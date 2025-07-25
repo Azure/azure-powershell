@@ -196,7 +196,7 @@ function Test_ImportBase64EncodedStringWithoutPasswordAsCertificate
 
 <#
 .SYNOPSIS
-Merge a cer (signed CSR) into a non-existant key pair
+Merge a cer (signed CSR) into a non-existent key pair
 #>
 
 function Test_MergeCerWithNonExistantKeyPair
@@ -212,7 +212,7 @@ function Test_MergeCerWithNonExistantKeyPair
 
 <#
 .SYNOPSIS
-Merge a cer (signed CSR) into a non-existant key pair
+Merge a cer (signed CSR) into a non-existent key pair
 #>
 
 function Test_MergeCerWithMismatchKeyPair
@@ -250,7 +250,7 @@ function Test_GetCertificate
 
 <#
 .SYNOPSIS
-Get a non existant certificate
+Get a non existent certificate
 #>
 
 function Test_GetCertificateNonExistant
@@ -360,7 +360,7 @@ function Test_NewCertificatePolicy
     Assert-NotNull $policy
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -IssuerName Self
     Assert-NotNull $policy
-    Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
+    Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
     Assert-NotNull $policy
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailAtNumberOfDaysBeforeExpiry 15
@@ -496,7 +496,7 @@ function Test_Add_AzureKeyVaultCertificate
         Assert-Null $certificateOperation.Information
         Assert-Null $certificateOperation.ErrorCode
         Assert-Null $certificateOperation.ErrorMessage
-        Start-Sleep -s 10
+        Start-TestSleep -Seconds 10
         $certificateOperation = Get-AzKeyVaultCertificateOperation $keyVault $certificateName
         $pollCount++
     }

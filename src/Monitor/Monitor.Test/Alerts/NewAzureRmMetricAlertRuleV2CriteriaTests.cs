@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System;
 using System.Management.Automation;
@@ -22,7 +23,7 @@ using Xunit;
 using Xunit.Abstractions;
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
-    public class NewAzureRmMetricAlertRuleV2CriteriaTests
+    public class NewAzureRmMetricAlertRuleV2CriteriaTests : RMTestBase
     {
         private readonly NewAzureRmMetricAlertRuleV2CriteriaCommand cmdlet;
         private Mock<ICommandRuntime> commandRuntimeMock;

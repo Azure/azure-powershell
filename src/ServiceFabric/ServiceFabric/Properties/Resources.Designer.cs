@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -174,6 +174,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string CannotParseReliabilityLevel {
             get {
                 return ResourceManager.GetString("CannotParseReliabilityLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot parse vmImage {0}..
+        /// </summary>
+        internal static string CannotParseVmImage {
+            get {
+                return ResourceManager.GetString("CannotParseVmImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot remove Bronze durability Node Type when the durability level is mismatched in the SF VMSS extension. To unblock, upgrade the \&quot;durabilityLevel\&quot; of the Node Type to match VMSS setting: {0}. One way to do this is by calling Update-AzServiceFabricDurability..
+        /// </summary>
+        internal static string CannotRemoveMismatchedDurabilityNodeType {
+            get {
+                return ResourceManager.GetString("CannotRemoveMismatchedDurabilityNodeType", resourceCulture);
             }
         }
         
@@ -529,6 +547,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating reliability level is correlated with the node count of the primary node type. This cluster has multiple primary node types so the node type name has to be sent via -NodeType parameter..
+        /// </summary>
+        internal static string MultiplePrimaryNodeTypesTargetUndefined {
+            get {
+                return ResourceManager.GetString("MultiplePrimaryNodeTypesTargetUndefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The cluster {0} already exists. Please remove the resource group and try again..
         /// </summary>
         internal static string NewExistingCluster {
@@ -547,11 +574,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Node type {0} was not a primary node type..
+        /// </summary>
+        internal static string NodeTypeNotPrimary {
+            get {
+                return ResourceManager.GetString("NodeTypeNotPrimary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cluster model has no definition of NodeTypes..
         /// </summary>
         internal static string NodeTypesNotDefinedInCluster {
             get {
                 return ResourceManager.GetString("NodeTypesNotDefinedInCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No change has been found for NodeType {0}. Operation is canceled..
+        /// </summary>
+        internal static string NodeTypeUpdateIsNoOp {
+            get {
+                return ResourceManager.GetString("NodeTypeUpdateIsNoOp", resourceCulture);
             }
         }
         

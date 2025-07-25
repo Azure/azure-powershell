@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/restore-azoperationalinsightsworkspace
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/restore-azoperationalinsightsworkspace
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Restore a deleted workspace.
 ## SYNTAX
 
 ```
-Restore-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Force]
+Restore-AzOperationalInsightsWorkspace -ResourceGroupName <String> -Name <String> -Location <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,9 +24,9 @@ Restore a deleted workspace.
 
 ### Example 1
 ```powershell
-PS C:\> $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
-PS C:\> $workspace | Remove-AzOperationalInsightsWorkspace
-PS C:\> $workspace = Restore-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName RG-NAME -Name WORKSPACE-NAME -Location LOCATION-VALUE
+$workspace | Remove-AzOperationalInsightsWorkspace
+$workspace = Restore-AzOperationalInsightsWorkspace -ResourceGroupName RG-NAME -Name WORKSPACE-NAME -Location LOCATION-VALUE
 ```
 
 Restore deleted workspace.
@@ -72,7 +72,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -87,7 +87,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -102,7 +102,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

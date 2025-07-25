@@ -35,6 +35,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the runbook version type
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Runtime Environment of module ")]
+        [ValidateSet(Constants.RuntimeVersion.PowerShell51,
+            Constants.RuntimeVersion.PowerShell72,
+            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string RuntimeVersion { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -45,19 +55,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             {
                 ret = new List<Module>
                 {
-                   this.AutomationClient.GetModule(this.ResourceGroupName, this.AutomationAccountName, this.Name)
+                   this.AutomationClient.GetModule(this.ResourceGroupName, this.AutomationAccountName, this.Name, Utils.isRuntimeVersionPowerShell72(RuntimeVersion))
                 };
                 this.GenerateCmdletOutput(ret);
             }
             else
             {
                 string nextLink = string.Empty;
-
                 do
                 {
-                    ret = this.AutomationClient.ListModules(this.ResourceGroupName, this.AutomationAccountName, ref nextLink);
+                    ret = this.AutomationClient.ListModules(this.ResourceGroupName, this.AutomationAccountName, ref nextLink, Utils.isRuntimeVersionPowerShell72(RuntimeVersion));                    
                     this.GenerateCmdletOutput(ret);
-
                 } while (!string.IsNullOrEmpty(nextLink));
             }
         }

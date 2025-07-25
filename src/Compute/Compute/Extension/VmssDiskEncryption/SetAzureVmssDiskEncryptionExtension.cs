@@ -21,9 +21,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 
@@ -65,6 +67,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
         public string DiskEncryptionKeyVaultId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceID of the managed identity with access to keyvault for Azure Disk Encryption operations.")]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -115,10 +124,28 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets/extensions", "ResourceGroupName", "VMScaleSetName")]
+            HelpMessage = "The extension publisher name. If this parameter is not specified, default value is Microsoft.Azure.Security for Windows VMs and Linux VMs")]
+        [ValidateNotNullOrEmpty]
+        public string ExtensionPublisherName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for Windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
         [ValidateNotNullOrEmpty]
         public string ExtensionName { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The extension type. Specify this parameter to override its default value of \"AzureDiskEncryption\" for Windows VMs and \"AzureDiskEncryptionForLinux\" for Linux VMs.")]
+        [ValidateNotNullOrEmpty]
+        public string ExtensionType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "EncryptFormatAll data drives that are not already encrypted")]
+        public SwitchParameter EncryptFormatAll { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -146,7 +173,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultResourceIdKey, DiskEncryptionKeyVaultId ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.kekVaultResourceIdKey, KeyEncryptionKeyVaultId ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.volumeTypeKey, VolumeType ?? string.Empty);
-            publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
+
+            if (EncryptFormatAll.IsPresent)
+            {
+                publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionFormatAllOperation);
+            }
+            else
+            {
+                publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
+            }
 
             string keyEncryptAlgorithm = string.Empty;
             if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
@@ -186,11 +221,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             if (OperatingSystemTypes.Windows.Equals(this.CurrentOSType))
             {
                 this.ExtensionName = this.ExtensionName ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName;
+                this.ExtensionPublisherName = this.ExtensionPublisherName ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultPublisher;
+                this.ExtensionType = this.ExtensionType ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
                     Name = this.ExtensionName,
-                    Publisher = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
-                    Type1 = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName,
+                    Publisher = this.ExtensionPublisherName,
+                    VirtualMachineScaleSetExtensionPropertiesType = this.ExtensionType,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
@@ -201,11 +238,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             else if (OperatingSystemTypes.Linux.Equals(this.CurrentOSType))
             {
                 this.ExtensionName = this.ExtensionName ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+                this.ExtensionPublisherName = this.ExtensionPublisherName ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher;
+                this.ExtensionType = this.ExtensionType ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
                     Name = this.ExtensionName,
-                    Publisher = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
-                    Type1 = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
+                    Publisher = this.ExtensionPublisherName,
+                    VirtualMachineScaleSetExtensionPropertiesType = this.ExtensionType,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
@@ -219,6 +258,63 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
 
             return vmssExtensionParameters;
+        }
+
+        private bool UpdateVmssEncryptionIdentity()
+        {
+            bool updateVmss = false;
+            var vmssParameters = (this.VirtualMachineScaleSetClient.Get(
+                this.ResourceGroupName, this.VMScaleSetName));
+
+            if (vmssParameters.Identity == null || vmssParameters.Identity.UserAssignedIdentities == null ||
+                !vmssParameters.Identity.UserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
+                    "Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource")),
+                    "InvalidResult", ErrorCategory.InvalidResult, null));
+
+            if (vmssParameters.VirtualMachineProfile == null)
+            {
+                vmssParameters.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+            }
+
+            if (vmssParameters.VirtualMachineProfile.SecurityProfile == null)
+            {
+                vmssParameters.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+            }
+
+            if (vmssParameters.VirtualMachineProfile.SecurityProfile.EncryptionIdentity == null)
+            {
+                vmssParameters.VirtualMachineProfile.SecurityProfile.EncryptionIdentity = new EncryptionIdentity();
+            }
+
+            if (String.IsNullOrEmpty(vmssParameters.VirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId) || 
+                !vmssParameters.VirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId.Equals(this.EncryptionIdentity, 
+                StringComparison.OrdinalIgnoreCase))
+            {
+                vmssParameters.VirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
+                updateVmss = true;
+            }
+
+            if (updateVmss)
+            {
+                // update VMss
+                AzureOperationResponse<VirtualMachineScaleSet, VirtualMachineScaleSetsCreateOrUpdateHeaders> updateEncryptionIdentity = null;
+                updateEncryptionIdentity = this.VirtualMachineScaleSetClient.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName, vmssParameters.Name, vmssParameters).GetAwaiter().GetResult();
+
+                if (updateEncryptionIdentity != null && updateEncryptionIdentity.Response != null && 
+                    updateEncryptionIdentity.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,"Failed to update encryption identity on VMSS")),
+                        "InvalidResult", ErrorCategory.InvalidResult, null));
+                }
+                return false;
+            }
+            return true;
         }
 
         public override void ExecuteCmdlet()
@@ -285,6 +381,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
         }
 
+        private void UpdateVmssEncryptionIdentityBeforeVerifyKeyVaultOperation()
+        {
+            bool updateEncryptionIdentity = UpdateVmssEncryptionIdentity();
+            if (updateEncryptionIdentity)
+            {
+                this.WriteObject("Encryption identity updated successfully on VMSS.");
+            }
+        }
+
         private void VerifyKeyVault(string keyVaultId)
         {
             string regexString = @"/subscriptions/(?<subId>\S+)/resourceGroups/(?<rgName>\S+)/providers/Microsoft.KeyVault/vaults/(?<vaultName>\S+)(.*?)";
@@ -322,6 +427,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     {
                         ThrowInvalidArgumentError("The location of key vault ID, {0}, does not match with the VM scale set.", keyVaultId);
 
+                    }
+                    if (this.EncryptionIdentity != null)
+                    {
+                        UpdateVmssEncryptionIdentityBeforeVerifyKeyVaultOperation();
+                    }
+                    
+                    VirtualMachineScaleSet vmssResponse = this.VirtualMachineScaleSetClient.Get(this.ResourceGroupName, VMScaleSetName);
+                    if (vmssResponse != null && vmssResponse.VirtualMachineProfile != null && vmssResponse.VirtualMachineProfile.SecurityProfile != null && 
+                        vmssResponse.VirtualMachineProfile.SecurityProfile.EncryptionIdentity != null && 
+                        vmssResponse.VirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
+                    {
+                        return;
                     }
                     else if (returnedKeyVault.Properties == null
                         || returnedKeyVault.Properties.EnabledForDiskEncryption == null

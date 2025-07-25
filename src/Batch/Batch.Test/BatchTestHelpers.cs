@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 tags: tags == null ? null : TagsConversionHelper.CreateTagDictionary(tags, true),
                 dedicatedCoreQuotaPerVMFamilyEnforced: dedicatedCoreQuotaPerVMFamilyEnforced,
                 dedicatedCoreQuotaPerVMFamily: machineFamilyQuotas,
-                identity: identity ?? new BatchAccountIdentity(ResourceIdentityType.None));
+                identity: identity);
 
             return resource;
         }
@@ -376,18 +376,23 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a CloudPoolGetResponse object
+        /// Builds a CloudPoolGetResponse object using a pool ID
         /// </summary>
         public static AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> CreateCloudPoolGetResponse(string poolId)
         {
-            var response = new AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>();
-            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-
             ProxyModels.CloudPool pool = new ProxyModels.CloudPool();
             pool.Id = poolId;
+            return CreateCloudPoolGetResponse(pool);
+        }
 
+        /// <summary>
+        /// Builds a CloudPoolGetResponse object using a pool model
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> CreateCloudPoolGetResponse(ProxyModels.CloudPool pool)
+        {
+            var response = new AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Body = pool;
-
             return response;
         }
 
@@ -454,48 +459,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return response;
         }
 
-        /// <summary>
-        /// Builds a CloudPoolStatisticsResponse object. Note: Using avgCPUPercentage and startTime for validating if the pipeline return the correct values
-        /// </summary>
-        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
-            double avgCPUPercentage,
-            DateTime startTime)
-        {
-            var stats = new ProxyModels.PoolStatistics()
-            {
-                ResourceStats = new ProxyModels.ResourceStatistics() { AvgCPUPercentage = avgCPUPercentage },
-                UsageStats = new ProxyModels.UsageStatistics() { StartTime =  startTime }
-            };
-
-            var response = new AzureOperationResponse
-                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders>()
-            {
-                Body = stats,
-                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
-            };
-
-            return response;
-        }
-
-        /// <summary>
-        /// Builds a CloudJobStatisticsResponse object.Note: Using startTime for validating if the pipeline return the correct values
-        /// </summary>
-        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
-        {
-            var stats = new ProxyModels.JobStatistics()
-            {
-                StartTime = startTime
-            };
-
-            var response = new AzureOperationResponse
-                <ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders>()
-            {
-                Body = stats,
-                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
-            };
-
-            return response;
-        }
 
         /// <summary>
         /// Builds a GetRemoteLoginSettingsResponse object
@@ -550,6 +513,50 @@ namespace Microsoft.Azure.Commands.Batch.Test
             response.Body = new MockPagedEnumerable<ProxyModels.ComputeNode>(computeNodes);
 
             return response;
+        }
+
+        /// <summary>
+        /// Builds a ComputeNodeExtensionGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.NodeVMExtension, ProxyModels.ComputeNodeExtensionGetHeaders> CreateComputeNodeExtensionGetResponse(Azure.Batch.VMExtension extension)
+        {
+            var response = new AzureOperationResponse<ProxyModels.NodeVMExtension, ProxyModels.ComputeNodeExtensionGetHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            ProxyModels.NodeVMExtension proxyExtension = CreateProxyExtension(extension);
+            response.Body = proxyExtension;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ComputeNodeExtensionListResponse object
+        /// </summary>
+        public static AzureOperationResponse<IPage<ProxyModels.NodeVMExtension>, ProxyModels.ComputeNodeExtensionListHeaders> CreateComputeNodeExtensionListResponse(IEnumerable<Azure.Batch.VMExtension> extensions)
+        {
+            var response = new AzureOperationResponse<IPage<ProxyModels.NodeVMExtension>, ProxyModels.ComputeNodeExtensionListHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            List<ProxyModels.NodeVMExtension> proxyExtensions = new List<ProxyModels.NodeVMExtension>();
+
+            foreach (Azure.Batch.VMExtension extension in extensions)
+            {
+                ProxyModels.NodeVMExtension proxyExtension = CreateProxyExtension(extension);
+                proxyExtensions.Add(proxyExtension);
+            }
+
+            response.Body = new MockPagedEnumerable<ProxyModels.NodeVMExtension>(proxyExtensions);
+
+            return response;
+        }
+
+        private static ProxyModels.NodeVMExtension CreateProxyExtension(Azure.Batch.VMExtension extension)
+        {
+            ProxyModels.NodeVMExtension proxyExtension = new ProxyModels.NodeVMExtension();
+            proxyExtension.InstanceView = new ProxyModels.VMExtensionInstanceView();
+            proxyExtension.VmExtension = new ProxyModels.VMExtension(extension.Name, extension.Publisher, extension.Type);
+            proxyExtension.ProvisioningState = ProvisioningState.Succeeded.ToString();
+            return proxyExtension;
         }
 
         /// <summary>
@@ -707,20 +714,33 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a TaskCountsGetResponse object
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders> CreateTaskCountsGetResponse(
-            int active, int running, int succeeded, int failed)
+        public static AzureOperationResponse<ProxyModels.TaskCountsResult, ProxyModels.JobGetTaskCountsHeaders> CreateTaskCountsGetResponse(
+            int requiredTaskSlots, int activeTasks, int runningTasks, int succeededTasks, int failedTasks)
         {
-            var response = new AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>();
+            var response = new AzureOperationResponse<ProxyModels.TaskCountsResult, ProxyModels.JobGetTaskCountsHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
-            ProxyModels.TaskCounts taskCounts = new ProxyModels.TaskCounts();
-            taskCounts.Active = active;
-            taskCounts.Running = running;
-            taskCounts.Succeeded = succeeded;
-            taskCounts.Failed = failed;
-            taskCounts.Completed = succeeded + failed;
+            var completedTasks = succeededTasks + failedTasks;
 
-            response.Body = taskCounts;
+            ProxyModels.TaskCounts taskCounts = new ProxyModels.TaskCounts();
+            taskCounts.Active = activeTasks;
+            taskCounts.Running = runningTasks;
+            taskCounts.Succeeded = succeededTasks;
+            taskCounts.Failed = failedTasks;
+            taskCounts.Completed = completedTasks;
+
+            ProxyModels.TaskSlotCounts slotCount = new ProxyModels.TaskSlotCounts();
+            slotCount.Active = requiredTaskSlots * activeTasks;
+            slotCount.Running = requiredTaskSlots * runningTasks;
+            slotCount.Succeeded = requiredTaskSlots * succeededTasks;
+            slotCount.Failed = requiredTaskSlots * failedTasks;
+            slotCount.Completed = requiredTaskSlots * completedTasks;
+
+            ProxyModels.TaskCountsResult result = new ProxyModels.TaskCountsResult();
+            result.TaskCounts = taskCounts;
+            result.TaskSlotCounts = slotCount;
+
+            response.Body = result;
 
             return response;
         }

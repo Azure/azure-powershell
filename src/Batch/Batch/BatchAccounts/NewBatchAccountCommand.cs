@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Batch.Models;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -61,11 +63,47 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Mandatory = false, HelpMessage = "The public network access type")]
         public PublicNetworkAccessType PublicNetworkAccess { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The identity associated with the BatchAccount")]
+        [Parameter(Mandatory = false, HelpMessage = "The type of identity associated with the BatchAccount.\r\nIf set to UserAssigned, the UserAssignedIdentities parameter must also be provided.")]
         public ResourceIdentityType IdentityType { get; set; } = ResourceIdentityType.None;
+
+        [Parameter(Mandatory = false, HelpMessage = "An array containing user assigned identities associated with the BatchAccount. This parameter is only used when IdentityType is set to UserAssigned.")]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Configures how customer data is encrypted inside the Batch account.\r\nBy default, accounts are encrypted using a Microsoft managed key.\r\nFor additional control, a customer-managed key can be used instead.")]
+        public KeySource EncryptionKeySource { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The Key Identifier for customer-based encryption.")]
+        public string EncryptionKeyIdentifier { get; set; }
 
         protected override void ExecuteCmdletImpl()
         {
+            Dictionary<string, UserAssignedIdentities> identityDictionary = null;
+            if (IdentityType == ResourceIdentityType.UserAssigned)
+            {
+                if (IdentityId == null)
+                {
+                    throw new PSArgumentNullException("IdentityId", "IdentityId must be provided when IdentityType is set to UserAssigned.");
+                }
+
+                identityDictionary = IdentityId.ToDictionary(i => i, i => new UserAssignedIdentities());
+            }
+
+            EncryptionProperties encryption = null;
+            if (EncryptionKeySource == KeySource.MicrosoftKeyVault)
+            {
+                if (IdentityType != ResourceIdentityType.UserAssigned)
+                {
+                    throw new PSArgumentException("If EncryptionKeySource is set to 'MicrosoftKeyVault', the Batch Account identity must be set to `UserAssigned`.");
+                }
+
+                if (EncryptionKeyIdentifier == null)
+                {
+                    throw new PSArgumentNullException("EncryptionKeyIdentifier", "If EncryptionKeySource is set to 'MicrosoftKeyVault', a valid Key Identifier must also be supplied as parameter 'EncryptionKeyIdentifier'.");
+                }
+
+                encryption = new EncryptionProperties(EncryptionKeySource, new KeyVaultProperties(EncryptionKeyIdentifier));
+            }
+
             AccountCreateParameters parameters = new AccountCreateParameters(this.ResourceGroupName, this.AccountName, this.Location)
             {
                 AutoStorageAccountId = this.AutoStorageAccountId,
@@ -74,8 +112,10 @@ namespace Microsoft.Azure.Commands.Batch
                 KeyVaultUrl = this.KeyVaultUrl,
                 Tags = this.Tag,
                 PublicNetworkAccess = this.PublicNetworkAccess,
-                Identity = new BatchAccountIdentity(this.IdentityType)
+                Identity = new BatchAccountIdentity(IdentityType, null, null, identityDictionary),
+                Encryption = encryption
             };
+
             BatchAccountContext context = BatchClient.CreateAccount(parameters);
             WriteObject(context);
         }

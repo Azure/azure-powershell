@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azsnapshot
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azsnapshot
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Removes a snapshot.
 
 ```
 Remove-AzSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,8 @@ The **Remove-AzSnapshot** cmdlet removes a snapshot.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Force;
+```powershell
+Remove-AzSnapshot -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01' -Force;
 ```
 
 This command removes the snapshot named 'Snapshot01' in the resource group 'ResourceGroup01'.

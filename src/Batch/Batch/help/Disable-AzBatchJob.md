@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: C831F934-7513-4882-A155-816E56CD9807
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchjob
+online version: https://learn.microsoft.com/powershell/module/az.batch/disable-azbatchjob
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ You can enable a disabled job later.
 ## EXAMPLES
 
 ### Example 1: Disable a Batch job
-```
-PS C:\>Disable-AzBatchJob -Id "Job-000001" -DisableJobOption "Terminate" -BatchContext $Context
+```powershell
+Disable-AzBatchJob -Id "Job-000001" -DisableJobOption "Terminate" -BatchContext $Context
 ```
 
 This command disables the job that has the ID Job-000001.
@@ -39,7 +39,7 @@ Use the **Get-AzBatchAccountKey** cmdlet to assign a context to the $Context var
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

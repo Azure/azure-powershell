@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "SourceAddress",
-            ChangeDescription = "This parameter is becoming optional as SourceIpGroup can be provided without this.",
-            IsBecomingMandatory = false)]
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddress,
@@ -85,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallNetworkRuleProtocol.Any,
             MNM.AzureFirewallNetworkRuleProtocol.TCP,
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
-            MNM.AzureFirewallNetworkRuleProtocol.ICMP,
+            MNM.AzureFirewallNetworkRuleProtocol.Icmp,
             IgnoreCase = false)]
         public string[] Protocol { get; set; }
         
@@ -102,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Only one of DestinationAddress/DestinationIpGroup or DestinationFqdns is allowed
-            // Eventually we may want to have exclusitivity with IpGroup too but for now not doing that
+            // Eventually we may want to have exclusivity with IpGroup too but for now not doing that
             if (((DestinationAddress != null) || (DestinationIpGroup != null)) && (DestinationFqdn != null))
             {
                 throw new ArgumentException("Both DestinationAddress or DestinationIpGroup and DestinationFqdns not allowed");
@@ -124,7 +120,8 @@ namespace Microsoft.Azure.Commands.Network
                 DestinationIpGroups = this.DestinationIpGroup?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
                 DestinationFqdns = this.DestinationFqdn?.ToList(),
-                RuleType = "NetworkRule"
+                RuleType = "NetworkRule",
+                Description = this.Description
             };
 
             WriteObject(networkRule);

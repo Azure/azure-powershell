@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/add-azattestationpolicysigner
+online version: https://learn.microsoft.com/powershell/module/az.attestation/add-azattestationpolicysigner
 schema: 2.0.0
 ---
 
@@ -15,13 +15,15 @@ Adds a trusted policy signer for a tenant in Azure Attestation.
 ### NameParameterSet
 ```
 Add-AzAttestationPolicySigner [-Name] <String> [-ResourceGroupName] <String> -Signer <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Add-AzAttestationPolicySigner [-ResourceId] <String> -Signer <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +33,8 @@ The Add-AzAttestationPolicySigner cmdlet adds a trusted policy signer for a tena
 
 ### Example 1
 ```powershell
-PS C:\> $trustedSigner = Get-Content -Path .\trusted.signer.txt
-PS C:\> Add-AzAttestationPolicySigner -Name pshtest -ResourceGroupName psh-test-rg -Signer $trustedSigner
+$trustedSigner = Get-Content -Path .\trusted.signer.txt
+Add-AzAttestationPolicySigner -Name pshtest -ResourceGroupName psh-test-rg -Signer $trustedSigner
 ```
 
 Add a trusted signer for the Atteestation Provider named *pshtest*.

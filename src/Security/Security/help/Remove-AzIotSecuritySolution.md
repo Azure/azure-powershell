@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzIotSecuritySolution
+online version: https://learn.microsoft.com/powershell/module/az.security/Remove-AzIotSecuritySolution
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Delete IoT security solution
 ### ResourceGroupLevelResource (Default)
 ```
 Remove-AzIotSecuritySolution -Name <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -27,7 +28,8 @@ Remove-AzIotSecuritySolution -ResourceId <String> [-PassThru] [-DefaultProfile <
 ### InputObject
 ```
 Remove-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +40,7 @@ The IoT security solution collects security data and events from iot devices and
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup"
+Remove-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup"
 ```
 
 Delete IoT security solution "MySample" with resource group "MyResourceGroup"

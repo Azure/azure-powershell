@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/undo-azkeyvaultsecretremoval
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultsecretremoval
 schema: 2.0.0
 ---
 
@@ -18,10 +18,17 @@ Undo-AzKeyVaultSecretRemoval [-VaultName] <String> [-Name] <String> [-DefaultPro
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### BySecretUri
+```
+Undo-AzKeyVaultSecretRemoval [-Id] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### InputObject
 ```
 Undo-AzKeyVaultSecretRemoval [-InputObject] <PSDeletedKeyVaultSecretIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,8 +40,31 @@ Caller needs to have 'recover' permission in order to perform this operation.
 
 ### Example 1
 ```powershell
-PS C:\> Undo-AzKeyVaultSecretRemoval -VaultName 'MyKeyVault' -Name 'MySecret'
+Undo-AzKeyVaultSecretRemoval -VaultName 'MyKeyVault' -Name 'MySecret'
+```
 
+```output
+Vault Name   : MyKeyVault
+Name         : MySecret
+Version      : f622abc7b1394092812f1eb0f85dc91c
+Id           : https://mykeyvault.vault.azure.net:443/secrets/mysecret/f622abc7b1394092812f1eb0f85dc91c
+Enabled      : True
+Expires      :
+Not Before   :
+Created      : 4/19/2018 5:56:02 PM
+Updated      : 4/26/2018 7:48:40 PM
+Content Type :
+Tags         :
+```
+
+This command will recover the secret 'MySecret' that was previously deleted, into an active and usable state.
+
+### Example 2
+```powershell
+Undo-AzKeyVaultSecretRemoval -Id "https://mykeyvault.vault.azure.net:443/secrets/mysecret/"
+```
+
+```output
 Vault Name   : MyKeyVault
 Name         : MySecret
 Version      : f622abc7b1394092812f1eb0f85dc91c
@@ -52,11 +82,26 @@ This command will recover the secret 'MySecret' that was previously deleted, int
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,11 +112,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+The URI of the KeyVault Secret.
+Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
+
+```yaml
+Type: String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Deleted secret object
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem
+Type: PSDeletedKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -87,7 +148,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Default
 Aliases: SecretName
 
@@ -103,7 +164,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Default
 Aliases:
 
@@ -114,27 +175,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -162,6 +208,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzKeyVaultSecret](./Remove-AzKeyVaultSecret.md)
 
-[Add-AzKeyVaultSecret](./Add-AzKeyVaultSecret.md)
+[Set-AzKeyVaultSecret](./Set-AzKeyVaultSecret.md)
 
 [Get-AzKeyVaultSecret](./Get-AzKeyVaultSecret.md)

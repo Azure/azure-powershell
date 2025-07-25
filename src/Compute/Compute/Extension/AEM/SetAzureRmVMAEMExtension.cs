@@ -12,22 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Rest;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -69,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.")]
+                HelpMessage = "If this parameter is provided, the cmdlet will enable Windows Azure Diagnostics for this virtual machine.")]
         public SwitchParameter EnableWAD { get; set; }
 
         [Parameter(
@@ -112,6 +108,43 @@ namespace Microsoft.Azure.Commands.Compute
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Install the new extension.")]
         public SwitchParameter InstallNewExtension { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 7,
+                ParameterSetName = "NewExtension",
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Configures the proxy URI that should be used by the VM Extension for SAP.")]
+        public string ProxyURI { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 8,
+                ParameterSetName = "NewExtension",
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Enable debug mode for the VM Extension.")]
+        public SwitchParameter DebugExtension { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "NewExtension",
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Path to user assigned identity.")]
+        public string PathUserIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "NewExtension",
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Skip VM identity assignment.")]
+        public SwitchParameter SkipIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "NewExtension",
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Deploy test extension.")]
+        public SwitchParameter IsTest { get; set; }
 
         private IAuthorizationManagementClient _authClient;
 
@@ -198,122 +231,269 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
 
-
-        private void SetNewExtension(VirtualMachine selectedVM, VirtualMachineInstanceView selectedVMStatus)
+        private VirtualMachineIdentity assureVmIdentityType(VirtualMachine pVM, bool blnUserAssiged)
         {
-            // check VM identity
-            // give VM idenity access to resources/resource groups
-            // deploy extension on VM
+            ResourceIdentityType resourceIdentityType = blnUserAssiged ? ResourceIdentityType.UserAssigned : ResourceIdentityType.SystemAssigned;
 
-            //TODO should we allow user assigned identity?
-            if (selectedVM.Identity == null)
+            VirtualMachineIdentity pVmIdentity = pVM.Identity;
+            if (null == pVmIdentity)
             {
-                selectedVM.Identity = new VirtualMachineIdentity(type: ResourceIdentityType.SystemAssigned);
-                selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.
-                    CreateOrUpdate(this.ResourceGroupName, this.VMName, selectedVM);
-            }
-            else if (selectedVM.Identity.Type == ResourceIdentityType.UserAssigned)
+                pVmIdentity = new VirtualMachineIdentity(null, null, resourceIdentityType);
+                pVM.Identity = pVmIdentity;
+            } else
             {
-                selectedVM.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
-                selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.
-                    CreateOrUpdate(this.ResourceGroupName, this.VMName, selectedVM);
-            }
-
-            HashSet<string> scopes = new HashSet<string>();
-
-            int endIndex = 4; //Scope is set to resource group
-            if (this.SetAccessToIndividualResources)
-            {
-                endIndex = 8; //Scope is set to resource
-            }
-
-            // Add VM Scope or Resource Group scope
-            scopes.Add(String.Join("/", selectedVM.Id.Split('/').SubArray(0, endIndex)));
-            //TODO: do we want to support unmanaged disks?
-            scopes.Add(String.Join("/", selectedVM.StorageProfile.OsDisk.ManagedDisk.Id.Split('/').SubArray(0, endIndex)));
-            foreach (var dataDisk in selectedVM.StorageProfile.DataDisks)
-            {
-                scopes.Add(String.Join("/", dataDisk.ManagedDisk.Id.Split('/').SubArray(0, endIndex)));
-            }
-            foreach (var nic in selectedVM.NetworkProfile.NetworkInterfaces)
-            {
-                scopes.Add(String.Join("/", nic.Id.Split('/').SubArray(0, endIndex)));
-            }
-
-            DateTime startTime = DateTime.Now;
-            foreach (string scope in scopes)
-            {
-                /* In some cases, the role assignment cannot be created because the VM identity is not yet available for usage. */
-                bool created = false;
-                while (!created)
+                if (resourceIdentityType != pVmIdentity.Type)
                 {
-                    string scopedRoleId = $"{scope}/providers/Microsoft.Authorization/roleDefinitions/{AEMExtensionConstants.NewExtensionRole}";
-                    string roleDefinitionId = $"/subscriptions/{this.DefaultContext.Subscription.Id}/providers/Microsoft.Authorization/roleDefinitions/{AEMExtensionConstants.NewExtensionRole}";
-                    var existingRoleAssignments = AuthClient.RoleAssignments.ListForScope(scope);
-                    var existingRoleAssignment = existingRoleAssignments.FirstOrDefault(assignmentTest =>
-                        assignmentTest.Properties.PrincipalId.EqualsInsensitively(selectedVM.Identity.PrincipalId)
-                            && assignmentTest.Properties.RoleDefinitionId.EqualsInsensitively(roleDefinitionId)
-                            && assignmentTest.Properties.Scope.EqualsInsensitively(scope));
+                    pVmIdentity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                }
+            }
 
-                    if (existingRoleAssignment != null)
+            return pVmIdentity;
+        }
+
+        private void assureClientId(VirtualMachineIdentity pVmIdentity, string szPath)
+        {
+            // assure user assigned list
+            //
+            IDictionary<string, UserAssignedIdentitiesValue> pUserAssignedList = pVmIdentity.UserAssignedIdentities;
+            if (null == pUserAssignedList)
+            {
+                pUserAssignedList = new Dictionary<string, UserAssignedIdentitiesValue>(1);
+                pVmIdentity.UserAssignedIdentities = pUserAssignedList;
+            }
+
+            // -) identity cannot be duplicated in the provided userAssignedIdentities list
+            // -) ContainsKey, TryGetValue don't work
+            //
+            foreach (string szKey in pUserAssignedList.Keys)
+            {
+                if (0 == string.Compare(szKey, szPath, true))
+                {
+                    return;
+                }
+            }
+
+            pUserAssignedList[szPath] = new UserAssignedIdentitiesValue();
+
+        }
+
+        private string getClientId(VirtualMachine pVM, string szPathIdentity)
+        {
+            string szClientId = null;
+
+            if (   null != pVM.Identity
+                && null != pVM.Identity.UserAssignedIdentities
+                )
+            {
+                foreach (KeyValuePair<string, UserAssignedIdentitiesValue> kvp in pVM.Identity.UserAssignedIdentities)
+                {
+                    if (0 == string.Compare(kvp.Key, szPathIdentity, true))
                     {
-                        this._Helper.WriteVerbose($"Role Assignment for scope {scope} already exists for principal {selectedVM.Identity.PrincipalId}");
-                        created = true;
+                        UserAssignedIdentitiesValue uav = kvp.Value;
+                        szClientId = uav.ClientId;
                         break;
-                    }
-
-
-                    RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters()
-                    {
-                        Properties = new RoleAssignmentProperties()
-                        {
-                            RoleDefinitionId = scopedRoleId,
-                            //TODO: do we want to support user assigned identity?
-                            PrincipalId = selectedVM.Identity.PrincipalId
-                        }
-                    };
-                    try
-                    {
-                        string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
-                        string assignmentName = Guid.NewGuid().ToString();
-                        if ("Record".EqualsInsensitively(testMode) || Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.RunningMocked)
-                        {
-                            // Make sure to use the same ID during test record and playback
-                            assignmentName = AEMHelper.GenerateGuid(scope);
-                        }
-
-                        AuthClient.RoleAssignments.Create(scope, assignmentName, createParameters);
-                        created = true;
-                    }
-                    catch (CloudException cex)
-                    {
-                        if (!("PrincipalNotFound".Equals(cex.Body.Code)))
-                        {
-                            throw;
-                        }
-
-                        this._Helper.WriteVerbose(cex.ToString());
-                    }
-
-                    if (!created && (DateTime.Now - startTime).TotalSeconds < MAX_WAIT_TIME_FOR_SP_SECONDS)
-                    {
-                        this._Helper.WriteVerbose("Virtual Machine System Identity not available yet - waiting 5 seconds");
-                        Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(5000);
-                    }
-                    else if (!created)
-                    {
-                        this._Helper.WriteError($"Waited {MAX_WAIT_TIME_FOR_SP_SECONDS} seconds for VM identity to become available - giving up. Please try again later.");
-                        return;
                     }
                 }
             }
 
+            if (string.IsNullOrEmpty(szClientId))
+            {
+                throw new Exception(string.Format("Cannot resolve clientId, path: {0}. Please assign a valid user identity to the VM: {1}."
+                    , szPathIdentity
+                    , pVM.Name
+                    ));
+            }
+
+            return szClientId;
+        }
+
+        private string getPrincipalId(VirtualMachine pVM, string szPathIdentity)
+        {
+            // must not be null at this point
+            //
+            VirtualMachineIdentity pVmIdentity = pVM.Identity;
+
+            string szPrincipalId = null;
+
+            if (string.IsNullOrEmpty(szPathIdentity))
+            {
+                szPrincipalId = pVmIdentity.PrincipalId;
+            }
+            else
+            {
+
+                foreach (KeyValuePair<string, UserAssignedIdentitiesValue> kvp in pVmIdentity.UserAssignedIdentities)
+                {
+                    if (0 == string.Compare(kvp.Key, szPathIdentity, true))
+                    {
+                        UserAssignedIdentitiesValue uav = kvp.Value;
+                        szPrincipalId = uav.PrincipalId;
+                        break;
+                    }
+                }
+            }
+
+            if (string.IsNullOrEmpty(szPrincipalId))
+            {
+                throw new Exception(string.Format("cannot resolve principalId, path: {0}"
+                    , szPathIdentity
+                    ));
+            }
+
+            return szPrincipalId;
+        }
+
+        private void SetNewExtension(VirtualMachine selectedVM, VirtualMachineInstanceView selectedVMStatus)
+        {
+            // check VM identity
+            // give VM identity access to resources/resource groups
+            // deploy extension on VM
+
+            bool blnIsUserAssigned = !string.IsNullOrEmpty(this.PathUserIdentity);
+
+            if (!this.SkipIdentity)
+            {
+                
+                VirtualMachineIdentity pVmIdentity = assureVmIdentityType(selectedVM, blnIsUserAssigned);
+             
+                if (blnIsUserAssigned)
+                {
+                    assureClientId(pVmIdentity, this.PathUserIdentity);
+                }
+
+                selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.
+                       CreateOrUpdate(this.ResourceGroupName, this.VMName, selectedVM);
+
+                HashSet<string> scopes = new HashSet<string>();
+
+                int endIndex = 4; //Scope is set to resource group
+                if (this.SetAccessToIndividualResources)
+                {
+                    endIndex = 8; //Scope is set to resource
+                }
+
+                // Add VM Scope or Resource Group scope
+                scopes.Add(String.Join("/", selectedVM.Id.Split('/').SubArray(0, endIndex)));
+                //TODO: do we want to support unmanaged disks?
+                scopes.Add(String.Join("/", selectedVM.StorageProfile.OsDisk.ManagedDisk.Id.Split('/').SubArray(0, endIndex)));
+                foreach (var dataDisk in selectedVM.StorageProfile.DataDisks)
+                {
+                    scopes.Add(String.Join("/", dataDisk.ManagedDisk.Id.Split('/').SubArray(0, endIndex)));
+                }
+                foreach (var nic in selectedVM.NetworkProfile.NetworkInterfaces)
+                {
+                    scopes.Add(String.Join("/", nic.Id.Split('/').SubArray(0, endIndex)));
+                }
+
+                string szPrincipalId = getPrincipalId(selectedVM, this.PathUserIdentity);
+
+                DateTime startTime = DateTime.Now;
+                foreach (string scope in scopes)
+                {
+                    /* In some cases, the role assignment cannot be created because the VM identity is not yet available for usage. */
+                    bool created = false;
+                    while (!created)
+                    {
+                        string scopedRoleId = $"{scope}/providers/Microsoft.Authorization/roleDefinitions/{AEMExtensionConstants.NewExtensionRole}";
+                        string roleDefinitionId = $"/subscriptions/{this.DefaultContext.Subscription.Id}/providers/Microsoft.Authorization/roleDefinitions/{AEMExtensionConstants.NewExtensionRole}";
+                        var existingRoleAssignments = AuthClient.RoleAssignments.ListForScope(scope);
+                        var existingRoleAssignment = existingRoleAssignments.FirstOrDefault(assignmentTest =>
+                            assignmentTest.Properties.PrincipalId.EqualsInsensitively(szPrincipalId)
+                                && assignmentTest.Properties.RoleDefinitionId.EqualsInsensitively(roleDefinitionId)
+                                && assignmentTest.Properties.Scope.EqualsInsensitively(scope));
+
+                        if (existingRoleAssignment != null)
+                        {
+                            this._Helper.WriteVerbose($"Role Assignment for scope {scope} already exists for principal {szPrincipalId}");
+                            created = true;
+                            break;
+                        }
+
+
+                        RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters()
+                        {
+                            Properties = new RoleAssignmentProperties()
+                            {
+                                RoleDefinitionId = scopedRoleId,
+                                PrincipalId = szPrincipalId
+                            }
+                        };
+                        try
+                        {
+                            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+                            string assignmentName = Guid.NewGuid().ToString();
+                            if ("Record".EqualsInsensitively(testMode) || Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.RunningMocked)
+                            {
+                                // Make sure to use the same ID during test record and playback
+                                assignmentName = AEMHelper.GenerateGuid(scope);
+                            }
+
+                            AuthClient.RoleAssignments.Create(scope, assignmentName, createParameters);
+                            created = true;
+                        }
+                        catch (CloudException cex)
+                        {
+                            if (!("PrincipalNotFound".Equals(cex.Body.Code)))
+                            {
+                                throw;
+                            }
+
+                            this._Helper.WriteVerbose(cex.ToString());
+                        }
+
+                        if (!created && (DateTime.Now - startTime).TotalSeconds < MAX_WAIT_TIME_FOR_SP_SECONDS)
+                        {
+                            this._Helper.WriteVerbose("Virtual Machine System Identity not available yet - waiting 5 seconds");
+                            Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(5000);
+                        }
+                        else if (!created)
+                        {
+                            this._Helper.WriteError($"Waited {MAX_WAIT_TIME_FOR_SP_SECONDS} seconds for VM identity to become available - giving up. Please try again later.");
+                            return;
+                        }
+                    }
+                }
+            }
+
+            var sapmonPublicConfig = new List<KeyValuePair>();
+            if (!String.IsNullOrEmpty(this.ProxyURI))
+            {
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "proxy", Value = this.ProxyURI });
+            }
+            if (this.DebugExtension.IsPresent)
+            {
+                sapmonPublicConfig.Add(new KeyValuePair() { Key = "debug", Value = "1" });
+            }
+
+            string szClientId = null;
+
+            if (blnIsUserAssigned)
+            {
+                szClientId = getClientId(selectedVM, this.PathUserIdentity);
+                sapmonPublicConfig.Add(new KeyValuePair("client_id", szClientId));
+            }
+
+            ExtensionConfig jsonPublicConfig = new ExtensionConfig();
+            jsonPublicConfig.Config = sapmonPublicConfig;
+
+            // allow test extension
+            //
+            string szPublisher;
+            if (this.IsTest)
+            {
+                szPublisher = AEMExtensionConstants.AEMExtensionPublisherv2_TestAfterMigration[OSType];
+            } else
+            {
+                szPublisher = AEMExtensionConstants.AEMExtensionPublisherv2[OSType];
+            }
+
             var vmExtensionConfig = new VirtualMachineExtension()
             {
-                Publisher = AEMExtensionConstants.AEMExtensionPublisherv2[OSType],
+                Publisher = szPublisher,
                 VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionTypev2[OSType],
                 TypeHandlerVersion = AEMExtensionConstants.AEMExtensionVersionv2[OSType].ToString(2),
                 Location = selectedVM.Location,
+                Settings = jsonPublicConfig,
                 AutoUpgradeMinorVersion = true,
                 ForceUpdateTag = DateTime.Now.Ticks.ToString()
             };
@@ -631,7 +811,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }).GetAwaiter().GetResult();
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension cmdlet.");
 
                 var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
@@ -653,7 +833,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }).GetAwaiter().GetResult();
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension cmdlet.");
 
                 var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);

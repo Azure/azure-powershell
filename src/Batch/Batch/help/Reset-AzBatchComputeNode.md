@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: A202537B-D292-4822-A0B9-27A6A20621D4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/reset-azbatchcomputenode
+online version: https://learn.microsoft.com/powershell/module/az.batch/reset-azbatchcomputenode
 schema: 2.0.0
 ---
 
@@ -31,16 +31,16 @@ The **Reset-AzBatchComputeNode** cmdlet reinstalls the operating system on the s
 ## EXAMPLES
 
 ### Example 1: Reimage a node
-```
-PS C:\>Reset-AzBatchComputeNode -PoolId "MyPool" -Id "tvm-3257026573_2-20150813t200938z" -BatchContext $Context
+```powershell
+Reset-AzBatchComputeNode -PoolId "MyPool" -Id "tvm-3257026573_2-20150813t200938z" -BatchContext $Context
 ```
 
 This command reimages the compute node with ID "tvm-3257026573_2-20150813t200938z" in the pool named MyPool.
 Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Reimage all nodes in a pool
-```
-PS C:\>Get-AzBatchComputeNode -PoolId "MyPool" -BatchContext $Context | Reset-AzBatchComputeNode -BatchContext $Context
+```powershell
+Get-AzBatchComputeNode -PoolId "MyPool" -BatchContext $Context | Reset-AzBatchComputeNode -BatchContext $Context
 ```
 
 This command reimages every compute node in the pool named MyPool.
@@ -49,7 +49,7 @@ This command reimages every compute node in the pool named MyPool.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

@@ -1,27 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns?api-version=2017-05-15-preview&$filter=properties%2FosType%20eq%20%27Windows%27%20and%20properties%2Fstatus%20eq%20%27Failed%27%20and%20properties%2FstartTime%20ge%202018-05-22T23%3A40%3A00.0000000Z",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zP2FwaS12ZXJzaW9uPTIwMTctMDUtMTUtcHJldmlldyYkZmlsdGVyPXByb3BlcnRpZXMlMkZvc1R5cGUlMjBlcSUyMCUyN1dpbmRvd3MlMjclMjBhbmQlMjBwcm9wZXJ0aWVzJTJGc3RhdHVzJTIwZXElMjAlMjdGYWlsZWQlMjclMjBhbmQlMjBwcm9wZXJ0aWVzJTJGc3RhcnRUaW1lJTIwZ2UlMjAyMDE4LTA1LTIyVDIzJTNBNDAlM0EwMC4wMDAwMDAwWg==",
+      "RequestUri": "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns?api-version=2022-08-08&$filter=properties%2FosType%20eq%20%27Windows%27%20and%20properties%2Fstatus%20eq%20%27Failed%27%20and%20properties%2FstartTime%20ge%202021-04-04T11%3A10%3A00.0000000Z",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzgzZmQ2NTItNjRmMy00NjgwLTgxZTktMGI5NzhjNTQyMDA1L3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zP2FwaS12ZXJzaW9uPTIwMjItMDgtMDgmJGZpbHRlcj1wcm9wZXJ0aWVzJTJGb3NUeXBlJTIwZXElMjAlMjdXaW5kb3dzJTI3JTIwYW5kJTIwcHJvcGVydGllcyUyRnN0YXR1cyUyMGVxJTIwJTI3RmFpbGVkJTI3JTIwYW5kJTIwcHJvcGVydGllcyUyRnN0YXJ0VGltZSUyMGdlJTIwMjAyMS0wNC0wNFQxMSUzQTEwJTNBMDAuMDAwMDAwMFo=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1e300f74-41c8-456f-b26e-0cf1dd40a90a"
+          "d7443e49-ec0f-4444-ac8b-8d55ab6ea602"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27129.04",
+          "FxVersion/4.700.22.47601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "92ae32a5-0c53-400a-9fcf-844eb30eb198"
+          "ec0be684-a6c4-40d6-8112-3238e4ce1017"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -30,34 +30,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "92ae32a5-0c53-400a-9fcf-844eb30eb198"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "ec0be684-a6c4-40d6-8112-3238e4ce1017"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "71548950-5770-457a-92af-72dd4288cdd6"
+          "86e6cd11-c6f8-4120-803a-e14609be85d9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190203T215555Z:71548950-5770-457a-92af-72dd4288cdd6"
+          "JIOINDIAWEST:20221027T112213Z:86e6cd11-c6f8-4120-803a-e14609be85d9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 03 Feb 2019 21:55:55 GMT"
+          "Thu, 27 Oct 2022 11:22:13 GMT"
         ],
         "Content-Length": [
           "12"
@@ -75,6 +69,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+    "SubscriptionId": "783fd652-64f3-4680-81e9-0b978c542005"
   }
 }

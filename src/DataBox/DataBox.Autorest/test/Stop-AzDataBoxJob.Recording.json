@@ -1,0 +1,230 @@
+{
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellSchedulej2hr/cancel?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellSchedulej2hr/cancel?api-version=2025-02-01",
+      "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "205633f2-fbe1-4019-8a86-fc137456bea0" ],
+        "x-ms-client-request-id": [ "13e6c94c-edc5-4391-8174-1ab9328a46d2" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/54d2fb44-7097-43b9-9212-7588fdeef020" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "205633f2-fbe1-4019-8a86-fc137456bea0" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213517Z:205633f2-fbe1-4019-8a86-fc137456bea0" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 225C33D7510348FD9CD14F2F309233A6 Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:16Z" ],
+        "Date": [ "Thu, 17 Apr 2025 21:35:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellths7/cancel?api-version=2025-02-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellths7/cancel?api-version=2025-02-01",
+      "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "9d008874-e9cf-446a-b851-da973ae835e9" ],
+        "x-ms-client-request-id": [ "4070acad-3e31-446d-8093-ba3107b3feac" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/ee868d33-1e50-49ab-8ba4-fb5187df34e6" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-correlation-request-id": [ "9d008874-e9cf-446a-b851-da973ae835e9" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213517Z:9d008874-e9cf-446a-b851-da973ae835e9" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C35429B72E7445798FEE15D32D038F32 Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:17Z" ],
+        "Date": [ "Thu, 17 Apr 2025 21:35:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellExportf9j3/cancel?api-version=2025-02-01+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellExportf9j3/cancel?api-version=2025-02-01",
+      "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "fb851a1e-6a9e-4672-a7eb-408bf5ed2dc7" ],
+        "x-ms-client-request-id": [ "b2335d7c-06fb-4960-8330-b77e014bafe2" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/4ac813b0-b716-4caf-ab00-86c976ead10d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "fb851a1e-6a9e-4672-a7eb-408bf5ed2dc7" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213519Z:fb851a1e-6a9e-4672-a7eb-408bf5ed2dc7" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B3170A309B914D00A7C46BA7E37E1F18 Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:18Z" ],
+        "Date": [ "Thu, 17 Apr 2025 21:35:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellUAIicpg/cancel?api-version=2025-02-01+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellUAIicpg/cancel?api-version=2025-02-01",
+      "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "2a9bc744-81a8-42ea-9db1-8dc38adea855" ],
+        "x-ms-client-request-id": [ "503d4d58-7a69-456e-bab0-41226396ec65" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/60b72ef5-28f9-4446-a207-701980aa85a5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "2a9bc744-81a8-42ea-9db1-8dc38adea855" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213520Z:2a9bc744-81a8-42ea-9db1-8dc38adea855" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C4A26C79FF3B4F53A696A98BB79AD968 Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:19Z" ],
+        "Date": [ "Thu, 17 Apr 2025 21:35:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/PwshDiskoi75/cancel?api-version=2025-02-01+5": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/PwshDiskoi75/cancel?api-version=2025-02-01",
+      "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "9c285a24-a966-49e3-bbc3-7817dc596121" ],
+        "x-ms-client-request-id": [ "791c3280-f4bd-41a7-a77f-78581eebca20" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/63f4f733-8248-4915-9ea0-e53868a1dcec" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "9c285a24-a966-49e3-bbc3-7817dc596121" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213522Z:9c285a24-a966-49e3-bbc3-7817dc596121" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 42ECFDE398104E6C8E715FEE5163608A Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:20Z" ],
+        "Date": [ "Thu, 17 Apr 2025 21:35:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/PwshHeavyvog4/cancel?api-version=2025-02-01+6": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/PwshHeavyvog4/cancel?api-version=2025-02-01",
+      "Content": "{\r\n  \"reason\": \"Test Job\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5294cab0-af21-4ff4-9e66-f9bbf6ba1966" ],
+        "x-ms-client-request-id": [ "9d2c5199-4bd5-4994-ab8d-17bd292312c1" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f36494aa-c092-4cef-9cdd-5a3c7a472793/westindia/f27e1657-b59d-473a-a25e-4ce544be7769" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "5294cab0-af21-4ff4-9e66-f9bbf6ba1966" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213523Z:5294cab0-af21-4ff4-9e66-f9bbf6ba1966" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 10DA0173EACF40E2A82CF25A2866599B Ref B: MAA201060515023 Ref C: 2025-04-17T21:35:22Z" ],
+        "Date": [ "Thu, 17 Apr 2025 21:35:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

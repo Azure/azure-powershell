@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     public abstract class AzureServiceBusCmdletBase : AzureRMCmdlet
     {
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
-        private Microsoft.Azure.Commands.ServiceBus.ServiceBusClient  _client;
+        private ServiceBusClient _client;
 
         protected const string ServiceBusNamespaceVerb = "AzureRmServiceBusNamespace";
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
         protected const string RuleInputObjectParameterSet = "RuleResourceIdSet";
-        protected const string NetwrokruleSetInputObjectParameterSet = "NetwrokruleSetInputObjectSet";
+        protected const string NetworkRuleSetInputObjectParameterSet = "NetworkRuleSetInputObjectSet";
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
 
@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string SubscriptionResourceIdParameterSet = "SubscriptionResourceIdSet";
         protected const string RuleResourceIdParameterSet = "RuleResourceIdSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
+        protected const string PrivateEndpointResourceIdParameterSet = "PrivateEndpointResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -100,10 +101,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
         protected const string RuleResourceParameterSet = "RulePropertiesSet";
         protected const string RuleResourceActionParameterSet = "RuleActionPropertiesSet";
-        protected const string NetwrokruleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
-        protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
+        protected const string NetworkRuleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
+        protected const string NetworkRuleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
+        protected const string PrivateEndpointPropertiesParameterSet = "PrivateEndpointPropertiesSet";
+        protected const string PrivateLinkPropertiesParameterSet = "PrivateLinkPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -133,69 +136,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string ServicebusStartMigrationConfiguration = "AzureRmServiceBusStartMigration";
         protected const string ServicebusCompleteMigrationConfiguration = "AzureRmServiceBusCompleteMigration";
 
-        //Access Rights 
-        protected const string Manage = "Manage";
-        protected const string Send = "Send";
-        protected const string Listen = "Listen";
-
-        protected struct SKU
-        {
-            internal const string Basic = "Basic";
-            internal const string Standard = "Standard";
-            internal const string Premium = "Premium";
-        }
-
-        protected struct RegeneKeys
-        {
-            internal const string PrimaryKey = "PrimaryKey";
-            internal const string SecondaryKey = "SecondaryKey";
-        }
-        
-        protected static AccessRights ParseAccessRights(string rightsName)
-        {
-            AccessRights returnAccessRights;
-            if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
-            {
-                throw new ArgumentOutOfRangeException("AccessRights");
-            }
-            return returnAccessRights;
-        }
-        
-        public static SkuName ParseSkuName(string skuName)
-        {
-            SkuName returnSkuName;
-            if (!Enum.TryParse<SkuName>(skuName, true, out returnSkuName))
-            {
-                throw new ArgumentOutOfRangeException("SkuName");
-            }
-            return returnSkuName;
-        }
-
-        public static SkuTier ParseSkuTier(string skuTier)
-        {
-            SkuTier returnSkutier;
-            if (!Enum.TryParse<SkuTier>(skuTier, true, out returnSkutier))
-            {
-                throw new ArgumentOutOfRangeException("skuTier");
-            }
-            return returnSkutier;
-        }
-
-        public static TimeSpan ParseTimespan(string strTimespan)
-        {
-            TimeSpan tspan = new TimeSpan();
-            if(strTimespan.Contains("P") || strTimespan.Contains("D") || strTimespan.Contains("T") || strTimespan.Contains("H") || strTimespan.Contains("M") || strTimespan.Contains("M"))
-            {
-                tspan = XmlConvert.ToTimeSpan(strTimespan);
-            }
-            else
-            {
-                tspan = TimeSpan.Parse(strTimespan);
-            }
-            return tspan;
-        }
-
-        public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
+        public ServiceBusClient Client
         {
             get
             {
@@ -211,128 +152,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
         }
 
-        protected void ExecuteLongRunningCmdletWrap(Func<PSNamespaceLongRunningOperation> func)
-        {
-            try
-            {
-                var longRunningOperation = func();
-
-                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
-                bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
-                if (!success)
-                {
-                    WriteErrorWithTimestamp(longRunningOperation.Error);
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                WriteError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidArgument, null));
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
-            }
-        }
-
-        protected void WriteProgress(PSNamespaceLongRunningOperation operation)
-        {
-            WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
-        }
-
-        protected PSNamespaceLongRunningOperation WaitForOperationToComplete(PSNamespaceLongRunningOperation longRunningOperation)
-        {
-            WriteProgress(longRunningOperation);
-
-            while (longRunningOperation.Status == OperationStatus.InProgress)
-            {
-                var retryAfter = longRunningOperation.RetryAfter ?? LongRunningOperationDefaultTimeout;
-
-                Thread.Sleep(retryAfter);
-
-                WriteProgress(longRunningOperation);
-            }
-
-            return longRunningOperation;
-        }
-
-        protected T ParseInputFile<T>(string InputFile)
-        {
-            T parsedObj;
-
-            if (!string.IsNullOrEmpty(InputFile))
-            {
-                string fileName = this.TryResolvePath(InputFile);
-                if (!(new FileInfo(fileName)).Exists)
-                {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.FileDoesNotExist, fileName));
-                }
-
-                try
-                {
-                    parsedObj = JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName));
-                    return parsedObj;
-                }
-                catch (JsonException)
-                {
-                    WriteVerbose("Deserializing the input role definition failed.");
-                    throw;
-                }
-            }
-
-            return default(T);
-        }
-
-        public ResourceIdentifier GetResourceDetailsFromId(string strResourceId)
-        {
-            ResourceIdentifier returnResourceIdentifier = new ResourceIdentifier(strResourceId);
-            returnResourceIdentifier.ParentResource = Regex.Split(strResourceId, @"/")[8];
-            return returnResourceIdentifier;
-        }
-
-        #region TagsHelper
-
-        public Dictionary<string, string> ConvertTagsToDictionary(Hashtable tags)
-        {
-            if (tags != null)
-            {
-
-
-                Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
-                foreach (DictionaryEntry tag in tags)
-                {
-                    string key = tag.Key as string;
-                    if (string.IsNullOrWhiteSpace(key))
-                        throw new ArgumentException("Invalid tag name");
-
-                    if (tag.Value != null && !(tag.Value is string))
-                        throw new ArgumentException("Tag has invalid value");
-                    string value = (tag.Value == null) ? string.Empty : (string)tag.Value;
-                    tagsDictionary[key] = value;
-                }
-                return tagsDictionary;
-
-            }
-
-            return null;
-        }
-
-        public Hashtable ConvertTagsToHashtable(IDictionary<string, string> tags)
-        {
-            if (tags != null)
-            {
-                Hashtable tagsHashtable = new Hashtable();
-                foreach (var tag in tags)
-                    tagsHashtable[tag.Key] = tag.Value;
-
-                return tagsHashtable;
-            }
-
-            return null;
-        }
-
-        #endregion
     }
-
 
     public class LocalResourceIdentifier : ResourceIdentifier
     {
@@ -361,8 +181,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public string ParentResource1 { get; set; }
 
         public string ParentResource2 { get; set; }
-
-
-
     }
 }

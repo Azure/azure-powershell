@@ -18,7 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* [Breaking Change]Updated parametersnaming conventions and associated examples
+* Update the outputs of breaking change announcements.
+
+## Version 3.1.1
+* Added breaking change announcement for below commands from array or single object to list.
+    - 'Get-AzManagedServicesAssignment'
+    - 'Get-AzManagedServicesDefinition'
+    - 'Get-AzManagedServicesMarketplaceDefinition'
+    - 'New-AzManagedServicesAssignment'
+    - 'New-AzManagedServicesAuthorizationObject'
+    - 'New-AzManagedServicesDefinition'
+    - 'New-AzManagedServicesEligibleApproverObject'
+    - 'New-AzManagedServicesEligibleAuthorizationObject' 
+
+## Version 3.1.0
+* Upgraded nuget package to signed package.
+
+## Version 3.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 3.0.0
+* [Breaking Change] Updated API version to 2020-02-01-preview
+
+## Version 2.0.0
+* [Breaking Change] Updated parameters naming conventions and associated examples
 
 ## Version 1.1.1
 * Updated breaking change warnings on cmdlets of managed services assignment and definition

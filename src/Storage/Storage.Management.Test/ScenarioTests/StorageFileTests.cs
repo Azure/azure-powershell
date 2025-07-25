@@ -12,44 +12,73 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
-    public class StorageFileTests : RMTestBase
+    public class StorageFileTests : StorageTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public StorageFileTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageFileShare()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-StorageFileShare");
+            TestRunner.RunTestScript("Test-StorageFileShare");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageFileShareGetUsage()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-StorageFileShareGetUsage");
+            TestRunner.RunTestScript("Test-StorageFileShareGetUsage");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestShareSoftDeletee()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-ShareSoftDelete");
+            TestRunner.RunTestScript("Test-ShareSoftDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestShareSnapshot()
+        {
+            TestRunner.RunTestScript("Test-ShareSnapshot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFileServiceProperties()
+        {
+            TestRunner.RunTestScript("Test-FileServiceProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageShareNFS()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageShareNFS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageFilePV2()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageFilePV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageFilePaidBursting()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageFilePaidBursting");
         }
     }
 }

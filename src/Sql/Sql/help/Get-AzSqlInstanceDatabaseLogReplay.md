@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Get-AzSqlInstanceDatabaseLogReplay
+online version: https://learn.microsoft.com/powershell/module/az.sql/Get-AzSqlInstanceDatabaseLogReplay
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Get-AzSqlInstanceDatabaseLogReplay** cmdlet gets the Log Replay service st
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
+Get-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
 ```
 
 This command will get log replay service status on the given database.
@@ -73,7 +73,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName

@@ -1,54 +1,118 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
+---
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azrelaynamespace
+online version: https://learn.microsoft.com/powershell/module/az.relay/get-azrelaynamespace
 schema: 2.0.0
 ---
 
 # Get-AzRelayNamespace
 
 ## SYNOPSIS
-Gets a description for the specified Relay namespace within the resource group.
+Returns the description for the specified namespace.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzRelayNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRelayNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzRelayNamespace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzRelayNamespace -InputObject <IRelayIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzRelayNamespace** cmdlet gets a description for the specified Relay namespace within the resource group.
+Returns the description for the specified namespace.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> Get-AzRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
-
-ProvisioningState  : Succeeded
-CreatedAt          : 4/12/2017 12:38:47 AM
-UpdatedAt          : 4/12/2017 12:39:10 AM
-ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
-MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
-Location           : West US
-Tags               : {[tag1, Tag1Value]}
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
-Name               : TestNameSpace-Relay1
-Type               : Microsoft.Relay/namespaces
+### Example 1: List all Relay namespaces within the resource group
+```powershell
+Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg
 ```
 
-Returns a description of the specified Relay namespace.
+```output
+Name             ResourceGroupName Location        Status SkuName  ServiceBusEndpoint
+----             ----------------- --------        ------ -------  ------------------
+lucasrelay       lucas-relay-rg    West Central US Active Standard https://lucasrelay.servicebus.windows.net:443/
+namespace-pwsh01 lucas-relay-rg    East US         Active Standard https://namespace-pwsh01.servicebus.windows.net:443/
+```
+
+The cmdlet lists all Relay namespaces within the resource group.
+
+### Example 2: Gets a description for the specified Relay namespace within the resource group
+```powershell
+Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Format-List
+```
+
+```output
+CreatedAt                    : 12/20/2022 3:20:46 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microso
+                               ft.Relay/namespaces/namespace-pwsh01
+Location                     : East US
+MetricId                     : 9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-pwsh01
+Name                         : namespace-pwsh01
+PrivateEndpointConnection    : 
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : 
+ResourceGroupName            : lucas-relay-rg
+ServiceBusEndpoint           : https://namespace-pwsh01.servicebus.windows.net:443/
+SkuName                      : Standard
+SkuTier                      : Standard
+Status                       : Active
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                               }
+Type                         : Microsoft.Relay/Namespaces
+UpdatedAt                    : 12/20/2022 3:21:28 AM
+```
+
+The cmdlet gets a description for the specified Relay namespace within the resource group.
+
+### Example 3: Gets a description for the specified Relay namespace by pipeline
+```powershell
+$namespaces = Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg 
+$namespaces[0] | Get-AzRelayNamespace
+```
+
+```output
+Name       ResourceGroupName Location        Status SkuName  ServiceBusEndpoint
+----       ----------------- --------        ------ -------  ------------------
+lucasrelay lucas-relay-rg    West Central US Active Standard https://lucasrelay.servicebus.windows.net:443/
+```
+
+The cmdlet gets a description for the specified Relay namespace by pipeline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -57,46 +121,78 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Relay Namespace Name.
+The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Get
+Aliases: NamespaceName
 
-Required: False
-Position: 1
+Required: True
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayNamespace
 
 ## NOTES
 

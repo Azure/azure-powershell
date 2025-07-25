@@ -57,10 +57,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Name { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
+        public ExtendedLocation ExtendedLocation { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         //     Gets or sets possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         public string NetworkAccessPolicy { get; set; }
         public string DiskAccessId { get; set; }
+        public PSPurchasePlan PurchasePlan { get; set; }
+        public bool? SupportsHibernation { get; set; }
 
+        //
+        // Summary:
+        //     Gets or sets list of supported capabilities (like Accelerated Networking) for
+        //     the image from which the source disk from the snapshot was originally created.
+        public SupportedCapabilities SupportedCapabilities { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets possible values include: 'Enabled', 'Disabled'
+        public string PublicNetworkAccess { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets percentage complete for the background copy when a resource is created
+        //     via the CopyStart operation.
+        public double? CompletionPercent { get; set; }
+        public string DataAccessAuthMode { get; set; }
     }
 }

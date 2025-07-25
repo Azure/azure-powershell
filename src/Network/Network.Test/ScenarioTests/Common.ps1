@@ -90,15 +90,3 @@ function Clean-ResourceGroup($rgname)
         Remove-AzResourceGroup -Name $rgname -Force
     }
 }
-
-<#
-.SYNOPSIS
-Sleeps but only during recording.
-#>
-function Start-TestSleep($milliseconds)
-{
-    if ((Get-NetworkTestMode) -ne 'Playback')
-    {
-        Start-Sleep -Milliseconds $milliseconds
-    }
-}

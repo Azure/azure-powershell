@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the partner subscription id for Instance Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The subscription id of the secondary managed instance of the Instance Failover Group needed only for cross-subscrption setup")]
+            HelpMessage = "The subscription id of the secondary managed instance of the Instance Failover Group needed only for cross-subscription setup")]
         [ValidateNotNullOrEmpty]
         public string PartnerSubscriptionId { get; set; }
 
@@ -108,10 +108,19 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the failover policy for read only endpoint of the Sql Azure Instance Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.")]
+            HelpMessage = "Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string AllowReadOnlyFailoverToPrimary { get; set; }
+
+        /// <summary>
+        /// Gets or sets the failover policy for read only endpoint of the Sql Azure Instance Failover Group.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Intended usage of the secondary instance in the Failover Group. Standby indicates that the secondary instance will be used as a passive replica for disaster recovery only.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Geo", "Standby")]
+        public string SecondaryType { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -163,6 +172,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
                 FailoverWithDataLossGracePeriodHours = gracePeriod,
                 ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : "Disabled",
+                SecondaryType = SecondaryType,
             });
             return newEntity;
         }

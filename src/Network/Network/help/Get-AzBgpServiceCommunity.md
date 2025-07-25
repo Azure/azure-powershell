@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azbgpservicecommunity
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azbgpservicecommunity
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Provides a list of all services / regions, BGP communities, and associated prefi
 ## SYNTAX
 
 ```
-Get-AzBgpServiceCommunity [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBgpServiceCommunity [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,9 +23,11 @@ This cmdlet provides a list of all services / regions, BGP communities, and asso
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzBgpServiceCommunity
+```
 
+```output
 ...
 
 Name           : AzureCentralIndia

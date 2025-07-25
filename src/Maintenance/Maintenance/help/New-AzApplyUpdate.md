@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version: https://docs.microsoft.com/en-us/powershell/module/az.maintenance/new-azapplyupdate
+online version: https://learn.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate
 schema: 2.0.0
 ---
 
@@ -14,8 +14,9 @@ Apply maintenance updates to resource
 
 ```
 New-AzApplyUpdate [-ResourceGroupName] <String> [-ProviderName] <String> [-ResourceParentType <String>]
- [-ResourceParentName <String>] [-ResourceType] <String> [-ResourceName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceParentName <String>] [-ResourceType] <String> [-ApplyUpdateName <String>] [-Status <String>]
+ [-ResourceName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,9 +26,10 @@ Apply maintenance updates to resource
 
 ### Example 1
 ```powershell
-PS C:\> New-AzApplyUpdate -ResourceGroupName smdtest$region -ResourceParentType hostGroups -ResourceParentName smddhg$region -ResourceType hosts -ResourceName smddh$region -ProviderName Microsoft.Compute
+New-AzApplyUpdate -ResourceGroupName smdtest$region -ResourceParentType hostGroups -ResourceParentName smddhg$region -ResourceType hosts -ResourceName smddh$region -ProviderName Microsoft.Compute
+```
 
-
+```output
 Status         : InProgress
 ResourceId     : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/smdtestwestus2/providers/Microsoft.Compute/hostGroups/smddhgwestus2/hosts/smddhwestus2
 LastUpdateTime : 11/8/2019 9:39:01 AM
@@ -40,6 +42,21 @@ Type           : Microsoft.Maintenance/applyUpdates
 Apply maintenance updates to resource
 
 ## PARAMETERS
+
+### -ApplyUpdateName
+The apply update name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -156,6 +173,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Status
+The apply update status.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

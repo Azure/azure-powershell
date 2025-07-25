@@ -148,6 +148,7 @@ function Test-DedicatedHostVirtualMachine
         # VM Profile & Hardware
         $vmsize = 'Standard_E2s_v3';
         $vmname0 = 'v' + $rgname;
+        $stnd = "Standard";
 
         # Creating a VM using simple parameter set
         $username = "admin01"
@@ -155,7 +156,7 @@ function Test-DedicatedHostVirtualMachine
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname0-$vmname0".tolower();
 
-        New-AzVM -ResourceGroupName $rgname -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostId $dedicatedHostId -DomainNameLabel $domainNameLabel;
+        New-AzVM -ResourceGroupName $rgname -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostId $dedicatedHostId -DomainNameLabel $domainNameLabel -SecurityType $stnd;
         $vm0 = Get-AzVM -ResourceGroupName $rgname -Name $vmname0;
         Assert-AreEqual $dedicatedHostId $vm0.Host.Id;
 
@@ -177,7 +178,7 @@ function Test-DedicatedHostVirtualMachine
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize -Zone "2" -HostId $dedicatedHostId `
+        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize -Zone "2" -HostId $dedicatedHostId -SecurityType $stnd `
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 
@@ -238,6 +239,94 @@ function Test-DedicatedHostVirtualMachine
         Remove-AzVM -ResourceGroupName $rgname -Name $vmname0 -Force;
         Remove-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
         Remove-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupName;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Restart dedicated host feature.
+#>
+function Test-DedicatedHostRestart
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        # [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        # $loc = $loc.Replace(' ', '');
+        $loc = "eastus2euap";
+        
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $hostGroupName = $rgname + 'hostgroup';
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "2" -Tag @{key1 = "val1"};
+
+        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
+        $hostName = $rgname + 'host';
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -Tag @{key1 = "val2"};
+
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        
+        # Restart the dedicated host
+        Restart-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+
+        # Resource Id Parameter set
+        Restart-AzHost -ResourceId $dedicatedHost.Id;
+
+        # Object Parameter set
+        Restart-AzHost -Host $dedicatedHost;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Restart dedicated host Update and Size.
+#>
+function Test-DedicatedHostUpdateAndSize
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        # [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        # $loc = $loc.Replace(' ', '');
+        $loc = "eastus2euap";        
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $hostGroupName = $rgname + 'hostgroup';
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1  -Zone "2" -Tag @{key1 = "val1"};
+
+        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
+        $hostName = $rgname + 'host';
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "ESv3-Type1" -Tag @{key1 = "val2"};
+
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        
+        # Restart the dedicated host
+        $hostSize = Get-AzHostSize -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Assert-NotNull $hostSize;
+
+        # Update DH
+        $dHUpdate = Update-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -AutoReplaceOnFailure $false;
+        Assert-AreEqual $dHUpdate.AutoReplaceOnFailure $False ;
+
     }
     finally
     {

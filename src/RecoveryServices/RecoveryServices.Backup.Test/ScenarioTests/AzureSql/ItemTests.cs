@@ -13,21 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ItemTests : RMTestBase
+    public partial class ItemTests : RecoveryServicesBackupTestRunner
     {
-        public XunitTracingInterceptor _logger;
+        private readonly string _AzureSqlcommonModule = $"ScenarioTests/Common.ps1";
+        private readonly string _AzureSqltestModule = $"ScenarioTests/{PsBackupProviderTypes.AzureSql}/ItemTests.ps1";
 
-        public ItemTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ItemTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "This workload is not supported anymore")]
@@ -35,8 +33,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlGetItems()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetItems");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
+                "Test-AzureSqlGetItems"
+            );
         }
 
         [Fact(Skip = "This workload is not supported anymore")]
@@ -44,8 +45,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlDisableProtection()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlDisableProtection");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
+                "Test-AzureSqlDisableProtection"
+            );
         }
 
         [Fact(Skip = "This workload is not supported anymore")]
@@ -53,8 +57,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlGetRPs()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetRPs");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
+                "Test-AzureSqlGetRPs"
+            );
         }
     }
 }

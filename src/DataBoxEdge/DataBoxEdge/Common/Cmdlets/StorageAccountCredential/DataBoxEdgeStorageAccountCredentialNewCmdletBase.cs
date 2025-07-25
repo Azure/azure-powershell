@@ -130,14 +130,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
                     this.DataBoxEdgeManagementClient.StorageAccountCredentials,
                     this.DeviceName,
                     this.Name,
+                    this.ResourceGroupName,
                     InitStorageAccountCredentialObject(
                         name: this.Name,
                         storageAccountName: this.Name,
                         accountType: this.StorageAccountType,
                         sslStatus: HelpMessageStorageAccountCredential.SslStatus,
                         secret: encryptedSecret
-                    ),
-                    this.ResourceGroupName
+                    )
                 ));
         }
 
@@ -149,9 +149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
             AsymmetricEncryptedSecret secret)
         {
             var storageAccountCredential = new ResourceModel(
-                name,
                 sslStatus,
                 accountType,
+                name,
                 userName: storageAccountName,
                 accountKey: secret);
             return storageAccountCredential;

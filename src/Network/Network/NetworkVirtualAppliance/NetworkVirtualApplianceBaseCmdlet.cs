@@ -52,6 +52,26 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
+        public bool IsNetworkVirtualApplianceProvisioned(string resourceGroupName, string name)
+        {
+            try
+            {
+                var nva = GetNetworkVirtualAppliance(resourceGroupName, name);
+                if(nva.ProvisioningState != "Succeeded")
+                    return false;
+            }
+            catch (Microsoft.Rest.Azure.CloudException exception)
+            {
+                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // Resource is not present
+                    return false;
+                }
+                throw;
+            }
+            return true;
+        }
+
         public PSNetworkVirtualAppliance GetNetworkVirtualAppliance(string resourceGroupName, string name, string expandResource = null)
         {
             var nva = this.NetworkVirtualAppliancesClient.Get(resourceGroupName, name, expandResource);

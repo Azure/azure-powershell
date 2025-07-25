@@ -45,6 +45,8 @@ using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
 using HybridRunbookWorkerGroup = Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Rest.Azure;
+using ContentLink = Microsoft.Azure.Management.Automation.Models.ContentLink;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -91,9 +93,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public IEnumerable<Model.AutomationAccount> ListAutomationAccounts(string resourceGroupName, ref string nextLink)
         {
             Rest.Azure.IPage<AutomationManagement.Models.AutomationAccount> response;
-            if(!string.IsNullOrWhiteSpace(resourceGroupName))
+            if (!string.IsNullOrWhiteSpace(resourceGroupName))
             {
-                if(string.IsNullOrWhiteSpace(nextLink))
+                if (string.IsNullOrWhiteSpace(nextLink))
                 {
                     response = this.automationManagementClient.AutomationAccount.ListByResourceGroup(resourceGroupName);
                 }
@@ -101,7 +103,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     response = this.automationManagementClient.AutomationAccount.ListByResourceGroupNext(nextLink);
                 }
-                
+
             }
             else
             {
@@ -143,7 +145,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName,
-            string location, string plan, IDictionary tags)
+            string location, string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("Location", location).NotNull();
@@ -165,13 +167,61 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Tags = accountTags
             };
 
+            if (addSystemId == true)
+            {
+                accountCreateOrUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+            }
+            if ((userIds != null) && userIds.Any())
+            {
+                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
+                foreach (var id in userIds)
+                {
+                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
+                }
+
+                var IdType = ResourceIdentityType.UserAssigned;
+                if (addSystemId == true)
+                {
+                    IdType = ResourceIdentityType.SystemAssignedUserAssigned;
+                }
+
+                accountCreateOrUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+            }
+            if (enableAMK == true)
+            {
+                accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(null, EncryptionKeySourceType.MicrosoftAutomation);
+            }
+            if (enableCMK == true)
+            {
+                if (String.IsNullOrEmpty(UserIdentityEncryption))
+                {
+                    accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault
+                        );
+                }
+                else
+                {
+                    accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault,
+                        new EncryptionPropertiesIdentity(UserIdentityEncryption)
+                        );
+                }
+            }
+
+            if (disablePublicNetworkAccess == true)
+            {
+                accountCreateOrUpdateParameters.PublicNetworkAccess = false;
+            }
+
             var account = this.automationManagementClient.AutomationAccount.CreateOrUpdate(resourceGroupName, automationAccountName, accountCreateOrUpdateParameters);
 
             return new AutomationAccount(resourceGroupName, account);
         }
 
         public AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName,
-            string plan, IDictionary tags)
+            string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
@@ -200,6 +250,54 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 },
                 Tags = accountTags,
             };
+
+            if (addSystemId == true)
+            {
+                accountUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+            }
+            if ((userIds != null) && userIds.Any())
+            {
+                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
+                foreach (var id in userIds)
+                {
+                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
+                }
+
+                var IdType = ResourceIdentityType.UserAssigned;
+                if (addSystemId == true)
+                {
+                    IdType = ResourceIdentityType.SystemAssignedUserAssigned;
+                }
+
+                accountUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+            }
+            if (enableAMK == true)
+            {
+                accountUpdateParameters.Encryption = new EncryptionProperties(null, EncryptionKeySourceType.MicrosoftAutomation);
+            }
+            if (enableCMK == true)
+            {
+                if (String.IsNullOrEmpty(UserIdentityEncryption))
+                {
+                    accountUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault
+                        );
+                }
+                else
+                {
+                    accountUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault,
+                        new EncryptionPropertiesIdentity(UserIdentityEncryption)
+                        );
+                }
+            }
+
+            if (disablePublicNetworkAccess == true)
+            {
+                accountUpdateParameters.PublicNetworkAccess = false;
+            }
 
             var account = this.automationManagementClient.AutomationAccount.Update(resourceGroupName, automationAccountName, accountUpdateParameters);
 
@@ -232,31 +330,51 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #region Module
 
         public Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink,
-            string moduleName)
+            string moduleName,bool isPowershell72Module = false)
         {
-            var createdModule = this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+            ModuleCreateOrUpdateParameters moduleCreateOrUpdateParameters = new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
+            {
+                Name = moduleName,
+                ContentLink = new AutomationManagement.Models.ContentLink()
+                {
+                    Uri = contentLink.ToString(),
+                    ContentHash = null,
+                    Version = null
+                },
+            };
+            if (isPowershell72Module)
+            {
+                this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
                 automationAccountName,
                 moduleName,
-                new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
-                {
-                    Name = moduleName,
-                    ContentLink = new AutomationManagement.Models.ContentLink()
-                    {
-                         Uri = contentLink.ToString(),
-                         ContentHash = null,
-                         Version = null
-                    },
-                });
-
-            return this.GetModule(resourceGroupName, automationAccountName, moduleName);
+                moduleCreateOrUpdateParameters
+                );
+            }
+            else
+            {
+                this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+                automationAccountName,
+                moduleName,
+                moduleCreateOrUpdateParameters
+                );
+            }
+            return this.GetModule(resourceGroupName, automationAccountName, moduleName, isPowershell72Module);
         }
 
-        public Module GetModule(string resourceGroupName, string automationAccountName, string name)
+        public Module GetModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false)
         {
             try
             {
-                var module =
-                    this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                AutomationManagement.Models.Module module =null;
+                if (isPowershell72Module)
+                {
+                    module = this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
+                }
+                else
+                {
+                    module = this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                }
+                
                 return new Module(resourceGroupName, automationAccountName, module);
             }
             catch (ErrorResponseException cloudException)
@@ -272,17 +390,31 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName,
-            ref string nextLink)
+            ref string nextLink, bool isPowershell72Module = false)
         {
             Rest.Azure.IPage<AutomationManagement.Models.Module> response;
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
+                if (isPowershell72Module)
+                {
+                    response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
+                }
+                else
+                {
+                    response = this.automationManagementClient.Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
+                }                
             }
             else
             {
-                response = this.automationManagementClient.Module.ListByAutomationAccountNext(nextLink);
+                if (isPowershell72Module)
+                {
+                    response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccountNext(nextLink);
+                }
+                else
+                {
+                    response = this.automationManagementClient.Module.ListByAutomationAccountNext(nextLink);
+                }                
             }
 
             nextLink = response.NextPageLink;
@@ -290,37 +422,71 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Module UpdateModule(string resourceGroupName, string automationAccountName, string name,
-            Uri contentLinkUri, string contentLinkVersion)
-        {
-            var moduleModel =
-                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
-            if (contentLinkUri != null)
-            {
-                var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
-
-                moduleUpdateParameters.Name = name;
-                moduleUpdateParameters.ContentLink = new AutomationManagement.Models.ContentLink();
-                moduleUpdateParameters.ContentLink.Uri = contentLinkUri.ToString();
-                moduleUpdateParameters.ContentLink.Version =
-                    (String.IsNullOrWhiteSpace(contentLinkVersion))
-                        ? Guid.NewGuid().ToString()
-                        : contentLinkVersion;
-
-                moduleUpdateParameters.Tags = moduleModel.Tags;
-
-                this.automationManagementClient.Module.Update(resourceGroupName, automationAccountName, name,
-                    moduleUpdateParameters);
-            }
-            var updatedModule =
-                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
-            return new Module(resourceGroupName, automationAccountName, updatedModule);
-        }
-
-        public void DeleteModule(string resourceGroupName, string automationAccountName, string name)
+            Uri contentLinkUri, string contentLinkVersion, bool isPowershell72Module = false)
         {
             try
             {
-                this.automationManagementClient.Module.Delete(resourceGroupName, automationAccountName, name);
+                ModuleCreateOrUpdateParameters moduleCreateOrUpdateParameters = new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
+                {
+                    Name = name,
+                    ContentLink = new AutomationManagement.Models.ContentLink()
+                    {
+                        Uri = contentLinkUri.ToString(),
+                        ContentHash = null,
+                        Version =
+                            (String.IsNullOrWhiteSpace(contentLinkVersion))
+                            ? Guid.NewGuid().ToString()
+                            : contentLinkVersion
+                    },
+                };
+                if (contentLinkUri != null)
+                {
+                    if (isPowershell72Module)
+                    {
+                         this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
+                    automationAccountName,
+                    name,
+                    moduleCreateOrUpdateParameters
+                    );
+
+                    }
+                    else
+                    {
+                        this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+                    automationAccountName,
+                    name,
+                    moduleCreateOrUpdateParameters
+                    );
+                    }
+                    
+                }
+                return this.GetModule(resourceGroupName, automationAccountName, name, isPowershell72Module);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Module),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+
+                }
+
+                throw;
+            }
+        }
+
+        public void DeleteModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false)
+        {
+            try
+            {
+                if (isPowershell72Module)
+                {
+                    this.automationManagementClient.PowerShell72Module.Delete(resourceGroupName, automationAccountName, name);
+                }
+                else
+                {
+                    this.automationManagementClient.Module.Delete(resourceGroupName, automationAccountName, name);
+                }                
             }
             catch (ErrorResponseException cloudException)
             {
@@ -340,16 +506,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Schedule CreateSchedule(string resourceGroupName, string automationAccountName, Schedule schedule)
         {
-            var scheduleCreateOrUpdateParameters = new AutomationManagement.Models.ScheduleCreateOrUpdateParameters
+            var scheduleCreateOrUpdateParameters = new ScheduleCreateOrUpdateParameters
             {
-               Name = schedule.Name,
-               StartTime = schedule.StartTime.DateTime,
-               ExpiryTime = schedule.ExpiryTime,
-               Description = schedule.Description,
-               Interval = schedule.Interval,
-               Frequency = schedule.Frequency.ToString(),
-               AdvancedSchedule = schedule.GetAdvancedSchedule(),
-               TimeZone = schedule.TimeZone,
+                Name = schedule.Name,
+                StartTime = schedule.StartTime,
+                ExpiryTime = schedule.ExpiryTime,
+                Description = schedule.Description,
+                Interval = schedule.Interval,
+                Frequency = schedule.Frequency.ToString(),
+                AdvancedSchedule = schedule.GetAdvancedSchedule(),
+                TimeZone = schedule.TimeZone,
             };
 
             var scheduleCreateResponse = this.automationManagementClient.Schedule.CreateOrUpdate(
@@ -392,7 +558,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.Schedule.ListByAutomationAccount(resourceGroupName, automationAccountName);;
+                response = this.automationManagementClient.Schedule.ListByAutomationAccount(resourceGroupName, automationAccountName); ;
             }
             else
             {
@@ -435,7 +601,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.Runbook.ListByAutomationAccount(resourceGroupName, automationAccountName);;
+                response = this.automationManagementClient.Runbook.ListByAutomationAccount(resourceGroupName, automationAccountName); ;
             }
             else
             {
@@ -498,7 +664,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             // if graph runbook make sure type is not null and has right value
-            if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase) 
+            if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase)
                 && (string.IsNullOrWhiteSpace(type) || !IsGraphRunbook(type)))
             {
                 throw new ResourceCommonException(typeof(Runbook),
@@ -525,8 +691,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var runbook = this.CreateRunbookByName(resourceGroupName, automationAccountName, runbookName, description, tags, type, logProgress, logVerbose, overwrite);
 
-                FileStream SourceStream = File.Open(runbookPath, FileMode.Open);
-                this.automationManagementClient.RunbookDraft.ReplaceContent(resourceGroupName, automationAccountName, runbookName, SourceStream);
+                using (FileStream SourceStream = File.Open(runbookPath, FileMode.Open))
+                {
+                    this.automationManagementClient.RunbookDraft.ReplaceContent(resourceGroupName, automationAccountName, runbookName, SourceStream);
+                }
 
                 if (published)
                 {
@@ -946,7 +1114,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 response.Select(
                     stream => this.CreateJobStreamFromJobStreamModel(stream, resourceGroupName, automationAccountName, jobId));
         }
-        
+
         public JobStreamRecord GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId)
         {
             var response = this.automationManagementClient.JobStream.Get(resourceGroupName, automationAccountName, jobId.ToString(), jobStreamId);
@@ -1041,7 +1209,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             nextLink = response.NextPageLink;
             return response.Select(c => new Job(resourceGroupName, automationAccountName, c));
         }
-                
+
         public IEnumerable<Job> ListJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime,
             DateTimeOffset? endTime, string jobStatus, ref string nextLink)
         {
@@ -1200,7 +1368,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     string.Format(CultureInfo.CurrentCulture, Resources.ConnectionAlreadyExists, name));
             }
 
-            var ccparam = new ConnectionCreateOrUpdateParameters() { Name = name,
+            var ccparam = new ConnectionCreateOrUpdateParameters()
+            {
+                Name = name,
                 Description = description,
                 ConnectionType = new ConnectionTypeAssociationProperty() { Name = connectionTypeName },
                 FieldDefinitionValues =
@@ -1319,27 +1489,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
-        #region HybridRunbookworkers
-        
-        public IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink)
-        {
-            Rest.Azure.IPage<AutomationManagement.Models.HybridRunbookWorkerGroup> response;
+        #region HybridRunbookworkerGroups
 
-            if (string.IsNullOrEmpty(nextLink))
-            {
-                response = this.automationManagementClient.HybridRunbookWorkerGroup.ListByAutomationAccount(resourceGroupName, automationAccountName);;
-            }
-            else
-            {
-                response = this.automationManagementClient.HybridRunbookWorkerGroup.ListByAutomationAccountNext(nextLink);
-            }
-
-            nextLink = response.NextPageLink;
-
-            return response.Select(c => new HybridRunbookWorkerGroup(resourceGroupName, automationAccountName, c));
-        }
-
-        public HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name)
+        public HybridRunbookWorkerGroup GetHybridWorkerGroup(string resourceGroupName, string automationAccountName, string name)
         {
             var hybridRunbookWorkerGroupModel = this.TryGetHybridRunbookWorkerModel(resourceGroupName, automationAccountName, name);
             if (hybridRunbookWorkerGroupModel == null)
@@ -1349,7 +1501,57 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             return new HybridRunbookWorkerGroup(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupModel);
-            
+
+        }
+
+        public AutomationManagement.Models.HybridRunbookWorkerGroup CreateOrUpdateRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string credentialName = null)
+        {
+            AutomationManagement.Models.HybridRunbookWorkerGroup response;
+
+            var hybridWorkerGroupCreationParams = new HybridRunbookWorkerGroupCreateOrUpdateParameters()
+            {
+                Name = hybridRunbookWorkerGroupName,
+            };
+
+            if (!string.IsNullOrEmpty(credentialName))
+            {
+                hybridWorkerGroupCreationParams.Credential = new RunAsCredentialAssociationProperty(credentialName);
+            }
+
+            response = this.automationManagementClient.HybridRunbookWorkerGroup.Create(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName, hybridWorkerGroupCreationParams);
+
+            return response;
+        }
+
+        public IEnumerable<Management.Automation.Models.HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink)
+        {
+            Rest.Azure.IPage<Management.Automation.Models.HybridRunbookWorkerGroup> response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.HybridRunbookWorkerGroup.ListByAutomationAccount(resourceGroupName, automationAccountName); ;
+            }
+            else
+            {
+                response = this.automationManagementClient.HybridRunbookWorkerGroup.ListByAutomationAccountNext(nextLink);
+            }
+
+            nextLink = response.NextPageLink;
+
+            return response.Select(c => c);
+        }
+
+        public Management.Automation.Models.HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name)
+        {
+            var hybridRunbookWorkerGroupModel = this.TryGetHybridRunbookWorkerGroupModel(resourceGroupName, automationAccountName, name);
+            if (hybridRunbookWorkerGroupModel == null)
+            {
+                throw new ResourceCommonException(typeof(HybridRunbookWorkerGroup),
+                    string.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerGroupNotFound, name));
+            }
+
+            return hybridRunbookWorkerGroupModel;
+
         }
 
         public void DeleteHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name)
@@ -1372,6 +1574,86 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+
+        #region HybridRunbookWorkers
+
+
+        public Management.Automation.Models.HybridRunbookWorker GetHybridRunbookWorkers(string resourceGroupName, string automationAccountName, string hybridWorkerGroupName, string workerName)
+        {
+            var hybridRunbookWokerModel = this.TryGetHybridRunbookWorkerModel(resourceGroupName, automationAccountName, hybridWorkerGroupName, workerName);
+
+            if (hybridRunbookWokerModel == null)
+            {
+                throw new ResourceCommonException(typeof(Management.Automation.Models.HybridRunbookWorker),
+                    string.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerNotFound, workerName));
+            }
+
+            return hybridRunbookWokerModel;
+        }
+
+        public IEnumerable<Management.Automation.Models.HybridRunbookWorker> ListHybridRunbookWorkers(string resourceGroupName, string automationAccountName, string hybridWorkerGroupName, ref string nextLink)
+        {
+
+            Rest.Azure.IPage<Management.Automation.Models.HybridRunbookWorker> response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.HybridRunbookWorkers.ListByHybridRunbookWorkerGroup(resourceGroupName, automationAccountName, hybridWorkerGroupName);
+            }
+            else
+            {
+                response = this.automationManagementClient.HybridRunbookWorkers.ListByHybridRunbookWorkerGroupNext(nextLink);
+            }
+
+            nextLink = response.NextPageLink;
+
+            return response;
+        }
+
+        public Management.Automation.Models.HybridRunbookWorker CreateOrUpdateRunbookWorker(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string workerName, string vmResourceId)
+        {
+            AutomationManagement.Models.HybridRunbookWorker response;
+
+            var hybridWorkerCreationParams = new HybridRunbookWorkerCreateParameters()
+            {
+                Name = hybridRunbookWorkerGroupName,
+                VMResourceId = vmResourceId,
+            };
+
+            response = this.automationManagementClient.HybridRunbookWorkers.Create(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName, workerName, hybridWorkerCreationParams);
+
+            return response;
+        }
+
+
+        public void DeleteHybridRunbookWorker(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string name)
+        {
+            try
+            {
+                this.automationManagementClient.HybridRunbookWorkers.Delete(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName, name);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Credential),
+                        string.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerGroupNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        public void MoveRunbookWorker(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string targetHybridRunbookWorkerGroupName, string workerName)
+        {
+            var workerMoveParams = new HybridRunbookWorkerMoveParameters()
+            {
+                HybridRunbookWorkerGroupName = targetHybridRunbookWorkerGroupName
+            };
+            this.automationManagementClient.HybridRunbookWorkers.Move(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName, workerName, workerMoveParams);
+        }
+
+        #endregion
         #region JobSchedule
 
         public JobSchedule GetJobSchedule(string resourceGroupName, string automationAccountName, Guid jobScheduleId)
@@ -1433,7 +1715,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.JobSchedule.ListByAutomationAccount(resourceGroupName, automationAccountName);;
+                response = this.automationManagementClient.JobSchedule.ListByAutomationAccount(resourceGroupName, automationAccountName); ;
             }
             else
             {
@@ -1487,10 +1769,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Guid.NewGuid(),
                 new JobScheduleCreateParameters
                 {
-                     Schedule = new ScheduleAssociationProperty { Name = scheduleName },
-                     Runbook = new RunbookAssociationProperty { Name = runbookName },
-                     Parameters = processedParameters,
-                     RunOn = runOn
+                    Schedule = new ScheduleAssociationProperty { Name = scheduleName },
+                    Runbook = new RunbookAssociationProperty { Name = runbookName },
+                    Parameters = processedParameters,
+                    RunOn = runOn
                 });
 
             return new JobSchedule(resourceGroupName, automationAccountName, sdkJobSchedule);
@@ -1569,6 +1851,120 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region Python3Package
+
+        public IEnumerable<Module> ListPython3Package(string resourceGroupName, string automationAccountName,
+            ref string nextLink)
+        {
+            Rest.Azure.IPage<AutomationManagement.Models.Module> response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = (IPage<AutomationManagement.Models.Module>)(this.automationManagementClient.Python3Package.ListByAutomationAccount(resourceGroupName, automationAccountName));
+            }
+            else
+            {
+                response = (IPage<AutomationManagement.Models.Module>)this.automationManagementClient.Python3Package.ListByAutomationAccountNext(nextLink);
+            }
+
+            nextLink = response.NextPageLink;
+            return response.Select(c => new Module(resourceGroupName, automationAccountName, c));
+        }
+
+        public void DeletePython3Package(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                this.automationManagementClient.Python3Package.Delete(resourceGroupName, automationAccountName, name);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(Module),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        public Module GetPython3Package(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                var module =
+                    this.automationManagementClient.Python3Package.Get(resourceGroupName, automationAccountName, name);
+                return new Module(resourceGroupName, automationAccountName, module);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Module),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+
+
+        public Module CreatePython3Package(string resourceGroupName, string automationAccountName, Uri contentLink,
+            string moduleName)
+        {
+            var createdModule = this.automationManagementClient.Python3Package.CreateOrUpdate(resourceGroupName,
+                automationAccountName,
+                moduleName,
+                new AutomationManagement.Models.PythonPackageCreateParameters()
+                {
+                    ContentLink = new AutomationManagement.Models.ContentLink()
+                    {
+                        Uri = contentLink.ToString(),
+                        ContentHash = null,
+                        Version = null
+                    },
+                });
+
+            return this.GetPython3Package(resourceGroupName, automationAccountName, moduleName);
+        }
+
+        public Module UpdatePython3Package(string resourceGroupName, string automationAccountName, string name,
+            Uri contentLinkUri, string contentLinkVersion)
+        {
+            try
+            {
+                var moduleModel =
+                this.automationManagementClient.Python3Package.Get(resourceGroupName, automationAccountName, name);
+                if (contentLinkUri != null)
+                {
+                    var updateModule = this.automationManagementClient.Python3Package.Update(resourceGroupName,
+                    automationAccountName,
+                    name,
+                    new AutomationManagement.Models.PythonPackageUpdateParameters());
+                }
+                var updatedModule =
+                this.automationManagementClient.Python3Package.Get(resourceGroupName, automationAccountName, name);
+                return new Module(resourceGroupName, automationAccountName, updatedModule);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Module),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+
+                }
+
+                throw;
+            }
+        }
+
+        #endregion
+
+
+
         #region Private Methods
 
         private Schedule CreateScheduleFromScheduleModel(string resourceGroupName, string automationAccountName,
@@ -1629,7 +2025,51 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             return hybridRunbookWorkerGroup;
         }
-        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName, 
+
+        private Management.Automation.Models.HybridRunbookWorkerGroup TryGetHybridRunbookWorkerGroupModel(string resourceGroupName, string automationAccountName, string HybridRunbookWorkerGroupName)
+        {
+            Azure.Management.Automation.Models.HybridRunbookWorkerGroup hybridRunbookWorkerGroup = null;
+            try
+            {
+                hybridRunbookWorkerGroup = this.automationManagementClient.HybridRunbookWorkerGroup.Get(resourceGroupName, automationAccountName, HybridRunbookWorkerGroupName);
+            }
+            catch (ErrorResponseException e)
+            {
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    hybridRunbookWorkerGroup = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return hybridRunbookWorkerGroup;
+        }
+
+
+        private Management.Automation.Models.HybridRunbookWorker TryGetHybridRunbookWorkerModel(string resourceGroupName, string automationAccountName, string HybridRunbookWorkerGroupName, string workerId)
+        {
+            Azure.Management.Automation.Models.HybridRunbookWorker hybridRunbookWorker = null;
+            try
+            {
+                hybridRunbookWorker = this.automationManagementClient.HybridRunbookWorkers.Get(resourceGroupName, automationAccountName, HybridRunbookWorkerGroupName, workerId);
+            }
+            catch (ErrorResponseException e)
+            {
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    hybridRunbookWorker = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return hybridRunbookWorker;
+        }
+
+        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName,
             string certificateName)
         {
             Azure.Management.Automation.Models.Certificate certificate = null;
@@ -1660,7 +2100,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 runbook = this.GetRunbook(resourceGroupName, automationAccountName, runbookName);
             }
-            catch(ResourceCommonException)
+            catch (ResourceCommonException)
             {
                 // Ignore if runbook does not exists in the account. This is to start global runbooks by name
                 return new Dictionary<string, RunbookParameter>();
@@ -1683,7 +2123,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             IEnumerable<KeyValuePair<string, RunbookParameter>> runbookParameters = null;
             parameters = parameters ?? new Dictionary<string, string>();
             var filteredParameters = new Dictionary<string, string>();
-            
+
             try
             {
                 runbook = this.GetRunbook(resourceGroupName, automationAccountName, runbookName);
@@ -1693,29 +2133,33 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 // Ignore if runbook does not exists in the account. This is to start global runbooks by name
                 runbookParameters = new Dictionary<string, RunbookParameter>();
             }
-            
+
             if (runbook != null && 0 == String.Compare(runbook.State, RunbookState.New, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
             {
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
                     Resources.RunbookHasNoPublishedVersion, runbookName));
             }
-            
-            if (runbook != null && runbook.RunbookType == "Python2") {
+
+            if (runbook != null && (runbook.RunbookType == "Python2" || runbook.RunbookType == "Python3"))
+            {
                 int i = 1;
 
-                foreach (var key in parameters.Keys) {
+                foreach (var key in parameters.Keys)
+                {
                     object paramValue = parameters[key];
-                    try {
+                    try
+                    {
                         filteredParameters.Add("[Parameter " + i.ToString() + "]", PowerShellJsonConverter.Serialize(paramValue));
                     }
-                    catch(JsonSerializationException)
+                    catch (JsonSerializationException)
                     {
                         throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.RunbookParameterCannotBeSerializedToJson, key));
                     }
                     i++;
                 }
             }
-            else {
+            else if(runbook != null)
+            {
                 runbookParameters = runbook.Parameters.Cast<DictionaryEntry>().ToDictionary(k => k.Key.ToString(), k => (RunbookParameter)k.Value);
 
                 foreach (var runbookParameter in runbookParameters)
@@ -1749,7 +2193,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
                 }
             }
-            
+
             return filteredParameters;
         }
 
@@ -1794,7 +2238,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return filteredParameters;
         }
 
-        
+
         private AutomationManagement.Models.Schedule GetScheduleModel(string resourceGroupName, string automationAccountName, string scheduleName)
         {
             AutomationManagement.Models.Schedule scheduleModel;
@@ -1899,7 +2343,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             var fileExtension = IsGraphRunbook(runbookType) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
 
-            var outputFilePath = outputFolderFullPath + "\\" + runbookName + fileExtension;
+            var outputFilePath = Path.Combine(outputFolderFullPath, runbookName + fileExtension);
 
             // file exists and overwrite Not specified
             if (File.Exists(outputFilePath) && !overwriteExistingFile)
@@ -1983,5 +2427,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
         #endregion
+
     }
 }

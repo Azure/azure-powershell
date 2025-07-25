@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationsourcecontrol
+online version: https://learn.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol
 schema: 2.0.0
 ---
 
 # New-AzAutomationSourceControl
 
 ## SYNOPSIS
-Creates an A Automation source control.
+Creates an Azure Automation source control.
 
 ## SYNTAX
 
@@ -20,61 +20,62 @@ New-AzAutomationSourceControl -Name <String> -RepoUrl <Uri> -SourceType <String>
 ```
 
 ## DESCRIPTION
-The New-AzAutomationSourceControl cmdlet creates a configuration to link my Azure Automation account with my VSTS TFVC, VSTS Git or GitHub.
+The New-AzAutomationSourceControl cmdlet creates a configuration to link an Azure Automation account with a VSTS TFVC, VSTS Git or GitHub.
 
 ## EXAMPLES
 
 ### Example 1
-Create a source control configuration to link my Azure Automation account with my VSTS TFVC project. TFVC projects do not have branches, and therefore, the Branch parameter is not specified.
+Create a source control configuration to link an Azure Automation account with a VSTS TFVC project. TFVC projects do not have branches, and therefore, the Branch parameter is not specified.
 
 ```powershell
-PS C:\> # VSTS Personal access token
-PS C:\> $token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
-PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
+# VSTS Personal access token
+$accessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSNative" `
-                                           -RepoUrl "https://contoso.visualstudio.com/ContosoProduction/_versionControl" `
+                                           -RepoUrl "https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname>" `
                                            -SourceType "VsoTfvc" `
                                            -FolderPath "/Runbooks" `
                                            -AccessToken $accessToken
+```
 
+```output
 Name        SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
 ----        ---------- ------ ---------- -------- -------------- -------
-VSTSNative  VsoTfvc            /Runbooks True     True           https://contoso.visualstudio.com/ContosoProduc...
+VSTSNative  VsoTfvc            /Runbooks True     True           https://dev.azure.com/<accountname>/<adopro...
 ```
 
 ### Example 2
-Create a source control configuration to link my Azure Automation account with my VSTS Git project.
+Create a source control configuration to link an Azure Automation account with a VSTS Git project.
 
 
 ```powershell
-PS C:\> # VSTS Personal access token
-PS C:\> $token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
-PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
+# VSTS Personal access token
+$accessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSGit" `
-                                           -RepoUrl "https://contoso.visualstudio.com/_git/Finance" `
+                                           -RepoUrl "https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname>" `
                                            -SourceType "VsoGit" `
                                            -Branch "Development" `
                                            -FolderPath "/" `
                                            -AccessToken $accessToken
+```
 
+```output
 Name    SourceType Branch      FolderPath AutoSync PublishRunbook RepoUrl
 ----    ---------- ------      ---------- -------- -------------- -------
-VSTSGit VsoGit     Development /          True     True           https://contoso.visualstudio.com/_git/Finan...
+VSTSGit VsoGit     Development /          True     True           https://dev.azure.com/<accountname>/<adopro...
 ```
 
 ### Example 3
-Create a source control configuration to link my Azure Automation account with my GitHub project.
+Create a source control configuration to link an Azure Automation account with a GitHub project.
 
 
 ```powershell
-PS C:\> # GitHub access token
-PS C:\> $token = "68b08011223aac8bdd3388913a44rrsaa84fdf"
-PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
+# GitHub access token
+$accessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
+ New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "GitHub1" `
                                            -RepoUrl "https://github.com/Contoso/TestSourceControl.git" `
@@ -82,7 +83,9 @@ PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -Branch "master" `
                                            -FolderPath "/Runbooks" `
                                            -AccessToken $accessToken
+```
 
+```output
 Name    SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
 ----    ---------- ------ ---------- -------- -------------- -------
 GitHub1 GitHub     master /Runbooks  True     True           https://github.com/Contoso/TestSourceControl...
@@ -304,7 +307,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

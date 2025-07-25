@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 3D4822DD-736B-42DF-8D9A-1CB23FEF052E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqldatabaseexport
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport
 schema: 2.0.0
 ---
 
@@ -27,11 +27,17 @@ The **New-AzSqlDatabaseExport** cmdlet exports an Azure SQL Database as a .bacpa
 The get export database status request may be sent to retrieve status information for this request.
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
+> [!IMPORTANT]
+> In order to make use of this cmdlet the firewall on the Azure SQL Server will need to be configured to "Allow Azure services and resources to access this server". If this is not configured then GatewayTimeout errors will be experienced.
+
 ## EXAMPLES
 
 ### Example 1: Create an export request for a database
+```powershell
+New-AzSqlDatabaseExport -ResourceGroupName "RG01" -ServerName "Server01" -DatabaseName "Database01" -StorageKeyType "StorageAccessKey" -StorageKey "StorageKey01" -StorageUri "http://account01.blob.core.contoso.net/bacpacs/database01.bacpac" -AdministratorLogin "User" -AdministratorLoginPassword "secure password"
 ```
-PS C:\>New-AzSqlDatabaseExport -ResourceGroupName "RG01" -ServerName "Server01" -DatabaseName "Database01" -StorageKeyType "StorageAccessKey" -StorageKey "StorageKey01" -StorageUri "http://account01.blob.core.contoso.net/bacpacs/database01.bacpac" -AdministratorLogin "User" -AdministratorLoginPassword "secure password"
+
+```output
 ResourceGroupName          : RG01
 ServerName                 : Server01
 DatabaseName               : Database01
@@ -89,15 +95,15 @@ The acceptable values for this parameter are:
 SQL authentication.
 Set the *AdministratorLogin* and *AdministratorLoginPassword* to the SQL administrator username and password. 
 - ADPassword.
-Azure Active Directory authentication.
-Set *AdministratorLogin* and *AdministratorLoginPassword* to the Azure AD administrator username and password.
+Microsoft Entra authentication.
+Set *AdministratorLogin* and *AdministratorLoginPassword* to the Microsoft Entra administrator username and password.
 This parameter is only available on SQL Database V12 servers.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Sql, AdPassword
+Accepted values: None, Sql, AdPassword, ManagedIdentity
 
 Required: False
 Position: Named
@@ -223,7 +229,7 @@ This value uses a Shared Access Signature (SAS) key.
 Type: Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType
 Parameter Sets: (All)
 Aliases:
-Accepted values: StorageAccessKey, SharedAccessKey
+Accepted values: StorageAccessKey, SharedAccessKey, ManagedIdentity
 
 Required: True
 Position: Named
@@ -313,4 +319,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzSqlDatabaseImport](./New-AzSqlDatabaseImport.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

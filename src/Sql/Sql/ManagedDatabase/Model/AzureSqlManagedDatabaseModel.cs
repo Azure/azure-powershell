@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string Collation { get; set; }
 
         /// <summary>
-        /// Gets or sets the status of the managed databse
+        /// Gets or sets the status of the managed database
         /// </summary>
         public string Status { get; set; }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string DefaultSecondaryLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the default catalov collation
+        /// Gets or sets the default catalog collation
         /// </summary>
         public string CatalogCollation { get; set; }
 
@@ -109,6 +109,34 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string LastBackupName { get; set; }
 
         /// <summary>
+        /// Gets or sets the last backup name
+        /// </summary>
+        public string StorageContainerIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource identifier of the cross-subscription
+        /// source database associated with create operation of this database.
+        /// </summary>
+        public string CrossSubscriptionSourceDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the restorable cross-subscription dropped database
+        /// resource id to restore when creating this database.
+        /// </summary>
+        public string CrossSubscriptionRestorableDroppedDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets target managed instance id used in cross-subscription
+        /// restore.
+        /// </summary>
+        public string CrossSubscriptionTargetManagedInstanceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ledger property for the database
+        /// </summary>
+        public bool? EnableLedger { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlManagedDatabaseModel
         /// </summary>
         public AzureSqlManagedDatabaseModel()
@@ -146,6 +174,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             LongTermRetentionBackupResourceId = database.LongTermRetentionBackupResourceId;
             AutoCompleteRestore = database.AutoCompleteRestore;
             LastBackupName = database.LastBackupName;
+            StorageContainerIdentity = database.StorageContainerIdentity;
+            CrossSubscriptionRestorableDroppedDatabaseId = database.CrossSubscriptionRestorableDroppedDatabaseId;
+            CrossSubscriptionSourceDatabaseId = database.CrossSubscriptionSourceDatabaseId;
+            CrossSubscriptionTargetManagedInstanceId = database.CrossSubscriptionTargetManagedInstanceId;
+            EnableLedger = database.IsLedgerOn;
         }
     }
 }

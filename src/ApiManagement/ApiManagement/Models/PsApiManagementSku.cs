@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         Standard = 2,
         Premium = 3,
         Basic = 4,
-        Consumption = 5
+        Consumption = 5,
+        Isolated = 6
     }
 }

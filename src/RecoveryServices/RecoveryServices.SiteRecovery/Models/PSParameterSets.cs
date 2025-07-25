@@ -39,47 +39,67 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         internal const string ARSVault = "AzureRecoveryServicesVault";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault.
         /// </summary>
         internal const string ASRVault = "AzureSiteRecoveryVault";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - Azure Fabric.
         /// </summary>
         internal const string Azure = "Azure";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - A2A Fabric.
         /// </summary>
         internal const string AzureToAzure = "AzureToAzure";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - A2A Fabric.
         /// </summary>
         internal const string AzureToAzureWithoutDiskDetails = "AzureToAzureWithoutDiskDetails";
-        
+
+        /// <summary>
+        /// Handle ASR Vault - A2A Fabric.
         /// </summary>
+        internal const string AzureToAzureWithoutProtectedItemDetails = "AzureToAzureWithoutProtectedItemDetails";
+
+        /// <summary>
         /// Handle ASR Vault - Paramset for A2a ManagedDisk.
         /// </summary>
         internal const string AzureToAzureManagedDisk = "AzureToAzureManagedDisk";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - A2A Fabric name.
         /// </summary>
         internal const string AzureToAzureWithFabricName = "AzureToAzureWithFabricName";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - A2A Fabric -AzureToAzureWithMultipleStorageAccount.
         /// </summary>
         internal const string AzureToAzureWithMultipleStorageAccount = "AzureToAzureWithMultipleStorageAccount";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - A2A Zone to zone replication.
         /// </summary>
         internal const string AzureZoneToZone = "AzureZoneToZone";
-        
+
+        /// <summary>
+        /// Handle ASR Vault - EdgeZone to EdgeZone replication.
         /// </summary>
+        internal const string EdgeZoneToEdgeZone = "EdgeZoneToEdgeZone";
+
+        /// <summary>
+        /// Handle ASR Vault - Azure to EdgeZone replication.
+        /// </summary>
+        internal const string AzureToEdgeZone = "AzureToEdgeZone";
+
+        /// <summary>
+        /// Handle ASR Vault - EdgeZone to Azure replication.
+        /// </summary>
+        internal const string EdgeZoneToAzure = "EdgeZoneToAzure";
+
+        /// <summary>
         /// Handle ASR Vault.
         /// </summary>
         internal const string AzureToVMware = "AzureToVMware";
@@ -178,6 +198,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     When Object and Name are passed to the command.
         /// </summary>
         internal const string ByObjectWithName = "ByObjectWithName";
+
+        /// <summary>
+        ///     When Object and Site ID are passed to the command.
+        /// </summary>
+        internal const string ByObjectWithSiteId = "ByObjectWithSiteId";
+
+        /// <summary>
+        ///     When Object, Site ID and FriendlyName are passed to the command.
+        /// </summary>
+        internal const string ByObjectWithSiteIdAndFriendlyName = "ByObjectWithSiteIdAndFriendlyName";
 
         /// <summary>
         ///     When Object and Name are passed to the command Legacy.
@@ -368,6 +398,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     When only RP Object is passed along with VM network to the command.
         /// </summary>
         internal const string ByRPObjectWithVMNetworkAndRecoveryTag = "ByRPObjectWithVMNetworkAndRecoveryTag";
+        
         /// <summary>
         ///     When only RP Object is passed along with VM network ID to the command.
         /// </summary>
@@ -507,6 +538,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Remove replication protected items from RP
         /// </summary>
         internal const string RemoveReplicationProtectedItems = "RemoveReplicationProtectedItems";
+
+        /// <summary>
+        /// Mapping for Azure to VMware using RCM.
+        /// </summary>
+        internal const string ReplicateAzureToVMware = "ReplicateAzureToVMware";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure using RCM.
+        /// </summary>
+        internal const string ReplicateVMwareToAzure = "ReplicateVMwareToAzure";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure using RCM with disk input.
+        /// </summary>
+        internal const string ReplicateVMwareToAzureWithDiskInput = "ReplicateVMwareToAzureWithDiskInput";
 
         /// <summary>
         ///     Set alerts to send to owners.

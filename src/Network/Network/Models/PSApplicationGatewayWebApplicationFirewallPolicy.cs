@@ -13,6 +13,7 @@
 // limitations under the License.
 //
 
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -26,5 +27,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSApplicationGatewayFirewallPolicySettings PolicySettings { get; set; }
 
         public PSApplicationGatewayFirewallPolicyManagedRules ManagedRules { get; set; }
+
+        // CustomBlockResponse fields to be mapped from inside the policy settings
+        // to be shown as response in PS (Feature parity with AFD WAF Policy)
+        public int? CustomBlockResponseStatusCode { get; set; }
+
+        public string CustomBlockResponseBody { get; set; }
+
+        public System.Collections.Generic.IList<ApplicationGateway> ApplicationGateways { get; set; }
+
+        public System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition> ApplicationGatewayForContainers { get; set; }
     }
 }

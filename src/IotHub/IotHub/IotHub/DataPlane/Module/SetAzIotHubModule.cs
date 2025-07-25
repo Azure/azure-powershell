@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             }
         }
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
             if (this.AuthMethod.Equals(PSDeviceAuthType.x509_thumbprint))
             {

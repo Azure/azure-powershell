@@ -279,10 +279,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Gets the associated Job Credential associated to the Azure SQL Database Agent
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="agentName"></param>
-        /// <param name="jobName"></param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
         /// <returns>The agent belonging to specified server</returns>
         public JobExecution GetJobExecution(
             string resourceGroupName,
@@ -401,7 +402,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server name</param>
         /// <param name="agentName">The agent name</param>
-        /// <param name="credentialName">The credential name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
         public void CancelJobExecution(
             string resourceGroupName,
             string serverName,
@@ -820,6 +822,60 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
 
         #endregion
 
+        #region PrivateEndpoints
+
+        /// <summary>
+        /// PUT: Creates a JobPrivateEndpoint on the associated Azure SQL Database Agent
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="privateEndpointName">The private endpoint name</param>
+        /// <param name="parameters">The private endpoint's create parameters</param>
+        /// <returns>The created job private endpoint</returns>
+        public JobPrivateEndpoint CreateOrUpdatePrivateEndpoint(string resourceGroupName, string serverName, string agentName, string privateEndpointName, JobPrivateEndpoint parameters)
+        {
+            return GetCurrentSqlClient().JobPrivateEndpoints.CreateOrUpdate(resourceGroupName, serverName, agentName, privateEndpointName, parameters);
+        }
+
+        /// <summary>
+        /// Get the associated JobPrivateEndpoint for the Azure SQL Database Agent
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="privateEndpointName">The private endpoint name</param>
+        /// <returns>The associated job private endpoint belonging to specified agent</returns>
+        public JobPrivateEndpoint GetPrivateEndpoint(string resourceGroupName, string serverName, string agentName, string privateEndpointName)
+        {
+            return GetCurrentSqlClient().JobPrivateEndpoints.Get(resourceGroupName, serverName, agentName, privateEndpointName);
+        }
+
+        /// <summary>
+        /// Lists the JobPrivateEndpoints associated to the Azure SQL Database Agent
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <returns>A list of job private endpoints belonging to specified agent</returns>
+        public IPage<JobPrivateEndpoint> ListPrivateEndpointsByAgent(string resourceGroupName, string serverName, string agentName)
+        {
+            return GetCurrentSqlClient().JobPrivateEndpoints.ListByAgent(resourceGroupName, serverName, agentName);
+        }
+
+        /// <summary>
+        /// Deletes the JobPrivateEndpoint associated to the Azure SQL Database Agent
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="privateEndpointName">The private endpoint name</param>
+        public void RemovePrivateEndpoint(string resourceGroupName, string serverName, string agentName, string privateEndpointName)
+        {
+            GetCurrentSqlClient().JobPrivateEndpoints.Delete(resourceGroupName, serverName, agentName, privateEndpointName);
+        }
+
+        #endregion PrivateEndpoints
 
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request

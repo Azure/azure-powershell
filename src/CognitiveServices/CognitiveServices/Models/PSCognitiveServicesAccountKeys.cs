@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 {
     public class PSCognitiveServicesAccountKeys
     {
-        public PSCognitiveServicesAccountKeys(CognitiveServicesModels.CognitiveServicesAccountKeys cognitiveServicesAccountKeys)
+        public PSCognitiveServicesAccountKeys(CognitiveServicesModels.ApiKeys cognitiveServicesAccountKeys)
         {
             this.Key1 = cognitiveServicesAccountKeys.Key1.ToString();
             this.Key2 = cognitiveServicesAccountKeys.Key2.ToString();

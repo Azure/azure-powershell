@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     {
 
         //always delete the slots, 
-        private bool deleteSlotsByDefault = true;
-
-        // leave behind the empty webhosting plan 
-        private bool deleteEmptyServerFarmByDefault = false;
+        private bool deleteSlotsByDefault = true;        
 
         //always delete the metrics
         private bool deleteMetricsByDefault = true;
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "If this is the last app in the App Service plan. Delete this App Service plan to prevent unexpected charges.")]
+        public SwitchParameter DeleteAppServicePlan { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force { get; set; }
 
          [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Name,
                 () =>
                 {
-                    WebsitesClient.RemoveWebApp(ResourceGroupName, Name, null, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault);
+                    WebsitesClient.RemoveWebApp(ResourceGroupName, Name, null, DeleteAppServicePlan, deleteMetricsByDefault, deleteSlotsByDefault);
                 });
 
         }

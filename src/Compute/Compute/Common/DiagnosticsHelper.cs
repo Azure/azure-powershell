@@ -24,12 +24,9 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -44,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         private static string WadCfg = "WadCfg";
         private static string WadCfgBlob = "WadCfgBlob";
         private static string StorageType = "StorageType";
-        private static string StorageAccount = "storageAccount";
+        private static string StorageAccount = "StorageAccount";
         private static string Path = "path";
         private static string ExpandResourceDirectory = "expandResourceDirectory";
         private static string LocalResourceDirectory = "localResourceDirectory";
@@ -664,6 +661,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         /// </summary>
         /// <param name="publicConfigPath">Public configuration file path</param>
         /// <param name="privateConfigPath">Private configuration file path, can be empty</param>
+        /// <param name="resourceId"></param>
+        /// <param name="cmdlet"></param>
         /// <param name="storageClient">Storage client</param>
         /// <returns>A tuple with public configuration as first element and private configuration as second element</returns>
         public static Tuple<Hashtable, Hashtable> GetConfigurationsFromFiles(string publicConfigPath, string privateConfigPath, string resourceId, Cmdlet cmdlet, IStorageManagementClient storageClient)
@@ -743,7 +742,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static bool IsDiagnosticsExtension(VirtualMachineScaleSetExtension extension)
         {
             return extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                extension.Type1.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase);
+                extension.VirtualMachineScaleSetExtensionPropertiesType.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase);
         }
 
         /// <summary>

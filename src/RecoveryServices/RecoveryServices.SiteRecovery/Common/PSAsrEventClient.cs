@@ -26,13 +26,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets the events.
         /// </summary>
-        /// <param name="parameters">events search query.</param>
+        /// <param name="eventName">The name of the Azure Site Recovery event.</param>
         /// <returns></returns>
         public EventModel GetAzureRmSiteRecoveryEvent(string eventName)
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationEvents
-                .GetWithHttpMessagesAsync(eventName, this.GetRequestHeaders(true))
+                .GetWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 eventName, this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -48,7 +51,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var odataQuery = new ODataQuery<EventQueryParameter>(parameters.ToQueryString());
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationEvents
-                .ListWithHttpMessagesAsync(odataQuery, this.GetRequestHeaders(true))
+                .ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 odataQuery, this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;

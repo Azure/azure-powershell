@@ -91,6 +91,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSSqlConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlClientEncryptionPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlClientEncryptionPolicy ClientEncryptionPolicy { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlVectorEmbeddingPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlVectorEmbeddingPolicy vectorEmbeddingPolicy { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerAnalyticalStorageTtlHelpMessage)]
+        public int? AnalyticalStorageTtl { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlDatabaseGetResults ParentObject { get; set; }
@@ -153,6 +164,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 sqlContainerResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ToSDKModel(ConflictResolutionPolicy);
             }
 
+            if (ClientEncryptionPolicy != null)
+            {
+                sqlContainerResource.ClientEncryptionPolicy = PSClientEncryptionPolicy.ToSDKModel(ClientEncryptionPolicy, Paths);
+            }
+
+            if (vectorEmbeddingPolicy != null)
+            {
+                sqlContainerResource.VectorEmbeddingPolicy = PSVectorEmbeddingPolicy.ToSDKModel(vectorEmbeddingPolicy);
+            }
+
             if (ConflictResolutionPolicyMode != null)
             {
                 ConflictResolutionPolicy conflictResolutionPolicy = new ConflictResolutionPolicy
@@ -175,6 +196,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (IndexingPolicy != null)
             {
                 sqlContainerResource.IndexingPolicy = PSIndexingPolicy.ToSDKModel(IndexingPolicy);
+            }
+
+            if (AnalyticalStorageTtl != null)
+            {
+                sqlContainerResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
             }
 
             CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);

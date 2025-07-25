@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationJobs.BeginCancelWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     jobName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -52,6 +54,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var odataQuery = new ODataQuery<JobQueryParameter>(jqp.ToQueryString());
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationJobs.ListWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     odataQuery,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -79,6 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationJobs.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     jobName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -96,6 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationJobs.BeginRestartWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     jobName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -116,8 +124,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationJobs.BeginResumeWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     jobName,
-                    resumeJobParams,
+                    resumeJobParams.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

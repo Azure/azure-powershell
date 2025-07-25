@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <param name="dscOnboardingMetaConfig">
         /// The dsc onboarding meta configuration.
-        /// </param>/// 
+        /// </param>
         public DscOnboardingMetaconfig(string resourceGroupName, string automationAccountName, AutomationManagement.Models.AgentRegistration dscOnboardingMetaConfig)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();

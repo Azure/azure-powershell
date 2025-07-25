@@ -15,41 +15,26 @@
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class SqlPoolTests : SynapseTestBase
+    public class SqlPoolTests : SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SqlPoolTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SqlPoolTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseSqlPool()
         {
-            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
-            if (string.IsNullOrEmpty(testResourceGroupName))
-            {
-                testResourceGroupName = nameof(TestResourceGroupName);
-            }
+            TestRunner.RunTestScript("Test-SynapseSqlPool");
+        }
 
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
-            if (string.IsNullOrEmpty(testWorkspaceName))
-            {
-                testWorkspaceName = nameof(TestWorkspaceName);
-            }
-
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
-                string.Format(
-                "Test-SynapseSqlPool -resourceGroupName '{0}' -workspaceName '{1}'",
-                testResourceGroupName,
-                testWorkspaceName));
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSynapseSqlPoolSecurity()
+        {
+            TestRunner.RunTestScript("Test-SynapseSqlPool-Security");
         }
     }
 }

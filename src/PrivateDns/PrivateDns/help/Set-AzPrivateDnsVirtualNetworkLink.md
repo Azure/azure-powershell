@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
 ms.assetid: A8E230A0-5057-40BC-81CD-6D397A503A84
-online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/Set-AzPrivateDnsVirtualNetworkLink
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/Set-AzPrivateDnsVirtualNetworkLink
 schema: 2.0.0
 ---
 
@@ -16,20 +16,20 @@ Updates/Sets a virtual network link associated with a private zone and a resourc
 ### Fields (Default)
 ```
 Set-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-IsRegistrationEnabled <Boolean>] [-ResolutionPolicy <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
 Set-AzPrivateDnsVirtualNetworkLink -InputObject <PSPrivateDnsVirtualNetworkLink>
- [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>] [-Overwrite] [-DefaultProfile <IAzureContextContainer>]
+ [-IsRegistrationEnabled <Boolean>] [-ResolutionPolicy <String>] [-Tag <Hashtable>] [-Overwrite] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzPrivateDnsVirtualNetworkLink -ResourceId <String> [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>]
+Set-AzPrivateDnsVirtualNetworkLink -ResourceId <String> [-IsRegistrationEnabled <Boolean>] [-ResolutionPolicy <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,9 +42,11 @@ When specifying the zone using a **PSPrivateDnsVirtualNetworkLink** object (pass
 ## EXAMPLES
 
 ### Example 1: Set a link
+```powershell
+Set-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -Tag @{} -IsRegistrationEnabled $true
 ```
-PS C:\>Set-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -Tag @{} -IsRegistrationEnabled $true
 
+```output
 Name                    : mylink
 ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink
@@ -56,6 +58,7 @@ Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Tags                    : {}
 RegistrationEnabled     : True
+ResolutionPolicy        : Default
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
 ```
@@ -105,6 +108,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResolutionPolicy
+Specifies the resolution policy of the virtual network link
+
+```yaml
+Type: Azure.ResourceManager.PrivateDns.Models.PrivateDnsResolutionPolicy
+Parameter Sets: (All)
+Aliases:
+Accepted values: Default, NxDomainRedirect
+
+Required: False
+Position: Named
+Default value: Default
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

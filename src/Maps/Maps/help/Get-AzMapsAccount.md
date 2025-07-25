@@ -1,96 +1,108 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Maps.dll-Help.xml
+---
+external help file: Az.Maps-help.xml
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/en-us/powershell/module/az.maps/get-azmapsaccount
+online version: https://learn.microsoft.com/powershell/module/az.maps/get-azmapsaccount
 schema: 2.0.0
 ---
 
 # Get-AzMapsAccount
 
 ## SYNOPSIS
-Gets the account.
+Get a Maps Account.
 
 ## SYNTAX
 
-### ResourceGroupParameterSet (Default)
+### List1 (Default)
 ```
-Get-AzMapsAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzMapsAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### AccountNameParameterSet
+### Get
 ```
-Get-AzMapsAccount [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzMapsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzMapsAccount -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### GetViaIdentity
 ```
-Get-AzMapsAccount [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzMapsAccount -InputObject <IMapsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzMapsAccount cmdlet gets a provisioned Azure Maps account, either by resource group and name, or by resource id.
-Additionally, it can return a list of all accounts in the ResourceGroup, or all Azure Maps accounts for the current subscription.
+Get a Maps Account.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List all Maps Accounts under a subscription
 ```powershell
-PS C:\> Get-AzMapsAccount -ResourceGroupName MyResourceGroup -Name MyAccount
-
-ResourceGroupName AccountName Id
------------------ ----------- --
-MyResourceGroup   MyAccount   /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
+Get-AzMapsAccount
 ```
 
-Gets the account named MyAccount in the resource group MyResourceGroup, if it exists.
-
-### Example 2
-```powershell
-PS C:\> Get-AzMapsAccount -ResourceGroupName MyResourceGroup
-
-ResourceGroupName AccountName Id
------------------ ----------- --
-MyResourceGroup   MyAccount   /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
-[...]
+```output
+Location Name               Type                    Kind
+-------- ----               ----                    ----
+eastus   pwsh-mapsAccount01 Microsoft.Maps/accounts Gen1
 ```
 
-Gets all Azure Maps accounts in the resource group MyResourceGroup.
+This command lists all Maps Accounts under a subscription.
 
-### Example 3
+### Example 2: List all Maps Accounts under a resource group
 ```powershell
-PS C:\> Get-AzMapsAccount
-
-ResourceGroupName   AccountName            Id
------------------   -----------            --
-[...]
-MyResourceGroup     MyAccount              /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
-[...]
+Get-AzMapsAccount -ResourceGroupName azure-rg-test
 ```
 
-Gets all Azure Maps accounts in the current subscription.
-
-### Example 4
-```powershell
-PS C:\> Get-AzMapsAccount -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
-
-ResourceGroupName AccountName Id
------------------ ----------- --
-MyResourceGroup   MyAccount   /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
+```output
+Location Name               Type                    Kind
+-------- ----               ----                    ----
+eastus   pwsh-mapsAccount01 Microsoft.Maps/accounts Gen1
 ```
 
-Gets the Maps account specified by the Resource Id.
+This command lists all Maps Accounts under a resource group.
+
+### Example 3: Get a Maps Account
+```powershell
+Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01
+```
+
+```output
+Location Name               Type                    Kind
+-------- ----               ----                    ----
+eastus   pwsh-mapsAccount01 Microsoft.Maps/accounts Gen1
+```
+
+This command gets a Maps Account.
+
+### Example 4: Get a Maps Account by pipeline
+```powershell
+New-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 -SkuName S0 -Location eastus | Get-AzMapsAccount
+```
+
+```output
+Location Name               Type                    Kind
+-------- ----               ----                    ----
+eastus   pwsh-mapsAccount01 Microsoft.Maps/accounts Gen1
+```
+
+This command gets a Maps Account by pipeline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -99,73 +111,77 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Maps Account Name.
+The name of the Maps Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameParameterSet
-Aliases: MapsAccountName, AccountName
+Parameter Sets: Get
+Aliases: AccountName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupParameterSet
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: AccountNameParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Maps Account ResourceId.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount
 
 ## NOTES
 

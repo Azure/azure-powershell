@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             DefaultTtl = gremlinGraphGetPropertiesResource.DefaultTtl;
             UniqueKeyPolicy = new PSUniqueKeyPolicy(gremlinGraphGetPropertiesResource.UniqueKeyPolicy);
             ConflictResolutionPolicy = new PSConflictResolutionPolicy(gremlinGraphGetPropertiesResource.ConflictResolutionPolicy);
-            _rid = gremlinGraphGetPropertiesResource._rid;
-            _ts = gremlinGraphGetPropertiesResource._ts;
-            _etag = gremlinGraphGetPropertiesResource._etag;
+            _rid = gremlinGraphGetPropertiesResource.Rid;
+            _ts = gremlinGraphGetPropertiesResource.Ts;
+            _etag = gremlinGraphGetPropertiesResource.Etag;
         }
 
         //

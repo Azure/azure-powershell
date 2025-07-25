@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/targetTypes",
+  "apiVersion": "2024-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.chaos"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChaosTargetType",
+      "description": "Get a Target Type resources for given location.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{locationName}/targetTypes/{targetTypeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaostargettype"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LocationName <String>",
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Target Type resources for given location.",
+          "parameters": [
+            {
+              "name": "-LocationName",
+              "value": "[Path.locationName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.targetTypeName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

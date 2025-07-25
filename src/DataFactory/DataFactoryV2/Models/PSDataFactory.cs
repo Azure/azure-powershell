@@ -68,6 +68,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
+        public string PublicNetworkAccess
+        {
+            get { return dataFactory.PublicNetworkAccess; }
+        }
+
         public IDictionary<string, string> Tags
         {
             get
@@ -89,6 +94,18 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             set
             {
                 dataFactory.Identity = value;
+            }
+        }
+
+        public EncryptionConfiguration Encryption
+        {
+            get
+            {
+                return dataFactory.Encryption;
+            }
+            set
+            {
+                dataFactory.Encryption = value;
             }
         }
 

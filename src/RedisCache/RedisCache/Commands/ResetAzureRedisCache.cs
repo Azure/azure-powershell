@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RedisCache.Models;
+
 namespace Microsoft.Azure.Commands.RedisCache
 {
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.RedisCache.Properties;
-    using Microsoft.Azure.Management.Redis.Models;
-    using RebootTypeStrings = Microsoft.Azure.Management.Redis.Models.RebootType;
+    using RebootTypeStrings = RebootType;
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]

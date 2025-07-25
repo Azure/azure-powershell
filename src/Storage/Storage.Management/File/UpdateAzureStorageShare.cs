@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [AllowEmptyCollection]
         [ValidateNotNull]
         public Hashtable Metadata { get; set; }
-        
+
         [Parameter(
            Mandatory = false,
            HelpMessage = "Access tier for specific share. StorageV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium.")]
@@ -141,6 +141,89 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private string accessTier = null;
         
+        [Parameter(Mandatory = false,
+            HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
+        [ValidateSet(RootSquashType.NoRootSquash,
+            RootSquashType.RootSquash,
+            RootSquashType.AllSquash,
+            IgnoreCase = true)]
+        public string RootSquash { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the Get-AzStorageFileServiceUsage cmdlet output for the minimum and maximum allowed value for provisioned bandwidth.")]
+        public int ProvisionedBandwidthMibps
+        {
+            get
+            {
+                return provisionedBandwidthMibps is null ? 0 : provisionedBandwidthMibps.Value;
+            }
+            set
+            {
+                provisionedBandwidthMibps = value;
+            }
+        }
+        private int? provisionedBandwidthMibps = null;
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The provisioned IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the Get-AzStorageFileServiceUsage cmdlet output for the minimum and maximum allowed value for provisioned IOPS.")]
+        public int ProvisionedIops
+        {
+            get
+            {
+                return provisionedIops is null ? 0 : provisionedIops.Value;
+            }
+            set
+            {
+                provisionedIops = value;
+            }
+        }
+        private int? provisionedIops = null;
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.")]
+        public bool PaidBurstingEnabled
+        {
+            get
+            {
+                return paidBurstingEnabled is null ? false : paidBurstingEnabled.Value;
+            }
+            set
+            {
+                paidBurstingEnabled = value;
+            }
+        }
+        private bool? paidBurstingEnabled = null;
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.")]
+        public int PaidBurstingMaxIops
+        {
+            get
+            {
+                return paidBurstingMaxIops is null ? 0 : paidBurstingMaxIops.Value;
+            }
+            set
+            {
+                paidBurstingMaxIops = value;
+            }
+        }
+        private int? paidBurstingMaxIops = null;
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.")]
+        public int PaidBurstingMaxBandwidthMibps
+        {
+            get
+            {
+                return paidBurstingMaxBandwidthMibps is null ? 0 : paidBurstingMaxBandwidthMibps.Value;
+            }
+            set
+            {
+                paidBurstingMaxBandwidthMibps = value;
+            }
+        }
+        private int? paidBurstingMaxBandwidthMibps = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -166,6 +249,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     break;
             }
 
+            FileSharePropertiesFileSharePaidBursting paidBursting = default(FileSharePropertiesFileSharePaidBursting);
+            if (this.paidBurstingEnabled != null || this.paidBurstingMaxBandwidthMibps != null || this.paidBurstingMaxIops != null)
+            {
+                paidBursting = new FileSharePropertiesFileSharePaidBursting(this.paidBurstingEnabled, this.paidBurstingMaxIops, this.paidBurstingMaxBandwidthMibps);
+            }
+
             if (ShouldProcess(this.Name, "Update Share"))
             {
                 Dictionary<string, string> MetadataDictionary = CreateMetadataDictionary(Metadata, validate: true);
@@ -177,7 +266,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                     new FileShare(
                                         metadata: MetadataDictionary,
                                         shareQuota: shareQuota,
-                                        accessTier: accessTier));
+                                        rootSquash: this.RootSquash,
+                                        accessTier: accessTier,
+                                        provisionedIops: this.provisionedIops,
+                                        provisionedBandwidthMibps: this.provisionedBandwidthMibps,
+                                        fileSharePaidBursting: paidBursting));
 
                 WriteObject(new PSShare(Share));
             }

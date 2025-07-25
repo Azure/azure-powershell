@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 9C755BE8-0624-4CF7-AE7C-34DAF44678E8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchautoscale
+online version: https://learn.microsoft.com/powershell/module/az.batch/disable-azbatchautoscale
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Disable-AzBatchAutoScale** cmdlet disables automatic scaling of the specif
 ## EXAMPLES
 
 ### Example 1: Disable automatic scaling of a pool
-```
-PS C:\>Disable-AzBatchAutoScale -Id "MyPool" -BatchContext $Context
+```powershell
+Disable-AzBatchAutoScale -Id "MyPool" -BatchContext $Context
 ```
 
 This command disables automatic scaling for the pool named MyPool.
@@ -34,7 +34,7 @@ This command disables automatic scaling for the pool named MyPool.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -100,5 +100,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Test-AzBatchAutoScale](./Test-AzBatchAutoScale.md)
 
 [Azure Batch Cmdlets](/powershell/module/Az.Batch/)
-
-

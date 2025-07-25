@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
         public const string SystemAssigned = "SystemAssigned";
 
         /// <summary>
+        /// The name of the resource identity type that will automatically create an identity for the resource.
+        /// </summary>
+        public const string UserAssigned = "UserAssigned";
+
+        /// <summary>
         /// The name of the resource identity type that indicates the resource should have no identity assigned.
         /// </summary>
         public const string None = "None";

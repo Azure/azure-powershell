@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabaselongtermretentionbackup
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqldatabaselongtermretentionbackup
 schema: 2.0.0
 ---
 
@@ -15,19 +15,19 @@ Deletes a long term retention backup.
 ### RemoveBackupDefault (Default)
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force]
+ [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveBackupByInputObject
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveBackupByResourceId
 ```
-Remove-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-Force]
+Remove-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,9 +38,10 @@ The **Remove-AzSqlDatabaseLongTermRetentionBackup** cmdlet deletes the backup sp
 
 ### Example 1: Delete a single backup with resource group
 ```powershell
-PS C:\> Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -ResourceGrouName resourcegroup01
+Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -ResourceGroupName resourcegroup01
+```
 
-
+```output
 BackupExpirationTime : 3/22/2018 5:50:55 AM
 BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM
@@ -56,9 +57,10 @@ Deletes the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;13165566655000
 
 ### Example 2: Delete a single backup without resource group
 ```powershell
-PS C:\> Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server02 -DatabaseName database02 -BackupName "55970792-164c-4a4a-88e5-7158d092d503;131656309980000000"
+Remove-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server02 -DatabaseName database02 -BackupName "55970792-164c-4a4a-88e5-7158d092d503;131656309980000000"
+```
 
-
+```output
 BackupExpirationTime : 3/22/2018 11:43:18 PM
 BackupName           : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 BackupTime           : 3/15/2018 11:43:18 PM
@@ -74,9 +76,10 @@ Deletes the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;13165566655000
 
 ### Example 3: Delete all backups for a location
 ```powershell
-PS C:\> Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope | Remove-AzSqlDatabaseLongTermRetentionBackup
+Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope | Remove-AzSqlDatabaseLongTermRetentionBackup
+```
 
-
+```output
 BackupExpirationTime : 3/22/2018 5:50:55 AM
 BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM
@@ -101,6 +104,21 @@ ServerCreateTime     : 2/28/2018 12:12:19 AM
 This command deletes all long term retention backups for the northeurope location.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupName
 The name of the backup.
@@ -285,8 +303,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzSqlDatabaseLongTermRetentionBackup](./Get-AzSqlDatabaseLongTermRetentionBackup.md)
 
+[Update-AzSqlDatabaseLongTermRetentionBackup](./Update-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Copy-AzSqlDatabaseLongTermRetentionBackup](./Copy-AzSqlDatabaseLongTermRetentionBackup.md)
+
 [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 
 [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

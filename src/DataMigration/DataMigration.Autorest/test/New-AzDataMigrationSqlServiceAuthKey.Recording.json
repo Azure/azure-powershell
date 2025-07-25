@@ -1,0 +1,148 @@
+{
+  "New-AzDataMigrationSqlServiceAuthKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms/listAuthKeys?api-version=2021-10-30-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms/listAuthKeys?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "ccc86c9b-a044-4bb9-986e-9272d1b50a53" ],
+        "CommandName": [ "Get-AzDataMigrationSqlServiceAuthKey" ],
+        "FullCommandName": [ "Get-AzDataMigrationSqlServiceAuthKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "9543cf8f-5efe-465f-b4ed-90a84a8b45ee" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "93166239-95c7-4300-b4d3-8ea86e4271a8" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164517Z:93166239-95c7-4300-b4d3-8ea86e4271a8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:45:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "233" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"authKey1\":\"IR@0e777110-81d3-4821-95a8-3c9ef1955bf6@alias-dms@eu2euap@f4+g7N1OQdxjWaIAci9F2o0L4fWZw0UjMvLynbKaq9c=\",\"authKey2\":\"IR@0e777110-81d3-4821-95a8-3c9ef1955bf6@alias-dms@eu2euap@bv4Sdt92t1nP7GeGELkwsnUQeDWmJ23ymu36lKf9lpQ=\"}"
+    }
+  },
+  "New-AzDataMigrationSqlServiceAuthKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms/regenerateAuthKeys?api-version=2021-10-30-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms/regenerateAuthKeys?api-version=2021-10-30-preview",
+      "Content": "{\r\n  \"keyName\": \"AuthKey1\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "29" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "08d052be-09de-4610-b9a7-8b4413caab66" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "f09ca541-c388-4f42-9e34-f2455845cc83" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164518Z:f09ca541-c388-4f42-9e34-f2455845cc83" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:45:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "117" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"authKey1\":\"IR@0e777110-81d3-4821-95a8-3c9ef1955bf6@alias-dms@eu2euap@3RUvlcYcsm4FV+K00uf1b2qbnwEZpcFqQYWG7co8IBo=\"}"
+    }
+  },
+  "New-AzDataMigrationSqlServiceAuthKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms/regenerateAuthKeys?api-version=2021-10-30-preview+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms/regenerateAuthKeys?api-version=2021-10-30-preview",
+      "Content": "{\r\n  \"keyName\": \"AuthKey2\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "29" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f4867800-c600-4454-94e9-5177e4e3b054" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "4c2e356c-0ba1-45f8-93d7-fcbc9c21dd3d" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164519Z:4c2e356c-0ba1-45f8-93d7-fcbc9c21dd3d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:45:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "117" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"authKey2\":\"IR@0e777110-81d3-4821-95a8-3c9ef1955bf6@alias-dms@eu2euap@Eo6c6c1OYgdLMEPb+hGfJiOXJBmB+/h/45ZP2J1S27c=\"}"
+    }
+  },
+  "New-AzDataMigrationSqlServiceAuthKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms/listAuthKeys?api-version=2021-10-30-preview+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms/listAuthKeys?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "219b864d-a5bc-4593-b59b-ec9f0df1b39c" ],
+        "CommandName": [ "Get-AzDataMigrationSqlServiceAuthKey" ],
+        "FullCommandName": [ "Get-AzDataMigrationSqlServiceAuthKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "66964849-b7f1-4c6e-a7d2-5740517b3b60" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-correlation-request-id": [ "d749276e-45bf-41df-98cf-a1213fe18e28" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164520Z:d749276e-45bf-41df-98cf-a1213fe18e28" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:45:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "233" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"authKey1\":\"IR@0e777110-81d3-4821-95a8-3c9ef1955bf6@alias-dms@eu2euap@3RUvlcYcsm4FV+K00uf1b2qbnwEZpcFqQYWG7co8IBo=\",\"authKey2\":\"IR@0e777110-81d3-4821-95a8-3c9ef1955bf6@alias-dms@eu2euap@Eo6c6c1OYgdLMEPb+hGfJiOXJBmB+/h/45ZP2J1S27c=\"}"
+    }
+  }
+}

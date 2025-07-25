@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: A7C287C4-E9FD-407A-91BD-EFA17C33FC8B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvault
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvault
 schema: 2.0.0
 ---
 
@@ -16,18 +16,21 @@ Gets key vaults.
 ### GetVaultByName (Default)
 ```
 Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
 Get-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
 ```
-Get-AzKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,12 +40,21 @@ particular key vault.
 Note that although specifying the resource group is optional for this cmdlet when you get a single
 key vault, you should do so for better performance.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+
 ## EXAMPLES
 
 ### Example 1: Get all key vaults in your current subscription
 ```powershell
-PS C:\> Get-AzKeyVault
+Get-AzKeyVault
+```
 
+```output
 Vault Name          : myvault1
 Resource Group Name : myrg
 Location            : westus
@@ -70,8 +82,10 @@ This command gets all the key vaults in your current subscription.
 
 ### Example 2: Get a specific key vault
 ```powershell
-PS C:\> Get-AzKeyVault -VaultName 'myvault'
+Get-AzKeyVault -VaultName 'myvault'
+```
 
+```output
 Vault Name                       : myvault
 Resource Group Name              : myrg
 Location                         : westus
@@ -106,8 +120,10 @@ This command gets the key vault named myvault in your current subscription.
 
 ### Example 3: Get key vaults in a resource group
 ```powershell
-PS C:\> Get-AzKeyVault -ResourceGroupName 'myrg1'
+Get-AzKeyVault -ResourceGroupName 'myrg1'
+```
 
+```output
 Vault Name          : myvault2
 Resource Group Name : myrg1
 Location            : westus
@@ -127,8 +143,10 @@ This command gets all the key vaults in the resource group named ContosoPayRollR
 
 ### Example 4: Get all deleted key vaults in your current subscription
 ```powershell
-PS C:\> Get-AzKeyVault -InRemovedState
+Get-AzKeyVault -InRemovedState
+```
 
+```output
 Vault Name           : myvault4
 Location             : westus
 Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/providers/Microsoft.KeyVault/locations/westu
@@ -144,8 +162,10 @@ This command gets all the deleted key vaults in your current subscription.
 
 ### Example 5: Get a deleted key vault
 ```powershell
-PS C:\> Get-AzKeyVault -VaultName 'myvault4'  -Location 'westus' -InRemovedState
+Get-AzKeyVault -VaultName 'myvault4'  -Location 'westus' -InRemovedState
+```
 
+```output
 Vault Name           : myvault4
 Location             : westus
 Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/providers/Microsoft.KeyVault/locations/westu
@@ -162,8 +182,10 @@ subscription and in westus region.
 
 ### Example 6: Get key vaults using filtering
 ```powershell
-PS C:\> Get-AzKeyVault -VaultName 'myvault*'
+Get-AzKeyVault -VaultName 'myvault*'
+```
 
+```output
 Vault Name          : myvault2
 Resource Group Name : myrg1
 Location            : westus
@@ -240,6 +262,23 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -SubscriptionId
+The ID of the subscription.
+By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
+Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -271,7 +310,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -283,7 +322,7 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

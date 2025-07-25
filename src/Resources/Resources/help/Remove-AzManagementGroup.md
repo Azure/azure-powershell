@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagementgroup/
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azmanagementgroup/
 schema: 2.0.0
 ---
 
@@ -14,14 +14,15 @@ Removes a Management Group
 
 ### GroupOperations (Default)
 ```
-Remove-AzManagementGroup [-GroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzManagementGroup [-GroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupObject
 ```
 Remove-AzManagementGroup -InputObject <PSManagementGroup> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,12 +32,12 @@ The **Remove-AzManagementGroup** cmdlet deletes a Management Group.
 
 ### Example 1: Remove a Management Group
 ```powershell
-PS C:\> Remove-AzManagementGroup -GroupName "TestGroup"
+Remove-AzManagementGroup -GroupName "TestGroup"
 ```
 
 ### Example 2: Remove a Management Group by piping PSManagementGroup Object
 ```powershell
-PS C:\> Get-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
+Get-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
 ```
 
 ## PARAMETERS

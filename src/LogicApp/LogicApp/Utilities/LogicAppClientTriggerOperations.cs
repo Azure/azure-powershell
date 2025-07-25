@@ -64,14 +64,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="workflowName">Name of the workflow</param>
         /// <param name="triggerName">Name of the trigger</param>
+        /// <param name="nextPageLink"></param>
         /// <returns>List of trigger histories</returns>
         public Page<WorkflowTriggerHistory> GetWorkflowTriggerHistories(string resourceGroupName, string workflowName,
-            string triggerName)
+            string triggerName, string nextPageLink = "")
         {
-            return
-                (Page<WorkflowTriggerHistory>)
-                    this.LogicManagementClient.WorkflowTriggerHistories.List(resourceGroupName, workflowName,
-                        triggerName);
+            return string.IsNullOrWhiteSpace(nextPageLink) ?
+                    (Page<WorkflowTriggerHistory>)this.LogicManagementClient.WorkflowTriggerHistories.List(
+                        resourceGroupName, workflowName, triggerName) :
+                    (Page<WorkflowTriggerHistory>)this.LogicManagementClient.WorkflowTriggerHistories.ListNext(nextPageLink);
         }
 
         /// <summary>

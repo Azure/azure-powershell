@@ -15,18 +15,29 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase
 {
     using System;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Common.Strategies;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Management.Resources.Models;
 
     public abstract class DeploymentCreateCmdlet: DeploymentWhatIfCmdlet
     {
+        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
+        public string QueryString { get; set; }
+
         protected abstract ConfirmImpact ConfirmImpact { get; }
 
-        protected abstract PSDeploymentCmdletParameters DeploymentParameters { get; }
+        /// <summary>
+        /// It's important not to call this function more than once during an invocation, as it can call the Bicep CLI.
+        /// This is slow, and can also cause diagnostics to be emitted multiple times.
+        /// </summary>
+        protected abstract PSDeploymentCmdletParameters BuildDeploymentParameters();
+
+        protected abstract bool ShouldSkipConfirmationIfNoChange();
 
         protected override void OnProcessRecord()
         {
@@ -38,6 +49,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             {
                 PSWhatIfOperationResult whatIfResult = this.ExecuteWhatIf();
                 string whatIfFormattedOutput = WhatIfOperationResultFormatter.Format(whatIfResult);
+
+                if (this.ShouldProcessGivenCurrentConfirmFlagAndPreference() &&
+                    this.ShouldSkipConfirmationIfNoChange() &&
+                    whatIfResult.Changes.All(x => x.ChangeType == ChangeType.NoChange || x.ChangeType == ChangeType.Ignore))
+                {
+
+                    var whatIfInformation = new HostInformationMessage { Message = whatIfFormattedOutput };
+                    var tags = new[] { "PSHOST" };
+
+                    this.WriteInformation(whatIfInformation, tags);
+                    this.ExecuteDeployment();
+
+                    return;
+                }
+
                 string cursorUp = $"{(char)27}[1A";
 
                 // Use \r to override the built-in "What if:" in output.
@@ -54,26 +80,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
         protected void ExecuteDeployment()
         {
-            if (!string.IsNullOrEmpty(this.DeploymentParameters.DeploymentDebugLogLevel))
+            var parameters = BuildDeploymentParameters();
+
+            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
             {
-                WriteWarning(Resources.WarnOnDeploymentDebugSetting);
+                this.WriteWarning(Resources.WarnOnDeploymentDebugSetting);
             }
 
-            if (this.DeploymentParameters.ScopeType == DeploymentScopeType.ResourceGroup)
+            if (parameters.ScopeType == DeploymentScopeType.ResourceGroup)
             {
-                WriteObject(this.ResourceManagerSdkClient.ExecuteResourceGroupDeployment(this.DeploymentParameters));
+                this.WriteObject(this.NewResourceManagerSdkClient.ExecuteResourceGroupDeployment(parameters));
             }
             else
             {
-                WriteObject(this.ResourceManagerSdkClient.ExecuteDeployment(this.DeploymentParameters));
+                this.WriteObject(this.NewResourceManagerSdkClient.ExecuteDeployment(parameters));
             }
         }
 
-        protected bool ShouldExecuteWhatIf()
-        {
-            return ShouldProcessGivenCurrentWhatIfFlagAndPreference()
-                || ShouldProcessGivenCurrentConfirmFlagAndPreference();
-        }
+        protected bool ShouldExecuteWhatIf() =>
+            this.ShouldProcessGivenCurrentWhatIfFlagAndPreference() ||
+            this.ShouldProcessGivenCurrentConfirmFlagAndPreference();
 
         private bool ShouldProcessGivenCurrentWhatIfFlagAndPreference()
         {
@@ -109,6 +135,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             var confirmPreference = (ConfirmImpact)this.SessionState.PSVariable.GetValue("ConfirmPreference");
 
             return this.ConfirmImpact >= confirmPreference;
+        }
+
+        public override object GetDynamicParameters()
+        {
+            if (!string.IsNullOrEmpty(QueryString))
+            {
+                if(QueryString.Substring(0,1) == "?")
+                    protectedTemplateUri = TemplateUri + QueryString;
+                else
+                    protectedTemplateUri = TemplateUri + "?" + QueryString;
+            }
+            return base.GetDynamicParameters();
         }
     }
 }

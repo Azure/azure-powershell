@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Location"), OutputType(typeof(PSResourceProviderLocation))]
     public class GetAzureLocationCmdlet : ResourceManagerCmdletBaseWithApiVersion
     {
+        public const string ExtendedLocationsParameterSet = "ExtendedLocation";
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to include extended locations.", ParameterSetName = GetAzureLocationCmdlet.ExtendedLocationsParameterSet)]
+        public bool? ExtendedLocation { get; set; }
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
@@ -39,14 +43,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 throw new PSInvalidOperationException(Resources.NoSubscriptionsUnderCurrentDirectory);
             }
-            var allLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString());
+            var allLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString(), ExtendedLocation);
             var providers = this.ResourceManagerSdkClient.ListResourceProviders(providerName: null, listAvailable: true);
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);
-
             this.WriteObject(providerLocations, enumerateCollection: true);
         }
 
-        private List<PSResourceProviderLocation> ConstructResourceProviderLocations(List<Internal.Subscriptions.Models.Location> locations, List<Provider> providers)
+
+
+        private List<PSResourceProviderLocation> ConstructResourceProviderLocations(List<Management.ResourceManager.Models.Location> locations, List<Provider> providers)
         {
             var locationProviderMap = GetLocationProviderMap(providers);
 
@@ -61,7 +66,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Location = location.Name,
                     DisplayName = location.DisplayName,
-                    Providers = mapEntry.Value
+                    Longitude = location.Metadata.Longitude,
+                    Latitude = location.Metadata.Latitude,
+                    PhysicalLocation = location.Metadata.PhysicalLocation,
+                    Providers = mapEntry.Value,
+                    PairedRegion = location.Metadata.PairedRegion,
+                    RegionType = location.Metadata.RegionType,
+                    RegionCategory = location.Metadata.RegionCategory,
+                    GeographyGroup = location.Metadata.GeographyGroup,
+                    Type = location.Type
                 },
                 StringComparer.InvariantCultureIgnoreCase);
 

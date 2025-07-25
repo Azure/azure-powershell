@@ -24,34 +24,21 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
     /// HpcCacheTest.
     /// </summary>
     [Collection("HpcCacheCollection")]
-    public class HpcCacheTest
+    public class HpcCacheTest : HPCCacheTestRunner
     {
-        /// <summary>
-        /// Defines the testOutputHelper.
-        /// </summary>
-        private readonly ITestOutputHelper testOutputHelper;
-
         /// <summary>
         /// Defines the Fixture.
         /// </summary>
         private readonly HpcCacheTestFixture fixture;
 
         /// <summary>
-        /// XunitTracingInterceptor.
-        /// </summary>
-        private readonly XunitTracingInterceptor logger;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="HpcCacheTest"/> class.
         /// </summary>
         /// <param name="testOutputHelper">The testOutputHelper<see cref="ITestOutputHelper"/>.</param>
         /// <param name="fixture">The Fixture<see cref="HpcCacheTestFixture"/>.</param>
-        public HpcCacheTest(ITestOutputHelper testOutputHelper, HpcCacheTestFixture fixture)
+        public HpcCacheTest(ITestOutputHelper testOutputHelper, HpcCacheTestFixture fixture) : base(testOutputHelper)
         {
             this.fixture = fixture;
-            this.testOutputHelper = testOutputHelper;
-            this.logger = new XunitTracingInterceptor(this.testOutputHelper);
-            XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -61,15 +48,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCacheByResourceGroupAndName()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0} {1} {2}",
-                    "Test-GetAzHPCCacheByNameAndResourceGroup",
-                    this.fixture.ResourceGroup.Name,
-                    this.fixture.Cache.Name),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-GetAzHPCCacheByNameAndResourceGroup {this.fixture.ResourceGroup.Name} {this.fixture.Cache.Name}");
         }
 
         /// <summary>
@@ -79,15 +58,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFlushCache()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0} {1} {2}",
-                    "Test-FlushCache",
-                    this.fixture.ResourceGroup.Name,
-                    this.fixture.Cache.Name),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-FlushCache {this.fixture.ResourceGroup.Name} {this.fixture.Cache.Name}");
         }
 
         /// <summary>
@@ -97,15 +68,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartStopCache()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0} {1} {2}",
-                    "Test-Stop-Start-Cache",
-                    this.fixture.ResourceGroup.Name,
-                    this.fixture.Cache.Name),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-Stop-Start-Cache {this.fixture.ResourceGroup.Name} {this.fixture.Cache.Name}");
         }
 
 
@@ -116,18 +79,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewCacheRemoveCache()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0} {1} {2} {3} {4} {5}",
-                    "Test-NewCache-RemoveCache",
-                    this.fixture.ResourceGroup.Name,
-                    this.fixture.SubscriptionID,
-                    this.fixture.ResourceGroup.Location,
-                    this.fixture.VirtualNetwork.Name,
-                    this.fixture.SubNet.Name)
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-NewCache-RemoveCache {this.fixture.ResourceGroup.Name} {this.fixture.SubscriptionID} {this.fixture.ResourceGroup.Location} {this.fixture.VirtualNetwork.Name} {this.fixture.SubNet.Name}");
         }
 
         /// <summary>
@@ -137,15 +89,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetCache()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0} {1} {2}",
-                    "Test-SetCache",
-                    this.fixture.ResourceGroup.Name,
-                    this.fixture.Cache.Name),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-SetCache {this.fixture.ResourceGroup.Name} {this.fixture.Cache.Name}");
         }
 
         /// <summary>
@@ -155,13 +99,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUsageModel()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0}",
-                    "Test-GetUsageModel"),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-GetUsageModel");
         }
 
         /// <summary>
@@ -171,13 +109,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSku()
         {
-            var scripts = new string[]
-            {
-                string.Format(
-                    "{0}",
-                    "Test-GetSku"),
-            };
-            HpcCacheController.NewInstance.RunPsTest(this.logger, scripts);
+            TestRunner.RunTestScript($"Test-GetSku");
         }
     }
 }

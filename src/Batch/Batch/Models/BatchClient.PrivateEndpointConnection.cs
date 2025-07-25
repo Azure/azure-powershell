@@ -91,13 +91,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var connection = new PrivateEndpointConnection(
-                name: name,
-                privateLinkServiceConnectionState: new PrivateLinkServiceConnectionState(
-                    status: status,
-                    description: description));
+            PrivateLinkServiceConnectionState state = new PrivateLinkServiceConnectionState(status: status, description: description);
 
-            BatchManagementClient.PrivateEndpointConnection.Update(resourceGroup, accountName, name, connection);
+            BatchManagementClient.PrivateEndpointConnection.Update(resourceGroup, accountName, name, state, default);
         }
 
         internal IEnumerable<PrivateEndpointConnection> ListAllPrivateEndpointConnections(string resourceGroup, string accountName, int? maxResults = null)

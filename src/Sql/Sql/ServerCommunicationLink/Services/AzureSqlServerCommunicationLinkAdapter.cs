@@ -41,8 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Constructs an adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerCommunicationLinkAdapter(IAzureContext context)
         {
             Context = context;
@@ -81,8 +80,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Creates or updates a Azure Sql Server communication link.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
         /// <returns>The upserted Azure Sql server communication link</returns>
         internal AzureSqlServerCommunicationLinkModel UpsertServerCommunicationLink(AzureSqlServerCommunicationLinkModel model)
@@ -126,7 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="link">The service response</param>
         /// <returns>The converted model</returns>

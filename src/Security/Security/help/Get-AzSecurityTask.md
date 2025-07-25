@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityTask
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecurityTask
 schema: 2.0.0
 ---
 
@@ -14,12 +14,14 @@ Gets the security tasks that Azure Security Center recommends you to do in order
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityTask [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityTask [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzSecurityTask -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityTask -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
@@ -30,12 +32,14 @@ Get-AzSecurityTask -ResourceGroupName <String> -Name <String> [-DefaultProfile <
 
 ### SubscriptionLevelResource
 ```
-Get-AzSecurityTask -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityTask -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzSecurityTask -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityTask -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +50,10 @@ This cmdlet lets you discover the security tasks that Azure Security Center reco
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityTask
+Get-AzSecurityTask
+```
+
+```output
 Id                                                                                                                                              Name                                 RecommendationType                                  ResourceId
 --                                                                                                                                              ----                                 ------------------                                  ----------
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/locations/centralus/tasks/08357a1e-c534-756f-cbb9-7b45e73f3137 08357a1e-c534-756f-cbb9-7b45e73f3137 Subscription has machines with failed baseline rule /subscriptions/48...
@@ -59,8 +66,10 @@ Gets all the security tasks that were discovered on resources inside a subscript
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSecurityTask -ResourceGroupName "myService1"
+Get-AzSecurityTask -ResourceGroupName "myService1"
+```
 
+```output
 Id                                                                                                                                                                        Name                                 RecommendationType                   ResourceI
                                                                                                                                                                                                                                                     d        
 --                                                                                                                                                                        ----                                 ------------------                   ---------
@@ -81,8 +90,10 @@ Gets all the security tasks that were discovered on resources inside a resource 
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzSecurityTask -ResourceGroupName "myService1" -Name "22ef553d-f13a-5227-ee4c-7cc861d28c96"
+Get-AzSecurityTask -ResourceGroupName "myService1" -Name "22ef553d-f13a-5227-ee4c-7cc861d28c96"
+```
 
+```output
 Id                                                                                                                                                                        Name                                 RecommendationType              ResourceId    
 --                                                                                                                                                                        ----                                 ------------------              ----------    
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/tasks/22ef553d-f13a-5227-ee4c-7cc861d28c96 22ef553d-f13a-5227-ee4c-7cc861d28c96 Enable DDoS protection standard /subscripti...

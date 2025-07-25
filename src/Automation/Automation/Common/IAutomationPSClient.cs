@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName);
 
-        AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location, string plan, IDictionary tags);
+        AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location, string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess);
 
-        AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags);
+        AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess);
 
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
-        #region AgentRegistrationInforamtion
+        #region AgentRegistrationInformation
         AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
 
         AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);
@@ -132,15 +132,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Modules
 
-        Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName);
+        Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName, bool isPowershell72Module = false);
 
-        Module GetModule(string resourceGroupName, string automationAccountName, string name);
+        Module GetModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false);
 
-        Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion);
+        Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion, bool isPowershell72Module = false);
 
-        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName, ref string nextLink);
+        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName, ref string nextLink, bool isPowershell72Module = false);
 
-        void DeleteModule(string resourceGroupName, string automationAccountName, string name);
+        void DeleteModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false);
 
         #endregion
 
@@ -227,12 +227,31 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
-        #region HybridrunbookWorker
-        HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
+        #region HybridrunbookWorkerGroups
 
-        IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink);
+        HybridRunbookWorkerGroup GetHybridWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
+        
+        Management.Automation.Models.HybridRunbookWorkerGroup CreateOrUpdateRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string credentialName = null);
+
+        Management.Automation.Models.HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
+
+        IEnumerable<Management.Automation.Models.HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink);
 
         void DeleteHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
+
+        #region HybridRunbookWorkers
+
+        Management.Automation.Models.HybridRunbookWorker GetHybridRunbookWorkers(string resourceGroupName, string automationAccountName, string hybridWorkerGroupName, string workerName);
+
+        IEnumerable<Management.Automation.Models.HybridRunbookWorker> ListHybridRunbookWorkers(string resourceGroupName, string automationAccountName, string hybridWorkerGroupName, ref string nextLink);
+
+        Management.Automation.Models.HybridRunbookWorker CreateOrUpdateRunbookWorker(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string workerName, string vmResourceId);
+
+        void DeleteHybridRunbookWorker(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string name);
+
+        void MoveRunbookWorker(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string targetHybridRunbookWorkerGroupName, string workerName);
 
         #endregion
 
@@ -445,6 +464,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Guid jobId,
             string streamType,
             ref string nextLink);
+
+        #endregion
+
+        #region Python3
+
+        Module CreatePython3Package(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName);
+        Module GetPython3Package(string resourceGroupName, string automationAccountName, string name);
+
+        Module UpdatePython3Package(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion);
+
+        IEnumerable<Module> ListPython3Package(string resourceGroupName, string automationAccountName, ref string nextLink);
+
+        void DeletePython3Package(string resourceGroupName, string automationAccountName, string name);
 
         #endregion
     }

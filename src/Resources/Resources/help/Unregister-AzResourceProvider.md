@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: D5126B7B-7FBB-4C72-B77E-13ADE2BE9B1B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/unregister-azresourceprovider
+online version: https://learn.microsoft.com/powershell/module/az.resources/unregister-azresourceprovider
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Unregisters a resource provider.
 
 ```
 Unregister-AzResourceProvider -ProviderNamespace <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,7 @@ The **Unregister-AzResourceProvider** cmdlet unregisters an Azure resource provi
 ### Example 1: Unregister resource provider with ProviderNamespace
 
 ```powershell
-PS C:\>Unregister-AzResourceProvider -ProviderNamespace "Microsoft.support"
+Unregister-AzResourceProvider -ProviderNamespace "Microsoft.support"
 ```
 
 This command unregisters the resource provider "Microsoft.support".
@@ -143,5 +144,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzResourceProvider](./Get-AzResourceProvider.md)
 
 [Register-AzResourceProvider](./Register-AzResourceProvider.md)
-
-

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>DataBoxEdge</PsModuleName>
@@ -40,7 +40,9 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.DataBoxEdge" Version="1.0.0" />
+    <ProjectReference Include="..\DataBoxEdge.Management.Sdk\DataBoxEdge.Management.Sdk.csproj" />
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

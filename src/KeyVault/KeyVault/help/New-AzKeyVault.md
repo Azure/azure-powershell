@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 4C40DAC9-5C0B-4AFD-9BDB-D407E0B9F701
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvault
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/new-azkeyvault
 schema: 2.0.0
 ---
 
@@ -16,8 +16,9 @@ Creates a key vault.
 ```
 New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <String> [-EnabledForDeployment]
  [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-EnablePurgeProtection]
- [-EnableRbacAuthorization] [-SoftDeleteRetentionInDays <Int32>] [-Sku <SkuName>] [-Tag <Hashtable>]
- [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DisableRbacAuthorization] [-SoftDeleteRetentionInDays <Int32>] [-PublicNetworkAccess <String>]
+ [-Sku <String>] [-Tag <Hashtable>] [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
@@ -30,12 +31,22 @@ Note: If you see the error **The subscription is not registered to use namespace
 **Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"** and then rerun your
 **New-AzKeyVault** command. For more information, see Register-AzResourceProvider.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- GET /users/{id}
+- GET /servicePrincipals/{id}
+- GET /groups/{id}
+- GET /me
+
 ## EXAMPLES
 
 ### Example 1: Create a Standard key vault
 ```powershell
-PS C:\> New-AzKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US'
+New-AzKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US'
+```
 
+```output
 Vault Name                       : contoso03vault
 Resource Group Name              : group14
 Location                         : East US
@@ -44,25 +55,26 @@ Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 Vault URI                        : https://contoso03vault.vault.azure.net/
 Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 SKU                              : Standard
-Enabled For Deployment?          : False
-Enabled For Template Deployment? : False
-Enabled For Disk Encryption?     : False
-Soft Delete Enabled?             :
+Enabled For Deployment?          : 
+Enabled For Template Deployment? : 
+Enabled For Disk Encryption?     : 
+Soft Delete Enabled?             : True
 Access Policies                  :
                                    Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
                                    Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
                                    Application ID                             :
                                    Display Name                               : User Name (username@microsoft.com)
-                                   Permissions to Keys                        : get, create, delete, list, update,
-                                   import, backup, restore, recover
-                                   Permissions to Secrets                     : get, list, set, delete, backup,
-                                   restore, recover
-                                   Permissions to Certificates                : get, delete, list, create, import,
-                                   update, deleteissuers, getissuers, listissuers, managecontacts, manageissuers,
-                                   setissuers, recover, backup, restore
-                                   Permissions to (Key Vault Managed) Storage : delete, deletesas, get, getsas, list,
-                                   listsas, regeneratekey, set, setsas, update, recover, backup, restore
+                                   Permissions to Keys                        : all
+                                   Permissions to Secrets                     : all
+                                   Permissions to Certificates                : all
+                                   Permissions to (Key Vault Managed) Storage : all
 
+Network Rule Set                  :
+                                   Default Action                             : Allow
+                                   Bypass                                     : AzureServices
+                                   IP Rules                                   :
+                                   Virtual Network Rules                      :
+                                      
 Tags                             :
 ```
 
@@ -72,8 +84,10 @@ value for the *SKU* parameter, it creates a Standard key vault.
 
 ### Example 2: Create a Premium key vault
 ```powershell
-PS C:\>New-AzKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US' -Sku 'Premium'
+New-AzKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US' -Sku 'Premium'
+```
 
+```output
 Vault Name                       : contoso03vault
 Resource Group Name              : group14
 Location                         : East US
@@ -91,16 +105,17 @@ Access Policies                  :
                                    Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
                                    Application ID                             :
                                    Display Name                               : User Name (username@microsoft.com)
-                                   Permissions to Keys                        : get, create, delete, list, update,
-                                   import, backup, restore, recover
-                                   Permissions to Secrets                     : get, list, set, delete, backup,
-                                   restore, recover
-                                   Permissions to Certificates                : get, delete, list, create, import,
-                                   update, deleteissuers, getissuers, listissuers, managecontacts, manageissuers,
-                                   setissuers, recover, backup, restore
-                                   Permissions to (Key Vault Managed) Storage : delete, deletesas, get, getsas, list,
-                                   listsas, regeneratekey, set, setsas, update, recover, backup, restore
+                                   Permissions to Keys                        : all
+                                   Permissions to Secrets                     : all
+                                   Permissions to Certificates                : all
+                                   Permissions to (Key Vault Managed) Storage : all
 
+Network Rule Set                 :
+                                  Default Action                             : Allow
+                                  Bypass                                     : AzureServices
+                                  IP Rules                                   :
+                                  Virtual Network Rules                      :
+                                 
 Tags                             :
 ```
 
@@ -109,11 +124,45 @@ Premium for the *SKU* parameter to create a Premium key vault.
 
 ### Example 3
 ```powershell
-PS C:\> $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "110.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault
-PS C:\> $virtualNetwork = New-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG -Location westus -AddressPrefix "110.0.0.0/16" -Subnet $frontendSubnet
-PS C:\> $myNetworkResId = (Get-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG).Subnets[0].Id
-PS C:\> $ruleSet = New-AzKeyVaultNetworkRuleSetObject -DefaultAction Allow -Bypass AzureServices -IpAddressRange "110.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId
-PS C:\> New-AzKeyVault -ResourceGroupName "myRg" -VaultName "myVault" -NetworkRuleSet $ruleSet
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "110.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault
+$virtualNetwork = New-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG -Location westus -AddressPrefix "110.0.0.0/16" -Subnet $frontendSubnet
+$myNetworkResId = (Get-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG).Subnets[0].Id
+$ruleSet = New-AzKeyVaultNetworkRuleSetObject -DefaultAction Allow -Bypass AzureServices -IpAddressRange "110.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId
+New-AzKeyVault -ResourceGroupName "myRg" -VaultName "myVault" -NetworkRuleSet $ruleSet -Location westus
+```
+
+```output
+Vault Name                       : myVault
+Resource Group Name              : myRg
+Location                         : East US
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myRg/providers
+                                   /Microsoft.KeyVault/vaults/myVault
+Vault URI                        : https://myVault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Premium
+Enabled For Deployment?          : False
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             :
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : all
+                                   Permissions to Secrets                     : all
+                                   Permissions to Certificates                : all
+                                   Permissions to (Key Vault Managed) Storage : all
+
+Network Rule Set                 :
+                                  Default Action                             : Allow
+                                  Bypass                                     : AzureServices
+                                  IP Rules                                   : 110.0.1.0/24
+                                  Virtual Network Rules                      : /subscriptions/0b1f6471-1bf0-4dda-ae
+                                  c3-cb9272f09590/resourcegroups/myRg/providers/microsoft.network/virtualnetworks
+                                  /myvnet/subnets/frontendsubnet
+                                 
+Tags                             :
 ```
 
 Creating a key vault and specifies network rules to allow access to the specified IP address from the virtual network identified by $myNetworkResId. See `New-AzKeyVaultNetworkRuleSetObject` for more information.
@@ -127,6 +176,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableRbacAuthorization
+If specified, disables to authorize data actions by Role Based Access Control (RBAC), and then the access policies specified in vault properties will be honored. Note that management actions are always authorized with RBAC.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -196,23 +260,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableRbacAuthorization
-If specified, enables to authorize data actions by Role Based Access Control (RBAC), and then the access policies specified in vault properties will be ignored. Note that management actions are always authorized with RBAC.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
-Specifies the Azure region in which to create the key vault. Use the command [Get-AzLocation](https://docs.microsoft.com/powershell/module/Azure/Get-AzLocation) to see your choices.
+Specifies the Azure region in which to create the key vault. Use the command [Get-AzLocation](/powershell/module/az.resources/get-azlocation) to see your choices.
 
 ```yaml
 Type: System.String
@@ -256,6 +305,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+Specifies whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules. By default, we will enable public network access.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of an existing resource group in which to create the key vault.
 
@@ -275,10 +339,9 @@ Accept wildcard characters: False
 Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (https://go.microsoft.com/fwlink/?linkid=512521).
 
 ```yaml
-Type: Microsoft.Azure.Management.KeyVault.Models.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium
 
 Required: False
 Position: Named
@@ -299,6 +362,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the subscription.
+By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
+Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -357,8 +437,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### System.Management.Automation.SwitchParameter
-
-### Microsoft.Azure.Management.KeyVault.Models.SkuName
 
 ### System.Collections.Hashtable
 

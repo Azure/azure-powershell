@@ -24,6 +24,7 @@
               <Name>ReplicationState</Name>
               <Name>PercentComplete</Name>
               <Name>StartTime</Name>
+              <Name>LinkType</Name>
             </ReferencedProperties>
           </PropertySet>
         </Members>

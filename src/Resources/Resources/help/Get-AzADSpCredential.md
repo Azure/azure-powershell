@@ -1,77 +1,60 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: 7690143F-5F09-4739-9F66-B2ACDF8305F4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadspcredential
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadspcredential
 schema: 2.0.0
 ---
 
 # Get-AzADSpCredential
 
 ## SYNOPSIS
-Retrieves a list of credentials associated with a service principal.
+Lists key credentials and password credentials for an service principal.
 
 ## SYNTAX
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADSpCredential -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADSpCredential -ObjectId <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
-Get-AzADSpCredential -ServicePrincipalName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzADSpCredential -ServicePrincipalName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADSpCredential -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADSpCredential -DisplayName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNObjectParameterSet
 ```
-Get-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzADSpCredential -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzADSpCredential cmdlet can be used to retrieve a list of credentials associated with a service principal.
-This command will retrieve all of the credential properties (but not the credential value) associated with the service principal.
+Lists key credentials and password credentials for an service principal.
 
 ## EXAMPLES
 
-### Example 1 - List credentials by SPN
-
-```
-PS C:\> Get-AzADSpCredential -ServicePrincipalName http://test12345
-```
-
-Returns a list of credentials associated with the service principal with SPN 'http://test12345'.
-
-### Example 2 - List credentials by object id
-
-```
-PS C:\> Get-AzADSpCredential -ObjectId 58e28616-99cc-4da4-b705-7672130e1047
+### Example 1: List credentials from service principal by display name
+```powershell
+Get-AzADSpCredential -DisplayName $name
 ```
 
-Returns a list of credentials associated with the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047".
-
-### Example 3 - List credentials by piping
-
-```
-PS C:\> Get-AzADServicePrincipal -ObjectId 58e28616-99cc-4da4-b705-7672130e1047 | Get-AzADSpCredential
-```
-
-Gets the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047" and pipes it to the Get-AzADSpCredential cmdlet to list all credentials for that service principal.
+List credentials from service principal by display name
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -83,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The display name of the service principal
+Display name of the service principal.
 
 ```yaml
 Type: System.String
@@ -93,12 +76,12 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The object id of the service principal to retrieve credentials from.
+The object Id of service principal.
 
 ```yaml
 Type: System.String
@@ -108,12 +91,12 @@ Aliases: Id
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ServicePrincipalName
-The name (SPN) of the service principal to retrieve credentials from.
+The service principal name.
 
 ```yaml
 Type: System.String
@@ -123,15 +106,15 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ServicePrincipalObject
-The service principal object to retrieve the credentials from.
+The service principal object, could be used as pipeline input.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 Parameter Sets: SPNObjectParameterSet
 Aliases:
 
@@ -142,26 +125,54 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADCredential
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential
 
 ## NOTES
 
+ALIASES
+
+Get-AzADServicePrincipalCredential
+
 ## RELATED LINKS
-
-[New-AzADSpCredential](./New-AzADSpCredential.md)
-
-[Remove-AzADSpCredential](./Remove-AzADSpCredential.md)
-
-[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
-

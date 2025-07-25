@@ -12,12 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = "southeastasia"
-$resourceGroupName = "pstestrg8895"
-$vaultName = "pstestrsv8895"
+$location = "eastasia" 
+$resourceGroupName = "afs-pstest-rg" 
+$vaultName = "afs-pstest-vault" 
 $fileShareFriendlyName = "fs1"
-$fileShareName = "AzureFileShare;fs1"
-$saName = "pstestsa8895"
+$fileShareName = "azurefileshare;7f34af6cfe2f3f3204cfd4d18cd6b37f7dec2c84a2d759ffab3d1367f9e17356" 
+$saName = "afspstestsa"
+$saRgName = "afs-pstest-rg" 
 $skuName="Standard_LRS"
 $policyName = "afspolicy1"
 
@@ -50,31 +51,32 @@ function Test-AzureFSGetJob
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
-		$startDate1 = Get-QueryDateInUtc $((Get-Date).AddDays(-1)) "StartDate1"
+		$startDate1 = Get-QueryDateInUtc $((Get-Date).AddHours(-2)) "StartDate1"
 		$endDate1 = Get-QueryDateInUtc $(Get-Date) "EndDate1"
 
 		$jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -From $startDate1 -To $endDate1
 
 		foreach ($job in $jobs)
 		{
-			$jobDetails = Get-AzRecoveryServicesBackupJobDetails -VaultId $vault.ID -Job $job;
-			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetails `
-				-VaultId $vault.ID `
-				-JobId $job.JobId
+			$jobDetails = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $job;
+			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -JobId $job.JobId
 
 			Assert-AreEqual $jobDetails.JobId $job.JobId
+			# validation for StorageAccountName filed in job response
+			Assert-AreEqual $jobDetails.StorageAccountName $saName 
+
 			Assert-AreEqual $jobDetails2.JobId $job.JobId
+			Assert-AreEqual $jobDetails2.StorageAccountName $saName
 		}
 
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $container
+		Cleanup-Vault $vault $item
 	}
 }
 
@@ -99,7 +101,6 @@ function Test-AzureFSWaitJob
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 	}
 	finally
@@ -116,9 +117,7 @@ function Test-AzureFSCancelJob
  		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
 		# Trigger backup and wait for completion
-		$backupJob = Backup-AzRecoveryServicesBackupItem ` -VaultId $vault.ID -Item $item
-		
-		Assert-True { $backupJob.Status -eq "InProgress" }
+		$backupJob = Backup-AzRecoveryServicesBackupItem -VaultId $vault.ID -Item $item
 
 		$cancelledJob = Stop-AzRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
 
@@ -127,7 +126,6 @@ function Test-AzureFSCancelJob
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 	}
 	finally

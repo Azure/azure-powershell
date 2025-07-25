@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [LocationCompleter("Microsoft.Compute/locations/publishers")]
         public string Location { get; set; }
 
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -53,11 +59,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (this.IsParameterBound(c => c.Location))
                 {
                     string filter = String.Format("location eq '{0}'", this.Location);
-                    result = ResourceSkusClient.List(filter);
+                    result = ResourceSkusClient.List(filter, this.EdgeZone);
                 }
                 else
                 {
-                    result = ResourceSkusClient.List();
+                    result = ResourceSkusClient.List(includeExtendedLocations: this.EdgeZone);
                 }
                 var resultList = result.ToList();
                 var nextPageLink = result.NextPageLink;

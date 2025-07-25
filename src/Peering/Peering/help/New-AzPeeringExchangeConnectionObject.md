@@ -1,78 +1,54 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringexchangeconnectionobject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringexchangeconnectionobject
 schema: 2.0.0
 ---
 
 # New-AzPeeringExchangeConnectionObject
 
 ## SYNOPSIS
-Creates a in memory PSObject to be used for creating or modifying a Peering.
+Create an in-memory object for ExchangeConnection.
 
 ## SYNTAX
 
-### IPv4Address (Default)
 ```
-New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
- [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MD5AuthenticationKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### IPv6Address
-```
-New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv6Address <String>
- [-MaxPrefixesAdvertisedIPv6 <Int32>] [-MD5AuthenticationKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### IPv4AddressIPv6Address
-```
-New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
- -PeerSessionIPv6Address <String> [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MaxPrefixesAdvertisedIPv6 <Int32>]
- [-MD5AuthenticationKey <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzPeeringExchangeConnectionObject [-BgpSessionMaxPrefixesAdvertisedV4 <Int32>]
+ [-BgpSessionMaxPrefixesAdvertisedV6 <Int32>] [-BgpSessionMd5AuthenticationKey <String>]
+ [-BgpSessionMicrosoftSessionIPv4Address <String>] [-BgpSessionMicrosoftSessionIPv6Address <String>]
+ [-BgpSessionPeerSessionIPv4Address <String>] [-BgpSessionPeerSessionIPv6Address <String>]
+ [-BgpSessionPrefixV4 <String>] [-BgpSessionPrefixV6 <String>] [-ConnectionIdentifier <String>]
+ [-PeeringDbFacilityId <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates an in memory PSObject 
+Create an in-memory object for ExchangeConnection.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create an exchange connection object
 ```powershell
-PS C:> $exconnection = New-AzPeeringExchangeConnectionObject -PeeringDBFacilityId 99999 -PeerSessionIPv4Address 10.3.151.99 -MaxPrefixesAdvertisedIPv4 20000 -MD5AuthenticationKey 25234523452123411fd234qdwfas3234
+$md5Key = "******"
 
-PeeringDBFacilityId     : 99999
-PeerSessionIPv4Address  : 10.3.151.99
-MaxPrefixesAdvertisedV4 : 20000
-Md5AuthenticationKey    : 25234523452123411fd234qdwfas3234
+New-AzPeeringExchangeConnectionObject -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -ConnectionIdentifier c111111111111
 ```
 
-Local connection object
+```output
+ConnectionIdentifier ConnectionState ErrorMessage PeeringDbFacilityId
+-------------------- --------------- ------------ -------------------
+c111111111111                                     82
+```
+
+Create a exchange connection object in memory
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -BgpSessionMaxPrefixesAdvertisedV4
+The maximum number of prefixes advertised over the IPv4 session.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaxPrefixesAdvertisedIPv4
-The maximum advertised IPv4
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: IPv4Address, IPv4AddressIPv6Address
 Aliases:
 
 Required: False
@@ -82,12 +58,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxPrefixesAdvertisedIPv6
-The maximum advertised IPv6
+### -BgpSessionMaxPrefixesAdvertisedV6
+The maximum number of prefixes advertised over the IPv6 session.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: IPv6Address, IPv4AddressIPv6Address
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -97,8 +73,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MD5AuthenticationKey
-The MD5 authentication key for session.
+### -BgpSessionMd5AuthenticationKey
+The MD5 authentication key of the session.
 
 ```yaml
 Type: System.String
@@ -112,45 +88,120 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeeringDBFacilityId
-The peering facility Id found on https://peeringdb.com
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeerSessionIPv4Address
-The peer session IPv4 address
+### -BgpSessionMicrosoftSessionIPv4Address
+The IPv4 session address on Microsoft's end.
 
 ```yaml
 Type: System.String
-Parameter Sets: IPv4Address, IPv4AddressIPv6Address
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeerSessionIPv6Address
-The peer session IPv6 address
+### -BgpSessionMicrosoftSessionIPv6Address
+The IPv6 session address on Microsoft's end.
 
 ```yaml
 Type: System.String
-Parameter Sets: IPv6Address, IPv4AddressIPv6Address
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BgpSessionPeerSessionIPv4Address
+The IPv4 session address on peer's end.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BgpSessionPeerSessionIPv6Address
+The IPv6 session address on peer's end.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BgpSessionPrefixV4
+The IPv4 prefix that contains both ends' IPv4 addresses.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BgpSessionPrefixV6
+The IPv6 prefix that contains both ends' IPv6 addresses.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectionIdentifier
+The unique identifier (GUID) for the connection.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringDbFacilityId
+The PeeringDB.com ID of the facility at which the connection has to be set up.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,11 +213,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangeConnection
 
 ## NOTES
 

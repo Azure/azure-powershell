@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 47E8E8C1-A63D-4243-A004-ABD5CA1A559E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlelasticpool
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlelasticpool
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Remove-AzSqlElasticPool** cmdlet deletes an Azure SQL Database elastic poo
 ## EXAMPLES
 
 ### Example 1: Delete an elastic pool
-```
-PS C:\>Remove-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
+```powershell
+Remove-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
 ```
 
 This command deletes an elastic pool named ElasticPool01.
@@ -164,6 +164,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlElasticPool](./Set-AzSqlElasticPool.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 
 

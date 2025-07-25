@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: D5943E9F-E4E6-4A1F-A144-44691CF32FC8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmdatadisk
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk
 schema: 2.0.0
 ---
 
@@ -14,8 +14,9 @@ Removes a data disk from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzVMDataDisk [-VM] <PSVirtualMachine> [[-DataDiskNames] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVMDataDisk [-VM] <PSVirtualMachine> [[-DataDiskNames] <String[]>] [-ForceDetach]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,10 +25,10 @@ The **Remove-AzVMDataDisk** cmdlet removes a data disk from a virtual machine.
 ## EXAMPLES
 
 ### Example 1: Remove a data disk from a virtual machine
-```
-PS C:\> $VirtualMachine = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
-PS C:\> Remove-AzVMDataDisk -VM $VirtualMachine -Name "Disk3"
-PS C:\> Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+```powershell
+$VirtualMachine = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
+Remove-AzVMDataDisk -VM $VirtualMachine -Name "Disk3"
+Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzVM** cmdlet.
@@ -59,6 +60,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceDetach
+Sets detachOption property to ForceDetach for the provided disk(s). Only applicable for managed data disks.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -131,5 +147,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzVMDataDisk](./Add-AzVMDataDisk.md)
 
 [Get-AzVM](./Get-AzVM.md)
-
-

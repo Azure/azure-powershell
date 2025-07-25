@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azcontext
+online version: https://learn.microsoft.com/powershell/module/az.accounts/get-azcontext
 schema: 2.0.0
 ---
 
@@ -19,21 +19,24 @@ Get-AzContext [-DefaultProfile <IAzureContextContainer>] [[-Name] <String>] [<Co
 
 ### ListAllContexts
 ```
-Get-AzContext [-ListAvailable] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContext [-ListAvailable] [-RefreshContextFromTokenCache] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Get-AzContext cmdlet gets the current metadata used to authenticate Azure Resource Manager requests.
 This cmdlet gets the Active Directory account, Active Directory tenant, Azure subscription, and the targeted Azure environment.
-Azure Resource Manager cmdlets use these settings by default when making Azure Resource Manager requests.
+Azure Resource Manager cmdlets use these settings by default when making Azure Resource Manager requests. When the available amount of subscription exceeds the default limit of 25, some subscriptions may not show up in the results of `Get-AzContext -ListAvailable`. Please run `Connect-AzAccount -MaxContextPopulation <int>` to get more contexts.
 
 ## EXAMPLES
 
 ### Example 1: Getting the current context
+```powershell
+Connect-AzAccount
+Get-AzContext
 ```
-PS C:\> Connect-AzAccount
-PS C:\> Get-AzContext
 
+```Output
 Name                                     Account             SubscriptionName    Environment         TenantId
 ----                                     -------             ----------------    -----------         --------
 Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
@@ -42,9 +45,11 @@ Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1      
 In this example we are logging into our account with an Azure subscription using Connect-AzAccount, and then we are getting the context of the current session by calling Get-AzContext.
 
 ### Example 2: Listing all available contexts
+```powershell
+Get-AzContext -ListAvailable
 ```
-PS C:\> Get-AzContext -ListAvailable
 
+```Output
 Name                                     Account             SubscriptionName    Environment         TenantId
 ----                                     -------             ----------------    -----------         --------
 Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
@@ -101,8 +106,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RefreshContextFromTokenCache
+Refresh contexts from token cache
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListAllContexts
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -118,3 +138,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzContext](./Set-AzContext.md)
 
+[Connect-AzAccount](./Connect-AzAccount.md)

@@ -125,8 +125,31 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Additional Nic Properties of the Virtual Appliance.")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualApplianceAdditionalNicProperties[] AdditionalNic { get; set; }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The Internet Ingress IPs Properties of the Virtual Appliance.")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualApplianceInternetIngressIpsProperties[] InternetIngressIp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Network Profile of the Virtual Appliance.")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualApplianceNetworkProfile NetworkProfile { get; set; }
 
         public override void Execute()
         {
@@ -168,11 +191,25 @@ namespace Microsoft.Azure.Commands.Network
             networkVirtualAppliance.BootStrapConfigurationBlobs = this.BootStrapConfigurationBlob;
             networkVirtualAppliance.CloudInitConfigurationBlobs = this.CloudInitConfigurationBlob;
             networkVirtualAppliance.CloudInitConfiguration = this.CloudInitConfiguration;
+            if (AdditionalNic != null)
+            {
+                networkVirtualAppliance.AdditionalNics = AdditionalNic;
+            }
+
+            if (InternetIngressIp != null)
+            {
+                networkVirtualAppliance.InternetIngressPublicIps = InternetIngressIp;
+            }
+
+            if (NetworkProfile != null)
+            {
+                networkVirtualAppliance.NetworkProfile = NetworkProfile;
+            }
 
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);
 
             networkVirtualApplianceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-            
+
             this.NetworkVirtualAppliancesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkVirtualApplianceModel);
             
             var getNetworkVirtualAppliance = this.GetNetworkVirtualAppliance(this.ResourceGroupName, this.Name);

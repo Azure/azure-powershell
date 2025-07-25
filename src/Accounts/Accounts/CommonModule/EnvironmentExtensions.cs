@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         /// <param name="environment">The current Azure Environment</param>
         /// <param name="baseEndpoint">The Uri to transform</param>
-        /// <returns>The Uri, with naseUri appropriately altered for the current Azure environment</returns>
+        /// <returns>The Uri, with baseUri appropriately altered for the current Azure environment</returns>
         public static Uri GetUriFromBaseRequestUri(this IAzureEnvironment environment, Uri baseEndpoint)
         {
             if (null == environment)
@@ -50,6 +50,18 @@ namespace Microsoft.Azure.Commands.Common
             if (baseEnvironment.ServiceManagementUrl.IsMatch(baseEndpoint))
             {
                 return baseEndpoint.PatchHost(environment.ServiceManagementUrl);
+            }
+
+            if (environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId)
+                && baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId].IsMatch(baseEndpoint))
+            {
+                return baseEndpoint.PatchHost(environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId]);
+            }
+
+            if (environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl)
+                && baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl].IsMatch(baseEndpoint))
+            {
+                return baseEndpoint.PatchHost(environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl]);
             }
 
             if (environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint) 
@@ -103,8 +115,9 @@ namespace Microsoft.Azure.Commands.Common
             return baseEndpoint;
         }
 
+        ////TODO: Update to support all data plane audience
         /// <summary>
-        /// Determien the inteneded audience of a request
+        /// Determine the intended audience of a request
         /// </summary>
         /// <param name="environment">The environment to use as a source of audiences</param>
         /// <param name="baseEndpoint">The Uri to try to find the audience for</param>
@@ -182,11 +195,11 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Determines if the given Uri contaisn the given endpoint or endpoint suffix
+        /// Determines if the given Uri contains the given endpoint or endpoint suffix
         /// </summary>
         /// <param name="endpointOrSuffix">The endpoint or suffix to match</param>
         /// <param name="compare">The Uri to compare to the given endpoint or suffix.</param>
-        /// <returns>True if the Uri matches the given endpoint or siffix, otherwise false</returns>
+        /// <returns>True if the Uri matches the given endpoint or suffix, otherwise false</returns>
         internal static bool IsMatch(this string endpointOrSuffix, Uri compare)
         {
             var matcher = endpointOrSuffix.GetMatcher();
@@ -282,6 +295,7 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         /// <param name="target"></param>
         /// <param name="searchValue"></param>
+        /// <param name="comparison"></param>
         /// <returns></returns>
         internal static bool ContainsNotNull(this string target, string searchValue, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
         {
@@ -328,7 +342,7 @@ namespace Microsoft.Azure.Commands.Common
 
         internal static bool TryDequeueIfNotNull<T>(this ConcurrentQueue<T> queue, out T result)
         {
-            result = default(T);
+            result = default;
             if (null == queue)
             {
                 return false;

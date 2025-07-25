@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterDiskEncryptionKey", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true),OutputType(typeof(Cluster))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterDiskEncryptionKey", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true),OutputType(typeof(AzureHDInsightCluster))]
     public class SetAzureHDInsightClusterDiskEncryptionKeyCommand : HDInsightCmdletBase
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";

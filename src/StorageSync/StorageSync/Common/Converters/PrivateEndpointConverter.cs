@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class PrivateEndpointConverter.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSPrivateEndpoint, Microsoft.Azure.Management.StorageSync.Models.PrivateEndpoint}" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSPrivateEndpoint, PrivateEndpoint}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSPrivateEndpoint, Microsoft.Azure.Management.StorageSync.Models.PrivateEndpoint}" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSPrivateEndpoint, PrivateEndpoint}" />
     public class PrivateEndpointConverter : ConverterBase<PSPrivateEndpoint, StorageSyncModels.PrivateEndpoint>
     {
 

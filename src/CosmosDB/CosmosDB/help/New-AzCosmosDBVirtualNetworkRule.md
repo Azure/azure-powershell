@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbvirtualnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbvirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBVirtualNetworkRule -Id {id} -IgnoreMissingVNetServiceEndpoint 0
+New-AzCosmosDBVirtualNetworkRule -Id "id" -IgnoreMissingVNetServiceEndpoint 0
+```
+
+```output
 Id  IgnoreMissingVNetServiceEndpoint
 --   --------------------------------
 {id}                            False
@@ -36,7 +39,7 @@ Id  IgnoreMissingVNetServiceEndpoint
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +54,7 @@ Accept wildcard characters: False
 Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +69,7 @@ Accept wildcard characters: False
 Boolean to indicate if to create firewall rule before the virtual network has vnet service endpoint enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

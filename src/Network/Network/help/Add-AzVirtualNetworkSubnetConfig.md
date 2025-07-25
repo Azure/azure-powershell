@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: B8B632B5-9D3B-4352-B4C8-49C00472B3A7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azvirtualnetworksubnetconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig
 schema: 2.0.0
 ---
 
@@ -15,22 +15,26 @@ Adds a subnet configuration to a virtual network.
 
 ### SetByResource (Default)
 ```
-Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
- [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
- [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
- [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> [-AddressPrefix <String[]>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
+ [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>] [-ServiceEndpoint <String[]>]
+ [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>]
+ [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
+ [-PrivateEndpointNetworkPoliciesFlag <String>] [-PrivateLinkServiceNetworkPoliciesFlag <String>]
+ [-IpAllocation <PSIpAllocation[]>] [-DefaultOutboundAccess <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ResourceId <String>]
- [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
- [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
- [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> [-AddressPrefix <String[]>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-NetworkSecurityGroupId <String>]
+ [-RouteTableId <String>] [-ResourceId <String>] [-ServiceEndpoint <String[]>]
+ [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>]
+ [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
+ [-PrivateEndpointNetworkPoliciesFlag <String>] [-PrivateLinkServiceNetworkPoliciesFlag <String>]
+ [-IpAllocation <PSIpAllocation[]>] [-DefaultOutboundAccess <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,9 +57,9 @@ New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
 ### Example 2: Add a delegation to a subnet being added to an existing virtual network
 ```powershell
-PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
-PS C:\> $delegation = New-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers"
-PS C:\> Add-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+$vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
+$delegation = New-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers"
+Add-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 ```
 
 This example first gets an existing vnet.
@@ -72,10 +76,25 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultOutboundAccess
+Default outbound connectivity for all VMs in the subnet
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -139,6 +158,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IpamPoolPrefixAllocation
+IpamPool to auto allocate from for subnet address prefixes.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpamPoolPrefixAllocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the subnet configuration to add.
 
@@ -151,6 +185,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkIdentifier
+NetworkIdentifier Value for ServiceEndpoint
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -186,7 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateEndpointNetworkPoliciesFlag
-Configure to enable or disable applying network policies on private endpoint in the subnet.
+Configure to enable or disable applying network policies on private endpoint in the subnet. Default value is Disabled.
 
 ```yaml
 Type: System.String
@@ -261,6 +310,21 @@ Service Endpoint Value
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceEndpointConfig
+Service Endpoint with NetworkIdentifier Value
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpoint[]
 Parameter Sets: (All)
 Aliases:
 

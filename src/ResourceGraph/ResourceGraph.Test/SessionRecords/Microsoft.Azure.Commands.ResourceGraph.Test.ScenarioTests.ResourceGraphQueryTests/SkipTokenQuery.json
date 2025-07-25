@@ -1,0 +1,92 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1449fdae-cc85-4eb5-8254-180521628c12"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "395"
+        ]
+      },
+      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"9e223dbe-3399-4e19-88eb-0975f02ac87f\"\r\n  ],\r\n  \"query\": \"project id, properties\",\r\n  \"options\": {\r\n    \"$skipToken\": \"ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogMywNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FyZy1ldXMtc2l4LXNmLmFyZy5jb3JlLndpbmRvd3MubmV0Ig0KfQ==\",\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "e37e3c7c-e471-4ebe-baff-cdc3fa6011d4"
+        ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [
+          "12"
+        ],
+        "x-ms-user-quota-remaining": [
+          "12"
+        ],
+        "x-ms-user-quota-resets-after": [
+          "00:00:04"
+        ],
+        "x-ms-resource-graph-request-duration": [
+          "0:00:00:00.3408069"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-request-id": [
+          "e37e3c7c-e471-4ebe-baff-cdc3fa6011d4"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANWEST:20250210T023702Z:e37e3c7c-e471-4ebe-baff-cdc3fa6011d4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5343DF23F50C43ECB1A7D286830AB828 Ref B: TYO201100117053 Ref C: 2025-02-10T02:37:01Z"
+        ],
+        "Date": [
+          "Mon, 10 Feb 2025 02:37:01 GMT"
+        ],
+        "Content-Length": [
+          "1523"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"totalRecords\": 40,\r\n  \"count\": 3,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AzAccountsTest/providers/Microsoft.Automation/automationAccounts/AzAccountsTestAutomation/runbooks/TestSystemIdentityPwsh\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"description\": null,\r\n        \"creationTime\": \"2024-04-03T09:00:23.88Z\",\r\n        \"state\": \"Published\",\r\n        \"parameters\": {},\r\n        \"lastModifiedTime\": \"2024-04-03T09:01:13.3566667Z\",\r\n        \"serviceManagementTags\": null,\r\n        \"lastModifiedBy\": null,\r\n        \"logActivityTrace\": 0,\r\n        \"runbookType\": \"PowerShell72\",\r\n        \"logProgress\": false,\r\n        \"outputTypes\": [],\r\n        \"logVerbose\": false,\r\n        \"jobCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AzAccountsTest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzAccountsTestUMI\",\r\n      \"properties\": {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"4a3ec5fb-ba6f-4a7f-98e2-2918cd728500\",\r\n        \"clientId\": \"810db65e-2f37-42b8-95cf-4c18d7e78da3\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-centraluseuap\",\r\n      \"properties\": {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"3e4cbc11-b5c6-4c42-a134-d82d52c743b6\",\r\n        \"clientId\": \"2edfe7dd-c48a-46f0-9a5b-54b276a9b25e\"\r\n      }\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\",\r\n  \"$skipToken\": \"ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogNiwNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FyZy1ldXMtc2l4LXNmLmFyZy5jb3JlLndpbmRvd3MubmV0Ig0KfQ==\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
+  }
+}

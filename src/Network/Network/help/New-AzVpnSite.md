@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnsite
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvpnsite
 schema: 2.0.0
 ---
 
@@ -17,33 +17,37 @@ for S2S connectivity with a Cortex virtual hub.
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
  -VirtualWanResourceGroupName <String> -VirtualWanName <String> -IpAddress <String> [-AddressSpace <String[]>]
- [-DeviceModel <String>] [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>]
- [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>]
+ [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>]
+ [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanNameByVpnSiteLinkObject
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
  -VirtualWanResourceGroupName <String> -VirtualWanName <String> [-AddressSpace <String[]>]
- [-DeviceModel <String>] [-DeviceVendor <String>] -VpnSiteLink <PSVpnSiteLink[]> [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite] -VpnSiteLink <PSVpnSiteLink[]>
+ [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteIpAddress
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWan <PSVirtualWan>
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
- [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteLinkObject
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWan <PSVirtualWan>
- [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] -VpnSiteLink <PSVpnSiteLink[]>
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite]
+ -VpnSiteLink <PSVpnSiteLink[]> [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -51,16 +55,18 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWanId <String>
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
- [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceIdByVpnSiteLinkObject
 ```
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWanId <String>
- [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] -VpnSiteLink <PSVpnSiteLink[]>
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite]
+ -VpnSiteLink <PSVpnSiteLink[]> [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -73,15 +79,17 @@ for S2S connectivity with a Cortex virtual hub.
 ### Example 1
 
 ```powershell
-PS C:\> New-AzResourceGroup -Location "East US" -Name "nonlinkSite"
-PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName "nonlinkSite" -Name myVirtualWAN -Location "East US"
+New-AzResourceGroup -Location "East US" -Name "nonlinkSite"
+$virtualWan = New-AzVirtualWan -ResourceGroupName "nonlinkSite" -Name myVirtualWAN -Location "East US"
 
-PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
-PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
-PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+$vpnSiteAddressSpaces = New-Object string[] 2
+$vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+$vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 
-PS C:\> New-AzVpnSite -ResourceGroupName "nonlinkSite" -Name "testVpnSite" -Location "East US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+New-AzVpnSite -ResourceGroupName "nonlinkSite" -Name "testVpnSite" -Location "East US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+```
 
+```output
 ResourceGroupName : nonlinkSite
 Name              : testVpnSite
 Id                : /subscriptions/{subscriptionId}/resourceGroups/nonlinkSite/providers/Microsoft.Network/vpnSites/testVpnSite
@@ -102,15 +110,15 @@ An IPSec connection can then be setup with this branch and a VpnGateway using th
 
 ### Example 2
 ```powershell
-PS C:\> New-AzResourceGroup -Location "East US" -Name "multilink"
-PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName multilink -Name myVirtualWAN -Location "East US"
-PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
-PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
-PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+New-AzResourceGroup -Location "East US" -Name "multilink"
+$virtualWan = New-AzVirtualWan -ResourceGroupName multilink -Name myVirtualWAN -Location "East US"
+$vpnSiteAddressSpaces = New-Object string[] 2
+$vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+$vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 
-PS C:\> $vpnSiteLink = New-AzVpnSiteLink -Name "testVpnSiteLink1" -IpAddress "15.25.35.45" -LinkProviderName "SomeTelecomProvider" -LinkSpeedInMbps "10"
-PS C:\> $vpnSiteLink2 = New-AzVpnSiteLink -Name "testVpnSiteLink2" -IpAddress "15.25.35.55" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "100"
-PS C:\> $vpnSite = New-AzVpnSite -ResourceGroupName "multilink" -Name "testVpnSite" -Location "East US" -VirtualWan $virtualWan -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2)
+$vpnSiteLink = New-AzVpnSiteLink -Name "testVpnSiteLink1" -IpAddress "15.25.35.45" -LinkProviderName "SomeTelecomProvider" -LinkSpeedInMbps "10"
+$vpnSiteLink2 = New-AzVpnSiteLink -Name "testVpnSiteLink2" -IpAddress "15.25.35.55" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "100"
+$vpnSite = New-AzVpnSite -ResourceGroupName "multilink" -Name "testVpnSite" -Location "East US" -VirtualWan $virtualWan -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2)
 ```
 
 The above will create a resource group, Virtual WAN and a VpnSite with 1 VpnSiteLinks in East US in "multilink" resource group in Azure.
@@ -120,6 +128,8 @@ The above will create a resource group, Virtual WAN and a VpnSite with 1 VpnSite
 Creates a new Azure VpnSite resource. (autogenerated)
 
 <!-- Aladdin Generated Example -->
+
+
 ```powershell
 New-AzVpnSite -AddressSpace <String[]> -DeviceModel 'SomeDevice' -DeviceVendor 'SomeDeviceVendor' -IpAddress '1.2.3.4' -LinkSpeedInMbps '10' -Location 'East US' -Name 'testVpnSite' -ResourceGroupName 'multilink' -VirtualWanName <String> -VirtualWanResourceGroupName <String>
 ```
@@ -255,6 +265,21 @@ Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanObjectByVpnSiteI
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsSecuritySite
+if vpn site is a security site.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -463,11 +488,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVpnSite
-
 ## NOTES
 
 ## RELATED LINKS

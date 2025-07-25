@@ -13,51 +13,43 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
-    public class MarketplaceTests : RMTestBase
+    public class MarketplaceTests : ConsumptionTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public MarketplaceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public MarketplaceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListMarketplaces()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListMarketplaces");
+            TestRunner.RunTestScript("Test-ListMarketplaces");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListMarketplacesWithDateFilter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListMarketplacesWithDateFilter");
+            TestRunner.RunTestScript("Test-ListMarketplacesWithDateFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriodMarketplaces()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriodMarketplaces");
+            TestRunner.RunTestScript("Test-ListBillingPeriodMarketplaces");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListMarketplacesWithFilterOnInstanceName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListMarketplacesWithFilterOnInstanceName");
+            TestRunner.RunTestScript("Test-ListMarketplacesWithFilterOnInstanceName");
         }
     }
 }

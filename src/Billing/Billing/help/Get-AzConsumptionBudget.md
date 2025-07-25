@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azconsumptionbudget
+online version: https://learn.microsoft.com/powershell/module/az.billing/get-azconsumptionbudget
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ The Get-AzConsumptionBudget cmdlet gets a list of budgets in either a subscripti
 
 ### Example 1: Get a list of budgets at subscription level
 ```powershell
-PS C:\> Get-AzConsumptionBudget
+Get-AzConsumptionBudget
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -38,7 +41,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Get a list of budgets at resource group level
 ```powershell
-PS C:\> Get-AzConsumptionBudget -ResourceGroupName RGBudgets
+Get-AzConsumptionBudget -ResourceGroupName RGBudgets
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -52,7 +58,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 3: Get a budget with the budget name at subscription level
 ```powershell
-PS C:\> Get-AzConsumptionBudget -Name PSBudget
+Get-AzConsumptionBudget -Name PSBudget
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -66,7 +75,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 4: Get a budget with the budget name at resource group level
 ```powershell
-PS C:\> Get-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG
+Get-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -137,5 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Consumption.Models.PSBudget
 
 ## NOTES
+- Currently, PowerShell SDK for Consumption is only available to Enterprise Agreement customers.
+- PowerShell SDK for Consumption is using an older version of Budgets API and few backwards non-compatible items like listing Budgets with filters will not work as expected.
 
 ## RELATED LINKS

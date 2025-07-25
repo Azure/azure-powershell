@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 36B3B1AC-6E7F-4607-A024-91583D952B62
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/new-azoperationalinsightswindowseventdatasource
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightswindowseventdatasource
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ The **New-AzOperationalInsightsWindowsEventDataSource** cmdlet adds a data sourc
 ## EXAMPLES
 
 ### Example 1: Create system Windows event data source
-```
+```powershell
 $EventLogNames       = @()
 $EventLogNames      += 'Directory Service'
 $EventLogNames      += 'Microsoft-Windows-EventCollector/Operational'
@@ -59,6 +59,8 @@ Get-AzOperationalInsightsDataSource `
    -WorkspaceName $WorkspaceName `
    -Kind 'WindowsEvent'
 ```
+
+Adds a data source that collects Windows event logs from connected computers that run the Windows operating system in Azure Operational Insights.
 
 ## PARAMETERS
 
@@ -244,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

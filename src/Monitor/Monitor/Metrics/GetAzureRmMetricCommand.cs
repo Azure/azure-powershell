@@ -22,6 +22,8 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
 using System.Globalization;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics
 {
@@ -104,8 +106,14 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Gets or sets the metricfilter parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric dimension filter to query metrics for")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric dimension filter to query metrics for")]
         public string MetricFilter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dimension parameter of the cmdlet
+        /// </summary>]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric dimensions to query metrics for")]
+        public string[] Dimension { get; set; }
 
         /// <summary>
         /// Gets or sets the metricnames parameter of the cmdlet
@@ -133,6 +141,15 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             bool fullDetails = this.DetailedOutput.IsPresent;
 
+            if (this.IsParameterBound(c => c.Dimension))
+            {
+                if (this.IsParameterBound(c => c.MetricFilter) && !string.IsNullOrEmpty(this.MetricFilter))
+                {
+                    throw new AzPSArgumentException("usage: -Dimension and -MetricFilter parameters are mutually exclusive.", "MetricFilter");
+                }
+                this.MetricFilter = string.Join(" and ", this.Dimension.Select(d => string.Format("{0} eq '*'", d)));
+            }
+
             // EndTime defaults to Now
             if (this.EndTime == default(DateTime))
             {
@@ -153,7 +170,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 timegrain = null;
             }
             string metricNames = (this.MetricName != null && this.MetricName.Count() > 0) ? string.Join(",", this.MetricName) : null;
-            string aggregation = (this.AggregationType != null && this.AggregationType.HasValue) ? this.AggregationType.Value.ToString() : null;
+            string aggregation = this.AggregationType.HasValue ? this.AggregationType.Value.ToString() : null;
             int? top = (this.Top == default(int?)) ? null : this.Top;
             string orderBy = (this.OrderBy == default(string)) ? null : this.OrderBy;
             ResultType? resultType = (this.ResultType == default(ResultType?)) ? null : this.ResultType;

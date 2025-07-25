@@ -39,14 +39,12 @@ function Build-CharacterTable
     param ($Configuration)
 
     $blacklistOfCodePoints = $Configuration.BlacklistOfCodePoints
-    $whitelistOfCodePointRanges = $Configuration.WhitelistOfCodePointRanges
 
     $arraySize = 0x10FFFF + 1
     $blacklistedCodePointsTable = new-object bool[] $arraySize
     for ($i = 0; $i -lt $arraySize; $i += 1)
     {
-        $blacklistedCodePointsTable[$i] = $blacklistOfCodePoints.Contains($i) -or
-                    ($whitelistOfCodePointRanges.Where({ ($_.Start -le $i) -and ($_.End -ge $i) }).Count -eq 0);
+        $blacklistedCodePointsTable[$i] = $blacklistOfCodePoints.Contains($i);
     }
     return $blacklistedCodePointsTable
 }

@@ -367,6 +367,69 @@ function Test-NetworkInterfaceIpConfigurationCRUDMinimalParameters
 
 <#
 .SYNOPSIS
+Tests creating new simple public networkinterface with Gateway Loadbalancer.
+#>
+function Test-NetworkInterfaceGatewayLoadBalancerConsumer
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+
+    $vnetProviderName = Get-ResourceName;
+    $subnetProviderName = Get-ResourceName;
+    $lbProviderName = Get-ResourceName;
+    $frontendProviderName = Get-ResourceName;
+
+    $vnetConsumerName = Get-ResourceName;
+    $subnetConsumerName = Get-ResourceName;
+    $publicIpConsumerName = Get-ResourceName;
+    $nicConsumerName = Get-ResourceName;
+    $ipconfigConsumerName = Get-ResourceName;
+    $domainNameLabel = Get-ResourceName;
+    $rglocation = Get-ProviderLocation ResourceManagement;
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces";
+    $location = Get-ProviderLocation $resourceTypeParent;
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" };
+
+        # Create Provider Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetProviderName -AddressPrefix "10.0.1.0/24";
+        $vnet = New-AzVirtualNetwork -Name $vnetProviderName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+
+        # Create Provider LoadBalancer
+        $frontendProvider = New-AzLoadBalancerFrontendIpConfig -Name $frontendProviderName -Subnet $vnet.Subnets[0];
+        $lbProvider = New-AzLoadBalancer -Name $lbProviderName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontendProvider -Sku "Gateway";
+
+        # Create Consumer Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetConsumerName -AddressPrefix "10.0.1.0/24";
+        $vnet = New-AzVirtualNetwork -Name $vnetConsumerName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+
+        # Create Consumer publicip
+        $publicipConsumer = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpConsumerName -Sku "Standard" -location $location -AllocationMethod Static;
+
+	# Create the ipconfiguration
+	$ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id;
+
+        # Create NetworkInterface
+        $nicConsumer = New-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1 -Tag @{ testtag = "testval" };
+
+        # Get NetworkInterface
+        $expectedNicConsumer = Get-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname;
+
+        # Verification
+        Assert-AreEqual $frontendProvider.Id $expectedNicConsumer.ipconfigurations[0].GatewayLoadBalancer.Id;   
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test creating new NetworkInterfaceIpConfiguration
 #>
 function Test-NetworkInterfaceIpConfigurationCRUDAllParameters

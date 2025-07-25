@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,11 +61,65 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation to create Access Policy Assignment failed..
+        /// </summary>
+        internal static string AccessPolicyAssignmentCreationFailed {
+            get {
+                return ResourceManager.GetString("AccessPolicyAssignmentCreationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cache &apos;{0}&apos; does not have Access Policy Assignment with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string AccessPolicyAssignmentNotFound {
+            get {
+                return ResourceManager.GetString("AccessPolicyAssignmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation to create Access Policy failed..
+        /// </summary>
+        internal static string AccessPolicyCreationFailed {
+            get {
+                return ResourceManager.GetString("AccessPolicyCreationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cache &apos;{0}&apos; does not have Access Policy with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string AccessPolicyNotFound {
+            get {
+                return ResourceManager.GetString("AccessPolicyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redis Cache with name &apos;{0}&apos; does not exists..
         /// </summary>
         internal static string CacheNotFound {
             get {
                 return ResourceManager.GetString("CacheNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Access Policy &apos;{0}&apos; with specified name and permissions for cache &apos;{1}&apos;.
+        /// </summary>
+        internal static string CreateAccessPolicy {
+            get {
+                return ResourceManager.GetString("CreateAccessPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating access policy assignment &apos;{0}&apos; for Redis Cache &apos;{1}&apos;....
+        /// </summary>
+        internal static string CreateAccessPolicyAssignment {
+            get {
+                return ResourceManager.GetString("CreateAccessPolicyAssignment", resourceCulture);
             }
         }
         
@@ -124,6 +178,24 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to flush all keys present in redis cache &apos;{0}&apos;?.
+        /// </summary>
+        internal static string FlushingRedisCache {
+            get {
+                return ResourceManager.GetString("FlushingRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flushing redis cache &apos;{0}&apos; ....
+        /// </summary>
+        internal static string FlushRedisCache {
+            get {
+                return ResourceManager.GetString("FlushRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to import data into redis cache &apos;{0}&apos;?.
         /// </summary>
         internal static string ImportingRedisCache {
@@ -138,6 +210,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         internal static string ImportRedisCache {
             get {
                 return ResourceManager.GetString("ImportRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id &apos;{0}&apos;is not valid. Id should be of the form &quot;/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group name&gt;/providers/Microsoft.Cache/Redis/&lt;cache name&gt;/&lt;operation group&gt;/&lt;name&gt;&quot;..
+        /// </summary>
+        internal static string InvalidRedisCacheChildResourceId {
+            get {
+                return ResourceManager.GetString("InvalidRedisCacheChildResourceId", resourceCulture);
             }
         }
         
@@ -264,6 +345,24 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         internal static string RegeneratingRedisCacheKey {
             get {
                 return ResourceManager.GetString("RegeneratingRedisCacheKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Access Policy &apos;{0}&apos; from Redis Cache &apos;{1}&apos;....
+        /// </summary>
+        internal static string RemoveAccessPolicy {
+            get {
+                return ResourceManager.GetString("RemoveAccessPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Access Policy Assignment &apos;{0}&apos; from Redis Cache &apos;{1}&apos;....
+        /// </summary>
+        internal static string RemoveAccessPolicyAssignment {
+            get {
+                return ResourceManager.GetString("RemoveAccessPolicyAssignment", resourceCulture);
             }
         }
         

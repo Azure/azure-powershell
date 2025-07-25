@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 81D55C43-C9A3-4DA7-A469-A3A7550FE9A4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetwork
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetwork
 schema: 2.0.0
 ---
 
@@ -14,10 +14,13 @@ Creates a virtual network.
 ## SYNTAX
 
 ```
-New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]>
- [-DnsServer <String[]>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>] [-Tag <Hashtable>]
- [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> [-AddressPrefix <String[]>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-DnsServer <String[]>] [-FlowTimeout <Int32>]
+ [-Subnet <PSSubnet[]>] [-BgpCommunity <String>] [-EnableEncryption <String>]
+ [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>] [-EnableDdosProtection]
+ [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>] [-EdgeZone <String>]
+ [-PrivateEndpointVNetPoliciesValue <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +74,26 @@ default network security group rules. The New-AzVirtualNetworkSubnetConfig cmdle
 in-memory representations of two subnets that both reference the network security group that was
 created. The New-AzVirtualNetwork command then creates the virtual network.
 
+### Example 4: Create a virtual network with an IPAM Pool to auto allocate from for address prefixes
+```powershell
+New-AzNetworkManagerIpamPool -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "testIpamPool" -Location "centralus" -AddressPrefix @("10.0.0.0/16")
+$ipamPool = Get-AzNetworkManagerIpamPool -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "testIpamPool"
+$ipamPoolPrefixAllocation = [PSCustomObject]@{
+     Id = $ipamPool.Id
+     NumberOfIpAddresses = "256"
+ }
+$subnet = New-AzVirtualNetworkSubnetConfig -Name "testSubnet" -IpamPoolPrefixAllocation $ipamPoolPrefixAllocation
+New-AzVirtualNetwork -Name "testVnet" -ResourceGroupName "testRG" -Location "centralus" -Subnet $subnet -IpamPoolPrefixAllocation $ipamPoolPrefixAllocation
+```
+
+This example creates a virtual network with an IPAM (IP Address Management) pool to automatically allocate address prefixes. 
+First, an IPAM pool named testIpamPool is created in the testRG resource group and testNM network manager in the centralus region with the address prefix 10.0.0.0/16.
+The Get-AzNetworkManagerIpamPool cmdlet retrieves the IPAM pool that was just created.
+Next, a custom object representing the IPAM pool prefix allocation is created. This object includes the Id of the IPAM pool and the NumberOfIpAddresses to allocate. 
+The New-AzVirtualNetworkSubnetConfig cmdlet creates a subnet named testSubnet configured to use the IPAM pool prefix allocation object.
+Finally, the New-AzVirtualNetwork cmdlet creates a virtual network named testVnet in the testRG resource group and centralus location. 
+The virtual network includes the subnet created in the previous step and uses the IPAM pool prefix allocation for address prefix allocation.
+
 ## PARAMETERS
 
 ### -AddressPrefix
@@ -81,7 +104,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -163,6 +186,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EdgeZone
+{{ Fill EdgeZone Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableDdosProtection
 A switch parameter which represents if DDoS protection is enabled or not.
 
@@ -175,6 +213,51 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEncryption
+Indicates if encryption is enabled on the virtual network. The value should be true to enable encryption on the virtual network, false to disable encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EncryptionEnforcementPolicy
+Set the Encryption EnforcementPolicy. The value should be allowUnencrypted to allow VMs without encryption capability inside an encrypted virtual network, or dropUnencrypted to disable any VM without encryption capability from being added into an encrypted virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FlowTimeout
+FlowTimeout enables connection tracking for intra-VM flows. The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -198,6 +281,21 @@ Specifies IpAllocations for a virtual network.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpAllocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpamPoolPrefixAllocation
+Specifies a list of PSIpamPoolPrefixAllocation objects to auto allocate from for virtual network address prefixes.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpamPoolPrefixAllocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -232,6 +330,21 @@ Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrivateEndpointVNetPoliciesValue
+The PrivateEndpointVNetPolicies of the virtual network
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

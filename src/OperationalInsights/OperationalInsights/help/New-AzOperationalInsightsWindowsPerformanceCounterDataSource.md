@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 09CC097E-0210-4443-BCDB-5CF6C8300288
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/new-azoperationalinsightswindowsperformancecounterdatasource
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightswindowsperformancecounterdatasource
 schema: 2.0.0
 ---
 
@@ -33,6 +33,22 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource [-Workspace] <PSWor
 The **New-AzOperationalInsightsWindowsPerformanceCounterDataSource** cmdlet adds a Windows performance counter data source for connected computers that run the Windows operating system.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace -Name performance1 -ObjectName object -CounterName counters
+```
+
+```output
+Name              : performance1
+ResourceGroupName : testrg
+WorkspaceName     : LogAnalyticsWorkspace
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/testrg/providers/Microsoft.OperationalInsights/workspaces/LogAnalyticsWorkspace/datasources/performance1
+Kind              : WindowsPerformanceCounter
+Properties        : {"objectName":"object","instanceName":"*","intervalSeconds":15,"counterName":"counters","collectorType":"Default"}
+```
+
+Add a Windows performance counter data source for connected computers that run the Windows operating system.
 
 ## PARAMETERS
 
@@ -233,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

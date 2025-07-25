@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     /// <summary>
-    /// Cmdlet for getting Data Migration Service resource
+    /// Cmdlet for getting Azure Data Migration Service (classic) resource
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationService", DefaultParameterSetName = ResourceGroupSet), OutputType(typeof(PSDataMigrationService))]
     [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix+ "Dms")]
@@ -52,12 +52,12 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the data migration service.
+        /// Gets or sets the name of the Azure Database Migration Service (classic).
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = ServiceNameGroupSet,
-            HelpMessage = "Name of Database Migration Service.")]
+            HelpMessage = "Name of Azure Database Migration Service (classic).")]
         [ValidateNotNullOrEmpty]
         [Alias("ServiceName")]
         public string Name { get; set; }

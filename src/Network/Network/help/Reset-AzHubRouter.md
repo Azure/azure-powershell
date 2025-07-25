@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/reset-azhubrouter
+online version: https://learn.microsoft.com/powershell/module/az.network/reset-azhubrouter
 schema: 2.0.0
 ---
 
@@ -12,22 +12,23 @@ Resets the RoutingState of a VirtualHub resource.
 
 ## SYNTAX
 
-### ByVirtualHubName (Default)
+### ByVirtualHubObject (Default)
+```
+Reset-AzHubRouter -InputObject <PSVirtualHub> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualHubName
 ```
 Reset-AzHubRouter -ResourceGroupName <String> -Name <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-Reset-AzHubRouter -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualHubObject
-```
-Reset-AzHubRouter -InputObject <PSVirtualHub> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzHubRouter -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,7 @@ Resets the Routing State of an existing VirtualHub resource only if the Routing 
 ### Example 1
 
 ```powershell
-PS C:\> Reset-AzHubRouter -ResourceGroupName "testRG" -Name "westushub"
+Reset-AzHubRouter -ResourceGroupName "testRG" -Name "westushub"
 ```
 
 Reset the routing state of the virtual hub using its ResourceGroupName and ResourceName.
@@ -46,7 +47,7 @@ Reset the routing state of the virtual hub using its ResourceGroupName and Resou
 ### Example 2
 
 ```powershell
-PS C:\> Reset-AzHubRouter -ResourceId "/subscriptions/testSub/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub"
+Reset-AzHubRouter -ResourceId "/subscriptions/testSub/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub"
 ```
 
 Reset the routing state of the virtual hub using its ResourceId.
@@ -54,7 +55,7 @@ Reset the routing state of the virtual hub using its ResourceId.
 ### Example 3
 
 ```powershell
-PS C:\> Reset-AzHubRouter -InputObject $virtualHub
+Reset-AzHubRouter -InputObject $virtualHub
 ```
 
 Reset the routing state of the virtual hub using an input object. The input object is of type PSVirtualHub.
@@ -62,7 +63,7 @@ Reset the routing state of the virtual hub using an input object. The input obje
 ### Example 4
 
 ```powershell
-PS C:\> Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" | Reset-AzHubRouter
+Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" | Reset-AzHubRouter
 ```
 
 An existing virtual hub object can be retrieved and then passed as input object to Reset-AzHubRouter.
@@ -91,21 +92,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -206,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkservicetag
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkservicetag
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Gets the list of service tag information resources.
 ## SYNTAX
 
 ```
-Get-AzNetworkServiceTag -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkServiceTag -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,9 +26,12 @@ For example, even if you specify `-Location eastus2` you will get the list of se
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
-PS C:\> $serviceTags = Get-AzNetworkServiceTag -Location eastus2
-PS C:\> $serviceTags
+$serviceTags = Get-AzNetworkServiceTag -Location eastus2
+$serviceTags
 
 Name         : Public
 Id           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx/providers/Microsoft.Network/serviceTags/Public
@@ -36,7 +40,7 @@ ChangeNumber : 63
 Cloud        : Public
 Values       : {ApiManagement, ApiManagement.AustraliaCentral, ApiManagement.AustraliaCentral2, ApiManagement.AustraliaEast...}
 
-PS C:\> $serviceTags.Values
+$serviceTags.Values
 
 Name             : ApiManagement
 System Service   : AzureApiManagement
@@ -73,19 +77,22 @@ Change Number    : 2
 The command gets the list of service tag information resources and stores it in variable `serviceTags`.
 
 ### Example 2: Get all address prefixes for AzureSQL
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
-PS C:\> $serviceTags = Get-AzNetworkServiceTag -Location eastus2
-PS C:\> $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql" }
-PS C:\> $sql
+$serviceTags = Get-AzNetworkServiceTag -Location eastus2
+$sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql" }
+$sql
 
 Name             : Sql
 System Service   : AzureSQL
 Address Prefixes : {13.65.31.249/32, 13.65.39.207/32, 13.65.85.183/32, 13.65.200.105/32...}
 Change Number    : 18
 
-PS C:\> $sql.Properties.AddressPrefixes.Count
+$sql.Properties.AddressPrefixes.Count
 644
-PS C:\> $sql.Properties.AddressPrefixes
+$sql.Properties.AddressPrefixes
 13.65.31.249/32
 13.65.39.207/32
 13.65.85.183/32
@@ -98,9 +105,12 @@ The first command gets the list of service tag information resources and stores 
 The second command filters the list to select information resource for Sql.
 
 ### Example 3: Get Storage's service tag information resource for West US 2
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
-PS C:\> $serviceTags = Get-AzNetworkServiceTag -Location eastus2
-PS C:\> $serviceTags.Values | Where-Object { $_.Name -eq "Storage.WestUS2" }
+$serviceTags = Get-AzNetworkServiceTag -Location eastus2
+$serviceTags.Values | Where-Object { $_.Name -eq "Storage.WestUS2" }
 
 Name             : Storage.WestUS2
 System Service   : AzureStorage
@@ -108,7 +118,7 @@ Region           : westus2
 Address Prefixes : {13.66.176.16/28, 13.66.176.48/28, 13.66.232.64/28, 13.66.232.208/28...}
 Change Number    : 5
 
-PS C:\> $serviceTags.Values | Where-Object { $_.Name -like "Storage*" -and $_.Properties.Region -eq "westus2" }
+$serviceTags.Values | Where-Object { $_.Name -like "Storage*" -and $_.Properties.Region -eq "westus2" }
 
 Name             : Storage.WestUS2
 System Service   : AzureStorage
@@ -116,7 +126,7 @@ Region           : westus2
 Address Prefixes : {13.66.176.16/28, 13.66.176.48/28, 13.66.232.64/28, 13.66.232.208/28...}
 Change Number    : 5
 
-PS C:\> $serviceTags.Values | Where-Object { $_.Properties.SystemService -eq "AzureStorage" -and $_.Properties.Region -eq "westus2" }
+$serviceTags.Values | Where-Object { $_.Properties.SystemService -eq "AzureStorage" -and $_.Properties.Region -eq "westus2" }
 
 Name             : Storage.WestUS2
 System Service   : AzureStorage
@@ -130,10 +140,11 @@ The following commands show various way to filter the list to select service tag
 
 ### Example 4: Get all global service tag information resources
 ```powershell
-PS C:\> $serviceTags = Get-AzNetworkServiceTag -Location eastus2
-PS C:\> $serviceTags.Values | Where-Object { -not $_.Properties.Region }
+$serviceTags = Get-AzNetworkServiceTag -Location eastus2
+$serviceTags.Values | Where-Object { -not $_.Properties.Region }
+```
 
-
+```output
 Name             : ApiManagement
 System Service   : AzureApiManagement
 Address Prefixes : {13.64.39.16/32, 13.66.138.92/31, 13.66.140.176/28, 13.67.8.108/31...}

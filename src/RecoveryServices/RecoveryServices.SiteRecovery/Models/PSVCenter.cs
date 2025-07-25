@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Initializes a new instance of the <see cref="ASRvCenter" /> class with required
         ///     parameters.
         /// </summary>
-        /// <param name="vServer">vCenter server object</param>
+        /// <param name="vCenterServer">vCenter server object</param>
         public ASRvCenter(VCenter vCenterServer)
         {
             this.ID = vCenterServer.Id;
             this.Name = vCenterServer.Name;
             this.FriendlyName = vCenterServer.Properties.FriendlyName;
-            this.IpOrHostName = vCenterServer.Properties.IpAddress;
+            this.IpOrHostName = vCenterServer.Properties.IPAddress;
             this.Port = vCenterServer.Properties.Port;
             this.FabricArmResourceName = vCenterServer.Properties.FabricArmResourceName;
             this.ProcessServerId = vCenterServer.Properties.ProcessServerId;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ID { get; }
 
         /// <summary>
-        ///     Gets the Fabric arm resoure name.
+        ///     Gets the Fabric arm resource name.
         /// </summary>
         public string FabricArmResourceName { get; }
 

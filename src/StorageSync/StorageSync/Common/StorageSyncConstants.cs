@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
@@ -102,7 +101,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The cloud tiering off
         /// </summary>
         public const string CloudTieringOff = "off";
-
         /// <summary>
         /// The Offline Data Transfer on
         /// </summary>
@@ -111,11 +109,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The Offline Data Transfer off
         /// </summary>
         public const string OfflineDataTransferOff = "off";
-
         /// <summary>
         /// The afs agent registry key
         /// </summary>
         public const string AfsAgentRegistryKey = @"SOFTWARE\Microsoft\Azure\StorageSync\Agent";
+        /// <summary>
+        /// The afs registry key
+        /// </summary>
+        public const string AfsRegistryKey = @"SOFTWARE\Microsoft\Azure\StorageSync";
         /// <summary>
         /// The afs agent installer path registry key value name
         /// </summary>
@@ -132,20 +133,90 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The file sync SVC name
         /// </summary>
         public const string FileSyncSvcName = "FileSyncSvc";
-
         /// <summary>
         /// The storage sync resource manager
         /// </summary>
         public const string StorageSyncResourceManager = "StorageSyncResourceManager";
-
         /// <summary>
         /// The sync server identifier
         /// </summary>
         public const string SyncServerId = "SyncServerId";
-
         /// <summary>
         /// The tenant identifier
         /// </summary>
         public const string TenantId = "TenantId";
+
+        /// <summary>
+        /// Registry key name for Server Auth Type
+        /// </summary>
+        public const string ServerAuthRegistryKeyName = "ServerAuth";
+
+        /// <summary>
+        /// Registry key name for Server Type
+        /// </summary>
+        public const string ServerTypeRegistryKeyName = "ServerType";
+
+        /// <summary>
+        /// Compute ResourceType
+        /// </summary>
+        public const string ComputeResourceType = "Microsoft.Compute";
+
+        /// <summary>
+        /// Hybrid Resource Type
+        /// </summary>
+        public const string HybridResourceType = "Microsoft.HybridCompute";
+
+        /// <summary>
+        /// Virtual Machines
+        /// </summary>
+        public const string VirtualMachineString = "virtualMachines";
+
+        /// <summary>
+        /// machines
+        /// </summary>
+        public const string HybridMachineString = "machines";
+
+        /// <summary>
+        /// Azure Instance Metadata Uri
+        /// </summary>
+        public const string AzureInstanceMetadataUri = "http://169.254.169.254/metadata/instance/compute?api-version=2019-11-01";
+
+        /// <summary>
+        /// Hybrid Instance Metadata Uri
+        /// </summary>
+        public const string HybridInstanceMetadataUri = "http://localhost:40342/metadata/instance/compute?api-version=2019-11-01";
+
+        /// <summary>
+        /// Azure Token Uri.
+        ///  Azure IMDS Documentation: https://learn.microsoft.com/en-us/azure/virtual-machines/instance-metadata-service
+        /// DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token",
+        /// </summary>
+        public const string AzureTokenUri = DefaultMSILoginUri + "?resource=https://management.azure.com/&api-version=2019-11-01";
+
+        /// <summary>
+        /// Hybrid Token Uri
+        /// Hybrid IMDS Documentation: https://learn.microsoft.com/en-us/azure/azure-arc/servers/managed-identity-authentication
+        /// </summary>
+        public const string HybridTokenUri = "http://localhost:40342/metadata/identity/oauth2/token?resource=https://management.azure.com/&api-version=2020-06-01";
+
+        /// <summary>
+        /// Default MSILoginUri
+        /// </summary>
+        public const string DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token";
+
+        /// <summary>
+        /// default backup MSILoginUri
+        /// </summary>
+        public const string DefaultBackupMSILoginUri = "http://localhost:50342/oauth2/token";
+
+        /// <summary>
+        /// GetVM API Version
+        /// </summary>
+        public const string GetVmApiVersion = "2022-08-01";
+
+        /// <summary>
+        /// Get Hybrid API Version
+        /// </summary>
+        public const string GetHybridApiVersion = "2022-08-11-preview";
     }
 }

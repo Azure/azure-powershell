@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/set-azsynapseintegrationruntime
+online version: https://learn.microsoft.com/powershell/module/az.synapse/set-azsynapseintegrationruntime
 schema: 2.0.0
 ---
 
@@ -18,11 +18,15 @@ Set-AzSynapseIntegrationRuntime [-ResourceGroupName <String>] -WorkspaceName <St
  [-Type <String>] [-Description <String>] [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>]
  [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
  [-VNetId <String>] [-Subnet <String>] [-PublicIP <String[]>] [-DataFlowComputeType <String>]
- [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>]
- [-Edition <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
- [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>]
+ [-ManagedVNetCopyComputeScaleDataIntegrationUnit <Int32>] [-ManagedVNetCopyComputeScaleTimeToLive <Int32>]
+ [-ManagedVNetPipelineExternalComputeScaleTimeToLive <Int32>] [-ManagedVNetNumberOfPipelineNodeCount <Int32>]
+ [-ManagedVNetNumberOfExternalNodeCount <Int32>] [-SelfContainedInteractiveAuthoringEnabled]
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-ExpressCustomSetup <ArrayList>]
+ [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>]
+ [-DataProxyStagingPath <String>] [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>]
+ [-AuthKey <SecureString>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByLinkedIntegrationRuntimeName
@@ -38,11 +42,15 @@ Set-AzSynapseIntegrationRuntime -Name <String> -WorkspaceObject <PSSynapseWorksp
  [-Description <String>] [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>]
  [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
  [-VNetId <String>] [-Subnet <String>] [-PublicIP <String[]>] [-DataFlowComputeType <String>]
- [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>]
- [-Edition <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
- [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
- [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>]
+ [-ManagedVNetCopyComputeScaleDataIntegrationUnit <Int32>] [-ManagedVNetCopyComputeScaleTimeToLive <Int32>]
+ [-ManagedVNetPipelineExternalComputeScaleTimeToLive <Int32>] [-ManagedVNetNumberOfPipelineNodeCount <Int32>]
+ [-ManagedVNetNumberOfExternalNodeCount <Int32>] [-SelfContainedInteractiveAuthoringEnabled]
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-ExpressCustomSetup <ArrayList>]
+ [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>]
+ [-DataProxyStagingPath <String>] [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>]
+ [-AuthKey <SecureString>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByLinkedIntegrationRuntimeParentObject
@@ -58,7 +66,10 @@ Set-AzSynapseIntegrationRuntime -ResourceId <String> [-Type <String>] [-Descript
  [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
  [-PublicIP <String[]>] [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>]
- [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
+ [-DataFlowTimeToLive <Int32>] [-ManagedVNetCopyComputeScaleDataIntegrationUnit <Int32>]
+ [-ManagedVNetCopyComputeScaleTimeToLive <Int32>] [-ManagedVNetPipelineExternalComputeScaleTimeToLive <Int32>]
+ [-ManagedVNetNumberOfPipelineNodeCount <Int32>] [-ManagedVNetNumberOfExternalNodeCount <Int32>]
+ [-SelfContainedInteractiveAuthoringEnabled] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
  [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
  [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
@@ -99,14 +110,14 @@ The **Set-AzSynapseIntegrationRuntime** cmdlet updates an integration runtime wi
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -Description 'New description'
+Set-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' -Description 'New description'
 ```
 
 The cmdlet updates the description of integration runtime named 'test-selfhost-ir'.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' `
+Set-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir' `
                                         -SharedIntegrationRuntimeResourceId '/subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir' -Type "SelfHosted"
 ```
 
@@ -389,6 +400,81 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedVNetCopyComputeScaleDataIntegrationUnit
+DIU number setting reserved for copy activity execution.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SetByIntegrationRuntimeName, SetByParentObject, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedVNetCopyComputeScaleTimeToLive
+Time to live (in minutes) setting of integration runtime which will execute copy activity.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SetByIntegrationRuntimeName, SetByParentObject, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedVNetNumberOfExternalNodeCount
+Number of the the external nodes, which should be greater than 0 and less than 11.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SetByIntegrationRuntimeName, SetByParentObject, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedVNetNumberOfPipelineNodeCount
+Number of the pipeline nodes, which should be greater than 0 and less than 11.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SetByIntegrationRuntimeName, SetByParentObject, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedVNetPipelineExternalComputeScaleTimeToLive
+Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SetByIntegrationRuntimeName, SetByParentObject, SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxParallelExecutionsPerNode
 Maximum parallel execution count per node for a managed dedicated integration runtime.
 
@@ -488,6 +574,21 @@ Parameter Sets: SetByResourceId, SetByLinkedIntegrationRuntimeResourceId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelfContainedInteractiveAuthoringEnabled
+An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SetByIntegrationRuntimeName, SetByParentObject, SetByResourceId
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

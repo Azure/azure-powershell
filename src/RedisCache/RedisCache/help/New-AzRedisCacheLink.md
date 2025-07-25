@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/new-azrediscachelink
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/new-azrediscachelink
 schema: 2.0.0
 ---
 
@@ -23,12 +23,18 @@ Create a geo replication link between two Redis Caches.
 ## EXAMPLES
 
 ### Example 1: Create a link between two caches
+```powershell
+New-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 ```
-PS C:\>New-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Creating
+```output
+PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Creating
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command creates geo-replication link between Redis Cache mycache1 and mycache2.
@@ -112,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -152,6 +152,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Existing = "Existing";
 
         /// <summary>
+        ///     Suffix to add in client request id while making SDS calls.
+        /// </summary>
+        public const string FabricDiscoveryClientRequestIdSuffix = "-Ps";
+
+        /// <summary>
         ///     Group Type: Failover
         /// </summary>
         public const string Failover = "Failover";
@@ -230,6 +235,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string InMageProviderSpecificSettings = "InMageProviderSpecificSettings";
 
         /// <summary>
+        ///     Represents InMageRcm string constant.
+        /// </summary>
+        public const string InMageRcm = "InMageRcm";
+
+        /// <summary>
+        ///     Represents InMageRcmFailback string constant.
+        /// </summary>
+        public const string InMageRcmFailback = "InMageRcmFailback";
+
+        /// <summary>
         ///     JSON field: InstanceType
         /// </summary>
         public const string InstanceType = "InstanceType";
@@ -239,6 +254,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     HUB https://azure.microsoft.com/en-in/pricing/hybrid-use-benefit/
         /// </summary>
         public const string LicenseTypeWindowsServer = "WindowsServer";
+
+        /// <summary>
+        ///     No license type for SQL https://azure.microsoft.com/en-in/blog/azure-hybrid-benefit-for-sql-server-on-azure-virtual-machines/
+        /// </summary>
+        public const string NoLicenseTypeSql = "NoLicenseType";
+
+        /// <summary>
+        ///     The SQL server license type for 
+        ///     PAYG https://azure.microsoft.com/en-in/blog/azure-hybrid-benefit-for-sql-server-on-azure-virtual-machines/
+        /// </summary>
+        public const string LicenseTypePAYG = "PAYG";
+
+        /// <summary>
+        ///     The SQL server license type for 
+        ///     AHUB https://azure.microsoft.com/en-in/blog/azure-hybrid-benefit-for-sql-server-on-azure-virtual-machines/
+        /// </summary>
+        public const string LicenseTypeAHUB = "AHUB";
 
         /// <summary>
         ///     Represents NetworkType string value.
@@ -254,6 +286,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Represents New string value.
         /// </summary>
         public const string New = "New";
+
+        /// <summary>
+        ///     Represents Next page link.
+        /// </summary>
+        public const string NextPageLink = "nextPageLink";
 
         /// <summary>
         ///     Acceptable values of Replication Frequency in seconds (as per portal).
@@ -326,6 +363,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Premium_LRS = "Premium_LRS";
 
         /// <summary>
+        ///     Represents Premium_ZRS storage account.
+        /// </summary>
+        public const string Premium_ZRS = "Premium_ZRS";
+
+        /// <summary>
+        ///     Represents PremiumV2_LRS storage account.
+        /// </summary>
+        public const string PremiumV2_LRS = "PremiumV2_LRS";
+
+        /// <summary>
+        ///     Represents UltraSSD_LRS storage account.
+        /// </summary>
+        public const string UltraSSD_LRS = "UltraSSD_LRS";
+        /// <summary>
         ///     Represents primary location.
         /// </summary>
         public const string PrimaryLocation = "Primary";
@@ -376,6 +427,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string RecoveryLocation = "Recovery";
 
         /// <summary>
+        ///     Recovery Tag for application consistent recovery point type.
+        /// </summary>
+        public const string RecoveryTagApplicationConsistent = "RecoveryTagApplicationConsistent";
+
+        /// <summary>
+        ///     Recovery Tag for crash consistent recovery point type.
+        /// </summary>
+        public const string RecoveryTagCrashConsistent = "RecoveryTagCrashConsistent";
+
+        /// <summary>
         ///     Recovery Tag for Latest Recovery Point.
         /// </summary>
         public const string RecoveryTagLatest = "Latest";
@@ -408,7 +469,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Required = "Required";
 
         /// <summary>
-        ///     Failover deployment model: ResourceMananger
+        ///     Failover deployment model: ResourceManager
         /// </summary>
         public const string ResourceManager = "ResourceManager";
 
@@ -471,6 +532,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Represents StandardSSD_LRS storage account.
         /// </summary>
         public const string StandardSSD_LRS = "StandardSSD_LRS";
+
+        /// <summary>
+        ///     Represents StandardSSD_ZRS storage account.
+        /// </summary>
+        public const string StandardSSD_ZRS = "StandardSSD_ZRS";
 
         /// <summary>
         ///     Represents Standard_SSD storage account.
@@ -546,6 +612,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Represents use of recovery cloud service provided by user for test failover.
         /// </summary>
         public const string UseRecoveryCloudService = "UseRecoveryCloudService";
+
+        /// <summary>
+        ///     Sets the Utc date time format.
+        /// </summary>
+        public const string UtcDateTimeFormat = "yyyy-MM-dd HH:mm:ssZ";
 
         /// <summary>
         /// Represents autocreation of cloud service for test failover.
@@ -1095,7 +1166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    ///     ASR Heatlth Event Severity mapped with Monitoring Event in SRS.
+    ///     ASR Health Event Severity mapped with Monitoring Event in SRS.
     /// </summary>
     public static class ASRHealthEventServerity
     {
@@ -1118,5 +1189,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Represents severity of the health event -Warning.
         /// </summary>
         public const string Warning = "Warning";
+    }
+
+    /// <summary>
+    /// Http headers.
+    /// </summary>
+    public static class HttpHeaders
+    {
+        /// <summary>
+        /// Accept language header key.
+        /// </summary>
+        public const string AcceptLanguage = "accept-language";
+
+        /// <summary>
+        /// Client request Id header key.
+        /// </summary>
+        public const string ClientRequestId = "x-ms-client-request-id";
+
+        /// <summary>
+        /// Request Id header key.
+        /// </summary>
+        public const string RequestId = "x-ms-request-id";
     }
 }

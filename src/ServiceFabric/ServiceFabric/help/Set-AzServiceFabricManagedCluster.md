@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/set-azservicefabricmanagedcluster
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricmanagedcluster
 schema: 2.0.0
 ---
 
@@ -18,11 +18,11 @@ Set-AzServiceFabricManagedCluster [-InputObject] <PSManagedCluster> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WithPramsByName
+### WithParamsByName
 ```
 Set-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-HttpGatewayConnectionPort <Int32>]
- [-ClientConnectionPort <Int32>] [-DnsName <String>] [-ReverseProxyEndpointPort <Int32>] [-AsJob]
+ [-ClientConnectionPort <Int32>] [-DnsName <String>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,8 +30,8 @@ Set-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
 ```
 Set-AzServiceFabricManagedCluster [-ResourceId] <String> [-UpgradeMode <ClusterUpgradeMode>]
  [-CodeVersion <String>] [-HttpGatewayConnectionPort <Int32>] [-ClientConnectionPort <Int32>]
- [-DnsName <String>] [-ReverseProxyEndpointPort <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DnsName <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,8 @@ Set cluster resource properties.
 ```powershell
 $rgName = "testRG"
 $clusterName = "testCluster"
-Update-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Name $clusterName -DnsName testnewdns -ClientConnectionPort 50000 -Verbose
+$tags = @{"test"="tag"}
+Set-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Name $clusterName -DnsName testnewdns -ClientConnectionPort 50000 -Tag $tags -Verbose
 ```
 
 Update dns name and client connection port for the cluster.
@@ -83,7 +84,7 @@ Port used for client connections to the cluster. Default: 19000.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -98,7 +99,7 @@ Cluster code version. Only use if upgrade mode is Manual.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -128,7 +129,7 @@ Cluster's dns name.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -143,7 +144,7 @@ Port used for http connections to the cluster. Default: 19080.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -173,7 +174,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithPramsByName
+Parameter Sets: WithParamsByName
 Aliases: ClusterName
 
 Required: True
@@ -188,7 +189,7 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithPramsByName
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: True
@@ -213,12 +214,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ReverseProxyEndpointPort
-Endpoint used by reverse proxy.
+### -Tag
+Specify the tags as key/value pairs.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: WithPramsByName, ByNameById
+Type: System.Collections.Hashtable
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -233,7 +234,7 @@ Cluster code version upgrade mode. Automatic or Manual.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode]
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 Accepted values: Automatic, Manual
 

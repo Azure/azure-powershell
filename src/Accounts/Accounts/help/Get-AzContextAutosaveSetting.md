@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azcontextautosavesetting
+online version: https://learn.microsoft.com/powershell/module/az.accounts/get-azcontextautosavesetting
 schema: 2.0.0
 ---
 
@@ -24,10 +24,12 @@ automatically saved, and where saved context and credential information can be f
 
 ## EXAMPLES
 
-### Get context save metadata for the current session
+### Example 1: Get context save metadata for the current session
+```powershell
+Get-AzContextAutosaveSetting
 ```
-PS C:\> Get-AzContextAutosaveSetting
 
+```Output
 Mode             : Process
 ContextDirectory : None
 ContextFile      : None
@@ -38,10 +40,12 @@ Settings         : {}
 
 Get details about whether and where the context is saved.  In the above example, the autosave feature has been disabled.
 
-### Get context save metadata for the current user
+### Example 2: Get context save metadata for the current user
+```powershell
+Get-AzContextAutosaveSetting -Scope CurrentUser
 ```
-PS C:\> Get-AzContextAutosaveSetting -Scope CurrentUser
 
+```Output
 Mode             : CurrentUser
 ContextDirectory : C:\Users\contoso\AppData\Roaming\Windows Azure Powershell
 ContextFile      : AzureRmContext.json
@@ -88,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

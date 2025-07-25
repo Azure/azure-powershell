@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azprivatednszonegroup
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azprivatednszonegroup
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Removes a DNS zone group.
 
 ```
 Remove-AzPrivateDnsZoneGroup -ResourceGroupName <String> -PrivateEndpointName <String> -Name <String> [-Force]
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,10 +25,10 @@ The **Remove-AzPrivateDnsZoneGroup** cmdlet removes a DNS zone group.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzPrivateDnsZoneGroup -ResourceGroupName "rg" -PrivateEndpointName "test-pr-endpoint" -name dnsgroup1 
+Remove-AzPrivateDnsZoneGroup -ResourceGroupName "rg" -PrivateEndpointName "test-pr-endpoint" -name dnsgroup1
 ```
 
-Above example removes a DNS zone grup named dnsgroup1 from endpoint test-pr-endpoint.
+Above example removes a DNS zone group named dnsgroup1 from endpoint test-pr-endpoint.
 
 ## PARAMETERS
 

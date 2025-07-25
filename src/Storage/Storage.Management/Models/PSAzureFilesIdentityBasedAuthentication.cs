@@ -24,11 +24,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.DirectoryServiceOptions = auth.DirectoryServiceOptions;
                 this.ActiveDirectoryProperties = auth.ActiveDirectoryProperties != null ? new PSActiveDirectoryProperties(auth.ActiveDirectoryProperties) : null;
+                this.DefaultSharePermission = auth.DefaultSharePermission;
             }
         }
         // Gets or sets indicates the directory service used. Possible values include: 'None','AADDS', 'AD'
         public string DirectoryServiceOptions { get; set; }
         public PSActiveDirectoryProperties ActiveDirectoryProperties { get; set; }
+        public string DefaultSharePermission { get; set; }
     }
 
     public class PSActiveDirectoryProperties
@@ -43,6 +45,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 this.DomainGuid = properties.DomainGuid;
                 this.DomainSid = properties.DomainSid;
                 this.AzureStorageSid = properties.AzureStorageSid;
+                this.SamAccountName = properties.SamAccountName;
+                this.AccountType = properties.AccountType;
             }
         }
         public string DomainName { get; set; }
@@ -51,5 +55,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string DomainGuid { get; set; }
         public string DomainSid { get; set; }
         public string AzureStorageSid { get; set; }
+        public string SamAccountName { get; set; }
+        public string AccountType { get; set; }
     }
 }

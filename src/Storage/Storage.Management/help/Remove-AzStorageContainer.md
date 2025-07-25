@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 6A46DA60-2ACF-4842-B5B3-58944264854A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragecontainer
 schema: 2.0.0
 ---
 
@@ -16,8 +16,8 @@ Removes the specified storage container.
 ```
 Remove-AzStorageContainer [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,8 +26,8 @@ The **Remove-AzStorageContainer** cmdlet removes the specified storage container
 ## EXAMPLES
 
 ### Example 1: Remove a container
-```
-PS C:\>Remove-AzStorageContainer -Name "MyTestContainer"
+```powershell
+Remove-AzStorageContainer -Name "MyTestContainer"
 ```
 
 This example removes a container named MyTestContainer.
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

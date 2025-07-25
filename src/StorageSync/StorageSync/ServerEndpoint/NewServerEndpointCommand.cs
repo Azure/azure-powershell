@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
@@ -25,6 +24,9 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using System;
+using System.Linq;
+using Microsoft.Azure.Commands.StorageSync.InternalObjects;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -163,16 +165,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public int? VolumeFreeSpacePercent { get; set; }
 
         /// <summary>
-        /// Gets or sets the cloud seeded data.
-        /// </summary>
-        /// <value>The cloud seeded data.</value>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.OfflineDataTransferParameter)]
-        public SwitchParameter OfflineDataTransfer { get; set; }
-
-        /// <summary>
         /// Gets or sets the tier files older than days.
         /// </summary>
         /// <value>The tier files older than days.</value>
@@ -183,16 +175,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public int? TierFilesOlderThanDays { get; set; }
 
         /// <summary>
-        /// Gets or sets the cloud seeded data file share URI.
-        /// </summary>
-        /// <value>The cloud seeded data file share URI.</value>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.OfflineDataTransferShareNameParameter)]
-        public string OfflineDataTransferShareName { get; set; }
-
-        // <summary>
         /// Gets or sets a value indicating the policy to use for the initial download sync.
         /// </summary>
         /// <value>The initial download policy.</value>
@@ -200,14 +182,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.InitialDownloadPolicyParameter)]
-        // #TODO : Update swagger to make them string constants
-        //[ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
-        //    StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
-        //    StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("AvoidTieredFiles",
-            "NamespaceOnly",
-            "NamespaceThenModifiedFiles",
+        [ValidateSet(StorageSyncModels.InitialDownloadPolicy.AvoidTieredFiles,
+            StorageSyncModels.InitialDownloadPolicy.NamespaceOnly,
+            StorageSyncModels.InitialDownloadPolicy.NamespaceThenModifiedFiles,
             IgnoreCase = true)]
         public string InitialDownloadPolicy { get; set; }
 
@@ -219,13 +196,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.LocalCacheModeParameter)]
-        //[ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
-        //    StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
-        //    IgnoreCase = true)]
-        [ValidateSet("DownloadNewAndModifiedFiles",
-            "UpdateLocallyCachedFiles",
+        [ValidateSet(StorageSyncModels.LocalCacheMode.DownloadNewAndModifiedFiles,
+            StorageSyncModels.LocalCacheMode.UpdateLocallyCachedFiles,
             IgnoreCase = true)]
         public string LocalCacheMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the policy to use for the initial upload sync.
+        /// </summary>
+        /// <value>The initial upload policy.</value>
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = false,
+          HelpMessage = HelpMessages.InitialUploadPolicyParameter)]
+        [ValidateSet(StorageSyncModels.InitialUploadPolicy.Merge,
+            StorageSyncModels.InitialUploadPolicy.ServerAuthoritative,
+            IgnoreCase = true)]
+        public string InitialUploadPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets as job.
@@ -272,34 +259,72 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     ServerLocalPath = ServerLocalPath,
                     ServerResourceId = ServerResourceId,
-                    TierFilesOlderThanDays = TierFilesOlderThanDays,
-                    OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff,
-                    OfflineDataTransferShareName = OfflineDataTransferShareName
+                    TierFilesOlderThanDays = TierFilesOlderThanDays
                 };
 
-                StorageSyncModels.InitialDownloadPolicy initialDownloadPolicy;
                 if (this.IsParameterBound(c => c.InitialDownloadPolicy))
                 {
-                    if (!Enum.TryParse(InitialDownloadPolicy, true, out initialDownloadPolicy))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidInitialDownloadPolicyErrorMessage);
-                    }
-                    createParameters.InitialDownloadPolicy = initialDownloadPolicy;
+                    createParameters.InitialDownloadPolicy = InitialDownloadPolicy;
                 }
 
-                StorageSyncModels.LocalCacheMode localCacheMode;
                 if (this.IsParameterBound(c => c.LocalCacheMode))
                 {
-                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
-                    }
-                    createParameters.LocalCacheMode = localCacheMode;
+                    createParameters.LocalCacheMode = LocalCacheMode;
+                }
+
+                if (this.IsParameterBound(c => c.InitialUploadPolicy))
+                {
+                    createParameters.InitialUploadPolicy = InitialUploadPolicy;
                 }
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
                 string syncGroupName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
+
+                // Get Registered Server
+                var serverResourceIdentifier = new ResourceIdentifier(ServerResourceId);
+                StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverResourceIdentifier.ResourceName);
+
+                if (registeredServer == null)
+                {
+                    throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
+                }
+
+                // Handle cluster name server scenario where the rbac needs to be applied on all the nodes.
+                StorageSyncClientWrapper.VerboseLogger.Invoke($"Registered Server Auth Type : {registeredServer.ActiveAuthType} with ServerRole {registeredServer.ServerRole}");
+
+                IEnumerable<StorageSyncModels.RegisteredServer> impactedRegisteredServers;
+                if (registeredServer.ServerRole == ServerRoleType.ClusterName.ToString())
+                {
+                    impactedRegisteredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers
+                    .ListByStorageSyncService(resourceGroupName, storageSyncServiceName)
+                    .Where(s => !string.IsNullOrEmpty(s.ClusterId) && s.ClusterId.Equals(registeredServer.ServerId, StringComparison.InvariantCultureIgnoreCase));
+                }
+                else
+                {
+                    impactedRegisteredServers = new List<StorageSyncModels.RegisteredServer> { registeredServer };
+                }
+
+                foreach (var impactedRegisteredServer in impactedRegisteredServers)
+                {
+                    if (impactedRegisteredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.ManagedIdentity &&
+                        !String.IsNullOrEmpty(impactedRegisteredServer.ApplicationId) && Guid.TryParse(impactedRegisteredServer.ApplicationId, out Guid serverIdentityGuid)
+                        && serverIdentityGuid != Guid.Empty)
+                    {
+                        StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroupName).FirstOrDefault();
+
+                        if (cloudEndpoint == null)
+                        {
+                            throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                        }
+                        var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                        var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                        StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                           serverIdentityGuid,
+                           Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                           scope);
+                    }
+                }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
                 if (ShouldProcess(Target, ActionMessage))

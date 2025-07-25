@@ -142,7 +142,7 @@ RequiredModules = @(@{ModuleName="Az.Accounts"; ModuleVersion="1.0.0"})
 The tooling for these services are no longer actively supported.  Customers are encouraged to move to alternative services as soon as it is convenient.
 
 ### Windows PowerShell 5.1 and .NET Framework 4.7.2
-- Using Az with Windows PowerShell 5.1 requires the installation of .NET Framework 4.7.2. However, using Az with PowerShell Core does not require .NET Framework 4.7.2. 
+- Using Az with Windows PowerShell 5.1 requires the installation of .NET Framework 4.7.2. However, using Az with PowerShell 7 does not require .NET Framework 4.7.2. 
 
 ### Temporary removal of User login using PSCredential
 - Due to changes in the authentication flow for .NET Standard, we are temporarily removing user login via PSCredential. This capability will be re-introduced in the 1/15/2019 release for Windows PowerShell 5.1. This is discussed in detail in [this issue.](https://github.com/Azure/azure-powershell/issues/7430)

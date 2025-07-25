@@ -1,49 +1,118 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-ms.assetid: 91919242-59ED-4938-A3A3-23A66F85FBC1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnorigin
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnorigin
 schema: 2.0.0
 ---
 
 # Get-AzCdnOrigin
 
 ## SYNOPSIS
-Gets a CDN origin server.
+Gets an existing origin within an endpoint.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### List (Default)
 ```
-Get-AzCdnOrigin [-OriginName <String>] -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Get-AzCdnOrigin [-OriginName <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzCdnOrigin -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### GetViaIdentityProfile
 ```
-Get-AzCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>]
+Get-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityEndpoint
+```
+Get-AzCdnOrigin -Name <String> -EndpointInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzCdnOrigin -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzCdnOrigin** cmdlet gets an Azure Content Delivery Network (CDN) origin server and its configuration data.
+Gets an existing origin within an endpoint.
 
 ## EXAMPLES
 
+### Example 1: List AzureCDN origins under the AzureCDN endpoint
+```powershell
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
+```
+
+```output
+Name    ResourceGroupName
+----    -----------------
+origin1 testps-rg-da16jm
+origin2 testps-rg-da16jm
+```
+
+List AzureCDN origins under the AzureCDN endpoint
+
+### Example 2: Get an AzureCDN origin under the AzureCDN endpoint
+```powershell
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
+```
+
+```output
+Name    ResourceGroupName
+----    -----------------
+origin1 testps-rg-da16jm
+```
+
+Get an AzureCDN origin under the AzureCDN endpoint
+
+### Example 3: Get an AzureCDN origin under the AzureCDN endpoint via identity
+```powershell
+New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name origin1 -HostName "host1.hello.com" | Get-AzCdnOrigin
+```
+
+```output
+Name    Location ResourceGroupName
+----    -------- -----------------
+origin1          testps-rg-da16jm
+```
+
+Get an AzureCDN origin under the AzureCDN endpoint via identity
+
 ## PARAMETERS
 
-### -CdnEndpoint
-Specifies the CDN endpoint object to which the origin belongs.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
-Parameter Sets: ByObjectParameterSet
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityEndpoint
 Aliases:
 
 Required: True
@@ -53,27 +122,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EndpointName
-Specifies the name of the endpoint to which the origin server belongs.
+Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: List, GetViaIdentityProfile, Get
 Aliases:
 
 Required: True
@@ -83,27 +137,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OriginName
-Specifies the name of the origin server.
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the origin which is unique within the endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: GetViaIdentityProfile, Get, GetViaIdentityEndpoint
+Aliases: OriginName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Specifies the name of the profile to which the origin server belongs.
+Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -114,11 +198,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group to which the origin server belongs.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -128,17 +212,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of the Azure CDN origin.
+### -SubscriptionId
+Azure Subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -148,16 +232,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzCdnOrigin](./Set-AzCdnOrigin.md)
-
-

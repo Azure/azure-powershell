@@ -1,84 +1,97 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
+---
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azrelaykey
+online version: https://learn.microsoft.com/powershell/module/az.relay/get-azrelaykey
 schema: 2.0.0
 ---
 
 # Get-AzRelayKey
 
 ## SYNOPSIS
-Gets the primary and secondary connection strings for the given Relay entities (Namespace/WcfRelay/HybridConnection).
+Primary and secondary connection strings to the namespace.
 
 ## SYNTAX
 
-### NamespaceAuthorizationRuleSet (Default)
+### List (Default)
 ```
-Get-AzRelayKey [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### WcfRelayAuthorizationRuleSet
-```
-Get-AzRelayKey [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### HybridConnectionAuthorizationRuleSet
+### List1
 ```
-Get-AzRelayKey [-ResourceGroupName] <String> [[-Namespace] <String>] [-HybridConnection] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -HybridConnection <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WcfRelay <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzRelayKey** cmdlet returns the primary and secondary connection strings for the given Relay entities (Namespace/WcfRelay/HybridConnection).
+Primary and secondary connection strings to the namespace.
 
 ## EXAMPLES
 
-### Example 1: Namespace
+### Example 1: Get the primary and secondary connection strings for the given Relay namespace
 ```powershell
-PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
-
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
+Get-AzRelayKey -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name authRule-01
 ```
 
-### Example 2: WcfRelay
-```powershell
-PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1  -WcfRelay TestWCFRelay1 -Name AuthoRule1
-
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
+```output
+KeyName                   : authRule-01
+PrimaryConnectionString   : Endpoint=sb://namespace-pwsh01.servicebus.windows.net/;SharedAccessKeyName=authRule-01;SharedAccessKey=xxxxxxxxxxxxxxxxx
+PrimaryKey                : xxxxxxxxxxxxxxxxx
+SecondaryConnectionString : Endpoint=sb://namespace-pwsh01.servicebus.windows.net/;SharedAccessKeyName=authRule-01;SharedAccessKey=xxxxxxxxxxxxxxxxx
+SecondaryKey              : xxxxxxxxxxxxxxxxx
 ```
 
-### Example 3: HybridConnection
-```powershell
-PS C:\> Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
+This cmdlet gets the primary and secondary connection strings for the given Relay namespace.
 
-PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
-SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
-PrimaryKey                : ############################################
-SecondaryKey              : ############################################
-KeyName                   : AuthoRule1
+### Example 2: Get the primary and secondary connection strings for the given Hybrid Connection
+```powershell
+Get-AzRelayKey -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01  -Name authRule-01
 ```
 
-Primary and secondary connection string to the specified Relay entities (Namespace/WcfRelay/HybridConnection).
+```output
+KeyName                   : authRule-01
+PrimaryConnectionString   : Endpoint=sb://namespace-pwsh01.servicebus.windows.net/;SharedAccessKeyName=authRule-01;SharedAccessKey=xxxxxxxxxxxxxxxxx
+PrimaryKey                : xxxxxxxxxxxxxxxxx
+SecondaryConnectionString : Endpoint=sb://namespace-pwsh01.servicebus.windows.net/;SharedAccessKeyName=authRule-01;SharedAccessKey=xxxxxxxxxxxxxxxxx
+SecondaryKey              : xxxxxxxxxxxxxxxxx
+```
+
+This cmdlet gets the primary and secondary connection strings for the given Hybrid Connection.
+
+### Example 3: Get the primary and secondary connection strings for the given Wcf Relay
+```powershell
+Get-AzRelayKey -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01  -Name authRule-01 | Format-List
+```
+
+```output
+KeyName                   : authRule-01
+PrimaryConnectionString   : Endpoint=sb://namespace-pwsh01.servicebus.windows.net/;SharedAccessKeyName=authRule-01;SharedAccessKey=xxxxxxxxxxxxxxxxx
+PrimaryKey                : xxxxxxxxxxxxxxxxx
+SecondaryConnectionString : Endpoint=sb://namespace-pwsh01.servicebus.windows.net/;SharedAccessKeyName=authRule-01;SharedAccessKey=xxxxxxxxxxxxxxxxx
+SecondaryKey              : xxxxxxxxxxxxxxxxx
+```
+
+This cmdlet gets the primary and secondary connection strings for the given Wcf Relay.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -88,22 +101,22 @@ Accept wildcard characters: False
 ```
 
 ### -HybridConnection
-HybridConnection Name.
+The hybrid connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: HybridConnectionAuthorizationRuleSet
+Parameter Sets: List1
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-AuthorizationRule Name.
+The authorization rule name.
 
 ```yaml
 Type: System.String
@@ -111,41 +124,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
-
-```yaml
-Type: System.String
-Parameter Sets: NamespaceAuthorizationRuleSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name.
+The namespace name
 
 ```yaml
 Type: System.String
@@ -153,37 +139,97 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Resource group within the Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WcfRelay
-WcfRelay Name.
+The relay name.
 
 ```yaml
 Type: System.String
-Parameter Sets: WcfRelayAuthorizationRuleSet
+Parameter Sets: List2
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleKeysAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAccessKeys
 
 ## NOTES
 

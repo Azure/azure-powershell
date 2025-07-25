@@ -1,0 +1,7 @@
+<Project>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.4.7" IncludeAssets="All" />
+  </ItemGroup>
+
+</Project>

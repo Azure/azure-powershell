@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnServerConfiguration",
-        DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnServerConfiguration))]
     public class NewAzureRmVpnServerConfigurationCommand : VpnServerConfigurationBaseCmdlet
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of P2S VPN client tunneling protocols.")]
+            HelpMessage = "The list of P2S VPN gateway authentication types.")]
         [ValidateSet(
             MNM.VpnAuthenticationType.Certificate,
             MNM.VpnAuthenticationType.Radius,
@@ -76,56 +75,47 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         public string[] VpnClientRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
             HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
         public string[] VpnClientRevokedCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server address.")]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server secret.")]
         public SecureString RadiusServerSecret { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External multiple radius servers.")]
         public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         public string[] RadiusServerRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         public string[] RadiusClientRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD tenant for P2S AAD authentication.")]
         [ValidateNotNullOrEmpty]
         public string AadTenant { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD audience for P2S AAD authentication.")]
         [ValidateNotNullOrEmpty]
         public string AadAudience { get; set; }
@@ -133,7 +123,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             HelpMessage = "AAD issuer for P2S AAD authentication.")]
         [ValidateNotNullOrEmpty]
         public string AadIssuer { get; set; }
@@ -143,6 +132,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of IPSec policies for VpnServerConfiguration.")]
         public PSIpsecPolicy[] VpnClientIpsecPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of VpnServerConfigurationPolicyGroups that this P2SVpnGateway needs to have.")]
+        public PSVpnServerConfigurationPolicyGroup[] ConfigurationPolicyGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -168,6 +162,32 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
             }
 
+            if (this.VpnAuthenticationType != null)
+            {
+                if (this.VpnAuthenticationType.Contains(MNM.VpnAuthenticationType.AAD))
+                {
+                    if ((this.VpnProtocol == null) ||
+                        (this.VpnProtocol != null &&
+                        this.VpnProtocol.Contains(MNM.VpnClientProtocol.IkeV2) &&
+                        this.VpnProtocol.Contains(MNM.VpnClientProtocol.OpenVPN) &&
+                        this.VpnProtocol.Count() == 2))
+                    {
+                        // In the case of multi-auth with OpenVPN and IkeV2, block user from configuring with just AAD since AAD is not supported for IkeV2
+                        if (this.VpnAuthenticationType.Count() == 1)
+                        {
+                            throw new ArgumentException(Properties.Resources.VpnMultiAuthIkev2OpenvpnOnlyAad);
+                        }
+                        else if (this.VpnAuthenticationType.Count() > 1)
+                        {
+                            if (!ShouldContinue(Properties.Resources.VpnMultiAuthIkev2OpenvpnAadWarning, Properties.Resources.ConfirmMessage))
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
             vpnServerConfigurationToCreate = this.CreateVpnServerConfigurationObject(
                 vpnServerConfigurationToCreate,
                 this.VpnProtocol,
@@ -182,7 +202,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.AadTenant,
                 this.AadAudience,
                 this.AadIssuer,
-                this.VpnClientIpsecPolicy);
+                this.VpnClientIpsecPolicy,
+                this.ConfigurationPolicyGroup);
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,

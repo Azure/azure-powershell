@@ -1,7 +1,7 @@
 ---
 Module Name: Az.HDInsight
 Module Guid: 3fd1475f-cb23-4ffb-bf08-33d94b7d1acb
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight
+Download Help Link: https://learn.microsoft.com/powershell/module/az.hdinsight
 Help Version: 4.1.2.0
 Locale: en-US
 ---
@@ -9,6 +9,8 @@ Locale: en-US
 # Az.HDInsight Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Microsoft Azure HDInsight in the Azure Resource Manager (ARM) framework. These cmdlets are used to manage HDInsight clusters and the jobs that run on them. The cmdlets exist in the Microsoft.Azure.Commands.HDInsight namespace.
+
+We no longer maintain Az.HDInsight before version 5.0.0. It is recommended to upgrade to at least version 5.0.0.
 
 ## Az.HDInsight Cmdlets
 ### [Add-AzHDInsightClusterIdentity](Add-AzHDInsightClusterIdentity.md)
@@ -32,11 +34,29 @@ Adds a security profile to a cluster configuration object.
 ### [Add-AzHDInsightStorage](Add-AzHDInsightStorage.md)
 Adds an Azure Storage key to a cluster configuration object.
 
+### [Disable-AzHDInsightAzureMonitor](Disable-AzHDInsightAzureMonitor.md)
+Disables Azure Monitor in a specified HDInsight cluster.
+
+### [Disable-AzHDInsightAzureMonitorAgent](Disable-AzHDInsightAzureMonitorAgent.md)
+Disables Azure Monitor Agent in a specified HDInsight cluster.
+
 ### [Disable-AzHDInsightMonitoring](Disable-AzHDInsightMonitoring.md)
-Disables monitoring in a HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
+Disables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
+
+### [Enable-AzHDInsightAzureMonitor](Enable-AzHDInsightAzureMonitor.md)
+Enables Azure Monitor in a specified HDInsight cluster.
+
+### [Enable-AzHDInsightAzureMonitorAgent](Enable-AzHDInsightAzureMonitorAgent.md)
+Enables Azure Monitor Agent in a specified HDInsight cluster.
 
 ### [Enable-AzHDInsightMonitoring](Enable-AzHDInsightMonitoring.md)
-Enables monitoring in a HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
+Enables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
+
+### [Get-AzHDInsightAzureMonitor](Get-AzHDInsightAzureMonitor.md)
+Gets the azure monitor status of a specified HDInsight cluster.
+
+### [Get-AzHDInsightAzureMonitorAgent](Get-AzHDInsightAzureMonitorAgent.md)
+Gets the azure monitor agent status of a specified HDInsight cluster.
 
 ### [Get-AzHDInsightCluster](Get-AzHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.
@@ -54,7 +74,7 @@ Gets the list of jobs from a cluster and lists them in reverse chronological ord
 Gets the log output for a job from the storage account associated with a specified cluster.
 
 ### [Get-AzHDInsightMonitoring](Get-AzHDInsightMonitoring.md)
-Gets the status of monitoring installation on the cluster.
+Gets the status of the Classic Azure Monitor logs integration on an HDInsight cluster.
 
 ### [Get-AzHDInsightPersistedScriptAction](Get-AzHDInsightPersistedScriptAction.md)
 Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action.
@@ -83,11 +103,17 @@ Creates a non-persisted cluster configuration object that describes an Azure HDI
 ### [New-AzHDInsightHiveJobDefinition](New-AzHDInsightHiveJobDefinition.md)
 Creates a Hive job object.
 
+### [New-AzHDInsightIPConfiguration](New-AzHDInsightIPConfiguration.md)
+Creates the IP configuration of private link configuration.
+
 ### [New-AzHDInsightMapReduceJobDefinition](New-AzHDInsightMapReduceJobDefinition.md)
 Creates a MapReduce job object.
 
 ### [New-AzHDInsightPigJobDefinition](New-AzHDInsightPigJobDefinition.md)
 Creates a Pig job object.
+
+### [New-AzHDInsightPrivateLinkConfiguration](New-AzHDInsightPrivateLinkConfiguration.md)
+Creates the private link configuration of the HDInsight cluster.
 
 ### [New-AzHDInsightSqoopJobDefinition](New-AzHDInsightSqoopJobDefinition.md)
 Creates a Sqoop job object.
@@ -133,6 +159,9 @@ Stops a specified running job on a cluster.
 
 ### [Submit-AzHDInsightScriptAction](Submit-AzHDInsightScriptAction.md)
 Submits a new script action to an Azure HDInsight cluster.
+
+### [Update-AzHDInsightCluster](Update-AzHDInsightCluster.md)
+Update tags or managed identities for a HDInsight cluster.
 
 ### [Use-AzHDInsightCluster](Use-AzHDInsightCluster.md)
 Selects a cluster to be used with the Invoke-RmAzureHDInsightHiveJob cmdlet.

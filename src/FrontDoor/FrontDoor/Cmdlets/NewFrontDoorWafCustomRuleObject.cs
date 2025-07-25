@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -80,9 +81,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string EnabledState { get; set; }
 
+        /// <summary>
+        /// Gets or sets describes the list of variables to group the rate limit
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Gets or sets describes the list of variables to group the rate limit")]
+        public PSFrontDoorWafCustomRuleGroupByVariable[] CustomRule  { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var CustomRule = new PSCustomRule
+            var customRule = new PSCustomRule
             {
                 Name = Name,
                 MatchConditions = MatchCondition.ToList(),
@@ -91,9 +98,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 RateLimitDurationInMinutes = !this.IsParameterBound(c => c.RateLimitDurationInMinutes) ? 1 : RateLimitDurationInMinutes,
                 RateLimitThreshold = RateLimitThreshold,
                 Action = Action,
-                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? "Enabled" : EnabledState
+                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? "Enabled" : EnabledState,
+                CustomRule = CustomRule
             };
-            WriteObject(CustomRule);
+            WriteObject(customRule);
         }
 
     }

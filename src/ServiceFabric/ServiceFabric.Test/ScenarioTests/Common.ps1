@@ -57,7 +57,7 @@ function Get-NodeTypeName
 
 function Get-KeyVaultName
 {
-    return "azurermsfkvtest";
+    return "pstestkv2";
 }
 
 function Get-NewCertName
@@ -68,50 +68,50 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/4e680cd578ba4e57b650d9f89cd20835"
+    return "https://gumakv1.vault.azure.net/secrets/gumacert/bc05af76fa894a38a0f9f47804bacc42"
 }
 
 function Get-InitialThumbprint
 {
-    return "3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B"
+    return "ED1647D7E58F9F69E473B4700A0CCED50F7F65B0"
 }
 
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC"
+    return "3027AB10104C94545CB23406FF31ADEFE896A9BB"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/599d307311bf4508b7511ed482fa746f"
+    return "https://gumakv1.vault.azure.net/secrets/pstestcert2/9f35b712392c4a9cacd50b76582ee017"
 }
 
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "3B892D25432FDA538F54B1EADD0B28BA82C488CC"
+    return "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3"
 }
 
 function Get-CACertCommonName
 {
-	return "azurermsfcntest.southcentralus.cloudapp.azure.com"
+	return "pstestcert"
 }
 
 function Get-CACertIssuerThumbprint
 {
-	return "417e225037fbfaa4f95761d5ae729e1aea7e3a42,d4de20d05e66fc53fe1a50882c78db2852cae474"
+	return "23EACB87421FB794AA9B68A31DB194BCDFEB34CF"
 }
 
 function Get-CACertSecretUrl
 {
-	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/219a6d1803c34447b686db16ecd6285a"
+	return "https://gumakv1.vault.azure.net/secrets/pstestcert2/9f35b712392c4a9cacd50b76582ee017"
 }
 
 function Get-CertWUSecretUrl
 {
-	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/5236086354ac470e8efa4e0426b6144d"
+	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/4159eda1fcea468e9bf40a361021f18d"
 }
 
 function Get-DurabilityLevel
@@ -122,6 +122,11 @@ function Get-DurabilityLevel
 function Get-ReliabilityLevel
 {
 	return "Bronze"
+}
+
+function Get-VmImage
+{
+	return "Windows"
 }
 
 function Get-NewNodeTypeName
@@ -180,14 +185,45 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
         }
 
         Write-Host "Cluster state: $($cluster.ClusterState). Waiting for Ready state before continuing."
-        Start-Sleep -Seconds 15
+        Start-TestSleep -Seconds 15
     }
 
     Write-Error "WaitForClusterReadyState timed out"
     return $false
 }
 
-function WaitForAllJob($timeoutInSeconds = 1200)
+function WaitForManagedClusterReadyStateIfRecord($clusterName, $resourceGroupName)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		# Wait for Ready cluster state before updating otherwise update is going to fail
+		if (-not (WaitForManagedClusterReadyState $clusterName $resourceGroupName))
+		{
+			Assert-True $false 'Cluster is not in Ready state. Can not continue with test.'
+		}
+	}
+}
+
+function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $timeoutInSeconds = 2100)
+{
+    $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
+    while (-not $clusterReady -and (Get-Date) -lt $timeoutTime) {
+        $cluster = (Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName)[0]
+        if ($cluster.ClusterState -eq "Ready")
+        {
+            return $true
+            break
+        }
+
+        Write-Host "Cluster state: $($cluster.ClusterState). Waiting for Ready state before continuing."
+        Start-TestSleep -Seconds 30
+    }
+
+    Write-Error "WaitForClusterReadyState timed out"
+    return $false
+}
+
+function WaitForAllJob($timeoutInSeconds = 2100)
 {
     $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
     $allJobs = Get-Job
@@ -207,28 +243,109 @@ function WaitForAllJob($timeoutInSeconds = 1200)
             return $false
 		}
 
-        Start-Sleep -Seconds 15
+        Start-TestSleep -Seconds 30
     } while ((Get-Date) -lt $timeoutTime)
 
     Write-Error "WaitForJob timed out"
     return $false
 }
 
+<#
+.SYNOPSIS
+Asserts if two hashtables with simple key and value types are equal
+#>
+function Assert-HashtableEqual($h1, $h2)
+{
+  if($h1.count -ne $h2.count)
+  {
+    throw "Hashtable size not equal. Hashtable1: " + $h1.count + " Hashtable2: " + $h2.count
+  }
+
+  foreach($key in $h1.Keys)
+  {
+    if($h1[$key] -ne $h2[$key])
+    {
+      throw "Tag content not equal. Key:$key Tags1:" +  $h1[$key] + " Tags2:" + $h2[$key]
+    }
+  }
+}
+
+###################
+#
+# Verify that the actual string ends with the expected suffix
+#
+#    param [string] $expectedSuffix : The expected suffix
+#    param [string] $actual         : The actual string
+#    param [string] $message        : The message to return if the actual string does not end with the suffix
+####################
+function Assert-EndsWith
+{
+    param([string] $expectedSuffix, [string] $actual, [string] $message)
+
+  Assert-NotNull $actual
+
+  if (!$message)
+  {
+      $message = "Assertion failed because actual '$actual' does not end with '$expectedSuffix'"
+  }
+
+  if (-not $actual.EndsWith($expectedSuffix))
+  {
+      throw $message
+  }
+
+  return $true
+}
+
+###################
+#
+# Verify that the properties of the object are equal taking into account a list of exceptions
+#
+#    param [object]   $expected       : The expected object
+#    param [object]   $actual         : The actual object
+#    param [string[]] $except         : The list of property names that don't need to be equal
+#    param [string]   $message        : The message to return if the actual string does not end with the suffix
+####################
+function Assert-AreEqualObjectPropertiesExcept
+{
+    param([object] $expected, [object] $actual, [string[]] $except, [string] $message)
+    
+    $properties = $expected | Get-Member -MemberType "Property" | Select -ExpandProperty Name
+    
+    foreach ($exception in $except) {
+        $properties = $properties | Where-Object { $_ -ne $exception }
+    }
+
+    $diff = Compare-Object $expected $actual -Property $properties
+
+    if ($diff -ne $null)
+    {
+        if (!$message)
+        {
+            $message = "Assert failed because the objects don't match. Expected: " + $diff[0] + " Actual: " + $diff[1]
+        }
+
+        throw $message
+    }
+
+    return $true
+}
+
 # Application functions
 
 function Get-AppTypeName
 {
-    return "CalcServiceApp"
+    return "VotingType"
 }
 
 function Get-AppTypeV1Name
 {
-    return "1.0"
+    return "1.0.0"
 }
 
 function Get-AppTypeV2Name
 {
-    return "1.1"
+    return "2.0.0"
 }
 
 function Get-AppPackageV1
@@ -243,5 +360,42 @@ function Get-AppPackageV2
 
 function Get-ServiceTypeName
 {
-    return "CalcServiceType"
+    return "VotingWebType"
+}
+
+# Managed Application functions
+
+function Get-ManagedAppTypeName
+{
+    return "VotingType"
+}
+
+function Get-ManagedAppTypeV1Name
+{
+    return "1.0.0"
+}
+
+function Get-ManagedAppTypeV2Name
+{
+    return "2.0.0"
+}
+
+function Get-ManagedAppPackageV1
+{
+    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-09T21:48:25Z&se=2025-07-10T06:03:25Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-09T21:48:25Z&ske=2025-07-10T06:03:25Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****"
+}
+
+function Get-ManagedAppPackageV2
+{
+    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.2.0.0.sfpkg?sp=r&st=2025-07-09T21:48:50Z&se=2025-07-10T06:03:50Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-09T21:48:50Z&ske=2025-07-10T06:03:50Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****"
+}
+
+function Get-ManagedStatelessServiceTypeName
+{
+    return "VotingWebType"
+}
+
+function Get-ManagedStatefulServiceTypeName
+{
+    return "VotingDataType"
 }

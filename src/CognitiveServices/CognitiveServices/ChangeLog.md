@@ -19,6 +19,53 @@
 -->
 ## Upcoming Release
 
+## Version 1.16.0
+* Updated SDK via autorest.powershell.
+* Added Get, New, Remove cmdlets for AzCognitiveServicesAccountRaiPolicy, AzCognitiveServicesAccountRaiBlocklist, AzCognitiveServicesAccountRaiBlocklistItem.
+* Added Get cmdlets for AzCognitiveServicesRaiContentFilters, AzCognitiveServicesAccountDeploymentSku, AzCognitiveServicesModelCapacity.
+* Added Get, New cmdlets for AzCognitiveServicesAccountDefenderForAISetting.
+
+## Version 1.15.0
+* Upgraded nuget package to signed package.
+
+## Version 1.14.1
+* Updated SDK via autorest.powershell.
+
+## Version 1.14.0
+* Updated CognitiveServices PowerShell to use 2023-05-01 version.
+
+## Version 1.13.1
+* Removed notice and attestation from `New-AzCognitiveServicesAccount`.
+
+## Version 1.13.0
+* Updated CognitiveServices PowerShell to use 2022-12-01 version.
+* Added new CognitiveServices CommitmentPlan and Association cmdlets.
+* Added MultiRegionSetting support for CognitiveServices Account cmdlets.
+
+## Version 1.12.0
+* Updated CognitiveServices PowerShell to use 2022-10-01 version.
+
+## Version 1.11.0
+* Updated CognitiveServices PowerShell to use 2022-03-01 version.
+* Added `Get-AzCognitiveServicesAccountModel` cmdlet.
+
+## Version 1.10.0
+* Updated PowerShell to use 2021-10-01 version.
+* Added CommitmentTier and CommitmentPlan cmdlets.
+* Added Deployment cmdlets.
+* Added `New-AzCognitiveServicesObject` cmdlet for generating CommitmentPlan/Deployment objects.
+
+## Version 1.9.0
+* [Breaking Change] Changed type of PSCognitiveServicesAccount.Identity.Type from IdentityType to ResourceIdentityType.
+* [Breaking Change] Changed type of PSCognitiveServicesAccount.Sku.Tier from SkuTier to string.
+* [Breaking Change] Removed ActionRequired from PrivateLinkServiceConnectionState.
+* Updated PowerShell to use 2021-04-30 version.
+* Added `Undo-AzCognitiveServicesAccountRemoval` cmdlet.
+* Added parameters `-RestrictOutboundNetworkAccess`, `-AllowedFqdnList`, `-DisableLocalAuth`, `-KeyVaultIdentityClientId`, `-IdentityType`, `-UserAssignedIdentityId` to `New-AzureCognitiveServicesAccount` and `Set-AzureCognitiveServicesAccount`.
+* Added parameters `-InRemovedState`, `-Location` to `Remove-AzureCognitiveServicesAccount` and `Get-AzureCognitiveServicesAccount`.
+
+## Version 1.8.0
+
 * Updated SDK to 7.4.0-preview.
 
 ## Version 1.7.0

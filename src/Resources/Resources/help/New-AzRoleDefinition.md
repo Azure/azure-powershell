@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 8300B143-E322-419E-BC98-DBA56DD90A59
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azroledefinition
 schema: 2.0.0
 ---
 
@@ -19,12 +19,14 @@ Finally, use this command to create a custom role using role definition.
 
 ### InputFileParameterSet
 ```
-New-AzRoleDefinition [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoleDefinition [-InputFile] <String> [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
-New-AzRoleDefinition [-Role] <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoleDefinition [-Role] <PSRoleDefinition> [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,32 +84,31 @@ Following is a sample json role definition that can be provided as input
 
 ### Example 1: Create using PSRoleDefinitionObject
 ```powershell
-PS C:\> $role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
+$role = New-Object -TypeName Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition 
+$role.Name = 'Virtual Machine Operator'
+$role.Description = 'Can monitor, start, and restart virtual machines.'
+$role.IsCustom = $true
+$role.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+$role.Actions = @(
+    "Microsoft.Compute/*/read"
+    "Microsoft.Compute/virtualMachines/start/action"
+    "Microsoft.Compute/virtualMachines/restart/action"
+    "Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action"
+    "Microsoft.Network/*/read"
+    "Microsoft.Storage/*/read"
+    "Microsoft.Authorization/*/read"
+    "Microsoft.Resources/subscriptions/resourceGroups/read"
+    "Microsoft.Resources/subscriptions/resourceGroups/resources/read"
+    "Microsoft.Insights/alertRules/*"
+    "Microsoft.Support/*"
+)
 
-PS C:\> $role.Id = $null
-PS C:\> $role.Name = "Virtual Machine Operator"
-PS C:\> $role.Description = "Can monitor, start, and restart virtual machines."
-PS C:\> $role.Actions.RemoveRange(0,$role.Actions.Count)
-PS C:\> $role.Actions.Add("Microsoft.Compute/*/read")
-PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
-PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
-PS C:\> $role.Actions.Add("Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action")
-PS C:\> $role.Actions.Add("Microsoft.Network/*/read")
-PS C:\> $role.Actions.Add("Microsoft.Storage/*/read")
-PS C:\> $role.Actions.Add("Microsoft.Authorization/*/read")
-PS C:\> $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
-PS C:\> $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/resources/read")
-PS C:\> $role.Actions.Add("Microsoft.Insights/alertRules/*")
-PS C:\> $role.Actions.Add("Microsoft.Support/*")
-PS C:\> $role.AssignableScopes.Clear()
-PS C:\> $role.AssignableScopes.Add("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-
-PS C:\> New-AzRoleDefinition -Role $role
+New-AzRoleDefinition -Role $role
 ```
 
 ### Example 2: Create using JSON file
 ```powershell
-PS C:\> New-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
+New-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
 
 ## PARAMETERS
@@ -157,6 +158,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipClientSideScopeValidation
+If specified, skip client side scope validation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -180,4 +196,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 [Set-AzRoleDefinition](./Set-AzRoleDefinition.md)
 
 [Remove-AzRoleDefinition](./Remove-AzRoleDefinition.md)
-

@@ -1,0 +1,333 @@
+{
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"templateDeploymentOptions\": {\r\n      \"preflightSupported\": true,\r\n      \"preflightOptions\": [ \"DefaultValidationOnly\" ]\r\n    },\r\n    \"resourceMovePolicy\": {\r\n      \"crossResourceGroupMoveEnabled\": true,\r\n      \"crossSubscriptionMoveEnabled\": true\r\n    },\r\n    \"routingType\": \"Default\",\r\n    \"regionality\": \"Regional\",\r\n    \"endpoints\": [\r\n      {\r\n        \"apiVersions\": [ \"2018-11-01-preview\", \"2020-01-01-preview\", \"2019-01-01\" ],\r\n        \"locations\": [ \"West US\", \"West Central US\", \"West Europe\", \"Southeast Asia\", \"West US 2\", \"East US 2 EUAP\", \"North Europe\", \"East US\", \"East Asia\" ],\r\n        \"requiredFeatures\": [ \"Microsoft.Contoso/RPaaSSampleApp\" ]\r\n      }\r\n    ],\r\n    \"swaggerSpecifications\": [\r\n      {\r\n        \"apiVersions\": [ \"2018-11-01-preview\", \"2020-01-01-preview\", \"2019-01-01\" ],\r\n        \"swaggerSpecFolderUri\": \"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"\r\n      }\r\n    ],\r\n    \"enableAsyncOperation\": true\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1049" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "5dbcec93-2563-4cc1-8af2-7bd19ede2141" ],
+        "x-ms-correlation-request-id": [ "fc659c27-e7ed-43c3-bc44-8acb30caa908" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051053Z:fc659c27-e7ed-43c3-bc44-8acb30caa908" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:10:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "945" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"Employees\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"locations\":[\"West US\",\"West Central US\",\"West Europe\",\"Southeast Asia\",\"West US 2\",\"East US 2 EUAP\",\"North Europe\",\"East US\",\"East Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"resourceMovePolicy\":{\"validationRequired\":false,\"crossResourceGroupMoveEnabled\":true,\"crossSubscriptionMoveEnabled\":true}},\"name\":\"Employees\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "4660a867-07a9-462b-904c-ea1bf60f8323" ],
+        "CommandName": [ "New-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubResourceTypeRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "f557cff0-9757-4da0-b3df-f64b1377cdc2" ],
+        "x-ms-correlation-request-id": [ "d565f3d2-72ed-47ce-b8ba-0acde57ef491" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051123Z:d565f3d2-72ed-47ce-b8ba-0acde57ef491" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:11:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "945" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"Employees\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"locations\":[\"West US\",\"West Central US\",\"West Europe\",\"Southeast Asia\",\"West US 2\",\"East US 2 EUAP\",\"North Europe\",\"East US\",\"East Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"resourceMovePolicy\":{\"validationRequired\":false,\"crossResourceGroupMoveEnabled\":true,\"crossSubscriptionMoveEnabled\":true}},\"name\":\"Employees\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "4660a867-07a9-462b-904c-ea1bf60f8323" ],
+        "CommandName": [ "New-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubResourceTypeRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "f0ac4937-9a29-4d6f-a5fd-b2859d98d2ee" ],
+        "x-ms-correlation-request-id": [ "29c835d8-6939-469c-a4a3-f1fbde0770be" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051124Z:29c835d8-6939-469c-a4a3-f1fbde0770be" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:11:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "945" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"Employees\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"locations\":[\"West US\",\"West Central US\",\"West Europe\",\"Southeast Asia\",\"West US 2\",\"East US 2 EUAP\",\"North Europe\",\"East US\",\"East Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"resourceMovePolicy\":{\"validationRequired\":false,\"crossResourceGroupMoveEnabled\":true,\"crossSubscriptionMoveEnabled\":true}},\"name\":\"Employees\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "525d337a-dfec-4f09-90c8-037dd52fa53c" ],
+        "CommandName": [ "Get-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "Get-AzProviderHubResourceTypeRegistration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "6b8cc263-1016-4b9f-93c1-190db438699b" ],
+        "x-ms-correlation-request-id": [ "2a92b4af-fee1-4ceb-b313-968c44caa6d5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051124Z:2a92b4af-fee1-4ceb-b313-968c44caa6d5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:11:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "945" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"Employees\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"locations\":[\"West US\",\"West Central US\",\"West Europe\",\"Southeast Asia\",\"West US 2\",\"East US 2 EUAP\",\"North Europe\",\"East US\",\"East Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"resourceMovePolicy\":{\"validationRequired\":false,\"crossResourceGroupMoveEnabled\":true,\"crossSubscriptionMoveEnabled\":true}},\"name\":\"Employees\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations?api-version=2020-11-20+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "d7b97f72-585b-48be-90ed-b6e7e2daa9dd" ],
+        "CommandName": [ "Get-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "Get-AzProviderHubResourceTypeRegistration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "ea434455-2e88-4c51-a61f-7a6e77a99147" ],
+        "x-ms-correlation-request-id": [ "3e786d36-eac1-4655-8dd2-f56dfb00cdd7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051124Z:3e786d36-eac1-4655-8dd2-f56dfb00cdd7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:11:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "9419" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"name\":\"extensionresourcetype\",\"routingType\":\"ProxyOnly, Extension\",\"regionality\":\"Global\",\"endpoints\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/contoso/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":false,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false},\"name\":\"extensionresourcetype\"},{\"properties\":{\"name\":\"Operations\",\"routingType\":\"ProxyOnly, Tenant\",\"regionality\":\"Global\",\"endpoints\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/contoso/resource-manager/Microsoft.Contoso/\"}],\"allowedUnauthorizedActions\":[\"microsoft.contoso/operations/read\"],\"enableAsyncOperation\":false,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]}},\"name\":\"Operations\"},{\"properties\":{\"name\":\"clusters\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"East US 2 EUAP\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.canary.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"East US\",\"East US2\",\"West US\",\"West US2\",\"Central US\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.unitedstates.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"France Central\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.france.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"Southeast Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.asiapacific.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"Australia East\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.australia.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"UK South\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"Japan East\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"West Europe\",\"North Europe\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.europe.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"linkedAccessChecks\":[{\"actionName\":\"Microsoft.Contoso/clusters/write\",\"linkedProperty\":\"extendedLocation.name\",\"linkedAction\":\"Microsoft.ExtendedLocation/customLocations/deploy/action\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"extendedLocations\":[{\"type\":\"CustomLocation\",\"supportedPolicy\":\"NotSpecified\"}]},\"name\":\"clusters\"},{\"properties\":{\"name\":\"Locations\",\"routingType\":\"ProxyOnly\",\"regionality\":\"Global\",\"endpoints\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":false,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false},\"name\":\"Locations\"},{\"properties\":{\"name\":\"locations/operationStatuses\",\"routingType\":\"ProxyOnly, Tenant, LocationBased\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"East US\",\"East US 2\",\"West US 2\",\"UK South\",\"Central US\",\"Japan East\",\"East Asia\",\"West US\",\"East US 2 EUAP\",\"Australia East\",\"South East Asia\",\"France Central\",\"West Europe\",\"North Europe\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"allowedUnauthorizedActions\":[\"Microsoft.Contoso/Locations/OperationStatuses/read\",\"Microsoft.Contoso/Locations/OperationStatuses/write\"],\"enableAsyncOperation\":false,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]}},\"name\":\"locations/operationStatuses\"},{\"properties\":{\"name\":\"towers\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"East US 2 EUAP\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.canary.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"East US\",\"East US2\",\"West US\",\"West US2\",\"Central US\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.unitedstates.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"France Central\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.france.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"Southeast Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.asiapacific.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"Australia East\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.australia.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"UK South\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"Japan East\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"]},{\"apiVersions\":[\"2020-01-01-preview\"],\"locations\":[\"West Europe\",\"North Europe\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSBridge\"],\"extensions\":[{\"endpointUri\":\"https://k8bridge.europe.production.fusion.azure.com/\",\"extensionCategories\":[\"ResourceCreationBegin\",\"ResourceDeletionBegin\",\"ResourcePatchBegin\"]}]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2020-01-01-preview\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/contoso/resource-manager/Microsoft.Contoso/\"}],\"linkedAccessChecks\":[{\"actionName\":\"Microsoft.Contoso/towers/write\",\"linkedProperty\":\"extendedLocation.name\",\"linkedAction\":\"Microsoft.ExtendedLocation/customLocations/deploy/action\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"extendedLocations\":[{\"type\":\"CustomLocation\",\"supportedPolicy\":\"NotSpecified\"}]},\"name\":\"towers\"},{\"properties\":{\"name\":\"Employees\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"locations\":[\"West US\",\"West Central US\",\"West Europe\",\"Southeast Asia\",\"West US 2\",\"East US 2 EUAP\",\"North Europe\",\"East US\",\"East Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"resourceMovePolicy\":{\"validationRequired\":false,\"crossResourceGroupMoveEnabled\":true,\"crossSubscriptionMoveEnabled\":true}},\"name\":\"Employees\"}]}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$DELETE+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "639f90b2-60cb-43c3-9f45-a4ab5cfaa968" ],
+        "CommandName": [ "Remove-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "Remove-AzProviderHubResourceTypeRegistration_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "137e2df2-17a2-4533-8be0-e555c17df115" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051125Z:137e2df2-17a2-4533-8be0-e555c17df115" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:11:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20+7": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"templateDeploymentOptions\": {\r\n      \"preflightSupported\": true,\r\n      \"preflightOptions\": [ \"DefaultValidationOnly\" ]\r\n    },\r\n    \"resourceMovePolicy\": {\r\n      \"crossResourceGroupMoveEnabled\": true,\r\n      \"crossSubscriptionMoveEnabled\": true\r\n    },\r\n    \"routingType\": \"Default\",\r\n    \"regionality\": \"Regional\",\r\n    \"endpoints\": [\r\n      {\r\n        \"apiVersions\": [ \"2018-11-01-preview\", \"2020-01-01-preview\", \"2019-01-01\" ],\r\n        \"locations\": [ \"West US\", \"West Central US\", \"West Europe\", \"Southeast Asia\", \"West US 2\", \"East US 2 EUAP\", \"North Europe\", \"East US\", \"East Asia\" ],\r\n        \"requiredFeatures\": [ \"Microsoft.Contoso/RPaaSSampleApp\" ]\r\n      }\r\n    ],\r\n    \"swaggerSpecifications\": [\r\n      {\r\n        \"apiVersions\": [ \"2018-11-01-preview\", \"2020-01-01-preview\", \"2019-01-01\" ],\r\n        \"swaggerSpecFolderUri\": \"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"\r\n      }\r\n    ],\r\n    \"enableAsyncOperation\": true\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1049" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "653fcbd7-0063-4920-9c8b-61a3f724b081" ],
+        "x-ms-correlation-request-id": [ "19371913-f798-44ab-8bd9-fce12dc0c043" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051131Z:19371913-f798-44ab-8bd9-fce12dc0c043" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:11:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "945" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"Employees\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"locations\":[\"West US\",\"West Central US\",\"West Europe\",\"Southeast Asia\",\"West US 2\",\"East US 2 EUAP\",\"North Europe\",\"East US\",\"East Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"resourceMovePolicy\":{\"validationRequired\":false,\"crossResourceGroupMoveEnabled\":true,\"crossSubscriptionMoveEnabled\":true}},\"name\":\"Employees\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "0d72978f-fb8a-4407-abd3-f1988b0e0e91" ],
+        "CommandName": [ "New-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubResourceTypeRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "4ac01dd7-2fd8-425b-9950-ac53b5f53c13" ],
+        "x-ms-correlation-request-id": [ "a571c10d-46f8-446a-bae7-667b2706eb67" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051201Z:a571c10d-46f8-446a-bae7-667b2706eb67" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:12:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "945" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"Employees\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"locations\":[\"West US\",\"West Central US\",\"West Europe\",\"Southeast Asia\",\"West US 2\",\"East US 2 EUAP\",\"North Europe\",\"East US\",\"East Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"resourceMovePolicy\":{\"validationRequired\":false,\"crossResourceGroupMoveEnabled\":true,\"crossSubscriptionMoveEnabled\":true}},\"name\":\"Employees\"}"
+    }
+  },
+  "AzProviderHubResourceTypeRegistration-CRUD+[NoContext]+Create, get, list, and delete ResourceTypeRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/Employees?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "0d72978f-fb8a-4407-abd3-f1988b0e0e91" ],
+        "CommandName": [ "New-AzProviderHubResourceTypeRegistration" ],
+        "FullCommandName": [ "New-AzProviderHubResourceTypeRegistration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "740559a8-8415-4c2a-b081-810f77c1705c" ],
+        "x-ms-correlation-request-id": [ "0c2c7056-f823-467d-8282-36d3eaac3d88" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T051201Z:0c2c7056-f823-467d-8282-36d3eaac3d88" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:12:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "945" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"name\":\"Employees\",\"routingType\":\"Default\",\"regionality\":\"Regional\",\"endpoints\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"locations\":[\"West US\",\"West Central US\",\"West Europe\",\"Southeast Asia\",\"West US 2\",\"East US 2 EUAP\",\"North Europe\",\"East US\",\"East Asia\"],\"requiredFeatures\":[\"Microsoft.Contoso/RPaaSSampleApp\"]}],\"swaggerSpecifications\":[{\"apiVersions\":[\"2018-11-01-preview\",\"2020-01-01-preview\",\"2019-01-01\"],\"swaggerSpecFolderUri\":\"https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/\"}],\"enableAsyncOperation\":true,\"provisioningState\":\"Succeeded\",\"enableThirdPartyS2S\":false,\"templateDeploymentOptions\":{\"preflightSupported\":true,\"preflightOptions\":[\"DefaultValidationOnly\"]},\"resourceMovePolicy\":{\"validationRequired\":false,\"crossResourceGroupMoveEnabled\":true,\"crossSubscriptionMoveEnabled\":true}},\"name\":\"Employees\"}"
+    }
+  }
+}

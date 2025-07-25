@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/update-azapimanagementcache
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementcache
 schema: 2.0.0
 ---
 
@@ -15,22 +15,22 @@ updates a cache in Api Management service.
 ### ExpandedParameter (Default)
 ```
 Update-AzApiManagementCache -Context <PsApiManagementContext> -CacheId <String> [-ConnectionString <String>]
- [-AzureRedisResourceId <String>] [-Description <String>] [-PassThru]
+ [-AzureRedisResourceId <String>] [-Description <String>] [-UseFromLocation <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Update-AzApiManagementCache -InputObject <PsApiManagementCache> [-ConnectionString <String>]
- [-AzureRedisResourceId <String>] [-Description <String>] [-PassThru]
+ [-AzureRedisResourceId <String>] [-Description <String>] [-UseFromLocation <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Update-AzApiManagementCache -ResourceId <String> [-ConnectionString <String>] [-AzureRedisResourceId <String>]
- [-Description <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-UseFromLocation <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,10 +40,11 @@ The cmdlet **Update-AzApiManagementCache** updates a cache in the ApiManagement 
 
 ### Example 1 : Updates the Description of the Cache in centralus
 ```powershell
-PS D:\github\azure-powershell> $context=New-AzApiManagementContext -ResourceGroupName Api-Default-Central-US -ServiceName contoso
-PS D:\github\azure-powershell> Update-AzApiManagementCache -Context $context -CacheId centralus -Description "Team new cache" -PassThru
+$context=New-AzApiManagementContext -ResourceGroupName Api-Default-Central-US -ServiceName contoso
+Update-AzApiManagementCache -Context $context -CacheId centralus -Description "Team new cache" -PassThru
+```
 
-
+```output
 CacheId              : centralus
 Description          : Team new cache
 ConnectionString     : {{5cc19889e6ed3b0524c3f7d3}}
@@ -194,6 +195,21 @@ Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UseFromLocation
+Cache UseFromLocation. This parameter is optional, default value 'default'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

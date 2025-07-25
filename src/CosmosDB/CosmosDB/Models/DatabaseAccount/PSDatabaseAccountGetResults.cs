@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ConsistencyPolicy = databaseAccountGetResults.ConsistencyPolicy;
             EnableAutomaticFailover = databaseAccountGetResults.EnableAutomaticFailover;
             IsVirtualNetworkFilterEnabled = databaseAccountGetResults.IsVirtualNetworkFilterEnabled;
-            IpRules = databaseAccountGetResults.IpRules;
+            IpRules = databaseAccountGetResults.IPRules;
             DatabaseAccountOfferType = databaseAccountGetResults.DatabaseAccountOfferType;
             DocumentEndpoint = databaseAccountGetResults.DocumentEndpoint;
             ProvisioningState = databaseAccountGetResults.ProvisioningState;
@@ -54,10 +54,22 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
             KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
+            CustomerManagedKeyStatus = databaseAccountGetResults.CustomerManagedKeyStatus;
             PrivateEndpointConnections = databaseAccountGetResults.PrivateEndpointConnections;
             EnableFreeTier = databaseAccountGetResults.EnableFreeTier;
             ApiProperties = new PSApiProperties(databaseAccountGetResults.ApiProperties);
             EnableAnalyticalStorage = databaseAccountGetResults.EnableAnalyticalStorage;
+            EnableBurstCapacity = databaseAccountGetResults.EnableBurstCapacity;
+            NetworkAclBypass = databaseAccountGetResults.NetworkAclBypass;
+            NetworkAclBypassResourceIds = databaseAccountGetResults.NetworkAclBypassResourceIds;
+            InstanceId = databaseAccountGetResults.InstanceId;
+            BackupPolicy = new PSBackupPolicy(databaseAccountGetResults.BackupPolicy);
+            RestoreParameters = new PSRestoreParameters(databaseAccountGetResults.RestoreParameters);
+            CreateMode = databaseAccountGetResults.CreateMode;
+            AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
+            EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
+            MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
+            EnablePerRegionPerPartitionAutoscale = databaseAccountGetResults.EnablePerRegionPerPartitionAutoscale;
         }
 
         //
@@ -180,5 +192,58 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether to enable storage analytics.
         public bool? EnableAnalyticalStorage { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether burst capacity is enabled.
+        public bool? EnableBurstCapacity { get; set; }
+        //
+        // Summary:
+        //     Indicates the status of the Customer Managed Key feature on the account. In
+        /// case there are errors, the property provides troubleshooting guidance.
+        public string CustomerManagedKeyStatus { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Partition Merge is enabled.
+        public bool? EnablePartitionMerge { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate to allow Network Acl Bypass.
+        public NetworkAclBypass? NetworkAclBypass { get; set; }
+        //
+        // Summary:
+        //     Gets or sets list of Network Acl Bypass Resource Ids.
+        public IList<string> NetworkAclBypassResourceIds { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the InstanceId of the CosmosDB Account
+        public string InstanceId { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the Backup Policy of the CosmosDB Account
+        public PSBackupPolicy BackupPolicy { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the RestoreParameters of the CosmosDB Account
+        public PSRestoreParameters RestoreParameters { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the CreateMode of the CosmosDB Account
+        public string CreateMode { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the AnalyticalStorageConfiguration of the CosmosDB Account
+        public PSAnalyticalStorageConfiguration AnalyticalStorageConfiguration { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the MinimalTlsVersion of the CosmosDB Account
+        public string MinimalTlsVersion { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Dynamic Scaling (Per Region Per Partition Autoscale) is enabled.
+        public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
     }
 }

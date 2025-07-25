@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2A3B7343-9AA0-4505-AEDE-31C0C5B98694
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutecrossconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azexpressroutecrossconnection
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Modifies an ExpressRoute cross connection.
 ### ModifyByCircuitReference
 ```
 Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection <PSExpressRouteCrossConnection> [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ModifyByParameterValues
@@ -24,7 +25,8 @@ Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection <PSExpressRouteCr
 Set-AzExpressRouteCrossConnection -ResourceGroupName <String> -Name <String>
  [-ServiceProviderProvisioningState <String>] [-ServiceProviderNotes <String>]
  [-Peerings <PSExpressRouteCrossConnectionPeering[]>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +35,7 @@ The **Set-AzExpressRouteCrossConnection** cmdlet saves the modified ExpressRoute
 ## EXAMPLES
 
 ### Example 1: Change the Service Provider Provisioning State of an ExpressRoute cross connection
-```
+```powershell
 $cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 $cc.ServiceProviderProvisioningState = 'Provisioned'
 Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection $cc
@@ -207,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

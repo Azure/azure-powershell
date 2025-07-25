@@ -1,0 +1,42 @@
+{
+  "resourceType": "services/problemClassifications",
+  "apiVersion": "2024-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.support"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSupportProblemClassification",
+      "description": "Get problem classification details for a specific Azure service.",
+      "path": "/providers/Microsoft.Support/services/{serviceName}/problemClassifications/{problemClassificationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportproblemclassification"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get problem classification details for a specific Azure service.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.problemClassificationName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

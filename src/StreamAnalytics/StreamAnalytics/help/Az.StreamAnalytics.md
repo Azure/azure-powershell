@@ -1,76 +1,119 @@
-﻿---
+---
 Module Name: Az.StreamAnalytics
-Module Guid: 59713673-194f-418a-b1f2-ac60db82edf9
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics
-Help Version: 4.0.4.0
+Module Guid: f3678192-db41-439b-99e7-6fda95f6c601
+Download Help Link: https://learn.microsoft.com/powershell/module/az.streamanalytics
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.StreamAnalytics Module
 ## Description
-This topic displays help topics for the Azure Stream Analytics Cmdlets.
+Microsoft Azure PowerShell: StreamAnalytics cmdlets
 
 ## Az.StreamAnalytics Cmdlets
+### [Get-AzStreamAnalyticsCluster](Get-AzStreamAnalyticsCluster.md)
+Gets information about the specified cluster.
+
+### [Get-AzStreamAnalyticsClusterStreamingJob](Get-AzStreamAnalyticsClusterStreamingJob.md)
+Lists all of the streaming jobs in the given cluster.
+
 ### [Get-AzStreamAnalyticsDefaultFunctionDefinition](Get-AzStreamAnalyticsDefaultFunctionDefinition.md)
-Gets the default definition of a function in Stream Analytics.
+Retrieves the default definition of a function based on the parameters specified.
 
 ### [Get-AzStreamAnalyticsFunction](Get-AzStreamAnalyticsFunction.md)
-Gets functions in a Stream Analytics job.
+Gets details about the specified function.
 
 ### [Get-AzStreamAnalyticsInput](Get-AzStreamAnalyticsInput.md)
-Gets Stream Analytics job inputs.
+Gets details about the specified input.
 
 ### [Get-AzStreamAnalyticsJob](Get-AzStreamAnalyticsJob.md)
-Gets Stream Analytics jobs information.
+Gets details about the specified streaming job.
 
 ### [Get-AzStreamAnalyticsOutput](Get-AzStreamAnalyticsOutput.md)
-Gets the outputs defined in a specified Stream Analytics job or output.
+Gets details about the specified output.
 
 ### [Get-AzStreamAnalyticsQuota](Get-AzStreamAnalyticsQuota.md)
-Gets information about the Streaming Unit quota for a region.
+Retrieves the subscription's current quota information in a particular region.
 
 ### [Get-AzStreamAnalyticsTransformation](Get-AzStreamAnalyticsTransformation.md)
-Gets information about a Stream Analytics job transformation.
+Gets details about the specified transformation.
+
+### [New-AzStreamAnalyticsCluster](New-AzStreamAnalyticsCluster.md)
+Creates a Stream Analytics Cluster or replaces an already existing cluster.
 
 ### [New-AzStreamAnalyticsFunction](New-AzStreamAnalyticsFunction.md)
-Creates or replaces a function in a Stream Analytics job.
+Creates a function or replaces an already existing function under an existing streaming job.
 
 ### [New-AzStreamAnalyticsInput](New-AzStreamAnalyticsInput.md)
-Creates or updates a job input.
+Creates an input or replaces an already existing input under an existing streaming job.
 
 ### [New-AzStreamAnalyticsJob](New-AzStreamAnalyticsJob.md)
-Creates or updates a Stream Analytics job.
+Creates a streaming job or replaces an already existing streaming job.
 
 ### [New-AzStreamAnalyticsOutput](New-AzStreamAnalyticsOutput.md)
-Creates or updates outputs for a Stream Analytics job.
+Creates an output or replaces an already existing output under an existing streaming job.
 
 ### [New-AzStreamAnalyticsTransformation](New-AzStreamAnalyticsTransformation.md)
-Creates or updates a transformation within a job.
+Creates a transformation or replaces an already existing transformation under an existing streaming job.
+
+### [Remove-AzStreamAnalyticsCluster](Remove-AzStreamAnalyticsCluster.md)
+Deletes the specified cluster.
 
 ### [Remove-AzStreamAnalyticsFunction](Remove-AzStreamAnalyticsFunction.md)
-Deletes a function from a Stream Analytics job.
+Deletes a function from the streaming job.
 
 ### [Remove-AzStreamAnalyticsInput](Remove-AzStreamAnalyticsInput.md)
-Deletes an input from a Stream Analytics job.
+Deletes an input from the streaming job.
 
 ### [Remove-AzStreamAnalyticsJob](Remove-AzStreamAnalyticsJob.md)
-Removes a Stream Analytics job.
+Deletes a streaming job.
 
 ### [Remove-AzStreamAnalyticsOutput](Remove-AzStreamAnalyticsOutput.md)
-Deletes an output from a Stream Analytics job.
+Deletes an output from the streaming job.
 
 ### [Start-AzStreamAnalyticsJob](Start-AzStreamAnalyticsJob.md)
-Starts a Stream Analytics job.
+Starts a streaming job.
+Once a job is started it will start processing input events and produce output.
 
 ### [Stop-AzStreamAnalyticsJob](Stop-AzStreamAnalyticsJob.md)
-Stops a Stream Analytics job.
+Stops a running streaming job.
+This will cause a running streaming job to stop processing input events and producing output.
 
 ### [Test-AzStreamAnalyticsFunction](Test-AzStreamAnalyticsFunction.md)
-Tests whether Stream Analytics can connect to a function.
+Tests if the information provided for a function is valid.
+This can range from testing the connection to the underlying web service behind the function or making sure the function code provided is syntactically correct.
 
 ### [Test-AzStreamAnalyticsInput](Test-AzStreamAnalyticsInput.md)
-Tests the connection status of an input.
+Tests whether an input's datasource is reachable and usable by the Azure Stream Analytics service.
 
 ### [Test-AzStreamAnalyticsOutput](Test-AzStreamAnalyticsOutput.md)
-Tests the connection status of an output.
+Tests whether an output's datasource is reachable and usable by the Azure Stream Analytics service.
+
+### [Update-AzStreamAnalyticsCluster](Update-AzStreamAnalyticsCluster.md)
+Updates an existing cluster.
+This can be used to partially update (ie.
+update one or two properties) a cluster without affecting the rest of the cluster definition.
+
+### [Update-AzStreamAnalyticsFunction](Update-AzStreamAnalyticsFunction.md)
+Updates an existing function under an existing streaming job.
+This can be used to partially update (ie.
+update one or two properties) a function without affecting the rest the job or function definition.
+
+### [Update-AzStreamAnalyticsInput](Update-AzStreamAnalyticsInput.md)
+Updates an existing input under an existing streaming job.
+This can be used to partially update (ie.
+update one or two properties) an input without affecting the rest the job or input definition.
+
+### [Update-AzStreamAnalyticsJob](Update-AzStreamAnalyticsJob.md)
+Creates a streaming job or replaces an already existing streaming job.
+
+### [Update-AzStreamAnalyticsOutput](Update-AzStreamAnalyticsOutput.md)
+Updates an existing output under an existing streaming job.
+This can be used to partially update (ie.
+update one or two properties) an output without affecting the rest the job or output definition.
+
+### [Update-AzStreamAnalyticsTransformation](Update-AzStreamAnalyticsTransformation.md)
+Updates an existing transformation under an existing streaming job.
+This can be used to partially update (ie.
+update one or two properties) a transformation without affecting the rest the job or transformation definition.
 

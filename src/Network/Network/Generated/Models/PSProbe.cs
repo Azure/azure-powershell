@@ -47,7 +47,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int NumberOfProbes { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
+        public int? ProbeThreshold { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string RequestPath { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string NoHealthyBackendsBehavior { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
@@ -71,6 +77,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         public bool ShouldSerializeNumberOfProbes()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeProbeThreshold()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

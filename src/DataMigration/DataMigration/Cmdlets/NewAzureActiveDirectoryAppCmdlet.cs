@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     {
         [Parameter(
            Mandatory = true,
-           HelpMessage = "Azure Active Directory Application Id")]
+           HelpMessage = "Microsoft Entra Application Id")]
         [ValidateNotNullOrEmpty]
         [Alias("AppId")]
         public string ApplicationId { get; set; }
 
         [Parameter(
            Mandatory = true,
-           HelpMessage = "Azure Active Directory Key")]
+           HelpMessage = "Microsoft Entra ID Key")]
         [ValidateNotNullOrEmpty]
         [Alias("Key")]
         public SecureString AppKey { get; set; }

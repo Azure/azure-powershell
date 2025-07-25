@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
 
         [Parameter(Mandatory = true, HelpMessage = "The text value for the TXT record to add.", ParameterSetName = PrivateDnsUtils.TxtRecord)]
         [ValidateNotNullOrEmpty]
-        [ValidateLength(PrivateDnsClient.TxtRecordMinLength, PrivateDnsClient.TxtRecordMaxLength)]
         public string Value { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = PrivateDnsUtils.SrvRecord)]
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                         break;
                     }
 
-                case RecordType.AAAA:
+                case RecordType.Aaaa:
                     {
                         result.Records.Add(new Models.AaaaRecord { Ipv6Address = this.Ipv6Address });
                         break;
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                         result.Records.Add(new Models.PtrRecord { Ptrdname = this.Ptrdname });
                         break;
                     }
-                case RecordType.CNAME:
+                case RecordType.Cname:
                     {
                         if (result.Records.Count != 0)
                         {

@@ -29,9 +29,9 @@ Validates an object is instance of a type
 #>
 function Assert-IsInstance
 {
-	param([object] $obj, [Type] $type)
+	param([Type] $type, [object] $obj)
 
-	Assert-AreEqual $obj.GetType() $type
+	Assert-AreEqual $type $obj.GetType() 
 }
 
 <#
@@ -40,8 +40,8 @@ Validates property count of a custom object
 #>
 function Assert-PropertiesCount
 {
-	param([PSCustomObject] $obj, [int] $count)
+	param([int] $count, [PSCustomObject] $obj)
 
 	$properties = $obj.PSObject.Properties
-	Assert-AreEqual $([System.Linq.Enumerable]::ToArray($properties).Count) $count
+	Assert-AreEqual $count $([System.Linq.Enumerable]::ToArray($properties).Count) 
 }

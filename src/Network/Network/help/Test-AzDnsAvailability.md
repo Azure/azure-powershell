@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azdnsavailability
+online version: https://learn.microsoft.com/powershell/module/az.network/test-azdnsavailability
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Checks whether a domain name in the cloudapp.azure.com zone is available for use
 ## EXAMPLES
 
 ### Example 1: Check if contoso.westus.cloudapp.azure.com is available for use.
-```
+```powershell
 Test-AzDnsAvailability -DomainNameLabel contoso -Location westus
 ```
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

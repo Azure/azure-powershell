@@ -23,7 +23,7 @@ function Test-MaxContextPopulationWithSpecifiedValue
 	$applicationId=$authenticationString.SubString($authenticationString.IndexOf("ServicePrincipal=")+"ServicePrincipal=".length,36)
 	$password=$authenticationString.SubString($authenticationString.IndexOf("ServicePrincipalSecret=")+"ServicePrincipalSecret=".length,34)
 	$secret = ConvertTo-SecureString -String $password -AsPlainText -Force
-	$tenantId=$authenticationString.SubString($authenticationString.IndexOf("AADTenant=")+"AADTenant=".length,36)
+	$tenantId=$authenticationString.SubString($authenticationString.IndexOf("TenantId=")+"TenantId=".length,36)
 	
 	$credential = New-Object -TypeName System.Management.Automation.PSCredential($applicationId, $secret)	
 
@@ -38,7 +38,7 @@ function Test-MaxContextPopulationWithSpecifiedValue
 	} 
 	Else  
 	{
-		# subtract 1 only for test freamwork 
+		# subtract 1 only for test framework 
 		Assert-AreEqual $maxContextPopulation ((Get-AzContext -ListAvailable).count-1)
 	}
 
@@ -55,7 +55,7 @@ function Test-MaxContextPopulationWithDefaultValue
 	$applicationId=$authenticationString.SubString($authenticationString.IndexOf("ServicePrincipal=")+"ServicePrincipal=".length,36)
 	$password=$authenticationString.SubString($authenticationString.IndexOf("ServicePrincipalSecret=")+"ServicePrincipalSecret=".length,34)
 	$secret = ConvertTo-SecureString -String $password -AsPlainText -Force
-	$tenantId=$authenticationString.SubString($authenticationString.IndexOf("AADTenant=")+"AADTenant=".length,36)
+	$tenantId=$authenticationString.SubString($authenticationString.IndexOf("TenantId=")+"TenantId=".length,36)
 	
 	$credential = New-Object -TypeName System.Management.Automation.PSCredential($applicationId, $secret)	
 	Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant $tenantId	
@@ -69,7 +69,7 @@ function Test-MaxContextPopulationWithDefaultValue
 	} 
 	Else  
 	{
-		# subtract 1 only for test freamwork 
+		# subtract 1 only for test framework 
 		Assert-AreEqual $defaultContextPopulation ((Get-AzContext -ListAvailable).count-1)
 	}
 }
@@ -84,7 +84,7 @@ function Test-MaxContextPopulationGetAll
 	$applicationId=$authenticationString.SubString($authenticationString.IndexOf("ServicePrincipal=")+"ServicePrincipal=".length,36)
 	$password=$authenticationString.SubString($authenticationString.IndexOf("ServicePrincipalSecret=")+"ServicePrincipalSecret=".length,34)
 	$secret = ConvertTo-SecureString -String $password -AsPlainText -Force
-	$tenantId=$authenticationString.SubString($authenticationString.IndexOf("AADTenant=")+"AADTenant=".length,36)
+	$tenantId=$authenticationString.SubString($authenticationString.IndexOf("TenantId=")+"TenantId=".length,36)
 	
 	$credential = New-Object -TypeName System.Management.Automation.PSCredential($applicationId, $secret)	
 	

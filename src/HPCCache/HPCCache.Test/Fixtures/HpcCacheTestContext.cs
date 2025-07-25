@@ -14,11 +14,10 @@
 
 namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.HPCCache.Test.Utilities;
+    using Microsoft.Azure.Commands.TestFx.Recorder;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Authorization.Models;
     using Microsoft.Azure.Management.Internal.Resources;
@@ -30,6 +29,12 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using Constants = Utilities.Constants;
 
     /// <summary>
     /// Defines the <see cref="HpcCacheTestContext" />.
@@ -61,7 +66,8 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             [System.Runtime.CompilerServices.CallerMemberName]
             string methodName = ".ctor")
         {
-            HttpMockServer.Matcher = HpcCacheController.GetRecordMatcher();
+            SetupAzureSession();
+            BuildMockServer();
             this.mockContext = MockContext.Start(suiteObject, methodName);
             this.RegisterSubscriptionForResource("Microsoft.StorageCache");
         }
@@ -76,9 +82,51 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             [System.Runtime.CompilerServices.CallerMemberName]
             string methodName = ".ctor")
         {
-            HttpMockServer.Matcher = HpcCacheController.GetRecordMatcher();
+            SetupAzureSession();
+            BuildMockServer();
             this.mockContext = MockContext.Start(type.Name, methodName);
             this.RegisterSubscriptionForResource("Microsoft.StorageCache");
+        }
+
+        private void SetupAzureSession()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            if (!(AzureSession.Instance?.DataStore is MemoryDataStore))
+            {
+                AzureSession.Instance.DataStore = new MemoryDataStore();
+            }
+        }
+
+        private void BuildMockServer()
+        {
+            var rpToIgnore = new Dictionary<string, string>
+            {
+                { "Microsoft.Resources", null },
+                { "Microsoft.Features", null },
+                { "Microsoft.Authorization", null },
+                { "Microsoft.Network", null },
+            };
+            var uaToIgnore = new Dictionary<string, string>
+            {
+                { "Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01" },
+                { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10" },
+            };
+
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, rpToIgnore, uaToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(GetTestProjectPath(), "SessionRecords");
+        }
+
+        private string GetTestProjectPath()
+        {
+            var testAssembly = Assembly.GetExecutingAssembly();
+            var testProjectPath = testAssembly.GetCustomAttributes<AssemblyMetadataAttribute>().Single(a => a.Key == "TestProjectPath").Value;
+
+            if (string.IsNullOrEmpty(testProjectPath))
+            {
+                throw new InvalidOperationException($"Unable to determine the test directory for {testAssembly}");
+            }
+
+            return testProjectPath;
         }
 
         /// <summary>
@@ -262,7 +310,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             var reg = resourceManagementClient.Providers.Register(providerName);
             StorageCacheTestUtilities.ThrowIfTrue(reg == null, $"Failed to register provider {providerName}");
             var result = resourceManagementClient.Providers.Get(providerName);
-            StorageCacheTestUtilities.ThrowIfTrue(result == null, $"Failed to register provier {providerName}");
+            StorageCacheTestUtilities.ThrowIfTrue(result == null, $"Failed to register provider {providerName}");
         }
 
         /// <summary>
@@ -283,11 +331,6 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             {
                 RoleDefinitionId = roleDefinition.Id,
                 PrincipalId = Constants.StorageCacheResourceProviderPrincipalId,
-
-                // The principal ID assigned to the role.
-                // This maps to the ID inside the Active Directory.
-                // It can point to a user, service principal, or security group.
-                CanDelegate = false,
             };
 
             authorizationManagementClient.RoleAssignments.Create(scope, assignmentName, newRoleAssignment);

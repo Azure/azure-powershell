@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azrmstoragecontainerimmutabilitypolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azrmstoragecontainerimmutabilitypolicy
 schema: 2.0.0
 ---
 
@@ -15,13 +15,15 @@ Gets ImmutabilityPolicy of a Storage blob containers
 ### AccountName (Default)
 ```
 Get-AzRmStorageContainerImmutabilityPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -ContainerName <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ContainerName <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Get-AzRmStorageContainerImmutabilityPolicy -ContainerName <String> -StorageAccount <PSStorageAccount>
- [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Etag <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ContainerObject
@@ -36,24 +38,24 @@ The **Get-AzRmStorageContainerImmutabilityPolicy** cmdlet gets ImmutabilityPolic
 ## EXAMPLES
 
 ### Example 1: Get ImmutabilityPolicy of a Storage blob container with Storage account name and container name
-```
-PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
+```powershell
+Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 ```
 
 This command gets ImmutabilityPolicy of a Storage blob container with Storage account name and container name.
 
 ### Example 2: Get ImmutabilityPolicy of a Storage blob container with Storage account object and container name
-```
-PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject -ContainerName "myContainer"
+```powershell
+$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
+Get-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject -ContainerName "myContainer"
 ```
 
 This command gets ImmutabilityPolicy of a Storage blob containers with Storage account object and container name.
 
 ### Example 3: Get ImmutabilityPolicy of a Storage blob container with Storage container object
-```
-PS C:\>$containerObject = Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
-PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
+```powershell
+$containerObject = Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
+Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
 ```
 
 This command gets ImmutabilityPolicy of a Storage blob container with Storage container object.
@@ -166,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

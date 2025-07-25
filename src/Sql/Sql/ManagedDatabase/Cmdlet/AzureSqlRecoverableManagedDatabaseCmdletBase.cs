@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
         /// <returns></returns>
         protected override AzureSqlRecoverableManagedDatabaseAdapter InitModelAdapter()
         {

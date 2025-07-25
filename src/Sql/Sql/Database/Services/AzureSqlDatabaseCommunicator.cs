@@ -21,6 +21,10 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure.OData;
+using System.Threading;
+using Microsoft.Rest.Azure;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -52,8 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseCommunicator(IAzureContext context)
         {
             Context = context;
@@ -67,9 +70,33 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets the Azure Sql Database
         /// </summary>
-        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName)
+        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName, ODataQuery<Management.Sql.Models.Database> oDataQuery = null, string subscriptionId = null)
         {
-            return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName);
+            return GetCurrentSqlClient(subscriptionId).Databases.Get(resourceGroupName, serverName, databaseName, oDataQuery);
+        }
+
+        /// <summary>
+        /// Revalidates Azure Sql Database Encryption Protector
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="serverName">Name of the server</param>
+        /// <param name="databaseName">Name of the database</param>
+        public async Task<Rest.Azure.AzureOperationResponse> RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+            Rest.Azure.AzureOperationResponse _response = await GetCurrentSqlClient().DatabaseEncryptionProtectors.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName).ConfigureAwait(false);
+            return await GetCurrentSqlClient().GetPostOrDeleteOperationResultAsync(_response, null, default(CancellationToken)).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Reverts the Azure Sql Database Encryption Protector
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="serverName">Name of the server</param>
+        /// <param name="databaseName">Name of the database</param>
+        public async Task<Rest.Azure.AzureOperationResponse> RevertDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+            Rest.Azure.AzureOperationResponse _response = await GetCurrentSqlClient().DatabaseEncryptionProtectors.BeginRevertWithHttpMessagesAsync(resourceGroupName, serverName, databaseName).ConfigureAwait(false);
+            return await GetCurrentSqlClient().GetPostOrDeleteOperationResultAsync(_response, null, default(CancellationToken)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -85,7 +112,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public IList<Management.Sql.Models.Database> List(string resourceGroupName, string serverName)
         {
-            return new List<Management.Sql.Models.Database>(GetCurrentSqlClient().Databases.ListByServer(resourceGroupName, serverName));
+            List<Management.Sql.Models.Database> resultsList = new List<Management.Sql.Models.Database>();
+
+            var pagedResponse = GetCurrentSqlClient().Databases.ListByServer(resourceGroupName, serverName);
+            resultsList.AddRange(pagedResponse);
+
+            while (!string.IsNullOrEmpty(pagedResponse.NextPageLink))
+            {
+                pagedResponse = GetCurrentSqlClient().Databases.ListByServerNext(pagedResponse.NextPageLink);
+                resultsList.AddRange(pagedResponse);
+            }
+
+            return resultsList;
         }
 
         /// <summary>
@@ -161,11 +199,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private Management.Sql.SqlManagementClient GetCurrentSqlClient()
+        private Management.Sql.SqlManagementClient GetCurrentSqlClient(string subscriptionId = null)
         {
             // Get the SQL management client for the current subscription
             // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
             var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            if (subscriptionId != null)
+            {
+                sqlClient.SubscriptionId = subscriptionId;
+            }
             return sqlClient;
         }
 

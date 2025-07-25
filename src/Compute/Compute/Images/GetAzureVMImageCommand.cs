@@ -12,14 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -42,6 +45,12 @@ namespace Microsoft.Azure.Commands.Compute
         [LocationCompleter("Microsoft.Compute/locations/publishers")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set the extended location name for EdgeZone. If not set, VM Image will be queried from Azure main region. Otherwise it will be queried from the specified extended location")]
+        public string EdgeZone { get; set; }
 
         [Parameter(ParameterSetName = ListVMImageParamSetName,
             Mandatory = true,
@@ -72,7 +81,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the version of the image. Use 'latest' to get the latest image")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Version { get; set; }
@@ -89,21 +99,157 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string OrderBy { get; set; }
 
+        [PSArgumentCompleter("properties", "properties/imageDeprecationStatus")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The expand expression to apply on the operation.",
+            ValueFromPipelineByPropertyName = true)]
+        public string Expand { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
-                if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
+                if ((this.IsParameterBound(c => c.EdgeZone)) && this.EdgeZone != null)
                 {
-                    var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
+                    // Edgezone and List
+                    if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
+                    {
+                        var result = this.VirtualMachineImagesEdgeZoneClient.ListWithHttpMessagesAsync(
+                            this.Location.Canonicalize(),
+                            this.EdgeZone.Canonicalize(),
+                            this.PublisherName,
+                            this.Offer,
+                            this.Skus,
+                            expand: this.Expand,
+                            top: this.Top,
+                            orderby: this.OrderBy
+                            ).GetAwaiter().GetResult();
+
+                        var images = from r in result.Body
+                                     select new PSVirtualMachineImage
+                                     {
+                                         RequestId = result.RequestId,
+                                         StatusCode = result.Response.StatusCode,
+                                         Id = r.Id,
+                                         Location = r.Location,
+                                         EdgeZone = r.ExtendedLocation.Name,
+                                         Version = r.Name,
+                                         PublisherName = this.PublisherName,
+                                         Offer = this.Offer,
+                                         Skus = this.Skus
+                                     };
+
+                        WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    }
+                    // EdgeZone and version provided 
+                    else
+                    {
+                        var response = this.VirtualMachineImagesEdgeZoneClient.GetWithHttpMessagesAsync(
+                            this.Location.Canonicalize(),
+                            this.EdgeZone,
+                            this.PublisherName,
+                            this.Offer,
+                            this.Skus,
+                            version: this.Version).GetAwaiter().GetResult();
+
+                        var image = new PSVirtualMachineImageDetail
+                        {
+                            RequestId = response.RequestId,
+                            StatusCode = response.Response.StatusCode,
+                            Id = response.Body.Id,
+                            Location = response.Body.Location,
+                            EdgeZone = response.Body.ExtendedLocation.Name,
+                            Name = response.Body.Name,
+                            Version = this.Version,
+                            PublisherName = this.PublisherName,
+                            Offer = this.Offer,
+                            Skus = this.Skus,
+                            OSDiskImage = response.Body.OsDiskImage,
+                            DataDiskImages = response.Body.DataDiskImages,
+                            PurchasePlan = response.Body.Plan,
+                            AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
+                            HyperVGeneration = response.Body.HyperVGeneration,
+                            ImageDeprecationStatus = response.Body.ImageDeprecationStatus
+                        };
+
+                        WriteObject(image);
+                    }
+                }
+                // None EdgeZone and List 
+                else if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
+                {
+                    // Expand provided 
+                    if (this.Expand != null)
+                    {
+                        var result = this.VirtualMachineImageClient.ListWithPropertiesWithHttpMessagesAsync(
+                            this.Location.Canonicalize(),
+                            this.PublisherName,
+                            this.Offer,
+                            this.Skus,
+                            expand: this.Expand,
+                            top: this.Top,
+                            orderby: this.OrderBy
+                            ).GetAwaiter().GetResult();
+
+                        var images = from r in result.Body
+                                 select new PSVirtualMachineImage
+                                 {
+                                     RequestId = result.RequestId,
+                                     StatusCode = result.Response.StatusCode,
+                                     Id = r.Id,
+                                     Location = r.Location,
+                                     Version = r.Name,
+                                     PublisherName = this.PublisherName,
+                                     Offer = this.Offer,
+                                     Skus = this.Skus,
+                                     Architecture = r.Architecture,
+                                     HyperVGeneration = r.HyperVGeneration,
+                                     ImageDeprecationStatus = r.ImageDeprecationStatus
+                                 };
+                    
+                        WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    }
+                    // Expand not provided 
+                    else
+                    {
+                        var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Offer,
                         this.Skus,
                         top: this.Top,
                         orderby: this.OrderBy
+                        ).GetAwaiter().GetResult();
+                        var images = from r in result.Body
+                                     select new PSVirtualMachineImage
+                                     {
+                                         RequestId = result.RequestId,
+                                         StatusCode = result.Response.StatusCode,
+                                         Id = r.Id,
+                                         Location = r.Location,
+                                         Version = r.Name,
+                                         PublisherName = this.PublisherName,
+                                         Offer = this.Offer,
+                                         Skus = this.Skus
+                                     };
+
+                        WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    }
+                }
+                // None EdgeZone and version provided
+                else if (this.ParameterSetName.Equals(GetVMImageDetailParamSetName) && this.Version.ToLower() == "latest")
+                {
+                    var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.PublisherName,
+                        this.Offer,
+                        this.Skus,
+                        expand: this.Expand,
+                        top: 1,
+                        orderby: "name desc"
                         ).GetAwaiter().GetResult();
 
                     var images = from r in result.Body
@@ -119,7 +265,7 @@ namespace Microsoft.Azure.Commands.Compute
                                      Skus = this.Skus
                                  };
 
-                    WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    WriteObject(images);
                 }
                 else
                 {
@@ -142,10 +288,11 @@ namespace Microsoft.Azure.Commands.Compute
                         Offer = this.Offer,
                         Skus = this.Skus,
                         OSDiskImage = response.Body.OsDiskImage,
+                        ImageDeprecationStatus = response.Body.ImageDeprecationStatus,
                         DataDiskImages = response.Body.DataDiskImages,
                         PurchasePlan = response.Body.Plan,
                         AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
-                        HyperVGeneration = response.Body.HyperVGeneration
+                        HyperVGeneration = response.Body.HyperVGeneration                        
                     };
 
                     WriteObject(image);

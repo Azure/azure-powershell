@@ -16,13 +16,14 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.Azure.Storage.File;
     using System;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using global::Azure.Storage.Files.Shares.Models;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare", DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
     [OutputType(typeof(AzureStorageFileShare))]
@@ -47,8 +48,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         Mandatory = false,
         ParameterSetName = Constants.SpecificParameterSetName,
         HelpMessage = "SnapshotTime of the file share snapshot to be received.")]
-                [ValidateNotNullOrEmpty]
-                public DateTimeOffset? SnapshotTime { get; set; }
+        [ValidateNotNullOrEmpty]
+        public DateTimeOffset? SnapshotTime { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Include deleted shares, by default get share won't include deleted shares",
+            ParameterSetName = Constants.MatchingPrefixParameterSetName)]
+        public SwitchParameter IncludeDeleted { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specify this parameter to only generate a local share object, without get share properties from server.",
+            ParameterSetName = Constants.SpecificParameterSetName)]
+        public SwitchParameter SkipGetProperty { get; set; }
 
         [Parameter(
             ValueFromPipeline = true,
@@ -62,36 +73,65 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Azure Storage Context Object")]
         public override IStorageContext Context { get; set; }
 
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            this.RunTask(async taskId =>
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case Constants.SpecificParameterSetName:
-                        NamingUtil.ValidateShareName(this.Name, false);
-                        var share = this.Channel.GetShareReference(this.Name, this.SnapshotTime);
-                        await this.Channel.FetchShareAttributesAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                        WriteCloudShareObject(taskId, this.Channel, share);
+                case Constants.SpecificParameterSetName:
+                    NamingUtil.ValidateShareName(this.Name, false);
 
-                        break;
+                    ShareClient share = Util.GetTrack2ShareReference(this.Name,
+                        (AzureStorageContext)this.Context, 
+                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00","Z"),
+                        ClientOptions);
+                    if (!this.SkipGetProperty)
+                    {
+                        ShareProperties shareProperties = share.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
+                        WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));
+                    }
+                    else
+                    {
+                        WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties: null, ClientOptions));
+                    }
 
-                    case Constants.MatchingPrefixParameterSetName:
-                        NamingUtil.ValidateShareName(this.Prefix, true);
-                        await this.Channel.EnumerateSharesAsync(
-                            this.Prefix,
-                            ShareListingDetails.All,
-                            item => WriteCloudShareObject(taskId, this.Channel, item),
-                            this.RequestOptions,
-                            this.OperationContext,
-                            this.CmdletCancellationToken).ConfigureAwait(false);
+                    break;
 
-                        break;
+                case Constants.MatchingPrefixParameterSetName:
+                    NamingUtil.ValidateShareName(this.Prefix, true);
 
-                    default:
-                        throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
-                }
-            });
+                    ShareServiceClient shareService = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                    ShareStates shareStates = ShareStates.Snapshots;
+                    if (this.IncludeDeleted.IsPresent)
+                    {
+                        shareStates |= ShareStates.Deleted; 
+                    }
+                    Pageable<ShareItem> shareitems = shareService.GetShares(ShareTraits.All, shareStates, this.Prefix, this.CmdletCancellationToken);
+
+                    foreach (ShareItem shareitem in shareitems)
+                    {
+                        if (shareitem.IsDeleted != null && shareitem.IsDeleted.Value) // the share is deleted
+                        {
+                            WriteObject(new AzureStorageFileShare(shareService, shareitem.Name, (AzureStorageContext)this.Context, shareitem, ClientOptions));
+                        }
+                        else // normal share
+                        {
+                            ShareClient shareClient = shareService.GetShareClient(shareitem.Name);
+                            if (!String.IsNullOrEmpty(shareitem.Snapshot))
+                            {
+                                shareClient = shareClient.WithSnapshot(shareitem.Snapshot);
+                            }
+                            WriteObject(new AzureStorageFileShare(shareClient, (AzureStorageContext)this.Context, shareitem, ClientOptions));
+                        }
+                    }
+
+                    break;
+
+                default:
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
+            }
         }
     }
 }

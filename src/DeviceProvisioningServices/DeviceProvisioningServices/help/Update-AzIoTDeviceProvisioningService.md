@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/update-aziotdeviceprovisioningservice
+online version: https://learn.microsoft.com/powershell/module/az.deviceprovisioningservices/update-aziotdeviceprovisioningservice
 schema: 2.0.0
 ---
 
@@ -15,50 +15,56 @@ Update an Azure IoT Hub device provisioning service.
 ### ResourceUpdateSet (Default)
 ```
 Update-AzIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable>
- [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectUpdateSet
 ```
 Update-AzIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription> [-Tag] <Hashtable>
- [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectCreateUpdateSet
 ```
 Update-AzIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription>
- [-AllocationPolicy] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AllocationPolicy] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdUpdateSet
 ```
 Update-AzIoTDeviceProvisioningService [-ResourceId] <String> [-Tag] <Hashtable> [-Reset]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdCreateUpdateSet
 ```
 Update-AzIoTDeviceProvisioningService [-ResourceId] <String> [-AllocationPolicy] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceCreateUpdateSet
 ```
 Update-AzIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String>
- [-AllocationPolicy] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AllocationPolicy] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-For an introduction to Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/about-iot-dps.
+For an introduction to Azure IoT Hub Device Provisioning Service, see https://learn.microsoft.com/azure/iot-dps/about-iot-dps.
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -AllocationPolicy "GeoLatency"
 ```
-PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -AllocationPolicy "GeoLatency"
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Type						: Microsoft.Devices/provisioningServices
@@ -75,9 +81,13 @@ Etag						: AAAAAAAT52k=
 Update Allocation Policy to "GeoLatency" of an Azure IoT Hub device provisioning service "myiotdps".
 
 ### Example 2
+```powershell
+$tag = @{}
+$tag.Add("key1","Value1")
+Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag $tag
 ```
-PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Type						: Microsoft.Devices/provisioningServices
@@ -91,12 +101,16 @@ SkuTier						: Standard
 Etag						: AAAAAAAPoOk=
 ```
 
-Add "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps".
+Add tags to an Azure IoT Hub device provisioning service "myiotdps".
 
 ### Example 3
+```powershell
+$tag = @{}
+$tag.Add("key1","Value1")
+Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDeviceProvisioningService -Tag $tag -Reset
 ```
-PS C:\> Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDps -Tag @tags -Reset
 
+```output
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
 Type						: Microsoft.Devices/provisioningServices
@@ -110,7 +124,7 @@ SkuTier						: Standard
 Etag						: AAAAAAAS1dY=
 ```
 
-Delete Tag and add new "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps" using pipeline.
+Delete Tag and add new tags to an Azure IoT Hub device provisioning service "myiotdps" using pipeline.
 
 ## PARAMETERS
 
@@ -267,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

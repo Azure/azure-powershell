@@ -11,6 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -18,6 +19,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
@@ -57,7 +59,11 @@ namespace Microsoft.Azure.Commands.Profile
                 throw new InvalidOperationException(Resources.ContextCannotBeNull);
             }
 
-            _client = new RMProfileClient(profile);
+            _client = new RMProfileClient(profile)
+            {
+                WarningLog = (s) => WriteWarning(s),
+                CmdletContext = _cmdletContext
+            };
             _client.WarningLog = (s) => WriteWarning(s);
         }
 
@@ -65,15 +71,14 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
             {
-                IAzureSubscription result;
+                IEnumerable<IAzureSubscription> result;
                 try
                 {
-                    if (!this._client.TryGetSubscriptionByName(TenantId, this.SubscriptionName, out result))
+                    if (!this._client.TryGetSubscriptionListByName(TenantId, this.SubscriptionName, out result))
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
-
-                    WriteObject(new PSAzureSubscription(result));
+                    WriteSubscriptions(result);
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -84,15 +89,15 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else if (!string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
-                IAzureSubscription result;
+                IEnumerable<IAzureSubscription> result = null;
                 try
                 {
-                    if (!this._client.TryGetSubscriptionById(TenantId, this.SubscriptionId, out result))
+                    result = this._client.TryGetSubscriptionById(TenantId, this.SubscriptionId);
+                    if (result == null || result.Count() == 0)
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionId);
                     }
-
-                    WriteObject( new PSAzureSubscription(result));
+                    WriteObject(new PSAzureSubscription(result.FirstOrDefault()));
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -115,13 +120,13 @@ namespace Microsoft.Azure.Commands.Profile
                         if (TenantId.Equals(DefaultContext.Tenant.Id))
                         {
                             var subscriptions = _client.ListSubscriptions(TenantId);
-                            WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                            WriteSubscriptions(subscriptions);
                         }
                     }
                     else
                     {
                         var subscriptions = _client.ListSubscriptions(TenantId);
-                        WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                        WriteSubscriptions(subscriptions);
                     }
                 }
                 catch (AadAuthenticationException exception)
@@ -134,14 +139,22 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void ThrowSubscriptionNotFoundError(string tenant, string subscription)
         {
-            throw new PSArgumentException(string.Format(Resources.SubscriptionNotFoundError, subscription, tenant));
+            PSArgumentException exception = new PSArgumentException(string.Format(Resources.SubscriptionNotFoundError, subscription, tenant));
+            exception.Data[AzurePSErrorDataKeys.ErrorKindKey] = ErrorKind.UserError;
+            throw exception;
         }
 
         private void ThrowTenantAuthenticationError(string tenant, AadAuthenticationException exception)
         {
             throw new PSArgumentException(string.Format(Resources.TenantAuthFailed, tenant), exception);
         }
+
+        private void WriteSubscriptions(IEnumerable<IAzureSubscription> subscriptions)
+        {
+            if (null != subscriptions && subscriptions.Any())
+            {
+                WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)).OrderBy(s => s.TenantId).ThenBy(s=>s.Name), enumerateCollection: true);
+            }
+        }
     }
-
-
 }

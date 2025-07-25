@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 12F8A120-7282-4844-90E0-1C3393336E8A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob
 schema: 2.0.0
 ---
 
@@ -17,7 +17,8 @@ Gets Backup jobs.
 ```
 Get-AzRecoveryServicesBackupJob [[-Status] <JobStatus>] [[-Operation] <JobOperation>] [[-From] <DateTime>]
  [[-To] <DateTime>] [[-JobId] <String>] [[-Job] <JobBase>] [-BackupManagementType <BackupManagementType>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-UseSecondaryRegion] [-VaultLocation <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,10 +31,12 @@ Set the vault context by using the -VaultId parameter.
 ### Example 1: Get all in-progress jobs
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Joblist = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
-PS C:\> $Joblist[0]
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Joblist = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
+$Joblist[0]
+```
 
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime
 ------------     ---------            ------               ---------                 -------
 V2VM             Backup               InProgress           4/23/2016 5:00:30 PM      1/1/2001 12:00:00
@@ -45,8 +48,8 @@ The second command displays the first item in the $Joblist array.
 ### Example 2: Get all failed jobs in the last 7 days
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -Status Failed -VaultId $vault.ID
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -Status Failed -VaultId $vault.ID
 ```
 
 This command gets failed jobs from the last week in the vault.
@@ -60,13 +63,15 @@ Therefore, it uses the default value of the current time.
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
 $Job = $Jobs[0]
-While ( $Job.Status -ne Completed ) {
+While ( $Job.Status -ne "Completed" ) {
     Write-Host -Object "Waiting for completion..."
     Start-Sleep -Seconds 10
     $Job = Get-AzRecoveryServicesBackupJob -Job $Job -VaultId $vault.ID
 }
 Write-Host -Object "Done!"
+```
 
+```output
 Waiting for completion... 
 Waiting for completion... 
 Waiting for completion... 
@@ -81,9 +86,19 @@ Note: You can use **Wait-AzRecoveryServicesBackupJob** cmdlet to wait for an Azu
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$Jobs = Get-AzRecoveryServicesBackupJob  -VaultId $vault.ID  -Status Completed -From (Get-Date).AddDays(-2).ToUniversalTime() -BackupManagementType AzureVM
+$Jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -Status Completed -From (Get-Date).AddDays(-2).ToUniversalTime() -BackupManagementType AzureVM
 ```
+
 First cmdlet fetches the vault object. Second cmdlet stores all the AzureVM jobs in the given vault which completed in last 2 days to $jobs. Change the value of BackupManagementType parameter to MAB in order to fetch MAB agent jobs.
+
+### Example 5: Get jobs for cross region restore 
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.Id -From ((Get-Date).AddDays(-29)).ToUniversalTime() -Operation CrossRegionRestore
+```
+
+First cmdlet fetches the vault object. Second cmdlet fetches all Cross region restore jobs in last 29 days for a given recovery services vault.
 
 ## PARAMETERS
 
@@ -188,7 +203,7 @@ The acceptable values for this parameter are:
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData
+Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData, BackupDataMove, UpdateCustomerManagedKey
 
 Required: False
 Position: 2
@@ -241,6 +256,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UseSecondaryRegion
+Filters from Secondary Region for Cross Region Restore
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultId
 
 ARM ID of the Recovery Services Vault.
@@ -254,6 +284,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VaultLocation
+Location of the Recovery Services Vault used to fetch the secondary region jobs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

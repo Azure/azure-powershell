@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         {
             cmdlet.ClusterName = ClusterName;
             cmdlet.ResourceGroupName = ResourceGroupName;
-            var cluster = new Cluster(id: "id", name: ClusterName)
+            var cluster = new Cluster(id: "id", name: ClusterName, location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux
+                    OsType = "Linux"
                 }
             };
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public void CanListHDInsightClustersInRG()
         {
             cmdlet.ResourceGroupName = ResourceGroupName;
-            var cluster1 = new Cluster(id: "id", name: ClusterName + "1")
+            var cluster1 = new Cluster(id: "id", name: ClusterName + "1", location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux
+                    OsType = "Linux"
                 }
             };
 
-            var cluster2 = new Cluster(id: "id", name: ClusterName + "2")
+            var cluster2 = new Cluster(id: "id", name: ClusterName + "2", location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux
+                    OsType = "Linux"
                 }
             };
 
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanListHDInsightClusters()
         {
-            var cluster1 = new Cluster(id: "id", name: ClusterName + "1")
+            var cluster1 = new Cluster(id: "id", name: ClusterName + "1", location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -161,11 +161,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux
+                    OsType = "Linux"
                 }
             };
 
-            var cluster2 = new Cluster(id: "id", name: ClusterName + "2")
+            var cluster2 = new Cluster(id: "id", name: ClusterName + "2", location: Location)
             {
                 Location = Location,
                 Properties = new ClusterGetProperties
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     {
                         CoresUsed = 24
                     },
-                    OsType = OSType.Linux
+                    OsType = "Linux"
                 }
             };
 

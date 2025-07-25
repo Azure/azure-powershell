@@ -1,0 +1,43 @@
+{
+  "Remove-AzEdgeOrderAddress+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/addresses/pwAddTestvca7?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-ny/providers/Microsoft.EdgeOrder/addresses/pwAddTestvca7?api-version=2021-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "2b8d3c77-17f9-40fe-9cf3-5b59d656a408" ],
+        "CommandName": [ "Remove-AzEdgeOrderAddress" ],
+        "FullCommandName": [ "Remove-AzEdgeOrderAddress_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "2b8d3c77-17f9-40fe-9cf3-5b59d656a408" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "e822b8cb-cea2-4dc3-a481-22af2647142b" ],
+        "x-ms-correlation-request-id": [ "e822b8cb-cea2-4dc3-a481-22af2647142b" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211123T092523Z:e822b8cb-cea2-4dc3-a481-22af2647142b" ],
+        "Date": [ "Tue, 23 Nov 2021 09:25:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

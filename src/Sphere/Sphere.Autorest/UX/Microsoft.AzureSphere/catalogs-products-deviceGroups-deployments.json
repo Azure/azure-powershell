@@ -1,0 +1,62 @@
+{
+  "resourceType": "catalogs/products/deviceGroups/deployments",
+  "apiVersion": "2024-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.sphere"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSphereDeployment",
+      "description": "Get a Deployment.\n'.default' and '.unassigned' are system defined values and cannot be used for product or device group name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.sphere/get-azspheredeployment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-DeviceGroupName <String>",
+              "-Name <String>",
+              "-ProductName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-DeviceGroupName",
+              "value": "[Path.deviceGroupName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.deploymentName]"
+            },
+            {
+              "name": "-ProductName",
+              "value": "[Path.productName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -19,17 +19,19 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using global::Azure;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Storage.DataMovement;
     using System;
+    using System.Runtime.InteropServices;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
-    using System.Runtime.InteropServices;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     [OutputType(typeof(AzureStorageFile))]
@@ -49,10 +51,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share where the file would be downloaded.")]
+            HelpMessage = "ShareClient object indicated the share where the file would be downloaded.")]
         [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
+        public ShareClient ShareClient { get; set; }
 
         [Parameter(
             Position = 0,
@@ -60,10 +61,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be downloaded.")]
+            HelpMessage = "ShareDirectoryClient object indicated the cloud directory where the file would be downloaded.")]
         [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
+        public ShareDirectoryClient ShareDirectoryClient { get; set; }
 
         [Parameter(
             Position = 0,
@@ -71,10 +71,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.FileParameterSetName,
-            HelpMessage = "CloudFile object indicated the cloud file to be downloaded.")]
+            HelpMessage = "ShareFileClient object indicated the cloud file to be downloaded.")]
         [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
+        public ShareFileClient ShareFileClient { get; set; }
 
         [Parameter(
             Position = 1,
@@ -147,24 +146,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             CloudFile fileToBeDownloaded;
+            ShareFileClient fileClientToBeDownloaded = null;
             string[] path = NamingUtil.ValidatePath(this.Path, true);
             switch (this.ParameterSetName)
             {
-                case LocalConstants.FileParameterSetName:
-                    fileToBeDownloaded = this.File;
+                case LocalConstants.FileParameterSetName:  
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    fileClientToBeDownloaded = this.ShareFileClient;
+                    fileToBeDownloaded = AzureStorageFile.GetTrack1FileClient(fileClientToBeDownloaded, ((AzureStorageContext)this.Context).StorageAccount.Credentials);
                     break;
 
                 case LocalConstants.ShareNameParameterSetName:
                     var share = this.BuildFileShareObjectFromName(this.ShareName);
-                    fileToBeDownloaded = share.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                    fileToBeDownloaded = share.GetRootDirectoryReference().GetFileReferenceByPath(path); 
+
+                    ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                    fileClientToBeDownloaded = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.Path);
                     break;
 
                 case LocalConstants.ShareParameterSetName:
-                    fileToBeDownloaded = this.Share.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    fileClientToBeDownloaded = this.ShareClient.GetRootDirectoryClient().GetFileClient(this.Path);
+                    fileToBeDownloaded = AzureStorageFile.GetTrack1FileClient(fileClientToBeDownloaded, ((AzureStorageContext)this.Context).StorageAccount.Credentials);
                     break;
 
                 case LocalConstants.DirectoryParameterSetName:
-                    fileToBeDownloaded = this.Directory.GetFileReferenceByPath(path);
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    fileClientToBeDownloaded = this.ShareDirectoryClient.GetFileClient(this.Path);
+                    fileToBeDownloaded = AzureStorageFile.GetTrack1FileClient(fileClientToBeDownloaded, ((AzureStorageContext)this.Context).StorageAccount.Credentials);
                     break;
 
                 default:
@@ -193,35 +202,90 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 this.RunTask(async taskId =>
                 {
-                    await
-                        fileToBeDownloaded.FetchAttributesAsync(null, this.RequestOptions, OperationContext,
-                            CmdletCancellationToken).ConfigureAwait(false);
 
-                    var progressRecord = new ProgressRecord(
-                        this.OutputStream.GetProgressId(taskId),
-                        string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity,
-                            fileToBeDownloaded.GetFullPath(), targetFile),
-                        Resources.PrepareDownloadingFile);
-
-                    await DataMovementTransferHelper.DoTransfer(() =>
+                    // If not Oauth, and not AllowTrailingDot , use DMlib
+                    if (!WithOauthCredential() && (this.DisAllowTrailingDot.IsPresent || !Util.PathContainsTrailingDot(fileClientToBeDownloaded.Path)))
                     {
-                        return this.TransferManager.DownloadAsync(
-                            fileToBeDownloaded,
-                            targetFile,
-                            new DownloadOptions
-                            {
-                                DisableContentMD5Validation = !this.CheckMd5,
-                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
-                            },
-                            this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
-                            CmdletCancellationToken);
-                    },
+                        await
+                            fileToBeDownloaded.FetchAttributesAsync(null, this.RequestOptions, OperationContext,
+                                CmdletCancellationToken).ConfigureAwait(false);
+
+                        var progressRecord = new ProgressRecord(
+                            this.OutputStream.GetProgressId(taskId),
+                            string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity,
+                                fileToBeDownloaded.GetFullPath(), targetFile),
+                            Resources.PrepareDownloadingFile);
+
+                        await DataMovementTransferHelper.DoTransfer(() =>
+                        {
+                            return this.TransferManager.DownloadAsync(
+                                fileToBeDownloaded,
+                                targetFile,
+                                new DownloadOptions
+                                {
+                                    DisableContentMD5Validation = !this.CheckMd5,
+                                    PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
+                                },
+                                this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
+                                CmdletCancellationToken);
+                        },
                         progressRecord,
                         this.OutputStream).ConfigureAwait(false);
 
-                    if (this.PassThru)
+                        if (this.PassThru)
+                        {
+                            ShareFileProperties fileProperties = await fileClientToBeDownloaded.GetPropertiesAsync(cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+                            OutputStream.WriteObject(taskId, new AzureStorageFile(fileClientToBeDownloaded, (AzureStorageContext)this.Context, fileProperties, ClientOptions));
+                        }
+                    }
+                    else // Track2 SDK 
                     {
-                        WriteCloudFileObject(taskId, this.Channel, fileToBeDownloaded);
+                        ShareFileProperties fileProperties =  await fileClientToBeDownloaded.GetPropertiesAsync( cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+
+                        var progressRecord = new ProgressRecord(
+                            this.OutputStream.GetProgressId(taskId),
+                            string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity,
+                                fileClientToBeDownloaded.Path, targetFile),
+                            Resources.PrepareDownloadingFile);
+
+                        if (!System.IO.File.Exists(targetFile) || ConfirmOverwrite(fileClientToBeDownloaded, targetFile))
+                        {
+                            //Prepare progress Handler
+                            IProgress<long> progressHandler = new Progress<long>((finishedBytes) =>
+                            {
+                                if (progressRecord != null)
+                                {
+                                    // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
+                                    progressRecord.PercentComplete = (fileProperties.ContentLength == 0) ? 100 : (int)(finishedBytes * 100 / fileProperties.ContentLength);
+                                    progressRecord.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, progressRecord.PercentComplete);
+                                    this.OutputStream.WriteProgress(progressRecord);
+                                }
+                            });
+
+                            using (FileStream stream = System.IO.File.OpenWrite(targetFile))
+                            {
+                                stream.SetLength(0);
+                                long contentLenLeft = fileProperties.ContentLength;
+                                long downloadOffset = 0;
+                                ShareFileDownloadOptions downloadOptions = new ShareFileDownloadOptions();
+                                while (contentLenLeft > 0)
+                                {
+                                    long contentSize = contentLenLeft < size4MB ? contentLenLeft : size4MB;
+                                    downloadOptions.Range = new HttpRange(downloadOffset, contentSize);
+                                    ShareFileDownloadInfo download = fileClientToBeDownloaded.Download(downloadOptions, cancellationToken: this.CmdletCancellationToken);
+                                    download.Content.CopyTo(stream);
+                                    downloadOffset += download.ContentLength;
+                                    contentLenLeft -= download.ContentLength;
+                                    progressHandler.Report(downloadOffset);
+                                }
+                            }
+                        }
+
+                        if (this.PassThru)
+                        {
+                            // TODO: should make sure track1 file object attributes get?
+                            OutputStream.WriteObject(taskId, new AzureStorageFile(fileClientToBeDownloaded, (AzureStorageContext)this.Context, fileProperties, ClientOptions));
+                        }
                     }
                 });
             }

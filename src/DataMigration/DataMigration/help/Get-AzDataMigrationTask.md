@@ -1,21 +1,22 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/Get-AzDataMigrationTask
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationTask
 schema: 2.0.0
 ---
 
 # Get-AzDataMigrationTask
 
 ## SYNOPSIS
-Retrieves the PSProjectTask object associated with an Azure Database Migration Service migration task.
+Retrieves the PSProjectTask object associated with an Azure Database Migration Service (classic) migration task.
 
 ## SYNTAX
 
 ### ListByComponent (Default)
 ```
 Get-AzDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
- [-TaskType <TaskTypeEnum>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-TaskType <TaskTypeEnum>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListByInputObject
@@ -57,30 +58,32 @@ Get-AzDataMigrationTask [-ResourceId] <String> -Name <String> [-Expand] -ResultT
 ### GetByComponent
 ```
 Get-AzDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
- [-Name <String>] [-Expand] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name <String>] [-Expand] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByComponentResultType
 ```
 Get-AzDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String> -Name <String>
- [-Expand] -ResultType <ResultTypeEnum> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Expand] -ResultType <ResultTypeEnum> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzDataMigrationTask cmdlet retrieves the properties associated with an Azure Database Migration Service migration task.
+The Get-AzDataMigrationTask cmdlet retrieves the properties associated with an Azure Database Migration Service (classic) migration task.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get -AzDataMigrationTask -TaskName myTestTask -ServiceName myTestService -ProjectName MyTestProject -ResourceGroupName MyResourceGroup -Expand
+```powershell
+Get-AzDataMigrationTask -TaskName myTestTask -ServiceName myTestService -ProjectName MyTestProject -ResourceGroupName MyResourceGroup -Expand
 ```
 
-The above example illustrates the use of Get-AzDataMigrationTask cmdlet to retrieve the properties associated with an Azure Database Migration Service migration task based on task name passed in as input parameter
+The above example illustrates the use of Get-AzDataMigrationTask cmdlet to retrieve the properties associated with an Azure Database Migration Service (classic) migration task based on task name passed in as input parameter
 
 ### Example 2
-```
-PS C:\> Get -AzDataMigrationTask -Project $myProject
+```powershell
+Get-AzDataMigrationTask -Project $myProject
 ```
 
 The above example illustrates the use of Get-AzDataMigrationTask cmdlet to retrieve all of the migration tasks associated with PSProject object passed in as input parameter
@@ -278,7 +281,7 @@ Filter by TaskType.
 Type: System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]
 Parameter Sets: ListByComponent, ListByInputObject, ListByResourceId
 Aliases:
-Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, MigrateSqlServerSqlDbMi, ValidateSqlServerSqlDbMi, MigrateSqlServerSqlDbSync, ConnectToSourceSqlServerSync, ConnectToTargetSqlSync, GetUserTablesSqlSync, ValidateSqlServerSqlDbSync
+Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, MigrateSqlServerSqlDbMi, ValidateSqlServerSqlDbMi, MigrateSqlServerSqlDbSync, ConnectToSourceSqlServerSync, ConnectToTargetSqlSync, GetUserTablesSqlSync, ValidateSqlServerSqlDbSync, ConnectToSourceMongoDb, ConnectToTargetMongoDb, MigrateMongoDb, ValidateMongoDbMigration, ConnectToTargetSqlDbMiSync, ValidateSqlServerSqlDbMiSync, MigrateSqlServerSqlDbMiSync
 
 Required: False
 Position: Named
@@ -288,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

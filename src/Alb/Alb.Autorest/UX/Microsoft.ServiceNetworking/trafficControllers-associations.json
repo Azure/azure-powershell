@@ -1,0 +1,95 @@
+{
+  "resourceType": "trafficControllers/associations",
+  "apiVersion": "2025-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.alb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAlbAssociation",
+      "description": "Get a Association",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.alb/get-azalbassociation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AlbName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Association",
+          "parameters": [
+            {
+              "name": "-AlbName",
+              "value": "[Path.trafficControllerName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.associationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAlbAssociation",
+      "description": "Delete a Association",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.alb/remove-azalbassociation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AlbName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Association",
+          "parameters": [
+            {
+              "name": "-AlbName",
+              "value": "[Path.trafficControllerName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.associationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

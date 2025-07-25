@@ -1,0 +1,76 @@
+{
+  "Update-AzWorkloadsMonitor+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7?api-version=2023-04-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"name\": \"suha\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "42" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000291c-0000-3400-0000-641832140000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "566cc9ca-4cfb-4626-91d2-9363bbf4091d" ],
+        "x-ms-correlation-request-id": [ "65cfe9ad-4e85-4714-a744-78275a9e2ee7" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230320T101447Z:65cfe9ad-4e85-4714-a744-78275a9e2ee7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Mar 2023 10:14:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1386" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7\",\"name\":\"suha-160323-ams7\",\"type\":\"microsoft.workloads/monitors\",\"location\":\"eastus2euap\",\"tags\":{\"name\":\"suha\"},\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-16T09:57:29.2058589Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T10:14:43.1766433Z\"},\"properties\":{\"appLocation\":\"eastus\",\"routingPreference\":\"RouteAll\",\"managedResourceGroupConfiguration\":{\"name\":\"mrg-16037\"},\"monitorSubnet\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/e2e-portal-wlmonitor-do-not-delete/providers/Microsoft.Network/virtualNetworks/vnetpeeringtest/subnets/snet-1603-4\",\"provisioningState\":\"Succeeded\",\"logAnalyticsWorkspaceArmId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/mrg-16037/providers/microsoft.operationalinsights/workspaces/sapmon-laws-874eca89287299\",\"msiArmId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/mrg-16037/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sapmon-msi-874eca89287299\",\"storageAccountArmId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/mrg-16037/providers/Microsoft.Storage/storageAccounts/sapsto874eca89287299\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzWorkloadsMonitor+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7?api-version=2023-04-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"name\": \"suhaById\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "46" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00002a1c-0000-3400-0000-6418321a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c1aa4549-2999-4f8c-b886-862580808a6f" ],
+        "x-ms-correlation-request-id": [ "16ab0f7f-6080-4207-883d-f29e2706daa3" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230320T101451Z:16ab0f7f-6080-4207-883d-f29e2706daa3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Mar 2023 10:14:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1390" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7\",\"name\":\"suha-160323-ams7\",\"type\":\"microsoft.workloads/monitors\",\"location\":\"eastus2euap\",\"tags\":{\"name\":\"suhaById\"},\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-16T09:57:29.2058589Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T10:14:49.8684362Z\"},\"properties\":{\"appLocation\":\"eastus\",\"routingPreference\":\"RouteAll\",\"managedResourceGroupConfiguration\":{\"name\":\"mrg-16037\"},\"monitorSubnet\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/e2e-portal-wlmonitor-do-not-delete/providers/Microsoft.Network/virtualNetworks/vnetpeeringtest/subnets/snet-1603-4\",\"provisioningState\":\"Succeeded\",\"logAnalyticsWorkspaceArmId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/mrg-16037/providers/microsoft.operationalinsights/workspaces/sapmon-laws-874eca89287299\",\"msiArmId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/mrg-16037/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sapmon-msi-874eca89287299\",\"storageAccountArmId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/mrg-16037/providers/Microsoft.Storage/storageAccounts/sapsto874eca89287299\"}}",
+      "isContentBase64": false
+    }
+  }
+}

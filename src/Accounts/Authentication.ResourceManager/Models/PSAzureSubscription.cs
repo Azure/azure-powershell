@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Convert a subscription from a PSObject
         /// </summary>
-        /// <param name="other">ThePSObject to poulate this subscription from</param>
+        /// <param name="other">ThePSObject to populate this subscription from</param>
         public PSAzureSubscription(PSObject other)
         {
             this.Id = other.GetProperty<string>(nameof(Id));
@@ -88,15 +88,15 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <inheritdoc />
-        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 1)]
-        public string Id { get; set; }
-
-        /// <inheritdoc />
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
 
         /// <inheritdoc />
-        [Ps1Xml(Label = "State", Target = ViewControl.Table, Position = 3)]
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 1)]
+        public string Id { get; set; }
+
+        /// <inheritdoc />
+        [Ps1Xml(Label = "State", Target = ViewControl.Table, Position = 2)]
         public string State { get; set; }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The tenant home for the subscription.
         /// </summary>
-        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, Position = 2)]
+        [Ps1Xml(Label = "TenantId", GroupByThis = true, Target = ViewControl.Table)]
         public string TenantId
         {
             get
@@ -209,6 +209,22 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
 
             return result;
+        }
+
+        public string AuthorizationSource
+        {
+            get
+            {
+                return this.GetProperty(AzureSubscription.Property.AuthorizationSource);
+            }
+        }
+
+        public Dictionary<string, string> Tags
+        {
+            get
+            {
+                return this.GetTags();
+            }
         }
     }
 }

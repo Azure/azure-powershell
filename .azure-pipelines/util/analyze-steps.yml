@@ -1,14 +1,50 @@
 parameters:
-  osName: ''
   configuration: ''
+  testFramework: ''
+  powerShellPlatform: ''
+  IsGenerateBased: ''
 
 steps:
 - template: download-build-steps.yml
   parameters:
-    osName: ${{ parameters.osName }}
+    artifactName: build-${{ parameters.testFramework }}
+- task: NodeTool@0
+  displayName: Install autorest
+  inputs:
+    versionSpec: '18.20.7'
+    command: custom
+    verbose: false
+    customCommand: install autorest@latest
+- task: PowerShell@2
+  displayName: Setup environment for autorest
+  inputs:
+    targetType: inline
+    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+    pwsh: true
+- task: Npm@1
+  displayName: Install tsp client
+  inputs:
+    command: custom
+    customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
+- task: UseDotNet@2
+  displayName: 'Use .NET SDK'
+  inputs:
+    packageType: sdk
+    version: 8.x
 
-- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
-  displayName: 'Install platyPS'
+- pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
+  displayName: 'Install PowerShell Dependencies'
+
+- task: PowerShell@2
+  displayName: 'Install latest modules'
+  inputs:
+    targetType: 'inline'
+    script: |
+      New-Item -ItemType Directory -Path "Az-Cmdlets-latest"
+      Invoke-WebRequest -Uri "https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz" -OutFile "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -MaximumRetryCount 2 -RetryIntervalSec 1
+      tar -xvzf "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -C "Az-Cmdlets-latest"
+      . Az-Cmdlets-latest/InstallModule.ps1
+    pwsh: true
 
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'
@@ -16,6 +52,8 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:GenerateHelp /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: DotNetCoreCLI@2
   displayName: 'Static Analysis'
@@ -23,7 +61,9 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      IsGenerateBased: ${{ parameters.IsGenerateBased }}
 
 - template: publish-artifacts-steps.yml
   parameters:
-    artifactName: analyze-${{ parameters.osName }}
+    artifactName: analyze-${{ parameters.testFramework }}-$(System.JobAttempt)

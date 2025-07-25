@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Storage.Files.Shares;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.Azure.Storage;
@@ -20,6 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.Azure.Storage.File;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
+    using System.IO;
     using System.Globalization;
     using System.Net;
     using System.Threading.Tasks;
@@ -29,6 +32,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using System.Collections;
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage;
+    using global::Azure.Storage.Files.Shares.Models;
+    using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Queues;
+    using Microsoft.WindowsAzure.Commands.Storage.File;
+    using System.Linq;
 
     internal static class Util
     {
@@ -244,7 +253,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Used in DMlib ShouldOverwriteCallback, to convert object to blob/file/localpath, and return path
         /// </summary>
-        /// <param name="instance">object instace</param>
+        /// <param name="instance">object instance</param>
         /// <returns>path of the object</returns>
         public static string ConvertToString(this object instance)
         {
@@ -283,17 +292,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get snapshot Time of a blob Uri.
+        /// Get snapshot Time of a blob/file Uri.
         /// </summary>
-        public static DateTimeOffset? GetSnapshotTimeFromBlobUri(Uri BlobUri)
+        public static DateTimeOffset? GetSnapshotTimeFromUri(Uri itemUri)
+        {
+            string snapshotTimeString = GetSnapshotTimeStringFromUri(itemUri);
+            if (snapshotTimeString != null)
+            {
+                return DateTimeOffset.Parse(snapshotTimeString).ToUniversalTime();
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Get snapshot Time string of a blob/file Uri.
+        /// </summary>
+        public static string GetSnapshotTimeStringFromUri(Uri itemUri)
         {
             string snapshotQueryParameter = "snapshot=";
-            string[] queryBlocks = BlobUri.Query.Split(new char[] { '&', '?' });
+            string shareSnapshotQueryParameter = "sharesnapshot=";
+            string[] queryBlocks = itemUri.Query.Split(new char[] { '&', '?' });
             foreach (string block in queryBlocks)
             {
                 if (block.StartsWith(snapshotQueryParameter))
                 {
-                    return DateTimeOffset.Parse(block.Replace(snapshotQueryParameter, "")).ToUniversalTime();
+                    return System.Web.HttpUtility.UrlDecode(block.Replace(snapshotQueryParameter, ""));
+                }
+                if (block.StartsWith(shareSnapshotQueryParameter))
+                {
+                    return System.Web.HttpUtility.UrlDecode(block.Replace(shareSnapshotQueryParameter, ""));
                 }
             }
             return null;
@@ -353,7 +380,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Get the Blob Type of the Track2 Blob client type
         /// </summary>
         /// <param name="blob"></param>
-        /// <param name="CheckOnServer"> If Track2 blob Client don't contain blob type inforamtion, try to get it on server</param>
+        /// <param name="CheckOnServer"> If Track2 blob Client don't contain blob type information, try to get it on server</param>
         public static global::Azure.Storage.Blobs.Models.BlobType? GetBlobType(BlobBaseClient blob, bool CheckOnServer = false)
         {
             if (blob is BlockBlobClient)
@@ -378,10 +405,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-        public static BlobBaseClient GetTrack2BlobClient(BlobContainerClient track2container, string blobName, AzureStorageContext context, string versionId = null, bool? IsCurrentVersion = null, string snapshot = null, BlobClientOptions options = null, global::Azure.Storage.Blobs.Models.BlobType? blobType = null)
+        public static BlobBaseClient GetTrack2BlobClient(BlobContainerClient track2container, string blobName, AzureStorageContext context, string versionId = null, bool? IsCurrentVersion = null, string snapshot = null, BlobClientOptions options = null, global::Azure.Storage.Blobs.Models.BlobType? blobType = null, bool shouldTrimSlash = true)
         {
             //Get Track2 Blob Client Uri
-            BlobUriBuilder blobUriBuilder = new BlobUriBuilder(track2container.Uri)
+            BlobUriBuilder blobUriBuilder = new BlobUriBuilder(track2container.Uri, trimBlobNameSlashes: shouldTrimSlash)
             {
                 BlobName = blobName
             };
@@ -392,6 +419,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             if (snapshot != null)
             {
                 blobUriBuilder.Snapshot = snapshot;
+            }
+            if (shouldTrimSlash == false)
+            {
+                if (options == null)
+                {
+                    options = new BlobClientOptions();
+                }
+                options.TrimBlobNameSlashes = shouldTrimSlash;
             }
 
             return GetTrack2BlobClient(blobUriBuilder.ToUri(), context, options, blobType);
@@ -404,7 +439,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 options = new BlobClientOptions();
             }
-            if (context.StorageAccount.Credentials.IsToken) //Oauth
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
             {
                 if (blobType == null)
                 {
@@ -426,7 +461,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                 }
             }
-            else if (context.StorageAccount.Credentials.IsSharedKey) //Shared Key
+            else if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
                 if (blobType == null)
                 {
@@ -481,7 +516,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public static BlobServiceClient GetTrack2BlobServiceClient(AzureStorageContext context, BlobClientOptions options = null)
         {
             BlobServiceClient blobServiceClient;
-            if (context.StorageAccount.Credentials.IsToken) //Oauth
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
             {
                 blobServiceClient = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, options);
             }
@@ -490,7 +525,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 string connectionString = context.ConnectionString;
 
                 // remove the "?" at the begin of SAS if any
-                if (context.StorageAccount.Credentials.IsSAS)
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
                 {
                     connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
                 }
@@ -506,14 +541,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="userDelegationKeyEndTime"></param>
         public static void ValidateUserDelegationKeyStartEndTime(DateTimeOffset userDelegationKeyStartTime, DateTimeOffset userDelegationKeyEndTime)
         {
-            //Check the Expire Time and Start Time, should remove this if server can rerturn clear error message
+            //Check the Expire Time and Start Time, should remove this if server can return clear error message
             const double MAX_LIFE_TIME_DAYS = 7;
             TimeSpan maxLifeTime = TimeSpan.FromDays(MAX_LIFE_TIME_DAYS);
             if (userDelegationKeyEndTime <= DateTimeOffset.UtcNow)
             {
                 throw new ArgumentException(string.Format("Expiry time {0} is earlier than now.", userDelegationKeyEndTime.ToString()));
             }
-            else if (userDelegationKeyStartTime >= userDelegationKeyEndTime)
+            else if (userDelegationKeyStartTime != null && userDelegationKeyStartTime >= userDelegationKeyEndTime)
             {
                 throw new ArgumentException(string.Format("Start time {0} is later than expiry time {1}.", userDelegationKeyStartTime.ToString(), userDelegationKeyEndTime.ToString()));
             }
@@ -532,7 +567,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 return null;
             }
 
-            switch(pageBlobTier)
+            switch (pageBlobTier)
             {
                 case PremiumPageBlobTier.P4:
                     return global::Azure.Storage.Blobs.Models.AccessTier.P4;
@@ -595,6 +630,245 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 default:
                     return null;
             }
+        }
+
+        public static FileAttributes AzureFileNtfsAttributesToLocalAttributes(NtfsFileAttributes cloudFileNtfsAttributes)
+        {
+            FileAttributes fileAttributes = FileAttributes.Normal;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.ReadOnly) == NtfsFileAttributes.ReadOnly)
+                fileAttributes |= FileAttributes.ReadOnly;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Hidden) == NtfsFileAttributes.Hidden)
+                fileAttributes |= FileAttributes.Hidden;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.System) == NtfsFileAttributes.System)
+                fileAttributes |= FileAttributes.System;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Directory) == NtfsFileAttributes.Directory)
+                fileAttributes |= FileAttributes.Directory;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Archive) == NtfsFileAttributes.Archive)
+                fileAttributes |= FileAttributes.Archive;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Temporary) == NtfsFileAttributes.Temporary)
+                fileAttributes |= FileAttributes.Temporary;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.Offline) == NtfsFileAttributes.Offline)
+                fileAttributes |= FileAttributes.Offline;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.NotContentIndexed) == NtfsFileAttributes.NotContentIndexed)
+                fileAttributes |= FileAttributes.NotContentIndexed;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.NoScrubData) == NtfsFileAttributes.NoScrubData)
+                fileAttributes |= FileAttributes.NoScrubData;
+
+            if ((cloudFileNtfsAttributes & NtfsFileAttributes.None) == NtfsFileAttributes.None)
+            {
+                if (fileAttributes != FileAttributes.Normal)
+                {
+                    fileAttributes = fileAttributes & (~FileAttributes.Normal);
+                }
+            }
+
+            return fileAttributes;
+        }
+
+        public static NtfsFileAttributes LocalAttributesToAzureFileNtfsAttributes(FileAttributes fileAttributes)
+        {
+            NtfsFileAttributes cloudFileNtfsAttributes = NtfsFileAttributes.None;
+
+            if ((fileAttributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.ReadOnly;
+
+            if ((fileAttributes & FileAttributes.Hidden) == FileAttributes.Hidden)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Hidden;
+
+            if ((fileAttributes & FileAttributes.System) == FileAttributes.System)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.System;
+
+            if ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Directory;
+
+            if ((fileAttributes & FileAttributes.Archive) == FileAttributes.Archive)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Archive;
+
+            if ((fileAttributes & FileAttributes.Normal) == FileAttributes.Normal)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.None;
+
+            if ((fileAttributes & FileAttributes.Temporary) == FileAttributes.Temporary)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Temporary;
+
+            if ((fileAttributes & FileAttributes.Offline) == FileAttributes.Offline)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.Offline;
+
+            if ((fileAttributes & FileAttributes.NotContentIndexed) == FileAttributes.NotContentIndexed)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.NotContentIndexed;
+
+            if ((fileAttributes & FileAttributes.NoScrubData) == FileAttributes.NoScrubData)
+                cloudFileNtfsAttributes |= NtfsFileAttributes.NoScrubData;
+
+            if (cloudFileNtfsAttributes != NtfsFileAttributes.None) cloudFileNtfsAttributes &= (~NtfsFileAttributes.None);
+
+            return cloudFileNtfsAttributes;
+        }
+
+        public static string GetSASStringWithoutQuestionMark(string sas)
+        {
+            if (sas.StartsWith("?"))
+            {
+                sas = sas.Substring(1);
+            }
+            return sas;
+        }
+
+
+        public static ShareServiceClient GetTrack2FileServiceClient(AzureStorageContext context, ShareClientOptions options = null)
+        {
+            if (context == null || string.IsNullOrEmpty(context.ConnectionString))
+            {
+                throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+            }
+
+            ShareServiceClient shareServiceClient;
+            if (context.StorageAccount!= null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
+            {
+                if (context.ShareTokenIntent != null)
+                {
+                    options.ShareTokenIntent = context.ShareTokenIntent.Value;   
+                }
+                shareServiceClient = new ShareServiceClient(context.StorageAccount.FileEndpoint, context.Track2OauthToken, options);
+            }
+            else  //sas , key or Anonymous, use connection string
+            {
+                string connectionString = context.ConnectionString;
+
+                // remove the "?" at the begin of SAS if any
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+                {
+                    connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                }
+                shareServiceClient = new ShareServiceClient(connectionString, options);
+            }
+            return shareServiceClient;
+        }
+
+        public static ShareClient GetTrack2ShareReference(string shareName, AzureStorageContext context, string snapshotTime = null, ShareClientOptions options = null)
+        {
+            ShareClient shareClient = GetTrack2FileServiceClient(context, options).GetShareClient(shareName);
+            if (snapshotTime != null)
+            {
+                return shareClient.WithSnapshot(snapshotTime);
+            }
+            else
+            {
+                return shareClient;
+            }
+        }
+
+        public static QueueServiceClient GetTrack2QueueServiceClient(AzureStorageContext context, QueueClientOptions options = null)
+        {
+            if (context == null || string.IsNullOrEmpty(context.ConnectionString))
+            {
+                throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+            }
+
+            QueueServiceClient queueServiceClient;
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken)
+            {
+                queueServiceClient = new QueueServiceClient(context.StorageAccount.QueueEndpoint, context.Track2OauthToken, options);
+            }
+            else
+            {
+                string connectionString = context.ConnectionString;
+                // remove the "?" at the begin of SAS if any
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+                {
+                    connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                }
+                queueServiceClient = new QueueServiceClient(connectionString, options);
+            }
+            return queueServiceClient;
+        }
+
+
+        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context, QueueClientOptions options)
+        {
+            QueueClient queueClient = GetTrack2QueueServiceClient(context, options).GetQueueClient(queueName);
+            return queueClient;
+        }
+
+        /// <summary>
+        /// Get SnapshotQualifiedUri without credential from a blob/file service item Uri.
+        /// </summary>
+        public static string GetSnapshotQualifiedUri(Uri itemUri)
+        {
+            string snapshotQueryParameter = "snapshot=";
+            string shareSnapshotQueryParameter = "sharesnapshot=";
+            string blobVersionQueryParameter = "versionid=";
+            if (!string.IsNullOrEmpty(itemUri.Query))
+            {
+                string[] queryBlocks = itemUri.Query.Split(new char[] { '&', '?' });
+                foreach (string block in queryBlocks)
+                {
+                    if (block.StartsWith(snapshotQueryParameter) || block.StartsWith(shareSnapshotQueryParameter) || block.StartsWith(blobVersionQueryParameter))
+                    {
+                        return itemUri.ToString().Replace(itemUri.Query, "?" + block);
+                    }
+                }
+                return itemUri.ToString().Replace(itemUri.Query, "");
+            }
+            else
+            {
+                return itemUri.ToString();
+            }
+        }
+
+        /// <summary>
+        ///  Get if a file path in format "dir1/dir2/filename" contains trailingdot in any block of the path
+        /// </summary>
+        public static bool PathContainsTrailingDot(string filePath)
+        {
+            foreach (string block in filePath.Split(NamingUtil.PathSeparators))
+            {
+                if (block.EndsWith("."))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///  Remove trailingdot from dir/file name from a file Uri
+        /// </summary>
+        public static Uri RemoveFileUriTrailingDot(Uri fileUri)
+        {
+            string noLastSegment = string.Format("{0}://{1}", fileUri.Scheme, fileUri.Authority);
+            for (int i = 0; i < fileUri.Segments.Length; i++)
+            {
+                noLastSegment += fileUri.Segments[i].TrimEnd('.', '/');
+                if (fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0] == '/')
+                {
+                    noLastSegment += fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0];
+                }
+            }
+            return new Uri(noLastSegment);
+        }
+
+        public static string RemoveFilePathTrailingDot(string filePath)
+        {
+            string filePathWithoutDot;
+            string[] segments = filePath.Split(NamingUtil.PathSeparators);
+            List<string> segmentsWithoutDot = new List<string>();
+
+            foreach (string segment in segments)
+            {
+                segmentsWithoutDot.Add(segment.TrimEnd('.'));
+            }
+            filePathWithoutDot = String.Join(Path.DirectorySeparatorChar.ToString(), segmentsWithoutDot);
+
+            return filePathWithoutDot;
         }
     }
 }

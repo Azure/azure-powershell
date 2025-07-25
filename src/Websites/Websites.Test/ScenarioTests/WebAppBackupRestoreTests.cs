@@ -12,22 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class WebAppBackupRestoreTests : RMTestBase
+    public class WebAppBackupRestoreTests : WebsitesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public WebAppBackupRestoreTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -39,7 +35,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppBackup()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppBackup");
+            TestRunner.RunTestScript("Test-CreateNewWebAppBackup");
         }
 
 #if NETSTANDARD
@@ -51,7 +47,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppBackupPiping()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppBackupPiping");
+            TestRunner.RunTestScript("Test-CreateNewWebAppBackupPiping");
         }
 
 #if NETSTANDARD
@@ -63,7 +59,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppBackup()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppBackup");
+            TestRunner.RunTestScript("Test-GetWebAppBackup");
         }
 
 #if NETSTANDARD
@@ -75,7 +71,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppBackupList()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppBackupList");
+            TestRunner.RunTestScript("Test-GetWebAppBackupList");
         }
 
 #if NETSTANDARD
@@ -87,7 +83,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEditAndGetWebAppBackupConfiguration()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EditAndGetWebAppBackupConfiguration");
+            TestRunner.RunTestScript("Test-EditAndGetWebAppBackupConfiguration");
         }
 
 #if NETSTANDARD
@@ -99,42 +95,42 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEditAndGetWebAppBackupConfigurationPiping()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EditAndGetWebAppBackupConfigurationPiping");
+            TestRunner.RunTestScript("Test-EditAndGetWebAppBackupConfigurationPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSnapshot()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppSnapshot");
+            TestRunner.RunTestScript("Test-GetWebAppSnapshot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreWebAppSnapshot()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RestoreWebAppSnapshot");
+            TestRunner.RunTestScript("Test-RestoreWebAppSnapshot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDeletedWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetDeletedWebApp");
+            TestRunner.RunTestScript("Test-GetDeletedWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedWebAppToExisting()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RestoreDeletedWebAppToExisting");
+            TestRunner.RunTestScript("Test-RestoreDeletedWebAppToExisting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedWebAppToNew()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RestoreDeletedWebAppToNew");
+            TestRunner.RunTestScript("Test-RestoreDeletedWebAppToNew");
         }
     }
 }

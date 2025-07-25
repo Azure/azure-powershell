@@ -1,0 +1,166 @@
+{
+  "Remove-AzMapsAccount+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01",
+      "Content": "{\r\n  \"location\": \"westcentralus\",\r\n  \"sku\": {\r\n    \"name\": \"G2\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "71" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-e643039496705d602ad3cee887eff7f6-423dad68fdebd6fb-01" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/japanwest/4c8e0af4-1175-4678-a898-e828de8faf1b" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "5229d40a-c382-4528-80a2-5a90f57c4aa3" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020213Z:5229d40a-c382-4528-80a2-5a90f57c4aa3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1326FCC1CFE14C8C8BC2EF755FC6D521 Ref B: TYO201100113023 Ref C: 2025-04-16T02:02:11Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:02:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "731" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"kind\": \"Gen2\",\n  \"type\": \"Microsoft.Maps/accounts\",\n  \"sku\": {\n    \"name\": \"G2\",\n    \"tier\": \"Standard\"\n  },\n  \"properties\": {\n    \"uniqueId\": \"55e4a809-2f6c-4fd9-85e0-68cd7c096cf7\",\n    \"provisioningState\": \"Succeeded\",\n    \"disableLocalAuth\": false\n  },\n  \"systemData\": {\n    \"createdBy\": \"v-jiaji@microsoft.com\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2025-04-16T02:02:03.7522573Z\",\n    \"lastModifiedBy\": \"v-jiaji@microsoft.com\",\n    \"lastModifiedByType\": \"User\",\n    \"lastModifiedAt\": \"2025-04-16T02:02:13.0012971Z\"\n  },\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6\",\n  \"name\": \"maps5y1mz6\",\n  \"location\": \"westcentralus\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsAccount+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "ddd6a361-e5b7-40f8-8f90-609e9b3832cb" ],
+        "CommandName": [ "Remove-AzMapsAccount" ],
+        "FullCommandName": [ "Remove-AzMapsAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.7", "Az.Maps/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-f39b2acd9ccc1ec5937a929b3303e279-a148a1b7e293cdd2-01" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/japanwest/5db40039-3b98-4599-a451-e44f48b1d7ce" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "d5784a6b-2628-4f67-83fc-abcd7230bb9f" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020217Z:d5784a6b-2628-4f67-83fc-abcd7230bb9f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 698101336A5843D09FD3ADF37888DDB3 Ref B: TYO201100113023 Ref C: 2025-04-16T02:02:13Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:02:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsAccount+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01",
+      "Content": "{\r\n  \"location\": \"westcentralus\",\r\n  \"sku\": {\r\n    \"name\": \"G2\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "71" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-a157ca55aff53dd85d5403b0d41d350a-5e0a92554f04c381-01" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/japanwest/dd96201b-a077-4303-a90b-5ddb85593c20" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "99cc23dd-def5-4bb1-aa20-468533dc9782" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020220Z:99cc23dd-def5-4bb1-aa20-468533dc9782" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 689F6B374CA2436CB7407FCABF6B00B3 Ref B: TYO201100113023 Ref C: 2025-04-16T02:02:17Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:02:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "731" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"kind\": \"Gen2\",\n  \"type\": \"Microsoft.Maps/accounts\",\n  \"sku\": {\n    \"name\": \"G2\",\n    \"tier\": \"Standard\"\n  },\n  \"properties\": {\n    \"uniqueId\": \"5d1df473-d905-4376-ae2d-1d3ab22d8a59\",\n    \"provisioningState\": \"Succeeded\",\n    \"disableLocalAuth\": false\n  },\n  \"systemData\": {\n    \"createdBy\": \"v-jiaji@microsoft.com\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2025-04-16T02:02:19.7861471Z\",\n    \"lastModifiedBy\": \"v-jiaji@microsoft.com\",\n    \"lastModifiedByType\": \"User\",\n    \"lastModifiedAt\": \"2025-04-16T02:02:19.7861471Z\"\n  },\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6\",\n  \"name\": \"maps5y1mz6\",\n  \"location\": \"westcentralus\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsAccount+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "82425f28-d322-43e2-8c99-7224cb3a894d" ],
+        "CommandName": [ "Remove-AzMapsAccount" ],
+        "FullCommandName": [ "Remove-AzMapsAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.7", "Az.Maps/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-6773f7f96811ef99ae602b3d3794c4fb-65b430bcd43a5ac6-01" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/japanwest/bfff5bc2-5bf8-4556-9de7-84c4bb4c7cd4" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "bbf45867-860c-4eb4-8bd3-7d3d60891a4e" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020224Z:bbf45867-860c-4eb4-8bd3-7d3d60891a4e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 47CA81437F784D14BDAA2B70AD204074 Ref B: TYO201100113023 Ref C: 2025-04-16T02:02:20Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:02:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,52 +1,52 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
-ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azdiagnosticsetting
+online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
 schema: 2.0.0
 ---
 
 # Remove-AzDiagnosticSetting
 
 ## SYNOPSIS
-Remove a diagnostic setting for the a resource.
+Deletes existing diagnostic settings for the specified resource.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-Remove-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzDiagnosticSetting -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzDiagnosticSetting -InputObject <IDiagnosticSettingIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzDiagnosticSetting** cmdlet removes the diagnostic setting for the particular resource.
-This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
+Deletes existing diagnostic settings for the specified resource.
 
 ## EXAMPLES
 
-### Example 1: Remove the default diagnostic setting (service) for a resource
-```
-PS C:\>Remove-AzDiagnosticSetting -ResourceId "Resource01"
-```
-
-This command removes the default diagnostic setting (service) for the resource called Resource01.
-
-### Example 2: Remove the default diagnostic setting identified by the given name for a resource
-```
-PS C:\>Remove-AzDiagnosticSetting -ResourceId "Resource01" -Name myDiagSetting
+### Example 1: Remove DiagnosticSetting by name
+```powershell
+$subscriptionId = (Get-AzContext).Subscription.Id
+Remove-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -Name test-setting
 ```
 
-This command removes the diagnostic setting called myDiagSetting for the resource called Resource01.
+Remove DiagnosticSetting by name
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -55,33 +55,64 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-The name of the diagnostic setting. If not given the call default to "service" as it was in the previous API and this cmdlet will only disable all categories for metrics/logs.
+The name of the diagnostic setting.
 
 ```yaml
 Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the ID of the resource.
+The identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -101,7 +132,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -120,15 +152,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.AzureOperationResponse
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzDiagnosticSetting](./Get-AzDiagnosticSetting.md)
-[Set-AzDiagnosticSetting](./Set-AzDiagnosticSetting.md)

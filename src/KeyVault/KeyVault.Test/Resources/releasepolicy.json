@@ -1,0 +1,15 @@
+{
+    "anyOf": [
+      {
+        "authority": "https://sharedeus.eus.attest.azure.net/",
+        "allOf": [
+            {
+                "claim": "x-ms-sgx-is-debuggable",
+                "equals": "true"
+            }
+        ]
+      }
+    ],
+    "version": "1.0.0"
+  }
+

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Metric Unit
         /// </summary>
-        public Unit Unit { get; set; }
+        public string Unit { get; set; }
 
         /// <summary>
         /// Metric data
@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="metric">The input Metric object</param>
         public PSMetric(Metric metric)
         {
-            this.Name = metric.Name;
+            this.Name = metric.Name; 
             this.Unit = metric.Unit;
             this.Id = metric.Id;
             this.Type = metric.Type;
-            this.Data = ((metric.Timeseries != null && metric.Timeseries.Count > 0)? new PSMetricValuesCollection(metric.Timeseries[0].Data) : null);
+            this.Data = ((metric.Timeseries != null && metric.Timeseries.Count > 0 && metric.Timeseries[0].Data != null)? new PSMetricValuesCollection(metric.Timeseries[0].Data) : null);
             this.Timeseries = metric.Timeseries;
         }
     }

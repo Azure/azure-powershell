@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,15 +56,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "VirtualNetworkName",
-            deprecateByVersion: "2.0.0",
-            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.",
-            OldWay = "New-AzFirewall -VirtualNetworkName \"vnet-name\"",
-            NewWay = "New-AzFirewall -VirtualNetwork $vnet",
-            OldParamaterType = typeof(string),
-            NewParameterTypeName = nameof(PSVirtualNetwork),
-            ReplaceMentCmdletParameterName = "VirtualNetwork")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -73,17 +64,8 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "PublicIpName",
-            deprecateByVersion: "2.0.0",
-            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Public IP Address will be provided as a list of one or more objects instead of a string.",
-            OldWay = "New-AzFirewall -PublicIpName \"public-ip-name\"",
-            NewWay = "New-AzFirewall -PublicIpAddress @($publicip1, $publicip2)",
-            OldParamaterType = typeof(string),
-            NewParameterTypeName = "List<PSPublicIpAddress>",
-            ReplaceMentCmdletParameterName = "PublicIpAddress")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "OldIpConfigurationParameterValues",
             HelpMessage = "Public IP address name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.")]
@@ -99,9 +81,8 @@ namespace Microsoft.Azure.Commands.Network
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "IpConfigurationParameterValues",
             HelpMessage = "One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
         [ValidateNotNullOrEmpty]
         public PSPublicIpAddress[] PublicIpAddress { get; set; }
@@ -162,12 +143,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Requires DNS Proxy functionality for FQDNs within Network Rules. By default is is enabled."
-        )]
-        public SwitchParameter DnsProxyNotRequiredForNetworkRule { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "The list of DNS Servers"
         )]
         public string[] DnsServer { get; set; }
@@ -199,8 +174,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The sku name for firewall")]
         [ValidateSet(
-                MNM.AzureFirewallSkuName.AZFWHub,
-                MNM.AzureFirewallSkuName.AZFWVNet,
+                MNM.AzureFirewallSkuName.AzfwHub,
+                MNM.AzureFirewallSkuName.AzfwVnet,
                 IgnoreCase = false)]
         public string SkuName { get; set; }
 
@@ -211,6 +186,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
                 MNM.AzureFirewallSkuTier.Standard,
                 MNM.AzureFirewallSkuTier.Premium,
+                MNM.FirewallPolicySkuTier.Basic,
                 IgnoreCase = false)]
         public string SkuTier { get; set; }
 
@@ -236,6 +212,39 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Allow Active FTP. By default it is false."
         )]
         public SwitchParameter AllowActiveFTP { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Enable Fat Flow Logging. By default it is false."
+       )]
+        public SwitchParameter EnableFatFlowLogging { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Enable Dnstap Logging. By default it is false."
+       )]
+        public SwitchParameter EnableDnstapLogging { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "Enable UDP Log Optimization. By default it is false."
+       )]
+        public SwitchParameter EnableUDPLogOptimization { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The Route Server Id for the firewall")]
+        public string RouteServerId { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The minimum number of capacity units for this azure firewall")]
+        public int? MinCapacity { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The maximum number of capacity units for this azure firewall")]
+        public int? MaxCapacity { get; set; }
 
         public override void Execute()
         {
@@ -274,10 +283,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             var firewall = new PSAzureFirewall();
             var sku = new PSAzureFirewallSku();
-            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName: MNM.AzureFirewallSkuName.AZFWVNet;
+            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AzfwVnet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
-            if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)
+            if (sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.Location))
+            {
+                if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.Location))
+                {
+                    throw new ArgumentException("Basic Sku Firewall is not supported in this region yet - " + this.Location, nameof(this.Location));
+                }
+            }
+            if (this.SkuName == MNM.AzureFirewallSkuName.AzfwHub)
             {
 
                 if (VirtualHubId != null && this.Location != null)
@@ -291,9 +307,24 @@ namespace Microsoft.Azure.Commands.Network
 
                 }
 
-                if(this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
+                if (this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
                 {
                     throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
+                }
+
+                if(this.RouteServerId != null)
+                {
+                    throw new ArgumentException("The Route Server is not supported on AZFW_Hub SKU Firewalls");
+                }
+
+                if (this.VirtualNetwork != null)
+                {
+                    throw new ArgumentException("Virtual Network is not supported on AZFW_Hub sku Firewalls");
+                }
+
+                if (this.PublicIpAddress != null && this.HubIPAddress != null)
+                {
+                    throw new ArgumentException("Public IP address can only be provided as part of PublicIps or HubIPAddresses. Not both at the same time.");
                 }
 
                 firewall = new PSAzureFirewall()
@@ -304,8 +335,17 @@ namespace Microsoft.Azure.Commands.Network
                     Sku = sku,
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
-                    HubIPAddresses = this.HubIPAddress
+                    HubIPAddresses = this.HubIPAddress,
+                    Zones = this.Zone == null ? null : this.Zone.ToList(),
+                    EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableDnstapLogging = (this.EnableDnstapLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
                 };
+
+                if (this.PublicIpAddress != null) 
+                {
+                    firewall.AddIpAddressesForByopipHubFirewall(this.PublicIpAddress);
+                }
             }
             else
             {
@@ -321,11 +361,14 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     PrivateRange = this.PrivateRange,
-                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent? "true" : null),
-                    DNSRequireProxyForNetworkRules = (this.DnsProxyNotRequiredForNetworkRule.IsPresent ? "false" : null),
+                    DNSEnableProxy = (this.EnableDnsProxy.IsPresent ? "true" : null),
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
-                    Sku = sku
+                    Sku = sku,
+                    EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableDnstapLogging = (this.EnableDnstapLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
+                    RouteServerId = this.RouteServerId
                 };
 
                 if (this.Zone != null)
@@ -335,11 +378,30 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.virtualNetwork != null)
                 {
-                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    if (firewall.Sku != null && firewall.Sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic))
+                    {
+                        firewall.AllocateBasicSku(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    }
+                    else
+                    {
+                        firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    }
                 }
-
                 firewall.ValidateDNSProxyRequirements();
             }
+
+            PSAzureFirewallAutoscaleConfiguration autoscaleConfiguration = new PSAzureFirewallAutoscaleConfiguration();
+
+            if (this.MinCapacity.HasValue)
+            {
+                autoscaleConfiguration.MinCapacity = this.MinCapacity.Value;
+            }
+            if (this.MaxCapacity.HasValue)
+            {
+                autoscaleConfiguration.MaxCapacity = this.MaxCapacity.Value;
+            }
+
+            firewall.AutoscaleConfiguration = autoscaleConfiguration;
 
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);

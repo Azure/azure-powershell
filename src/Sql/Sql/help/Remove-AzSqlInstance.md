@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlinstance
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlinstance
 schema: 2.0.0
 ---
 
@@ -14,35 +14,50 @@ Removes an Azure SQL Managed Database Instance.
 
 ### RemoveInstanceFromInputParameters (Default)
 ```
-Remove-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Force]
+Remove-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
-Remove-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Force]
+Remove-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveInstanceFromAzureResourceId
 ```
-Remove-AzSqlInstance [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSqlInstance [-ResourceId] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSqlInstance** cmdlet removes an Azure SQL Database Managed Instance.
+The **Remove-AzSqlInstance** cmdlet removes an Azure SQL Managed Instance.
 
 ## EXAMPLES
 
 ### Example 1: Remove instance
-```
-PS C:\>Remove-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the instance named managedInstance1.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

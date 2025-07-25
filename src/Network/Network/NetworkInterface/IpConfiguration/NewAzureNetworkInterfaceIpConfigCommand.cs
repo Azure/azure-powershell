@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -26,6 +27,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the IpConfiguration")]
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Private IPAddress Prefix Length")]
+        [ValidateNotNullOrEmpty]
+        public int? PrivateIPAddressPrefixLength { get; set; }
 
         public override void Execute()
         {
@@ -130,6 +137,16 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            if (!string.IsNullOrEmpty(this.GatewayLoadBalancerId))
+            {
+                // Gateway
+                if (ipconfig.GatewayLoadBalancer == null)
+                {
+                    ipconfig.GatewayLoadBalancer = new PSFrontendIPConfiguration();
+                }
+                ipconfig.GatewayLoadBalancer.Id = this.GatewayLoadBalancerId;
+            }
+
             if (this.ApplicationGatewayBackendAddressPoolId != null)
             {
                 ipconfig.ApplicationGatewayBackendAddressPools = new List<PSApplicationGatewayBackendAddressPool>();
@@ -146,6 +163,21 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     ipconfig.ApplicationSecurityGroups.Add(new PSApplicationSecurityGroup { Id = asgId });
                 }
+            }
+
+            if (this.PrivateIPAddressPrefixLength != null)
+            {
+                if (this.Primary.IsPresent)
+                {
+                    throw new ArgumentException("Primary property must be false when PrivateIPAddressPrefixLength is set.");
+                }
+
+                if (!string.Equals(this.PrivateIpAddressVersion, "IPv4", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException("PrivateIPAddressVersion must be IPv4 when PrivateIPAddressPrefixLength is set.");
+                }
+
+                ipconfig.PrivateIpAddressPrefixLength = this.PrivateIPAddressPrefixLength;
             }
 
             ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;

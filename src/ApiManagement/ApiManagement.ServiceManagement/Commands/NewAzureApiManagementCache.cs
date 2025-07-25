@@ -57,6 +57,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [ValidateLength(1, 2000)]
         public String Description { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Cache UseFromLocation. This parameter is optional, default value 'default'.")]
+        [ValidateLength(1, 2000)]
+        public String UseFromLocation { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string cacheId = CacheId ?? "default";
@@ -68,7 +75,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     cacheId,
                     ConnectionString,
                     Description,
-                    AzureRedisResourceId);
+                    AzureRedisResourceId,
+                    UseFromLocation ?? "default");
 
                 WriteObject(cache);
             }

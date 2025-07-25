@@ -16,6 +16,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.Azure.Management.ApiManagement.Models;
     using ResourceManager.Common;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
@@ -43,15 +44,36 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
            HelpMessage = "Virtual Network Configuration of Azure API Management deployment region. Default value is $null")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of availability zones denoting where the api management service is deployed into.")]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag only meant to be used for Premium SKU ApiManagement Service and Non Internal VNET deployments. " +
+            "This is useful in case we want to take a gateway region out of rotation." +
+            " This can also be used to standup a new region in Passive mode, test it and then make it Live later. "+ 
+            "Default behavior is to make the region live immediately. ")]
+        public bool? DisableGateway { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResourceId for integration into stv2 Virtual Network Deployments.")]
+        public string PublicIpAddressId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             WriteObject(
                 new PsApiManagementRegion
                 {
                     Location = Location,
-                    Sku = PsApiManagementSku.Premium, // additional regions are only supported in Premium Sku
+                    Sku = SkuType.Premium, // additional regions are only supported in Premium Sku
                     Capacity = Capacity.HasValue ? Capacity.Value : 1,
-                    VirtualNetwork = VirtualNetwork
+                    VirtualNetwork = VirtualNetwork,
+                    Zone = Zone,
+                    DisableGateway = DisableGateway,
+                    PublicIpAddressId = PublicIpAddressId
                 });
         }
     }

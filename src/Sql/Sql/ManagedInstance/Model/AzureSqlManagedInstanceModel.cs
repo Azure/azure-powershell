@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         public Management.Internal.Resources.Models.Sku Sku { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not this is a GPv2 variant of General Purpose edition.
+        /// </summary>
+        public bool? IsGeneralPurposeV2 { get; set; }
+
+        /// <summary>
         /// Gets or sets the fully qualified domain name of the managed instance
         /// </summary>
         public string FullyQualifiedDomainName { get; set; }
@@ -94,6 +99,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         public int? StorageSizeInGB { get; set; }
 
         /// <summary>
+        /// Gets or sets the maximum storage IOps.
+        /// </summary>
+        public int? StorageIOps { get; set; }
+
+        /// <summary>
         /// Gets or sets the Managed Instance collation
         /// </summary>
         public string Collation { get; set; }
@@ -113,7 +123,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the Managed Instance time zone
         /// </summary>
         public string TimezoneId { get; set; }
-
 
          /// <summary>
         /// Gets or sets the resource id of the dns zone partner of the managed instance
@@ -139,5 +148,69 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the managed instance backup storage redundancy
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance requested backup storage redundancy
+        /// </summary>
+        public string RequestedBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance current backup storage redundancy
+        /// </summary>
+        public string CurrentBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance maintenance configuration id
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure SQL Managed Instance Active Directory administrator
+        /// </summary>
+        public Management.Sql.Models.ManagedInstanceExternalAdministrator Administrators { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of a user assigned identity to be used
+        /// </summary>
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// Gets or sets a CMK URI of the key to use for encryption.
+        /// </summary>
+        public string KeyId { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not the multi-az is enabled
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service principal object
+        /// </summary>
+        public Common.ServicePrincipal ServicePrincipal { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the internal format of instance databases specific
+        /// to the SQL engine version. Possible values include: &#39;AlwaysUpToDate&#39;, &#39;SQLServer2022&#39;
+        /// </summary>
+        public string DatabaseFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets weather or not Managed Instance is freemium.
+        /// Possible values include: &#39;Regular&#39;, &#39;Freemium&#39;
+        /// </summary>
+        public string PricingModel { get; set; }
+
+        /// <summary>
+        /// Gets or sets the external governance status of the managed instance.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        public string ExternalGovernanceStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication metadata mode of the managed instance.
+        /// Possible values include: &#39;AzureAD&#39;, &#39;Paired&#39;, &#39;Windows&#39;
+        /// </summary>
+        public string AuthenticationMetadata { get; set; }
     }
 }

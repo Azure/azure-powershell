@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Net.Http;
-using Microsoft.Azure.Commands.Common.Authentication;
-using System.Net.Http.Headers;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -30,22 +31,44 @@ namespace Microsoft.Azure.Commands.Common
     /// </summary>
     public class UserAgent
     {
-        Version _version;
+        private ProductInfoHeaderValue[] _userAgents;
 
         public UserAgent(InvocationInfo invocation)
-            : this(invocation?.MyCommand?.Module?.Version ?? new Version("1.0.0"))
         {
-        }
-
-        public UserAgent(Version moduleVersion)
-        {
-            _version = moduleVersion;
+            List<ProductInfoHeaderValue> list = new List<ProductInfoHeaderValue>();
+            string azVersion = (String.IsNullOrWhiteSpace(AzurePSCmdlet.AzVersion)) ? "0.0.0" : AzurePSCmdlet.AzVersion;
+            list.Add(new ProductInfoHeaderValue("AzurePowershell", $"v{azVersion}"));
+            if(!String.IsNullOrWhiteSpace(AzurePSCmdlet.PowerShellVersion))
+            {
+                list.Add(new ProductInfoHeaderValue("PSVersion", $"v{AzurePSCmdlet.PowerShellVersion}"));
+            }
+            string moduleName = TelemetryProvider.TrimModuleName(invocation?.MyCommand?.ModuleName);
+            string moduleVersion = TelemetryProvider.TrimModuleVersion(invocation?.MyCommand?.Module?.Version);
+            if(!string.IsNullOrWhiteSpace(moduleName))
+            {
+                list.Add(new ProductInfoHeaderValue(moduleName, moduleVersion));
+            }
+            try
+            {
+                string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+                if (!String.IsNullOrWhiteSpace(hostEnv))
+                {
+                    hostEnv = hostEnv.Trim().Replace("@", "_").Replace("/", "_");
+                    list.Add(new ProductInfoHeaderValue(hostEnv, ""));
+                }
+            }
+            catch (Exception ) 
+            {
+                // ignore it
+            }
+                
+            _userAgents = list.ToArray();
         }
 
         /// <summary>
         /// Pipeline delegate to add a unique id header to an outgoing request
         /// </summary>
-        /// <param name="request">The outgpoing request</param>
+        /// <param name="request">The outgoing request</param>
         /// <param name="token">The cancellation token</param>
         /// <param name="cancel">Additional cancellation action if the operation is cancelled</param>
         /// <param name="signal">Signal delegate for logging events</param>
@@ -53,10 +76,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>Amended pipeline for retrieving a response</returns>
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token, Action cancel, SignalDelegate signal, NextDelegate next)
         {
-            var userAgents = new ProductInfoHeaderValue[] { new ProductInfoHeaderValue("AzurePowershell", $"Az4.0.0-preview") };
-            // add user agent headers
-
-            foreach (var userAgent in userAgents)
+            foreach (var userAgent in _userAgents)
             {
                 request.Headers.UserAgent.Add(userAgent);
             }

@@ -4,26 +4,24 @@
     <OmitJsonPackage>true</OmitJsonPackage>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
+
   <Import Project="$(MSBuildThisFileDirectory)\Common.Netcore.Dependencies.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)Az.nonprod.props" Condition="'$(TargetFramework)' == 'net8.0'" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.8.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.13.3" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.7" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.6" />
-    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit" Version="2.9.3" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="xunit.runner.console" Version="2.4.0" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.0" />
+    <PackageReference Include="xunit.runner.console" Version="2.9.3" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
     <Reference Include="System.Net.Http" />
-    <PackageReference Include="Newtonsoft.Json" version="10.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" version="13.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.2" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' and '$(OS)' != 'Windows_NT'">
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' and '$(OS)' == 'Windows_NT'">
@@ -33,27 +31,13 @@
     </Reference>
   </ItemGroup>
 
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <!-- version of SDK should reference https://docs.microsoft.com/en-us/powershell/azure/what-is-azure-powershell -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
- </ItemGroup>
-
- <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
- </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
   </ItemGroup>
 </Project>

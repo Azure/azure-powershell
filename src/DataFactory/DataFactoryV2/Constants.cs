@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeNode = "AzureRmDataFactoryV2IntegrationRuntimeNode";
 
+        public const string IntegrationRuntimeVNetInjectionStandard = "Standard";
+
+        public const string IntegrationRuntimeVNectInjectionExpress = "Express";
+
         public const string IntegrationRuntimeMetric = "AzureRmDataFactoryV2IntegrationRuntimeMetric";
 
         public const string IntegrationRuntimeKey = "AzureRmDataFactoryV2IntegrationRuntimeKey";
@@ -67,6 +71,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string HelpPipelineName = "The pipeline name.";
 
         public const string HelpTriggerName = "The trigger name.";
+
+        public const string HelpTriggerRunId = "The Run ID of the trigger.";
+
+        public const string HelpTriggerRun = "The information about the trigger run.";
 
         public const string HelpTriggerObject = "The trigger object.";
 
@@ -136,17 +144,35 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeSubnet = "The name of the subnet in the VNet.";
 
+        public const string HelpIntegrationRuntimeSubnetId = "The ID of subnet, to which this Azure-SSIS integration runtime will be joined.";
+
         public const string HelpIntegrationRuntimePublicIP = "The static public IP addresses which the integration runtime will use.";
 
         public const string HelpIntegrationRuntimeDataFlowCoreCount = "Core count of the data flow cluster which will execute data flow job.";
 
         public const string HelpIntegrationRuntimeDataFlowComputeType = "Compute type of the data flow cluster which will execute data flow job.";
 
+        public const string HelpIntegrationRuntimeDataFlowQuickReuseEnabled = "Enable data flow flow cluster reuse in the next data flow activity run.";
+
         public const string HelpIntegrationRuntimeDataFlowTimeToLive = "Time to live (in minutes) setting of the data flow cluster which will execute data flow job.";
+
+        public const string HelpIntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit = "DIU number setting reserved for copy activity execution.";
+
+        public const string HelpIntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive = "Time to live (in minutes) setting of integration runtime which will execute copy activity.";
+
+        public const string HelpIntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive = "Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.";
+
+        public const string HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes = "Number of the pipeline nodes, which should be greater than 0 and less than 11.";
+
+        public const string HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes = "Number of the the external nodes, which should be greater than 0 and less than 11.";
+
+        public const string HelpIntegrationRuntimeSelfContainedInteractiveAuthoringEnabled = "An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.";
 
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 
         public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
+
+        public const string HelpIntegrationRuntimeVNetInjectionMethod = "The virtual network injection method for Azure-SSIS Integration Runtime, Standard or Express, with Standard as default when not specified.";
 
         public const string HelpIntegrationRuntimeExpressCustomSetup = "The express custom setup for SSIS integration runtime which could be used to setup configurations and 3rd party components without custom setup script.";
 
@@ -256,6 +282,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpGlobalParameter = "The dictionary containing the global parameters of the data factory.";
 
+        public const string HelpIdentityType = "The identity type for the factory. It can be 'SystemAssigned', 'UserAssigned' or 'SystemAssigned,UserAssigned'";
+
+        public const string HelpUserAssignedIdenty = "Dictionary of user assigned identities to use. { \"<UAMI Id>\" : {} }";
+
+        public const string HelpPublicNetworkAccess = "Whether or not public network access is allowed for the data factory. It can be 'Enabled' or 'Disabled'";
+
+        public const string HelpEncryptionVaultBaseUrl = "The url of the Azure Key Vault used for encryption with CMK.";
+
+        public const string HelpEncryptionKeyName = "The name of the key in Azure Key Vault to use as Customer Managed Key for encryption.";
+
+        public const string HelpEncryptionKeyVersion = "The version of the key used for CMK. If not provided, latest version will be used.";
+
+        public const string HelpEncryptionUserAssignedIdentity = "User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.";
+
         public const string HelpRepoConfigurationProjectName = "The project name for repo configuration.";
 
         public const string HelpRepoConfigurationTenantId = "The tenant id for repo configuration.";
@@ -272,6 +312,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpRepoConfigurationLastCommitId = "The last commit id for repo configuration.";
 
+        public const string HelpRepoConfigurationDisablePublish = "Disable manual publish operation in ADF studio to favor automated publish.";
+
         public const string Id = "Id";
 
         public const string DataFactoryId = "DataFactoryId";
@@ -282,5 +324,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string ActionDescriptionForRemoveEventSubscription = "Unsubscribe the event trigger from external service events.";
 
+        public const string ActionDescriptionForInvokePipeline = "Starts a run for \"{0}\" pipeline in the \"{1}\" factory.";
     }
 }

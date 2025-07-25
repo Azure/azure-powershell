@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6B26DADE-BF71-48D2-98C9-87B2F6182AC2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmnetworkinterface
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface
 schema: 2.0.0
 ---
 
@@ -15,13 +15,26 @@ Removes a network interface from a virtual machine.
 
 ```
 Remove-AzVMNetworkInterface [-VM] <PSVirtualMachine> [[-NetworkInterfaceIDs] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Remove-AzVMNetworkInterface** cmdlet removes a network interface from a virtual machine.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Remove-AzVMNetworkInterface -VM $vmConfig
+$vmConfig.NetworkProfile
+```
+
+```Output
+NetworkInterfaces NetworkApiVersion NetworkInterfaceConfigurations
+----------------- ----------------- ------------------------------
+{}
+```
 
 ## PARAMETERS
 
@@ -117,5 +130,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzVM](./Get-AzVM.md)
-
-

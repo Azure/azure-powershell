@@ -14,14 +14,12 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using System;
+    using Microsoft.Azure.Commands.RedisCache.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.RedisCache.Models;
+    using Microsoft.Rest.Azure;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.RedisCache.Models;
-    using Microsoft.Azure.Management.Redis.Models;
-    using Microsoft.Rest.Azure;
-    using Properties;
-    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache"), OutputType(typeof(RedisCacheAttributes))]
     public class GetAzureRedisCache : RedisCacheCmdletBase
@@ -52,7 +50,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             else
             {
-                // List all cache in given resource group if avaliable otherwise all cache in given subscription
+                // List all cache in given resource group if available otherwise all cache in given subscription
                 IPage<RedisResource> response = CacheClient.ListCaches(ResourceGroupName);
                 List<RedisCacheAttributes> list = new List<RedisCacheAttributes>();
                 foreach (RedisResource resource in response)

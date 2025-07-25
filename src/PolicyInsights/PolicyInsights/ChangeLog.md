@@ -19,6 +19,44 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.1
+* Removed "Microsoft.Azure.Management.PolicyInsights" Version "1.0.0" PackageReference
+
+## Version 1.7.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+
+## Version 1.6.5
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 1.6.4
+* Upgraded Azure.Core to 1.35.0.
+
+## Version 1.6.3
+* Updated Azure.Core to 1.34.0.
+
+## Version 1.6.2
+* Updated Azure.Core to 1.33.0.
+
+## Version 1.6.1
+* Updated Azure.Core to 1.31.0.
+
+## Version 1.6.0
+* Added support for policy attestations.
+
+## Version 1.5.1
+* Updated parameter documentation for Get-AzPolicyState 
+
+## Version 1.5.0
+* Added support for new remediation properties allowing the remediation of more resources with better control over the remediation rate and error handling
+* Added support of fetching very large sets of results by internally using paginated API calls for policy states and policy events commands
+
+## Version 1.4.1
+* Retracted changes made in powershell that increased request row limit. Removed incorrect statement of supporting paging
+
+## Version 1.4.0
+* Added support for returning paginated results for Get-AzPolicyState
+
 ## Version 1.3.1
 * Corrected example 3 for `Start-AzPolicyComplianceScan`
 

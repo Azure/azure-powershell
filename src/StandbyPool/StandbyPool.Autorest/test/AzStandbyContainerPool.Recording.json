@@ -1,0 +1,277 @@
+{
+  "AzStandbyContainerPool+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01",
+      "Content": "{\r\n  \"location\": \"centralindia\",\r\n  \"properties\": {\r\n    \"elasticityProfile\": {\r\n      \"maxReadyCapacity\": 3,\r\n      \"refillPolicy\": \"always\"\r\n    },\r\n    \"containerGroupProperties\": {\r\n      \"containerGroupProfile\": {\r\n        \"id\": \"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourcegroups/standbypool-powershell-sdk/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG\",\r\n        \"revision\": 1\r\n      }\r\n    },\r\n    \"zones\": [ \"1\", \"2\", \"3\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "478" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2300b921-0000-2000-0000-6807c1ea0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30543\"" ],
+        "x-ms-operation-identifier": [ "tenantId=9d443c47-1ad7-4a6f-9cd7-7ae8f68d867a,objectId=5178a768-e5ce-4a6d-b586-2dba816d2f57/westus2/335977f3-4533-44d0-a68e-41e82c18b4f0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "67e7f0db-e411-4a79-bfce-aa5947613a69" ],
+        "x-ms-correlation-request-id": [ "582b1eaf-bb0e-424f-b97b-d73647285c99" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "12000" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162058Z:582b1eaf-bb0e-424f-b97b-d73647285c99" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 45CAF50ADB9543F790C685B292989215 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:20:52Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:20:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "893" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool\",\"name\":\"testCGPool\",\"type\":\"microsoft.standbypool/standbycontainergrouppools\",\"location\":\"centralindia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:20:57.6059183Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:20:57.6059183Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":3,\"refillPolicy\":\"always\"},\"containerGroupProperties\":{\"containerGroupProfile\":{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourcegroups/standbypool-powershell-sdk/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG\",\"revision\":1}},\"zones\":[\"1\",\"2\",\"3\"],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStandbyContainerPool+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "e1490cad-64a3-4ead-9712-293c65302320" ],
+        "CommandName": [ "New-AzStandbyContainerGroupPool" ],
+        "FullCommandName": [ "New-AzStandbyContainerGroupPool_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2300b921-0000-2000-0000-6807c1ea0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a6242bbf-4a35-4a41-b5dd-07d0b863198d" ],
+        "x-ms-correlation-request-id": [ "c41779c9-0b39-4586-87f4-ab31ec05540b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162129Z:c41779c9-0b39-4586-87f4-ab31ec05540b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C5AD30A5B81A4624AF022FE01BF9B6F7 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:21:29Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:21:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "893" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool\",\"name\":\"testCGPool\",\"type\":\"microsoft.standbypool/standbycontainergrouppools\",\"location\":\"centralindia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:20:57.6059183Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:20:57.6059183Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":3,\"refillPolicy\":\"always\"},\"containerGroupProperties\":{\"containerGroupProfile\":{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourcegroups/standbypool-powershell-sdk/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG\",\"revision\":1}},\"zones\":[\"1\",\"2\",\"3\"],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStandbyContainerPool+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "e1490cad-64a3-4ead-9712-293c65302320" ],
+        "CommandName": [ "New-AzStandbyContainerGroupPool" ],
+        "FullCommandName": [ "New-AzStandbyContainerGroupPool_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2300b921-0000-2000-0000-6807c1ea0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "883c28bf-9525-4091-90bc-a5d4611dad2f" ],
+        "x-ms-correlation-request-id": [ "d0d24694-7f94-48e5-95e0-a8c6b2794929" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162130Z:d0d24694-7f94-48e5-95e0-a8c6b2794929" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 08E3E43EC0924FAAA7442CAF55930B6C Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:21:29Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:21:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "893" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool\",\"name\":\"testCGPool\",\"type\":\"microsoft.standbypool/standbycontainergrouppools\",\"location\":\"centralindia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:20:57.6059183Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:20:57.6059183Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":3,\"refillPolicy\":\"always\"},\"containerGroupProperties\":{\"containerGroupProfile\":{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourcegroups/standbypool-powershell-sdk/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG\",\"revision\":1}},\"zones\":[\"1\",\"2\",\"3\"],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStandbyContainerPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "58e9f1b6-d967-42da-9774-20b2e2e3de8e" ],
+        "CommandName": [ "Get-AzStandbyContainerGroupPool" ],
+        "FullCommandName": [ "Get-AzStandbyContainerGroupPool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2300b921-0000-2000-0000-6807c1ea0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "eef6fb0f-e5b7-46e6-9ee4-e78fa5367ab2" ],
+        "x-ms-correlation-request-id": [ "a7ce29cc-216d-4e8d-b09d-eb8c3bd1de31" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162131Z:a7ce29cc-216d-4e8d-b09d-eb8c3bd1de31" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D69FC04CEC4A4CAD8BAA4904317B29A3 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:21:30Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:21:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "893" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool\",\"name\":\"testCGPool\",\"type\":\"microsoft.standbypool/standbycontainergrouppools\",\"location\":\"centralindia\",\"tags\":{},\"systemData\":{\"createdBy\":\"carlosh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T16:20:57.6059183Z\",\"lastModifiedBy\":\"carlosh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T16:20:57.6059183Z\"},\"properties\":{\"elasticityProfile\":{\"maxReadyCapacity\":3,\"refillPolicy\":\"always\"},\"containerGroupProperties\":{\"containerGroupProfile\":{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourcegroups/standbypool-powershell-sdk/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG\",\"revision\":1}},\"zones\":[\"1\",\"2\",\"3\"],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStandbyContainerPool+[NoContext]+GetRuntimeView+$GET+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool/runtimeViews/latest?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool/runtimeViews/latest?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "5fed8864-37ca-44d0-94ea-cb402bdc3f90" ],
+        "CommandName": [ "Get-AzStandbyContainerGroupPoolStatus" ],
+        "FullCommandName": [ "Get-AzStandbyContainerGroupPoolStatus_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30543\"" ],
+        "x-ms-operation-identifier": [ "tenantId=9d443c47-1ad7-4a6f-9cd7-7ae8f68d867a,objectId=5178a768-e5ce-4a6d-b586-2dba816d2f57/westus2/4a9e190d-5371-431f-a5ae-83079837499d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "94431e4b-11b5-41e9-b7d1-7ca954e5ee14" ],
+        "x-ms-correlation-request-id": [ "0f360d57-102f-49d6-a4f7-2d56f26266d1" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162132Z:0f360d57-102f-49d6-a4f7-2d56f26266d1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BEA1594F3C8D46B9B2E1CFD506A7B2D4 Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:21:31Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:21:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "521" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool/runtimeViews/latest\",\"name\":\"latest\",\"type\":\"Microsoft.StandbyPool/standbyContainerGroupPools/runtimeViews\",\"properties\":{\"instanceCountSummary\":[{\"zone\":1,\"instanceCountsByState\":[{\"state\":\"Deleting\",\"count\":0},{\"state\":\"Running\",\"count\":0},{\"state\":\"Creating\",\"count\":1}]}],\"status\":{\"code\":\"HealthState/degraded\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzStandbyContainerPool+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/resourceGroups/standbypool-powershell-sdk/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testCGPool?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "2819f01f-c2f5-40da-8e84-a15b030ed0d8" ],
+        "CommandName": [ "Remove-AzStandbyContainerGroupPool" ],
+        "FullCommandName": [ "Remove-AzStandbyContainerGroupPool_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.4.0", "PSVersion/v7.4.7", "Az.StandbyPool/0.2.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2300b827-0000-2000-0000-6807c2100000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/providers/Microsoft.StandbyPool/locations/CENTRALINDIA/operationStatuses/a4769828-a015-42e2-bd66-e9f34cfe0e79*B1EB4618C1ADFF72AE333B50FF3CCE438568D1B049A967AB714C6941E5ADA6EC?api-version=2025-03-01\u0026t=638809356964799456\u0026c=MIIHpTCCBo2gAwIBAgITOgWZuFmLREgOyTdeugAEBZm4WTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjUwNDE5MTQyMjI3WhcNMjUxMDE2MTQyMjI3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAPxDlNdj6r6H0vTzKfz228nqLQPXYSxPqEGQSSSCczQcCX3f_Xtnvc-lFdoleay-OVQlgfbWiMkGazl2q7FVj9BZUHJ3KXFg833nlMDzzIkfrA17t4t3OW-6po21aPw9TdEBtH-GReYxdd8YmK-hHhKfpllLkKKn29Z8r3ecn-VJ1URRr4gV1Dnhd8h62eio4oVWmqq_9ITkiyfphE8gKB3n-2ZGTlftv1uEX4hpgnUbyhP4GBPp9Ni0RdYmpukMEr1-GI3W5OnXgKOvoCRB0HZQKU-5u630M-76UA_GFyALd1X_xQwHcCHKvtBzX5EEcQ4AOj_B540c3Mp0HnljQsECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBRgocSx-jjjSuZiJXHuNlAhZPhmbjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAK5mT0Rrym5x1NF2yah7nxZLo1y0madgpRkCREZyGAoW02DZD68DX6wagq4RbcOr_MAlhvWOTjVB8J52ZIsydOGq5NSpxte9Cy10m7-zSXWMn0yNE8YUToarDNRzmshQ5pEBXhjU6kSMEvqeNG8Fr3KrDZEVieQc5By_ZV8F9vtuv90XjrjiLw1qOrPVVvUFOTx-JlUR4aErF4Jldd_YA0aWCiYbvu3Bd1vWtXdnrkJSX-natlKNqGimVnj86nKEao8ktK5pKaHq6C8vbOLeNreXRy5C2fC1tgiZ00V2pHuk1qbOdhlzTDv8G0HZLm_T7_s92OBqMAwBJ1uChKnQm6M\u0026s=77aZNFB2r7mt62n9TTCRZjO2J8BLPTGs_ZCakajdNO7GvnSFMiudb-Oyapu2t-dhfvIqqOk3_dgTj6IE6HZ9eu0I4sKo-Z5KIbWqXALn_XLys0KBS8rFuRAb7qRxMnmc9AWCxuv9-mv1fvIE9ym4JS4__WlxL_QWEadpn5KmGWPpXvOtO3okMgbOYJRgM0rFZMNIcW6l-eoSHLavHirHCmqWMUaIoqYIO-8flfs_vIssGv7zKGuZucheSTd66Wl4QRKlUk7n7f-eHU2QPeubRv-HBuUBqOwQc8vozHNjOxKcEMNQAfB05A-wI4r2Een3lVRdOXIvnNxTMO4963pSLw\u0026h=GeZPSbyASfoNalOL_OMh0awQKnqYkZyF__MQYM_OPZk" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30543\"" ],
+        "x-ms-operation-identifier": [ "tenantId=9d443c47-1ad7-4a6f-9cd7-7ae8f68d867a,objectId=5178a768-e5ce-4a6d-b586-2dba816d2f57/westus2/4256e1e5-335a-412b-ac5c-19d3cd2d6b39" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/826c93bf-0407-46d0-86dc-6c41c64c8f0c/providers/Microsoft.StandbyPool/locations/CENTRALINDIA/operationStatuses/a4769828-a015-42e2-bd66-e9f34cfe0e79*B1EB4618C1ADFF72AE333B50FF3CCE438568D1B049A967AB714C6941E5ADA6EC?api-version=2025-03-01\u0026t=638809356964799456\u0026c=MIIHpTCCBo2gAwIBAgITOgWZuFmLREgOyTdeugAEBZm4WTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjUwNDE5MTQyMjI3WhcNMjUxMDE2MTQyMjI3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAPxDlNdj6r6H0vTzKfz228nqLQPXYSxPqEGQSSSCczQcCX3f_Xtnvc-lFdoleay-OVQlgfbWiMkGazl2q7FVj9BZUHJ3KXFg833nlMDzzIkfrA17t4t3OW-6po21aPw9TdEBtH-GReYxdd8YmK-hHhKfpllLkKKn29Z8r3ecn-VJ1URRr4gV1Dnhd8h62eio4oVWmqq_9ITkiyfphE8gKB3n-2ZGTlftv1uEX4hpgnUbyhP4GBPp9Ni0RdYmpukMEr1-GI3W5OnXgKOvoCRB0HZQKU-5u630M-76UA_GFyALd1X_xQwHcCHKvtBzX5EEcQ4AOj_B540c3Mp0HnljQsECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBRgocSx-jjjSuZiJXHuNlAhZPhmbjAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAK5mT0Rrym5x1NF2yah7nxZLo1y0madgpRkCREZyGAoW02DZD68DX6wagq4RbcOr_MAlhvWOTjVB8J52ZIsydOGq5NSpxte9Cy10m7-zSXWMn0yNE8YUToarDNRzmshQ5pEBXhjU6kSMEvqeNG8Fr3KrDZEVieQc5By_ZV8F9vtuv90XjrjiLw1qOrPVVvUFOTx-JlUR4aErF4Jldd_YA0aWCiYbvu3Bd1vWtXdnrkJSX-natlKNqGimVnj86nKEao8ktK5pKaHq6C8vbOLeNreXRy5C2fC1tgiZ00V2pHuk1qbOdhlzTDv8G0HZLm_T7_s92OBqMAwBJ1uChKnQm6M\u0026s=77aZNFB2r7mt62n9TTCRZjO2J8BLPTGs_ZCakajdNO7GvnSFMiudb-Oyapu2t-dhfvIqqOk3_dgTj6IE6HZ9eu0I4sKo-Z5KIbWqXALn_XLys0KBS8rFuRAb7qRxMnmc9AWCxuv9-mv1fvIE9ym4JS4__WlxL_QWEadpn5KmGWPpXvOtO3okMgbOYJRgM0rFZMNIcW6l-eoSHLavHirHCmqWMUaIoqYIO-8flfs_vIssGv7zKGuZucheSTd66Wl4QRKlUk7n7f-eHU2QPeubRv-HBuUBqOwQc8vozHNjOxKcEMNQAfB05A-wI4r2Een3lVRdOXIvnNxTMO4963pSLw\u0026h=GeZPSbyASfoNalOL_OMh0awQKnqYkZyF__MQYM_OPZk" ],
+        "x-ms-request-id": [ "a4769828-a015-42e2-bd66-e9f34cfe0e79" ],
+        "x-ms-correlation-request-id": [ "c4b183b6-ab56-4d3e-a7f7-ba2aefade64c" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250422T162136Z:c4b183b6-ab56-4d3e-a7f7-ba2aefade64c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E0B2C4255C89494B92DE3803FA94C18B Ref B: CO6AA3150219039 Ref C: 2025-04-22T16:21:32Z" ],
+        "Date": [ "Tue, 22 Apr 2025 16:21:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  }
+}

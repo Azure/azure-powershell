@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Search.Models;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
@@ -69,27 +70,87 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = HostingModeHelpMessage)]
         public PSHostingMode? HostingMode { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = PublicNetworkAccessMessage)]
+        public PSPublicNetworkAccess? PublicNetworkAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = IdentityMessage)]
+        public PSIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = IPRulesMessage)]
+        public PSIpRule[] IPRuleList { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DisableLocalAuthMessage)]
+        public bool? DisableLocalAuth { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AuthOptionsMessage)]
+        public PSAuthOptionName? AuthOption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AadAuthFailureModeMessage)]
+        public PSAadAuthFailureMode? AadAuthFailureMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = SemanticSearchModeMessage)]
+        public PSSemanticSearchMode? SemanticSearchMode { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            Azure.Management.Search.Models.SearchService searchService = null;
+            var networkRuleSet = IPRuleList?.Any() == true ? new PSNetworkRuleSet
+            {
+                IpRules = IPRuleList
+            } : null;
 
-            if (HostingMode == null)
+            var identity = IdentityType.HasValue ? new PSIdentity
             {
-                searchService = new Azure.Management.Search.Models.SearchService(name: Name,
-                                                                                    location: Location,
-                                                                                    sku: new Sku((SkuName)Sku),
-                                                                                    replicaCount: ReplicaCount,
-                                                                                    partitionCount: PartitionCount);
-            }
-            else
+                Type = IdentityType.Value
+            } : null;
+
+            PSAuthOptions authOptions = null;
+            if (AuthOption == PSAuthOptionName.ApiKeyOnly)
             {
-                searchService = new Azure.Management.Search.Models.SearchService(name: Name,
-                                                                                    location: Location,
-                                                                                    sku: new Sku((SkuName)Sku),
-                                                                                    replicaCount: ReplicaCount,
-                                                                                    partitionCount: PartitionCount,
-                                                                                    hostingMode: (HostingMode)HostingMode);
+                authOptions = new PSAuthOptions { ApiKeyOnly = new PSObject() };
             }
+            else if (AuthOption == PSAuthOptionName.AadOrApiKey)
+            {
+                authOptions = new PSAuthOptions { AadOrApiKey = new PsAadOrApiKeyAuthOption() };
+                if (AadAuthFailureMode.HasValue)
+                {
+                    authOptions.AadOrApiKey.AadAuthFailureMode = AadAuthFailureMode;
+                }
+            }
+
+            string semanticSearchMode = null;
+            if (SemanticSearchMode.HasValue)
+            {
+                semanticSearchMode = SemanticSearchMode.ToString().ToLower();
+            }
+
+            Azure.Management.Search.Models.SearchService searchService =
+                new Azure.Management.Search.Models.SearchService(
+                    name: Name,
+                    location: Location,
+                    sku: new Sku((SkuName)Sku),
+                    replicaCount: ReplicaCount,
+                    partitionCount: PartitionCount,
+                    hostingMode: (HostingMode?)HostingMode,
+                    publicNetworkAccess: (PublicNetworkAccess?)PublicNetworkAccess,
+                    identity: (Identity)identity,
+                    networkRuleSet: (NetworkRuleSet)networkRuleSet,
+                    disableLocalAuth: DisableLocalAuth,
+                    authOptions: (DataPlaneAuthOptions)authOptions,
+                    semanticSearch: semanticSearchMode);
 
             if (ShouldProcess(Name, Resources.CreateSearchService))
             {

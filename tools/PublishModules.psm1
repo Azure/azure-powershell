@@ -107,6 +107,7 @@ function Get-RollupModules {
             if ($IsNetCore) {
                 # For .NetCore publish AzureRM.Netcore
                 $targets += "$PSScriptRoot\Az"
+                $targets += "$PSScriptRoot\AzPreview"
             } else {
                 $targets += "$PSScriptRoot\AzureRM"
             }
@@ -266,15 +267,16 @@ function Get-AllModules {
         [ValidateNotNullOrEmpty()]
         [String]$Scope,
 
+        [String]$TargetBuild,
+
         [switch]$PublishLocal,
 
         [switch]$IsNetCore
     )
     Write-Host "Getting Azure client modules"
     $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
-    Write-Host " "
-    
-    if($clientModules.Length -le 2) {
+    Write-Host  "$clientModules"
+    if($clientModules.Count -le 2 -and  $TargetBuild -eq "true") {
         return @{
             ClientModules = $clientModules
         }
@@ -282,11 +284,11 @@ function Get-AllModules {
 
     Write-Host "Getting admin modules"
     $adminModules = Get-AdminModules -BuildConfig $BuildConfig -Scope $Scope
-    Write-Host " "
+    Write-Host "$adminModules"
 
     Write-Host "Getting rollup modules"
     $rollupModules = Get-RollupModules -BuildConfig $BuildConfig -Scope $Scope -IsNetCore:$isNetCore
-    Write-Host " "
+    Write-Host "$rollupModules"
 
     return @{
         ClientModules = $clientModules;
@@ -308,22 +310,53 @@ function Get-AllModules {
 .PARAMETER Path
 Path to the psd1 file.
 
+.PARAMETER KeepRequiredModules
+Switch to keep RequiredModules.
+
 #>
 function Remove-ModuleDependencies {
     [CmdletBinding()]
     param(
-        [string]$Path
+        [string]$Path,
+
+        [Parameter(Mandatory=$false)]
+        [switch]$KeepRequiredModules
     )
 
     PROCESS {
-        $regex = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
-        $content = (Get-Content -Path $Path) -join "`r`n"
-        $text = $regex.Replace($content, "RequiredModules = @()")
-        Out-FileNoBom -File $Path -Text $text
+        if (-not $KeepRequiredModules.IsPresent){
+            $regexRequiredModules = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
+            $regexModuleList = New-Object System.Text.RegularExpressions.Regex "# ModuleList = @\(\)"
+            $content = (Get-Content -Path $Path) -join "`r`n"
+            $requiredModulesMatch = $regexRequiredModules.Match($content)
+            if ($requiredModulesMatch.Success) {
+                $requiredModulesContent = $requiredModulesMatch.Value
+            } else {
+                $requiredModulesContent = "RequiredModules = @()"
+            }
+            $content = $regexRequiredModules.Replace($content, "RequiredModules = @()")
+            $text = $regexModuleList.Replace($content,  ($requiredModulesContent -replace "RequiredModules", "ModuleList"))
+            Out-FileNoBom -File $Path -Text $text
+        }
 
         $regex = New-Object System.Text.RegularExpressions.Regex "NestedModules\s*=\s*@\([^\)]+\)"
         $content = (Get-Content -Path $Path) -join "`r`n"
-        $text = $regex.Replace($content, "NestedModules = @()")
+
+        $file = Get-Item $Path
+        Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
+        $ReplacedNestedModules = ""
+        foreach ($nestedModule in $ModuleMetadata.NestedModules)
+        {
+            if('.dll' -ne [System.IO.Path]::GetExtension($nestedModule)) 
+            {
+                $ReplacedNestedModules += "'$nestedModule', ";
+            }
+        }
+        if("" -ne $ReplacedNestedModules){
+            $ReplacedNestedModules = $ReplacedNestedModules.Substring(0, $ReplacedNestedModules.Length - 2)
+        }
+
+        $text = $regex.Replace($content, "NestedModules = @($ReplacedNestedModules)")
         Out-FileNoBom -File $Path -Text $text
     }
 }
@@ -440,18 +473,35 @@ function Save-PackageLocally {
     $ModuleName = $module['ModuleName']
     $RequiredVersion = $module['RequiredVersion']
 
+
     # Only check for the modules that specifies = required exact dependency version
     if ($RequiredVersion -ne $null) {
         Write-Output "Checking for required module $ModuleName, $RequiredVersion"
         if (Find-Module -Name $ModuleName -RequiredVersion $RequiredVersion -Repository $TempRepo -ErrorAction SilentlyContinue) {
             Write-Output "Required dependency $ModuleName, $RequiredVersion found in the repo $TempRepo"
         } else {
+            if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+                $PSRepositoryUrl = $Env:DEFAULT_PS_REPOSITORY_URL
+                $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+                $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+            }
+            else {
+                $PSRepositoryUrl = "https://www.powershellgallery.com/api/v2"
+            }
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
-            Write-Output "Downloading the package from PsGallery to the path $TempRepoPath"
-            # We try to download the package from the PsGallery as we are likely intending to use the existing version of the module.
-            # If the module not found in psgallery, the following commnad would fail and hence publish to local repo process would fail as well
-            Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 | Out-Null
-            Write-Output "Downloaded the package sucessfully"
+            Write-Output "Downloading the package from $PSRepositoryUrl to the path $TempRepoPath"
+            # We try to download the package from the PSRepositoryUrl as we are likely intending to use the existing version of the module.
+            # If the module not found in PSRepositoryUrl, the following command would fail and hence publish to local repo process would fail as well
+            if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg -TrustRepository -Verbose
+            } else {
+                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg -TrustRepository -Verbose
+            }
+            $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
+            $ModulePaths = $env:PSModulePath -split ';'
+            $DestinationModulePath = [System.IO.Path]::Combine($ModulePaths[0], $ModuleName, $RequiredVersion)
+            Expand-Archive -Path $NupkgFilePath -DestinationPath $DestinationModulePath -Force
+            Write-Output "Downloaded the package successfully"
         }
     }
 }
@@ -546,13 +596,36 @@ function Add-AllModules {
     foreach ($module in $Keys) {
         $modulePath = $Modules[$module]
         Write-Output "Adding $module modules to local repo"
-
         # Save missing dependencies locally from PS gallery.
         Save-PackagesFromPsGallery -TempRepo $TempRepo -TempRepoPath $TempRepoPath -ModulePaths $modulePath
 
         # Add the modules to the local repository
         Add-Modules -TempRepo $TempRepo -TempRepoPath $TempRepoPath -ModulePath $modulePath -NugetExe $NugetExe
         Write-Output " "
+    }
+    Write-Output "Removing lower version Az.Accounts packages"
+    $packages = Get-ChildItem -Path "./artifacts" -Filter "Az.Accounts.*.nupkg"
+    $latestVersion = [version]"0.0.0"
+    $latestPackage = $null
+    
+    foreach ($package in $packages) {
+        $fileName = $package.Name
+        $versionString = $fileName.Replace('Az.Accounts.', '').Replace('.nupkg', '')
+        if ($versionString -match 'preview') {
+            return 
+        }
+        $version = [version]$versionString
+        
+        if ($version -gt $latestVersion) {
+            $latestVersion = $version
+            $latestPackage = $package
+        }
+    }
+    
+    foreach ($package in $packages) {
+        if ($package.FullName -ne $latestPackage.FullName) {
+            Remove-Item $package.FullName -Force
+        }
     }
     Write-Output " "
 }
@@ -684,7 +757,7 @@ function Add-Module {
             }
 
             Write-Output "Removing module manifest dependencies for $unzippedManifest"
-            Remove-ModuleDependencies -Path (Join-Path $TempRepoPath $unzippedManifest)
+            Remove-ModuleDependencies -Path (Join-Path $TempRepoPath $unzippedManifest -Resolve)
 
             Remove-Item -Path $zipPath -Force
 

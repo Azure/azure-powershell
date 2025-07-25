@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Get-AzSqlDatabaseSensitivityRecommendation
+online version: https://learn.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseSensitivityRecommendation
 schema: 2.0.0
 ---
 
@@ -32,8 +32,10 @@ The Get-AzSqlDatabaseSensitivityRecommendation cmdlet returns the recommended in
 
 ### Example 1: Get recommended information types and sensitivity labels of an Azure SQL database.
 ```powershell
-PS C:\> Get-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
+Get-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -ServerName server -DatabaseName database
+```
 
+```output
 ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
@@ -60,8 +62,10 @@ SensitivityLabels : {{
 
 ### Example 2: Get recommended information types and sensitivity labels of an Azure SQL database using Piping.
 ```powershell
-PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityRecommendation
+Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Get-AzSqlDatabaseSensitivityRecommendation
+```
 
+```output
 ResourceGroupName : resourceGroup
 ServerName        : server
 DatabaseName      : database
@@ -193,4 +197,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Learn more about Azure SQL Database data discovery and classification](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-data-discovery-and-classification)
+[Learn more about Azure SQL Database data discovery and classification](https://learn.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)

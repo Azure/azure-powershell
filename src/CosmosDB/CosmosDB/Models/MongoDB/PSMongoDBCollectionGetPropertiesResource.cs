@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             AnalyticalStorageTtl = mongoDBCollectionGetPropertiesResource.AnalyticalStorageTtl;
-            _rid = mongoDBCollectionGetPropertiesResource._rid;
-            _ts = mongoDBCollectionGetPropertiesResource._ts;
-            _etag = mongoDBCollectionGetPropertiesResource._etag;
+            _rid = mongoDBCollectionGetPropertiesResource.Rid;
+            _ts = mongoDBCollectionGetPropertiesResource.Ts;
+            _etag = mongoDBCollectionGetPropertiesResource.Etag;
         }
 
         //

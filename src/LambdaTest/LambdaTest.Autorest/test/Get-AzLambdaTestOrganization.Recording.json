@@ -1,0 +1,47 @@
+{
+  "Get-AzLambdaTestOrganization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg-lambdatest/providers/LambdaTest.HyperExecute/organizations/test1?api-version=2024-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg-lambdatest/providers/LambdaTest.HyperExecute/organizations/test1?api-version=2024-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "e28e3428-f99d-4cb2-bd49-2577e773b54e" ],
+        "CommandName": [ "Get-AzLambdaTestOrganization" ],
+        "FullCommandName": [ "Get-AzLambdaTestOrganization_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.2", "Az.LambdaTest/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0f000bd4-0000-0300-0000-686bc83f0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "276918f3-fe48-491c-96f0-b4b44b340803" ],
+        "x-ms-correlation-request-id": [ "e68240e0-8fbd-4c36-8770-ed1e4c265ec8" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20250709T080118Z:e68240e0-8fbd-4c36-8770-ed1e4c265ec8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F973F18F991A44DD94E322E549ABA6E0 Ref B: PNQ231110908036 Ref C: 2025-07-09T08:01:18Z" ],
+        "Date": [ "Wed, 09 Jul 2025 08:01:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1047" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/yashika-rg-lambdatest/providers/lambdatest.hyperexecute/organizations/test1\",\"name\":\"test1\",\"type\":\"lambdatest.hyperexecute/organizations\",\"location\":\"East US\",\"tags\":{},\"systemData\":{\"createdBy\":\"yashikajain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-07T13:11:23.6156436Z\",\"lastModifiedBy\":\"yashikajain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-07T13:11:23.6156436Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"d23b5b69-c2b9-4a87-d4b3-40f369b35fd6\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"lambdatestinc1584019832435\",\"offerId\":\"lambdatest_liftr_testing\",\"planId\":\"hyperexecute_multios_azurenative\",\"planName\":\"HyperExecute Public Cloud (MultiOS)\",\"termUnit\":\"P1Y\",\"termId\":\"o73usof6rkyy\"}},\"provisioningState\":\"Succeeded\",\"user\":{\"firstName\":\"\",\"lastName\":\"\",\"emailAddress\":\"yashikajain@microsoft.com\",\"upn\":\"yashikajain@microsoft.com\",\"phoneNumber\":\"\"},\"partnerProperties\":{\"licensesSubscribed\":1}}}",
+      "isContentBase64": false
+    }
+  }
+}

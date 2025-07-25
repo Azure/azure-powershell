@@ -1,0 +1,85 @@
+# Variable 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
+schedules:
+- cron: "50 15 * * *"
+  displayName: 11:50 PM (UTC + 8:00) China Daily Run
+  branches:
+    include:
+    - main
+
+# The 'resources' and 'uses' below are used to resolve the error 'Repository associated with wiki ID <WikiId> does not exist or you do not have permissions for the operation you are attempting.'
+resources:
+  repositories:
+  - repository: ServiceContactList
+    type: git
+    name: internal.wiki
+
+jobs:
+- job: UpdateYaml
+  displayName: Update resourceManagement.yml
+  pool: pool-windows-2019
+  uses:
+    repositories:
+    - ServiceContactList
+
+  steps:
+  - task: UseDotNet@2
+    displayName: Install .NET SDK
+    inputs:
+      packageType: sdk
+      version: 8.x
+
+  - pwsh: |
+      dotnet --version
+      dotnet new tool-manifest --force
+      dotnet tool install powershell --version 7.4.*
+    displayName: Install PowerShell 7.4.x
+
+  - pwsh: |
+      if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
+        Install-PackageProvider -Name NuGet -Force
+      }
+      Install-Package -Name YamlDotNet -RequiredVersion $(YamlDotNetVersion) -ProviderName NuGet -Force -ErrorAction Stop
+    displayName: Install YamlDotNet NuGet Package
+    retryCountOnTaskFailure: 5
+
+  - pwsh: |
+      dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File ./tools/Github/ParseServiceContactsList.ps1 -AccessToken $env:SYSTEM_ACCESSTOKEN
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    displayName: Update resourceManagement.yml file locally
+    condition: succeeded()
+
+  - pwsh: |
+      $hasChanges = git diff --name-only .github/policies
+      if ($null -eq $hasChanges) {
+          Write-Host "The wiki has no changes."
+          Write-Host "##vso[task.setvariable variable=ChangesDetected]false"
+      } else {
+          Write-Host "There are changes in the repository."
+          Write-Host "##vso[task.setvariable variable=ChangesDetected]true"
+      }
+    displayName: Check if Wiki table has any changes
+
+  - template: util/get-github-pat-steps.yml
+
+  - pwsh: |
+      git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+      git config --global user.name "azure-powershell-bot"
+      git checkout -b "internal/sync-resourcemanagement-yml"
+
+      git add .github/policies
+      git commit -m "Sync resourceManagement.yml"
+
+      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
+      git push origin internal/sync-resourcemanagement-yml --force
+    displayName: Git commit and push
+    condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
+
+  - pwsh: |
+      $Title = "Sync resourceManagement.yml according To ADO Wiki Page - Service Contact List"
+      $HeadBranch = "internal/sync-resourcemanagement-yml"
+      $BaseBranch = "main"
+      $Description = "This PR synchronizes the task: 'Triage issues to the service team' part of resourceManagement.yml from table of Service Contact List in ADO wiki page"
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
+    displayName: Create PR to main branch
+    condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))

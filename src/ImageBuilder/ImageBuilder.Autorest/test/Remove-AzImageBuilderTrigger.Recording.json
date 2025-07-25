@@ -1,0 +1,44 @@
+{
+  "Remove-AzImageBuilderTrigger+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-k08ybw/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-sfq64n/triggers/azps-trigger-j68s2g?api-version=2022-07-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-k08ybw/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-sfq64n/triggers/azps-trigger-j68s2g?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "9602b978-5e3c-47b3-8dee-2d9f6355f62b" ],
+        "CommandName": [ "Remove-AzImageBuilderTrigger" ],
+        "FullCommandName": [ "Remove-AzImageBuilderTrigger_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.4.7", "Az.ImageBuilder/0.4.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=73b5eafe-f507-4fcd-8a90-99327064a949/southindia/da138e4b-ffec-49fd-9a45-b2999e512758" ],
+        "x-ms-correlation-request-id": [ "57a4a961-21af-43e2-b83b-d50d8f8bb595" ],
+        "x-ms-request-id": [ "8c63d838-9838-4721-a5a0-a671468ad106" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250430T054555Z:57a4a961-21af-43e2-b83b-d50d8f8bb595" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DD49D0A26977424B94769E49CDAA656A Ref B: MAA201060515009 Ref C: 2025-04-30T05:45:53Z" ],
+        "Date": [ "Wed, 30 Apr 2025 05:45:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

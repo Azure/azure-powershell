@@ -1,117 +1,89 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azpeering
+online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeering
 schema: 2.0.0
 ---
 
 # Get-AzPeering
 
 ## SYNOPSIS
-Gets the Peering Resources for a subscription
+Gets an existing peering with the specified name under the given subscription and resource group.
 
 ## SYNTAX
 
-### BySubscription (Default)
+### List1 (Default)
 ```
-Get-AzPeering [-Kind <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceGroupAndName
-```
-Get-AzPeering [-ResourceGroupName] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeering [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ByResourceId
+### Get
 ```
-Get-AzPeering [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeering -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzPeering -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPeering -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the Peerings from a subscription, resource group, or by name.
+Gets an existing peering with the specified name under the given subscription and resource group.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List all peerings
 ```powershell
-PS C:> Get-AzPeering
-
-Name              : myExchangePeering1
-Sku.Name          : Basic_Exchange_Free
-Kind              : Exchange
-Connections       : {99999}
-PeerAsn.Id        : /subscriptions/providers/Microsoft.Peering/peerAsns/Contoso
-PeeringLocation   : Seattle
-ProvisioningState : Succeeded
-Location          : centralus
-Id                : /subscriptions/resourceGroups/test/providers/Microsoft.Peering/peerings/myExchangePeering1
-Type              : Microsoft.Peering/peerings
-Tags              : {}
-
-Name                 : ContosoSeattlePeering
-Sku                  : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringSku
-Kind                 : Direct
-Connections          : {99999}
-UseForPeeringService : False
-PeerAsn              : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSSubResource
-PeeringLocation      : Seattle
-ProvisioningState    : Succeeded
-Location             : centralus
-Id                   : /subscriptions/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/ContosoSeattlePeering
-Type                 : Microsoft.Peering/peerings
-Tags                 : {}
+Get-AzPeering
 ```
 
-Gets all the resources for the subscription.
-
-### Example 2
-```powershell
-PS C:> Get-AzPeering -ResourceGroupName test -Name myExchangePeering1
-
-Name              : myExchangePeering1
-Sku.Name          : Basic_Exchange_Free
-Kind              : Exchange
-Connections       : {99999}
-PeerAsn.Id        : /subscriptions/providers/Microsoft.Peering/peerAsns/Contoso
-PeeringLocation   : Seattle
-ProvisioningState : Succeeded
-Location          : centralus
-Id                : /subscriptions/resourceGroups/test/providers/Microsoft.Peering/peerings/myExchangePeering1
-Type              : Microsoft.Peering/peerings
-Tags              : {}
+```output
+Name           SkuName             Kind     PeeringLocation ProvisioningState Location
+----           -------             ----     --------------- ----------------- --------
+DemoComp1      Premium_Direct_Free Direct   Dallas          Succeeded         South Central US
+DemoPeering    Premium_Direct_Free Direct   Dallas          Succeeded         South Central US
+TestEdgeZone   Premium_Direct_Free Direct   Atlanta         Succeeded         East US 2
+MapsIxRs       Premium_Direct_Free Direct   Ashburn         Succeeded         East US
+DemoMapsConfig Premium_Direct_Free Direct   Seattle         Succeeded         West US 2
+testexchange   Basic_Exchange_Free Exchange Amsterdam       Succeeded         West Europe
+TestPeer1      Basic_Direct_Free   Direct   Amsterdam       Succeeded         West Europe
+test1          Basic_Direct_Free   Direct   Athens          Succeeded         France Central
 ```
 
-Gets the Exchange peering named `myExchangePeering1`
+List all peerings in subscription
 
-### Example 2
+### Example 2: Get specific peering by name and resource group
 ```powershell
-PS C:> Get-AzPeering -ResourceId $resourceId
-
-Name              : myExchangePeering1
-Sku.Name          : Basic_Exchange_Free
-Kind              : Exchange
-Connections       : {99999}
-PeerAsn.Id        : /subscriptions/providers/Microsoft.Peering/peerAsns/Contoso
-PeeringLocation   : Seattle
-ProvisioningState : Succeeded
-Location          : centralus
-Id                : /subscriptions/resourceGroups/test/providers/Microsoft.Peering/peerings/myExchangePeering1
-Type              : Microsoft.Peering/peerings
-Tags              : {}
+Get-AzPeering -Name DemoPeering -ResourceGroupName DemoRG
 ```
 
-Gets the Exchange peering named `myExchangePeering1` based on the resource id.
+```output
+Name        SkuName             Kind   PeeringLocation ProvisioningState Location
+----        -------             ----   --------------- ----------------- --------
+DemoPeering Premium_Direct_Free Direct Dallas          Succeeded         South Central US
+```
+
+Get a specific peering by resource group and name
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -120,30 +92,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-Shows all Peering resource by Kind.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: BySubscription
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The unique name of the PSPeering.
+The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName
-Aliases:
+Parameter Sets: Get
+Aliases: PeeringName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,32 +123,32 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id string name.
+### -SubscriptionId
+The Azure subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceId
+Type: System.String[]
+Parameter Sets: List1, Get, List
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -185,11 +157,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
 
 ## NOTES
 

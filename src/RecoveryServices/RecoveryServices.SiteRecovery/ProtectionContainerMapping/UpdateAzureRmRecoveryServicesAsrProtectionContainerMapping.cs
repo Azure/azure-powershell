@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         #region Parameters
         /// <summary>
-        ///     Gets or sets protection container mapping object corresponding to the protection container to be updatd.
+        ///     Gets or sets protection container mapping object corresponding to the protection container to be updated.
         /// </summary>
         [Parameter(ParameterSetName = AzureToAzureEnableAutoUpdate, Mandatory = true, ValueFromPipeline = true,HelpMessage = "Object for protection container mapping.")]
         [Parameter(ParameterSetName = AzureToAzureDisableAutoUpdate, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object for protection container mapping.")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = AzureToAzureEnableAutoUpdate,
             Mandatory = true,
-            HelpMessage = "Specifies the automation accountId used for auto udpate.")]
+            HelpMessage = "Specifies the automation accountId used for auto update.")]
         public string AutomationAccountId { get; set; }
 
         #endregion Parameters

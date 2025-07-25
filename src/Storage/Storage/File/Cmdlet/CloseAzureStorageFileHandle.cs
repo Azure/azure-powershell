@@ -14,13 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using System;
     using System.Globalization;
     using System.Management.Automation;
-    using System.Net;
 
     [Cmdlet("Close", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileHandle", SupportsShouldProcess = true, DefaultParameterSetName = ShareNameCloseAllParameterSetName)]
     [OutputType(typeof(int))]
@@ -81,33 +82,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public string ShareName { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 0, 
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareCloseAllParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
+            HelpMessage = "ShareClient object indicated the share which contains the files/directories to closed handle.")]
         [Parameter(
-            Position = 0,
+            Position = 0, 
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareCloseSingleParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
+            HelpMessage = "ShareClient object indicated the share which contains the files/directories to closed handle.")]
         [ValidateNotNull]
-        [Alias ("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
+        public ShareClient ShareClient { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 0, 
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DirectoryCloseAllParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the base folder which contains the files/directories to closed handle.")]
+            HelpMessage = "ShareDirectoryClient object indicated the base folder which contains the files/directories to closed handle.")]
         [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
+        public ShareDirectoryClient ShareDirectoryClient { get; set; }
 
         [Parameter(
             Position = 0,
@@ -115,10 +114,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = FileCloseAllParameterSetName,
-            HelpMessage = "CloudFile object indicated the file to close handle.")]
+            HelpMessage = "ShareFileClient object indicated the file to close handle.")]
         [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
+        public ShareFileClient ShareFileClient { get; set; }
 
         [Parameter(
             Position = 1,
@@ -153,17 +151,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = FileCloseAllParameterSetName, HelpMessage = "Force close all File handles.")]
         public SwitchParameter CloseAll { get; set; }
 
-        [Parameter(
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ShareNameCloseSingleParameterSetName,
-            HelpMessage = "Azure Storage Context Object")]
-        [Parameter(
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ShareNameCloseAllParameterSetName,
-            HelpMessage = "Azure Storage Context Object")]
-        public override IStorageContext Context { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix directory and file names.", ParameterSetName = ShareNameCloseAllParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix directory and file names.", ParameterSetName = ShareNameCloseSingleParameterSetName)]
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return the count of closed file handles.")]
         public SwitchParameter PassThru { get; set; }
@@ -175,24 +165,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             if (this.ShouldProcess(string.Format("Close File Handles for File or FileDirectory on Path: {0}", this.Path != null? this.Path : (this.FileHandle != null? this.FileHandle.Path: null) ), "This operation will force the provided file handle(s) closed, which may cause data loss or corruption for active applications/users.", null))
             {
-                CloudFileDirectory baseDirectory = null;
+                ShareDirectoryClient baseDirClient = null;
+                ShareFileClient targetFile = null;
                 switch (this.ParameterSetName)
                 {
                     case DirectoryCloseAllParameterSetName:
-                        baseDirectory = this.Directory;
+                        baseDirClient = this.ShareDirectoryClient;
                         break;
 
                     case ShareNameCloseSingleParameterSetName:
                     case ShareNameCloseAllParameterSetName:
-                        baseDirectory = this.BuildFileShareObjectFromName(this.ShareName).GetRootDirectoryReference();
+                        NamingUtil.ValidateShareName(this.ShareName, false);
+                        ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                        baseDirClient = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient();
                         break;
 
                     case ShareCloseSingleParameterSetName:
                     case ShareCloseAllParameterSetName:
-                        baseDirectory = this.Share.GetRootDirectoryReference();
+                        baseDirClient = this.ShareClient.GetRootDirectoryClient();
                         break;
+
                     case FileCloseAllParameterSetName:
-                        // Don't need to set baseDirectory when input is a CloudFile
+                        targetFile = this.ShareFileClient;
                         break;
 
                     default:
@@ -206,19 +200,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                 // When not input path/File, the list handle target must be a Dir
                 bool foundAFolder = true;
-                CloudFileDirectory targetDir = baseDirectory;
-                CloudFile targetFile = null;
-                if (this.File != null)
+                ShareDirectoryClient targetDir = baseDirClient;
+                if (targetFile != null)
                 {
-                    targetFile = this.File;
                     foundAFolder = false;
                 }
                 else
                 {
                     if (!string.IsNullOrEmpty(this.Path))
                     {
-                        string[] subfolders = NamingUtil.ValidatePath(this.Path);
-                        targetDir = baseDirectory.GetDirectoryReferenceByPath(subfolders);
+                        targetDir = baseDirClient.GetSubdirectoryClient(this.Path);
 
                         // Don't need check the path target to File or FileDir since: 
                         // 1. check File/FileDir exist will fail on File/FileDir with DeletePending status
@@ -233,48 +224,50 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 }
 
                 //Close handle
-                CloseFileHandleResultSegment closeResult = null;
-                FileContinuationToken continuationToken = null;
+                CloseHandlesResult closeResult = null;
                 int numHandlesClosed = 0;
-                do
+                int numHandlesFailed = 0;
+                if (foundAFolder)
                 {
-                    if (foundAFolder)
+                    if (FileHandle != null)
                     {
-                        if (FileHandle != null)
+                        // close single handle on fileDir
+                        if (this.FileHandle.HandleId == null)
                         {
-                            // close single handle on fileDir
-                            if (this.FileHandle.HandleId == null)
-                            {
-                                throw new System.ArgumentException(string.Format("The HandleId of the FileHandle on path {0} should not be null.", this.FileHandle.Path), "FileHandle");
-                            }
-                            closeResult = targetDir.CloseHandleSegmented(this.FileHandle.HandleId.ToString(), continuationToken, Recursive, null, this.RequestOptions, this.OperationContext);
+                            throw new System.ArgumentException(string.Format("The HandleId of the FileHandle on path {0} should not be null.", this.FileHandle.Path), "FileHandle");
                         }
-                        else
-                        {
-                            // close all handle on fileDir
-                            closeResult = targetDir.CloseAllHandlesSegmented(continuationToken, Recursive, null, this.RequestOptions, this.OperationContext);
-                        }
+                        closeResult = targetDir.ForceCloseHandle(this.FileHandle.HandleId.ToString(), this.CmdletCancellationToken).Value;
                     }
                     else
                     {
-                        if (FileHandle != null)
-                        {
-                            // close single handle on file
-                            if (this.FileHandle.HandleId == null)
-                            {
-                                throw new System.ArgumentException(string.Format("The HandleId of the FileHandle on path {0} should not be null.", this.FileHandle.Path), "FileHandle");
-                            }
-                            closeResult = targetFile.CloseHandleSegmented(this.FileHandle.HandleId.ToString(), continuationToken, null, this.RequestOptions, this.OperationContext);
-                        }
-                        else
-                        {
-                            // close all handle on file
-                            closeResult = targetFile.CloseAllHandlesSegmented(continuationToken, null, this.RequestOptions, this.OperationContext);
-                        }
+                        // close all handle on fileDir
+                        closeResult = targetDir.ForceCloseAllHandles(Recursive, this.CmdletCancellationToken);
                     }
-                    numHandlesClosed += closeResult.NumHandlesClosed;
-                    continuationToken = closeResult.ContinuationToken;
-                } while (continuationToken != null && continuationToken.NextMarker != null);
+                }
+                else
+                {
+                    if (FileHandle != null)
+                    {
+                        // close single handle on file
+                        if (this.FileHandle.HandleId == null)
+                        {
+                            throw new System.ArgumentException(string.Format("The HandleId of the FileHandle on path {0} should not be null.", this.FileHandle.Path), "FileHandle");
+                        }
+                        closeResult = targetFile.ForceCloseHandle(this.FileHandle.HandleId.ToString(), this.CmdletCancellationToken).Value;
+                    }
+                    else
+                    {
+                        // close all handle on file
+                        closeResult = targetFile.ForceCloseAllHandles(this.CmdletCancellationToken);
+                    }
+                }
+                numHandlesClosed += closeResult.ClosedHandlesCount;
+                numHandlesFailed += closeResult.FailedHandlesCount;
+
+                if (numHandlesFailed != 0)
+                {
+                    throw new InvalidOperationException(String.Format("Failed to close file handlers count : {0}.", numHandlesFailed));
+                }
 
                 if (PassThru)
                 {

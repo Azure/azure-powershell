@@ -1,0 +1,225 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/513cee7a-0615-47f3-acf0-a1b8d501867c/resourcegroups/ps1109?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTEzY2VlN2EtMDYxNS00N2YzLWFjZjAtYTFiOGQ1MDE4NjdjL3Jlc291cmNlZ3JvdXBzL3BzMTEwOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e850026d-0e36-4dc1-b47c-4f97b664a163"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "28"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"westus\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "ff72ddcb-9f3e-4265-bc3b-e35e167ca102"
+        ],
+        "x-ms-correlation-request-id": [
+          "ff72ddcb-9f3e-4265-bc3b-e35e167ca102"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20250227T135738Z:ff72ddcb-9f3e-4265-bc3b-e35e167ca102"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 43515AEF94954859AE563B6B72A6EA80 Ref B: MAA201060514019 Ref C: 2025-02-27T13:57:34Z"
+        ],
+        "Date": [
+          "Thu, 27 Feb 2025 13:57:37 GMT"
+        ],
+        "Content-Length": [
+          "215"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/513cee7a-0615-47f3-acf0-a1b8d501867c/resourceGroups/ps1109\",\r\n  \"name\": \"ps1109\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"Created\": \"2025-02-27T13:57:34.7892796Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/513cee7a-0615-47f3-acf0-a1b8d501867c/resourceGroups/ps1109/providers/Microsoft.Network/virtualNetworks/MyNet?api-version=2024-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTEzY2VlN2EtMDYxNS00N2YzLWFjZjAtYTFiOGQ1MDE4NjdjL3Jlc291cmNlR3JvdXBzL3BzMTEwOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL015TmV0P2FwaS12ZXJzaW9uPTIwMjQtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a8ed8a8-918c-4176-a877-f17ddfd1a29b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "33450621-898a-4270-857b-fdefb778cf65"
+        ],
+        "x-ms-correlation-request-id": [
+          "33450621-898a-4270-857b-fdefb778cf65"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20250227T135739Z:33450621-898a-4270-857b-fdefb778cf65"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 8CF1E3726A2F4465B903C30799C27237 Ref B: MAA201060514029 Ref C: 2025-02-27T13:57:38Z"
+        ],
+        "Date": [
+          "Thu, 27 Feb 2025 13:57:38 GMT"
+        ],
+        "Content-Length": [
+          "217"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/virtualNetworks/MyNet' under resource group 'ps1109' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/513cee7a-0615-47f3-acf0-a1b8d501867c/resourceGroups/ps1109/providers/Microsoft.Network/virtualNetworks/MyNet?api-version=2024-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTEzY2VlN2EtMDYxNS00N2YzLWFjZjAtYTFiOGQ1MDE4NjdjL3Jlc291cmNlR3JvdXBzL3BzMTEwOS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL015TmV0P2FwaS12ZXJzaW9uPTIwMjQtMDUtMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a8ed8a8-918c-4176-a877-f17ddfd1a29b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "952"
+        ]
+      },
+      "RequestBody": "{\r\n  \"extendedLocation\": {\r\n    \"name\": \"microsoftlosangeles1\",\r\n    \"type\": \"EdgeZone\"\r\n  },\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ],\r\n      \"ipamPoolPrefixAllocations\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"MySubnet\",\r\n        \"properties\": {\r\n          \"addressPrefix\": \"10.0.0.0/24\",\r\n          \"addressPrefixes\": [],\r\n          \"serviceEndpoints\": [],\r\n          \"serviceEndpointPolicies\": [],\r\n          \"ipAllocations\": [],\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Disabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\",\r\n          \"applicationGatewayIPConfigurations\": [],\r\n          \"defaultOutboundAccess\": false,\r\n          \"ipamPoolPrefixAllocations\": []\r\n        }\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"ipAllocations\": []\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "0f026411-f063-449b-b6cf-e24fbfce153a"
+        ],
+        "x-ms-correlation-request-id": [
+          "0f026411-f063-449b-b6cf-e24fbfce153a"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20250227T135740Z:0f026411-f063-449b-b6cf-e24fbfce153a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 36B95BABE7474279972F005E202CFF6A Ref B: MAA201060514029 Ref C: 2025-02-27T13:57:39Z"
+        ],
+        "Date": [
+          "Thu, 27 Feb 2025 13:57:40 GMT"
+        ],
+        "Content-Length": [
+          "150"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"UnsupportedEdgeZone\",\r\n    \"message\": \"Edge zone 'microsoftlosangeles1' not found. The available edge zones in location 'westus' are ''.\"\r\n  }\r\n}",
+      "StatusCode": 400
+    }
+  ],
+  "Names": {
+    "Test-VirtualNetworkInEdgeZone": [
+      "ps1109"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "513cee7a-0615-47f3-acf0-a1b8d501867c"
+  }
+}

@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public object Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets resource etag
+        /// </summary>
+        /// <remarks>
+        /// A unique read-only string that changes whenever the resource is updated.
+        /// </remarks>
+        public string Etag { get; set; }
+
+        /// <summary>
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }
@@ -60,5 +68,36 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets active directory
         /// </summary>
         public List<PSNetAppFilesActiveDirectory> ActiveDirectories { get; set; }
+
+        public PSNetAppFilesAccountEncryption Encryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the resource.
+        /// </summary>
+        public PSManagedServiceIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets System Data
+        /// </summary>
+        public PSSystemData SystemData { get; set; }
+
+        /// <summary>
+        /// Gets or sets DisableShowmount 
+        /// Shows the status of disableShowmount
+        /// for all volumes under the subscription, null equals false
+        /// </summary>
+        public bool? DisableShowmount {get; set;}
+
+        /// <summary>
+        /// Gets or sets NfsV4IdDomain 
+        /// Shows the status of NfsV4IdDomain
+        /// </summary>
+        public string NfsV4IdDomain  { get; set; }
+
+        /// <summary>
+        /// Gets or sets MultiAdStatus 
+        /// Shows the status of MultiAdStatus
+        /// </summary>
+        public string MultiAdStatus { get; set; }
     }
 }

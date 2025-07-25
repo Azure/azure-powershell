@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -94,6 +94,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of trusted client CA certificate chains")]
+        public PSApplicationGatewayTrustedClientCertificate[] TrustedClientCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend IP config")]
         public PSApplicationGatewayFrontendIPConfiguration[] FrontendIPConfigurations { get; set; }
 
@@ -116,16 +122,34 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayBackendAddressPool[] BackendAddressPools { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of backend http settings")]
         public PSApplicationGatewayBackendHttpSettings[] BackendHttpSettingsCollection { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of backend settings")]
+        public PSApplicationGatewayBackendSettings[] BackendSettingsCollection { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of ssl profiles")]
+        public PSApplicationGatewaySslProfile[] SslProfiles { get; set; }
+
+        [Parameter(
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of http listener")]
         public PSApplicationGatewayHttpListener[] HttpListeners { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of listener")]
+        public PSApplicationGatewayListener[] Listeners { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -134,10 +158,16 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayUrlPathMap[] UrlPathMaps { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of request routing rule")]
         public PSApplicationGatewayRequestRoutingRule[] RequestRoutingRules { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of routing rule")]
+        public PSApplicationGatewayRoutingRule[] RoutingRules { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -185,6 +215,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = " Whether Request Buffering is enabled.")]
+        public bool? EnableRequestBuffering { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = " Whether Response Buffering is enabled.")]
+        public bool? EnableResponseBuffering { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = " Whether Force firewallPolicy association is enabled.")]
         public SwitchParameter ForceFirewallPolicyAssociation { get; set; }
         
@@ -199,7 +239,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
-        [CmdletParameterBreakingChange("UserAssignedIdentityId", ReplaceMentCmdletParameterName = "Identity")]
         [Parameter(
             ParameterSetName = "IdentityByUserAssignedIdentityId",
             Mandatory = false,
@@ -292,6 +331,11 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.TrustedRootCertificates =this.TrustedRootCertificate?.ToList();
             }
 
+            if (this.TrustedClientCertificates != null)
+            {
+                applicationGateway.TrustedClientCertificates = this.TrustedClientCertificates?.ToList();
+            }
+
             if (this.FrontendIPConfigurations != null)
             {
                 applicationGateway.FrontendIPConfigurations = this.FrontendIPConfigurations?.ToList();
@@ -317,9 +361,24 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.BackendHttpSettingsCollection = this.BackendHttpSettingsCollection?.ToList();
             }
 
+            if (this.BackendSettingsCollection != null)
+            {
+                applicationGateway.BackendSettingsCollection = this.BackendSettingsCollection?.ToList();
+            }
+
+            if (this.SslProfiles != null)
+            {
+                applicationGateway.SslProfiles = this.SslProfiles?.ToList();
+            }
+
             if (this.HttpListeners != null)
             {
                 applicationGateway.HttpListeners = this.HttpListeners?.ToList();
+            }
+
+            if (this.Listeners != null)
+            {
+                applicationGateway.Listeners = this.Listeners?.ToList();
             }
 
             if (this.UrlPathMaps != null)
@@ -330,6 +389,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.RequestRoutingRules != null)
             {
                 applicationGateway.RequestRoutingRules = this.RequestRoutingRules?.ToList();
+            }
+
+            if (this.RoutingRules != null)
+            {
+                applicationGateway.RoutingRules = this.RoutingRules?.ToList();
             }
 
             if (this.RewriteRuleSet != null)
@@ -371,6 +435,29 @@ namespace Microsoft.Azure.Commands.Network
             if (this.EnableFIPS.IsPresent)
             {
                 applicationGateway.EnableFips = true;
+            }
+
+            if (!string.Equals(applicationGateway.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(applicationGateway.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
+            {
+                applicationGateway.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+
+                if (this.EnableRequestBuffering.HasValue)
+                {
+                    applicationGateway.GlobalConfiguration.EnableRequestBuffering = this.EnableRequestBuffering.Value;
+                }
+                else
+                {
+                    applicationGateway.GlobalConfiguration.EnableRequestBuffering = true;
+                }
+
+                if (this.EnableResponseBuffering.HasValue)
+                {
+                    applicationGateway.GlobalConfiguration.EnableResponseBuffering = this.EnableResponseBuffering.Value;
+                }
+                else
+                {
+                    applicationGateway.GlobalConfiguration.EnableResponseBuffering = true;
+                }
             }
 
             if (this.ForceFirewallPolicyAssociation.IsPresent)

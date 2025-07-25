@@ -1,0 +1,334 @@
+{
+  "New-AzPurviewAccount+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01",
+      "Content": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"capacity\": 4,\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "143" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-account-status": [ "Creating" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "ec0d714c-b189-4cde-8a81-e831b4cde26b" ],
+        "x-ms-correlation-request-id": [ "ec0d714c-b189-4cde-8a81-e831b4cde26b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042026Z:ec0d714c-b189-4cde-8a81-e831b4cde26b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:20:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1226" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"307fb3e8-1cbf-47d5-b08f-9dd1c3dad885\"},\"friendlyName\":\"bez-test-pa3\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa3.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa3.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa3.guardian.purview.azure.com\"},\"provisioningState\":\"Creating\",\"privateEndpointConnections\":[],\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-lazwdkc\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3\",\"name\":\"bez-test-pa3\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"619403cc-a10d-47b6-bea6-41161f23ce30\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:20:21.1852284Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPurviewAccount+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "4f3eb9e2-6f45-427e-b7d5-13286e3be4f3" ],
+        "CommandName": [ "Az.Purview.internal\\New-AzPurviewAccount" ],
+        "FullCommandName": [ "New-AzPurviewAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
+        "x-ms-account-status": [ "Creating" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "a290c905-7193-4463-a5d3-6581636a14a5" ],
+        "x-ms-correlation-request-id": [ "a290c905-7193-4463-a5d3-6581636a14a5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042057Z:a290c905-7193-4463-a5d3-6581636a14a5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:20:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1518" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"307fb3e8-1cbf-47d5-b08f-9dd1c3dad885\"},\"friendlyName\":\"bez-test-pa3\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa3.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa3.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa3.guardian.purview.azure.com\"},\"provisioningState\":\"Creating\",\"privateEndpointConnections\":[],\"managedResources\":{\"resourceGroup\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc\",\"storageAccount\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.Storage/storageAccounts/scaneastusgeadqgt\"},\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-lazwdkc\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3\",\"name\":\"bez-test-pa3\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"619403cc-a10d-47b6-bea6-41161f23ce30\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:20:21.1852284Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPurviewAccount+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "4f3eb9e2-6f45-427e-b7d5-13286e3be4f3" ],
+        "CommandName": [ "Az.Purview.internal\\New-AzPurviewAccount" ],
+        "FullCommandName": [ "New-AzPurviewAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
+        "x-ms-account-status": [ "Creating" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "4b476d7d-7b8b-4fcd-b9c7-f18e33b19aaa" ],
+        "x-ms-correlation-request-id": [ "4b476d7d-7b8b-4fcd-b9c7-f18e33b19aaa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042127Z:4b476d7d-7b8b-4fcd-b9c7-f18e33b19aaa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:21:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1518" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"307fb3e8-1cbf-47d5-b08f-9dd1c3dad885\"},\"friendlyName\":\"bez-test-pa3\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa3.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa3.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa3.guardian.purview.azure.com\"},\"provisioningState\":\"Creating\",\"privateEndpointConnections\":[],\"managedResources\":{\"resourceGroup\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc\",\"storageAccount\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.Storage/storageAccounts/scaneastusgeadqgt\"},\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-lazwdkc\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3\",\"name\":\"bez-test-pa3\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"619403cc-a10d-47b6-bea6-41161f23ce30\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:20:21.1852284Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPurviewAccount+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "4f3eb9e2-6f45-427e-b7d5-13286e3be4f3" ],
+        "CommandName": [ "Az.Purview.internal\\New-AzPurviewAccount" ],
+        "FullCommandName": [ "New-AzPurviewAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11953" ],
+        "x-ms-account-status": [ "Creating" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "5b7a8162-ccd7-4efa-a23f-9f6b03efe447" ],
+        "x-ms-correlation-request-id": [ "5b7a8162-ccd7-4efa-a23f-9f6b03efe447" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042157Z:5b7a8162-ccd7-4efa-a23f-9f6b03efe447" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:21:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1518" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"307fb3e8-1cbf-47d5-b08f-9dd1c3dad885\"},\"friendlyName\":\"bez-test-pa3\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa3.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa3.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa3.guardian.purview.azure.com\"},\"provisioningState\":\"Creating\",\"privateEndpointConnections\":[],\"managedResources\":{\"resourceGroup\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc\",\"storageAccount\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.Storage/storageAccounts/scaneastusgeadqgt\"},\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-lazwdkc\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3\",\"name\":\"bez-test-pa3\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"619403cc-a10d-47b6-bea6-41161f23ce30\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:20:21.1852284Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPurviewAccount+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "4f3eb9e2-6f45-427e-b7d5-13286e3be4f3" ],
+        "CommandName": [ "Az.Purview.internal\\New-AzPurviewAccount" ],
+        "FullCommandName": [ "New-AzPurviewAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
+        "x-ms-account-status": [ "Creating" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "5795786b-08d2-42cc-be60-7f75dd80ec4f" ],
+        "x-ms-correlation-request-id": [ "5795786b-08d2-42cc-be60-7f75dd80ec4f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042228Z:5795786b-08d2-42cc-be60-7f75dd80ec4f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:22:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1709" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"307fb3e8-1cbf-47d5-b08f-9dd1c3dad885\"},\"friendlyName\":\"bez-test-pa3\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa3.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa3.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa3.guardian.purview.azure.com\"},\"provisioningState\":\"Creating\",\"privateEndpointConnections\":[],\"managedResources\":{\"resourceGroup\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc\",\"storageAccount\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.Storage/storageAccounts/scaneastusgeadqgt\",\"eventHubNamespace\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.EventHub/namespaces/Atlas-015d1d8c-6975-49b7-8bf3-c8b2e9ef7154\"},\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-lazwdkc\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3\",\"name\":\"bez-test-pa3\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"619403cc-a10d-47b6-bea6-41161f23ce30\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:20:21.1852284Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPurviewAccount+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "4f3eb9e2-6f45-427e-b7d5-13286e3be4f3" ],
+        "CommandName": [ "Az.Purview.internal\\New-AzPurviewAccount" ],
+        "FullCommandName": [ "New-AzPurviewAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
+        "x-ms-account-status": [ "Creating" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "940744fd-510f-457b-8506-7880ad503c7e" ],
+        "x-ms-correlation-request-id": [ "940744fd-510f-457b-8506-7880ad503c7e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042258Z:940744fd-510f-457b-8506-7880ad503c7e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:22:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1709" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"307fb3e8-1cbf-47d5-b08f-9dd1c3dad885\"},\"friendlyName\":\"bez-test-pa3\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa3.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa3.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa3.guardian.purview.azure.com\"},\"provisioningState\":\"Creating\",\"privateEndpointConnections\":[],\"managedResources\":{\"resourceGroup\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc\",\"storageAccount\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.Storage/storageAccounts/scaneastusgeadqgt\",\"eventHubNamespace\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.EventHub/namespaces/Atlas-015d1d8c-6975-49b7-8bf3-c8b2e9ef7154\"},\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-lazwdkc\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3\",\"name\":\"bez-test-pa3\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"619403cc-a10d-47b6-bea6-41161f23ce30\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:20:21.1852284Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPurviewAccount+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "4f3eb9e2-6f45-427e-b7d5-13286e3be4f3" ],
+        "CommandName": [ "Az.Purview.internal\\New-AzPurviewAccount" ],
+        "FullCommandName": [ "New-AzPurviewAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
+        "x-ms-account-status": [ "Succeeded" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "641df61c-d6b2-4d37-b13d-14015c901b5f" ],
+        "x-ms-correlation-request-id": [ "641df61c-d6b2-4d37-b13d-14015c901b5f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042329Z:641df61c-d6b2-4d37-b13d-14015c901b5f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:23:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1710" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"307fb3e8-1cbf-47d5-b08f-9dd1c3dad885\"},\"friendlyName\":\"bez-test-pa3\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa3.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa3.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa3.guardian.purview.azure.com\"},\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[],\"managedResources\":{\"resourceGroup\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc\",\"storageAccount\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.Storage/storageAccounts/scaneastusgeadqgt\",\"eventHubNamespace\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.EventHub/namespaces/Atlas-015d1d8c-6975-49b7-8bf3-c8b2e9ef7154\"},\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-lazwdkc\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3\",\"name\":\"bez-test-pa3\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"619403cc-a10d-47b6-bea6-41161f23ce30\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:20:21.1852284Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPurviewAccount+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "4f3eb9e2-6f45-427e-b7d5-13286e3be4f3" ],
+        "CommandName": [ "Az.Purview.internal\\New-AzPurviewAccount" ],
+        "FullCommandName": [ "New-AzPurviewAccount_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
+        "x-ms-account-status": [ "Succeeded" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "f398cfa1-792e-4a9d-a846-566fa6a7f8a0" ],
+        "x-ms-correlation-request-id": [ "f398cfa1-792e-4a9d-a846-566fa6a7f8a0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042329Z:f398cfa1-792e-4a9d-a846-566fa6a7f8a0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:23:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1710" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"capacity\":1},\"properties\":{\"cloudConnectors\":{\"awsExternalId\":\"307fb3e8-1cbf-47d5-b08f-9dd1c3dad885\"},\"friendlyName\":\"bez-test-pa3\",\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByObjectId\":\"2f153a9e-5be9-4f43-abd2-04561777c8b0\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"endpoints\":{\"catalog\":\"https://bez-test-pa3.catalog.purview.azure.com\",\"scan\":\"https://bez-test-pa3.scan.purview.azure.com\",\"guardian\":\"https://bez-test-pa3.guardian.purview.azure.com\"},\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[],\"managedResources\":{\"resourceGroup\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc\",\"storageAccount\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.Storage/storageAccounts/scaneastusgeadqgt\",\"eventHubNamespace\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/managed-rg-lazwdkc/providers/Microsoft.EventHub/namespaces/Atlas-015d1d8c-6975-49b7-8bf3-c8b2e9ef7154\"},\"publicNetworkAccess\":\"Enabled\",\"managedResourceGroupName\":\"managed-rg-lazwdkc\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgzw9el/providers/Microsoft.Purview/accounts/bez-test-pa3\",\"name\":\"bez-test-pa3\",\"type\":\"Microsoft.Purview/accounts\",\"location\":\"eastus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"619403cc-a10d-47b6-bea6-41161f23ce30\",\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-08-18T04:20:21.1852284Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-18T04:20:21.1852284Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

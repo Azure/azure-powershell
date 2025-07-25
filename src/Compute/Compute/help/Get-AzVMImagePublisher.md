@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7311F66C-3370-4436-8030-6D98D42C3112
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmimagepublisher
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets the VMImage publishers.
 ## SYNTAX
 
 ```
-Get-AzVMImagePublisher -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMImagePublisher -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,8 @@ The **Get-AzVMImagePublisher** cmdlet gets the VMImage publishers.
 ## EXAMPLES
 
 ### Example 1: Get VMImage publishers for a region
-```
-PS C:\> Get-AzVMImagePublisher -Location "Central US"
+```powershell
+Get-AzVMImagePublisher -Location "Central US"
 ```
 
 This command gets the publishers of VMImage instances for the Central US region within your Azure profile.
@@ -83,5 +84,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
 [Save-AzVMImage](./Save-AzVMImage.md)
-
-

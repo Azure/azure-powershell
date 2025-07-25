@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/invoke-AzSqlInstanceFailover
+online version: https://learn.microsoft.com/powershell/module/az.sql/invoke-AzSqlInstanceFailover
 schema: 2.0.0
 ---
 
@@ -25,14 +25,14 @@ The **Invoke-AzSqlInstanceFailover** cmdlet failovers an Azure SQL Managed Insta
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzSqlInstanceFailover -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
+Invoke-AzSqlInstanceFailover -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
 ```
 
 This command will failover the primary replica of the instance named "ManagedInstance01".
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzSqlInstanceFailover -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" -ReadableSecondary
+Invoke-AzSqlInstanceFailover -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" -ReadableSecondary
 ```
 
 This command will failover the readable secondary replica of the managed instance "ManagedInstance01".
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure SQL instance to remove.
+The name of the Azure SQL instance to fail over.
 
 ```yaml
 Type: System.String
@@ -96,7 +96,7 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -PassThru

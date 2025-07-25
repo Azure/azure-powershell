@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Xunit;
     using Xunit.Abstractions;
 
-    public class DeploymentWhatIfTests : ResourceTestRunner
+    public class DeploymentWhatIfTests : ResourcesTestRunner
     {
         public DeploymentWhatIfTests(ITestOutputHelper output) : base(output)
         {
@@ -65,6 +65,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-WhatIfExcludeChangeTypesAtResourceGroupScope");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Test_WhatIfWithUserDefinedTypes()
+            => TestRunner.RunTestScript("Test-WhatIfWithUserDefinedTypes");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Test_WhatIfWithNullableType()
+            => TestRunner.RunTestScript("Test-WhatIfWithNullableType");
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -141,6 +151,34 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TenantLevelWhatIf_SetExcludeChangeType_HidesResourceChanges()
         {
             TestRunner.RunTestScript("Test-WhatIfExcludeChangeTypesAtTenantScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantLevelWhatIf_ProviderNoRbacAtTenantScope()
+        {
+            TestRunner.RunTestScript("Test-WhatIfProviderNoRbacAtTenantScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MGLevelWhatIf_ProviderNoRbacAtManagementGroupScope()
+        {
+            TestRunner.RunTestScript("Test-WhatIfProviderNoRbacAtManagementGroupScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubLevelWhatIf_ProviderNoRbacAtSubscriptionScope()
+        {
+            TestRunner.RunTestScript("Test-WhatIfProviderNoRbacAtSubscriptionScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RGLevelWhatIf_ProviderNoRbacAtResourceGroupScope()
+        {
+            TestRunner.RunTestScript("Test-WhatIfProviderNoRbacAtResourceGroupScope");
         }
     }
 }

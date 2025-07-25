@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualrouter
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualrouter
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Get an Azure VirtualRouter
 
 ### VirtualRouterSubscriptionIdParameterSet (Default)
 ```
-Get-AzVirtualRouter [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualRouter [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### VirtualRouterNameParameterSet
@@ -25,7 +26,8 @@ Get-AzVirtualRouter -ResourceGroupName <String> [-RouterName <String>]
 
 ### VirtualRouterResourceIdParameterSet
 ```
-Get-AzVirtualRouter -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualRouter -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +42,7 @@ Get-AzVirtualRouter -ResourceGroupName virtualRouterRG -RouterName virtualRouter
 
 ### Example 2
 ```powershell
-$virtualRouterId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/virtualRouterRG/providers/Microsoft.Network/virtualRouters/virtualRouter'
+$virtualRouterId = '/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/virtualRouterRG/providers/Microsoft.Network/virtualRouters/virtualRouter'
 Get-AzVirtualRouter -ResourceId $virtualRouterId
 ```
 
@@ -73,7 +75,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
@@ -103,7 +105,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

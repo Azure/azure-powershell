@@ -17,42 +17,87 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class SqlOperationsTests
+    public class SqlOperationsTests : CosmosDBTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public SqlOperationsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SqlOperationsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlOperationsCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlOperationsCmdlets");
+            TestRunner.RunTestScript("Test-SqlOperationsCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlOperationsCmdletsUsingInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlOperationsCmdletsUsingInputObject");
+            TestRunner.RunTestScript("Test-SqlOperationsCmdletsUsingInputObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlInAccountRestoreOperationsCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlInAccountRestoreOperationsCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2()
+        {
+            TestRunner.RunTestScript("Test-SqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlInAccountRestoreOperationsNoTimestampCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlInAccountRestoreOperationsNoTimestampCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlInAccountRestoreOperationsSharedResourcesCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlThroughputCmdlets");
+            TestRunner.RunTestScript("Test-SqlThroughputCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlMigrateThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlMigrateThroughputCmdlets");
+            TestRunner.RunTestScript("Test-SqlMigrateThroughputCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlRoleCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlRoleCmdlets");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClientEncryptionKeyCmdlets()
+        {
+            TestRunner.RunTestScript("Test-ClientEncryptionKeyCmdlets");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClientEncryptionKeyCmdletsUsingInputObject()
+        {
+            TestRunner.RunTestScript("Test-ClientEncryptionKeyCmdletsUsingInputObject");
         }
     }
 }

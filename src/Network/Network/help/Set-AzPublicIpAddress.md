@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: EC798838-1850-4E88-B17F-D2F00F2D4EE9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azpublicipaddress
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azpublicipaddress
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ The **Set-AzPublicIpAddress** cmdlet updates a public IP address.
 
 ## EXAMPLES
 
-### 1: Change allocation method of a public IP address
-```
-PS C:\> $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+### Example 1: Change allocation method of a public IP address
+```powershell
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 
-PS C:\> $publicIp.PublicIpAllocationMethod = "Static"
+$publicIp.PublicIpAllocationMethod = "Static"
     
-PS C:\> Set-AzPublicIpAddress -PublicIpAddress $publicIp
+Set-AzPublicIpAddress -PublicIpAddress $publicIp
 
-PS C:\> Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
  First command gets the public IP address resource with name $publicIPName in the resource 
@@ -41,15 +41,15 @@ PS C:\> Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
     updated object, and modifies the allocation method to 'Static'. A public IP address gets 
     allocated immediately.
 
-### 2: Add DNS domain label of a public IP address
-```
-PS C:\> $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+### Example 2: Add DNS domain label of a public IP address
+```powershell
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 
-PS C:\> $publicIp.DnsSettings = @{"DomainNameLabel" = "newdnsprefix"}
+$publicIp.DnsSettings = @{"DomainNameLabel" = "newdnsprefix"}
     
-PS C:\> Set-AzPublicIpAddress -PublicIpAddress $publicIp
+Set-AzPublicIpAddress -PublicIpAddress $publicIp
 
-PS C:\> $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
 First command gets the public IP address resource with name $publicIPName in the resource 
@@ -58,15 +58,16 @@ First command gets the public IP address resource with name $publicIPName in the
     Set-AzPublicIPAddress command updates the public IP address resource with the 
     updated object. DomainNameLabel & Fqdn are modified as expected.
     
-### 3: Change DNS domain label of a public IP address
-```
-PS C:\> $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 
-PS C:\> $publicIp.DnsSettings.DomainNameLabel = "newdnsprefix"
+### Example 3: Change DNS domain label of a public IP address
+```powershell
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+
+$publicIp.DnsSettings.DomainNameLabel = "newdnsprefix"
     
-PS C:\> Set-AzPublicIpAddress -PublicIpAddress $publicIp
+Set-AzPublicIpAddress -PublicIpAddress $publicIp
 
-PS C:\> $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
 First command gets the public IP address resource with name $publicIPName in the resource 
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -142,5 +143,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPublicIpAddress](./New-AzPublicIpAddress.md)
 
 [Remove-AzPublicIpAddress](./Remove-AzPublicIpAddress.md)
-
-

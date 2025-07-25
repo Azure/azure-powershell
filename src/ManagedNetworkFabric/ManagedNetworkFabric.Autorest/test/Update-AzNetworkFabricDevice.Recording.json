@@ -1,0 +1,40 @@
+{
+  "Update-AzNetworkFabricDevice+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricNameTest-AggrRack-MgmtSwitch1?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricNameTest-AggrRack-MgmtSwitch1?api-version=2023-06-15",
+      "Content": "{\n  \"properties\": {\n    \"serialNumber\": \"13456-1234-1234-13354-1233\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "74" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"04009dcd-0000-0100-0000-650d37c60000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "c6b38bb5-b59d-4a45-922e-9e1cfe7a5332" ],
+        "x-ms-request-id": [ "5d37eb29-d746-4861-a2b9-2af5ea07bdbd" ],
+        "x-ms-correlation-request-id": [ "abb225cc-6ab2-4593-992c-8919e54f4dd9" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T064422Z:abb225cc-6ab2-4593-992c-8919e54f4dd9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 06:44:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1022" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricNameTest-AggrRack-MgmtSwitch1\",\"name\":\"fabricNameTest-AggrRack-MgmtSwitch1\",\"type\":\"microsoft.managednetworkfabric/networkdevices\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-22T05:30:49.9881058Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T06:44:20.6704207Z\"},\"properties\":{\"networkRackId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkRacks/fabricNameTest-aggrack\",\"networkDeviceSku\":\"DefaultSku\",\"networkDeviceRole\":\"TS\",\"hostName\":\"AR-MGMT1\",\"serialNumber\":\"13456-1234-1234-13354-1233\",\"version\":\"\",\"configurationState\":\"Succeeded\",\"administrativeState\":\"Enabled\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

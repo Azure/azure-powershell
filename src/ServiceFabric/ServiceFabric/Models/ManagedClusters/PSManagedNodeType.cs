@@ -12,32 +12,42 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
     public class PSManagedNodeType : NodeType
     {
         public PSManagedNodeType(NodeType nodeType)
-            : base(isPrimary: nodeType.IsPrimary,
-                   vmInstanceCount: nodeType.VmInstanceCount,
-                   dataDiskSizeGB: nodeType.DataDiskSizeGB,
-                   id: nodeType.Id,
+            : base(id: nodeType.Id,
                    name: nodeType.Name,
                    type: nodeType.Type,
                    tags: nodeType.Tags,
+                   isPrimary: nodeType.IsPrimary,
+                   vmInstanceCount: nodeType.VMInstanceCount,
+                   dataDiskSizeGb: nodeType.DataDiskSizeGb,
+                   dataDiskType: nodeType.DataDiskType,
                    provisioningState: nodeType.ProvisioningState,
                    placementProperties: nodeType.PlacementProperties,
                    capacities: nodeType.Capacities,
                    applicationPorts: nodeType.ApplicationPorts,
                    ephemeralPorts: nodeType.EphemeralPorts,
-                   vmSize: nodeType.VmSize,
-                   vmImagePublisher: nodeType.VmImagePublisher,
-                   vmImageOffer: nodeType.VmImageOffer,
-                   vmImageSku: nodeType.VmImageSku,
-                   vmImageVersion: nodeType.VmImageVersion,
-                   vmSecrets: nodeType.VmSecrets,
-                   vmExtensions: nodeType.VmExtensions)
+                   vmSize: nodeType.VMSize,
+                   vmImagePublisher: nodeType.VMImagePublisher,
+                   vmImageOffer: nodeType.VMImageOffer,
+                   vmImageSku: nodeType.VMImageSku,
+                   vmImageVersion: nodeType.VMImageVersion,
+                   vmSecrets: nodeType.VMSecrets,
+                   vmExtensions: nodeType.VMExtensions,
+                   vmManagedIdentity: nodeType.VMManagedIdentity,
+                   isStateless: nodeType.IsStateless,
+                   multiplePlacementGroups: nodeType.MultiplePlacementGroups,
+                   vmSharedGalleryImageId: nodeType.VMSharedGalleryImageId,
+                   securityType: nodeType.SecurityType,
+                   secureBootEnabled: nodeType.SecureBootEnabled,
+                   enableNodePublicIP: nodeType.EnableNodePublicIP,
+                   natGatewayId: nodeType.NatGatewayId,
+                   vmImagePlan: nodeType.VMImagePlan)
         {
         }
     }

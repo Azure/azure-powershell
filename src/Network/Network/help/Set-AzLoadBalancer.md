@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 494E185D-3746-4959-846E-660017A1F392
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azloadbalancer
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azloadbalancer
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Updates a load balancer.
 ## SYNTAX
 
 ```
-Set-AzLoadBalancer -LoadBalancer <PSLoadBalancer> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzLoadBalancer -LoadBalancer <PSLoadBalancer> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,10 +24,10 @@ The **Set-AzLoadBalancer** cmdlet updates a load balancer.
 ## EXAMPLES
 
 ### Example 1: Modify a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "NRPLB" -ResourceGroupName "NRP-RG"
-PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewRule" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81 -BackendPort 8181 -Protocol "TCP"
-PS C:\> $slb | Set-AzLoadBalancer
+```powershell
+$slb = Get-AzLoadBalancer -Name "NRPLB"
+$slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewRule" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81 -BackendPort 8181 -Protocol "TCP"
+$slb | Set-AzLoadBalancer
 ```
 
 The first command gets the load balancer named NRPLB, and then stores it in the $slb variable.
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -131,5 +131,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzLoadBalancer](./New-AzLoadBalancer.md)
 
 [Remove-AzLoadBalancer](./Remove-AzLoadBalancer.md)
-
-

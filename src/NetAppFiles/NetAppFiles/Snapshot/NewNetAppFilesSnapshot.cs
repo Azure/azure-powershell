@@ -18,6 +18,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 {
@@ -133,8 +136,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Create(snapshotBody, ResourceGroupName, AccountName, PoolName, VolumeName, Name);
-                WriteObject(anfSnapshot);
+                try
+                {
+                    var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Create(ResourceGroupName, AccountName, PoolName, VolumeName, Name, snapshotBody);
+                    WriteObject(anfSnapshot.ToPsNetAppFilesSnapshot());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

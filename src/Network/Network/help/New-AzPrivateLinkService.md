@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivatelinkservice
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azprivatelinkservice
 schema: 2.0.0
 ---
 
@@ -14,10 +14,11 @@ Creates a private link service
 
 ```
 New-AzPrivateLinkService -Name <String> -ResourceGroupName <String> -Location <String>
- -LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>
- -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]> [-Visibility <String[]>] [-AutoApproval <String[]>] [-EnableProxyProtocol]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]>
+ [-LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>] [-Visibility <String[]>]
+ [-AutoApproval <String[]>] [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DestinationIPAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,7 @@ The **New-AzPrivateLinkService** cmdlet creates a private link service
 
 ### Example 1
 
-The following example creates a private link service.
+The following example creates a private link service with a load balancer.
 
 ```powershell
 $vnet = Get-AzVirtualNetwork -ResourceName 'myvnet' -ResourceGroupName 'myresourcegroup'
@@ -38,6 +39,21 @@ $publicip = Get-AzPublicIpAddress -ResourceGroupName 'myresourcegroup'
 $frontend = New-AzLoadBalancerFrontendIpConfig -Name 'FrontendIpConfig01' -PublicIpAddress $publicip
 $lb = New-AzLoadBalancer -Name 'MyLoadBalancer' -ResourceGroupName 'myresourcegroup' -Location 'West US' -FrontendIpConfiguration $frontend
 New-AzPrivateLinkService -Name 'mypls' -ResourceGroupName myresourcegroup -Location "West US" -LoadBalancerFrontendIpConfiguration $frontend -IpConfiguration $IPConfig
+```
+
+### Example 2
+
+The following example creates a private link service with destinationIPAddress.
+
+```powershell
+$vnet = Get-AzVirtualNetwork -ResourceName 'myvnet' -ResourceGroupName 'myresourcegroup'
+# View the results of $vnet and change 'mysubnet' in the following line to the appropriate subnet name.
+$subnet = $vnet | Select-Object -ExpandProperty subnets | Where-Object Name -eq 'mysubnet'
+$IPConfig1 = New-AzPrivateLinkServiceIpConfig -Name 'IP-Config1' -Subnet $subnet -PrivateIpAddress '10.0.0.5' -Primary
+$IPConfig2 = New-AzPrivateLinkServiceIpConfig -Name 'IP-Config2' -Subnet $subnet -PrivateIpAddress '10.0.0.6'
+$IPConfig3 = New-AzPrivateLinkServiceIpConfig -Name 'IP-Config3' -Subnet $subnet -PrivateIpAddress '10.0.0.7'
+$IPConfigs = @($IPConfig1, $IPConfig2, $IPConfig3)
+New-AzPrivateLinkService -Name 'mypls' -ResourceGroupName myresourcegroup -Location "West US" -IpConfiguration $IPConfigs -DestinationIPAddress '192.168.0.5'
 ```
 
 ## PARAMETERS
@@ -87,6 +103,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DestinationIPAddress
+The destination IP address of the private link service.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+The edge zone of the private link service
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableProxyProtocol
 Enable proxy protocol for the private link service.
 
@@ -98,7 +144,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -140,7 +186,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

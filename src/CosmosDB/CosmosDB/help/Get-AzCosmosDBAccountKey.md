@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey
 schema: 2.0.0
 ---
 
@@ -37,12 +37,14 @@ Get the list of connection keys.
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzCosmosDBAccountKey -ResourceGroupName rg1 -Name dbname -Type "ReadOnlyKeys"
+Get-AzCosmosDBAccountKey -ResourceGroupName rg1 -Name dbname -Type "ReadOnlyKeys"
+```
 
+```output
 Name                           Value
 ----                           -----
-PrimaryReadonlyMasterKey       qjw0ISW1WNN0BIVPeaI7Tm3H8uZ1h7ESQjxaUendxHmIUNQowVvcL84fTqeXoC2HFgyu8Zo1mCFEcg0jZJHPjA==
-SecondaryReadonlyMasterKey     9YRcTABuOHcKyHAKf0lmCeHsrcXu02aeID1g3wjXjlX8SU4s2WNlEB5htJoy3xqxNDqIyGfnq3dblLbrZDbesg==
+PrimaryReadonlyMasterKey       ********************************
+SecondaryReadonlyMasterKey     ********************************
 ```
 
 Lists the keys for CosmosDB Account. The Key Type can be value from : ConnectionStrings, Keys and ReadOnlyKeys. Default is Keys.
@@ -53,7 +55,7 @@ Lists the keys for CosmosDB Account. The Key Type can be value from : Connection
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,7 +70,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: PSDatabaseAccountGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -83,7 +85,7 @@ Accept wildcard characters: False
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -98,7 +100,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -113,7 +115,7 @@ Accept wildcard characters: False
 ResourceId of the resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -129,7 +131,7 @@ Value from: {ConnectionStrings, Keys, ReadOnlyKeys}.
 Default is Keys.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

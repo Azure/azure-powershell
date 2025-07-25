@@ -12,14 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.KeyVault.WebKey;
+using Microsoft.Azure.Commands.KeyVault.Helpers;
+
 using System;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.KeyVault.Models;
+using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -30,12 +35,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.next = next;
         }
 
-        public JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password)
+        public Track1Sdk.JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password, WebKeyConverterExtraInfo extraInfo = null)
         {
             if (CanProcess(fileInfo))
                 return Convert(fileInfo.FullName, password);
             if (next != null)
-                return next.ConvertKeyFromFile(fileInfo, password);
+                return next.ConvertKeyFromFile(fileInfo, password, extraInfo);
+            throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
+        }
+
+        public Track2Sdk.JsonWebKey ConvertToTrack2SdkKeyFromFile(FileInfo fileInfo, SecureString password, WebKeyConverterExtraInfo extraInfo = null)
+        {
+            if (CanProcess(fileInfo))
+                return ConvertToTrack2SdkJsonWebKey(fileInfo.FullName, password, extraInfo);
+            if (next != null)
+                return next.ConvertToTrack2SdkKeyFromFile(fileInfo, password);
             throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
         }
 
@@ -50,19 +64,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return PfxFileExtension.Equals(fileInfo.Extension, StringComparison.OrdinalIgnoreCase);
         }
 
-        private JsonWebKey Convert(string pfxFileName, SecureString pfxPassword)
+        private Track1Sdk.JsonWebKey Convert(string pfxFileName, SecureString pfxPassword)
         {
-            X509Certificate2 certificate;
-
-            if (pfxPassword != null)
-                certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
-            else
-                certificate = new X509Certificate2(pfxFileName);
-
+            X509Certificate2 certificate = GetExportableCertificate(pfxFileName, pfxPassword);
             if (!certificate.HasPrivateKey)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
 
-            var key = certificate.PrivateKey as RSA;
+            var key = certificate.GetRSAPrivateKey();
 
             if (key == null)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
@@ -70,14 +78,40 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return CreateJWK(key);
         }
 
-        private static JsonWebKey CreateJWK(RSA rsa)
+        private Track2Sdk.JsonWebKey ConvertToTrack2SdkJsonWebKey(string pfxFileName, SecureString pfxPassword, WebKeyConverterExtraInfo extraInfo = null)
+        {
+            X509Certificate2 certificate = GetExportableCertificate(pfxFileName, pfxPassword);
+
+            if (!certificate.HasPrivateKey)
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
+
+            var rsaKey = certificate.GetRSAPrivateKey();
+
+            if (rsaKey != null)
+            {
+                return CreateTrack2SdkJWK(rsaKey, extraInfo);
+            }
+
+            var ecKey = certificate.GetECDsaPrivateKey();
+            if(ecKey != null)
+            {
+                return CreateTrack2SdkJWK(ecKey, extraInfo);
+            }
+
+            // to do: support converting oct to jsonwebKey
+
+            throw new ArgumentException(string.Format(KeyVaultProperties.Resources.ImportNotSupported, "oct-HSM"));
+
+        }
+
+        private static Track1Sdk.JsonWebKey CreateJWK(RSA rsa)
         {
             if (rsa == null)
                 throw new ArgumentNullException("rsa");
             RSAParameters rsaParameters = rsa.ExportParameters(true);
-            var webKey = new JsonWebKey()
+            var webKey = new Track1Sdk.JsonWebKey()
             {
-                Kty = JsonWebKeyType.Rsa,
+                Kty = Track1Sdk.JsonWebKeyType.Rsa,
                 E = rsaParameters.Exponent,
                 N = rsaParameters.Modulus,
                 D = rsaParameters.D,
@@ -89,6 +123,68 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             };
 
             return webKey;
+        }
+
+        private static Track2Sdk.JsonWebKey CreateTrack2SdkJWK(RSA rsa, WebKeyConverterExtraInfo extraInfo = null)
+        {
+            if (rsa == null)
+                throw new ArgumentNullException("rsa");
+            RSAParameters rsaParameters = rsa.ExportParameters(true);
+            var webKey = new Track2Sdk.JsonWebKey(rsa, default, extraInfo?.KeyOps?.Select(op => new Track2Sdk.KeyOperation(op)))
+            {
+                // note: Keyvault need distinguish RSA and RSA-HSM
+                KeyType = Track2Sdk.KeyType.RsaHsm,
+                N = rsaParameters.Modulus,
+                E = rsaParameters.Exponent,
+                DP = rsaParameters.DP,
+                DQ = rsaParameters.DQ,
+                QI = rsaParameters.InverseQ,
+                Q = rsaParameters.Q,
+                D = rsaParameters.D,
+                P = rsaParameters.P
+            };
+            return webKey;
+        }
+
+        private static Track2Sdk.JsonWebKey CreateTrack2SdkJWK(ECDsa ecdSa, WebKeyConverterExtraInfo extraInfo = null)
+        {
+            if (ecdSa == null)
+            {
+                throw new ArgumentNullException("ecdSa");
+            }
+
+            ECParameters ecParameters = ecdSa.ExportParameters(true);
+            var webKey = new Track2Sdk.JsonWebKey(ecdSa, default, extraInfo?.KeyOps?.Select(op => new Track2Sdk.KeyOperation(op)))
+            {
+                // note: Keyvault need distinguish EC and EC-HSM
+                KeyType = Track2Sdk.KeyType.EcHsm,
+                CurveName = ecParameters.Curve.CurveType.ToString(),
+                D = ecParameters.D,
+                X = ecParameters.Q.X,
+                Y = ecParameters.Q.Y
+            };
+
+            return webKey;
+
+        }
+
+        private static Track2Sdk.JsonWebKey CreateTrack2SdkJWK(Aes aes, WebKeyConverterExtraInfo extraInfo = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static X509Certificate2 GetExportableCertificate(string fileName, SecureString pwd)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // cert.Get*PrivateKey().ExportParameter(true) doesn't work even cert is marked with X509KeyStorageFlags.Exportable on Windows
+                return CertificateExportHelper.GetExportableCertificate(File.ReadAllBytes(fileName), pwd?.ConvertToString());
+            }
+            else
+            {
+                return new X509Certificate2(fileName, pwd, X509KeyStorageFlags.Exportable);
+            }
+
         }
 
         private IWebKeyConverter next;

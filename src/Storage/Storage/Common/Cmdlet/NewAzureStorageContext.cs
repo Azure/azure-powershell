@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,22 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
+using Azure.Storage.Files.Shares.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.ServiceManagement.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Auth;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -37,16 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContext", DefaultParameterSetName = OAuthParameterSet), OutputType(typeof(AzureStorageContext))]
     public class NewAzureStorageContext : AzureDataCmdlet
     {
-        /// <summary>
-        /// Default resourceId for storage OAuth tokens
-        /// </summary>
-        public const string StorageOAuthEndpointResourceValue = "https://storage.azure.com";
-
-        /// <summary>
-        /// The extension key to use for the storage token audience value
-        /// </summary>
-        public const string StorageOAuthEndpointResourceKey = "StorageOAuthEndpointResourceId";
-
         /// <summary>
         /// Account name and key parameter set name
         /// </summary>
@@ -97,6 +82,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// </summary>
         private const string AnonymousEnvironmentParameterSet = "AnonymousAccountEnvironment";
 
+        /// <summary>
+        /// Account name and key with Service Endpoint parameter set name
+        /// </summary>
+        private const string AccountNameKeyServiceEndpointParameterSet = "AccountNameAndKeyServiceEndpoint";
+
+        /// <summary>
+        /// Sas token with Service Endpoint parameter set name
+        /// </summary>
+        private const string SasTokenServiceEndpointParameterSet = "SasTokenServiceEndpoint";
+
+        /// <summary>
+        /// Anonymous storage account with Service Endpoint parameter set name
+        /// </summary>
+        private const string AnonymousServiceEndpointParameterSet = "AnonymousAccountServiceEndpoint";
+
+        /// <summary>
+        /// OAuth storage account with Service Endpoint parameter set name
+        /// </summary>
+        private const string OAuthServiceEndpointParameterSet = "OAuthAccountServiceEndpoint";
+
         private const string StorageAccountNameHelpMessage = "Azure Storage Account Name";
         [Parameter(Position = 0, HelpMessage = StorageAccountNameHelpMessage,
             Mandatory = true, ParameterSetName = AccountNameKeyParameterSet)]
@@ -113,7 +118,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(Position = 0, HelpMessage = StorageAccountNameHelpMessage,
             Mandatory = true, ParameterSetName = OAuthParameterSet)]
         [Parameter(Position = 0, HelpMessage = StorageAccountNameHelpMessage,
-            Mandatory = true, ParameterSetName = OAuthEnvironmentParameterSet)]        
+            Mandatory = true, ParameterSetName = OAuthEnvironmentParameterSet)]
+        [Parameter(Position = 0, HelpMessage = StorageAccountNameHelpMessage,
+            Mandatory = true, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = StorageAccountNameHelpMessage,
+            Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
@@ -122,6 +131,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             Mandatory = true, ParameterSetName = AccountNameKeyParameterSet)]
         [Parameter(Position = 1, HelpMessage = StorageAccountKeyHelpMessage,
             Mandatory = true, ParameterSetName = AccountNameKeyEnvironmentParameterSet)]
+        [Parameter(Position = 1, HelpMessage = StorageAccountKeyHelpMessage,
+            Mandatory = true, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountKey { get; set; }
 
@@ -130,6 +141,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             Mandatory = true, ParameterSetName = SasTokenParameterSet)]
         [Parameter(HelpMessage = SasTokenHelpMessage,
             Mandatory = true, ParameterSetName = SasTokenEnvironmentParameterSet)]
+        [Parameter(HelpMessage = SasTokenHelpMessage,
+            Mandatory = true, ParameterSetName = SasTokenServiceEndpointParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SasToken { get; set; }
 
@@ -155,6 +168,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             Mandatory = true, ParameterSetName = AnonymousParameterSet)]
         [Parameter(HelpMessage = AnonymousHelpMessage,
             Mandatory = true, ParameterSetName = AnonymousEnvironmentParameterSet)]
+        [Parameter(HelpMessage = AnonymousHelpMessage,
+            Mandatory = true, ParameterSetName = AnonymousServiceEndpointParameterSet)]
         public SwitchParameter Anonymous
         {
             get { return isAnonymous; }
@@ -165,6 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 
         [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = OAuthParameterSet)]
         [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = OAuthEnvironmentParameterSet)]
+        [Parameter(HelpMessage = "Use OAuth storage account", Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet)]
         public SwitchParameter UseConnectedAccount
         {
             get { return isOAuth; }
@@ -226,6 +242,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 
         private string environmentName = string.Empty;
 
+        private const string BlobServiceEndPointHelpMessage = "Azure storage blob service endpoint";
+        [Parameter(Mandatory = true, HelpMessage = BlobServiceEndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = BlobServiceEndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = BlobServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = BlobServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        public string BlobEndpoint { get; set; }
+
+        private const string FileServiceEndPointHelpMessage = "Azure storage file service endpoint";
+        [Parameter(HelpMessage = FileServiceEndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = FileServiceEndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = FileServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = FileServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        public string FileEndpoint { get; set; }
+
+        private const string QueueServiceEndPointHelpMessage = "Azure storage queue service endpoint";
+        [Parameter(HelpMessage = QueueServiceEndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = QueueServiceEndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = QueueServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = QueueServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        public string QueueEndpoint { get; set; }
+
+        private const string TableServiceEndPointHelpMessage = "Azure storage table service endpoint";
+        [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = AccountNameKeyServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = AnonymousServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
+        [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
+        public string TableEndpoint { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = OAuthParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthEnvironmentParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        public SwitchParameter EnableFileBackupRequestIntent { get; set; }
+
         /// <summary>
         /// Get storage account by account name and account key
         /// </summary>
@@ -237,8 +286,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         internal CloudStorageAccount GetStorageAccountByNameAndKey(string accountName, string accountKey,
             bool useHttps, string storageEndpoint = "")
         {
-            StorageCredentials credential = new StorageCredentials(accountName, accountKey);
+            StorageCredentials credential = new StorageCredentials(GetRealAccountName(accountName), accountKey);
             return GetStorageAccountWithEndPoint(credential, accountName, useHttps, storageEndpoint);
+        }
+
+        /// <summary>
+        /// Get storage account by account name and account key
+        /// </summary>
+        /// <returns>A storage account</returns>
+        internal CloudStorageAccount GetStorageAccountByNameAndKey(string accountName, string accountKey,
+            string blobEndPoint, string queueEndPoint, string fileEndPoint, string tableEndPoint)
+        {
+            StorageCredentials credential = new StorageCredentials(GetRealAccountName(accountName), accountKey);
+            return new CloudStorageAccount(credential,
+                string.IsNullOrEmpty(blobEndPoint) ? null : new Uri(blobEndPoint),
+                string.IsNullOrEmpty(queueEndPoint) ? null : new Uri(queueEndPoint),
+                string.IsNullOrEmpty(tableEndPoint) ? null : new Uri(tableEndPoint),
+                string.IsNullOrEmpty(fileEndPoint) ? null : new Uri(fileEndPoint));
         }
 
         /// <summary>
@@ -252,7 +316,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         internal CloudStorageAccount GetStorageAccountByNameAndKeyFromAzureEnvironment(string accountName,
             string accountKey, bool useHttps, string azureEnvironmentName = "")
         {
-            StorageCredentials credential = new StorageCredentials(accountName, accountKey);
+            StorageCredentials credential = new StorageCredentials(GetRealAccountName(accountName), accountKey);
             return GetStorageAccountWithAzureEnvironment(credential, StorageAccountName, useHttps, azureEnvironmentName);
         }
 
@@ -269,6 +333,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             StorageCredentials credential = new StorageCredentials(sasToken);
             return GetStorageAccountWithEndPoint(credential, storageAccountName, useHttps, storageEndpoint);
+        }
+
+        /// <summary>
+        /// Get storage account by sastoken
+        /// </summary>
+        /// <returns>A storage account</returns>
+        internal CloudStorageAccount GetStorageAccountBySasToken(string sasToken,
+            string blobEndPoint, string queueEndPoint, string fileEndPoint, string tableEndPoint)
+        {
+            StorageCredentials credential = new StorageCredentials(sasToken);
+            return new CloudStorageAccount(credential,
+                string.IsNullOrEmpty(blobEndPoint) ? null : new Uri(blobEndPoint),
+                string.IsNullOrEmpty(queueEndPoint) ? null : new Uri(queueEndPoint),
+                string.IsNullOrEmpty(tableEndPoint) ? null : new Uri(tableEndPoint),
+                string.IsNullOrEmpty(fileEndPoint) ? null : new Uri(fileEndPoint));
         }
 
         internal CloudStorageAccount GetStorageAccountBySasTokenFromAzureEnvironment(string storageAccountName,
@@ -311,6 +390,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
 
         /// <summary>
+        /// Get storage account by anonymous
+        /// </summary>
+        /// <returns>A storage account</returns>
+        internal CloudStorageAccount GetAnonymousStorageAccount(
+            string blobEndPoint, string queueEndPoint, string fileEndPoint, string tableEndPoint)
+        {
+            StorageCredentials credential = new StorageCredentials();
+            return new CloudStorageAccount(credential,
+                string.IsNullOrEmpty(blobEndPoint) ? null : new Uri(blobEndPoint),
+                string.IsNullOrEmpty(queueEndPoint) ? null : new Uri(queueEndPoint),
+                string.IsNullOrEmpty(tableEndPoint) ? null : new Uri(tableEndPoint),
+                string.IsNullOrEmpty(fileEndPoint) ? null : new Uri(fileEndPoint));
+        }
+
+        /// <summary>
         /// Get anonymous storage account
         /// </summary>
         /// <param name="storageAccountName">Storage account name, it's used for build end point</param>
@@ -333,10 +427,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <returns>A storage account</returns>
         internal CloudStorageAccount GetStorageAccountByOAuth(string storageAccountName, bool useHttps, string storageEndpoint = "")
         {
-            IAccessToken accessToken = CreateOAuthToken();
-            TokenCredential tokenCredential = new TokenCredential(GetTokenStrFromAccessToken(accessToken), GetTokenRenewer(accessToken), null, new TimeSpan(0, 1, 0));
+            TokenCredential tokenCredential = OAuthUtil.getTokenCredential(DefaultContext, WriteDebug); 
             StorageCredentials credential = new StorageCredentials(tokenCredential);
             return GetStorageAccountWithEndPoint(credential, storageAccountName, useHttps, storageEndpoint);
+        }
+
+        /// <summary>
+        /// Get storage account by OAuth
+        /// </summary>
+        /// <returns>A storage account</returns>
+        internal CloudStorageAccount GetStorageAccountByOAuth(
+            string blobEndPoint, string queueEndPoint, string fileEndPoint, string tableEndPoint)
+        {
+            TokenCredential tokenCredential = OAuthUtil.getTokenCredential(DefaultContext, WriteDebug);
+            StorageCredentials credential = new StorageCredentials(tokenCredential);
+            return new CloudStorageAccount(credential,
+                string.IsNullOrEmpty(blobEndPoint) ? null : new Uri(blobEndPoint),
+                string.IsNullOrEmpty(queueEndPoint) ? null : new Uri(queueEndPoint),
+                string.IsNullOrEmpty(tableEndPoint) ? null : new Uri(tableEndPoint),
+                string.IsNullOrEmpty(fileEndPoint) ? null : new Uri(fileEndPoint));
         }
 
         /// <summary>
@@ -344,78 +453,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// </summary>
         /// <param name="storageAccountName">Storage account name, it's used for build end point</param>
         /// <param name="useHttps"></param>
-        /// <param name="storageEndpoint"></param>
+        /// <param name="azureEnvironmentName"></param>
         /// <returns>A storage account</returns>
         internal CloudStorageAccount GetStorageAccountByOAuthFromAzureEnvironment(string storageAccountName, bool useHttps, string azureEnvironmentName = "")
         {
-            IAccessToken accessToken = CreateOAuthToken();
-            TokenCredential tokenCredential = new TokenCredential(GetTokenStrFromAccessToken(accessToken), GetTokenRenewer(accessToken), null, new TimeSpan(0, 1, 0));
+            TokenCredential tokenCredential = OAuthUtil.getTokenCredential(DefaultContext, WriteDebug);
             StorageCredentials credential = new StorageCredentials(tokenCredential);
             return GetStorageAccountWithAzureEnvironment(credential, storageAccountName, useHttps, azureEnvironmentName);
         }
 
-        private RenewTokenFuncAsync GetTokenRenewer(IAccessToken accessToken)
-        {
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-            RenewTokenFuncAsync renewer = async (Object state, CancellationToken cancellationToken) =>
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-            {
-                var tokenStr = GetTokenStrFromAccessToken(accessToken);
-                return new NewTokenAndFrequency(tokenStr, new TimeSpan(0, 1, 0));
-            };
-            return renewer;
-        }
-
-        private IAzureEnvironment EnsureStorageOAuthAudienceSet(IAzureEnvironment environment)
-        {
-            if (environment != null)
-            {
-                if (!environment.IsPropertySet(StorageOAuthEndpointResourceKey))
-                {
-                    environment.SetProperty(StorageOAuthEndpointResourceKey, StorageOAuthEndpointResourceValue);
-                }
-            }
-
-            return environment;
-        }
-
-        /// <summary>
-        /// Create a OAuth Token
-        /// </summary>
-        /// <returns>the token</returns>
-        private IAccessToken CreateOAuthToken()
-        {
-            if (DefaultContext == null || DefaultContext.Account == null)
-            {
-                throw new InvalidOperationException(Resources.ContextCannotBeNull);
-            }
-
-            IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
-               DefaultContext.Account,
-               EnsureStorageOAuthAudienceSet(DefaultContext.Environment),
-               DefaultContext.Tenant.Id,
-               null,
-               ShowDialog.Never,
-               null,
-               StorageOAuthEndpointResourceKey);
-            return accessToken;
-        }
-
-        /// <summary>
-        /// Get the token string from the accesstoken
-        /// </summary>
-        /// <param name="accessToken">the token</param>
-        /// <returns>token string</returns>
-        private string GetTokenStrFromAccessToken(IAccessToken accessToken)
-        {
-            var tokenStr = string.Empty;
-            accessToken.AuthorizeRequest((tokenType, tokenValue) =>
-            {
-                tokenStr = tokenValue;
-            });
-            WriteDebug(DateTime.Now.ToString() + ": token:" + tokenStr);
-            return tokenStr;
-        }
+       
 
         /// <summary>
         /// Get storage account and use specific end point
@@ -548,12 +595,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 case AccountNameKeyParameterSet:
                     account = GetStorageAccountByNameAndKey(StorageAccountName, StorageAccountKey, useHttps, storageEndpoint);
                     break;
+                case AccountNameKeyServiceEndpointParameterSet:
+                    account = GetStorageAccountByNameAndKey(StorageAccountName, StorageAccountKey, this.BlobEndpoint, this.QueueEndpoint, this.FileEndpoint, this.TableEndpoint);
+                    break;
                 case AccountNameKeyEnvironmentParameterSet:
                     account = GetStorageAccountByNameAndKeyFromAzureEnvironment(StorageAccountName, StorageAccountKey,
                         useHttps, environmentName);
                     break;
                 case SasTokenParameterSet:
                     account = GetStorageAccountBySasToken(StorageAccountName, SasToken, useHttps, storageEndpoint);
+                    break;
+                case SasTokenServiceEndpointParameterSet:
+                    account = GetStorageAccountBySasToken(SasToken, this.BlobEndpoint, this.QueueEndpoint, this.FileEndpoint, this.TableEndpoint);
                     break;
                 case SasTokenEnvironmentParameterSet:
                     account = GetStorageAccountBySasTokenFromAzureEnvironment(StorageAccountName, SasToken, useHttps, environmentName);
@@ -567,11 +620,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 case AnonymousParameterSet:
                     account = GetAnonymousStorageAccount(StorageAccountName, useHttps, storageEndpoint);
                     break;
+                case AnonymousServiceEndpointParameterSet:
+                    account = GetAnonymousStorageAccount(this.BlobEndpoint, this.QueueEndpoint, this.FileEndpoint, this.TableEndpoint);
+                    break;
                 case AnonymousEnvironmentParameterSet:
                     account = GetAnonymousStorageAccountFromAzureEnvironment(StorageAccountName, useHttps, environmentName);
                     break;
                 case OAuthParameterSet:
                     account = GetStorageAccountByOAuth(StorageAccountName, useHttps, storageEndpoint);
+                    break;
+                case OAuthServiceEndpointParameterSet:
+                    account = GetStorageAccountByOAuth(this.BlobEndpoint, this.QueueEndpoint, this.FileEndpoint, this.TableEndpoint);
                     break;
                 case OAuthEnvironmentParameterSet:
                     account = GetStorageAccountByOAuthFromAzureEnvironment(StorageAccountName, useHttps, environmentName);
@@ -580,9 +639,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
             }
 
-            AzureStorageContext context = new AzureStorageContext(account, StorageAccountName, DefaultContext, WriteDebug);
+            AzureStorageContext context = new AzureStorageContext(account, GetRealAccountName(StorageAccountName), DefaultContext, WriteDebug);
+            if (this.EnableFileBackupRequestIntent.IsPresent)
+            {
+                context.ShareTokenIntent = ShareTokenIntent.Backup;
+            }
 
             WriteObject(context);
+        }
+
+        private static string GetRealAccountName(string inputAccountName)
+        {
+            if (inputAccountName != null)
+            {
+                // remove zone partition from the input account name, like input "myaccountname.z10", the real account name is "myaccountname"
+                return inputAccountName.Split(new char[] { '.' })[0];
+            }
+            return null;
         }
     }
 }

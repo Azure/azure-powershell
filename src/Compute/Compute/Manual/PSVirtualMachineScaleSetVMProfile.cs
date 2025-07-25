@@ -36,5 +36,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string EvictionPolicy { get; set; }
         public BillingProfile BillingProfile { get; set; }
         public ScheduledEventsProfile ScheduledEventsProfile { get; set; }
+        public CapacityReservationProfile CapacityReservation { get; set; }
+        public string UserData { get; set; }
+        public PSApplicationProfile ApplicationProfile { get; set; }
+        public SecurityPostureReference SecurityPostureReference { get; set; }
+        public System.DateTime? TimeCreated { get; private set; }
     }
 }

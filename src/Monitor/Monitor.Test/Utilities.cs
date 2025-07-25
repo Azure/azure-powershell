@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
         public static AzureOperationResponse<IPage<EventData>> InitializeResponse(int numRecords = 10)
         {
-            // 200 is the default page lenght of the backend, but these are tests -> using 10 as page length
+            // 200 is the default page length of the backend, but these are tests -> using 10 as page length
             if (numRecords < 10)
             {
                 return InitializeFinalResponse(numRecords);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             };
 
             return new AlertRuleResource(
-                id: "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d",
+                id: "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d",
                 location: "East US",
                 alertRuleResourceName: Name,
                 isEnabled: true,
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 Assert.Equal(expectedResourceGroup, resourceGroup);
                 // Assert.Equal(ResourceUri, nameOrTargetUri);
 
-                // Calling with Detailed ouput and resourceuri
+                // Calling with Detailed output and resourceuri
                 VerifyDetailedOutput(cmdlet: typedCmdlet, expectedResourceGroup: expectedResourceGroup, resourceGroup: ref resourceGroup, nameOrTargetUri: ref nameOrTargetUri);
             }
         }

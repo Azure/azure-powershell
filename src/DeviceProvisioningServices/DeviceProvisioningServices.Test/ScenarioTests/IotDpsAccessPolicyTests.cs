@@ -12,29 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.DeviceProvisioningServices.Test
 {
-    public class IotDpsAccessPolicyTests : RMTestBase
+    public class IotDpsAccessPolicyTests : DeviceProvisioningServicesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IotDpsAccessPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IotDpsAccessPolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IotDpsAccessPolicyLifeCycle()
         {
-            IotDpsController.NewInstance.RunPsTest(_logger, "Test-AzureIotDpsAccessPolicyLifeCycle");
+            TestRunner.RunTestScript("Test-AzureIotDpsAccessPolicyLifeCycle");
         }
     }
 }

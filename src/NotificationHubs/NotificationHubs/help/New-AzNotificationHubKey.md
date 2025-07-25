@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: A03F32C3-BB01-46A5-86C5-B7A4DDC42351
-online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/new-aznotificationhubkey
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/new-aznotificationhubkey
 schema: 2.0.0
 ---
 
@@ -25,11 +25,19 @@ New-AzNotificationHubKey cmdlet regenerates the Primary Key/Secondary Key for th
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+New-AzNotificationHubKey -ResourceGroup "ContosoNotificationsGroup" -Namespace "ContosoNamespace" -NotificationHub "ContosoInternalHub" -AuthorizationRule "DefaultListenSharedAccessSignature" -PolicyKey "PrimaryKey"
 ```
 
-{{ Add example description here }}
+```Output
+PrimaryConnectionString   : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenShare
+                            dAccessSignature;SharedAccessKey=V******z0=
+SecondaryConnectionString : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=DefaultListenShare
+                            dAccessSignature;SharedAccessKey=V******HV=
+PrimaryKey                : V******z0=
+SecondaryKey              : V******HV=
+KeyName                   : DefaultListenSharedAccessSignature
+```
 
 ## PARAMETERS
 

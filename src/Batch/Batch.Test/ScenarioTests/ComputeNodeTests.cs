@@ -12,113 +12,113 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Reflection;
+using Microsoft.Azure.Batch;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class ComputeNodeTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class ComputeNodeTests : BatchTestRunner
     {
         private const string poolId = ScenarioTestHelpers.SharedPool;
         private const string iaasPoolId = ScenarioTestHelpers.SharedIaasPool;
-        public XunitTracingInterceptor _logger;
 
-        public ComputeNodeTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ComputeNodeTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveComputeNodes()
         {
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string removeNodePoolId = "removenodepool";
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-RemoveComputeNodes '{0}'", removeNodePoolId) }; },
-                () =>
+            UpgradePolicy upgradePolicy = new UpgradePolicy(Azure.Batch.Common.UpgradeMode.Automatic);
+            upgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
+            upgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback = true;
+            upgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = true;
+            upgradePolicy.AutomaticOSUpgradePolicy.UseRollingUpgradePolicy = true;
+            upgradePolicy.AutomaticOSUpgradePolicy.OsRollingUpgradeDeferral = true;
+
+            upgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
+            upgradePolicy.RollingUpgradePolicy.EnableCrossZoneUpgrade = true;
+            upgradePolicy.RollingUpgradePolicy.MaxBatchInstancePercent = 20;
+            upgradePolicy.RollingUpgradePolicy.MaxUnhealthyUpgradedInstancePercent = 20;
+            upgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent = 20;
+            upgradePolicy.RollingUpgradePolicy.PauseTimeBetweenBatches = TimeSpan.FromSeconds(5);
+            upgradePolicy.RollingUpgradePolicy.PrioritizeUnhealthyInstances = false;
+            upgradePolicy.RollingUpgradePolicy.RollbackFailedInstancesOnPolicyBreach = false;
+
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(controller, context, removeNodePoolId, targetDedicated: 2, targetLowPriority: 0);
-                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, removeNodePoolId);
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, removeNodePoolId, targetDedicated: 2, targetLowPriority: 0, upgradePolicy: upgradePolicy);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, removeNodePoolId);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(controller, context, removeNodePoolId);
+                    ScenarioTestHelpers.DeletePool(this, context, removeNodePoolId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-RemoveComputeNodes '{removeNodePoolId}'"
+            );
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootAndReimageComputeNode()
         {
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            string computeNodeId = null;
-            string computeNodeId2 = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-RebootAndReimageComputeNode '{0}' '{1}' '{2}'", poolId, computeNodeId, computeNodeId2) }; },
-                () =>
+            string poolId = "rebootandreimagenodepool";
+
+            TestRunner.RunTestScript(
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId, 0);
-                    computeNodeId2 = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId, 1);
-                    ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
-                    ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId2);
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
                 },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-RebootAndReimageComputeNode '{poolId}'"
+            );
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableComputeNodeScheduling()
         {
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            string computeNodeId = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-DisableAndEnableComputeNodeScheduling '{0}' '{1}'", poolId, computeNodeId) }; },
-                () =>
+            string poolId = "disableandenablenodepool";
+
+            TestRunner.RunTestScript(
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
-                    ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
                 },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-DisableAndEnableComputeNodeScheduling '{poolId}'"
+            );
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetComputeNodeRemoteLoginSettings()
         {
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            string computeNodeId = null;
+            string poolId = "noderemoteloginpool";
 
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-GetRemoteLoginSettings '{0}' '{1}'", iaasPoolId, computeNodeId) }; },
-                () =>
+            TestRunner.RunTestScript(
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, iaasPoolId);
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
                 },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-GetRemoteLoginSettings '{poolId}'"
+            );
         }
     }
 }

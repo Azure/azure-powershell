@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/disable-azurermalias
+online version: https://learn.microsoft.com/powershell/module/az.accounts/disable-azurermalias
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ Disables AzureRm prefix aliases for Az modules. If -Module is specified, only mo
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Disable-AzureRmAlias
+```powershell
+Disable-AzureRmAlias
 ```
 
 Disables all AzureRm prefixes for the current PowerShell session.
 
-### Example 1
-```
-PS C:\> Disable-AzureRmAlias -Module Az.Accounts -Scope CurrentUser
+### Example 2
+```powershell
+Disable-AzureRmAlias -Module Az.Accounts -Scope CurrentUser
 ```
 
 Disables AzureRm aliases for the Az.Accounts module for both the current process and for the current user.
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

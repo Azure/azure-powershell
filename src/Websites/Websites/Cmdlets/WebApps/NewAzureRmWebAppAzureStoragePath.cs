@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public AzureStorageType Type { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Storage account name. E.g.: myfilestorageaccount.file.core.windows.net")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure Storage account name. e.g.: myfilestorageaccount")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string AccessKey { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Path in the container where the share specified by ShareName will be exposed")]
+        [Parameter(Mandatory = true, HelpMessage = "Path in the container where the share specified by ShareName will be exposed. MountPath must be sub-directory of \"mounts\".")]
         [ValidateNotNullOrEmpty]
         public string MountPath { get; set; }
 

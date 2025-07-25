@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 212281F0-9A3E-4652-919F-400455E3950E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmaemextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmaemextension
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Gets information about the AEM extension.
 
 ```
 Get-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
- [[-OSType] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-OSType] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +25,8 @@ The **Get-AzVMAEMExtension** cmdlet gets information about the Azure Enhanced Mo
 ## EXAMPLES
 
 ### Example 1: Get the AEM extension
-```
-PS C:\> Get-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+```powershell
+Get-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command gets information for the AEM extension for the virtual machine named contoso-server.
@@ -149,5 +150,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzVMAEMExtension](./Set-AzVMAEMExtension.md)
 
 [Test-AzVMAEMExtension](./Test-AzVMAEMExtension.md)
-
-

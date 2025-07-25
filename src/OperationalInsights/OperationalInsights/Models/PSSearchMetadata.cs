@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.ResultType = metadata.ResultType;
                 this.Top = metadata.Top;
                 this.Total = metadata.Total;
+                this.SearchId = metadata.SearchId;
                 if (metadata.Id != null)
                 {
                     this.Id = new Guid(metadata.Id);
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                         summaryList.Add(new PSCoreSummary(metadata.CoreSummaries[i]));
                     }
                 }
+
                 this.CoreSummaries = summaryList;
                 this.Status = metadata.Status;
                 this.StartTime = metadata.StartTime;
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                         sortList.Add(new PSSearchSort(metadata.Sort[j]));
                     }
                 }
+
                 this.Sort = sortList;
                 this.RequestTime = metadata.RequestTime;
                 this.AggregatedValueField = metadata.AggregatedValueField;
@@ -70,7 +73,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public long? Total { get; set; }
         public long? Top { get; set; }
         public Guid? Id { get; set; }
-        public IEnumerable<object> CoreResponses { get; set; }
+        public string SearchId { get; set; }
         public List<PSCoreSummary> CoreSummaries { get; set; }
         public string Status { get; set; }
         public DateTime? StartTime { get; set; }
@@ -83,5 +86,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public long? Sum { get; set; }
         public long? Max { get; set; }
         public PSMetadataSchema Schema { get; set; }
+        public IEnumerable<object> CoreResponses { get; set; } //this is not in use anymore - removing this will cause the build to fail
     }
 }

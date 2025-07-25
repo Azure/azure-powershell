@@ -104,6 +104,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 case CmdletModel.BackupManagementType.AzureVM:
                     providerType = ServiceClientModel.BackupManagementType.AzureIaasVM.ToString();
                     break;
+                case CmdletModel.BackupManagementType.AzureWorkload:
+                    providerType = ServiceClientModel.BackupManagementType.AzureWorkload.ToString();
+                    break;
                 case CmdletModel.BackupManagementType.AzureSQL:
                     providerType = ServiceClientModel.BackupManagementType.AzureSql.ToString();
                     break;
@@ -146,7 +149,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// are to be made to contact the backend service. 
         /// This is determined by the job status of powershell object.
         /// </summary>
-        /// <param name="jobStatus">Powershell job status enum value</param>
+        /// <param name="pSJobStatus">Powershell job status enum value</param>
         /// <returns>Service job status</returns>
         public static string
             GetServiceClientJobStatus(
@@ -264,6 +267,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 case CmdletModel.ScheduleRunType.Weekly:
                     scheduleRunType = ServiceClientModel.ScheduleRunType.Weekly.ToString();
                     break;
+                case CmdletModel.ScheduleRunType.Hourly:
+                    scheduleRunType = ServiceClientModel.ScheduleRunType.Hourly.ToString();
+                    break;
                 default:
                     break;
             }
@@ -307,7 +313,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Note: This doesn't work if the string has any extra characters
         /// after slash. (CSM ID's generally don't have)
         /// </summary>
-        /// <param name="url"></param>
+        /// <param name="fullId"></param>
         /// <returns></returns>
         public static string GetLastIdFromFullId(string fullId)
         {
@@ -354,6 +360,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
                 case CmdletModel.WorkloadType.MSSQL:
                     serviceClientWorkloadType = ServiceClientModel.WorkloadType.SQLDataBase.ToString();
+                    break;
+                case CmdletModel.WorkloadType.AzureFiles:
+                    serviceClientWorkloadType = ServiceClientModel.WorkloadType.AzureFileShare.ToString(); // this might cause some issue later, monitor for failures.
                     break;
                 default:
                     break;

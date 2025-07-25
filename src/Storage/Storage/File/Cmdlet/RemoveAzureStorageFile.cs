@@ -14,9 +14,9 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using global::Azure.Storage.Files.Shares;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using System.Globalization;
     using System.Management.Automation;
 
@@ -32,37 +32,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public string ShareName { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 0, 
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share where the file would be removed.")]
+            HelpMessage = "ShareClient object indicated the share where the file would be removed.")]
         [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
+        public ShareClient ShareClient { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 0, 
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be removed.")]
+            HelpMessage = "ShareDirectoryClient object indicated the base folder where the file would be removed.")]
         [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
+        public ShareDirectoryClient ShareDirectoryClient { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 0, 
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.FileParameterSetName,
-            HelpMessage = "CloudFile object indicated the file to be removed.")]
+            HelpMessage = "ShareFileClient object indicated the file would be removed.")]
         [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
+        public ShareFileClient ShareFileClient { get; set; }
 
         [Parameter(
             Position = 1,
@@ -87,25 +84,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            string[] path = NamingUtil.ValidatePath(this.Path, true);
-            CloudFile fileToBeRemoved;
+            ShareFileClient fileToBeRemoved;
             switch (this.ParameterSetName)
             {
                 case Constants.FileParameterSetName:
-                    fileToBeRemoved = this.File;
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    fileToBeRemoved = this.ShareFileClient;
                     break;
 
                 case Constants.ShareNameParameterSetName:
-                    var share = this.BuildFileShareObjectFromName(this.ShareName);
-                    fileToBeRemoved = share.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                    NamingUtil.ValidateShareName(this.ShareName, false);
+                    ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                    fileToBeRemoved = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.Path);
                     break;
 
                 case Constants.ShareParameterSetName:
-                    fileToBeRemoved = this.Share.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    fileToBeRemoved = this.ShareClient.GetRootDirectoryClient().GetFileClient(this.Path);
                     break;
 
                 case Constants.DirectoryParameterSetName:
-                    fileToBeRemoved = this.Directory.GetFileReferenceByPath(path);
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    fileToBeRemoved = this.ShareDirectoryClient.GetFileClient(this.Path);
                     break;
 
                 default:
@@ -114,14 +114,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             this.RunTask(async taskId =>
             {
-                if (this.ShouldProcess(fileToBeRemoved.GetFullPath(), "Remove file"))
+                if (this.ShouldProcess(Util.GetSnapshotQualifiedUri(fileToBeRemoved.Uri), "Remove file"))
                 {
-                    await this.Channel.DeleteFileAsync(fileToBeRemoved, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                    var responds =  await fileToBeRemoved.DeleteAsync(cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+                    responds.Headers.TryGetValue("x-ms-link-count", out var linkCount);
+                    if (linkCount != null)
+                    {
+                        OutputStream.WriteVerbose(taskId, string.Format(CultureInfo.CurrentCulture, "Deleted file {0} with link count {1}", Util.GetSnapshotQualifiedUri(fileToBeRemoved.Uri), linkCount));
+                    }
                 }
 
                 if (this.PassThru)
                 {
-                    WriteCloudFileObject(taskId, this.Channel, fileToBeRemoved);
+                    OutputStream.WriteObject(taskId, new AzureStorageFile(fileToBeRemoved, (AzureStorageContext)this.Context, clientOptions: ClientOptions));
                 }
             });
         }

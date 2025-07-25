@@ -45,5 +45,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ProximityPlacementGroupVM");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPPGVMIntentListAndZones()
+        {
+            TestRunner.RunTestScript("Test-PPGVMIntentAndZoneFeatures");
+        }
     }
 }

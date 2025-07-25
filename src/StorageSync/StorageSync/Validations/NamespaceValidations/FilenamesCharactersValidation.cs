@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
 
     /// <summary>
@@ -49,14 +50,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                 "File/Directory names with unsupported characters",
                 ValidationType.FilenameCharacters)
         {
-            var whitelistOfCodePointRanges = configuration.WhitelistOfCodePointRanges().ToList();
             var blacklistOfCodePoints = new HashSet<int>(configuration.BlacklistOfCodePoints());
 
             _codePointBlackList = new bool[NumberOfCodePoints];
 
             for (int i = 0; i < NumberOfCodePoints; ++i)
             {
-                _codePointBlackList[i] = blacklistOfCodePoints.Contains(i) || !whitelistOfCodePointRanges.Any(range => range.Includes(i));
+                _codePointBlackList[i] = blacklistOfCodePoints.Contains(i);
             }
         }
         #endregion
@@ -98,16 +98,35 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         /// <param name="node">The node.</param>
         /// <param name="isDirectory">if set to <c>true</c> [is directory].</param>
         /// <returns>IValidationResult.</returns>
-        private IValidationResult ValidateInternal (INamedObjectInfo node, bool isDirectory)
+        private IValidationResult ValidateInternal(INamedObjectInfo node, bool isDirectory)
         {
             string name = node.Name;
             List<int> positions = new List<int>();
+            string message = string.Empty;
+            char prevChar = 'a';
 
             for (int i = 0, codepointIndex = 0; i < name.Length; ++i, ++codepointIndex)
             {
                 int codePoint;
+                message = string.Empty;
 
-                if (char.IsSurrogatePair(name, i))
+                if (char.IsHighSurrogate(name[i]) && name.Length == 1)
+                {
+                    codePoint = name[i];
+                    message = $"Invalid surrogate char found in the file name at location {i + 1}";
+                }
+                else if (!char.IsHighSurrogate(prevChar) && char.IsLowSurrogate(name[i]))
+                {
+                    codePoint = name[i];
+                    message = $"Found a low surrogate character without a preceding high surrogate character at location {i + 1}";
+                }
+                else if (char.IsHighSurrogate(prevChar) && !char.IsLowSurrogate(name[i]))
+                {
+                    --codepointIndex;
+                    codePoint = name[i];
+                    message = $"Invalid hight surrogate char found in the file name at location {i + 1}";
+                }
+                else if (char.IsSurrogatePair(name, i))
                 {
                     codePoint = char.ConvertToUtf32(name, i);
                     i += 1;
@@ -117,13 +136,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     codePoint = name[i];
                 }
 
-                if (codePoint < 0 || 
-                    codePoint >= NumberOfCodePoints || 
-                    _codePointBlackList[codePoint])
+                prevChar = name[i];
+
+                if (codePoint < 0 ||
+                    codePoint >= NumberOfCodePoints ||
+                    _codePointBlackList[codePoint] ||
+                    !string.IsNullOrEmpty(message))
                 {
                     // adding +1 so that positions are 1-based
                     // to make them more human friendly
                     positions.Add(codepointIndex + 1);
+                }
+
+                codepointIndex = i;
+
+                if (!string.IsNullOrEmpty(message))
+                {
+                    Trace.TraceWarning(message);
                 }
             }
 

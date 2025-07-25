@@ -14,6 +14,8 @@
 
 using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
+using Commands.StorageSync.Interop.Enums;
+using Commands.StorageSync.Interop.Exceptions;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
@@ -23,9 +25,12 @@ using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
+using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
@@ -97,6 +102,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.StorageSyncServiceIdAlias)]
         public string ParentResourceId { get; set; }
 
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = HelpMessages.RegisteredServerAssignIdentityParameter)]
+        public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets as job.
@@ -144,10 +153,37 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId, parentResourceName);
-                    WriteObject(resource);
+                    try
+                    {
+                        RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId, parentResourceName);
+                        WriteObject(resource);
+                    }
+                    catch(ServerRegistrationException ex)
+                    {
+                        this.StorageSyncClientWrapper.VerboseLogger.Invoke($"Registration failed with Category : {ex.Category} , ErrorCode : {ex.ExternalErrorCode} ");
+                        this.StorageSyncClientWrapper.VerboseLogger.Invoke($"Exception details : {ex}");
+                        throw;
+                    }
+                    
                 }
             });
+        }
+
+        private string m_serverMachineName;
+        protected string ServerMachineName
+        {
+            get
+            {
+                if (m_serverMachineName == null)
+                {
+                    m_serverMachineName = SystemUtility.GetMachineName();
+                    if (string.IsNullOrEmpty(m_serverMachineName))
+                    {
+                        throw new ServerRegistrationException(ServerRegistrationErrorCode.ServerNameIsNullOrEmpty);
+                    }
+                }
+                return m_serverMachineName;
+            }
         }
 
         /// <summary>
@@ -160,7 +196,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <exception cref="PSArgumentException">AfsAgentInstallerPath</exception>
         private RegisteredServer PerformServerRegistration(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
-            using (ISyncServerRegistration syncServerRegistrationClient = new SyncServerRegistrationClient(StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement()))
+            using (ISyncServerRegistration syncServerRegistrationClient = StorageSyncClientWrapper.StorageSyncResourceManager.CreateSyncServerManagement())
             {
                 if (string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
                 {
@@ -177,8 +213,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     ManagementInteropConstants.CertificateKeyLength,
                     Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
                     StorageSyncClientWrapper.AfsAgentVersion,
-                    (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName,
-                            StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)));
+                    ServerMachineName,
+                    (pResourceGroupName, pStorageSyncServiceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncServiceName,
+                            StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)),
+                    this.AssignIdentity.ToBool());
             }
         }
 
@@ -197,36 +235,77 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 ClusterId = serverRegistrationData.ClusterId.ToString(),
                 ClusterName = serverRegistrationData.ClusterName,
                 AgentVersion = serverRegistrationData.AgentVersion,
-                ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate),
+
                 ServerOSVersion = serverRegistrationData.ServerOSVersion,
                 ServerRole = serverRegistrationData.ServerRole.ToString(),
                 FriendlyName = SystemUtility.GetMachineName(),
                 LastHeartBeat = DateTime.Now.ToString(),
             };
 
-            return RemoveDoubleQuotes(StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Create(
+            if (AssignIdentity)
+            {
+                if(default == serverRegistrationData.ApplicationId.GetValueOrDefault())
+                {
+                    throw new PSArgumentException("This server is not configured properly to use managed identities. Follow the steps in the Azure File Sync documentation (https://aka.ms/AFS/ManagedIdentities) to enable a system-assigned managed identity for this server.");
+                }
+                createParameters.ApplicationId = serverRegistrationData.ApplicationId.ToString();
+
+                // Handle role assignment for cluster nodes
+                if (serverRegistrationData.ServerRole == InternalObjects.ServerRoleType.ClusterNode)
+                {
+                    RegisteredServer clusterNameServer = default;
+                    if (serverRegistrationData.ClusterId.GetValueOrDefault(Guid.Empty) != Guid.Empty)
+                    {
+                        try
+                        {
+                            clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverRegistrationData.ClusterId.ToString());
+                        }
+                        catch (StorageSyncErrorException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            // Cluster is not registered yet. Continue with clusterNameServer as null.
+                        }
+                    }
+                    var clusterNameResourceId = clusterNameServer?.Id;
+                    var endpoints = new List<Tuple<ServerEndpoint, StorageSyncModels.CloudEndpoint>>();
+                    StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, storageSyncServiceName).ForEach(syncGroup =>
+                    {
+                        IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
+                        StorageSyncModels.CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
+
+                        StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name).ForEach(serverEndpoint =>
+                        {
+                            if (string.Equals(serverEndpoint.ServerResourceId, clusterNameResourceId, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                endpoints.Add(new Tuple<ServerEndpoint, StorageSyncModels.CloudEndpoint>(serverEndpoint, cloudEndpoint));
+                            }
+                        });
+                    });
+
+                    var serverIdentityGuid = serverRegistrationData.ApplicationId.Value;
+                    foreach (var endpoint in endpoints)
+                    {
+                        ServerEndpoint serverEndpoint = endpoint.Item1;
+                        StorageSyncModels.CloudEndpoint cloudEndpoint = endpoint.Item2;
+                        var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                        var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+
+                        StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                           serverIdentityGuid,
+                           Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                           scope);
+                    }
+                }
+            }
+            else
+            {
+                createParameters.ServerCertificate = serverRegistrationData.ServerCertificate != null ? Convert.ToBase64String(serverRegistrationData.ServerCertificate) : null;
+            }
+
+            return StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Create(
                resourceGroupName,
                 storageSyncServiceName,
                 serverRegistrationData.ServerId.ToString(),
-                createParameters));
+                createParameters);
         }
-
-        /// <summary>
-        /// Removes the double quotes.
-        /// </summary>
-        /// <param name="registeredServer">The registered server.</param>
-        /// <returns>RegisteredServer.</returns>
-        private RegisteredServer RemoveDoubleQuotes(RegisteredServer registeredServer)
-        {
-            registeredServer.ClusterId = registeredServer.ClusterId.Trim('\"');
-            registeredServer.StorageSyncServiceUid = registeredServer.StorageSyncServiceUid.Trim('\"');
-            registeredServer.ServerId = registeredServer.ServerId.Trim('\"');
-            registeredServer.DiscoveryEndpointUri = registeredServer.DiscoveryEndpointUri.Trim('\"');
-            registeredServer.ManagementEndpointUri = registeredServer.ManagementEndpointUri.Trim('\"');
-            registeredServer.LastHeartBeat = registeredServer.LastHeartBeat.Trim('\"');
-
-            return registeredServer;
-        }
-
     }
 }

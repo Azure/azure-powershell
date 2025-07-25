@@ -1,0 +1,52 @@
+{
+  "resourceType": "virtualMachines/runCommands",
+  "apiVersion": "2023-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.compute"
+  },
+  "commands": [
+    {
+      "name": "Remove-AzVMRunCommand",
+      "description": "The operation to delete the run command.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.compute/remove-azvmruncommand"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-RunCommandName <String>",
+              "[-SubscriptionId <String>]",
+              "-VMName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "The operation to delete the run command.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RunCommandName",
+              "value": "[Path.runCommandName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VMName",
+              "value": "[Path.vmName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

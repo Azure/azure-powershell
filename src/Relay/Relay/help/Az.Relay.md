@@ -1,73 +1,86 @@
-﻿---
+---
 Module Name: Az.Relay
-Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.relay
-Help Version: 4.0.0.0
+Module Guid: 14fdcc41-318e-4838-8905-9cf090a8339c
+Download Help Link: https://learn.microsoft.com/powershell/module/az.relay
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.Relay Module
 ## Description
-List of the cmdlets for Azure Relay
+Microsoft Azure PowerShell: Relay cmdlets
 
 ## Az.Relay Cmdlets
 ### [Get-AzRelayAuthorizationRule](Get-AzRelayAuthorizationRule.md)
-Gets the description of a specified authorization rule for a given Relay entities (Namespace/WcfRelay/HybridConnection).
+Authorization rule for a namespace by name.
 
 ### [Get-AzRelayHybridConnection](Get-AzRelayHybridConnection.md)
-Gets a description for the specified HybridConnection within the Relay namespace.
+Returns the description for the specified hybrid connection.
 
 ### [Get-AzRelayKey](Get-AzRelayKey.md)
-Gets the primary and secondary connection strings for the given Relay entities (Namespace/WcfRelay/HybridConnection).
+Primary and secondary connection strings to the namespace.
 
 ### [Get-AzRelayNamespace](Get-AzRelayNamespace.md)
-Gets a description for the specified Relay namespace within the resource group.
+Returns the description for the specified namespace.
 
-### [Get-AzRelayOperation](Get-AzRelayOperation.md)
-List supported Relay Operations
+### [Get-AzRelayNamespaceNetworkRuleSet](Get-AzRelayNamespaceNetworkRuleSet.md)
+Gets NetworkRuleSet for a Namespace.
 
 ### [Get-AzWcfRelay](Get-AzWcfRelay.md)
-Returns a description for the specified WcfRelay.
+Returns the description for the specified WCF relay.
 
 ### [New-AzRelayAuthorizationRule](New-AzRelayAuthorizationRule.md)
-Creates a new authorization rule for the specified Relay entities (Namespace/WcfRelay/HybridConnection).
+Creates or updates an authorization rule for a namespace.
 
 ### [New-AzRelayHybridConnection](New-AzRelayHybridConnection.md)
-Creates a HybridConnection in the specified Relay namespace.
+Creates or updates a service hybrid connection.
+This operation is idempotent.
 
 ### [New-AzRelayKey](New-AzRelayKey.md)
-Regenerates the primary or secondary connection strings for the given Relay entities (Namespace/WcfRelay/HybridConnection)
+Regenerates the primary or secondary connection strings to the namespace.
 
 ### [New-AzRelayNamespace](New-AzRelayNamespace.md)
-Creates a new Relay namespace.
+Create Azure Relay namespace.
+
+### [New-AzRelayNetworkRuleSetIPRuleObject](New-AzRelayNetworkRuleSetIPRuleObject.md)
+Create an in-memory object for NwRuleSetIPRules.
 
 ### [New-AzWcfRelay](New-AzWcfRelay.md)
-Creates a WcfRelay in the specified Relay namespace.
+Creates or updates a WCF relay.
+This operation is idempotent.
 
 ### [Remove-AzRelayAuthorizationRule](Remove-AzRelayAuthorizationRule.md)
-Removes the authorization rule of a HybridConnection from the given Relay entities (Namespace/WcfRelay/HybridConnection).
+Deletes a namespace authorization rule.
 
 ### [Remove-AzRelayHybridConnection](Remove-AzRelayHybridConnection.md)
-Removes the HybridConnection from the specified HybridConnection namespace.
+Deletes a hybrid connection.
 
 ### [Remove-AzRelayNamespace](Remove-AzRelayNamespace.md)
-Removes the namespace from the specified resource group. 
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzWcfRelay](Remove-AzWcfRelay.md)
-Removes the WcfRelay from the specified Relay namespace.
+Deletes a WCF relay.
 
 ### [Set-AzRelayAuthorizationRule](Set-AzRelayAuthorizationRule.md)
-Updates the specified authorization rule description for the given Relay entities (Namespace/WcfRelay/HybridConnection).
+Creates or updates an authorization rule for a namespace.
 
 ### [Set-AzRelayHybridConnection](Set-AzRelayHybridConnection.md)
-Updates the description of a HybridConnection in the specified Relay namespace.
+Creates or updates a service hybrid connection.
+This operation is idempotent.
 
-### [Set-AzRelayNamespace](Set-AzRelayNamespace.md)
-Updates the description of an existing Relay namespace.
+### [Set-AzRelayNamespaceNetworkRuleSet](Set-AzRelayNamespaceNetworkRuleSet.md)
+Update NetworkRuleSet for a Namespace.
 
 ### [Set-AzWcfRelay](Set-AzWcfRelay.md)
-Updates the description of a WcfRelay in the specified Relay namespace.
+Creates or updates a WCF relay.
+This operation is idempotent.
 
 ### [Test-AzRelayName](Test-AzRelayName.md)
-Checks the Availability of the given NameSpace Name
+Check the specified namespace name availability.
+
+### [Update-AzRelayNamespace](Update-AzRelayNamespace.md)
+Creates or updates a namespace.
+Once created, this namespace's resource manifest is immutable.
+This operation is idempotent.
 

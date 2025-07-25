@@ -15,6 +15,7 @@
 
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -27,6 +28,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Policy Name", Target = ViewControl.Table, ScriptBlock = "$_.SslPolicy.PolicyName")]
         public PSApplicationGatewaySslPolicy SslPolicy { get; set; }
 
+        public PSApplicationGatewayGlobalConfiguration GlobalConfiguration { get; set; }
+
         public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
 
         public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
@@ -34,6 +37,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
 
         public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificates { get; set; }
+
+        public List<PSApplicationGatewayTrustedClientCertificate> TrustedClientCertificates { get; set; }
 
         public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
@@ -45,11 +50,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayBackendHttpSettings> BackendHttpSettingsCollection { get; set; }
 
+        public List<PSApplicationGatewayBackendSettings> BackendSettingsCollection { get; set; }
+
+        public List<PSApplicationGatewaySslProfile> SslProfiles { get; set; }
+
         public List<PSApplicationGatewayHttpListener> HttpListeners { get; set; }
+
+        public List<PSApplicationGatewayListener> Listeners { get; set; }
 
         public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
 
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
+
+        public List<PSApplicationGatewayRoutingRule> RoutingRules { get; set; }
 
         public List<PSApplicationGatewayRewriteRuleSet> RewriteRuleSets { get; set; }
 
@@ -74,6 +87,46 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool? EnableFips { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableRequestBuffering
+        {
+            get
+            {
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                    this.GlobalConfiguration.EnableRequestBuffering = true;
+                }
+                return this.GlobalConfiguration?.EnableRequestBuffering;
+            }
+
+            set
+            {
+                this.GlobalConfiguration.EnableRequestBuffering = value;
+            }
+
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableResponseBuffering 
+        {
+            get
+            {
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                    this.GlobalConfiguration.EnableResponseBuffering = true;
+                }
+                return this.GlobalConfiguration?.EnableResponseBuffering;
+            }
+                
+            set
+            {
+                this.GlobalConfiguration.EnableResponseBuffering = value;
+            }
+        
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? ForceFirewallPolicyAssociation { get; set; }
         
         public List<string> Zones { get; set; }
@@ -87,10 +140,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public PSManagedServiceIdentity Identity { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string DefaultPredefinedSslPolicy { get; private set; }
+
         [JsonIgnore]
         public string GatewayIpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(GatewayIPConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TrustedClientCertificatesText
+        {
+            get { return JsonConvert.SerializeObject(TrustedClientCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -130,9 +192,27 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string BackendSettingsCollectionText
+        {
+            get { return JsonConvert.SerializeObject(BackendSettingsCollection, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string SslProfilesText
+        {
+            get { return JsonConvert.SerializeObject(SslProfiles, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string HttpListenersText
         {
             get { return JsonConvert.SerializeObject(HttpListeners, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ListenersText
+        {
+            get { return JsonConvert.SerializeObject(Listeners, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -145,6 +225,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RequestRoutingRulesText
         {
             get { return JsonConvert.SerializeObject(RequestRoutingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RoutingRulesText
+        {
+            get { return JsonConvert.SerializeObject(RoutingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

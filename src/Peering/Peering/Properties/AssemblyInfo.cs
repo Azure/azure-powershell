@@ -16,12 +16,13 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Microsoft Peering Service")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - Peering")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
+
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("65C9118E-0F63-42F7-BC61-55D69073B75D")]
-[assembly: AssemblyVersion("0.1.9")]
-[assembly: AssemblyFileVersion("0.1.9")]
+[assembly: Guid("78c6a853-5ea3-4374-9c5f-5b532d62c892")]
+[assembly: AssemblyVersion("0.5.0")]
+[assembly: AssemblyFileVersion("0.5.0")]

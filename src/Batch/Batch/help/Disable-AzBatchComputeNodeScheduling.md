@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 2DF5FB4D-A5CB-439C-AC6F-DF2130AF33EC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchcomputenodescheduling
+online version: https://learn.microsoft.com/powershell/module/az.batch/disable-azbatchcomputenodescheduling
 schema: 2.0.0
 ---
 
@@ -42,9 +42,9 @@ Tasks stopped in this manner will not be rescheduled.
 ## EXAMPLES
 
 ### Example 1: Disable task scheduling on a compute node
-```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
-PS C:\> Disable-AzBatchComputeNodeScheduling -PoolId "myPool" -Id "tvm-1783593343_34-20151117t222514z" -BatchContext $Context
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
+Disable-AzBatchComputeNodeScheduling -PoolId "myPool" -Id "tvm-1783593343_34-20151117t222514z" -BatchContext $Context
 ```
 
 These commands disable task schedule on the compute node tvm-1783593343_34-20151117t222514z.
@@ -54,9 +54,9 @@ The second command then uses this object reference and the **Disable-AzBatchComp
 Because the *DisableComputeNodeSchedulingOptions* parameter was not included any tasks currently running on the compute node will be requeued.
 
 ### Example 2: Disable task scheduling on all compute nodes in a pool
-```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
-PS C:\> Get-AzBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Disable-AzBatchComputeNodeScheduling -BatchContext $Context
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
+Get-AzBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Disable-AzBatchComputeNodeScheduling -BatchContext $Context
 ```
 
 These commands disable task scheduling on all the computer nodes in the batch pool Pool06.
@@ -70,7 +70,7 @@ Because the *DisableComputeNodeSchedulingOptions* parameter was not included any
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -196,5 +196,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
 
 [Enable-AzBatchComputeNodeScheduling](./Enable-AzBatchComputeNodeScheduling.md)
-
-

@@ -20,6 +20,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureFileShareRecoveryPoint : AzureRecoveryPoint
     {
         /// <summary>
+        /// Recovery Type information for Recovery point: "Vault", "Snapshot", "Snapshot and Vault" 
+        /// </summary>
+        public RecoveryPointTier RecoveryPointTier;
+
+        /// <summary>
         /// Url to the snapshot of fileshare
         /// </summary>
         public string FileShareSnapshotUri { get; set; }

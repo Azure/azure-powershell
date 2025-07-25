@@ -18,9 +18,11 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
@@ -28,7 +30,10 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Removes a given role assignment.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", 
+        SupportsShouldProcess = true, 
+        DefaultParameterSetName = ParameterSet.Empty), 
+        OutputType(typeof(PSRoleAssignment))]
     public class RemoveAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
@@ -62,7 +67,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "The app SPN.")]
         [ValidateNotNullOrEmpty]
-        [Alias("SPN")]
+        [Alias("SPN", "ApplicationId")]
         public string ServicePrincipalName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
@@ -156,6 +161,9 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
         public PSRoleAssignment InputObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         public override void ExecuteCmdlet()
         {
             IEnumerable<PSRoleAssignment> roleAssignments = null;
@@ -183,16 +191,23 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id
+                    Subscription = DefaultProfile.DefaultContext.Subscription?.Id?.ToString()
                 },
-                ExcludeAssignmentsForDeletedPrincipals = false,
                 // we should never expand principal groups in the Delete scenario
                 ExpandPrincipalGroups = false,
                 // never include classic administrators in the Delete scenario
                 IncludeClassicAdministrators = false
             };
 
-            AuthorizationClient.ValidateScope(options.Scope, true);
+            if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
+            {
+                WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
+            }
+
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(options.Scope, true);
+            }
 
             ConfirmAction(
                 string.Format(ProjectResources.RemovingRoleAssignment, ObjectId, Scope, RoleDefinitionName),
@@ -204,9 +219,12 @@ namespace Microsoft.Azure.Commands.Resources
                     if (PassThru)
                     {
                         WriteObject(roleAssignments, enumerateCollection: true);
+                    } 
+                    else // If customer does not need the RA object print regular success method
+                    {
+                        WriteObject(string.Format(ProjectResources.SuccessfullRARemove, ObjectId, Scope, RoleDefinitionName));
                     }
                 });
-
         }
     }
 }

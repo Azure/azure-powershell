@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: D2CCAEB4-E43E-4075-9436-77F2C4FE9463
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmimageoffer
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmimageoffer
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Gets VMImage offer types.
 ## SYNTAX
 
 ```
-Get-AzVMImageOffer -Location <String> -PublisherName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVMImageOffer -Location <String> [-EdgeZone <String>] -PublisherName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +24,8 @@ The **Get-AzVMImageOffer** cmdlet gets the VMImage offer types.
 ## EXAMPLES
 
 ### Example 1: Get offer types for a publisher
-```
-PS C:\> Get-AzVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
+```powershell
+Get-AzVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
 ```
 
 This command gets the offer types for the specified publisher in the Central US region.
@@ -44,6 +44,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+Set the extended location name for EdgeZone. If not set, VM Image offer will be queried from Azure main region. Otherwise it will be queried from the specified extended location
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -100,5 +115,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
 [Save-AzVMImage](./Save-AzVMImage.md)
-
-

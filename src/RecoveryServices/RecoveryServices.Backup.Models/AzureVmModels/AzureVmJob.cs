@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -57,5 +58,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Azure VM specific job sub-task class.
     /// </summary>
-    public class AzureVmJobSubTask : AzureJobSubTask { }
+    public class AzureVmJobSubTask : AzureJobSubTask {
+        
+        /// <summary>
+        /// sub task duration
+        /// </summary>
+        public TimeSpan? Duration { get; set; }
+    }
 }

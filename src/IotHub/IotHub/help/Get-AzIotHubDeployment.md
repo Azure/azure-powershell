@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubdeployment
+online version: https://learn.microsoft.com/powershell/module/az.iothub/get-aziothubdeployment
 schema: 2.0.0
 ---
 
@@ -32,20 +32,20 @@ Get-AzIotHubDeployment [-ResourceId] <String> [-Name <String>] [-DefaultProfile 
 
 ## DESCRIPTION
 Get the details of an IoT Edge deployment or List IoT Edge deployments in an IoT Hub.
-See https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring for more information.
+See https://learn.microsoft.com/azure/iot-edge/module-deployment-monitoring for more information.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1"
+Get-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1"
 ```
 
 Get the details of an IoT Edge deployment.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
+Get-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
 ```
 
 List all IoT Edge deployments in an IoT Hub.

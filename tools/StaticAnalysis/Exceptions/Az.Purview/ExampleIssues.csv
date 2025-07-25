@@ -1,0 +1,3 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Purview","Get-AzPurviewAccount","4","2","Invalid_Cmdlet","5000","1","Get-AzADDomainService is not a valid command name.","Get-AzADDomainService -InputObject $got","Check the spell of Get-AzADDomainService."
+"Az.Purview","Get-AzPurviewAccount","4","2","Invalid_Cmdlet","5000","1","Get-AzADDomainService is not a valid command name.","Get-AzADDomainService -InputObject $got","Check the spell of Get-AzADDomainService."

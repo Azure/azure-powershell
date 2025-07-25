@@ -1,0 +1,37 @@
+{
+  "resourceType": "defenderForStorageSettings",
+  "apiVersion": "2022-12-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.security"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSecurityDefenderForStorage",
+      "description": "Gets the Defender for Storage settings for the specified storage account.",
+      "path": "/{resourceId}/providers/Microsoft.Security/defenderForStorageSettings/{settingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.security/get-azsecuritydefenderforstorage"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the Defender for Storage settings for the specified storage account.",
+          "parameters": [
+            {
+              "name": "-ResourceId",
+              "value": "[Path.resourceId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

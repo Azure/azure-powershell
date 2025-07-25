@@ -19,6 +19,44 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+## Version 1.3.1
+* Added breaking change announcement for the following cmdlets due to migrating autorest from v3 to v4.
+  * `Get-AzFederatedIdentityCredential`
+  * `New-AzFederatedIdentityCredential`
+  * `Update-AzFederatedIdentityCredential`
+
+## Version 1.3.0
+* Upgraded nuget package to signed package.
+
+## Version 1.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 1.2.0
+* Renamed `*-AzFederatedIdentityCredentials` to `*-AzFederatedIdentityCredential`, and kept `*-AzFederatedIdentityCredentials` as an alias.
+
+## Version 1.1.1
+* Upgraded to API version 2023-01-31.
+* Federated identity credentials GA version is available now.
+
+## Version 1.1.0
+* Supported Create/Get/Update/Remove Federated Identity Credentials on a User Assigned Managed Identity
+  * `Get-AzFederatedIdentityCredentials`
+  * `New-AzFederatedIdentityCredentials`
+  * `Remove-AzFederatedIdentityCredentials`
+  * `Update-AzFederatedIdentityCredentials`
+* Supported List Associated Resources on a User Assigned Managed Identity
+  * `Get-AzUserAssignedIdentityAssociatedResource`
+
+## Version 1.0.0
+* General availability of `Az.ManagedServiceIdentity`
+
+## Version 0.8.0
+* Bumped API Version to 2018-11-30
+* Added new cmdlets `Get-AzSystemAssignedIdentity` and `Update-AzUserAssignedIdentity`
+
 ## Version 0.7.3
 * Update references in .psd1 to use relative path
 

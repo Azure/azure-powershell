@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 0C8AC52C-4E70-493C-A299-79CE32EC5EF1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabase
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabase
 schema: 2.0.0
 ---
 
@@ -14,8 +14,9 @@ Gets one or more databases.
 ## SYNTAX
 
 ```
-Get-AzSqlDatabase [[-DatabaseName] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzSqlDatabase [[-DatabaseName] <String>] [-ExpandKeyList] [-KeysFilter <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,117 +26,270 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Get all databases on a server
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01"
 ```
-PS C:\>Get-AzSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01"
-ResourceGroupName             : resourcegroup01
-ServerName                    : server01
-DatabaseName                  : master
-Location                      : Central US
-DatabaseId                    : a2a7f2db-7526-4d86-a7b2-36276ee10dc6
-Edition                       : None
-CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
-MaxSizeBytes                  : 5368709120
-Status                        : Online
-CreationDate                  : 7/3/2015 7:32:44 AM
-CurrentServiceObjectiveId     : c99ac918-dbea-463f-a475-16ec020fdc12
-CurrentServiceObjectiveName   : System1
-RequestedServiceObjectiveId   : c99ac918-dbea-463f-a475-16ec020fdc12
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
-Tags                          : 
 
-ResourceGroupName             : resourcegroup01
-ServerName                    : server01
-DatabaseName                  : database01
-Location                      : Central US
-DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
-Edition                       : Standard
-CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
-MaxSizeBytes                  : 268435456000
-Status                        : Online
-CreationDate                  : 7/3/2015 7:33:37 AM
-CurrentServiceObjectiveId     : f1173c43-91bd-4aaa-973c-54e79e15235b
-CurrentServiceObjectiveName   : S0
-RequestedServiceObjectiveId   : f1173c43-91bd-4aaa-973c-54e79e15235b
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
-Tags                          :
+```output
+ResourceGroupName				         : resourcegroup01
+ServerName						           : server01
+DatabaseName					           : master
+Location						             : Central US
+DatabaseId						           : a2a7f2db-7526-4d86-a7b2-36276ee10dc6
+Edition							             : None
+CollationName					           : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation				         : 
+MaxSizeBytes					           : 5368709120
+Status							             : Online
+CreationDate					           : 7/3/2015 7:32:44 AM
+CurrentServiceObjectiveId		     : c99ac918-dbea-463f-a475-16ec020fdc12
+CurrentServiceObjectiveName		   : System1
+RequestedServiceObjectiveId		   : c99ac918-dbea-463f-a475-16ec020fdc12
+RequestedServiceObjectiveName	   : 
+ElasticPoolName					         : 
+EarliestRestoreDate				       : 
+Tags							               :
+CurrentBackupStorageRedundancy	 : Geo
+RequestedBackupStorageRedundancy : Geo
+
+ResourceGroupName				         : resourcegroup01
+ServerName						           : server01
+DatabaseName                     : database01
+Location						             : Central US
+DatabaseId						           : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition							             : Standard
+CollationName					           : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation				         : 
+MaxSizeBytes					           : 268435456000
+Status							             : Online
+CreationDate					           : 7/3/2015 7:33:37 AM
+CurrentServiceObjectiveId		     : f1173c43-91bd-4aaa-973c-54e79e15235b
+CurrentServiceObjectiveName		   : S0
+RequestedServiceObjectiveId		   : f1173c43-91bd-4aaa-973c-54e79e15235b
+RequestedServiceObjectiveName	   : 
+ElasticPoolName					         : 
+EarliestRestoreDate				       : 
+Tags							               :
+CurrentBackupStorageRedundancy	 : Geo
+RequestedBackupStorageRedundancy : Geo
 ```
 
 This command gets all databases on the server named server01.
 
 ### Example 2: Get a database by name on a server
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
 ```
-PS C:\>Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
-ResourceGroupName             : resourcegroup01
-ServerName                    : server01
-DatabaseName                  : database02
-Location                      : Central US
-DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
-Edition                       : Standard
-CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
-MaxSizeBytes                  : 268435456000
-Status                        : Online
-CreationDate                  : 7/3/2015 7:33:37 AM
-CurrentServiceObjectiveId     : f1173c43-91bd-4aaa-973c-54e79e15235b
-CurrentServiceObjectiveName   : S0
-RequestedServiceObjectiveId   : f1173c43-91bd-4aaa-973c-54e79e15235b
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
-Tags                          :
+
+```output
+ResourceGroupName				         : resourcegroup01
+ServerName						           : server01
+DatabaseName					           : database02
+Location						             : Central US
+DatabaseId						           : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition							             : Standard
+CollationName					           : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation				         : 
+MaxSizeBytes					           : 268435456000
+Status							             : Online
+CreationDate					           : 7/3/2015 7:33:37 AM
+CurrentServiceObjectiveId		     : f1173c43-91bd-4aaa-973c-54e79e15235b
+CurrentServiceObjectiveName		   : S0
+RequestedServiceObjectiveId		   : f1173c43-91bd-4aaa-973c-54e79e15235b
+RequestedServiceObjectiveName	   : 
+ElasticPoolName                  : 
+EarliestRestoreDate				       : 
+Tags							               :
+CurrentBackupStorageRedundancy	 : Geo
+RequestedBackupStorageRedundancy : Geo
 ```
 
 This command gets a database named Database02 from a server named Server01.
 
 ### Example 3: Get all databases on a server using filtering
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database*"
 ```
-PS C:\> Get-AzSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database*"
-ResourceGroupName             : resourcegroup01
-ServerName                    : server01
-DatabaseName                  : database01
-Location                      : Central US
-DatabaseId                    : a2a7f2db-7526-4d86-a7b2-36276ee10dc6
-Edition                       : None
-CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
-MaxSizeBytes                  : 5368709120
-Status                        : Online
-CreationDate                  : 7/3/2015 7:32:44 AM
-CurrentServiceObjectiveId     : c99ac918-dbea-463f-a475-16ec020fdc12
-CurrentServiceObjectiveName   : System1
-RequestedServiceObjectiveId   : c99ac918-dbea-463f-a475-16ec020fdc12
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
-Tags                          : 
 
-ResourceGroupName             : resourcegroup01
-ServerName                    : server01
-DatabaseName                  : database02
-Location                      : Central US
-DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
-Edition                       : Standard
-CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
-MaxSizeBytes                  : 268435456000
-Status                        : Online
-CreationDate                  : 7/3/2015 7:33:37 AM
-CurrentServiceObjectiveId     : f1173c43-91bd-4aaa-973c-54e79e15235b
-CurrentServiceObjectiveName   : S0
-RequestedServiceObjectiveId   : f1173c43-91bd-4aaa-973c-54e79e15235b
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
-Tags                          :
+```output
+ResourceGroupName				         : resourcegroup01
+ServerName						           : server01
+DatabaseName					           : database01
+Location						             : Central US
+DatabaseId						           : a2a7f2db-7526-4d86-a7b2-36276ee10dc6
+Edition							             : None
+CollationName				             : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation				         : 
+MaxSizeBytes					           : 5368709120
+Status							             : Online
+CreationDate					           : 7/3/2015 7:32:44 AM
+CurrentServiceObjectiveId		     : c99ac918-dbea-463f-a475-16ec020fdc12
+CurrentServiceObjectiveName		   : System1
+RequestedServiceObjectiveId		   : c99ac918-dbea-463f-a475-16ec020fdc12
+RequestedServiceObjectiveName	   : 
+ElasticPoolName					         : 
+EarliestRestoreDate				       : 
+Tags							               : 
+CurrentBackupStorageRedundancy	 : Geo
+RequestedBackupStorageRedundancy : Geo
+
+ResourceGroupName				         : resourcegroup01
+ServerName						           : server01
+DatabaseName					           : database02
+Location                         : Central US
+DatabaseId					             : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition						               : Standard
+CollationName					           : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation				         : 
+MaxSizeBytes					           : 268435456000
+Status							             : Online
+CreationDate					           : 7/3/2015 7:33:37 AM
+CurrentServiceObjectiveId		     : f1173c43-91bd-4aaa-973c-54e79e15235b
+CurrentServiceObjectiveName		   : S0
+RequestedServiceObjectiveId		   : f1173c43-91bd-4aaa-973c-54e79e15235b
+RequestedServiceObjectiveName	   : 
+ElasticPoolName					         : 
+EarliestRestoreDate				       : 
+Tags                             :
+CurrentBackupStorageRedundancy	 : Geo
+RequestedBackupStorageRedundancy : Geo
 ```
 
 This command gets all databases on the server named server01 that start with "database".
+
+### Example 4: Get a database with TDE AKV keys on a server using expand keys parameter.
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeyList
+```
+
+```output
+ResourceGroupName				 : resourcegroup01
+ServerName						 : server01
+DatabaseName					 : database02
+Location						 : Central US
+DatabaseId						 : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition							 : Standard
+CollationName					 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation				 : 
+MaxSizeBytes					 : 268435456000
+Status							 : Online
+CreationDate					 : 7/3/2015 7:33:37 AM
+CurrentServiceObjectiveId		 : f1173c43-91bd-4aaa-973c-54e79e15235b
+CurrentServiceObjectiveName		 : S0
+RequestedServiceObjectiveId		 : f1173c43-91bd-4aaa-973c-54e79e15235b
+RequestedServiceObjectiveName	 : 
+ElasticPoolName                  : 
+EarliestRestoreDate				 : 
+Tags							 :
+CurrentBackupStorageRedundancy	 : Geo
+RequestedBackupStorageRedundancy : Geo
+Identity                         : Microsoft.Azure.Management.Sql.Models.DatabaseIdentity
+EncryptionProtector              : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+Keys                             : {[https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901, Microsoft.Azure.Management.Sql.Models.DatabaseKey], 
+                                    [https://contoso.vault.azure.net/keys/contosokey2/09876543210987654321098765432109, Microsoft.Azure.Management.Sql.Models.DatabaseKey]}
+FederatedClientId                :
+```
+
+This command gets all the TDE AKV keys configured on the database.
+
+### Example 5: Get a database with TDE AKV keys on a server using expand keys and filter by date
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeyList -KeysFilter "1/13/2022"
+```
+
+```output
+ResourceGroupName				 : resourcegroup01
+ServerName						 : server01
+DatabaseName					 : database02
+Location						 : Central US
+DatabaseId						 : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition							 : Standard
+CollationName					 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation				 : 
+MaxSizeBytes					 : 268435456000
+Status							 : Online
+CreationDate					 : 7/3/2015 7:33:37 AM
+CurrentServiceObjectiveId		 : f1173c43-91bd-4aaa-973c-54e79e15235b
+CurrentServiceObjectiveName		 : S0
+RequestedServiceObjectiveId		 : f1173c43-91bd-4aaa-973c-54e79e15235b
+RequestedServiceObjectiveName	 : 
+ElasticPoolName                  : 
+EarliestRestoreDate				 : 
+Tags							 :
+CurrentBackupStorageRedundancy	 : Geo
+RequestedBackupStorageRedundancy : Geo
+Identity                         : Microsoft.Azure.Management.Sql.Models.DatabaseIdentity
+EncryptionProtector              : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+Keys                             : {[https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901, Microsoft.Azure.Management.Sql.Models.DatabaseKey], 
+                                    [https://contoso.vault.azure.net/keys/contosokey2/09876543210987654321098765432109, Microsoft.Azure.Management.Sql.Models.DatabaseKey]}
+FederatedClientId                :
+```
+
+This command gets a database configured with TDE CMK keys
+
+### Example 6: Get a database with TDE AKV keys on a server using expand keys and filter as 'current'
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02" -ExpandKeyList -KeysFilter "current"
+```
+
+```output
+ResourceGroupName				 : resourcegroup01
+ServerName						 : server01
+DatabaseName					 : database02
+Location						 : Central US
+DatabaseId						 : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition							 : Standard
+CollationName					 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation				 : 
+MaxSizeBytes					 : 268435456000
+Status							 : Online
+CreationDate					 : 7/3/2015 7:33:37 AM
+CurrentServiceObjectiveId		 : f1173c43-91bd-4aaa-973c-54e79e15235b
+CurrentServiceObjectiveName		 : S0
+RequestedServiceObjectiveId		 : f1173c43-91bd-4aaa-973c-54e79e15235b
+RequestedServiceObjectiveName	 : 
+ElasticPoolName                  : 
+EarliestRestoreDate				 : 
+Tags							 :
+CurrentBackupStorageRedundancy	 : Geo
+RequestedBackupStorageRedundancy : Geo
+Identity                         : Microsoft.Azure.Management.Sql.Models.DatabaseIdentity
+EncryptionProtector              : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+Keys                             : 
+FederatedClientId                :
+```
+
+This command gets a database configured with TDE CMK keys with filter as 'current'
+
+### Example 7: Get a database configured with preferred enclave type as VBS
+
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database02
+Location                      : Central US
+DatabaseId                    : 34d9d561-42a7-484e-bf05-62ddef8000ab
+Edition                       : GeneralPurpose
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : 268435456000
+Status                        : Online
+CreationDate                  : 8/26/2015 10:04:29 PM
+CurrentServiceObjectiveName   : GP_Gen5_2
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
+LicenseType                   : LicenseIncluded
+Tags                          :
+EnableLedger                  : False
+PreferredEnclaveType          : VBS
+```
+
+This command gets a database configured with VBS enclave
 
 ## PARAMETERS
 
@@ -151,7 +305,7 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -DefaultProfile
@@ -166,6 +320,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandKeyList
+Flag to be used to view all the AKV keys in a database.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeysFilter
+Timestamp filter to Get AKV keys
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

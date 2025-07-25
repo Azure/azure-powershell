@@ -1,0 +1,46 @@
+{
+  "New-AzSupportFileWorkspacesNoSubscription+[NoContext]+Create+$PUT+https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-for-create-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-for-create-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "0e3c4073-1939-4bdf-a6a6-c427f2da4610" ],
+        "CommandName": [ "New-AzSupportFileWorkspacesNoSubscription" ],
+        "FullCommandName": [ "New-AzSupportFileWorkspacesNoSubscription_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.2", "Az.Support/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-for-create-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6?api-version=2024-04-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "7b424c33-4b90-42dc-bd62-c0cfc6caa413" ],
+        "x-ms-correlation-request-id": [ "7b424c33-4b90-42dc-bd62-c0cfc6caa413" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240423T181554Z:7b424c33-4b90-42dc-bd62-c0cfc6caa413" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 59CFD30AADA64FE1AC644908EC4726EE Ref B: MNZ221060608031 Ref C: 2024-04-23T18:15:50Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:15:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "305" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Support/fileWorkspaces/test-for-create-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\"name\":\"test-for-create-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\"type\":\"Microsoft.Support/fileWorkspaces\",\"properties\":{\"expirationTime\":\"2024-04-24T18:15:52Z\",\"createdOn\":\"2024-04-23T18:15:52Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

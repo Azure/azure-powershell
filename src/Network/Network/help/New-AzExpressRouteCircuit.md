@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: E40CAF2F-ED57-4AC1-8B9A-E48042DD8F91
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azexpressroutecircuit
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azexpressroutecircuit
 schema: 2.0.0
 ---
 
@@ -19,16 +19,18 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <
  [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String> -BandwidthInMbps <Int32>
  [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ExpressRoutePort
 ```
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
  [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
- [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
+ [-AuthorizationKey <String>] [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,6 +106,21 @@ A list of circuit authorizations.
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization[]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AuthorizationKey
+The authorization key used when the circuit is provisioned on an ExpressRoutePort resource in different subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: ExpressRoutePort
 Aliases:
 
 Required: False
@@ -304,7 +321,7 @@ The tier of service for the circuit. Possible values for this parameter are: `St
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium, Local
+Accepted values: Standard, Premium, Basic, Local
 
 Required: False
 Position: Named
@@ -361,7 +378,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

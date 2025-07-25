@@ -15,6 +15,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Tools.Common.Models
@@ -22,6 +23,10 @@ namespace Tools.Common.Models
     [Serializable]
     public class ModuleMetadata
     {
+        [JsonProperty(Order = -99)]
+        public string ModuleName { get; set; }
+        [JsonProperty(Order = -98)] 
+        public string ModuleVersion { get; set; }
         private List<CmdletMetadata> _cmdlets = new List<CmdletMetadata>();
         private Dictionary<string, TypeMetadata> _typeDictionary = new Dictionary<string, TypeMetadata>();
         private Dictionary<string, bool> _processedTypes = new Dictionary<string, bool>();
@@ -82,14 +87,22 @@ namespace Tools.Common.Models
                 var otherCmdlet = other.Cmdlets.Find(c => thisCmdletNames.ContainsKey(c.Name) || c.AliasList.Find(a => thisCmdletNames.ContainsKey(a)) != null);
                 if (otherCmdlet == null)
                 {
+                    // Console.WriteLine($"Cannot find cmdlet {thisCmdletNames} in new version.");
                     return false;
                 }
-
                 modulesEqual &= thisCmdlet.Equals(otherCmdlet);
             }
-
+            /*if(this.Cmdlets.Count != other.Cmdlets.Count)
+            {
+                Console.WriteLine($"The number of cmdlets is unmatched in old and new module");
+            }*/
             modulesEqual &= this.Cmdlets.Count == other.Cmdlets.Count;
             return modulesEqual;
+        }
+
+        public static ModuleMetadata DeserializeCmdlets(string fileName)
+        {
+            return File.Exists(fileName) ? JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName)) : null;
         }
 
         public override int GetHashCode()

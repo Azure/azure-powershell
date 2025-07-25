@@ -15,36 +15,36 @@
 namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using global::Azure;
+    using global::Azure.Core;
+    using global::Azure.Storage;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Specialized;
+    using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.DataLake.Models;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.Shared.Protocol;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Threading.Tasks;
-    using System.Collections;
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using global::Azure.Storage.Blobs;
-    using global::Azure.Storage.Files.DataLake;
-    using global::Azure.Storage;
-    using global::Azure;
-    using global::Azure.Storage.Files.DataLake.Models;
-    using global::Azure.Core;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using Track2blobModel = global::Azure.Storage.Blobs.Models;
-    using global::Azure.Storage.Blobs.Specialized;
     using System.Management.Automation;
+    using System.Threading.Tasks;
+    using Track2blobModel = global::Azure.Storage.Blobs.Models;
 
     /// <summary>
     /// Base cmdlet for storage blob/container cmdlet
     /// </summary>
     public class StorageCloudBlobCmdletBase : StorageCloudCmdletBase<IStorageBlobManagement>
     {
-        //[Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false)]
-        //[ValidateNotNullOrEmpty]
-        //public virtual string TagCondition { get; set; }        
+        [Parameter(HelpMessage = "Optional Tag expression statement to check match condition. The blob request will fail when the blob tags does not match the given expression." +
+            "See details in https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public virtual string TagCondition { get; set; }        
 
         /// <summary>
         /// Initializes a new instance of the StorageCloudBlobCmdletBase class.
@@ -74,14 +74,57 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
         }
 
+        public DataLakeClientOptions DataLakeClientOptions
+        {
+            get
+            {
+                if (dataLakeClientOptions == null)
+                {
+                    dataLakeClientOptions = new DataLakeClientOptions();
+                    dataLakeClientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                    return dataLakeClientOptions;
+                }
+                else
+                {
+                    return dataLakeClientOptions;
+                }
+            }
+        }
+        private DataLakeClientOptions dataLakeClientOptions = null;
+
         public BlobClientOptions ClientOptions
         {
             get
             {
-                BlobClientOptions options = new BlobClientOptions();
-                options.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
-                return options;
+                if (clientOptions == null)
+                {
+                    clientOptions = new BlobClientOptions();
+                    clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                    return clientOptions;
+                }
+                else
+                {
+                    return clientOptions;
+                }
             }
+        }
+        private BlobClientOptions clientOptions = null;
+
+        public BlobClientOptions SetClientOptionsWithEncryptionScope(string encryptionScope)
+        {
+            if (clientOptions == null)
+            {
+                clientOptions = new BlobClientOptions();
+                clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                clientOptions.EncryptionScope = encryptionScope;
+                return clientOptions;
+            }
+            else
+            {
+                clientOptions.EncryptionScope = encryptionScope;
+                return clientOptions;
+            }
+
         }
 
         public global::Azure.Storage.Blobs.Models.BlobRequestConditions BlobRequestConditions
@@ -89,6 +132,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.BlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.BlobRequestConditions();
+                if (this.TagCondition != null)
+                {
+                    requestConditions.TagConditions = this.TagCondition;
+                }
                 return requestConditions;
             }
         }
@@ -98,6 +145,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.PageBlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.PageBlobRequestConditions();
+                if (this.TagCondition != null)
+                {
+                    requestConditions.TagConditions = this.TagCondition;
+                }
                 return requestConditions;
             }
         }
@@ -107,6 +158,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions();
+                if (this.TagCondition != null)
+                {
+                    requestConditions.TagConditions = this.TagCondition;
+                }
                 return requestConditions;
             }
         }
@@ -263,7 +318,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Get a service channel object using specified storage account
         /// </summary>
-        /// <param name="account">Cloud storage account object</param>
+        /// <param name="context">Cloud storage account object</param>
         /// <returns>IStorageBlobManagement channel object</returns>
         protected IStorageBlobManagement CreateChannel(AzureStorageContext context)
         {
@@ -283,8 +338,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Write CloudBlob to output using specified service channel
         /// </summary>
-        /// <param name="blob">The output CloudBlob object</param>
+        /// <param name="taskId">Task id</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
+        /// <param name="blob">A CloudBlob object</param>
+        /// <param name="continuationToken">Continuation token.</param>
         internal void WriteCloudBlobObject(long taskId, IStorageBlobManagement channel, CloudBlob blob, BlobContinuationToken continuationToken = null)
         {
             AzureStorageBlob azureBlob = new AzureStorageBlob(blob, channel.StorageContext, ClientOptions);
@@ -320,6 +377,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
+        /// Write a datalake gen2 folder to output.
+        /// </summary>
+        internal void WriteDataLakeGen2Item(IStorageBlobManagement channel, DataLakePathClient pathClient, DataLakeFileSystemClient fileSystem)
+        {
+            AzureDataLakeGen2Item azureDataLakeGen2Item = new AzureDataLakeGen2Item(pathClient, fileSystem);
+            azureDataLakeGen2Item.Context = channel.StorageContext;
+            WriteObject(azureDataLakeGen2Item);
+        }
+
+        /// <summary>
         /// Write a datalake gen2 pathitem to output.
         /// </summary>
         internal void WriteDataLakeGen2Item(IStorageBlobManagement channel, PathItem item, DataLakeFileSystemClient fileSystem, string ContinuationToken = null, bool fetchProperties = false)
@@ -331,10 +398,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
+        /// Write a datalake gen2 deleted item to output.
+        /// </summary>
+        internal void WriteDataLakeGen2DeletedItem(IStorageBlobManagement channel, PathDeletedItem item, DataLakeFileSystemClient fileSystem, string ContinuationToken = null)
+        {
+            AzureDataLakeGen2DeletedItem azureDataLakeGen2DeletedItem = new AzureDataLakeGen2DeletedItem(item, fileSystem);
+            azureDataLakeGen2DeletedItem.Context = channel.StorageContext;
+            azureDataLakeGen2DeletedItem.ContinuationToken = ContinuationToken;
+            WriteObject(azureDataLakeGen2DeletedItem);
+        }
+
+        /// <summary>
         /// Write CloudBlob to output using specified service channel
         /// </summary>
-        /// <param name="blob">The output CloudBlob object</param>
+        /// 
+        /// <param name="taskId">Task id</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
+        /// <param name="container">A CloudBlobContainer object</param>
+        /// <param name="permissions">permissions of container</param>
+        /// <param name="continuationToken">Continuation token.</param>
         internal void WriteCloudContainerObject(long taskId, IStorageBlobManagement channel,
             CloudBlobContainer container, BlobContainerPermissions permissions, BlobContinuationToken continuationToken = null)
         {
@@ -358,14 +440,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
         }
 
-        protected void ValidateBlobTier(BlobType type, PremiumPageBlobTier? pageBlobTier = null, StandardBlobTier? standardBlobTier = null, RehydratePriority? rehydratePriority = null)
+        protected void ValidateBlobTier(BlobType type, PremiumPageBlobTier? pageBlobTier = null, bool? isBlockBlobAccessTier = null, RehydratePriority? rehydratePriority = null)
         {
             if ((pageBlobTier != null)
                 && (type != BlobType.PageBlob))
             {
                 throw new ArgumentOutOfRangeException("BlobType, PageBlobTier", String.Format("PremiumPageBlobTier can only be set to Page Blob. The Current BlobType is: {0}", type));
             }
-            if ((standardBlobTier != null || rehydratePriority != null)
+            if (((isBlockBlobAccessTier != null && isBlockBlobAccessTier.Value) || rehydratePriority != null)
                 && (type != BlobType.BlockBlob))
             {
                 throw new ArgumentOutOfRangeException("BlobType, StandardBlobTier/RehydratePriority", String.Format("StandardBlobTier and RehydratePriority can only be set to Block Blob. The Current BlobType is: {0}", type));
@@ -408,8 +490,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// get the CloudBlobContainer object by name if container exists
         /// </summary>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="containerName">container name</param>
-        /// <returns>return CloudBlobContianer object if specified container exists, otherwise throw an exception</returns>
+        /// <param name="skipCheckExists"></param>
+        /// <returns>return CloudBlobContainer object if specified container exists, otherwise throw an exception</returns>
         internal async Task<CloudBlobContainer> GetCloudBlobContainerByName(IStorageBlobManagement localChannel, string containerName, bool skipCheckExists = false)
         {
             if (!NameUtil.IsValidContainerName(containerName))
@@ -432,8 +516,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Get an Exist DataLakeGen2Item, return true is the item is a folder, return false if it's File
         /// </summary>
-        /// <param name="container">the blob container</param>
+        /// <param name="fileSystem"></param>
         /// <param name="path">the path of the Items</param>
+        /// <param name="fileClient"></param>
+        /// <param name="dirClient"></param>
         /// <returns>return true if the item is a folder, else false</returns>
         public static bool GetExistDataLakeGen2Item(DataLakeFileSystemClient fileSystem, string path, out DataLakeFileClient fileClient, out DataLakeDirectoryClient dirClient)
         {
@@ -535,7 +621,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Set Metadata to a datalake gen2 item
         /// </summary>
-        /// <param name="file">datalake gen2 item</param>
+        /// <param name="item">datalake gen2 item</param>
         /// <param name="Metadata">Metadata to set</param>
         /// <param name="setToServer">True will set to server, false only set to the local Datalakegen2Item object</param>
         protected static IDictionary<string, string> SetDatalakegen2ItemMetaData(DataLakePathClient item, Hashtable Metadata, bool setToServer = true)
@@ -613,7 +699,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// get the DataLakeFileSystemClient object by name if DataLakeFileSystem exists
         /// </summary>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="fileSystemName">DataLakeFileSystem name</param>
+        /// <param name="skipCheckExists"></param>
         /// <returns>return DataLakeFileSystemClient object if specified DataLakeFileSystem exists, otherwise throw an exception</returns>
         internal DataLakeFileSystemClient GetFileSystemClientByName(IStorageBlobManagement localChannel, string fileSystemName, bool skipCheckExists = false)
         {
@@ -625,22 +713,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             Uri fileSystemUri = localChannel.StorageContext.StorageAccount.CreateCloudBlobClient().GetContainerReference(fileSystemName).Uri;
             DataLakeFileSystemClient fileSystem;
 
-            if (localChannel.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
+            if (localChannel.StorageContext.StorageAccount.Credentials != null && localChannel.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
             {
-                fileSystem = new DataLakeFileSystemClient(fileSystemUri, localChannel.StorageContext.Track2OauthToken);
+                fileSystem = new DataLakeFileSystemClient(fileSystemUri, localChannel.StorageContext.Track2OauthToken, this.DataLakeClientOptions);
             }
-            else if (localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
+            else if (localChannel.StorageContext.StorageAccount.Credentials != null && localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
             {
-                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + localChannel.StorageContext.StorageAccount.Credentials.SASToken));
+                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)), this.DataLakeClientOptions);
             }
-            else if (localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
+            else if (localChannel.StorageContext.StorageAccount.Credentials != null && localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
                 fileSystem = new DataLakeFileSystemClient(fileSystemUri,
-                     new StorageSharedKeyCredential(localChannel.StorageContext.StorageAccountName, localChannel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()));
+                     new StorageSharedKeyCredential(localChannel.StorageContext.StorageAccountName, localChannel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), this.DataLakeClientOptions);
             }
             else //Anonymous
             {
-                fileSystem = new DataLakeFileSystemClient(fileSystemUri);
+                fileSystem = new DataLakeFileSystemClient(fileSystemUri, this.DataLakeClientOptions);
             }
 
             return fileSystem;
@@ -682,8 +770,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// set blob properties to a blob object
         /// </summary>
-        /// <param name="azureBlob">CloudBlob object</param>
-        /// <param name="meta">blob properties hashtable</param>
+        /// <param name="blob">CloudBlob object</param>
+        /// <param name="properties">blob properties hashtable</param>
         protected static void SetBlobProperties(CloudBlob blob, Hashtable properties)
         {
             if (properties == null)
@@ -707,7 +795,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// set blob metadata to a blob object
         /// </summary>
-        /// <param name="azureBlob">CloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="meta">meta data hashtable</param>
         protected static void SetBlobMeta(CloudBlob blob, Hashtable meta)
         {
@@ -806,56 +894,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             return originalMetaData;
         }
 
-        protected static Track2blobModel.AccessTier? GetAccessTier_Track2(StandardBlobTier? standardBlobTier, PremiumPageBlobTier? pageBlobTier)
-        {
-            if(standardBlobTier == null && pageBlobTier == null)
-            {
-                return null;
-            }
-            if (standardBlobTier != null)
-            {
-                switch (standardBlobTier.Value)
-                {
-                    case StandardBlobTier.Archive:
-                        return Track2blobModel.AccessTier.Archive;
-                    case StandardBlobTier.Cool:
-                        return Track2blobModel.AccessTier.Cool;
-                    case StandardBlobTier.Hot:
-                        return Track2blobModel.AccessTier.Hot;
-                    default:
-                        return null;
-                }
-            }
-            else //pageBlobTier != null
-            {
-                switch (pageBlobTier.Value)
-                {
-                    case PremiumPageBlobTier.P4:
-                        return Track2blobModel.AccessTier.P4;
-                    case PremiumPageBlobTier.P6:
-                        return Track2blobModel.AccessTier.P6;
-                    case PremiumPageBlobTier.P10:
-                        return Track2blobModel.AccessTier.P10;
-                    case PremiumPageBlobTier.P20:
-                        return Track2blobModel.AccessTier.P20;
-                    case PremiumPageBlobTier.P30:
-                        return Track2blobModel.AccessTier.P30;
-                    case PremiumPageBlobTier.P40:
-                        return Track2blobModel.AccessTier.P40;
-                    case PremiumPageBlobTier.P50:
-                        return Track2blobModel.AccessTier.P50;
-                    case PremiumPageBlobTier.P60:
-                        return Track2blobModel.AccessTier.P60;
-                    case PremiumPageBlobTier.P70:
-                        return Track2blobModel.AccessTier.P70;
-                    case PremiumPageBlobTier.P80:
-                        return Track2blobModel.AccessTier.P80;
-                    default:
-                        return null;
-                }
-            }
-        }
-
         // Convert Track1 Blob object to Track 2 blob Client
         public static BlobClient GetTrack2BlobClient(CloudBlob cloubBlob, AzureStorageContext context, BlobClientOptions options = null)
         {
@@ -865,22 +903,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 if (context == null)
                 {
                     //TODO : Get Oauth context from current login user.
-                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
+                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credential to Track2 Blob object.");
                 }
                 blobClient = new BlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
 
             }
             else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
             {
+                string sas = Util.GetSASStringWithoutQuestionMark(cloubBlob.ServiceClient.Credentials.SASToken);
                 string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
                 if (cloubBlob.IsSnapshot)
                 {
                     // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
+                    fullUri = fullUri + "&" + sas;
                 }
                 else
                 {
-                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
+                    fullUri = fullUri + "?" + sas;
                 }
                 blobClient = new BlobClient(new Uri(fullUri), options);
             }
@@ -922,7 +961,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 
         protected virtual bool UseTrack2Sdk()
         {
+            if (!string.IsNullOrEmpty(TagCondition))
+            {
+                return true;
+            }
             return false;
+        }
+
+        protected void ThrowIfPremium(string exMsgFormat)
+        {
+            AccountProperties accountProperties = Channel.GetAccountProperties();
+            if (accountProperties.SkuName.Contains("Premium"))
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, exMsgFormat, Channel.StorageContext.StorageAccountName));
+            }
         }
     }
 }

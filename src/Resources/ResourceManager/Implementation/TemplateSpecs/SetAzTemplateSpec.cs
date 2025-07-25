@@ -12,14 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.IO;
 using System.Management.Automation;
 
@@ -120,6 +123,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [LocationCompleter("Microsoft.Resources/templateSpecs")]
         public string Location { get; set; }
 
+        [Alias("Tags")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Hashtable of tags for the template spec and/or version")]
+        [ValidateNotNull]
+        public Hashtable Tag { get; set; }
+
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonParameterSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Resource Manager template JSON.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonParameterSet, ValueFromPipelineByPropertyName = true,
@@ -129,9 +139,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Alias("InputFile")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByNameFromJsonFileParameterSet, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
+            HelpMessage = "The file path to the local Azure Resource Manager template JSON/Bicep file.")]
         [Parameter(Mandatory = true, ParameterSetName = UpdateVersionByIdFromJsonFileParameterSet, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
+            HelpMessage = "The file path to the local Azure Resource Manager template JSON/Bicep file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
@@ -146,6 +156,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string VersionDescription { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionFile { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionString { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -175,7 +195,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         case UpdateVersionByIdFromJsonFileParameterSet:
                         case UpdateVersionByNameFromJsonFileParameterSet:
-                            string filePath = this.TryResolvePath(TemplateFile);
+                            var filePath = this.TryResolvePath(TemplateFile);
                             if (!File.Exists(filePath))
                             {
                                 throw new PSInvalidOperationException(
@@ -183,7 +203,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 );
                             }
 
-                            packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath);
+                            packagedTemplate = BicepUtility.IsBicepFile(TemplateFile) ?
+                                TemplateSpecPackagingEngine.PackBicep(filePath, this.WriteVerbose, this.WriteWarning) :
+                                TemplateSpecPackagingEngine.Pack(filePath);
                             break;
                         case UpdateVersionByIdFromJsonParameterSet:
                         case UpdateVersionByNameFromJsonParameterSet:
@@ -225,7 +247,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             packagedTemplate = new PackagedTemplate
                             {
                                 RootTemplate = JObject.Parse(TemplateJson),
-                                Artifacts = new TemplateSpecArtifact[0]
+                                Artifacts = new LinkedTemplateArtifact[0]
                             };
                             break;
                         default:
@@ -237,6 +259,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         return;
                     }
 
+                    if (!string.IsNullOrWhiteSpace(UIFormDefinitionFile))
+                    {
+                        string UIFormFilePath = this.TryResolvePath(UIFormDefinitionFile);
+                        if (!File.Exists(UIFormFilePath))
+                        {
+                            throw new PSInvalidOperationException(
+                                string.Format(ProjectResources.InvalidFilePath, UIFormDefinitionFile)
+                            );
+                        }
+                        string UIFormJson = FileUtilities.DataStore.ReadFileAsText(UIFormDefinitionFile);
+                        packagedTemplate.UIFormDefinition = JObject.Parse(UIFormJson);
+                    }
+                    else if (!string.IsNullOrWhiteSpace(UIFormDefinitionString))
+                    {
+                        packagedTemplate.UIFormDefinition = JObject.Parse(UIFormDefinitionString);
+                    }
+
                     var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
                         ResourceGroupName,
                         Name,
@@ -245,7 +284,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         packagedTemplate,
                         templateSpecDescription: Description,
                         templateSpecDisplayName: DisplayName,
-                        versionDescription: VersionDescription
+                        versionDescription: VersionDescription,
+                        templateSpecTags: Tag, // Note: Only applied if template spec doesn't exist
+                        versionTags: Tag
                     );
 
                     WriteObject(templateSpecVersion);
@@ -264,7 +305,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             Name,
                             Location,
                             templateSpecDescription: Description,
-                            templateSpecDisplayName: DisplayName
+                            templateSpecDisplayName: DisplayName,
+                            tags: Tag
                         );
 
                     // As the root template spec is a seperate resource type, it won't contain version 

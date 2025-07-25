@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightslinkedservice
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightslinkedservice
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Get or list linked service for workspace, list when "-LinkedServiceName" was not
 
 ### Example 1
 ```powershell
-Get-AzOperationalInsightsLinkedService -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster
+Get-AzOperationalInsightsLinkedService -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster
+```
 
+```output
 Id                    : /subscriptions/{subscription}/resourcegroups/{rg-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}/linkedservices/cluster
 Name                  : {cluster-name}/Cluster
 Type                  : Microsoft.OperationalInsights/workspaces/linkedServices
@@ -43,7 +45,7 @@ Get linked service for workspace
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -58,7 +60,7 @@ Accept wildcard characters: False
 The linked service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +75,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +90,7 @@ Accept wildcard characters: False
 The workspace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

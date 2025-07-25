@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             MongoDBDatabaseGetResults readMongoDBDatabaseGetResults = null;
             try
             {
-                readMongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBDatabase(ResourceGroupName, AccountName, Name);
+                readMongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoDBDatabase(ResourceGroupName, AccountName, Name);
             }
             catch (CloudException e)
             {
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Updating an existing CosmosDB MongoDB Database"))
             {
-                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoDBDatabase(ResourceGroupName, AccountName, Name, mongoDBDatabaseCreateUpdateParameters);
+                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoDBDatabase(ResourceGroupName, AccountName, Name, mongoDBDatabaseCreateUpdateParameters);
                 WriteObject(new PSMongoDBDatabaseGetResults(mongoDBDatabaseGetResults));
             }
 

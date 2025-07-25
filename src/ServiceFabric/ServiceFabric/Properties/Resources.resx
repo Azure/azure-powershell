@@ -156,8 +156,14 @@
   <data name="CannotParseReliabilityLevel" xml:space="preserve">
     <value>Cannot parse reliability level {0}.</value>
   </data>
+  <data name="CannotParseVmImage" xml:space="preserve">
+    <value>Cannot parse vmImage {0}.</value>
+  </data>
   <data name="CannotUpdateBronzeNodeType" xml:space="preserve">
     <value>Cannot update node type with a durability level of Bronze, please update durability level to Silver or above first.</value>
+  </data>
+  <data name="CannotRemoveMismatchedDurabilityNodeType" xml:space="preserve">
+    <value>Cannot remove Bronze durability Node Type when the durability level is mismatched in the SF VMSS extension. To unblock, upgrade the \"durabilityLevel\" of the Node Type to match VMSS setting: {0}. One way to do this is by calling Update-AzServiceFabricDurability.</value>
   </data>
   <data name="CannotUpdateNodeCountLessThenReliabilityLevel" xml:space="preserve">
     <value>Cannot update node count to {0} because it is less than the minimum required node count of {1} for {2} reliability level.</value>
@@ -303,6 +309,12 @@
   <data name="UseAutoToIncreaseNodesCount" xml:space="preserve">
     <value>Primary node count is {0}, which is less than the required node count of {1} for the target reliability level. Please use 'AutoAddNode' switch to automatically increase node count.</value>
   </data>
+  <data name="MultiplePrimaryNodeTypesTargetUndefined" xml:space="preserve">
+    <value>Updating reliability level is correlated with the node count of the primary node type. This cluster has multiple primary node types so the node type name has to be sent via -NodeType parameter.</value>
+  </data>
+  <data name="NodeTypeNotPrimary" xml:space="preserve">
+    <value>Node type {0} was not a primary node type.</value>
+  </data>
   <data name="VaultCreatedWithOutAccessPolicy" xml:space="preserve">
     <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzKeyVaultAccessPolicy to set access policies.</value>
   </data>
@@ -323,5 +335,8 @@
   </data>
   <data name="CertificateThumbprintMismatch" xml:space="preserve">
     <value>The thumprint provided '{0}' is different from the thumbprint '{1}' for certificate {2} version {3} in keyvault {4}.</value>
+  </data>
+  <data name="NodeTypeUpdateIsNoOp" xml:space="preserve">
+    <value>No change has been found for NodeType {0}. Operation is canceled.</value>
   </data>
 </root>

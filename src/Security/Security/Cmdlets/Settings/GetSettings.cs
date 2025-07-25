@@ -12,14 +12,10 @@
 // limitations under the License.
 // ------------------------------------
 
-using System;
-using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Settings;
-using Microsoft.Azure.Commands.SecurityCenter.Common;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Rest.Azure;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
 {

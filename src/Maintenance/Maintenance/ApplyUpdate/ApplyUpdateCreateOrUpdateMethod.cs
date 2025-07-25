@@ -41,10 +41,23 @@ namespace Microsoft.Azure.Commands.Maintenance
                     string resourceParentName = this.ResourceParentName;
                     string resourceType = this.ResourceType;
                     string resourceName = this.ResourceName;
+                    string applyUpdateName = this.ApplyUpdateName;
+                    string status = this.Status;
 
-                    var result = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
-                        ApplyUpdatesClient.CreateOrUpdateParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName) :
-                        ApplyUpdatesClient.CreateOrUpdate(resourceGroupName, providerName, resourceType, resourceName);
+                    ApplyUpdate result;
+                    if (!string.IsNullOrEmpty(applyUpdateName) && !string.IsNullOrEmpty(status))
+                    {
+                        result = ApplyUpdatesClient.CreateOrUpdateOrCancel(resourceGroupName, providerName, resourceType, resourceName, applyUpdateName,
+                            new ApplyUpdate() { Status = Status });
+                    }
+                    else if (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName))
+                    {
+                        result = ApplyUpdatesClient.CreateOrUpdateParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName);
+                    }
+                    else
+                    {
+                        result = ApplyUpdatesClient.CreateOrUpdate(resourceGroupName, providerName, resourceType, resourceName);
+                    }
 
                     var psObject = new PSApplyUpdate();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<ApplyUpdate, PSApplyUpdate>(result, psObject);
@@ -94,8 +107,22 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
+            Mandatory = false,
+            HelpMessage = "The apply update name.",
+            ValueFromPipelineByPropertyName = true)]
+        public string ApplyUpdateName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = false,
+            HelpMessage = "The apply update status.",
+            ValueFromPipelineByPropertyName = true)]
+        public string Status { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
             Position = 3,
-            Mandatory = true, 
+            Mandatory = true,
             HelpMessage = "The resource name.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }

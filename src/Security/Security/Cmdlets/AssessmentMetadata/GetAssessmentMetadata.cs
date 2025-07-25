@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AssessmentMetadata
                     WriteObject(metadataList.ConvertToPSType(), enumerateCollection: true);
                     break;
                 case ParameterSetNames.SubscriptionLevelResource:
-                    SecurityAssessmentMetadata metadata = null;
+                    SecurityAssessmentMetadataResponse metadata = null;
 
                     try
                     {

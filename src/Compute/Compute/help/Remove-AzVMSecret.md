@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmsecret
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmsecret
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Removes (a) secret(s) from a virtual machine object
 
 ```
 Remove-AzVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,8 @@ The Remove-AzVMSecret cmdlet removes (a) secret(s) from a virtual machine object
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzVMSecret | Update-AzVM
+```powershell
+Get-AzVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzVMSecret | Update-AzVM
 ```
 
 Removes all secrets from a virtual machine "vm1" in resource group "rg1" and update the VM

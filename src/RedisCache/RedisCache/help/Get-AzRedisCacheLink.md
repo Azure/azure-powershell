@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscachelink
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/get-azrediscachelink
 schema: 2.0.0
 ---
 
@@ -41,45 +41,69 @@ There are four different ways to get geo-replication link detail. Either provide
 ## EXAMPLES
 
 ### Example 1: Get using parameter set AllLinksForCache
+```powershell
+Get-AzRedisCacheLink -Name "mycache1"
 ```
-PS C:\>Get-AzRedisCacheLink -Name "mycache1"
 
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Succeeded
+```output
+PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Succeeded
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command gets all geo-replication links for Redis Cache named mycache1.
 
 ### Example 2: Get using parameter set AllLinksForPrimaryCache
+```powershell
+Get-AzRedisCacheLink -PrimaryServerName "mycache1"
 ```
-PS C:\>Get-AzRedisCacheLink -PrimaryServerName "mycache1"
 
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Succeeded
+```output
+PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Succeeded
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command gets geo-replication links where Redis Cache named mycache1 is primary.
 
 ### Example 3: Get using parameter set AllLinksForSecondaryCache
+```powershell
+Get-AzRedisCacheLink -SecondaryServerName "mycache2"
 ```
-PS C:\>Get-AzRedisCacheLink -SecondaryServerName "mycache2"
 
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Succeeded
+```output
+PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Succeeded
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command gets geo-replication links where Redis Cache named mycache2 is secondary.
 
 ### Example 4: Get using parameter set SingleLink
+```powershell
+Get-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 ```
-PS C:\>Get-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Succeeded
+```output
+PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Succeeded
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command gets a single geo-replication links where Redis Cache named mycache1 is primary and Redis Cache named mycache2 is secondary.
@@ -147,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

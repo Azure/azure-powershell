@@ -319,6 +319,7 @@ function Test_SetSecretVersion
     # create a new version
     $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
     Assert-NotNull $sec
+    $v2 = $sec.Version
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
     
     # Update old version

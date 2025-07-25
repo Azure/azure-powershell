@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        [CmdletParameterBreakingChange("Description", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -64,6 +63,11 @@ namespace Microsoft.Azure.Commands.Network
                 this.Subscription = resourceIdentifier.Subscription;
                 this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0, resourceIdentifier.ResourceType.LastIndexOf('/'));
                 this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            }
+            else if (this.IsParameterBound(c => c.PrivateLinkResourceType))
+            {
+                this.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
+                this.PrivateLinkResourceType = DynamicParameters[privateEndpointTypeName].Value as string;
             }
 
             IPrivateLinkProvider provider = BuildProvider(this.Subscription, this.PrivateLinkResourceType);

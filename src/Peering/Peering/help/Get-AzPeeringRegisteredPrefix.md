@@ -1,65 +1,87 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azpeeringregisteredprefix
+online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringregisteredprefix
 schema: 2.0.0
 ---
 
 # Get-AzPeeringRegisteredPrefix
 
 ## SYNOPSIS
-Gets or lists the registered prefix for peerings.
+Gets an existing registered prefix with the specified name under the given subscription, resource group and peering.
 
 ## SYNTAX
 
-### ByResourceGroupAndName (Default)
+### List (Default)
 ```
-Get-AzPeeringRegisteredPrefix [-ResourceGroupName] <String> [-PeeringName] <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### InputObject
-```
-Get-AzPeeringRegisteredPrefix [-InputObject] <PSPeering> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeeringRegisteredPrefix -PeeringName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceId
+### GetViaIdentityPeering
 ```
-Get-AzPeeringRegisteredPrefix [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeeringRegisteredPrefix -Name <String> -PeeringInputObject <IPeeringIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzPeeringRegisteredPrefix -Name <String> -PeeringName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPeeringRegisteredPrefix -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets or lists the registered prefix for peerings.
+Gets an existing registered prefix with the specified name under the given subscription, resource group and peering.
 
 ## EXAMPLES
 
-### List registered ASNs for peering
+### Example 1: List all registered prefixes for a peering
 ```powershell
-PS C:\> Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroupName -PeeringName $peeringName
+Get-AzPeeringRegisteredPrefix -PeeringName DemoPeering -ResourceGroupName DemoRG
 ```
 
-Lists registered asn.
-
-### Gets registered ASN for peering by name
-```powershell
-PS C:\> Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroupName -PeeringName $peeringName -Name $registeredPrefixName
+```output
+Name                  Prefix       PeeringServicePrefixKey              PrefixValidationState ProvisioningState
+----                  ------       -----------------------              --------------------- -----------------
+accessibilityTesting1 240.0.0.0/24 f5947454-80e3-4ce5-bcb3-2501537b6952 Failed                Succeeded
+accessibilityTesting2 240.0.1.0/24 249aa0dd-6177-4105-94fe-dfefcbf5ab48 Failed                Succeeded
+accessibilityTesting3 240.0.2.0/24 4fb59e9e-d4eb-4847-b2ad-9939edda750b Failed                Succeeded
+accessibilityTesting4 240.0.4.0/24 b725f16c-759b-4144-93ed-ed4eb89cb8f7 Failed                Succeeded
+accessibilityTesting5 240.0.3.0/24 bb1262ca-0b31-45f3-a301-105b0615b21c Failed                Succeeded
 ```
 
-Gets registered peering asn.
+List all registered prefixes
 
-{{ Add example description here }}
+### Example 2: Get specific registered prefix for a peering
+```powershell
+Get-AzPeeringRegisteredPrefix -PeeringName DemoPeering -ResourceGroupName DemoRG -Name accessibilityTesting1
+```
+
+```output
+Name                  Prefix       PeeringServicePrefixKey              PrefixValidationState ProvisioningState
+----                  ------       -----------------------              --------------------- -----------------
+accessibilityTesting1 240.0.0.0/24 f5947454-80e3-4ce5-bcb3-2501537b6952 Failed                Succeeded
+```
+
+Get a specific registered prefix by name
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -69,77 +91,92 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Use a Get-AzPeering
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: InputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of prefix.
+The name of the registered prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName, InputObject
-Aliases:
+Parameter Sets: GetViaIdentityPeering, Get
+Aliases: RegisteredPrefixName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeeringName
-The unique name of the PSPeering.
+### -PeeringInputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceGroupAndName
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: GetViaIdentityPeering
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PeeringName
+The name of the peering.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The create or use an existing resource group name.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id string name.
+### -SubscriptionId
+The Azure subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceId
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,13 +185,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringRegisteredPrefix
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringRegisteredPrefix
 
 ## NOTES
 

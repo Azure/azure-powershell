@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C3DD193E-B8FE-468D-BEE7-00C3D99B469E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azresourcegroupdeployment
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azresourcegroupdeployment
 schema: 2.0.0
 ---
 
@@ -16,13 +16,14 @@ Removes a resource group deployment and any associated operations.
 ### RemoveByResourceGroupName (Default)
 ```
 Remove-AzResourceGroupDeployment [-ResourceGroupName] <String> [-Name] <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByResourceGroupDeploymentId
 ```
-Remove-AzResourceGroupDeployment -Id <String> [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzResourceGroupDeployment -Id <String> [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +35,10 @@ The **Remove-AzResourceGroupDeployment** cmdlet removes an Azure resource group 
 ### Example 1: Removes a resource group deployment with ResourceId
 
 ```powershell
-PS C:\>Remove-AzResourceGroupDeployment -ResourceId /subscriptions/{subId}/resourceGroups/testGroup/providers/Microsoft.Resources/deployments/testDeployment1
+Remove-AzResourceGroupDeployment -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testGroup/providers/Microsoft.Resources/deployments/testDeployment1
+```
 
+```output
 True
 ```
 
@@ -45,8 +48,10 @@ Successful removal returns true.
 ### Example 2: Removes a resource group deployment with ResourceGroupName and ResourceName
 
 ```powershell
-PS C:\>Remove-AzResourceGroupDeployment -ResourceGroupName testGroup -Name testDeployment1
+Remove-AzResourceGroupDeployment -ResourceGroupName testGroup -Name testDeployment1
+```
 
+```output
 True
 ```
 
@@ -183,5 +188,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Stop-AzResourceGroupDeployment](./Stop-AzResourceGroupDeployment.md)
 
 [Test-AzResourceGroupDeployment](./Test-AzResourceGroupDeployment.md)
-
-

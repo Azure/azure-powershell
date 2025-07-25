@@ -1,0 +1,44 @@
+{
+  "AzConnectedNetworkDeviceRegistrationKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/existingResourceGroup/providers/Microsoft.HybridNetwork/devices/existingDevice/listRegistrationKey?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/existingResourceGroup/providers/Microsoft.HybridNetwork/devices/existingDevice/listRegistrationKey?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "46487ea4-06a7-442b-9e01-e4cf01385a79" ],
+        "CommandName": [ "Get-AzConnectedNetworkDeviceRegistrationKey" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkDeviceRegistrationKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "5c8ef1bc-0342-4cde-bf22-aa14c277dd9c" ],
+        "x-ms-build-version": [ "" ],
+        "x-ms-correlation-request-id": [ "dd22492f-cf11-4a47-80c9-051012fb0e1b" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220216T140821Z:dd22492f-cf11-4a47-80c9-051012fb0e1b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 14:08:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "822" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"registrationKey\":\"eyJNZWNEZXZpY2VUcmFuc2llbnRBdXRoS2V5IjoiZGQyMjQ5MmYtY2YxMS00YTQ3LTgwYzktMDUxMDEyZmIwZTFiIiwiTWVjRGV2aWNlQXV0aEtleVN0YXJ0VGltZSI6IjIwMjItMDItMTZUMTQ6MDg6MjAuNzIxNzQzNloiLCJTZXJ2aWNlQnVzUXVldWVOYW1lIjoiMmNkZjI0ODAtNWVkOC00MGJjLTgyNzUtNDE0MTQ4MWRjYmMxLXJlcXVlc3QiLCJBQURFbmRwb2ludCI6bnVsbCwiQUFEQXVkaWVuY2UiOm51bGwsIkFybVJlc291cmNlSWQiOm51bGwsIk1lY0NvbnRyb2xsZXJFbmRwb2ludCI6Imh0dHBzOi8vZWFzdHVzLXByb2QubWVjZGV2aWNlLmF6dXJlLmNvbTo0NDMiLCJEYmVEZXZpY2VJZCI6bnVsbCwiUmVzb3VyY2VVbmlxdWVJZCI6IjJjZGYyNDgwLTVlZDgtNDBiYy04Mjc1LTQxNDE0ODFkY2JjMSIsIlN1YnNjcmlwdGlvbklkIjoiNTY5NTFlNGMtMjAwOC00YmNhLTg4YmEtZDJkMmVhYjlmZWRlIiwiUmVzb3VyY2VHcm91cE5hbWUiOiJrdWtoYXJlIiwiUHJvdmlkZXJOYW1lc3BhY2UiOiJNaWNyb3NvZnQuSHlicmlkTmV0d29yayIsIlJlc291cmNlVHlwZSI6IkRldmljZXMiLCJSZXNvdXJjZVR5cGVOYW1lIjoiTWVjQXNlQnVpbGRUZXN0MjIwMiJ9\"}",
+      "isContentBase64": false
+    }
+  }
+}

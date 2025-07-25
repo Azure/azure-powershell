@@ -191,6 +191,9 @@
   <data name="ApplicationGatewaybackendHttpSettingsName" xml:space="preserve">
     <value>backendHttpSettingsCollection</value>
   </data>
+  <data name="ApplicationGatewaybackendSettingsName" xml:space="preserve">
+    <value>backendSettingsCollection</value>
+  </data>
   <data name="ApplicationGatewayChildResourceId" xml:space="preserve">
     <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/applicationGateways/{2}/{3}/{4}</value>
     <comment>The ID of a application gateway child resource</comment>
@@ -204,6 +207,9 @@
   <data name="ApplicationGatewayHttpListenerName" xml:space="preserve">
     <value>httpListeners</value>
   </data>
+  <data name="ApplicationGatewayListenerName" xml:space="preserve">
+    <value>listeners</value>
+  </data>
   <data name="ApplicationGatewayIPConfigurationName" xml:space="preserve">
     <value>gatewayIpConfigurations</value>
   </data>
@@ -212,6 +218,9 @@
   </data>
   <data name="ApplicationGatewayRequestRoutingRuleName" xml:space="preserve">
     <value>requestRoutingRules</value>
+  </data>
+  <data name="ApplicationGatewayRoutingRuleName" xml:space="preserve">
+    <value>routingRules</value>
   </data>
   <data name="ApplicationGatewayAuthenticationCertificateName" xml:space="preserve">
     <value>authenticationCertificates</value>
@@ -276,6 +285,15 @@
   <data name="InvalidIPAddress" xml:space="preserve">
     <value>The IpAddress specified is invalid.</value>
   </data>
+  <data name="InvalidPrivateIPRange" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid.</value>
+  </data>
+  <data name="InvalidPrivateIPRangeMask" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid. Subnet masks should be between 0 and 32 bits.</value>
+  </data>
+  <data name="InvalidPrivateIPRangeUnmaskedBits" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid. Bits not covered by the subnet mask should be all 0.</value>
+  </data>
   <data name="ParentVirtualHubNotFound" xml:space="preserve">
     <value>The parent virtual hub mentioned could not be found.</value>
   </data>
@@ -284,6 +302,9 @@
   </data>
   <data name="ParentVpnGatewayNotFound" xml:space="preserve">
     <value>The parent VpnGateway for this connection cannot be found.</value>
+  </data>
+  <data name="ParentVpnServerConfigurationNotFound" xml:space="preserve">
+    <value>The parent VpnServerConfiguration for this PolicyGroup cannot be found.</value>
   </data>
   <data name="ParentExpressRouteGatewayNotFound" xml:space="preserve">
     <value>The parent ExpressRouteGateway for this connection cannot be found.</value>
@@ -324,6 +345,9 @@
   <data name="VpnConnectionNotFound" xml:space="preserve">
     <value>The VpnConnection could not be found.</value>
   </data>
+  <data name="VpnServerConfigurationPolicyGroupNotFound" xml:space="preserve">
+    <value>The VpnServerConfigurationPolicyGroup could not be found.</value>
+  </data>
   <data name="VpnGatewayNotFound" xml:space="preserve">
     <value>The VpnGateway to modify could not be found</value>
   </data>
@@ -351,17 +375,26 @@
   <data name="CreatingLongRunningOperationMessage" xml:space="preserve">
     <value>Creating resource with ResourceGroupName {0}, ResourceName {1}.</value>
   </data>
+  <data name="CreatingChildResourceLongRunningOperationMessage" xml:space="preserve">
+    <value>Creating child resource with ResourceGroupName {0}, ParentResourceName {1} ResourceName {2}.</value>
+  </data>
   <data name="ResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
   <data name="InvalidName" xml:space="preserve">
     <value>Field Name {0} contains invalid character.</value>
   </data>
+  <data name="RouteServerToUpdateNotFound" xml:space="preserve">
+    <value>The Route Server to update could not be found.</value>
+  </data>
   <data name="VirtualHubToUpdateNotFound" xml:space="preserve">
     <value>The VirtualHub to update could not be found.</value>
   </data>
   <data name="VpnGatewayRequiredToCreateVpnConnection" xml:space="preserve">
     <value>A valid VpnGateway reference is required to create a VpnConnection.</value>
+  </data>
+  <data name="VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup" xml:space="preserve">
+    <value>A valid VpnServerConfiguration reference is required to create or update a PolicyGroup.</value>
   </data>
   <data name="ExpressRouteGatewayRequiredToCreateExpressRouteConnection" xml:space="preserve">
     <value>A valid ExpressRouteGateway reference is required to create an ExpressRouteConnection.</value>
@@ -374,6 +407,9 @@
   </data>
   <data name="InvalidAutoScaleConfiguration" xml:space="preserve">
     <value>Min {0} cannot be greater than Max {1}.</value>
+  </data>
+  <data name="InvalidAutoScaleConfigurationBounds" xml:space="preserve">
+    <value>MinScaleUnit and MaxScaleUnit must be between 1 and 40, inclusive. </value>
   </data>
   <data name="ExpressRouteGatewayNotFound" xml:space="preserve">
     <value>The ExpressRouteGateway to modify could not be found</value>
@@ -434,8 +470,11 @@
   <data name="RemoveVirtualRouterWarning" xml:space="preserve">
     <value>Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
+  <data name="RemoveRouteServerWarning" xml:space="preserve">
+    <value>Removing a Route Server will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
   <data name="ConnectionMonitorV1V2" xml:space="preserve">
-    <value>Connection moniotr V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified</value>
+    <value>Connection monitor V1 can not be defined with either TestGroup. Either connection monitor V1 or V2 can be specified</value>
   </data>
   <data name="ConnectionMonitorSourceResourceIdInputObjectTestGroups" xml:space="preserve">
     <value>Either SourceResourceId or InputObject or TestGroups is to be defined</value>
@@ -443,20 +482,8 @@
   <data name="EndpointResourceId" xml:space="preserve">
     <value>Endpoint resourceId not in the correct format</value>
   </data>
-  <data name="EndpointFilterType" xml:space="preserve">
-    <value>Only filter type Include is supported</value>
-  </data>
-  <data name="EndpointFilterItem" xml:space="preserve">
-    <value>FilterType defined without filter item</value>
-  </data>
-  <data name="EndpointFilterItemType" xml:space="preserve">
-    <value>Endpoint filter item type is not AgentAddress</value>
-  </data>
-  <data name="EndpointFilterItemAddress" xml:space="preserve">
-    <value>Endpoint filter item address is empty</value>
-  </data>
-  <data name="EndpointFilterItemList" xml:space="preserve">
-    <value>Filter item list is empty</value>
+  <data name="InvalidEndpointResourceIdForSpecifiedType" xml:space="preserve">
+    <value>ResourceId is invalid for specified endpoint type {0}</value>
   </data>
   <data name="EndpointSourceDestination" xml:space="preserve">
     <value>No sources or destination endpoints</value>
@@ -483,7 +510,7 @@
     <value>IP version is undefined</value>
   </data>
   <data name="TestConfiguration" xml:space="preserve">
-    <value>No test configuraiton is provided</value>
+    <value>No test configuration is provided</value>
   </data>
   <data name="TestGroupParameters" xml:space="preserve">
     <value>Test group is missing one or more mandatory parameter</value>
@@ -525,7 +552,7 @@
     <value>WorkspaceResourceId must be provided in connection monitor output.</value>
   </data>
   <data name="InvalidWorkspaceResourceId" xml:space="preserve">
-    <value>TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LocAnalytics workspace.</value>
+    <value>TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LogAnalytics workspace.</value>
   </data>
   <data name="UnsupportedEndpointFilterItemType" xml:space="preserve">
     <value>Specified EndpointFilterItemType is not supported. Supported type is 'AgentAddress'.</value>
@@ -539,6 +566,9 @@
   <data name="UnsupportedProtocolConfigurationType" xml:space="preserve">
     <value>Either TCP, HTTP or ICMP protocol should be defined.</value>
   </data>
+  <data name="UnsupportedDestinationPortBehavior" xml:space="preserve">
+    <value>Invalid value for DestinationPortBehavior. Supported values are 'None', 'ListenIfAvailable'.</value>
+  </data>
   <data name="UnsupportedHTTPMethod" xml:space="preserve">
     <value>Method in HTTPConfiguration is not supported. Valid values are 'GET' and 'POST'.</value>
   </data>
@@ -547,6 +577,9 @@
   </data>
   <data name="InvalidStatusCodeRangesFormat" xml:space="preserve">
     <value>Invalid format of status code ranges in HTTPConfiguration. Example of valid values: '100', '200-205', '3xx'. Codes should be between 100 and 600.</value>
+  </data>
+   <data name="InvalidUserAssignedManagedIdentity" xml:space="preserve">
+    <value>UserAssigned ManagedIdentity specified in flow log is not a valid ID ManagedIdentity.</value>
   </data>
   <data name="ConnectionMonitorEndpointMustHaveName" xml:space="preserve">
     <value>Connection monitor endpoint must have name.</value>
@@ -594,7 +627,13 @@
     <value>Specified resourceID in endpoint is not a valid resource ID.</value>
   </data>
   <data name="InvalidEndpointResourceType" xml:space="preserve">
-    <value>Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualMachineScaleSet and Workspace. Please update the resource ID of endpoint.</value>
+    <value>Resource type of endpoint is not supported. Supported types are VirtualMachine, VirtualNetwork, Subnet and Workspace. Please update the resource ID of endpoint.</value>
+  </data>
+  <data name="EmptyEndpointType" xml:space="preserve">
+    <value>Type in the endpoint {0} should be populated. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork.</value>
+  </data>
+  <data name="InvalidEndpointType" xml:space="preserve">
+    <value>Invalid type in the endpoint {0}. Supported types are AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, ExternalAddress.</value>
   </data>
   <data name="EndpointFilterItemIsMissing" xml:space="preserve">
     <value>Connection monitor workspace endpoint must have at least one EndpointFilterItem.</value>
@@ -636,13 +675,16 @@
     <value>Connection monitor is not found.</value>
   </data>
   <data name="InvalidTargetResourceId" xml:space="preserve">
-    <value>TargetResourceId specified in flow log is not a valid resource ID of Network security group.</value>
+    <value>TargetResourceId specified in flow log is not a valid resource ID of Network security group, Virtual Network, Subnet or Network Interface.</value>
   </data>
   <data name="InvalidStorageId" xml:space="preserve">
     <value>StorageId specified in flow log is not a valid ID of storage account.</value>
   </data>
   <data name="InvalidFlowLogFormatVersion" xml:space="preserve">
     <value>Invalid format version. Supported values are 0, 1 and 2.</value>
+  </data>
+  <data name="FlowLogFilteringCriteriaExceedsLimit" xml:space="preserve">
+    <value>Filtering string can be maximum of 1000 characters in length.</value>
   </data>
   <data name="InvalidFlowLogFormatType" xml:space="preserve">
     <value>Invalid format type. Supported value is 'JSON'.</value>
@@ -693,7 +735,106 @@
     <value>A valid HubRouteTable reference is required.</value>
   </data>
   <data name="CommissioningStateConflict" xml:space="preserve">
-    <value>Cannot have both 'Commission' and 'Decomission' flags set</value>
+    <value>Cannot have both more than one flag set</value>
     <comment>Error message for setting the customIpPrefix</comment>
+  </data>
+  <data name="ApplicationGatewaySslProfileName" xml:space="preserve">
+    <value>sslProfiles</value>
+  </data>
+  <data name="ApplicationGatewayTrustedClientCertificateName" xml:space="preserve">
+    <value>trustedClientCertificates</value>
+  </data>
+  <data name="VpnNatRuleUnmatchedPortRange" xml:space="preserve">
+    <value>One or more port ranges specified the VPN NAT rule does not have a corresponding subnet mapping. The count of supplied port ranges in {0} must match with the count of subnets in {1}. </value>
+  </data>
+  <data name="VpnGatewayNatRuleNotFound" xml:space="preserve">
+    <value>The VpnGatewayNatRule could not be found</value>
+  </data>
+  <data name="VpnGatewayRequiredToCreateVpnNatRule" xml:space="preserve">
+    <value>A valid VpnGateway reference is required to create a VpnNatRule</value>
+  </data>
+  <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
+    <value>The VirtualNetworkGatewayNatRule could not be found</value>
+  </data>
+  <data name="RemoveRoutingIntentWarning" xml:space="preserve">
+    <value>Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub</value>
+  </data>
+  <data name="RemoveRouteMapWarning" xml:space="preserve">
+    <value>Removing this Route Map resource may affect the routing in your VirtualHub</value>
+  </data>
+  <data name="VHubRouteMapReferenceNotFound" xml:space="preserve">
+    <value>A valid VHub RouteMap reference is required</value>
+  </data>
+  <data name="RouteMapNotFound" xml:space="preserve">
+    <value>The route map resource could not be found</value>
+  </data>
+  <data name="RoutingIntentNotFound" xml:space="preserve">
+    <value>The routing intent resource could not be found</value>
+  </data>
+  <data name="SameTypeChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
+    <value>Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
+  </data>
+  <data name="UnsupportPrivateEndpointConnectionType" xml:space="preserve">
+    <value>{0} doesn't support private endpoint connection.</value>
+  </data>
+  <data name="UnsupportPrivateLinkResourceType" xml:space="preserve">
+    <value>{0} doesn't support private link resource.</value>
+  </data>
+  <data name="HubRequiredForHubAndSpokeTopology" xml:space="preserve">
+    <value>A hub is required for HubAndSpoke connectivity topology.</value>
+  </data>
+  <data name="InvalidVnetLocalRouteOverrideCriteriaValue" xml:space="preserve">
+    <value>Permitted values for VnetLocalRouteOverrideCriteria are Equal and Contains.</value>
+  </data>
+  <data name="VpnMultiAuthIkev2OpenvpnAadWarning" xml:space="preserve">
+    <value>Warning: VpnClientProtocol being configured are: OpenVPN, IkeV2. AAD is one of the auth types configured. Since AAD is only supported for OpenVPN, it will only be used for OpenVPN.</value>
+  </data>
+  <data name="VpnMultiAuthIkev2OpenvpnOnlyAad" xml:space="preserve">
+    <value>VpnClientProtocol being configured are : OpenVPN, IkeV2. VpnAuthenticationType being configured is AAD. Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol.</value>
+  </data>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="BastionCopyPasteInvalidValue" xml:space="preserve">
+    <value>Toggling copy/paste is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionIpConnectInvalidValue" xml:space="preserve">
+    <value>Toggling IP connect is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionScaleUnitOutOfRange" xml:space="preserve">
+    <value>Please select scale units value between {0} and {1}</value>
+  </data>
+  <data name="BastionScaleUnitUpdateNotAllowedOnBasic" xml:space="preserve">
+    <value>Bastion scalable host is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionSessionRecordingInvalidValue" xml:space="preserve">
+    <value>Toggling session recording is available on Premium SKU</value>
+  </data>
+  <data name="BastionSessionRecordingNotEnabled" xml:space="preserve">
+    <value>Session recording feature is not enabled</value>
+  </data>
+  <data name="BastionShareableLinkInvalidValue" xml:space="preserve">
+    <value>Toggling shareable link is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionSkuDowngradeNotAllowed" xml:space="preserve">
+    <value>Downgrading Sku is not allowed</value>
+  </data>
+  <data name="BastionSkuInvalidValue" xml:space="preserve">
+    <value>Please enter a valid value for Bastion SKU</value>
+  </data>
+  <data name="BastionTunnelingInvalidValue" xml:space="preserve">
+    <value>Toggling tunneling is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionTunnelingAndSessionRecordingNotAllowed" xml:space="preserve">
+    <value>Tunneling and session recording cannot be enabled together</value>
+  </data>
+  <data name="BastionShareableLinkConfirmRemove" xml:space="preserve">
+    <value>Are you sure you want to remove Bastion shareable link(s)?</value>
+  </data>
+  <data name="BastionShareableLinkRemoving" xml:space="preserve">
+    <value>Removing Bastion shareable link(s)</value>
+  </data>
+  <data name="BastionShareableLinkNotEnabled" xml:space="preserve">
+    <value>Shareable link feature is not enabled</value>
   </data>
 </root>

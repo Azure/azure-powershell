@@ -1,86 +1,39 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll-Help.xml
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://docs.microsoft.com/en-us/powershell/module/az.databox/remove-azdataboxjob
+online version: https://learn.microsoft.com/powershell/module/az.databox/remove-azdataboxjob
 schema: 2.0.0
 ---
 
 # Remove-AzDataBoxJob
 
 ## SYNOPSIS
-Deletes the databox job
+Deletes a job.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
 ```
-Remove-AzDataBoxJob -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-PassThru] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetByResourceIdParameterSet
-```
-Remove-AzDataBoxJob -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetByInputObjectParameterSet
-```
-Remove-AzDataBoxJob -InputObject <PSDataBoxJob> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzDataBoxJob** cmdlet is used to delete a finished databox job from the list of databox jobs.
+Deletes a job.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Deletes a job
 ```powershell
-PS C:\> Remove-AzDataBoxJob -ResourceGroupName TestRg -name test 
-Confirm
-"Cancelling Databox Job "test
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
+Remove-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"
 ```
 
-Deletes the specified databox job
-
-### Example 2
-```powershell
-PS C:\> Remove-AzDataBoxJob -ResourceGroupName TestRg -name test -Force
-
-```
-
-Deletes the specified databox job forcefully without confirmation
-
-### Example 3
-```powershell
-PS C:\> Remove-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/TestRg/providers/Microsoft.DataBox/jobs/test"
-
-```
-
-Deletes the specified databox job
+Deletes a job
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Force remove without confirmation
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -94,15 +47,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-InputObject of type PSDataBoxJob
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.PSDataBoxJob
-Parameter Sets: GetByInputObjectParameterSet
-Aliases:
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,12 +64,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Databox Job Name
+The name of the job Resource within the specified resource group.
+job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
+Parameter Sets: (All)
+Aliases: JobName
 
 Required: True
 Position: Named
@@ -124,8 +79,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
-PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -140,11 +110,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Databox Job Resource Group Name
+The Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -154,18 +124,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Databox Job Resource Id
+### -SubscriptionId
+The Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
-Aliases: Id
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -185,7 +155,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -204,11 +175,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 ## NOTES
 

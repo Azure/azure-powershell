@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricmanagednodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagednodetype
 schema: 2.0.0
 ---
 
@@ -51,7 +51,7 @@ Remove-AzServiceFabricManagedNodeType [-ResourceId] <String> -NodeName <String[]
 ```
 
 ## DESCRIPTION
-Remove the node type or specific nodes within the node type. If the paremter -NodeName is used then only nodes specified will be removed.
+Remove the node type or specific nodes within the node type. If the parameter -NodeName is used then only nodes specified will be removed.
 
 ## EXAMPLES
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 
 ### -ForceRemoveNode
 Using this flag will force the removal even if service fabric is unable to disable the nodes.
-Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the opearion.
+Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the operation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

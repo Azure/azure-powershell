@@ -19,6 +19,87 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.0.0
+* Upgraded Api version to 2025-04-15
+* Added support for cipher
+* Added support for migration from classic cdn to afdx
+
+## Version 3.3.1
+* This upgrade contains no changes in cdn powershell commandline tool, it only notifies user that we are going to upgrade the version of autorest, and will bring some breaking changes.
+
+## Version 3.3.0
+* Upgraded nuget package to signed package.
+
+## Version 3.2.2
+* Added support to enable ManagedIdentity when no BYOC in the classic front door during migration
+
+## Version 3.2.1
+* Bypassed object id validation for KeyVault access policy during `Start-AzFrontDoorCdnProfilePrepareMigration`
+
+## Version 3.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgrade API version to 2024-02-01
+* Added support to configure rules to scrub PII values from the AFDx logs when new or update a AFDx resource.
+  
+## Version 3.1.2
+* Fixed the case sensitive issue when do preparing migration steps for `Start-AzFrontDoorCdnProfilePrepareMigration`
+
+## Version 3.1.1
+* Customized output property for `Get-AzCdnEdgeNode` command
+
+## Version 3.1.0
+* Upgraded API version to 2023-05-01
+* Fixed known issue for `Update-AzCdnProfile`, `Update-AzFrontDoorCdnProfile`, `Remove-AzCdnProfile`, `Remove-AzCdnProfile`
+
+## Version 3.0.0
+* Upgraded API version to 2022-11-01-preview
+* Added support to migrate from Azure Front Door (classic) to Azure Front Door Standard and Premium.
+* Added support for AFDX upgrade from Standard tier to Premium tier.
+
+## Version 2.1.0
+* Upgraded API version to 2021-06-01
+* Removed deprecated cmdlets
+  - Disable-AzCdnCustomDomain
+  - Enable-AzCdnCustomDomain
+  - Get-AzCdnEdgeNodes
+  - Get-AzCdnProfileSsoUrl
+  - New-AzCdnDeliveryPolicy
+  - Set-AzFrontDoorCdnSecret
+* Added new cmdlets
+  - Clear-AzFrontDoorCdnEndpointContent
+  - Get-AzFrontDoorCdnEndpointResourceUsage
+  - Get-AzFrontDoorCdnOriginGroupResourceUsage
+  - Get-AzFrontDoorCdnProfileResourceUsage
+  - Get-AzFrontDoorCdnRuleSetResourceUsage
+  - Test-AzFrontDoorCdnEndpointCustomDomain
+  - Test-AzFrontDoorCdnEndpointNameAvailability
+  - Test-AzFrontDoorCdnProfileHostNameAvailability
+  - Update-AzFrontDoorCdnCustomDomainValidationToken
+  - Update-AzFrontDoorCdnRule
+* Renamed Set cmdlets to Update cmdlets
+* Renamed `Unpublish-AzCdnEndpointContent` cmdlets to `Clear-AzCdnEndpointContent`
+* Added `Object` suffix to memory object creation cmdlets
+
+## Version 1.8.3
+* Added breaking change messages for all cmdlets in Az.CDN module
+
+## Version 1.8.2
+* Added breaking change messages for upcoming breaking change release of version 2.0.0
+
+## Version 1.8.1
+* Fixed null reference exception and typos in `New-AzFrontDoorCdnRule` cmdlet
+
+## Version 1.8.0
+* Fixed mandatory parameters issue in `Get-AzCdnEndpointResourceUsage` cmdlet
+
+## Version 1.7.1
+* Fixed profile missing issue in `Remove-AzCdnProfile` cmdlet
+
+## Version 1.7.0
+* Added cmdlets to support new AFD Premium / Standard SKUs
+  
+## Version 1.6.0
 * Added cmdlets to support multi-origin and private link functionality 
 
 ## Version 1.4.3

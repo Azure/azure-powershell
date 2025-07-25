@@ -25,6 +25,7 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Events
 {
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
         public GetAzureRmLogTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
+            TestExecutionHelpers.SetUpSessionAndProfile();
             insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
             MonitorClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();

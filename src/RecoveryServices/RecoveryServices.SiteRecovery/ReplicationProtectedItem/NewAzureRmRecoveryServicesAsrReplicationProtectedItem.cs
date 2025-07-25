@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Job = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job;
@@ -87,6 +88,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter AzureToAzure { get; set; }
 
         /// <summary>
+        ///    Switch parameter to specify the replicated item is a VMware virtual machine 
+        ///    or a physical server that will be replicated to Azure using RCM.
+        /// </summary>
+        [Parameter(
+            Position = 0,
+            ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure,
+            Mandatory = true)]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput,
+            Mandatory = true)]
+        public SwitchParameter ReplicateVMwareToAzure { get; set; }
+
+        /// <summary>
         ///     Gets or sets protectable item object for which replication is being enabled.
         ///     Not needed in A2A.
         /// </summary>
@@ -110,6 +125,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
            ParameterSetName = VMwareToAzureParameterSet,
            Mandatory = true,
            ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectableItem ProtectableItem { get; set; }
 
@@ -123,6 +146,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             HelpMessage = "Specifies the disk configuration to used Vm for Azure to Azure disaster recovery scenario.")]
         [ValidateNotNullOrEmpty]
         public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureDiskReplicationConfiguration { get; set; }
+
+        /// <summary>
+        ///    Gets or sets the list of disks to be replicated and the cache storage account 
+        ///    and recovery storage account to be used during replication.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput,
+            Mandatory = true,
+            HelpMessage = "Specifies the disk input to be used for VMware to Azure disaster recovery scenario.")]
+        [ValidateNotNullOrEmpty]
+        public ASRInMageRcmDiskInput[] InMageRcmDiskInput { get; set; }
 
         /// <summary>
         /// Gets or sets the azure vm id to be replicated.
@@ -145,10 +179,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
         [ValidateNotNullOrEmpty]
         public string RecoveryVmName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the license type.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.NoLicenseType,
+            Constants.LicenseTypeWindowsServer)]
+        [DefaultValue(Constants.LicenseTypeWindowsServer)]
+        public string LicenseType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the test network ARM Id.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
+        [ValidateNotNullOrEmpty]
+        public string TestNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the test subnet name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
+        [ValidateNotNullOrEmpty]
+        public string TestSubnetName { get; set; }
 
         /// <summary>
         ///     Gets or sets the ASR protection container mapping object corresponding to
@@ -161,8 +223,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the ID of the Azure storage account to replicate to.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
@@ -192,12 +254,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRunAsAccount Account { get; set; }
 
         /// <summary>
+        ///     Gets or sets the name of credentials to be used to push install the mobility service
+        ///     on source machine if needed.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
+        [ValidateNotNullOrEmpty]
+        public string CredentialsToAccessVm { get; set; }
+
+        /// <summary>
         ///     Gets or sets Vm log azure storage account Id.
         /// </summary>
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
         [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string LogStorageAccountId { get; set; }
 
@@ -225,6 +297,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRProcessServer ProcessServer { get; set; }
 
         /// <summary>
+        ///     Gets or sets the name of appliance to be used to replicate this machine.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string ApplianceName { get; set; }
+
+
+        /// <summary>
+        ///     Gets or sets the ASR Fabric object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRFabric Fabric { get; set; }
+
+
+        /// <summary>
         ///     Gets or sets the ID of the Azure virtual network to recover the machine to in the event of a failover.
         /// </summary>
         [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
@@ -232,6 +322,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureNetworkId { get; set; }
 
@@ -244,6 +336,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureSubnetName { get; set; }
 
@@ -256,6 +350,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = VMwareToAzureParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryResourceGroupId { get; set; }
 
@@ -266,6 +362,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
         [ValidateNotNullOrEmpty]
         public string ReplicationGroupName { get; set; }
 
@@ -281,6 +379,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
         [ValidateNotNullOrEmpty]
         public string RecoveryAvailabilityZone { get; set; }
 
@@ -289,22 +392,123 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput, HelpMessage = "Specify the proximity placement group Id to used by the failover Vm in target recovery region.")]
         [ValidateNotNullOrEmpty]
         public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of virtual machine scale set to failover this virtual machine to.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the virtual machine scale set Id to be used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the virtual machine scale set Id to be used by the failover Vm in target recovery region.")]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryVirtualMachineScaleSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of capacity reservation group to failover this virtual machine to.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the capacity reservation group Id to be used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the capacity reservation group Id to be used by the failover Vm in target recovery region.")]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryCapacityReservationGroupId { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the AvailabilitySet to recover the machine to in the event of a failover.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specify the availability set Id to be used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet, HelpMessage = "Specify the availability set Id to be used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, HelpMessage = "Specify the availability set Id to be used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, HelpMessage = "Specify the availability set Id to be used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput, HelpMessage = "Specify the availability set Id to be used by the failover Vm in target recovery region.")]
         [ValidateNotNullOrEmpty]
         public string RecoveryAvailabilitySetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM size in the event of a failover.
+        /// </summary>
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specify the recovery virtual machine size.")]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet, HelpMessage = "Specify the recovery virtual machine size.")]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, HelpMessage = "Specify the recovery virtual machine size.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, HelpMessage = "Specify the recovery virtual machine size.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput, HelpMessage = "Specify the recovery virtual machine size.")]
+        [ValidateNotNullOrEmpty]
+        public string Size { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SQL Server license type to the machine to in the event of a failover.
+        /// </summary>
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specify the SQL Server license type of the VM.")]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet, HelpMessage = "Specify the SQL Server license type of the VM.")]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, HelpMessage = "Specify the SQL Server license type of the VM.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.NoLicenseTypeSql,
+            Constants.LicenseTypePAYG,
+            Constants.LicenseTypeAHUB)]
+        public string SqlServerLicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets target VM tags.
+        /// </summary>
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specify the tags for target VM.")]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet, HelpMessage = "Specify the tags for target VM.")]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, HelpMessage = "Specify the tags for target VM.")]
+        [ValidateNotNullOrEmpty]
+        public IDictionary<string, string> RecoveryVmTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the disks.
+        /// </summary>
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specify the tags for the disks of the VM.")]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet, HelpMessage = "Specify the tags for the disks of the VM.")]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, HelpMessage = "Specify the tags for the disks of the VM.")]
+        [ValidateNotNullOrEmpty]
+        public IDictionary<string, string> DiskTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target NICs.
+        /// </summary>
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specify the tags for the target NICs of the VM.")]
+        [Parameter(ParameterSetName = VMwareToAzureParameterSet, HelpMessage = "Specify the tags for the target NICs of the VM.")]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, HelpMessage = "Specify the tags for the target NICs of the VM.")]
+        [ValidateNotNullOrEmpty]
+        public IDictionary<string, string> RecoveryNicTag { get; set; }
+
+        /// <summary>
+        ///     Gets or sets if the Azure virtual machine that is created on failover should use managed disks.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.True,
+            Constants.False)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
+        public string UseManagedDisk { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether managed disks should be used during replication.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.True,
+            Constants.False)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
+        public string UseManagedDisksForReplication { get; set; }
 
         /// <summary>
         /// Gets or sets BootDiagnosticStorageAccountId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
         public string RecoveryBootDiagStorageAccountId { get; set; }
 
         /// <summary>
@@ -345,7 +549,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the recovery disk storage account ARM Id.  
         /// </summary> 
         /// [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils)] 
-        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specifies the Recovery VM managed disk type.", Mandatory =true)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskType, HelpMessage = "Specifies the Recovery VM managed disk type.", Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, HelpMessage = "Specifies the Recovery VM managed disk type.", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
         public string DiskType { get; set; }
@@ -355,7 +560,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
         public string DiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        ///  Gets or sets the recovery extended location.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specifies Recovery ExtendedLocation in case of EZ-to-EZ.", Mandatory = false)]
+        public string RecoveryExtendedLocation { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Azure Site Recovery Replication protection Cluster.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the replication protection cluster Id.", Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the replication protection cluster Id.", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public ASRReplicationProtectionCluster ReplicationProtectionCluster { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -438,6 +658,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         AzureToAzureReplication(input);
                         break;
 
+                    case ASRParameterSets.ReplicateVMwareToAzure:
+                    case ASRParameterSets.ReplicateVMwareToAzureWithDiskInput:
+                        if (!(policyInstanceType is InMageRcmPolicyDetails))
+                        {
+                            throw new PSArgumentException(
+                                string.Format(
+                                    Properties.Resources.ContainerMappingParameterSetMismatch,
+                                    this.ProtectionContainerMapping.Name,
+                                    policyInstanceType));
+                        }
+                        InMageRcmToAzureReplication(input);
+                        break;
+
                     default:
                         break;
                 }
@@ -472,6 +705,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         private void VMwareToAzureReplication(EnableProtectionInput input)
         {
+            var seedManagedDiskTag = this.DiskTag;
+            if (!string.IsNullOrEmpty(this.RecoveryAzureStorageAccountId))
+            {
+                seedManagedDiskTag = null;
+            }
             var providerSettings = new InMageAzureV2EnableProtectionInput
             {
                 ProcessServerId = this.ProcessServer.Id,
@@ -482,14 +720,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 TargetAzureNetworkId = this.RecoveryAzureNetworkId,
                 TargetAzureSubnetId = this.RecoveryAzureSubnetName,
                 LogStorageAccountId = this.LogStorageAccountId,
-                MultiVmGroupName = this.ReplicationGroupName,
+                MultiVMGroupName = this.ReplicationGroupName,
                 DiskType = this.DiskType,
-                MultiVmGroupId = this.ReplicationGroupName,
-                TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
+                MultiVMGroupId = this.ReplicationGroupName,
+                TargetAzureVMName = string.IsNullOrEmpty(this.RecoveryVmName)
                                             ? this.ProtectableItem.FriendlyName
                                             : this.RecoveryVmName,
                 EnableRdpOnTargetOption = Constants.NeverEnableRDPOnTargetOption,
-                DiskEncryptionSetId = this.DiskEncryptionSetId
+                DiskEncryptionSetId = this.DiskEncryptionSetId,
+                TargetAvailabilityZone = this.RecoveryAvailabilityZone,
+                TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
+                TargetAvailabilitySetId = this.RecoveryAvailabilitySetId,
+                TargetVMSize = this.Size,
+                SqlServerLicenseType = this.SqlServerLicenseType,
+                TargetVMTags = this.RecoveryVmTag,
+                TargetNicTags = this.RecoveryNicTag,
+                SeedManagedDiskTags = seedManagedDiskTag,
+                TargetManagedDiskTags = this.DiskTag
             };
 
             if (this.IsParameterBound(c => c.InMageAzureV2DiskInput))
@@ -539,16 +786,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         // Compare the Multi VM Group Name.
                         if (string.Compare(
                                 this.ReplicationGroupName,
-                                providerSpecificDetails.MultiVmGroupName,
+                                providerSpecificDetails.MultiVMGroupName,
                                 StringComparison.OrdinalIgnoreCase) ==
                             0)
                         {
                             // Multi VM Group found.
                             // Set the values in the InMageAzureV2 Provider specific input.
-                            providerSettings.MultiVmGroupName =
-                                providerSpecificDetails.MultiVmGroupName;
-                            providerSettings.MultiVmGroupId =
-                                providerSpecificDetails.MultiVmGroupId;
+                            providerSettings.MultiVMGroupName =
+                                providerSpecificDetails.MultiVMGroupName;
+                            providerSettings.MultiVMGroupId =
+                                providerSpecificDetails.MultiVMGroupId;
                             flag = true;
                             break;
                         }
@@ -561,8 +808,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     // Multi VM Group was not found.
                     // Create a new Multi VM Group and Set the values in the 
                     // InMageAzureV2 Provider specific input.
-                    providerSettings.MultiVmGroupName = this.ReplicationGroupName;
-                    providerSettings.MultiVmGroupId = Guid.NewGuid().ToString();
+                    providerSettings.MultiVMGroupName = this.ReplicationGroupName;
+                    providerSettings.MultiVMGroupId = Guid.NewGuid().ToString();
                 }
             }
 
@@ -577,11 +824,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var providerSettings = new HyperVReplicaAzureEnableProtectionInput();
 
-            providerSettings.HvHostVmId = this.ProtectableItem.FabricObjectId;
-            providerSettings.VmName = this.ProtectableItem.FriendlyName;
-            providerSettings.TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
+            providerSettings.HvHostVMId = this.ProtectableItem.FabricObjectId;
+            providerSettings.VMName = this.ProtectableItem.FriendlyName;
+            providerSettings.TargetAzureVMName = string.IsNullOrEmpty(this.RecoveryVmName)
                                                     ? this.ProtectableItem.FriendlyName
                                                     : this.RecoveryVmName;
+            providerSettings.TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId;
+            providerSettings.TargetAvailabilityZone = this.RecoveryAvailabilityZone;
+            providerSettings.UseManagedDisks = this.UseManagedDisk;
+            providerSettings.UseManagedDisksForReplication = this.UseManagedDisksForReplication;
+            providerSettings.TargetAvailabilitySetId = this.RecoveryAvailabilitySetId;
+            providerSettings.TargetVMSize = this.Size;
+            providerSettings.SqlServerLicenseType = this.SqlServerLicenseType;
+            providerSettings.TargetVMTags = this.RecoveryVmTag;
+            providerSettings.TargetNicTags = this.RecoveryNicTag;
+            providerSettings.TargetManagedDiskTags = this.DiskTag;
+
+            if (this.DiskTag != null && this.DiskTag.Count > 0 && this.UseManagedDisk == Constants.False)
+            {
+                throw new PSArgumentException(
+                    string.Format(
+                        Resources.DiskTagCannotBeSet,
+                        this.DiskTag,
+                        this.UseManagedDisk));
+            }
+
+            if(!string.IsNullOrEmpty(this.RecoveryAzureStorageAccountId)
+                && !string.IsNullOrEmpty(this.UseManagedDisksForReplication))
+            {
+                throw new PSArgumentException(
+                    string.Format(Resources.IncorrectParameters));
+            }
 
             if (!string.IsNullOrEmpty(this.RecoveryAzureNetworkId))
             {
@@ -615,7 +888,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (string.IsNullOrWhiteSpace(this.OS))
             {
-                providerSettings.OsType = (string.Compare(
+                providerSettings.OSType = (string.Compare(
                                                this.ProtectableItem.OS,
                                                Constants.OSWindows,
                                                StringComparison.OrdinalIgnoreCase) ==
@@ -629,7 +902,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             else
             {
-                providerSettings.OsType = this.OS;
+                providerSettings.OSType = this.OS;
             }
 
             if (string.IsNullOrWhiteSpace(this.OSDiskName))
@@ -648,15 +921,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
+            string deploymentType = string.Empty;
             if (this.RecoveryAzureStorageAccountId != null)
             {
                 providerSettings.TargetStorageAccountId =
                     this.RecoveryAzureStorageAccountId;
+                deploymentType = Utilities.GetValueFromArmId(
+                    this.RecoveryAzureStorageAccountId,
+                    ARMResourceTypeConstants.Providers);
             }
-
-            var deploymentType = Utilities.GetValueFromArmId(
-                this.RecoveryAzureStorageAccountId,
-                ARMResourceTypeConstants.Providers);
+            else
+            {
+                if(this.LogStorageAccountId != null)
+                {
+                    deploymentType = Utilities.GetValueFromArmId(
+                    this.LogStorageAccountId,
+                    ARMResourceTypeConstants.Providers);
+                }
+            }
+            
             if (deploymentType.ToLower()
                 .Contains(Constants.Classic.ToLower()))
             {
@@ -671,6 +954,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.RecoveryResourceGroupId;
             }
 
+            if (this.IsParameterBound(c => c.IncludeDiskId))
+            {
+                List<string> disksToInclude = IncludeDiskId.ToList();
+                providerSettings.DisksToInclude = disksToInclude;
+            }
+
             input.Properties.ProviderSpecificDetails = providerSettings;
         }
 
@@ -679,13 +968,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void AzureToAzureReplication(EnableProtectionInput input)
         {
+            Logger.Instance.WriteWarning("Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default " +
+                "to security type Trusted Launch. Azure Site Recovery currently does not support Trusted Launch VMs, hence, " +
+                "to keep using Azure Site Recovery please create Virtual Machine with security type Standard. Non-Trusted Launch " +
+                "Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, " +
+                "please visit https://aka.ms/TLaD.");
+
             var providerSettings = new A2AEnableProtectionInput()
             {
                 FabricObjectId = this.AzureVmId,
                 RecoveryContainerId =
                         this.ProtectionContainerMapping.TargetProtectionContainerId,
-                VmDisks = new List<A2AVmDiskInputDetails>(),
-                VmManagedDisks = new List<A2AVmManagedDiskInputDetails>(),
+                VMDisks = new List<A2AVmDiskInputDetails>(),
+                VMManagedDisks = new List<A2AVmManagedDiskInputDetails>(),
                 RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                 RecoveryCloudServiceId = this.RecoveryCloudServiceId,
                 RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
@@ -693,17 +988,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryAzureNetworkId = this.RecoveryAzureNetworkId,
                 RecoverySubnetName = this.RecoveryAzureSubnetName,
                 RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
-                RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId
+                RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
+                RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
+                RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId,
+                RecoveryExtendedLocation = this.IsParameterBound(c => c.RecoveryExtendedLocation) ? new ExtendedLocation
+                {
+                    Name = this.RecoveryExtendedLocation
+                } : null
             };
 
             if (!string.IsNullOrEmpty(this.ReplicationGroupName))
             {
-                providerSettings.MultiVmGroupName = this.ReplicationGroupName;
+                providerSettings.MultiVMGroupName = this.ReplicationGroupName;
             }
 
             if (!string.IsNullOrEmpty(this.RecoveryCloudServiceId))
             {
                 providerSettings.RecoveryResourceGroupId = null;
+            }
+
+            if (this.ReplicationProtectionCluster != null)
+            {
+                providerSettings.ProtectionClusterId = this.ReplicationProtectionCluster.ID;
+                if (string.IsNullOrEmpty(this.ReplicationGroupName))
+                {
+                    providerSettings.MultiVMGroupName = this.ReplicationProtectionCluster.Name;
+                }
             }
 
             if (this.AzureToAzureDiskReplicationConfiguration == null)
@@ -732,7 +1042,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             throw new Exception("Recovery Storage account is not required for managed disk vm to protect");
                         }
                         var osDisk = virtualMachine.StorageProfile.OsDisk;
-                        providerSettings.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                        providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                         {
                             DiskId = osDisk.ManagedDisk.Id,
                             RecoveryResourceGroupId = this.RecoveryResourceGroupId,
@@ -744,7 +1054,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         {
                             foreach (var dataDisk in virtualMachine.StorageProfile.DataDisks)
                             {
-                                providerSettings.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                                providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                                 {
                                     DiskId = dataDisk.ManagedDisk.Id,
                                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
@@ -763,7 +1073,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         }
 
                         var osDisk = virtualMachine.StorageProfile.OsDisk;
-                        providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
+                        providerSettings.VMDisks.Add(new A2AVmDiskInputDetails
                         {
                             DiskUri = osDisk.Vhd.Uri,
                             RecoveryAzureStorageAccountId = this.RecoveryAzureStorageAccountId,
@@ -773,7 +1083,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         {
                             foreach (var dataDisk in virtualMachine.StorageProfile.DataDisks)
                             {
-                                providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
+                                providerSettings.VMDisks.Add(new A2AVmDiskInputDetails
                                 {
                                     DiskUri = dataDisk.Vhd.Uri,
                                     RecoveryAzureStorageAccountId = this.RecoveryAzureStorageAccountId,
@@ -794,7 +1104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     if (disk.IsManagedDisk)
                     {
-                        providerSettings.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                        providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                         {
                             DiskId = disk.DiskId,
                             RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
@@ -813,7 +1123,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     }
                     else
                     {
-                        providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
+                        providerSettings.VMDisks.Add(new A2AVmDiskInputDetails
                         {
                             DiskUri = disk.VhdUri,
                             RecoveryAzureStorageAccountId =
@@ -832,6 +1142,157 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                    this.KeyEncryptionKeyUrl,
                    this.KeyEncryptionVaultId);
 
+            input.Properties.ProviderSpecificDetails = providerSettings;
+        }
+
+        /// <summary>
+        ///     Helper method for VMware to Azure using RCM replication scenario.
+        /// </summary>
+        private void InMageRcmToAzureReplication(EnableProtectionInput input)
+        {
+            var fabricSpecificDetails = (InMageRcmFabricSpecificDetails)this.RecoveryServicesClient
+                .GetAzureSiteRecoveryFabric(this.Fabric.Name)
+                .Properties
+                .CustomDetails;
+            var processServer = fabricSpecificDetails
+                .ProcessServers
+                .Where(x => x.Name.Equals(this.ApplianceName, StringComparison.OrdinalIgnoreCase))
+                .FirstOrDefault();
+            if (processServer == null)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.ApplianceNotFound,
+                        this.ApplianceName));
+            }
+
+            var supportedProviders = new List<string> { Constants.InMageRcm };
+            if (this.ProtectableItem.SupportedReplicationProviders
+                .Except(supportedProviders).Any())
+            {
+                throw new PSArgumentException(
+                    string.Format(
+                        Properties.Resources.UnsupportedReplicationProviderForProtectableItem,
+                        Constants.InMageRcm));
+            }
+
+            var siteId = this.ProtectableItem.FabricSiteId;
+            var runAsAccount =
+                this.FabricDiscoveryClient.GetAzureSiteRecoveryRunAsAccounts(siteId)
+                .Where(x => x.Properties.DisplayName.Equals(
+                        this.CredentialsToAccessVm, StringComparison.OrdinalIgnoreCase ) &&
+                    x.Properties.ApplianceName.Equals(
+                        this.ApplianceName, StringComparison.OrdinalIgnoreCase))
+                .FirstOrDefault();
+            if (runAsAccount == null)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.RunAsAccountNotFound,
+                        this.CredentialsToAccessVm,
+                        this.ApplianceName,
+                        siteId));
+            }
+
+            var providerSettings = new InMageRcmEnableProtectionInput
+            {
+                FabricDiscoveryMachineId = this.ProtectableItem.ID,
+                RunAsAccountId = runAsAccount.Id,
+                TargetResourceGroupId = this.RecoveryResourceGroupId,
+                TargetNetworkId = this.RecoveryAzureNetworkId,
+                TargetAvailabilitySetId = this.RecoveryAvailabilitySetId,
+                TargetAvailabilityZone = this.RecoveryAvailabilityZone,
+                TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
+                TargetBootDiagnosticsStorageAccountId = this.RecoveryBootDiagStorageAccountId,
+                TargetSubnetName = this.RecoveryAzureSubnetName,
+                TargetVMName = string.IsNullOrEmpty(this.RecoveryVmName)
+                    ? this.ProtectableItem.FriendlyName
+                    : this.RecoveryVmName,
+                TargetVMSize = this.Size,
+                LicenseType = this.LicenseType,
+                TestNetworkId = this.TestNetworkId,
+                TestSubnetName = this.TestSubnetName,
+                MultiVMGroupName = this.ReplicationGroupName,
+                ProcessServerId = processServer.Id,
+                DisksDefault = new InMageRcmDisksDefaultInput()
+                {
+                    DiskType = this.DiskType,
+                    DiskEncryptionSetId = this.DiskEncryptionSetId,
+                    LogStorageAccountId = this.LogStorageAccountId
+                }
+            };
+            
+            if (this.IsParameterBound(c => c.InMageRcmDiskInput))
+            {
+                List<InMageRcmDiskInput> inMageRcmDiskInput = InMageRcmDiskInput.Select(
+                    p => new InMageRcmDiskInput
+                    {
+                        DiskId = p.DiskId,
+                        DiskType = p.DiskType,
+                        LogStorageAccountId = p.LogStorageAccountId,
+                        DiskEncryptionSetId = p.DiskEncryptionSetId
+                    }
+                    ).ToList();
+                providerSettings.DisksToInclude = inMageRcmDiskInput;
+            }
+
+            // Check if the replication group name is valid.
+            if (this.ReplicationGroupName != null)
+            {
+                // Get all the protected items in the protection container.
+                var fabricName = Utilities.GetValueFromArmId(
+                    this.ProtectableItem.ID,
+                    ARMResourceTypeConstants.ReplicationFabrics);
+                var protectionContainerName = Utilities.GetValueFromArmId(
+                    this.ProtectableItem.ID,
+                    ARMResourceTypeConstants.ReplicationProtectionContainers);
+                var listReplicationProtectedItems =
+                    this.RecoveryServicesClient
+                        .GetAzureSiteRecoveryReplicationProtectedItem(
+                            fabricName,
+                            protectionContainerName);
+
+                // Loop over all the protected items and find if the multi VM group already exists.
+                var flag = false;
+                foreach (var rpi in listReplicationProtectedItems)                
+                {
+                    // Check if the replication protected item is an InMageRcm instance.
+                    if (rpi.Properties.ProviderSpecificDetails is InMageRcmReplicationDetails)
+                    {
+                        // Get the InMageRcm specific details.
+                        var providerSpecificDetails =
+                            (InMageRcmReplicationDetails)rpi.Properties
+                                .ProviderSpecificDetails;
+
+                        // Compare the multi VM group name.
+                        if (string.Compare(
+                                this.ReplicationGroupName,
+                                providerSpecificDetails.MultiVMGroupName,
+                                StringComparison.OrdinalIgnoreCase) ==
+                            0)
+                        {
+                            // Multi VM group found.
+                            // Set the values in the InMageRcm provider specific input.
+                            providerSettings.MultiVMGroupName =
+                                providerSpecificDetails.MultiVMGroupName;
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+
+                // Check if the multi VM group was found or is to be created now.
+                if (flag == false)
+                {
+                    // Multi VM group was not found.
+                    // Create a new multi VM group and set the values in the 
+                    // InMageRcm provider specific input.
+                    providerSettings.MultiVMGroupName = this.ReplicationGroupName;
+                }
+            }
+
+            // Set the InMageRcm provider specific input in the enable protection input.
+            input.Properties.ProtectableItemId = null;
             input.Properties.ProviderSpecificDetails = providerSettings;
         }
 

@@ -25,10 +25,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(PSSite))]
     public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
+        [Parameter(Mandatory = false, HelpMessage = "Specify true to apply the configuration settings and restarts the app only if necessary.")]
+        public SwitchParameter SoftRestart { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WebsitesClient.RestartWebApp(ResourceGroupName, Name, null);
+            WebsitesClient.RestartWebApp(ResourceGroupName, Name, null, SoftRestart);
             WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null)));
         }
     }

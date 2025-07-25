@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzIotSecurityAnalyticsAggregatedRecommendation
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzIotSecurityAnalyticsAggregatedRecommendation
 schema: 2.0.0
 ---
 
@@ -21,7 +21,8 @@ Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName <String> -
 ### SolutionLevelResource
 ```
 Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName <String> -SolutionName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,8 +33,10 @@ The name of an aggregated recommendation is its type
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Name IoT_OpenPorts
+Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Name IoT_OpenPorts
+```
 
+```output
 Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolution/analyticsModels/default/aggregatedRecommendations/IoT_OpenPorts"
 Name: "IoT_OpenPorts"
 Type: "Microsoft.Security/IoTSecurityAggregatedRecommendation"
@@ -53,8 +56,10 @@ Get the aggregated recommendation "IoT_OpenPorts" in security solution "MySoluti
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution"
+Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution"
+```
 
+```output
 Array of aggregated recommendation items as shown in example 1
 ```
 

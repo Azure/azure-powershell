@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 90C3DF13-0010-49B6-A8CD-C6AC34BC3EFA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragecontainer
 schema: 2.0.0
 ---
 
@@ -16,15 +16,17 @@ Lists the storage containers.
 ### ContainerName (Default)
 ```
 Get-AzStorageContainer [[-Name] <String>] [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-IncludeDeleted] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### ContainerPrefix
 ```
 Get-AzStorageContainer -Prefix <String> [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-IncludeDeleted] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,19 +34,56 @@ The **Get-AzStorageContainer** cmdlet lists the storage containers associated wi
 
 ## EXAMPLES
 
-### Example 1: Get Azure Storage blob by name
-```
-PS C:\>Get-AzStorageContainer -Name container*
+### Example 1: Get Azure Storage container by name
+```powershell
+Get-AzStorageContainer -Name container*
 ```
 
 This example uses a wildcard character to return a list of all containers with a name that starts with container.
 
 ### Example 2: Get Azure Storage container by container name prefix
-```
-PS C:\>Get-AzStorageContainer -Prefix "container"
+```powershell
+Get-AzStorageContainer -Prefix "container"
 ```
 
 This example uses the *Prefix* parameter to return a list of all containers with a name that starts with container.
+
+### Example 3: List Azure Storage container, include deleted containers
+<!-- Skip: Output cannot be splitted from code -->
+
+
+```
+$containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
+
+$containers
+
+   Storage Account Name: storageaccountname
+
+Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                      
+----                 ------------         ------------                   ---------  ---------                                                                                                                                                                   
+testcon              Off                  8/28/2020 10:18:13 AM +00:00                                                                                                                                                                                                                                                                   
+testcon2                                  9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
+
+$c[1].BlobContainerProperties
+
+LastModified                   : 9/4/2020 12:52:37 PM +00:00
+LeaseStatus                    : Unlocked
+LeaseState                     : Expired
+LeaseDuration                  : 
+PublicAccess                   : 
+HasImmutabilityPolicy          : False
+HasLegalHold                   : False
+DefaultEncryptionScope         : $account-encryption-key
+PreventEncryptionScopeOverride : False
+DeletedOn                      : 9/8/2020 4:29:59 AM +00:00
+RemainingRetentionDays         : 299
+ETag                           : "0x8D850D167059285"
+Metadata                       : {}
+```
+
+This example lists all containers of a storage account, include deleted containers.
+Then show the deleted container properties, include : DeletedOn, RemainingRetentionDays.
+Deleted containers will only exist after enabled Container softdelete with Enable-AzStorageBlobDeleteRetentionPolicy.
 
 ## PARAMETERS
 
@@ -131,6 +170,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeDeleted
+Include deleted containers, by default list containers won't include deleted containers
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxCount
 Specifies the maximum number of objects that this cmdlet returns.
 
@@ -160,7 +214,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Prefix
@@ -196,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -217,5 +271,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzStorageContainer](./Remove-AzStorageContainer.md)
 
 [Set-AzStorageContainerAcl](./Set-AzStorageContainerAcl.md)
-
-

@@ -24,23 +24,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Common
     /// </summary>
     public class AzureNetAppFilesCmdletBase : AzureRMCmdlet
     { 
-        private IAzureNetAppFilesManagementClient _netAppFilesManagementClient;
+        private INetAppManagementClient _netAppFilesManagementClient;
 
         protected const string ResourceIdParameterSet = "ByResourceIdParameterSet";
         protected const string ObjectParameterSet = "ByObjectParameterSet";
         protected const string ParentObjectParameterSet = "ByParentObjectParameterSet";
         protected const string FieldsParameterSet = "ByFieldsParameterSet";
-
+        public const string PreviewMessage = "The cmdlet  is in preview.";
 
         /// <summary>
         /// Gets or sets the Azure NetApp Files management client.
         /// </summary>
-        public IAzureNetAppFilesManagementClient AzureNetAppFilesManagementClient
+        public INetAppManagementClient AzureNetAppFilesManagementClient
         {
             get =>
                 _netAppFilesManagementClient ??
                 (_netAppFilesManagementClient =
-                    AzureSession.Instance.ClientFactory.CreateArmClient<AzureNetAppFilesManagementClient>(DefaultProfile.DefaultContext,
+                    AzureSession.Instance.ClientFactory.CreateArmClient<NetAppManagementClient>(DefaultProfile.DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager));
             set { _netAppFilesManagementClient = value; }
         }

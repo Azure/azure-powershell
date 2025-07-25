@@ -38,7 +38,8 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = getAssetName
     $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
+    $tag = @{Owner='jingnanxu'}
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force -Tag $tag
     return $resourceGroup
 }
 
@@ -60,4 +61,33 @@ function Assert-Tags($tags1, $tags2)
             throw "Tag content not equal. Key:$key Tags1:" +  $tags1[$key] + "Tags2:" + $tags2[$key]
         }
     }
+}
+
+<#
+.SYNOPSIS
+Disable the CustomDomain Https deployment
+#>
+function TestCleanUp-DisableCustomDomainHttps($resourceGroupName, $frontDoorName, $customFrontendEndpointName)
+{
+    $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name $customFrontendEndpointName
+    Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
+    [int]$counter = 0
+    do 
+    {
+       Wait-Seconds 60
+       $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name $customFrontendEndpointName
+    } while ($customDomain.CustomHttpsProvisioningState -ne "Enabled" -and $counter++ -lt 60)
+    Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabled"
+	Assert-AreEqual $customDomain.MinimumTlsVersion "1.2"
+
+    $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name $customFrontendEndpointName
+    $disabledCustomDomain = $customDomain | Disable-AzFrontDoorCustomDomainHttps
+    Assert-AreEqual $disabledCustomDomain.CustomHttpsProvisioningState "Disabling"
+    [int]$counter = 0
+    do 
+    {
+       Wait-Seconds 60
+       $disabledCustomDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name $customFrontendEndpointName
+    } while ($disabledCustomDomain.CustomHttpsProvisioningState -ne "Disabled" -and $counter++ -lt 60)
+    Assert-AreEqual $disabledCustomDomain.CustomHttpsProvisioningState "Disabled"
 }

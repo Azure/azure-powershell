@@ -1,44 +1,83 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+---
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/new-azeventhubconsumergroup
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubconsumergroup
 schema: 2.0.0
 ---
 
 # New-AzEventHubConsumerGroup
 
 ## SYNOPSIS
-Creates a new consumer group for the specified Event Hub.
+create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
- [-Name] <String> [[-UserMetadata] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespaceExpanded
+```
+New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceInputObject <IEventHubIdentity>
+ [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespace
+```
+New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceInputObject <IEventHubIdentity>
+ -Parameter <IConsumerGroup> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEventhubExpanded
+```
+New-AzEventHubConsumerGroup -Name <String> -EventhubInputObject <IEventHubIdentity> [-UserMetadata <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEventhub
+```
+New-AzEventHubConsumerGroup -Name <String> -EventhubInputObject <IEventHubIdentity> -Parameter <IConsumerGroup>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new consumer group for the specified Event Hub.
+create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> New-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName
+### Example 1: Create an EventHub ConsumerGroup
+```powershell
+New-AzEventHubConsumerGroup -Name myConsumerGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -EventHubName myEventHub -UserMetadata "Test ConsumerGroup"
 ```
 
-Creates the consumer group \`MyConsumerGroupName\` in the Event Hub \`MyEventHubName\`, scoped to the namespace \`MyNamespaceName\`, with resource group \`MyResourceGroupName\`.
+```output
+CreatedAt                    : 9/13/2022 9:20:47 AM
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+                               /eventhubs/eh1/consumergroups/myConsumerGroup
+Location                     : australiaeast
+Name                         : myConsumerGroup
+ResourceGroupName            : myResourceGroup
+UpdatedAt                    : 9/13/2022 9:20:47 AM
+UserMetadata                 : Test ConsumerGroup
+```
+
+Creates a new consumer group `myConsumerGroup` for EventHubs entity `myEventHub`.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -47,23 +86,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventHub
-EventHub Name
+### -EventhubInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: CreateViaIdentityEventhubExpanded, CreateViaIdentityEventhub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -EventHubName
+The Event Hub name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: EventHubName
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityNamespace
+Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-ConsumerGroup Name
+The consumer group name
 
 ```yaml
 Type: System.String
@@ -71,54 +125,102 @@ Parameter Sets: (All)
 Aliases: ConsumerGroupName
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Namespace
-Namespace Name
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: CreateViaIdentityNamespaceExpanded, CreateViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: NamespaceName
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+Single item in List or Get Consumer group operation
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
+Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityEventhub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -UserMetadata
-User Metadata for ConsumerGroup
+User Metadata is a placeholder to store user-defined string data with maximum length 1024.
+e.g.
+it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityEventhubExpanded
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,15 +256,17 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
+
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
 
 ## NOTES
 

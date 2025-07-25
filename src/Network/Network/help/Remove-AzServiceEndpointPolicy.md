@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azserviceendpointpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azserviceendpointpolicy
 schema: 2.0.0
 ---
 
@@ -15,19 +15,22 @@ Removes a service endpoint policy.
 ### RemoveByNameParameterSet (Default)
 ```
 Remove-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteByResourceIdParameterSet
 ```
 Remove-AzServiceEndpointPolicy -ResourceId <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteByInputObjectParameterSet
 ```
 Remove-AzServiceEndpointPolicy -InputObject <PSServiceEndpointPolicy> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,15 +39,15 @@ The **Remove-AzServiceEndpointPolicy** cmdlet removes a service endpoint policy.
 ## EXAMPLES
 
 ### Example 1: Removes a service endpoint policy using name
-```
-Remove-AzServiceEndpointPolicy -Name "Policy1" -ResourceGroup "resourcegroup1"
+```powershell
+Remove-AzServiceEndpointPolicy -Name "Policy1" -ResourceGroupName "resourcegroup1"
 ```
 
 This command removes a service endpoint policy with name Policy1 which belongs to resourcegroup with name "resourcegroup1"
 
 ### Example 2: Remove a service endpoint policy using input object
-```
-Remove-AzServiceEndpointPolicy -InputObject $Policy1 -ResourceGroup "resourcegroup1"
+```powershell
+Remove-AzServiceEndpointPolicy -InputObject $Policy1
 ```
 
 This command removes a service endpoint policy object Policy1 which belongs to resourcegroup with name "resourcegroup1"
@@ -188,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

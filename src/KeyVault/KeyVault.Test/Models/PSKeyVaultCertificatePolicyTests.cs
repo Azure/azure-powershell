@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
                 exportable: null,
                 certificateTransparency: null);
 
-            Assert.Equal(policy.Kty, Constants.RSA);
+            Assert.Equal(Constants.RSA, policy.Kty);
             Assert.NotNull(policy.KeySize);
             Assert.Equal(2048, policy.KeySize.Value);
         }
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
                 certificateTransparency: null);
             policy.Validate();
 
-            Assert.Equal(policy.Kty, Constants.RSA);
+            Assert.Equal(Constants.RSA, policy.Kty);
             Assert.NotNull(policy.KeySize);
             Assert.Equal(2048, policy.KeySize.Value);
         }

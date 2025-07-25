@@ -16,24 +16,20 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DatabaseBackupStretchTests : SqlTestsBase
+    public class DatabaseBackupStretchTests : SqlTestRunner
     {
         public DatabaseBackupStretchTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseListRestorePoints()
         {
-            RunPowerShellTest("Test-ListStretchDatabaseRestorePoints");
+            TestRunner.RunTestScript("Test-ListStretchDatabaseRestorePoints");
         }
     }
 }

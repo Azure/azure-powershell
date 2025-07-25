@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: FD27C755-9AAF-42DA-8425-1661C92B6C68
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/stop-azhdinsightjob
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/stop-azhdinsightjob
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Stops a specified running job on a cluster.
 
 ```
 Stop-AzHDInsightJob [-ClusterName] <String> [-JobId] <String> [-HttpCredential] <PSCredential>
- [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,11 +25,11 @@ The **Stop-AzHDInsightJob** cmdlet stops a specified running job on an Azure HDI
 ## EXAMPLES
 
 ### Example 1: Stop a job on the specified cluster
-```
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
-PS C:\> Stop-AzHDInsightJob `
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
+Stop-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds `
             -JobId $jobId
@@ -114,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -133,5 +134,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
 [Wait-AzHDInsightJob](./Wait-AzHDInsightJob.md)
-
-

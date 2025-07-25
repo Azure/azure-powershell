@@ -38,7 +38,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = workspace.Location;
             this.Tags = workspace.Tags;
 
-            this.Sku = workspace.Sku != null ? workspace.Sku.Name : null;
+            this.Sku = workspace.Sku.Name;
+            this.CapacityReservationLevel = workspace?.Sku?.CapacityReservationLevel;
+            this.LastSkuUpdate = workspace?.Sku?.LastSkuUpdate;
+
             this.retentionInDays = workspace.RetentionInDays;
             this.CustomerId = new Guid(workspace.CustomerId);
             this.ProvisioningState = workspace.ProvisioningState;
@@ -46,7 +49,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.PublicNetworkAccessForIngestion = workspace.PublicNetworkAccessForIngestion;
             this.PublicNetworkAccessForQuery = workspace.PublicNetworkAccessForQuery;
             this.PrivateLinkScopedResources = workspace.PrivateLinkScopedResources;
-
+            this.WorkspaceCapping = workspace.WorkspaceCapping;
+            this.CreatedDate = workspace.CreatedDate;
+            this.ModifiedDate = workspace.ModifiedDate;
+            this.ForceCmkForQuery = workspace.ForceCmkForQuery;
+            this.WorkspaceFeatures = new PSWorkspaceFeatures(workspace.Features);
+            this.DefaultDataCollectionRuleResourceId = workspace.DefaultDataCollectionRuleResourceId;
         }
 
         public string Name { get; set; }
@@ -61,6 +69,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string Sku { get; set; }
 
+        public int? CapacityReservationLevel { get; set; }
+
+        public string LastSkuUpdate { get; }
+
         public int? retentionInDays { get; set; }
 
         public Guid? CustomerId { get; set; }
@@ -72,5 +84,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string PublicNetworkAccessForQuery { get; set; }
 
         public IList<PrivateLinkScopedResource> PrivateLinkScopedResources { get; private set; }
+
+        public WorkspaceCapping WorkspaceCapping { get; private set; }
+
+        public string CreatedDate { get; set; }
+
+        public string ModifiedDate { get; set; }
+
+        public bool? ForceCmkForQuery { get; set; }
+
+        public PSWorkspaceFeatures WorkspaceFeatures { get; set; }
+
+        public string DefaultDataCollectionRuleResourceId { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 65BF37D3-4FCE-48A3-BC5D-01AA20FEB6CA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmaddomainextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmaddomainextension
 schema: 2.0.0
 ---
 
@@ -15,16 +15,33 @@ Adds an AD domain extension to a virtual machine.
 
 ```
 Set-AzVMADDomainExtension -DomainName <String> [-OUPath <String>] [-JoinOption <UInt32>]
- [-Credential <PSCredential>] [-Restart] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
+ [-Credential <PSCredential>] [-Restart] [-ResourceGroupName] <String> [-VMName] <String> -Name <String>
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzVMADDomainExtension** cmdlet adds an Azure Active Directory (AD) domain virtual machine extension to a virtual machine.
+The **Set-AzVMADDomainExtension** cmdlet adds a Microsoft Entra ID virtual machine extension to a virtual machine.
 This extension lets your virtual machine join a domain.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+# Create a Resource Group and Virtual Machine before this.
+$extensionName = "extensionName"
+$virtualMachineName = "vmName"
+$resourceGroupName = "resourceGroupName"
+$domainName = "domain.com"
+Set-AzVMADDomainExtension -ResourceGroupName $resourceGroupName -VMName $virtualMachineName -Name $extensionName -DomainName $domainName
+```
+
+```Output
+RequestId IsSuccessStatusCode StatusCode ReasonPhrase
+--------- ------------------- ---------- ------------
+                         True         OK OK
+```
 
 ## PARAMETERS
 
@@ -108,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -JoinOption
-Specifies the join option. For join options see [fJoinOptions](https://docs.microsoft.com/en-us/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
+Specifies the join option. For join options see [JoinOptions](https://learn.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
@@ -145,7 +162,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

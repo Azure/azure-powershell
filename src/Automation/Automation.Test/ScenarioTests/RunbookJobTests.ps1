@@ -17,8 +17,8 @@
 Checks whether the first string contains the second one
 #>
 
-$resourceGroupName = "PSCmdletTest-RG"
-$automationAccountName = "PSCmdletTestAccount01"
+$resourceGroupName = "to-delete-01"
+$automationAccountName = "fbs-aa-01"
 
 function AssertContains
 {
@@ -264,7 +264,7 @@ function Test-CreateJobAndGetOutputPowerShellScript
 
     Write-Output "Get error output of the job - success."
 
-    # Get a single Error ouput record
+    # Get a single Error output record
     $errRecord = Get-AzAutomationJobOutputRecord -JobId $jobId -Id $streamId -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName
     Assert-True { $errRecord -ne $null } "Get-AzAutomationJobOutputRecord failed to get automation Job Error record Output!"
 
@@ -283,4 +283,68 @@ function Test-CreateJobAndGetOutputPowerShellScript
                   }
 
     Write-Output "Remove runbook - success."
+}
+
+
+<#
+.SYNOPSIS
+ Start Job of PowerShell Script runbook, get output
+   and get Output records (both success & failure records).
+#>
+function Test-RunBookNamePattern
+{
+   param(
+        [string] $RunbookPath
+    )
+
+	Assert-True {AutomationAccountExistsFn} "Automation Account does not exist."
+
+    $desc = 'PowerShell Script runbook'
+    $tags = @{'TagKey1'='TagValue1'}
+
+    $validRBNames = @('TestRunbook-PowerShellScript','testRunbook-PowerShell-Script','TestRunbook-PowerShell_Script','TestRunbook_PowerShell_Script','TestRunbook_3powerShell-1script')
+    $inValidRBNames = @('1TestRunbook-PowerShellScript','_testRunbook-PowerShell-Script','-TestRunbook-PowerShell_Script',';TestRunbook_PowerShell_Script' )
+
+    foreach($rbName in $validRBNames)
+    {
+        Write-Host "Creating Runbook : " $rbName
+        $runbook = Import-AzAutomationRunbook `
+                        -Path $RunbookPath `
+                        -Description $desc `
+                        -Name $rbName `
+                        -Type PowerShell `
+                        -ResourceGroup $resourceGroupName `
+                        -Tags $tags `
+                        -LogProgress $false `
+                        -LogVerbose $false `
+                        -AutomationAccountName $automationAccountName `
+                        -Published 
+        Assert-NotNull $runbook "Import-AzAutomationRunbook failed to import PowerShell Script runbook $Name."
+
+        # Remove the runbook
+        Remove-AzAutomationRunbook -Name $rbName -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
+
+        Write-Output "Remove created runbook."
+
+    }
+
+    foreach($rbName in $inValidRBNames)
+    {
+        Write-Host "Creating Runbook : " $rbName
+
+        Assert-Throws {Import-AzAutomationRunbook `
+                        -Path $RunbookPath `
+                        -Description $desc `
+                        -Name $rbName `
+                        -Type PowerShell `
+                        -ResourceGroup $resourceGroupName `
+                        -Tags $tags `
+                        -LogProgress $false `
+                        -LogVerbose $false `
+                        -AutomationAccountName $automationAccountName `
+                        -Published 
+                  }
+
+    }
+
 }

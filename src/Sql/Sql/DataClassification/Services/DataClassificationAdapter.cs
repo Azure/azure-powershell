@@ -285,12 +285,14 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
 
         private static SensitivityLabelModel ToSensitivityLabelModel(SensitivityLabel sensitivityLabel)
         {
-            string[] idComponents = sensitivityLabel.Id.Split('/');
+            var match = new global::System.Text.RegularExpressions.Regex("/schemas/(?<schemaName>.*)/tables/(?<tableName>.*)/columns/(?<columnName>.*)/sensitivityLabels/",
+                global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(sensitivityLabel.Id);
+
             return new SensitivityLabelModel
             {
-                SchemaName = idComponents[12],
-                TableName = idComponents[14],
-                ColumnName = idComponents[16],
+                SchemaName = match.Groups["schemaName"].Value,
+                TableName = match.Groups["tableName"].Value,
+                ColumnName = match.Groups["columnName"].Value,
                 SensitivityLabel = NullifyStringIfEmpty(sensitivityLabel.LabelName),
                 SensitivityLabelId = NullifyStringIfEmpty(sensitivityLabel.LabelId),
                 InformationType = NullifyStringIfEmpty(sensitivityLabel.InformationType),

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 064196C3-ABF3-4F3A-A4AB-EB0D27098C70
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmextension
 schema: 2.0.0
 ---
 
@@ -16,17 +16,19 @@ Updates extension properties or adds an extension to a virtual machine.
 ### Settings (Default)
 ```
 Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-Settings <Hashtable>]
- [-ProtectedSettings <Hashtable>] [-AsJob] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
- [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProtectedSettings <Hashtable>] [-EnableAutomaticUpgrade <Boolean>] [-AsJob] [-ResourceGroupName] <String>
+ [-VMName] <String> -Name <String> [-TypeHandlerVersion <String>] [-Location <String>]
+ [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SettingString
 ```
 Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-SettingString <String>]
- [-ProtectedSettingString <String>] [-AsJob] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
- [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProtectedSettingString <String>] [-EnableAutomaticUpgrade <Boolean>] [-AsJob] [-ResourceGroupName] <String>
+ [-VMName] <String> -Name <String> [-TypeHandlerVersion <String>] [-Location <String>]
+ [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,10 +37,10 @@ The **Set-AzVMExtension** cmdlet updates properties for existing Virtual Machine
 ## EXAMPLES
 
 ### Example 1: Modify settings by using hash tables
-```
-PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
-PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
-PS C:\> Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
+```powershell
+$Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+$ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
+Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -ExtensionType "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
 ```
 
 The first two commands use standard Windows PowerShell syntax to create hash tables, and then stores those hash tables in the $Settings and $ProtectedSettings variables.
@@ -48,10 +50,10 @@ The final command modifies an extension of the virtual machine named VirtualMach
 The command specifies other required information that includes the publisher and the extension type.
 
 ### Example 2: Modify settings by using strings
-```
-PS C:\> $SettingsString = '{"fileUris":[],"commandToExecute":""}';
-PS C:\> $ProtectedSettingsString = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
-PS C:\> Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -SettingString $SettingsString -ProtectedSettingString $ProtectedSettingsString ;
+```powershell
+$SettingsString = '{"fileUris":[],"commandToExecute":""}';
+$ProtectedSettingsString = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
+Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Publisher "Contoso.Compute" -ExtensionType "CustomScriptExtension" -TypeHandlerVersion "1.1" -SettingString $SettingsString -ProtectedSettingString $ProtectedSettingsString ;
 ```
 
 The first two commands create strings that contain settings, and then stores them in the $SettingsString and $ProtectedSettingsString variables.
@@ -103,6 +105,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticUpgrade
+Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -161,7 +178,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -362,5 +379,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMExtension](./Get-AzVMExtension.md)
 
 [Remove-AzVMExtension](./Remove-AzVMExtension.md)
-
-

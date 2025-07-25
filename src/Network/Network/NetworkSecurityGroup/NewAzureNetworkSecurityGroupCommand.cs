@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updated. Initial enablement will trigger re-evaluation")]
+        public SwitchParameter FlushConnection { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of NetworkSecurityRules")]
         public PSSecurityRule[] SecurityRules { get; set; }
 
@@ -96,6 +102,7 @@ namespace Microsoft.Azure.Commands.Network
             nsg.ResourceGroupName = this.ResourceGroupName;
             nsg.Location = this.Location;
             nsg.SecurityRules = this.SecurityRules?.ToList();
+            nsg.FlushConnection = this.FlushConnection;
 
             // Map to the sdk object
             var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkSecurityGroup>(nsg);

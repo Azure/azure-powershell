@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 656BE930-E778-40B0-8A75-BFE52DE386CE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmsssecret
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmsssecret
 schema: 2.0.0
 ---
 
@@ -15,24 +15,48 @@ Adds a secret to a VMSS.
 
 ```
 Add-AzVmssSecret [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-SourceVaultId] <String>]
- [[-VaultCertificate] <VaultCertificate[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-VaultCertificate] <VaultCertificate[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzVmssSecret** cmdlet adds a secret to the Virtual Machine Scale Set (VMSS).
 The secret must be stored in an Azure Key Vault.
-For more information relating to Key Vault, see [What is Azure Key Vault?](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/) (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/).
-For more information about the cmdlets, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
+For more information relating to Key Vault, see [What is Azure Key Vault?](https://learn.microsoft.com/azure/key-vault/general/basic-concepts) (https://learn.microsoft.com/azure/key-vault/general/basic-concepts).
+For more information about the cmdlets, see [Azure Key Vault Cmdlets](/powershell/module/az.keyvault) or the [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
 
 ## EXAMPLES
 
-### Example 1: Add a secret to the VMSS
+### Example 1: Add a secret to the VMSS using the Azure Key Vault virtual machine extension
+
+```powershell
+# Build settings
+$settings = @{
+    secretsManagementSettings = @{
+        pollingIntervalInS       = "<pollingInterval>"
+        certificateStoreName     = "<certStoreName>"
+        certificateStoreLocation = "<certStoreLoc>"
+        observedCertificates     = @("<observedCert1>", "<observedCert2>")
+    } 
+} | ConvertTo-Json
+$extName = "KeyVaultForLinux"
+$extPublisher = "Microsoft.Azure.KeyVault"
+$extType = "KeyVaultForLinux"
+# Add Extension to VMSS
+$vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "2.0" -Setting $settings
+# Start the deployment
+Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss
 ```
-PS C:\> $Vault = Get-AzKeyVault -VaultName "ContosoVault"
-PS C:\> $CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "Certificates"
-PS C:\> $VMSS = New-AzVmssConfig
-PS C:\> Add-AzVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId $Vault.ResourceId -VaultCertificate $CertConfig
+
+To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows). 
+
+### Example 2: Add a secret to the VMSS using Add-AzVmssSecret
+```powershell
+$Vault = Get-AzKeyVault -VaultName "ContosoVault"
+$CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "Certificates"
+$VMSS = New-AzVmssConfig
+Add-AzVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId $Vault.ResourceId -VaultCertificate $CertConfig
 ```
 
 This example adds a secret to the VMSS.

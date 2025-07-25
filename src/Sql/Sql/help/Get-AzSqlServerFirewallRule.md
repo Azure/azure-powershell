@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: AD8BA5CB-D5D4-4C6E-A65F-E7AE69E3B22C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserverfirewallrule
 schema: 2.0.0
 ---
 
@@ -25,8 +25,11 @@ If you specify the name of a firewall rule, this cmdlet gets information about t
 ## EXAMPLES
 
 ### Example 1: Get all rules for a server
+```powershell
+Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
-PS C:\>Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : server01
 StartIpAddress    : 0.0.0.0
@@ -43,8 +46,11 @@ FirewallRuleName  : Rule01
 This command gets all the firewall rules for the server named Server01.
 
 ### Example 2: Get all rules for a server using filtering
+```powershell
+Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule*"
 ```
-PS C:\>Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule*"
+
+```output
 ResourceGroupName : ResourceGroup01
 ServerName        : server01
 StartIpAddress    : 0.0.0.0
@@ -89,7 +95,7 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -174,6 +180,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlServerFirewallRule](./Set-AzSqlServerFirewallRule.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 
 

@@ -1,0 +1,136 @@
+parameters:
+- name: name
+  type: string
+- name: vmImage
+  type: string
+- name: osType
+  type: string
+- name: psVersion
+  type: string
+- name: dotnetVersion
+  type: string
+- name: galleryName
+  type: string
+- name: pipelineBuildId
+  type: string
+
+jobs:
+- job: ${{ parameters.name }}
+  timeoutInMinutes: 600
+  pool:
+    vmImage: ${{ parameters.vmImage }}
+
+  steps:
+  - task: UseDotNet@2
+    displayName: Install .NET SDK ${{ parameters.dotnetVersion }}
+    condition: ne('${{ parameters.dotnetVersion }}', '')
+    inputs:
+      packageType: sdk
+      version: ${{ parameters.dotnetVersion }}
+
+  - task: PowerShell@2
+    displayName: Install Powershell ${{ parameters.psVersion }}
+    condition: ne('${{ parameters.psVersion }}', '')
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/InitializeLiveTestEnvironment.ps1
+      arguments: -DesiredVersion ${{ parameters.psVersion }}
+
+  - task: PowerShell@2
+    displayName: Prepare for artifacts
+    condition: ne(variables['skipLatest'], 'true')
+    inputs:
+      pwsh: true
+      targetType: inline
+      script:
+        New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
+
+  - task: DownloadPipelineArtifact@2
+    condition: and(ne(variables['skipLatest'], 'true'), ${{ in(parameters.galleryName, 'DailyBuild', 'Sign') }})
+    displayName: Download artifacts from ${{ parameters.galleryName }}
+    inputs:
+      buildType: 'specific'
+      ${{ if eq(parameters.galleryName, 'DailyBuild') }}:
+        project: $(BuildPipelineProject)
+        definition: $(BuildPipelineDefinitionId)
+        artifactName: 'artifacts'
+      ${{ elseif eq(parameters.galleryName, 'Sign') }}:
+        project: $(SignPipelineProject)
+        definition: $(SignPipelineDefinitionId)
+        artifactName: $(ArtifactName)
+        itemPattern: '**/artifacts/**'
+      ${{ if eq(replace(parameters.pipelineBuildId, ' ', ''), '') }}:
+        buildVersionToDownload: 'latestFromBranch'
+        branchName: refs/heads/$(PipelineBranchName)
+      ${{ else }}:
+        buildVersionToDownload: 'specific'
+        pipelineId: ${{ parameters.PipelineBuildId }}
+      targetPath: $(Pipeline.Workspace)
+
+  - task: PowerShell@2
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), ${{ ne(parameters.galleryName, 'PSGallery') }})
+    displayName: Prepare for Az module
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        $azPackagesDir = New-Item -Name AzPreviewPackages -Path $(DataLocation) -ItemType Directory -Force
+        $azPackagesFiles =  Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg"
+        Move-Item -Path $azPackagesFiles -Destination $azPackagesDir
+        Get-ChildItem -LiteralPath $azPackagesDir
+
+  - task: PowerShell@2
+    displayName: Install desired Az module from ${{ parameters.galleryName }}
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InstallLiveTestAzModules.ps1 -Source ${{ parameters.galleryName }} -AzPackagesLocation (Join-Path -Path $(DataLocation) -ChildPath AzPreviewPackages)'
+
+  - template: get-keyvault-secret-steps.yml
+    parameters:
+      serviceConnectionName: $(LiveTestServiceConnectionName)
+      keyVaultName: $(LiveTestServicePrincipalKeyVaultName)
+      secretName: $(LiveTestServicePrincipalSecretName)
+      outVar: 'LiveTestServicePrincipalSecret'
+      execCondition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+
+  - task: Bash@3
+    displayName: Clean up Azure Identity Keys from MacOS Keychain
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), ${{ eq(parameters.osType, 'MacOS') }})
+    continueOnError: true
+    inputs:
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/CleanAzureIdentityKeysForMacOS
+      failOnStderr: false
+    env:
+      KEYCHAIN_SERVICES: '$(AzureIdentityKeychainServices)'
+
+  - task: PowerShell@2
+    displayName: Connect Azure with live test service principal
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/ConnectLiveTestServicePrincipal.ps1 $(LiveTestSubscriptionId) $(LiveTestTenantId) $(LiveTestServicePrincipalId) $(LiveTestServicePrincipalSecret)'
+      failOnStderr: true
+    retryCountOnTaskFailure: 3
+
+  - task: PowerShell@2
+    displayName: Run end-to-end live scenarios
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -OSVersion ${{ parameters.vmImage }} -RunPlatform ${{ parameters.osType }} -RunPowerShell ${{ parameters.psVersion }}'
+
+  - task: PublishPipelineArtifact@1
+    displayName: Publish live test results to pipeline artifact
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+    inputs:
+      artifact: livetest-os-${{ parameters.vmImage }}-ps-${{ replace(parameters.psVersion, '*', 'x') }}
+      targetPath: $(DataLocation)

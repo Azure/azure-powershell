@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Header value to set for the given header name. Header will be deleted if this is omitted")]
         public string HeaderValue { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An optional field under 'Rewrite Action'. It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud")]
+        public PSApplicationGatewayHeaderValueMatcher HeaderValueMatcher { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -42,7 +47,8 @@ namespace Microsoft.Azure.Commands.Network
             var headerConfiguration = new PSApplicationGatewayHeaderConfiguration
             {
                 HeaderName = this.HeaderName,
-                HeaderValue = this.HeaderValue
+                HeaderValue = this.HeaderValue,
+                HeaderValueMatcher = this.HeaderValueMatcher
             };
 
             return headerConfiguration;

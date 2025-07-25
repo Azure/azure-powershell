@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Gets the CosmosDB Gremlin Graph.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBGremlinGraph -ResourceGroupName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String>
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -31,8 +32,10 @@ The **Get-AzCosmosDBGremlinGraph** cmdlet gets the CosmosDB Gremlin Graph proper
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBGremlinGraph -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Name {graphName}
+Get-AzCosmosDBGremlinGraph -ResourceGroupName "rgName" -AccountName "accountName" -DatabaseName "dbName" -Name "graphName"
+```
 
+```output
 Name    Id   Resource
 {name}  {id} Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinGraphGetPropertiesResource
 ```
@@ -45,7 +48,7 @@ Resource Object contains IndexingPolicy, PartitionKey, DefaultTtl, UniqueKeyPoli
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -60,7 +63,7 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -75,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -90,7 +93,7 @@ Accept wildcard characters: False
 Gremlin Graph Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +108,7 @@ Accept wildcard characters: False
 Gremlin Database object.
 
 ```yaml
-Type: PSGremlinDatabaseGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinDatabaseGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -120,7 +123,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 

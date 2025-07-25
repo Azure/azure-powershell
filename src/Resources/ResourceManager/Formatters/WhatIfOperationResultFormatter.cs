@@ -17,9 +17,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Comparers;
+    using NewComparers;
+    using NewExtensions;
     using Extensions;
-    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
     using Properties;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
     public class WhatIfOperationResultFormatter : WhatIfJsonFormatter
     {
-        private WhatIfOperationResultFormatter(ColoredStringBuilder builder)
+        public WhatIfOperationResultFormatter(ColoredStringBuilder builder)
             : base(builder)
         {
         }
@@ -43,9 +44,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             var formatter = new WhatIfOperationResultFormatter(builder);
 
             formatter.FormatNoiseNotice();
-            formatter.FormatLegend(result.Changes);
-            formatter.FormatResourceChanges(result.Changes);
-            formatter.FormatStats(result.Changes);
+            formatter.FormatLegend(result.Changes, result.PotentialChanges);
+            formatter.FormatResourceChanges(result.Changes, true);
+            formatter.FormatStats(result.Changes, true);
+            formatter.FormatResourceChanges(result.PotentialChanges, false);
+            formatter.FormatStats(result.PotentialChanges, false);
+            formatter.FormatDiagnostics(result.Diagnostics, result.Changes, result.PotentialChanges);
 
             return builder.ToString();
         }
@@ -76,6 +80,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             switch (propertyChange.PropertyChangeType)
             {
                 case PropertyChangeType.Create:
+                case PropertyChangeType.NoEffect:
                     return propertyChange.After.IsLeaf();
 
                 case PropertyChangeType.Delete:
@@ -87,9 +92,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             }
         }
 
-        private void FormatStats(IList<PSWhatIfChange> resourceChanges)
+        private void FormatStats(IList<PSWhatIfChange> resourceChanges, bool definiteChanges)
         {
-            this.Builder.AppendLine().Append("Resource changes: ");
+            if (definiteChanges)
+            {
+                this.Builder.AppendLine().Append("Resource changes: ");
+            }
+            else if (resourceChanges != null && resourceChanges.Count != 0)
+            {
+                this.Builder.AppendLine().Append("Potential changes: ");
+            } else
+            {
+                return;
+            }
 
             if (resourceChanges == null || resourceChanges.Count == 0)
             {
@@ -110,6 +125,62 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.Builder.Append(".");
         }
 
+        public void FormatDiagnostics(IList<DeploymentDiagnosticsDefinition> diagnostics, IList<PSWhatIfChange> changes, IList<PSWhatIfChange> potentialChanges)
+        {
+            if (changes != null)
+            {
+                var unsupportedChanges = changes
+                    .Where(c => c.ChangeType == ChangeType.Unsupported)
+                    .ToList();
+
+                if (diagnostics == null)
+                {
+                    diagnostics = new List<DeploymentDiagnosticsDefinition>();
+                }
+                foreach (var change in unsupportedChanges)
+                {
+                    diagnostics.Add(new DeploymentDiagnosticsDefinition(level: Level.Warning, code: "Unsupported", message: change.UnsupportedReason, target: change.FullyQualifiedResourceId));
+                }
+            }
+
+            if (potentialChanges != null)
+            {
+                var unsupportedChanges = potentialChanges
+                    .Where(c => c.ChangeType == ChangeType.Unsupported)
+                    .ToList();
+
+                if (diagnostics == null)
+                {
+                    diagnostics = new List<DeploymentDiagnosticsDefinition>();
+                }
+                foreach (var change in unsupportedChanges)
+                {
+                    diagnostics.Add(new DeploymentDiagnosticsDefinition(level: Level.Warning, code: "Unsupported", message: change.UnsupportedReason, target: change.FullyQualifiedResourceId));
+                }
+            }
+
+
+            if (diagnostics == null || diagnostics.Count == 0)
+            {
+                return;
+            }
+
+            this.Builder.AppendLine().AppendLine();
+
+            this.Builder.Append($"Diagnostics ({diagnostics.Count}): ").AppendLine();
+            
+            diagnostics.ForEach(d =>
+            {
+                using (this.Builder.NewColorScope(DiagnosticExtensions.ToColor(d.Level)))
+                {
+                    this.Builder.Append($"({d.Target})").Append(Symbol.WhiteSpace);
+                    this.Builder.Append(d.Message).Append(Symbol.WhiteSpace);
+                    this.Builder.Append($"({d.Code})");
+                    this.Builder.AppendLine();
+                }
+            });
+        }
+
         private string FormatChangeTypeCount(ChangeType changeType, int count)
         {
             switch (changeType)
@@ -126,68 +197,89 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     return $"{count} to ignore";
                 case ChangeType.NoChange:
                     return $"{count} no change";
+                case ChangeType.Unsupported:
+                    return $"{count} unsupported";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(changeType), changeType, null);
             }
         }
 
-        private void FormatLegend(IList<PSWhatIfChange> resourceChanges)
+        private void FormatLegend(IList<PSWhatIfChange> changes, IList<PSWhatIfChange> potentialChanges)
         {
+            var resourceChanges = changes ?? new List<PSWhatIfChange>();
+
+            if (potentialChanges != null && potentialChanges.Count > 0)
+            {
+                resourceChanges = resourceChanges.Concat(potentialChanges).ToList();
+            }
+
             if (resourceChanges == null || resourceChanges.Count == 0)
             {
                 return;
             }
-
-            var changeTypeSet = new HashSet<ChangeType>();
+            var psChangeTypeSet = new HashSet<PSChangeType>();
 
             void PopulateChangeTypeSet(IList<PSWhatIfPropertyChange> propertyChanges)
             {
                 propertyChanges?.ForEach(propertyChange =>
                 {
-                    changeTypeSet.Add(propertyChange.PropertyChangeType.ToChangeType());
+                    psChangeTypeSet.Add(propertyChange.PropertyChangeType.ToPSChangeType());
                     PopulateChangeTypeSet(propertyChange.Children);
                 });
             }
 
             foreach (PSWhatIfChange resourceChange in resourceChanges)
             {
-                changeTypeSet.Add(resourceChange.ChangeType);
+                psChangeTypeSet.Add(resourceChange.ChangeType.ToPSChangeType());
                 PopulateChangeTypeSet(resourceChange.Delta);
             }
 
             this.Builder
                 .Append("Resource and property changes are indicated with ")
-                .AppendLine(changeTypeSet.Count == 1 ? "this symbol:" : "these symbols:");
+                .AppendLine(psChangeTypeSet.Count == 1 ? "this symbol:" : "these symbols:");
 
-            changeTypeSet
-                .OrderBy(changeType => changeType, new ChangeTypeComparer())
-                .ForEach(changeType => this.Builder
+            psChangeTypeSet
+                .OrderBy(x => x, new PSChangeTypeComparer())
+                .ForEach(x => this.Builder
                     .Append(Indent())
-                    .Append(changeType.ToSymbol(), changeType.ToColor())
+                    .Append(x.ToSymbol(), x.ToColor())
                     .Append(Symbol.WhiteSpace)
-                    .Append(changeType)
+                    .Append(x)
                     .AppendLine());
         }
 
-        private void FormatResourceChanges(IList<PSWhatIfChange> resourceChanges)
+        private void FormatResourceChanges(IList<PSWhatIfChange> resourceChanges, bool definiteChanges)
         {
             if (resourceChanges == null || resourceChanges.Count == 0)
             {
                 return;
             }
 
-            int scopeCount = resourceChanges.Select(rc => rc.Scope).Distinct().Count();
+            int scopeCount = resourceChanges.Select(rc => rc.Scope.ToUpperInvariant()).Distinct().Count();
 
-            this.Builder
-                .AppendLine()
-                .Append("The deployment will update the following ")
-                .AppendLine(scopeCount == 1 ? "scope:" : "scopes:");
+            if (definiteChanges)
+            {
+                this.Builder
+                    .AppendLine()
+                    .Append("The deployment will update the following ")
+                    .AppendLine(scopeCount == 1 ? "scope:" : "scopes:");
+            } else
+            {
+                this.Builder
+                    .AppendLine()
+                    .AppendLine()
+                    .AppendLine()
+                    .Append("The following change MAY OR MAY NOT be deployed to the following ")
+                    .AppendLine(scopeCount == 1 ? "scope:" : "scopes:");
+            }
+
+            
 
             resourceChanges
-                .OrderBy(rc => rc.Scope)
-                .GroupBy(rc => rc.Scope)
+                .OrderBy(rc => rc.Scope.ToUpperInvariant())
+                .GroupBy(rc => rc.Scope.ToUpperInvariant())
                 .ToDictionary(g => g.Key, g => g.ToList())
-                .ForEach(kvp => FormatResourceChangesInScope(kvp.Key, kvp.Value));
+                .ForEach(kvp => FormatResourceChangesInScope(kvp.Value[0].Scope, kvp.Value));
         }
 
         private void FormatResourceChangesInScope(string scope, IList<PSWhatIfChange> resourceChanges)
@@ -235,21 +327,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
                     return;
 
-                case ChangeType.Modify when resourceChange.Delta?.Count > 0:
-                    using (this.Builder.NewColorScope(Color.Reset))
+                default:
+                    if (resourceChange.Delta?.Count > 0)
                     {
-                        IList<PSWhatIfPropertyChange> propertyChanges = resourceChange.Delta
-                            .OrderBy(pc => pc.PropertyChangeType, new PropertyChangeTypeComparer())
-                            .ThenBy(pc => pc.Path)
-                            .ToList();
+                        using (this.Builder.NewColorScope(Color.Reset))
+                        {
+                            IList<PSWhatIfPropertyChange> propertyChanges = resourceChange.Delta
+                                .OrderBy(pc => pc.PropertyChangeType, new PropertyChangeTypeComparer())
+                                .ThenBy(pc => pc.Path)
+                                .ToList();
 
-                        this.Builder.AppendLine();
-                        this.FormatPropertyChanges(propertyChanges);
+                            this.Builder.AppendLine();
+                            this.FormatPropertyChanges(propertyChanges);
+                        }
+
+                        return;
                     }
 
-                    return;
-
-                default:
                     if (isLast)
                     {
                         this.Builder.AppendLine();
@@ -325,7 +419,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
                 case PropertyChangeType.Array:
                     this.FormatPropertyChangePath(propertyChangeType, path, null, children, maxPathLength, indentLevel);
-                    this.FormatPropertyArrayChange(propertyChange.Children, indentLevel + 1);
+                    this.FormatPropertyArrayChange(propertyChange, propertyChange.Children, indentLevel + 1);
+                    break;
+
+                case PropertyChangeType.NoEffect:
+                    this.FormatPropertyChangePath(propertyChangeType, path, after, children, maxPathLength, indentLevel);
+                    this.FormatPropertyNoEffect(after, indentLevel + 1);
                     break;
 
                 default:
@@ -341,6 +440,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             int maxPathLength,
             int indentLevel)
         {
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
             int paddingWidth = maxPathLength - path.Length + 1;
             bool hasChildren = children != null && children.Count > 0;
 
@@ -439,8 +543,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             }
         }
 
-        private void FormatPropertyArrayChange(IList<PSWhatIfPropertyChange> propertyChanges, int indentLevel)
+        private void FormatPropertyArrayChange(PSWhatIfPropertyChange parentPropertyChange, IList<PSWhatIfPropertyChange> propertyChanges, int indentLevel)
         {
+            if (string.IsNullOrEmpty(parentPropertyChange.Path))
+            {
+                // The parent change doesn't have a path, which means the current
+                // array change is a nested change. We need to decrease indent_level
+                // and print indentation before printing "[".
+                indentLevel--;
+                FormatIndent(indentLevel);
+            }
+
             if (propertyChanges.Count == 0)
             {
                 this.Builder.AppendLine("[]");
@@ -462,6 +575,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.Builder
                 .Append(Indent(indentLevel))
                 .Append(Symbol.RightSquareBracket);
+        }
+
+        private void FormatPropertyNoEffect(JToken value, int indentLevel)
+        {
+            using (this.Builder.NewColorScope(Color.Gray))
+            {
+                this.FormatJson(value, indentLevel: indentLevel);
+            }
         }
     }
 }

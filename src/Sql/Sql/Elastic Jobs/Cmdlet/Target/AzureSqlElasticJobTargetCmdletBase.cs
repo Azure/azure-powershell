@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public virtual SwitchParameter Exclude { get; set; }
 
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The Azure Elastic Job Adapter</returns>
         protected override AzureSqlElasticJobAdapter InitModelAdapter()
@@ -324,25 +324,25 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the Refresh Credential Name
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = DefaultSqlServerOrElasticPoolSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = DefaultSqlShardMapSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 2,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = TargetGroupObjectSqlServerOrElasticPoolSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = TargetGroupObjectSqlShardMapSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 2,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = ParentResourceIdSqlServerOrElasticPoolSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = ParentResourceIdSqlShardMapSet)]
         public override string RefreshCredentialName { get; set; }
@@ -407,7 +407,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// We clear these properties so that during piping scenarios we can ensure we initialize the minimum properties
         /// for either getting, starting, stopping the current job execution.
         /// Resource group name, server name, agent name, target group name, and name are cleared
-        /// so that during the next iteration in list, they will be initialized properly during <see cref="InitializeInputObjectProperties"/>
+        /// so that during the next iteration in list, they will be initialized properly during <see cref="AzureSqlElasticJobsCmdletBase{TInputObject, TModel, TAdapter}.InitializeInputObjectProperties(TInputObject)"/>
+        /// </remarks>
         protected void ClearProperties()
         {
             this.ResourceGroupName = null;

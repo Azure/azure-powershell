@@ -76,7 +76,7 @@ function Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
 	$rgName = Get-TestResourceGroupName
 
 	[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine]$vm = New-Object -TypeName Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine
-	  $vm.Id = "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService"
+	  $vm.Id = "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService1"
 	[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule]$port = New-Object -TypeName Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPortRule
 	$port.AllowedSourceAddressPrefix = "127.0.0.1"
 	$port.MaxRequestAccessDuration = "PT3H"
@@ -126,7 +126,7 @@ function Start-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
 	$rgName = Get-TestResourceGroupName
 
 	[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine]$vm = New-Object -TypeName Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine
-	$vm.Id = "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService"
+	$vm.Id = "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Compute/virtualMachines/testService1"
 	[Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort]$port = New-Object -TypeName Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyInitiatePort
 	$port.AllowedSourceAddressPrefix = "127.0.0.1"
 	$port.EndTimeUtc = [DateTime]::UtcNow.AddHours(2)

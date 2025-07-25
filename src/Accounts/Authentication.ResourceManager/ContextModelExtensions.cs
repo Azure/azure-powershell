@@ -102,7 +102,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 context.Tenant = new AzureTenant();
                 context.Tenant.CopyFrom(other.Tenant);
                 context.CopyPropertiesFrom(other);
-                context.TokenCache = AzureSession.Instance.TokenCache;
             }
         }
 
@@ -138,7 +137,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 ServiceManagementUrl = environment1.ServiceManagementUrl ?? environment2.ServiceManagementUrl,
                 SqlDatabaseDnsSuffix = environment1.SqlDatabaseDnsSuffix ?? environment2.SqlDatabaseDnsSuffix,
                 StorageEndpointSuffix = environment1.StorageEndpointSuffix ?? environment2.StorageEndpointSuffix,
-                TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix
+                TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix,
+                ContainerRegistryEndpointSuffix = environment1.ContainerRegistryEndpointSuffix ?? environment2.ContainerRegistryEndpointSuffix
             };
 
             foreach (var property in environment1.ExtendedProperties.Keys.Union(environment2.ExtendedProperties.Keys))
@@ -150,6 +150,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             return mergedEnvironment;
         }
 
-
+        public static IAzureEnvironment DeepCopy(this IAzureEnvironment environment)
+        {
+            var copy = new AzureEnvironment(environment);
+            copy.Type = (environment as AzureEnvironment)?.Type ?? copy.Type;
+            return copy;
+        }
     }
 }

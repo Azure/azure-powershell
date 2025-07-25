@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/enable-azstoragedeleteretentionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/enable-azstoragedeleteretentionpolicy
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Enable delete retention policy  for the Azure Storage Blob service.
 
 ```
 Enable-AzStorageDeleteRetentionPolicy [-RetentionDays] <Int32> [-PassThru] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,8 @@ The **Enable-AzStorageDeleteRetentionPolicy** cmdlet enables delete retention po
 ## EXAMPLES
 
 ### Example 1: Enable delete retention policy for the Blob service
-```
-C:\PS>Enable-AzStorageDeleteRetentionPolicy -RetentionDays 3
+```powershell
+Enable-AzStorageDeleteRetentionPolicy -RetentionDays 3
 ```
 
 This command enables delete retention policy for the Blob service, and set deleted blob retention days to 3.
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

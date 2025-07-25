@@ -12,43 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
 using Microsoft.Rest.Azure;
 using Moq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation.Language;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
     public partial class MockSubscriptionClientFactory
     {
-        public static Queue<Func<AzureOperationResponse<Subscription>>> SubGetQueueVer2019 { get; set; } = null;
-        public static Queue<Func<AzureOperationResponse<IPage<Subscription>>>> SubListQueueVer2019 { get; set; } = null;
-        public static Queue<Func<AzureOperationResponse<IPage<TenantIdDescription>>>> TenantListQueueVer2019 { get; set; } = null;
+        public static Queue<Func<AzureOperationResponse<Subscription>>> SubGetQueueVerLatest { get; set; } = null;
+        public static Queue<Func<AzureOperationResponse<IPage<Subscription>>>> SubListQueueVerLatest { get; set; } = null;
+        public static Queue<Func<AzureOperationResponse<IPage<TenantIdDescription>>>> TenantListQueueVerLatest { get; set; } = null;
 
-        public DeGetAsyncQueue<Subscription> GetSubQueueDequeueVer2019 = () => Task.FromResult(SubGetQueueVer2019.Dequeue().Invoke());
-        public DeListAsyncQueue<Subscription> ListSubQueueDequeueVer2019 = () => Task.FromResult(SubListQueueVer2019.Dequeue().Invoke());
-        public DeListAsyncQueue<TenantIdDescription> ListTenantQueueDequeueVer2019 = () => Task.FromResult(TenantListQueueVer2019.Dequeue().Invoke());
+        public DeGetAsyncQueue<Subscription> GetSubQueueDequeueVerLatest = () => Task.FromResult(SubGetQueueVerLatest.Dequeue().Invoke());
+        public DeListAsyncQueue<Subscription> ListSubQueueDequeueVerLatest = () => Task.FromResult(SubListQueueVerLatest.Dequeue().Invoke());
+        public DeListAsyncQueue<TenantIdDescription> ListTenantQueueDequeueVerLatest = () => Task.FromResult(TenantListQueueVerLatest.Dequeue().Invoke());
 
-        public SubscriptionClient GetSubscriptionClientVer2019()
+        public SubscriptionClient GetSubscriptionClientVerLatest()
         {
             var tenantMock = new Mock<ITenantsOperations>();
             tenantMock.Setup(t => t.ListWithHttpMessagesAsync(It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(
                     (Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
-                        if(TenantListQueueVer2019 != null && TenantListQueueVer2019.Any())
+                        if(TenantListQueueVerLatest != null && TenantListQueueVerLatest.Any())
                         {
-                            return ListTenantQueueDequeueVer2019();
+                            return ListTenantQueueDequeueVerLatest();
                         }
-                        var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k));
+                        var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k, domains: new List<string>{GetTenantDomainFromId(k)}));
                         var mockPage = new MockPage<TenantIdDescription>(tenants.ToList());
 
                         AzureOperationResponse<IPage<TenantIdDescription>> r = new AzureOperationResponse<IPage<TenantIdDescription>>
@@ -64,9 +62,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 s => s.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>())).Returns(
                     (string subId, Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
-                        if (SubGetQueueVer2019 != null && SubGetQueueVer2019.Any())
+                        if (SubGetQueueVerLatest != null && SubGetQueueVerLatest.Any())
                         {
-                            return GetSubQueueDequeueVer2019();
+                            return GetSubQueueDequeueVerLatest();
                         }
                         AzureOperationResponse<Subscription> result = new AzureOperationResponse<Subscription>
                         {
@@ -91,9 +89,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 (s) => s.ListWithHttpMessagesAsync(null, It.IsAny<CancellationToken>())).Returns(
                     (Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
-                        if (SubListQueueVer2019 != null && SubListQueueVer2019.Any())
+                        if (SubListQueueVerLatest != null && SubListQueueVerLatest.Any())
                         {
-                            return ListSubQueueDequeueVer2019();
+                            return ListSubQueueDequeueVerLatest();
                         }
 
                         AzureOperationResponse<IPage<Subscription>> result = null;
@@ -160,17 +158,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 .Returns(
                     (Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
-                        if (TenantListQueueVer2019 != null && TenantListQueueVer2019.Any())
+                        if (TenantListQueueVerLatest != null && TenantListQueueVerLatest.Any())
                         {
-                            return ListTenantQueueDequeueVer2019();
+                            return ListTenantQueueDequeueVerLatest();
                         }
-                        var mockPage = new MockPage<TenantIdDescription>(tenants);
 
-                        AzureOperationResponse<IPage<TenantIdDescription>> r = new AzureOperationResponse<IPage<TenantIdDescription>>
+                        AzureOperationResponse<IPage<TenantIdDescription>> r = null;
+                        if (tenants != null)
                         {
-                            Body = mockPage
-                        };
-
+                            var mockPage = new MockPage<TenantIdDescription>(tenants);
+                            r = new AzureOperationResponse<IPage<TenantIdDescription>>
+                            {
+                                Body = mockPage
+                            };
+                        }
                         return Task.FromResult(r);
                     }
                 );
@@ -184,39 +185,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 HasNextPage = Enumerable.Repeat(false, subscriptionListLists.Count).ToList();
             }
             var subscriptionMock = new Mock<ISubscriptionsOperations>();
-            if (subscriptionGetList != null)
-            {
-                subscriptionMock.Setup(
-                    s => s.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>())).Returns(
-                        (string subId, Dictionary<string, List<string>> ch, CancellationToken token) =>
+            subscriptionMock.Setup(
+                s => s.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>())).Returns(
+                    (string subId, Dictionary<string, List<string>> ch, CancellationToken token) =>
+                    {
+                        if (SubGetQueueVerLatest != null && SubGetQueueVerLatest.Any())
                         {
-                            if (SubGetQueueVer2019 != null && SubGetQueueVer2019.Any())
-                            {
-                                return GetSubQueueDequeueVer2019();
-                            }
-                            AzureOperationResponse<Subscription> result = new AzureOperationResponse<Subscription>()
-                            {
-                                RequestId = Guid.NewGuid().ToString()
-                            };
-                            if (subscriptionGetList.Any())
-                            {
-                                result.Body = subscriptionGetList.First();
-                                subscriptionGetList.RemoveAt(0);
-                            }
-                            return Task.FromResult(result);
-                        });
-            }
+                            return GetSubQueueDequeueVerLatest();
+                        }
+                        if (subscriptionGetList == null || !subscriptionGetList.Any())
+                        {
+                            throw new CloudException("Subscription is not in the tenant.");
+                        }
+                        var result = new AzureOperationResponse<Subscription>()
+                        {
+                            RequestId = Guid.NewGuid().ToString(),
+                            Body = subscriptionGetList.First()
+                        };
+                        subscriptionGetList.RemoveAt(0);
+                        return Task.FromResult(result);
+                    });
             subscriptionMock.Setup(
                 (s) => s.ListWithHttpMessagesAsync(null, It.IsAny<CancellationToken>())).Returns(
                     (Dictionary<string, List<string>> ch, CancellationToken token) =>
                     {
-                        if (SubListQueueVer2019 != null && SubListQueueVer2019.Any())
+                        if (SubListQueueVerLatest != null && SubListQueueVerLatest.Any())
                         {
-                            return ListSubQueueDequeueVer2019();
+                            return ListSubQueueDequeueVerLatest();
                         }
 
                         AzureOperationResponse<IPage<Subscription>> result = null;
-                        if (subscriptionListLists.Any() && HasNextPage.Any())
+                        if (subscriptionListLists!= null && subscriptionListLists.Any() && HasNextPage.Any())
                         {
                             result = new AzureOperationResponse<IPage<Subscription>>
                             {
@@ -249,17 +248,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             return subscriptionMock.Object;
         }
 
-        public SubscriptionClient GetSubscriptionClientVer2019(List<TenantIdDescription> tenants, List<Subscription> subscriptionGetList, List<List<Subscription>> subscriptionListLists, List<bool> HasNextPage = null)
+        public SubscriptionClient GetSubscriptionClientVerLatest(List<TenantIdDescription> tenants, List<Subscription> subscriptionGetList, List<List<Subscription>> subscriptionListLists, List<bool> HasNextPage = null)
         {
             var client = new Mock<SubscriptionClient>() { CallBase = true };
-            if (subscriptionGetList != null || subscriptionListLists != null)
-            {
-                client.SetupGet(c => c.Subscriptions).Returns(GetSubscriptionMock(subscriptionGetList, subscriptionListLists, HasNextPage));
-            }
-            if(tenants != null)
-            {
-                client.SetupGet(c => c.Tenants).Returns(GetTenantMock(tenants));
-            }
+            client.SetupGet(c => c.Subscriptions).Returns(GetSubscriptionMock(subscriptionGetList, subscriptionListLists, HasNextPage));
+            client.SetupGet(c => c.Tenants).Returns(GetTenantMock(tenants));
             return client.Object;
         }
 

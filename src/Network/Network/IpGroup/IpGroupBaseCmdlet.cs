@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class IpGroupBaseCmdlet : NetworkBaseCmdlet
     {
-        public IIpGroupsOperations IpGroupsClient
+        public IIPGroupsOperations IpGroupsClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.IpGroups;
+                return NetworkClient.NetworkManagementClient.IPGroups;
             }
         }
 

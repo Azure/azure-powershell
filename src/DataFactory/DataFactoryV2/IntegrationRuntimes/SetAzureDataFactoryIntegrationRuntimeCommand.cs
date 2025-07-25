@@ -26,7 +26,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntime))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime", DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName, SupportsShouldProcess = true), OutputType(typeof(PSIntegrationRuntime))]
     public class SetAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(
@@ -247,6 +247,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSubnetId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSubnetId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSubnetId)]
+        [ValidateNotNull]
+        public string SubnetId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -271,11 +286,25 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowComputeType)]
-        [PSArgumentCompleter(Management.DataFactory.Models.DataFlowComputeType.General, 
-            Management.DataFactory.Models.DataFlowComputeType.MemoryOptimized, 
+        [PSArgumentCompleter(Management.DataFactory.Models.DataFlowComputeType.General,
+            Management.DataFactory.Models.DataFlowComputeType.MemoryOptimized,
             Management.DataFactory.Models.DataFlowComputeType.ComputeOptimized)]
         [ValidateNotNullOrEmpty]
         public string DataFlowComputeType { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        public SwitchParameter DataFlowEnableQuickReuse { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -304,6 +333,90 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowTimeToLive)]
         public int? DataFlowTimeToLive { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
+        public int? ManagedVNetCopyComputeScaleDataIntegrationUnit { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
+        public int? ManagedVNetCopyComputeScaleTimeToLive { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
+        public int? ManagedVNetPipelineExternalComputeScaleTimeToLive { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
+        public int? ManagedVNetNumberOfPipelineNodeCount { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes)]
+        public int? ManagedVNetNumberOfExternalNodeCount { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        public SwitchParameter SelfContainedInteractiveAuthoringEnabled { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -338,6 +451,25 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             IntegrationRuntimeEdition.Enterprise,
             IgnoreCase = true)]
         public string Edition { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeVNetInjectionMethod)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.IntegrationRuntimeVNetInjectionStandard,
+            Constants.IntegrationRuntimeVNectInjectionExpress,
+            IgnoreCase = true)]
+        public string VNetInjectionMethod { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -565,7 +697,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             var authKey = ConvertToUnsecureString(AuthKey);
                             selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKeyAuthorization(new SecureString(authKey));
                         }
-
+                        if (SelfContainedInteractiveAuthoringEnabled.IsPresent)
+                        {
+                            selfHosted.SelfContainedInteractiveAuthoringEnabled = true;
+                        }
                         resource.Properties = selfHosted;
                     }
                 }
@@ -581,6 +716,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 if (selfHostedIr != null)
                 {
                     selfHostedIr.LinkedInfo = new LinkedIntegrationRuntimeRbacAuthorization(SharedIntegrationRuntimeResourceId);
+                    if (SelfContainedInteractiveAuthoringEnabled.IsPresent)
+                    {
+                        selfHostedIr.SelfContainedInteractiveAuthoringEnabled = true;
+                    }
                 }
                 else
                 {
@@ -721,59 +860,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntime.SsisProperties.CatalogInfo.CatalogPricingTier = CatalogPricingTier;
             }
 
-            if (integrationRuntime.ComputeProperties?.VNetProperties == null
-                || (string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.VNetId)
-                    && string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.Subnet)))
-            {
-                // When no previous VNet set, both VNetId and Subnet must be present
-                if (!string.IsNullOrWhiteSpace(VNetId) && !string.IsNullOrWhiteSpace(Subnet))
-                {
-                    // Both VNetId and Subnet are set
-                    if (integrationRuntime.ComputeProperties == null)
-                    {
-                        integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
-                    }
+            SetAzureDataFactoryIntegrationRuntimeCommandHelper.SetSubnetId(
+                integrationRuntime, VNetInjectionMethod, SubnetId, Subnet, VNetId
+                );
 
-                    integrationRuntime.ComputeProperties.VNetProperties = new IntegrationRuntimeVNetProperties()
-                    {
-                        VNetId = VNetId,
-                        Subnet = Subnet
-                    };
-                }
-                else if (string.IsNullOrWhiteSpace(VNetId) ^ string.IsNullOrWhiteSpace(Subnet))
-                {
-                    // Only one of the two pramaters is set
-                    throw new PSArgumentException(string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.IntegrationRuntimeInvalidVnet),
-                        "Type");
-                }
-            }
-            else
-            {
-                // We have VNet properties set, then we are able to change VNetId or Subnet individually now.
-                // Could be empty. If user input empty, then convert it to null. If user want to remove VNet settings, input both with empty string.
-                if (VNetId != null)
-                {
-                    integrationRuntime.ComputeProperties.VNetProperties.VNetId = VNetId.IsEmptyOrWhiteSpace() ? null : VNetId;
-                }
-                if (Subnet != null)
-                {
-                    integrationRuntime.ComputeProperties.VNetProperties.Subnet = Subnet.IsEmptyOrWhiteSpace() ? null : Subnet;
-                }
-
-                // Make sure both VNetId and Subnet are present, or both null
-                if (string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.VNetId)
-                    ^ string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.Subnet))
-                {
-                    throw new PSArgumentException(string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.IntegrationRuntimeInvalidVnet),
-                        "Type");
-                }
-            }
-
-            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null)
+            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null || DataFlowEnableQuickReuse != null)
             {
                 if (integrationRuntime.ComputeProperties == null)
                 {
@@ -787,16 +878,57 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType = DataFlowComputeType ?? integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType;
                 integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount = DataFlowCoreCount ?? integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount;
                 integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive = DataFlowTimeToLive ?? integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive;
+                if (DataFlowEnableQuickReuse.IsPresent)
+                {
+                    integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = false;
+                }
+                else
+                {
+                    // setting it as null as the default value for the cleanup variable is false, and the backend endpoint treats null value as true.
+                    integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = null;
+                }
+
+            }
+
+            if (ManagedVNetCopyComputeScaleDataIntegrationUnit != null || ManagedVNetCopyComputeScaleTimeToLive != null)
+            {
+                if (integrationRuntime.ComputeProperties == null)
+                {
+                    integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
+                }
+                if (integrationRuntime.ComputeProperties.CopyComputeScaleProperties == null)
+                {
+                    integrationRuntime.ComputeProperties.CopyComputeScaleProperties = new CopyComputeScaleProperties();
+                }
+
+                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit = ManagedVNetCopyComputeScaleDataIntegrationUnit ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit;
+                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive = ManagedVNetCopyComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive;
+            }
+
+            if (ManagedVNetPipelineExternalComputeScaleTimeToLive != null || ManagedVNetNumberOfPipelineNodeCount != null || ManagedVNetNumberOfExternalNodeCount != null)
+            {
+                if (integrationRuntime.ComputeProperties == null)
+                {
+                    integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
+                }
+                if (integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties == null)
+                {
+                    integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties = new PipelineExternalComputeScaleProperties();
+                }
+
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = ManagedVNetPipelineExternalComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes = ManagedVNetNumberOfPipelineNodeCount ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes = ManagedVNetNumberOfExternalNodeCount ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes;
             }
 
             if (PublicIPs != null)
             {
-                if (string.IsNullOrWhiteSpace(VNetId))
+                if (string.IsNullOrWhiteSpace(VNetId) && string.IsNullOrWhiteSpace(SubnetId))
                 {
                     throw new PSArgumentException(string.Format(
                             CultureInfo.InvariantCulture,
-                            Resources.IntegrationRuntimeVNetNotProvided),
-                        "VNetId");
+                            Resources.IntegrationRuntimeSubnetNotProvided),
+                        "SubnetId");
                 }
 
                 if (PublicIPs.Length != 2)

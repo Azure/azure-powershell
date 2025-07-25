@@ -1,70 +1,68 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/get-azeventhubnetworkruleset
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
 schema: 2.0.0
 ---
 
 # Get-AzEventHubNetworkRuleSet
 
 ## SYNOPSIS
-Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
+Gets NetworkRuleSet for a Namespace.
 
 ## SYNTAX
 
-### NetworkRuleSetPropertiesSet (Default)
+### Get (Default)
 ```
-Get-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Namespace] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### NetworkRuleSetNamespacePropertiesSet
-```
-Get-AzEventHubNetworkRuleSet [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### NetworkRuleSetResourceIdParameterSet
+### List
 ```
-Get-AzEventHubNetworkRuleSet [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventHubNetworkRuleSet -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
+Gets NetworkRuleSet for a Namespace.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Gets the network rule set of an EventHub namespace
 ```powershell
-PS C:\> Get-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375
+Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
-Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namespace parameters. 
-
-### Example 2
-```powershell
-PS C:\> Get-AzEventHubNetworkRuleSet -Namespace Eventhub-Namespace1-2389
+```output
+DefaultAction                : Allow
+IPRule                       : {}
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/default
+Location                     : Central US
+Name                         : default
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : myResourceGroup
+VirtualNetworkRule           :
 ```
 
-Get the details of Event Hubs NetworkruleSet of namespace using  Namespace which is in the current subscription.
-
-### Example 3
-```powershell
-PS C:\> Get-AzEventHubNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-2389
-```
-
-Get the details of Event Hubs NetworkruleSet of namespace using Resource Id of other Namespace 
+Gets the network rule set of EventHub namespace `myNamespace`.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -73,74 +71,79 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Namespace
-Namespace Name
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: NetworkRuleSetPropertiesSet, NetworkRuleSetNamespacePropertiesSet
-Aliases: NamespaceName
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: NetworkRuleSetPropertiesSet
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
 ```yaml
-Type: System.String
-Parameter Sets: NetworkRuleSetNamespacePropertiesSet
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Namespace Resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: NetworkRuleSetResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSet
+
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSetListResult
 
 ## NOTES
 

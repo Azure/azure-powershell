@@ -13,44 +13,46 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.StorageSync.Models;
+using System;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
-    /// Class SyncProgressStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
+    /// Class SyncActivityStatusConverter.
+    /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, SyncProgressStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
+    /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, SyncProgressStatus}" />
     public class SyncActivityStatusConverter : ConverterBase<PSSyncActivityStatus, StorageSyncModels.ServerEndpointSyncActivityStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.SyncProgressStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncActivityStatus Transform(PSSyncActivityStatus source) => new StorageSyncModels.ServerEndpointSyncActivityStatus(
-            source.Timestamp,
-            source.PerItemErrorCount,
-            source.AppliedItemCount,
-            source.TotalItemCount,
-            source.AppliedBytes,source.TotalBytes);
+        /// <returns>StorageSyncModels.ServerEndpointSyncActivityStatus.</returns>
+        protected override StorageSyncModels.ServerEndpointSyncActivityStatus Transform(PSSyncActivityStatus source)
+        {
+            // Sync activity properties are read-only from the RP
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncProgressStatus.</returns>
+        /// <returns>PSSyncActivityStatus.</returns>
         protected override PSSyncActivityStatus Transform(StorageSyncModels.ServerEndpointSyncActivityStatus source)
         {
             return new PSSyncActivityStatus()
             {
                 Timestamp = source.Timestamp,
                 AppliedBytes = source.AppliedBytes,
-                AppliedItemCount=source.AppliedItemCount,
-                PerItemErrorCount=source.PerItemErrorCount,
+                AppliedItemCount = source.AppliedItemCount,
+                PerItemErrorCount = source.PerItemErrorCount,
                 TotalBytes = source.TotalBytes,
-                TotalItemCount=source.TotalItemCount
+                TotalItemCount = source.TotalItemCount,
+                SyncMode = source.SyncMode,
+                SessionMinutesRemaining = source.SessionMinutesRemaining
             };
         }
     }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzIotSecurityAnalyticsAggregatedAlert
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzIotSecurityAnalyticsAggregatedAlert
 schema: 2.0.0
 ---
 
@@ -26,14 +26,16 @@ Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName <String> -SolutionN
 
 ## DESCRIPTION
 The Get-AzIotSecurityAnalyticsAggregatedAlert cmdlet returns one or more aggregated alerts on devices of iot hub.
-The name of the aggregated alerts is a combination of the alert type and the alert aggragted date, separated by '/'.
+The name of the aggregated alerts is a combination of the alert type and the alert aggregated date, separated by '/'.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Name "IoT_Bruteforce_Fail/2019-02-02"
+Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Name "IoT_Bruteforce_Fail/2019-02-02"
+```
 
+```output
 Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolution/analyticsModels/default/aggregatedAlerts/IoT_Bruteforce_Fail/2019-02-02"
 Name: "IoT_Bruteforce_Fail/2019-02-02"
 Type: "Microsoft.Security/IoTSecurityAggregatedAlert"
@@ -67,8 +69,10 @@ Get the aggregated alert "IoT_Bruteforce_Fail/2019-02-02" (the name combined fro
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution"
+Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution"
+```
 
+```output
 Array of aggregated alert items as shown in example 1
 ```
 

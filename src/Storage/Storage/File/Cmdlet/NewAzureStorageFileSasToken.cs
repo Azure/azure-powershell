@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.File;
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Azure.Storage.Files.Shares;
+using Azure.Storage.Files.Shares.Models;
+using Azure.Storage.Sas;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -37,15 +35,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         /// </summary>
         private const string NameSasPolicyParmeterSet = "NameSasPolicy";
 
-        /// <summary>
-        /// Sas permission with CloudFile instance parameter set name
-        /// </summary>
-        private const string CloudFileSasPermissionParameterSet = "FileSasPermission";
+        private const string FileClientSasPermissionParameterSet = "FileSasPermission";
 
-        /// <summary>
-        /// Sas policy with CloudFile instance parameter set name
-        /// </summary>
-        private const string CloudFileSasPolicyParmeterSet = "FileSasPolicy";
+        private const string FileClientSasPolicyParameterSet = "FileSasPolicy";
+
 
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Share Name",
@@ -74,21 +67,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public string Path { get; set; }
 
         [Parameter(Mandatory = true,
-            HelpMessage = "CloudFile instance to represent the file to get SAS token against.",
+            HelpMessage = "ShareFileClient instance to represent the file to get SAS token against.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CloudFileSasPermissionParameterSet)]
+            ParameterSetName = FileClientSasPermissionParameterSet)]
         [Parameter(Mandatory = true,
-            HelpMessage = "CloudFile instance to represent the file to get SAS token against.",
+            HelpMessage = "ShareFileClient instance to represent the file to get SAS token against.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CloudFileSasPolicyParmeterSet)]
+            ParameterSetName = FileClientSasPolicyParameterSet)]
         [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
+        public ShareFileClient ShareFileClient { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = NameSasPolicyParmeterSet)]
-        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = CloudFileSasPolicyParmeterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = FileClientSasPolicyParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Policy
         {
@@ -104,13 +96,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Mandatory = false,
             HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
-            ParameterSetName = CloudFileSasPermissionParameterSet)]
+            ParameterSetName = FileClientSasPermissionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        [ValidateNotNull]
-        public SharedAccessProtocol? Protocol { get; set; }
+        [ValidateSet("HttpsOnly", "HttpsOrHttp", IgnoreCase = true),]
+        public string Protocol { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
         [ValidateNotNullOrEmpty]
@@ -127,23 +119,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
         public SwitchParameter FullUri { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "Azure Storage Context Object",
-            ParameterSetName = NameSasPermissionParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "Azure Storage Context Object",
-            ParameterSetName = NameSasPolicyParmeterSet)]
-        [ValidateNotNull]
-        public override IStorageContext Context { get; set; }
-
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         /// <summary>
         /// Execute command
@@ -151,73 +131,58 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (String.IsNullOrEmpty(ShareName)) return;
+            ShareClient shareClient;
+            ShareFileClient fileClient;
 
-            CloudFileShare fileShare = null;
-            CloudFile file = null;
-
-            if (null != this.File)
+            if (null != this.ShareFileClient)
             {
-                file = this.File;
-                fileShare = this.File.Share;
+                CheckContextForObjectInput((AzureStorageContext)this.Context);
+                fileClient = this.ShareFileClient;
+                shareClient = Util.GetTrack2ShareReference(fileClient.ShareName,
+                        (AzureStorageContext)this.Context,
+                        snapshotTime: Util.GetSnapshotTimeStringFromUri(fileClient.Uri),
+                        ClientOptions);
             }
             else
             {
-                string[] path = NamingUtil.ValidatePath(this.Path, true);
-                fileShare = Channel.GetShareReference(this.ShareName);
-                file = fileShare.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                shareClient = Util.GetTrack2ShareReference(this.ShareName,
+                        (AzureStorageContext)this.Context,
+                        snapshotTime: null,
+                        ClientOptions);
+                fileClient = shareClient.GetRootDirectoryClient().GetFileClient(this.Path);
             }
 
-            SharedAccessFilePolicy accessPolicy = new SharedAccessFilePolicy();
 
-            bool shouldSetExpiryTime = SasTokenHelper.ValidateShareAccessPolicy(
-                Channel,
-                fileShare.Name,
-                accessPolicyIdentifier,
-                !string.IsNullOrEmpty(this.Permission),
-                this.StartTime.HasValue,
-                this.ExpiryTime.HasValue);
+            if (this.Context != null && this.Context is AzureStorageContext && ((AzureStorageContext)this.Context).StorageAccount != null && !((AzureStorageContext)this.Context).StorageAccount.Credentials.IsSharedKey)
+            {
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credential.");
+            }
 
-            SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
+            // Get share saved policy if any
+            ShareSignedIdentifier identifier = null;
+            if (!string.IsNullOrEmpty(this.Policy))
+            {
+                identifier = SasTokenHelper.GetShareSignedIdentifier(shareClient, this.Policy, CmdletCancellationToken);
+            }
 
-            string sasToken = file.GetSharedAccessSignature(accessPolicy, null, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+            //Create SAS builder
+            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromFile(fileClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
+
+            //Create SAS and output it
+            string sasToken = SasTokenHelper.GetFileSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, CmdletCancellationToken);
+
+            // remove prefix "?" of SAS if any
+            sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
 
             if (FullUri)
             {
-                string fullUri = SasTokenHelper.GetFullUriWithSASToken(file.SnapshotQualifiedUri.AbsoluteUri.ToString(), sasToken);
-
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(fileClient.Uri.AbsoluteUri.ToString(), sasToken);
                 WriteObject(fullUri);
             }
             else
             {
                 WriteObject(sasToken);
             }
-        }
-
-        protected override IStorageFileManagement CreateChannel()
-        {
-            if (this.Channel == null || !this.ShareChannel)
-            {
-                this.Channel = new StorageFileManagement(this.GetCmdletStorageContext());
-            }
-
-            return this.Channel;
-        }
-
-        /// <summary>
-        /// Update the access policy
-        /// </summary>
-        /// <param name="policy">Access policy object</param>
-        /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
-        private void SetupAccessPolicy(SharedAccessFilePolicy policy, bool shouldSetExpiryTime)
-        {
-            DateTimeOffset? accessStartTime;
-            DateTimeOffset? accessEndTime;
-            SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
-                out accessStartTime, out accessEndTime, shouldSetExpiryTime);
-            policy.SharedAccessStartTime = accessStartTime;
-            policy.SharedAccessExpiryTime = accessEndTime;
-            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }

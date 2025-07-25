@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Translate Health errors to Powershell object.
         /// </summary>
-        /// <param name="ASREventSpecificDetails">Rest API ASREventSpecificDetails object.</param>
+        /// <param name="eventSpecificDetails">Rest API EventSpecificDetails object.</param>
         /// <returns></returns>
         private ASREventSpecificDetails TranslateEventSpecificDetails(
             EventSpecificDetails eventSpecificDetails)
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Translate Health errors to Powershell object.
         /// </summary>
-        /// <param name="ASREventSpecificDetails">Rest API ASREventSpecificDetails object.</param>
+        /// <param name="eventSpecificDetails">Rest API EventProviderSpecificDetails object.</param>
         /// <returns></returns>
         private ASREventProviderSpecificDetails TranslateProviderSpecificEventDetails(
             EventProviderSpecificDetails eventSpecificDetails)
@@ -185,6 +185,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 eventProviderDetails = new ASRHyperVReplica2012R2EventDetails(
                     (HyperVReplica2012R2EventDetails) eventSpecificDetails);
+            }
+            else if (eventSpecificDetails is InMageRcmEventDetails)
+            {
+                eventProviderDetails = new ASRInMageRcmEventDetails(
+                    (InMageRcmEventDetails)eventSpecificDetails);
+            }
+            else if (eventSpecificDetails is InMageRcmFailbackEventDetails)
+            {
+                eventProviderDetails = new ASRInMageRcmFailbackEventDetails(
+                    (InMageRcmFailbackEventDetails)eventSpecificDetails);
             }
             return eventProviderDetails;
         }
@@ -309,7 +319,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Converts REST API object to Powershell object.
         /// </summary>
-        /// <param name="eventSettings">Internal object for a monitoring event.</param>
+        /// <param name="eventDetails">Internal object for a monitoring event.</param>
         /// <returns>
         ///     REST API object for HyperVReplica E2A event provider specific
         ///     details.
@@ -426,7 +436,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         /// <summary>
         ///     Gets or sets InMage Event type.
-        ///     Takes one of the values of <see cref="InMageMonitoringEventType" />.
+        ///     Takes one of the values of <see cref="EventType" />.
         /// </summary>
         public string EventType { get; set; }
 
@@ -444,6 +454,126 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets the class type.
         /// </summary>
         public override string ProviderType => "InMageAzureV2";
+    }
+
+    /// <summary>
+    ///     Model class for event details of an InMageRcm event.
+    /// </summary>
+    public class ASRInMageRcmEventDetails : ASREventProviderSpecificDetails
+    {
+        /// <summary>
+        ///     API object to PowerShell object.
+        /// </summary>
+        /// <returns>
+        ///     REST API object for InMageRcm event provider specific details.
+        ///</returns>
+        public ASRInMageRcmEventDetails(InMageRcmEventDetails inMageRcmEventDetails)
+        {
+            this.ProtectedItemName = inMageRcmEventDetails.ProtectedItemName;
+            this.VmName = inMageRcmEventDetails.VMName;
+            this.LatestAgentVersion = inMageRcmEventDetails.LatestAgentVersion;
+            this.JobId = inMageRcmEventDetails.JobId;
+            this.FabricName = inMageRcmEventDetails.FabricName;
+            this.ApplianceName = inMageRcmEventDetails.ApplianceName;
+            this.ServerType = inMageRcmEventDetails.ServerType;
+            this.ComponentDisplayName = inMageRcmEventDetails.ComponentDisplayName;
+        }
+
+        /// <summary>
+        ///     Gets or sets the protected item name.
+        /// </summary>
+        public string ProtectedItemName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the VM name.
+        /// </summary>
+        public string VmName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the latest agent version.
+        /// </summary>
+        public string LatestAgentVersion { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the job Id.
+        /// </summary>
+        public string JobId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fabric name.
+        /// </summary>
+        public string FabricName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the appliance name.
+        /// </summary>
+        public string ApplianceName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the server type.
+        /// </summary>
+        public string ServerType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the component display name.
+        /// </summary>
+        public string ComponentDisplayName { get; set; }
+
+        /// <summary>
+        ///     Gets the class type.
+        /// </summary>
+        public override string ProviderType => "InMageRcm";
+    }
+
+    /// <summary>
+    ///     Model class for event details of an InMageRcmFailback event.
+    /// </summary>
+    public class ASRInMageRcmFailbackEventDetails : ASREventProviderSpecificDetails
+    {
+        /// <summary>
+        ///     API object to PowerShell object.
+        /// </summary>
+        /// <returns>
+        ///     REST API object for InMageRcmFailback event provider specific details.
+        ///</returns>
+        public ASRInMageRcmFailbackEventDetails(InMageRcmFailbackEventDetails inMageRcmFailbackEventDetails)
+        {
+            this.ProtectedItemName = inMageRcmFailbackEventDetails.ProtectedItemName;
+            this.VmName = inMageRcmFailbackEventDetails.VMName;
+            this.ApplianceName = inMageRcmFailbackEventDetails.ApplianceName;
+            this.ServerType = inMageRcmFailbackEventDetails.ServerType;
+            this.ComponentDisplayName = inMageRcmFailbackEventDetails.ComponentDisplayName;
+        }
+
+        /// <summary>
+        ///     Gets or sets the protected item name.
+        /// </summary>
+        public string ProtectedItemName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the VM name.
+        /// </summary>
+        public string VmName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the appliance name.
+        /// </summary>
+        public string ApplianceName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the server type.
+        /// </summary>
+        public string ServerType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the component display name.
+        /// </summary>
+        public string ComponentDisplayName { get; set; }
+
+        /// <summary>
+        ///     Gets the class type.
+        /// </summary>
+        public override string ProviderType => "InMageRcmFailback";
     }
 
     /// <summary>

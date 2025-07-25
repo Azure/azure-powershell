@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.SecurityCenter.Models.Alerts;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 {
@@ -87,12 +87,12 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     break;
                 case ParameterSetNames.SubscriptionLevelResource:
                     SecurityCenterClient.AscLocation = Location;
-                    var alert = SecurityCenterClient.Alerts.GetSubscriptionLevelAlertWithHttpMessagesAsync(Name).GetAwaiter().GetResult().Body;
+                    var alert = SecurityCenterClient.Alerts.GetSubscriptionLevelWithHttpMessagesAsync(Name).GetAwaiter().GetResult().Body;
                     WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceGroupLevelResource:
                     SecurityCenterClient.AscLocation = Location;
-                    alert = SecurityCenterClient.Alerts.GetResourceGroupLevelAlertsWithHttpMessagesAsync(Name, ResourceGroupName).GetAwaiter().GetResult().Body;
+                    alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
                     WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 
                     if (string.IsNullOrEmpty(rg))
                     {
-                        alert = SecurityCenterClient.Alerts.GetSubscriptionLevelAlertWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
+                        alert = SecurityCenterClient.Alerts.GetSubscriptionLevelWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
                     }
                     else
                     {
-                        alert = SecurityCenterClient.Alerts.GetResourceGroupLevelAlertsWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId), rg).GetAwaiter().GetResult().Body;
+                        alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(rg, AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
                     }
 
                     WriteObject(alert.ConvertToPSType(), enumerateCollection: false);

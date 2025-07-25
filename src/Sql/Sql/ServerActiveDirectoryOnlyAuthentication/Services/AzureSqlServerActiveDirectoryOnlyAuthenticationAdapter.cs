@@ -39,8 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
         /// <summary>
         /// Constructs a Azure SQL Server Active Directory administrator adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerActiveDirectoryOnlyAuthenticationAdapter(IAzureContext context)
         {
             Context = context;
@@ -80,10 +79,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql ServerActiveDirectoryAdministrator Server</param>
+        /// <param name="model"></param>
         /// <returns>The upserted Azure SQL Server Active Directory administrator</returns>
         internal AzureSqlServerActiveDirectoryOnlyAuthenticationModel UpsertAzureADOnlyAuthenticaion(string resourceGroup, string serverName, AzureSqlServerActiveDirectoryOnlyAuthenticationModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, new ServerAzureADOnlyAuthentication(model.AzureADOnlyAuthentication));
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, new ServerAzureADOnlyAuthentication(azureAdOnlyAuthentication: model.AzureADOnlyAuthentication));
 
             return CreateServerActiveDirectoryOnlyAuthenticationModelFromResponse(resourceGroup, serverName, resp);
         }
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the Azure Sql ServerActiveDirectoryAdministrator Server</param>
-        /// <param name="admin">The service response</param>
+        /// <param name="serverAzureADOnlyAuthentication"></param>
         /// <returns>The converted model</returns>
         public static AzureSqlServerActiveDirectoryOnlyAuthenticationModel CreateServerActiveDirectoryOnlyAuthenticationModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ServerAzureADOnlyAuthentication serverAzureADOnlyAuthentication)
         {
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
 
                 model.ResourceGroupName = resourceGroup;
                 model.ServerName = serverName;
-                model.AzureADOnlyAuthentication = serverAzureADOnlyAuthentication.AzureADOnlyAuthentication;
+                model.AzureADOnlyAuthentication = serverAzureADOnlyAuthentication.AzureAdOnlyAuthentication.Value;
                 return model;
             }
 

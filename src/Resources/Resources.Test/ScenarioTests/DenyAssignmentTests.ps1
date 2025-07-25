@@ -29,7 +29,8 @@ function Test-GetDa
 
 function Test-GetDaById
 {
-    $id = '22704996-fbd0-4ab1-8625-722d897825d2'
+    # Random select a id from the result of listing deny assignments
+    $id = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments/22704996-fbd0-4ab1-8625-722d897825d2"
     $assignments = Get-AzDenyAssignment -Id $id
     
     Assert-NotNull $assignments
@@ -39,18 +40,18 @@ function Test-GetDaById
 
 function Test-GetDaByIdAndSpecifiedScope
 {
-    $id = '43AF7D0C-0BF8-407F-96C0-96A29D076431'
-    $scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
+    $id = '22704996-fbd0-4ab1-8625-722d897825d2'
+    $scope = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
     $assignments = Get-AzDenyAssignment -Id $id -Scope $scope
     
     Assert-NotNull $assignments
     Assert-True { $assignments.Length -eq 1 }
-    Assert-AreEqual $assignments[0].Id $id
+    Assert-AreEqual $assignments[0].Id "$scope/providers/Microsoft.Authorization/denyAssignments/$id"
 }
 
 function Test-GetDaByName
 {
-    $daName = 'AzureAuthzSDK_22704996-FBD0-4AB1-8625-722D897825D2'
+    $daName = "StoragePool Resource Provider Management Lock for MSP_bez-rg_bez-diskpool_eastus"
     $assignments = Get-AzDenyAssignment -DenyAssignmentName $daName
     
     Assert-NotNull $assignments
@@ -60,8 +61,8 @@ function Test-GetDaByName
 
 function Test-GetDaByNameAndSpecifiedScope
 {
-    $daName = 'AzureAuthzSDK_43AF7D0C-0BF8-407F-96C0-96A29D076431'
-    $daScope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
+    $daName = "StoragePool Resource Provider Management Lock for MSP_bez-rg_bez-diskpool_eastus"
+    $daScope = '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-demo001-h09oyaz47r6qb'
     $assignments = Get-AzDenyAssignment -DenyAssignmentName $daName -Scope $daScope
     
     Assert-NotNull $assignments
@@ -72,7 +73,7 @@ function Test-GetDaByNameAndSpecifiedScope
 
 function Test-GetDaByObjectId
 {
-    $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
+    $objectId = '00000000-0000-0000-0000-000000000000'
     $assignments = Get-AzDenyAssignment -ObjectId $objectId
     
     Assert-NotNull $assignments
@@ -81,7 +82,7 @@ function Test-GetDaByObjectId
 
 function Test-GetDaByObjectIdAndGroupExpansion
 {
-    $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
+    $objectId = 'fc6c8339-646b-4fb2-a2e2-80f95c0baf96'
     $assignments = Get-AzDenyAssignment -ObjectId $objectId -ExpandPrincipalGroups
     
     Assert-NotNull $assignments
@@ -90,8 +91,8 @@ function Test-GetDaByObjectIdAndGroupExpansion
 
 function Test-GetDaByObjectIdAndRGName
 {
-    $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
-    $resourceGroupName = 'AzureAuthzSDK'
+    $objectId = '00000000-0000-0000-0000-000000000000'
+    $resourceGroupName = 'managed-rg-fypurview'
     $assignments = Get-AzDenyAssignment -ObjectId $objectId -ResourceGroupName $resourceGroupName 
     
     Assert-NotNull $assignments
@@ -100,10 +101,10 @@ function Test-GetDaByObjectIdAndRGName
 
 function Test-GetDaByObjectIdAndRGNameResourceNameResourceType
 {
-    $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
-    $resourceGroupName = 'AzureAuthzSDK'
-    $resourceName ='authzsdktestresource'
-    $resourceType = 'Microsoft.Storage/storageAccounts'
+    $objectId = '00000000-0000-0000-0000-000000000000'
+    $resourceGroupName = 'managed-rg-fypurview'
+    $resourceName ='demo001'
+    $resourceType = 'Microsoft.Databricks/workspaces'
     $assignments = Get-AzDenyAssignment -ObjectId $objectId -ResourceGroupName $resourceGroupName -ResourceName  $resourceName -ResourceType  $resourceType 
     
     Assert-NotNull $assignments
@@ -112,8 +113,8 @@ function Test-GetDaByObjectIdAndRGNameResourceNameResourceType
 
 function Test-GetDaByObjectIdAndScope
 {
-    $objectId = 'f8d526a054eb4941ae69ebf4a334d0f0'
-    $scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
+    $objectId = '00000000-0000-0000-0000-000000000000'
+    $scope = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
     $assignments = Get-AzDenyAssignment -ObjectId $objectId -Scope $scope
     
     Assert-NotNull $assignments
@@ -222,7 +223,7 @@ function Test-GetDaByScope
 
 function Test-GetDaByRG
 {
-    $resourceGroupName = 'AzureAuthzSDK'
+    $resourceGroupName = 'managed-rg-feng-purview'
     $assignments = Get-AzDenyAssignment -ResourceGroupName $resourceGroupName
     
     Assert-NotNull $assignments

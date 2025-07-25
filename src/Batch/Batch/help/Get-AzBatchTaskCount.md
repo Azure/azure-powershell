@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchtaskcount
+online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchtaskcount
 schema: 2.0.0
 ---
 
@@ -32,8 +32,11 @@ Task counts provide a count of the tasks by active, running or completed task st
 ## EXAMPLES
 
 ### Example 1: Get task counts by ID
+```powershell
+Get-AzBatchTaskCount -JobId "Job01" -BatchContext $Context
 ```
-PS C:\> Get-AzBatchTaskCount -JobId "Job01" -Id "Task03" -BatchContext $Context
+
+```output
 Active              : 1
 Completed           : 0
 Failed              : 0
@@ -49,7 +52,7 @@ Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variabl
 
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service.
 To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated.
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.

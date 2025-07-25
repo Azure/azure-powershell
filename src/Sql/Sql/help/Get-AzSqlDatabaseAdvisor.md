@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 5AAB22C6-8E3C-4BDC-8A54-DA5A9906B762
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseadvisor
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabaseadvisor
 schema: 2.0.0
 ---
 
@@ -25,8 +25,11 @@ The **Get-AzSqlDatabaseAdvisor** cmdlet gets one or more Azure SQL Database Advi
 ## EXAMPLES
 
 ### Example 1: List all the advisors for the specified database
+```powershell
+Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner"
 ```
-PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner"
+
+```output
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -75,8 +78,11 @@ RecommendedActions             : {}
 This command gets lists all the advisors for the database named WIRunner that belongs to the server named wi-runner-australia-east.
 
 ### Example 2: Get a single advisor for the specified database
+```powershell
+Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex"
 ```
-PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex"
+
+```output
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -92,8 +98,11 @@ RecommendedActions             : {}
 This command gets the Advisor named CreateIndex for the database named WIRunner.
 
 ### Example 3: List all the advisors with their recommended actions included in the response
+```powershell
+Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -ExpandRecommendedActions
 ```
-PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -ExpandRecommendedActions
+
+```output
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -149,8 +158,11 @@ This command gets all the advisors for the database named 'WIRunner' with their 
 Since the command uses the *ExpandRecommendedActions* parameter, the cmdlet gets the recommended actions with the response.
 
 ### Example 4: Get a single advisor with its recommended actions included in the response
+```powershell
+Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex" -ExpandRecommendedActions
 ```
-PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex" -ExpandRecommendedActions
+
+```output
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -170,8 +182,11 @@ This command gets the Advisor named CreateIndex from the database named WIRunner
 Since the command uses the *ExpandRecommendedActions* parameter, the cmdlet gets the recommended actions with the response.
 
 ### Example 5: List all the advisors for the specified database using filtering
+```powershell
+Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName d*
 ```
-PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName d*
+
+```output
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -211,7 +226,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -DatabaseName
@@ -315,4 +330,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlDatabaseAdvisorAutoExecuteStatus](./Set-AzSqlDatabaseAdvisorAutoExecuteStatus.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

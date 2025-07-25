@@ -1,15 +1,15 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 258A4EA9-B82C-4664-8DCE-30D47A623868
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/switch-azwebappslot
+online version: https://learn.microsoft.com/powershell/module/az.websites/switch-azwebappslot
 schema: 2.0.0
 ---
 
 # Switch-AzWebAppSlot
 
 ## SYNOPSIS
-Swap two slots with a Web App
+Swap two slots within a Web App
 
 ## SYNTAX
 
@@ -17,27 +17,32 @@ Swap two slots with a Web App
 ```
 Switch-AzWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
  [[-SwapWithPreviewAction] <SwapWithPreviewAction>] [[-PreserveVnet] <Boolean>] [-ResourceGroupName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### S2
 ```
 Switch-AzWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
  [[-SwapWithPreviewAction] <SwapWithPreviewAction>] [[-PreserveVnet] <Boolean>] [-WebApp] <PSSite>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Switch-AzWebAppSlot** switches two slots associated with an Azure Web App.
+The **Switch-AzWebAppSlot** cmdlet switches two slots associated with an Azure Web App.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Switch-AzWebAppSlot -SourceSlotName "sourceslot" -DestinationSlotName "destinationslot" -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
+```powershell
+Switch-AzWebAppSlot -SourceSlotName "sourceslot" -DestinationSlotName "destinationslot" -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
-This command will switch slot "sourceslot" slot with "destinationslot" the Web App ContosoWebApp associated with the resource group Default-Web-WestUS
+This command will switch slot "sourceslot" with slot "destinationslot" on the Web App ContosoWebApp in the resource group Default-Web-WestUS.
+
+> [!NOTE]
+> Use "production" as the slot name when the either the source or destination slot is intended to be the production slot.
 
 ## PARAMETERS
 
@@ -194,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsighthost
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost
 schema: 2.0.0
 ---
 
@@ -15,17 +15,18 @@ Lists the hosts of the HDInsight cluster.
 ### SetByNameParameterSet (Default)
 ```
 Get-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [[-DefaultProfile] <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Get-AzHDInsightHost [-ResourceId] <String> [[-DefaultProfile] <IAzureContextContainer>] [<CommonParameters>]
+Get-AzHDInsightHost [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Get-AzHDInsightHost [-InputObject] <AzureHDInsightCluster> [[-DefaultProfile] <IAzureContextContainer>]
+Get-AzHDInsightHost [-InputObject] <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -36,19 +37,19 @@ The **Get-AzHDInsightHost** cmdlet lists the hosts of the HDInsight cluster.
 
 ### Example 1
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> Get-AzHDInsightHost -ClusterName $clusterName
+# Cluster info
+$clusterName = "your-hadoop-001"
+Get-AzHDInsightHost -ClusterName $clusterName
 ```
 
 This command lists of cluster' hosts with cluster name.
 
 ### Example 2
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $cluster=Get-AzHDInsightCluster -ClusterName $clusterName
-PS C:\> $cluster | Get-AzHDInsightHost
+# Cluster info
+$clusterName = "your-hadoop-001"
+$cluster=Get-AzHDInsightCluster -ClusterName $clusterName
+$cluster | Get-AzHDInsightHost
 ```
 
 This command lists of cluster' hosts with pipeline.

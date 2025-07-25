@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses

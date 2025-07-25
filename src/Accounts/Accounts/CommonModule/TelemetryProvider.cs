@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -28,11 +28,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Commands.Common
 {
     /// <summary>
-    /// Class providing telemtry usage based on the user's data collection settings
+    /// Class providing telemetry usage based on the user's data collection settings
     /// </summary>
     public class TelemetryProvider : IDictionary<string, AzurePSQoSEvent>, IDisposable
     {
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Create a Telemetry Provider using the given event listener
         /// </summary>
-        /// <param name="listener">The event listenet</param>
+        /// <param name="listener">The event listener</param>
         /// <returns>A telemetry provider that send data over the given event listener</returns>
         public static TelemetryProvider Create(IEventListener listener)
         {
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Factory method for TelemetryProvider
         /// </summary>
-        /// <param name="warningLogger">A logger for warnign messages (conditionally used for data collection warning)</param>
+        /// <param name="warningLogger">A logger for warning messages (conditionally used for data collection warning)</param>
         /// <param name="debugLogger">A logger for debugging traces</param>
         /// <returns></returns>
         public static TelemetryProvider Create(Action<string> warningLogger, Action<string> debugLogger)
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Create a telemtry provider, using the given profile settings and event store
+        /// Create a telemetry provider, using the given profile settings and event store
         /// </summary>
         /// <param name="collect">Whether ot not to collect data</param>
         /// <param name="store">The store for events generated during telemetry</param>
@@ -103,20 +104,21 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Log a telemtry event
+        /// Log a telemetry event
         /// </summary>
-        /// <param name="qosEvent">The event to log</param>
-        public virtual void LogEvent(string key)
+        /// <param name="qosEventKey">The event to log</param>
+        public virtual void LogEvent(string qosEventKey)
         {
             var dataCollection = _dataCollectionProfile.EnableAzureDataCollection;
             var enabled = dataCollection.HasValue ? dataCollection.Value : true;
 
-            AzurePSQoSEvent qos;
-            if (this.TryGetValue(key, out qos))
+            AzurePSQoSEvent qosEvent;
+            if (this.TryGetValue(qosEventKey, out qosEvent))
             {
-                qos.FinishQosEvent();
-                _helper.LogQoSEvent(qos, enabled, enabled);
-                this.Remove(key);
+                qosEvent.FinishQosEvent();
+                _helper.LogQoSEvent(qosEvent, enabled, enabled);
+                _helper.FlushMetric();
+                this.Remove(qosEventKey);
             }
         }
 
@@ -129,35 +131,45 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Create a telmetry record
+        /// Create a telemetry record
         /// </summary>
         /// <param name="invocationInfo"></param>
         /// <param name="parameterSetName"></param>
         /// <param name="correlationId"></param>
+        /// <param name="processRecordId"></param>
         /// <returns></returns>
         public virtual AzurePSQoSEvent CreateQosEvent(InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId)
         {
             var qosEvent = new AzurePSQoSEvent
             {
                 CommandName = invocationInfo?.MyCommand?.Name,
-                ModuleVersion = invocationInfo?.MyCommand?.Module?.Version?.ToString(),
-                SessionId = correlationId,
+                ModuleVersion = TrimModuleVersion(invocationInfo?.MyCommand?.Module?.Version),
+                ModuleName = TrimModuleName(invocationInfo?.MyCommand?.ModuleName),
+                SourceScript = invocationInfo?.ScriptName,
+                ScriptLineNumber = invocationInfo?.ScriptLineNumber ?? 0,
+                SessionId = MetricHelper.SessionId,
                 ParameterSetName = parameterSetName,
                 InvocationName = invocationInfo?.InvocationName,
-                InputFromPipeline = invocationInfo?.PipelineLength > 0
+                InputFromPipeline = invocationInfo?.PipelineLength > 0,
+                UserAgent = AzurePSCmdlet.UserAgent,
+                AzVersion = AzurePSCmdlet.AzVersion,
+                AzAccountsVersion = AzurePSCmdlet.AzAccountsVersion,
+                PSVersion = AzurePSCmdlet.PowerShellVersion,
+                HostVersion = AzurePSCmdlet.PSHostVersion,
+                PSHostName = AzurePSCmdlet.PSHostName,
             };
 
-            // below is workaround that current invocationInfo only contains private module name. Trimming '.private' is a workaround for the time being.
-            const string privateModuleSuffix = ".private";
-            string moduleName = invocationInfo?.MyCommand?.ModuleName;
-            if (moduleName != null && moduleName.StartsWith("Az.") && moduleName.EndsWith(privateModuleSuffix))
-            {
-                moduleName = moduleName.Substring(0, moduleName.Length - privateModuleSuffix.Length);
-            }
-            qosEvent.ModuleName = moduleName;
 
-            qosEvent.UserAgent = AzurePSCmdlet.UserAgent;
-            qosEvent.AzVersion = AzurePSCmdlet.AzVersion;
+            if (qosEvent.UserAgent == null)
+            {
+                qosEvent.UserAgent = new ProductInfoHeaderValue("AzurePowershell", string.Format("Az{0}", "0.0.0")).ToString();
+                string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+                if (!String.IsNullOrWhiteSpace(hostEnv))
+                {
+                    hostEnv = hostEnv.Trim().Replace("@", "_").Replace("/", "_");
+                    qosEvent.UserAgent += string.Format(" {0}", hostEnv);
+                }
+            }
 
             if (invocationInfo != null)
             {
@@ -178,19 +190,51 @@ namespace Microsoft.Azure.Commands.Common
                 }
             }
 
+            var showSecretsWarning = false;
+            if (AzureSession.Instance.TryGetComponent<IOutputSanitizer>(nameof(IOutputSanitizer), out var outputSanitizer))
+            {
+                showSecretsWarning = outputSanitizer?.RequireSecretsDetection == true;
+            }
+            qosEvent.SanitizerInfo = new SanitizerTelemetry(showSecretsWarning);
+
             this[processRecordId] = qosEvent;
             return qosEvent;
         }
 
+        private const string privateAssemblySuffix = ".private";
+        private const string privateAssemblyPrefix = "Az.";
+        private static readonly int privateAssemblyPrefixLength = privateAssemblyPrefix.Length;
+        /// <summary>
+        /// below is workaround that current invocationInfo only contains private module name. Trimming '.private' is a workaround for the time being.
+        /// </summary>
+        /// <param name="moduleName"></param>
+        /// <returns></returns>
+        internal static string TrimModuleName(string moduleName)
+        {
+            if (moduleName != null && moduleName.StartsWith(privateAssemblyPrefix) && moduleName.EndsWith(privateAssemblySuffix))
+            {
+                int splitter = moduleName.Substring(privateAssemblyPrefixLength).IndexOf('.');
+                moduleName = moduleName.Substring(0, splitter + privateAssemblyPrefixLength);
+            }
+            return moduleName;
+
+        }
+        /// <summary>
+        /// PowerShell module doesn't support revision. Trim it from sematic version.
+        /// </summary>
+        /// <param name="moduleVersion"></param>
+        /// <returns></returns>
+        internal static string TrimModuleVersion(Version moduleVersion)
+        {
+            if (moduleVersion == null)
+                return "0.0.0";
+            return $"{moduleVersion.Major}.{moduleVersion.Minor}.{moduleVersion.Build}";
+        }
 
         private static MetricHelper CreateMetricHelper(AzurePSDataCollectionProfile profile)
         {
             var result = new MetricHelper(profile);
-            result.AddTelemetryClient(new TelemetryClient
-            {
-                InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
-            });
-
+            result.AddDefaultTelemetryClient();
             return result;
         }
 
@@ -203,7 +247,7 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             warningLogger(Resources.DataCollectionEnabledWarning);
-            return new AzurePSDataCollectionProfile(true);
+            return new AzurePSDataCollectionProfile();
         }
 
         public void Dispose()
@@ -236,7 +280,12 @@ namespace Microsoft.Azure.Commands.Common
 
         public bool TryGetValue(string key, out AzurePSQoSEvent value)
         {
-            return ProcessRecordEvents.TryGetValue(key, out value);
+            if(key != null)
+            {
+                return ProcessRecordEvents.TryGetValue(key, out value);
+            }
+            value = null;
+            return false;
         }
 
         public void Add(KeyValuePair<string, AzurePSQoSEvent> item)

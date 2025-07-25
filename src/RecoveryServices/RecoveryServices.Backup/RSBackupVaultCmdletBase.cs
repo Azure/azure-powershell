@@ -1,6 +1,8 @@
-﻿using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+﻿using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -23,6 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Get the job PS model after fetching the job object from the service given the job ID.
         /// </summary>
         /// <param name="jobId">ID of the job to be fetched</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns></returns>
         public CmdletModel.JobBase GetJobObject(string jobId, string vaultName = null, string resourceGroupName = null)
         {
@@ -36,6 +40,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Gets list of job PS models after fetching the job objects from the service given the list of job IDs.
         /// </summary>
         /// <param name="jobIds">List of IDs of jobs to be fetched</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns></returns>
         public List<CmdletModel.JobBase> GetJobObject(IList<string> jobIds, string vaultName = null, string resourceGroupName = null)
         {
@@ -51,10 +57,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
 
         /// <summary>
+        /// Get the job PS model after fetching the job object from the service given the job ID.
+        /// </summary>
+        /// <param name="secondaryRegion">secondaryRegion for the vault </param>
+        /// <param name="vaultId">ResourceId of the vault to be fetched</param>
+        /// <param name="jobId">ID of the job to be fetched</param>
+        /// <returns></returns>
+        public CmdletModel.JobBase GetCrrJobObject(string secondaryRegion, string vaultId, string jobId)
+        {
+            CrrModel.CrrJobRequest jobRequest = new CrrModel.CrrJobRequest();
+            jobRequest.JobName = jobId;
+            jobRequest.ResourceId = vaultId;
+
+            JobBase job = JobConversions.GetPSJobCrr(ServiceClientAdapter.GetCRRJobDetails(
+                secondaryRegion,
+                jobRequest));
+
+            return job;
+        }
+
+        /// <summary>
         /// Based on the response from the service, handles the job created in the service appropriately.
         /// </summary>
         /// <param name="response">Response from service</param>
         /// <param name="operationName">Name of the operation</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         protected void HandleCreatedJob(
             AzureRestNS.AzureOperationResponse response,
             string operationName,
@@ -84,10 +112,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         var jobStatusResponse =
                             (OperationStatusJobExtendedInfo)operationStatus.Properties;
-                        WriteObject(GetJobObject(
+
+                        try
+                        {
+                            WriteObject(GetJobObject(
                             jobStatusResponse.JobId,
                             vaultName: vaultName,
                             resourceGroupName: resourceGroupName));
+                        }
+                        catch (Exception e)
+                        {
+                            WriteDebug("Caught exception while fetching Jobresource: " + e.Message);
+                            WriteDebug("Job resource could not be fetched"); // resx: Resources.FailedToFetchJob
+                        }
                     }
                 }
 

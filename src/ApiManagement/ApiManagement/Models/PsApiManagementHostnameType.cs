@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         Portal = 2,
         Management = 3,
         Scm = 4,
-        DeveloperPortal = 5
+        DeveloperPortal = 5,
+        Configuration = 6,
+        Data = 7
     }
 }

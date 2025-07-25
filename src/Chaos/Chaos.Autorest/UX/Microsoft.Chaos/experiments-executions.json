@@ -1,0 +1,95 @@
+{
+  "resourceType": "experiments/executions",
+  "apiVersion": "2024-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.chaos"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChaosExecutionExperimentDetail",
+      "description": "Execution details of an experiment resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions/{executionId}/getExecutionDetails",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosexecutionexperimentdetail"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ExecutionId <String>",
+              "-ExperimentName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Execution details of an experiment resource.",
+          "parameters": [
+            {
+              "name": "-ExecutionId",
+              "value": "[Path.executionId]"
+            },
+            {
+              "name": "-ExperimentName",
+              "value": "[Path.experimentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzChaosExperimentExecution",
+      "description": "Get an execution of an Experiment resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions/{executionId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosexperimentexecution"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ExecutionId <String>",
+              "-ExperimentName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get an execution of an Experiment resource.",
+          "parameters": [
+            {
+              "name": "-ExecutionId",
+              "value": "[Path.executionId]"
+            },
+            {
+              "name": "-ExperimentName",
+              "value": "[Path.experimentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

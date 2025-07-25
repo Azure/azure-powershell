@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlconflictresolutionpolicy
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Creates a new object of type PSSqlConflictResolutionPolicy. It can be passed as 
 
 ```
 New-AzCosmosDBSqlConflictResolutionPolicy -Type <String> [-Path <String>]
- [-ConflictResolutionProcedure <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ConflictResolutionProcedure <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,14 +25,14 @@ Object corresponding to Sql API's ConflictResolutionPolicy.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlConflictResolutionPolicy -Type LastWriterWins -Path "/myPath"
+New-AzCosmosDBSqlConflictResolutionPolicy -Type LastWriterWins -Path "/myPath"
+```
 
+```output
 Mode           ConflictResolutionPath ConflictResolutionProcedure
 ----           ---------------------- ---------------------------
 LastWriterWins /myPath
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -39,7 +40,7 @@ LastWriterWins /myPath
 To be provided when the type is custom.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -69,7 +70,7 @@ Accept wildcard characters: False
 To be provided when the type is LastWriterWins.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +85,7 @@ Accept wildcard characters: False
 Can have the values: LastWriterWins, Custom, Manual.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

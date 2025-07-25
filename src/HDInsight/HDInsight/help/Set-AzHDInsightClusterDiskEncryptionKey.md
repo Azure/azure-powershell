@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 5141D84C-3C58-42B9-890F-C3C9049BC1C5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/set-azhdinsightclusterdiskencryptionkey
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclusterdiskencryptionkey
 schema: 2.0.0
 ---
 
@@ -17,7 +17,8 @@ Rotates the disk encryption key of the specified HDInsight cluster.
 ```
 Set-AzHDInsightClusterDiskEncryptionKey [-ResourceGroupName] <String> [-Name] <String>
  -EncryptionKeyName <String> -EncryptionKeyVersion <String> -EncryptionVaultUri <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -41,7 +42,7 @@ Rotate the disk encryption key of the specified HDInsight cluster. For this oper
 
 ### Example 1
 ```powershell
-PS C:\> # Cluster configuration info
+# Cluster configuration info
         $clusterResourceGroupName = "Group"
         $clusterName = "your-cmk-cluster"
 
@@ -55,7 +56,7 @@ Set-AzHDInsightClusterDiskEncryptionKey `
 
 ### Example 2
 ```powershell
-PS C:\> # Cluster configuration info
+# Cluster configuration info
         $clusterName = "your-cmk-cluster"
 
 $cluster= Get-AzHDInsightCluster -ClusterName $clusterName 
@@ -232,4 +233,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Customer-managed key disk encryption](https://docs.microsoft.com/en-us/azure/hdinsight/disk-encryption)
+[Customer-managed key disk encryption](https://learn.microsoft.com/azure/hdinsight/disk-encryption)

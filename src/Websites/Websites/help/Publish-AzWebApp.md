@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/publish-azwebapp
+online version: https://learn.microsoft.com/powershell/module/az.websites/publish-azwebapp
 schema: 2.0.0
 ---
 
@@ -12,16 +12,20 @@ Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
 
 ## SYNTAX
 
-### FromResourceName
+### FromWebApp (Default)
 ```
-Publish-AzWebApp -ArchivePath <String> [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
- [[-Slot] <String>]  [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Publish-AzWebApp [-ArchivePath <String>] [-ArchiveURL <String>] [-Type <String>] [-Clean] [-Async] [-Restart]
+ [-TargetPath <String>] [-PullIdentity <String>] [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>]
+ [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### FromWebApp
+### FromResourceName
 ```
-Publish-AzWebApp -ArchivePath <String> [-AsJob] [-WebApp] <PSSite> [-Force] [-DefaultProfile <IAzureContextContainer>] 
- [<CommonParameters>]
+Publish-AzWebApp [-ArchivePath <String>] [-ArchiveURL <String>] [-Type <String>] [-Clean] [-Async] [-Restart]
+ [-TargetPath <String>] [-PullIdentity <String>] [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>]
+ [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,38 +35,47 @@ The **Publish-AzWebApp** cmdlet uploads content to an existing Azure Web App. Th
 
 ### Example 1
 ```powershell
-PS C:\> Publish-AzWebApp -ResourceGroupName Default-Web-WestUS -Name MyApp -ArchivePath C:\project\app.zip
+Publish-AzWebApp -ResourceGroupName Default-Web-WestUS -Name MyApp -ArchivePath C:\project\app.zip
 ```
 
 Uploads the contents of app.zip to the web app named MyApp belonging to the resource group Default-Web-WestUS.
 
 ### Example 2
 ```powershell
-PS C:\> Publish-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp -Slot Staging -ArchivePath C:\project\javaproject.war
+Publish-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp -Slot Staging -ArchivePath C:\project\javaproject.war
 ```
 
 Uploads the contents of javaproject.war to the Staging slot of the web app named ContosoApp belonging to the resource group ContosoRG.
 
 ### Example 3
 ```powershell
-PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
-PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -AsJob
+$app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -AsJob
 ```
 
 Uploads the contents of app.zip to the web app named ContosoApp belonging to the resource group ContosoRG. The cmdlet will be run in a background job.
 
 ### Example 4
 ```powershell
-PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
-PS C:\> $app | Publish-AzWebApp -ArchivePath C:\project\java_app.jar
-```
-### Example 5
-```powershell
-PS C:\> $app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
-PS C:\> Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Force
+$app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+$app | Publish-AzWebApp -ArchivePath C:\project\java_app.jar
 ```
 
-Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG.
+### Example 5
+```powershell
+$app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Force
+```
+
+Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG. If -Force is not specified it will prompt for the confirmation before the contents will be deployed.
+
+### Example 6
+```powershell
+$app = Get-AzWebApp -ResourceGroupName ContosoRG -Name ContosoApp
+Publish-AzWebApp -WebApp $app -ArchivePath C:\project\app.zip -Timeout 300000 -Force
+```
+
+Uploads the contents of java_app.jar to the web app named ContosoApp belonging to the resource group ContosoRG. User can Sets the timespan in Milliseconds to wait before the request times out. If -Force is not specified it will prompt for the confirmation before the contents will be deployed.
 
 ## PARAMETERS
 
@@ -74,7 +87,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArchiveURL
+URL of the artifact. The webapp will pull the artifact from this URL. Ex: "http://mysite.com/files/myapp.war
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,8 +124,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forcefully Remove Option
+### -Async
+The artifact is deployed asynchronously. (The command will exit once the artifact is pushed to the web app.)
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Clean
+Cleans the target directory prior to deploying the file(s).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -126,6 +169,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Forcefully Remove Option
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IgnoreStack
+Disables any language-specific defaults
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the web app.
 
@@ -138,6 +211,36 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PullIdentity
+AAD identity used for pull based deployments. 'system' will use the app's system assigned identity. An user assigned identity can be used by providing the client ID. Only available for Windows WebApps. Support for Linux WebApps coming soon.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Reset
+Reset Java web apps to default parking page
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -156,6 +259,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Restart
+The web app will be restarted following the deployment. Set this to false if you are deploying multiple artifacts and do not want to restart the site on the earlier deployments.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Slot
 The name of the web app slot.
 
@@ -168,6 +286,52 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TargetPath
+Absolute path that the artifact should be deployed to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timeout
+Sets the timespan in Milliseconds to wait before the request times out.
+
+```yaml
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+Used to override the type of artifact being deployed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: war, jar, ear, zip, static
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -186,8 +350,38 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

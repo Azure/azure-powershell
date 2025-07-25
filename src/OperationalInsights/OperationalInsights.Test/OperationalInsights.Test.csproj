@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>OperationalInsights</PsModuleName>
@@ -11,9 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
-    <PackageReference Include="Microsoft.Azure.OperationalInsights" Version="0.10.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.25.0-preview" />
+    <PackageReference Include="Microsoft.Azure.OperationalInsights" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
   </ItemGroup>
 
 </Project>

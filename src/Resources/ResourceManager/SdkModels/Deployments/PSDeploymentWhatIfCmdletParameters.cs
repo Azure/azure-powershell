@@ -6,7 +6,8 @@
     using System.IO;
     using System.Linq;
     using Commands.Common.Authentication.Abstractions;
-    using Management.ResourceManager.Models;
+    using Management.Resources.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
@@ -25,6 +26,7 @@
             DeploymentMode mode = DeploymentMode.Incremental,
             string location = null,
             string managementGroupId = null,
+            string queryString = null,
             string resourceGroupName = null,
             string templateUri = null,
             string templateSpecId = null,
@@ -32,13 +34,15 @@
             Hashtable templateObject = null,
             Hashtable templateParametersObject = null,
             WhatIfResultFormat resultFormat = WhatIfResultFormat.FullResourcePayloads,
-            string[] excludeChangeTypes = null)
+            string[] excludeChangeTypes = null,
+            string validationLevel = null)
         {
             this.DeploymentName = deploymentName ?? this.GenerateDeployName();
             this.ScopeType = scopeType;
             this.Mode = mode;
             this.Location = location;
             this.ManagementGroupId = managementGroupId;
+            this.QueryString = queryString;
             this.ResourceGroupName = resourceGroupName;
             this.TemplateUri = templateUri;
             this.TemplateParametersUri = templateParametersUri;
@@ -50,6 +54,7 @@
                 .Select(changeType => changeType.ToLowerInvariant())
                 .Distinct()
                 .Select(changeType => (ChangeType)Enum.Parse(typeof(ChangeType), changeType, true));
+            this.ValidationLevel = validationLevel;
         }
 
         public string DeploymentName
@@ -65,6 +70,8 @@
         public string Location { get; set; }
 
         public DeploymentMode Mode { get; set; }
+
+        public string QueryString { get; set; }
 
         public string  ResourceGroupName { get; set; }
 
@@ -82,6 +89,8 @@
 
         public IEnumerable<ChangeType> ExcludeChangeTypes { get; }
 
+        public string ValidationLevel { get; set; }
+
         public DeploymentWhatIf ToDeploymentWhatIf()
         {
             var properties = new DeploymentWhatIfProperties
@@ -98,6 +107,11 @@
             else if (Uri.IsWellFormedUriString(this.TemplateUri, UriKind.Absolute))
             {
                 properties.TemplateLink = new TemplateLink(this.TemplateUri);
+
+                if (!string.IsNullOrEmpty(this.QueryString))
+                {
+                    properties.TemplateLink.QueryString = this.QueryString;
+                }
             }
             else
             {
@@ -120,8 +134,13 @@
                     ? PSJsonSerializer.Serialize(parametersDictionary)
                     : null;
                 properties.Parameters = !string.IsNullOrEmpty(parametersContent)
-                    ? JObject.Parse(parametersContent)
+                    ? parametersContent.FromJson<Dictionary<string, DeploymentParameter>>()
                     : null;
+            }
+
+            if (!string.IsNullOrEmpty(this.ValidationLevel))
+            {
+                properties.ValidationLevel = this.ValidationLevel;
             }
 
             return new DeploymentWhatIf(properties, this.Location);

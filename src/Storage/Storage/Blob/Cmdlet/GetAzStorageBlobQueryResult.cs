@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private const string BlobPipelineParameterSet = "BlobPipeline";
 
         /// <summary>
-        /// container pipeline paremeter set name
+        /// container pipeline parameter set name
         /// </summary>
         private const string ContainerPipelineParameterSet = "ContainerPipeline";
 
@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         [ValidateNotNullOrEmpty]
         public string VersionId { get; set; }
 
-        [Parameter(HelpMessage = "Query string, see more details in: https://docs.microsoft.com/en-us/azure/storage/blobs/query-acceleration-sql-reference", Mandatory = true)]
+        [Parameter(HelpMessage = "Query string, see more details in: https://learn.microsoft.com/en-us/azure/storage/blobs/query-acceleration-sql-reference", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string QueryString { get; set; }
 
@@ -107,11 +107,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         [Parameter(HelpMessage = "Force to overwrite the existing file.")]
         public SwitchParameter Force { get; set; }
-
-        protected override bool UseTrack2Sdk()
-        {
-            return true;
-        }
 
         /// <summary>
         /// Initializes a new instance of the RemoveStorageAzureBlobCommand class.
@@ -158,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         this.Blob, Channel.StorageContext,
                         this.VersionId,
                         null,
-                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"),
+                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"),
                         this.ClientOptions, Track2Models.BlobType.Block);
                     break;
                 case NameParameterSet:
@@ -169,7 +164,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         this.Blob, Channel.StorageContext,
                         this.VersionId,
                         null,
-                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"),
+                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"),
                         this.ClientOptions, Track2Models.BlobType.Block);
                     break;
             }
@@ -185,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 bytesScanned = finishedBytes;
             });
 
-            // preapre query Option
+            // prepare query Option
             // Not show the Progressbar now, since the ProgressHandler can't represent the read query progress 
             Track2Models.BlobQueryOptions queryOption = new Track2Models.BlobQueryOptions
             {

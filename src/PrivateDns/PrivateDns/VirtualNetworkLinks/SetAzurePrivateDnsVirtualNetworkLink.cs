@@ -13,11 +13,13 @@
 namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 {
     using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PrivateDns.Models;
     using Microsoft.Azure.Commands.PrivateDns.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using ProjectResources = Microsoft.Azure.Commands.PrivateDns.Properties.Resources;
+    using ResolutionPolicyType = Microsoft.Azure.Management.PrivateDns.Models.ResolutionPolicy;
 
     /// <summary>
     /// Updates an existing zone.
@@ -56,6 +58,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [Parameter(Mandatory = false, HelpMessage = "Boolean that represents if registration is enabled on the virtual network link.")]
         [ValidateNotNullOrEmpty]
         public bool? IsRegistrationEnabled { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resolution policy on the virtual network link.Only 'NxDomainRedirect' and 'Default' options allowed. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response.")]
+        [ValidateNotNullOrEmpty]
+        public string ResolutionPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -105,6 +111,11 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
             if (this.IsRegistrationEnabled != null)
             {
                 linkToUpdate.RegistrationEnabled = this.IsRegistrationEnabled.Value;
+            }
+
+            if (this.ResolutionPolicy != null) 
+            { 
+                linkToUpdate.ResolutionPolicy = this.ResolutionPolicy;
             }
 
             ConfirmAction(

@@ -16,6 +16,51 @@
 .SYNOPSIS
 Tests verify scenarios for RoleDefinitions creation.
 #>
+function Test-RDWithAbacConditionsGet
+{
+    # Setup
+    $subscription = $(Get-AzContext).Subscription
+
+    $resource = Get-AzResource | Select-Object -Last 1 -Wait
+    Assert-NotNull $resource "Cannot find any resource to continue test execution."
+
+    $subScope = "/subscriptions/" + $subscription[0].SubscriptionId
+    $rgScope = "/subscriptions/" + $subscription[0].SubscriptionId + "/resourceGroups/" + $resource.ResourceGroupName
+    $resourceScope = $resource.ResourceId
+
+    # Task 1: Get Contributor role, verify condition doesn't exist
+    $roleDef1 = Get-AzRoleDefinition -Name "Reader"
+    Assert-AreEqual $roleDef1.Name "Reader"
+    Assert-AreEqual $false $roleDef1.IsCustom
+
+    # TODO: replace the active code with the commented Permissions check after the breaking change
+    # Assert-NotNull $roleDef1.Permissions
+    # Assert-True { $roleDef1.Permissions.Length -gt 0 }
+    # Assert-NotNull $roleDef1.Permissions[0].Actions
+    # Assert-True { $roleDef1.Permissions[0].Actions.Length -gt 0 }
+    Assert-NotNull $roleDef1.Actions
+    Assert-True { $roleDef1.Actions.Length -gt 0 }
+
+    # Task 2: Get Key Vault role, verify condition exists
+    $roleDef2 = Get-AzRoleDefinition -Id 8b54135c-b56d-4d72-a534-26097cfdc8d8
+    Assert-AreEqual $false $roleDef1.IsCustom
+
+    # TODO: replace the active code with the commented Permissions check after the breaking change
+    # Assert-NotNull $roleDef2.Permissions
+    # Assert-True { $roleDef2.Permissions.Length -gt 0 }
+    # Assert-NotNull $roleDef2.Permissions[0].Actions
+    # Assert-NotNull $roleDef2.Permissions[0].Condition
+    # Assert-NotNull $roleDef2.Permissions[0].ConditionVersion
+    Assert-NotNull $roleDef2.Actions
+    Assert-True { $roleDef2.Actions.Length -gt 0 }
+    Assert-NotNull $roleDef2.ConditionVersion
+    Assert-NotNull $roleDef2.Condition
+}
+
+<#
+.SYNOPSIS
+Tests verify scenarios for RoleDefinitions creation.
+#>
 function Test-RoleDefinitionCreateTests
 {
     # Setup

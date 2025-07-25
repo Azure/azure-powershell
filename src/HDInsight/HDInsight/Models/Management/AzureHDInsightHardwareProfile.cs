@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public AzureHDInsightHardwareProfile(HardwareProfile hardwareProfile)
         {
-            VmSize = hardwareProfile.VmSize;
+            VmSize = hardwareProfile.VMSize;
         }
 
         /// <summary>

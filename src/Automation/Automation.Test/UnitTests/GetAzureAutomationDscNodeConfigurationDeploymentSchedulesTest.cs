@@ -22,10 +22,11 @@ using Moq;
 using Xunit;
 using System;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
-    public class GetAzureAutomationDscNodeConfigurationDeploymentSchedulesTest
+    public class GetAzureAutomationDscNodeConfigurationDeploymentSchedulesTest : RMTestBase
     {
         private readonly Mock<IAutomationPSClient> mockAutomationClient;
 

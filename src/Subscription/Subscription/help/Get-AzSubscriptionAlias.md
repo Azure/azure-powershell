@@ -1,60 +1,78 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
-online version:https://docs.microsoft.com/en-us/powershell/module/az.subscription/get-azsubscriptionalias
+online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionalias
 schema: 2.0.0
 ---
 
 # Get-AzSubscriptionAlias
 
 ## SYNOPSIS
-Gets subscription alias details
+Get Alias Subscription.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzSubscriptionAlias [-AliasName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzSubscriptionAlias [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzSubscriptionAlias -AliasName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzSubscriptionAlias -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSubscriptionAlias** cmdlet gets subscription alias details.
+Get Alias Subscription.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List Alias Subscription.
 ```powershell
-PS C:\> Get-AzSubscriptionAlias -AliasName "ExistingAliasName"
+Get-AzSubscriptionAlias
 ```
 
-Gets subscription alias details
+```output
+AliasName          SubscriptionId                       ProvisioningState
+---------          --------------                       -----------------
+test-subscription  XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+test-subscription2 XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+```
+
+List Alias Subscription.
+
+### Example 2: Get Alias Subscription.
+```powershell
+Get-AzSubscriptionAlias -AliasName test-subscription
+```
+
+```output
+AliasName         SubscriptionId                       ProvisioningState
+---------         --------------                       -----------------
+test-subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+```
+
+Get Alias Subscription.
 
 ## PARAMETERS
 
 ### -AliasName
-Alias for the subscription
+AliasName is the name for the subscription creation request.
+Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -62,12 +80,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -76,34 +95,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -112,11 +115,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasListResult
+
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse
 
 ## NOTES
 

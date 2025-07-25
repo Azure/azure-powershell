@@ -28,12 +28,45 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string ResourceIdLevelResource = "ResourceIdLevelResource";
         public const string ResourceId = "ResourceId";
         public const string InputObject = "InputObject";
+        public const string InputObjectV3 = "InputObjectV3";
         public const string PolicyOn = "PolicyOn";
         public const string PolicyOff = "PolicyOff";
 
         #region Settings
 
-        public const string DataExportSettingsScope = "DataExportSettingsScope";
+        public const string SettingsScope = "SettingsScope";
+
+        #endregion
+
+        #region Sql Vulnerability Assessment
+
+        public const string OnPremMachines = "OnPremMachines";
+
+        public const string ResourceIdWithBaselineObject = "ResourceIdWithBaselineObject";
+        public const string ResourceIdWithBaselineLatest = "ResourceIdWithBaselineLatest";
+        public const string OnPremMachinesWithBaselineObject = "OnPremMachinesWithBaselineObject";
+        public const string InputObjectBaselineWithResourceId = "InputObjectWithResourceId";
+        public const string InputObjectBaselineWithOnPrem = "InputObjectBaselineWithOnPrem";
+        public const string ResourceIdWithScanId = "ResourceIdWithScanId";
+        public const string OnPremMachinesWithScanId = "OnPremMachinesWithScanId";
+
+        #endregion
+
+        #region AlertsSuppressionRules
+
+        public const string RuleNameWithParameters = "RuleNameWithParameters";
+
+        #endregion
+
+        #region Security Automation
+
+        public const string SecurityAutomationScope = "SecurityAutomationScope";
+        public const string SecurityAutomationActionWorkspace = "SecurityAutomationActionWorkspace";
+        public const string SecurityAutomationActionEventHub = "SecurityAutomationActionEventHub";
+        public const string SecurityAutomationActionLogicApp = "SecurityAutomationActionLogicApp";
+        public const string SecurityAutomationRule = "SecurityAutomationRule";
+        public const string SecurityAutomationRuleSet = "SecurityAutomationRuleSet";
+        public const string SecurityAutomationSource = "SecurityAutomationSource";
 
         #endregion
     }

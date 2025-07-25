@@ -1,135 +1,141 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: 063BAA79-484D-48CF-9170-3808813752BD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadspcredential
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azadspcredential
 schema: 2.0.0
 ---
 
 # New-AzADSpCredential
 
 ## SYNOPSIS
-Adds a credential to an existing service principal.
+Creates key credentials or password credentials for an service principal.
 
 ## SYNTAX
 
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
 New-AzADSpCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpObjectIdWithCertValueParameterSet
 ```
-New-AzADSpCredential -ObjectId <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>] -CertValue <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SPNWithCertValueParameterSet
+### SpObjectIdWithKeyCredentialParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalName <String> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ObjectId <String> -KeyCredentials <MicrosoftGraphKeyCredential[]>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SPNWithPasswordParameterSet
+### SpObjectIdWithPasswordCredentialParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalName <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ObjectId <String> -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithCertValueParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential [-StartDate <DateTime>] [-EndDate <DateTime>] -CertValue <String>
+ -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithPasswordParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential [-StartDate <DateTime>] [-EndDate <DateTime>]
+ -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SPNWithCertValueParameterSet
+```
+New-AzADSpCredential [-StartDate <DateTime>] [-EndDate <DateTime>] -CertValue <String>
+ -ServicePrincipalName <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### SPNWithPasswordParameterSet
+```
+New-AzADSpCredential [-StartDate <DateTime>] [-EndDate <DateTime>] -ServicePrincipalName <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ServicePrincipalObjectWithPasswordCredentialParameterSet
+```
+New-AzADSpCredential -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
+ -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SPNWithPasswordCredentialParameterSet
+```
+New-AzADSpCredential -PasswordCredentials <MicrosoftGraphPasswordCredential[]> -ServicePrincipalName <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ServicePrincipalObjectWithKeyCredentialParameterSet
+```
+New-AzADSpCredential -KeyCredentials <MicrosoftGraphKeyCredential[]>
+ -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SPNWithKeyCredentialParameterSet
+```
+New-AzADSpCredential -KeyCredentials <MicrosoftGraphKeyCredential[]> -ServicePrincipalName <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzADSpCredential cmdlet can be used to add a new credential or to roll credentials for a service principal.
-The service principal is identified by supplying either the object id or service principal name.
+Creates key credentials or password credentials for an service principal.
 
 ## EXAMPLES
 
-### Example 1: Create a new service principal credential using a generated password
-
+### Example 1: Create key credentials for service principal
 ```powershell
-PS C:\> New-AzADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
-
-Secret    : System.Security.SecureString
-StartDate : 11/12/2018 9:36:05 PM
-EndDate   : 11/12/2019 9:36:05 PM
-KeyId     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-Type      : Password
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+                                 -Property @{'Key' = $cert;
+                                 'Usage'       = 'Verify'; 
+                                 'Type'        = 'AsymmetricX509Cert'
+                                 }
+New-AzADSpCredential -ObjectId $Id -KeyCredentials $credential
 ```
 
-A new password credential is added to the existing service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476'.
+Create key credentials for service principal
 
-### Example 2: Create a new service principal credential using a certificate
-
+### Example 2: Create password credentials for service principal
 ```powershell
-PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-PS C:\> $cer.Import("C:\myapp.cer")
-PS C:\> $binCert = $cer.GetRawCertData()
-PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)
-PS C:\> New-AzADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue -StartDate $cer.NotBefore -EndDate $cer.NotAfter
+Get-AzADServicePrincipal -ApplicationId $appId | New-AzADSpCredential -StartDate $startDate -EndDate $endDate
 ```
 
-The supplied base64 encoded public X509 certificate ("myapp.cer") is added to the existing service principal using its SPN.
-
-### Example 3: Create a new service principal credential using piping
-
-```powershell
-PS C:\> Get-AzADServicePrincipal -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | New-AzADSpCredential
-
-Secret    : System.Security.SecureString
-StartDate : 11/12/2018 9:36:05 PM
-EndDate   : 11/12/2019 9:36:05 PM
-KeyId     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-Type      : Password
-```
-
-Gets the service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476' and pipes that to the New-AzADSpCredential to create a new service principal credential for that service principal with a generated password.
+Create password credentials for service principal
 
 ## PARAMETERS
 
 ### -CertValue
-The value of the "asymmetric" credential type.
+The value of the 'asymmetric' credential type.
 It represents the base 64 encoded certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: SpObjectIdWithCertValueParameterSet, SPNWithCertValueParameterSet
+Parameter Sets: SpObjectIdWithCertValueParameterSet, ServicePrincipalObjectWithCertValueParameterSet, SPNWithCertValueParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ServicePrincipalObjectWithCertValueParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -143,56 +149,86 @@ Accept wildcard characters: False
 ### -EndDate
 The effective end date of the credential usage.
 The default end date value is one year from today.
-For an "asymmetric" type credential, this must be set to on or before the date that the X509 certificate is valid.
+For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: SpObjectIdWithPasswordParameterSet, SpObjectIdWithCertValueParameterSet, ServicePrincipalObjectWithCertValueParameterSet, ServicePrincipalObjectWithPasswordParameterSet, SPNWithCertValueParameterSet, SPNWithPasswordParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ObjectId
-The object id of the service principal to add the credentials to.
+### -KeyCredentials
+key credentials associated with the service principal.
 
 ```yaml
-Type: System.String
-Parameter Sets: SpObjectIdWithPasswordParameterSet, SpObjectIdWithCertValueParameterSet
-Aliases: ServicePrincipalObjectId
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]
+Parameter Sets: SpObjectIdWithKeyCredentialParameterSet, ServicePrincipalObjectWithKeyCredentialParameterSet, SPNWithKeyCredentialParameterSet
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ObjectId
+The object Id of application.
+
+```yaml
+Type: System.String
+Parameter Sets: SpObjectIdWithPasswordParameterSet, SpObjectIdWithCertValueParameterSet, SpObjectIdWithKeyCredentialParameterSet, SpObjectIdWithPasswordCredentialParameterSet
+Aliases: Id, ServicePrincipalObjectId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PasswordCredentials
+Password credentials associated with the service principal.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]
+Parameter Sets: SpObjectIdWithPasswordCredentialParameterSet, ServicePrincipalObjectWithPasswordCredentialParameterSet, SPNWithPasswordCredentialParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ServicePrincipalName
-The name (SPN) of the service principal to add the credentials to.
+The service principal name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SPNWithCertValueParameterSet, SPNWithPasswordParameterSet
+Parameter Sets: SPNWithCertValueParameterSet, SPNWithPasswordParameterSet, SPNWithPasswordCredentialParameterSet, SPNWithKeyCredentialParameterSet
 Aliases: SPN
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ServicePrincipalObject
-The service principal object to add the credentials to.
+The service principal object, could be used as pipeline input.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
-Parameter Sets: ServicePrincipalObjectWithCertValueParameterSet, ServicePrincipalObjectWithPasswordParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
+Parameter Sets: ServicePrincipalObjectWithCertValueParameterSet, ServicePrincipalObjectWithPasswordParameterSet, ServicePrincipalObjectWithPasswordCredentialParameterSet, ServicePrincipalObjectWithKeyCredentialParameterSet
 Aliases:
 
 Required: True
@@ -205,17 +241,17 @@ Accept wildcard characters: False
 ### -StartDate
 The effective start date of the credential usage.
 The default start date value is today.
-For an "asymmetric" type credential, this must be set to on or after the date that the X509 certificate is valid from.
+For an 'asymmetric' type credential, this must be set to on or after the date that the X509 certificate is valid from.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: SpObjectIdWithPasswordParameterSet, SpObjectIdWithCertValueParameterSet, ServicePrincipalObjectWithCertValueParameterSet, ServicePrincipalObjectWithPasswordParameterSet, SPNWithCertValueParameterSet, SPNWithPasswordParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -255,27 +291,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
-
-### System.DateTime
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADCredential
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential
 
-### Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential
 
 ## NOTES
 
+ALIASES
+
+New-AzADServicePrincipalCredential
+
 ## RELATED LINKS
-
-[Get-AzADSpCredential](./Get-AzADSpCredential.md)
-
-[Remove-AzADSpCredential](./Remove-AzADSpCredential.md)
-
-[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
-
-
-

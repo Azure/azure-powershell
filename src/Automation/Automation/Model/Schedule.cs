@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.LastModifiedTime = schedule.LastModifiedTime.ToLocalTime();
             this.IsEnabled = schedule.IsEnabled ?? false;
             this.NextRun = AdjustOffset(schedule.NextRun, schedule.NextRunOffsetMinutes);
-            this.Interval = (byte?)schedule.Interval ?? this.Interval;
+            this.Interval = (byte?)(long?)schedule.Interval ?? this.Interval;
             this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Frequency, true);
             this.WeeklyScheduleOptions = this.CreateWeeklyScheduleOptions(schedule);
             this.MonthlyScheduleOptions = this.CreateMonthlyScheduleOptions(schedule);
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// The day of week occurrence.
         /// </param>
         /// <returns>
-        /// The <see cref="int?"/>.
+        /// The <see cref="int">int?</see>
         /// </returns>
         private int? GetDayOfWeekOccurrence(string dayOfWeekOccurrence)
         {
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// The schedule.
         /// </param>
         /// <returns>
-        /// The <see cref="WeeklyScheduleOptions"/>.
+        /// The <see cref="WeeklyScheduleOptions"/>
         /// </returns>
         private WeeklyScheduleOptions CreateWeeklyScheduleOptions(Microsoft.Azure.Management.Automation.Models.Schedule schedule)
         {

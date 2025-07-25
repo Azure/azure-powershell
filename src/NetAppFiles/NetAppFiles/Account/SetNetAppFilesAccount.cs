@@ -21,6 +21,8 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 
 // Note:
 // Both set and Update need to exist
@@ -67,15 +69,36 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public PSNetAppFilesActiveDirectory[] ActiveDirectory { get; set; }
 
         [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Domain for NFSv4 user ID mapping. This property will be set for all NetApp accounts in the subscription and region and only affect non ldap NFSv4 volumes.")]
+        [ValidateNotNullOrEmpty]
+        public string NfsV4IdDomain { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the ANF account",
+            ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             IDictionary<string, string> tagPairs = null;
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = resourceIdentifier.ResourceName;
+            }
 
             if (Tag != null)
             {
@@ -90,14 +113,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             var netAppAccountBody = new NetAppAccount()
             {
                 Location = Location,
-                ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : new List<ActiveDirectory>(),
-                Tags = tagPairs
+                ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : new List<Management.NetApp.Models.ActiveDirectory>(),
+                Tags = tagPairs,
+                NfsV4IdDomain = NfsV4IdDomain
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(netAppAccountBody, ResourceGroupName, Name);
-                WriteObject(anfAccount.ToPsNetAppFilesAccount());
+                try
+                {
+                    var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(ResourceGroupName, Name, netAppAccountBody);
+                    WriteObject(anfAccount.ConvertToPs());             
+                }
+                catch(ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);                
+                }
             }
         }
     }

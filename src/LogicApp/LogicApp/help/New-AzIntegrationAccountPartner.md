@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 2B5FC268-4888-4AEB-B125-7263CF2E4DCD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/new-azintegrationaccountpartner
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/new-azintegrationaccountpartner
 schema: 2.0.0
 ---
 
@@ -32,10 +32,14 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Create an integration account partner
+```powershell
+$BusinessIdentities = @("ZZ","AA"),@("XX","GG")
+New-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22" -PartnerType "B2B" -BusinessIdentities $BusinessIdentities
 ```
-PS C:\>New-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22" -PartnerType "B2B" -BusinessIdentities $BusinessIdentities
-Id                 : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/partners/IntegrationAccountPartner1
-Name               : IntegrationAccountPartner1
+
+```output
+Id                 : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/partners/IntegrationAccountPartner22
+Name               : IntegrationAccountPartner22
 Type               : Microsoft.Logic/integrationAccounts/partners
 PartnerType        : B2B
 CreatedTime        : 3/26/2016 7:29:30 PM
@@ -49,8 +53,7 @@ This command creates the integration account partner named IntegrationAccountPar
 ## PARAMETERS
 
 ### -BusinessIdentities
-Specifies business identities for the integration account partner.
-Specify a hash table.
+Specifies business identities for the integration account partner. It is a nested array, with inner arrays containing the Qualifier as the first object/string and the Value as the second object/string.
 
 ```yaml
 Type: System.Object

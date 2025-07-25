@@ -42,6 +42,14 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
+            if (this.AzureFirewall.Sku != null && this.AzureFirewall.Sku.Tier != null && this.AzureFirewall.Sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.AzureFirewall.Location))
+            {
+                if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.AzureFirewall.Location))
+                {
+                    throw new ArgumentException("Basic Sku Firewall is not supported in this region yet - " + this.AzureFirewall.Location, nameof(this.AzureFirewall.Location));
+                }
+            }
+
             // Map to the sdk object
             var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewall);
             secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewall.Tag, validate: true);

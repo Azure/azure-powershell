@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 8BD3B8BD-DC87-4A94-9FCA-611D11D5E065
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightmetastore
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightmetastore
 schema: 2.0.0
 ---
 
@@ -26,37 +26,37 @@ A metastore is a SQL Database that can used to store metadata for Hive, Oozie, o
 ## EXAMPLES
 
 ### Example 1: Add a SQL database metastore to the cluster configuration object
-```
-PS C:\># Primary storage account info
-PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountResourceId = "yourstorageaccountresourceid"
-PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+```powershell
+# Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
-PS C:\> $storageContainer = "container001"
+$storageContainer = "container001"
 
 # Cluster configuration info
-PS C:\> $location = "East US 2"
-PS C:\> $clusterResourceGroupName = "Group"
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
 #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 # Hive metastore info
-PS C:\> $hiveSqlServer = "your-sqlserver-001"
-PS C:\> $hiveDb = "your-sqldb-001"
-PS C:\> $hiveCreds = Get-Credential
+$hiveSqlServer = "your-sqlserver-001"
+$hiveDb = "your-sqldb-001"
+$hiveCreds = Get-Credential
 
 # Oozie metastore info
-PS C:\> $oozieSqlServer = "your-sqlserver-001"
-PS C:\> $oozieDb = "your-sqldb-002"
-PS C:\> $oozieCreds = Get-Credential
+$oozieSqlServer = "your-sqlserver-001"
+$oozieDb = "your-sqldb-002"
+$oozieCreds = Get-Credential
 
 # Create the cluster
-PS C:\> New-AzHDInsightClusterConfig  `
+New-AzHDInsightClusterConfig  `
             | Add-AzHDInsightMetastore `
                 -SqlAzureServerName "$oozieSqlServer.database.contoso.net" `
                 -DatabaseName $oozieDb `
@@ -81,6 +81,53 @@ PS C:\> New-AzHDInsightClusterConfig  `
 ```
 
 This command adds a SQL database metastore to the cluster named your-hadoop-001.
+
+### Example 2: Add a custom Ambari database to the cluster configuration object
+```powershell
+# Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+
+
+$storageContainer = "container001"
+
+# Cluster configuration info
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+
+# If the cluster's resource group doesn't exist yet, run:
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+# Custom Amari database info
+$ambariSqlServer = "your-sqlserver-001"
+$ambariDb = "your-sqldb-003"
+$ambariCreds = Get-Credential
+
+# Create the cluster
+New-AzHDInsightClusterConfig  `
+            | Add-AzHDInsightMetastore `
+                -SqlAzureServerName "$ambariSqlServer.database.contoso.net" `
+                -DatabaseName $ambariDb `
+                -Credential $ambariCreds `
+                -MetastoreType AmbariDatabase `
+            | New-AzHDInsightCluster `
+                -ClusterType Hadoop `
+                -OSType Windows `
+                -ClusterSizeInNodes 4 `
+                -ResourceGroupName $clusterResourceGroupName `
+                -ClusterName $clusterName `
+                -HttpCredential $clusterCreds `
+                -Location $location `
+                -StorageAccountResourceId $storageAccountResourceId `
+                -StorageAccountKey $storageAccountKey `
+                -StorageContainer $storageContainer
+```
+
+This command adds a custom Ambari database to the cluster named your-hadoop-002.
 
 ## PARAMETERS
 
@@ -153,7 +200,7 @@ Possible values are HiveMetastore or OozieMetastore.
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastoreType
 Parameter Sets: (All)
 Aliases:
-Accepted values: HiveMetastore, OozieMetastore
+Accepted values: HiveMetastore, OozieMetastore, AmbariDatabase
 
 Required: True
 Position: 1
@@ -193,5 +240,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzHDInsightClusterConfig](./New-AzHDInsightClusterConfig.md)
-
-

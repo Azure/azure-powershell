@@ -14,11 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 {
-    using Management.ResourceManager.Models;
+    using Management.Resources.Models;
     using ResourceManager.Cmdlets.Formatters;
     using ResourceManager.Cmdlets.SdkModels.Deployments;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
@@ -173,12 +174,12 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
             {
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p1/foo1",
+                    ResourceId = "/Subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/RG1/providers/p1/foo1",
                     ChangeType = ChangeType.Create
                 },
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p2/bar",
+                    ResourceId = "/Subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p2/bar",
                     ChangeType = ChangeType.Create
                 },
                 new WhatIfChange
@@ -188,7 +189,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
                 },
                 new WhatIfChange
                 {
-                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000002/providers/p3/foobar1",
+                    ResourceId = "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000002/providers/p3/foobar1",
                     ChangeType = ChangeType.Ignore
                 },
                 new WhatIfChange
@@ -204,7 +205,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg1
             };
 
             string changesInfo = $@"
-Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
+Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/RG1
 {Color.Green}
   + p1/foo1
   + p2/bar
@@ -236,6 +237,11 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
             // Arrange.
             var whatIfChanges = new List<WhatIfChange>
             {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
+                    ChangeType = ChangeType.Unsupported,
+                },
                 new WhatIfChange
                 {
                     ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p1/foo",
@@ -273,7 +279,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
   - p5/foo
   - p6/foo{Color.Reset}{Color.Green}
   + p2/foo{Color.Reset}{Color.Blue}
-  ! p4/foo{Color.Reset}{Color.Reset}
+  ! p4/foo{Color.Reset}{Color.Gray}
+  x p0/foo{Color.Reset}{Color.Reset}
   = p3/foo{Color.Reset}{Color.Gray}
   * p1/foo
 {Color.Reset}
@@ -386,6 +393,13 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
                         },
                         new WhatIfPropertyChange
                         {
+                            Path = "path.to.property.change2",
+                            PropertyChangeType = PropertyChangeType.NoEffect,
+                            Before = "no",
+                            After = "yes"
+                        },
+                        new WhatIfPropertyChange
+                        {
                             Path = "path.to.array.change",
                             PropertyChangeType = PropertyChangeType.Array,
                             Children = new List<WhatIfPropertyChange>
@@ -405,6 +419,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
 
             string foo = $@"{Color.Orange}""foo""{Color.Reset}";
             string bar = $@"{Color.Green}""bar""{Color.Reset}";
+            string yes = $@"{Color.Gray}""yes""{Color.Reset}";
             string expected = $@"
 Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 {Color.Purple}
@@ -412,11 +427,256 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
     {Color.Purple}~{Color.Reset} path.to.array.change{Color.Reset}:{Color.Reset} [
       {Color.Purple}~{Color.Reset} 1{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
       ]
-    {Color.Purple}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
+    {Color.Purple}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset}  ""foo"" => ""bar""
+    {Color.Gray}x{Color.Reset} path.to.property.change2{Color.Reset}:{Color.Reset} ""yes""
 "
                 .Replace(@"""foo""", foo)
                 .Replace(@"""bar""", bar)
+                .Replace(@"""yes""", yes)
                 .Replace("\r\n", Environment.NewLine);
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(changes: whatIfChanges)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_FormatsDiagnosticsAndUnsupportedChanges()
+        {
+            var whatIfChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
+                    ChangeType = ChangeType.Unsupported,
+                    UnsupportedReason = "Unable to determine the source."
+                }
+            };
+
+            var diagnostics = new List<DeploymentDiagnosticsDefinition>
+            {
+                new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
+            };
+
+            string expected = $@"Diagnostics (2): 
+{Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
+{Color.Reset}{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(changes: whatIfChanges, diagnostics: diagnostics)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_FormatsDiagnosticsAndUnsupportedChangesAndPotentialChanges()
+        {
+            var whatIfChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
+                    ChangeType = ChangeType.Unsupported,
+                    UnsupportedReason = "Unable to determine the source."
+                }
+            };
+
+            var potentialChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo2",
+                    ChangeType = ChangeType.Create,
+                    UnsupportedReason = "Unable to determine the source."
+                }
+            };
+
+            var diagnostics = new List<DeploymentDiagnosticsDefinition>
+            {
+                new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
+            };
+
+            string expected = $@"Resource and property changes are indicated with these symbols:
+  [38;5;77m+[0m Create
+  [38;5;246mx[0m Unsupported
+
+The deployment will update the following scope:
+
+Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
+[38;5;246m
+  x p0/foo
+[0m
+Resource changes: 1 unsupported.
+
+
+The following change MAY OR MAY NOT be deployed to the following scope:
+
+Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
+[38;5;77m
+  + p0/foo2
+[0m
+Potential changes: 1 to create.
+
+Diagnostics (2): 
+[38;5;136m(resource1) Nested Deployment Skipped. (Code)
+[0m[38;5;136m(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
+[0m".Replace("\r\n", Environment.NewLine);
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(changes: whatIfChanges, potentialChanges: potentialChanges, diagnostics: diagnostics)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_FormatsDiagnostics()
+        {
+            var diagnostics = new List<DeploymentDiagnosticsDefinition>
+            {
+                new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
+            };
+
+            string expected = $@"Diagnostics (1): 
+{Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine); 
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(diagnostics: diagnostics)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_FormatsUnsupportedChanges()
+        {
+            var whatIfChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
+                    ChangeType = ChangeType.Unsupported,
+                    UnsupportedReason = "Unable to determine the source."
+                }
+            };
+
+            string expected = $@"Diagnostics (1): 
+{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(changes: whatIfChanges)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_nested_array_changes_does_not_throw()
+        {
+            // Arrange.
+            var whatIfChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000004/resourceGroups/rg4/providers/Microsoft.DocumentDB/databaseAccounts/myaccount/sqlDatabases/accesscontrol/containers/workflows",
+                    ChangeType = ChangeType.Modify,
+                    Delta = new List<WhatIfPropertyChange>
+                    {
+                        new WhatIfPropertyChange
+                        {
+                            Path = "properties.resource.indexingPolicy.compositeIndexes",
+                            PropertyChangeType = PropertyChangeType.Array,
+                            Children = new List<WhatIfPropertyChange>
+                            {
+                                new WhatIfPropertyChange
+                                {
+                                    Path = "0",
+                                    PropertyChangeType = PropertyChangeType.Modify,
+                                    Children = new List<WhatIfPropertyChange>
+                                    {
+                                        new WhatIfPropertyChange
+                                        {
+                                            Path = null,
+                                            PropertyChangeType = PropertyChangeType.Array,
+                                            Children = new List<WhatIfPropertyChange>
+                                            {
+                                                new WhatIfPropertyChange
+                                                {
+                                                    Path = "0",
+                                                    PropertyChangeType = PropertyChangeType.Modify,
+                                                    Children = new List<WhatIfPropertyChange>
+                                                    {
+                                                        new WhatIfPropertyChange
+                                                        {
+                                                            Path = "order",
+                                                            PropertyChangeType = PropertyChangeType.Delete,
+                                                            Before = "ascending",
+                                                        }
+                                                    }
+                                                },
+                                                new WhatIfPropertyChange
+                                                {
+                                                    Path = "1",
+                                                    PropertyChangeType = PropertyChangeType.Modify,
+                                                    Children = new List<WhatIfPropertyChange>
+                                                    {
+                                                        new WhatIfPropertyChange
+                                                        {
+                                                            Path = "order",
+                                                            PropertyChangeType = PropertyChangeType.Delete,
+                                                            Before = "ascending",
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                    }
+                }
+            };
+
+            string expected = $@"
+Scope: /subscriptions/00000000-0000-0000-0000-000000000004/resourceGroups/rg4
+{Color.Purple}
+  ~ Microsoft.DocumentDB/databaseAccounts/myaccount/sqlDatabases/accesscontrol/containers/workflows{Color.Reset}
+    {Color.Purple}~{Color.Reset} properties.resource.indexingPolicy.compositeIndexes{Color.Reset}:{Color.Reset} [
+      {Color.Purple}~{Color.Reset} 0{Color.Reset}:{Color.Reset}
+
+        [
+        {Color.Purple}~{Color.Reset} 0{Color.Reset}:{Color.Reset}
+
+          {Color.Orange}-{Color.Reset} order{Color.Reset}:{Color.Reset} {Color.Orange}""ascending""{Color.Reset}
+
+        {Color.Purple}~{Color.Reset} 1{Color.Reset}:{Color.Reset}
+
+          {Color.Orange}-{Color.Reset} order{Color.Reset}:{Color.Reset} {Color.Orange}""ascending""{Color.Reset}
+
+        ]
+
+      ]
+".Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(

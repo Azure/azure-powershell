@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlinstancepool
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqlinstancepool
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates an Azure SQL Instance pool.
 
 ```
 New-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String> -Location <String> -SubnetId <String>
- -VCore <Int32> -Edition <String> -ComputeGeneration <String> -LicenseType <String> [-Tag <Hashtable>] [-AsJob]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -LicenseType <String> [-Tag <Hashtable>] -MaintenanceConfigurationId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,19 +25,24 @@ The **New-AzSqlInstancePool** cmdlet creates an Azure SQL Instance pool.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancepool0 -Location canadacentral -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -VCore 8 -Edition GeneralPurpose -ComputeGeneration Gen5 -LicenseType LicenseIncluded
-ResourceGroupName : resourcegroup01
-Type              : Microsoft.Sql/instancePools
-Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
-InstancePoolName  : instancePool0
-SubnetId          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-VCores            : 8
-ComputeGeneration : Gen5
-Edition           : GeneralPurpose
-Tags              :
-Sku               : Microsoft.Azure.Management.Sql.Models.Sku
-Location          : canadacentral
-LicenseType       : LicenseIncluded
+New-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancepool0 -Location canadacentral -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -VCore 8 -Edition GeneralPurpose -ComputeGeneration Gen5 -LicenseType LicenseIncluded
+```
+
+```output
+ResourceGroupName          : resourcegroup01
+Type                       : Microsoft.Sql/instancePools
+Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
+InstancePoolName           : instancePool0
+SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+VCores                     : 8
+ComputeGeneration          : Gen5
+Edition                    : GeneralPurpose
+Tags                       :
+Sku                        : Microsoft.Azure.Management.Sql.Models.Sku
+Location                   : canadacentral
+LicenseType                : LicenseIncluded
+DnsZone                    : 1234567890
+MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
 ```
 
 This command creates a new Azure SQL Instance pool.

@@ -1,26 +1,19 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservationhistory
+online version: https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
 schema: 2.0.0
 ---
 
 # Get-AzReservationHistory
 
 ## SYNOPSIS
-Get `Reservation` revision history.
+List of all the revisions for the `Reservation`.
 
 ## SYNTAX
 
-### CommandLine (Default)
 ```
-Get-AzReservationHistory -ReservationOrderId <Guid> -ReservationId <Guid>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PipeObject
-```
-Get-AzReservationHistory -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>]
+Get-AzReservationHistory -ReservationId <String> -ReservationOrderId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -29,22 +22,38 @@ List of all the revisions for the `Reservation`.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> Get-AzReservationHistory -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "00000000-ffff-ffff-0000-00000fffff"
+### Example 1: Get the revision of a reservation
+```powershell
+Get-AzReservationHistory -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9
 ```
 
-Get the revision history of the specific reservation
+```output
+Location ReservationOrderId/ReservationId                                            Sku           State             BenefitStartTime      ExpiryDate            LastUpdatedDateTime   SkuDescription
+-------- --------------------------------                                            ---           -----             ----------------      ----------            -------------------   --------------
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/9 Standard_B1ls Succeeded         6/24/2022 10:06:39 PM 6/24/2023 12:00:00 AM 6/24/2022 10:06:43 PM Reserved VM Instance, Standard_B1ls, US West,… 
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/8 Standard_B1ls Succeeded         6/24/2022 10:06:39 PM 6/24/2023 12:00:00 AM 6/24/2022 10:06:43 PM Reserved VM Instance, Standard_B1ls, US West,… 
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/7 Standard_B1ls ConfirmedBilling                                              6/24/2022 10:06:17 PM Reserved VM Instance, Standard_B1ls, US West,…
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/6 Standard_B1ls PendingBilling                                                6/24/2022 10:04:04 PM Reserved VM Instance, Standard_B1ls, US West,… 
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/5 Standard_B1ls ConfirmedCapacity                                             6/24/2022 10:03:44 PM Reserved VM Instance, Standard_B1ls, US West,… 
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/4 Standard_B1ls PendingCapacity                                               6/24/2022 10:03:34 PM Reserved VM Instance, Standard_B1ls, US West,… 
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/3 Standard_B1ls Creating                                                      6/24/2022 10:03:17 PM Reserved VM Instance, Standard_B1ls, US West,… 
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/2 Standard_B1ls Creating                                                      6/24/2022 10:03:04 PM Reserved VM Instance, Standard_B1ls, US West,… 
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/1 Standard_B1ls Creating                                                      6/24/2022 10:02:52 PM Reserved VM Instance, Standard_B1ls, US West,…
+```
+
+Get the revision of a reservation.
+Some data might be truncated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,48 +62,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Reservation
-Pipe object parameter for `Reservation`s
-
-```yaml
-Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation
-Parameter Sets: PipeObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ReservationId
-ReservationId of the `Reservation` of which history is to be shown
+Id of the reservation item
 
 ```yaml
-Type: System.Guid
-Parameter Sets: CommandLine
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ReservationOrderId
-ReservationOrderId for the `ReservationOrder` that contains the `Reservation`
+Order Id of the reservation
 
 ```yaml
-Type: System.Guid
-Parameter Sets: CommandLine
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -103,13 +97,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
-
-### Microsoft.Azure.Commands.Reservations.Models.PSReservation
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Reservations.Models.PSReservationPage
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 
 ## NOTES
 

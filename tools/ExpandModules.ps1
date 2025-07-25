@@ -33,17 +33,32 @@ if ([string]::IsNullOrEmpty($Artifacts)) {
 New-Item -Path (Get-Item $Artifacts).FullName -Name "tmp" -ItemType "directory"
 $tmp = Join-Path -Path (Get-Item $Artifacts).FullName -ChildPath "tmp"
 
+$TargetModulePath = Join-Path $Artifacts -ChildPath "TargetModule.txt"
+$TargetModule = @()
+if (Test-Path $TargetModulePath) {
+    $TargetModule = Get-Content $TargetModulePath
+}
+Write-Host $TargetModule
 try {
-    foreach ($artifact in (Get-ChildItem -Path $Artifacts -Filter "*.nupkg").FullName) {
-        $module_name = (Get-Item -Path $artifact).Name
-        $zip_artifact = Join-Path -Path (Get-Item $Artifacts).FullName -ChildPath $module_name".zip"
+    $AllPackages = Get-ChildItem -Path $Artifacts -Filter "*.nupkg"
 
-        Write-Output "Renaming package $artifact to zip archive $zip_artifact"
-        Rename-Item $artifact $zip_artifact
-
-        Write-Output "Expanding $zip_artifact to $tmp\$module_name"
-        Expand-Archive $zip_artifact -DestinationPath $tmp"\"$module_name 
-        Remove-Item -Recurse $zip_artifact -Force -ErrorAction Stop
+    if ($TargetModule.Length -eq 0) {
+        Write-Error "No target modules found."
+        exit 1
+    }
+    foreach ($package in $AllPackages) {
+        foreach ($module in $TargetModule) {
+            if (($package.Name -like "Az.$module.*.nupkg") -or ($package.Name -match '^Az(Preview)?\.\d+\.\d+\.\d+\.nupkg$')) { 
+                $module_name = $package.Name
+                $zip_artifact = $package.FullName -replace ".nupkg$",".zip"
+                Write-Output "Renaming $package to zip archive $zip_artifact"
+                Rename-Item $package.FullName $zip_artifact
+                Write-Output "Expanding $zip_artifact to $tmp\$module_name"
+                Expand-Archive $zip_artifact -DestinationPath "$tmp\$module_name"
+                Remove-Item -Recurse $zip_artifact -Force -ErrorAction Stop
+                break
+            }
+        }
     }
 } catch {
     $Errors = $_

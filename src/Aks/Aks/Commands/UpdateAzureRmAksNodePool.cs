@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
@@ -60,11 +62,21 @@ namespace Microsoft.Azure.Commands.Aks.Commands
         [Alias("ResourceId")]
         public string Id { get; set; }
 
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of nodes for the node pools.")]
+        public int NodeCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Will only upgrade the node image of agent pools.")]
+        public SwitchParameter NodeImageOnly { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Update node pool without prompt")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
+        public string MaxSurge { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -77,15 +89,15 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 case Constants.IdParameterSet:
                     resource = new ResourceIdentifier(Id);
                     ResourceGroupName = resource.ResourceGroupName;
-                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
+                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(Id));
                     Name = resource.ResourceName;
                     break;
                 case Constants.InputObjectParameterSet:
                     WriteVerbose(Resources.UsingAgentPoolFromPipeline);
-                    pool = PSMapper.Instance.Map<AgentPool>(InputObject);
+                    pool = AdapterHelper<PSNodePool, AgentPool>.Adapt(InputObject);
                     resource = new ResourceIdentifier(pool.Id);
                     ResourceGroupName = resource.ResourceGroupName;
-                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource);
+                    ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(InputObject));
                     Name = resource.ResourceName;
                     break;
                 case Constants.ParentObjectParameterSet:
@@ -131,9 +143,56 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     {
                         pool.EnableAutoScaling = EnableAutoScaling.ToBool();
                     }
+                    if (this.IsParameterBound(c => c.Mode))
+                    {
+                        pool.Mode = Mode;
+                    }
+                    if (this.IsParameterBound(c => c.NodeCount))
+                    {
+                        pool.Count = NodeCount;
+                    }
 
-                    var updatedPool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
-                    WriteObject(PSMapper.Instance.Map<PSNodePool>(updatedPool));
+                    if (this.IsParameterBound(c => c.NodeImageOnly))
+                    {
+                        if (this.IsParameterBound(c => c.KubernetesVersion))
+                        {
+                            throw new AzPSArgumentException(Resources.UpdateKubernetesVersionAndNodeImageOnlyConflict, "KubernetesVersion");
+                        }
+                        if (!ShouldProcess(Resources.ConfirmOnlyUpgradeNodeVersion, ""))
+                        {
+                            return;
+                        }
+
+                        Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, ClusterName, Name);
+                        return;
+                    }
+                    if (this.IsParameterBound(c => c.NodeLabel))
+                    {
+                        pool.NodeLabels = new Dictionary<string, string>();
+                        foreach (var key in NodeLabel.Keys)
+                        {
+                            pool.NodeLabels.Add(key.ToString(), NodeLabel[key].ToString());
+                        }
+                    }
+                    if (this.IsParameterBound(c => c.Tag))
+                    {
+                        pool.Tags = new Dictionary<string, string>();
+                        foreach (var key in Tag.Keys)
+                        {
+                            pool.Tags.Add(key.ToString(), Tag[key].ToString());
+                        }
+                    }
+                    if (this.IsParameterBound(c => c.NodeTaint))
+                    {
+                        pool.NodeTaints = NodeTaint;
+                    }
+                    if (this.IsParameterBound(c => c.MaxSurge))
+                    {
+                        pool.UpgradeSettings = new AgentPoolUpgradeSettings(MaxSurge);
+                    }
+
+                    var updatedPool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
+                    WriteObject(AdapterHelper<AgentPool, PSNodePool>.Adapt(updatedPool));
                 });
             }
         }

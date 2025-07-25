@@ -83,11 +83,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidatePattern("([r-][w-][x-]){3}")]
         public string Umask { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported. ")]
+        [Parameter(Mandatory = false, HelpMessage = "Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported. " +
+            "The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("([r-][w-][x-]){3}")]
+        [ValidatePattern("([r-][w-][x-]){2}([r-][w-][xtT-])")]
         public string Permission { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Encryption context of the file. Encryption context is metadata that is not encrypted when stored on the file. The primary application of this field is to store non-encrypted data that can be used to derive the customer-provided key for a file. Not applicable for directories.",
+            ParameterSetName = FileParameterSet)]
+        public string EncryptionContext { get; set; }
 
         [Parameter(HelpMessage = "Specifies properties for the created directory or file. "+
             "The supported properties for file are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentMD5, ContentType." +
@@ -125,6 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         // Overwrite the useless parameter
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the NewAzDataLakeGen2ItemCommand class.
@@ -190,10 +196,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     PathHttpHeaders pathHttpHeaders = SetDatalakegen2ItemProperties(dirClient, BlobProperties, setToServer: false);
                     IDictionary<string, string> metadata = SetDatalakegen2ItemMetaData(dirClient, BlobMetadata, setToServer: false);
 
-                    dirClient.Create(pathHttpHeaders, 
-                        metadata, 
-                        this.Permission, 
-                        this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null);
+                    DataLakePathCreateOptions createOptions = new DataLakePathCreateOptions()
+                    {
+                        HttpHeaders = pathHttpHeaders,
+                        Metadata = metadata,
+                        AccessOptions = new DataLakeAccessOptions()
+                        {
+                            Permissions = this.Permission,
+                            Umask = this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null
+                        }
+                    };
+
+                    dirClient.Create(createOptions, this.CmdletCancellationToken);
 
                     WriteDataLakeGen2Item(localChannel, dirClient);
                 }
@@ -203,9 +217,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 DataLakeFileClient fileClient = fileSystem.GetFileClient(this.Path);
                 if (ShouldProcess(GetDataLakeItemUriWithoutSas(fileClient), "Create File: "))
                 {
-                    // Use SDK to upload directly when use SAS credential, and need set permission, since set permission after upload will fail with SAS
-                    if (Channel.StorageContext.StorageAccount.Credentials.IsSAS
-                        && (!string.IsNullOrEmpty(this.Permission) || !string.IsNullOrEmpty(this.Umask)))
+                    // Use SDK to upload directly when
+                    // 1. use SAS credential, and need set permission, since set permission after upload will fail with SAS, or 
+                    // 2. file encryption context is set by user 
+                    if ((Channel.StorageContext.StorageAccount != null && Channel.StorageContext.StorageAccount.Credentials != null &&
+                        Channel.StorageContext.StorageAccount.Credentials.IsSAS && (!string.IsNullOrEmpty(this.Permission) || !string.IsNullOrEmpty(this.Umask))) || 
+                        this.EncryptionContext != null)
                     {
                         Func<long, Task> taskGenerator = (taskId) => UploadDataLakeFile(taskId, fileClient, ResolvedFileName);
                         RunTask(taskGenerator);
@@ -235,15 +252,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             if (this.Force.IsPresent || !fileClient.Exists() || ShouldContinue(string.Format(Resources.OverwriteConfirmation, GetDataLakeItemUriWithoutSas(fileClient)), null))
             {
-
                 // Set Item Properties and MetaData
                 PathHttpHeaders pathHttpHeaders = SetDatalakegen2ItemProperties(fileClient, BlobProperties, setToServer: false);
                 IDictionary<string, string> metadata = SetDatalakegen2ItemMetaData(fileClient, BlobMetadata, setToServer: false);
-
-                fileClient.Create(pathHttpHeaders,
-                    metadata,
-                    this.Permission,
-                    this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null);
 
                 long fileSize = new FileInfo(ResolvedFileName).Length;
                 string activity = String.Format(Resources.SendAzureBlobActivity, this.Source, this.Path, this.FileSystem);
@@ -260,10 +271,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     }
                 });
 
-                using (FileStream stream = File.OpenRead(ResolvedFileName))
-                {
-                    await fileClient.AppendAsync(stream, 0, progressHandler: progressHandler, cancellationToken: CmdletCancellationToken).ConfigureAwait(false);
-                }
+                await fileClient.UploadAsync(ResolvedFileName,
+                    new DataLakeFileUploadOptions()
+                    {
+                        Metadata = metadata,
+                        Permissions = this.Permission,
+                        Umask = this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null,
+                        ProgressHandler = progressHandler,
+                        HttpHeaders = pathHttpHeaders,
+                        EncryptionContext = this.EncryptionContext 
+                    },
+                    this.CmdletCancellationToken).ConfigureAwait(false);
+
                 WriteDataLakeGen2Item(Channel, fileClient, taskId: taskId);
             }
 
@@ -292,6 +311,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// upload file to azure blob
         /// </summary>
         /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="filePath">local file path</param>
         /// <param name="blob">destination azure blob object</param>
         internal virtual async Task Upload2Blob(long taskId, IStorageBlobManagement localChannel, string filePath, CloudBlob blob)
@@ -373,13 +393,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string blobPermission = string.Empty;
             for (int i = 0; i < permission.Length; i++)
             {
-                if (umask[i] != '-')
+                if (Char.ToLower(permission[i]) == 't')
                 {
-                    blobPermission += '-';
+                    if (permission[i] == 'T')
+                    {
+                        blobPermission += permission[i];
+                    }
+                    else
+                    {
+                        if (umask[i] == '-')
+                        {
+                            blobPermission += 't';
+                        }
+                        else
+                        {
+                            blobPermission += 'T';
+                        }
+                    }
                 }
                 else
                 {
-                    blobPermission += permission[i];
+                    if (umask[i] != '-')
+                    {
+                        blobPermission += '-';
+                    }
+                    else
+                    {
+                        blobPermission += permission[i];
+                    }
                 }
             }
 

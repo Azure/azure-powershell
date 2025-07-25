@@ -16,11 +16,14 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
+using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
@@ -54,84 +57,61 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return result.Response.StatusCode;
         }
 
-        public virtual StorageInsight CreateOrUpdateStorageInsight(
-            string resourceGroupName,
-            string workspaceName,
-            string name,
-            string storageAccountResourceId,
-            string storageAccountKey,
-            List<string> tables,
-            List<string> containers)
+        public virtual StorageInsight CreateOrUpdateStorageInsight(PSStorageInsightParameters parameters)
         {
-            StorageInsight properties = new StorageInsight { Containers = containers, Tables = tables };
+            StorageInsight storageInsightsToUpdate = new StorageInsight { 
+                Containers = parameters.Containers, 
+                Tables = parameters.Tables,
+                ETag = parameters.Etag,
+                Tags = parameters.Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value)
+            };
 
-            if (!string.IsNullOrWhiteSpace(storageAccountResourceId) || !string.IsNullOrWhiteSpace(storageAccountKey))
+            if (!string.IsNullOrWhiteSpace(parameters.StorageAccountResourceId) && !string.IsNullOrWhiteSpace(parameters.StorageAccountKey))
             {
-                properties.StorageAccount = new StorageAccount { Id = storageAccountResourceId, Key = storageAccountKey };
+                storageInsightsToUpdate.StorageAccount = new StorageAccount { Id = parameters.StorageAccountResourceId, Key = parameters.StorageAccountKey };
             }
 
-            var response = OperationalInsightsManagementClient.StorageInsightConfigs.CreateOrUpdate(
-                resourceGroupName,
-                workspaceName,
-                name,
-                properties);
-
-            return response;
-        }
-
-        public virtual PSStorageInsight UpdatePSStorageInsight(UpdatePSStorageInsightParameters parameters)
-        {
-            // Get the existing storage insight
-            StorageInsight storageInsight = OperationalInsightsManagementClient.StorageInsightConfigs.Get(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
-
-            // Execute the update
-            StorageInsight updatedStorageInsight = CreateOrUpdateStorageInsight(
+            return OperationalInsightsManagementClient.StorageInsightConfigs.CreateOrUpdate(
                 parameters.ResourceGroupName,
                 parameters.WorkspaceName,
-                storageInsight.Name,
-                storageInsight.StorageAccount.Id,
-                string.IsNullOrWhiteSpace(parameters.StorageAccountKey) ? storageInsight.StorageAccount.Key : parameters.StorageAccountKey,
-                parameters.Tables ?? storageInsight.Tables.ToList(),
-                parameters.Containers ?? storageInsight.Containers.ToList());
+                parameters.Name,
+                storageInsightsToUpdate);
+        }
+
+        public virtual PSStorageInsight UpdatePSStorageInsight(PSStorageInsightParameters parameters)
+        {
+            // Get the existing storage insight
+            PSStorageInsight storageInsight;
+            try
+            {
+                storageInsight = GetStorageInsight(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
+            }
+            catch (RestException)
+            {
+                throw new PSArgumentException($"StorageInsight {parameters.Name} under workspace {parameters.WorkspaceName} does not existed");
+            }
+
+            // Execute the update
+            StorageInsight updatedStorageInsight = CreateOrUpdateStorageInsight(parameters);
 
             return new PSStorageInsight(updatedStorageInsight, parameters.ResourceGroupName, parameters.WorkspaceName);
         }
 
-        public virtual PSStorageInsight CreatePSStorageInsight(CreatePSStorageInsightParameters parameters)
+
+        public virtual PSStorageInsight CreatePSStorageInsight(PSStorageInsightParameters parameters, Action<bool, string, string, string, Action, Func<bool>> confirmAction, bool force)
         {
             PSStorageInsight storageInsight = null;
             Action createStorageInsight = () =>
             {
-                storageInsight =
-                    new PSStorageInsight(
-                        CreateOrUpdateStorageInsight(
-                            parameters.ResourceGroupName,
-                            parameters.WorkspaceName,
-                            parameters.Name,
-                            parameters.StorageAccountResourceId,
-                            parameters.StorageAccountKey,
-                            parameters.Tables,
-                            parameters.Containers),
-                        parameters.ResourceGroupName,
-                        parameters.WorkspaceName);
+                storageInsight = new PSStorageInsight(CreateOrUpdateStorageInsight(parameters), parameters.ResourceGroupName, parameters.WorkspaceName);
             };
 
-            parameters.ConfirmAction(
-                parameters.Force,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.StorageInsightExists,
-                    parameters.Name,
-                    parameters.WorkspaceName),
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.StorageInsightCreating,
-                    parameters.Name,
-                    parameters.WorkspaceName),
+            confirmAction(force,
+                string.Format(CultureInfo.InvariantCulture, Resources.StorageInsightExists, parameters.Name, parameters.WorkspaceName),
+                string.Format(CultureInfo.InvariantCulture, Resources.StorageInsightCreating, parameters.Name, parameters.WorkspaceName),
                 parameters.Name,
                 createStorageInsight,
-                () => CheckStorageInsightExists(parameters.ResourceGroupName, 
-                    parameters.WorkspaceName, parameters.Name));
+                () => CheckStorageInsightExists(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name));
             return storageInsight;
         }
 
@@ -143,7 +123,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 if (string.IsNullOrWhiteSpace(resourceGroupName) || string.IsNullOrWhiteSpace(workspaceName))
                 {
-                    throw new ArgumentException(Resources.WorkspaceDetailsCannotBeEmpty);
+                    throw new PSArgumentException(Resources.WorkspaceDetailsCannotBeEmpty);
                 }
 
                 storageInsights.Add(GetStorageInsight(resourceGroupName, workspaceName, storageInsightName));

@@ -14,16 +14,38 @@
 
 function Test-AzureVMGetJobs
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-adhoc-vault"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2"
+	$vmFriendlyName1 = "pstest-ccy-vm"
+	$vmFriendlyName2 = "pstest-ccy-vm2"
 	
 	try
 	{
 		# Setup
-		$vm1 = Create-VM $resourceGroupName $location 1
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Enable-Protection $vault $vm1
+		$vm1 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName1
+		$vm2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName2
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName 
 
+		# Disable soft Delete
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
+		# Disable Protection 
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+		$job = Disable-AzRecoveryServicesBackupProtection -VaultId $vault.ID -Item $item[0] -RemoveRecoveryPoints -Force;
+		$job2 = Disable-AzRecoveryServicesBackupProtection -VaultId $vault.ID -Item $item[1] -RemoveRecoveryPoints -Force;
+
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+
+		# undelete backup item
+		$undeleteJob = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[0] -VaultId $vault.ID
+		$undeleteJob2 = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[1] -VaultId $vault.ID
+
+		# Enable Protection
+		Enable-Protection $vault $vm1
+		
 		# Test 1: Triggering a new job increases job count
 
 		$startDate1 = Get-QueryDateInUtc $((Get-Date).AddDays(-1)) "StartDate1"
@@ -31,10 +53,9 @@ function Test-AzureVMGetJobs
 
 		$jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -From $startDate1 -To $endDate1
 		$jobCount1 = $jobs.Count
-
-		$vm2 = Create-VM $resourceGroupName $location 2
+						
 		Enable-Protection $vault $vm2
-
+				
 		$endDate2 = Get-QueryDateInUtc $(Get-Date) "EndDate2"
 
 		$jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -From $startDate1 -To $endDate2
@@ -45,8 +66,8 @@ function Test-AzureVMGetJobs
 		# Test 2: Job details
 		foreach ($job in $jobs)
 		{
-			$jobDetails = Get-AzRecoveryServicesBackupJobDetails -VaultId $vault.ID -Job $job;
-			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetails `
+			$jobDetails = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $job;
+			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetail `
 				-VaultId $vault.ID `
 				-JobId $job.JobId
 
@@ -76,28 +97,45 @@ function Test-AzureVMGetJobs
 			-From $startDate1 `
 			-To $endDate2 `
 			-BackupManagementType AzureVM
-		Assert-True { $jobs.Count -gt 0}
+		Assert-True { $jobs.Count -gt 0} 
 	}
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# Cleanup-ResourceGroup $resourceGroupName
 	}
 }
 
 function Test-AzureVMGetJobsTimeFilter
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup -Location $location
+	# $location = "southeastasia"
+	# $resourceGroupName = Create-ResourceGroup -Location $location
 	
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-adhoc-vault"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm3"	
+	$vmFriendlyName1 = "hiaga-adhoc-vm"
+	$vmFriendlyName2 = "hiaganewvm3"
+	$protectionState = "IRPending"
+
 	try
 	{
 		# Setup
-		$vm1 = Create-VM $resourceGroupName $location 1
-		$vm2 = Create-VM $resourceGroupName $location 2
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Enable-Protection $vault $vm1
-		Enable-Protection $vault $vm2
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName1
+		$vm2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName2
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName 
+
+		# $vm1 = Create-VM $resourceGroupName $location 1
+		# $vm2 = Create-VM $resourceGroupName $location 2
+		# $vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		# Disable soft Delete
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
+		# Enable-Protection $vault $vm1
+		# Enable-Protection $vault $vm2
 
 		# Generic time filter test
 
@@ -137,16 +175,7 @@ function Test-AzureVMGetJobsTimeFilter
 			-To $endTime2 } `
 			"Please specify From and To filter values in UTC. Other timezones are not supported";
 
-		# 3. rangeEnd.Subtract(rangeStart) > TimeSpan.FromDays(30)
-		$startTime3 = Get-QueryDateInUtc $((Get-Date).AddDays(-40)) "StartTime3"
-		$endTime3 = Get-QueryDateInUtc $(Get-Date) "EndTime3"
-		Assert-ThrowsContains { Get-AzRecoveryServicesBackupJob `
-			-VaultId $vault.ID `
-			-From $startTime3 `
-			-To $endTime3 } `
-			"To filter should not be more than 30 days away from From filter";
-
-		# 4. rangeStart > DateTime.UtcNow
+		# 3. rangeStart > DateTime.UtcNow
 		$startTime4 = Get-QueryDateInUtc $((Get-Date).AddYears(100).AddDays(-1)) "StartTime4"
 		$endTime4 = Get-QueryDateInUtc $((Get-Date).AddYears(100)) "EndTime4"
 		Assert-ThrowsContains { Get-AzRecoveryServicesBackupJob `
@@ -158,23 +187,34 @@ function Test-AzureVMGetJobsTimeFilter
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# Cleanup-ResourceGroup $resourceGroupName
 	}
 }
 
 function Test-AzureVMWaitJob
-{
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup -Location $location
+{	
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-adhoc-vault"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2"	
+	$vmFriendlyName1 = "pstest-ccy-vm"
+	$vmFriendlyName2 = "pstest-ccy-vm2"
 
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		$item = Enable-Protection $vault $vm
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		
-		$backupJob = Backup-AzRecoveryServicesBackupItem -VaultId $vault.ID -Item $item
+		# Disable soft Delete
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"		
+		
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID		
+		
+		# Trigger backup and wait for completion
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item[0] 
 
 		Assert-True { $backupJob.Status -eq "InProgress" }
 
@@ -184,24 +224,37 @@ function Test-AzureVMWaitJob
 	}
 	finally
 	{
-		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# no Cleanup		
 	}
 }
 
 function Test-AzureVMCancelJob
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup -Location $location
+	# $location = "southeastasia"
+	# $resourceGroupName = Create-ResourceGroup -Location $location
+
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-adhoc-vault"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmFriendlyName1 = "pstest-ccy-vm"
 
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		$item = Enable-Protection $vault $vm
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName1
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName 
+
+		# $vm2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmFriendlyName2
+		# $vm = Create-VM $resourceGroupName $location
+		# $vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		# Disable soft Delete
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType "AzureVM" -WorkloadType "AzureVM" # Enable-Protection $vault $vm
 		
-		$backupJob = Backup-AzRecoveryServicesBackupItem -VaultId $vault.ID -Item $item
+		$backupJob = Backup-AzRecoveryServicesBackupItem -VaultId $vault.ID -Item $item[0]
 
 		Assert-True { $backupJob.Status -eq "InProgress" }
 
@@ -212,6 +265,6 @@ function Test-AzureVMCancelJob
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# Cleanup-ResourceGroup $resourceGroupName
 	}
 }

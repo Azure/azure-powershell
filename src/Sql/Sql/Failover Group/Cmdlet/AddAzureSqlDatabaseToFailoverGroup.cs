@@ -60,6 +60,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public List<AzureSqlDatabaseModel> Database { get; set; }
 
         /// <summary>
+        /// The Azure SQL Databases secondary type on partner server.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Databases secondary type on partner server. Default value is Geo.")]
+        [ValidateSet("Geo", "Standby")]
+        public string SecondaryType { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -85,15 +93,18 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlFailoverGroupModel> model)
         {
-            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
+            AzureSqlFailoverGroupModel newModel = model.First();
             List<string> dbs = new List<string>();
-            dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
 
-            newEntity.Add(new AzureSqlFailoverGroupModel()
+            dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
+            newModel.Databases = GetUpdatedDatabaseList(dbs);
+
+            if (MyInvocation.BoundParameters.ContainsKey("SecondaryType"))
             {
-                Databases = GetUpdatedDatabaseList(dbs)
-            });
+                newModel.SecondaryType = SecondaryType;
+            }
+            newEntity.Add(newModel);
 
             return newEntity;
         }

@@ -32,6 +32,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// </summary>
         private const int DefaultConcurrentTaskCount = 10;
 
+        public const long sizeTB = (long)1024 * 1024 * 1024 * 1024;
+
+        protected const int size4MB = 4 * 1024 * 1024;
+
         /// <summary>
         /// Stores the transfer manager instance.
         /// </summary>
@@ -54,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public virtual SwitchParameter AsJob { get; set; }
-        
+
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
@@ -101,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
         }
 
-        protected  void DoEndProcessing()
+        protected void DoEndProcessing()
         {
             try
             {
@@ -144,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         // Dynamic Parameters which are only available on Windows.
         public class WindowsOnlyParameters
         {
-            [Parameter(HelpMessage = "Keep the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.")]
+            [Parameter(HelpMessage = "Keep the source File SMB properties (File Attributes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.")]
             public SwitchParameter PreserveSMBAttribute { get; set; }
         }
     }

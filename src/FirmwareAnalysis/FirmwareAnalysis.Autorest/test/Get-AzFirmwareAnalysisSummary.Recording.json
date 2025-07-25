@@ -1,0 +1,47 @@
+{
+  "Get-AzFirmwareAnalysisSummary+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/7795b9a8-97bb-ba4b-b21a-8dc6ae2dabb9/summaries/CVE?api-version=2024-01-10+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/7795b9a8-97bb-ba4b-b21a-8dc6ae2dabb9/summaries/CVE?api-version=2024-01-10",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "4995891b-f23e-441e-93b7-3fe488a988c7" ],
+        "CommandName": [ "Get-AzFirmwareAnalysisSummary" ],
+        "FullCommandName": [ "Get-AzFirmwareAnalysisSummary_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.FirmwareAnalysis/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=ff3a6090-3ef9-4621-b02c-e0abfd9da371,objectId=32d56fca-9a4a-417e-8daf-c99d3d86423a/centralus/19a8e2e4-3bbf-49ba-9c0b-55f336fc39ed" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-envoy-upstream-service-time": [ "3" ],
+        "x-ms-request-id": [ "57ac5a99-2b3e-40b8-9cce-bf109c5c68b2" ],
+        "x-ms-correlation-request-id": [ "ed907897-597c-4d49-80a0-4e1821a3fd3a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "241" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240216T192927Z:ed907897-597c-4d49-80a0-4e1821a3fd3a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 052A46FFED0146D4B2DF98DC53336116 Ref B: CO6AA3150217023 Ref C: 2024-02-16T19:29:27Z" ],
+        "Date": [ "Fri, 16 Feb 2024 19:29:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "386" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/7795b9a8-97bb-ba4b-b21a-8dc6ae2dabb9/summaries/CVE\",\"name\":\"CVE\",\"type\":\"Microsoft.IoTFirmwareDefense/workspaces/firmwares/summaries\",\"properties\":{\"unknown\":0,\"low\":4,\"medium\":63,\"high\":68,\"critical\":25,\"summaryType\":\"CVE\"}}",
+      "isContentBase64": false
+    }
+  }
+}

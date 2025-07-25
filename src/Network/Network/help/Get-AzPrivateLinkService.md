@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azprivatelinkservice
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azprivatelinkservice
 schema: 2.0.0
 ---
 
@@ -29,10 +29,12 @@ The **Get-AzPrivateLinkService** cmdlet gets one or more private link services.
 
 ## EXAMPLES
 
-### Example
-```
+### Example 1
+```powershell
 Get-AzPrivateLinkService -Name MyPLS -ResourceGroupName TestResourceGroup
+```
 
+```output
 Name                                 : MyPLS
 ResourceGroupName                    : TestResourceGroup
 Id                                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/prov
@@ -72,7 +74,7 @@ NetworkInterfaces                    : [
                                        ]
 ```
 
-This commandlet gets a private link service in the resource group.
+This cmdlet gets a private link service in the resource group.
 
 ## PARAMETERS
 
@@ -118,7 +120,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -130,7 +132,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -145,7 +147,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -157,7 +159,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

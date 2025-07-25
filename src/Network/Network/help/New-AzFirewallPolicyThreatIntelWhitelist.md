@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallpolicythreatintelwhitelist
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicythreatintelwhitelist
 schema: 2.0.0
 ---
 
 # New-AzFirewallPolicyThreatIntelWhitelist
 
 ## SYNOPSIS
-Create a new threat intelligence whitelist for Azure Firewall Policy
+Create a new threat intelligence allowlist for Azure Firewall Policy
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzFirewallPolicyThreatIntelWhitelist [-FQDN <String[]>] [-IpAddress <String[
 ```
 
 ## DESCRIPTION
-The **New-AzFirewallPolicyThreatIntelWhitelist** cmdlet creates a threat intel whitelist object, which can be used when creating or setting an Azure Firewall Policy.
+The **New-AzFirewallPolicyThreatIntelWhitelist** cmdlet creates a threat intel allowlist object, which can be used when creating or setting an Azure Firewall Policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
+New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
 ```
 
-This example creates a threat intel whitelist containing a FQDN whitelist of one entry and an Ip address whitelist of two entries
+This example creates a threat intel allowlist containing a FQDN allowlist of one entry and an Ip address allowlist of two entries
 
 ## PARAMETERS
 
@@ -35,7 +35,7 @@ This example creates a threat intel whitelist containing a FQDN whitelist of one
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -47,10 +47,10 @@ Accept wildcard characters: False
 ```
 
 ### -FQDN
-The FQDNs of the Threat Intel Whitelist
+The FQDNs of the Threat Intel allowlist
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -62,10 +62,10 @@ Accept wildcard characters: False
 ```
 
 ### -IpAddress
-The IP Addresses of the Threat Intel Whitelist
+The IP Addresses of the Threat Intel allowlist
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

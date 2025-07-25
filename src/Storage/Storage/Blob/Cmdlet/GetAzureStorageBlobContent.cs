@@ -30,6 +30,8 @@ using System.Globalization;
 using Track2Models = global::Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs;
 using Azure.Storage;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -50,6 +52,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// container pipeline
         /// </summary>
         private const string ContainerParameterSet = "ContainerPipeline";
+
+        /// <summary>
+        /// download from uri parameter set
+        /// </summary>
+        private const string UriParameterSet = "UriPipeline";
 
         [Alias("ICloudBlob")]
         [Parameter(HelpMessage = "Azure Blob Object", Mandatory = true,
@@ -96,7 +103,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         public string FileName = String.Empty;
 
-        [Parameter(HelpMessage = "check the md5sum")]
+        [Parameter(HelpMessage = "check the md5sum", ParameterSetName = ManualParameterSet)]
+        [Parameter(HelpMessage = "check the md5sum", ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "check the md5sum", ParameterSetName = ContainerParameterSet)]
         public SwitchParameter CheckMd5
         {
             get { return checkMd5; }
@@ -105,7 +114,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private bool checkMd5;
 
+        [Alias("Uri", "BlobUri")]
+        [Parameter(HelpMessage = "Blob uri to download from.", Mandatory = true,
+            ValueFromPipelineByPropertyName = true, ParameterSetName = UriParameterSet)]
+        public string AbsoluteUri { get; set; }
+
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ManualParameterSet)]
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ContainerParameterSet)]
+        public override IStorageContext Context { get; set; }
+
         private BlobToFileSystemNameResolver fileNameResolver;
+        private bool skipSourceChannelInit;
 
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageBlobContentCommand class.
@@ -128,6 +157,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Download blob to local file
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">Source blob object</param>
         /// <param name="filePath">Destination file path</param>
         internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, string filePath)
@@ -135,6 +166,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string activity = String.Format(Resources.ReceiveAzureBlobActivity, blob.Name, filePath);
             string status = Resources.PrepareDownloadingBlob;
             ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
+
+            // Get the length information if the blob doesn't have it 
+            if (blob.Properties.Length < 0)
+            {
+                blob.FetchAttributes();
+            }
+
             DataMovementUserData data = new DataMovementUserData()
             {
                 Data = blob,
@@ -165,6 +203,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Download blob to local file
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">Source blob object</param>
         /// <param name="filePath">Destination file path</param>
         internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, BlobBaseClient blob, string filePath)
@@ -182,7 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     InitialTransferSize = size4MB
                 };
                 await blob.DownloadToAsync(filePath, BlobRequestConditions, trasnferOption, CmdletCancellationToken).ConfigureAwait(false);
-                OutputStream.WriteObject(taskId, new AzureStorageBlob(blob, localChannel.StorageContext, blobProperties, options: ClientOptions));
+                OutputStream.WriteObject(taskId, new AzureStorageBlob(blob, localChannel is null? null : localChannel.StorageContext, blobProperties, options: ClientOptions));
             }
         }
 
@@ -300,9 +340,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 ValidatePipelineCloudBlobTrack2(blob);
             }
 
-            //skip download the snapshot except the CloudBlob pipeline
-            DateTimeOffset? snapshotTime = Util.GetSnapshotTimeFromBlobUri(blob.Uri);
-            if (snapshotTime != null && ParameterSetName != BlobParameterSet)
+            //skip download the snapshot except the CloudBlob pipeline or blob Uri
+            DateTimeOffset? snapshotTime = Util.GetSnapshotTimeFromUri(blob.Uri);
+            if (snapshotTime != null && ParameterSetName != BlobParameterSet && ParameterSetName != UriParameterSet)
             {
                 WriteWarning(String.Format(Resources.SkipDownloadSnapshot, blob.Name, snapshotTime));
                 return;
@@ -326,6 +366,51 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             IStorageBlobManagement localChannel = Channel;
             Func<long, Task> taskGenerator = (taskId) => DownloadBlob(taskId, localChannel, blob, filePath);
             RunTask(taskGenerator);
+        }
+
+        /// <summary>
+        /// Download blob with blob Uri
+        /// If blob is on a managed disk account, and server return 401 and requires a bearer token besides Sas Uri to download,
+        /// will try to generate a bearer token and download again with both Sas Uri and bearer token.
+        /// </summary>
+        /// <param name="blobUri"></param>
+        /// <param name="fileName"></param>
+        internal void GetBlobContent(string blobUri, string fileName)
+        {
+            BlobClientOptions blobClientOptions = this.ClientOptions;
+            BlobBaseClient blobclient = new BlobBaseClient(new Uri(blobUri), blobClientOptions);
+            Track2Models.BlobProperties blobproperties;
+            if (blobclient.AccountName.ToLower().StartsWith("md-")) // managed disk account, must be page blob
+            {
+                blobClientOptions.Diagnostics.LoggedHeaderNames.Add("WWW-Authenticate");
+                blobclient = new PageBlobClient(new Uri(blobUri), blobClientOptions);
+
+                try
+                {
+                    blobproperties = blobclient.GetProperties(null, this.CmdletCancellationToken).Value;
+                }
+                catch (global::Azure.RequestFailedException e) when (e.Status == 401) // need diskRP bearer token
+                {
+                    string audience = GetAudienceFrom401ExceptionMessage(e);
+                    if (audience != null)
+                    {
+                        WriteDebugLog(string.Format("Need bearer token with audience {0} to access the blob, so will generate bearer token and resend the request.", audience));
+                        AzureSessionCredential customerToken = new AzureSessionCredential(DefaultContext, customAudience: audience);
+                        blobclient = new PageBlobClient(new Uri(blobUri), customerToken, this.ClientOptions);
+                    }
+                    else
+                    {
+                        throw e;
+                    }
+                }
+            }
+            else // need check blob type for none md account
+            {
+                blobproperties = blobclient.GetProperties(null, this.CmdletCancellationToken).Value;
+
+                blobclient = Util.GetTrack2BlobClient(new Uri(blobUri), null, blobClientOptions, blobproperties.BlobType);
+            }
+            GetBlobContent(blobclient, fileName);
         }
 
         /// <summary>
@@ -359,9 +444,71 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 throw new ArgumentException(String.Format(Resources.InvalidFileName, fileName));
             }
 
-            //there is no need to check the read/write permission on the specified file path, the datamovement libraray will do that
+            //there is no need to check the read/write permission on the specified file path, the data movement library will do that
 
             return filePath;
+        }
+
+        /// <summary>
+        /// When request doesn't container a proper bearer token, server will return 401 error include the audience of the required bearer token.
+        /// This function will get the audience of bearer token from SDK exception message.
+        /// If server not return audience, will output null.
+        /// </summary>
+        private string GetAudienceFrom401ExceptionMessage(global::Azure.RequestFailedException exception)
+        {
+            string authenticateHeaderName = "WWW-Authenticate";
+            string audience = null;
+            foreach (var header in exception.GetRawResponse().Headers)
+            {
+                string headerName = header.Name;
+                if (headerName.StartsWith(authenticateHeaderName))
+                {
+                    string headerValue = header.Value;
+                    WriteDebugLog(string.Format("Found header name: {0}, value: {1}", headerName, headerValue));
+                    string audienceName = "resource_id=";
+                    try
+                    {
+                        string authText = headerValue.Split(new string[] { audienceName }, StringSplitOptions.None)[1];
+                        audience = authText.Split(new string[] { " " }, StringSplitOptions.None)[0];
+                        WriteDebugLog(string.Format("Found audience: {0}", audience));
+                        return audience;
+                    }
+                    catch
+                    {
+                        WriteDebugLog(string.Format("Failed to parse the header. The parsing result has length of {0}", audience.Length));
+                    }
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Create blob client and storage service management channel if need to.
+        /// </summary>
+        /// <returns>IStorageManagement object</returns>
+        protected override IStorageBlobManagement CreateChannel()
+        {
+            //Init storage blob management channel
+            if (skipSourceChannelInit)
+            {
+                return null;
+            }
+            else
+            {
+                return base.CreateChannel();
+            }
+        }
+
+        /// <summary>
+        /// Begin cmdlet processing
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            if (ParameterSetName == UriParameterSet)
+            {
+                skipSourceChannelInit = true;
+            }
+            base.BeginProcessing();
         }
 
         protected override void ProcessRecord()
@@ -418,6 +565,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     if (ShouldProcess(BlobName, "Download"))
                     {
                         GetBlobContent(ContainerName, BlobName, FileName);
+                    }
+                    break;
+                case UriParameterSet:
+                    if (ShouldProcess(BlobName, "Download"))
+                    {
+                        GetBlobContent(AbsoluteUri, FileName);
                     }
                     break;
             }

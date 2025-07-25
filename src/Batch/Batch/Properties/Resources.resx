@@ -482,10 +482,10 @@
     <value>Downloading byte range {0} to {1}</value>
   </data>
   <data name="UsingAadAuth" xml:space="preserve">
-    <value>Using Azure Active Directory authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccountKeys cmdlet.</value>
+    <value>Using Microsoft Entra authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccountKeys cmdlet.</value>
   </data>
   <data name="UsingSharedKeyAuth" xml:space="preserve">
-    <value>Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Azure Active Directory authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccount cmdlet.</value>
+    <value>Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Microsoft Entra authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccount cmdlet.</value>
   </data>
   <data name="GetTaskCounts" xml:space="preserve">
     <value>Getting task counts for job {0}.</value>
@@ -507,5 +507,17 @@
   </data>
   <data name="GetPrivateLinkResourceNoFilter" xml:space="preserve">
     <value>Getting all private link resources in resource group "{0}", account "{0}"</value>
+  </data>
+  <data name="GettingSupportedVirtualMachineSku" xml:space="preserve">
+    <value>Getting all supported virtual machine Skus for location {0}.</value>
+  </data>
+  <data name="GettingSupportedVirtualMachineSkuWithODataParameters" xml:space="preserve">
+    <value>Getting all supported virtual machine Skus for location {0}. MaxResultCount: {1}, Filter: {2}.</value>
+  </data>
+  <data name="GetComputeNodeExtensionByName" xml:space="preserve">
+    <value>Getting compute node extension "{0}" from compute node "{1}" on pool "{2}".</value>
+  </data>
+  <data name="GetComputeNodeExtensions" xml:space="preserve">
+    <value>Getting compute nodes extensions from pool "{0}", compute node {1}.</value>
   </data>
 </root>

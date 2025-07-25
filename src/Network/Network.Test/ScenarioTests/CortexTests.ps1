@@ -20,8 +20,7 @@ function Test-CortexCRUD
 {
  # Setup
     $rgName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "East US"
-
+    $rglocation = Get-ProviderLocation ResourceManagement
 	$virtualWanName = Get-ResourceName
 	$virtualHubName = Get-ResourceName
 	$vpnSiteName = Get-ResourceName
@@ -41,7 +40,7 @@ function Test-CortexCRUD
 	try
 	{
 		# Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
 
 		# Create the Virtual Wan
 		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
@@ -52,50 +51,50 @@ function Test-CortexCRUD
 		Assert-AreEqual $true $virtualWan.AllowVnetToVnetTraffic
 		Assert-AreEqual $false $virtualWan.AllowBranchToBranchTraffic
 
-        $virtualWans = Get-AzureRmVirtualWan -ResourceGroupName $rgName
-        Assert-NotNull $virtualWans
+		$virtualWans = Get-AzVirtualWan -ResourceGroupName $rgName
+		Assert-NotNull $virtualWans
 
-        $virtualWansAll = Get-AzureRmVirtualWan
-        Assert-NotNull $virtualWansAll
-        Assert-NotNull $virtualWansAll[0].ResourceGroupName
+		$virtualWansAll = Get-AzVirtualWan
+		Assert-NotNull $virtualWansAll
+		Assert-NotNull $virtualWansAll[0].ResourceGroupName
 
 		$virtualWansAll = Get-AzVirtualWan -ResourceGroupName "*"
-        Assert-NotNull $virtualWansAll
+		Assert-NotNull $virtualWansAll
 
 		$virtualWansAll = Get-AzVirtualWan -Name "*"
-        Assert-NotNull $virtualWansAll
+		Assert-NotNull $virtualWansAll
 
 		$virtualWansAll = Get-AzVirtualWan -ResourceGroupName "*" -Name "*"
-        Assert-NotNull $virtualWansAll
+		Assert-NotNull $virtualWansAll
 
 		# Create the Virtual Hub
-		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
 
-        $virtualHubs = Get-AzureRmVirtualHub -ResourceGroupName $rgName
-        Assert-NotNull $virtualHubs
+		$virtualHubs = Get-AzVirtualHub -ResourceGroupName $rgName
+		Assert-NotNull $virtualHubs
 
-        $virtualHubsAll = Get-AzureRmVirtualHub
-        Assert-NotNull $virtualHubsAll
-         Assert-NotNull $virtualHubsAll[0].ResourceGroupName
+		#$virtualHubsAll = Get-AzVirtualHub
+		#Assert-NotNull $virtualHubsAll
+		#Assert-NotNull $virtualHubsAll[0].ResourceGroupName
 
-		$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*"
-        Assert-NotNull $virtualHubsAll
+		#$virtualHubsAll = Get-AzVirtualHub -ResourceGroupName "*"
+		#Assert-NotNull $virtualHubsAll
 
-		$virtualHubsAll = Get-AzureRmVirtualHub -Name "*"
-        Assert-NotNull $virtualHubsAll
+		#$virtualHubsAll = Get-AzVirtualHub -Name "*"
+		#Assert-NotNull $virtualHubsAll
 
-		$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*" -Name "*"
-        Assert-NotNull $virtualHubsAll
+		#$virtualHubsAll = Get-AzVirtualHub -ResourceGroupName "*" -Name "*"
+		#Assert-NotNull $virtualHubsAll
 
 		# Update the Virtual Hub
 		$route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.0.0/16", "11.0.0.0/16") -NextHopIpAddress "12.0.0.5"
 		$route2 = New-AzVirtualHubRoute -AddressPrefix @("13.0.0.0/16") -NextHopIpAddress "14.0.0.5"
 		$routeTable = New-AzVirtualHubRouteTable -Route @($route1, $route2)
-		Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -RouteTable $routeTable
+		Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -RouteTable $routeTable -HubRoutingPreference "ExpressRoute"
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
@@ -134,53 +133,110 @@ function Test-CortexCRUD
 		Assert-AreEqual "7.3.4.5" $updatedVpnSite2.VpnSiteLinks[0].IpAddress
 		Update-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2)
 
-        $vpnSites = Get-AzureRmVpnSite -ResourceGroupName $rgName
-        Assert-NotNull $vpnSites
+		$vpnSites = Get-AzVpnSite -ResourceGroupName $rgName
+		Assert-NotNull $vpnSites
 
-        $vpnSitesAll = Get-AzVpnSite
-        Assert-NotNull $vpnSitesAll
-        Assert-NotNull $vpnSitesAll[0].ResourceGroupName
+		$vpnSitesAll = Get-AzVpnSite
+		Assert-NotNull $vpnSitesAll
+		Assert-NotNull $vpnSitesAll[0].ResourceGroupName
 
 		$vpnSitesAll = Get-AzVpnSite -ResourceGroupName "*"
-        Assert-NotNull $vpnSitesAll
+		Assert-NotNull $vpnSitesAll
 
 		$vpnSitesAll = Get-AzVpnSite -Name "*"
-        Assert-NotNull $vpnSitesAll
+		Assert-NotNull $vpnSitesAll
 
 		$vpnSitesAll = Get-AzVpnSite -ResourceGroupName "*" -Name "*"
-        Assert-NotNull $vpnSitesAll
+		Assert-NotNull $vpnSitesAll
+
+		# Create a NATRule object
+		$natRule = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule
+		$natRule.Name = "NatRule1"
+		$natRule.Mode = "EgressSnat"
+		$natRule.VpnGatewayNatRulePropertiesType = "Static"
+		$natRuleInternalMapping = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping
+		$natRuleInternalMapping.AddressSpace = "192.168.0.0/24"
+		$natRule.InternalMappings = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping[] 1
+		$natRule.InternalMappings[0] = $natRuleInternalMapping
+		$natRuleExternalMapping = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping
+		$natRuleExternalMapping.AddressSpace = "10.0.0.0/24"
+		$natRule.ExternalMappings = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping[] 1
+		$natRule.ExternalMappings[0] = $natRuleExternalMapping
+		$vpnGatewayNatRules = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule[] 1
+		$vpnGatewayNatRules[0] = $natRule
 
 		# Create the VpnGateway
-		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3
-		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4
+		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -EnableRoutingPreferenceInternetFlag -EnableBgpRouteTranslationForNat -VpnGatewayNatRule $vpnGatewayNatRules
+		
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		#Assert-AreEqual $True $vpnGateway.EnableBgpRouteTranslationForNat
+		Assert-AreEqual 1 $vpnGateway.NatRules.Count
+		Assert-AreEqual "NatRule1" $vpnGateway.NatRules[0].Name
+
+		# Update VpnGateway with new NatRule2
+		$vpnGatewayNatRules[0].Name = "NatRule2"
+		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4 -VpnGatewayNatRule $vpnGatewayNatRules -EnableBgpRouteTranslationForNat $false
+
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
 		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
 		Assert-AreEqual 4 $vpnGateway.VpnGatewayScaleUnit
+		Assert-AreEqual 1 $vpnGateway.NatRules.Count
+		Assert-AreEqual "NatRule2" $vpnGateway.NatRules[0].Name
+		Assert-AreEqual "EgressSnat" $vpnGateway.NatRules[0].Mode
+		Assert-AreEqual "Static" $vpnGateway.NatRules[0].VpnGatewayNatRulePropertiesType
+		Assert-AreEqual "Succeeded" $vpnGateway.NatRules[0].ProvisioningState	
+		#Assert-AreEqual $false $createdVpnGateway.EnableBgpRouteTranslationForNat
 
-        $vpnGateways = Get-AzVpnGateway
-        Assert-NotNull $vpnGateways
-        Assert-NotNull $vpnGateways[0].ResourceGroupName
+		# Create one more NATRule using New-AzVpnGatewayNatRule
+		New-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -Type "Static" -Mode "IngressSnat" -InternalMapping "192.168.1.0/26" -ExternalMapping "10.0.1.0/26" -InternalPortRange @("100-100") -ExternalPortRange @("200-200")
+		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
+		Assert-AreEqual "NatRule3" $natRule.Name
+		Assert-AreEqual "Static" $natRule.VpnGatewayNatRulePropertiesType
+		Assert-AreEqual "IngressSnat" $natRule.Mode
+		Assert-AreEqual 1 $natRule.InternalMappings.Count		
+		Assert-AreEqual "192.168.1.0/26" $natRule.InternalMappings[0].AddressSpace
+		Assert-AreEqual 1 $natRule.ExternalMappings.Count		
+		Assert-AreEqual "10.0.1.0/26" $natRule.ExternalMappings[0].AddressSpace
+		Assert-AreEqual "100-100" $natRule.InternalMappings[0].PortRange
+		Assert-AreEqual "200-200" $natRule.ExternalMappings[0].PortRange
+		Assert-AreEqual 0 $natRule.IngressVpnSiteLinkConnections.Count	
+		Assert-AreEqual 0 $natRule.EgressVpnSiteLinkConnections.Count
+		Assert-AreEqual "Succeeded" $natRule.ProvisioningState		
 
-        $vpnGateways = Get-AzureRmVpnGateway -ResourceGroupName $rgName
-        Assert-NotNull $vpnGateways
+		Update-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -InternalMapping "192.168.2.0/26" -ExternalMapping "10.0.2.0/26" -InternalPortRange @("300-300") -ExternalPortRange @("400-400")
+		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
+		Assert-AreEqual "NatRule3" $natRule.Name
+		Assert-AreEqual "192.168.2.0/26" $natRule.InternalMappings[0].AddressSpace
+		Assert-AreEqual "10.0.2.0/26" $natRule.ExternalMappings[0].AddressSpace
+		Assert-AreEqual "300-300" $natRule.InternalMappings[0].PortRange
+		Assert-AreEqual "400-400" $natRule.ExternalMappings[0].PortRange
+		Assert-AreEqual "Succeeded" $natRule.ProvisioningState	
+		#Assert-AreEqual $True $vpnGateway.IsRoutingPreferenceInternet
 
-        $vpnGatewaysAll = Get-AzureRmVpnGateway -ResourceGroupName "*"
-        Assert-NotNull $vpnGatewaysAll
+		$vpnGateways = Get-AzVpnGateway
+		Assert-NotNull $vpnGateways
+		Assert-NotNull $vpnGateways[0].ResourceGroupName
 
-		$vpnGatewaysAll = Get-AzureRmVpnGateway -Name "*"
-        Assert-NotNull $vpnGatewaysAll
+		#$vpnGateways = Get-AzVpnGateway -ResourceGroupName $rgName
+		#Assert-NotNull $vpnGateways
 
-		$vpnGatewaysAll = Get-AzureRmVpnGateway -ResourceGroupName "*" -Name "*"
-        Assert-NotNull $vpnGatewaysAll
+		#$vpnGatewaysAll = Get-AzVpnGateway -ResourceGroupName "*"
+		#Assert-NotNull $vpnGatewaysAll
 
-		$vpnGatewaysAll = Get-AzureRmVpnGateway
-        Assert-NotNull $vpnGatewaysAll
+		#$vpnGatewaysAll = Get-AzVpnGateway -Name "*"
+		#Assert-NotNull $vpnGatewaysAll
+
+		#$vpnGatewaysAll = Get-AzVpnGateway -ResourceGroupName "*" -Name "*"
+		#Assert-NotNull $vpnGatewaysAll
+
+		$vpnGatewaysAll = Get-AzVpnGateway
+		Assert-NotNull $vpnGatewaysAll
 		
 		# Reset/Reboot the VpnGateway using Reset-AzVpnGateway
-        $job = Reset-AzVpnGateway -VpnGateway $vpnGateway -AsJob
-	    $job | Wait-Job
-	    $actual = $job | Receive-Job
+		$job = Reset-AzVpnGateway -VpnGateway $vpnGateway  -IpConfigurationId "Instance0" -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
 		
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
@@ -196,62 +252,401 @@ function Test-CortexCRUD
 		Assert-AreEqual $false $vpnConnection.UseLocalAzureIpAddress 
 
 		# Create the VpnConnection with site with links
-		$vpnSiteLinkConnection1 = New-AzVpnSiteLinkConnection -Name $vpnLink1ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[0] -ConnectionBandwidth 100
-	    $vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[1] -ConnectionBandwidth 10
+		$natRule2 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2"
+		$vpnSiteLinkConnection1 = New-AzVpnSiteLinkConnection -Name $vpnLink1ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[0] -ConnectionBandwidth 100 -EgressNatRule $natRule2
+		$vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[1] -ConnectionBandwidth 10 -VpnLinkConnectionMode "Default"
 
 		$createdVpnConnection2 = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -VpnSite $vpnSite2 -VpnSiteLinkConnection @($vpnSiteLinkConnection1, $vpnSiteLinkConnection2)
 		$vpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name
 		Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
 		Assert-AreEqual 2 $vpnConnection2.VpnLinkConnections.Count
+		Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections[0].EgressNatRules.Count
+		Assert-AreEqual 0 $vpnConnection2.VpnLinkConnections[0].IngressNatRules.Count
+		Assert-AreEqual "Default" $vpnConnection2.VpnLinkConnections[1].VpnLinkConnectionMode
+		
+		$natRule2 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2"
+		Assert-AreEqual 0 $natRule2.IngressVpnSiteLinkConnections.count
+		Assert-AreEqual 1 $natRule2.EgressVpnSiteLinkConnections.count
+		Assert-AreEqual $vpnConnection2.VpnLinkConnections[0].Id $natRule2.EgressVpnSiteLinkConnections[0].Id
 
-		$vpnSiteLinkConnection1.RoutingWeight = 10
-		Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -VpnSiteLinkConnection @($vpnSiteLinkConnection1)
-		$vpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name
+		#$natRule3 = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3"
+		#$vpnSiteLinkConnection1.EgressNatRules.Clear()
+		#$vpnSiteLinkConnection1.IngressNatRules.Add($natRule3)
+		#$vpnSiteLinkConnection1.RoutingWeight = 10
+		#Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -VpnSiteLinkConnection @($vpnSiteLinkConnection1)
+		#$vpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name
 
-		Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
-		Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections.Count
-		Assert-AreEqual 10 $vpnConnection2.VpnLinkConnections[0].RoutingWeight
+		#Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
+		#Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections.Count
+		#Assert-AreEqual 10 $vpnConnection2.VpnLinkConnections[0].RoutingWeight
+		#Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections[0].IngressNatRules.Count
+		#Assert-AreEqual 0 $vpnConnection2.VpnLinkConnections[0].EgressNatRules.Count
 
-        $vpnConnections = Get-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName
-        Assert-NotNull $vpnConnections
+		$vpnConnections = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName
+		Assert-NotNull $vpnConnections
 
-		$vpnConnections = Get-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "*"
-        Assert-NotNull $vpnConnections
+		$vpnConnections = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "*"
+		Assert-NotNull $vpnConnections
+
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
+		Assert-AreEqual 2 $vpnGateway.NatRules.Count
+
+		# Remove NATRule using Remove-AzVpnGatewayNatRule
+		#$delete = Remove-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule2" -Force -PassThru
+		$delete = Remove-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -Force -PassThru
+		Assert-AreEqual $True $delete
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
+		Assert-AreEqual 1 $vpnGateway.NatRules.Count
 
 		# Create a HubVirtualNetworkConnection
-		$remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix "10.0.1.0/24"
-		$createdHubVnetConnection = New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork
-		$hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName
-		Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
-        $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName
-        Assert-NotNull $hubVnetConnections
-        $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "*"
-        Assert-NotNull $hubVnetConnections
+		#$remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix "10.0.1.0/24"
+		#$createdHubVnetConnection = New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork
+		#$hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName
+		#Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
+		#$hubVnetConnections = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName
+		#Assert-NotNull $hubVnetConnections
+		#$hubVnetConnections = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "*"
+		#Assert-NotNull $hubVnetConnections
 
-        # Clean up
-        $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
-        Assert-AreEqual $True $delete
+		# Clean up
+		#$delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
+		#Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
-        Assert-AreEqual $True $delete
+		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+		Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -Force -PassThru
-        Assert-AreEqual $True $delete
+		Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
-        Assert-AreEqual $True $delete
+		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
+		Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
-        Assert-AreEqual $True $delete
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
+		Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -Force -PassThru
-        Assert-AreEqual $True $delete
+		Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-        Assert-AreEqual $True $delete
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
-        Assert-AreEqual $True $delete
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-StaticRoutesConfigCRUD
+{
+	$rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$route1 = New-AzStaticRoute -Name "route1" -AddressPrefix @("10.20.0.0/16", "10.30.0.0/16") -NextHopIpAddress "10.90.0.5"
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+
+		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
+		$RoutingConfig1 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id) -VnetLocalRouteOverrideCriteria "Equal"
+		$RoutingConfig2 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id)
+
+		Assert-AreEqual ($RoutingConfig1.PropagatedRouteTables.Labels.Count -gt 0) $true
+		Assert-AreEqual ($RoutingConfig1.VnetRoutes.StaticRoutes.Count -gt 0) $true
+		
+		Assert-AreEqual $RoutingConfig1.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Equal"
+		Assert-AreEqual $RoutingConfig2.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Contains"
+
+		$besubnet = New-AzVirtualNetworkSubnetConfig -Name 'default' -AddressPrefix '10.1.0.0/16'
+		$vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'MyVnet' -AddressPrefix '10.1.0.0/16' `
+		-Location $rglocation -Subnet $besubnet
+
+		New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHub.Name -Name "TestConn" -RemoteVirtualNetwork $vnet -RoutingConfiguration $RoutingConfig1
+		$hubVnetConn = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHub.Name -Name "TestConn"
+
+		# check if the specified value is programmed on connection
+		Assert-AreEqual $hubVnetConn.RoutingConfiguration.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Equal"
+
+	}
+
+	finally
+	{
+		Clean-ResourceGroup $rgName
+	}
+}
+
+function Test-RoutingIntentCRUD
+{
+ # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$firewallName = "testFirewall1"
+	$riName = "testRoutingIntent1"
+	$privatePolicyName = "PrivateTraffic"
+	$internetPolicyName = "PublicTraffic"
+
+	$storeName = 'blob' + $rgName
+    
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+
+		# Create a firewall in the Virtual hub
+		$fwIp = New-AzFirewallHubPublicIpAddress -Count 1
+		$hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+		New-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Location $rglocation -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
+		$firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+
+		$policy1 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
+		$policy2 = New-AzRoutingPolicy -Name $internetPolicyName -Destination @("Internet") -NextHop $firewall.Id
+		New-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy1, $policy2)
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
+		Assert-AreEqual $routingIntent.Name $riName
+
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+		Assert-AreEqual $riPolicy.NextHop $firewall.Id
+
+		$policy3 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
+		$routingIntent = Set-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy3)
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Add-AzRoutingPolicy -Name $internetPolicyName -RoutingIntent $routingIntent -Destination @("Internet") -NextHop $firewall.Id
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $internetPolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		Remove-AzRoutingPolicy -Name $internetPolicyName -RoutingIntent $routingIntent
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		Set-AzRoutingPolicy -Name $privatePolicyName -RoutingIntent $routingIntent -Destination @("Internet", "PrivateTraffic") -NextHop $firewall.Id
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 2
+
+		$delete = Remove-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-RouteMapCRUD
+{
+ # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$routeMapName = "testRouteMap"
+	$virtualNetworkName = "testVirtualNetwork"
+	$virtualNetworkConnectionName = "testVirtualNetworkConnection"
+    
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+
+		# Create a route map in the Virtual hub
+		$routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+		$routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+		$routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+		$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
+
+		$routeMapMatchCriterion2 = New-AzRouteMapRuleCriterion -MatchCondition "Equals" -AsPath @("12345")
+		$routeMapAction2 = New-AzRouteMapRuleAction -Type "Drop"
+		$routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatchCriterion2) -RouteMapRuleAction @($routeMapAction2) -NextStepIfMatched "Terminate"
+
+		New-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule1, $routeMapRule2)
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.Rules.Count 2
+
+		Update-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule2)
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.Rules.Count 1
+		Assert-AreEqual $routeMap.AssociatedInboundConnections.Count 0
+
+		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
+		$testRoutingConfiguration =New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("testLabel") -Id @($rt1.Id) -InboundRouteMap $routeMap.Id
+
+		# creating virtual network and a virtual hub vnet connection resource
+		$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.2.1.0/24"
+		$backendSubnet  = New-AzVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.2.2.0/24"
+		$remoteVirtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $rgName -Location $rglocation -AddressPrefix "10.2.0.0/16" -Subnet $frontendSubnet,$backendSubnet
+		$hubVnetCon1 = New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $virtualNetworkConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -RoutingConfiguration $testRoutingConfiguration
+
+		$effectiveRoutes = Get-AzVHubEffectiveRoute -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceId $rt1.Id -VirtualWanResourceType 'RouteTable'
+		Assert-AreEqual $effectiveRoutes.Value.Count 1
+
+		$inboundRoutes = Get-AzVHubInboundRoute -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceUri $hubVnetCon1.Id -VirtualWanConnectionType 'HubVirtualNetworkConnection'
+		Assert-AreEqual $inboundRoutes.Value.Count 1
+		Assert-AreEqual "10.2.0.0/16" $inboundRoutes.Value.Prefix
+
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.AssociatedInboundConnections.Count 1
+
+		$delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $virtualNetworkConnectionName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+VpnSiteIsSecurity
+#>
+function Test-VpnSiteIsSecurity
+{
+ # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+	$virtualWanName = Get-ResourceName
+	$vpnSiteName1 = Get-ResourceName
+	$vpnSiteName2 = Get-ResourceName
+	$vpnSiteName3 = Get-ResourceName
+    $vpnSiteLinkName1 = Get-ResourceName
+	$vpnSiteLinkName2 = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the VpnSite
+		$vpnSiteAddressSpaces1 = New-Object string[] 1
+		$vpnSiteAddressSpaces1[0] = "192.168.2.0/24"
+		$ip1 = "1.2.3.4"
+		$createdVpnSite1 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip1 -AddressSpace $vpnSiteAddressSpaces1 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10
+		$vpnSite1 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1
+		Assert-AreEqual $rgName $vpnSite1.ResourceGroupName
+		Assert-AreEqual $vpnSiteName1 $vpnSite1.Name
+		Assert-AreEqual $ip1 $vpnSite1.IpAddress
+		Assert-AreEqual $False $vpnSite1.IsSecuritySite
+
+		# Create the VpnSite with IsSecuritySite
+		$vpnSiteAddressSpaces2 = New-Object string[] 1
+		$vpnSiteAddressSpaces2[0] = "192.168.3.0/24"
+		$ip2 = "2.3.4.5"
+		$createdVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip2 -AddressSpace $vpnSiteAddressSpaces2 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10 -IsSecuritySite
+		$vpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2
+		Assert-AreEqual $rgName $vpnSite2.ResourceGroupName
+		Assert-AreEqual $vpnSiteName2 $vpnSite2.Name
+		Assert-AreEqual $ip2 $vpnSite2.IpAddress
+		Assert-AreEqual $True $vpnSite2.IsSecuritySite
+
+		# Create the VpnSite with Links
+		$vpnSiteAddressSpaces3 = New-Object string[] 2
+		$vpnSiteAddressSpaces3[0] = "192.168.2.0/24"
+		$vpnSiteAddressSpaces3[1] = "192.168.3.0/24"
+		$vpnSiteLink1 = New-AzVpnSiteLink -Name $vpnSiteLinkName1 -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10"
+		$vpnSiteLink2 = New-AzVpnSiteLink -Name $vpnSiteLinkName2 -IpAddress "5.5.5.6" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "10"
+
+		$createdVpnSite3 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName3 -Location $rglocation -VirtualWan $virtualWan -AddressSpace $vpnSiteAddressSpaces3 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2) -IsSecuritySite
+		$vpnSite3 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName3
+		Assert-AreEqual $rgName $vpnSite3.ResourceGroupName
+		Assert-AreEqual $vpnSiteName3 $vpnSite3.Name
+		Assert-AreEqual $True $vpnSite3.IsSecuritySite
+
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2 -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName3 -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
 	}
 	finally
 	{
@@ -328,11 +723,16 @@ function Test-CortexDownloadConfig
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
 		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
+
+		# Create traffic selector policy
+		$trafficSelector = New-AzIpsecTrafficSelectorPolicy -LocalAddressRange ("2.2.2.2/32", "4.4.4.4/32") -RemoteAddressRange ("3.3.3.3/32", "5.5.5.5/32")
 		
 		# Create the VpnConnection
-		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $vpnSite -ConnectionBandwidth 20
+		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $vpnSite -ConnectionBandwidth 20 -TrafficSelectorPolicy ($trafficSelector)
 		$vpnConnection = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName
 		Assert-AreEqual $vpnConnectionName $vpnConnection.Name
+		Assert-AreEqual $trafficSelector.LocalAddressRanges[0] $createdVpnConnection.TrafficSelectorPolicies[0].LocalAddressRanges[0]
+		Assert-AreEqual $trafficSelector.RemoteAddressRanges[0] $createdVpnConnection.TrafficSelectorPolicies[0].RemoteAddressRanges[0]
 		
 		# Create the VpnConnection with site with links
 		$vpnSiteLinkConnection1 = New-AzVpnSiteLinkConnection -Name $vpnLink1ConnectionName -VpnSiteLink $vpnSite2.VpnSiteLinks[0] -ConnectionBandwidth 100
@@ -342,6 +742,12 @@ function Test-CortexDownloadConfig
 		$vpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name
 		Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
 		Assert-AreEqual 2 $vpnConnection2.VpnLinkConnections.Count
+
+		# Test Reset VpnSiteLinkConnection
+		Reset-AzVpnSiteLinkConnection -InputObject $vpnConnection2.VpnLinkConnections[0]
+
+		# Update VpnConnection with -TrafficSelectorPolicy
+		$updatedVpnConnection2 = Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnection2Name -TrafficSelectorPolicy ($trafficSelector)
 
 		# Download config
 		$storetype = 'Standard_GRS'
@@ -510,13 +916,19 @@ function Test-CortexExpressRouteCRUD
     $virtualHubName = Get-ResourceName
     $VpnServerConfiguration1Name = Get-ResourceName
     $VpnServerConfiguration2Name = Get-ResourceName
+    $VpnServerConfigurationMultiAuthName = Get-ResourceName
+    $VpnServerConfiguration2MultiAuthName = Get-ResourceName
     $P2SVpnGatewayName = Get-ResourceName
     $vpnclientAuthMethod = "EAPTLS"
+    
+    $aadTenant = "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4"
+    $aadIssuer = "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/"
+    $aadAudience = "a21fce82-76af-45e6-8583-a08cb3b956f9"
 
     $storeName = 'blob' + $rgName
 
     try
-	{
+    	{
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
 
@@ -533,16 +945,28 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		Assert-AreEqual $virtualWan.Id $virtualhub.VirtualWan.Id
 
-		# Create the VpnServerConfiguration1 with VpnClient settings using New-AzVpnServerConfiguration
+		# Create a PolicyGroup1 Object
+		$policyGroup1 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroup
+		$policyGroup1.Name = "PolicyGroup1"
+		$policyGroup1.IsDefault = $False
+		$policyGroup1.Priority = 0
+		$policyGroupMember1 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember
+		$policyGroupMember1.Name = "policyGroupMember1"
+		$policyGroupMember1.AttributeType = "AADGroupId"
+		$policyGroupMember1.AttributeValue = "41b23e61-6c1e-4545-b367-cd054e0ed4b5"
+		$policyGroup1.PolicyMembers = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember[] 1
+		$policyGroup1.PolicyMembers[0] = $policyGroupMember1
+
+		# Create the VpnServerConfiguration1 with VpnClient settings (and child PolicyGroup1) using New-AzVpnServerConfiguration
 		$VpnServerConfigCertFilePath = Join-Path -Path $basedir -ChildPath "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
 		$listOfCerts = New-Object "System.Collections.Generic.List[String]"
 		$listOfCerts.Add($VpnServerConfigCertFilePath)
 		$vpnclientipsecpolicy1 = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup14 -PfsGroup PFS14
-        New-AzVpnServerConfiguration -Name $VpnServerConfiguration1Name -ResourceGroupName $rgName -VpnProtocol IkeV2 -VpnAuthenticationType Certificate -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -VpnClientIpsecPolicy $vpnclientipsecpolicy1 -Location $rglocation
+		New-AzVpnServerConfiguration -Name $VpnServerConfiguration1Name -ResourceGroupName $rgName -VpnProtocol IkeV2 -VpnAuthenticationType Certificate -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -VpnClientIpsecPolicy $vpnclientipsecpolicy1 -ConfigurationPolicyGroup $policyGroup1 -Location $rglocation
 
-        # Get created VpnServerConfiguration using Get-AzVpnServerConfiguration
-        $vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name
-        Assert-NotNull $vpnServerConfig1
+		# Get created VpnServerConfiguration using Get-AzVpnServerConfiguration
+		$vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name
+		Assert-NotNull $vpnServerConfig1
 		Assert-AreEqual $rgName $vpnServerConfig1.ResourceGroupName
 		Assert-AreEqual $VpnServerConfiguration1Name $vpnServerConfig1.Name
 		$protocols = $vpnServerConfig1.VpnProtocols
@@ -551,6 +975,8 @@ function Test-CortexExpressRouteCRUD
 		$authenticationTypes = $vpnServerConfig1.VpnAuthenticationTypes
 		Assert-AreEqual 1 @($authenticationTypes).Count
 		Assert-AreEqual "Certificate" $authenticationTypes[0]
+		Assert-AreEqual 1 @($vpnServerConfig1.ConfigurationPolicyGroups).Count
+		Assert-AreEqual "PolicyGroup1" $vpnServerConfig1.ConfigurationPolicyGroups[0].Name
 
 		# Create the P2SVpnGateway using New-AzP2sVpnGateway
 		$vpnClientAddressSpaces = New-Object string[] 2
@@ -558,7 +984,7 @@ function Test-CortexExpressRouteCRUD
 		$vpnClientAddressSpaces[1] = "192.168.3.0/24"
 		$customDnsServers = New-Object string[] 1
 		$customDnsServers[0] = "7.7.7.7"
-		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers -EnableInternetSecurityFlag
+		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers -EnableRoutingPreferenceInternetFlag
 		Assert-AreEqual "Succeeded" $createdP2SVpnGateway.ProvisioningState
 
 		# Get the created P2SVpnGateway using Get-AzP2sVpnGateway
@@ -568,34 +994,35 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
-        Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
+		Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual $True $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
+		Assert-AreEqual $True $P2SVpnGateway.IsRoutingPreferenceInternet
+
+		$getPolicyGroup1 = Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration1Name -Name "PolicyGroup1"
+		Assert-AreEqual $getPolicyGroup1.Id	$vpnServerConfig1.ConfigurationPolicyGroups[0].Id
 
 		# Reset/Reboot the P2SVpnGateway using Reset-AzP2sVpnGateway
-        $job = Reset-AzP2sVpnGateway -P2SVpnGateway $P2SVpnGateway -AsJob
-	    $job | Wait-Job
-	    $actual = $job | Receive-Job
-		
-		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
+		$job = Reset-AzP2sVpnGateway -P2SVpnGateway $P2SVpnGateway -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
 
 		# Get all associated VpnServerConfigurations at Wan level using Get-AzVirtualWanVpnServerConfiguration
-        $associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -Name $virtualWanName -ResourceGroupName $rgName
-        Assert-NotNull $associatedVpnServerConfigs
-        Assert-AreEqual 1 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
-        Assert-AreEqual $vpnServerConfig1.Id $associatedVpnServerConfigs.VpnServerConfigurationResourceIds[0]
+		$associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -Name $virtualWanName -ResourceGroupName $rgName
+		Assert-NotNull $associatedVpnServerConfigs
+		Assert-AreEqual 1 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
+		Assert-AreEqual $vpnServerConfig1.Id $associatedVpnServerConfigs.VpnServerConfigurationResourceIds[0]
 
-        # Get VpnServerConfiguration1 and see that it shows as attached to P2SVpnGateway created.
-        $vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name
-        Assert-NotNull $vpnServerConfig1
-        Assert-AreEqual $vpnServerConfig1.P2sVpnGateways[0].Id $P2SVpnGateway.Id
+		# Get VpnServerConfiguration1 and see that it shows as attached to P2SVpnGateway created.
+		$vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name
+		Assert-NotNull $vpnServerConfig1
+		Assert-AreEqual $vpnServerConfig1.P2sVpnGateways[0].Id $P2SVpnGateway.Id
 
-        # List all VpnServerConfigurations under Resource group
-        $vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
-        Assert-NotNull $vpnServerConfigs
-        Assert-AreEqual 1 @($vpnServerConfigs).Count
-        
-        # Generate vpn profile at Hub/P2SVpnGateway level using Get-AzP2sVpnGatewayVpnProfile
+		# List all VpnServerConfigurations under Resource group
+		$vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
+		Assert-NotNull $vpnServerConfigs
+		Assert-AreEqual 1 @($vpnServerConfigs).Count
+
+		# Generate vpn profile at Hub/P2SVpnGateway level using Get-AzP2sVpnGatewayVpnProfile
 		$vpnProfileResponse = Get-AzP2sVpnGatewayVpnProfile -Name $P2SVpnGatewayName -ResourceGroupName $rgName -AuthenticationMethod $vpnclientAuthMethod
 		Assert-NotNull $vpnProfileResponse.ProfileUrl
 		Assert-AreEqual True ($vpnProfileResponse.ProfileUrl -Match "zip")
@@ -614,17 +1041,83 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual "Succeeded" $vpnServerConfig2.ProvisioningState
 		Assert-AreEqual "TestRadiusServer" $vpnServerConfig2.RadiusServerAddress
 	
-        # List all VpnServerConfigurations under Resource group
-        $vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
-        Assert-NotNull $vpnServerConfigs
-        Assert-AreEqual 2 @($vpnServerConfigs).Count
+		# Create the VpnServerConfigurationMultiAuth with Radius and Certificate settings using New-AzVpnServerConfiguration
+		New-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVpn -VpnAuthenticationType Radius,Certificate -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts -VpnClientRootCertificateFilesList $listOfCerts -Location $rglocation
+        
+        $vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
+		Assert-AreEqual "Succeeded" $vpnServerConfigMultiAuth.ProvisioningState
+		Assert-AreEqual "TestRadiusServer" $vpnServerConfigMultiAuth.RadiusServerAddress
+		$authenticationTypes = $vpnServerConfigMultiAuth.VpnAuthenticationTypes
+		Assert-AreEqual 2 @($authenticationTypes).Count
 
-		# Update existing VpnServerConfiguration2 using Update-AzVpnServerConfiguration
-		Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -RadiusServerAddress "TestRadiusServer1"
+		# Create the VpnServerConfiguration2MultiAuth with OpenVPN & IkeV2 and only AAD auth should throw error
+		Assert-ThrowsContains { New-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN, IkeV2 -VpnAuthenticationType AAD -AadAudience $aadAudience -AadTenant $aadTenant -AadIssuer $aadIssuer -Location $rglocation } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
+		# check no new server configuration got created
+		$vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
+		Assert-NotNull $vpnServerConfigs
+		Assert-AreEqual 3 @($vpnServerConfigs).Count
+
+		# Create the VpnServerConfiguration2MultiAuth with a valid configuration to be used for testing Set later
+		# VpnProtocol is OpenVPN and auth type is AAD
+		New-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadAudience $aadAudience -AadTenant $aadTenant -AadIssuer $aadIssuer -Location $rglocation
+		$vpnServerConfig2MultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2MultiAuthName
+		Assert-AreEqual "Succeeded" $vpnServerConfig2MultiAuth.ProvisioningState
+		Assert-AreEqual $aadAudience $vpnServerConfig2MultiAuth.AadAuthenticationParameters.AadAudience
+		Assert-AreEqual $aadTenant $vpnServerConfig2MultiAuth.AadAuthenticationParameters.AadTenant
+		Assert-AreEqual $aadIssuer $vpnServerConfig2MultiAuth.AadAuthenticationParameters.AadIssuer
+		$protocols = $vpnServerConfig2MultiAuth.VpnProtocols
+		Assert-AreEqual 1 @($protocols).Count
+		Assert-AreEqual "OpenVPN" $protocols[0]
+
+		# List all VpnServerConfigurations under Resource group
+		$vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
+		Assert-NotNull $vpnServerConfigs
+		Assert-AreEqual 4 @($vpnServerConfigs).Count
+
+		# Create a PolicyGroup2 Object
+		$policyGroup2= New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroup
+		$policyGroup2.Name = "PolicyGroup2"
+		$policyGroup2.IsDefault = $true
+		$policyGroup2.Priority = 0
+		$policyGroupMember2 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember
+		$policyGroupMember2.Name = "policyGroupMember2"
+		$policyGroupMember2.AttributeType = "AADGroupId"
+		$policyGroupMember2.AttributeValue = "41b23e61-6c1e-4545-b367-cd054e0ed4b5"
+		$policyGroup2.PolicyMembers = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember[] 1
+		$policyGroup2.PolicyMembers[0] = $policyGroupMember2
+
+		# Update existing VpnServerConfiguration2(adding child PolicyGroup2) using Update-AzVpnServerConfiguration
+		Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -RadiusServerAddress "TestRadiusServer1" -ConfigurationPolicyGroup $policyGroup2
 		$VpnServerConfig2 = Get-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName
 		Assert-AreEqual $VpnServerConfiguration2Name $VpnServerConfig2.Name
 		Assert-AreEqual "TestRadiusServer1" $VpnServerConfig2.RadiusServerAddress
-		
+		Assert-AreEqual 1 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
+		Assert-AreEqual "PolicyGroup2" $VpnServerConfig2.ConfigurationPolicyGroups[0].Name
+		Assert-AreEqual 0 $VpnServerConfig2.ConfigurationPolicyGroups[0].Priority
+
+		# Delete VpnServerConfiguration2 child PolicyGroup2 using Remove-AzVpnServerConfigurationPolicyGroup		
+		$delete = Remove-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -Force -PassThru
+		Assert-AreEqual $True $delete
+		$VpnServerConfig2 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
+		Assert-AreEqual 0 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
+
+		# Create PolicyGroup2 for VpnServerConfiguration2 using New-AzVpnServerConfigurationPolicyGroup
+		New-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -DefaultPolicyGroup -Priority 1 -PolicyMember $policyGroupMember2
+		$getPolicyGroup2 = Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2"
+		Assert-AreEqual "PolicyGroup2" $getPolicyGroup2.Name
+		Assert-AreEqual $true $getPolicyGroup2.IsDefault
+		Assert-AreEqual 1 @($getPolicyGroup2.PolicyMembers).Count
+		Assert-AreEqual 1 $getPolicyGroup2.Priority
+
+		$VpnServerConfig2 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
+		Assert-AreEqual 1 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
+
+		# Update PolicyGroup2 for VpnServerConfiguration2 using Update-AzVpnServerConfigurationPolicyGroup
+		Update-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -Priority 2 -DefaultPolicyGroup $true
+		$getPolicyGroup2 = Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2"
+		Assert-AreEqual $true $getPolicyGroup2.IsDefault
+		Assert-AreEqual 2 $getPolicyGroup2.Priority
+
 		Update-AzVpnServerConfiguration -ResourceId  $VpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2"			
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
 		Assert-AreEqual "TestRadiusServer2" $VpnServerConfig2Get.RadiusServerAddress
@@ -633,9 +1126,31 @@ function Test-CortexExpressRouteCRUD
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
         Assert-AreEqual "TestRadiusServer3" $VpnServerConfig2Get.RadiusServerAddress
 
-        # Update existing P2SVpnGateway  with new VpnClientAddressPool and CustomDnsServers using Update-AzP2sVpnGateway
-        $vpnClientAddressSpaces[1] = "192.168.4.0/24"
-        $updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces -CustomDnsServer 9.9.9.9 -DisableInternetSecurityFlag
+		# Update existing VpnServerConfigurationMultiAuth using Update-AzVpnServerConfiguration
+		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius 
+		$vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
+		Assert-AreEqual "Succeeded" $vpnServerConfigMultiAuth.ProvisioningState
+		Assert-AreEqual "TestRadiusServer" $vpnServerConfigMultiAuth.RadiusServerAddress
+		$authenticationTypes = $vpnServerConfigMultiAuth.VpnAuthenticationTypes
+		Assert-AreEqual 1 @($authenticationTypes).Count
+
+		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius,Certificate,AAD -VpnClientRootCertificateFilesList $listOfCerts -AadAudience $aadAudience -AadIssuer $aadIssuer -AadTenant $aadTenant
+		$vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
+		Assert-AreEqual "Succeeded" $vpnServerConfigMultiAuth.ProvisioningState
+		Assert-AreEqual "TestRadiusServer" $vpnServerConfigMultiAuth.RadiusServerAddress
+		Assert-NotNull $vpnServerConfigMultiAuth.AadAuthenticationParameters.AadTenant;
+		$authenticationTypes = $vpnServerConfigMultiAuth.VpnAuthenticationTypes
+		Assert-AreEqual 3 @($authenticationTypes).Count
+
+		# Update existing VpnServerConfiguration2MultiAuth to use OpenVPN and IkeV2 with only AAD should fail
+		Assert-ThrowsContains { Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN, IkeV2 } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
+		$protocols = $vpnServerConfig2MultiAuth.VpnProtocols
+		Assert-AreEqual 1 @($protocols).Count
+		Assert-AreEqual "OpenVPN" $protocols[0]
+
+		# Update existing P2SVpnGateway  with new VpnClientAddressPool and CustomDnsServers using Update-AzP2sVpnGateway
+		$vpnClientAddressSpaces[1] = "192.168.4.0/24"
+		$updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces -CustomDnsServer 9.9.9.9 -DisableInternetSecurityFlag
 
         $P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
@@ -647,33 +1162,54 @@ function Test-CortexExpressRouteCRUD
         Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual $false $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 
-		# Update existing P2SVpnGateway to remove the CustomDnsServers
+		# Update existing P2SVpnGateway to remove the CustomDnsServers & EnableInternetSecurityFlag & adding new P2SConnectionConfiguration
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-		Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -CustomDnsServer @()
-        $P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-        Assert-AreEqual 0 @($P2SVpnGateway.CustomDnsServers).Count
+		$p2SConnectionConfigs = New-Object Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration[] 2
+		$p2SConnectionConfigs[0] = $P2SVpnGateway.P2SConnectionConfigurations[0]
+		$p2SConnectionConfigs[1] =  New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration
+		$p2SConnectionConfigs[1].Name = "P2SConnectionConfigNew"
+		$p2SConnectionConfigs[1].VpnClientAddressPool = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSAddressSpace
+		$p2SConnectionConfigs[1].VpnClientAddressPool.AddressPrefixes = New-Object string[] 1
+		$p2SConnectionConfigs[1].VpnClientAddressPool.AddressPrefixes[0] = "192.168.5.0/24"
+		Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -CustomDnsServer @() -EnableInternetSecurityFlag -P2SConnectionConfiguration $p2SConnectionConfigs
 
-        $associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -ResourceId $virtualWan.Id
-        Assert-NotNull $associatedVpnServerConfigs
-        Assert-AreEqual 1 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
-        Assert-AreEqual $vpnServerConfig1.Id $associatedVpnServerConfigs.VpnServerConfigurationResourceIds[0]
+		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+		Assert-AreEqual 0 @($P2SVpnGateway.CustomDnsServers).Count
+		Assert-AreEqual 2 @($P2SVpnGateway.P2SConnectionConfigurations).Count
+		Assert-AreEqual "P2SConnectionConfigDefault" $P2SVpnGateway.P2SConnectionConfigurations[0].Name
+		Assert-AreEqual $true $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
+		Assert-AreEqual "P2SConnectionConfigNew" $P2SVpnGateway.P2SConnectionConfigurations[1].Name		
+		Assert-AreEqual $true $P2SVpnGateway.P2SConnectionConfigurations[1].EnableInternetSecurity
 
-        # Delete VpnServerConfiguration2 using Remove-AzVirtualWanVpnServerConfiguration
+		$associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -ResourceId $virtualWan.Id
+		Assert-NotNull $associatedVpnServerConfigs
+		Assert-AreEqual 1 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
+		Assert-AreEqual $vpnServerConfig1.Id $associatedVpnServerConfigs.VpnServerConfigurationResourceIds[0]
+
+        # Delete VpnServerConfiguration2 using Remove-AzVpnServerConfiguration
 		$delete = Remove-AzVpnServerConfiguration -InputObject $VpnServerConfig2Get -Force -PassThru
 		Assert-AreEqual $True $delete
 
-		$vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
-        Assert-NotNull $vpnServerConfigs
-        Assert-AreEqual 1 @($vpnServerConfigs).Count
+		# Delete VpnServerConfigurationMultiAuthName using Remove-AzVpnServerConfiguration
+		$delete = Remove-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName -Force -PassThru
+		Assert-AreEqual $True $delete
 
-        # Get aggreagated point to site connections health from P2SVpnGateway
-        #$aggregatedConnectionHealth = Get-AzP2sVpnGatewayConnectionHealth -Name $P2SvpnGatewayName -ResourceGroupName $rgName
-        #Assert-NotNull $aggregatedConnectionHealth
-        #Assert-NotNull $aggregatedConnectionHealth.VpnClientConnectionHealth
-        #Assert-AreEqual 0 $aggregatedConnectionHealth.VpnClientConnectionHealth.VpnClientConnectionsCount
-        
-        # Get a SAS url for getting detained point to site connections health details.
-        $storetype = 'Standard_GRS'
+		# Delete VpnServerConfiguration2MultiAuth
+		$delete = Remove-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2MultiAuthName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
+		Assert-NotNull $vpnServerConfigs
+		Assert-AreEqual 1 @($vpnServerConfigs).Count
+
+		# Get aggreagated point to site connections health from P2SVpnGateway
+		#$aggregatedConnectionHealth = Get-AzP2sVpnGatewayConnectionHealth -Name $P2SvpnGatewayName -ResourceGroupName $rgName
+		#Assert-NotNull $aggregatedConnectionHealth
+		#Assert-NotNull $aggregatedConnectionHealth.VpnClientConnectionHealth
+		#Assert-AreEqual 0 $aggregatedConnectionHealth.VpnClientConnectionHealth.VpnClientConnectionsCount
+
+		# Get a SAS url for getting detained point to site connections health details.
+		$storetype = 'Standard_GRS'
 		$containerName = "cont$($rgName)"
 		New-AzStorageAccount -ResourceGroupName $rgName -Name $storeName -Location $rglocation -Type $storetype
 		$key = Get-AzStorageAccountKey -ResourceGroupName $rgName -Name $storeName
@@ -685,22 +1221,26 @@ function Test-CortexExpressRouteCRUD
 		$now=get-date
 		$blobSasUrl = New-AzStorageBlobSASToken -Container $containerName -Blob emptyfile.txt -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
 
-        # Get detailed point to site connections health from P2SVpnGateway
-        $detailedConnectionHealth = Get-AzP2sVpnGatewayDetailedConnectionHealth -Name $P2SvpnGatewayName -ResourceGroupName $rgName -OutputBlobSasUrl $blobSasUrl
-        Assert-NotNull $detailedConnectionHealth
-        Assert-NotNull $detailedConnectionHealth.SasUrl
-        Assert-AreEqual $blobSasUrl $detailedConnectionHealth.SasUrl
+		# Get detailed point to site connections health from P2SVpnGateway
+		$detailedConnectionHealth = Get-AzP2sVpnGatewayDetailedConnectionHealth -Name $P2SvpnGatewayName -ResourceGroupName $rgName -OutputBlobSasUrl $blobSasUrl
+		Assert-NotNull $detailedConnectionHealth
+		Assert-NotNull $detailedConnectionHealth.SasUrl
+		Assert-AreEqual $blobSasUrl $detailedConnectionHealth.SasUrl
      }
      finally
      {
-		# Delete P2SVpnGateway using Remove-AzP2sVpnGateway
+	    # Delete P2SVpnGateway using Remove-AzP2sVpnGateway
 		$delete = Remove-AzP2sVpnGateway -Name $P2SVpnGatewayName -ResourceGroupName $rgName -Force -PassThru
 		Assert-AreEqual $True $delete
 
-        # Verify that there are no associated VpnServerConfigurations to Virtual wan anymore
-        $associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -Name $virtualWanName -ResourceGroupName $rgName
-        Assert-NotNull $associatedVpnServerConfigs
-        Assert-AreEqual 0 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
+		# Verify that there are no associated VpnServerConfigurations to Virtual wan anymore
+		$associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -Name $virtualWanName -ResourceGroupName $rgName
+		Assert-NotNull $associatedVpnServerConfigs
+		#Assert-AreEqual 0 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
+
+		# Verify that Get PolicyGroup1 works even after attached P2SVpnGateway was deleted.
+		$getPolicyGroup1 = Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration1Name -Name "PolicyGroup1"
+		Assert-NotNull $getPolicyGroup1
 
 		# Delete VpnServerConfiguration1 using Remove-AzVpnServerConfiguration      
 		$delete = Remove-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name -Force -PassThru
@@ -759,11 +1299,11 @@ function Test-CortexExpressRouteCRUD
 		$listOfCerts = New-Object "System.Collections.Generic.List[String]"
 		$listOfCerts.Add($VpnServerConfigCertFilePath)
 		$vpnclientipsecpolicy1 = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup14 -PfsGroup PFS14
-        New-AzVpnServerConfiguration -Name $VpnServerConfiguration1Name -ResourceGroupName $rgName -VpnProtocol IkeV2 -VpnAuthenticationType Certificate -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -VpnClientIpsecPolicy $vpnclientipsecpolicy1 -Location $rglocation
+        	New-AzVpnServerConfiguration -Name $VpnServerConfiguration1Name -ResourceGroupName $rgName -VpnProtocol IkeV2 -VpnAuthenticationType Certificate -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -VpnClientIpsecPolicy $vpnclientipsecpolicy1 -Location $rglocation
 
-        # Get created VpnServerConfiguration using Get-AzVpnServerConfiguration
-        $vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name
-        Assert-NotNull $vpnServerConfig1
+        	# Get created VpnServerConfiguration using Get-AzVpnServerConfiguration
+	        $vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name
+        	Assert-NotNull $vpnServerConfig1
 		
 		# Create the P2SVpnGateway using New-AzP2sVpnGateway
 		$vpnClientAddressSpaces = New-Object string[] 2
@@ -777,7 +1317,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 
 		$expected = Disconnect-AzP2SVpnGatewayVpnConnection -ResourceGroupName $rgname -ResourceName $P2SvpnGatewayName -VpnConnectionId @("IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
-        Assert-AreEqual $expected.Name $P2SVpnGateway.Name
+        	Assert-AreEqual $expected.Name $P2SVpnGateway.Name
      }
      finally
      {
@@ -894,7 +1434,7 @@ function Test-VpnGatewayPacketCapture
 
 		# Delete the resources
 		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
-        Assert-AreEqual $True $delete
+        	Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
 		Assert-AreEqual $True $delete
@@ -915,8 +1455,8 @@ CortexCRUD
 function Test-VpnConnectionPacketCapture
 {
 	# Setup
-    $rgName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "East US"
+    	$rgName = Get-ResourceName
+    	$rglocation = Get-ProviderLocation ResourceManagement "East US"
 
 	$virtualWanName = Get-ResourceName
 	$virtualHubName = Get-ResourceName
@@ -934,7 +1474,7 @@ function Test-VpnConnectionPacketCapture
 	try
 	{
 		# Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+        	$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
 
 		# Create the Virtual Wan
 		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
@@ -970,7 +1510,7 @@ function Test-VpnConnectionPacketCapture
 
 		# Create the VpnConnection with site with links
 		$vpnSiteLinkConnection1 = New-AzVpnSiteLinkConnection -Name $vpnLink1ConnectionName -VpnSiteLink $createdVpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100
-	    $vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $createdVpnSite.VpnSiteLinks[1] -ConnectionBandwidth 10
+	    	$vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnLink2ConnectionName -VpnSiteLink $createdVpnSite.VpnSiteLinks[1] -ConnectionBandwidth 10
 
 		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $createdVpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection1, $vpnSiteLinkConnection2)
 
@@ -1015,20 +1555,20 @@ function Test-VpnConnectionPacketCapture
 		Assert-AreEqual $createdVpnConnection.Name $output.Name
 		Assert-AreEqual $output.Code "Succeeded"
 
-        $delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
-        Assert-AreEqual $True $delete
+        	$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+	        Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
-        Assert-AreEqual $True $delete
+        	$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
+        	Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
-        Assert-AreEqual $True $delete
+        	$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
+        	Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-        Assert-AreEqual $True $delete
+        	$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        	Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
-        Assert-AreEqual $True $delete
+        	$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+        	Assert-AreEqual $True $delete
 	}
 	finally
 	{
@@ -1054,6 +1594,10 @@ function Test-VpnConnectionPacketCapture
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
     $VpnGatewayName = Get-ResourceName
+    $vpnSiteName = Get-ResourceName
+    $vpnSiteLinkName = Get-ResourceName
+    $vpnSiteLinkConnection = Get-ResourceName
+    $vpnConnectionName = Get-ResourceName
     
     try
 	{
@@ -1083,11 +1627,31 @@ function Test-VpnConnectionPacketCapture
 		$updatedvpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual 1 @($updatedvpnGateway.BgpSettings.BGPPeeringAddresses[0]).Count
 		Assert-AreEqual 1 @($updatedvpnGateway.BgpSettings.BGPPeeringAddresses[1]).Count
+
+		#VpnSiteLinkConnection with VpnGatewayCustomBgpAddress
+		$link = New-AzVpnSiteLink -Name $vpnSiteLinkName -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10" -BGPPeeringAddress "10.21.1.1" -BGPAsn 6500
+		$vpnSite = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Location $rglocation -VirtualWan $virtualWan -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($link)
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.22.5"
+		$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.10"
+
+		$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name $vpnSiteLinkConnection -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddress $address,$address2 -EnableBgp
+		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddress.Count
+		$vpnConnection = New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
+		Assert-AreEqual 1 $vpnConnection.VpnLinkConnections.Count
      }
      finally
      {
+		# Delete VpnConnection using Remove-AzVpnConnection
+		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+		Assert-AreEqual $True $delete
+
 		# Delete VpnGateway using Remove-AzVpnGateway
 		$delete = Remove-AzVpnGateway -Name $VpnGatewayName -ResourceGroupName $rgName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete VpnSite using Remove-AzVpnSite
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		# Delete Virtual hub
@@ -1105,8 +1669,8 @@ function Test-VpnConnectionPacketCapture
 function Test-CortexVirtualHubCRUD
 {
 	# Setup
-    $rgName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
+    	$rgName = Get-ResourceName
+    	$rglocation = Get-ProviderLocation ResourceManagement "West Central US"
 
 	$virtualWanName = Get-ResourceName
 	$virtualHubName = Get-ResourceName
@@ -1114,7 +1678,7 @@ function Test-CortexVirtualHubCRUD
 	try
 	{
 		# Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+        	$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
 
 		# Create the Virtual Wan
 		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
@@ -1135,11 +1699,11 @@ function Test-CortexVirtualHubCRUD
 		Reset-AzHubRouter -ResourceGroupName $rgName -Name $virtualHubName
 
 		# Delete the resources
-        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-        Assert-AreEqual $True $delete
+        	$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        	Assert-AreEqual $True $delete
 
-        $delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
-        Assert-AreEqual $True $delete
+        	$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+        	Assert-AreEqual $True $delete
 	}
 	finally
 	{
@@ -1220,3 +1784,289 @@ function Test-VHubRouteTableCRUD
 		Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-VpnSiteLinkConnectionGetIkeSa
+{
+	# Setup
+    	$rgName = Get-ResourceName
+    	$rglocation = Get-ProviderLocation ResourceManagement
+	$virtualWan1Name = Get-ResourceName
+	$virtualWan2Name = Get-ResourceName
+	$virtualHub1Name = Get-ResourceName
+	$virtualHub2Name = Get-ResourceName
+	$vpnSiteLink1Name = Get-ResourceName
+	$vpnSiteLink2Name = Get-ResourceName
+	$vpnSite1Name = Get-ResourceName
+	$vpnSite2Name = Get-ResourceName
+	$vpnGateway1Name = Get-ResourceName
+	$vpnGateway2Name = Get-ResourceName
+	$vpnSiteLinkConnection1Name = Get-ResourceName
+	$vpnSiteLinkConnection2Name = Get-ResourceName
+	$vpnConnection1Name = Get-ResourceName
+	$vpnConnection2Name = Get-ResourceName
+    
+	try
+	{
+		# Create Resource Group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create and Get Virtual Wan 1
+		$createVirtualWan1 = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWan1Name -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan1 = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWan1Name
+		Assert-AreEqual $rgName $virtualWan1.ResourceGroupName
+		Assert-AreEqual $virtualWan1Name $virtualWan1.Name
+
+		# Create and Get Virtual Hub 1
+		$createVirtualHub1 = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHub1Name -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan1
+		$virtualHub1 = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHub1Name
+		Assert-AreEqual $rgName $virtualHub1.ResourceGroupName
+		Assert-AreEqual $virtualHub1Name $virtualHub1.Name
+		Assert-AreEqual "192.168.1.0/24" $virtualHub1.AddressPrefix
+
+		# Create VPN Gateway 1
+		$createVpnGateway1Job = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGateway1Name -VirtualHub $virtualHub1 -VpnGatewayScaleUnit 3 -AsJob
+
+		# Create and Get Virtual Wan 2
+		$createVirtualWan2 = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWan2Name -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan2 = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWan2Name
+		Assert-AreEqual $rgName $virtualWan2.ResourceGroupName
+		Assert-AreEqual $virtualWan2Name $virtualWan2.Name
+
+		# Create and Get Virtual Hub 2
+		$createVirtualHub2 = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHub2Name -Location $rglocation -AddressPrefix "192.169.1.0/24" -VirtualWan $virtualWan2
+		$virtualHub2 = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHub2Name
+		Assert-AreEqual $rgName $virtualHub2.ResourceGroupName
+		Assert-AreEqual $virtualHub2Name $virtualHub2.Name
+		Assert-AreEqual "192.169.1.0/24" $virtualHub2.AddressPrefix
+
+		# Create VPN Gateway 2
+		$createVpnGateway2Job = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGateway2Name -VirtualHub $virtualHub2 -VpnGatewayScaleUnit 3 -AsJob
+
+		# Create and Get VPN Site 1 with Links
+		$vpnSite1AddressSpaces = New-Object string[] 1
+		$vpnSite1AddressSpaces[0] = "192.168.2.0/24"
+		$vpnSiteLink1 = New-AzVpnSiteLink -Name $vpnSiteLink1Name -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10"
+		
+		$createVpnSite1 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite1Name -Location $rglocation -VirtualWan $virtualWan1 -AddressSpace $vpnSite1AddressSpaces -DeviceModel "SomeDevice1" -DeviceVendor "SomeDeviceVendor1" -VpnSiteLink @($vpnSiteLink1)
+		$vpnSite1 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite1Name
+		Assert-AreEqual $rgName $vpnSite1.ResourceGroupName
+		Assert-AreEqual $vpnSite1Name $vpnSite1.Name
+		Assert-AreEqual 1 $vpnSite1.VpnSiteLinks.Count
+
+		# Get VPN Gateway 1
+		$createVpnGateway1Job | Wait-Job
+		$gw1 = $createVpnGateway1Job | Receive-Job
+		$vpnGateway1 = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGateway1Name
+		Assert-AreEqual $rgName $vpnGateway1.ResourceGroupName
+		Assert-AreEqual $vpnGateway1Name $vpnGateway1.Name
+		Assert-AreEqual 3 $vpnGateway1.VpnGatewayScaleUnit
+
+		# Create and Get VPN Connection 1 and VPN Site Link Connection 1
+		$sharedKeySecureString = ConvertTo-SecureString -String "abcd" -AsPlainText -Force
+
+		$vpnSiteLinkConnection1 = New-AzVpnSiteLinkConnection -Name $vpnSiteLinkConnection1Name -VpnSiteLink $vpnSite1.VpnSiteLinks[0] -SharedKey $sharedKeySecureString -ConnectionBandwidth 100
+		$createVpnConnection1 = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGateway1Name -Name $vpnConnection1Name -VpnSite $vpnSite1 -VpnSiteLinkConnection @($vpnSiteLinkConnection1)
+		$vpnConnection1 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGateway1Name -Name $vpnConnection1Name
+		Assert-AreEqual $vpnConnection1Name $vpnConnection1.Name
+		Assert-AreEqual 1 $vpnConnection1.VpnLinkConnections.Count
+
+		# Get IP Address of an Instance of VPN Gateway 1
+		$instanceIp1 = "0.0.0.0"
+		if ((Get-NetworkTestMode) -ne 'Playback')
+		{
+			$storetype = 'Standard_GRS'
+			$containerName = "cont1$($rgName)"
+			$storeName = "blob1" + $rgName
+			New-AzStorageAccount -ResourceGroupName $rgName -Name $storeName -Location $rglocation -Type $storetype
+			$key = Get-AzStorageAccountKey -ResourceGroupName $rgName -Name $storeName
+			$context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+			New-AzStorageContainer -Name $containerName -Context $context
+			$container = Get-AzStorageContainer -Name $containerName -Context $context
+			$now = Get-Date
+			$vpnSite1ConfigFileName = "vpnSite1Config.json"
+			$blobSasUrl1 = New-AzStorageBlobSASToken -Container $containerName -Blob $vpnSite1ConfigFileName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+			$sasUrl1 = Get-AzVirtualWanVpnConfiguration -VirtualWan $virtualWan1 -StorageSasUrl $blobSasUrl1 -VpnSite $vpnSite1
+
+			$configFile1 = Get-AzStorageBlobContent -Blob $vpnSite1ConfigFileName -Container $containerName -Context $context
+			$configFile1Data = (Get-Content $vpnSite1ConfigFileName -Raw) | ConvertFrom-Json
+			$instanceIp1 = $configFile1Data.vpnSiteConnections.gatewayConfiguration.IpAddresses.Instance0
+		}
+		Assert-NotNull $instanceIp1
+
+		# Create and Get VPN Site 2 with Links
+		$vpnSite2AddressSpaces = New-Object string[] 1
+		$vpnSite2AddressSpaces[0] = "192.169.2.0/24"
+		$vpnSiteLink2 = New-AzVpnSiteLink -Name $vpnSiteLink2Name -IpAddress $instanceIp1 -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "10"
+
+		$createVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -Location $rglocation -VirtualWan $virtualWan2 -AddressSpace $vpnSite2AddressSpaces -DeviceModel "SomeDevice2" -DeviceVendor "SomeDeviceVendor2" -VpnSiteLink @($vpnSiteLink2)
+		$vpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name
+		Assert-AreEqual $rgName $vpnSite2.ResourceGroupName
+		Assert-AreEqual $vpnSite2Name $vpnSite2.Name
+		Assert-AreEqual 1 $vpnSite2.VpnSiteLinks.Count
+
+		# Get VPN Gateway 1
+		$createVpnGateway2Job | Wait-Job
+		$gw2 = $createVpnGateway2Job | Receive-Job
+		$vpnGateway2 = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGateway2Name
+		Assert-AreEqual $rgName $vpnGateway2.ResourceGroupName
+		Assert-AreEqual $vpnGateway2Name $vpnGateway2.Name
+		Assert-AreEqual 3 $vpnGateway2.VpnGatewayScaleUnit
+
+		# Create and Get VPN Connection 2 to Site with Links
+		$vpnSiteLinkConnection2 = New-AzVpnSiteLinkConnection -Name $vpnSiteLinkConnection2Name -VpnSiteLink $vpnSite2.VpnSiteLinks[0] -SharedKey $sharedKeySecureString -ConnectionBandwidth 100
+		$createVpnConnection2 = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGateway2Name -Name $vpnConnection2Name -VpnSite $vpnSite2 -VpnSiteLinkConnection @($vpnSiteLinkConnection2)
+		$vpnConnection2 = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGateway2Name -Name $vpnConnection2Name
+		Assert-AreEqual $vpnConnection2Name $vpnConnection2.Name
+		Assert-AreEqual 1 $vpnConnection2.VpnLinkConnections.Count
+
+		# Get IP Address of an Instance of VPN Gateway 2
+		$instanceIp2 = "0.0.0.1"
+		if ((Get-NetworkTestMode) -ne 'Playback')
+		{
+			$storetype = 'Standard_GRS'
+			$containerName = "cont2$($rgName)"
+			$storeName = "blob2" + $rgName
+			New-AzStorageAccount -ResourceGroupName $rgName -Name $storeName -Location $rglocation -Type $storetype
+			$key = Get-AzStorageAccountKey -ResourceGroupName $rgName -Name $storeName
+			$context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+			New-AzStorageContainer -Name $containerName -Context $context
+			$container = Get-AzStorageContainer -Name $containerName -Context $context
+			$now = Get-Date
+
+			$vpnSite2ConfigFileName = "vpnSite2Config.json"
+			$blobSasUrl2 = New-AzStorageBlobSASToken -Container $containerName -Blob $vpnSite2ConfigFileName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+			$sasUrl2 = Get-AzVirtualWanVpnConfiguration -VirtualWan $virtualWan2 -StorageSasUrl $blobSasUrl2 -VpnSite $vpnSite2
+
+			$configFile2 = Get-AzStorageBlobContent -Blob $vpnSite2ConfigFileName -Container $containerName -Context $context
+			$configFile2Data = (Get-Content $vpnSite2ConfigFileName -Raw) | ConvertFrom-Json
+			$instanceIp2 = $configFile2Data.vpnSiteConnections.gatewayConfiguration.IpAddresses.Instance0
+		}
+		Assert-NotNull $instanceIp2
+
+		# Update IP Address of VPN Site Link 1
+		$vpnSiteLink1.IpAddress = $instanceIp2
+		Update-AzVpnSite -InputObject $vpnSite1 -VpnSiteLink $vpnSiteLink1
+		$vpnSite1 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite1Name
+
+		Start-TestSleep -Seconds 350
+
+		# Get IKE Security Associations for VPN Site Link Connections
+		$ikesa1 = Get-AzVpnSiteLinkConnectionIkeSa -ResourceGroupName $rgName -VpnGatewayName $vpnGateway1Name -VpnConnectionName $vpnConnection1Name -Name $vpnSiteLinkConnection1Name
+		Assert-NotNull $ikesa1
+
+		$ikesa2 = Get-AzVpnSiteLinkConnectionIkeSa -InputObject $vpnConnection2.VpnLinkConnections[0]
+		Assert-NotNull $ikesa2
+
+		# Clean Resources
+		<#
+		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGateway1Name -Name $vpnConnection1Name -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGateway2Name -Name $vpnConnection2Name -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGateway1Name -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGateway2Name -Force -PassThru
+		Assert-AreEqual $True $delete
+		
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite1Name -Force -PassThru
+		Assert-AreEqual $True $delete
+		
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -Force -PassThru
+		Assert-AreEqual $True $delete
+		
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHub1Name -Force -PassThru
+		Assert-AreEqual $True $delete
+		
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHub2Name -Force -PassThru
+		Assert-AreEqual $True $delete
+		
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWan1Name -Force -PassThru
+		Assert-AreEqual $True $delete
+		
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWan2Name -Force -PassThru
+		Assert-AreEqual $True $delete
+		#>
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Create a virtual hub and vpn gateway with custom asn and update them
+#>
+function Test-VirtualHubAndVpnGatewayWithCustomAsn
+{
+	# Setup
+	$rgName = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement "West Central US"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$vpnGatewayName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+		Assert-AreEqual $true $virtualWan.AllowVnetToVnetTraffic
+		Assert-AreEqual $true $virtualWan.AllowBranchToBranchTraffic
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -VirtualWan $virtualWan -AddressPrefix "192.168.1.0/24" -VirtualRouterAsn 65000
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+		Assert-AreEqual 65000 $virtualHub.VirtualRouterAsn
+
+		# Create the VpnGateway
+		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -Asn 65100
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
+		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
+		Assert-AreEqual 65100 $vpnGateway.BgpSettings.Asn
+
+		# Update Virtual Hub
+		$updatedVirtualHub = Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -VirtualRouterAsn 65001
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual 65001 $virtualHub.VirtualRouterAsn
+
+		# Update the VpnGateway
+		$updatedVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Asn 65101
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
+		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
+		Assert-AreEqual 65101 $vpnGateway.BgpSettings.Asn
+
+		# Delete Vpn Gateway
+		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete Virtual hub
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete Virtual wan
+		$delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+

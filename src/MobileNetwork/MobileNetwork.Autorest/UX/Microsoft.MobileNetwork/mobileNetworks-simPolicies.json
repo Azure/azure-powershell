@@ -1,0 +1,95 @@
+{
+  "resourceType": "mobileNetworks/simPolicies",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMobileNetworkSimPolicy",
+      "description": "Gets information about the specified SIM policy.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/simPolicies/{simPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworksimpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MobileNetworkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about the specified SIM policy.",
+          "parameters": [
+            {
+              "name": "-MobileNetworkName",
+              "value": "[Path.mobileNetworkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.simPolicyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMobileNetworkSimPolicy",
+      "description": "Deletes the specified SIM policy.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/simPolicies/{simPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworksimpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MobileNetworkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified SIM policy.",
+          "parameters": [
+            {
+              "name": "-MobileNetworkName",
+              "value": "[Path.mobileNetworkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.simPolicyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

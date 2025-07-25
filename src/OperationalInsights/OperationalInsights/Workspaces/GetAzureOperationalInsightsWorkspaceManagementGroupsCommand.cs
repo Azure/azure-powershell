@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [GenericBreakingChange("Get-AzOperationalInsightsWorkspaceManagementGroups alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsWorkspaceManagementGroup"), OutputType(typeof(PSManagementGroup))]
     [Alias("Get-AzOperationalInsightsWorkspaceManagementGroups")]
     public class GetAzureOperationalInsightsWorkspaceManagementGroupsCommand : OperationalInsightsBaseCmdlet

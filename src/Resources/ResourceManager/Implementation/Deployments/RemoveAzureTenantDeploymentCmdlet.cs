@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetDeploymentName(this.Id) : this.InputObject.DeploymentName
                     };
 
-                    this.ResourceManagerSdkClient.DeleteDeploymentAtTenantScope(options.DeploymentName);
+                    this.NewResourceManagerSdkClient.DeleteDeploymentAtTenantScope(options.DeploymentName);
 
                     if (this.PassThru.IsPresent)
                     {

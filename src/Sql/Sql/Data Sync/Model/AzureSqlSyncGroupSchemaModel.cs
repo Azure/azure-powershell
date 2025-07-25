@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// </summary>
         public IList<AzureSqlSyncGroupSchemaTableModel> Tables { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Master sync member name
         /// </summary>
         public string MasterSyncMemberName { get; set; }

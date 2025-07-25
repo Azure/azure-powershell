@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 22975A89-CAFF-4F18-8DCE-B695413FBAC7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragequeue
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragequeue
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Removes a storage queue.
 
 ```
 Remove-AzStorageQueue [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +25,15 @@ The **Remove-AzStorageQueue** cmdlet removes a storage queue.
 ## EXAMPLES
 
 ### Example 1: Remove a storage queue by name
-```
-PS C:\>Remove-AzStorageQueue "ContosoQueue01"
+```powershell
+Remove-AzStorageQueue "ContosoQueue01"
 ```
 
 This command removes a queue named ContosoQueue01.
 
 ### Example 2: Remove multiple storage queues
-```
-PS C:\>Get-AzStorageQueue "Contoso*" | Remove-AzStorageQueue
+```powershell
+Get-AzStorageQueue "Contoso*" | Remove-AzStorageQueue
 ```
 
 This command removes all queues with names that start with Contoso.
@@ -148,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

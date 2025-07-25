@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ApiManagement
 Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement
+Download Help Link: https://learn.microsoft.com/powershell/module/az.apimanagement
 Help Version: 4.0.0.0
 Locale: en-US
 ---
@@ -198,7 +198,7 @@ Creates a new diagnostics at the Global scope or Api Scope.
 Creates new Gateway entity.
 
 ### [New-AzApiManagementGatewayHostnameConfiguration](New-AzApiManagementGatewayHostnameConfiguration.md)
-Creates a hostname configuratin for the existing Gateway.
+Creates a hostname configuration for the existing Gateway.
 
 ### [New-AzApiManagementGroup](New-AzApiManagementGroup.md)
 Creates an API management group.
@@ -208,6 +208,9 @@ Creates an instance of **PsApiManagementHttpMessageDiagnostic** which is an Http
 
 ### [New-AzApiManagementIdentityProvider](New-AzApiManagementIdentityProvider.md)
 Creates a new Identity Provider configuration.
+
+### [New-AzApiManagementKeyVaultObject](New-AzApiManagementKeyVaultObject.md)
+Creates an instance of PsApiManagementKeyVaultObject.
 
 ### [New-AzApiManagementLogger](New-AzApiManagementLogger.md)
 Creates an API Management Logger.
@@ -342,7 +345,7 @@ Deletes an existing user.
 Removes a user from a group.
 
 ### [Restore-AzApiManagement](Restore-AzApiManagement.md)
-Restores an API Management Service from the specified Azure storage blob.
+Restores an API Management Service from the specified Azure Storage blob.
 
 ### [Save-AzApiManagementTenantGitConfiguration](Save-AzApiManagementTenantGitConfiguration.md)
 Saves changes by creating a commit for current configuration.
@@ -406,6 +409,9 @@ Enables or disables tenant access.
 
 ### [Set-AzApiManagementUser](Set-AzApiManagementUser.md)
 Sets user details.
+
+### [Sync-AzApiManagementKeyVaultSecret](Sync-AzApiManagementKeyVaultSecret.md)
+Refreshes NamedValue or Certificate created by KeyVault.
 
 ### [Update-AzApiManagementApiRelease](Update-AzApiManagementApiRelease.md)
 Updates a particular Api Release.

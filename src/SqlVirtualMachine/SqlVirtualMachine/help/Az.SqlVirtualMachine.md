@@ -1,55 +1,64 @@
 ---
 Module Name: Az.SqlVirtualMachine
 Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
-Download Help Link: {{ Update Download Link }}
+Download Help Link: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.SqlVirtualMachine Module
 ## Description
-This topic displays help topics for the Azure SQL virtual machine Cmdlets.
+Microsoft Azure PowerShell: SqlVirtualMachine cmdlets
 
 ## Az.SqlVirtualMachine Cmdlets
+### [Assert-AzSqlVMEntraAuth](Assert-AzSqlVMEntraAuth.md)
+Validates a SQL virtual machine Entra Authentication.
+
 ### [Get-AzAvailabilityGroupListener](Get-AzAvailabilityGroupListener.md)
-Get one or more Availability Group Listeners in a SQL Virtual Machine Group.
+Gets an availability group listener.
 
 ### [Get-AzSqlVM](Get-AzSqlVM.md)
-Gets one or more sql virtual machines.
+Gets a SQL virtual machine.
 
 ### [Get-AzSqlVMGroup](Get-AzSqlVMGroup.md)
-Gets one or more sql virtual machine groups.
+Gets a SQL virtual machine group.
+
+### [Invoke-AzRedeploySqlVM](Invoke-AzRedeploySqlVM.md)
+Uninstalls and reinstalls the SQL IaaS Extension.
+
+### [Invoke-AzSqlVMTroubleshoot](Invoke-AzSqlVMTroubleshoot.md)
+Starts SQL virtual machine troubleshooting.
 
 ### [New-AzAvailabilityGroupListener](New-AzAvailabilityGroupListener.md)
-Creates a new Availability Group Listener.
+Creates or updates an availability group listener.
+
+### [New-AzSqlVirtualMachineAgReplicaObject](New-AzSqlVirtualMachineAgReplicaObject.md)
+Create an in-memory object for AgReplica.
+
+### [New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject](New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject.md)
+Create an in-memory object for MultiSubnetIPConfiguration.
 
 ### [New-AzSqlVM](New-AzSqlVM.md)
-Creates a new sql virtual machine.
-
-### [New-AzSqlVMConfig](New-AzSqlVMConfig.md)
-Creates a new configuration for a sql virtual machine.
+Creates or updates a SQL virtual machine.
 
 ### [New-AzSqlVMGroup](New-AzSqlVMGroup.md)
-Creates a new sql virtual machine group.
+Creates or updates a SQL virtual machine group.
 
 ### [Remove-AzAvailabilityGroupListener](Remove-AzAvailabilityGroupListener.md)
-Deletes an Availability Group Listener.
+Deletes an availability group listener.
 
 ### [Remove-AzSqlVM](Remove-AzSqlVM.md)
-Deletes a sql virtual machine.
+Deletes a SQL virtual machine.
 
 ### [Remove-AzSqlVMGroup](Remove-AzSqlVMGroup.md)
-Deletes a sql virtual machine group.
+Deletes a SQL virtual machine group.
 
-### [Set-AzSqlVMConfigGroup](Set-AzSqlVMConfigGroup.md)
-Set the information relative to a sql virtual machine group in a sql virtual machine configuration.
-
-### [Update-AzAvailabilityGroupListener](Update-AzAvailabilityGroupListener.md)
-Updates the Availability Group Listener.
+### [Start-AzSqlVMAssessment](Start-AzSqlVMAssessment.md)
+Starts SQL best practices Assessment on SQL virtual machine.
 
 ### [Update-AzSqlVM](Update-AzSqlVM.md)
-Updates a sql virtual machine.
+Updates a SQL virtual machine.
 
 ### [Update-AzSqlVMGroup](Update-AzSqlVMGroup.md)
-Updates a sql virtual machine group.
+Updates SQL virtual machine group.
 

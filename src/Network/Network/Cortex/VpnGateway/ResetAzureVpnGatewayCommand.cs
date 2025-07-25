@@ -64,6 +64,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure IpConfiguration ID of the VpnGateway to reset.")]
+        [ValidateNotNullOrEmpty]
+        public string IpConfigurationId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -95,7 +102,14 @@ namespace Microsoft.Azure.Commands.Network
             string shouldProcessMessage = string.Format("Execute {0}VpnGateway for ResourceGroupName {1} VpnGateway {2}", ResourceManager.Common.AzureRMConstants.AzureRMPrefix, this.ResourceGroupName, this.Name);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Reset))
             {
-                this.VpnGatewayClient.Reset(this.ResourceGroupName, this.Name);
+                if (!string.IsNullOrEmpty(this.IpConfigurationId))
+                {
+                    this.VpnGatewayClient.Reset(this.ResourceGroupName, this.Name, this.IpConfigurationId);
+                }
+                else
+                {
+                    this.VpnGatewayClient.Reset(this.ResourceGroupName, this.Name);
+                }
 
                 var getVpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.Name);
                 WriteObject(getVpnGateway);

@@ -1,0 +1,91 @@
+{
+  "Get-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+ListByParent+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/simdev-3333902-cluster-1/bareMetalMachineKeySets?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/simdev-3333902-cluster-1/bareMetalMachineKeySets?api-version=2025-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "41053b23-4546-470b-b279-269995cdacdc" ],
+        "CommandName": [ "Get-AzNetworkCloudBareMetalMachineKeySet" ],
+        "FullCommandName": [ "Get-AzNetworkCloudBareMetalMachineKeySet_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2fc7c5eb-68fb-41e5-9ffc-8a4517766a82" ],
+        "x-ms-correlation-request-id": [ "57495a47-e162-41e1-bc0c-03c2f1680bcc" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20250402T044452Z:57495a47-e162-41e1-bc0c-03c2f1680bcc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C79B9858DCAF4315B2E14A7BE9F71704 Ref B: AMS231022012033 Ref C: 2025-04-02T04:44:52Z" ],
+        "Date": [ "Wed, 02 Apr 2025 04:44:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2152" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/simdev-3333902-cluster-1/bareMetalMachineKeySets/bmmKeySet\",\"name\":\"bmmKeySet\",\"type\":\"microsoft.networkcloud/clusters/baremetalmachinekeysets\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-hostedresources-55678c72/providers/microsoft.extendedlocation/customlocations/simdev-3323985-cluster-1-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"35009a75-0000-1000-0000-67ecc0bb0000\\\"\",\"tags\":{\"tag1\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-02T04:44:21.823872Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-04-02T04:44:43.7988056Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"azureGroupId\":\"598f3796-d0dd-45ec-b0fc-000000000000\",\"expiration\":\"2025-12-31T23:59:59.008Z\",\"jumpHostsAllowed\":[\"10.23.25.1\"],\"osGroupName\":\"standardAccessGroup\",\"privilegeLevel\":\"Standard\",\"userList\":[{\"azureUserName\":\"userABC\",\"description\":\"User ABC Desc\",\"sshPublicKey\":{\"keyData\":\"ssh-rsa REDACTED\"},\"userPrincipalName\":\"REDACTED\"}],\"userListStatus\":[{\"azureUserName\":\"userABC\",\"status\":\"Invalid\",\"statusMessage\":\"Invalid due to validation error (failed to find Entra group); inactive on all nodes\"}],\"lastValidation\":\"2025-04-02T04:44:26Z\",\"detailedStatus\":\"AllInvalid\",\"detailedStatusMessage\":\"Updated users on all the nodes\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/simdev-3333902-cluster-1/bareMetalMachineKeySets/bmmKeySet?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/simdev-3333902-cluster-1/bareMetalMachineKeySets/bmmKeySet?api-version=2025-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "21e96c7a-a9a7-40e7-86e2-7af5f11892db" ],
+        "CommandName": [ "Get-AzNetworkCloudBareMetalMachineKeySet" ],
+        "FullCommandName": [ "Get-AzNetworkCloudBareMetalMachineKeySet_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"35009a75-0000-1000-0000-67ecc0bb0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "75340782-786e-4dc7-8fb6-b1bf7ea05f2a" ],
+        "x-ms-correlation-request-id": [ "5781f14d-99d3-44d4-96d9-2a32091da26a" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20250402T044453Z:5781f14d-99d3-44d4-96d9-2a32091da26a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 68A2FC9CBBB94B9EB523E753D7048608 Ref B: AMS231022012033 Ref C: 2025-04-02T04:44:52Z" ],
+        "Date": [ "Wed, 02 Apr 2025 04:44:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2140" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_id-simdev-3333902/providers/Microsoft.NetworkCloud/clusters/simdev-3333902-cluster-1/bareMetalMachineKeySets/bmmKeySet\",\"name\":\"bmmKeySet\",\"type\":\"microsoft.networkcloud/clusters/baremetalmachinekeysets\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-hostedresources-55678c72/providers/microsoft.extendedlocation/customlocations/simdev-3323985-cluster-1-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"35009a75-0000-1000-0000-67ecc0bb0000\\\"\",\"tags\":{\"tag1\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-02T04:44:21.823872Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-04-02T04:44:43.7988056Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"azureGroupId\":\"598f3796-d0dd-45ec-b0fc-000000000000\",\"expiration\":\"2025-12-31T23:59:59.008Z\",\"jumpHostsAllowed\":[\"10.23.25.1\"],\"osGroupName\":\"standardAccessGroup\",\"privilegeLevel\":\"Standard\",\"userList\":[{\"azureUserName\":\"userABC\",\"description\":\"User ABC Desc\",\"sshPublicKey\":{\"keyData\":\"ssh-rsa REDACTED\"},\"userPrincipalName\":\"REDACTED\"}],\"userListStatus\":[{\"azureUserName\":\"userABC\",\"status\":\"Invalid\",\"statusMessage\":\"Invalid due to validation error (failed to find Entra group); inactive on all nodes\"}],\"lastValidation\":\"2025-04-02T04:44:26Z\",\"detailedStatus\":\"AllInvalid\",\"detailedStatusMessage\":\"Updated users on all the nodes\"}}",
+      "isContentBase64": false
+    }
+  }
+}

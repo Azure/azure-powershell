@@ -1,0 +1,13 @@
+{
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "ResourceId": "/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourceGroups/github-action-deploy/providers/Microsoft.Storage/storageAccounts/storexahdnmg5xqlduarm",
+  "ReportName": "powershell-test-report-fordelete",
+  "GeneratedReportName": "powershell-test-report",
+  "PayloadUrl": "https://a.b.c.com",
+  "Secret": "testSecret",
+  "PreparedWebhookName": "test-webhook",
+  "NewPayloadUrl": "https://a.b.com",
+  "SubscriptionId": "f744fbde-a95f-437e-8fcf-38f9324e3d9c",
+  "WebhookName": "test-webhook-fordelete",
+  "TimeZone": "Pacific Standard Time"
+}

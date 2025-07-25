@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,7 +18,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSIdentity
     {
-        public PSIdentity(string type, string principalId = default(string), string tenantId = default(string))
+        public PSIdentity(string type, string principalId = default, string tenantId = default)
         {
             PrincipalId = principalId;
             TenantId = tenantId;
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             }
         }
 
-        public Identity getIdentity()
+        public Identity GetIdentity()
         {
             return new Identity(this.getIdentityType(), this.PrincipalId, this.TenantId);
         }

@@ -19,28 +19,29 @@ Test Recovery Services Backup Vault
 
 function Test-AzureVMGetContainers
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	$location = "centraluseuap" # "southeastasia"
+	$resourceGroupName = "iaasvm-pstest-rg" # Create-ResourceGroup $location
+	$vaultName = "iaasvm-pstest-vault"
+	$vmName = "iaasvm-pstest-vm"
 
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Enable-Protection $vault $vm
+		$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName  # Create-VM $resourceGroupName $location
+		$vault =  Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName # Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+		$item = Enable-Protection $vault $vm
 		
 		# VARIATION-1: Get All Containers with only mandatory parameters
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
-			-ContainerType AzureVM `
-			-Status Registered;
+			-ContainerType AzureVM;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
 		# VARIATION-2: Get Containers with friendly name filter
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Status Registered `
 			-FriendlyName $vm.Name;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
@@ -48,7 +49,6 @@ function Test-AzureVMGetContainers
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Status Registered `
 			-FriendlyName $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
@@ -57,13 +57,18 @@ function Test-AzureVMGetContainers
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Status Registered `
 			-ResourceGroupName $vm.ResourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 	}
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# Cleanup-ResourceGroup $resourceGroupName
+
+		#disable protection with RemoveRecoveryPoints
+		Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -VaultId $vault.ID -Force
+
+		# enable soft delete 
+		Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState Enable -VaultId $vault.ID
 	}
 }

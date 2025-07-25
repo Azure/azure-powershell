@@ -1,75 +1,64 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: C791C593-F7D5-4961-97F9-E4909813FFE7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadapplication
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplication
 schema: 2.0.0
 ---
 
 # Remove-AzADApplication
 
 ## SYNOPSIS
-Deletes the azure active directory application.
+Deletes entity from applications
 
 ## SYNTAX
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADApplication -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADApplication -ObjectId <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Remove-AzADApplication -ApplicationId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADApplication -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationDisplayNameParameterSet
 ```
-Remove-AzADApplication -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADApplication -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzADApplication -InputObject <PSADApplication> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADApplication -InputObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the azure active directory application.
+Deletes entity from applications
 
 ## EXAMPLES
 
-### Example 1: Remove application by object id
-
+### Example 1: Remove application by display name
 ```powershell
-PS C:\> Remove-AzADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738
+Remove-AzADApplication -DisplayName $name
 ```
 
-Removes the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' from the tenant.
+Remove application by display name
 
-### Example 2: Remove application by application id
-
+### Example 2: Remove application by pipeline input
 ```powershell
-PS C:\> Remove-AzADApplication -ApplicationId f9c5ea4f-28f0-401a-a491-491a037fa346
+Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 ```
 
-Removes the application with application id 'f9c5ea4f-28f0-401a-a491-491a037fa346' from the tenant.
-
-### Example 3: Remove application by piping
-
-```powershell
-PS C:\> Get-AzADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738 | Remove-AzADApplication
-```
-
-Gets the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' and pipes that to the Remove-AzADApplication cmdlet to remove the application from the tenant.
+Remove application by pipeline input
 
 ## PARAMETERS
 
 ### -ApplicationId
-The application id of the application to remove.
+key: id of application
 
 ```yaml
 Type: System.Guid
@@ -79,15 +68,15 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -99,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The display name of the application.
+key: display name of application
 
 ```yaml
 Type: System.String
@@ -109,30 +98,15 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Force
-Switch to delete an application without a confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -InputObject
-The object representing the application to remove.
+The application object, could be used as pipeline input.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -144,22 +118,22 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The object id of the application to delete.
+key: object id of application
 
 ```yaml
 Type: System.String
 Parameter Sets: ObjectIdParameterSet
-Aliases:
+Aliases: Id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Specifying this will return true if the command was successful.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -209,26 +183,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Guid
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
-
-[New-AzADApplication](./New-AzADApplication.md)
-
-[Get-AzADApplication](./Get-AzADApplication.md)
-
-[Update-AzADApplication](./Update-AzADApplication.md)
-
-[Remove-AzADAppCredential](./Remove-AzADAppCredential.md)
-

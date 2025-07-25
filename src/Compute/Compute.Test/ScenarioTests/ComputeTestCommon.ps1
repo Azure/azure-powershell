@@ -138,6 +138,47 @@ function Create-KeyVault
     return $properties
 }
 
+# Create key vault resources
+function Create-KeyVaultWithAclEncryptionIdentity
+{
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        [string] $resourceGroupName,
+        [Parameter(Mandatory=$true, Position=1)]
+        [string] $location,
+        [Parameter(Mandatory=$false, Position=2)]
+        [string] $vaultName,
+        [Parameter(Mandatory=$false, Position=3)]
+        [String] $userIdentityPrincipalId
+    )
+
+    # initialize parameters if needed
+    if ([string]::IsNullOrEmpty($resourceGroupName)) { $resourceGroupName = Get-ComputeTestResourceName }
+    if ([string]::IsNullOrEmpty($location)) { $location = Get-ComputeVMLocation }
+    if ([string]::IsNullOrEmpty($vaultName)) { $vaultName = 'kv' + $resourceGroupName }
+
+    # create vault
+    $vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location -Sku standard -DisableRbacAuthorization
+    $vault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
+
+    # create access policy
+    $servicePrincipalName = (Get-AzContext).Account.Id
+    Assert-NotNull $servicePrincipalName
+    if (-not [string]::IsNullOrEmpty($userIdentityPrincipalId)) {
+       Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ObjectId $userIdentityPrincipalId -PermissionsToKeys all -PermissionsToSecrets all
+    }
+    Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDeployment -EnabledForTemplateDeployment
+
+    # return the newly created key vault properties
+    $properties = New-Object PSObject -Property @{
+        DiskEncryptionKeyVaultId = $vault.ResourceId
+        DiskEncryptionKeyVaultUrl = $vault.VaultUri
+        #KeyEncryptionKeyUrl = $kek.Key.kid
+    }
+    return $properties
+}
+
 # Create a new virtual machine with other necessary resources configured
 function Create-VirtualMachine
 {
@@ -161,7 +202,8 @@ function Create-VirtualMachine
 
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+    $stnd = "Standard";
+    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
@@ -267,7 +309,8 @@ function Create-VirtualMachineNoDataDisks
 
     # VM Profile & Hardware
     $vmsize = 'Standard_D2S_V3';
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+    $stnd = "Standard";
+    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
@@ -423,8 +466,11 @@ Gets default VM size string
 function Get-DefaultVMSize
 {
     param([string] $location = "westus")
-
-    $vmSizes = Get-AzVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
+    $vmSizes = Get-AzComputeResourceSku -Location $location | Where-Object {
+        $_.ResourceType -eq "virtualMachines" -and
+        ([int]($_.Capabilities | Where-Object { $_.Name -eq "vCPUs" }).Value) -ge 4 -and
+        ([int]($_.Capabilities | Where-Object { $_.Name -eq "MaxDataDiskCount" }).Value) -ge 8
+    }
 
     foreach ($sz in $vmSizes)
     {
@@ -473,7 +519,7 @@ Gets default CRP Image
 #>
 function Get-DefaultCRPImage
 {
-    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server*')
+    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server*', [bool] $New = $False)
 
     $result = (Get-AzVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
@@ -495,7 +541,12 @@ function Get-DefaultCRPImage
         $defaultOffer = $result[0];
     }
 
-    $result = (Get-AzVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
+    if ($New -eq $True){
+        $result = (Get-AzVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus| where { $_ -like '*2022-datacenter*'};
+    }
+    else {
+        $result = (Get-AzVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
+    }
     if ($result.Count -eq 1)
     {
         $defaultSku = $result;
@@ -516,6 +567,7 @@ function Get-DefaultCRPImage
     }
     
     $vmimg = Get-AzVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
+
 
     return $vmimg;
 }

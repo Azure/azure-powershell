@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The cloud endpoint name parameter
         /// </summary>
-        public const string CloudEndpointNameParameter = "Name of the CloudEndpoint.";
+        public const string CloudEndpointNameParameter = "Name of the CloudEndpoint. To verify the cloud endpoint name, use the Get-AzStorageSyncCloudEndpoint cmdlet, and check the Name property of the returned object.";
         /// <summary>
         /// The cloud endpoint force parameter
         /// </summary>
@@ -171,10 +171,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string OfflineDataTransferParameter = "Cloud Seeded Data Parameter.";
         /// <summary>
-        /// The cloud seeded data file share URI parameter
-        /// </summary>
-        public const string OfflineDataTransferShareNameParameter = "Cloud Seeded Data File Share Uri Parameter.";
-        /// <summary>
         /// The initial download policy parameter.
         /// </summary>
         public const string InitialDownloadPolicyParameter = "Initial Download Policy Parameter.";
@@ -182,6 +178,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The Local cache mode parameter.
         /// </summary>
         public const string LocalCacheModeParameter = "Local Cache Mode Parameter.";
+        /// <summary>
+        /// Server Identity Parameter
+        /// </summary>
+        public const string ServerIdentityParameter = "Registered Server Identity";
         /// <summary>
         /// The tier files older than days parameter
         /// </summary>
@@ -214,5 +214,44 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Change detection recurse parameter
         /// </summary>
         public const string ChangeDetectionRecurseParameter = "Indication whether directory change detection is recursive.";
+        /// <summary>
+        /// The initial upload policy parameter.
+        /// </summary>
+        public const string InitialUploadPolicyParameter = "Initial Upload Policy Parameter.";
+
+        /// <summary>
+        /// Storage Sync Service Assign Identity Parameter.
+        /// </summary>
+        public const string StorageSyncServiceAssignIdentityParameter = "Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this parameter without \"-IdentityType\", will use system assigned identity.";
+
+        /// <summary>
+        /// Registered Server Assign Identity Parameter.
+        /// </summary>
+        public const string RegisteredServerAssignIdentityParameter = "Assign Identity parameter helps to dictate the kind of server registration - server certificate or identity.";
+
+        /// <summary>
+        /// Storage Sync Service Identity Type Parameter.
+        /// </summary>
+        public const string StorageSyncServiceIdentityTypeParameter = "Set the new Storage Sync Service Identity type, the identity is for use with accessing storage account and file share.";
+
+        /// <summary>
+        /// Storage Sync Service User Assigned IdentityId Parameter.
+        /// </summary>
+        public const string StorageSyncServiceUserAssignedIdentityIdParameter = "Set resource ids for the the new Storage Sync Service user assigned Identity, the identity will be used with accessing storage account and file share.";
+        
+        /// <summary>
+        /// Storage Sync Service Use Identity Parameter.
+        /// </summary>
+        public const string StorageSyncServiceUseIdentityParameter = "Set the Storage Sync Service topology to consume the Managed Identity settings if the feature is enabled on the server and in the cloud.";
+
+        /// <summary>
+        /// Storage sync service managed identity type error.
+        /// </summary>
+        public const string StorageSyncServiceManagedIdentityTypeError = "The value for AssignIdentityType is not valid, the valid value are: \"None\", \"SystemAssigned\", \"UserAssigned\", or \"SystemAssignedUserAssigned\"";
+
+        /// <summary>
+        /// Storage sync service managed identity type parameter error.
+        /// </summary>
+        public const string StorageSyncServiceIdentityParameterError = "UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.";
     }
 }

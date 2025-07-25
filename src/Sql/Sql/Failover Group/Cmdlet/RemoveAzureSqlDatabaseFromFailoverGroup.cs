@@ -102,14 +102,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
+            AzureSqlFailoverGroupModel newModel = model.First();
             List<string> dbs = new List<string>();
 
             dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
+            newModel.Databases = GetUpdatedDatabaseList(dbs);
 
-            newEntity.Add(new AzureSqlFailoverGroupModel()
-            {
-                Databases = GetUpdatedDatabaseList(dbs)
-            });
+            newEntity.Add(newModel);
 
             return newEntity;
         }

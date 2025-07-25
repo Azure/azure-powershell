@@ -1,93 +1,66 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
+---
+external help file: Az.ApplicationInsights-help.xml
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/get-azapplicationinsightscontinuousexport
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscontinuousexport
 schema: 2.0.0
 ---
 
 # Get-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
-Get application insights continuous export configuration for an application insights resource
+Get the Continuous Export configuration for this export id.
 
 ## SYNTAX
 
-### ComponentNameParameterSet (Default)
+### List (Default)
 ```
-Get-AzApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String> [[-ExportId] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ComponentObjectParameterSet
-```
-Get-AzApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
- [[-ExportId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationInsightsContinuousExport -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### Get
 ```
-Get-AzApplicationInsightsContinuousExport [-ResourceId] <String> [[-ExportId] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationInsightsContinuousExport -ExportId <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzApplicationInsightsContinuousExport -InputObject <IApplicationInsightsIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get application insights continuous export configuration for an application insights resource
+Get the Continuous Export configuration for this export id.
 
 ## EXAMPLES
 
-### Example 1 Get continuous export for an application insights resource
-```
-PS C:\> Get-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
-
-ExportId                     DocumentTypes                ExportStatus DestinationStorageAccountId
---------                     -------------                ------------ ---------------------------
-ZJrfffySPdtG3ESn3iRxVIEFuNY= Request, Performance Counter Preparing    /subscriptions/{subid}...
+### Example 1: Get continuous export for an application insights resource
+```powershell
+Get-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
 ```
 
-Get application insights continuous export configurations for resource named "test" in resource group "testgroup"
+Get continuous export for an application insights resource
 
-### Example 2 Get continuous export for an application insights resource
-```
-PS C:\> Get-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "ZJrfffySPdtG3ESn3iRxVIEFuNY="
-
-ExportId                         : ZJrfffySPdtG3ESn3iRxVIEFuNY=
-StorageName                      : targetaccount
-ContainerName                    : continuousexport
-DocumentTypes                    : Request, Performance Counter
-DestinationStorageSubscriptionId : {subid}
-DestinationStorageLocationId     : eastus
-DestinationStorageAccountId      : /subscriptions/{subid}/resourceGroups/targetstorage/providers/Microsoft.Storage/storageAccounts/targetaccount
-IsEnabled                        : True
-ExportStatus                     : Preparing
-LastSuccessTime                  :
+### Example 2: Get continuous export for an application insights resource
+```powershell
+Get-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "ZJrfffySPdtG3ESn3iRxVIEFuNY="
 ```
 
-Get application insights continuous export configuration with export id "ZJrfffySPdtG3ESn3iRxVIEFuNY=" for resource named "test" in resource group "testgroup"
+Get continuous export for an application insights resource
 
 ## PARAMETERS
 
-### -ApplicationInsightsComponent
-Application Insights Component Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-Parameter Sets: ComponentObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -97,77 +70,93 @@ Accept wildcard characters: False
 ```
 
 ### -ExportId
-Application Insights Continuous Export Id.
+The Continuous Export configuration ID.
+This is unique within a Application Insights component.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
-Required: False
-Position: 2
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Application Insights Component Name.
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ComponentNameParameterSet
+Parameter Sets: List, Get
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ComponentNameParameterSet
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Application Insights Component Resource Id.
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSExportConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
 
 ## NOTES
 

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         protected override void OnProcessRecord()
         {
-            var deploymentOperations = ResourceManagerSdkClient.ListDeploymentOperationsAtResourceGroup(
+            var deploymentOperations = NewResourceManagerSdkClient.ListDeploymentOperationsAtResourceGroup(
                 ResourceGroupName, DeploymentName);
             base.OnProcessRecord();
 

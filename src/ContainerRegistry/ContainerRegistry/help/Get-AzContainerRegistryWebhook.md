@@ -1,99 +1,83 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/get-azcontainerregistrywebhook
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrywebhook
 schema: 2.0.0
 ---
 
 # Get-AzContainerRegistryWebhook
 
 ## SYNOPSIS
-Gets a container registry webhook.
+Gets the properties of the specified webhook.
 
 ## SYNTAX
 
-### ListWebhookByNameResourceGroupParameterSet (Default)
+### List (Default)
 ```
-Get-AzContainerRegistryWebhook [-ResourceGroupName] <String> [-RegistryName] <String> [-IncludeConfiguration]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ShowWebhookByNameResourceGroupParameterSet
-```
-Get-AzContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
- [-IncludeConfiguration] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerRegistryWebhook -RegistryName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ShowWebhookByRegistryObjectParameterSet
+### Get
 ```
-Get-AzContainerRegistryWebhook [-Name] <String> -Registry <PSContainerRegistry> [-IncludeConfiguration]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListWebhookByRegistryObjectParameterSet
-```
-Get-AzContainerRegistryWebhook -Registry <PSContainerRegistry> [-IncludeConfiguration]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerRegistryWebhook -RegistryName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### GetViaIdentity
 ```
-Get-AzContainerRegistryWebhook [-IncludeConfiguration] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerRegistryWebhook -InputObject <IContainerRegistryIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByRegistry
+```
+Get-AzContainerRegistryWebhook -Registry <IRegistry> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzContainerRegistryWebhook cmdlet gets a specified webhook of container registry or all the webhooks of a container registry.
+Gets the properties of the specified webhook.
 
 ## EXAMPLES
 
-### Example 1: Get a specified webhook of a container registry
+### Example 1: Gets a container registry webhook.
 ```powershell
-PS C:\>Get-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
-
-Name            Location   Status     Scope           Actions         Provisioni ServiceUri
-                                                                      ngState
-----            --------   ------     -----           -------         ---------- ----------
-webhook001      westus     enabled                    {push, delete}  Succeeded
+Get-AzContainerRegistryWebhook  -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name "webhook001"
 ```
 
-Get a specified webhook of a container registry
+```output
+Name       Location Status  Scope ProvisioningState
+----       -------- ------  ----- -----------------
+webhook001 eastus2  enabled       Succeeded
+```
+
+Gets a container registry webhook.
 
 ### Example 2: Get all the webhooks of a container registry
 ```powershell
-PS C:\>Get-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry"
+Get-AzContainerRegistryWebhook  -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample"
+```
 
-Name            Location   Status     Scope           Actions         Provisioni ServiceUri
-                                                                      ngState
-----            --------   ------     -----           -------         ---------- ----------
-webhook04       westus     enabled                    {push, delete}  Succeeded
-webhook05       westus     disabled                   {push, delete}  Succeeded
-wh003           westus     enabled                    delete          Succeeded
+```output
+Name       Location Status  Scope ProvisioningState
+----       -------- ------  ----- -----------------
+webhook001 eastus2  enabled       Succeeded
+webhook002 eastus2  enabled       Succeeded
+webhook003 eastus   enabled foo:* Succeeded
 ```
 
 Get all the webhooks of a container registry
 
-### Example 3: Get a specified webhook of a container registry with configuration details
-```powershell
-PS C:\>Get-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -IncludeConfiguration
-
-Name            Location   Status     Scope           Actions         Provisioni ServiceUri
-                                                                      ngState
-----            --------   ------     -----           -------         ---------- ----------
-webhook001      westus     enabled                    {push, delete}  Succeeded  http://www.test.com/
-```
-
-Get a specified webhook of a container registry with configuration details
-
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -102,42 +86,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeConfiguration
-Get the configuration information for a webhook.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Webhook Name.
-
-```yaml
-Type: System.String
-Parameter Sets: ShowWebhookByNameResourceGroupParameterSet, ShowWebhookByRegistryObjectParameterSet
-Aliases: WebhookName, ResourceName
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Registry
-Container Registry Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
-Parameter Sets: ShowWebhookByRegistryObjectParameterSet, ListWebhookByRegistryObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -147,48 +102,81 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -RegistryName
-Container Registry Name.
+### -Name
+The name of the webhook.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListWebhookByNameResourceGroupParameterSet, ShowWebhookByNameResourceGroupParameterSet
+Parameter Sets: Get
+Aliases: WebhookName, ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Registry
+The Registry Object.
+To construct, see NOTES section for REGISTRY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Parameter Sets: GetByRegistry
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistryName
+The name of the container registry.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
 Aliases: ContainerRegistryName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListWebhookByNameResourceGroupParameterSet, ShowWebhookByNameResourceGroupParameterSet
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The container registry Webhook resource id
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: Id
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -197,22 +185,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzContainerRegistryWebhook](New-AzContainerRegistryWebhook.md)
-
-[Update-AzContainerRegistryWebhook](Update-AzContainerRegistryWebhook.md)
-
-[Remove-AzContainerRegistryWebhook](Remove-AzContainerRegistryWebhook.md)
-
-[Test-AzContainerRegistryWebhook](Test-AzContainerRegistryWebhook.md)

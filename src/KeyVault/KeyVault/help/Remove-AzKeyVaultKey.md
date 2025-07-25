@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 817BF177-519F-47BA-86CF-4591FB402E2Dl
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultkey
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -16,13 +16,22 @@ Deletes a key in a key vault.
 ### ByVaultName (Default)
 ```
 Remove-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### HsmByVaultName
+```
+Remove-AzKeyVaultKey -HsmName <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Remove-AzKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [-Force] [-PassThru] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +43,10 @@ This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ### Example 1: Remove a key from a key vault
 ```powershell
-PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -PassThru
+Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -PassThru
+```
 
+```output
 Vault Name           : contoso
 Name                 : key2
 Id                   : https://contoso.vault.azure.net:443/keys/itsoftware/fdad15793ba0437e960497908ef9eb32
@@ -54,7 +65,7 @@ This command removes the key named ITSoftware from the key vault named Contoso.
 
 ### Example 2: Remove a key without user confirmation
 ```powershell
-PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force
+Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso.
@@ -62,7 +73,7 @@ The command specifies the *Force* parameter, and, therefore, the cmdlet does not
 
 ### Example 3: Purge a deleted key from the key vault permanently
 ```powershell
-PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
+Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso permanently.
@@ -70,7 +81,7 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 
 ### Example 4: Remove keys by using the pipeline operator
 ```powershell
-PS C:\> Get-AzKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzKeyVaultKey
+Get-AzKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzKeyVaultKey
 ```
 
 This command gets all the keys in the key vault named Contoso, and passes them to the **Where-Object** cmdlet by using the pipeline operator.
@@ -103,6 +114,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmName
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmByVaultName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,7 +171,7 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key based on 
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVaultName
+Parameter Sets: ByVaultName, HsmByVaultName
 Aliases: KeyName
 
 Required: True
@@ -238,7 +264,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
 
-[Set-AzKeyVaultKeyAttribute](./Set-AzKeyVaultKeyAttribute.md)
-
 [Undo-AzKeyVaultKeyRemoval](./Undo-AzKeyVaultKeyRemoval.md)
-

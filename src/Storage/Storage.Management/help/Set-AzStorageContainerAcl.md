@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BDEEF1EA-A785-4E17-9887-C2000BDFCF57
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragecontaineracl
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstoragecontaineracl
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Sets the public access permission to a storage container.
 ```
 Set-AzStorageContainerAcl [-Name] <String> [-Permission] <BlobContainerPublicAccessType> [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,15 +26,15 @@ The **Set-AzStorageContainerAcl** cmdlet sets the public access permission to th
 ## EXAMPLES
 
 ### Example 1: Set azure storage container ACL by name
-```
-PS C:\>Set-AzStorageContainerAcl -Container "Container01" -Permission Off -PassThru
+```powershell
+Set-AzStorageContainerAcl -Container "Container01" -Permission Off -PassThru
 ```
 
 This command creates a container that has no public access.
 
 ### Example 2: Set azure storage container ACL by using the pipeline
-```
-PS C:\>Get-AzStorageContainer container* | Set-AzStorageContainerAcl -Permission Blob -PassThru
+```powershell
+Get-AzStorageContainer container* | Set-AzStorageContainerAcl -Permission Blob -PassThru
 ```
 
 This command gets all storage containers whose name starts with container and then passes the result on the pipeline to set the permission for them all to Blob access.
@@ -184,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -205,5 +206,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzStorageContainer](./New-AzStorageContainer.md)
 
 [Remove-AzStorageContainer](./Remove-AzStorageContainer.md)
-
-

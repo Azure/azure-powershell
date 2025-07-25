@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 0E1C05B0-8CF6-4C03-AA05-B13A4059A280
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvaultcertificateorganizationdetail
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificateorganizationdetail
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Creates an in-memory certificate organization details object.
 ```
 New-AzKeyVaultCertificateOrganizationDetail [-Id <String>]
  [-AdministratorDetails <System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateAdministratorDetails]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +27,11 @@ The **New-AzKeyVaultCertificateOrganizationDetail** cmdlet creates an in-memory 
 
 ### Example 1: Create an organization details object
 ```powershell
-PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName "Patti" -LastName "Fuller" -EmailAddress "Patti.Fuller@contoso.com" -PhoneNumber "1234567890"
-PS C:\> New-AzKeyVaultCertificateOrganizationDetail -AdministratorDetails $AdminDetails
+$AdminDetails = New-AzKeyVaultCertificateAdministratorDetail -FirstName "Patti" -LastName "Fuller" -EmailAddress "Patti.Fuller@contoso.com" -PhoneNumber "1234567890"
+New-AzKeyVaultCertificateOrganizationDetail -AdministratorDetails $AdminDetails
+```
 
+```output
 Id AdministratorDetails
 -- --------------------
    {Patti}
@@ -133,4 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzKeyVaultCertificateAdministratorDetail](./New-AzKeyVaultCertificateAdministratorDetail.md)
-

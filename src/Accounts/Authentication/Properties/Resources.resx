@@ -226,7 +226,7 @@
     <value>[Common.Authentication]: Acquiring token using AdalConfiguration with Domain: '{0}', AdEndpoint: '{1}', ClientId: '{2}', ClientRedirectUri: {3}</value>
   </data>
   <data name="UPNAcquireTokenContextTrace" xml:space="preserve">
-    <value>[Common.Authentication]: Acquiring token using context with Authority '{0}', CorrelationId: '{1}', ValidateAuthority: '{2}'</value>
+    <value>[Common.Authentication]: Acquiring token using context with Authority '{0}', ClientId: '{1}'</value>
   </data>
   <data name="UPNExpiredTokenTrace" xml:space="preserve">
     <value>[Common.Authentication]: Token is expired</value>
@@ -235,7 +235,7 @@
     <value>[Common.Authentication]: Renewing Token with Type: '{0}', Expiry: '{1}', MultipleResource? '{2}', Tenant: '{3}', UserId: '{4}'</value>
   </data>
   <data name="UPNRenewTokenUserInfoTrace" xml:space="preserve">
-    <value>[Common.Authentication]: User info for token DisplayId: '{0}', Name: {2} {1}, IdProvider: '{3}', Uid: '{4}'</value>
+    <value>[Common.Authentication]: User info for token Username: '{0}', HomeAccountId: {1}, Environment: '{2}', Uid: '{3}'</value>
   </data>
   <data name="UPNTokenExpirationCheckTrace" xml:space="preserve">
     <value>[Common.Authentication]: Checking token expiration, token expires '{0}' Comparing to '{1}' With threshold '{2}', calculated time until token expiry: '{3}'</value>
@@ -339,5 +339,99 @@
   </data>
   <data name="OldAzureDirectoryName" xml:space="preserve">
     <value>Windows Azure Powershell</value>
+  </data>
+  <data name="AuthenticationClientFactoryNotRegistered" xml:space="preserve">
+    <value>No authentication client factory has been registered, please try to re-authenticate using Connect-AzAccount.</value>
+  </data>
+  <data name="SuccessfullyLaunchedBrowser" xml:space="preserve">
+    <value>We have launched a browser for you to log in. For the old experience with device code flow, please run 'Connect-AzAccount -UseDeviceAuthentication'.</value>
+  </data>
+  <data name="TryLaunchBrowser" xml:space="preserve">
+    <value>Attempting to launch a browser for authorization code login.</value>
+  </data>
+  <data name="UnableToLaunchBrowser" xml:space="preserve">
+    <value>Unable to launch a browser for authorization code login. Reverting to device code login.</value>
+  </data>
+  <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
+    <value>Context autosave is not supported on current environment. Please disable it using 'Disable-AzContextSave'.</value>
+  </data>
+  <data name="MissingPasswordAndNoCache" xml:space="preserve">
+    <value>Password is missing and no cache found for the current user.</value>
+  </data>
+  <data name="FailedToMigrateAdal2Msal" xml:space="preserve">
+    <value>INITIALIZATION: Failed to migrate ADAL token to MSAL token with error : {0}</value>
+  </data>
+  <data name="HelpMessageOfDefaultSubscriptionForLogin" xml:space="preserve">
+    <value>Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.</value>
+  </data>
+  <data name="HelpMessageOfEnableInterceptSurvey" xml:space="preserve">
+    <value>When enabled, you are prompted infrequently to participate in user experience surveys for Azure PowerShell.</value>
+  </data>
+  <data name="HelpMessageOfDisplayBreakingChangeWarnings" xml:space="preserve">
+    <value>Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.</value>
+  </data>
+  <data name="HelpMessageOfEnableDataCollection" xml:space="preserve">
+    <value>When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience. For more information, see our privacy statement: https://aka.ms/privacy</value>
+  </data>
+  <data name="StorageLockConflicts" xml:space="preserve">
+    <value>AzKeyStore is locked. Please try again after a while.</value>
+  </data>
+  <data name="SwitchLoginMethodWarning" xml:space="preserve">
+    <value>You may need to login again after updating "{0}".</value>
+    <comment>0 = key of the config</comment>
+  </data>
+  <data name="HelpMessageOfEnableWamLogin" xml:space="preserve">
+    <value>When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007</value>
+  </data>
+  <data name="RecommendationMessageForLocation" xml:space="preserve">
+    <value>Selecting “{0}” may reduce your costs. The region you’ve selected may cost more for the same services. You can disable this message in the future with the command “Update-AzConfig -DisplayRegionIdentified $false”. Learn more at https://go.microsoft.com/fwlink/?linkid=2225665</value>
+    <comment>0 = recommended location</comment>
+  </data>
+  <data name="HelpMessageOfDisplayRegionIdentified" xml:space="preserve">
+    <value>When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.</value>
+  </data>
+  <data name="HelpMessageOfEnableErrorRecordsPersistence" xml:space="preserve">
+    <value>When enabled, error records will be written to ~/.Azure/ErrorRecords.</value>
+  </data>
+  <data name="HelpMessageOfCheckForUpgrade" xml:space="preserve">
+    <value>When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value is true.</value>
+  </data>
+  <data name="FailedToMigrateMsalCacheWithLegayName" xml:space="preserve">
+    <value>INITIALIZATION: Failed to migrate MSAL token cache of the legacy name with error : {0}</value>
+  </data>
+  <data name="HelpMessageOfDisplaySecretsWarning" xml:space="preserve">
+    <value>When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844</value>
+  </data>
+  <data name="DisableInstanceDiscoveryWarning" xml:space="preserve">
+    <value>Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. It is crucial to ensure that the configured authority host is valid and trustworthy.</value>
+  </data>
+  <data name="HelpMessageOfDisableInstanceDiscovery" xml:space="preserve">
+    <value>Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.</value>
+  </data>
+  <data name="HelpMessageOfLoginExperienceV2" xml:space="preserve">
+    <value>Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad 'On' (Default) and 'Off'. 'On' requires user's input. 'Off' will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended).</value>
+  </data>
+  <data name="ErrorMessageMsalInteractionRequiredWithTid" xml:space="preserve">
+    <value>Authentication failed against tenant {0}. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). If you need to access subscriptions in that tenant, please rerun 'Connect-AzAccount' with additional parameter '-TenantId {0}'.</value>
+    <comment>0 = tenant ID</comment>
+  </data>
+  <data name="ErrorMsgMsalInteractionRequiredWithResourceID" xml:space="preserve">
+    <value>Authentication failed against resource {0}. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). Please rerun 'Connect-AzAccount' with additional parameter '-AuthScope {0}'.</value>
+    <comment>0 = resource ID</comment>
+  </data>
+  <data name="AuthenticationTelemetryRecordPushError" xml:space="preserve">
+    <value>Fail to push authentication telemetry record, please check the CmdletcContext with Id {0}.</value>
+  </data>
+  <data name="ErrorSshAuthScopeNotSet" xml:space="preserve">
+    <value>The scope of authenticating for SSH is not set. Please run "Set-AzEnvironment -Name {0} -SshAuthScope ..." to set it first.</value>
+    <comment>0 = environment name</comment>
+  </data>
+  <data name="ErrorMessageOfClaimsChallengeRequired" xml:space="preserve">
+    <value>{0}
+
+Run the cmdlet below to authenticate interactively; additional parameters may be added as needed.
+
+Connect-AzAccount -Tenant (Get-AzContext).Tenant.Id -ClaimsChallenge "{1}"</value>
+    <comment>0 = error message about policy violation; 1 = claims challenge in base64</comment>
   </data>
 </root>

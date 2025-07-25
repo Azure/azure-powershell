@@ -15,41 +15,19 @@
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
-    public class SqlDatabaseTests : SynapseTestBase
+    public class SqlDatabaseTests : SynapseTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SqlDatabaseTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SqlDatabaseTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "This feature is in a limited preview, initially accessible only to certain subscriptions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseSqlDatabase()
         {
-            string testResourceGroupName = SynapseTestBase.TestResourceGroupName;
-            if (string.IsNullOrEmpty(testResourceGroupName))
-            {
-                testResourceGroupName = nameof(TestResourceGroupName);
-            }
-
-            string testWorkspaceName = SynapseTestBase.TestWorkspaceName;
-            if (string.IsNullOrEmpty(testWorkspaceName))
-            {
-                testWorkspaceName = nameof(TestWorkspaceName);
-            }
-
-            SynapseTestBase.NewInstance.RunPsTest(
-                _logger,
-                string.Format(
-                "Test-SynapseSqlDatabase -resourceGroupName '{0}' -workspaceName '{1}'",
-                testResourceGroupName,
-                testWorkspaceName));
+            TestRunner.RunTestScript("Test-SynapseSqlDatabase");
         }
     }
 }

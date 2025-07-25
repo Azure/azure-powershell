@@ -1,0 +1,201 @@
+{
+  "resourceType": "locations/vendors/networkFunctions/roleInstances",
+  "apiVersion": "2021-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.connectednetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzConnectedNetworkVendorFunctionRoleInstance",
+      "description": "Gets the information of role instance of vendor network function.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/locations/{locationName}/vendors/{vendorName}/networkFunctions/{serviceKey}/roleInstances/{roleInstanceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorfunctionroleinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LocationName <String>",
+              "-Name <String>",
+              "-ServiceKey <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VendorName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the information of role instance of vendor network function.",
+          "parameters": [
+            {
+              "name": "-LocationName",
+              "value": "[Path.locationName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.roleInstanceName]"
+            },
+            {
+              "name": "-ServiceKey",
+              "value": "[Path.serviceKey]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VendorName",
+              "value": "[Path.vendorName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Restart-AzConnectedNetworkVendorFunctionRoleInstance",
+      "description": "Restarts a role instance of a vendor network function.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/locations/{locationName}/vendors/{vendorName}/networkFunctions/{serviceKey}/roleInstances/{roleInstanceName}/restart",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectednetwork/restart-azconnectednetworkvendorfunctionroleinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LocationName <String>",
+              "-Name <String>",
+              "-ServiceKey <String>",
+              "[-SubscriptionId <String>]",
+              "-VendorName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Restarts a role instance of a vendor network function.",
+          "parameters": [
+            {
+              "name": "-LocationName",
+              "value": "[Path.locationName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.roleInstanceName]"
+            },
+            {
+              "name": "-ServiceKey",
+              "value": "[Path.serviceKey]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VendorName",
+              "value": "[Path.vendorName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzConnectedNetworkVendorFunctionRoleInstance",
+      "description": "Starts a role instance of a vendor network function.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/locations/{locationName}/vendors/{vendorName}/networkFunctions/{serviceKey}/roleInstances/{roleInstanceName}/start",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectednetwork/start-azconnectednetworkvendorfunctionroleinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LocationName <String>",
+              "-Name <String>",
+              "-ServiceKey <String>",
+              "[-SubscriptionId <String>]",
+              "-VendorName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Starts a role instance of a vendor network function.",
+          "parameters": [
+            {
+              "name": "-LocationName",
+              "value": "[Path.locationName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.roleInstanceName]"
+            },
+            {
+              "name": "-ServiceKey",
+              "value": "[Path.serviceKey]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VendorName",
+              "value": "[Path.vendorName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzConnectedNetworkVendorFunctionRoleInstance",
+      "description": "Powers off (stop) a role instance of a vendor network function.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/locations/{locationName}/vendors/{vendorName}/networkFunctions/{serviceKey}/roleInstances/{roleInstanceName}/stop",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectednetwork/stop-azconnectednetworkvendorfunctionroleinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LocationName <String>",
+              "-Name <String>",
+              "-ServiceKey <String>",
+              "[-SubscriptionId <String>]",
+              "-VendorName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Powers off (stop) a role instance of a vendor network function.",
+          "parameters": [
+            {
+              "name": "-LocationName",
+              "value": "[Path.locationName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.roleInstanceName]"
+            },
+            {
+              "name": "-ServiceKey",
+              "value": "[Path.serviceKey]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VendorName",
+              "value": "[Path.vendorName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

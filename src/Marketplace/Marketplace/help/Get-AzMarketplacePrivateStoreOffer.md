@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll-Help.xml
 Module Name: Az.Marketplace
-online version:https://docs.microsoft.com/en-us/powershell/module/az.marketplace/get-azmarketplaceprivatestoreoffer
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreoffer
 schema: 2.0.0
 ---
 
@@ -13,19 +13,22 @@ Get one or more private store's offer.
 ## SYNTAX
 
 ```
-Get-AzMarketplacePrivateStoreOffer -PrivateStoreId <String> [-OfferId <String>]
+Get-AzMarketplacePrivateStoreOffer -PrivateStoreId <String> [-OfferId <String>] [-SubscriptionId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Get one or more private store's offer with public + private plans  that were added under tenant scope. If subscription id is presents, 
 get one or more private store's offer with private plans only under subscription scope
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d
+Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d
+```
 
+```output
 UniqueOfferId             : publisherid.offerid
 OfferDisplayName          :
 PublisherDisplayName      :
@@ -57,8 +60,10 @@ Get private store's offers with private + public plans  that were added under te
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -SubscriptionId bc17bb69-1264-4f90-a9f6-0e51e29d5281
+Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -SubscriptionId bc17bb69-1264-4f90-a9f6-0e51e29d5281
+```
 
+```output
 UniqueOfferId             : publisherid.offerid
 OfferDisplayName          :
 PublisherDisplayName      :
@@ -90,9 +95,10 @@ Get private store's offers with private plans only that were added under subscri
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -OfferId publisherid.offerid
+Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -OfferId publisherid.offerid
+```
 
-
+```output
 UniqueOfferId             : publisherid.offerid
 OfferDisplayName          :
 PublisherDisplayName      :
@@ -111,9 +117,10 @@ Get  private store's offer with private + public plans that was been added under
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -OfferId publisherid.offerid -SubscriptionId bc17bb69-1264-4f90-a9f6-0e51e29d5281
+Get-AzMarketplacePrivateStoreOffer -PrivateStoreId 7gh67884-1r56-44fb-a93d-030d4ae08b2d -OfferId publisherid.offerid -SubscriptionId bc17bb69-1264-4f90-a9f6-0e51e29d5281
+```
 
-
+```output
 UniqueOfferId             : publisherid.offerid
 OfferDisplayName          :
 PublisherDisplayName      :
@@ -129,7 +136,6 @@ Type                      : Microsoft.Marketplace/privateStores/offers
 ```
 
 Get private store's offer with private plans only that was been added under tenant scope.
-
 
 ## PARAMETERS
 

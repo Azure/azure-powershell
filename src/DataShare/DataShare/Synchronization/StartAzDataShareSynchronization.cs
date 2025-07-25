@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
         {
             var startFunc = (Func<string, string, string, Synchronize, ShareSubscriptionSynchronization>)this
                 .DataShareManagementClient
-                .ShareSubscriptions.SynchronizeMethod;
+                .ShareSubscriptions.Synchronize;
 
             var synchronization = startFunc(
                 this.ResourceGroupName,

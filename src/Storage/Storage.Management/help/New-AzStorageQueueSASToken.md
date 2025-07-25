@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 42C669B6-B621-454C-B897-262E1C8E76E3
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragequeuesastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragequeuesastoken
 schema: 2.0.0
 ---
 
@@ -15,16 +15,17 @@ Generates a shared access signature token for an Azure storage queue.
 
 ### SasPolicy
 ```
-New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <String>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
-New-AzStorageQueueSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzStorageQueueSASToken [-Name] <String> [-Permission <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,8 +34,8 @@ The **New-AzStorageQueueSASToken** cmdlet generates shared access signature toke
 ## EXAMPLES
 
 ### Example 1: Generate a queue SAS token with full permission
-```
-PS C:\>New-AzStorageQueueSASToken -Name "Test" -Permission raup
+```powershell
+New-AzStorageQueueSASToken -Name "Test" -Permission raup
 ```
 
 This example generates a queue SAS token with full permission.
@@ -135,7 +136,7 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies permissions for a storage queue.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+It is important to note that this is a string, like `raup` (for Read, Add, Update and ProcessMessages).
 
 ```yaml
 Type: System.String
@@ -172,7 +173,7 @@ The acceptable values for this parameter are:
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Storage.SharedAccessProtocol]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
@@ -200,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

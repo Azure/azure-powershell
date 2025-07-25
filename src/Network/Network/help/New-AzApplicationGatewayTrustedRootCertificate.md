@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewaytrustedrootcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewaytrustedrootcertificate
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Creates a Trusted Root Certificate for an application gateway.
 
 ```
 New-AzApplicationGatewayTrustedRootCertificate -Name <String> -CertificateFile <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +25,8 @@ The **New-AzApplicationGatewayTrustedRootCertificate** cmdlet creates a Trusted 
 
 ### Example 1
 ```powershell
-PS C:\> $certFilePath = ".\rootCA.cer"
-PS C:\> $trc = New-AzApplicationGatewayTrustedRootCertificate -Name "trc1" -CertificateFile $certFilePath
+$certFilePath = ".\rootCA.cer"
+$trc = New-AzApplicationGatewayTrustedRootCertificate -Name "trc1" -CertificateFile $certFilePath
 ```
 
 This command creates a Trusted Root Certificate named List "trc1" and stores the result in the variable named $trc.
@@ -109,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

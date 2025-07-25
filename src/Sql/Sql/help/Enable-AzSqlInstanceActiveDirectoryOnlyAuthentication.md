@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqlinstanceactivedirectoryonlyauthentication
+online version: https://learn.microsoft.com/powershell/module/az.sql/enable-azsqlinstanceactivedirectoryonlyauthentication
 schema: 2.0.0
 ---
 
 # Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication
 
 ## SYNOPSIS
-Enables Azure AD only authentication for a specific SQL Managed Instance.
+Enables Microsoft Entra-only authentication for a specific SQL Managed Instance.
 
 ## SYNTAX
 
@@ -31,19 +31,22 @@ Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication [-ResourceId] <String>
 ```
 
 ## DESCRIPTION
-The **Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication** cmdlet enables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Managed Instance in the current subscription.
+The **Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication** cmdlet enables Microsoft Entra-only authentication requirement for an AzureSQL Managed Instance in the current subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+```
+
+```output
 ResourceGroupName InstanceName        AzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
 ResourceGroup01   ManagedInstance01   True
 ```
 
-This command enables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Managed Instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.
+This command enables Microsoft Entra-only authentication requirement for an AzureSQL Managed Instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.
 
 ## PARAMETERS
 
@@ -78,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-The name of the Azure SQL Managed Instance the Azure Active Directory only authentication is in.
+The name of the Azure SQL Managed Instance the Microsoft Entra-only authentication is in.
 
 ```yaml
 Type: System.String

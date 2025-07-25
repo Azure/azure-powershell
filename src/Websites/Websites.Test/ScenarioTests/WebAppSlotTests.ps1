@@ -297,6 +297,7 @@ function Test-CreateNewWebAppSlot
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
 	$resourceType = "Microsoft.Web/sites"
+	$tag= @{"TagKey" = "TagValue"}
 	try
 	{
 		#Setup
@@ -318,7 +319,7 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 
 		# Create deployment slot
-		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AsJob
+		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Tag $tag -AsJob
 		$job | Wait-Job
 		$slot1 = $job | Receive-Job
 
@@ -327,6 +328,8 @@ function Test-CreateNewWebAppSlot
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot1.Name
 		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
+		Assert-AreEqual $tag.Keys $slot1.Tags.Keys
+        	Assert-AreEqual $tag.Values $slot1.Tags.Values
 	}
 	finally
 	{
@@ -436,14 +439,14 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $serverFarm1.Id $webApp.ServerFarmId
 
 		# Create deployment slot
-		$slot = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName1
+		$slot = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName1 -CopyIdentity
 		$appWithSlotName = "$appname/$slotname"
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm1.Id $slot.ServerFarmId
         Assert-Null $webApp.Identity
-		Assert-AreEqual "AllAllowed" $slot.SiteConfig.FtpsState
+		Assert-AreEqual "FtpsOnly" $slot.SiteConfig.FtpsState
 		
 		# Change service plan & set site and SiteConfig properties
 		$job = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -HttpsOnly $true -AlwaysOn $true -AsJob
@@ -459,8 +462,9 @@ function Test-SetWebAppSlot
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
 		$slot.SiteConfig.RequestTracingEnabled = $true
-		$slot.SiteConfig.FtpsState = "FtpsOnly"
+		$slot.SiteConfig.FtpsState = "AllAllowed"
 		$slot.SiteConfig.MinTlsVersion = "1.0"
+		$slot.SiteConfig.HealthCheckPath = "/api/path"
 
 		$slot = $slot | Set-AzWebAppSlot
 
@@ -469,8 +473,9 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
 		Assert-AreEqual $true $slot.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $slot.SiteConfig.RequestTracingEnabled
-		Assert-AreEqual "FtpsOnly" $slot.SiteConfig.FtpsState
+		Assert-AreEqual "AllAllowed" $slot.SiteConfig.FtpsState
 		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
+		Assert-AreEqual "/api/path" $slot.SiteConfig.HealthCheckPath
 
 		# set app settings and connection strings
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
@@ -481,7 +486,7 @@ function Test-SetWebAppSlot
         # Assert
         Assert-NotNull  $slot.Identity
         Assert-AreEqual ($appSettings.Keys.Count) $slot.SiteConfig.AppSettings.Count
-		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
+		Assert-AreEqual "1.2" $slot.SiteConfig.MinTlsVersion
 
         $slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 
@@ -519,7 +524,7 @@ function Test-SetWebAppSlot
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-Null $webApp.Identity
-		Assert-AreEqual "AllAllowed" $slot.SiteConfig.FtpsState
+		Assert-AreEqual "FtpsOnly" $slot.SiteConfig.FtpsState
 
 		# Get the deployment slot
 		
@@ -528,7 +533,7 @@ function Test-SetWebAppSlot
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
 		$slot.SiteConfig.RequestTracingEnabled = $true
-		$slot.SiteConfig.FtpsState = "FtpsOnly"
+		$slot.SiteConfig.FtpsState = "AllAllowed"
 		$slot.SiteConfig.MinTlsVersion = "1.0"
 
 		$slot = $slot | Set-AzWebAppSlot
@@ -537,7 +542,7 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $true $slot.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $slot.SiteConfig.RequestTracingEnabled
-		Assert-AreEqual "FtpsOnly" $slot.SiteConfig.FtpsState
+		Assert-AreEqual "AllAllowed" $slot.SiteConfig.FtpsState
 		Assert-AreEqual "1.0" $slot.SiteConfig.MinTlsVersion
 	}
 	finally
@@ -875,152 +880,6 @@ function Test-SlotSwapWithPreview($swapWithPreviewAction)
 		Remove-AzResourceGroup -Name $rgname -Force
 	}
 
-}
-
-<#
-.SYNOPSIS
-Tests setting and Azure Storage Account in a new Windows container app. Currently the API fails when adding Azure Storage Accounts for slots. Will enable this test when the API is fixed.
-.DESCRIPTION
-SmokeTest
-#>
-function Test-SetAzureStorageWebAppHyperVSlot
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$wname = Get-WebsiteName
-	$slotname = "staging"
-	$location = Get-WebLocation
-	$whpName = Get-WebHostPlanName
-	$tier = "PremiumContainer"
-	$apiversion = "2015-08-01"
-	$resourceType = "Microsoft.Web/sites"
-	$containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
-    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
-    $containerRegistryUser ="DotNetSDKTesting"
-    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
-    $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
-    $dockerPrefix = "DOCKER|" 
-	$azureStorageAccountCustomId1 = "mystorageaccount"
-	$azureStorageAccountType1 = "AzureFiles"
-	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
-	$azureStorageAccountShareName1 = "myremoteshare"
-	$azureStorageAccountAccessKey1 = "AnAccessKey"
-	$azureStorageAccountMountPath1 = "/mymountpath"
-	$azureStorageAccountCustomId2 = "mystorageaccount2"
-	$azureStorageAccountType2 = "AzureFiles"
-	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
-	$azureStorageAccountShareName2 = "myremoteshare2"
-	$azureStorageAccountAccessKey2 = "AnAccessKey2"
-	$azureStorageAccountMountPath2 = "/mymountpath2"
-
-	try
-	{
-		###
-		# Currently the API fails when adding Azure Storage Accounts for slots. Will enable this test when the API is fixed.
-		###
-
-		#Setup
-		New-AzResourceGroup -Name $rgname -Location $location
-		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
-		
-		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
-		$job | Wait-Job
-		$actual = $job | Receive-Job
-		
-		# Assert
-		Assert-AreEqual $wname $actual.Name
-		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
-
-		# Get new web app
-		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
-		
-		Write-Debug "Created the web app"
-
-		# Assert
-		Assert-AreEqual $wname $result.Name
-		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
-        Assert-AreEqual $true $result.IsXenon
-        Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
-
-		# Create deployment slot
-		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname -AsJob
-		$job | Wait-Job
-		$slot1 = $job | Receive-Job
-
-		Write-Debug "Created the slot"
-
-		$appWithSlotName = "$wname/$slotname"
-
-		Write-Debug $appWithSlotName
-
-		# Assert
-		Assert-AreEqual $appWithSlotName $slot1.Name
-		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
-
-		$testStorageAccount1 = New-AzWebAppAzureStoragePath -Name $azureStorageAccountCustomId1 -Type $azureStorageAccountType1 -AccountName $azureStorageAccountName1 -ShareName $azureStorageAccountShareName1 -AccessKey $azureStorageAccountAccessKey1 -MountPath $azureStorageAccountMountPath1
-		$testStorageAccount2 = New-AzWebAppAzureStoragePath -Name $azureStorageAccountCustomId2 -Type $azureStorageAccountType2 -AccountName $azureStorageAccountName2 -ShareName $azureStorageAccountShareName2 -AccessKey $azureStorageAccountAccessKey2 -MountPath $azureStorageAccountMountPath2
-
-		Write-Debug "Created the new storage account paths"
-
-		Write-Debug $testStorageAccount1.Name
-		Write-Debug $testStorageAccount2.Name
-
-
-		# set Azure Storage accounts
-        $webApp = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname -AzureStoragePath $testStorageAccount1, $testStorageAccount2
-
-		Write-Debug "Set the new storage account paths"
-
-
-		# get the web app
-		$result = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname
-		$azureStorageAccounts = $result.AzureStoragePath
-
-		# Assert
-		Write-Debug $azureStorageAccounts[0].Name
-		Assert-AreEqual $azureStorageAccounts[0].Name $azureStorageAccountCustomId1
-
-		Write-Debug $azureStorageAccounts[0].Type
-		Assert-AreEqual $azureStorageAccounts[0].Type $azureStorageAccountType1
-		
-		Write-Debug $azureStorageAccounts[0].AccountName
-		Assert-AreEqual $azureStorageAccounts[0].AccountName $azureStorageAccountName1
-		
-		Write-Debug $azureStorageAccounts[0].ShareName
-		Assert-AreEqual $azureStorageAccounts[0].ShareName $azureStorageAccountShareName1
-		
-		Write-Debug $azureStorageAccounts[0].AccessKey 
-		Assert-AreEqual $azureStorageAccounts[0].AccessKey $azureStorageAccountAccessKey1
-		
-		Write-Debug $azureStorageAccounts[0].MountPath
-		Assert-AreEqual $azureStorageAccounts[0].MountPath $azureStorageAccountMountPath1
-
-		Write-Debug $azureStorageAccounts[1].Name
-		Assert-AreEqual $azureStorageAccounts[1].Name $azureStorageAccountCustomId2
-
-		Write-Debug $azureStorageAccounts[1].Type
-		Assert-AreEqual $azureStorageAccounts[1].Type $azureStorageAccountType2
-
-		Write-Debug $azureStorageAccounts[1].AccountName
-		Assert-AreEqual $azureStorageAccounts[1].AccountName $azureStorageAccountName2
-
-		Write-Debug $azureStorageAccounts[1].ShareName
-		Assert-AreEqual $azureStorageAccounts[1].ShareName $azureStorageAccountShareName2
-
-		Write-Debug $azureStorageAccounts[1].AccessKey
-		Assert-AreEqual $azureStorageAccounts[1].AccessKey $azureStorageAccountAccessKey2
-
-		Write-Debug $azureStorageAccounts[1].MountPath
-		Assert-AreEqual $azureStorageAccounts[1].MountPath $azureStorageAccountMountPath2
-	}
-	finally
-	{
-		# Cleanup
-		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
-		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzResourceGroup -Name $rgname -Force
-	}
 }
 
 <#

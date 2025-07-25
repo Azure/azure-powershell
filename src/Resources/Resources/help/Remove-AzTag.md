@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Tags.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 66B25541-0FA5-46CF-90D8-FE9527BE11C6
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-aztag
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-aztag
 schema: 2.0.0
 ---
 
@@ -14,22 +14,15 @@ Deletes predefined Azure tags or values | Deletes the entire set of tags on a re
 ## SYNTAX
 
 ### RemovePredefinedTagParameterSet
-
-```powershell
+```
 Remove-AzTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceIdParameterSet
-
-```powershell
-Remove-AzTag
-   -ResourceId <String>
-   [-PassThru]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+```
+Remove-AzTag [-PassThru] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +41,7 @@ You can define and apply tags in a single step, but predefined tags let you esta
 
 ### Example 1: Delete a predefined tag
 ```powershell
-PS C:\>Remove-AzTag -Name "Department"
+Remove-AzTag -Name "Department"
 ```
 
 This command deletes the predefined tag named Department and all of its values.
@@ -56,7 +49,10 @@ If the tag has been applied to any resources or resource groups, the command fai
 
 ### Example 2: Delete a value from a predefined tag
 ```powershell
-PS C:\>Remove-AzTag -Name "Department" -Value "HumanResources" -PassThru
+Remove-AzTag -Name "Department" -Value "HumanResources" -PassThru
+```
+
+```output
 Name:   Department
 Count:  14
 Values: 
@@ -75,7 +71,7 @@ If the value has been applied to any resources or resource groups, the command f
 ### Example 3: Deletes the entire set of tags on a subscription
 
 ```powershell
-PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}
+Remove-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 This command deletes the entire set of tags on the subscription with {subId}. It will not return the object deleted if not passing in "-PassThru".
@@ -83,8 +79,10 @@ This command deletes the entire set of tags on the subscription with {subId}. It
 ### Example 4: Deletes the entire set of tags on a resource
 
 ```powershell
-PS C:\>Remove-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -PassThru
+Remove-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1 -PassThru
+```
 
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}
@@ -95,7 +93,7 @@ Properties :
              Status   Normal
 ```
 
-This command deletes the entire set of tags on the resource with {resourceId}. It returns the deleted oject when passing in "-PassThru".
+This command deletes the entire set of tags on the resource with {resourceId}. It returns the deleted object when passing in "-PassThru".
 
 ## PARAMETERS
 
@@ -131,16 +129,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Value
-Deletes the specified values from the predefined tag, but does not delete the tag.
+### -PassThru
+Returns an object that represents the deleted tag or the resulting tag with deleted valued.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: RemovePredefinedTagParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -161,16 +159,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns an object that represents the deleted tag or the resulting tag with deleted valued.
+### -Value
+Deletes the specified values from the predefined tag, but does not delete the tag.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: RemovePredefinedTagParameterSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

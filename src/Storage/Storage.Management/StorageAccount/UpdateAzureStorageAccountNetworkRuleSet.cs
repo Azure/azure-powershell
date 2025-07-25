@@ -112,12 +112,31 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Storage Account NetworkRule ResourceAccessRules.")]
+        public PSResourceAccessRule[] ResourceAccessRule
+        {
+            get
+            {
+                return resourceAccessRule;
+            }
+            set
+            {
+                isResourceAccessRuleSet = true;
+                resourceAccessRule = value == null ? new List<PSResourceAccessRule>().ToArray() : value;
+            }
+        }
+
         private PSNetWorkRuleBypassEnum? bypass = null;
         private PSNetWorkRuleDefaultActionEnum? defaultAction = null;
         private PSIpRule[] iPRules = null;
         private PSVirtualNetworkRule[] virtualNetworkRules = null;
+        private PSResourceAccessRule[] resourceAccessRule = null;
         private bool isIpRuleSet = false;
         private bool isNetworkRuleSet = false;
+        private bool isResourceAccessRuleSet = false;
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -129,7 +148,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.Name, "Update Storage Account NetworkRule"))
             {
-                if (IPRule == null && VirtualNetworkRule == null && bypass == null && defaultAction == null)
+                if (IPRule == null && VirtualNetworkRule == null && bypass == null && defaultAction == null && resourceAccessRule == null)
                 {
                     throw new System.ArgumentNullException("IPRules, VirtualNetworkRules, Bypass, DefaultAction", "Request must specify an account NetworkRule property to update.");
                 }
@@ -154,6 +173,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (isNetworkRuleSet)
                 {
                     psNetworkRule.VirtualNetworkRules = VirtualNetworkRule;
+                }
+
+                if (isResourceAccessRuleSet)
+                {
+                    psNetworkRule.ResourceAccessRules = ResourceAccessRule;
                 }
 
                 if (bypass != null)

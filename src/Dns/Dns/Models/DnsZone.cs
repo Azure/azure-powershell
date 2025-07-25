@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.Dns.Models;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Dns.Models;
+
     /// <summary>
     /// A DNS zone
     /// </summary>
@@ -68,8 +68,13 @@ namespace Microsoft.Azure.Commands.Dns
         /// </summary>
         public long? NumberOfRecordSets { get; set; }
         /// <summary>
-        ///Gets or sets the max number of records for this zone
+        /// Gets or sets the max number of records for this zone
         /// </summary>
         public long? MaxNumberOfRecordSets { get; set; }
+
+        /// <summary>
+        /// Gets or sets the signing keys for this zone
+        /// </summary>
+        public List<SigningKey> SigningKeys { get; set; }
     }
 }

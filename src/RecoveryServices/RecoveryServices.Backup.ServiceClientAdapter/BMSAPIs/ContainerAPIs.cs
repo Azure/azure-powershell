@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="containerName">Name of the container to unregister</param>
         /// <param name="queryFilter">Query parameters</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Response of the job created in the service</returns>
         public RestAzureNS.AzureOperationResponse InquireContainer(
             string containerName,
@@ -50,6 +52,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="queryFilter">Query parameters</param>
         /// <param name="skipToken">Skip token for pagination</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of protection containers</returns>
         public IEnumerable<ProtectionContainerResource> ListContainers(
             ODataQuery<BMSContainerQueryObject> queryFilter,
@@ -73,9 +77,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Fetches a particular protection container in the vault
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="containerName"></param>
+        /// <returns></returns>
+        public ProtectionContainerResource GetContainer(
+            string vaultName = null,
+            string resourceGroupName = null,
+            string containerName = null)
+        {
+            ProtectionContainerResource container = BmsAdapter.Client.ProtectionContainers.GetWithHttpMessagesAsync(
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    AzureFabricName,
+                    containerName,                    
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return container;
+        }
+
+        /// <summary>
         /// Fetches backup engines in the vault according to the query params
         /// </summary>
         /// <param name="queryParams">Query parameters</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of backup engines</returns>
         public IEnumerable<BackupEngineBaseResource> ListBackupEngines(
             ODataQuery<BMSBackupEnginesQueryObject> queryParams,
@@ -102,7 +130,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Fetches unregistered containers in the vault according to the query params
         /// </summary>
         /// <param name="queryFilter">Query parameters</param>
-        /// <param name="skipToken">Skip token for pagination</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of protectable containers</returns>
         public IEnumerable<ProtectableContainerResource> ListUnregisteredContainers(
             ODataQuery<BMSContainerQueryObject> queryFilter,
@@ -184,6 +213,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Triggers unregister of a container in service
         /// </summary>
         /// <param name="containerName">Name of the container to unregister</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         public RestAzureNS.AzureOperationResponse UnregisterContainers(
             string containerName,
             string vaultName = null,
@@ -201,6 +232,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Triggers unregister of a workload container in service
         /// </summary>
         /// <param name="containerName">Name of the container to unregister</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         public RestAzureNS.AzureOperationResponse UnregisterWorkloadContainers(
             string containerName,
             string vaultName = null,

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/new-Azsqlelasticjobagent
+online version: https://learn.microsoft.com/powershell/module/Az.sql/new-Azsqlelasticjobagent
 schema: 2.0.0
 ---
 
@@ -15,19 +15,22 @@ Creates a new elastic job agent
 ### DefaultSet (Default)
 ```
 New-AzSqlElasticJobAgent [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
- [-Name] <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Name] <String> [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-IdentityType <String>]
+ [-WorkerCount <Int32>] [-SkuName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ObjectSet
 ```
 New-AzSqlElasticJobAgent [-DatabaseObject] <AzureSqlDatabaseModel> [-Name] <String> [-Tag <Hashtable>]
+ [-UserAssignedIdentityId <String[]>] [-IdentityType <String>] [-WorkerCount <Int32>] [-SkuName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 New-AzSqlElasticJobAgent [-DatabaseResourceId] <String> [-Name] <String> [-Tag <Hashtable>]
+ [-UserAssignedIdentityId <String[]>] [-IdentityType <String>] [-WorkerCount <Int32>] [-SkuName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,15 +40,31 @@ The New-AzSqlElasticJobAgent cmdlet creates a new Elastic Job agent
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -DatabaseName jobdb -Name agent
 ```
-PS C:\> New-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -DatabaseName jobdb -Name agent
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready
 ```
 
 Creates a new Elastic Job agent
+
+### Example 2
+```powershell
+$umi = Get-AzUserAssignedIdentity -ResourceGroupName rg -Name pstestumi
+New-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -DatabaseName jobdb -Name agent -IdentityType "UserAssigned" -UserAssignedIdentityId $umi.Id -SkuName JA200 -WorkerCount 200
+```
+
+```output
+ResourceGroupName ServerName       DatabaseName AgentName State Tags
+----------------- ----------       ------------ --------- ----- ----
+rg                elasticjobserver jobdb        agent     Ready
+```
+
+Creates a new Elastic Job agent with specific Sku and Identity 
 
 ## PARAMETERS
 
@@ -109,6 +128,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+Type of Identity to be used. Possible values are UserAssigned and None.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The Agent Name
 
@@ -154,6 +188,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuName
+The name of the service objective to assign to the Azure SQL Job Agent.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: RequestedServiceObjectiveName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 The Agent Tags
 
@@ -161,6 +210,36 @@ The Agent Tags
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+List of user assigned identities
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkerCount
+WorkerCount is the capacity of the Azure SQL Job Agent which controls the number of concurrent targets that can be executed.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases: Capacity
 
 Required: False
 Position: Named

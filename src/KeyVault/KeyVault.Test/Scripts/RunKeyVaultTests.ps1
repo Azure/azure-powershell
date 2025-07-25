@@ -70,8 +70,8 @@ param(
     [string] $StorageResourceId = $null
 )
 
-. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Common.ps1")
-. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Assert.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\tools\ScenarioTest.ResourceManager\Common.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\tools\ScenarioTest.ResourceManager\Assert.ps1")
 . (Join-Path $PSScriptRoot "Common.ps1")
 . (Join-Path $PSScriptRoot "VaultKeyTests.ps1")
 . (Join-Path $PSScriptRoot "VaultSecretTests.ps1")
@@ -79,7 +79,6 @@ param(
 . (Join-Path $PSScriptRoot "VaultManagedStorageAccountTests.ps1");
 . (Join-Path $PSScriptRoot "VaultManagementTests.ps1")
 . (Join-Path $PSScriptRoot "ControlPlane\KeyVaultManagementTests.ps1")  # Shared between PSH scenario tests and KV-specific script based tests.
-. (Join-Path $PSScriptRoot "ControlPlane\Common.ps1")
 
 $global:totalCount = 0
 $global:passedCount = 0
@@ -245,7 +244,7 @@ function Run-AllDataPlaneTests
 {
     Write-Host "Starting the data plane tests..."
 
-    # All operations that invlove soft delete
+    # All operations that involve soft delete
     if($global:softDeleteEnabled -eq $true)
     {
         # Key soft delete tests

@@ -1,0 +1,110 @@
+{
+  "Update-AzWindowsIotServicesDevice+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"quantity\": 100\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "49" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a900e466-0000-0700-0000-5fb36b410000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "ab8cfb3c-7a3b-4ee3-90e7-83ef0bbeb6d5" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "948c0389-ad12-43db-b5b2-9189a8c0af61" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061841Z:948c0389-ad12-43db-b5b2-9189a8c0af61" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "495" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v\",\"name\":\"wis-imsg4v\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a900e466-0000-0700-0000-5fb36b410000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":100,\"notes\":null,\"startDate\":\"2020-11-17T06:18:01.7321539Z\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzWindowsIotServicesDevice+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01",
+      "Content": "{\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a900ed66-0000-0700-0000-5fb36b420000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "26ee8ceb-8cd0-4e83-99b8-300dd109ef85" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "c1b78d6c-a538-4e52-8606-e6acc0260861" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061842Z:c1b78d6c-a538-4e52-8606-e6acc0260861" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "495" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v\",\"name\":\"wis-imsg4v\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a900ed66-0000-0700-0000-5fb36b420000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":100,\"notes\":null,\"startDate\":\"2020-11-17T06:18:01.7321539Z\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzWindowsIotServicesDevice+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"quantity\": 200\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "49" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a900f966-0000-0700-0000-5fb36b420000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "af5abf55-c568-4e27-b2ad-7a90f5ba140d" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "1ad7f4f3-c39b-468b-8364-4a01ab37c193" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061842Z:1ad7f4f3-c39b-468b-8364-4a01ab37c193" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "495" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v\",\"name\":\"wis-imsg4v\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a900f966-0000-0700-0000-5fb36b420000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":200,\"notes\":null,\"startDate\":\"2020-11-17T06:18:01.7321539Z\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

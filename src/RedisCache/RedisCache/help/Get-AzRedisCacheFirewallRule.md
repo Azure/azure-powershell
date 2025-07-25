@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscachefirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/get-azrediscachefirewallrule
 schema: 2.0.0
 ---
 
@@ -23,10 +23,12 @@ If **RuleName** parameter if provided, **Get-AzRedisCacheFirewallRule** cmdlet g
 ## EXAMPLES
 
 ### Example 1: Get a single firewall rule
+```powershell
+Get-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone"
 ```
-PS C:\>Get-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone"
 
-        ResourceGroupName : myGroup
+```output
+ResourceGroupName : myGroup
         Name              : mycache
         FirewallRuleId    : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/mycache/firewallRules/ruleone
         RuleName          : ruleone
@@ -38,10 +40,12 @@ PS C:\>Get-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone"
 This command gets firewall rule named ruleone from Redis Cache named mycache.
 
 ### Example 2: Get all firewall rules
+```powershell
+Get-AzRedisCacheFirewallRule -Name "mycache"
 ```
-PS C:\>Get-AzRedisCacheFirewallRule -Name "mycache"
 
-        ResourceGroupName : myGroup
+```output
+ResourceGroupName : myGroup
         Name              : mycache
         FirewallRuleId    : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/mycache/firewallRules/ruleone
         RuleName          : ruleone
@@ -123,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             WriteWarning("After the NodeType is removed, you may see the nodes of the NodeType are in error state. " +
                 "Run 'Remove-ServiceFabricNodeState' on those nodes to fix them. Read this document for details: " +
-                "https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps");
+                "https://learn.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps");
 
             var cluster = GetCurrentCluster();
             var vmssExists = VmssExists();
@@ -64,11 +65,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             this.NodeType));
                 }
 
+
                 var durabilityLevel = GetDurabilityLevel(existingNodeType.DurabilityLevel);
-                if (durabilityLevel == DurabilityLevel.Bronze)
+                if (durabilityLevel == DurabilityLevel.Bronze && vmssExists)
                 {
-                    throw new PSInvalidOperationException(
-                        ServiceFabricProperties.Resources.CannotUpdateBronzeNodeType);
+                    var vmss = GetVmss(existingNodeType.Name, cluster.ClusterId);
+
+                    VirtualMachineScaleSetExtension sfExtension;
+                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile?.Extensions, out sfExtension))
+                    {
+                        string vmssDurabilityLevel = GetDurabilityLevelFromExtension(sfExtension);
+                        if (!string.Equals(DurabilityLevel.Bronze.ToString(), vmssDurabilityLevel, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            throw new PSInvalidOperationException(string.Format(
+                                ServiceFabricProperties.Resources.CannotRemoveMismatchedDurabilityNodeType, this.NodeType));
+                        }
+                    }
                 }
             }
 
@@ -80,7 +92,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         this.NodeType));
             }
 
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} ", this.NodeType)))
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0}", this.NodeType)))
             {
                 if (vmssExists)
                 {
@@ -96,14 +108,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     cluster.NodeTypes.Remove(existingNodeType);
 
-                    /**
+                    /*
                      * * Pulled this out after discussion with Justin. Opened Issue #6246 to track the Null Ptr Exception.
                     cluster.UpgradeDescription.DeltaHealthPolicy = new ClusterUpgradeDeltaHealthPolicy()
                     {
                         MaxPercentDeltaUnhealthyApplications = 0,
                         MaxPercentDeltaUnhealthyNodes = 0,
                         MaxPercentUpgradeDomainDeltaUnhealthyNodes = 0
-                    };**/
+                    };*/
 
                     var patchRequest = new ClusterUpdateParameters
                     {
@@ -115,7 +127,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 else
                 {
-                    WriteObject((PSCluster)cluster, true);
+                    WriteObject(new PSCluster(cluster), true);
                 }
             }
         }

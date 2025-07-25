@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Security.Models.Alerts;
 using Microsoft.Azure.Management.Security.Models;
 
 namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
@@ -26,10 +27,10 @@ namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
             {
                 Id = value.Id,
                 Name = value.Name,
-                Email = value.Email,
+                Email = value.Emails,
                 Phone = value.Phone,
-                AlertNotifications = value.AlertNotifications,
-                AlertsToAdmins = value.AlertsToAdmins
+                AlertNotifications = value.AlertNotifications?.State,
+                AlertsToAdmins = (value.NotificationsByRole?.Roles?.Contains("Owner") ?? false) ? value.NotificationsByRole?.State : "Off"
             };
         }
 

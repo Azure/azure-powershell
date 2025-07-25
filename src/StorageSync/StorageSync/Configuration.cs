@@ -54,10 +54,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             /// </summary>
             [DataMember] public List<string> InvalidFilenames;
             /// <summary>
-            /// The whitelist of code point ranges
-            /// </summary>
-            [DataMember] public List<CodePointRange> WhitelistOfCodePointRanges;
-            /// <summary>
             /// The blacklist of code points
             /// </summary>
             [DataMember] public List<int> BlacklistOfCodePoints;
@@ -110,7 +106,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             public string Description { get; set; }
 
             /// <summary>
-            /// Includeses the specified code point.
+            /// Includes the specified code point.
             /// </summary>
             /// <param name="codePoint">The code point.</param>
             /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
@@ -148,7 +144,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 		}
 
         /// <summary>
-        /// Executings the assembly path.
+        /// Executing the assembly path.
         /// </summary>
         /// <returns>System.String.</returns>
         private string ExecutingAssemblyPath()
@@ -196,15 +192,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         public IEnumerable<string> InvalidFileNames()
         {
             return _validationsConfiguration.InvalidFilenames;
-        }
-
-        /// <summary>
-        /// Whitelists the of code point ranges.
-        /// </summary>
-        /// <returns>IEnumerable&lt;Configuration.CodePointRange&gt;.</returns>
-        public IEnumerable<CodePointRange> WhitelistOfCodePointRanges()
-        {
-            return _validationsConfiguration.WhitelistOfCodePointRanges;
         }
 
         /// <summary>

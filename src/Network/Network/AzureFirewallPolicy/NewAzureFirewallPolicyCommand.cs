@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
@@ -71,10 +73,15 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The base policy to inherit from")]
         public string BasePolicy { get; set; }
 
-       [Parameter(
+        [Parameter(
             Mandatory = false,
             HelpMessage = "The DNS Setting")]
         public PSAzureFirewallPolicyDnsSettings DnsSetting { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The SQL related setting")]
+        public PSAzureFirewallPolicySqlSetting SqlSetting { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -91,6 +98,61 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Intrusion Detection Setting")]
+        [ValidateNotNull]
+        public PSAzureFirewallPolicyIntrusionDetection IntrusionDetection { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Transport security name")]
+        public string TransportSecurityName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault")]
+        public string TransportSecurityKeyVaultSecretId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Firewall policy sku tier")]
+        [ValidateSet(
+            MNM.FirewallPolicySkuTier.Standard,
+            MNM.FirewallPolicySkuTier.Premium,
+            MNM.FirewallPolicySkuTier.Basic,
+            IgnoreCase = true)]
+        public string SkuTier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "ResourceId of the user assigned identity to be assigned to Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentity")]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Firewall Policy Identity to be assigned to Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        public PSManagedServiceIdentity Identity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private IP ranges to which traffic won't be SNAT'ed"
+        )]
+        public string[] PrivateRange { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
+
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.")]
+        public PSAzureFirewallPolicySNAT Snat { get; set; }
 
         public override void Execute()
         {
@@ -109,6 +171,10 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSAzureFirewallPolicy CreateAzureFirewallPolicy()
         {
+            if (this.Snat != null && this.PrivateRange != null && this.PrivateRange.Length > 0)
+            {
+                throw new ArgumentException("Please use Snat parameter to set PrivateRange. Private ranges can not be provided on both Snat and PrivateRange parameters at the same time.");
+            }
 
             var firewallPolicy = new PSAzureFirewallPolicy()
             {
@@ -118,8 +184,59 @@ namespace Microsoft.Azure.Commands.Network
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                 ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                 BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
-                DnsSettings = this.DnsSetting
+                DnsSettings = this.DnsSetting,
+                SqlSetting = this.SqlSetting,
+                Sku = new PSAzureFirewallPolicySku
+                {
+                    Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
+                },
+                IntrusionDetection = this.IntrusionDetection,
+                PrivateRange = this.PrivateRange,
+                ExplicitProxy = this.ExplicitProxy
             };
+
+            if (this.Snat != null)
+            {
+                firewallPolicy.Snat = this.Snat;
+            }
+
+            if (this.UserAssignedIdentityId != null)
+            {
+                firewallPolicy.Identity = new PSManagedServiceIdentity
+                {
+                    Type = MNM.ResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
+            }
+            else if (this.Identity != null)
+            {
+                firewallPolicy.Identity = this.Identity;
+            }
+
+            if (this.TransportSecurityKeyVaultSecretId != null)
+            {
+                if (this.TransportSecurityName == null)
+                {
+                    throw new ArgumentException("TransportSecurityName must be provided with TransportSecurityKeyVaultSecretId");
+                }
+
+                if (this.Identity == null && this.UserAssignedIdentityId == null)
+                {
+                    throw new ArgumentException("Identity must be provided with TransportSecurityKeyVaultSecretId");
+                }
+
+                firewallPolicy.TransportSecurity = new PSAzureFirewallPolicyTransportSecurity
+                {
+                    CertificateAuthority = new PSAzureFirewallPolicyTransportSecurityCertificateAuthority
+                    {
+                        Name = this.TransportSecurityName,
+                        KeyVaultSecretId = this.TransportSecurityKeyVaultSecretId
+                    }
+                };
+            }
 
             // Map to the sdk object
             var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);

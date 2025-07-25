@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 50E09DF7-F5B5-4668-9520-73D562E91800
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseadvisorautoexecutestatus
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqldatabaseadvisorautoexecutestatus
 schema: 2.0.0
 ---
 
@@ -26,8 +26,11 @@ Currently, this cmdlet supports the values Enabled, Disabled, and Default.
 ## EXAMPLES
 
 ### Example 1: Enable auto execute for an advisor
+```powershell
+Set-AzSqlDatabaseAdvisorAutoExecuteStatus -ResourceGroupName "ContosoRunnersProd" -ServerName "runner-australia-east" -DatabaseName "ContosoRunner" -AdvisorName "CreateIndex" -AutoExecuteStatus Enabled
 ```
-PS C:\>Set-AzSqlDatabaseAdvisorAutoExecuteStatus -ResourceGroupName "ContosoRunnersProd" -ServerName "runner-australia-east" -DatabaseName "ContosoRunner" -AdvisorName "CreateIndex" -AutoExecuteStatus Enabled
+
+```output
 DatabaseName                   : ContosoRunner
 ResourceGroupName              : ContosoRunnersProd
 ServerName                     : runner-australia-east
@@ -188,5 +191,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzSqlDatabaseAdvisor](./Get-AzSqlDatabaseAdvisor.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 

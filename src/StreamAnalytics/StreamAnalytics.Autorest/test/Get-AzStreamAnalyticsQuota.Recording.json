@@ -1,0 +1,45 @@
+{
+  "Get-AzStreamAnalyticsQuota+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas?api-version=2017-04-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas?api-version=2017-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "fa35cc6e-95d3-41a6-aee2-72d06403d714" ],
+        "CommandName": [ "Get-AzStreamAnalyticsQuota" ],
+        "FullCommandName": [ "Get-AzStreamAnalyticsQuota_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "fa35cc6e-95d3-41a6-aee2-72d06403d714" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11938" ],
+        "x-ms-correlation-request-id": [ "42186a00-12a3-400c-a853-a1fd0d1b9132" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032007Z:42186a00-12a3-400c-a853-a1fd0d1b9132" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Mar 2021 03:20:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "527" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas/StreamingUnits\",\"name\":\"StreamingUnits\",\"type\":\"Microsoft.StreamAnalytics/quotas\",\"properties\":{\"maxCount\":500,\"currentCount\":0}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas/StreamingClusters\",\"name\":\"StreamingClusters\",\"type\":\"Microsoft.StreamAnalytics/quotas\",\"properties\":{\"maxCount\":5,\"currentCount\":3}}]}",
+      "isContentBase64": false
+    }
+  }
+}

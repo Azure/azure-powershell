@@ -19,6 +19,76 @@
 -->
 ## Upcoming Release
 
+## Version 3.7.0
+* Upgraded nuget package to signed package.
+* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property. 
+
+## Version 3.6.4
+* Migrate Batch SDK to generated SDK
+  - Removed "Microsoft.Azure.Management.Batch" Version="15.0.0" PackageReference
+  - Added Batch.Management.Sdk ProjectReference
+
+## Version 3.6.3
+* Fixed secrets exposure in example documentation.
+
+## Version 3.6.2
+* Fixed a bug where `New-AzBatchApplicationPackage` wouldn't work if the application `AllowUpdates` parameter was set to `$false`.
+
+## Version 3.6.1
+* Removed the out-of-date breaking change message for `Get-AzBatchCertificate` and `New-AzBatchCertificate`.
+
+## Version 3.6.0
+* Added new properties `ResourceTags`  and `UpgradePolicy` to `PSCloudPool` and `PSPoolSpecification`.
+* Added new property `UpgradingOS` to `PSNodeCounts`.
+* Added new properties `Caching`, `DiskSizeGB`, `ManagedDisk` and `WriteAcceleratorEnabled` to `PSOSDisk`.
+* Added new properties `SecurityProfile` and `ServiceArtifactReference` to `PSVirtualMachineConfigurations`.
+* Added new property `ScaleSetVmResourceId` to `PSVirtualMachineInfo`.
+
+## Version 3.5.0
+* Removed cmdlets: `Get-AzBatchPoolStatistic` and `Get-AzBatchJobStatistic`
+* Deprecated cmdlets: `Get-AzBatchCertificate` and `New-AzBatchCertificate`
+  - The Batch account certificates feature is deprecated. Please transition to using Azure Key Vault to securely access and install certificates on your Batch pools, [learn more](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide)
+
+## Version 3.4.0
+* Added new property `Encryption` of type `EncryptionProperties` to `AccountCreateParameters`.
+  - Configures how customer data is encrypted inside the Batch account.
+
+## Version 3.3.0
+* Added new properties `CurrentNodeCommunicationMode` (read only) and `TargetCommunicationMode` of type `NodeCommunicationMode` to `PSCloudPool`.
+  - Valid values for `NodeCommunicationMode`: Default, Classic, Simplified
+  - When the `PSCloudPool` is updated with a new `TargetCommunicationMode` value, the Batch service will attempt to update the pool to the new value the next time the pool is resized down to zero compute nodes and back up.
+* `PSPrivateLinkServiceConnectionState`'s `ActionRequired` property required has been renamed to `ActionsRequired`. The old property has been marked as obsolete, and now just returns the new property. This should not impact existing consumers.
+
+## Version 3.2.1
+* Fixed a bug wherein creating a new JobSchedule does not properly submit Output Files.
+
+## Version 3.2.0
+
+* Updated Az.Batch to use `Microsoft.Azure.Batch` SDK version 15.3.0
+  - Add ability to assign user-assigned managed identities to `PSCloudPool`. These identities will be made available on each node in the pool, and can be used to access various resources.
+  - Added `IdentityReference` property to the following models to support accessing resources via managed identity:
+    - `PSAzureBlobFileSystemConfiguration`
+    - `PSOutputFileBlobContainerDestination`
+    - `PSContainerRegistry`
+    - `PSResourceFile`
+    - `PSUploadBatchServiceLogsConfiguration`
+  - Added new `extensions` property to `PSVirtualMachineConfiguration` on `PSCloudPool` to specify virtual machine extensions for nodes
+  - Added the ability to specify availability zones using a new property `NodePlacementConfiguration` on `VirtualMachineConfiguration`
+  - Added new `OSDisk` property to `VirtualMachineConfiguration`, which contains settings for the operating system disk of the Virtual Machine.
+    - The `Placement` property on `PSDiffDiskSettings` specifies the ephemeral disk placement for operating system disks for all VMs in the pool. Setting it to "CacheDisk" will store the ephemeral OS disk on the VM cache.
+  - Added `MaxParallelTasks` property on `PSCloudJob` to control the maximum allowed tasks per job (defaults to -1, meaning unlimited).
+  - Added `VirtualMachineInfo` property on `PSComputeNode` which contains information about the current state of the virtual machine, including the exact version of the marketplace image the VM is using.
+  - Added `RecurrenceInterval` property to `PSSchedule` to control the interval between the start times of two successive job under a job schedule.
+  - Added a new 'Get-AzBatchComputeNodeExtension' command, which gets a specific extension by name, or a list of all extensions, for a given compute node.
+* Updated Az.Batch`Microsoft.Azure.Management.Batch` SDK version 14.0.0.
+  - Added a new `Get-AzBatchSupportedVirtualMachineSku` command, which gets the list of Batch-supported Virtual Machine VM sizes available at a given location.
+  - Added a new `Get-AzBatchTaskSlotCount` command, which gets the number of task slots required by a given job.
+  - 'MaxTasksPerComputeNode' has been renamed to 'TaskSlotsPerNode', to match a change in functionality.
+    - 'MaxTasksPerComputeNode' will remain as an alias but will be removed in a coming update.
+
+## Version 3.1.1
+* Removed assembly `System.Text.Encodings.Web.dll` [#16062]
+
 ## Version 3.1.0
 * Updated Az.Batch to use `Microsoft.Azure.Management.Batch` SDK version to 11.0.0
 * Added the ability to set the BatchAccount Identity in the `New-AzBatchAccount` cmdlet
@@ -56,7 +126,7 @@
 * Removed `TargetOSVersion` from `PSCloudServiceConfiguration`.
 * Renamed `CurrentOSVersion` to `OSVersion` on `PSCloudServiceConfiguration`.
 * Removed `DataEgressGiB` and `DataIngressGiB` from `PSPoolUsageMetrics`.
-* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**. 
+* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**.
   - **Get-AzBatchSupportedImage** returns the same data as **Get-AzBatchNodeAgentSku** but in a more friendly format.
   - New non-verified images are also now returned. Additional information about `Capabilities` and `BatchSupportEndOfLife` for each image is also included.
 * Added ability to mount remote file-systems on each node of a pool via the new `MountConfiguration` parameter of **New-AzBatchPool**.

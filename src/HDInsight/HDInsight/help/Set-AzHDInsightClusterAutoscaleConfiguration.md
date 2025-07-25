@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 1C3B7A57-D645-498C-98F4-DAE9B782123E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/set-azhdinsightclusterautoscaleconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclusterautoscaleconfiguration
 schema: 2.0.0
 ---
 
@@ -17,7 +17,8 @@ Sets the autoscale configuration of an Azure HDInsight cluster.
 ```
 Set-AzHDInsightClusterAutoscaleConfiguration [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-MinWorkerNodeCount <Int32>] [-MaxWorkerNodeCount <Int32>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ScheduleAutoscaleByNameParameterSet
@@ -25,7 +26,8 @@ Set-AzHDInsightClusterAutoscaleConfiguration [[-ResourceGroupName] <String>] [-C
 Set-AzHDInsightClusterAutoscaleConfiguration [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-TimeZone <String>]
  [-Condition <System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightAutoscaleCondition]>]
- [-Schedule] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Schedule] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoscaleConfigurationByNameParameterSet
@@ -38,15 +40,16 @@ Set-AzHDInsightClusterAutoscaleConfiguration [[-ResourceGroupName] <String>] [-C
 ### LoadAutoscaleByResourceIdParameterSet
 ```
 Set-AzHDInsightClusterAutoscaleConfiguration [-ResourceId] <String> [-MinWorkerNodeCount <Int32>]
- [-MaxWorkerNodeCount <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MaxWorkerNodeCount <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ScheduleAutoscaleByResourceIdParameterSet
 ```
 Set-AzHDInsightClusterAutoscaleConfiguration [-ResourceId] <String> [-TimeZone <String>]
  [-Condition <System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightAutoscaleCondition]>]
- [-Schedule] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Schedule] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoscaleConfigurationByResourceIdParameterSet
@@ -60,14 +63,16 @@ Set-AzHDInsightClusterAutoscaleConfiguration [-ResourceId] <String>
 ```
 Set-AzHDInsightClusterAutoscaleConfiguration [-InputObject] <AzureHDInsightCluster>
  [-MinWorkerNodeCount <Int32>] [-MaxWorkerNodeCount <Int32>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ScheduleAutoscaleByInputObjectParameterSet
 ```
 Set-AzHDInsightClusterAutoscaleConfiguration [-InputObject] <AzureHDInsightCluster> [-TimeZone <String>]
  [-Condition <System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightAutoscaleCondition]>]
- [-Schedule] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Schedule] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoscaleConfigurationByInputObjectParameterSet
@@ -84,9 +89,9 @@ This cmdlet **Set-AzHDInsightClusterAutoscaleConfiguration** sets the autoscale 
 
 ### Example 1: Set the Load-based autoscale configuration of the HDInsight cluster
 ```powershell
-PS C:\> $clusterResourceGroup="group"
-PS C:\> $clusterName="MyCluster"
-PS C:\> Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup `
+$clusterResourceGroup="group"
+$clusterName="MyCluster"
+Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup `
             -ClusterName $clusterName -MinWorkerNodeCount 3 -MaxWorkerNodeCount 5
 ```
 
@@ -95,13 +100,13 @@ This command sets the Load-based autoscale configuration of an Azure HDInsight c
 ### Example 2: Set the Schedule-based autoscale of the HDInsight cluster
 ```powershell
 # Create autoscale conditions
-PS C:\> $condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 5 -Day Monday,Wednesday
-PS C:\> $condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 4 -Day Friday
+$condition1=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 5 -Day Monday,Wednesday
+$condition2=New-AzHDInsightClusterAutoscaleScheduleCondition -Time 09:00 -WorkerNodeCount 4 -Day Friday
 
 # Set autoscale configuration
-PS C:\> $clusterResourceGroup="group"
-PS C:\> $clusterName="MyCluster"
-PS C:\> Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName -Schedule -TimeZone "Pacific Standard Time" -Condition $condition1,$condition2
+$clusterResourceGroup="group"
+$clusterName="MyCluster"
+Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName -Schedule -TimeZone "Pacific Standard Time" -Condition $condition1,$condition2
 ```
 
 This command sets the Schedule-based autoscale configuration of the HDInsight cluster.
@@ -109,15 +114,15 @@ This command sets the Schedule-based autoscale configuration of the HDInsight cl
 ### Example 3: Set the autoscale configuration of the HDInsight cluster based another cluster which has set autoscale configuration
 ```powershell
 # Get the autoscale configuration of another cluster.
-PS C:\> $clusterResourceGroup="group"
-PS C:\> $anotherClusterName="anotherClusterName"
-PS C:\> $autoscaleConfig=Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $anotherClusterName
+$clusterResourceGroup="group"
+$anotherClusterName="anotherClusterName"
+$autoscaleConfig=Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $anotherClusterName
 
 # Set autoscale configuration
-PS C:\> $clusterResourceGroup="group"
-PS C:\> $clusterName="MyCluster"
-PS C:\> Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName `
-            -Autoscale $autoscaleConfig
+$clusterResourceGroup="group"
+$clusterName="MyCluster"
+Set-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName `
+            -AutoscaleConfiguration $autoscaleConfig
 ```
 
 This command sets the autoscale configuration of the HDInsight cluster based another cluster.

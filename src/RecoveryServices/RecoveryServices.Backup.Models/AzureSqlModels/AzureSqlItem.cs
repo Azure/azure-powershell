@@ -69,17 +69,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         /// <summary>
         /// Oldest Recovery Point for the Item
-        /// </summary
+        /// </summary>
         public DateTime? OldestRecoveryPoint { get; set; }
 
         /// <summary>
         /// Recovery Points Count for the Item
-        /// </summary
+        /// </summary>
         public int? RecoveryPointCount { get; set; }
 
         /// <summary>
         /// PolicyState for the Item
-        /// </summary
+        /// </summary>
         public string PolicyState { get; set; }
     }
 }

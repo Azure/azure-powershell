@@ -109,6 +109,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtension");
         }
 
+        [Fact(Skip = "TODO: only works for live mode")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestAzureDiskEncryptionExtensionDualPassToSinglePassMigration()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionDualPassToSinglePassMigration");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePass()
@@ -151,6 +158,33 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInSetADECmdlet()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInSetADECmdlet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithIdentityNotSetInVirtualMachine()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithIdentityNotAckledInKeyVault()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithIdentityNotAckledInKeyVault");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBginfoExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineBginfoExtension");
@@ -175,6 +209,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineADDomainExtensionDomainJoin()
         {
             TestRunner.RunTestScript("Test-VirtualMachineADDomainExtensionDomainJoin");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineExtensionEnableAutomaticUpgrade()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineExtensionEnableAutomaticUpgrade");
         }
     }
 }

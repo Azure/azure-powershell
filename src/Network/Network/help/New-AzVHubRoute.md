@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvhubroute
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvhubroute
 schema: 2.0.0
 ---
 
@@ -12,8 +12,10 @@ Creates a VHubRoute object which can be passed as parameter to the New-AzVHubRou
 
 ## SYNTAX
 
-```powershell
-New-AzVHubRoute -Name <String> -Destination <String[]> -DestinationType <String> -NextHop <String> -NextHopType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+New-AzVHubRoute -Destination <String[]> -DestinationType <String> -NextHop <String> -Name <String>
+ -NextHopType <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,11 +27,13 @@ Creates a VHubRoute object.
 ### Example 1
 
 ```powershell
-PS C:\> $rgName = "testRg"
-PS C:\> $firewallName = "testFirewall"
-PS C:\> $firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
-PS C:\> New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+$rgName = "testRg"
+$firewallName = "testFirewall"
+$firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+New-AzVHubRoute -Name "private-traffic" -Destination @("10.30.0.0/16", "10.40.0.0/16") -DestinationType "CIDR" -NextHop $firewall.Id -NextHopType "ResourceId"
+```
 
+```output
 Name            : private-traffic
 DestinationType : CIDR
 Destinations    : {10.30.0.0/16, 10.40.0.0/16}
@@ -42,12 +46,14 @@ The above command will create a VHubRoute object with nextHop as the specified F
 ### Example 2
 
 ```powershell
-PS C:\> $rgName = "testRg"
-PS C:\> $hubName = "testHub"
-PS C:\> $hubVnetConnName = "testHubVnetConn"
-PS C:\> $hubVnetConnection = Get-AzVirtualHubVnetConnection -Name $hubVnetConnName -ParentResourceName $hubName -ResourceGroupName $rgName
-PS C:\> New-AzVHubRoute -Name "nva-traffic" -Destination @("10.20.0.0/16", "10.50.0.0/16") -DestinationType "CIDR" -NextHop $hubVnetConnection.Id -NextHopType "ResourceId"
+$rgName = "testRg"
+$hubName = "testHub"
+$hubVnetConnName = "testHubVnetConn"
+$hubVnetConnection = Get-AzVirtualHubVnetConnection -Name $hubVnetConnName -ParentResourceName $hubName -ResourceGroupName $rgName
+New-AzVHubRoute -Name "nva-traffic" -Destination @("10.20.0.0/16", "10.50.0.0/16") -DestinationType "CIDR" -NextHop $hubVnetConnection.Id -NextHopType "ResourceId"
+```
 
+```output
 Name            : private-traffic
 DestinationType : CIDR
 Destinations    : {10.30.0.0/16, 10.40.0.0/16}
@@ -57,12 +63,15 @@ NextHop         : /subscriptions/testSub/resourceGroups/testRg/providers/Microso
 
 The above command will create a VHubRoute object with nextHop as the specified hubVnetConnection which can then be added to a VHubRouteTable resource.
 
-
 ### Example 3
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
-PS C:\> $hub = Get-AzVirtualHub -ResourceGroupName {rgname} -Name {virtual-hub-name}
-PS C:\> $hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name {connection-name}
-PS C:\> $hubVnetConn
+$hub = Get-AzVirtualHub -ResourceGroupName "rgname" -Name "virtual-hub-name"
+$hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name "connection-name"
+$hubVnetConn
+
 Name                   : conn_2
 Id                     : /subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualHubs/{virtual-hub-name}/hubVirtualNetworkConnections/conn_2
 RemoteVirtualNetwork   : /subscriptions/{subscriptionID}/resourceGroups/{rgname}/providers/Microsoft.Network/virtualNetworks/rVnet_2
@@ -88,10 +97,10 @@ RoutingConfiguration   : {
                            }
                          }
                          
-PS C:\> $staticRoute1 = New-AzStaticRoute -Name "static_route1" -AddressPrefix @("10.2.1.0/24", "10.2.3.0/24") -NextHopIpAddress "10.2.0.5"
-PS C:\> $routingConfig = $hubVnetConn.RoutingConfiguration
-PS C:\> $routingConfig.VnetRoutes.StaticRoutes = @($staticRoute1)
-PS C:\> $routingConfig
+$staticRoute1 = New-AzStaticRoute -Name "static_route1" -AddressPrefix @("10.2.1.0/24", "10.2.3.0/24") -NextHopIpAddress "10.2.0.5"
+$routingConfig = $hubVnetConn.RoutingConfiguration
+$routingConfig.VnetRoutes.StaticRoutes = @($staticRoute1)
+$routingConfig
 AssociatedRouteTable  : Microsoft.Azure.Commands.Network.Models.PSResourceId
 PropagatedRouteTables : {
                           "Labels": [
@@ -117,16 +126,18 @@ VnetRoutes            : {
                           ]
                         }
 
-PS C:\> Update-AzVirtualHubVnetConnection -InputObject $hubVnetConn -RoutingConfiguration $routingConfig
+Update-AzVirtualHubVnetConnection -InputObject $hubVnetConn -RoutingConfiguration $routingConfig
 ```
+
 The above commands will get the RoutingConfiguration of an already existing AzVHubRoute and then add a static route on the connection. Alternatively, if you hope to create a new connection with the static route within it, please see Example 1 [here.](New-AzRoutingConfiguration.md)
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -141,7 +152,7 @@ Accept wildcard characters: False
 List of Destinations.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +167,7 @@ Accept wildcard characters: False
 Type of Destinations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,8 +182,8 @@ Accept wildcard characters: False
 The route name.
 
 ```yaml
-Type: String
-Parameter Sets: (all)
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -186,7 +197,7 @@ Accept wildcard characters: False
 The next hop.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +212,7 @@ Accept wildcard characters: False
 The Next Hop type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -14,19 +14,21 @@
 
 namespace Microsoft.Azure.Commands.Network.Bastion
 {
+    using System;
+    using System.Collections;
+    using System.ComponentModel;
+    using System.Management.Automation;
+
     using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.Network.Models.Bastion;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using MNM = Microsoft.Azure.Management.Network.Models;
+    using MNM = Management.Network.Models;
 
     [Cmdlet(VerbsCommon.New,
-       ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
+       ResourceManager.Common.AzureRMConstants.AzureRMPrefix + Constants.BastionResourceName,
        DefaultParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNObject,
        SupportsShouldProcess = true),
        OutputType(typeof(PSBastion))]
@@ -43,9 +45,9 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Alias("ResourceName", "BastionName")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The bastion resource name.")]
+            HelpMessage = "The Bastion resource name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
+        [ResourceNameCompleter(Constants.BastionResourceType, "ResourceGroupName")]
         public string Name { get; set; }
 
         [Alias("PublicIpAddressObject")]
@@ -176,6 +178,67 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The Bastion Sku Tier")]
+        [PSArgumentCompleter(PSBastionSku.Basic, PSBastionSku.Standard, PSBastionSku.Premium)]
+        [ValidateSet(
+            MNM.BastionHostSkuName.Basic,
+            MNM.BastionHostSkuName.Standard,
+            MNM.BastionHostSkuName.Premium,
+            IgnoreCase = false)]
+        public string Sku { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The Scale Units for Bastion")]
+        [DefaultValue(Constants.MinimumScaleUnits)]
+        public int? ScaleUnit { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Kerberos")]
+        [DefaultValue(false)]
+        public bool? EnableKerberos { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Copy and Paste")]
+        [DefaultValue(false)]
+        public bool? DisableCopyPaste { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Native Client")]
+        [DefaultValue(false)]
+        public bool? EnableTunneling { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "IP Connect")]
+        [DefaultValue(false)]
+        public bool? EnableIpConnect { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Shareable Link")]
+        [DefaultValue(false)]
+        public bool? EnableShareableLink { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipeline = true,
+           HelpMessage = "Session Recording")]
+        [DefaultValue(false)]
+        public bool? EnableSessionRecording { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -209,12 +272,43 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         private PSBastion CreateBastion()
         {
-            var bastion = new PSBastion()
+            PSBastion bastion = new PSBastion(this.Name, this.ResourceGroupName, this.VirtualNetwork.Location, this.Sku);
+
+            #region Feature Validations
+            ValidateFeatures(bastion, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink, this.EnableSessionRecording);
+            if (this.EnableKerberos.HasValue)
             {
-                Name = this.Name,
-                ResourceGroupName = this.ResourceGroupName,
-                Location = this.VirtualNetwork.Location
-            };
+                bastion.EnableKerberos = this.EnableKerberos.Value;
+            }
+            if (this.DisableCopyPaste.HasValue)
+            {
+                bastion.DisableCopyPaste = this.DisableCopyPaste.Value;
+            }
+            if (this.EnableTunneling.HasValue)
+            {
+                bastion.EnableTunneling = this.EnableTunneling.Value;
+            }
+            if (this.EnableIpConnect.HasValue)
+            {
+                bastion.EnableIpConnect = this.EnableIpConnect.Value;
+            }
+            if (this.EnableShareableLink.HasValue)
+            {
+                bastion.EnableShareableLink = this.EnableShareableLink.Value;
+            }
+            if (this.EnableSessionRecording.HasValue)
+            {
+                bastion.EnableSessionRecording = this.EnableSessionRecording.Value;
+            }
+            #endregion
+
+            #region Scale Unit Validations
+            ValidateScaleUnits(bastion, this.ScaleUnit);
+            if (this.ScaleUnit.HasValue)
+            {
+                bastion.ScaleUnit = this.ScaleUnit.Value;
+            }
+            #endregion
 
             if (this.VirtualNetwork != null)
             {
@@ -223,6 +317,8 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             //// Map to the sdk object
             var BastionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(bastion);
+            //// PS does not allow plurals which is why there is a mismatch in property name and hence the below line
+            BastionModel.ScaleUnits = bastion.ScaleUnit;
             BastionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             //// Execute the Create bastion call
@@ -255,9 +351,10 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             if (this.PublicIpAddress == null)
             {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.PublicIpAddressName));
+                throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.PublicIpAddressName));
             }
         }
+        
         public void ParseVirtualNetworkObject()
         {
             //// Get VirtualNetworkRgName and VirtualNetworkName by ByVNResourceId
@@ -282,7 +379,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             if (this.VirtualNetwork == null)
             {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkName));
+                throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.VirtualNetworkName));
             }
         }
     }

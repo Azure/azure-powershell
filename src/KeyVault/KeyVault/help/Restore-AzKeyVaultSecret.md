@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 70DB088D-4AF5-406B-8D66-118A0F766041
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/restore-azkeyvaultsecret
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -19,16 +19,24 @@ Restore-AzKeyVaultSecret [-VaultName] <String> [-InputFile] <String> [-DefaultPr
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### BySecretUri
+```
+Restore-AzKeyVaultSecret [-Id] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByInputObject
 ```
 Restore-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ByResourceId
+### ByParentResourceId
 ```
-Restore-AzKeyVaultSecret [-ResourceId] <String> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzKeyVaultSecret [-ParentResourceId] <String> [-InputFile] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,8 +52,31 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up secret
 ```powershell
-PS C:\> Restore-AzKeyVaultSecret -VaultName 'contoso' -InputFile "C:\Backup.blob"
+Restore-AzKeyVaultSecret -VaultName 'contoso' -InputFile "C:\Backup.blob"
+```
 
+```output
+Vault Name   : contoso
+Name         : secret1
+Version      : 7128133570f84a71b48d7d0550deb74c
+Id           : https://contoso.vault.azure.net:443/secrets/secret1/7128133570f84a71b48d7d0550deb74c
+Enabled      : True
+Expires      : 4/6/2018 3:59:43 PM
+Not Before   :
+Created      : 4/5/2018 11:46:28 PM
+Updated      : 4/6/2018 11:30:17 PM
+Content Type :
+Tags         :
+```
+
+This command restores a secret, including all of its versions, from the backup file named Backup.blob into the key vault named contoso.
+
+### Example 2: Restore a backed-up secret (using Uri)
+```powershell
+Restore-AzKeyVaultSecret -Id "https://contoso.vault.azure.net:443/secrets/" -InputFile "C:\Backup.blob"
+```
+
+```output
 Vault Name   : contoso
 Name         : secret1
 Version      : 7128133570f84a71b48d7d0550deb74c
@@ -63,11 +94,26 @@ This command restores a secret, including all of its versions, from the backup f
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,11 +124,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+The URI of the KeyVault Secret.
+Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
+
+```yaml
+Type: String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputFile
 Specifies the input file that contains the backup of the secret to restore.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +159,7 @@ Accept wildcard characters: False
 KeyVault object
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Type: PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -108,13 +170,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
+### -ParentResourceId
 KeyVault Resource Id
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
+Type: String
+Parameter Sets: ByParentResourceId
+Aliases: ResourceId
 
 Required: True
 Position: 0
@@ -127,7 +189,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault into which to restore the secret.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -138,27 +200,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -193,4 +240,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzKeyVaultSecret](./Get-AzKeyVaultSecret.md)
 
 [Remove-AzKeyVaultSecret](./Remove-AzKeyVaultSecret.md)
-

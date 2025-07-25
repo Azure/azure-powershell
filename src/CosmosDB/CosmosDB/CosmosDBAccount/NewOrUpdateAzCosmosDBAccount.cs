@@ -70,8 +70,55 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
         public bool? EnableAnalyticalStorage { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePartitionMergeHelpMessage)]
+        public bool? EnablePartitionMerge { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableBurstCapacityHelpMessage)]
+        public bool? EnableBurstCapacity { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.NetworkAclBypassHelpMessage)]
+        [PSArgumentCompleter("None", "AzureServices")]
+        public string NetworkAclBypass { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.NetworkAclBypassResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string[] NetworkAclBypassResourceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
+        [PSArgumentCompleter(SDKModel.ServerVersion.Three2, SDKModel.ServerVersion.Three6, SDKModel.ServerVersion.Four0)]
+        public string ServerVersion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupIntervalInMinHelpMessage)]
+        public int? BackupIntervalInMinutes { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupRetentionInHoursHelpMessage)]
+        public int? BackupRetentionIntervalInHours { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupStorageRedundancyHelpMessage)]
+        [PSArgumentCompleter("Geo", "Local", "Zone")]
+        public string BackupStorageRedundancy { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupTypeHelpMessage)]
+        [PSArgumentCompleter("Periodic", "Continuous")]
+        public string BackupPolicyType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.ContinuousTierHelpMessage)]
+        [PSArgumentCompleter("Continuous7Days", "Continuous30Days")]
+        public string ContinuousTier { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = Constants.AnalyticalStorageSchemaTypeHelpMessage)]
+        [PSArgumentCompleter(SDKModel.AnalyticalStorageSchemaType.WellDefined, SDKModel.AnalyticalStorageSchemaType.FullFidelity)]
+        public string AnalyticalStorageSchemaType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.MinimalTlsVersionHelpMessage)]
+        [PSArgumentCompleter(SDKModel.MinimalTlsVersion.Tls, SDKModel.MinimalTlsVersion.Tls11, SDKModel.MinimalTlsVersion.Tls12)]
+        public string MinimalTlsVersion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePerRegionPerPartitionAutoscaleHelpMessage)]
+        public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
 
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {
@@ -127,6 +174,27 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 iprules.Add(new IpAddressOrRange(ipAddressOrRange));
             }
             return iprules;
+        }
+
+        protected AnalyticalStorageConfiguration CreateAnalyticalStorageConfiguration(string param)
+        {
+            AnalyticalStorageConfiguration retval = null;
+            switch (param)
+            {
+                case SDKModel.AnalyticalStorageSchemaType.WellDefined:
+                case SDKModel.AnalyticalStorageSchemaType.FullFidelity:
+                    retval = new AnalyticalStorageConfiguration(param);
+                    break;
+
+                default:
+                    if (!string.IsNullOrWhiteSpace(param))
+                    {
+                        string message = $"Invalid value for AnalyticalStorageSchemaType.  Valid values are '{SDKModel.AnalyticalStorageSchemaType.WellDefined}' and '{SDKModel.AnalyticalStorageSchemaType.FullFidelity}'.";
+                        WriteWarning(message);
+                    }
+                    break;
+            }
+            return retval;
         }
     }
 }

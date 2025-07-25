@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string ContextDirectory { get; set; }
 
         /// <summary>
-        /// Fiel name for the context file
+        /// File name for the context file
         /// </summary>
         public string ContextFile { get; set; }
 
@@ -51,6 +51,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         public string CacheFile { get; set; }
 
+        /// <summary>
+        /// The name of the keystore file
+        /// </summary>
+        public string KeyStoreFile { get; set; }
 
         /// <summary>
         /// Extensible settings for autosave
@@ -64,6 +68,41 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             set
             {
                 _extendedSettings = value;
+            }
+        }
+
+        public static ContextAutosaveSettings FromAzureSession(IAzureSession session, string mode)
+        {
+            if (mode == ContextSaveMode.CurrentUser)
+            {
+                return new ContextAutosaveSettings()
+                {
+                    Mode = ContextSaveMode.CurrentUser,
+                    CacheDirectory = session.TokenCacheDirectory,
+                    CacheFile = session.TokenCacheFile,
+                    ContextDirectory = session.ARMProfileDirectory,
+                    ContextFile = session.ARMProfileFile,
+                    KeyStoreFile = session.KeyStoreFile,
+                    Settings = new Dictionary<string, string>() {
+                        { "InstallationId", session.GetProperty("InstallationId") }
+                    },
+                };
+            }
+            else
+            {
+                const string NoDirectory = "None";
+                return new ContextAutosaveSettings()
+                {
+                    Mode = ContextSaveMode.Process,
+                    CacheDirectory = NoDirectory,
+                    CacheFile = NoDirectory,
+                    ContextDirectory = NoDirectory,
+                    ContextFile = NoDirectory,
+                    KeyStoreFile = NoDirectory,
+                    Settings = new Dictionary<string, string>() {
+                        { "InstallationId", session.GetProperty("InstallationId") }
+                    },
+                };
             }
         }
     }

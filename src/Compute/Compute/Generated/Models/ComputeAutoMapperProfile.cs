@@ -56,9 +56,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
-                cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
-                cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
                 cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroupList>();
                 cfg.CreateMap<TO.PSHostGroupList, TO.PSHostGroup>();
                 cfg.CreateMap<TO.PSHostGroup, TO.PSHostGroupList>();
@@ -83,6 +80,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>();
                 cfg.CreateMap<TO.PSGalleryImageVersionList, TO.PSGalleryImageVersion>();
                 cfg.CreateMap<TO.PSGalleryImageVersion, TO.PSGalleryImageVersionList>();
+
+                cfg.CreateMap<FROM.GalleryInVMAccessControlProfile, TO.PSGalleryInVMAccessControlProfileList>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileList, TO.PSGalleryInVMAccessControlProfile>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfile, TO.PSGalleryInVMAccessControlProfileList>();
+
+                cfg.CreateMap<FROM.GalleryInVMAccessControlProfileVersion, TO.PSGalleryInVMAccessControlProfileVersionList>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileVersionList, TO.PSGalleryInVMAccessControlProfileVersion>();
+                cfg.CreateMap<TO.PSGalleryInVMAccessControlProfileVersion, TO.PSGalleryInVMAccessControlProfileVersionList>();
+
                 cfg.CreateMap<FROM.Image, TO.PSImageList>();
                 cfg.CreateMap<TO.PSImageList, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, TO.PSImageList>();
@@ -103,14 +109,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
                 cfg.CreateMap<FROM.Disk, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.DiskUpdate, FROM.Disk>();
-                cfg.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>();
-                cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
+
+                //Adding a condition to check for null because automapper maps null IDictionary Types to empty IDictionary values
+                cfg.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
+                cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
+                
                 cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
-                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
-                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
-                cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
-                cfg.CreateMap<TO.PSContainerService, FROM.ContainerService>();
+                
+                //Adding a condition to check for null because automapper maps null IDictionary Types to empty IDictionary values
+                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
+                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
+                
                 cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroup>();
                 cfg.CreateMap<TO.PSHostGroup, FROM.DedicatedHostGroup>();
                 cfg.CreateMap<FROM.DedicatedHost, TO.PSHost>();
@@ -177,9 +191,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.VirtualMachineScaleSetExtensionProfile, TO.PSVirtualMachineScaleSetExtensionProfile>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetExtensionProfile, FROM.VirtualMachineScaleSetExtensionProfile>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetExtension, TO.PSVirtualMachineScaleSetExtension>()
-                    .ForMember(c => c.Type, o => o.MapFrom(r => r.Type1));
+                    .ForMember(c => c.Type, o => o.MapFrom(r => r.VirtualMachineScaleSetExtensionPropertiesType));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetExtension, FROM.VirtualMachineScaleSetExtension>()
-                    .ForMember(c => c.Type1, o => o.MapFrom(r => r.Type));
+                    .ForMember(c => c.VirtualMachineScaleSetExtensionPropertiesType, o => o.MapFrom(r => r.Type));
 
                 cfg.CreateMap<FROM.DiskAccess, TO.PSDiskAccess>();
                 cfg.CreateMap<TO.PSDiskAccess, FROM.DiskAccess>();
@@ -189,7 +203,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
                 cfg.CreateMap<FROM.VirtualMachineAssessPatchesResult, TO.PSVirtualMachinePatchAssessmentResult>();
                 cfg.CreateMap<TO.PSVirtualMachinePatchAssessmentResult, FROM.VirtualMachineAssessPatchesResult>();
-
+                cfg.CreateMap<FROM.VirtualMachineInstallPatchesResult, TO.PSVirtualMachineInstallPatchesResult>();
+                cfg.CreateMap<TO.PSVirtualMachineInstallPatchesResult, FROM.VirtualMachineInstallPatchesResult>();
+                cfg.CreateMap<FROM.SshPublicKeyResource, TO.PSSshPublicKeyResource>();
+                cfg.CreateMap<TO.PSSshPublicKeyResource, FROM.SshPublicKeyResource>();
+                cfg.CreateMap<FROM.SshPublicKeyResource, TO.PSSshPublicKeyResourceList>();
+                cfg.CreateMap<TO.PSSshPublicKeyResourceList, TO.PSSshPublicKeyResource>();
+                cfg.CreateMap<TO.PSSshPublicKeyResource, TO.PSSshPublicKeyResourceList>();
+                cfg.CreateMap<FROM.SharedGallery, TO.PSSharedGallery>();
+                cfg.CreateMap<TO.PSSharedGallery, FROM.SharedGallery>();
+                cfg.CreateMap<FROM.SharedGallery, TO.PSSharedGalleryList>();
+                cfg.CreateMap<TO.PSSharedGalleryList, TO.PSSharedGallery>();
+                cfg.CreateMap<TO.PSSharedGallery, TO.PSSharedGalleryList>();
+                cfg.CreateMap<FROM.SharedGalleryImage, TO.PSSharedGalleryImage>();
+                cfg.CreateMap<TO.PSSharedGalleryImage, FROM.SharedGalleryImage>();
+                cfg.CreateMap<FROM.SharedGalleryImage, TO.PSSharedGalleryImageList>();
+                cfg.CreateMap<TO.PSSharedGalleryImageList, TO.PSSharedGalleryImage>();
+                cfg.CreateMap<TO.PSSharedGalleryImage, TO.PSSharedGalleryImageList>();
+                cfg.CreateMap<FROM.SharedGalleryImageVersion, TO.PSSharedGalleryImageVersion>();
+                cfg.CreateMap<TO.PSSharedGalleryImageVersion, FROM.SharedGalleryImageVersion>();
+                cfg.CreateMap<FROM.SharedGalleryImageVersion, TO.PSSharedGalleryImageVersionList>();
+                cfg.CreateMap<TO.PSSharedGalleryImageVersionList, TO.PSSharedGalleryImageVersion>();
+                cfg.CreateMap<TO.PSSharedGalleryImageVersion, TO.PSSharedGalleryImageVersionList>();
+                cfg.CreateMap<FROM.CapacityReservationGroup, TO.PSCapacityReservationGroup>();
+                cfg.CreateMap<TO.PSCapacityReservationGroup, FROM.CapacityReservationGroup>();
+                cfg.CreateMap<FROM.CapacityReservationGroup, TO.PSCapacityReservationGroupList>();
+                cfg.CreateMap<TO.PSCapacityReservationGroupList, TO.PSCapacityReservationGroup>();
+                cfg.CreateMap<TO.PSCapacityReservationGroup, TO.PSCapacityReservationGroupList>();
+                cfg.CreateMap<FROM.CapacityReservation, TO.PSCapacityReservation>();
+                cfg.CreateMap<TO.PSCapacityReservation, FROM.CapacityReservation>();
+                cfg.CreateMap<FROM.CapacityReservation, TO.PSCapacityReservationList>();
+                cfg.CreateMap<TO.PSCapacityReservationList, TO.PSCapacityReservation>();
+                cfg.CreateMap<TO.PSCapacityReservation, TO.PSCapacityReservationList>();
+                cfg.CreateMap<FROM.RestorePoint, TO.PSRestorePoint>();
+                cfg.CreateMap<FROM.RestorePointCollection, TO.PSRestorePointCollection>();
             });
             _mapper = config.CreateMapper();
         }

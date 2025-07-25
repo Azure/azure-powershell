@@ -1,65 +1,117 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
+---
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
-ms.assetid: 35CE5C5F-F8D4-426F-A33A-4F9EA50E9B83
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
 schema: 2.0.0
 ---
 
 # New-AzStreamAnalyticsInput
 
 ## SYNOPSIS
-Creates or updates a job input.
+Creates an input or replaces an already existing input under an existing streaming job.
 
 ## SYNTAX
 
 ```
-New-AzStreamAnalyticsInput [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzStreamAnalyticsInput -JobName <String> -Name <String> -ResourceGroupName <String> -File <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzStreamAnalyticsInput** cmdlet creates an input within a Stream Analytics job or updates an existing input.
-The name of the input can be specified in the JSON file or on the command line.
-If both are specified, the name on command line must match the name in the file.
-If you specify an input that already exists and do not specify the *Force* parameter, the cmdlet will ask whether or not to replace the existing input.
-If you specify the *Force* parameter and specify an existing input name, the input will be replaced without confirmation.
+Creates an input or replaces an already existing input under an existing streaming job.
 
 ## EXAMPLES
 
 ### Example 1: Create a job input with a definition from a file
 ```powershell
-PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json"
+New-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name input-01 -File .\test\template-json\EventHub.json
 ```
 
-This command creates an input from the file Input.json.
-If an existing input with the name specified in the input definition file is already defined, the cmdlet will ask whether or not to replace it.
+```output
+Name     Type                                           ETag
+----     ----                                           ----
+input-01 Microsoft.StreamAnalytics/streamingjobs/inputs 6c9f5122-44b9-45bf-81c9-5349a9dd8851
+```
 
-### Example 2: Create a job input
+This command creates an input from the file EventHub.json.
+
+(below is an example for "EventHub.json")
+{
+  "properties": {
+    "type": "Stream",
+    "serialization": {
+      "type": "Json",
+      "properties": {
+        "encoding": "UTF8"
+      }
+    },
+    "compression": {
+      "type": "None"
+    },
+    "datasource": {
+      "type": "Microsoft.EventHub/EventHub",
+      "properties": {
+        "serviceBusNamespace": "xxxxxxxxxxxxxx",
+        "sharedAccessPolicyName": "xxxxxxxxxxxxxxxx",
+        "sharedAccessPolicyKey": "xxxxxxxxxxxxxxxxxxxxxx",
+        "authenticationMode": "ConnectionString",
+        "eventHubName": "xxxxxxxxxxxxxxxx",
+        "consumerGroupName": "xxxxxxxxxxxxxxxx"
+      }
+    }
+  }
+}
+
+### Example 2: Create a job input with a definition from a file
 ```powershell
-PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream"
+New-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name input-01 -File .\test\template-json\IotHub.json
 ```
 
-This command creates a new input on the job called EntryStream.
-If an existing input with this name is already defined, the cmdlet will ask whether or not to replace it.
-
-### Example 3: Replace a job input with a definition from a file
-```powershell
-PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream" -Force
+```output
+Name     Type                                           ETag
+----     ----                                           ----
+input-01 Microsoft.StreamAnalytics/streamingjobs/inputs 6c9f5122-44b9-45bf-81c9-5349a9dd8851
 ```
 
-This command replaces the definition of the existing input source called EntryStream with the definition from file without confirmation.
+This command creates an input from the file IotHub.json.
+
+(below is an example for "IotHub.json")
+{
+  "properties": {
+    "type": "Stream",
+    "serialization": {
+      "type": "Json",
+      "properties": {
+        "encoding": "UTF8"
+      }
+    },
+    "compression": {
+      "type": "None"
+    },
+    "partitionKey": "",
+    "datasource": {
+      "type": "Microsoft.Devices/IotHubs",
+      "properties": {
+        "iotHubNamespace": "xxxxxxxxxxx",
+        "sharedAccessPolicyName": "xxxxxxxxxxxxxx",
+        "sharedAccessPolicyKey": "xxxxxxxxxxxxxxxxx",
+        "consumerGroupName": "$Default",
+        "endpoint": "messages/events"
+      }
+    }
+  }
+}
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -69,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -File
-Specifies the path to a JSON file that contains the JSON representation of the Azure Stream Analytics input to create.
+The name of the streaming job.
 
 ```yaml
 Type: System.String
@@ -77,17 +129,35 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -IfMatch
+The ETag of the input.
+Omit this value to always overwrite the current input.
+Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new input to be created, but to prevent updating an existing input.
+Other values will result in a 412 Pre-condition Failed response.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -JobName
-Specifies the name of the Azure Stream Analytics job under which to create the Azure Stream Analytics input.
+The name of the streaming job.
 
 ```yaml
 Type: System.String
@@ -107,14 +177,45 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Azure Stream Analytics input to create.
+The name of the input.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: InputName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -122,24 +223,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group under which to create the Azure Streaming input.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -153,7 +239,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -169,30 +255,24 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStreamAnalyticsInput](./Get-AzStreamAnalyticsInput.md)
-
-[Remove-AzStreamAnalyticsInput](./Remove-AzStreamAnalyticsInput.md)
-
-[Test-AzStreamAnalyticsInput](./Test-AzStreamAnalyticsInput.md)
-
-

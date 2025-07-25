@@ -29,8 +29,8 @@ function Test-ManagedApplicationCRUD
 	# Test
 	New-AzResourceGroup -Name $rgname -Location $rglocation
 
-	$appDef = New-AzManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname -DisplayName $display -Description "Test" -Location $rglocation -LockLevel ReadOnly -PackageFileUri https://testclinew.blob.core.windows.net/files/vivekMAD.zip -Authorization 5e91139a-c94b-462e-a6ff-1ee95e8aac07:8e3af657-a8ff-443c-a75c-2fe8c4bcb635
-	$actual = New-AzManagedApplication -Name $appName -ResourceGroupName $rgname -ManagedResourceGroupName $managedrgname -ManagedApplicationDefinitionId $appDef.ResourceId -Location $rglocation -Kind ServiceCatalog -Parameter "$TestOutputRoot\SampleManagedApplicationParameters.json"
+	$appDef = New-AzManagedApplicationDefinition -Name $appDefName -ResourceGroupName $rgname -DisplayName $display -Description "Test" -Location $rglocation -LockLevel ReadOnly -PackageFileUri https://ilshat.blob.core.windows.net/packages/blank_working.zip -Authorization 6fd8564d-425b-4017-9121-ba334bab0be4:8e3af657-a8ff-443c-a75c-2fe8c4bcb635
+	$actual = New-AzManagedApplication -Name $appName -ResourceGroupName $rgname -ManagedResourceGroupName $managedrgname -ManagedApplicationDefinitionId $appDef.ResourceId -Location $rglocation -Kind ServiceCatalog
 	$expected = Get-AzManagedApplication -Name $appName -ResourceGroupName $rgname
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.ManagedApplicationId $actual.ManagedApplicationId

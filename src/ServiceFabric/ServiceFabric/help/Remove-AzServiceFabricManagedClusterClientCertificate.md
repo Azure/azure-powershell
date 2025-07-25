@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricmanagedclusterclientcertificate
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagedclusterclientcertificate
 schema: 2.0.0
 ---
 
 # Remove-AzServiceFabricManagedClusterClientCertificate
 
 ## SYNOPSIS
-Remvoe client certificate by thumbprint or common name.
+Remove client certificate by thumbprint or common name.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Remove-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedC
 ```
 
 ## DESCRIPTION
-Remvoe client certificate by thumbprint or common name.
+Remove client certificate by thumbprint or common name.
 
 ## EXAMPLES
 

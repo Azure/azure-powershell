@@ -1,0 +1,126 @@
+{
+  "Remove-AzAttestationProvider+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerhu192p0k874zl?api-version=2020-10-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerhu192p0k874zl?api-version=2020-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "9c01ccb0-0f49-47eb-8050-19b43326d0f1" ],
+        "CommandName": [ "Remove-AzAttestationProvider" ],
+        "FullCommandName": [ "Remove-AzAttestationProvider_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Attestation/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-f9e0ed1a5830ddcdfb96ac5fdb3119bf-2d3e644f20232f35-01" ],
+        "x-ms-maa-service-version": [ "1.11.02043.302" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "f329c799-74b7-44e6-91b7-67eabc7049df" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220920T020922Z:f329c799-74b7-44e6-91b7-67eabc7049df" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Sep 2022 02:09:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAttestationProvider+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerejrmugiwbxnq2?api-version=2020-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerejrmugiwbxnq2?api-version=2020-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "cc715feb-d56f-4aaa-b0e9-73002e5e8760" ],
+        "CommandName": [ "Get-AzAttestationProvider" ],
+        "FullCommandName": [ "Get-AzAttestationProvider_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Attestation/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "00-193447118c98dbf4440dd91867b8c8bc-7f9f155df5aee9c8-01" ],
+        "x-ms-maa-service-version": [ "1.11.02043.302" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "de40f582-1222-4238-b32a-8421756435d9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220920T020922Z:de40f582-1222-4238-b32a-8421756435d9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Sep 2022 02:09:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "390" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerejrmugiwbxnq2\",\"name\":\"providerejrmugiwbxnq2\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://providerejrmugiwbxnq2.eus.attest.azure.net\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAttestationProvider+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerejrmugiwbxnq2?api-version=2020-10-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerejrmugiwbxnq2?api-version=2020-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "3152edbe-02e7-49cb-aa8c-284d386a1e59" ],
+        "CommandName": [ "Remove-AzAttestationProvider" ],
+        "FullCommandName": [ "Remove-AzAttestationProvider_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Attestation/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-773e3d8d4bcfefd91a66e47113e91640-fabac196cacb4a14-01" ],
+        "x-ms-maa-service-version": [ "1.11.02043.302" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "6751edca-da14-48c4-bbcb-bc18f4b6647f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220920T020927Z:6751edca-da14-48c4-bbcb-bc18f4b6647f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Sep 2022 02:09:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

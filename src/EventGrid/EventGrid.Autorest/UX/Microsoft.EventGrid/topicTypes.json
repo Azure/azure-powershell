@@ -1,0 +1,37 @@
+{
+  "resourceType": "topicTypes",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridTopicType",
+      "description": "Get information about a topic type.",
+      "path": "/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridtopictype"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get information about a topic type.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.topicTypeName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

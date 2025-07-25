@@ -1,0 +1,86 @@
+{
+  "Test-AzEventHubName+[NoContext]+NamespaceAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/Microsoft.EventHub/checkNameAvailability?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/Microsoft.EventHub/checkNameAvailability?api-version=2024-05-01-preview",
+      "Content": "{\n  \"name\": \"namespaceV15vo09k\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "33" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "1ee284a4-c9fe-45fe-8d56-d975fce9b052" ],
+        "x-ms-client-request-id": [ "363e2f98-48b7-4e51-8ba1-4caae98566a0_RP" ],
+        "x-ms-messaging-activity-id": [ "8d660b12-fcd4-4c1a-8762-2b2c6b7c8dcc" ],
+        "x-ms-messaging-routing-id": [ "KOREACENTRAL|KOREACENTRAL|G13|2025-05-07T08:56:16" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=eea76376-6cf2-4f48-a713-64382d4b9625/koreacentral/f14679cf-fea0-4f46-ac38-097938506c9a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "1ee284a4-c9fe-45fe-8d56-d975fce9b052" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20250507T085616Z:1ee284a4-c9fe-45fe-8d56-d975fce9b052" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F8B3A6E715894285AF7F9C63A78B1566 Ref B: SEL221051805025 Ref C: 2025-05-07T08:56:16Z" ],
+        "Date": [ "Wed, 07 May 2025 08:56:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "76" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":false,\"reason\":\"NameInUse\",\"message\":\"Name already in use\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzEventHubName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/disasterRecoveryConfigs/checkNameAvailability?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/disasterRecoveryConfigs/checkNameAvailability?api-version=2024-05-01-preview",
+      "Content": "{\n  \"name\": \"alias8gwdsb\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "27" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "38fec960-0864-4729-8fe8-9567bf201d09" ],
+        "x-ms-client-request-id": [ "2a92a055-6b28-499f-b14f-f347bd8de58d_RP" ],
+        "x-ms-messaging-activity-id": [ "0db1f90e-e8db-4894-bfcd-507d441cbac1" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G10|2025-05-07T08:56:18" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=eea76376-6cf2-4f48-a713-64382d4b9625/koreacentral/e954e80b-91f4-4b8b-88e4-45cb5ef8e94f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "38fec960-0864-4729-8fe8-9567bf201d09" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20250507T085618Z:38fec960-0864-4729-8fe8-9567bf201d09" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 56DBD89B35F146FC9E8869DA06F48BF2 Ref B: SEL221051805025 Ref C: 2025-05-07T08:56:17Z" ],
+        "Date": [ "Wed, 07 May 2025 08:56:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "75" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true,\"reason\":\"None\",\"message\":\"Namespace name available\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -96,8 +96,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     Properties = new DiscoverProtectableItemRequestProperties
                     {
                         FriendlyName = this.FriendlyName,
-                        IpAddress = this.IPAddress,
-                        OsType = this.OSType
+                        IPAddress = this.IPAddress,
+                        OSType = this.OSType
                     }
                 };
 

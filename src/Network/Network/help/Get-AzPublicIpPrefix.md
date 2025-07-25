@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azpublicipprefix
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azpublicipprefix
 schema: 2.0.0
 ---
 
@@ -20,7 +20,8 @@ Get-AzPublicIpPrefix [-Name <String>] [-ResourceGroupName <String>] [-DefaultPro
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzPublicIpPrefix -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPublicIpPrefix -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,8 +31,10 @@ The **Get-AzPublicIpPrefix** cmdlet gets one or more public IP prefixes in a res
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPublicIpPrefix -ResourceGroupName myRg -Name myPublicIpPrefix1
+Get-AzPublicIpPrefix -ResourceGroupName myRg -Name myPublicIpPrefix1
+```
 
+```output
 Name                   : myPublicIpPrefix1
 ResourceGroupName      : myRg
 Location               : westus
@@ -47,7 +50,8 @@ IPPrefix               : xx.xx.xx.xx/xx
 IdleTimeoutInMinutes   :
 Zones                  : {}
 Sku                    : {
-                           "Name": "Standard"
+                           "Name": "Standard",
+                           "Tier":"Regional"
                          }
 IpTags                 : []
 PublicIpAddresses      : []
@@ -57,8 +61,10 @@ This command gets a public IP prefix resource with myPublicIpPrefix1 in resource
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzPublicIpPrefix -Name myPublicIpPrefix*
+Get-AzPublicIpPrefix -Name myPublicIpPrefix*
+```
 
+```output
 Name                   : myPublicIpPrefix1
 ResourceGroupName      : myRg
 Location               : westus
@@ -74,7 +80,8 @@ IPPrefix               : xx.xx.xx.xx/xx
 IdleTimeoutInMinutes   :
 Zones                  : {}
 Sku                    : {
-                           "Name": "Standard"
+                           "Name": "Standard",
+                           "Tier": "Regional"
                          }
 IpTags                 : []
 PublicIpAddresses      : []

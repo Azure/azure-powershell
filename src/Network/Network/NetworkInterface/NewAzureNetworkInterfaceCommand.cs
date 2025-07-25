@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the network interface")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByIpConfigurationResourceId",
@@ -219,6 +225,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "DisableTcpStateTracking")]
+        public string DisableTcpStateTracking { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "EnableIPForwarding")]
         public SwitchParameter EnableIPForwarding { get; set; }
         
@@ -226,6 +238,29 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "EnableAcceleratedNetworking")]
         public SwitchParameter EnableAcceleratedNetworking { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The auxiliary mode of the Network Interface ")]
+        [ValidateSet(
+            MNM.NetworkInterfaceAuxiliaryMode.None,
+            MNM.NetworkInterfaceAuxiliaryMode.MaxConnections,
+            MNM.NetworkInterfaceAuxiliaryMode.AcceleratedConnections,
+            MNM.NetworkInterfaceAuxiliaryMode.Floating,
+            IgnoreCase = true)]
+        public string AuxiliaryMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The auxiliary sku of the Network Interface ")]
+        [ValidateSet(
+            MNM.NetworkInterfaceAuxiliarySku.None,
+            MNM.NetworkInterfaceAuxiliarySku.A1,
+            MNM.NetworkInterfaceAuxiliarySku.A2,
+            MNM.NetworkInterfaceAuxiliarySku.A4,
+            MNM.NetworkInterfaceAuxiliarySku.A8,
+            IgnoreCase = true)]
+        public string AuxiliarySku { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -270,6 +305,15 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Name = this.Name;
 
             networkInterface.Location = this.Location;
+            if (!string.IsNullOrEmpty(EdgeZone))
+            {
+                networkInterface.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
+            if (!string.IsNullOrEmpty(DisableTcpStateTracking))
+            {
+                networkInterface.DisableTcpStateTracking = this.DisableTcpStateTracking;
+            }
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
             networkInterface.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
@@ -428,13 +472,45 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
+            if (!string.IsNullOrEmpty(this.AuxiliaryMode))
+            {
+                networkInterface.AuxiliaryMode = this.AuxiliaryMode;
+            }
+
+            if (!string.IsNullOrEmpty(this.AuxiliarySku))
+            {
+                networkInterface.AuxiliarySku = this.AuxiliarySku;
+            }
+
+            List<string> resourceIdsRequiringAuthToken = new List<string>();
+            Dictionary<string, List<string>> auxAuthHeader = null;
+
+            // Get aux token for each gateway lb references
+            foreach (var ipConfiguration in networkInterface.IpConfigurations)
+            {
+                if (ipConfiguration.GatewayLoadBalancer != null)
+                {
+                    //Get the aux header for the remote vnet
+                    resourceIdsRequiringAuthToken.Add(ipConfiguration.GatewayLoadBalancer.Id);
+                }
+            }
+
+            if (resourceIdsRequiringAuthToken.Count > 0)
+            {
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIdsRequiringAuthToken);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                }
+            }
+
             var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
 			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
 
 			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
+            this.NetworkInterfaceClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, networkInterfaceModel, auxAuthHeader).GetAwaiter().GetResult();
              
             var getNetworkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
 

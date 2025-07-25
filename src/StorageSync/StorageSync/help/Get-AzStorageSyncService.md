@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/get-Azstoragesyncservice
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/get-Azstoragesyncservice
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ This command lists all storage sync services within a given scope of subscriptio
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncService -ResourceGroupName "myResourceGroup"
+Get-AzStorageSyncService -ResourceGroupName "myResourceGroup"
 ```
 
 This command lists all storage sync service resources within a given resource group. It can be used to also list the attributes of each storage sync service. Specify -StorageSyncServiceName to return a specific one.
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

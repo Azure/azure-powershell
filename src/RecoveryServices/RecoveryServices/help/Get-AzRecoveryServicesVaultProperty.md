@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: C2A7F37B-5713-4430-B83F-C6745692396D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesvaultproperty
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvaultproperty
 schema: 2.0.0
 ---
 
@@ -24,13 +24,14 @@ The **Get-AzRecoveryServicesVaultProperty** cmdlet returns the properties of a R
 ## EXAMPLES
 
 ### Example 1: Get Properties of a vault
-```
-PS C:\> $vault = Get-AzRecoveryServicesVault -Name "MyVaultName"
-PS C:\> $props = Get-AzRecoveryServicesVaultProperty -VaultId $vault.Id
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.Id
+$vaultProperty.encryptionProperties
 ```
 
 The first command gets a Vault object and then stores it in the $vault variable.
-The second command Gets the Vault Properties.
+The second command Gets the Vault Properties. Next we access the encryptionProperties of the vault.
 
 ## PARAMETERS
 

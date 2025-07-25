@@ -177,14 +177,17 @@
   <data name="InvalidTenantId" xml:space="preserve">
     <value>Please set a valid tenant id in the AzureEnvironment.</value>
   </data>
+  <data name="LedgerDisableConfirmActionProcessMessage" xml:space="preserve">
+    <value>Disables uploading ledger digests</value>
+  </data>
+  <data name="LedgerEnableConfirmActionProcessMessage" xml:space="preserve">
+    <value>Enable uploading ledger digests</value>
+  </data>
   <data name="NewDataMaskingRuleIdAlreadyExistError" xml:space="preserve">
     <value>A rule that was defined on the same column already exists.</value>
   </data>
   <data name="NoStorageAccountWhenConfiguringAuditingPolicy" xml:space="preserve">
     <value>Cannot set auditing policy without a storage account name.</value>
-  </data>
-  <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
-    <value>Cannot set threat detection policy without a storage account name.</value>
   </data>
   <data name="PdoTitle" xml:space="preserve">
     <value>PHP Data Objects(PDO) Sample Code:</value>
@@ -271,7 +274,7 @@
     <value>Are you sure you want to submit request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'?</value>
   </data>
   <data name="StopAzureSqlInstanceOperationWarning" xml:space="preserve">
-    <value>Submiting request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'.</value>
+    <value>Submitting request for stopping the operation '{0}' on Azure Sql Managed Instance '{1}'.</value>
   </data>
   <data name="StorageAccountNotFound" xml:space="preserve">
     <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
@@ -303,17 +306,11 @@
   <data name="NeedToProvideEmail" xml:space="preserve">
     <value>You need to provide at least one email address or set EmailAdmins to True.</value>
   </data>
-  <data name="ServerNotApplicableForThreatDetection" xml:space="preserve">
-    <value>Threat detection is only available for the latest SQL Database Update (V12). Please upgrade to set it up on your database.</value>
-  </data>
   <data name="AuditingIsTurnedOff" xml:space="preserve">
     <value>In order to enable Threat Detection, please enable database auditing.</value>
   </data>
   <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
     <value>Cannot use the '{0}' option with other excluded detection types.</value>
-  </data>
-  <data name="InvalidDetectionTypeList" xml:space="preserve">
-    <value>Cannot use the 'None' option with other detection types</value>
   </data>
   <data name="BaseConfirmActionProcessMessage" xml:space="preserve">
     <value>About to process resource</value>
@@ -605,7 +602,7 @@
     <value>You cannot change hardware family.</value>
   </data>
   <data name="RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
-    <value>Permanantly removing the Long Term Retention backup '{0}' on database '{1}' on instance '{2}' in location '{3}'?</value>
+    <value>Permanently removing the Long Term Retention backup '{0}' on database '{1}' on instance '{2}' in location '{3}'?</value>
   </data>
   <data name="RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on instance '{2}' in location '{3}'?</value>
@@ -634,7 +631,7 @@
   <data name="ServerNameInvalid" xml:space="preserve">
     <value>The server name '{0}' cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists.</value>
   </data>
-  <data name="GeoBackupRedundancyChosenWarning" xml:space="preserve">
+  <data name="BackupRedundancyChosenIsGeoWarning" xml:space="preserve">
     <value>Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions.</value>
   </data>
   <data name="BackupRedundancyNotChosenTakeGeoWarning" xml:space="preserve">
@@ -652,7 +649,121 @@
   <data name="BackupRedundancyNotChosenTakeSourceWarning" xml:space="preserve">
     <value>You have not specified the value for backup storage redundancy which will default to the source's backup storage redundancy. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions.</value>
   </data>
+  <data name="UnsupportedDatabaseEditionForAuditingPolicy" xml:space="preserve">
+    <value>Auditing policy cannot be defined for database edition {0}</value>
+  </data>
+  <data name="RemoveAzureSqlServerTrustGroupDescription" xml:space="preserve">
+    <value>Removing Azure Sql Server Trust Group '{0}' in location '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerTrustGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server Trust Group '{0}' in location '{1}'?</value>
+  </data>
+  <data name="InvalidLongTermRetentionBackupResourceIdFormat" xml:space="preserve">
+    <value>Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
+ /subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+ /subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+                    "ResourceId"</value>
+  </data>
+  <data name="MissingExternalAdmin" xml:space="preserve">
+    <value>ExternalAdminName must be provided when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
+  </data>
+  <data name="MissingSQLAdministratorCredentials" xml:space="preserve">
+    <value>SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
+  </data>
+  <data name="RemoveAzureSqlServerOutboundFirewallRuleDescription" xml:space="preserve">
+    <value>Permanently removing allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerOutboundFirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'?</value>
+  </data>
+  <data name="ServerOutboundFirewallRuleFQDNExists" xml:space="preserve">
+    <value>Allowed FQDN with name '{0}' already exists in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server '{1}'.</value>
+  </data>
+  <data name="ServerOutboundFirewallRuleFQDNDoesNotExist" xml:space="preserve">
+    <value>Allowed FQDN with name '{0}' does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server '{1}'.</value>
+  </data>
+  <data name="ManagedInstanceLinkAlreadyExists" xml:space="preserve">
+    <value>Instance link with name '{0}' already exists on managed instance '{1}'</value>
+  </data>
+  <data name="ServerTrustCertificateAlreadyExists" xml:space="preserve">
+    <value>Certificate with name '{0}' already exists on managed instance '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceServerTrustCertificateDescription" xml:space="preserve">
+    <value>Permanently removing SQL Server trust certificate named '{2}' from managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
+    <value>Are you sure you want to remove SQL Server trust certificate named '{2}' from managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Permanently removing instance link named '{2}' from managed instance '{1}' in resource group '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the instance link named '{2}' from managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="CreateAzureSqlInstanceServerTrustCertificateDescription" xml:space="preserve">
+    <value>Creating a new SQL Server trust certificate named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
+    <value>Are you sure you want to create a new SQL Server trust certificate named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="SetServerConfigurationOptionDescription" xml:space="preserve">
+    <value>Setting value '{0}' for the server configuration option named '{1}' on managed instance '{2}' located in resource group '{3}'.</value>
+  </data>
+  <data name="SetServerConfigurationOptionWarning" xml:space="preserve">
+    <value>Are you sure you want to set the value '{0}' for the server configuration option named '{1}' on managed instance '{2}' located in resource group '{3}'?</value>
+  </data>
   <data name="SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters" xml:space="preserve">
-    <value>Parameter '{0}' and '{1}' both being null is not allowed.</value>
+    <value>Invalid parameters, '{0}' and '{1}' can't both be null.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Creating a new instance link named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="CreateAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to create a new instance link named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceLinkAllowDataLoss" xml:space="preserve">
+    <value>This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?</value>
+  </data>
+  <data name="SetAzureSqlInstanceLinkDescription" xml:space="preserve">
+    <value>Updating instance link named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="SetAzureSqlInstanceLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to update instance link named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="StopLogReplayErrorDatabaseOrigin" xml:space="preserve">
+    <value>Cannot stop the log replay as database {0} on the instance {1} in the resource group {2} was not created with log replay service.</value>
+  </data>
+  <data name="RemoveAzureSqlServerIpv6FirewallRuleDescription" xml:space="preserve">
+    <value>Permanently removing IPv6 Firewall Rule '{0}' for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerIpv6FirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the IPv6 Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
+  </data>
+  <data name="ServerIpv6FirewallRuleNameExists" xml:space="preserve">
+    <value>IPv6 Firewall Rule with name: '{0}' already exists for server '{1}'.</value>
+  </data>
+  <data name="ServerIpv6FirewallRuleNameDoesNotExist" xml:space="preserve">
+    <value>IPv6 Firewall Rule with name: '{0}' does not exist for server '{1}'.</value>
+  </data>
+  <data name="SetAzureSqlInstanceDtcDescription" xml:space="preserve">
+    <value>Updating DTC on managed instance '{1}' located in resource group '{0}'.</value>
+  </data>
+  <data name="SetAzureSqlInstanceDtcWarning" xml:space="preserve">
+    <value>Are you sure you want to update DTC on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="AzureElasticJobPrivateEndpointExists" xml:space="preserve">
+    <value>Job Private Endpoint with name '{0}' already exists in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobPrivateEndpointNotExists" xml:space="preserve">
+    <value>Job Private Endpoint with name '{0}' does not exist in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobPrivateEndpointWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the private endpoint '{0}' from agent '{1}'?</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="ForwardMigrationWithGeoDRInfo" xml:space="preserve">
+    <value>Changing the service tier to Hyperscale also converts the geo-secondary replica to Hyperscale. For more information, see https://go.microsoft.com/fwlink/?linkid=2314103</value>
   </data>
 </root>

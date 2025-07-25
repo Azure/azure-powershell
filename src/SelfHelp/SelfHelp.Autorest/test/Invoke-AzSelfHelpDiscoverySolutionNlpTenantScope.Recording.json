@@ -1,0 +1,41 @@
+{
+  "Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Help/discoverSolutions?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Help/discoverSolutions?api-version=2024-03-01-preview",
+      "Content": "{\n  \"issueSummary\": \"Billing Issues\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "38" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "a98dd041-ba25-4734-bf47-98eeeb418b99" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "a98dd041-ba25-4734-bf47-98eeeb418b99" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204610Z:a98dd041-ba25-4734-bf47-98eeeb418b99" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 090149E5DE854A96B8076234E4BFA4D5 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:46:09Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:46:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

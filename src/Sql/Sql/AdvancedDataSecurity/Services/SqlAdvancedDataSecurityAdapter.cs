@@ -1,0 +1,210 @@
+// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+
+namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
+{
+    /// <summary>
+    /// The SqlAdvancedDataSecurityAdapter class is responsible for transforming the data that was received form the endpoints to the cmdlets model of AdvancedDataSecurity policy and vice versa
+    /// </summary>
+    public class SqlAdvancedDataSecurityAdapter
+    {
+        /// <summary>
+        /// Gets or sets the Azure subscription
+        /// </summary>
+        private IAzureSubscription Subscription { get; set; }
+
+        /// <summary>
+        /// The Advanced Threat Protection endpoints communicator used by this adapter
+        /// </summary>
+        private AdvancedThreatProtectionSettingsAdapter AdvancedThreatProtectionAdapter { get; set; }
+
+        /// <summary>
+        /// The Azure endpoints communicator used by this adapter
+        /// </summary>
+        private AzureEndpointsCommunicator AzureCommunicator { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure profile
+        /// </summary>
+        public IAzureContext Context { get; set; }
+
+        public SqlAdvancedDataSecurityAdapter(IAzureContext context)
+        {
+            Context = context;
+            Subscription = context?.Subscription;
+            AdvancedThreatProtectionAdapter = new AdvancedThreatProtectionSettingsAdapter(Context);
+            AzureCommunicator = new AzureEndpointsCommunicator(Context);
+        }
+
+        /// <summary>
+        /// Provides a server Advanced Data Security policy model for the given server
+        /// </summary>
+        public ServerAdvancedDataSecurityPolicyModel GetServerAdvancedDataSecurityPolicy(string resourceGroup, string serverName)
+        {
+            var threatProtectionSettings = AdvancedThreatProtectionAdapter.GetServerAdvancedThreatProtectionSettings(resourceGroup, serverName);
+            var serverAdvancedDataSecurityPolicyModel = new ServerAdvancedDataSecurityPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                IsEnabled = (threatProtectionSettings.AdvancedThreatProtectionState == AdvancedThreatProtectionStateType.Enabled)
+            };
+
+            return serverAdvancedDataSecurityPolicyModel;
+        }
+
+        /// <summary>
+        /// Provides a managed instance Advanced Data Security policy model for the given managed instance
+        /// </summary>
+        public ManagedInstanceAdvancedDataSecurityPolicyModel GetManagedInstanceAdvancedDataSecurityPolicy(string resourceGroup, string managedInstanceName)
+        {
+            var threatProtectionSettings = AdvancedThreatProtectionAdapter.GetManagedInstanceAdvancedThreatProtectionSettings(resourceGroup, managedInstanceName);
+            var managedInstanceAdvancedDataSecurityPolicy = new ManagedInstanceAdvancedDataSecurityPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ManagedInstanceName = managedInstanceName,
+                IsEnabled = (threatProtectionSettings.AdvancedThreatProtectionState == AdvancedThreatProtectionStateType.Enabled)
+            };
+
+            return managedInstanceAdvancedDataSecurityPolicy;
+        }
+
+        /// <summary>
+        /// Sets a server Advanced Data Security policy model for the given server
+        /// </summary>
+        public ServerAdvancedDataSecurityPolicyModel SetServerAdvancedDataSecurity(ServerAdvancedDataSecurityPolicyModel model)
+        {
+            ServerAdvancedThreatProtectionSettingsModel threatProtectionSettings = new ServerAdvancedThreatProtectionSettingsModel()
+            {
+                ResourceGroupName = model.ResourceGroupName,
+                ServerName = model.ServerName,
+                AdvancedThreatProtectionState = model.IsEnabled ? AdvancedThreatProtectionStateType.Enabled : AdvancedThreatProtectionStateType.Disabled
+            };
+
+            AdvancedThreatProtectionAdapter.SetServerAdvancedThreatProtectionSettings(threatProtectionSettings);
+
+            return model;
+        }
+
+        /// <summary>
+        /// Sets a managed instance Advanced Data Security policy model for the given managed instance
+        /// </summary>
+        public ManagedInstanceAdvancedDataSecurityPolicyModel SetManagedInstanceAdvancedDataSecurity(ManagedInstanceAdvancedDataSecurityPolicyModel model)
+        {
+            ManagedInstanceAdvancedThreatProtectionSettingsModel threatProtectionSettings = new ManagedInstanceAdvancedThreatProtectionSettingsModel()
+            {
+                ResourceGroupName = model.ResourceGroupName,
+                ManagedInstanceName = model.ManagedInstanceName,
+                AdvancedThreatProtectionState = model.IsEnabled ? AdvancedThreatProtectionStateType.Enabled : AdvancedThreatProtectionStateType.Disabled
+            };
+
+            AdvancedThreatProtectionAdapter.SetManagedInstanceAdvancedThreatProtectionSettings(threatProtectionSettings);
+
+            return model;
+        }
+
+        /// <summary>
+        /// Deploys an ARM template that enables ADS with VA on server
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="serverLocation">The server location</param>
+        /// <param name="deploymentName">The name of the deployment (can be null - in this case a random name will be generated)</param>
+        public void AutoEnableServerVa(string resourceGroupName, string serverName, string serverLocation, string deploymentName)
+        {
+            AutoEnableVa(resourceGroupName, serverName, serverLocation, @"DeployServerVaTemplate.json", deploymentName);
+        }
+
+        /// <summary>
+        /// Deploys an ARM template that enables ADS with VA on managed instance
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="instanceName">The managed instance name</param>
+        /// <param name="instanceLocation">The managed instance location</param>
+        /// <param name="deploymentName">The name of the deployment (can be null - in this case a random name will be generated)</param>
+        public void AutoEnableInstanceVa(string resourceGroupName, string instanceName, string instanceLocation, string deploymentName)
+        {
+            AutoEnableVa(resourceGroupName, instanceName, instanceLocation, @"DeployInstanceVaTemplate.json", deploymentName);
+        }
+
+        private void AutoEnableVa(string resourceGroupName, string serverName, string serverLocation, string templateName, string deploymentName)
+        {
+            // Generate deployment name if it was not provided
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                deploymentName = "EnableVA_" + serverName + "_" + Guid.NewGuid().ToString("N");
+            }
+
+            // Trim deployment name as it has a maximum of 64 chars
+            if (deploymentName.Length > 64)
+            {
+                deploymentName = deploymentName.Substring(0, 64);
+            }
+
+            Dictionary<string, object> parametersDictionary = new Dictionary<string, object>
+            {
+                {"serverName", new Dictionary<string, object> { {"value", serverName } }},
+                {"location", new Dictionary<string, object> { {"value", serverLocation } }},
+            };
+            string parameters = JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.None,
+                Formatting = Formatting.Indented
+            });
+
+            var properties = new DeploymentProperties
+            {
+                Mode = DeploymentMode.Incremental,
+                Parameters = JObject.Parse(parameters),
+                Template = JObject.Parse(GetArmTemplateContent(templateName)),
+            };
+
+            Deployment deployment = new Deployment(properties);
+
+            AzureCommunicator.DeployArmTemplate(resourceGroupName, deploymentName, deployment);
+        }
+
+        /// <summary>
+        /// Returns the string content of the given template name
+        /// </summary>
+        /// <param name="templateName">The json file template name (with *.json ending)</param>
+        /// <returns>The string content of the given template name</returns>
+        private string GetArmTemplateContent(string templateName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = assembly.GetManifestResourceNames().FirstOrDefault(str => str.EndsWith(templateName));
+            string template;
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    template = reader.ReadToEnd();
+                }
+            }
+
+            return template;
+        }
+    }
+}

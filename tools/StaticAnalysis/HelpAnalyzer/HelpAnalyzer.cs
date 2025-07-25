@@ -169,7 +169,7 @@ namespace StaticAnalysis.HelpAnalyzer
                 var module = proxy.GetModuleMetadata(cmdletFile);
                 var cmdlets = module.Cmdlets;
                 var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
-                ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
+                ValidateHelpRecords(module.ModuleName, cmdlets, helpRecords, helpLogger);
                 helpLogger.Decorator.Remove("Cmdlet");
                 // TODO: Remove IfDef code
 #if !NETSTANDARD
@@ -226,88 +226,35 @@ namespace StaticAnalysis.HelpAnalyzer
             var psd1 = manifestFiles.FirstOrDefault();
             var parentDirectory = Directory.GetParent(psd1).FullName;
             var psd1FileName = Path.GetFileName(psd1);
-            var powershell = PowerShell.Create();
-            var script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName} -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules";
-            powershell.AddScript(script);
-            var cmdletResult = powershell.Invoke();
-            var nestedModules = new List<string>();
-            foreach (var module in cmdletResult)
-            {
-                if (module != null && module.ToString().StartsWith("."))
-                {
-                    nestedModules.Add(module.ToString().Substring(2));
-                }
-                else if (module != null)
-                {
-                    nestedModules.Add(module.ToString());
-                }
-            }
 
-            script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName}" +
-                          " -BindingVariable ModuleMetadata; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };";
-            cmdletResult = PowerShell.Create().AddScript(script).Invoke();
-            var requiredModules = cmdletResult.Where(c => c != null && !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
             var allCmdlets = new List<CmdletMetadata>();
-            if (nestedModules.Any())
+
+
+            string moduleName = psd1FileName.Replace(".psd1", "");
+
+            Console.WriteLine(directory);
+            Directory.SetCurrentDirectory(directory);
+
+            processedHelpFiles.Add(moduleName);
+
+            helpLogger.Decorator.AddDecorator(h =>
             {
-                Directory.SetCurrentDirectory(directory);
+                h.HelpFile = moduleName;
+                h.Assembly = moduleName;
+            }, "Cmdlet");
+            var module = MetadataLoader.GetModuleMetadata(moduleName);
+            var cmdlets = module.Cmdlets;
+            allCmdlets.AddRange(cmdlets);
+            helpLogger.Decorator.Remove("Cmdlet");
 
-                requiredModules = requiredModules.Join(scopes,
-                        module => 1,
-                        dir => 1,
-                        (module, dir) => Path.Combine(dir, module))
-                    .Where(Directory.Exists)
-                    .ToList();
-
-                requiredModules.Add(directory);
-                foreach (var nestedModule in nestedModules)
-                {
-                    var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                    if (!File.Exists(assemblyFile)) continue;
-
-                    var assemblyFileName = Path.GetFileName(assemblyFile);
-                    helpLogger.Decorator.AddDecorator(h =>
-                    {
-                        h.HelpFile = assemblyFileName;
-                        h.Assembly = assemblyFileName;
-                    }, "Cmdlet");
-                    processedHelpFiles.Add(assemblyFileName);
-                    // TODO: Remove IfDef
-#if NETSTANDARD
-                    var proxy = new CmdletLoader();
-#else
-                    var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-#endif
-                    var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
-                    var cmdlets = module.Cmdlets;
-                    allCmdlets.AddRange(cmdlets);
-                    helpLogger.Decorator.Remove("Cmdlet");
-                    // TODO: Remove IfDef code
-#if !NETSTANDARD
-                    AppDomain.Unload(_appDomain);
-#endif
-                }
-            }
-
-            script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName} -BindingVariable ModuleMetadata; $ModuleMetadata.FunctionsToExport;";
-            cmdletResult = PowerShell.Create().AddScript(script).Invoke();
-            var functionCmdlets = cmdletResult.Select(c => c.ToString()).ToList();
-            foreach (var cmdlet in functionCmdlets)
-            {
-                var metadata = new CmdletMetadata();
-                metadata.VerbName = cmdlet.Split("-")[0];
-                metadata.NounName = cmdlet.Split("-")[1];
-                allCmdlets.Add(metadata);
-            }
-
-            ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
+            ValidateHelpRecords(moduleName, allCmdlets, helpFiles, helpLogger);
             ValidateHelpMarkdown(helpFolder, helpFiles, helpLogger);
 
             Directory.SetCurrentDirectory(savedDirectory);
 
         }
 
-        private void ValidateHelpRecords(IList<CmdletMetadata> cmdlets, IList<string> helpRecords,
+        private void ValidateHelpRecords(string moduleName, IList<CmdletMetadata> cmdlets, IList<string> helpRecords,
             ReportLogger<HelpIssue> helpLogger)
         {
             var cmdletDict = new Dictionary<string, CmdletMetadata>();
@@ -318,7 +265,8 @@ namespace StaticAnalysis.HelpAnalyzer
                 {
                     HelpIssue issue = new HelpIssue
                     {
-                        Target = cmdlet.ClassName,
+                        Assembly = moduleName,
+                        Target = cmdlet.Name,
                         Severity = 1,
                         ProblemId = MissingHelp,
                         Remediation = string.Format("Add Help record for cmdlet {0} to help file.", cmdlet.Name)

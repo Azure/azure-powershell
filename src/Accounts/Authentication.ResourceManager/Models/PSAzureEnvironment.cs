@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             SqlDatabaseDnsSuffix = other.GetProperty<string>(nameof(SqlDatabaseDnsSuffix));
             StorageEndpointSuffix = other.GetProperty<string>(nameof(StorageEndpointSuffix));
             TrafficManagerDnsSuffix = other.GetProperty<string>(nameof(TrafficManagerDnsSuffix));
+            ContainerRegistryEndpointSuffix = other.GetProperty<string>(nameof(ContainerRegistryEndpointSuffix));
             AzureOperationalInsightsEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
             AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
@@ -217,7 +218,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string GraphEndpointResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the domain name suffix for traffig manager services.
+        /// Gets or sets the domain name suffix for traffic manager services.
         /// </summary>
         public string TrafficManagerDnsSuffix { get; set; }
 
@@ -245,6 +246,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// Gets or sets the expected token audience for authenticating requests to the key vault service.
         /// </summary>
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
+
+        /// <summary>
+        /// The domain name suffix for Azure Container Registry
+        /// </summary>
+        public string ContainerRegistryEndpointSuffix { get; set; }
 
         /// <summary>
         /// The token audience required for communicating with the Azure Log Analytics query service in this environment
@@ -337,7 +343,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <summary>
-        /// The domain name suffix for Azure Synapse Analyticss
+        /// The domain name suffix for Azure Synapse Analytics
         /// </summary>
         public string AzureSynapseAnalyticsEndpointSuffix
         {
@@ -352,7 +358,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <summary>
-        /// Gets or sets the resource Id to use for contacting the Synapse Analyticss endpoint
+        /// Gets or sets the resource Id to use for contacting the Synapse Analytics endpoint
         /// </summary>
         public string AzureSynapseAnalyticsEndpointResourceId
         {
@@ -407,7 +413,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
                        && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint
                        && AzureAttestationServiceEndpointResourceId == other.AzureAttestationServiceEndpointResourceId
-                       && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix;
+                       && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix
+                       && ContainerRegistryEndpointSuffix == other.ContainerRegistryEndpointSuffix;
             }
 
             return false;

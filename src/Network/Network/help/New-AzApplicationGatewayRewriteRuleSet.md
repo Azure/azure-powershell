@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriteruleset
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleset
 schema: 2.0.0
 ---
 
 # New-AzApplicationGatewayRewriteRuleSet
 
 ## SYNOPSIS
-Creates a request routing rule for an application gateway.
+Creates a rewrite rule set for an application gateway.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ New-AzApplicationGatewayRewriteRuleSet -Name <String>
 
 ### Example 1
 ```powershell
-PS C:\> $ruleset = New-AzApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRule $rule
+$ruleset = New-AzApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRule $rule
 ```
 
 This command creates a rewrite rule set named ruleset1 and stores the result in the variable named $ruleset.
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -17,5 +17,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSPublicIpPrefixSku
     {
         public string Name { get; set; }
+        public string Tier { get; set; }
     }
 }

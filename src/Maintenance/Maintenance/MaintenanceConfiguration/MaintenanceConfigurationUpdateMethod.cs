@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                     MaintenanceConfiguration configuration = new MaintenanceConfiguration();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<PSMaintenanceConfiguration, MaintenanceConfiguration>(this.Configuration, configuration);
 
-                    var result = MaintenanceConfigurationsClient.UpdateMethod(resourceGroupName, name, configuration);
+                    var result = MaintenanceConfigurationsClient.Update(resourceGroupName, name, configuration);
                     var psObject = new PSMaintenanceConfiguration();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(result, psObject);
                     WriteObject(psObject);

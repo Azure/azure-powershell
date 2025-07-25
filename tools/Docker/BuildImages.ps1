@@ -28,18 +28,10 @@ try {
     foreach ($dockerfile in (Get-ChildItem -Path $DOCKER -Filter "Dockerfile-*").FullName) {
         $os = $dockerfile.split("Dockerfile-")[1]
         Write-Output $os
-        if ($os -eq "ubuntu-18.04") {
-            docker build --build-arg VERSION=$version `
-                     --build-arg BUILD_DATE=$date `
-                     --tag $DockerImageName':'$version"-"$os `
-                     --tag $DockerImageName':latest' `
-                     -f $dockerfile $DOCKER
-        }else {
-            docker build --build-arg VERSION=$version `
-                     --build-arg BUILD_DATE=$date `
-                     --tag $DockerImageName':'$version"-"$os `
-                     -f $dockerfile $DOCKER
-        }
+        docker build --build-arg VERSION=$version `
+                    --build-arg BUILD_DATE=$date `
+                    --tag $DockerImageName':'$version"-"$os `
+                    -f $dockerfile $DOCKER
         
     }
 } catch {

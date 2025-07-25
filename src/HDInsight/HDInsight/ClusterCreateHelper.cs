@@ -11,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public static void AddClusterCredentialToGatewayConfig(PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations)
         {
-            Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.Gateway);
+            Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.Gateway);
             if (!string.IsNullOrEmpty(httpCredential?.UserName))
             {
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "true";
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
             }
 
-            configurations[ConfigurationKey.Gateway] = gatewayConfig;
+            configurations[Constants.ConfigurationKey.Gateway] = gatewayConfig;
         }
 
         public static void AddAzureDataLakeStorageGen1ToCoreConfig(string storageResourceId, string storageRootPath, string defaultAzureDataLakeStoreFileSystemEndpointSuffix, IDictionary<string, Dictionary<string, string>> configurations)
@@ -56,20 +55,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             }
 
             // Get existing core configs.
-            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.CoreSite);
+            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.CoreSite);
 
             // Add configurations for default ADL storage.
             coreConfig[Constants.StorageConfigurations.DefaultFsKey] = Constants.StorageConfigurations.DefaultFsAdlValue;
             coreConfig[Constants.StorageConfigurations.AdlHostNameKey] = storageAccountName;
             coreConfig[Constants.StorageConfigurations.AdlMountPointKey] = storageRootPath;
 
-            configurations[ConfigurationKey.CoreSite] = coreConfig;
+            configurations[Constants.ConfigurationKey.CoreSite] = coreConfig;
         }
 
         public static void AddAdditionalStorageAccountsToCoreConfig(Dictionary<string, string> additionalStorageAccounts, IDictionary<string, Dictionary<string, string>> configurations)
         {
             // Get existing core configs.
-            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, ConfigurationKey.CoreSite);
+            Dictionary<string, string> coreConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.CoreSite);
 
             foreach (KeyValuePair<string, string> storageAccount in additionalStorageAccounts)
             {
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 coreConfig[configKey] = storageAccount.Value;
             }
 
-            configurations[ConfigurationKey.CoreSite] = coreConfig;
+            configurations[Constants.ConfigurationKey.CoreSite] = coreConfig;
         }
 
         public static void AddDataLakeStorageGen1IdentityToIdentityConfig(Guid applicationId, Guid aadTenantId, byte[] certificateFileBytes, string certificatePassword,
@@ -95,10 +94,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 {Constants.DataLakeConfigurations.ResourceUriKey, dataLakeEndpointResourceId}
             };
 
-            configurations[ConfigurationKey.ClusterIdentity] = datalakeConfig;
+            configurations[Constants.ConfigurationKey.ClusterIdentity] = datalakeConfig;
         }
 
-        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, string defaultStorageSuffix)
+        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, bool? enableSecureChannel, string defaultStorageSuffix)
         {
             storageContainer = storageContainer ?? clusterName.ToLower();
             string storageAccountName = Utils.GetResourceNameFromResourceId(storageResourceId);
@@ -110,11 +109,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 IsDefault = true,
                 Container = storageContainer,
                 Key = storageAccountkey,
-                ResourceId = storageResourceId
+                ResourceId = storageResourceId,
+                EnableSecureChannel = enableSecureChannel
             };
         }
 
-        public static StorageAccount CreateAdlsGen2StorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageFileSystem, string msiResourceId, string defaultStorageSuffix)
+        public static StorageAccount CreateAdlsGen2StorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageFileSystem, bool? enableSecureChannel, string msiResourceId, string defaultStorageSuffix)
         {
             storageFileSystem = storageFileSystem ?? clusterName.ToLower();
 
@@ -128,7 +128,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 FileSystem = storageFileSystem,
                 Key = storageAccountkey,
                 MsiResourceId = msiResourceId,
-                ResourceId = storageResourceId
+                ResourceId = storageResourceId,
+                EnableSecureChannel = enableSecureChannel
             };
         }
 
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             string connectionUrl =
                 string.Format(Constants.MetastoreConfigurations.ConnectionUrlFormat, hiveMetastore.SqlAzureServerName, hiveMetastore.DatabaseName);
 
-            configurations.AddOrCombineConfigurations(ConfigurationKey.HiveSite, new Dictionary<string, string>
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.HiveSite, new Dictionary<string, string>
                 {
                     {Constants.MetastoreConfigurations.HiveSite.ConnectionUrlKey, connectionUrl},
                     {Constants.MetastoreConfigurations.HiveSite.ConnectionUserNameKey, hiveMetastore.Credential.UserName},
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     {Constants.MetastoreConfigurations.HiveSite.ConnectionDriverNameKey, Constants.MetastoreConfigurations.HiveSite.ConnectionDriverNameValue}
                 });
 
-            configurations.AddOrCombineConfigurations(ConfigurationKey.HiveEnv, new Dictionary<string, string>
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.HiveEnv, new Dictionary<string, string>
                 {
                     {Constants.MetastoreConfigurations.HiveEnv.DatabaseKey, Constants.MetastoreConfigurations.DatabaseValue},
                     {Constants.MetastoreConfigurations.HiveEnv.DatabaseNameKey, hiveMetastore.DatabaseName},
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             }
             string connectionUrl = string.Format(Constants.MetastoreConfigurations.ConnectionUrlFormat, oozieMetastore.SqlAzureServerName, oozieMetastore.DatabaseName);
 
-            configurations.AddOrCombineConfigurations(ConfigurationKey.OozieSite, new Dictionary<string, string>
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.OozieSite, new Dictionary<string, string>
                 {
                     {Constants.MetastoreConfigurations.OozieSite.UrlKey, connectionUrl},
                     {Constants.MetastoreConfigurations.OozieSite.UserNameKey, oozieMetastore.Credential.UserName},
@@ -178,7 +179,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     {Constants.MetastoreConfigurations.OozieSite.SchemaKey, Constants.MetastoreConfigurations.OozieSite.SchemaValue}
                 });
 
-            configurations.AddOrCombineConfigurations(ConfigurationKey.OozieEnv, new Dictionary<string, string>
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.OozieEnv, new Dictionary<string, string>
                 {
                     {Constants.MetastoreConfigurations.OozieEnv.DatabaseKey, Constants.MetastoreConfigurations.DatabaseValue},
                     {Constants.MetastoreConfigurations.OozieEnv.DatabaseNameKey, oozieMetastore.DatabaseName},
@@ -186,6 +187,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     {Constants.MetastoreConfigurations.OozieEnv.ExistingDatabaseKey, oozieMetastore.DatabaseName},
                     {Constants.MetastoreConfigurations.OozieEnv.ExistingHostKey, oozieMetastore.SqlAzureServerName},
                     {Constants.MetastoreConfigurations.OozieEnv.HostNameKey, oozieMetastore.SqlAzureServerName}
+                });
+        }
+
+        public static void AddCustomAmbariDatabaseToConfigurations(AzureHDInsightMetastore ambariDatabase, IDictionary<string, Dictionary<string, string>> configurations)
+        {
+            if (Uri.CheckHostName(ambariDatabase.SqlAzureServerName) != UriHostNameType.Dns)
+            {
+                throw new ArgumentException("Please provide the fully qualified sql server name.");
+            }
+
+            configurations.AddOrCombineConfigurations(Constants.ConfigurationKey.AmbariConf, new Dictionary<string, string>
+                {
+                    {Constants.AmbariConfiguration.SqlServerKey, ambariDatabase.SqlAzureServerName},
+                    {Constants.AmbariConfiguration.DatabaseNameKey, ambariDatabase.DatabaseName},
+                    {Constants.AmbariConfiguration.DatabaseUserKey, ambariDatabase.Credential.UserName},
+                    {Constants.AmbariConfiguration.DatabasePasswordKey, ambariDatabase.Credential.Password.ConvertToString()}
                 });
         }
 
@@ -233,50 +250,50 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             };
         }
 
-        public static ComputeProfile CreateComputeProfile(OsProfile osProfile, VirtualNetworkProfile vnetProfile, Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions, string clusterType, int workerNodeCount, string headNodeSize, string workerNodeSize, string zookeeperNodeSize = null, string edgeNodeSize = null, string kafkaManagementNodeSize = null, bool isEnableIDBroker = false)
+        public static ComputeProfile CreateComputeProfile(OsProfile osProfile, VirtualNetworkProfile vnetProfile, Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions, string clusterType, int workerNodeCount, string headNodeSize, string workerNodeSize, string zookeeperNodeSize = null, string edgeNodeSize = null, bool isKafakaRestProxyEnable=false, string kafkaManagementNodeSize = null, bool isIDBrokerEnable = false, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfigurations=null)
         {
             List<Role> roles = new List<Role>();
 
             // Create head node
-            headNodeSize = headNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.HeadNode);
+            headNodeSize = headNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.HeadNodeRole, defaultVmSizeConfigurations);
             List<ScriptAction> headNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.HeadNode);
             Role headNode = CreateHeadNodeRole(osProfile, vnetProfile, headNodeScriptActions, headNodeSize);
             roles.Add(headNode);
 
             // Create worker node
-            workerNodeSize = workerNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.WorkerNode);
+            workerNodeSize = workerNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.WorkerNodeRole, defaultVmSizeConfigurations);
             List<ScriptAction> workerNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.WorkerNode);
             Role workerNode = CreateWorkerNodeRole(osProfile, vnetProfile, workerNodeScriptActions, workerNodeCount, workerNodeSize);
             roles.Add(workerNode);
 
             // Create Zookeeper Node
-            if (zookeeperNodeSize != null)
-            {
-                List<ScriptAction> zookeeperNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.ZookeeperNode);
-                Role zookeeperNode = CreateZookeeperNodeRole(osProfile, vnetProfile, zookeeperNodeScriptActions, zookeeperNodeSize);
-                roles.Add(zookeeperNode);
-            }
+            zookeeperNodeSize= zookeeperNodeSize?? GetNodeSize(clusterType, Constants.ClusterRoleType.ZookeeperNodeRole, defaultVmSizeConfigurations);
+            List<ScriptAction> zookeeperNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.ZookeeperNode);
+            Role zookeeperNode = CreateZookeeperNodeRole(osProfile, vnetProfile, zookeeperNodeScriptActions, zookeeperNodeSize);
+            roles.Add(zookeeperNode);
 
             // RServer & MLServices clusters contain an additional edge node. Return here for all other types.
             if (new[] { "RServer", "MLServices" }.Contains(clusterType, StringComparer.OrdinalIgnoreCase))
             {
                 // Set up edgenode and add to collection.
                 const int edgeNodeCount = 1;
-                edgeNodeSize = edgeNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.EdgeNode);
+                edgeNodeSize = edgeNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.EdgeNodeRole, defaultVmSizeConfigurations); ;
                 Role edgeNode = CreateEdgeNodeRole(osProfile, vnetProfile, null, edgeNodeCount, edgeNodeSize);
                 roles.Add(edgeNode);
             }
 
             // Create Id Broker Node
-            if (isEnableIDBroker)
+            if (isIDBrokerEnable)
             {
-                Role idBrokerNode = CreateIdBrokerNodeRole(osProfile, vnetProfile);
+                string idBrokerNodeSize= GetNodeSize(clusterType, Constants.ClusterRoleType.HIBNodeRole, defaultVmSizeConfigurations);
+                Role idBrokerNode = CreateIdBrokerNodeRole(osProfile, vnetProfile, idBrokerNodeSize);
                 roles.Add(idBrokerNode);
             }
 
             // Create Kafka Management Node
-            if (kafkaManagementNodeSize != null)
+            if (isKafakaRestProxyEnable)
             {
+                kafkaManagementNodeSize = kafkaManagementNodeSize?? GetNodeSize(clusterType, Constants.ClusterRoleType.KafkaManagementNodeRole, defaultVmSizeConfigurations);
                 Role kafkaManagementNode = CreateKafkaManagementNode(osProfile, vnetProfile, kafkaManagementNodeSize);
                 roles.Add(kafkaManagementNode);
             }
@@ -305,10 +322,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return CreateCommonRole(osProfile, vnetProfile, AzureHDInsightClusterNodeType.EdgeNode, edgeNodeScriptActions, edgeNodeCount, edgeNodeSize);
         }
 
-        public static Role CreateIdBrokerNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile)
+        public static Role CreateIdBrokerNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile,string idBrokerNodeSize)
         {
             const int idBrokerNodeCount = 2;
-            return CreateCommonRole(null, vnetProfile, AzureHDInsightClusterNodeType.IdBrokerNode, null, idBrokerNodeCount, null);
+            return CreateCommonRole(null, vnetProfile, AzureHDInsightClusterNodeType.IdBrokerNode, null, idBrokerNodeCount, idBrokerNodeSize);
         }
 
         public static Role CreateKafkaManagementNode(OsProfile osProfile, VirtualNetworkProfile vnetProfile, string kafkaManagementNodeSize)
@@ -326,7 +343,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 TargetInstanceCount = instanceCount,
                 HardwareProfile = vmSize != null ? new HardwareProfile
                 {
-                    VmSize = vmSize
+                    VMSize = vmSize
                 } : null,
                 VirtualNetworkProfile = vnetProfile,
                 OsProfile = osProfile,
@@ -334,21 +351,35 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             };
         }
 
-        public static string GetNodeSize(string clusterType, ClusterNodeType nodeType)
+        public static string GetNodeSize(string clusterType, string nodeRoleType)
         {
-            switch (nodeType)
+            switch (nodeRoleType)
             {
-                case ClusterNodeType.HeadNode:
+                case Constants.ClusterRoleType.HeadNodeRole:
                     return DefaultVmSizes.HeadNode.GetSize(clusterType);
-                case ClusterNodeType.WorkerNode:
+                case Constants.ClusterRoleType.WorkerNodeRole:
                     return DefaultVmSizes.WorkerNode.GetSize(clusterType);
-                case ClusterNodeType.ZookeeperNode:
+                case Constants.ClusterRoleType.ZookeeperNodeRole:
                     return DefaultVmSizes.ZookeeperNode.GetSize(clusterType);
-                case ClusterNodeType.EdgeNode:
+                case Constants.ClusterRoleType.EdgeNodeRole:
                     return DefaultVmSizes.EdgeNode.GetSize(clusterType);
+                case Constants.ClusterRoleType.KafkaManagementNodeRole:
+                    return DefaultVmSizes.KafkaManagementNode.GetSize(clusterType);
+                case Constants.ClusterRoleType.HIBNodeRole:
+                    return DefaultVmSizes.IdBrokerNode.GetSize(clusterType);
                 default:
                     throw new ArgumentOutOfRangeException("nodeType");
             }
+        }
+
+        public static string GetNodeSize(string clusterType, string nodeRoleType, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfigurations)
+        {
+            string vmSize=GetDefaultVmSizeFromDictionary(clusterType.ToUpper(), nodeRoleType, defaultVmSizeConfigurations);
+            if (vmSize == null)
+            {
+                vmSize = GetNodeSize(clusterType, nodeRoleType);
+            }
+            return vmSize;
         }
 
         public static SecurityProfile ConvertAzureHDInsightSecurityProfileToSecurityProfile(AzureHDInsightSecurityProfile azureHDInsightSecurityProfile, string assignedIdentity)
@@ -357,7 +388,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
             SecurityProfile securityProfile = new SecurityProfile(DirectoryType.ActiveDirectory);
             securityProfile.Domain = Utils.GetResourceNameFromResourceId(azureHDInsightSecurityProfile.DomainResourceId);
-            securityProfile.OrganizationalUnitDN = azureHDInsightSecurityProfile.OrganizationalUnitDN;
+            securityProfile.OrganizationalUnitDn = azureHDInsightSecurityProfile.OrganizationalUnitDN;
             securityProfile.LdapsUrls = azureHDInsightSecurityProfile.LdapsUrls;
             if (azureHDInsightSecurityProfile.DomainUserCredential != null)
             {
@@ -390,6 +421,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return config;
         }
 
+        public static bool CheckEnableKafkaRestProxy(NetworkProperties networkProperties)
+        {
+            return networkProperties != null;
+        }
+
         private static void AddOrCombineConfigurations(this IDictionary<string, Dictionary<string, string>> configurations, string configKey, Dictionary<string, string> newConfigurations)
         {
             if (configurations.ContainsKey(configKey))
@@ -410,6 +446,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         private static Dictionary<TKey, TValue> MergedDictionaries<TKey, TValue>(IDictionary<TKey, TValue> dict1, IDictionary<TKey, TValue> dict2)
         {
             return dict1.Union(dict2).ToDictionary(p => p.Key, p => p.Value);
+        }
+
+        private static string GetDefaultVmSizeFromDictionary(string clusterType, string nodeType, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfiguration)
+        {
+            string vmSize = null;
+            if (defaultVmSizeConfiguration != null && defaultVmSizeConfiguration.TryGetValue(nodeType, out var clusterTypeAndVmSizeDict))
+            {
+                if (!clusterTypeAndVmSizeDict.TryGetValue(clusterType, out vmSize))
+                {
+                    // backend will use the string "*" to stand for it is applicable for all cluster type.
+                    clusterTypeAndVmSizeDict.TryGetValue(Constants.ClusterType.AllClusterType, out vmSize);
+                }
+            }
+            return vmSize;
         }
     }
 }

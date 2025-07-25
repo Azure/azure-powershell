@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        public List<PSVpnServerConfigurationPolicyGroup> ConfigurationPolicyGroups { get; set; }
+
         [JsonIgnore]
         public string VpnClientRootCertificatesText
         {
@@ -97,6 +99,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string P2SVpnGatewaysText
         {
             get { return JsonConvert.SerializeObject(P2SVpnGateways, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ConfigurationPolicyGroupsText
+        {
+            get { return JsonConvert.SerializeObject(ConfigurationPolicyGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -17,28 +17,24 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 {
-    public class PoolTests
+    public class PoolTests : NetAppFilesTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public PoolTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PoolTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPoolCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PoolCrud");
+            TestRunner.RunTestScript("Test-PoolCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPoolPipelines()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PoolPipelines");
+            TestRunner.RunTestScript("Test-PoolPipelines");
         }
     }
 }

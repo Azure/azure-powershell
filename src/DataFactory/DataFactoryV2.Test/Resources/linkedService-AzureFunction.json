@@ -1,0 +1,10 @@
+{
+	"properties": {
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "fakeurl",
+			"authentication": "MSI",
+			"resourceId": "fakeResourceId"
+		}
+	}
+}

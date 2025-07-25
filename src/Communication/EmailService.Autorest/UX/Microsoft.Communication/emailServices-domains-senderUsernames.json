@@ -1,0 +1,105 @@
+{
+  "resourceType": "emailServices/domains/senderUsernames",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.communication"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEmailServiceSenderUsername",
+      "description": "Get a valid sender username for a domains resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.communication/get-azemailservicesenderusername"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-EmailServiceName <String>",
+              "-ResourceGroupName <String>",
+              "-SenderUsername <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a valid sender username for a domains resource.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-EmailServiceName",
+              "value": "[Path.emailServiceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SenderUsername",
+              "value": "[Path.senderUsername]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEmailServiceSenderUsername",
+      "description": "Operation to delete a SenderUsernames resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.communication/remove-azemailservicesenderusername"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-EmailServiceName <String>",
+              "-ResourceGroupName <String>",
+              "-SenderUsername <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Operation to delete a SenderUsernames resource.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-EmailServiceName",
+              "value": "[Path.emailServiceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SenderUsername",
+              "value": "[Path.senderUsername]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

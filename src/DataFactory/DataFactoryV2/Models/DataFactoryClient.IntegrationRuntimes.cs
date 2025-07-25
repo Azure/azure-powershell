@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     resourceGroupName,
                     dataFactoryName,
                     integrationRuntimeName,
-                    resource);
+                    resource?.Properties);
         }
 
         public virtual PSIntegrationRuntime CreateOrUpdateIntegrationRuntime(CreatePSIntegrationRuntimeParameters parameters)
@@ -181,6 +181,30 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactoryName);
         }
 
+        public virtual async Task<List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>> GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsAsync(
+            string resourceGroupName,
+            string dataFactoryName,
+            string integrationRuntimeName)
+        {
+            var outboundNetworkDependenciesEndpointsResponse = await this.DataFactoryManagementClient.IntegrationRuntimes.ListOutboundNetworkDependenciesEndpointsAsync(
+                resourceGroupName,
+                dataFactoryName,
+                integrationRuntimeName);
+
+            var response = new List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>();
+            if (null == outboundNetworkDependenciesEndpointsResponse?.Value)
+            {
+                return response;
+            }
+
+            foreach(var categoryEndpoints in outboundNetworkDependenciesEndpointsResponse.Value)
+            {
+                response.Add(new PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint(categoryEndpoints));
+            }
+
+            return response;
+        }
+
         public virtual async Task<HttpStatusCode> DeleteIntegrationRuntimeAsync(
             string resourceGroupName,
             string dataFactoryName,
@@ -205,7 +229,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     resourceGroupName,
                     dataFactoryName,
                     integrationRuntimeName,
-                    new IntegrationRuntimeRegenerateKeyParameters(keyName));
+                    keyName);
 
             return new PSIntegrationRuntimeKeys(response.AuthKey1, response.AuthKey2);
         }
@@ -319,7 +343,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactoryName,
                 integrationRuntimeName,
                 nodeName,
-                request);
+                request?.ConcurrentJobsLimit);
         }
 
         public virtual async Task<IntegrationRuntimeNodeIpAddress> GetIntegrationRuntimeNodeIpAsync(
@@ -357,7 +381,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 resourceGroupName,
                 dataFactoryName,
                 integrationRuntimeName,
-                request);
+                request?.AutoUpdate,request?.UpdateDelayOffset);
 
             return new PSSelfHostedIntegrationRuntime(
                 response,
@@ -375,7 +399,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 resourceGroupName,
                 dataFactoryName,
                 integrationRuntimeName,
-                new LinkedIntegrationRuntimeRequest(linkedDataFactoryName));
+                linkedDataFactoryName);
 
             return response.Response.StatusCode;
         }
@@ -460,7 +484,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
             }
 
-            // Don't support get status for legacy integraiton runtime.
+            // Don't support get status for legacy integration runtime.
             throw new PSInvalidOperationException("This type of integration runtime is not supported by this version powershell cmdlets.");
         }
 

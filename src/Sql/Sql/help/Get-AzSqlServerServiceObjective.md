@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: AC2D64B9-5BCD-45D3-8650-538633F5BBBC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverserviceobjective
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserverserviceobjective
 schema: 2.0.0
 ---
 
@@ -31,8 +31,11 @@ The **Get-AzSqlServerServiceObjective** cmdlet gets the available service object
 ## EXAMPLES
 
 ### Example 1: Get service objectives
+```powershell
+Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
-PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+
+```output
 serviceObjectiveName SkuName       Edition          Family Capacity CapacityUnit Enabled
 -------------------- -------       -------          ------ -------- ------------ -------
 System               System        System                  0        DTU          False
@@ -52,8 +55,11 @@ BC_Gen5_4            BC_Gen5       BusinessCritical Gen5   4        VCores      
 This command gets the service objectives for the server named Server01.
 
 ### Example 2: Get service objectives using filtering
+```powershell
+Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServiceObjectiveName "P*"
 ```
-PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServiceObjectiveName "P*"
+
+```output
 ServiceObjectiveName SkuName       Edition          Family Capacity CapacityUnit Enabled
 -------------------- -------       -------          ------ -------- ------------ -------
 P1                   Premium       Premium                 125      DTU          True
@@ -63,8 +69,11 @@ P2                   Premium       Premium                 250      DTU         
 This command gets the service objectives for the server named Server01 that start with "System".
 
 ### Example 3: Get service objectives for a location
+```powershell
+Get-AzSqlServerServiceObjective -Location "west us"
 ```
-PS C:\>Get-AzSqlServerServiceObjective -Location "west us"
+
+```output
 serviceObjectiveName SkuName       Edition          Family Capacity CapacityUnit Enabled
 -------------------- -------       -------          ------ -------- ------------ -------
 System               System        System                  0        DTU          False
@@ -159,7 +168,7 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Confirm
@@ -208,6 +217,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 
 

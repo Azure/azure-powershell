@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 2E7E20CD-6A2B-455E-9476-8E0827429162
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlservercommunicationlink
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlservercommunicationlink
 schema: 2.0.0
 ---
 
@@ -25,22 +25,22 @@ Specify the name of a server communication link to see the properties for that l
 ## EXAMPLES
 
 ### Example 1: Get all communication links for a server
-```
-PS C:\> Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17"
+```powershell
+Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17"
 ```
 
 This command gets all server-to-server communication links for elastic database transactions for the server named ContosoServer17.
 
 ### Example 2: Get a specific communication link for a server
-```
-PS C:\> Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
+```powershell
+Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
 ```
 
 This command gets the server-to-server communication link named Link01.
 
 ### Example 3: Get all communication links for a server using filtering
-```
-PS C:\> Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link*"
+```powershell
+Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link*"
 ```
 
 This command gets all server-to-server communication links for elastic database transactions for the server named ContosoServer17 that start with "Link".
@@ -74,7 +74,7 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -159,4 +159,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzSqlServerCommunicationLink](./Remove-AzSqlServerCommunicationLink.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

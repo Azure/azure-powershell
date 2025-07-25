@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallexclusionconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallexclusionconfig
 schema: 2.0.0
 ---
 
@@ -14,6 +14,7 @@ Creates a new exclusion rule list for application gateway waf
 
 ```
 New-AzApplicationGatewayFirewallExclusionConfig -Variable <String> -Operator <String> -Selector <String>
+ [-ExclusionManagedRuleSet <PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +25,7 @@ The **New-AzApplicationGatewayFirewallExclusionConfig** cmdlet a new exclusion r
 
 ### Example 1
 ```powershell
-PS C:\> $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
+$exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
 ```
 
 This command creates a new exclusion rule lists configuration for the variable named RequestHeaderNames and operator named StartsWith and Selector named xyz. The exclusion list configuration is saved in $exclusion1.
@@ -46,8 +47,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExclusionManagedRuleSet
+List of Exclusion Managed ruleSets.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Operator
-When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
+When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to. Possible values are Any, IPMatch, GeoMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith.
 
 ```yaml
 Type: System.String
@@ -77,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Variable
-The variable to be excluded.
+The variable to be excluded. Match variable. Possible values are RequestHeaderNames, RequestCookieNames, QueryStringArgNames, RequestBodyPostArgNames.
 
 ```yaml
 Type: System.String
@@ -92,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

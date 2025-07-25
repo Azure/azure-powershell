@@ -1,0 +1,68 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/secureScores?api-version=2020-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvc2VjdXJlU2NvcmVzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a9db1d7e-c12f-4ef2-9ffd-12bf39c5cdfa"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29321.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.2.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "748"
+        ],
+        "x-ms-request-id": [
+          "4ea0ec1f-7b56-4bfe-aaf6-d3bf2fc865f0"
+        ],
+        "x-ms-correlation-request-id": [
+          "4ea0ec1f-7b56-4bfe-aaf6-d3bf2fc865f0"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20201129T085321Z:4ea0ec1f-7b56-4bfe-aaf6-d3bf2fc865f0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 29 Nov 2020 08:53:21 GMT"
+        ],
+        "Content-Length": [
+          "290"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/secureScores/ascScore\",\r\n      \"name\": \"ascScore\",\r\n      \"type\": \"Microsoft.Security/secureScores\",\r\n      \"properties\": {\r\n        \"displayName\": \"ASC score\",\r\n        \"score\": {\r\n          \"max\": 60,\r\n          \"current\": 34.3,\r\n          \"percentage\": 0.5717\r\n        },\r\n        \"weight\": 245\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "487bb485-b5b0-471e-9c0d-10717612f869"
+  }
+}

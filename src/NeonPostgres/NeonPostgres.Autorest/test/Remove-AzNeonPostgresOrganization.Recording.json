@@ -1,0 +1,43 @@
+{
+  "Remove-AzNeonPostgresOrganization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/TestNeonOrgPS?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/TestNeonOrgPS?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "81f51348-8505-446d-a271-2a57d027c296" ],
+        "CommandName": [ "Remove-AzNeonPostgresOrganization" ],
+        "FullCommandName": [ "Remove-AzNeonPostgresOrganization_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-request-id": [ "1ae398cc-4b08-4fec-8a20-55213c02b875" ],
+        "x-ms-correlation-request-id": [ "1ae398cc-4b08-4fec-8a20-55213c02b875" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250612T095020Z:1ae398cc-4b08-4fec-8a20-55213c02b875" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 827898EFD9594A9CA175A20339230179 Ref B: MAA201060516019 Ref C: 2025-06-12T09:50:18Z" ],
+        "Date": [ "Thu, 12 Jun 2025 09:50:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

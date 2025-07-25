@@ -44,6 +44,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestGlobalLoadBalancerBackendPoolCreate()
+        {
+            TestRunner.RunTestScript("Test-GlobalLoadBalancerBackendPoolCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancerBackendPoolRead()
         {
             TestRunner.RunTestScript("Test-LoadBalancerBackendPoolRead");
@@ -71,6 +79,46 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestLoadBalancerBackendAddressConfig()
         {
             TestRunner.RunTestScript("Test-LoadBalancerBackendAddressConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerBackendPoolCRUDWithAddTunnelInterface()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerBackendPoolCRUDWithAddTunnelInterface");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestIPBasedBackendPoolQueryInboundNatRulePortMapping()
+        {
+            TestRunner.RunTestScript("Test-IPBasedBackendPoolQueryInboundNatRulePortMapping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestNICBasedBackendPoolQueryInboundNatRulePortMapping()
+        {
+            TestRunner.RunTestScript("Test-NICBasedBackendPoolQueryInboundNatRulePortMapping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestManagedIpBasedLoadBalancerBackendPoolCreate()
+        {
+            TestRunner.RunTestScript("Test-ManagedIpBasedLoadBalancerBackendPoolCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestManagedIpBasedLoadBalancerBackendPoolUpdate()
+        {
+            TestRunner.RunTestScript("Test-ManagedIpBasedLoadBalancerBackendPoolUpdate");
         }
     }
 }

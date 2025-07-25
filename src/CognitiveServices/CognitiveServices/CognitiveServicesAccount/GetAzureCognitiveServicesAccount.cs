@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         protected const string AccountNameParameterSet = "AccountNameParameterSet";
+        protected const string GetDeletedAccountParameterSet = "GetDeletedAccountParameterSet";
+        protected const string ListDeletedAccountParameterSet = "ListDeletedAccountParameterSet";
+
 
         [Parameter(
             Position = 0,
@@ -43,6 +46,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ParameterSetName = AccountNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = GetDeletedAccountParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -53,9 +62,32 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AccountNameParameterSet,
             HelpMessage = "Cognitive Services Account Name.")]
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GetDeletedAccountParameterSet,
+            HelpMessage = "Cognitive Services Account Name.")]
         [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+            Position = 2,
+            ParameterSetName = GetDeletedAccountParameterSet,
+            Mandatory = true,
+            HelpMessage = "Cognitive Services Account Location.")]
+        [LocationCompleter("Microsoft.CognitiveServices/accounts")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetDeletedAccountParameterSet,
+            HelpMessage = "Specifies whether to only show the deleted accounts in the output.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ListDeletedAccountParameterSet,
+            HelpMessage = "Specifies whether to only show the deleted accounts in the output.")]
+        public SwitchParameter InRemovedState { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -63,36 +95,53 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
-                if (string.IsNullOrEmpty(this.ResourceGroupName))
+                switch (ParameterSetName)
                 {
-                    var cognitiveServicesAccounts = GetWithPaging(this.CognitiveServicesClient.Accounts.List(), false);
+                    case GetDeletedAccountParameterSet:
+                        var deletedAccount = this.CognitiveServicesClient.DeletedAccounts.Get(
+                               this.Location,
+                               this.ResourceGroupName,
+                               this.Name);
+                        WriteCognitiveServicesAccount(deletedAccount);
+                        break;
+                    case ListDeletedAccountParameterSet:
+                        var deletedAccounts = GetWithPaging(this.CognitiveServicesClient.DeletedAccounts.List(), false);
+                        WriteCognitiveServicesAccountList(deletedAccounts);
+                        break;
+                    default:
+                        if (string.IsNullOrEmpty(this.ResourceGroupName))
+                        {
+                            var cognitiveServicesAccounts = GetWithPaging(this.CognitiveServicesClient.Accounts.List(), false);
 
-                    WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
-                }
-                else if (string.IsNullOrEmpty(this.Name))
-                {
-                    var cognitiveServicesAccounts = GetWithPaging(this.CognitiveServicesClient.Accounts.ListByResourceGroup(this.ResourceGroupName), true);
-                    if (cognitiveServicesAccounts == null)
-                    {
-                        WriteWarningWithTimestamp("Received empty accounts list");
-                    }
-                    WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
-                }
-                else
-                {
-                    var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(
-                        this.ResourceGroupName,
-                        this.Name);
+                            WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
+                        }
+                        else if (string.IsNullOrEmpty(this.Name))
+                        {
+                            var cognitiveServicesAccounts = GetWithPaging(this.CognitiveServicesClient.Accounts.ListByResourceGroup(this.ResourceGroupName), true);
+                            if (cognitiveServicesAccounts == null)
+                            {
+                                WriteWarningWithTimestamp("Received empty accounts list");
+                            }
+                            WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
+                        }
+                        else
+                        {
+                            var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.Get(
+                                this.ResourceGroupName,
+                                this.Name);
 
-                    WriteCognitiveServicesAccount(cognitiveServicesAccount);
+                            WriteCognitiveServicesAccount(cognitiveServicesAccount);
+                        }
+                        break;
                 }
+
             });
         }
 
-        private IEnumerable<CognitiveServicesAccount> GetWithPaging(IPage<CognitiveServicesAccount> firstPage, bool isResourceGroup)
+        private IEnumerable<Account> GetWithPaging(IPage<Account> firstPage, bool isResourceGroup)
         {
-            var cognitiveServicesAccounts = new List<CognitiveServicesAccount>(firstPage);
-            IPage<CognitiveServicesAccount> nextPage = null;
+            var cognitiveServicesAccounts = new List<Account>(firstPage);
+            IPage<Account> nextPage = null;
             for (var nextLink = firstPage.NextPageLink; !string.IsNullOrEmpty(nextLink); nextLink = nextPage.NextPageLink)
             {
                 if (isResourceGroup)

@@ -1,40 +1,43 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/split-azreservation
+online version: https://learn.microsoft.com/powershell/module/az.reservations/split-azreservation
 schema: 2.0.0
 ---
 
 # Split-AzReservation
 
 ## SYNOPSIS
-Split a `Reservation`.
+Split a Reservation order.
 
 ## SYNTAX
 
-### CommandLine (Default)
 ```
-Split-AzReservation -ReservationOrderId <Guid> -ReservationId <Guid> -Quantity <Int32[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PipeObject
-```
-Split-AzReservation -Quantity <Int32[]> -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>]
+Split-AzReservation -OrderId <String> -ReservationId <String> -Quantity <Int32[]> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Split a `Reservation` into two `Reservation`s with specified quantity distribution.
+Split a Reservation order.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> Split-AzReservation -ReservationOrderId "00000000-ffff-ffff-0000-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111" -Quantities 2,3
+### Example 1: Split one reservation order into two reservations
+```powershell
+Split-AzReservation -ReservationOrderId "c615c897-aaaa-4123-8527-c42cc0da41e0" -ReservationId "1bdfaf4a-159d-46ec-be3a-f4aa527d423c" -Quantity @(2,8)
 ```
 
-Split the specified `Reservation` into two `Reservation`s with the corresponding quantities
+```output
+Location   ReservationOrderId/ReservationId                                             Sku           State     BenefitStartTime     ExpiryDate           LastUpdatedDateTime  SkuDescription
+--------   --------------------------------                                             ---           -----     ----------------     ----------           -------------------  --------------
+westeurope c615c897-aaaa-4123-8527-c42cc0da41e0/f4f0f24c-30d4-4f5d-823c-4a9e1e18b381/2  Standard_B1ls Succeeded 7/7/2022 10:55:12 PM 7/7/2025 12:00:00 AM 7/7/2022 11:21:51 PM Reserved VM Ins…
+westeurope c615c897-aaaa-4123-8527-c42cc0da41e0/85cd4ee6-654e-47df-b230-7fb2f1e86714/2  Standard_B1ls Succeeded 7/7/2022 10:55:12 PM 7/7/2025 12:00:00 AM 7/7/2022 11:21:51 PM Reserved VM Ins…
+westeurope c615c897-aaaa-4123-8527-c42cc0da41e0/1bdfaf4a-159d-46ec-be3a-f4aa527d423c/12 Standard_B1ls Cancelled 7/7/2022 10:55:12 PM 7/7/2025 12:00:00 AM 7/7/2022 11:21:51 PM Reserved VM Ins…
+```
+
+Split one reservation order into two reservations, given the quantity of each reservation.
+The quantity sum up should be equal to the original reservation before splitting.
+ReservationId can be either GUID form or fully qualified reservation id form "providers/Microsoft.Capacity/reservationOrders/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/reservations/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## PARAMETERS
 
@@ -42,9 +45,9 @@ Split the specified `Reservation` into two `Reservation`s with the corresponding
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,8 +56,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OrderId
+Reservation Order Id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ReservationOrderId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Quantity
-Comma-separated integers for quantity field of the two `Reservation`s
+Quantity.
 
 ```yaml
 Type: System.Int32[]
@@ -68,42 +86,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Reservation
-Pipe object parameter for `Reservation`
-
-```yaml
-Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation
-Parameter Sets: PipeObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ReservationId
-Id of the `Reservation` to split
+Reservation Id.
 
 ```yaml
-Type: System.Guid
-Parameter Sets: CommandLine
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReservationOrderId
-Id of the `ReservationOrder` that contains the `Reservation` that user wants to split
-
-```yaml
-Type: System.Guid
-Parameter Sets: CommandLine
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -129,7 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -148,11 +137,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Reservations.Models.PSReservation
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Reservations.Models.PSReservation
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 
 ## NOTES
 

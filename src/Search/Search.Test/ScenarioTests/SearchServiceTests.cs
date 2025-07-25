@@ -12,80 +12,170 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 {
-    public class SearchServiceTests : RMTestBase
+    public class SearchServiceTests : SearchTestRunner
     {
-        private readonly XunitTracingInterceptor traceInterceptor;
-
-        public SearchServiceTests(ITestOutputHelper output)
+        public SearchServiceTests(ITestOutputHelper output) : base(output)
         {
-            traceInterceptor = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(this.traceInterceptor);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchService()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchService");
+            TestRunner.RunTestScript("Test-NewAzSearchService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchServiceBasic()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchServiceBasic");
+            TestRunner.RunTestScript("Test-NewAzSearchServiceBasic");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceSemanticFree()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceSemanticFree");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceSemanticStandard()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceSemanticStandard");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceSemanticDisabled()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceSemanticDisabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceDisableLocalAuth()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceDisableLocalAuth");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceApiKeyOnlyAuth()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceApiKeyOnlyAuth");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchServiceL1()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchServiceL1");
+            TestRunner.RunTestScript("Test-NewAzSearchServiceL1");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceIdentity()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServicePublicNetworkAccessDisabled()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServicePublicNetworkAccessDisabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceIpRules()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceIpRules");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSearchService()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmSearchService");
+            TestRunner.RunTestScript("Test-GetAzSearchService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSearchService()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-RemoveAzureRmSearchService");
+            TestRunner.RunTestScript("Test-RemoveAzSearchService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetSearchService()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmSearchService");
+            TestRunner.RunTestScript("Test-SetAzSearchService");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetSearchServiceAuthOptions()
+        {
+            TestRunner.RunTestScript("Test-SetAzSearchServiceAuthOptions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSearchServiceAdminKey()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzureRmSearchServiceAdminKey");
+            TestRunner.RunTestScript("Test-ManageAzSearchServiceAdminKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSearchServiceQueryKey()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ManageAzureRmSearchServiceQueryKey");
+            TestRunner.RunTestScript("Test-ManageAzSearchServiceQueryKey");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPrivateLinkResource()
+        {
+            TestRunner.RunTestScript("Test-GetAzSearchPrivateLinkResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetPrivateLinkResourcePipeline()
+        {
+            TestRunner.RunTestScript("Test-GetAzSearchPrivateLinkResourcePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSharedPrivateLinkResources()
+        {
+            TestRunner.RunTestScript("Test-ManageAzSearchSharedPrivateLinkResources");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSharedPrivateLinkResourcesPipeline()
+        {
+            TestRunner.RunTestScript("Test-ManageAzSearchSharedPrivateLinkResourcePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSharedPrivateLinkResourcesJob()
+        {
+            TestRunner.RunTestScript("Test-ManageAzSearchSharedPrivateLinkResourceJob");
         }
     }
 }

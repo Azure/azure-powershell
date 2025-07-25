@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Services;
 using System.Management.Automation;
 
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 1,
             HelpMessage = "The name of the instance.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         public virtual string InstanceName { get; set; }
 
         /// <summary>

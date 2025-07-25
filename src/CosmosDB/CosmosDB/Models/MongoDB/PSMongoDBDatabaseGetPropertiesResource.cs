@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             Id = mongoDBDatabaseGetPropertiesResource.Id;
-            _rid = mongoDBDatabaseGetPropertiesResource._rid;
-            _ts = mongoDBDatabaseGetPropertiesResource._ts;
-            _etag = mongoDBDatabaseGetPropertiesResource._etag;
+            _rid = mongoDBDatabaseGetPropertiesResource.Rid;
+            _ts = mongoDBDatabaseGetPropertiesResource.Ts;
+            _etag = mongoDBDatabaseGetPropertiesResource.Etag;
         }
 
         //

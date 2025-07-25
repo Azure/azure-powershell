@@ -207,7 +207,7 @@ function Cleanup-OldCertificates
     $certificatePattern = Get-CertificateName '*'
     Get-AzKeyVaultCertificate $keyVault |
         Where-Object {$_.Name -like $certificatePattern} |
-        Remove-AzKeyVaultCertificate -Name $_.Name -VaultName $_.VaultName -Force -Confirm:$false
+        ForEach-Object { Remove-AzKeyVaultCertificate -Name $_.Name -VaultName $_.VaultName -Force -Confirm:$false }
 
     if($global:softDeleteEnabled -eq $true) 
     {

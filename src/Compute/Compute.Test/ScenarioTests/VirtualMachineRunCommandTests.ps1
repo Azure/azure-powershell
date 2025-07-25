@@ -58,6 +58,7 @@ function Test-VirtualMachineSetRunCommand
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
 
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -89,7 +90,7 @@ function Test-VirtualMachineSetRunCommand
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize `
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd `
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOSDisk -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
@@ -152,13 +153,14 @@ function Test-VirtualMachineScaleSetVMRunCommand
 
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
+        $stnd = "Standard";
 
         $adminUsername = 'Foo12';
         $adminPassword = Get-PasswordForVM;
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -SecurityType $stnd `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `

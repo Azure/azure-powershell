@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet("Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSVirtualHub InputObject { get; set; }
 
+        public const String RTv2ChangeDesc = "Parameter is being deprecated without being replaced. Use *VHubRouteTable* commands.";
         [Parameter(
             Mandatory = true,
             HelpMessage = "The route tables associated with this Virtual Hub.")]

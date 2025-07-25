@@ -11,10 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="5.0.0" />
+    <Reference Include="System.Security" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
     <PackageReference Include="System.Management" Version="4.5.0" />
-	</ItemGroup>
+  </ItemGroup>
 
   <ItemGroup>
     <WinPlatformAssemblies Include="$(RepoSrc)lib\Microsoft.Win32.Registry\win\*.dll" />
@@ -23,6 +23,11 @@
   
   <ItemGroup>
     <EmbeddedResource Include="Config.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\StorageSync.Helpers\StorageSync.Helper.csproj" />
+    <ProjectReference Include="..\StorageSync.Management.Sdk\StorageSync.Management.Sdk.csproj" />
   </ItemGroup>
   
   <ItemGroup>
@@ -50,5 +55,7 @@
   </ItemGroup>
 
 
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

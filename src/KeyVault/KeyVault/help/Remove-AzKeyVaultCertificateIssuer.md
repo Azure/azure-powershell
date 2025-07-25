@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: FC14F6BF-BD8F-45E0-9CAA-A937E5E56288
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultcertificateissuer
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultcertificateissuer
 schema: 2.0.0
 ---
 
@@ -16,13 +16,15 @@ Deletes a certificate issuer from a key vault.
 ### Default (Default)
 ```
 Remove-AzKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Remove-AzKeyVaultCertificateIssuer [-InputObject] <PSKeyVaultCertificateIssuerIdentityItem> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,8 +34,10 @@ The **Remove-AzKeyVaultCertificateIssuer** cmdlet deletes a certificate issuer f
 
 ### Example 1: Remove a certificate issuer
 ```powershell
-PS C:\> Remove-AzKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force
+Remove-AzKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force
+```
 
+```output
 AccountId           :
 ApiKey              :
 OrganizationDetails :
@@ -187,5 +191,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzKeyVaultCertificateIssuer](./Get-AzKeyVaultCertificateIssuer.md)
 
 [Set-AzKeyVaultCertificateIssuer](./Set-AzKeyVaultCertificateIssuer.md)
-
-

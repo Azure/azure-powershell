@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/undo-azkeyvaultmanagedstorageaccountremoval
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultmanagedstorageaccountremoval
 schema: 2.0.0
 ---
 
@@ -15,13 +15,15 @@ Recovers a previously deleted KeyVault-managed storage account.
 ### Default (Default)
 ```
 Undo-AzKeyVaultManagedStorageAccountRemoval [-VaultName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Undo-AzKeyVaultManagedStorageAccountRemoval [-InputObject] <PSDeletedKeyVaultManagedStorageAccountIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,9 +33,11 @@ The **Undo-AzKeyVaultManagedStorageAccountRemoval** command recovers a previousl
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzKeyVaultManagedStorageAccount -VaultName myVault -Name myAccount -InRemovedState
-PS C:\> Undo-AzKeyVaultManagedStorageAccountRemoval -VaultName myVault -Name myAccount
+Get-AzKeyVaultManagedStorageAccount -VaultName myVault -Name myAccount -InRemovedState
+Undo-AzKeyVaultManagedStorageAccountRemoval -VaultName myVault -Name myAccount
+```
 
+```output
 Id                  : https://myvault.vault.azure.net:443/storage/myaccount
 Vault Name          : myVault
 AccountName         : myAccount

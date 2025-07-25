@@ -12,50 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class DeviceSecurityGroupsTests
+    public class DeviceSecurityGroupsTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public DeviceSecurityGroupsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DeviceSecurityGroupsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceIdScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmDeviceSecurityGroup-ResourceIdScope");
+            TestRunner.RunTestScript("Get-AzureRmDeviceSecurityGroup-ResourceIdScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceIdLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetResourceIdLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
+            TestRunner.RunTestScript("Set-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveDeviceSecurityGroups()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
+            TestRunner.RunTestScript("Remove-AzureRmDeviceSecurityGroup-ResourceIdLevelResource");
         }
     }
 }

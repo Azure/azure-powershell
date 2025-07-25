@@ -31,5 +31,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string MailNickname { get; set; }
 
         public string Mail { get; set; }
+
+        public string ImmutableId { get; set; }
     }
 }

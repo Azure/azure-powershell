@@ -278,7 +278,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
             else
             {
-                return new X509Certificate2();
+                byte[] emptyCertificateData = Array.Empty<byte>();
+                return new X509Certificate2(emptyCertificateData);
             }
         }
 
@@ -302,7 +303,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         /// Converts unix asterisk based file pattern to regex
         /// </summary>
         /// <param name="wildcard">Asterisk based pattern</param>
-        /// <returns>Regeular expression of null is empty</returns>
+        /// <returns>Regular expression of null is empty</returns>
         private static string WildcardToRegex(string wildcard)
         {
             if (wildcard == null || wildcard == "") return wildcard;
@@ -382,7 +383,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 () =>
                 {
                     writeLocks[path] = false;
-                    virtualStore[path] = Encoding.UTF8.GetString(buffer);
+                    // trim \0 otherwise json fails to parse
+                    virtualStore[path] = Encoding.UTF8.GetString(buffer).TrimEnd('\0');
                 }
              );
         }

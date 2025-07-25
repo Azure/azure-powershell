@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
+using Microsoft.Azure.Commands.Sql.ReplicationLink.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
@@ -25,6 +26,10 @@ using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure.OData;
+using Microsoft.Azure.Management.Sql;
+using Newtonsoft.Json;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -42,6 +47,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// Gets or sets the AzureSqlElasticPoolCommunicator which has all the needed management clients
         /// </summary>
         private AzureSqlElasticPoolCommunicator ElasticPoolCommunicator { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AzureSqlDatabaseReplicationCommunicator which has all the needed management clients
+        /// </summary>
+        private AzureSqlDatabaseReplicationCommunicator ReplicationLinkCommunicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -63,6 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             _subscription = context?.Subscription;
             Communicator = new AzureSqlDatabaseCommunicator(Context);
             ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Context);
+            ReplicationLinkCommunicator = new AzureSqlDatabaseReplicationCommunicator(Context);
         }
 
         /// <summary>
@@ -71,11 +82,62 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="databaseName">The name of the Azure Sql Database</param>
+        /// <param name="oDataQuery">Additional query filter parameters</param>
         /// <returns>The Azure Sql Database object</returns>
-        internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
+        internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName, ODataQuery<Management.Sql.Models.Database> oDataQuery = null)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, databaseName);
+            var resp = Communicator.Get(resourceGroupName, serverName, databaseName, oDataQuery);
             return CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
+        }
+
+        /// <summary>
+        /// Check If Database has GeoDr link.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        /// <returns>True if database has GeoDr links</returns>
+        internal bool CheckIfDatabaseHasGeoDrLink(string resourceGroupName, string serverName, string databaseName)
+        {
+            var resp = ReplicationLinkCommunicator.ListLinksV2(resourceGroupName, serverName, databaseName);
+            return resp != null && resp.Any();
+        }
+
+        /// <summary>
+        /// Check if it's a Hyperscale Pool.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="elasticPoolName">The name of the Azure Sql Database</param>
+        /// <returns>True if it's a Hyperscale elastic pool</returns>
+        internal bool CheckIfHyperscalePool(string resourceGroupName, string serverName, string elasticPoolName)
+        {
+            if (elasticPoolName == null)
+                return false;
+            var resp = ElasticPoolCommunicator.Get(resourceGroupName, serverName, elasticPoolName);
+            return resp != null && resp.Edition == "Hyperscale";
+        }
+
+        /// <summary>
+        /// Revalidates database transparent data encryption protector.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        internal Rest.Azure.AzureOperationResponse RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+            return Communicator.RevalidateDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reverts the database transparent data encryption protector.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        internal Rest.Azure.AzureOperationResponse RevertDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+            return Communicator.RevertDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -100,6 +162,23 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         internal ICollection<AzureSqlDatabaseModel> ListDatabases(string resourceGroupName, string serverName)
         {
             var resp = Communicator.List(resourceGroupName, serverName);
+
+            return resp.Select((db) =>
+            {
+                return CreateDatabaseModelFromResponse(resourceGroupName, serverName, db);
+            }).ToList();
+        }
+
+        /// <summary>
+        /// Gets a list of Azure Sql Databases.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="elasticPoolName">The name of the Azure Sql Elastic Pool</param>
+        /// <returns>A list of database objects</returns>
+        internal ICollection<AzureSqlDatabaseModel> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName)
+        {
+            var resp = ElasticPoolCommunicator.ListDatabases(resourceGroupName, serverName, elasticPoolName);
 
             return resp.Select((db) =>
             {
@@ -160,8 +239,21 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 LicenseType = model.Database.LicenseType,
                 AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
                 MinCapacity = model.Database.MinimumCapacity,
-                ReadReplicaCount = model.Database.ReadReplicaCount,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.Database.BackupStorageRedundancy),
+                HighAvailabilityReplicaCount = model.Database.HighAvailabilityReplicaCount,
+                RequestedBackupStorageRedundancy = model.Database.RequestedBackupStorageRedundancy,
+                SecondaryType = model.Database.SecondaryType,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
+                IsLedgerOn = model.Database.EnableLedger,
+                PreferredEnclaveType = model.Database.PreferredEnclaveType,
+                Identity = model.Database.Identity,
+                Keys = model.Database.Keys,
+                EncryptionProtector = model.Database.EncryptionProtector,
+                FederatedClientId = model.Database.FederatedClientId,
+                EncryptionProtectorAutoRotation = model.Database.EncryptionProtectorAutoRotation,
+                UseFreeLimit = model.Database.UseFreeLimit,
+                FreeLimitExhaustionBehavior = model.Database.FreeLimitExhaustionBehavior,
+                ManualCutover = model.Database.ManualCutover,
+                PerformCutover = model.Database.PerformCutover
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
@@ -288,6 +380,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 var response = Communicator.ListOperations(resourceGroupName, serverName, databaseName);
                 IEnumerable<AzureSqlDatabaseActivityModel> list = response.Select((r) =>
                 {
+
                     return new AzureSqlDatabaseActivityModel()
                     {
                         DatabaseName = r.DatabaseName,
@@ -307,7 +400,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                         },
                         EstimatedCompletionTime = r.EstimatedCompletionTime,
                         Description = r.Description,
-                        IsCancellable = r.IsCancellable
+                        IsCancellable = r.IsCancellable,
+                        OperationPhaseDetails = r.OperationPhaseDetails,
                     };
                 });
 
@@ -392,7 +486,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
-        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
+        /// Map external BackupStorageRedundancy value (GeoZone/Geo/Local/Zone) to internal (GZRS/GRS/LRS/ZRS)
         /// </summary>
         /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
         /// <returns>internal backupStorageRedundancy</returns>
@@ -406,6 +500,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
             switch (backupStorageRedundancy.ToLower())
             {
+                case "geozone":
+                    return "GZRS";
                 case "geo":
                     return "GRS";
                 case "local":

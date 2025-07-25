@@ -1,0 +1,126 @@
+{
+  "Get-AzNetworkFabricNeighborGroup+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/neighborGroups?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/neighborGroups?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "163062f6-ef05-4d18-b07c-19e318109b88" ],
+        "CommandName": [ "Get-AzNetworkFabricNeighborGroup" ],
+        "FullCommandName": [ "Get-AzNetworkFabricNeighborGroup_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "168fcb36-2e8b-4172-9308-968202e772d9", "85d0a3de-3581-49be-89fe-c3f4d86e5e43", "404be48f-24dc-4d11-b05a-ca0f06d18f1a", "f29a8304-4db8-4ea9-9cbb-55ab325c2e3e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "4b1f33c5-9437-4235-909a-0ea77d760838" ],
+        "x-ms-correlation-request-id": [ "4b1f33c5-9437-4235-909a-0ea77d760838" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230921T143313Z:4b1f33c5-9437-4235-909a-0ea77d760838" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 21 Sep 2023 14:33:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "1319" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-terraform-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/neighborgroupName\",\"name\":\"neighborgroupName\",\"type\":\"microsoft.managednetworkfabric/neighborgroups\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-21T10:52:59.8683748Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-21T10:52:59.8683748Z\"},\"properties\":{\"destination\":{\"ipv4Addresses\":[\"10.10.10.10\"],\"ipv6Addresses\":[\"2F::/100\"]},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"name\":\"NeighborGroupName\",\"type\":\"microsoft.managednetworkfabric/neighborgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-21T14:31:12.0279771Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-21T14:31:12.0279771Z\"},\"properties\":{\"destination\":{\"ipv4Addresses\":[\"10.10.10.10\"],\"ipv6Addresses\":[\"2F::/100\"]},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkFabricNeighborGroup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "9b8e21f1-1dc0-419c-b837-2d9fec176aee" ],
+        "CommandName": [ "Get-AzNetworkFabricNeighborGroup" ],
+        "FullCommandName": [ "Get-AzNetworkFabricNeighborGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c025791-0000-0100-0000-650c53b00000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4d9b99ef-a9f9-4665-ac1a-069ba688fc38" ],
+        "x-ms-correlation-request-id": [ "3fba460f-e398-47f8-821e-82fa54dc7492" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230921T143314Z:3fba460f-e398-47f8-821e-82fa54dc7492" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 21 Sep 2023 14:33:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "651" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"name\":\"NeighborGroupName\",\"type\":\"microsoft.managednetworkfabric/neighborgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-21T14:31:12.0279771Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-21T14:31:12.0279771Z\"},\"properties\":{\"destination\":{\"ipv4Addresses\":[\"10.10.10.10\"],\"ipv6Addresses\":[\"2F::/100\"]},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkFabricNeighborGroup+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "6f26bcd8-6960-45ef-91ed-69de1a6c02de" ],
+        "CommandName": [ "Get-AzNetworkFabricNeighborGroup" ],
+        "FullCommandName": [ "Get-AzNetworkFabricNeighborGroup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "08b128fc-3a35-499d-91a6-0f25da0addb3", "7c969096-deaf-4bec-ba30-a2cf61a0dee5", "77e3b4a4-42cd-44e9-9c91-791eba9dce34", "30822ddb-9140-401c-8b29-bd107a637c0e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "78eb9aa3-d2ff-43c5-a45e-e6f9e5141d1d" ],
+        "x-ms-correlation-request-id": [ "78eb9aa3-d2ff-43c5-a45e-e6f9e5141d1d" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230921T143314Z:78eb9aa3-d2ff-43c5-a45e-e6f9e5141d1d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 21 Sep 2023 14:33:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "663" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"name\":\"NeighborGroupName\",\"type\":\"microsoft.managednetworkfabric/neighborgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-21T14:31:12.0279771Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-21T14:31:12.0279771Z\"},\"properties\":{\"destination\":{\"ipv4Addresses\":[\"10.10.10.10\"],\"ipv6Addresses\":[\"2F::/100\"]},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

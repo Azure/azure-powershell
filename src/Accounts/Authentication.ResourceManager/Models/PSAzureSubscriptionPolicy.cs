@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// object constructor
         /// </summary>
-        /// <param name="azureSubscriptionPolicies">Json string to convert</param>
+        /// <param name="subscriptionPolicies">Json string to convert</param>
         public PSAzureSubscriptionPolicy(SubscriptionPolicies subscriptionPolicies)
         {
             if (subscriptionPolicies != null)

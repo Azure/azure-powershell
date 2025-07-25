@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 return resourceInfo.ResourceGroupName;
             }
-            
+
             return ResourceGroupName;
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 return resourceInfo.ResourceName;
             }
-            
+
             return InstanceName;
         }
 
@@ -112,6 +112,14 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
         protected override AzureSqlInstanceActiveDirectoryAdministratorAdapter InitModelAdapter()
         {
             return new AzureSqlInstanceActiveDirectoryAdministratorAdapter(DefaultProfile.DefaultContext);
+        }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
         }
     }
 }

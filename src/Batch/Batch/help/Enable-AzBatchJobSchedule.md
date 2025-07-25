@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 02F91510-F14F-4401-BC5F-06B0874AEB4B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/enable-azbatchjobschedule
+online version: https://learn.microsoft.com/powershell/module/az.batch/enable-azbatchjobschedule
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ After you enable a job schedule, jobs can be created according to that schedule.
 ## EXAMPLES
 
 ### Example 1: Enable a job schedule
-```
-PS C:\>Enable-AzBatchJobSchedule -Id "JobSchedule17" -BatchContext $Context
+```powershell
+Enable-AzBatchJobSchedule -Id "JobSchedule17" -BatchContext $Context
 ```
 
 This command enables the job schedule that has the ID JobSchedule17.
@@ -36,7 +36,7 @@ Use the **Get-AzBatchAccountKey** cmdlet to assign a context to the $Context var
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

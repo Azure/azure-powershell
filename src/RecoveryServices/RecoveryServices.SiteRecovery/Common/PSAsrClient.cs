@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with
         ///     required current subscription.
         /// </summary>
-        /// <param name="azureSubscription">Azure Subscription</param>
+        /// <param name="azureProfile">Azure context.</param>
         public PSRecoveryServicesClient(
             IAzureContextContainer azureProfile)
         {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Generating that authentication token here and sending it via http headers.
         /// </summary>
         /// <param name="clientRequestId">Unique identifier for the client's request</param>
-        /// <param name="dateTime">Optional , datetime used for header genertion</param>
+        /// <param name="dateTime">Optional , datetime used for header generation</param>
         /// <returns>The authentication token for the provider</returns>
         public static string GenerateAgentAuthenticationHeader(
             string clientRequestId,
@@ -397,8 +397,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     AzureContext,
                     AzureEnvironment.Endpoint.ResourceManager);
 
-            siteRecoveryClient.ResourceGroupName = asrVaultCreds.ResourceGroupName;
-            siteRecoveryClient.ResourceName = asrVaultCreds.ResourceName;
             siteRecoveryClient.SubscriptionId = cloudCredentials.SubscriptionId;
             siteRecoveryClient.BaseUri = endPointUri;
 

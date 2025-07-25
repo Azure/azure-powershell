@@ -59,10 +59,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
-            Mandatory = true)]
+            Mandatory = true,
+            HelpMessage = "Specifies the ASR protection container object for the primary protection container to be used in the mapping. To get the ASR protection container in the Recovery Service Container run the Get-AzRecoveryServicesAsrProtectionContainer cmdlet.")]
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
-            Mandatory = true)]
+            Mandatory = true,
+            HelpMessage = "Specifies the ASR protection container object for the primary protection container to be used in the mapping. To get the ASR protection container in the Recovery Service Container run the Get-AzRecoveryServicesAsrProtectionContainer cmdlet.")]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer PrimaryProtectionContainer { get; set; }
 
@@ -141,6 +143,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 string.Compare(
                     this.Policy.ReplicationProvider,
                     Constants.InMageAzureV2,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.InMageRcm,
                     StringComparison.OrdinalIgnoreCase) !=
                 0)
             {

@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Network
 
             string virtualHubResourceGroupName = this.ResourceGroupName; // default to common RG
             var resolvedVirtualHub = new VirtualHub();
-            /// Resolve and Set the Virtual HUb
+            // Resolve and Set the Virtual Hub
             if (this.VirtualHubId != null) // When Id is provided
             {
                 var resourceInfo = new ResourceIdentifier(VirtualHubId);

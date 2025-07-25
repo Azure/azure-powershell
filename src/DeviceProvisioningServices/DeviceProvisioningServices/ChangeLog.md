@@ -19,6 +19,25 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.4
+* Upgraded nuget package to signed package.
+
+## Version 0.10.3
+* Removed Microsoft.Azure.Management.DeviceProvisioningServices 0.10.0-preview dependencies
+* Added Microsoft.Azure.PowerShell.DeviceProvisioningServices.Management.Sdk
+
+## Version 0.10.2
+* Fixed secrets exposure in example documentation.
+
+## Version 0.10.1
+* Removed the outdated deps.json file.
+
+## Version 0.10.0
+* Allowed update of attestation information (e.g. keys, certificates) for exsting device enrollments and enrollment groups
+
+## Version 0.9.0
+* Allow tags in IoT Device Provisioning Service create cmdlet.
+
 ## Version 0.8.0
 * Update devices provisioning service sdk
 

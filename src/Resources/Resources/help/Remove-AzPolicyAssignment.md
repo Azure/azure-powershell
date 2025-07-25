@@ -1,45 +1,48 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: 36399302-3EA5-45A3-A042-536CC7EC2E6D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azpolicyassignment
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicyassignment
 schema: 2.0.0
 ---
 
 # Remove-AzPolicyAssignment
 
 ## SYNOPSIS
-Removes a policy assignment.
+This operation deletes a policy assignment, given its name and the scope it was created in.
+The scope of a policy assignment is the part of its ID preceding '/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### Name (Default)
 ```
-Remove-AzPolicyAssignment -Name <String> [-Scope <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyAssignment -Name <String> [-Scope <String>] [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### IdParameterSet
+### Id
 ```
-Remove-AzPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzPolicyAssignment -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
+### InputObject
 ```
-Remove-AzPolicyAssignment -InputObject <PsPolicyAssignment> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyAssignment -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzPolicyAssignment** cmdlet removes the specified policy assignment.
+This operation deletes a policy assignment, given its name and the scope it was created in.
+The scope of a policy assignment is the part of its ID preceding '/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
 
 ## EXAMPLES
 
 ### Example 1: Remove policy assignment by name and scope
-```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-PS C:\> Remove-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -Confirm
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+Remove-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -Force
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
@@ -48,10 +51,23 @@ The second command removes the policy assignment named PolicyAssignment07 that w
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 2: Remove policy assignment by ID
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+Remove-AzPolicyAssignment -Id $PolicyAssignment.Id -Confirm:$false
 ```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
-PS C:\> Remove-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -Confirm
+
+The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
+The second command gets the policy assignment at a resource group level, and then stores it in the $PolicyAssignment variable.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
+The final command removes the policy assignment that the **ResourceId** property of $PolicyAssignment identifies.
+
+### Example 3: [Backcompat] Remove policy assignment by ID
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
+$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
+Remove-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -Confirm:$false -BackwardCompatible
+True
 ```
 
 The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
@@ -61,12 +77,11 @@ The final command removes the policy assignment that the **ResourceId** property
 
 ## PARAMETERS
 
-### -ApiVersion
-Specifies the version of the resource provider API to use.
-If you do not specify a version, this cmdlet uses the latest available version.
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,12 +93,28 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+When $true, skip confirmation prompts
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -93,12 +124,13 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Specifies the fully qualified resource ID for the policy assignment that this cmdlet removes.
+The ID of the policy assignment to delete.
+Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
+Parameter Sets: Id
+Aliases: ResourceId, PolicyAssignmentId
 
 Required: True
 Position: Named
@@ -108,11 +140,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The policy assignment object to remove that was output from another cmdlet.
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
-Parameter Sets: InputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -123,12 +156,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the policy assignment that this cmdlet removes.
+The name of the policy assignment to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
-Aliases:
+Parameter Sets: Name
+Aliases: PolicyAssignmentName
 
 Required: True
 Position: Named
@@ -137,8 +170,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Pre
-Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -153,11 +186,12 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Specifies the scope at which the policy is applied.
+The scope of the policy assignment.
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: Name
 Aliases:
 
 Required: False
@@ -177,7 +211,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -193,7 +227,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -202,6 +236,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
 
 ### System.String
 
@@ -212,11 +248,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzPolicyAssignment](./Get-AzPolicyAssignment.md)
-
-[New-AzPolicyAssignment](./New-AzPolicyAssignment.md)
-
-[Set-AzPolicyAssignment](./Set-AzPolicyAssignment.md)
-
-

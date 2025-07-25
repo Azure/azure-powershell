@@ -1,0 +1,14 @@
+pull_request:
+  comment:
+    - azure_pipeline:
+        allow_list:
+          - "azure-powershell - powershell-core"
+          - "azure-powershell - windows-powershell"
+        result_path: "/PipelineResult/PipelineResult.json"
+      group_by_keys:
+        - "Module"
+        - "PhaseName"
+        - "Platform"
+      template_path: "templates/PRComment.handlebars"
+      comment_title: "PRComment"
+      init_comment: "Thanks for your contribution! The pull request validation has started. Please revisit this comment for updated status."

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: DB0A8E4B-AD3F-4BAC-A0B2-031913E019D4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchpool
+online version: https://learn.microsoft.com/powershell/module/az.batch/remove-azbatchpool
 schema: 2.0.0
 ---
 
@@ -25,16 +25,16 @@ You are prompted for confirmation unless you use the *Force* parameter.
 ## EXAMPLES
 
 ### Example 1: Delete a Batch pool by pool ID
-```
-PS C:\>Remove-AzBatchPool -Id "MyPool" -BatchContext $Context
+```powershell
+Remove-AzBatchPool -Id "MyPool" -BatchContext $Context
 ```
 
 This command deletes the pool with ID MyPool.
 The user is prompted for confirmation before the delete operation takes place.
 
 ### Example 2: Delete all Batch pools by force
-```
-PS C:\>Get-AzBatchPool -BatchContext $Context | Remove-AzBatchPool -Force -BatchContext $Context
+```powershell
+Get-AzBatchPool -BatchContext $Context | Remove-AzBatchPool -Force -BatchContext $Context
 ```
 
 This command deletes all Batch pools.
@@ -44,7 +44,7 @@ Because the *Force* parameter is present, the confirmation prompt is suppressed.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

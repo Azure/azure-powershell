@@ -10,8 +10,10 @@
     <RootNamespace>$(LegacyAssemblyPrefix)Management.$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.1-preview" />
+    <ProjectReference Include="..\PowerBIEmbedded.Management.Sdk\PowerBIEmbedded.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

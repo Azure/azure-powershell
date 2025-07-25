@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         private const string NetWorkRuleStringParameterSet = "NetWorkRuleString";
 
         /// <summary>
-        /// IpRule in String paremeter set name
+        /// IpRule in String parameter set name
         /// </summary>
         private const string IpRuleStringParameterSet = "IpRuleString";
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             if (ShouldProcess(this.Name, "Remove Cognitive Services Account Networkrules"))
             {
-                var account = this.CognitiveServicesClient.Accounts.GetProperties(
+                var account = this.CognitiveServicesClient.Accounts.Get(
                                         this.ResourceGroupName,
                                         this.Name);
                 NetworkRuleSet accountACL = account.Properties.NetworkAcls;
@@ -123,12 +123,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                         break;
                     case IpRuleStringParameterSet:
-                        if (accountACL.IpRules == null)
-                            accountACL.IpRules = new List<IpRule>();
+                        if (accountACL.IPRules == null)
+                            accountACL.IPRules = new List<IpRule>();
                         foreach (string s in IpAddressOrRange)
                         {
                             IpRule rule = new IpRule(s);
-                            if (!RemoveIpRule(accountACL.IpRules, rule))
+                            if (!RemoveIpRule(accountACL.IPRules, rule))
                                 throw new ArgumentOutOfRangeException("IPAddressOrRange", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.Value));
                         }
                         break;
@@ -142,29 +142,29 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                         break;
                     case IpRuleObjectParameterSet:
-                        if (accountACL.IpRules == null)
-                            accountACL.IpRules = new List<IpRule>();
+                        if (accountACL.IPRules == null)
+                            accountACL.IPRules = new List<IpRule>();
                         foreach (PSIpRule rule in IpRule)
                         {
-                            if (!RemoveIpRule(accountACL.IpRules, rule.ToIpRule()))
+                            if (!RemoveIpRule(accountACL.IPRules, rule.ToIpRule()))
                                 throw new ArgumentOutOfRangeException("IPRule", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IpAddress));
                         }
                         break;
                 }
 
 
-                var properties = new CognitiveServicesAccountProperties();
+                var properties = new AccountProperties();
                 properties.NetworkAcls = accountACL;
                 this.CognitiveServicesClient.Accounts.Update(
                     this.ResourceGroupName,
                     this.Name,
-                    new CognitiveServicesAccount()
+                    new Account()
                     {
                         Properties = properties
                     }
                     );
 
-                account = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
+                account = this.CognitiveServicesClient.Accounts.Get(this.ResourceGroupName, this.Name);
 
                 switch (ParameterSetName)
                 {
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         /// </summary>
         /// <param name="ruleList">The IpRule List</param>
         /// <param name="ruleToRemove">The IP Rule to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <returns>true if remove success</returns>
         public bool RemoveIpRule(IList<IpRule> ruleList, IpRule ruleToRemove)
         {
             foreach (IpRule rule in ruleList)
@@ -203,8 +203,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         /// Remove one NetworkRule from NetworkRule List
         /// </summary>
         /// <param name="ruleList">The NetworkRule List</param>
-        /// <param name="ruleToRemove">The NetworkRulee to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <param name="ruleToRemove">The NetworkRule to remove</param>
+        /// <returns>true if remove success</returns>
         public bool RemoveNetworkRule(IList<VirtualNetworkRule> ruleList, VirtualNetworkRule ruleToRemove)
         {
             foreach (VirtualNetworkRule rule in ruleList)

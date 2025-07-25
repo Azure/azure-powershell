@@ -48,29 +48,29 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = SettingsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The settings.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable Settings { get; set; }
 
         [Parameter(
             ParameterSetName = SettingsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected settings.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable ProtectedSettings { get; set; }
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The setting raw string.")]
-        [ValidateNotNullOrEmpty]
         public string SettingString { get; set; }
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected setting raw string.")]
-        [ValidateNotNullOrEmpty]
         public string ProtectedSettingString { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public bool? EnableAutomaticUpgrade { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.Compute
                             : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
                     }
 
+                    if (string.IsNullOrEmpty(this.Location))
+                    {
+                        this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                    }
+
                     var parameters = new VirtualMachineExtension
                     {
                         Location = this.Location,
@@ -102,7 +107,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Settings = this.Settings,
                         ProtectedSettings = this.ProtectedSettings,
                         AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
-                        ForceUpdateTag = this.ForceRerun
+                        ForceUpdateTag = this.ForceRerun,
+                        EnableAutomaticUpgrade = this.EnableAutomaticUpgrade
                     };
 
                     if (NoWait.IsPresent)

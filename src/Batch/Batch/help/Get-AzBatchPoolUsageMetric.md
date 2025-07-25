@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 4B373447-3078-4C1F-932E-8337AB170DEB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolusagemetric
+online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchpoolusagemetric
 schema: 2.0.0
 ---
 
@@ -25,11 +25,14 @@ You can get the statistics for a specific pool and for a time range.
 ## EXAMPLES
 
 ### Example 1: Get pool usage metrics for a time range
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+$StartTime = Get-Date -Date "2016-05-16 00:00:00Z"
+$EndTime = Get-Date -Date "2016-05-16 01:00:00Z"
+Get-AzBatchPoolUsageMetric -StartTime $StartTime -EndTime $EndTime -BatchContext $context
 ```
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
-PS C:\> $StartTime = Get-Date -Date "2016-05-16 00:00:00Z"
-PS C:\> $EndTime = Get-Date -Date "2016-05-16 01:00:00Z"
-PS C:\> Get-AzBatchPoolUsageMetric -StartTime $StartTime -EndTime $EndTime -BatchContext $context
+
+```output
 DataEgressGiB      : 6.68875873088837E-06
 DataIngressGiB     : 1.9485130906105E-05
 EndTime            : 5/16/2016 12:30:00 AM
@@ -70,8 +73,11 @@ The commands store these values in the $StartTime and $EndTime variables for use
 The final command returns all of the pool usage metrics, aggregated by pool, across time interval between the specified start and end times.
 
 ### Example 2: Get pool usage metrics by using a filter
+```powershell
+Get-AzBatchPoolUsageMetric -Filter "poolId eq 'ContosoPool'" -BatchContext $Context
 ```
-PS C:\>Get-AzBatchPoolUsageMetric -Filter "poolId eq 'ContosoPool'" -BatchContext $Context
+
+```output
 DataEgressGiB      : 9.0496614575386E-06
 DataIngressGiB     : 2.60043889284134E-05
 EndTime            : 5/16/2016 5:30:00 PM
@@ -88,7 +94,7 @@ The command specifies a filter string to specify that pool, and uses the same $C
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -184,7 +190,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
-
-[Get-AzBatchPoolStatistics](./Get-AzBatchPoolStatistic.md)
-
-[Get-AzBatchJobStatistics](./Get-AzBatchJobStatistic.md)

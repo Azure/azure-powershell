@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitConnectionConfig", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCircuit))]
     public class RemoveAzureExpressRouteCircuitConnectionConfigCommand : ExpressRouteCircuitBaseCmdlet
     {
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             Position = 1,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "Express Route Circuit Peering intiating connection")]
+            HelpMessage = "Express Route Circuit Peering initiating connection")]
         [ValidateNotNullOrEmpty]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
@@ -70,18 +69,20 @@ namespace Microsoft.Azure.Commands.Network
 
             if (connection != null)
             {
-                if (AddressTypeUtils.IsIpv4(this.AddressPrefixType) || string.IsNullOrWhiteSpace(this.AddressPrefixType))
+                if ((string.IsNullOrWhiteSpace(this.AddressPrefixType) || AddressTypeUtils.IsIpv4(this.AddressPrefixType)) &&
+                    connection.IPv6CircuitConnectionConfig != null)
                 {
+                    // call is to remove ipv4 and ipv6 exists
                     connection.AddressPrefix = null;
                 }
-
-                else if (AddressTypeUtils.IsIpv6(this.AddressPrefixType))
+                else if (AddressTypeUtils.IsIpv6(this.AddressPrefixType) && connection.AddressPrefix != null)
                 {
+                    // call is to remove ipv6 and ipv4 exists
                     connection.IPv6CircuitConnectionConfig = null;
                 }
-
-                else if (AddressTypeUtils.IsAll(this.AddressPrefixType))
+                else
                 {
+                    // remove ipv4 call and ipv6 gr is already null OR remove ipv6 call and ipv4 gr is already null OR remove all
                     peering.Connections.Remove(connection);
                 }
             }

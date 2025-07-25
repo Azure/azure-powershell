@@ -1,46 +1,41 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/test-azcontainerregistrywebhook
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/test-azcontainerregistrywebhook
 schema: 2.0.0
 ---
 
 # Test-AzContainerRegistryWebhook
 
 ## SYNOPSIS
-Triggers a webhook ping event.
+Triggers a ping event to be sent to the webhook.
 
 ## SYNTAX
 
-### ResourceIdParameterSet (Default)
+### Ping (Default)
 ```
-Test-AzContainerRegistryWebhook -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### NameResourceGroupParameterSet
-```
-Test-AzContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzContainerRegistryWebhook -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### WebhookObjectParameterSet
+### PingByWebhook
 ```
-Test-AzContainerRegistryWebhook -Webhook <PSContainerRegistryWebhook>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzContainerRegistryWebhook [-SubscriptionId <String>] -Webhook <IWebhook> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Test-AzContainerRegistryWebhook cmdlet triggers a webhook ping event.
+Triggers a ping event to be sent to the webhook.
 
 ## EXAMPLES
 
 ### Example 1: Triggers a webhook ping event.
 ```powershell
-PS C:\> Test-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
+Test-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name "webhook001"
+```
 
-Id
---
+```output
 c5950af0-c8d0-4924-9873-1ba7da5cbf83
 ```
 
@@ -49,12 +44,12 @@ Triggers a webhook ping event.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -64,77 +59,111 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Webhook Name.
+The name of the webhook.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: Ping
 Aliases: WebhookName, ResourceName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -RegistryName
-Container Registry Name.
+The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: Ping
 Aliases: ContainerRegistryName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: Ping
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The container registry Webhook resource id
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: Id
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Webhook
-Container Registry Object.
+The webhook object.
+To construct, see NOTES section for WEBHOOK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
-Parameter Sets: WebhookObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+Parameter Sets: PingByWebhook
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,22 +172,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
-
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo
+### System.String
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzContainerRegistryWebhook](New-AzContainerRegistryWebhook.md)
-
-[Get-AzContainerRegistryWebhook](Get-AzContainerRegistryWebhook.md)
-
-[Update-AzContainerRegistryWebhook](Update-AzContainerRegistryWebhook.md)
-
-[Remove-AzContainerRegistryWebhook](Remove-AzContainerRegistryWebhook.md)

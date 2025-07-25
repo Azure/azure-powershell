@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
                                                     string routerName,
                                                     string ipConfigName)
         {
-            var ipConfigModel = this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.Get(resourceGroupName, routerName, ipConfigName);
+            var ipConfigModel = this.NetworkClient.NetworkManagementClient.VirtualHubIPConfiguration.Get(resourceGroupName, routerName, ipConfigName);
             var ipconfig = NetworkResourceManagerProfile.Mapper.Map<CNM.PSHubIpConfiguration>(ipConfigModel);
             virtualHubModel.IpConfigurations = new List<CNM.PSHubIpConfiguration>();
             virtualHubModel.IpConfigurations.Add(ipconfig);

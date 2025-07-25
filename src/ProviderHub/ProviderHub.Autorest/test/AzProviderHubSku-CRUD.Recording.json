@@ -1,0 +1,148 @@
+{
+  "AzProviderHubSku-CRUD+[NoContext]+Create, get, and delete a sku resource type+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees/skus/default?api-version=2020-11-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees/skus/default?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"skuSettings\": [\r\n      {\r\n        \"name\": \"freeSku\",\r\n        \"tier\": \"Tier1\",\r\n        \"kind\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"freeSku2\",\r\n        \"tier\": \"Tier1\",\r\n        \"kind\": \"Standard\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "259" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "7206704c-bf09-4f29-952b-eb17206f1b25" ],
+        "x-ms-correlation-request-id": [ "0ebcd510-2b9c-45c8-b799-5d2dc3dc5be1" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210917T234642Z:0ebcd510-2b9c-45c8-b799-5d2dc3dc5be1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 23:46:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "211" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"skuSettings\":[{\"name\":\"freeSku\",\"tier\":\"Tier1\",\"kind\":\"Standard\"},{\"name\":\"freeSku2\",\"tier\":\"Tier1\",\"kind\":\"Standard\"}]},\"type\":\"Microsoft.ProviderHub/providerRegistrationsskus\",\"name\":\"default\"}"
+    }
+  },
+  "AzProviderHubSku-CRUD+[NoContext]+Create, get, and delete a sku resource type+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees/skus?api-version=2020-11-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees/skus?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "0ac5cd25-abc0-49b9-8b21-ec404b33aded" ],
+        "CommandName": [ "Get-AzProviderHubSku" ],
+        "FullCommandName": [ "Get-AzProviderHubSku_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "e90912fe-5a3a-4c35-8b90-0b1c6767e256" ],
+        "x-ms-correlation-request-id": [ "6f3cbb05-a1fa-4cf8-a14d-0d23e34716f7" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210917T234642Z:6f3cbb05-a1fa-4cf8-a14d-0d23e34716f7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 23:46:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "223" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"skuSettings\":[{\"name\":\"freeSku\",\"tier\":\"Tier1\",\"kind\":\"Standard\"},{\"name\":\"freeSku2\",\"tier\":\"Tier1\",\"kind\":\"Standard\"}]},\"type\":\"Microsoft.ProviderHub/providerRegistrationsskus\",\"name\":\"default\"}]}"
+    }
+  },
+  "AzProviderHubSku-CRUD+[NoContext]+Create, get, and delete a sku resource type+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees/skus/default?api-version=2020-11-20+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees/skus/default?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "05e76920-b37e-4080-a664-d62398fe1dfe" ],
+        "CommandName": [ "Get-AzProviderHubSku" ],
+        "FullCommandName": [ "Get-AzProviderHubSku_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "7ce69a4c-2239-4efb-bc40-4ddc9b667b72" ],
+        "x-ms-correlation-request-id": [ "fb03bb9b-1b2f-4468-8997-141bfd61b7b0" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210917T234643Z:fb03bb9b-1b2f-4468-8997-141bfd61b7b0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 23:46:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "211" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"skuSettings\":[{\"name\":\"freeSku\",\"tier\":\"Tier1\",\"kind\":\"Standard\"},{\"name\":\"freeSku2\",\"tier\":\"Tier1\",\"kind\":\"Standard\"}]},\"type\":\"Microsoft.ProviderHub/providerRegistrationsskus\",\"name\":\"default\"}"
+    }
+  },
+  "AzProviderHubSku-CRUD+[NoContext]+Create, get, and delete a sku resource type+$DELETE+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees/skus/default?api-version=2020-11-20+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees/skus/default?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "3170860e-a403-447c-9a9a-f2ad3498eb26" ],
+        "CommandName": [ "Remove-AzProviderHubSku" ],
+        "FullCommandName": [ "Remove-AzProviderHubSku_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "d1bdda72-d07b-4584-b8ff-f7e155f83968" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20210917T234643Z:d1bdda72-d07b-4584-b8ff-f7e155f83968" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 23:46:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

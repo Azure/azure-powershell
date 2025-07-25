@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -197,6 +198,12 @@ namespace Microsoft.Azure.Commands.Profile
         public string AzureSynapseAnalyticsEndpointSuffix { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Suffix of Azure Container Registry.")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Suffix of Azure Container Registry.")]
+        public string ContainerRegistryEndpointSuffix { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
         [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
@@ -210,10 +217,21 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Specifies URI of the internet resource to fetch environments.")]
         public Uri Uri { get; set; }
 
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of Microsoft Graph")]
+        public string MicrosoftGraphEndpointResourceId { get; set; }
 
-        protected override void BeginProcessing()
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Microsoft Graph Url")]
+        public string MicrosoftGraphUrl { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The scope for authentication when SSH to an Azure VM.")]
+        public string SshAuthScope { get; set; }
+
+        protected override bool RequireDefaultContext()
         {
-            // do not call begin processing there is no context needed for this cmdlet
+            return false;
         }
 
         public override void ExecuteCmdlet()
@@ -252,7 +270,8 @@ namespace Microsoft.Azure.Commands.Profile
                             try
                             {
                                 EnvHelper = (EnvHelper == null ? new EnvironmentHelper() : EnvHelper);
-                                MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(newEnvironment.ResourceManagerUrl).Result;
+                                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out IHttpOperationsFactory factory);
+                                MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(newEnvironment.ResourceManagerUrl, factory).Result;
                                 string domain = EnvHelper.RetrieveDomain(ARMEndpoint);
 
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,
@@ -327,7 +346,8 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(StorageEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,
                                     nameof(ActiveDirectoryEndpoint), true);
-
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.ContainerRegistryEndpointSuffix,
+                                    nameof(ContainerRegistryEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment,
                                     AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
                                     nameof(ActiveDirectoryServiceEndpointResourceId));
@@ -371,6 +391,12 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureSynapseAnalyticsEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId,
                                     nameof(AzureSynapseAnalyticsEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
+                                    nameof(MicrosoftGraphEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl,
+                                    nameof(MicrosoftGraphUrl));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSshAuthScope,
+                                    nameof(SshAuthScope));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

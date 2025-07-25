@@ -1,7 +1,7 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.dll-Help.xml
+external help file: Az.ManagedServices-help.xml
 Module Name: Az.ManagedServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
+online version: https://learn.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
 schema: 2.0.0
 ---
 
@@ -12,16 +12,16 @@ Deletes the registration definition.
 
 ## SYNTAX
 
-### Default (Default)
+### Delete (Default)
 ```
-Remove-AzManagedServicesDefinition [-Scope <String>] -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzManagedServicesDefinition -Name <String> [-Scope <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByInputObject
+### DeleteViaIdentity
 ```
-Remove-AzManagedServicesDefinition -InputObject <PSRegistrationDefinition>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzManagedServicesDefinition -InputObject <IManagedServicesIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,32 +29,23 @@ Deletes the registration definition.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> Remove-AzManagedServicesDefinition -Name 0c146106-c927-4098-a7ca-30bbcf44a502
-PS C:\>
-```
-
-Removes the registration definition by name at the default scope.
-
-### Example 2
-```
-PS C:\> $definition = New-AzManagedServicesDefinition -DisplayName "MyTestDefinition" -ManagedByTenantId 72f9acbf-86f1-41af-91ab-2d7ef011db47 -RoleDefinitionId acdd72a7-3385-48ef-bd42-f606fba81ae7 -PrincipalId 714160ec-87d5-42bb-8b17-287c0dd7417d
-PS C:\> Remove-AzManagedServicesDefinition -InputObject $definition
-PS C:\>
+### Example 1: Removes Azure Lighthouse registration definition
+```powershell
+Remove-AzManagedServicesDefinition -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-Deletes the registration definition given the input object.
+Removes Azure Lighthouse registration definition at the given scope.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -64,11 +55,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The registration definition object.
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSRegistrationDefinition
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -79,12 +71,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The unique name of the Registration Definition.
+The GUID of the registration definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Default
-Aliases:
+Parameter Sets: Delete
+Aliases: RegistrationDefinitionId
 
 Required: True
 Position: Named
@@ -93,17 +85,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Scope
-The scope where the registration definition created.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: Default
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+The scope of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: False
+Position: Named
+Default value: "subscriptions/" + (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -118,7 +125,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -134,7 +141,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -144,10 +151,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSRegistrationDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity
+
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS

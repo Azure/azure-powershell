@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,6 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchRemoteLoginSettings alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchRemoteLoginSetting", DefaultParameterSetName = Constants.IdParameterSet),OutputType(typeof(PSRemoteLoginSettings))]
     [Alias("Get-AzBatchRemoteLoginSettings")]
     public class GetBatchComputeNodeRemoteLoginSettingCommand : BatchObjectModelCmdletBase

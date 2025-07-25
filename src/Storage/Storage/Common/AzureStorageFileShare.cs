@@ -14,26 +14,19 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    using Microsoft.Azure.Storage.Blob;
     using System;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Storage;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using global::Azure.Storage.Files.Shares.Models;
+    using System.Management.Automation;
 
     /// <summary>
     /// Azure storage file object
     /// </summary>
     public class AzureStorageFileShare : AzureStorageBase
     {
-        /// <summary>
-        /// CloudBlob object
-        /// </summary>    
-        [Ps1Xml(Label = "Share Uri", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.CloudFile.Share.Uri")]
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0, TableColumnWidth = 20)]
-        public CloudFileShare CloudFileShare { get; private set; }
-
         /// <summary>
         /// The Snapshot time of the share
         /// </summary>
@@ -43,6 +36,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Gets a value indicating whether this share is a snapshot.
         /// </summary>
         public bool IsSnapshot { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this share is deleted.
+        /// </summary>
+        public bool? IsDeleted { get; private set; }
 
         /// <summary>
         /// file share last modified time
@@ -55,21 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// </summary>
         public int? Quota { get; private set; }
 
-        /// <summary>
-        /// XSCL Track2 File Share Client, used to run file APIs
-        /// </summary>
-        public ShareClient ShareClient
-        {
-            get
-            {
-                if (privateShareClient == null)
-                {
-                    privateShareClient = GetTrack2FileShareClient(this.CloudFileShare, (AzureStorageContext)this.Context);
-                }
-                return privateShareClient;
-            }
-        }
-        private ShareClient privateShareClient = null;
+        public ShareClient ShareClient { get; private set; }
 
         /// <summary>
         /// XSCL Track2 File Share properties, will retrieve the properties on server and return to user
@@ -88,49 +72,108 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         private global::Azure.Storage.Files.Shares.Models.ShareProperties privateShareProperties = null;
 
         /// <summary>
-        /// Azure storage file constructor
+        /// XSCL Track2 File share List properties
         /// </summary>
-        /// <param name="file">Cloud file share object</param>
-        public AzureStorageFileShare(CloudFileShare share, AzureStorageContext storageContext)
+        public global::Azure.Storage.Files.Shares.Models.ShareItem ListShareProperties { get; private set; }
+
+        /// <summary>
+        /// Delete Share version ID
+        /// </summary>
+        public string VersionId { get; }
+
+        private ShareClientOptions shareClientOptions { get; set; }
+        private ShareServiceClient shareService { get; set; }
+
+        /// <summary>
+        /// Azure storage file share constructor from Track2 get file properties output
+        /// </summary>
+        public AzureStorageFileShare(ShareClient shareClient, AzureStorageContext storageContext, ShareProperties shareProperties = null, ShareClientOptions clientOptions = null)
         {
-            Name = share.Name;
-            CloudFileShare = share;
-            LastModified = share.Properties.LastModified;
-            IsSnapshot = share.IsSnapshot;
-            SnapshotTime = share.SnapshotTime;
-            Quota = share.Properties.Quota;
+            Name = shareClient.Name;
+            this.ShareClient = shareClient;
+            if (shareProperties != null)
+            {
+                privateShareProperties = shareProperties;
+                LastModified = shareProperties.LastModified;
+                SnapshotTime = Util.GetSnapshotTimeFromUri(ShareClient.Uri);
+                if (SnapshotTime != null)
+                {
+                    IsSnapshot = true;
+                }
+                Quota = shareProperties.QuotaInGB;
+            }
             Context = storageContext;
+            shareClientOptions = clientOptions;
         }
 
-        // Convert Track1 File share object to Track 2 file share Client
-        protected static ShareClient GetTrack2FileShareClient(CloudFileShare cloudFileShare, AzureStorageContext context)
+        /// <summary>
+        /// Azure storage file share constructor from Track2 list share output
+        /// </summary>
+        public AzureStorageFileShare(ShareClient shareClient, AzureStorageContext storageContext, ShareItem shareItem, ShareClientOptions clientOptions = null)
         {
-            ShareClient fileShareClient;
-            if (cloudFileShare.ServiceClient.Credentials.IsSAS) //SAS
+            Name = shareClient.Name;
+            this.ShareClient = shareClient;
+            if (shareItem != null)
             {
-                string fullUri = cloudFileShare.SnapshotQualifiedUri.ToString();
-                if (cloudFileShare.IsSnapshot)
+                this.ListShareProperties = shareItem;
+                this.IsDeleted = shareItem.IsDeleted;
+                this.VersionId = shareItem.VersionId;
+                if (shareItem.Properties != null)
                 {
-                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloudFileShare.ServiceClient.Credentials.SASToken.Substring(1);
+                    privateShareProperties = shareItem.Properties;
+                    LastModified = shareItem.Properties.LastModified;
+                    Quota = shareItem.Properties.QuotaInGB;
                 }
-                else
+                if (!string.IsNullOrEmpty(shareItem.Snapshot))
                 {
-                    fullUri = fullUri + cloudFileShare.ServiceClient.Credentials.SASToken;
+                    SnapshotTime = DateTimeOffset.Parse(shareItem.Snapshot).ToUniversalTime();
+                    IsSnapshot = true;
+                    this.ShareClient = this.ShareClient.WithSnapshot(shareItem.Snapshot);
                 }
-                fileShareClient = new ShareClient(new Uri(fullUri));
             }
-            else if (cloudFileShare.ServiceClient.Credentials.IsSharedKey) //Shared Key
-            {
-                fileShareClient = new ShareClient(cloudFileShare.SnapshotQualifiedUri,
-                    new StorageSharedKeyCredential(context.StorageAccountName, cloudFileShare.ServiceClient.Credentials.ExportBase64EncodedKey()));
-            }
-            else //Anonymous
-            {
-                fileShareClient = new ShareClient(cloudFileShare.SnapshotQualifiedUri);
-            }
+            Context = storageContext;
+            shareClientOptions = clientOptions;
+        }
 
-            return fileShareClient;
+        /// <summary>
+        /// Azure storage file share constructor from Track2 list share output, with deleted share
+        /// </summary>
+        public AzureStorageFileShare(ShareServiceClient shareService, string shareName, AzureStorageContext storageContext, ShareItem shareItem, ShareClientOptions clientOptions = null)
+        {
+            this.shareService = shareService;
+            this.Name = shareName;
+            if (shareItem != null)
+            {
+                this.ListShareProperties = shareItem;
+                this.IsDeleted = shareItem.IsDeleted;
+                this.VersionId = shareItem.VersionId;
+                if (shareItem.Properties != null)
+                {
+                    privateShareProperties = shareItem.Properties;
+                    LastModified = shareItem.Properties.LastModified;
+                    Quota = shareItem.Properties.QuotaInGB;
+                }
+                if (!string.IsNullOrEmpty(shareItem.Snapshot))
+                {
+                    SnapshotTime = DateTimeOffset.Parse(shareItem.Snapshot).ToUniversalTime();
+                    IsSnapshot = true;
+                }
+            }
+            Context = storageContext;
+            shareClientOptions = clientOptions;
+        }
+
+        // undelete a soft deleted share
+        public void UndeleteShare()
+        {
+            if (this.IsDeleted != null && this.IsDeleted.Value)
+            {
+                this.shareService.UndeleteShare(this.Name, this.VersionId);
+            }
+            else
+            {
+                throw new InvalidJobStateException("This share is not soft deleted, so can't undelete it.");
+            }
         }
     }
 }

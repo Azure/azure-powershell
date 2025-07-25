@@ -45,6 +45,7 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         Assert-AreEqual "ExpressRoute" $expected.ConnectionType
         Assert-AreEqual "3" $expected.RoutingWeight
         Assert-AreEqual $False $expected.ExpressRouteGatewayBypass
+        Assert-AreEqual $False $expected.EnablePrivateLinkFastPath
 
         $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name "*"
         Assert-True { $list.Count -ge 0 }
@@ -58,14 +59,15 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual 0 @($list).Count
 
-        # Now Create a Virtual Network Gateway Connection with ExpressRouteGatewayBypass enabled
-        $connection = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $gw  -ConnectionType ExpressRoute -RoutingWeight 3 -PeerId $circuit.Id -ExpressRouteGatewayBypass
+        # Now Create a Virtual Network Gateway Connection with ExpressRouteGatewayBypass and EnablePrivateLinkFastPath
+        $connection = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $gw  -ConnectionType ExpressRoute -RoutingWeight 3 -PeerId $circuit.Id -ExpressRouteGatewayBypass -EnablePrivateLinkFastPath
         $getConnection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
         Assert-AreEqual $getConnection.ResourceGroupName $connection.ResourceGroupName
         Assert-AreEqual $getConnection.Name $connection.Name
         Assert-AreEqual "ExpressRoute" $getConnection.ConnectionType
         Assert-AreEqual "3" $getConnection.RoutingWeight
         Assert-AreEqual $True $getConnection.ExpressRouteGatewayBypass
+        Assert-AreEqual $True $getConnection.EnablePrivateLinkFastPath
 
         # Delete VirtualNetworkGatewayConnection
         $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
@@ -116,8 +118,13 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
       # Create VirtualNetworkGateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
+      #create CustomBgpforGateway
+      $ipconfigurationId = $vnetIpConfig.id
+      $addresslist = @('169.254.21.25')
+      $gw1ipconfBgp = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId -CustomAddress $addresslist
+
 	  # Also test overriding the gateway ASN
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn 55000
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn 55000
       $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $vnetGateway.BgpSettings.Asn $actual.BgpSettings.Asn	
     
@@ -128,10 +135,14 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
 	  Assert-AreEqual $localnetGateway.BgpSettings.BgpPeeringAddress $actual.BgpSettings.BgpPeeringAddress
       Assert-AreEqual $localnetGateway.BgpSettings.PeerWeight $actual.BgpSettings.PeerWeight
 
+      # Create AzGatewayCustomBgpIpConfigurationObject
+      $address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vnetGateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.21.25"
+
       # Create & Get VirtualNetworkGatewayConnection
-      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $true
+      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $true -GatewayCustomBgpIpAddress $address
       $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-AreEqual $connection.EnableBgp $actual.EnableBgp
+      Assert-AreEqual 1 @($connection.GatewayCustomBgpIpAddresses).Count
     
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
@@ -280,7 +291,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  Assert-AreEqual $connection.IpsecPolicies[0].DhGroup $actual.IpsecPolicies[0].DhGroup
 	  Assert-AreEqual $connection.IpsecPolicies[0].PfsGroup $actual.IpsecPolicies[0].PfsGroup
       Assert-AreEqual 30 $connection.DpdTimeoutSeconds
-    
+
 	  # Set & Get VirtualNetworkGatewayConnection with policy cleared
       $job = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors $false -IpsecPolicies @() -DpdTimeoutInSeconds 10 -Force -AsJob
 	  $job | Wait-Job
@@ -372,6 +383,9 @@ function Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway
 
       $connection1 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1      
 	  Assert-NotNull $connection1.TunnelConnectionStatus
+
+      # Reset VirtualNetworkGatewayConnection
+      Reset-AzVirtualNetworkGatewayConnection -InputObject $connection1
       
       # Delete VirtualNetworkGatewayConnections
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName1 -PassThru -Force
@@ -383,6 +397,97 @@ function Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway
      {
       # Cleanup
         Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway connection test with Active-Active feature enabled virtual network gateway
+#>
+function Test-VirtualNetworkGatewayConnectionWithZeroSaData
+{
+    # Setup
+    $rgname = Get-ResourceName
+    $rname1 = Get-ResourceName
+	$rname2 = Get-ResourceName
+    $domainNameLabel11 = Get-ResourceName
+	$domainNameLabel12 = Get-ResourceName
+	$domainNameLabel2 = Get-ResourceName
+    $vnetName1 = Get-ResourceName
+	$vnetName2 = Get-ResourceName
+    $vnetConnectionName1 = Get-ResourceName
+	$vnetConnectionName2 = Get-ResourceName
+    $publicIpName11 = Get-ResourceName
+	$publicIpName12 = Get-ResourceName
+	$publicIpName2 = Get-ResourceName
+    $vnetGatewayConfigName11 = Get-ResourceName
+	$vnetGatewayConfigName12 = Get-ResourceName
+	$vnetGatewayConfigName2 = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+    
+        # Create the Virtual Network1
+      $subnet1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet1 = New-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
+      $vnet1 = Get-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
+      $subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+	  	            
+	  # Create Active-Active feature enabled virtualnetworkgateway1 & Get virtualnetworkgateway1
+      $publicip11 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName11 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel11  
+      $vnetIpConfig11 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName11 -PublicIpAddress $publicip11 -Subnet $subnet1
+
+      $publicip12 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName12 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel12
+      $vnetIpConfig12 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName12 -PublicIpAddress $publicip12 -Subnet $subnet1
+
+      $vnetGateway1 = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname1 -Location $location -IpConfigurations $vnetIpConfig11,$vnetIpConfig12 -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku HighPerformance -EnableActiveActiveFeature
+      $vnetGateway1 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname1
+
+      # Create IpsecPolicy and test SADataSizeKilobytes when passed 0
+      $ipsecPolicy = New-AzIpsecPolicy -SALifeTimeSeconds 3000 -SADataSizeKilobytes 0 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+      Assert-AreEqual $ipsecPolicy.SADataSizeKilobytes 0
+
+	  # Create the Virtual Network2
+      $subnet2 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 192.168.200.0/26
+      $vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 192.168.0.0/16 -Subnet $subnet2
+      $vnet2 = Get-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+      $subnet2 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet2
+
+      # Create the publicip2
+      $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2
+
+      # Create VirtualNetworkGateway2
+      $vnetIpConfig2 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -PublicIpAddress $publicip2 -Subnet $subnet2
+
+      $vnetGateway2 = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2 -location $location -IpConfigurations $vnetIpConfig2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
+      $vnetGateway2 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2
+
+      # Create & Get VirtualNetworkGatewayConnection1, VirtualNetworkGatewayConnection2
+      $connection1 = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1 -location $location -VirtualNetworkGateway1 $vnetGateway1 -VirtualNetworkGateway2 $vnetGateway2 -ConnectionType Vnet2Vnet -RoutingWeight 3 -SharedKey abc -IpsecPolicies $ipsecPolicy
+	  $connection2 = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName2 -location $location -VirtualNetworkGateway1 $vnetGateway2 -VirtualNetworkGateway2 $vnetGateway1 -ConnectionType Vnet2Vnet -RoutingWeight 3 -SharedKey abc -IpsecPolicies $ipsecPolicy
+      
+      $connection1 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1
+      $connection2 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName2
+
+	  Assert-AreEqual $connection1.IpsecPolicies[0].SADataSizeKilobytes $connection2.IpsecPolicies[0].SADataSizeKilobytes
+	  Assert-AreEqual $connection1.IpsecPolicies[0].SADataSizeKilobytes 0
+      Assert-AreEqual $connection2.IpsecPolicies[0].SADataSizeKilobytes 0
+
+      # Delete VirtualNetworkGatewayConnections
+      $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $connection1.ResourceGroupName -name $vnetConnectionName1 -PassThru -Force
+      Assert-AreEqual true $delete
+	  $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $connection2.ResourceGroupName -name $vnetConnectionName2 -PassThru -Force
+      Assert-AreEqual true $delete
+     }
+     finally
+     {
+         # Cleanup
+         Clean-ResourceGroup $rgname
      }
 }
 
@@ -400,7 +505,7 @@ function Test-VirtualNetworkGatewayConnectionCRUD
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/connections"
     $location = Get-ProviderLocation $resourceTypeParent
-    
+
     try 
      {
       # Create the resource group
@@ -417,11 +522,13 @@ function Test-VirtualNetworkGatewayConnectionCRUD
 
       # Create VirtualNetworkGateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
+      $natRule1 = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
+      $natRule2 = New-AzVirtualNetworkGatewayNatRule -Name "natRule2" -Type "Static" -Mode "EgressSnat" -InternalMapping @("20.0.0.0/16") -ExternalMapping @("50.0.0.0/16")
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -NatRule $natRule1,$natRule2
       $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $vnetGateway.ResourceGroupName $actual.ResourceGroupName	
-      Assert-AreEqual $vnetGateway.Name $actual.Name	
+      Assert-AreEqual $vnetGateway.Name $actual.Name
+      Assert-AreEqual 2 @($vnetGateway.NatRules).Count
       #Assert-AreEqual "Vpn" $expected.GatewayType
       #Assert-AreEqual "RouteBased" $expected.VpnType
     
@@ -434,8 +541,12 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       Assert-AreEqual "192.168.0.0/16" $localnetGateway.LocalNetworkAddressSpace.AddressPrefixes[0]
       $localnetGateway.Location = $location
 
+      # Get VirtualNetworkGatewayNatRules
+      $natRule1 = Get-AzVirtualNetworkGatewayNatRule -Name "natRule1" -ResourceGroupName $rgname -ParentResourceName $rname
+      $natRule2 = Get-AzVirtualNetworkGatewayNatRule -Name "natRule2" -ResourceGroupName $rgname -ParentResourceName $rname
+
       # Create & Get VirtualNetworkGatewayConnection
-      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1
+      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1 -ConnectionMode "Default" -IngressNatRule $natRule1 -EgressNatRule $natRule2
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
@@ -443,6 +554,9 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       Assert-AreEqual "3" $expected.RoutingWeight
 	  Assert-AreEqual "IKEv1" $expected.ConnectionProtocol
       #Assert-AreEqual "abc" $expected.SharedKey
+      Assert-AreEqual $expected.ConnectionMode $actual.ConnectionMode
+      Assert-AreEqual 1 @($expected.IngressNatRules).Count
+      Assert-AreEqual 1 @($expected.EgressNatRules).Count
 
       # List VirtualNetworkGatewayConnections
       $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname
@@ -460,12 +574,15 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $expected.LocalNetworkGateway2.Location = $location
       $expected.RoutingWeight = "4"
       $expected.SharedKey = "xyz"
+      $expected.ConnectionMode = "ResponderOnly"
 
 	  # Set/Update VirtualNetworkGatewayConnection Tags
-      $actual = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $expected -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" } -Force
+      $actual = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $expected -IngressNatRule @() -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" } -Force
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName    
       Assert-AreEqual 2 $expected.Tag.Count
 	  Assert-AreEqual $true $expected.Tag.Contains("testtagKey")
+      Assert-AreEqual $expected.ConnectionMode $actual.ConnectionMode
+      Assert-AreEqual 0 $expected.IngressNatRules.Count
       
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
@@ -555,7 +672,7 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       Assert-AreEqual "TestSharedKeyValue" $expected
 
       # Wait to avoid conflict
-      Start-TestSleep 60000
+      Start-TestSleep -Seconds 60
 
       # Reset VirtualNetworkGatewayConnectionSharedKey
       $actual = Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force
@@ -771,3 +888,89 @@ function Test-VirtualNetworkGatewayConnectionPacketCapture
         Clean-ResourceGroup $rgname
      }
 }
+
+function Test-VirtualNetworkGatewayConnectionGetIkeSa
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname1 = Get-ResourceName
+	$rname2 = Get-ResourceName
+    $domainNameLabel1 = Get-ResourceName
+	$domainNameLabel2 = Get-ResourceName
+    $vnetName1 = Get-ResourceName
+	$vnetName2 = Get-ResourceName
+    $vnetConnectionName1 = Get-ResourceName
+	$vnetConnectionName2 = Get-ResourceName
+    $publicIpName1 = Get-ResourceName
+	$publicIpName2 = Get-ResourceName
+    $vnetGatewayConfigName1 = Get-ResourceName
+	$vnetGatewayConfigName2 = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+     {
+      # Create Resource Group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+    
+      # Create Virtual Network 1
+      $subnet1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet1 = New-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
+      
+      # Get Virtual Network 1
+      $vnet1 = Get-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
+      $subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+
+      # Create Virtual Network 2
+      $subnet2 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.10.0.0/24
+      $vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.10.0.0/16 -Subnet $subnet2
+      
+      # Get Virtual Network 2
+      $vnet2 = Get-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+      $subnet2 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet2
+	  
+      # Create Public IP and Vnet IP Config 1 and 2
+      $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -Name $publicIpName1 -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel1
+      $vnetIpConfig1 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName1 -PublicIpAddress $publicip1 -Subnet $subnet1
+      $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -Name $publicIpName2 -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2
+      $vnetIpConfig2 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -PublicIpAddress $publicip2 -Subnet $subnet2
+
+	  # Create Virtual Network Gateway 1
+      $gw1 = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -Name $rname1 -Location $location -IpConfigurations $vnetIpConfig1 -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Standard
+
+      # Create Virtual Network Gateway 2
+      $gw2 = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -Name $rname2 -Location $location -IpConfigurations $vnetIpConfig2 -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Standard
+
+      # Get Virtual Network Gateway 1 and 2
+      $vnetGateway1 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -Name $rname1
+      $vnetGateway2 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -Name $rname2
+
+      # Create Virtual Network Gateway Connection 1
+      $job1 = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name $vnetConnectionName1 -Location $location -VirtualNetworkGateway1 $vnetGateway1 -VirtualNetworkGateway2 $vnetGateway2 -ConnectionType Vnet2Vnet -SharedKey abc -AsJob
+      $job1 | Wait-Job
+      $conn1 = $job1 | Receive-Job
+
+      # Create Virtual Network Gateway Connection 2
+      $job2 = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name $vnetConnectionName2 -Location $location -VirtualNetworkGateway1 $vnetGateway2 -VirtualNetworkGateway2 $vnetGateway1 -ConnectionType Vnet2Vnet -SharedKey abc -AsJob
+      $job2 | Wait-Job
+      $conn2 = $job2 | Receive-Job
+
+      Start-TestSleep -Seconds 300
+      
+      # Get Virtual Network Gateway Connection 1 and 2
+      $connection1 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name $vnetConnectionName1
+      $connection2 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name $vnetConnectionName2
+
+      Start-TestSleep -Seconds 150
+
+      $ikesa = Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject $connection1
+      Assert-NotNull $ikesa
+     }
+     finally
+     {
+      # Cleanup
+      Clean-ResourceGroup $rgname
+     }
+}
+

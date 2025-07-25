@@ -55,6 +55,17 @@ function Set-AzureRmSecurityPricing-SubscriptionLevelResource
 
 <#
 .SYNOPSIS
+Set an Azure Security Center pricing settings with subplan and extensions
+#>
+function Set-AzureRmSecurityPricing-SubscriptionLevelResource-WithSubplanAndExtensions
+{
+    Set-AzSecurityPricing -Name "VirtualMachines" -PricingTier "Standard" -SubPlan "P2" -Extension '[{"name": "MdeDesignatedSubscription","isEnabled": "False"},{"name": "AgentlessVmScanning","isEnabled": "True","additionalExtensionProperties": {"ExclusionTags":"[{\"key\":\"Microsoft\",\"value\":\"Defender\"},{\"key\":\"For\",\"value\":\"Cloud\"}]"}}]' 
+    $vmPricing = Get-AzSecurityPricing -Name "VirtualMachines"
+	Validate-Extensions $vmPricing
+}
+
+<#
+.SYNOPSIS
 Validates a list of security pricings
 #>
 function Validate-Pricings
@@ -78,4 +89,16 @@ function Validate-Pricing
 	param($pricing)
 
 	Assert-NotNull $pricing
+}
+
+<#
+.SYNOPSIS
+Validates a single pricing
+#>
+function Validate-Extensions
+{
+	param($pricing)
+
+	Assert-NotNull $pricing
+	Assert-NotNull $pricing.extensions
 }

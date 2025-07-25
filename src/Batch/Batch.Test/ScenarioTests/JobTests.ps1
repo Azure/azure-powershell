@@ -26,10 +26,14 @@ function Test-JobCRUD
 
     try
     {
-        # Create 2 jobs
         $poolInfo1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $poolInfo1.PoolId = "testPool"
-        New-AzBatchJob -Id $jobId1 -PoolInformation $poolInfo1 -BatchContext $context
+        $envSettings = @{
+            "ThisIsAString" = "Hello world";
+            # Make sure CommonEnvironmentSettings allows null values
+            "ThisIsNull" = $null
+        }
+        New-AzBatchJob -Id $jobId1 -PoolInformation $poolInfo1 -CommonEnvironmentSettings $envSettings -BatchContext $context
 
         $poolInfo2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
         $poolInfo2.PoolId = "testPool2"
@@ -74,7 +78,7 @@ function Test-DisableEnableTerminateJob
     Disable-AzBatchJob $jobId Terminate -BatchContext $context
 
     # Sleep a bit in Record mode since the job doesn't immediately switch to Disabled.
-    Start-TestSleep 10000
+    Start-TestSleep -Seconds 10
 
     # Verify the job was Disabled
     $job = Get-AzBatchJob $jobId -BatchContext $context
@@ -114,7 +118,7 @@ function Test-JobWithTaskDependencies
 
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
-        $poolSpec.VirtualMachineSize = $vmSize = "small"
+        $poolSpec.VirtualMachineSize = $vmSize = "standard_d1_v2"
         $poolSpec.CloudServiceConfiguration = $paasConfiguration
         $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
         $autoPoolSpec.PoolSpecification = $poolSpec
@@ -151,7 +155,7 @@ Tests create job completes when any task fails
 #>
 function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
 {
-    param([string]$jobId, [string]$taskId)
+    param([string]$poolId, [string]$jobId, [string]$taskId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
@@ -159,19 +163,8 @@ function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
     $targetOS = "*"
     $cmd = "cmd /c exit 3"
 
-    $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
-
-    $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
-    $poolSpec.TargetDedicatedComputeNodes = $targetDedicated = 3
-    $poolSpec.VirtualMachineSize = $vmSize = "small"
-    $poolSpec.CloudServiceConfiguration = $paasConfiguration
-    $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
-    $autoPoolSpec.PoolSpecification = $poolSpec
-    $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
-    $autoPoolSpec.KeepAlive =  $FALSE
-    $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
     $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
-    $poolInformation.AutoPoolSpecification = $autoPoolSpec
+    $poolInformation.PoolId = $poolId
 
     $ExitConditions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitConditions
     $ExitOptions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitOptions

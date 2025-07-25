@@ -14,6 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -36,6 +37,8 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Sku = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.Sku;
 using LoadBalancingRule = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.LoadBalancingRule;
+using UpgradeMode = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.UpgradeMode;
+using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -110,6 +113,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public DurabilityLevel DurabilityLevel { get; set; } = DurabilityLevel.Bronze;
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true,
+           HelpMessage = "Define whether the node type is a primary node type. Primary node type may have seed nodes and system services.")]
+        public bool? IsPrimaryNodeType { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "New VM image publisher")]
+        [ValidateNotNullOrEmpty()]
+        public string VMImagePublisher { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "New VM image offer")]
+        [ValidateNotNullOrEmpty()]
+        public string VMImageOffer { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "New VM image sku")]
+        [ValidateNotNullOrEmpty()]
+        public string VMImageSku { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "New VM image version")]
+        [ValidateNotNullOrEmpty()]
+        public string VMImageVersion { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = "The location of the node type and its associated storage, networking, and OS resources. If not specified, the location of the resource group will be used.")]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.DurabilityLevel == DurabilityLevel.Gold && !skusSupportGoldDurability.Contains(this.VmSku))
@@ -120,12 +146,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         string.Join(" / ", skusSupportGoldDurability)));
             }
 
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Add an new node type {0}", this.NodeType)))
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Add a new node type {0}", this.NodeType)))
             {
                 var cluster = GetCurrentCluster();
                 this.diagnosticsStorageName = cluster.DiagnosticsStorageAccountConfig.StorageAccountName;
-                CreateVmss(cluster.ClusterId);
                 var pscluster = AddNodeTypeToSfrp(cluster);
+                CreateVmss(cluster.ClusterId);
                 WriteObject(pscluster, true);
             }
         }
@@ -162,8 +188,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     EndPort = Constants.DefaultEphemeralEnd
                 },
                 HttpGatewayEndpointPort = Constants.DefaultHttpGatewayEndpoint,
-                IsPrimary = false,
-                VmInstanceCount = this.Capacity
+                IsPrimary = this.IsPrimaryNodeType ?? false,
+                VMInstanceCount = this.Capacity
             });
 
             return SendPatchRequest(new Management.ServiceFabric.Models.ClusterUpdateParameters()
@@ -212,7 +238,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetLocation()
         {
-            return this.ResourcesClient.ResourceGroups.Get(this.ResourceGroupName).Location;
+            if (!string.IsNullOrEmpty(this.Location))
+            { 
+                return this.Location;
+            }
+            return GetCurrentCluster().Location;
         }
 
         internal void GetProfiles(
@@ -251,6 +281,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 foreach (var vmss in vmssPages)
                 {
                     VirtualMachineScaleSetExtension sfExtension;
+                    // Future: For hybrid clusters, would need to make extension retrieval specifically Windows/Linux-targeted /w override for initial creation.
+                    // New node type for OS that is not yet in the cluster should be created using defaults from one of the sample templates.
                     if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile?.Extensions, out sfExtension))
                     {
                         if (string.Equals(GetClusterIdFromExtension(sfExtension), clusterId, StringComparison.OrdinalIgnoreCase))
@@ -269,7 +301,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             existingFabricExtension = sfExtension;
                             diagnosticsVmExt = vmss.VirtualMachineProfile.ExtensionProfile.Extensions.FirstOrDefault(
                                 e =>
-                                e.Type.Equals(Constants.IaaSDiagnostics, StringComparison.OrdinalIgnoreCase));
+                                e.Type.Equals(Constants.IaaSDiagnostics, StringComparison.OrdinalIgnoreCase) || e.Type.Equals(Constants.LinuxDiagnostic, StringComparison.OrdinalIgnoreCase));
                             break;
                         }
                     }
@@ -392,15 +424,71 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
             };
 
+            var targetImageReference = (!string.IsNullOrEmpty(this.VMImagePublisher)
+                || !string.IsNullOrEmpty(this.VMImageOffer)
+                || !string.IsNullOrEmpty(this.VMImageSku)
+                || !string.IsNullOrEmpty(this.VMImageVersion))
+                ? new ImageReference(
+                    null,
+                    this.VMImagePublisher ?? existingProfile.ImageReference.Publisher,
+                    this.VMImageOffer ?? existingProfile.ImageReference.Offer,
+                    this.VMImageSku ?? existingProfile.ImageReference.Sku,
+                    this.VMImageVersion ?? existingProfile.ImageReference.Version)
+                : existingProfile.ImageReference;
+
             return new VirtualMachineScaleSetStorageProfile()
             {
-                ImageReference = existingProfile.ImageReference,
+                ImageReference = targetImageReference,
                 OsDisk = osDisk
             };
         }
 
         private VirtualMachineScaleSetNetworkProfile CreateNetworkResource(VirtualMachineScaleSetNetworkConfiguration existingNetworkConfig)
         {
+            bool hasRDPInboundNatRule = false;
+            bool hasSSHInboundNatRule = false;
+            {
+                var existingNetworkConfigLbNatPoolIds = new HashSet<string>();
+                if (existingNetworkConfig.IpConfigurations != null)
+                {
+                    foreach (var existingIpConfiguration in existingNetworkConfig.IpConfigurations)
+                    {
+                        if (existingIpConfiguration.LoadBalancerInboundNatPools != null)
+                        {
+                            foreach (var lbInboundNatPool in existingIpConfiguration.LoadBalancerInboundNatPools)
+                            {
+                                existingNetworkConfigLbNatPoolIds.Add(lbInboundNatPool.Id);
+                            }
+                        }
+                    }
+                }
+
+                var existingLoadBalancers = NetworkManagementClient.LoadBalancers.List(this.ResourceGroupName);
+                string existingLBName;
+
+                foreach (var lb in existingLoadBalancers)
+                {
+                    existingLBName = lb.Name;
+                    if (lb.InboundNatPools != null)
+                    {
+                        foreach (var lbInboundNatPool in lb.InboundNatPools)
+                        {
+                            if (existingNetworkConfigLbNatPoolIds.Contains(lbInboundNatPool.Id))
+                            {
+                                if (lbInboundNatPool.BackendPort == Constants.DefaultRDPBackendPort)
+                                {
+                                    hasRDPInboundNatRule = true;
+                                }
+                                else if (lbInboundNatPool.BackendPort == Constants.DefaultSSHBackendPort)
+                                {
+                                    hasSSHInboundNatRule = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             var suffix = $"{this.Name.ToLower()}-{this.NodeType.ToLower()}";
             var publicAddressName = $"LBIP-{suffix}";
             var dnsLabel = $"dns-{suffix}";
@@ -438,6 +526,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 this.NetworkManagementClient.SubscriptionId,
                 this.ResourceGroupName,
                 lbName);
+
+            var newInboundNatPool = new List<InboundNatPool>();
+            if (hasRDPInboundNatRule || hasSSHInboundNatRule)
+            {
+                newInboundNatPool.Add(new InboundNatPool()
+                {
+                    Name = inboundNatPoolName,
+                    BackendPort = hasRDPInboundNatRule
+                            ? Constants.DefaultRDPBackendPort : Constants.DefaultSSHBackendPort,
+                    FrontendIPConfiguration = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
+                    {
+                        Id = string.Format(
+                                FrontendIdFormat,
+                                NetworkManagementClient.SubscriptionId,
+                                this.ResourceGroupName,
+                                lbName,
+                                frontendIpConfigurationName)
+                    },
+                    FrontendPortRangeStart = Constants.DefaultFrontendPortRangeStart,
+                    FrontendPortRangeEnd = Constants.DefaultFrontendPortRangeEnd,
+                    Protocol = "tcp"
+                });
+            }
 
             var newLoadBalancer = new LoadBalancer(newLoadBalancerId, lbName)
             {
@@ -552,26 +663,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         Port= Constants.DefaultHttpPort
                     },
                 },
-                InboundNatPools = new List<InboundNatPool>()
-                {
-                    new InboundNatPool()
-                    {
-                        Name = inboundNatPoolName,
-                        BackendPort = Constants.DefaultBackendPort,
-                        FrontendIPConfiguration = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
-                        {
-                             Id = string.Format(
-                                FrontendIdFormat,
-                                NetworkManagementClient.SubscriptionId,
-                                this.ResourceGroupName,
-                                lbName,
-                                frontendIpConfigurationName)
-                        },
-                        FrontendPortRangeStart = Constants.DefaultFrontendPortRangeStart,
-                        FrontendPortRangeEnd = Constants.DefaultFrontendPortRangeEnd,
-                        Protocol = "tcp"
-                    }
-                }
+                InboundNatPools = newInboundNatPool
             };
 
             NetworkManagementClient.LoadBalancers.BeginCreateOrUpdate(

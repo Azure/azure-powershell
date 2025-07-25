@@ -20,14 +20,15 @@ using Moq;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
-    public class RemoveAzureResourceGroupDeploymentCommandTests
+    public class RemoveAzureResourceGroupDeploymentCommandTests : RMTestBase
     {
         private RemoveAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourceManagerSdkClient> resourcesClientMock;
+        private Mock<NewResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -37,13 +38,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         public RemoveAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
-            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            resourcesClientMock = new Mock<NewResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourceManagerSdkClient = resourcesClientMock.Object
+                NewResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 

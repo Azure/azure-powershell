@@ -1,0 +1,49 @@
+{
+  "Sync-AzLabServicesLabUser+[NoContext]+Sync-AzLabServicesLabUser+$POST+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/syncGroup?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/syncGroup?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "214" ],
+        "x-ms-client-request-id": [ "99b5586d-c06c-44da-b4a5-7643c40b70a2" ],
+        "CommandName": [ "Sync-AzLabServicesLabUser" ],
+        "FullCommandName": [ "Sync-AzLabServicesLabUser_Sync" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.LabServices/0.1.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6205f759-1234-453c-9712-34d7671bceff/southindia/e397cee3-3a3e-4db0-9838-c8ed5936ee58" ],
+        "Request-Context": [ "appId=cid-v1:3c29314f-2b9f-4fd1-b8fc-13cc225f1416" ],
+        "x-ms-request-id": [ "0HNDPHPOOCDKJ:00000001" ],
+        "x-ms-correlation-request-id": [ "ddecf0ee-f216-42e2-9b26-d99915fb9dd0" ],
+        "traceparent": [ "00-c4fd57777bbcf22952670d7795b6d12f-734b04f98b14cf79-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview, 2021-11-15-preview, 2022-05-01-preview, 2022-08-01, 2023-06-07" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250707T031055Z:ddecf0ee-f216-42e2-9b26-d99915fb9dd0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 83ADC220FDE0413281F8686C94516D7E Ref B: MAA201060515035 Ref C: 2025-07-07T03:10:54Z" ],
+        "Date": [ "Mon, 07 Jul 2025 03:10:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "175" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"CannotSyncWithoutGroup\",\"message\":\"Cannot perform sync group operation on a lab without Active Directory group specified.\",\"details\":[],\"additionalInfo\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}

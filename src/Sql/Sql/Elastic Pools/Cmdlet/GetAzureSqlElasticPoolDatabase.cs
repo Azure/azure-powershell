@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.Database.Cmdlet;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticPoolDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseModel))]
-    public class GetAzureSqlElasticPoolDatabase : AzureSqlElasticPoolCmdletBase
+    public class GetAzureSqlElasticPoolDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         /// <summary>
         /// Gets or sets the name of the ElasticPool to use.
@@ -50,40 +50,44 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected IEnumerable<AzureSqlDatabaseModel> GetDatabase()
+        protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
         {
             ICollection<AzureSqlDatabaseModel> results;
 
             if (MyInvocation.BoundParameters.ContainsKey("DatabaseName") && !WildcardPattern.ContainsWildcardCharacters(DatabaseName))
             {
                 results = new List<AzureSqlDatabaseModel>();
-                results.Add(ModelAdapter.GetElasticPoolDatabase(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName));
+                
+                //Note: there is no "Get Database In Elastic Pool" API. There is just "List databases in pool"
+                // and "get database" APIs.
+                results.Add(ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName));
             }
             else
             {
-                results = ModelAdapter.ListElasticPoolDatabases(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);
+                results = ModelAdapter.ListDatabases(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);
             }
 
             return SubResourceWildcardFilter(DatabaseName, results);
         }
 
         /// <summary>
-        /// Executes the cmdlet.
+        /// No user input to apply to model
         /// </summary>
-        public override void ExecuteCmdlet()
+        /// <param name="model">Model retrieved from service</param>
+        /// <returns>The model that was passed in</returns>
+        protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
         {
-            ModelAdapter = InitModelAdapter();
-
-            WriteObject(GetDatabase());
+            return model;
         }
 
         /// <summary>
-        /// Not Used.
+        /// No changes to persist to server
         /// </summary>
-        /// <returns>Not Used</returns>
-        protected override IEnumerable<AzureSqlElasticPoolModel> GetEntity()
+        /// <param name="entity">The output of apply user input to model</param>
+        /// <returns>The input entity</returns>
+        protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
-            return null;
+            return entity;
         }
     }
 }

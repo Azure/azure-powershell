@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageserviceproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageserviceproperty
 schema: 2.0.0
 ---
 
@@ -23,9 +23,11 @@ The **Get-AzStorageServiceProperty** cmdlet gets the properties for Azure Storag
 ## EXAMPLES
 
 ### Example 1: Get  Azure Storage services property of the Blob service
+```powershell
+Get-AzStorageServiceProperty -ServiceType Blob
 ```
-C:\PS>Get-AzStorageServiceProperty -ServiceType Blob
 
+```output
 Logging.Version                     : 1.0
 Logging.LoggingOperations           : None
 Logging.RetentionDays               : 
@@ -99,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -107,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSSeriviceProperties
+### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSServiceProperties
 
 ## NOTES
 

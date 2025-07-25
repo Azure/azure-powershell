@@ -23,8 +23,6 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public string HostName { get; }
 
-        public string HostNamePrefix { get; }
-
         public string ProvisioningState { get; }
 
         public int? PublicPort { get; }
@@ -48,7 +46,6 @@ namespace Microsoft.Azure.Commands.SignalR.Models
         {
             ExternalIp = signalR.ExternalIP;
             HostName = signalR.HostName;
-            HostNamePrefix = signalR.HostNamePrefix;
             ProvisioningState = signalR.ProvisioningState;
             PublicPort = signalR.PublicPort;
             ServerPort = signalR.ServerPort;
@@ -60,7 +57,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
             }
             Cors = new PSSignalRCorsSettings(signalR.Cors);
             Version = signalR.Version;
-            NetworkAcls = new PSSignalRNetworkAcls(signalR.NetworkACLs);
+            NetworkAcls = new PSSignalRNetworkAcls(signalR.NetworkAcLs);
             Upstream = new PSServerlessUpstreamSettings(signalR.Upstream);
         }
     }

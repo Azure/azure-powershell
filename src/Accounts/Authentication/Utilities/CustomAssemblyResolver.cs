@@ -1,45 +1,44 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.PowerShell.AssemblyLoading;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
+    /// <summary>
+    /// Handles how common dependency assemblies like Azure.Core are loaded on .NET framework.
+    /// </summary>
     public static class CustomAssemblyResolver
     {
-        private static IDictionary<string, Version> NetFxPreloadAssemblies =
-            new Dictionary<string, Version>(StringComparer.InvariantCultureIgnoreCase)
-            {
-                {"Azure.Core", new Version("1.5.0.0")},
-                {"Microsoft.Bcl.AsyncInterfaces", new Version("1.0.0.0")},
-                {"Microsoft.IdentityModel.Clients.ActiveDirectory", new Version("3.19.2.6005")},
-                {"Microsoft.IdentityModel.Clients.ActiveDirectory.Platform", new Version("3.19.2.6005")},
-                {"Newtonsoft.Json", new Version("10.0.0.0")},
-                {"System.Buffers", new Version("4.0.2.0")},
-                {"System.Diagnostics.DiagnosticSource", new Version("4.0.4.0")},
-                {"System.Memory", new Version("4.0.1.1")},
-                {"System.Net.Http.WinHttpHandler", new Version("4.0.2.0")},
-                {"System.Numerics.Vectors", new Version("4.1.3.0")},
-                {"System.Private.ServiceModel", new Version("4.1.2.1")},
-                {"System.Reflection.DispatchProxy", new Version("4.0.3.0")},
-                {"System.Runtime.CompilerServices.Unsafe", new Version("4.0.5.0")},
-                {"System.Security.AccessControl", new Version("4.1.1.0")},
-                {"System.Security.Permissions", new Version("4.0.1.0")},
-                {"System.Security.Principal.Windows", new Version("4.1.1.0")},
-                {"System.ServiceModel.Primitives", new Version("4.2.0.0")},
-                {"System.Text.Encodings.Web", new Version("4.0.4.0")},
-                {"System.Text.Json", new Version("4.0.0.0")},
-                {"System.Threading.Tasks.Extensions", new Version("4.2.0.0")},
-                {"System.Xml.ReaderWriter", new Version("4.1.0.0")}
-            };
-
-        private static string PreloadAssemblyFolder { get; set; }
+        private static IDictionary<string, (string Path, Version Version)> NetFxPreloadAssemblies = ConditionalAssemblyProvider.GetAssemblies();
+        private static ISet<string> CrossMajorVersionRedirectionAllowList = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "System.Diagnostics.DiagnosticSource",
+            "System.Runtime.CompilerServices.Unsafe",
+            "Newtonsoft.Json",
+            "System.Memory.Data",
+            "System.Text.Json",
+            "Microsoft.Bcl.AsyncInterfaces",
+            "System.Text.Encodings.Web"
+        };
 
         public static void Initialize()
         {
             //This function is call before loading assemblies in PreloadAssemblies folder, so NewtonSoft.Json could not be used here
-            var accountFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            PreloadAssemblyFolder = Path.Combine(accountFolder, "PreloadAssemblies");
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
         }
 
@@ -51,12 +50,13 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             try
             {
                 AssemblyName name = new AssemblyName(args.Name);
-                if (NetFxPreloadAssemblies.TryGetValue(name.Name, out Version version))
+                if (NetFxPreloadAssemblies.TryGetValue(name.Name, out var assembly))
                 {
-                    if (version >= name.Version && version.Major == name.Version.Major)
+                    if (assembly.Version >= name.Version
+                        && (assembly.Version.Major == name.Version.Major
+                            || IsCrossMajorVersionRedirectionAllowed(name.Name)))
                     {
-                        string requiredAssembly = Path.Combine(PreloadAssemblyFolder, $"{name.Name}.dll");
-                        return Assembly.LoadFrom(requiredAssembly);
+                        return Assembly.LoadFrom(assembly.Path);
                     }
                 }
             }
@@ -64,6 +64,17 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
             }
             return null;
+        }
+
+        /// <summary>
+        /// We allow cross major version redirection for some assemblies to avoid shipping multiple versions of the same assembly.
+        /// Cautious should be taken when adding new assemblies to the allow list - make sure the new version is backward compatible.
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <returns></returns>
+        private static bool IsCrossMajorVersionRedirectionAllowed(string assemblyName)
+        {
+            return CrossMajorVersionRedirectionAllowList.Contains(assemblyName);
         }
     }
 }

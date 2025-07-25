@@ -17,21 +17,17 @@ namespace Microsoft.Azure.Commands.DataShare.Test.ScenarioTests.ScenarioTest
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class AccountTests
+    public class AccountTests : DataShareTestRunner
     {
-        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
-        public AccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AccountTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-AccountCrud");
+            TestRunner.RunTestScript("Test-AccountCrud");
         }
     }
 }

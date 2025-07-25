@@ -27,11 +27,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Target { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public PSPacketCaptureMachineScope Scope { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSPacketCaptureTargetType? TargetType { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public int? BytesToCapturePerPacket { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public int? TotalBytesPerSession { get; set; }
+        public uint? TotalBytesPerSession { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int? TimeLimitInSeconds { get; set; }
@@ -54,10 +60,22 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSPacketCaptureFilter> Filters { get; set; }
 
+        [JsonProperty(Order = 2)]
+        public bool? ContinuousCapture { get; set; }
+
+        [JsonProperty(Order = 3)]
+        public PSPacketCaptureSettings CaptureSettings { get; set; }
+
         [JsonIgnore]
         public string FiltersText
         {
             get { return JsonConvert.SerializeObject(this.Filters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ScopeText
+        {
+            get { return JsonConvert.SerializeObject(this.Scope, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -70,6 +88,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PacketCaptureErrorText
         {
             get { return JsonConvert.SerializeObject(this.PacketCaptureError, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string CaptureSettingsText
+        {
+            get { return JsonConvert.SerializeObject(this.CaptureSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializePacketCaptureError()

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpathindex
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpathindex
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ Object corresponding to Sql API's IncludedPath's Indexes.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+```
+
+```output
 DataType Precision Kind
 -------- --------- ----
 String          -1 Hash
@@ -37,7 +40,7 @@ Datatype for which the indexing behavior is applied to.
 Possible values include: 'String', 'Number', 'Point', 'Polygon', 'LineString', 'MultiPolygon'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,7 +71,7 @@ Indicates the type of index.
 Possible values include: 'Hash', 'Range', 'Spatial'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +87,7 @@ The precision of the index.
 -1 is maximum precision.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

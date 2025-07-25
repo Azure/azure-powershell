@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Accounts
 Module Guid: 342714fc-4009-4863-8afb-a9067e3db04b
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.accounts
+Download Help Link: https://learn.microsoft.com/powershell/module/az.accounts
 Help Version: 4.6.0.0
 Locale: en-US
 ---
@@ -13,6 +13,9 @@ Manages credentials and common configuration for all Azure modules.
 ## Az.Accounts Cmdlets
 ### [Add-AzEnvironment](Add-AzEnvironment.md)
 Adds endpoints and metadata for an instance of Azure Resource Manager.
+
+### [Clear-AzConfig](Clear-AzConfig.md)
+Clears the values of configs that are set by the user.
 
 ### [Clear-AzContext](Clear-AzContext.md)
 Remove all Azure credentials, account, and subscription information.
@@ -37,7 +40,13 @@ Disables AzureRm prefix aliases for Az modules.
 Disconnects a connected Azure account and removes all credentials and contexts associated with that account.
 
 ### [Enable-AzContextAutosave](Enable-AzContextAutosave.md)
-Allow the azure credential, account and subscription information to be saved and automatically loaded when you open a PowerShell window. 
+Azure contexts are PowerShell objects representing your active subscription to run commands against,
+and the authentication information needed to connect to an Azure cloud. With Azure contexts, Azure
+PowerShell doesn't need to reauthenticate your account each time you switch subscriptions. For more
+information, see [Azure PowerShell context objects](https://learn.microsoft.com/powershell/azure/context-persistence).
+
+This cmdlet allows the Azure context information to be saved and automatically loaded when you start
+a PowerShell process. For example, when opening a new window.
 
 ### [Enable-AzDataCollection](Enable-AzDataCollection.md)
 Enables Azure PowerShell to collect data to improve the user experience with the Azure PowerShell
@@ -46,6 +55,18 @@ machine. Data is collected by default unless you explicitly opt out.
 
 ### [Enable-AzureRmAlias](Enable-AzureRmAlias.md)
 Enables AzureRm prefix aliases for Az modules.
+
+### [Export-AzConfig](Export-AzConfig.md)
+Exports all the configs into a file so that it can be imported on another machine.
+
+### [Get-AzAccessToken](Get-AzAccessToken.md)
+Get secure access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+
+> [!NOTE]
+> For security purposes, the default output type has been changed from a plain text `String` to `SecureString`. For more information, see [Protect secrets in Azure PowerShell](https://go.microsoft.com/fwlink/?linkid=2258844).
+
+### [Get-AzConfig](Get-AzConfig.md)
+Gets the configs of Azure PowerShell.
 
 ### [Get-AzContext](Get-AzContext.md)
 Gets the metadata used to authenticate Azure Resource Manager requests.
@@ -59,9 +80,7 @@ Get the defaults set by the user in the current context.
 
 ### [Get-AzEnvironment](Get-AzEnvironment.md)
 Get endpoints and metadata for an instance of Azure services.
-
-### [Get-AzProfile](Get-AzProfile.md)
-Get the service profiles supported by installed modules.
+`GalleryUrl` will be removed from ArmMetadata and so Azure PowerShell will no longer provide for its value in `PSAzureEnvironment`. Currently `GalleryUrl` is not used in Azure PowerShell products. Please do not reply on `GalleryUrl` anymore. 
 
 ### [Get-AzSubscription](Get-AzSubscription.md)
 Get subscriptions that the current account can access.
@@ -69,11 +88,17 @@ Get subscriptions that the current account can access.
 ### [Get-AzTenant](Get-AzTenant.md)
 Gets tenants that are authorized for the current user.
 
+### [Import-AzConfig](Import-AzConfig.md)
+Imports configs from a file that was previously exported by `Export-AzConfig`.
+
 ### [Import-AzContext](Import-AzContext.md)
 Loads Azure authentication information from a file.
 
 ### [Invoke-AzRestMethod](Invoke-AzRestMethod.md)
 Construct and perform HTTP request to Azure resource management endpoint only
+
+### [Open-AzSurveyLink](Open-AzSurveyLink.md)
+Open survey link in default browser.
 
 ### [Register-AzModule](Register-AzModule.md)
 FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets
@@ -96,9 +121,6 @@ Saves the current authentication information for use in other PowerShell session
 ### [Select-AzContext](Select-AzContext.md)
 Select a subscription and account to target in Azure PowerShell cmdlets
 
-### [Select-AzProfile](Select-AzProfile.md)
-For modules that support multiple service profiles - load the cmdlets corresponding with the given service profile.
-
 ### [Send-Feedback](Send-Feedback.md)
 Sends feedback to the Azure PowerShell team via a set of guided prompts.
 
@@ -113,4 +135,7 @@ Sets properties for an Azure environment.
 
 ### [Uninstall-AzureRm](Uninstall-AzureRm.md)
 Removes all AzureRm modules from a machine.
+
+### [Update-AzConfig](Update-AzConfig.md)
+Updates the configs of Azure PowerShell.
 

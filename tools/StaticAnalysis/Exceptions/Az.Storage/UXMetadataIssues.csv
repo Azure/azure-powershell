@@ -1,0 +1,2 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Storage","1","Microsoft.Storage","storageAccounts-accountMigrations","Get-AzStorageAccountMigration","migrationName is defined in path but cannot find in example"

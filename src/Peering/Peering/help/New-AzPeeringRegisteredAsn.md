@@ -1,79 +1,52 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringregisteredasn
+online version: https://learn.microsoft.com/powershell/module/az.peering/new-azpeeringregisteredasn
 schema: 2.0.0
 ---
 
 # New-AzPeeringRegisteredAsn
 
 ## SYNOPSIS
-Create registered ASN for peering
+create a new registered ASN with the specified name under the given subscription, resource group and peering.
 
 ## SYNTAX
 
-### ByResourceGroupAndName (Default)
 ```
-New-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String> -Asn <Int32>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObject
-```
-New-AzPeeringRegisteredAsn -InputObject <PSPeering> [-Name] <String> -Asn <Int32> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-New-AzPeeringRegisteredAsn [-ResourceId] <String> [-Name] <String> -Asn <Int32> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringRegisteredAsn -Name <String> -PeeringName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Asn <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create registered ASNs for peering objects.
+create a new registered ASN with the specified name under the given subscription, resource group and peering.
 
 ## EXAMPLES
 
-### Get peering and create a registered ASN
+### Example 1: Create registered asn
 ```powershell
-PS C:\>$peering = Get-AzPeering -ResourceGroupName $resourceGroupName -Name $name
-PS C:\>$peering | New-AzPeeringRegisteredAsn -Name $asnName -Asn $asn
+New-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo -Asn 65001
 ```
 
-Get the peering you want to add a registered ASN. Then pass that to the commandlet.
-
-### Use peering resourceId to create a registered asn
-```powershell
-PS C:\>New-AzPeeringRegisteredAsn -ResourceId $resourceId -Name $asnName -Asn $asn
+```output
+Name    Asn   PeeringServicePrefixKey              ProvisioningState
+----    ---   -----------------------              -----------------
+TestAsn 65001 45a8db73-4b7c-4800-bb0f-d304a747d6f1 Succeeded
 ```
+
+Create a new registered asn for a peering
 
 ## PARAMETERS
 
-### -AsJob
-Run in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Asn
-The ASN to be registered
+The customer's ASN from which traffic originates.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -81,12 +54,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -95,23 +69,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Use a Get-AzPeering
+### -Name
+The name of the ASN.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: InputObject
-Aliases:
+Type: System.String
+Parameter Sets: (All)
+Aliases: RegisteredAsnName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The ASN to be registered
+### -PeeringName
+The name of the peering.
 
 ```yaml
 Type: System.String
@@ -119,54 +93,39 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringName
-The unique name of the PSPeering.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceGroupAndName
-Aliases:
-
-Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The create or use an existing resource group name.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id string name.
+### -SubscriptionId
+The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -206,13 +165,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringRegisteredAsn
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringRegisteredAsn
 
 ## NOTES
 

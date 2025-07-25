@@ -27,10 +27,18 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
         public void TestPrivateEndpointCRUD()
         {
             TestRunner.RunTestScript("Test-PrivateEndpointCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
+        public void TestPrivateEndpointInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointInEdgeZone");
         }
 
         [Fact]
@@ -39,6 +47,30 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestPrivateDnsZoneGroupCRUD()
         {
             TestRunner.RunTestScript("Test-PrivateDnsZoneGroupCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
+        public void TestPrivateEndpointApplicationSecurityGroup()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointApplicationSecurityGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
+        public void TestPrivateEndpointIpConfiguration()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointIpConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
+        public void TestPrivateEndpointCustomNetworkInterfaceName()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointCustomNetworkInterfaceName");
         }
     }
 }

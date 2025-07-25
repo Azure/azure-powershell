@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveNetworkHardenin
             {
                 DestinationPort = value.DestinationPort,
                 Direction = value.Direction,
-                IpAddresses = value.IpAddresses,
+                IpAddresses = value.IPAddresses,
                 Name = value.Name,
                 Protocols = value.Protocols
             };

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.DataShare
 Module Guid: fe925c54-a246-4a80-89ed-b8768f5dc3cd
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datashare
+Download Help Link: https://learn.microsoft.com/powershell/module/az.datashare
 Help Version: 0.1.0.0
 Locale: en-US
 ---
@@ -42,7 +42,7 @@ Gets information about share subscription in data share account.
 Gets information about synchronization runs in share subscription.
 
 ### [Get-AzDataShareSubscriptionSynchronizationDetail](Get-AzDataShareSubscriptionSynchronizationDetail.md)
-Gets information about synchonization details for share subscription.
+Gets information about synchronization details for share subscription.
 
 ### [Get-AzDataShareSynchronization](Get-AzDataShareSynchronization.md)
 Gets information about synchronization setting for a share.

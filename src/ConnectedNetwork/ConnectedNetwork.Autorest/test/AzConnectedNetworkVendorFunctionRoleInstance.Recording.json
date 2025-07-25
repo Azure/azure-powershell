@@ -1,0 +1,1006 @@
+{
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Start+$POST+https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/start?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/start?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "42471ca8-d7eb-4d53-add0-0a31b0b57690" ],
+        "CommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "155e861b-7f62-4007-980b-da69e56880f6" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "33dd0c3f-c8f5-48f3-a166-3488d0076b80" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T093834Z:33dd0c3f-c8f5-48f3-a166-3488d0076b80" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:38:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Start+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "42471ca8-d7eb-4d53-add0-0a31b0b57690" ],
+        "CommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00001dbf-0000-0100-0000-620cc6330000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "9f9046d8-e4d9-46bd-be35-e381ef2d33fd" ],
+        "x-ms-correlation-request-id": [ "1275e531-9ff6-436b-8726-f2f4b543b87b" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T093905Z:1275e531-9ff6-436b-8726-f2f4b543b87b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:39:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:38:34.5175949Z\",\"endTime\":\"2022-02-16T09:38:59.463983Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Start+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "42471ca8-d7eb-4d53-add0-0a31b0b57690" ],
+        "CommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance_Start" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00001dbf-0000-0100-0000-620cc6330000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-request-id": [ "5f6d3c65-20af-4c43-95f9-f700b8b765c7" ],
+        "x-ms-correlation-request-id": [ "42b5a171-582c-40c6-b31a-0a947782d8f3" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T093905Z:42b5a171-582c-40c6-b31a-0a947782d8f3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:39:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"0ef09030-9c7f-47b1-aa6f-831b406ba528*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:38:34.5175949Z\",\"endTime\":\"2022-02-16T09:38:59.463983Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/restart?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/restart?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "df95a899-4561-4a9f-90e0-9f599caf6f61" ],
+        "CommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "624fb0b8-6a62-4b81-96ff-06593500cc22" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "60ca2aaf-4a42-4d39-b321-1e90c03c6a9a" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T093907Z:60ca2aaf-4a42-4d39-b321-1e90c03c6a9a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:39:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Restart+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "df95a899-4561-4a9f-90e0-9f599caf6f61" ],
+        "CommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000027bf-0000-0100-0000-620cc63c0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
+        "x-ms-request-id": [ "728ff18e-3e28-4d1e-ad8e-3b92646bf4f6" ],
+        "x-ms-correlation-request-id": [ "500a6f51-9f55-4650-860f-51efcd1cad28" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T093938Z:500a6f51-9f55-4650-860f-51efcd1cad28" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:39:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "567" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Updating\",\"startTime\":\"2022-02-16T09:39:07.3643148Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Restart+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "df95a899-4561-4a9f-90e0-9f599caf6f61" ],
+        "CommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00005ebf-0000-0100-0000-620cc65e0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11996" ],
+        "x-ms-request-id": [ "e0904192-b3b3-41c5-baa2-5aacbbff04e9" ],
+        "x-ms-correlation-request-id": [ "bbb9ed07-f406-45ff-9531-963287a3ff21" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094008Z:bbb9ed07-f406-45ff-9531-963287a3ff21" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:40:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:39:07.3643148Z\",\"endTime\":\"2022-02-16T09:39:42.8761668Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Restart+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "df95a899-4561-4a9f-90e0-9f599caf6f61" ],
+        "CommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance_Restart" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00005ebf-0000-0100-0000-620cc65e0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11995" ],
+        "x-ms-request-id": [ "ececd997-5aa9-40c2-b436-e1e93bc6d08d" ],
+        "x-ms-correlation-request-id": [ "5b43fbd3-be0e-4287-820a-1e9994cab917" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094008Z:5b43fbd3-be0e-4287-820a-1e9994cab917" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:40:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"b746d1b0-1345-424f-bc5a-c5df6b579da7*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:39:07.3643148Z\",\"endTime\":\"2022-02-16T09:39:42.8761668Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Stop+$POST+https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/stop?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/stop?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "e82b5f17-0d78-4fba-b9ae-a0dd033a69de" ],
+        "CommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance_Stop" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4ba94b98-18b9-4578-8c76-6bdbd8cd1727" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "42471cbe-bd6b-4e39-b086-d1f1fe6e6fa2" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094009Z:42471cbe-bd6b-4e39-b086-d1f1fe6e6fa2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:40:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Stop+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "e82b5f17-0d78-4fba-b9ae-a0dd033a69de" ],
+        "CommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance_Stop" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000088bf-0000-0100-0000-620cc67a0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11994" ],
+        "x-ms-request-id": [ "9c6e8e3a-1563-413a-9f69-92e9d2b66ecb" ],
+        "x-ms-correlation-request-id": [ "67988b00-0c2f-4a8c-850b-64a5f35abb98" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094040Z:67988b00-0c2f-4a8c-850b-64a5f35abb98" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:40:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "567" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Updating\",\"startTime\":\"2022-02-16T09:40:09.6373901Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Stop+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "e82b5f17-0d78-4fba-b9ae-a0dd033a69de" ],
+        "CommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance_Stop" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000b7bf-0000-0100-0000-620cc69d0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11993" ],
+        "x-ms-request-id": [ "a547915a-79e3-4962-a340-332c18ef3377" ],
+        "x-ms-correlation-request-id": [ "b2c34f22-1047-482f-b132-b9ba64798bad" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094110Z:b2c34f22-1047-482f-b132-b9ba64798bad" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:41:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:40:09.6373901Z\",\"endTime\":\"2022-02-16T09:40:45.0669279Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Stop+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "e82b5f17-0d78-4fba-b9ae-a0dd033a69de" ],
+        "CommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance_Stop" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000b7bf-0000-0100-0000-620cc69d0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11992" ],
+        "x-ms-request-id": [ "f5a1bd8a-2c8e-4503-a456-718d48417364" ],
+        "x-ms-correlation-request-id": [ "c6ce7cdf-46f2-4068-af3f-a9528a466e48" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094111Z:c6ce7cdf-46f2-4068-af3f-a9528a466e48" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:41:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"a21a9f05-fed0-4c76-bd53-b2e9452087ab*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:40:09.6373901Z\",\"endTime\":\"2022-02-16T09:40:45.0669279Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+List+$GET+https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "3a6bd47e-5cbc-4f09-a4e4-bdde77bc77c3" ],
+        "CommandName": [ "Get-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkVendorFunctionRoleInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a7abc680-16fb-4496-a53d-a591b06896d8" ],
+        "x-ms-build-version": [ "" ],
+        "x-ms-correlation-request-id": [ "dfed17c9-1088-4521-b90a-6dea56cc7206" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094112Z:dfed17c9-1088-4521-b90a-6dea56cc7206" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:41:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "73" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"myRole\",\"properties\":{\"operationalState\":\"Stopped\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+StartViaIdentity+$POST+https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/start?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/start?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "d7117c48-8f8f-44b8-a210-17f6b1c87c59" ],
+        "CommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance_StartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ad1279e6-72b5-4ee2-91e0-40762af4f937" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "0da34037-e7eb-4d15-9e43-23c03ad35ed5" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094113Z:0da34037-e7eb-4d15-9e43-23c03ad35ed5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:41:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+StartViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "d7117c48-8f8f-44b8-a210-17f6b1c87c59" ],
+        "CommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance_StartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000005c0-0000-0100-0000-620cc6d10000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11991" ],
+        "x-ms-request-id": [ "be141c42-0965-47f0-bfe9-324860be873b" ],
+        "x-ms-correlation-request-id": [ "2b37a823-ff96-4bba-8076-14ec3ab65e75" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094144Z:2b37a823-ff96-4bba-8076-14ec3ab65e75" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:41:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:41:13.492534Z\",\"endTime\":\"2022-02-16T09:41:37.5205525Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+StartViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "d7117c48-8f8f-44b8-a210-17f6b1c87c59" ],
+        "CommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Start-AzConnectedNetworkVendorFunctionRoleInstance_StartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000005c0-0000-0100-0000-620cc6d10000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11990" ],
+        "x-ms-request-id": [ "87de7266-3dca-4bd7-a3e8-6872f16985a7" ],
+        "x-ms-correlation-request-id": [ "0d618737-227e-4b41-90f9-baba5bf1baf3" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094144Z:0d618737-227e-4b41-90f9-baba5bf1baf3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:41:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"82e13e59-1ce4-49dc-b98a-a6d21e5babe6*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:41:13.492534Z\",\"endTime\":\"2022-02-16T09:41:37.5205525Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/restart?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/restart?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "10342ae6-c077-4429-8bc8-4ef19ea3bf3f" ],
+        "CommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance_RestartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "983729f4-de80-4238-9f59-b3a5df46d453" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "802f4729-0997-4bde-a9f2-ccf10eb0443f" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094146Z:802f4729-0997-4bde-a9f2-ccf10eb0443f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:41:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "10342ae6-c077-4429-8bc8-4ef19ea3bf3f" ],
+        "CommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance_RestartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000013c0-0000-0100-0000-620cc6db0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11989" ],
+        "x-ms-request-id": [ "0feebe5f-e654-4a7f-9417-fc5031d7bad6" ],
+        "x-ms-correlation-request-id": [ "95ec423e-6c19-4274-aed3-8b368d54bdb5" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094216Z:95ec423e-6c19-4274-aed3-8b368d54bdb5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:42:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "567" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Updating\",\"startTime\":\"2022-02-16T09:41:45.8539948Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "10342ae6-c077-4429-8bc8-4ef19ea3bf3f" ],
+        "CommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance_RestartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000041c0-0000-0100-0000-620cc6fd0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11988" ],
+        "x-ms-request-id": [ "03309aed-ca2e-4195-9391-c0c0526d5e3d" ],
+        "x-ms-correlation-request-id": [ "393059b4-77fb-4b0c-aa22-cb6cb0e7fbdd" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094246Z:393059b4-77fb-4b0c-aa22-cb6cb0e7fbdd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:42:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:41:45.8539948Z\",\"endTime\":\"2022-02-16T09:42:21.6368978Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "10342ae6-c077-4429-8bc8-4ef19ea3bf3f" ],
+        "CommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Restart-AzConnectedNetworkVendorFunctionRoleInstance_RestartViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000041c0-0000-0100-0000-620cc6fd0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11987" ],
+        "x-ms-request-id": [ "d92355ce-1110-4cc4-bc12-40096d121f32" ],
+        "x-ms-correlation-request-id": [ "39818fad-f7d1-4e54-93bb-c52aabcbe353" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094247Z:39818fad-f7d1-4e54-93bb-c52aabcbe353" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:42:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"69c974dd-1de7-4b9c-97f9-b066ae1e9d54*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:41:45.8539948Z\",\"endTime\":\"2022-02-16T09:42:21.6368978Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+StopViaIdentity+$POST+https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/stop?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole/stop?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "5667a05d-9271-4b57-b8b8-b63b3c5797bb" ],
+        "CommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance_StopViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6401cd02-eb86-41e3-bd40-b75c2c20944b" ],
+        "x-ms-build-version": [ "" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01" ],
+        "x-ms-correlation-request-id": [ "ae27da20-c283-46bd-aaa2-91f59d242b4a" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094248Z:ae27da20-c283-46bd-aaa2-91f59d242b4a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:42:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+StopViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "5667a05d-9271-4b57-b8b8-b63b3c5797bb" ],
+        "CommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance_StopViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"000073c0-0000-0100-0000-620cc7190000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11986" ],
+        "x-ms-request-id": [ "fb07d1cf-e49e-4ada-b827-ef211fc3bb28" ],
+        "x-ms-correlation-request-id": [ "2c73ce2f-3da5-4d1d-9806-2597fcdf58c7" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094319Z:2c73ce2f-3da5-4d1d-9806-2597fcdf58c7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:43:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "566" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Updating\",\"startTime\":\"2022-02-16T09:42:48.554592Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+StopViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "5667a05d-9271-4b57-b8b8-b63b3c5797bb" ],
+        "CommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance_StopViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a7c0-0000-0100-0000-620cc73b0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11985" ],
+        "x-ms-request-id": [ "3874ec92-37c4-4c8a-852b-545d65c38c44" ],
+        "x-ms-correlation-request-id": [ "c1048e15-aba4-49a2-9140-b5443c1855ac" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094349Z:c1048e15-aba4-49a2-9140-b5443c1855ac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:43:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:42:48.554592Z\",\"endTime\":\"2022-02-16T09:43:23.6027448Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+StopViaIdentity+$GET+https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "5667a05d-9271-4b57-b8b8-b63b3c5797bb" ],
+        "CommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Stop-AzConnectedNetworkVendorFunctionRoleInstance_StopViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a7c0-0000-0100-0000-620cc73b0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11984" ],
+        "x-ms-request-id": [ "da13afb2-1b23-4c0d-82be-8a80a54ac1c3" ],
+        "x-ms-correlation-request-id": [ "60c9a7ad-499e-4fba-b0ad-de6404706e7e" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094349Z:60c9a7ad-499e-4fba-b0ad-de6404706e7e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:43:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridNetwork/locations/EASTUS/operationStatuses/2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"name\":\"2dbcb3fe-ee85-4543-bb43-c3fd7fb04c1a*B846F677C3C287857A7F449D1A74FF3C07D31C1E778751C044265EFEFC623A23\",\"resourceId\":\"/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole\",\"status\":\"Succeeded\",\"startTime\":\"2022-02-16T09:42:48.554592Z\",\"endTime\":\"2022-02-16T09:43:23.6027448Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedNetworkVendorFunctionRoleInstance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole?api-version=2021-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/xxxxx-11111-xxxxx-11111/providers/Microsoft.HybridNetwork/locations/eastus/vendors/existingVendor/networkFunctions/xxxxx-33333-xxxxx-33333/roleInstances/myRole?api-version=2021-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "f0f95108-6375-4d8b-906b-c32c8cc6d67d" ],
+        "CommandName": [ "Get-AzConnectedNetworkVendorFunctionRoleInstance" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkVendorFunctionRoleInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ConnectedNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c0af722d-6a47-49f2-8284-251733836a08" ],
+        "x-ms-build-version": [ "" ],
+        "x-ms-correlation-request-id": [ "a560f518-d70b-4060-be00-cfbdaa975c00" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20220216T094351Z:a560f518-d70b-4060-be00-cfbdaa975c00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 16 Feb 2022 09:43:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "61" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"myRole\",\"properties\":{\"operationalState\":\"Stopped\"}}",
+      "isContentBase64": false
+    }
+  }
+}

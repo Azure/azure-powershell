@@ -73,7 +73,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 throw new ResourceAlreadyExistException(String.Format(Resources.TableAlreadyExists, name));
             }
 
-            return new AzureStorageTable(table);
+            return new AzureStorageTable(table, this.Channel.StorageContext, this.tableClientOptions);
+        }
+
+        /// <summary>
+        /// create an azure table
+        /// </summary>
+        /// <param name="localChannel"></param>
+        /// <param name="tableName"></param>
+        internal AzureStorageTable CreateAzureTableV2(IStorageTableManagement localChannel, string tableName)
+        {
+            if (!NameUtil.IsValidTableName(tableName))
+            {
+                throw new ArgumentException(String.Format(Resources.InvalidTableName, tableName));
+            }
+
+            if (!localChannel.CreateTableIfNotExists(tableName, this.CmdletCancellationToken))
+            {
+                throw new ResourceAlreadyExistException(String.Format(Resources.TableAlreadyExists, tableName));
+            }
+
+            return localChannel.GetAzureStorageTable(tableName);
         }
 
         /// <summary>
@@ -82,7 +102,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            AzureStorageTable azureTable = CreateAzureTable(Name);
+            AzureStorageTable azureTable = this.Channel.IsTokenCredential ?
+                CreateAzureTableV2(Channel, Name) :
+                CreateAzureTable(Name);
 
             WriteObjectWithStorageContext(azureTable);
         }

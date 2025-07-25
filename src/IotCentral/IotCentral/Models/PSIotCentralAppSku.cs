@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum PSIotCentralAppSku
     {
-        S1 = 1,
         ST0 = 2,
         ST1 = 3,
         ST2 = 4

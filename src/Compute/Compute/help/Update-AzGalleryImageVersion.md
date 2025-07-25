@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azgalleryimageversion
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion
 schema: 2.0.0
 ---
 
@@ -17,22 +17,27 @@ Update a gallery image version.
 Update-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetExtendedLocation <Hashtable[]>] [-AllowDeletionOfReplicatedLocation <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Update-AzGalleryImageVersion [-ResourceId] <String> [-AsJob] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetExtendedLocation <Hashtable[]>] [-AllowDeletionOfReplicatedLocation <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
 Update-AzGalleryImageVersion [-InputObject] <PSGalleryImageVersion> [-AsJob]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
- [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>] [-TargetExtendedLocation <Hashtable[]>]
+ [-AllowDeletionOfReplicatedLocation <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,18 +45,76 @@ Update a gallery image version.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Change the replication regions and replica count
+
 ```powershell
-PS C:\> $region1 = @{Name='West US';ReplicaCount=1}
-PS C:\> $region2 = @{Name='East US';ReplicaCount=2}
-PS C:\> $region3 = @{Name='Central US'}
-PS C:\> $targetRegions = @($region1,$region2,$region3)
-PS C:\> Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageName $imageName -Name $versionName -ReplicaCount 2 -PublishingProfileEndOfLifeDate $endOfLifeDate -TargetRegion $targetRegions
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+$region1 = @{Name='West US';ReplicaCount=1}
+$region2 = @{Name='East US';ReplicaCount=2}
+$region3 = @{Name='Central US'}
+$targetRegions = @($region1,$region2,$region3)
+Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -ReplicaCount 2 -TargetRegion $targetRegions
 ```
 
-Update a gallery image version.
+Update a gallery image version's regions.
+
+### Example 2: Change whether an image version should be considered for latest.
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -PublishingProfileExcludeFromLatest:$false
+```
+
+Update a gallery image version's exclude from latest status. To include an image version in consideration for latest, use `-PublishingProfileExcludeFromLatest:$false`. To exclude an image version from consideration for latest, use `-PublishingProfileExcludeFromLatest`.
+
+### Example 3: Change the end-of-life date for an image version.
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+$endOfLifeDate = "2024-08-02T00:00:00+00:00"
+Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -PublishingProfileEndOfLifeDate $endOfLifeDate
+```
+
+Update a gallery image version's end-of-life date. The image version can still be used to create virtual machines after the end-of-life date.
+
+### Example 4: Update to remove TargetExtendedLocations.
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+
+Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -TargetExtendedLocation @() -AllowDeletionOfReplicatedLocation $True
+```
+
+Update a gallery image version to remove existing target extended locations. Pass in an empty array for -TargetExtendedLocation and set -AllowDeletionOfReplicatedLocation to true. 
 
 ## PARAMETERS
+
+### -AllowDeletionOfReplicatedLocation
+Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -89,7 +152,7 @@ The name of the gallery image definition.
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameter
-Aliases:
+Aliases: GalleryImageName
 
 Required: True
 Position: 2
@@ -223,6 +286,21 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TargetExtendedLocation
+The target extended locations where the Image Version is going to be replicated to. This property is updatable.
+
+```yaml
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 

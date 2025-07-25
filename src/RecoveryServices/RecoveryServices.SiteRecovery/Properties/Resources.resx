@@ -367,8 +367,11 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="ProtectionConatinerMappingNotFound" xml:space="preserve">
     <value>Protection Container Mapping "{0}" is not associated with Protection Container "{1}"</value>
   </data>
+  <data name="ProtectionClusterNotFound" xml:space="preserve">
+    <value>Protection Cluster "{0}" is not associated with Protection Container "{1}"</value>
+  </data>
   <data name="ProtectableItemNotFound" xml:space="preserve">
-    <value>Protectectable Item"{0}" is not associated with Protection Container "{1}"</value>
+    <value>Protectable Item"{0}" is not associated with Protection Container "{1}"</value>
   </data>
   <data name="ReplicationProtectedItemNotFound" xml:space="preserve">
     <value>Replication Protected Item"{0}" is not associated with Protection Container "{1}"</value>
@@ -386,7 +389,7 @@ Please provide a storage account with the same location as that of the vault.</v
     <value>This parameter set will be deprecated soon. Please use other suitable parameter set.</value>
   </data>
   <data name="InvalidNetworkMappingDetails" xml:space="preserve">
-    <value>Invalid netwok mapping details.</value>
+    <value>Invalid network mapping details.</value>
   </data>
   <data name="NetworkMappingNotFound" xml:space="preserve">
     <value>Network mapping details not found.</value>
@@ -402,6 +405,12 @@ Please provide a storage account with the same location as that of the vault.</v
   </data>
   <data name="UnsupportedReplicationProtectionActionForCommit" xml:space="preserve">
     <value>Unsupported replication protection action for virtual machine in replication group for commit for replication provider {0}. Use recovery plan action for the same purpose.</value>
+  </data>
+  <data name="UnsupportedReplicationProtectionActionForCancelFailover" xml:space="preserve">
+    <value>Unsupported replication protection action for virtual machine in replication group for cancel failover for replication provider {0}.</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForUnplannedFailover" xml:space="preserve">
+    <value>Unsupported replication protection action for virtual machine in replication group for Unplanned failover for replication provider {0}. Use recovery plan action for the same purpose.</value>
   </data>
   <data name="UnsupportedReplicationProtectionActionForTestFailover" xml:space="preserve">
     <value>Unsupported replication protection action for virtual machine in replication group for test failover for replication provider {0}. Use recovery plan action for the same purpose.</value>
@@ -436,7 +445,7 @@ Possible Causes: The resume job operation is not allowed on this Job.
 Recommended Action: To cleanup the resources created by Test failover run the Test failover cleanup operation on the test failed over Recovery plan/replicated machine.</value>
   </data>
   <data name="UnsupportedReplicationReprotectScenerio" xml:space="preserve">
-    <value>Unsupported Replication Reprotect Scenerio.</value>
+    <value>Unsupported Replication Reprotect Scenario.</value>
   </data>
   <data name="InvalidPrimaryStagingAzureStorageAccountIdDiskInput" xml:space="preserve">
     <value>Please pass a valid PrimaryStagingAzureStorageAccountId as input for disk URI "{0}".</value>
@@ -449,6 +458,9 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   </data>
   <data name="InvalidSwitchParamRPIAndProtectionContainerMapping" xml:space="preserve">
     <value>Incorrect mapping selected as Input. Replication protected item target fabric {0} not matching protection container mapping target Fabric {1}.</value>
+  </data>
+  <data name="InvalidSwitchParamRPCAndProtectionContainerMapping" xml:space="preserve">
+    <value>Incorrect mapping selected as Input. Replication protection cluster target fabric {0} not matching protection container mapping target Fabric {1}.</value>
   </data>
   <data name="NullorEmptyPrimaryStagingAzureStorageAccountId" xml:space="preserve">
     <value>PrimaryStagingAzureStorageAccountId passed is null or empty.</value>
@@ -509,5 +521,59 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   </data>
   <data name="RecoveryDiskTypeUnSupported" xml:space="preserve">
     <value>Recovery manged disk type "Standard_SSD" is not supported. Converting it to "StandardSSD_LRS".</value>
+  </data>
+  <data name="IPConfigNotFoundInVMNic" xml:space="preserve">
+    <value>IP Config "{0}" not found in VM NIC "{1}".</value>
+  </data>
+  <data name="DiskTagCannotBeSet" xml:space="preserve">
+    <value>Disk Tag(s) "{0}" cannot be set if UseManagedDisk is "{1}".</value>
+  </data>
+  <data name="SiteNotValid" xml:space="preserve">
+    <value>Site Id {0} is not valid. Please try again with the correct site details.</value>
+  </data>
+  <data name="RunAsAccountNotFound" xml:space="preserve">
+    <value>Credentials to access source machine: {0} not found for the appliance {1} in the Site {2}</value>
+  </data>
+  <data name="NoProtectableMachinesInSite" xml:space="preserve">
+    <value>No protectable machine found in the Site {1}.</value>
+  </data>
+  <data name="ProtectableMachineNotFound" xml:space="preserve">
+    <value>Protectable machine {0} not found in the Site {1}.</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForProtectableItem" xml:space="preserve">
+    <value>Unsupported replication provider for protectable item. Supported replication provider: {1}.</value>
+  </data>
+  <data name="ApplianceNotFound" xml:space="preserve">
+    <value>No appliance found with the name {0}.</value>
+  </data>
+  <data name="TargetApplianceAlreadyMapped" xml:space="preserve">
+    <value>The target appliance "{0}" is already mapped to the machine "{1}"</value>
+  </data>
+  <data name="UnsupportedReplicationProviderOperation" xml:space="preserve">
+    <value>Unsupported replication provider {0} for this {1} operation</value>
+  </data>
+  <data name="IncorrectParameters" xml:space="preserve">
+    <value>Only one of the input parameters are expected not both either RecoveryAzureStorageAccountId or UseManagedDisksForReplication </value>
+  </data>
+  <data name="NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed" xml:space="preserve">
+    <value>Cluster Recovery point requires user input else the LatestProcessRecoveryPoint flag should be passed.</value>
+  </data>
+  <data name="WrongIndividualNodeRecoveryPointPassed" xml:space="preserve">
+	<value>User input Recovery Point for nodes: {0} is/are already a part of cluster and is not an individual node.</value>	
+  </data>
+  <data name="ClusterRecoveryPointNotAvailable" xml:space="preserve">
+    <value>Cluster Recovery Point not available for {0}.</value>
+  </data>
+  <data name="InvalidNodeRecoveryPointPassed" xml:space="preserve">
+    <value>Node recovery points passed are not correct.</value>
+  </data>
+  <data name="InvalidInputForAllNodesInCluster" xml:space="preserve">
+    <value>Input does not contain information of all nodes that are part of the cluster.</value>
+  </data>
+  <data name="InvalidClusterInputWithoutProtectedItems" xml:space="preserve">
+    <value>Cluster doesn't contain protected items.</value>
+  </data>
+  <data name="NoRecoveryPointsFound" xml:space="preserve">
+	<value>No recovery points found for {0} which is part of cluster {1}.</value>	
   </data>
 </root>

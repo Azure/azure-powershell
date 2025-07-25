@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azdatalakegen2aclrecursive
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azdatalakegen2aclrecursive
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ Remove ACL recursively on the specified path.
 ```
 Remove-AzDataLakeGen2AclRecursive [-FileSystem] <String> [[-Path] <String>] [-ContinuationToken <String>]
  -Acl <PSPathAccessControlEntry[]> [-ContinueOnFailure] [-BatchSize <Int32>] [-MaxBatchCount <Int32>] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,11 +25,14 @@ The ACL entries in original ACL, which has same AccessControlType, DefaultScope 
 
 ## EXAMPLES
 
-### Example 1: Remove ACL recursively on a root directiry of filesystem
+### Example 1: Remove ACL recursively on a root directory of filesystem
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -DefaultScope
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -InputObject $acl
-PS C:\> Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -Context $ctx
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -DefaultScope
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission r-x -InputObject $acl
+Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -Context $ctx
 WARNING: To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.
 
 FailedEntries                   : 
@@ -42,11 +45,14 @@ ContinuationToken               :
 This command first creates an ACL object with 2 acl entries, then removes ACL recursively on a root directory of a file system.
 
 ### Example 2: Remove ACL recursively on a directory
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
-PS C:\> $result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -Context $ctx
+$result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -Context $ctx
 WARNING: To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.
 
-PS C:\> $result
+$result
 
 FailedEntries                   : {dir1/dir2/file4}
 TotalDirectoriesSuccessfulCount : 500
@@ -54,7 +60,7 @@ TotalFilesSuccessfulCount       : 2500
 TotalFailureCount               : 1
 ContinuationToken               : VBaHi5TfyO2ai1wYTRhIL2FjbGNibjA2c3RmATAxRDVEN0UzRENFQzZCRTAvYWRsc3Rlc3QyATAxRDY2M0ZCQTZBN0JGQTkvZGlyMC9kaXIxL2ZpbGUzFgAAAA==
 
-PS C:\> $result.FailedEntries
+$result.FailedEntries
 
 Name            IsDirectory ErrorMessage                                                                   
 ----            ----------- ------------                                                                   
@@ -62,10 +68,10 @@ dir0/dir2/file4       False This request is not authorized to perform this opera
 
 # user need fix the failed item , then can resume with ContinuationToken
 
-PS C:\> $result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinuationToken $result.ContinuationToken -Context $ctx
+$result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinuationToken $result.ContinuationToken -Context $ctx
 WARNING: To find the ACL Entry to remove, will only compare AccessControlType, DefaultScope and EntityId, will omit Permission.
 
-PS C:\> $result
+$result
 
 FailedEntries                   : 
 TotalDirectoriesSuccessfulCount : 100
@@ -77,6 +83,9 @@ ContinuationToken               :
 This command first removes ACL recursively on a directory and failed, then resume with ContinuationToken after user fix the failed file.
 
 ### Example 3: Remove ACL recursively chunk by chunk
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 $token = $null
 $TotalDirectoriesSuccess = 0
@@ -103,13 +112,16 @@ echo "ContinuationToken: `t`t`t`t`t$($token)"
 echo "FailedEntries:"$($FailedEntries | ft)
 ```
 
-This script will remove ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 50000 in this script.
+This script will remove ACL recursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 50000 in this script.
 
 ### Example 4: Remove ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
-```
-PS C:\> $result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
+<!-- Skip: Output cannot be splitted from code -->
 
-PS C:\> $result
+
+```
+$result = Remove-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
+
+$result
 
 FailedEntries                   : {dir0/dir1/file1, dir0/dir2/file4}
 TotalDirectoriesSuccessfulCount : 100
@@ -117,7 +129,7 @@ TotalFilesSuccessfulCount       : 500
 TotalFailureCount               : 2
 ContinuationToken               : VBaHi5TfyO2ai1wYTRhIL2FjbGNibjA2c3RmATAxRDVEN0UzRENFQzZCRTAvYWRsc3Rlc3QyATAxRDY2M0ZCQTZBN0JGQTkvZGlyMC9kaXIxL2ZpbGUzFgAAAA==
 
-PS C:\> $result.FailedEntries
+$result.FailedEntries
 
 Name            IsDirectory ErrorMessage                                                                   
 ----            ----------- ------------                                                                   
@@ -126,7 +138,7 @@ dir0/dir2/file4       False This request is not authorized to perform this opera
 
 # user need fix the failed item , then can resume with ContinuationToken
 
-PS C:\> foreach ($path in $result.FailedEntries.Name)
+foreach ($path in $result.FailedEntries.Name)
         {
             # user code to fix failed entry in $path
             
@@ -217,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContinueOnFailure
-Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
+Set this parameter to ignore failures and continue processing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -326,7 +338,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

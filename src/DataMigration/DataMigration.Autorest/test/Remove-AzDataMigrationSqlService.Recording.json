@@ -1,0 +1,1239 @@
+{
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices?api-version=2021-10-30-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "dba1cab4-4a3a-4c33-91ea-2ceac8cba0bb" ],
+        "CommandName": [ "Get-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Get-AzDataMigrationSqlService_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "3f754562-570e-47a9-b35b-e01fb0cd72ba", "7a584894-8312-4014-9c68-340f1bb532c0", "fdb629a7-24cf-4c92-b784-a7a9ccc4df6f", "ba88968f-122a-44f9-91dd-4e08eef68fe2", "a098333f-66ac-415d-b960-11eb6c62804d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-request-id": [ "e5056f7e-1757-426e-970a-a7090a0765c8" ],
+        "x-ms-correlation-request-id": [ "e5056f7e-1757-426e-970a-a7090a0765c8" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164729Z:e5056f7e-1757-426e-970a-a7090a0765c8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:47:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "8672" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-eastus2\",\"name\":\"alias-eastus2\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38rg/providers/Microsoft.DataMigration/sqlMigrationServices/ijh\",\"name\":\"ijh\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dmsUnit\",\"name\":\"dmsUnit\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dmsUnitTest\",\"name\":\"dmsUnitTest\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trail-eastus\",\"name\":\"trail-eastus\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-0k8lo2sr57\",\"name\":\"new-testing-sqlmigrationservice-0k8lo2sr57\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-pgej1vioy0\",\"name\":\"new-testing-sqlmigrationservice-pgej1vioy0\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-014gidzl5h\",\"name\":\"new-testing-sqlmigrationservice-014gidzl5h\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/MySqlMigrationService\",\"name\":\"MySqlMigrationService\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"uksouth\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trial-adsuk\",\"name\":\"trial-adsuk\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"westus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trail-westus\",\"name\":\"trail-westus\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dmsqw\",\"name\":\"dmsqw\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/tsum38-end2end2\",\"name\":\"tsum38-end2end2\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias\",\"name\":\"alias\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms\",\"name\":\"alias-dms\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/NewService\",\"name\":\"NewService\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Failed\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-cd5j6m1bh8\",\"name\":\"new-testing-sqlmigrationservice-cd5j6m1bh8\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/PSSTestingService\",\"name\":\"PSSTestingService\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trial-IR\",\"name\":\"trial-IR\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Failed\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trailTD-delete\",\"name\":\"trailTD-delete\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/IR2\",\"name\":\"IR2\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"name\":\"dms20211030\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trialTD\",\"name\":\"trialTD\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Failed\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trail-custom\",\"name\":\"trail-custom\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dmsty\",\"name\":\"dmsty\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/IR1\",\"name\":\"IR1\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"}]}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-0k8lo2sr57?api-version=2021-10-30-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-0k8lo2sr57?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/sqlMigrationServiceOperationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview" ],
+        "x-ms-request-id": [ "c76cc6f8-3795-4ba9-9ac4-a5bbab744730" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "4935eec6-b537-4612-ad48-4372160d0cde" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164731Z:4935eec6-b537-4612-ad48-4372160d0cde" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:47:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "b16709e7-e357-4ea7-9984-c314ae63c1ef" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "1cab19af-2dc2-4910-8802-11196bf7f74f" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164746Z:1cab19af-2dc2-4910-8802-11196bf7f74f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:47:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "06966fa6-50a4-4d1b-b008-2ed7ec2db769" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "ee33e676-b18d-4446-8034-eba385a22b12" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164802Z:ee33e676-b18d-4446-8034-eba385a22b12" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:48:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "c7565d2e-23d5-4806-bc39-bea05bb15bb8" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "f20b75f7-ad82-4ae3-a21e-cc6c7649a374" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164817Z:f20b75f7-ad82-4ae3-a21e-cc6c7649a374" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:48:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "cb8807a6-faa1-475c-bc14-6ef5db1f101d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "c80772ae-1f41-49db-a609-55e74cbda216" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164832Z:c80772ae-1f41-49db-a609-55e74cbda216" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:48:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "91dc4d89-feed-4f79-9ab6-7ea8b1d75fc7" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "1c52ce0e-0893-4f94-ab0d-563c1365c66d" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164848Z:1c52ce0e-0893-4f94-ab0d-563c1365c66d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:48:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "19dad15a-0212-4780-94db-4f7007757396" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "c0f8f66c-4204-4f44-b14d-03bef36c760c" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164903Z:c0f8f66c-4204-4f44-b14d-03bef36c760c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:49:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "55e3e62d-2a53-4edb-a6ae-7754dd1024a7" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "1a6424eb-b0e4-498f-a839-8c1b47aab3ff" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164918Z:1a6424eb-b0e4-498f-a839-8c1b47aab3ff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:49:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "9ac5fe37-ab88-4f7f-aed5-8908b0a07977" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "d9b48944-85ed-4e01-9a50-0cbc2adcb267" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164934Z:d9b48944-85ed-4e01-9a50-0cbc2adcb267" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:49:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "7c3381ad-1d13-483f-854b-c395cb02a69d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "97b01df2-c119-44a3-9614-83926ba1a8cd" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T164949Z:97b01df2-c119-44a3-9614-83926ba1a8cd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:49:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "b54417d0-5af5-488d-830c-04b9cb7df5ee" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "402b8f63-7653-4dcb-8301-74b4ce858e0c" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165004Z:402b8f63-7653-4dcb-8301-74b4ce858e0c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:50:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "28639c4a-a72f-40a0-bdfb-8d69ef44d839" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "01c932d6-4cd1-4cea-b9f4-9ef6e6a6ec3c" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165020Z:01c932d6-4cd1-4cea-b9f4-9ef6e6a6ec3c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:50:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "c88a3746-b7b8-4d4e-a08d-a24aedff0219" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-correlation-request-id": [ "8efd6556-8547-4951-ae94-a94c60e3670d" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165035Z:8efd6556-8547-4951-ae94-a94c60e3670d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:50:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "4fc75697-b8f0-43ad-b466-08ddea122423" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-correlation-request-id": [ "45fe08c5-38e8-49c5-b1b8-e9516f248a41" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165051Z:45fe08c5-38e8-49c5-b1b8-e9516f248a41" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:50:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "2ce88f4b-8487-4b52-ab84-3dd21d5e2c23" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-correlation-request-id": [ "9275ddc1-3bfc-4a82-85b0-ce9ff44f3a9c" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165106Z:9275ddc1-3bfc-4a82-85b0-ce9ff44f3a9c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:51:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "515bafe7-09c4-4531-8909-231f7e62fdfb" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-correlation-request-id": [ "3d243364-4a80-4e31-b093-4bc088143927" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165121Z:3d243364-4a80-4e31-b093-4bc088143927" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:51:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "e9a29a0d-44b6-4ad7-b905-d8582bd5acc2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "x-ms-correlation-request-id": [ "2c5ee312-1f9c-49c5-955b-ceb6715b1e5d" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165137Z:2c5ee312-1f9c-49c5-955b-ceb6715b1e5d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:51:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "e81b6def-3ec6-4963-8d8b-c6d216575299" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-correlation-request-id": [ "dab77b86-1cf9-436f-984a-05d8d17e6aa9" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165152Z:dab77b86-1cf9-436f-984a-05d8d17e6aa9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:51:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "a67bace1-35a7-43f8-a674-20bc432054b1" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-correlation-request-id": [ "51ab1e6c-d9ac-45e4-8343-d6eaca87aa39" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165207Z:51ab1e6c-d9ac-45e4-8343-d6eaca87aa39" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:52:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "8c0248eb-6976-49d4-a39f-1a4a7a5f3b76" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "x-ms-correlation-request-id": [ "256981fd-9f69-4208-953e-64a2017ebe80" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165223Z:256981fd-9f69-4208-953e-64a2017ebe80" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:52:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "b913707a-cc65-4f1b-a881-990f293bf211" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "x-ms-correlation-request-id": [ "c90e2e91-dba9-4b83-a108-6c29e6a04f5b" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165238Z:c90e2e91-dba9-4b83-a108-6c29e6a04f5b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:52:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+23": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "c27db6fc-c15c-45af-98f2-37dea570aaf7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "36d9f7ec-cdbe-4d46-91fa-38807e164c63" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165253Z:36d9f7ec-cdbe-4d46-91fa-38807e164c63" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:52:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+24": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "eb7c307c-74f0-43b8-ac0d-60c72a4255a5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
+        "x-ms-correlation-request-id": [ "e662cde1-0de7-40bc-80a5-77bec17410a6" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165309Z:e662cde1-0de7-40bc-80a5-77bec17410a6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:53:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+25": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "523fe29f-b5fa-4e4d-8850-a8498d30f0f8" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
+        "x-ms-correlation-request-id": [ "23957b34-6c3a-4c61-85f8-b25f4eb6f758" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165325Z:23957b34-6c3a-4c61-85f8-b25f4eb6f758" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:53:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+26": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "accbbd8c-79cf-4e21-a95a-8cebdc1372c4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
+        "x-ms-correlation-request-id": [ "7f8dcfe7-b8a4-4bac-ab35-74c375cb2800" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165340Z:7f8dcfe7-b8a4-4bac-ab35-74c375cb2800" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:53:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+27": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "fdbf4d41-1b2a-4492-9798-a68e61f30ff5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
+        "x-ms-correlation-request-id": [ "6ae3c44b-0e06-46e1-9e7d-cf15f17ad93b" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165355Z:6ae3c44b-0e06-46e1-9e7d-cf15f17ad93b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:53:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+28": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "1c36b404-708d-4eec-b063-cde33a507063" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
+        "x-ms-correlation-request-id": [ "75f079bb-7c0a-4e34-aea9-cf8ce3748234" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165411Z:75f079bb-7c0a-4e34-aea9-cf8ce3748234" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:54:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"InProgress\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+29": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/operationTypes/deletesqlmigrationservice/operationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "e7bc2e8b-dec4-4693-8c2e-ced335055504" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
+        "x-ms-correlation-request-id": [ "9fd0d629-fe87-4139-b6eb-445a35eaae6a" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165427Z:9fd0d629-fe87-4139-b6eb-445a35eaae6a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:54:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"bf4b1fdc-0777-4075-ac41-5faf83e875a7\",\"status\":\"Succeeded\",\"startTime\":\"2021-12-23T16:47:30.307Z\"}"
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/sqlMigrationServiceOperationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview+30": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus/sqlMigrationServiceOperationResults/bf4b1fdc-0777-4075-ac41-5faf83e875a7?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "35e0f7a7-4cae-4583-b1cb-4767454d5f4d" ],
+        "CommandName": [ "Remove-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Remove-AzDataMigrationSqlService_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "2ad4a041-f6f0-44b1-983f-3210f73cea57" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
+        "x-ms-correlation-request-id": [ "5957d743-3532-4cce-affb-a2e8c8e68523" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165427Z:5957d743-3532-4cce-affb-a2e8c8e68523" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:54:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzDataMigrationSqlService+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices?api-version=2021-10-30-preview+31": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices?api-version=2021-10-30-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "67665740-c6a9-4a1d-872f-10891c09c06c" ],
+        "CommandName": [ "Get-AzDataMigrationSqlService" ],
+        "FullCommandName": [ "Get-AzDataMigrationSqlService_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "6575a253-30e0-4c7e-942e-2136992e3434", "b5d6f03e-af04-4a23-93b0-ef90c850f6c9", "87a3b77b-8cfa-4b2f-bbd5-520d4fa3b78b", "3d9d2edb-4767-48de-85f0-531816b90789", "256508b8-ba3d-444b-ba2f-afc59f80ef9e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
+        "x-ms-request-id": [ "a11f4911-48ed-47f8-a224-e54086b7e148" ],
+        "x-ms-correlation-request-id": [ "a11f4911-48ed-47f8-a224-e54086b7e148" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20211223T165428Z:a11f4911-48ed-47f8-a224-e54086b7e148" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 23 Dec 2021 16:54:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "8287" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-eastus2\",\"name\":\"alias-eastus2\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38rg/providers/Microsoft.DataMigration/sqlMigrationServices/ijh\",\"name\":\"ijh\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dmsUnit\",\"name\":\"dmsUnit\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dmsUnitTest\",\"name\":\"dmsUnitTest\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trail-eastus\",\"name\":\"trail-eastus\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-pgej1vioy0\",\"name\":\"new-testing-sqlmigrationservice-pgej1vioy0\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-014gidzl5h\",\"name\":\"new-testing-sqlmigrationservice-014gidzl5h\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/MySqlMigrationService\",\"name\":\"MySqlMigrationService\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"uksouth\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trial-adsuk\",\"name\":\"trial-adsuk\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"westus\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trail-westus\",\"name\":\"trail-westus\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dmsqw\",\"name\":\"dmsqw\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/tsum38-end2end2\",\"name\":\"tsum38-end2end2\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias\",\"name\":\"alias\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/alias-dms\",\"name\":\"alias-dms\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/NewService\",\"name\":\"NewService\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Failed\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/new-testing-sqlmigrationservice-cd5j6m1bh8\",\"name\":\"new-testing-sqlmigrationservice-cd5j6m1bh8\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/PSSTestingService\",\"name\":\"PSSTestingService\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trial-IR\",\"name\":\"trial-IR\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Failed\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trailTD-delete\",\"name\":\"trailTD-delete\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/IR2\",\"name\":\"IR2\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dms20211030\",\"name\":\"dms20211030\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trialTD\",\"name\":\"trialTD\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Failed\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/trail-custom\",\"name\":\"trail-custom\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/dmsty\",\"name\":\"dmsty\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"integrationRuntimeState\":\"\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/sqlMigrationServices/IR1\",\"name\":\"IR1\",\"type\":\"Microsoft.DataMigration/sqlMigrationServices\"}]}"
+    }
+  }
+}

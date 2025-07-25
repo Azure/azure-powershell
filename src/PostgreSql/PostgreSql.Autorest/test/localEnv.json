@@ -1,0 +1,17 @@
+{
+  "SubscriptionId": "929287ae-832a-4946-8006-a6cc2a3f7244",
+  "resourceGroup": "PostgreSqlTest",
+  "serverName": "postgresql-test-100",
+  "flexibleServerName": "postgresql-flexible-test-100",
+  "replicaName": "postgresql-test-100-replica",
+  "firewallRuleName": "postgresqlrule01",
+  "FlexibleSku": "Standard_D2s_v3",
+  "restoreName": "postgresql-test-100-restore",
+  "restoreName2": "postgresql-test-100-restore-2",
+  "VNetName": "postgresqlvnet",
+  "location": "eastus2euap",
+  "serverName2": "postgresql-test-200",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "firewallRuleName2": "postgresqlrule02",
+  "Sku": "GP_Gen5_4"
+}

@@ -1,55 +1,69 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
+---
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/new-azrelaynamespace
+online version: https://learn.microsoft.com/powershell/module/az.relay/new-azrelaynamespace
 schema: 2.0.0
 ---
 
 # New-AzRelayNamespace
 
 ## SYNOPSIS
-Creates a new Relay namespace.
+Create Azure Relay namespace.
 
 ## SYNTAX
 
 ```
-New-AzRelayNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzRelayNamespace** cmdlet creates a new Relay namespace. Once created, the namespace
-resource manifest is immutable.
+Create Azure Relay namespace.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> New-AzRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1 -Location "West US" -Tag @{Tag1="Tag1Value"}
-
-ProvisioningState  : Succeeded
-CreatedAt          : 4/12/2017 12:38:47 AM
-UpdatedAt          : 4/12/2017 12:39:10 AM
-ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
-MetricId           : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:testnamespace-relay1
-Location           : West US
-Tags               : {[tag1, Tag1Value]}
-Id                 : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
-Name               : TestNameSpace-Relay1
-Type               : Microsoft.Relay/namespaces
+### Example 1: Creates a new Relay namespace
+```powershell
+New-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Location eastus
 ```
 
-Creates a new Relay namespace within the specified resource group.
+```output
+New-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Location eastus
+
+Name             ResourceGroupName Location Status SkuName  ServiceBusEndpoint
+----             ----------------- -------- ------ -------  ------------------
+namespace-pwsh01 lucas-relay-rg    East US  Active Standard https://namespace-pwsh01.servicebus.windows.net:443/
+```
+
+The cmdlet creates a new Relay namespace.
+Once created, the namespace resource manifest is immutable.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -59,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Relay Namespace Location.
+Resource location.
 
 ```yaml
 Type: System.String
@@ -67,29 +81,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Relay Namespace Name.
+The namespace name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: NamespaceName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -97,14 +126,45 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+The tier of this SKU.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.SkuTier
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -114,7 +174,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,17 +210,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.Collections.Hashtable
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayNamespace
 
 ## NOTES
 

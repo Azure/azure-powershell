@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/remove-aziothubdeployment
+online version: https://learn.microsoft.com/powershell/module/az.iothub/remove-aziothubdeployment
 schema: 2.0.0
 ---
 
@@ -31,13 +31,13 @@ Remove-AzIotHubDeployment [-ResourceId] <String> [-Name <String>] [-PassThru]
 ```
 
 ## DESCRIPTION
-See https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring for more information.
+See https://learn.microsoft.com/azure/iot-edge/module-deployment-monitoring for more information.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1"
+Remove-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1"
 ```
 
 Delete an IoT Edge deployment.

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.LastModifiedTime = sucmr.LastModifiedTime;
             this.MachineRunId = Guid.Parse(sucmr.Name);
             this.Name = sucmr.Name;
-            this.OperatingSystem = (OperatingSystemType)Enum.Parse(typeof(OperatingSystemType), sucmr.OsType, true);
+            this.OperatingSystem = (OperatingSystemType)Enum.Parse(typeof(OperatingSystemType), sucmr.OSType, true);
             this.SoftwareUpdateRunId = sucmr.CorrelationId.Value;
             this.TargetComputerType = (ComputerType)Enum.Parse(typeof(ComputerType), sucmr.TargetComputerType, true);
             this.TargetComputer = sucmr.TargetComputer;

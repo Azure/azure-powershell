@@ -19,6 +19,37 @@
 -->
 ## Upcoming Release
 
+## Version 1.13.0
+* Added support for Captcha
+
+## Version 1.12.0
+* Upgraded nuget package to signed package.
+
+## Version 1.11.1
+* Fixed a not converting from string to base in CustomBlockResponseBody bug in updating waf policy
+
+## Version 1.11.0
+* Upgraded to api version 2024-02-01
+* Added log scrubbing support and custom rules group by variable support
+
+## Version 1.10.1
+* Removed the outdated deps.json file.
+
+## Version 1.10.0
+* Fixed New-AzFrontDoorWafPolicy cmdlet to support adding Tags for the Azure Frontdoor waf policy
+
+## Version 1.9.0
+* Allowed rule engine action creation without RouteConfigurationOverride for `New-AzFrontDoorRulesEngineActionObject`.
+* Fixed DynamicCompression parameter being ignored issue of `New-AzFrontDoorRulesEngineActionObject`.
+
+## Version 1.8.0
+* Allowed Enable-AzFrontDoorCustomDomainHttps's SecretVersion parameter to be optional to support bring-your-own-certificate auto-rotation
+* Added Sku / RuleSetAction parameters for WAF
+
+## Version 1.7.0
+* Added FrontDoorId to properties
+* Added JSON Exclusions and RequestBodyCheck support to managed rules
+
 ## Version 1.6.1
 * Fixed an issue where an exception is being thrown when Enum.Parse tries to coerce a null value to an Enabled or Disabled enum values [#12344]
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabasefailovergroup
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup
 schema: 2.0.0
 ---
 
@@ -15,7 +15,9 @@ Modifies the configuration of an Azure SQL Database Failover Group.
 ```
 Set-AzSqlDatabaseFailoverGroup [-ServerName] <String> [-FailoverGroupName] <String>
  [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
- [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-ResourceGroupName] <String>
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
+ [-PartnerServerList <System.Collections.Generic.List`1[System.String]>]
+ [-ReadOnlyEndpointTargetServer <String>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,15 +30,15 @@ During preview of the Failover Groups feature, only values greater than or equal
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $failoverGroup = Set-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
+```powershell
+$failoverGroup = Set-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
 ```
 
 Sets a Failover Group's failover policy to 'Automatic.'
 
 ### Example 2
-```
-PS C:\> $failoverGroup = Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg | Set-AzSqlDatabaseFailoverGroup -FailoverPolicy Manual
+```powershell
+$failoverGroup = Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg | Set-AzSqlDatabaseFailoverGroup -FailoverPolicy Manual
 ```
 
 Sets a Failover Group's failover policy to 'Manual' by piping in the Failover Group.
@@ -100,7 +102,7 @@ Accepted values: Automatic, Manual
 
 Required: False
 Position: Named
-Default value: Automatic
+Default value: Manual
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -116,6 +118,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: 1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerServerList
+The list of partner servers in the failover group (empty list for 0 servers).
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReadOnlyEndpointTargetServer
+The name of the target server for the read only endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -177,4 +209,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzSqlDatabaseFailoverGroup](./Remove-AzSqlDatabaseFailoverGroup.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

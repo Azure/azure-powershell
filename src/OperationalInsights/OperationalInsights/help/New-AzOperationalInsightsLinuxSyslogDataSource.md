@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: D6CBDF09-E243-425B-8677-256163A6DFBF
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/new-azoperationalinsightslinuxsyslogdatasource
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightslinuxsyslogdatasource
 schema: 2.0.0
 ---
 
@@ -36,7 +36,7 @@ Azure Operational Insights can collect syslog data.
 ## EXAMPLES
 
 ### Example 1: Create syslog data sources
-```
+```powershell
 $FacilityNames       = @()
 $FacilityNames      += 'auth'
 $FacilityNames      += 'authpriv'
@@ -74,6 +74,9 @@ Get-AzOperationalInsightsDataSource `
    -WorkspaceName $WorkspaceName `
    -Kind 'LinuxSyslog'
 ```
+
+Adds a syslog data source to connected Linux computers in a workspace.
+Azure Operational Insights can collect syslog data.
 
 ## PARAMETERS
 
@@ -334,7 +337,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

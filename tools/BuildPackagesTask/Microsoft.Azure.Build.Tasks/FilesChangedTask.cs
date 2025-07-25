@@ -15,11 +15,11 @@
 namespace Microsoft.WindowsAzure.Build.Tasks
 {
     using System;
-    using System.Collections.Generic;
-    using System.Runtime.InteropServices;
+    using System.IO;
     using Microsoft.Build.Framework;
     using Microsoft.Build.Utilities;
     using Octokit;
+    using System.Linq;
 
     /// <summary>
     /// Build task to get all of the files changed in a given PR.
@@ -39,14 +39,21 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string RepositoryName { get; set; }
 
         /// <summary>
-        /// Gets or set the PullRequestNumber of a GitHub Pull Request.
+        /// Gets or set the trigger type, either PullRequest, Commit, or TargetModule.
         /// </summary>
-        public string PullRequestNumber { get; set; }
+        [Required]
+        public string TriggerType { get; set; }
 
         /// <summary>
-        /// Gets or set the TargetModule, e.g. Storage
+        /// Gets or set the file changed trigger, could be commit ID when CI triggered or pull request number when PR triggered, target modules when manual triggered or scheduled.
         /// </summary>
-        public string TargetModule { get; set; }
+        public string Trigger { get; set; }
+
+        /// <summary>
+        /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
+        /// </summary>
+        /// 
+        public string OutputFile { get; set; }
 
         /// <summary>
         /// Gets or sets the files changed produced by the task.
@@ -81,68 +88,95 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             if (debug)
             {
-                Console.WriteLine("PullRequestNumber:" + PullRequestNumber);
+                if (string.Equals("PullRequest", TriggerType))
+                {
+                    Console.WriteLine("Pull Request Number:" + Trigger);
+                }
+                else if (string.Equals("Commit", TriggerType))
+                {
+                    Console.WriteLine("Commit Id:" + Trigger);
+                }
+                else if (string.Equals("TargetModule", TriggerType))
+                {
+                    Console.WriteLine("Target Module:" + Trigger);
+                }
+                else
+                {
+                    Console.WriteLine("DEBUG: ---Invalid TriggerType");
+                }
             }
 
-            int ParsedPullRequestNumber;
-
-            // The next statement will convert the string representation of a number to its integer equivalent.
-            // If it succeeds it will return 'true'.
-            if (int.TryParse(PullRequestNumber, out ParsedPullRequestNumber))
+            try 
             {
-                List<string> filesChanged = new List<string>();
-                try
+                var client = new GitHubClient(new ProductHeaderValue("Azure"))
                 {
-                    //The variable is set in pipeline: "azure-powershell - powershell-core"
-                    var token = Environment.GetEnvironmentVariable("NOSCOPEPAT_ADXSDKPS");
-                    var client = new GitHubClient(new ProductHeaderValue("Azure"));
-                    if(RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !string.IsNullOrEmpty(token))
-                    {
-                        client.Credentials = new Credentials(token);
-                    }
-                    var files = client.PullRequest.Files(RepositoryOwner, RepositoryName, int.Parse(PullRequestNumber))
-                                    .ConfigureAwait(false).GetAwaiter().GetResult();
-                    if (files == null)
-                    {
-                        return false;
-                    }
-
-                    if (debug)
-                    {
-                        Console.WriteLine("DEBUG: ---Using these files: ");
-                    }
-
-                    foreach (var file in files)
-                    {
-                        var fileName = file.FileName;
-                        if (debug)
+                    Credentials = new Credentials(Environment.GetEnvironmentVariable("OCTOKITPAT"))
+                };
+                // The next statement will convert the string representation of a number to its integer equivalent.
+                // If it succeeds it will return 'true'.
+                switch (TriggerType) 
+                {
+                    case "PullRequest":
+                        try
                         {
-                            Console.WriteLine("DEBUG: " + fileName);
+                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Int32.Parse(Trigger))
+                                            .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                         }
-
-                        filesChanged.Add(fileName);
-                    }
-
-                    if (debug)
-                    {
-                        Console.WriteLine("Total: " + filesChanged.Count);
-                    }
+                        catch (AuthorizationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            client = new GitHubClient(new ProductHeaderValue("Azure"));
+                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Int32.Parse(Trigger))
+                                            .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
+                        }
+                        break;
+                    case "Commit":
+                        try
+                        {
+                            FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, Trigger)
+                                            .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
+                        }
+                        catch (AuthorizationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            client = new GitHubClient(new ProductHeaderValue("Azure"));
+                            FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, Trigger)
+                                            .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
+                        }
+                        break;
+                    case "TargetModule":
+                        FilesChanged = Trigger.Split(',');
+                        break;
+                    default:
+                        FilesChanged = new string[] { };
+                        break;
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine("---Exception Caught when trying to detect file changes with PS script: " + e.ToString());
-                    FilesChanged = new string[] { };
-                    return true;
-                }
-
-                FilesChanged = filesChanged.ToArray();
             }
-            else
+            catch (Exception e)
             {
+                Console.WriteLine("---Exception Caught when trying to detect file changes with PS script: " + e.ToString());
                 FilesChanged = new string[] { };
+                return true;
             }
+            
+            if (null != FilesChanged && FilesChanged.Length != 0 && debug) {
+                Console.WriteLine("DEBUG: ---Using these files: ");
+                foreach (string fileName in FilesChanged) 
+                {
+                    Console.WriteLine("DEBUG: " + fileName);
+                }
+                Console.WriteLine("Total: " + FilesChanged.Length);
+            }
+
+            SerializeChangedFilesToFile(FilesChanged);
 
             return true;
+        }
+
+        // This method will record the changed files into a text file at `OutputFile` for other task to consum.
+        private void SerializeChangedFilesToFile(string[] FilesChanged)
+        {
+            File.WriteAllLines(OutputFile, FilesChanged);
         }
     }
 }

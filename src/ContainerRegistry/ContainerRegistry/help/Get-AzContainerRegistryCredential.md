@@ -1,61 +1,58 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/get-azcontainerregistrycredential
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistrycredential
 schema: 2.0.0
 ---
 
 # Get-AzContainerRegistryCredential
 
 ## SYNOPSIS
-Gets the login credentials for a container registry.
+Lists the login credentials for the specified container registry.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet (Default)
+### List (Default)
 ```
-Get-AzContainerRegistryCredential [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### RegistryObjectParameterSet
-```
-Get-AzContainerRegistryCredential -Registry <PSContainerRegistry> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzContainerRegistryCredential -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### GetByRegistry
 ```
-Get-AzContainerRegistryCredential -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzContainerRegistryCredential [-SubscriptionId <String[]>] -Registry <IRegistry>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzContainerRegistryCredential cmdlet gets the login credentials for a container registry.
+Lists the login credentials for the specified container registry.
 
 ## EXAMPLES
 
 ### Example 1: Get the login credentials for a container registry
 ```powershell
-PS C:\>Get-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+Get-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample"
+```
 
-Username   Password                         Password2
---------   --------                         ---------
-MyRegistry +Y+==B==KdT=YV=ZgH=p/zQ/e1sNQq/d //JRPkgxx+r+z/ztU=R//E==vum=pRKL
+```output
+Username            Password           Password2
+--------            --------           ---------
+RegistryExample     xxxxxxxxx          XXXXXXXXX
 ```
 
 This command gets the login credentials for the specified container registry.
-Admin user has to be enabled for the container registry \`MyRegistry\` to get login credentials.
+Admin user has to be enabled for the container registry `RegistryExample` to get login credentials.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -64,28 +61,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Container Registry Name.
+### -Registry
+The Registry Object.
+To construct, see NOTES section for REGISTRY properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
-Aliases: ContainerRegistryName, RegistryName, ResourceName
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Parameter Sets: GetByRegistry
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Registry
-Container Registry Object.
+### -RegistryName
+The name of the container registry.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
-Parameter Sets: RegistryObjectParameterSet
-Aliases:
+Type: System.String
+Parameter Sets: List
+Aliases: Name
 
 Required: True
 Position: Named
@@ -95,32 +93,65 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: List
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The container registry resource id
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: Id
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -129,19 +160,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzContainerRegistry](New-AzContainerRegistry.md)
-
-[Update-AzContainerRegistry](Update-AzContainerRegistry.md)
-
-[Update-AzContainerRegistryCredential](Update-AzContainerRegistryCredential.md)
-

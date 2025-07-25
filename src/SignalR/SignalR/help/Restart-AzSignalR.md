@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/restart-azsignalr
+online version: https://learn.microsoft.com/powershell/module/az.signalr/restart-azsignalr
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Restart a SignalR service.
 ### ResourceGroupParameterSet (Default)
 ```
 Restart-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -27,7 +28,8 @@ Restart-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IA
 ### InputObjectParameterSet
 ```
 Restart-AzSignalR -InputObject <PSSignalRResource> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,10 +37,12 @@ Restart a SignalR service.
 
 ## EXAMPLES
 
-### Restart a specific SignalR service
+### Example 1: Restart a specific SignalR service
 ```powershell
-PS C:\> Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
+Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
+```
 
+```output
 True
 ```
 

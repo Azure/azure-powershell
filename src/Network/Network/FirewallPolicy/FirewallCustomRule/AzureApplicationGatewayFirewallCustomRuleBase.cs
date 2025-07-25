@@ -35,9 +35,22 @@ namespace Microsoft.Azure.Commands.Network
         public int Priority { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.")]
+        [ValidateSet("OneMin", "FiveMins", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string RateLimitDuration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1")]
+        [ValidateNotNullOrEmpty]
+        public int RateLimitThreshold { get; set; } 
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "Describes type of rule.")]
-        [ValidateSet("MatchRule", IgnoreCase = true)]
+        [ValidateSet("MatchRule", "RateLimitRule", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string RuleType { get; set; }
 
@@ -48,15 +61,33 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayFirewallCondition[] MatchCondition { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Define user session identifier group by clauses.")]
+        [ValidateCount(1, 1)]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayFirewallCustomRuleGroupByUserSession[] GroupByUserSession { get; set; }
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "Type of Actions.")]
         [ValidateSet("Allow", "Block", "Log", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Action { get; set; }
 
+        [Parameter(
+            HelpMessage = "Describes state of rule.")]
+        [ValidateSet("Disabled", "Enabled", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string State { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("State"))
+            {
+                this.State = "Enabled";
+            }
         }
 
         protected PSApplicationGatewayFirewallCustomRule NewObject()
@@ -66,8 +97,12 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Priority = this.Priority,
                 RuleType = this.RuleType,
+                RateLimitDuration = this.RateLimitDuration,
+                RateLimitThreshold = this.RateLimitThreshold,
                 MatchConditions = this.MatchCondition?.ToList(),
-                Action = this.Action
+                GroupByUserSession = this.GroupByUserSession?.ToList(),
+                Action = this.Action,
+                State = this.State
             };
         }
     }

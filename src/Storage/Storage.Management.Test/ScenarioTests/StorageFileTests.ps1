@@ -85,6 +85,15 @@ function Test-StorageFileShare
 		Assert-AreEqual $shareName  $shares[1].Name
 		Assert-AreEqual $shareName2  $shares[0].Name
 
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Filter "startswith(name, share)" 
+		Assert-AreEqual 2 $shares.Count
+		Assert-AreEqual $shareName  $shares[1].Name
+		Assert-AreEqual $shareName2  $shares[0].Name
+
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Filter "startswith(name, share2)" 
+		Assert-AreEqual 1 $shares.Count 
+		Assert-AreEqual $shareName2 $shares[0].Name
+
 		Remove-AzRmStorageShare -Force -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName
 		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual 1 $shares.Count
@@ -187,6 +196,12 @@ function Test-ShareSoftDelete
 		Assert-AreEqual $shareName1 $share.Name
 		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2
 		
+		# Get share usage
+		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -GetShareUsage
+		Assert-AreEqual $shareName1 $share.Name
+		Assert-AreEqual 0 $share.ShareUsageBytes
+		Assert-AreEqual $null $share.Deleted
+		
 		#delete share
 		Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Force
 
@@ -214,7 +229,7 @@ function Test-ShareSoftDelete
 		# restore share and check
 		if ($env:AZURE_TEST_MODE -eq "Record")
 		{
-			# sleep 1 miniute if record. Don't need sleep in replay
+			# sleep 1 minute if record. Don't need sleep in replay
 			sleep 60
 		}
 		Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -DeletedShareVersion $deletedShareVersion	
@@ -239,6 +254,394 @@ function Test-ShareSoftDelete
 		Assert-AreEqual $false $servicePropertie.ShareDeleteRetentionPolicy.Enabled
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Storage File Share Snapshot
+.DESCRIPTION
+SmokeTest
+#>
+function Test-ShareSnapshot
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+		$shareName1 = "share1"+ $rgname
+		$shareName2 = "share2"+ $rgname
+
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+
+		# Enable Share Soft delete
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5 
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual $true $servicePropertie.ShareDeleteRetentionPolicy.Enabled
+		Assert-AreEqual 5 $servicePropertie.ShareDeleteRetentionPolicy.Days
+
+		#create Shares
+		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1
+		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName1 $share.Name
+		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2
+		
+		# Create Share Snapshot
+		$shareSnapshot11 = New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Snapshot
+		Assert-AreEqual $shareName1 $shareSnapshot11.Name
+		# Assert-AreEqual 0 $share.ShareUsageBytes
+		#Assert-AreEqual $null $share.Deleted
+		# Assert-AreNotEqual $null $share.SnapshotTime
+		$shareSnapshot12 = New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Snapshot
+		$shareSnapshot21 = New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2 -Snapshot
+
+		# list Shares with IncludeSnapshot
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeSnapshot 
+        # Assert-AreEqual 6 $shares.Count
+
+		# Get single share snapshot
+		$sharesp1 = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name  $shareName1 -SnapshotTime $shareSnapshot11.SnapshotTime
+		Assert-AreEqual $shareName1 $sharesp1.Name
+        # Assert-AreEqual $shareSnapshot11.SnapshotTime $shareName1.SnapshotTime
+		
+		#delete single share snapshot
+		Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -SnapshotTime $shareSnapshot11.SnapshotTime -Force
+
+		# list Shares
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeSnapshot 
+        # Assert-AreEqual 5 $shares.Count
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeSnapshot -IncludeDeleted 
+        # Assert-AreEqual 6 $shares.Count
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeDeleted 
+        # Assert-AreEqual 2 $shares.Count
+		
+		# Delete share Default Include (None)
+		$Error.Clear()
+        Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Force -ErrorAction SilentlyContinue
+		# Assert-AreEqual 1 $Error.Count 
+        # Assert-AreEqual 409 $Error[0].Exception.Response.StatusCode
+
+		# Delete share Include None
+		$Error.Clear()
+        Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Include None -Force -ErrorAction SilentlyContinue
+		# Assert-AreEqual 1 $Error.Count 
+        # Assert-AreEqual 409 $Error[0].Exception.Response.StatusCode
+
+		# Delete share Include Snapshots
+		$Error.Clear()
+        Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Include Snapshots -Force
+
+		# Delete share Include Leased-Snapshots
+		$Error.Clear()
+        Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Include Leased-Snapshots -Force
+		
+		# list Shares after delete
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeSnapshot 
+        # Assert-AreEqual 0 $shares.Count
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Storage File Service Properties
+.DESCRIPTION
+SmokeTest
+#>
+function Test-FileServiceProperties
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $loc = Get-ProviderLocation_Canary2 ResourceManagement;
+        $kind = 'FileStorage'
+
+		$CorsRules = (@{
+			AllowedHeaders=@("x-ms-blob-content-type","x-ms-blob-content-disposition"); 
+			AllowedOrigins=@("*");
+			AllowedMethods=@("Get","Connect")},
+			@{
+			AllowedOrigins=@("http://www.fabrikam.com","http://www.contoso.com"); 
+			ExposedHeaders=@("x-ms-meta-data*","x-ms-meta-customheader"); 
+			AllowedHeaders=@("x-ms-meta-target*","x-ms-meta-customheader");
+			MaxAgeInSeconds=30;
+			AllowedMethods=@("PUT")})
+
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        # $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+		# Enable MC, and set smb setting
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $true `
+					-SMBProtocolVersion SMB2.1,SMB3.0,SMB3.1.1 `
+					-SMBAuthenticationMethod Kerberos,NTLMv2 `
+					-SMBKerberosTicketEncryption RC4-HMAC,AES-256 `
+					-SMBChannelEncryption AES-128-CCM,AES-128-GCM,AES-256-GCM
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.Versions.Count
+		Assert-AreEqual 2 $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods.Count
+		Assert-AreEqual 2 $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption.Count
+		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.ChannelEncryption.Count
+		Assert-AreEqual $true $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+
+		# Disable MC, update smb setting
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $false `
+					-SMBProtocolVersion SMB3.1.1 `
+					-SMBAuthenticationMethod Kerberos `
+					-SMBKerberosTicketEncryption AES-256 `
+					-SMBChannelEncryption AES-128-CCM
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual "SMB3.1.1" $servicePropertie.ProtocolSettings.Smb.Versions[0]
+		Assert-AreEqual "Kerberos" $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods[0]
+		Assert-AreEqual "AES-256" $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption[0]
+		Assert-AreEqual "AES-128-CCM" $servicePropertie.ProtocolSettings.Smb.ChannelEncryption[0]
+		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+
+		# remove smb setting
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname `
+					-SMBProtocolVersion @() `
+					-SMBAuthenticationMethod @()`
+					-SMBKerberosTicketEncryption @() `
+					-SMBChannelEncryption @()
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.Versions
+		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods
+		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption
+		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.ChannelEncryption
+
+		$property = Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRule $CorsRules
+		Assert-AreEqual "*" $property.Cors.CorsRulesProperty[0].AllowedOrigins
+		Assert-AreEqual "GET" $property.Cors.CorsRulesProperty[0].AllowedMethods[0]
+		Assert-AreEqual "CONNECT" $property.Cors.CorsRulesProperty[0].AllowedMethods[1]
+		Assert-AreEqual 0 $property.Cors.CorsRulesProperty[0].MaxAgeInSeconds
+		Assert-AreEqual "x-ms-blob-content-type" $property.Cors.CorsRulesProperty[0].AllowedHeaders[0]
+		Assert-AreEqual "x-ms-blob-content-disposition" $property.Cors.CorsRulesProperty[0].AllowedHeaders[1]
+		Assert-AreEqual "http://www.fabrikam.com" $property.Cors.CorsRulesProperty[1].AllowedOrigins[0]
+		Assert-AreEqual "PUT" $property.Cors.CorsRulesProperty[1].AllowedMethods[0]
+		Assert-AreEqual 30 $property.Cors.CorsRulesProperty[1].MaxAgeInSeconds
+
+		$property = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual "*" $property.Cors.CorsRulesProperty[0].AllowedOrigins
+		Assert-AreEqual "GET" $property.Cors.CorsRulesProperty[0].AllowedMethods[0]
+		Assert-AreEqual "CONNECT" $property.Cors.CorsRulesProperty[0].AllowedMethods[1]
+		Assert-AreEqual 0 $property.Cors.CorsRulesProperty[0].MaxAgeInSeconds
+		Assert-AreEqual "x-ms-blob-content-type" $property.Cors.CorsRulesProperty[0].AllowedHeaders[0]
+		Assert-AreEqual "x-ms-blob-content-disposition" $property.Cors.CorsRulesProperty[0].AllowedHeaders[1]
+		Assert-AreEqual "http://www.fabrikam.com" $property.Cors.CorsRulesProperty[1].AllowedOrigins[0]
+		Assert-AreEqual "PUT" $property.Cors.CorsRulesProperty[1].AllowedMethods[0]
+		Assert-AreEqual 30 $property.Cors.CorsRulesProperty[1].MaxAgeInSeconds
+
+		$property = Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRule @()
+		Assert-AreEqual 0 $property.Cors.CorsRulesProperty.Count
+
+		$property = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual 0 $property.Cors.CorsRulesProperty.Count
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Azure storage share with NFS
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-AzureStorageShareNFS
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $kind $sto.Kind; 
+
+		
+		$shareName = "share"+ $rgname
+		$sto | New-AzRmStorageShare -Name $shareName -EnabledProtocol NFS -RootSquash RootSquash
+		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual "NFS" $share.EnabledProtocols
+		Assert-AreEqual "RootSquash" $share.RootSquash
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -RootSquash NoRootSquash 	
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+ 		Assert-AreEqual $rgname $share.ResourceGroupName
+ 		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual "NFS" $share.EnabledProtocols
+		Assert-AreEqual "NoRootSquash" $share.RootSquash
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Azure storage ProvisionV2 Account
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-AzureStorageFilePV2
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'PremiumV2_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $kind $sto.Kind; 
+
+		
+		$shareName = "share"+ $rgname
+		$sto | New-AzRmStorageShare -Name $shareName -ProvisionedBandwidthMibps 129 -ProvisionedIops 3032 -QuotaGiB 32
+		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual 129 $share.ProvisionedBandwidthMibps
+		Assert-AreEqual 3032 $share.ProvisionedIops
+		Assert-AreEqual 32 $share.QuotaGiB
+		Assert-AreNotEqual $null $share.IncludedBurstIops
+		Assert-AreNotEqual $null $share.MaxBurstCreditsForIops
+		Assert-AreNotEqual $null $share.NextAllowedQuotaDowngradeTime
+		Assert-AreNotEqual $null $share.NextAllowedProvisionedIopsDowngradeTime
+		Assert-AreNotEqual $null $share.NextAllowedProvisionedBandwidthDowngradeTime
+		Assert-AreEqual $null $share.FileSharePaidBursting
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -ProvisionedBandwidthMibps 130 -ProvisionedIops 3033
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual 130 $share.ProvisionedBandwidthMibps
+		Assert-AreEqual 3033 $share.ProvisionedIops
+		Assert-AreEqual 32 $share.QuotaGiB
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Azure storage File Share PaidBursting on V1 account
+Smoke[Broken]Test
+#>
+function Test-AzureStorageFilePaidBursting
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $kind $sto.Kind; 
+
+		
+		$shareName = "share"+ $rgname
+		$sto | New-AzRmStorageShare -Name $shareName -PaidBurstingEnabled -PaidBurstingMaxBandwidthMibps 129 -PaidBurstingMaxIops 3033
+		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual $true $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual 3033 $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual 129 $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -PaidBurstingEnabled $false
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $false $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual $null $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual $null $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -PaidBurstingEnabled $true -PaidBurstingMaxBandwidthMibps 128 -PaidBurstingMaxIops 3032
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $true $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual 3032 $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual 128 $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
     finally
     {

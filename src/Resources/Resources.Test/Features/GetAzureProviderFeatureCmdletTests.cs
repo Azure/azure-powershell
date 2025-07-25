@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.TestFx;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Rest.Azure;
@@ -300,8 +301,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void ResetCalls()
         {
-            this.featureOperationsMock.ResetCalls();
-            this.commandRuntimeMock.ResetCalls();
+            this.featureOperationsMock.Invocations.Clear();
+            this.commandRuntimeMock.Invocations.Clear();
         }
 
         /// <summary>

@@ -34,7 +34,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   removeApplicationCapacity: app.RemoveApplicationCapacity,
                   metrics: app.Metrics,
                   provisioningState: app.ProvisioningState,
-                  typeName: app.TypeName)
+                  typeName: app.TypeName,
+                  identity: app.Identity,
+                  managedIdentities: app.ManagedIdentities)
         {
         }
     }

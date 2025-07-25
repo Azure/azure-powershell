@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 89ED4231-7616-47D0-BDAA-D849C245DC79
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azappserviceplan
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azappserviceplan
 schema: 2.0.0
 ---
 
@@ -21,7 +21,8 @@ Get-AzAppServicePlan [[-ResourceGroupName] <String>] [[-Name] <String>]
 
 ### S2
 ```
-Get-AzAppServicePlan [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAppServicePlan [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,15 +31,15 @@ The **Get-AzAppServicePlan** cmdlet gets an Azure App Service plan in the specif
 ## EXAMPLES
 
 ### Example 1: Get an App Service plan from a resource group
-```
-PS C:\>Get-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+```powershell
+Get-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
 This command gets the App Service plan named ContosoASP that belongs to the resource group named Default-Web-WestUS.
 
 ### Example 2: Get all App Service plans in a location
-```
-PS C:\>Get-AzAppServicePlan -Location "West US"
+```powershell
+Get-AzAppServicePlan -Location "West US"
 ```
 
 This command gets all App Service plans located in the "West US" region.
@@ -106,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -125,5 +126,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzAppServicePlan](./Remove-AzAppServicePlan.md)
 
 [Set-AzAppServicePlan](./Set-AzAppServicePlan.md)
-
-

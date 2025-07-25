@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     {
                         metricDimensions.Add(new MetricDimension(dimension.Dimension, "Include", dimension.IncludeValues));
                     }
-                    if (dimension.ExcludeValues != null && dimension.ExcludeValues.Count() > 0)
+                    else if (dimension.ExcludeValues != null && dimension.ExcludeValues.Count() > 0)
                     {
                         metricDimensions.Add(new MetricDimension(dimension.Dimension, "Exclude", dimension.ExcludeValues));
                     }

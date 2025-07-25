@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/import-azkeyvaultcertificate
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -16,37 +16,42 @@ Imports a certificate to a key vault.
 ### ImportCertificateFromFile (Default)
 ```
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String>
- [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Password <SecureString>] [-PolicyPath <String>] [-PolicyObject <PSKeyVaultCertificatePolicy>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromString
 ```
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -CertificateString <String>
- [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ContentType <String>] [-Password <SecureString>] [-PolicyPath <String>]
+ [-PolicyObject <PSKeyVaultCertificatePolicy>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromCollection
 ```
-Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
- [-CertificateCollection] <X509Certificate2Collection> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath <String>]
+ [-PolicyObject <PSKeyVaultCertificatePolicy>] [-CertificateCollection] <X509Certificate2Collection>
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Import-AzKeyVaultCertificate** cmdlet imports a certificate into a key vault.
 You can create the certificate to import by using one of the following methods:
-- Use `Add-AzKeyVaultCertificate` to create a certificate signing request and submit it to a certificate authority. See https://docs.microsoft.com/en-us/azure/key-vault/certificates/create-certificate-signing-request
+- Use `Add-AzKeyVaultCertificate` to create a certificate signing request and submit it to a certificate authority. See https://learn.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request
 - Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
 
 ## EXAMPLES
 
 ### Example 1: Import a key vault certificate
 ```powershell
-PS C:\> $Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
-PS C:\> Import-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+Import-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
+```
 
+```output
 Name        : importCert01
 Certificate : [Subject]
                 CN=contoso.com
@@ -75,7 +80,99 @@ Updated     : 2/8/2016 11:50:43 PM
 
 The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
 stores it in the $Password variable.
-The second command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
+The second command imports the certificate named ImportCert01 into the ContosoKV01 key vault.
+
+### Example 2: Import a key vault certificate by CertificateString
+```powershell
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$Base64String = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("import.pfx"))
+Import-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -CertificateString $Base64String -Password $Password
+```
+
+```output
+Name        : importCert01
+Certificate : [Subject]
+                CN=contoso.com
+
+              [Issuer]
+                CN=contoso.com
+
+              [Serial Number]
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+              [Not Before]
+                2/8/2016 3:11:45 PM
+
+              [Not After]
+                8/8/2016 4:21:45 PM
+
+              [Thumbprint]
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Tags        :
+Enabled     : True
+Created     : 2/8/2016 11:50:43 PM
+Updated     : 2/8/2016 11:50:43 PM
+```
+
+The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
+stores it in the $Password variable.
+The second command reads a certificate as a Base64 encoded representation.
+The third command imports the certificate named ImportCert01 into the ContosoKV01 key vault.
+
+### Example 3: Import a key vault certificate with PolicyFile
+```powershell
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+Import-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password -PolicyPath "C:\Users\contosoUser\Desktop\policy.json"
+```
+
+```output
+Name        : importCert01
+Certificate : [Subject]
+                CN=contoso.com
+
+              [Issuer]
+                CN=contoso.com
+
+              [Serial Number]
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+              [Not Before]
+                2/8/2016 3:11:45 PM
+
+              [Not After]
+                8/8/2016 4:21:45 PM
+
+              [Thumbprint]
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+KeyId         : https://ContosoKV01.vault.azure.net/keys/ImportCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+SecretId      : https://ContosoKV01.vault.azure.net/secrets/ImportCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Thumbprint    : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Policy        :
+                Secret Content Type: application/x-pkcs12
+                Issuer Name    : Unknown
+                Created On     : 3/22/2023 6:00:52 AM
+                Updated On     : 4/27/2023 9:52:53 AM
+                ...
+RecoveryLevel : Recoverable+Purgeable
+Enabled       : True
+Expires       : 6/9/2023 6:20:26 AM
+NotBefore     : 3/11/2023 6:20:26 AM
+Created       : 4/24/2023 9:05:51 AM
+Updated       : 4/24/2023 9:05:51 AM
+Tags          : {}
+VaultName     : ContosoKV01
+Name          : ImportCert01
+Version       : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Id            : https://ContosoKV01.vault.azure.net/certificates/ImportCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
+
+The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
+stores it in the $Password variable.
+The second command imports the certificate named ImportCert01 into the ContosoKV01 key vault with
+a policy defined by file.
 
 ## PARAMETERS
 
@@ -95,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateString
-Specifies a certificate string.
+Base64 encoded representation of the certificate object to import. This certificate needs to contain the private key.
 
 ```yaml
 Type: System.String
@@ -103,6 +200,21 @@ Parameter Sets: ImportWithPrivateKeyFromString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContentType
+Specifies the type of the certificate to be imported. Regards certificate string as PFX format by default.
+
+```yaml
+Type: System.String
+Parameter Sets: ImportWithPrivateKeyFromString
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,6 +273,36 @@ Specifies the password for a certificate file.
 ```yaml
 Type: System.Security.SecureString
 Parameter Sets: ImportCertificateFromFile, ImportWithPrivateKeyFromString
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyObject
+An in-memory object to specify management policy for the certificate. Mutual-exclusive to PolicyPath.
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PolicyPath
+A file path to specify management policy for the certificate that contains JSON encoded policy definition. Mutual-exclusive to PolicyObject.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -254,4 +396,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzKeyVaultCertificate](./Remove-AzKeyVaultCertificate.md)
 
-[Creating and merging CSR in Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/certificates/create-certificate-signing-request)
+[Creating and merging CSR in Key Vault](https://learn.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request)

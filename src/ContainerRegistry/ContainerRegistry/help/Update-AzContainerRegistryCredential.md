@@ -1,48 +1,57 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/update-azcontainerregistrycredential
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrycredential
 schema: 2.0.0
 ---
 
 # Update-AzContainerRegistryCredential
 
 ## SYNOPSIS
-Regenerates a login credential for a container registry.
+Regenerates one of the login credentials for the specified container registry.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet (Default)
+### RegenerateExpanded (Default)
 ```
-Update-AzContainerRegistryCredential [-ResourceGroupName] <String> [-Name] <String>
- -PasswordName <PasswordName> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### RegistryObjectParameterSet
-```
-Update-AzContainerRegistryCredential -Registry <PSContainerRegistry> -PasswordName <PasswordName>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzContainerRegistryCredential -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -PasswordName <PasswordName> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### Regenerate
 ```
-Update-AzContainerRegistryCredential -PasswordName <PasswordName> -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzContainerRegistryCredential -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -RegenerateCredentialParameter <IRegenerateCredentialParameters>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaIdentityExpanded
+```
+Update-AzContainerRegistryCredential -InputObject <IContainerRegistryIdentity> -PasswordName <PasswordName>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateByRegistry
+```
+Update-AzContainerRegistryCredential -Registry <IRegistry> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Update-AzContainerRegistryCredential cmdlet regenerates a login credential for a container registry.
+Regenerates one of the login credentials for the specified container registry.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate a login credential for a container registry
 ```powershell
-PS C:\>Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -PasswordName "Password"
+Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -PasswordName Password
+```
 
-Username   Password                         Password2
---------   --------                         ---------
-MyRegistry ++q/=K9+RH/+hwg2+3A=N+/w=J/12Ph9 //JRPkgxx+r+z/ztU=R//E==vum=pRKL
+```output
+Username            Password  Password2
+--------            --------  ---------
+RegistryExample     xxxxxxxxx xxxxxxxxx
 ```
 
 This command regenerates a login credential for the specified container registry.
@@ -51,12 +60,12 @@ Admin user has to be enabled for the container registry \`MyRegistry\` to regene
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -65,44 +74,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Container Registry Name.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
-Aliases: ContainerRegistryName, RegistryName, ResourceName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PasswordName
-The name of password to regenerate.
-Allowed values: password, password2.
-
-```yaml
-Type: Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName
-Parameter Sets: (All)
-Aliases:
-Accepted values: password, password2
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Registry
-Container Registry Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
-Parameter Sets: RegistryObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -112,33 +90,97 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name.
+### -PasswordName
+Specifies name of the password which should be regenerated -- password or password2.
 
 ```yaml
-Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PasswordName
+Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The container registry resource id
+### -RegenerateCredentialParameter
+The parameters used to regenerate the login credential.
+To construct, see NOTES section for REGENERATECREDENTIALPARAMETER properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: Id
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegenerateCredentialParameters
+Parameter Sets: Regenerate
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Registry
+The Registry Object.
+To construct, see NOTES section for REGISTRY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Parameter Sets: RegenerateByRegistry
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RegistryName
+The name of the container registry.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded, Regenerate
+Aliases: ContainerRegistryName, Name, ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded, Regenerate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded, Regenerate
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -152,7 +194,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,7 +210,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,21 +220,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegenerateCredentialParameters
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PSContainerRegistryCredential
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzContainerRegistry](New-AzContainerRegistry.md)
-
-[Update-AzContainerRegistry](Update-AzContainerRegistry.md)
-
-[Get-AzContainerRegistryCredential](Get-AzContainerRegistryCredential.md)
-

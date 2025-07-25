@@ -114,15 +114,39 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             });
         }
 
+        public ServerDevOpsAuditingSettings GetDevOpsAuditingPolicy(string resourceGroupName,
+            string serverName)
+        {
+            IServerDevOpsAuditSettingsOperations serverDevOpsAuditPolicies = GetCurrentSqlClient().ServerDevOpsAuditSettings;
+
+            return serverDevOpsAuditPolicies.Get(resourceGroupName, serverName);
+        }
+
+        public bool SetDevOpsAuditingPolicy(string resourceGroupName, string serverName,
+            ServerDevOpsAuditingSettings policy)
+        {
+            return SetAuditingPolicyInternal(() =>
+            {
+                SqlManagementClient client = GetCurrentSqlClient();
+                IServerDevOpsAuditSettingsOperations serverDevOpsAuditSettings = client.ServerDevOpsAuditSettings;
+
+                AzureOperationResponse<ServerDevOpsAuditingSettings> response =
+                    serverDevOpsAuditSettings.BeginCreateOrUpdateWithHttpMessagesAsync(
+                        resourceGroupName, serverName, policy).Result;
+                return client.GetLongRunningOperationResultAsync(response, null, CancellationToken.None).Result.Response.IsSuccessStatusCode;
+            });
+        }
+
         public IList<DiagnosticSettingsResource> GetDiagnosticsEnablingAuditCategory(
             out string nextDiagnosticSettingsName,
+            string categoryName, string settingsNamePrefix,
             string resourceGroupName, string serverName, string databaseName = "master")
         {
             string resourceUri = GetResourceUri(resourceGroupName, serverName, databaseName);
             IList<DiagnosticSettingsResource> settings =
                 GetMonitorManagementClient().DiagnosticSettings.ListAsync(resourceUri).Result.Value;
-            nextDiagnosticSettingsName = GetNextDiagnosticSettingsName(settings);
-            return settings?.Where(s => IsAuditCategoryEnabled(s))?.OrderBy(s => s.Name)?.ToList();
+            nextDiagnosticSettingsName = GetNextDiagnosticSettingsName(settings, settingsNamePrefix);
+            return settings?.Where(s => IsAuditCategoryEnabled(s, categoryName))?.OrderBy(s => s.Name)?.ToList();
         }
 
         public bool RemoveDiagnosticSettings(string settingsName, string resourceGroupName,
@@ -134,7 +158,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         }
 
         public DiagnosticSettingsResource CreateDiagnosticSettings(
-            string settingsName, string eventHubName, string eventHubAuthorizationRuleId, string workspaceId,
+            string categoryName, string settingsName, 
+            string eventHubName, string eventHubAuthorizationRuleId, string workspaceId,
             string resourceGroupName, string serverName, string databaseName = "master")
         {
             string resoureUri = GetResourceUri(resourceGroupName, serverName, databaseName);
@@ -164,7 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                         {
                             settings.Logs.Add(
                                 new LogSettings(
-                                    string.Equals(category.Name, DefinitionsCommon.SQLSecurityAuditCategory),
+                                    string.Equals(category.Name, categoryName),
                                     category.Name));
                         }
                     }
@@ -172,16 +197,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
             catch (AggregateException ex)
             {
-                if (!(ex.InnerException is ErrorResponseException ex1) ||
+                if (!(ex.InnerException is Management.Monitor.Version2018_09_01.Models.ErrorResponseException ex1) ||
                     ex1.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     throw ex.InnerException ?? ex;
                 }
             }
 
-            if (!settings.Logs.Any(l => string.Equals(l.Category, DefinitionsCommon.SQLSecurityAuditCategory)))
+            if (!settings.Logs.Any(l => string.Equals(l.Category, categoryName)))
             {
-                settings.Logs.Add(new LogSettings(true, DefinitionsCommon.SQLSecurityAuditCategory));
+                settings.Logs.Add(new LogSettings(true, categoryName));
             }
 
             return client.DiagnosticSettings.CreateOrUpdateAsync(
@@ -198,31 +223,36 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         public Guid? AssignServerIdentityIfNotAssigned(string resourceGroupName, string serverName)
         {
             var server = GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName);
-            if (server.Identity == null ||
-                server.Identity.Type != ResourceIdentityType.SystemAssigned.ToString())
+            if (server.Identity == null)
             {
-                server.Identity = ResourceIdentityHelper.GetIdentityObjectFromType(true);
+                server.Identity = ResourceIdentityHelper.GetIdentityObjectFromType(true, ResourceIdentityType.SystemAssigned.ToString(), null, null);
                 server = GetCurrentSqlClient().Servers.CreateOrUpdate(resourceGroupName, serverName, server);
+            }
+            else if (server.Identity.Type != null && server.Identity.Type.Contains("UserAssigned")) 
+            {
+                return null;
             }
 
             return server.Identity.PrincipalId;
         }
 
-        private static string GetNextDiagnosticSettingsName(IList<DiagnosticSettingsResource> settings)
+        private static string GetNextDiagnosticSettingsName(IList<DiagnosticSettingsResource> settings, 
+            string settingsNamePrefix)
         {
             int nextIndex = (settings?.Where(
-                s => s.Name.StartsWith(DefinitionsCommon.DiagnosticSettingsNamePrefix)).Select(
+                s => s.Name.StartsWith(settingsNamePrefix)).Select(
                 s => s.Name).Select(
-                name => name.Replace(DefinitionsCommon.DiagnosticSettingsNamePrefix, string.Empty)).Select(
+                name => name.Replace(settingsNamePrefix, string.Empty)).Select(
                 number => Int32.TryParse(number, out Int32 index) ? index : 0).DefaultIfEmpty().Max() ?? 0) + 1;
-            return $"{DefinitionsCommon.DiagnosticSettingsNamePrefix}{nextIndex}";
+
+            return $"{settingsNamePrefix}{nextIndex}";
         }
 
-        internal static bool IsAuditCategoryEnabled(DiagnosticSettingsResource settings)
+        internal static bool IsAuditCategoryEnabled(DiagnosticSettingsResource settings, string categoryName)
         {
             return settings?.Logs?.FirstOrDefault(
                 l => l.Enabled &&
-                string.Equals(l.Category, DefinitionsCommon.SQLSecurityAuditCategory)) != null;
+                string.Equals(l.Category, categoryName)) != null;
         }
 
         private static string GetResourceUri(string resourceGroupName, string serverName, string databaseName)

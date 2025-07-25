@@ -1,87 +1,121 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
+---
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/new-azrelayauthorizationrule
+online version: https://learn.microsoft.com/powershell/module/az.relay/new-azrelayauthorizationrule
 schema: 2.0.0
 ---
 
 # New-AzRelayAuthorizationRule
 
 ## SYNOPSIS
-Creates a new authorization rule for the specified Relay entities (Namespace/WcfRelay/HybridConnection).
+Creates or updates an authorization rule for a namespace.
 
 ## SYNTAX
 
-### NamespaceAuthorizationRuleSet (Default)
+### CreateExpanded (Default)
 ```
-New-AzRelayAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- -Rights <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### WcfRelayAuthorizationRuleSet
-```
-New-AzRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String>
- [-Name] <String> -Rights <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### HybridConnectionAuthorizationRuleSet
+### CreateExpanded1
 ```
-New-AzRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-HybridConnection] <String>
- [-Name] <String> -Rights <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -HybridConnection <String> [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateExpanded2
+```
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -WcfRelay <String> [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzRelayAuthorizationRule** cmdlet creates a new authorization rule for the specified Relay entities (Namespace/WcfRelay/HybridConnection).
+Creates or updates an authorization rule for a namespace.
 
 ## EXAMPLES
 
-### Example 1: Namespace
+### Example 1: Creates Authorization Rule with Listen rights for the Relay namespace
 ```powershell
-PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -Rights "Listen"
-
-Rights : {Listen}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/AuthoRule1
+New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name authRule-03 -Rights 'Listen','Send'
 ```
 
-Creates `AuthoRule1` with **Listen** rights for the namespace `TestNameSpace-Relay1`.
-
-### Example 2: WcfRelay
-```powershell
-PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Listen"
-
-Rights : {Listen}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay1/authorizationRules/AuthoRule1
+```output
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespa
+                               ce-pwsh01/authorizationrules/authRule-03
+Location                     : eastus
+Name                         : authRule-03
+ResourceGroupName            : lucas-relay-rg
+Rights                       : {Listen, Send}
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/Namespaces/AuthorizationRules
 ```
 
-Creates authorization rule `AuthoRule1` with **Listen** rights for the WcfRelay `TestWCFRelay1`.
+This cmdlet creates Authorization Rule with Listen rights for the Relay namespace.
 
-### Example 3: HybridConnection
+### Example 2: Creates Authorization Rule with Listen rights for the Hybrid Connection
 ```powershell
-PS C:\>New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Listen"
-
-Rights : {Listen}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/TestHybridConnection/authorizationRules/AuthoRule1
+New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01 -Rights 'Listen','Send' | Format-List
 ```
 
-Creates `AuthoRule1` with **Listen** rights for the Hybrid Connection `TestHybridConnection`.
+```output
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespa
+                               ce-pwsh01/hybridConnections/connection-01/authorizationRules/authRule-01
+Location                     : 
+Name                         : authRule-01
+ResourceGroupName            : lucas-relay-rg
+Rights                       : {Listen, Send}
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/hybridconnections/authorizationrules
+```
+
+This cmdlet creates Authorization Rule with Listen rights for the Hybrid Connection.
+
+### Example 3: Creates Authorization Rule with Listen rights for the Wcf Relay
+```powershell
+New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -Rights 'Listen','Send' | Format-List
+```
+
+```output
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespace-pwsh01/wcfRelays/wcf-01/authorizationRules/authRule-01
+Location                     : 
+Name                         : authRule-01
+ResourceGroupName            : lucas-relay-rg
+Rights                       : {Listen, Send}
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/wcfrelays/authorizationrules
+```
+
+This cmdlet creates Authorization Rule with Listen rights for for the Wcf Relay.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -91,106 +125,108 @@ Accept wildcard characters: False
 ```
 
 ### -HybridConnection
-HybridConnection Name.
+The hybrid connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: HybridConnectionAuthorizationRuleSet
+Parameter Sets: CreateExpanded1
 Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-AuthorizationRule Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Namespace
-Namespace Name.
-
-```yaml
-Type: System.String
-Parameter Sets: NamespaceAuthorizationRuleSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Rights
-Rights, e.g. 
-"Listen","Send","Manage"
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-Accepted values: Listen, Send, Manage
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The authorization rule name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AuthorizationRuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Namespace
+The namespace name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Resource group within the Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Rights
+The rights associated with the rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WcfRelay
-WcfRelay Name.
+The relay name.
 
 ```yaml
 Type: System.String
-Parameter Sets: WcfRelayAuthorizationRuleSet
+Parameter Sets: CreateExpanded2
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -226,17 +262,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azmanagementgroupsubscription/
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azmanagementgroupsubscription/
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Adds a Subscription to a Management Group.
 
 ```
 New-AzManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,18 @@ The **New-AzManagementGroupSubscription** cmdlet adds a Subscription to a Manage
 ## EXAMPLES
 
 ### Example 1: Add Subscription to a Management Group
+```powershell
+New-AzManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
 ```
-PS C:\> New-AzManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
+
+```output
+Name              : 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
+Type              : Microsoft.Management/managementGroups/subscriptions
+Id                : /providers/Microsoft.Management/managementGroups/TestGroup/subscriptions/5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+DisplayName       : Visual Studio Enterprise Subscription
+ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
+State             : Active
 ```
 
 ## PARAMETERS
@@ -129,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupSubscription
 
 ## NOTES
 

@@ -79,15 +79,13 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the TargetResourceType  parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = CreateAlertByScopes, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
         public string TargetResourceType { get; set; }
 
         /// <summary>
         /// Gets or sets the TargetResourceRegion  parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = CreateAlertByScopes, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
         public string TargetResourceRegion { get; set; }
 
         /// <summary>
@@ -99,12 +97,18 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public List<IPSMultiMetricCriteria> Condition { get; set; }
 
         /// <summary>
+        /// Gets or sets the AutoMitigate  parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flag that indicates whether the alert should be auto resolved or not")]
+        public Boolean AutoMitigate { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets the ActionGroup parameter
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
         [Alias("Actions")]
         [AllowEmptyCollection]
-        public ActivityLogAlertActionGroup[] ActionGroup { get; set; }
+        public Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[] ActionGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the ActionGroupId parameter
@@ -152,42 +156,64 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             }
 
             IDictionary<string, string> tags = null;
-            if (this.TargetResourceScope == null)//Single Resource Metric Alert Rule
+            if (this.Condition.Any(c => c.CriterionType == CriterionType.WebtestLocationAvailabilityCriterion))
+            {
+                var scopes = this.TargetResourceScope?.ToList<string>() ?? new List<string> { this.TargetResourceId };
+                MetricAlertCriteria criteria;
+                if (this.Condition.Count > 1)
+                {
+                    throw new ArgumentException("Only single Webtest location availability criterion is supported");
+                }
+
+                var psWebtestCriteria = this.Condition.First() as PSWebtestLocationAvailabilityCriteria;
+
+                criteria = new WebtestLocationAvailabilityCriteria(psWebtestCriteria.WebTestId, psWebtestCriteria.ComponentId, psWebtestCriteria.FailedLocationCount);
+                if (!scopes.Contains(psWebtestCriteria.ComponentId))
+                {
+                    scopes.Add(psWebtestCriteria.ComponentId);
+                }
+
+                tags = new Dictionary<string, string>()
+                    {
+                        {$"hidden-link:{psWebtestCriteria.WebTestId}", "Resource" },
+                        {$"hidden-link:{psWebtestCriteria.ComponentId}", "Resource" }
+                    };
+                var metricAlertResource = new MetricAlertResource(
+                        description: this.Description ?? Utilities.GetDefaultDescription("new Metric alert rule"),
+                        severity: this.Severity,
+                        location: "global",
+                        enabled: !this.DisableRule,
+                        scopes: this.TargetResourceScope,
+                        evaluationFrequency: this.Frequency,
+                        windowSize: this.WindowSize,
+                        criteria: criteria,
+                        autoMitigate: this.AutoMitigate,
+                        actions: actions,
+                        tags: tags
+                    );
+                if (ShouldProcess(
+                    target: $"Create/update an alert rule: {this.Name} from resource group: {this.ResourceGroupName}",
+                    action: "Create/update an alert rule"))
+                {
+                    var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
+                    WriteObject(result);
+                }
+            }
+            else if (this.TargetResourceScope == null)//Single Resource Metric Alert Rule
             {
                 var scopes = new List<string> {this.TargetResourceId};
 
                 MetricAlertCriteria criteria;
 
-                if (this.Condition.Any(c => c.CriterionType == CriterionType.WebtestLocationAvailabilityCriterion))
+                var metricCriteria = new List<MetricCriteria>();
+                foreach (var metricCondition in this.Condition)
                 {
-                    if (this.Condition.Count > 1)
-                    {
-                        throw new ArgumentException("Only single Webtest location availability criterion is supported");
-                    }
-
-                    var psWebtestCriteria = this.Condition.First() as PSWebtestLocationAvailabilityCriteria ;
-
-                    criteria = new WebtestLocationAvailabilityCriteria(psWebtestCriteria.WebTestId, psWebtestCriteria.ComponentId, psWebtestCriteria.FailedLocationCount);
-                    scopes.Add(psWebtestCriteria.ComponentId);
-
-                    tags = new Dictionary<string, string>()
-                    {
-                        {$"hidden-link:{psWebtestCriteria.WebTestId}", "Resource" },
-                        {$"hidden-link:{psWebtestCriteria.ComponentId}", "Resource" }
-                    };
+                    var condition = metricCondition as PSMetricCriteria;
+                    metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions, skipMetricValidation: condition.SkipMetricValidation));
                 }
-                else
-                {
-                    var metricCriteria = new List<MetricCriteria>();
-                    foreach (var metricCondition in this.Condition)
-                    {
-                        var condition = metricCondition as PSMetricCriteria;
-                        metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions, skipMetricValidation: condition.SkipMetricValidation));
-                    }
-                    criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
-                        allOf: metricCriteria
-                    );
-                }
+                criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
+                    allOf: metricCriteria
+                );
 
                 var metricAlertResource = new MetricAlertResource(
                         description: this.Description ?? Utilities.GetDefaultDescription("new Metric alert rule"),
@@ -198,6 +224,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                         evaluationFrequency: this.Frequency,
                         windowSize: this.WindowSize,
                         criteria: criteria,
+                        autoMitigate: this.AutoMitigate,
                         actions: actions,
                         tags: tags
                     );
@@ -240,6 +267,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     evaluationFrequency: this.Frequency,
                     windowSize: this.WindowSize,
                     criteria: metricCriteria,
+                    autoMitigate: this.AutoMitigate,
                     actions: actions
                 );
                 if (ShouldProcess(

@@ -23,6 +23,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
+using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -97,10 +98,31 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
+            if (EnablePartitionMerge != null)
+            {
+                databaseAccountUpdateParameters.EnablePartitionMerge = EnablePartitionMerge;
+            }
+            if (EnableBurstCapacity != null)
+            {
+                databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            }
+            if (NetworkAclBypass != null)
+            {
+                databaseAccountUpdateParameters.NetworkAclBypass =
+                    NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
+            }
+            if(MinimalTlsVersion != null)
+            {
+                databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            }
+            if (EnablePerRegionPerPartitionAutoscale != null)
+            {
+                databaseAccountUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
+            }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
-               databaseAccountUpdateParameters.ConsistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
+                databaseAccountUpdateParameters.ConsistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
             }
 
             if (Tag != null)
@@ -131,8 +153,93 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (IpRule != null)
             {
                 // not checking IpRules.Length > 0, to handle the removal of IpRules case
-                databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
+                databaseAccountUpdateParameters.IPRules = base.PopulateIpRules(IpRule);
             }
+
+            if (ServerVersion != null)
+            {
+                if (databaseAccountUpdateParameters.ApiProperties == null)
+                {
+                    databaseAccountUpdateParameters.ApiProperties = new ApiProperties();
+                }
+
+                databaseAccountUpdateParameters.ApiProperties.ServerVersion = ServerVersion;
+            }
+
+            if (NetworkAclBypassResourceId != null)
+            {
+                Collection<string> networkAclBypassResourceId = new Collection<string>(NetworkAclBypassResourceId);
+                databaseAccountUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
+            }
+
+            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue || !string.IsNullOrEmpty(BackupStorageRedundancy))
+            {
+                if (!string.IsNullOrEmpty(BackupPolicyType) &&
+                    BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarning("Cannot set BackupPolicyType along with BackupInterval or BackupRetention or BackupStorageRedundancy parameters");
+                    return;
+                }
+
+                if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+                {
+                    databaseAccountUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
+                    {
+                        PeriodicModeProperties = new PeriodicModeProperties()
+                        {
+                            BackupIntervalInMinutes = BackupIntervalInMinutes,
+                            BackupRetentionIntervalInHours = BackupRetentionIntervalInHours,
+                            BackupStorageRedundancy = BackupStorageRedundancy
+                        }
+                    };
+                }
+                else
+                {
+                    WriteWarning("Can accept BackupInterval or BackupRetention parameters only for accounts with PeriodicMode backup policy");
+                    return;
+                }
+            }
+
+            // Update backup policy to ContinuousModeBackupPolicy
+            if (!string.IsNullOrEmpty(ContinuousTier))
+            {
+                if (!(!string.IsNullOrEmpty(BackupPolicyType) &&
+                    BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase)))
+                {
+                    WriteWarning("ContinuousTier parameter need to be set together with BackupPolicyType Continuous");
+                    return;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(BackupPolicyType) && 
+                BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase))
+            {
+                // Update backup policy to ContinuousModeBackupPolicy
+                if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+                {
+                    databaseAccountUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy
+                    {
+                        ContinuousModeProperties = new ContinuousModeProperties()
+                        {
+                            Tier = ContinuousTier
+                        }
+                    };
+                }
+                else if (readDatabase.BackupPolicy is ContinuousModeBackupPolicy && !string.IsNullOrEmpty(ContinuousTier))
+                {
+                    // Update continuous tier if provided
+                    databaseAccountUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy
+                    {
+                        ContinuousModeProperties = new ContinuousModeProperties()
+                        {
+                            Tier = ContinuousTier
+                        }
+                    };
+                }
+            }
+
+            // Update analytical storage schema type.
+            databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
 
             if (ShouldProcess(Name, "Updating Database Account"))
             {

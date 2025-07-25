@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/remove-azsynapseroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapseroleassignment
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Deletes a Synapse Analytics role assignment.
 ### RemoveByWorkspaceNameAndNameParameterSet (Default)
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -SignInName <String>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceNameAndIdParameterSet
@@ -27,20 +28,22 @@ Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleAssignmentId <String
 ### RemoveByWorkspaceNameAndObjectIdParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ObjectId <String>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> -ObjectId <String>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceNameAndServicePrincipalNameParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String>
- -ServicePrincipalName <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ServicePrincipalName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceObjectAndIdParameterSet
@@ -52,54 +55,69 @@ Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleAssign
 ### RemoveByWorkspaceObjectAndNameParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -SignInName <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SignInName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceObjectAndObjectIdParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -ObjectId <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ObjectId <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionId <String>
- -ObjectId <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ObjectId <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -ServicePrincipalName <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ServicePrincipalName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Remove-AzSynapseRoleAssignment** cmdlet permanently deletes an Azure Synapse Analytics role assignment.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+* GET /users/{id}
+* GET /servicePrincipals/{id}
+
+>[!Note]
+> To removing a role assignment for a service principal, pass the object ID of the principal in the ObjectId parameter.
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId
+Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId
 ```
 
 This command deletes an Azure Synapse Analytics role assignment with a role assignment Id.
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentName ContosoRole -SignInName ContosoName
+Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName
 ```
 
-This command deletes an Azure Synapse Analytics role assignment with a role name and a user principal name.
+This command deletes an Azure Synapse Analytics role assignment at workspace level with a role name and a user principal name.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseRoleAssignment -RoleAssignmentId ContosoRoleAssignmentId
+Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem
+```
+
+This command deletes an Azure Synapse Analytics role assignment with a role name, a user principal name, a item type and a item.
+
+### Example 4
+```powershell
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseRoleAssignment -RoleAssignmentId ContosoRoleAssignmentId
 ```
 
 This command deletes an Azure Synapse Analytics role assignment with a role assignment Id through pipeline.
@@ -136,8 +154,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Item
+The item of Azure Synapse workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveByWorkspaceNameAndNameParameterSet, RemoveByWorkspaceNameAndObjectIdParameterSet, RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet, RemoveByWorkspaceNameAndServicePrincipalNameParameterSet, RemoveByWorkspaceObjectAndNameParameterSet, RemoveByWorkspaceObjectAndObjectIdParameterSet, RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet, RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ItemType
+The itemtype of Azure Synapse workspace.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+WorkspaceItemType
+Parameter Sets: RemoveByWorkspaceNameAndNameParameterSet, RemoveByWorkspaceNameAndObjectIdParameterSet, RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet, RemoveByWorkspaceNameAndServicePrincipalNameParameterSet, RemoveByWorkspaceObjectAndNameParameterSet, RemoveByWorkspaceObjectAndObjectIdParameterSet, RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet, RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet
+Aliases:
+Accepted values: ApacheSparkPool, IntegrationRuntime, LinkedService, Credential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectId
-The Azure AD ObjectId of the User, Group or Service Principal.
+The Microsoft Entra ObjectId of the User, Group or Service Principal.
 
 ```yaml
 Type: System.String

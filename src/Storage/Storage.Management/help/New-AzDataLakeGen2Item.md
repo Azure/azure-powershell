@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azdatalakegen2item
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azdatalakegen2item
 schema: 2.0.0
 ---
 
@@ -15,9 +15,9 @@ Create a file or directory in a filesystem.
 ### File (Default)
 ```
 New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -Source <String> [-Umask <String>]
- [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Permission <String>] [-EncryptionContext <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force]
+ [-AsJob] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Directory
@@ -35,25 +35,29 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Create a directory with specified permission, Umask, properties, and metadata
+```powershell
+New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwT -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 ```
-PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 
-   FileSystem Name: filesystem1
+```output
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
-dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwx    $superuser           $superuser
+dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwT    $superuser           $superuser
 ```
 
 This command creates a directory with specified Permission, Umask, properties, and metadata
 
 ### Example 2: Create(upload) a data lake file from a local source file, and the cmdlet runs in background
+```powershell
+$task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
+$task | Wait-Job
+$task.Output
 ```
-PS C:\> $task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
-PS C:\> $task | Wait-Job
-PS C:\> $task.Output
 
-   FileSystem Name: filesystem1
+```output
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group                
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -61,6 +65,18 @@ dir1/dir2/file1      False        14400000        2020-03-23 09:19:13Z rw-r-----
 ```
 
 This command creates(upload) a data lake file from a local source file, and the cmdlet runs in background.
+
+### Example 3: Create(upload) a data lake file from a local source file and set its encryption context
+```powershell
+$file = New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -EncryptionContext "encryptioncontext"
+$file.Properties.EncryptionContext
+```
+
+```output
+encryptioncontext
+```
+
+This command creates(upload) a data lake file from a local source file and sets its encryption context value to "encryptioncontext".
 
 ## PARAMETERS
 
@@ -139,6 +155,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionContext
+Encryption context of the file. Encryption context is metadata that is not encrypted when stored on the file. The primary application of this field is to store non-encrypted data that can be used to derive the customer-provided key for a file. Not applicable for directories.
+
+```yaml
+Type: System.String
+Parameter Sets: File
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FileSystem
 FileSystem name
 
@@ -201,9 +232,9 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Sets POSIX access permissions for the file owner, the file owning group, and others.
-Each class may be granted read, write, or execute permission.
-Symbolic (rwxrw-rw-) is supported.
+Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported. 
+The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, 
+absence of t or T indicates sticky bit not set.
 
 ```yaml
 Type: System.String
@@ -298,7 +329,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

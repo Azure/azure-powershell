@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/update-aziothubmoduletwin
+online version: https://learn.microsoft.com/powershell/module/az.iothub/update-aziothubmoduletwin
 schema: 2.0.0
 ---
 
@@ -34,34 +34,34 @@ Update-AzIotHubModuleTwin [-ResourceId] <String> [-DeviceId] <String> -ModuleId 
 ```
 
 ## DESCRIPTION
-Updates or replaces a device twin. See https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-module-twins for more information.
+Updates or replaces a device twin. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins for more information.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Tag $updatedTag -Desired $updatedDesired -Partial
+Update-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Tag $updatedTag -Desired $updatedDesired -Partial
 ```
 
 Returns the updated device module twin object.
 
 ### Example 2
 ```powershell
-PS C:\> Update-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Desired $updatedDesired -Partial
+Update-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Desired $updatedDesired -Partial
 ```
 
 Returns the device module twin object with updated desired properties.
 
 ### Example 3
 ```powershell
-PS C:\> Update-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Tag $updatedTag -Partial
+Update-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Tag $updatedTag -Partial
 ```
 
 Returns the device module twin object with updated tags property.
 
 ### Example 4
 ```powershell
-PS C:\> Update-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Tag $updatedTag -Desired $updatedDesired
+Update-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1" -Tag $updatedTag -Desired $updatedDesired
 ```
 
 Returns the replaced device module twin object.

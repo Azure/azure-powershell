@@ -1,41 +1,45 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/enable-azhdinsightmonitoring
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring
 schema: 2.0.0
 ---
 
 # Enable-AzHDInsightMonitoring
 
 ## SYNOPSIS
-Enables monitoring in a HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
+Enables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
 
 ## SYNTAX
 
 ```
 Enable-AzHDInsightMonitoring [-Name] <String> [-WorkspaceId] <String> [-PrimaryKey] <String>
- [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzHDInsightMonitoring** cmdlet enables monitoring in a Azure HDInsight cluster.
+The **Enable-AzHDInsightMonitoring** cmdlet enables the Classic Azure Monitor logs integration on an HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Enable-AzHDInsightMonitoring -Name testcluster -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey 'key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd'
 ```
-PS C:\> Enable-AzHDInsightMonitoring -Name testcluster -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
 
+```output
 True
 ```
 
 Monitoring will be enabled on the HDInsight cluster and relevant logs will be sent to the monitoring workspace with id 1d364e89-bb71-4503-aa3d-a23535aea7bd
 
 ### Example 2
+```powershell
+Enable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey 'key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd'
 ```
-PS C:\> Enable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
 
+```output
 True
 ```
 

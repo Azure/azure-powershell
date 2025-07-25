@@ -12,7 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using Newtonsoft.Json;
+
+using System;
+using System.Text;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -23,5 +29,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         [JsonProperty("value")]
         public object Value { get; set; }
+
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+            int maxTypeLength = Math.Max(10, Type.Length + 2);
+            string rowFormat = "{0, -" + maxTypeLength + "}  {1, -10}" + Environment.NewLine;
+            result.AppendLine();
+            result.AppendFormat(rowFormat, "Type", "Value");
+            result.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxTypeLength, "-"), GeneralUtilities.GenerateSeparator(10, "-"));
+            result.AppendFormat(rowFormat, Type, Value.ToString().Indent(maxTypeLength + 2).Trim());
+            return result.ToString();
+        }
     }
 }

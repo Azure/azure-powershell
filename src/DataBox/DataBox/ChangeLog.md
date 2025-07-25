@@ -20,6 +20,37 @@
 
 ## Upcoming Release
 
+## Version 0.5.0
+* Added new optional parameter -SkuModel to New-AzDataBoxJob cmdlet.
+    - This parameter is required only at the time of order creation for the new 120TB and 525TB SKUs.
+* All cmdlets will now use 2025-02-01 DataBoxRP API calls.
+
+## Version 0.3.3
+* Upgraded nuget package to signed package.
+
+## Version 0.3.2
+* Fixed secrets exposure in example documentation.
+
+## Version 0.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.3.0
+* Generated powershell cmdlets from latest swagger
+* Added support for customer disk job creation
+
+## Version 0.2.0
+* Switched following cmdlets to generated
+    - Get-AzDataBoxCredential
+    - Get-AzDataBoxJob
+    - New-AzDataBoxJob
+    - Remove-AzDataBoxJob
+    - Stop-AzDataBoxJob
+* Supported Creation, Updation, Deletion of Scheduled/Non-Scheduled order .              
+- Added support of transfer type ExportFromAzure.
+- Added support of Customer Managed Key.
+- Added support of double encryption.
+- Added support of user assigned identity in create/update order.
+
 ## Version 0.1.1
 * Update references in .psd1 to use relative path
 

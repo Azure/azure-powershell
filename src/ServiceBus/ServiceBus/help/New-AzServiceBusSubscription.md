@@ -1,76 +1,148 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+---
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebussubscription
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
 schema: 2.0.0
 ---
 
 # New-AzServiceBusSubscription
 
 ## SYNOPSIS
-Creates a subscription to the specified Service Bus topic.
+create a topic subscription.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Name] <String> [-AutoDeleteOnIdle <String>] [-DefaultMessageTimeToLive <String>]
- [-DeadLetteringOnMessageExpiration <Boolean>] [-DeadLetteringOnFilterEvaluationExceptions]
- [-EnableBatchedOperations <Boolean>] [-LockDuration <String>] [-MaxDeliveryCount <Int32>]
- [-RequiresSession <Boolean>] [-ForwardTo <String>] [-ForwardDeadLetteredMessagesTo <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-ClientId <String>]
+ [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
+ [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
+ [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
+ [-IsDurable] [-IsShared] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession]
+ [-Status <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespaceExpanded
+```
+New-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceInputObject <IServiceBusIdentity>
+ [-AutoDeleteOnIdle <TimeSpan>] [-ClientId <String>] [-DeadLetteringOnFilterEvaluationException]
+ [-DeadLetteringOnMessageExpiration] [-DefaultMessageTimeToLive <TimeSpan>]
+ [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations]
+ [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-IsDurable] [-IsShared]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespace
+```
+New-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceInputObject <IServiceBusIdentity>
+ -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityTopicExpanded
+```
+New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
+ [-AutoDeleteOnIdle <TimeSpan>] [-ClientId <String>] [-DeadLetteringOnFilterEvaluationException]
+ [-DeadLetteringOnMessageExpiration] [-DefaultMessageTimeToLive <TimeSpan>]
+ [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations]
+ [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-IsDurable] [-IsShared]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityTopic
+```
+New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
+ -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzServiceBusSubscription** cmdlet creates a new subscription to the specified Service Bus topic.
+create a topic subscription.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a new ServiceBus subscription
+```powershell
+New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 6) -EnableBatchedOperations
 ```
-PS C:\> New-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 
-Name                                      : SB-TopicSubscription-Example1
-AccessedAt                                : 1/20/2017 3:18:54 AM
+```output
+AccessedAt                                : 1/1/0001 12:00:00 AM
 AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
-CountDetails                              : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-CreatedAt                                 : 1/20/2017 3:18:52 AM
-DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
+ClientId                                  :
+CountDetailActiveMessageCount             : 0
+CountDetailDeadLetterMessageCount         : 0
+CountDetailScheduledMessageCount          : 0
+CountDetailTransferDeadLetterMessageCount : 0
+CountDetailTransferMessageCount           : 0
+CreatedAt                                 : 9/23/2022 2:37:46 PM
+DeadLetteringOnFilterEvaluationException  : True
 DeadLetteringOnMessageExpiration          : False
+DefaultMessageTimeToLive                  : 6.00:00:00
+DuplicateDetectionHistoryTimeWindow       :
 EnableBatchedOperations                   : True
+ForwardDeadLetteredMessagesTo             :
+ForwardTo                                 :
+Id                                        : /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/damorg/providers/Microsoft.ServiceBus/namespaces/testlatests
+                                            bmsi/topics/a/subscriptions/testsub
+IsClientAffine                            : False
+IsDurable                                 :
+IsShared                                  :
+Location                                  : westus
 LockDuration                              : 00:01:00
 MaxDeliveryCount                          : 10
 MessageCount                              : 0
+Name                                      : testsub
 RequiresSession                           : False
+ResourceGroupName                         : damorg
 Status                                    : Active
-UpdatedAt                                 : 1/20/2017 3:18:54 AM
 ```
 
-Creates	the subscription `SB-TopicSubscription-Example1` for the specified Service Bus topic `SB-Topic_exampl1`.
+Creates a new ServiceBus subscription `mySubscription` under topic `myTopic`.
 
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval, after which the subscription is automatically deleted. The minimum duration is 5 minutes.
+Idle interval after which the queue is automatically deleted.
+The minimum duration is 5 minutes.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.TimeSpan
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeadLetteringOnFilterEvaluationExceptions
+### -ClientId
+Indicates the Client ID of the application that created the client-affine subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeadLetteringOnFilterEvaluationException
 Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -81,46 +153,60 @@ Accept wildcard characters: False
 ```
 
 ### -DeadLetteringOnMessageExpiration
-Dead Lettering On Message Expiration
+Value that indicates whether a subscription has dead letter support when a message expires.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
-Accepted values: TRUE, FALSE
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultMessageTimeToLive
-Timespan to live value.
 This is the duration after which the message expires, starting from when the message is sent to Service Bus.
 This is the default value used when TimeToLive is not set on a message itself.
-For Standard = Timespan.Max and Basic = 14 days
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.TimeSpan
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DuplicateDetectionHistoryTimeWindow
+Defines the duration of the duplicate detection history.
+The default value is 10 minutes.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -130,18 +216,17 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBatchedOperations
-Enable Batched Operations - value that indicates whether server-side batched operations are enabled
+Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
-Accepted values: TRUE, FALSE
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,13 +235,13 @@ Queue/Topic name to forward the Dead Letter message
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,49 +250,94 @@ Queue/Topic name to forward the messages
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsClientAffine
+Value that indicates whether the subscription has an affinity to the client id.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsDurable
+For client-affine subscriptions, this value indicates whether the subscription is durable or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsShared
+For client-affine subscriptions, this value indicates whether the subscription is shared or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -LockDuration
-Lock Duration
+Timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
+The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.TimeSpan
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -MaxDeliveryCount
-MaxDeliveryCount - the maximum delivery count.
-A message is automatically deadlettered after this number of deliveries.
+Number of maximum deliveries.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Subscription Name
+The subscription name.
 
 ```yaml
 Type: System.String
@@ -215,70 +345,145 @@ Parameter Sets: (All)
 Aliases: SubscriptionName
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Namespace
-Namespace Name
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentityNamespaceExpanded, CreateViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: NamespaceName
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+Description of subscription resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
+Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityTopic
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -RequiresSession
-RequiresSession - the value indicating if this queue requires duplicate detection.
+Value indicating if a subscription supports the concept of sessions.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases:
-Accepted values: TRUE, FALSE
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceGroup
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Topic
-Topic Name
+### -Status
+Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: TopicName
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TopicInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentityTopicExpanded, CreateViaIdentityTopic
+Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -TopicName
+The topic name.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -314,20 +519,20 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
 
-### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx)

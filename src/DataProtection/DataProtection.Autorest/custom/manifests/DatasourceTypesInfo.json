@@ -1,0 +1,28 @@
+﻿{
+  "supportedDatasourceTypes": [
+    {
+      "serviceDatasourceType": "Microsoft.Compute/disks",
+      "clientDatasourceType": "AzureDisk"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+      "clientDatasourceType": "AzureDatabaseForPostgreSQL"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.Storage/storageAccounts/blobServices",
+      "clientDatasourceType": "AzureBlob"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.ContainerService/managedClusters",
+      "clientDatasourceType": "AzureKubernetesService"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "clientDatasourceType": "AzureDatabaseForPGFlexServer"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.DBforMySQL/flexibleServers",
+      "clientDatasourceType": "AzureDatabaseForMySQL"
+    }
+  ]
+}

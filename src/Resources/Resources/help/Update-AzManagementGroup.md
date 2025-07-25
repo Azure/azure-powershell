@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azmanagementgroup/
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azmanagementgroup/
 schema: 2.0.0
 ---
 
@@ -15,26 +15,29 @@ Updates a Management Group
 ### GroupOperations (Default)
 ```
 Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-ParentId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParentAndManagementGroupObject
 ```
 Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>]
- [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupObject
 ```
 Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>] [-ParentId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
 Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-DefaultProfile <IAzureContextContainer>]
- -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,29 +46,33 @@ The **Update-AzManagementGroup** cmdlet updates the **ParentId** or **DisplayNam
 ## EXAMPLES
 
 ### Example 1: Update a Management Group's Display Name
+```powershell
+Update-AzManagementGroup -GroupName "TestGroup" -DisplayName "New Display Name"
 ```
-PS C:\> Update-AzManagementGroup -Group "TestGroup" -DisplayName "New Display Name"
 
+```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : New Display Name
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
-ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+ParentId          : /providers/Microsoft.Management/managementGroups/00001111-aaaa-2222-bbbb-3333cccc4444
+ParentName        : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentDisplayName : 00001111-aaaa-2222-bbbb-3333cccc4444
 ```
 
 ### Example 2: Update a Management Group's Parent
+```powershell
+Update-AzManagementGroup -GroupName "TestGroup" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 ```
-PS C:\> Update-AzManagementGroup -Group "TestGroup" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 
+```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
@@ -75,13 +82,15 @@ ParentDisplayName : TestGroupParent
 ```
 
 ### Example 3: Update a Management Group by piping PSManagementGroup Object
+```powershell
+Get-AzManagementGroup -GroupName "TestGroup" | Update-AzManagementGroup -DisplayName "TestDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 ```
-PS C:\> Get-AzManagementGroup -GroupName "TestGroup" | Update-AzManagementGroup -DisplayName "TestDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 
+```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestDisplayName
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
@@ -91,17 +100,19 @@ ParentDisplayName : TestGroupParent
 ```
 
 ### Example 4: Update a Management Group's parent using the ParentObject
+```powershell
+$parentObject = Get-AzManagementGroup -GroupName "TestGroupParent"
+Update-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 ```
-PS C:\> $parentObject = Get-AzManagementGroup -GroupName "TestGroupParent"
-PS C:\> Update-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 
+```output
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
-UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
+UpdatedBy         : 00001111-aaaa-2222-bbbb-3333cccc4444
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentName        : TestGroupParent
 ParentDisplayName : TestGroupParent

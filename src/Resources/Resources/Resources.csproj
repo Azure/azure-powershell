@@ -1,38 +1,48 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <PsModuleName>Resources</PsModuleName>
-  </PropertyGroup>
+	<PropertyGroup>
+		<PsModuleName>Resources</PsModuleName>
+	</PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+	<Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+	<Import Project="$(MSBuildThisFileDirectory)..\..\psm1.props" />
 
-  <PropertyGroup>
-    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.5.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.12.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.1-preview" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="ManagementGroups\GetAzureRmManagementGroupUnderSubscription.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="2.0.0-beta" />
+		<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Authorization.Management.Sdk\Authorization.Management.Sdk.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

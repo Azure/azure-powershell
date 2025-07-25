@@ -12,12 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.StorageSync.Common.Converters;
 using Microsoft.Azure.Commands.StorageSync.Common.Exceptions;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
-using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
+using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,13 +43,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
     /// <summary>
     /// Class StorageSyncClientCmdletBase.
-    /// Implements the <see cref="Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory.ActiveDirectoryBaseCmdlet" />
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientCmdlet" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory.ActiveDirectoryBaseCmdlet" />
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientCmdlet" />
-    public abstract class StorageSyncClientCmdletBase : ActiveDirectoryBaseCmdlet, IStorageSyncClientCmdlet
+    public abstract class StorageSyncClientCmdletBase : AzureRMCmdlet, IStorageSyncClientCmdlet
     {
+        private MicrosoftGraphClient microsoftGraphClient;
+
+        public MicrosoftGraphClient MicrosoftGraphClient =>
+            microsoftGraphClient ?? (microsoftGraphClient = BuildClient<MicrosoftGraphClient>(endpoint: AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl, postBuild: instance =>
+            {
+                instance.TenantID = DefaultContext.Tenant.Id;
+                return instance;
+            }));
+
         /// <summary>
         /// The production arm service host
         /// </summary>
@@ -67,8 +77,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public StorageSyncClientCmdletBase()
         {
-            InitializeComponent();
+        }
 
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            InitializeComponent();
         }
 
         /// <summary>
@@ -76,7 +90,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         protected virtual void InitializeComponent()
         {
-            AzureContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? AzureContext.Tenant.Id;
+            try
+            {
+                AzureContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? AzureContext.Tenant.Id;
+            }
+            catch (Exception ex)
+            {
+                WriteVerbose(ex.Message);
+                throw;
+            }
+            
         }
 
         /// <summary>
@@ -115,7 +138,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Gets the subscription identifier.
         /// </summary>
         /// <value>The subscription identifier.</value>
-        public Guid SubscriptionId => AzureContext.Subscription.GetId();
+        public Guid SubscriptionId
+        {
+            get
+            {
+                try
+                {
+                    return AzureContext.Subscription.GetId();
+                }
+                catch(Exception ex)
+                {
+                    WriteVerbose(ex.Message);
+                    throw;
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the storage sync client wrapper.
@@ -127,7 +164,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (storageSyncClientWrapper == null)
                 {
-                    storageSyncClientWrapper = new StorageSyncClientWrapper(AzureContext, ActiveDirectoryClient);
+                    storageSyncClientWrapper = new StorageSyncClientWrapper(AzureContext, MicrosoftGraphClient);
                 }
 
                 storageSyncClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
@@ -155,17 +192,34 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </exception>
         protected void ExecuteClientAction(Action action)
         {
+            WriteVerbose($"Executing {this.GetType().Name}....");
             try
             {
-                action();
+                try
+                {
+                    action();
+                }
+                catch (StorageSyncModels.StorageSyncErrorException ex)
+                {
+                    throw new StorageSyncCloudException(ex);
+                }
+                catch (Rest.Azure.CloudException ex)
+                {
+                    WriteVerbose($"Cloud failed with exception {ex.Body?.Message}");
+                    throw new StorageSyncCloudException(ex);
+                }
             }
-            catch (StorageSyncModels.StorageSyncErrorException ex)
+            catch (Exception ex)
             {
-                throw new StorageSyncCloudException(ex);
-            }
-            catch (Rest.Azure.CloudException ex)
-            {
-                throw new StorageSyncCloudException(ex);
+                WriteVerbose(ex.ToString());
+
+                var innerException = ex.InnerException;
+                while (innerException != null)
+                {
+                    WriteVerbose(innerException.ToString()); 
+                    innerException = innerException.InnerException;
+                }
+                throw ex;
             }
         }
 
@@ -257,6 +311,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         protected void WriteObject(IEnumerable<StorageSyncModels.ServerEndpoint> resources)
         {
             WriteObject(resources.Select(new ServerEndpointConverter().Convert), true);
+        }
+
+        private T BuildClient<T>(string endpoint = null, Func<T, T> postBuild = null) where T : ServiceClient<T>
+        {
+            var instance = AzureSession.Instance.ClientFactory.CreateArmClient<T>(
+                DefaultProfile.DefaultContext, endpoint ?? AzureEnvironment.Endpoint.ResourceManager);
+            return postBuild == null ? instance : postBuild(instance);
         }
     }
 }

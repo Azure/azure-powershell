@@ -81,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         // Overwrite the useless parameter
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzDataLakeGen2ItemContentCommand class.
@@ -103,6 +104,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Download blob to local file
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">Source blob object</param>
         /// <param name="filePath">Destination file path</param>
         internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, string filePath)
@@ -110,6 +113,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string activity = String.Format(Resources.ReceiveAzureBlobActivity, blob.Name, filePath);
             string status = Resources.PrepareDownloadingBlob;
             ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
+
+            // If the blob has no length information, need get it
+            if(blob.Properties.Length < 0)
+            {
+                blob.FetchAttributes();
+            }
+
             DataMovementUserData data = new DataMovementUserData()
             {
                 Data = blob,
@@ -203,7 +213,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 throw new ArgumentException(String.Format(Resources.InvalidFileName, fileName));
             }
 
-            //there is no need to check the read/write permission on the specified file path, the datamovement libraray will do that
+            //there is no need to check the read/write permission on the specified file path, the data movement library will do that
 
             return filePath;
         }
@@ -254,7 +264,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 if (!InputObject.IsDirectory)
                 {
-                    if (Channel.StorageContext.StorageAccount.Credentials.IsSAS)
+                    if (Channel.StorageContext.StorageAccount != null &&
+                        Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsSAS)
                     {
                         // For SAS, the Uri already contains the sas token, so can't repeatedly inout the credential
                         blob = new CloudBlockBlob(InputObject.File.Uri);

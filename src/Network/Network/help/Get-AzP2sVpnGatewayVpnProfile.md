@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azp2svpngatewayvpnprofile
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azp2svpngatewayvpnprofile
 schema: 2.0.0
 ---
 
@@ -37,9 +37,10 @@ The **Get-AzP2sVpnGatewayVpnProfile** cmdlet enables you to generate and get a S
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzP2sVpnGatewayVpnProfile -Name 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -AuthenticationMethod EAPTLS
+Get-AzP2sVpnGatewayVpnProfile -Name 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -AuthenticationMethod EAPTLS
+```
 
-
+```output
 ProfileUrl : https://nfvprodsuppby.blob.core.windows.net/vpnprofileimmutable/8cf00031-37ec-4949-b74a-48f9021bf4c0/vpnprofile/2f132439-1051-44c6-9128-b704c1c48cf7/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=HmBSprVrs
              6hDY3x1HX958nimOjavnEjL2rlSuKIIW8Q%3D&st=2019-10-25T19%3A20%3A04Z&se=2019-10-25T20%3A20%3A04Z&sp=r&fileExtension=.zip
 ```
@@ -52,7 +53,7 @@ The **Get-AzP2sVpnGatewayVpnProfile** cmdlet enables you to generate and get a S
 Authentication Method
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: EAPTLS, EAPMSCHAPv2
@@ -68,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -83,7 +84,7 @@ Accept wildcard characters: False
 The p2s vpn gateway object to be modified
 
 ```yaml
-Type: PSP2SVpnGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
 Parameter Sets: ByP2SVpnGatewayObject
 Aliases: P2SVpnGateway
 
@@ -98,7 +99,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases: ResourceName
 
@@ -113,7 +114,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases:
 
@@ -128,7 +129,7 @@ Accept wildcard characters: False
 The Azure resource ID of the P2SVpnGateway to be modified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnGatewayResourceId
 Aliases:
 
@@ -140,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

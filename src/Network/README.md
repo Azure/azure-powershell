@@ -22,8 +22,8 @@ Register the feature `AllowApplicationSecurityGroups` for `Microsoft.Network` to
 
 ### LoadBalancerTests
 Register the feature `AllowILBAllPortsRule` for `Microsoft.Network` to your subscription.  
-Register for the [Load Balancer Standard Preview](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview#sign-up-by-using-powershell) on your subscription.
+Register for the [Load Balancer Standard Preview](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview#sign-up-by-using-powershell) on your subscription.
 
 ### PublicIpAddressTests
 [Enable Availability Zones](https://ms.portal.azure.com/#blade/Microsoft_Azure_Compute/EnableAvailabilityZonesBlade) for your subscription.  
-Register for the [Standard SKU Preview](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-public-ip-address#register-for-the-standard-sku-preview) on your subscription.
+Register for the [Standard SKU Preview](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-public-ip-address#register-for-the-standard-sku-preview) on your subscription.

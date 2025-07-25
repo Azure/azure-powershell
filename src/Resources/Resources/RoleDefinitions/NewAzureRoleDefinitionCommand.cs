@@ -16,7 +16,9 @@ using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using Newtonsoft.Json;
+
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -38,6 +40,9 @@ namespace Microsoft.Azure.Commands.Resources
         public PSRoleDefinition Role { get; set; }
 
         public Guid RoleDefinitionId { get; set; } = default(Guid);
+
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -65,8 +70,12 @@ namespace Microsoft.Azure.Commands.Resources
                 role = Role;
             }
 
-            foreach(var scope in role.AssignableScopes) {
-                AuthorizationClient.ValidateScope(scope, false);
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                foreach (var scope in role.AssignableScopes)
+                {
+                    AuthorizationClient.ValidateScope(scope, false);
+                }
             }
 
             WriteObject(PoliciesClient.CreateRoleDefinition(role, RoleDefinitionId));

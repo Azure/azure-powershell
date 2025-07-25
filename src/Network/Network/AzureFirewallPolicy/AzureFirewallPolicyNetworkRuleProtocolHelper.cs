@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallNetworkRuleProtocol.Any,
             MNM.AzureFirewallNetworkRuleProtocol.TCP,
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
-            MNM.AzureFirewallNetworkRuleProtocol.ICMP
+            MNM.AzureFirewallNetworkRuleProtocol.Icmp
         }).ToDictionary(item => item.ToUpper());
 
         private static readonly IDictionary<string, string> SupportedNatRuleProtocols = (new string[]{

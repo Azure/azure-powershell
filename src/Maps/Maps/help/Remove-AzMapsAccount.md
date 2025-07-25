@@ -1,73 +1,59 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Maps.dll-Help.xml
+---
+external help file: Az.Maps-help.xml
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/en-us/powershell/module/az.maps/remove-azmapsaccount
+online version: https://learn.microsoft.com/powershell/module/az.maps/remove-azmapsaccount
 schema: 2.0.0
 ---
 
 # Remove-AzMapsAccount
 
 ## SYNOPSIS
-Deletes an Azure Maps account.
+Delete a Maps Account.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### Delete (Default)
 ```
-Remove-AzMapsAccount [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzMapsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
+### DeleteViaIdentity
 ```
-Remove-AzMapsAccount [-InputObject <PSMapsAccount>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzMapsAccount -InputObject <IMapsIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
-```
-Remove-AzMapsAccount [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The Remove-AzMapsAccount cmdlet deletes the specified Azure Maps account.
+Delete a Maps Account.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Delete a Maps Account
 ```powershell
-PS C:\> Remove-AzMapsAccount -ResourceGroupName MyResourceGroup -Name MyAccount
-
-Confirm
-Are you sure you want to perform this action?
-Performing the operation "Deleting account MyAccount." on target "MyAccount".
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
+Remove-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01
 ```
 
-Deletes the account MyAccount from the resource group MyResourceGroup.
+This command deletes a Maps Account.
 
-### Example 2
-```
-PS C:\> Remove-AzMapsAccount -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
-
-Confirm
-Are you sure you want to perform this action?
-Performing the operation "Deleting account MyAccount." on target "MyAccount".
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
+### Example 2: Delete a Maps Account by pipeline
+```powershell
+Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount02 | Remove-AzMapsAccount
 ```
 
-Deletes the specified Azure Maps Account.
+This command deletes a Maps Account by pipeline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -77,14 +63,14 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Maps Account piped from Get-AzMapsAccount.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
-Parameter Sets: InputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -92,22 +78,22 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Maps Account Name.
+The name of the Maps Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
-Aliases: MapsAccountName, AccountName
+Parameter Sets: Delete
+Aliases: AccountName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the specified account was successfully deleted or not.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -122,32 +108,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Maps Account ResourceId.
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: Delete
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -183,13 +170,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
 
 ## OUTPUTS
 

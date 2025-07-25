@@ -16,17 +16,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.Commands.Resources.Models;
+using AuthorizationPermission = Microsoft.Azure.Management.Authorization.Models.Permission;
+
 // TODO: Remove IfDef code
 #if !NETSTANDARD
 using Microsoft.Azure.Commands.Resources.Models.Gallery;
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             };
         }
 
-        public static PSPermission ToPSPermission(this Permission permission)
+        public static PSPermission ToPSPermission(this AuthorizationPermission permission)
         {
             return new PSPermission
             {
@@ -236,13 +235,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (properties.Outputs != null && !string.IsNullOrEmpty(properties.Outputs.ToString()))
             {
-                var outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
+                var outputs = properties.Outputs.ToString().FromJson<Dictionary<string, DeploymentVariable>>();
                 deploymentObject.Outputs = outputs;
             }
 
             if (properties.Parameters != null && !string.IsNullOrEmpty(properties.Parameters.ToString()))
             {
-                var parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
+                var parameters = properties.Parameters.ToString().FromJson<Dictionary<string, DeploymentVariable>>();
                 deploymentObject.Parameters = parameters;
             }
 

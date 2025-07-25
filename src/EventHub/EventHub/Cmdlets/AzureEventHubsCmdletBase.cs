@@ -71,6 +71,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
         protected const string ClusterInputObjectParameterSet = "ClusterInputObjectSet";
+        protected const string SchemaGroupInputObjectParameterSet = "SchemaGroupInputObjectParameterSet";
+        protected const string ApplicationGroupInputObjectParameterSet = "ApplicationGroupInputObjectParameterSet";
 
         //Parameter sets for ResourceID
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
@@ -80,6 +82,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupResourceIdParameterSet = "ConsumergroupResourceIdParameterSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
         protected const string ClusterResourceIdParameterSet = "ClusterResourceIdParameterSet";
+        protected const string SchemaGroupResourceIdParameterSet = "SchemaGroupResourceIdParameterSet";
+        protected const string ApplicationGroupResourceIdParameterSet = "ApplicationGroupResourceIdParameterSet";
+        protected const string PrivateEndpointResourceIdParameterSet = "PrivateEndpointResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -87,9 +92,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRParameterSet";
         protected const string NetwrokruleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
+        protected const string PrivateEndpointPropertiesParameterSet = "PrivateEndpointPropertiesSet";
+        protected const string PrivateLinkPropertiesParameterSet = "PrivateLinkPropertiesSet";
         protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
+        protected const string ApplicationGroupPropertiesParameterSet = "ApplicationGroupPropertiesParameterSet";
 
         protected const string EventhubDefaultParameterSet = "EventhubDefaultSet";
 
@@ -103,6 +111,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AutoInflateParameterSet = "AutoInflateParameterSet";
         protected const string IdentityUpdateParameterSet = "IdentityUpdateParameterSet";
 
+        //ParameterSets for SchemaGroups
+        protected const string NamespaceSchemaGroupParameterSet = "NamespaceSchemaGroupParameterSet";
+
         //Alias - used in Cmdlets
         protected const string AliasResourceGroup = "ResourceGroup";
         protected const string AliasNamespaceName = "NamespaceName";
@@ -113,11 +124,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AliasAuthRuleObj = "AuthRuleObj";
         protected const string AliasResourceId = "ResourceId";
         protected const string AliasVirtualNetworkRule = "VirtualNteworkRule";
+        protected const string AliasSchemaGroupName = "SchemaGroupName";
 
         //Access Rights 
         protected const string Manage = "Manage";
         protected const string Send = "Send";
         protected const string Listen = "Listen";
+
+        //Schema Group properties
+        protected const string SchemaCompatibilityProperty = "SchemaCompatibility";
+        protected const string SchemaTypeProperty = "SchemaType";
+        protected const string GroupPropertyProperty = "GroupProperty";
 
 
         protected struct SKU
@@ -125,17 +142,22 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string Basic = "Basic";
             internal const string Standard = "Standard";
             internal const string Premium = "Premium";
-        }        
-        protected struct RegeneKeys
-        {
-            internal const string PrimaryKey = "PrimaryKey";
-            internal const string SecondaryKey = "SecondaryKey";
         }
+
+        protected const string NamespaceURL = "Microsoft.EventHub/namespaces";
+        protected const string SchemaGroupURL = "Microsoft.EventHub/namespaces/schemagroups";
+        protected const string ApplicationGroupURL = "Microsoft.EventHub/namespaces/applicationgroups";
+        protected const string PrivateEndpointURL = "Microsoft.EventHub/namespaces/privateEndpointConnections";
+        protected const string ClusterURL = "Microsoft.EventHub/clusters";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;
+
+        public const string BreakingChangeNotification = "- PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.";
+        public const string DeprecateByVersion = "Az 10.0";
+        public const string ChangeInEffectByDate = "23rd May, 2023";
         
-        public EventHubsClient Client
+        public EventHubsClient UtilityClient
         {
             get
             {
@@ -233,4 +255,37 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         public string ParentResource2 { get; set; }
 
     }
+
+    
+    public class ResourceIdParser
+    {
+        public int ResourceLevel { get; set; }
+
+        public string ResourceGroupName { get; set; }
+
+        public string TopLevelResourceName { get; set; }
+
+        public ResourceIdParser(int resourceLevel, string resourceId, string expectedResourceType)
+        {
+            //Resource Level indicates the hierarchy of a resource in a resource id
+            //level 1 :TopLevelResource would be an eventhub namespace
+            //Level 2 :ChildResource of the TopLevel Resource. EventHubEntities
+            //and so on.
+            if(resourceLevel == 1)
+            {
+                //TopLevelResource within resource group
+                ResourceIdentifier ResourceId = new ResourceIdentifier(resourceId);
+
+                if (ResourceId.ResourceType.ToLower().Equals(expectedResourceType.ToLower()))
+                {
+                    ResourceGroupName = ResourceId.ResourceGroupName;
+                    TopLevelResourceName = ResourceId.ResourceName;
+                }
+
+                else
+                    throw new Exception("Invalid Resource Id, Id must be of type " + expectedResourceType);
+            }
+        }
+    }
+
 }

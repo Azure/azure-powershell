@@ -19,154 +19,241 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DatabaseCrudTests : SqlTestsBase
+    public class DatabaseCrudTests : SqlTestRunner
     {
         public DatabaseCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
-        }
-
-        protected override void SetupManagementClients(Rest.ClientRuntime.Azure.TestFramework.MockContext context)
-        {
-            // Only SqlClient is needed.
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCreate()
         {
-            RunPowerShellTest("Test-CreateDatabase");
+            TestRunner.RunTestScript("Test-CreateDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVcoreDatabaseCreate()
         {
-            RunPowerShellTest("Test-CreateVcoreDatabase");
+            TestRunner.RunTestScript("Test-CreateVcoreDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVcoreDatabaseCreateWithLicenseType()
         {
-            RunPowerShellTest("Test-CreateVcoreDatabaseWithLicenseType");
+            TestRunner.RunTestScript("Test-CreateVcoreDatabaseWithLicenseType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateServerlessDatabase()
         {
-            RunPowerShellTest("Test-CreateServerlessDatabase");
+            TestRunner.RunTestScript("Test-CreateServerlessDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCreateWithSampleName()
         {
-            RunPowerShellTest("Test-CreateDatabaseWithSampleName");
+            TestRunner.RunTestScript("Test-CreateDatabaseWithSampleName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCreateWithZoneRedundancy()
         {
-            RunPowerShellTest("Test-CreateDatabaseWithZoneRedundancy");
+            TestRunner.RunTestScript("Test-CreateDatabaseWithZoneRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithMaintenanceConfigurationId()
+        {
+            TestRunner.RunTestScript("Test-CreateDatabaseWithMaintenanceConfigurationId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdate()
         {
-            RunPowerShellTest("Test-UpdateDatabase");
+            TestRunner.RunTestScript("Test-UpdateDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVcoreDatabaseUpdate()
         {
-            RunPowerShellTest("Test-UpdateVcoreDatabase");
+            TestRunner.RunTestScript("Test-UpdateVcoreDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVcoreDatabaseUpdateWithLicenseType()
         {
-            RunPowerShellTest("Test-UpdateVcoreDatabaseLicenseType");
+            TestRunner.RunTestScript("Test-UpdateVcoreDatabaseLicenseType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdateWithZoneRedundancy()
         {
-            RunPowerShellTest("Test-UpdateDatabaseWithZoneRedundant");
+            TestRunner.RunTestScript("Test-UpdateDatabaseWithZoneRedundant");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdateWithZoneRedundancyNotSpecified()
         {
-            RunPowerShellTest("Test-UpdateDatabaseWithZoneRedundantNotSpecified");
+            TestRunner.RunTestScript("Test-UpdateDatabaseWithZoneRedundantNotSpecified");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithMaintenanceConfigurationId()
+        {
+            TestRunner.RunTestScript("Test-UpdateDatabaseWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithPreferredEnclaveType()
+        {
+            TestRunner.RunTestScript("Test-UpdateDatabaseWithPreferredEnclaveType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateServerlessDatabase()
         {
-            RunPowerShellTest("Test-UpdateServerlessDatabase");
+            TestRunner.RunTestScript("Test-UpdateServerlessDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateFromSterlingToHyperscaleWithManualCutover()
+        {
+            TestRunner.RunTestScript("Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRename()
         {
-            RunPowerShellTest("Test-RenameDatabase");
+            TestRunner.RunTestScript("Test-RenameDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGet()
         {
-            RunPowerShellTest("Test-GetDatabase");
+            TestRunner.RunTestScript("Test-GetDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGetWithZoneRedundancy()
         {
-            RunPowerShellTest("Test-GetDatabaseWithZoneRedundancy");
+            TestRunner.RunTestScript("Test-GetDatabaseWithZoneRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGetWithMaintenanceConfigurationId()
+        {
+            TestRunner.RunTestScript("Test-GetDatabaseWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGetWithPreferredEnclaveType()
+        {
+            TestRunner.RunTestScript("Test-GetDatabaseWithPreferredEnclaveType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRemove()
         {
-            RunPowerShellTest("Test-RemoveDatabase");
+            TestRunner.RunTestScript("Test-RemoveDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCancelOperation()
         {
-            RunPowerShellTest("Test-CancelDatabaseOperation");
+            TestRunner.RunTestScript("Test-CancelDatabaseOperation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCreateWithBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-CreateDatabaseWithBackupStorageRedundancy");
+            TestRunner.RunTestScript("Test-CreateDatabaseWithBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithGeoZoneBackupStorageRedundancy()
+        {
+            TestRunner.RunTestScript("Test-CreateDatabaseWithGeoZoneBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithPreferredEnclaveType()
+        {
+            TestRunner.RunTestScript("Test-CreateDatabaseWithPreferredEnclaveType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGetWithBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-GetDatabaseWithBackupStorageRedundancy");
+            TestRunner.RunTestScript("Test-GetDatabaseWithBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithLedgerEnabled()
+        {
+            TestRunner.RunTestScript("Test-DatabaseCreateWithLedgerEnabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-DatabaseCreateWithPerDBCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-DatabaseUpdateWithPerDBCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-RevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFreeLimitDatabaseCreate()
+        {
+            TestRunner.RunTestScript("Test-FreeLimitDatabaseCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFreeLimitDatabaseUpdateFreeLimitExhaustionBehavior()
+        {
+            TestRunner.RunTestScript("Test-FreeLimitDatabaseUpdateFreeLimitExhaustionBehavior");
         }
     }
 }

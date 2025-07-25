@@ -50,10 +50,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                BackupResourceConfigResource getStorageResponse = RecoveryServicesClient.GetVaultStorageType(
+                BackupResourceConfigResource getStorageResponse = RecoveryServicesClient.GetVaultStorageConfig(
                                                                         this.Vault.ResourceGroupName, this.Vault.Name);
                 ASRVaultBackupProperties vaultBackupProperties = new ASRVaultBackupProperties();
                 vaultBackupProperties.BackupStorageRedundancy = getStorageResponse.Properties.StorageType;
+                vaultBackupProperties.CrossRegionRestore = (bool)getStorageResponse.Properties.CrossRegionRestoreFlag;
                 this.WriteObject(vaultBackupProperties);
             }
             catch (Exception exception)

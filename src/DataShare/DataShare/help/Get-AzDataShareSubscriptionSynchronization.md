@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatasharesubscriptionsynchronization
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharesubscriptionsynchronization
 schema: 2.0.0
 ---
 
@@ -25,14 +25,16 @@ Get-AzDataShareSubscriptionSynchronization -ResourceId <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-The **Get-AzDataShareSubscriptionSynchronization** cmdlet provides informaiton about all synchronization runs in a share subscription under a data share account on the consumer.
+The **Get-AzDataShareSubscriptionSynchronization** cmdlet provides information about all synchronization runs in a share subscription under a data share account on the consumer.
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds"  -ShareSubscriptionName "AdsShareSubscription"
 ```
-PS C:\> Get-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds"  -ShareSubscriptionName "AdsShareSubscription"
 
+```output
 durationMs        : 83660
 endTime           : 7/10/2019 9:01:23 AM
 message           :

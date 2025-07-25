@@ -25,5 +25,9 @@ namespace Microsoft.Azure.Commands.Security.Models.Pricings
         public string PricingTier { get; set; }
 
         public TimeSpan? FreeTrialRemainingTime { get; internal set; }
+
+        public string SubPlan { get; set; }
+
+        public string Extensions { get; set; }
     }
 }

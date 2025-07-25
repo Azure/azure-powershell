@@ -1,0 +1,126 @@
+{
+  "Get-AzNetworkFabricTapRule+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/networkTapRules?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/networkTapRules?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "d5804f6f-9c44-42dc-8c81-edf581990cd6" ],
+        "CommandName": [ "Get-AzNetworkFabricTapRule" ],
+        "FullCommandName": [ "Get-AzNetworkFabricTapRule_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "072d8588-1af2-4f29-b747-e2a8436961d8", "8627bffd-fad9-45d0-9bc1-d7dcada1d563", "bf593a88-59d6-47a2-8c9b-82fb84f77466", "42c9fc3b-b87b-44d9-af44-ba375cbaca82" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "7c7db7b4-099d-4294-a6aa-6bb10f2ba019" ],
+        "x-ms-correlation-request-id": [ "7c7db7b4-099d-4294-a6aa-6bb10f2ba019" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T054407Z:7c7db7b4-099d-4294-a6aa-6bb10f2ba019" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 05:44:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2997" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName\",\"name\":\"NetworkTapRuleName\",\"type\":\"microsoft.managednetworkfabric/networktaprules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-25T05:42:15.5346057Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-25T05:42:15.5346057Z\"},\"properties\":{\"pollingIntervalInSeconds\":30,\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"Inline\",\"matchConfigurations\":[{\"matchConfigurationName\":\"config1\",\"sequenceNumber\":12,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"encapsulationType\":\"None\",\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"100\"],\"portGroupNames\":[\"portGroupName1\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Drop\",\"truncate\":\"100\",\"isTimestampEnabled\":\"True\",\"destinationId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"matchConfigurationName\":\"match1\"}]}]}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName1\",\"name\":\"NetworkTapRuleName1\",\"type\":\"microsoft.managednetworkfabric/networktaprules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-25T05:42:50.2703884Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-25T05:42:50.2703884Z\"},\"properties\":{\"pollingIntervalInSeconds\":30,\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"File\",\"tapRulesUrl\":\"https://fileurl.com\",\"matchConfigurations\":[{\"matchConfigurationName\":\"config1\",\"sequenceNumber\":12,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"encapsulationType\":\"None\",\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"100\"],\"portGroupNames\":[\"portGroupName1\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Drop\",\"truncate\":\"100\",\"isTimestampEnabled\":\"True\",\"destinationId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"matchConfigurationName\":\"match1\"}]}]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkFabricTapRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "c06b6486-4ae9-4d4c-bcc6-a9825f25767c" ],
+        "CommandName": [ "Get-AzNetworkFabricTapRule" ],
+        "FullCommandName": [ "Get-AzNetworkFabricTapRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bd0079e4-0000-0100-0000-65111db90000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "29c3f966-1f70-4a3a-a748-aa698995c9ae" ],
+        "x-ms-correlation-request-id": [ "bd58a974-caec-4b82-a768-443991462111" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T054408Z:bd58a974-caec-4b82-a768-443991462111" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 05:44:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1474" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName\",\"name\":\"NetworkTapRuleName\",\"type\":\"microsoft.managednetworkfabric/networktaprules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-25T05:42:15.5346057Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-25T05:42:15.5346057Z\"},\"properties\":{\"pollingIntervalInSeconds\":30,\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"Inline\",\"matchConfigurations\":[{\"matchConfigurationName\":\"config1\",\"sequenceNumber\":12,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"encapsulationType\":\"None\",\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"100\"],\"portGroupNames\":[\"portGroupName1\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Drop\",\"truncate\":\"100\",\"isTimestampEnabled\":\"True\",\"destinationId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"matchConfigurationName\":\"match1\"}]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkFabricTapRule+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "389aa2c2-9c95-4406-bd6d-c1cab0fbcdf0" ],
+        "CommandName": [ "Get-AzNetworkFabricTapRule" ],
+        "FullCommandName": [ "Get-AzNetworkFabricTapRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "c1f876ae-d65a-4a86-97ac-ffd71496ea6a", "39452ace-34c5-45fc-8c6a-374741ad2bbc", "38bc92bd-0d10-4de7-9e16-aa0eebb65d7c", "6ebad446-d4aa-4814-8837-b77cfe28cf7d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "b699aeed-c81e-4ccd-a04b-729f4a3b7372" ],
+        "x-ms-correlation-request-id": [ "b699aeed-c81e-4ccd-a04b-729f4a3b7372" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T054408Z:b699aeed-c81e-4ccd-a04b-729f4a3b7372" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 05:44:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2997" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName\",\"name\":\"NetworkTapRuleName\",\"type\":\"microsoft.managednetworkfabric/networktaprules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-25T05:42:15.5346057Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-25T05:42:15.5346057Z\"},\"properties\":{\"pollingIntervalInSeconds\":30,\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"Inline\",\"matchConfigurations\":[{\"matchConfigurationName\":\"config1\",\"sequenceNumber\":12,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"encapsulationType\":\"None\",\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"100\"],\"portGroupNames\":[\"portGroupName1\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Drop\",\"truncate\":\"100\",\"isTimestampEnabled\":\"True\",\"destinationId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"matchConfigurationName\":\"match1\"}]}]}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName1\",\"name\":\"NetworkTapRuleName1\",\"type\":\"microsoft.managednetworkfabric/networktaprules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-25T05:42:50.2703884Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-25T05:42:50.2703884Z\"},\"properties\":{\"pollingIntervalInSeconds\":30,\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"File\",\"tapRulesUrl\":\"https://fileurl.com\",\"matchConfigurations\":[{\"matchConfigurationName\":\"config1\",\"sequenceNumber\":12,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"encapsulationType\":\"None\",\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"100\"],\"portGroupNames\":[\"portGroupName1\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Drop\",\"truncate\":\"100\",\"isTimestampEnabled\":\"True\",\"destinationId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"matchConfigurationName\":\"match1\"}]}]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

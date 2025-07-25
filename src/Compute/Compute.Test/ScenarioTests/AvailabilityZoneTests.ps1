@@ -59,12 +59,14 @@ function Test-VirtualMachineZone
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
+        $stnd = "Standard";
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone "1" `
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone "1" -SecurityType $stnd `
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
+
         $p = $imgRef | Set-AzVMSourceImage -VM $p;
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 

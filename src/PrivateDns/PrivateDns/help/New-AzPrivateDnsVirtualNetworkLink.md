@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
 ms.assetid: B78F3E8B-C7D2-458C-AB23-06F584FE97E0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/New-AzPrivateDnsVirtualNetworkLink
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/New-AzPrivateDnsVirtualNetworkLink
 schema: 2.0.0
 ---
 
@@ -16,21 +16,21 @@ Creates a new private DNS virtual network link.
 ### VirtualNetworkId (Default)
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -VirtualNetworkId <String> [-EnableRegistration] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ -VirtualNetworkId <String> [-EnableRegistration] [-ResolutionPolicy <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualNetworkObject
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -VirtualNetwork <VirtualNetwork> [-EnableRegistration] [-Tag <Hashtable>]
+ -VirtualNetwork <VirtualNetwork> [-EnableRegistration] [-ResolutionPolicy <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoteVirtualNetworkId
 ```
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- -RemoteVirtualNetworkId <String> [-EnableRegistration] [-Tag <Hashtable>]
+ -RemoteVirtualNetworkId <String> [-EnableRegistration] [-ResolutionPolicy <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,9 +44,11 @@ whether the cmdlet prompts you for confirmation.
 ## EXAMPLES
 
 ### Example 1: Create a Private DNS virtual network link
+```powershell
+$Link = New-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -VirtualNetworkId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork" -EnableRegistration
 ```
-PS C:\>$Link = New-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -VirtualNetworkId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork" -EnableRegistration
 
+```output
 Name                    : mylink
 ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
                           etwork/privateDnsZones/myzone.com/virtualNetworkLinks/mylink
@@ -58,6 +60,7 @@ Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Tags                    : {}
 RegistrationEnabled     : True
+ResolutionPolicy        : Default
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
 ```
@@ -95,6 +98,23 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -ResolutionPolicy
+Specifies the resolution policy of the virtual network link
+
+```yaml
+Type: Azure.ResourceManager.PrivateDns.Models.PrivateDnsResolutionPolicy
+Parameter Sets: (All)
+Aliases:
+Accepted values: Default, NxDomainRedirect
+
+Required: False
+Position: Named
+Default value: Default
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 
 ### -Name
 Specifies the name of the virtual network link to create.

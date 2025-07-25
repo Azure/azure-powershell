@@ -75,6 +75,24 @@ namespace Microsoft.Azure.Commands.Compute
                 : null;
         }
 
+        public static string GetResourceGroupNameId(string resourceId)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+
+        public static string GetResourceNameFromId(string resourceId, string resourceName, string instanceName = null, string version = null)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = (instanceName == null && version == null)
+                      ? new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)", RegexOptions.IgnoreCase)
+                      : new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+
         private static int GetTabLength(Object obj, int max, int depth, List<Tuple<string, string, int>> tupleList, bool expand = true)
         {
             var objType = obj.GetType();

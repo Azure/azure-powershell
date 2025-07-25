@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: FCDCEF0B-6E2C-480E-9841-EF4E64D61D54
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageshare
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstorageshare
 schema: 2.0.0
 ---
 
@@ -14,8 +14,9 @@ Creates a file share.
 ## SYNTAX
 
 ```
-New-AzStorageShare [-Name] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+New-AzStorageShare [-Name] <String> [-Protocol <String>] [-EnableSnapshotVirtualDirectoryAccess <Boolean>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -25,11 +26,18 @@ The **New-AzStorageShare** cmdlet creates a file share.
 ## EXAMPLES
 
 ### Example 1: Create a file share
-```
-PS C:\>New-AzStorageShare -Name "ContosoShare06"
+```powershell
+New-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command creates a file share named ContosoShare06.
+
+### Example 2: Create a file share with NFS protocol and EnableSnapshotVirtualDirectoryAccess
+```powershell
+New-AzStorageShare -Name "contososhare07" -Protocol Nfs -EnableSnapshotVirtualDirectoryAccess $true
+```
+
+This command creates a file share named contososhare07 with NFS protocol, and EnableSnapshotVirtualDirectoryAccess as true.
 
 ## PARAMETERS
 
@@ -100,6 +108,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSnapshotVirtualDirectoryAccess
+Only applicable for premium file storage accounts. Specifies whether the snapshot virtual directory should be accessible at the root of share mount point when NFS is enabled. If not specified, the default is true.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of a file share.
 This cmdlet creates a file share that has the name that this parameter specifies.
@@ -113,6 +136,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Protocol
+The protocols to enable for the share.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -132,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

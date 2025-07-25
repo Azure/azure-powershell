@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture
+online version: https://learn.microsoft.com/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture
 schema: 2.0.0
 ---
 
@@ -15,19 +15,22 @@ Stops Packet Capture Operation on a Virtual Network Gateway.
 ### ByName (Default)
 ```
 Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName <String> -Name <String> -SasUrl <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Stop-AzVirtualNetworkGatewayPacketCapture -InputObject <PSVirtualNetworkGateway> -SasUrl <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Stop-AzVirtualNetworkGatewayPacketCapture -ResourceId <String> -SasUrl <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,17 +40,19 @@ Stops Packet Capture Operation on a Virtual Network Gateway and will upload the 
 
 ### Example 1
 ```powershell
-PS C:\> $rgname = "testRg"
- $storeName = "teststorage"
- $containerName = "packetcaptureresults"
- $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
- $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
- New-AzStorageContainer -Name $containerName -Context $context
- $container = Get-AzStorageContainer -Name $containerName -Context $context
- $now=get-date
- $sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
-PS C:\> Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName $rgname -Name "testgw" -SasUrl $sasurl
+$rgname = "testRg"
+$storeName = "teststorage"
+$containerName = "packetcaptureresults"
+$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+$context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+New-AzStorageContainer -Name $containerName -Context $context
+$container = Get-AzStorageContainer -Name $containerName -Context $context
+$now = Get-Date
+$sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName $rgname -Name "testgw" -SasUrl $sasurl
+```
 
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:59:37 AM
 StartTime         : 10/1/2019 12:58:26 AM
@@ -65,17 +70,19 @@ Id                :
 
 ### Example 2
 ```powershell
-PS C:\> $rgname = "testRg"
- $storeName = "teststorage"
- $containerName = "packetcaptureresults"
- $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
- $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
- $container = Get-AzStorageContainer -Name $containerName -Context $context
- $now=get-date
- $sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
- $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name "testGw"
-PS C:\> Stop-AzVirtualNetworkGatewayPacketCapture -InputObject $gw -SasUrl $sasurl
+$rgname = "testRg"
+$storeName = "teststorage"
+$containerName = "packetcaptureresults"
+$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+$context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+$container = Get-AzStorageContainer -Name $containerName -Context $context
+$now = Get-Date
+$sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+$gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name "testGw"
+Stop-AzVirtualNetworkGatewayPacketCapture -InputObject $gw -SasUrl $sasurl
+```
 
+```output
 Code              : Succeeded
 EndTime           : 10/1/2019 12:59:37 AM
 StartTime         : 10/1/2019 12:58:26 AM
@@ -97,24 +104,9 @@ Id                :
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -127,7 +119,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -142,7 +134,7 @@ Accept wildcard characters: False
 The virtual network gateway object where packet capture to be started.
 
 ```yaml
-Type: PSVirtualNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: ByInputObject
 Aliases: VirtualNetworkGateway
 
@@ -157,7 +149,7 @@ Accept wildcard characters: False
 The virtual network gateway name where packet capture to be started.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: ResourceName, VirtualNetworkGatewayName, GatewayName
 
@@ -172,7 +164,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -187,7 +179,7 @@ Accept wildcard characters: False
 The Azure resource ID of the VirtualNetworkGateway where packet capture to be started.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -202,11 +194,26 @@ Accept wildcard characters: False
 SAS URL packet capture on virtual network gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -218,7 +225,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -245,4 +252,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Start-AzVirtualnetworkGatewayPacketCapture](./Stop-AzVirtualnetworkGatewayPacketCapture.md)

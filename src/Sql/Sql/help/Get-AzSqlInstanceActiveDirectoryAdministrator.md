@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator
 schema: 2.0.0
 ---
 
 # Get-AzSqlInstanceActiveDirectoryAdministrator
 
 ## SYNOPSIS
-Gets information about an Azure AD administrator for SQL Managed Instance.
+Gets information about a Microsoft Entra administrator for SQL Managed Instance.
 
 ## SYNTAX
 
@@ -31,39 +31,48 @@ Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceId] <String> [-DefaultPr
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlInstanceActiveDirectoryAdministrator** cmdlet gets information about an Azure Active Directory (Azure AD) administrator for an AzureSQL Managed Instance in the current subscription.
+The **Get-AzSqlInstanceActiveDirectoryAdministrator** cmdlet gets information about a Microsoft Entra administrator for an AzureSQL Managed Instance in the current subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+```
+
+```output
 ResourceGroupName InstanceName      DisplayName ObjectId 
 ----------------- ----------------- ----------- -------- 
 ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command gets information about an Azure AD administrator for a managed instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.
+This command gets information about a Microsoft Entra administrator for a managed instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.
 
 ### Example 2
 ```powershell
-PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance1" | Get-AzSqlInstanceActiveDirectoryAdministrator
+Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance1" | Get-AzSqlInstanceActiveDirectoryAdministrator
+```
+
+```output
 ResourceGroupName InstanceName      DisplayName ObjectId 
 ----------------- ----------------- ----------- -------- 
 ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command gets information about an Azure AD administrator from a managed instance object.
+This command gets information about a Microsoft Entra administrator from a managed instance object.
 
 ### Example 3
 ```powershell
-PS C:\>Get-AzSqlInstance -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance1" | Get-AzSqlInstanceActiveDirectoryAdministrator
+Get-AzSqlInstance -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance1" | Get-AzSqlInstanceActiveDirectoryAdministrator
+```
+
+```output
 ResourceGroupName InstanceName      DisplayName ObjectId 
 ----------------- ----------------- ----------- -------- 
 ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command gets information about an Azure AD administrator using managed instance resource identifier.
+This command gets information about a Microsoft Entra administrator using managed instance resource identifier.
 
 ## PARAMETERS
 

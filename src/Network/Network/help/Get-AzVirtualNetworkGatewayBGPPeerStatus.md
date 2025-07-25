@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkgatewaybgppeerstatus
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewaybgppeerstatus
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Lists an Azure virtual network gateway's BGP peers
 
 ```
 Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
- [-Peer <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Peer <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,9 +24,11 @@ This command enumerates BGP peers an Azure virtual network gateway is configured
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName
 ```
-PS C:\> Get-AzVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName
 
+```output
 Asn               : 65515
 ConnectedDuration : 9.01:04:53.5768637
 LocalAddress      : 10.1.0.254

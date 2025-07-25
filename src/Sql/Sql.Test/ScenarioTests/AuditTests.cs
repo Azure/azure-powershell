@@ -16,243 +16,303 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class AuditTests : SqlTestsBase
+    public class AuditTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var storageV2Client = GetStorageManagementClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var monitorManagementClient = GetMonitorManagementClient(context);
-            var commonMonitorManagementClient = GetCommonMonitorManagementClient(context);
-            var eventHubManagementClient = GetEventHubManagementClient(context);
-            var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, storageV2Client,
-                newResourcesClient, monitorManagementClient, commonMonitorManagementClient,
-                eventHubManagementClient, operationalInsightsManagementClient);
-        }
-
         public AuditTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
-        [Fact(Skip = "not able to re - record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyWithStorage()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyWithStorage");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerUpdatePolicyWithStorage()
         {
-            RunPowerShellTest("Test-BlobAuditServerUpdatePolicyWithStorage");
+            TestRunner.RunTestScript("Test-BlobAuditServerUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditServerUpdatePolicyWithStorage()
+        {
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditServerUpdatePolicyWithStorage");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableDatabaseAudit()
         {
-            RunPowerShellTest("Test-BlobAuditDisableDatabaseAudit");
+            TestRunner.RunTestScript("Test-BlobAuditDisableDatabaseAudit");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDisableServerAudit()
         {
-            RunPowerShellTest("Test-BlobAuditDisableServerAudit");
+            TestRunner.RunTestScript("Test-BlobAuditDisableServerAudit");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditDisableServerAudit()
+        {
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditDisableServerAudit");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailedDatabaseUpdatePolicyWithNoStorage()
         {
-            RunPowerShellTest("Test-BlobAuditFailedDatabaseUpdatePolicyWithNoStorage");
+            TestRunner.RunTestScript("Test-BlobAuditFailedDatabaseUpdatePolicyWithNoStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailedServerUpdatePolicyWithNoStorage()
         {
-            RunPowerShellTest("Test-BlobAuditFailedServerUpdatePolicyWithNoStorage");
+            TestRunner.RunTestScript("Test-BlobAuditFailedServerUpdatePolicyWithNoStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage()
+        {
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyKeepPreviousStorage()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyKeepPreviousStorage");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseUpdatePolicyKeepPreviousStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerUpdatePolicyKeepPreviousStorage()
         {
-            RunPowerShellTest("Test-BlobAuditServerUpdatePolicyKeepPreviousStorage");
+            TestRunner.RunTestScript("Test-BlobAuditServerUpdatePolicyKeepPreviousStorage");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage()
+        {
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailWithBadDatabaseIndentity()
         {
-            RunPowerShellTest("Test-BlobAuditFailWithBadDatabaseIndentity");
+            TestRunner.RunTestScript("Test-BlobAuditFailWithBadDatabaseIndentity");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditFailWithBadServerIndentity()
         {
-            RunPowerShellTest("Test-BlobAuditFailWithBadServerIndentity");
+            TestRunner.RunTestScript("Test-BlobAuditFailWithBadServerIndentity");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditFailWithBadServerIndentity()
+        {
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditFailWithBadServerIndentity");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseStorageKeyRotation()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseStorageKeyRotation");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseStorageKeyRotation");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerStorageKeyRotation()
         {
-            RunPowerShellTest("Test-BlobAuditServerStorageKeyRotation");
+            TestRunner.RunTestScript("Test-BlobAuditServerStorageKeyRotation");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditServerRetentionKeepProperties()
         {
-            RunPowerShellTest("Test-BlobAuditServerRetentionKeepProperties");
+            TestRunner.RunTestScript("Test-BlobAuditServerRetentionKeepProperties");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseRetentionKeepProperties()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseRetentionKeepProperties");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseRetentionKeepProperties");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnDatabase()
         {
-            RunPowerShellTest("Test-BlobAuditOnDatabase");
+            TestRunner.RunTestScript("Test-BlobAuditOnDatabase");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnServer()
         {
-            RunPowerShellTest("Test-BlobAuditOnServer");
+            TestRunner.RunTestScript("Test-BlobAuditOnServer");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportBlobAuditOnServer()
+        {
+            TestRunner.RunTestScript("Test-MSSupportBlobAuditOnServer");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
-            RunPowerShellTest("Test-BlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
+            TestRunner.RunTestScript("Test-BlobAuditDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWithAuditActionGroups()
         {
-            RunPowerShellTest("Test-BlobAuditWithAuditActionGroups");
+            TestRunner.RunTestScript("Test-BlobAuditWithAuditActionGroups");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtendedAuditOnDatabase()
         {
-            RunPowerShellTest("Test-ExtendedAuditOnDatabase");
+            TestRunner.RunTestScript("Test-ExtendedAuditOnDatabase");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtendedAuditOnServer()
         {
-            RunPowerShellTest("Test-ExtendedAuditOnServer");
+            TestRunner.RunTestScript("Test-ExtendedAuditOnServer");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnDatabase()
         {
-            RunPowerShellTest("Test-AuditOnDatabase");
+            TestRunner.RunTestScript("Test-AuditOnDatabase");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnServer()
         {
-            RunPowerShellTest("Test-AuditOnServer");
+            TestRunner.RunTestScript("Test-AuditOnServer");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestMSSupportAuditOnServer()
+        {
+            TestRunner.RunTestScript("Test-MSSupportAuditOnServer");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewDatabaseAuditDiagnosticsAreCreatedOnNeed()
         {
-            RunPowerShellTest("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
+            TestRunner.RunTestScript("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewServerAuditDiagnosticsAreCreatedOnNeed()
         {
-            RunPowerShellTest("Test-NewServerAuditDiagnosticsAreCreatedOnNeed");
+            TestRunner.RunTestScript("Test-NewServerAuditDiagnosticsAreCreatedOnNeed");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestMSSupportNewServerAuditDiagnosticsAreCreatedOnNeed()
+        {
+            TestRunner.RunTestScript("Test-MSSupportNewServerAuditDiagnosticsAreCreatedOnNeed");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAuditOnServer()
         {
-            RunPowerShellTest("Test-RemoveAuditOnServer");
+            TestRunner.RunTestScript("Test-RemoveAuditOnServer");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestMSSupportRemoveAuditOnServer()
+        {
+            TestRunner.RunTestScript("Test-MSSupportRemoveAuditOnServer");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAuditOnDatabase()
         {
-            RunPowerShellTest("Test-RemoveAuditOnDatabase");
+            TestRunner.RunTestScript("Test-RemoveAuditOnDatabase");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveDatabaseAuditingSettingsMultipleDiagnosticSettings()
         {
-            RunPowerShellTest("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
+            TestRunner.RunTestScript("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
-            RunPowerShellTest("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
+            TestRunner.RunTestScript("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestMSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings()
+        {
+            TestRunner.RunTestScript("Test-MSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerAuditingToStorageInVNet()
         {
-            RunPowerShellTest("Test-ServerAuditingToStorageInVNet");
+            TestRunner.RunTestScript("Test-ServerAuditingToStorageInVNet");
         }
 
-        [Fact(Skip = "not able to re-record because cannot create sql server in region 'West Central US'")]
+        [Fact(Skip = "Cannot re-record.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMSSupportServerAuditingToStorageInVNet()
+        {
+            TestRunner.RunTestScript("Test-MSSupportServerAuditingToStorageInVNet");
+        }
+
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseAuditingToStorageInVNet()
         {
-            RunPowerShellTest("Test-DatabaseAuditingToStorageInVNet");
+            TestRunner.RunTestScript("Test-DatabaseAuditingToStorageInVNet");
         }
     }
 }

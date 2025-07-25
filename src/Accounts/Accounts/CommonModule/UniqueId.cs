@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Pipeline delegate to add a unique id header to an outgoing request
         /// </summary>
-        /// <param name="request">The outgpoing request</param>
+        /// <param name="request">The outgoing request</param>
         /// <param name="token">The cancellation token</param>
         /// <param name="cancel">Additional cancellation action if the operation is cancelled</param>
         /// <param name="signal">Signal delegate for logging events</param>
@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Common
         {
             // add a header...
             request.Headers.Add("x-ms-unique-id", Interlocked.Increment(ref this.count).ToString());
-
             // continue with pipeline.
             return next(request, token, cancel, signal);
         }

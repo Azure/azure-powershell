@@ -70,14 +70,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 if (privateBlobClient == null)
                 {
-                    if (this.ICloudBlob != null)
-                    {
-                        privateBlobClient = GetTrack2BlobClient(this.ICloudBlob, (AzureStorageContext)this.Context, this.privateClientOptions);
-                    }
-                    else if(this.privateBlobBaseClient != null)
+                    if(this.privateBlobBaseClient != null)
                     {
                         privateBlobClient = GetTrack2BlobClient(this.privateBlobBaseClient, (AzureStorageContext)this.Context, this.privateClientOptions);
                     }
+                    else if(this.ICloudBlob != null)
+                    {
+                        privateBlobClient = GetTrack2BlobClient(this.ICloudBlob, (AzureStorageContext)this.Context, this.privateClientOptions);
+                    }                    
                 }
                 return privateBlobClient;
             }
@@ -120,9 +120,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             get
             {
-                if (privateBlobProperties == null)
+                // For find blob  by Tag, won't auto get blob properties.
+                if (getLazyProperties)
                 {
-                    privateBlobProperties = BlobBaseClient.GetProperties().Value;
+                    if (privateBlobProperties == null)
+                    {
+                        privateBlobProperties = BlobBaseClient.GetProperties().Value;
+                    }
                 }
                 return privateBlobProperties;
             }
@@ -171,6 +175,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         private BlobClientOptions privateClientOptions = null;
 
         /// <summary>
+        /// Get the lazy properties automatically, won't get it when the item is created with Find-AzStorageBlobByTag
+        /// </summary>
+        private bool getLazyProperties = true;
+
+        /// <summary>
         /// Blob AccessTier..
         /// </summary>
         public string AccessTier { get; set; }
@@ -178,7 +187,22 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Blob TagCount.
         /// </summary>
-        public long TagCount { get; set; }
+        public long TagCount
+        {
+            get
+            {
+                if (tagcount == -1)
+                {
+                    tagcount = BlobProperties.TagCount;
+                }
+                    return tagcount;
+            }
+            set
+            {
+                tagcount = value;
+            }
+        }
+        private long tagcount = -1;
 
         /// <summary>
         /// Blob Tags
@@ -186,9 +210,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public Hashtable Tags { get; set; }
 
         /// <summary>
+        /// XSCL Track2 File List properties
+        /// </summary>
+        public BlobItem ListBlobProperties { get; private set; }
+
+        /// <summary>
         /// Azure storage blob constructor
         /// </summary>
         /// <param name="blob">ICloud blob object</param>
+        /// <param name="storageContext">Storage context containing account information used to construct BlobClient.</param>
+        /// <param name="options">Blob client options which should contain powershell user agent.</param>
         public AzureStorageBlob(CloudBlob blob, AzureStorageContext storageContext, BlobClientOptions options = null)
         {
             Name = blob.Name;
@@ -204,21 +235,26 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             this.privateClientOptions = options;
             AccessTier = blob.Properties.StandardBlobTier is null ?
                 (blob.Properties.PremiumPageBlobTier is null ? null : blob.Properties.PremiumPageBlobTier.ToString())
-                : blob.Properties.StandardBlobTier.ToString();
+                : (blob.Properties.StandardBlobTier == StandardBlobTier.Unknown ? this.BlobProperties.AccessTier : blob.Properties.StandardBlobTier.ToString());
         }
 
         /// <summary>
         /// Azure storage blob constructor
         /// </summary>
-        /// <param name="blob">ICloud blob object</param>
+        /// <param name="track2BlobClient"></param>
+        /// <param name="storageContext">Storage context containing account information used to construct BlobClient.</param>
+        /// <param name="options">Blob client options which should contain powershell user agent.</param>
+        /// <param name="listBlobItem"></param>
         public AzureStorageBlob(BlobBaseClient track2BlobClient, AzureStorageContext storageContext, BlobClientOptions options = null, BlobItem listBlobItem = null)
         {
             if (listBlobItem == null)
             {
                 SetProperties(track2BlobClient, storageContext, track2BlobClient.GetProperties().Value, options);
+                this.ListBlobProperties = listBlobItem;
                 return;
             }
 
+            this.ListBlobProperties = listBlobItem;
             this.privateBlobBaseClient = track2BlobClient;
             Name = track2BlobClient.Name;
             this.Context = storageContext;
@@ -260,6 +296,51 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             SetProperties(track2BlobClient, storageContext, blobProperties, options);
         }
 
+        /// <summary>
+        /// Azure storage blob constructor
+        /// </summary>
+        /// <param name="blob">ICloud blob object</param>
+        /// <param name="storageContext">Storage context containing account information used to construct BlobClient.</param>
+        /// <param name="continuationToken">Continuation token.</param>
+        /// <param name="options">Blob client options which should contain powershell user agent.</param>
+        /// <param name="getProperties"></param>
+        public AzureStorageBlob(TaggedBlobItem blob, AzureStorageContext storageContext, string continuationToken = null, BlobClientOptions options = null, bool getProperties = false)
+        {
+            // Get Track2 blob client
+            BlobUriBuilder uriBuilder = new BlobUriBuilder(storageContext.StorageAccount.BlobEndpoint)
+            {
+                BlobContainerName = blob.BlobContainerName,
+                BlobName = blob.BlobName
+            };
+            Uri blobUri = uriBuilder.ToUri();
+            if (storageContext.StorageAccount != null && storageContext.StorageAccount.Credentials != null && storageContext.StorageAccount.Credentials.IsSAS)
+            {
+                blobUri= new Uri(blobUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(storageContext.StorageAccount.Credentials.SASToken));
+            }
+            this.privateBlobBaseClient = Util.GetTrack2BlobClient(blobUri, storageContext, options);
+
+            // Set continuationToken
+            if (continuationToken != null)
+            {
+                BlobContinuationToken token = new BlobContinuationToken();
+                token.NextMarker = continuationToken;
+                this.ContinuationToken = token;
+                ICloudBlob = storageContext.StorageAccount.CreateCloudBlobClient().GetContainerReference(blob.BlobContainerName).GetBlobReference(blob.BlobName);
+            }
+
+            // Set other properties
+            if (!getProperties)
+            {
+                getLazyProperties = false;
+                Name = blob.BlobName;
+                this.Context = storageContext;
+            }
+            else
+            {
+                SetProperties(this.privateBlobBaseClient, storageContext, null, options);
+            }
+        }
+
         private void SetProperties(BlobBaseClient track2BlobClient, AzureStorageContext storageContext, global::Azure.Storage.Blobs.Models.BlobProperties blobProperties = null, BlobClientOptions options = null)
         {
             if (blobProperties == null)
@@ -270,7 +351,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 }
                 catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
                 {
-                    // privateBlobProperties will be null when there are no permission to get blob proeprties, or blob is already deleted.
+                    // privateBlobProperties will be null when there are no permission to get blob properties, or blob is already deleted.
                 }
             }
             else
@@ -284,20 +365,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             privateClientOptions = options;
             if (privateBlobProperties is null)
             {
-                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, null);
+                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext is null ? null : storageContext.StorageAccount.Credentials, null);
             }
             else
             {
-                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext.StorageAccount.Credentials, privateBlobProperties.BlobType);
+                ICloudBlob = GetTrack1Blob(track2BlobClient, storageContext is null ? null : storageContext.StorageAccount.Credentials, privateBlobProperties.BlobType);
             }
             if (!(ICloudBlob is InvalidCloudBlob))
             {
                 BlobType = ICloudBlob.BlobType;
                 SnapshotTime = ICloudBlob.SnapshotTime;
             }
-            else // This code might should not be necessary, since currently only blob version will has Track1 Blob as null, and blob veresion won't have snapshot time
+            else // This code might should not be necessary, since currently only blob version will has Track1 Blob as null, and blob version won't have snapshot time
             {
-                SnapshotTime = Util.GetSnapshotTimeFromBlobUri(track2BlobClient.Uri);
+                SnapshotTime = Util.GetSnapshotTimeFromUri(track2BlobClient.Uri);
             }
 
             // Set the AzureStorageBlob Properties
@@ -322,15 +403,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Will return null if it's a Blob version, since Track1 not support blob version
         /// </summary>
         /// <param name="track2BlobClient"></param>
+        /// <param name="credentials"></param>
+        /// <param name="blobType">Azure storage blob type</param>
         public static CloudBlob GetTrack1Blob(BlobBaseClient track2BlobClient, StorageCredentials credentials, global::Azure.Storage.Blobs.Models.BlobType? blobType = null)
         {
-            if (Util.GetVersionIdFromBlobUri(track2BlobClient.Uri) != null)
+            if ((Util.GetVersionIdFromBlobUri(track2BlobClient.Uri) != null)
+                || (track2BlobClient.Uri.Query.Contains("sig=") && (credentials == null || !credentials.IsSAS)))
             {
                 // Track1 SDK don't support blob VersionId
                 return new InvalidCloudBlob(track2BlobClient.Uri, credentials);
             }
 
-            if (credentials.IsSAS) // the Uri already contains credentail.
+            if (credentials != null && credentials.IsSAS) // the Uri already contains credential.
             {
                 credentials = null;
             }
@@ -372,22 +456,23 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 if (context == null)
                 {
                     //TODO : Get Oauth context from current login user.
-                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
+                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credential to Track2 Blob object.");
                 }
                 blobClient = new BlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
 
             }
             else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
             {
+                string sas = Util.GetSASStringWithoutQuestionMark(cloubBlob.ServiceClient.Credentials.SASToken);
                 string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
                 if (cloubBlob.IsSnapshot)
                 {
                     // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
+                    fullUri = fullUri + "&" + sas;
                 }
                 else
                 {
-                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
+                    fullUri = fullUri + "?" + sas;
                 }
                 blobClient = new BlobClient(new Uri(fullUri), options);
             }
@@ -412,12 +497,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 return (BlobClient)blobBaseClient;
             }
             BlobClient blobClient;
-            if (context.StorageAccount.Credentials.IsToken) //Oauth
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
             {
                 blobClient = new BlobClient(blobBaseClient.Uri, context.Track2OauthToken, options);
 
             }
-            else if (context.StorageAccount.Credentials.IsSharedKey) //Shared Key
+            else if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
                 blobClient = new BlobClient(blobBaseClient.Uri,
                     new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey()), options);

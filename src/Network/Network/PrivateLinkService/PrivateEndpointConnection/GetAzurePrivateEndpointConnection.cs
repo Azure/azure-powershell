@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByResourceId"), OutputType(typeof(PSPrivateEndpointConnection))]
-    public class GetAzurePrivateEndpointConnection : PrivateEndpointConnectionBaseCmdlet
+    public class GetAzurePrivateEndpointConnection : PrivateEndpointConnectionBaseCmdlet, IDynamicParameters
     {
         [Parameter(
             Mandatory = true,
@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string PrivateLinkResourceId { get; set; }
 
-        [CmdletParameterBreakingChange("Description", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -59,6 +58,11 @@ namespace Microsoft.Azure.Commands.Network
                 this.Subscription = resourceIdentifier.Subscription;
                 this.PrivateLinkResourceType = resourceIdentifier.ResourceType;
                 this.ServiceName = resourceIdentifier.ResourceName;
+            }
+            else if (this.IsParameterBound(c => c.PrivateLinkResourceType))
+            {
+                this.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
+                this.PrivateLinkResourceType = DynamicParameters[privateEndpointTypeName].Value as string;
             }
 
             IPrivateLinkProvider provider = BuildProvider(this.Subscription, this.PrivateLinkResourceType);

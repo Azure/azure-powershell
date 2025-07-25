@@ -1,174 +1,111 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.dll-Help.xml
+---
+external help file: Az.ManagedServiceIdentity-help.xml
 Module Name: Az.ManagedServiceIdentity
-online version: https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/get-azuserassignedidentity
+online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentity
 schema: 2.0.0
 ---
 
 # Get-AzUserAssignedIdentity
 
 ## SYNOPSIS
-Gets User Assigned Identity/identities.
+Gets the identity.
 
 ## SYNTAX
 
-### SuscriptionParameterSet (Default)
+### List (Default)
 ```
-Get-AzUserAssignedIdentity [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzUserAssignedIdentity [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### ResourceGroupParameterSet
+### Get
 ```
-Get-AzUserAssignedIdentity -ResourceGroupName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzUserAssignedIdentity -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzUserAssignedIdentity -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzUserAssignedIdentity** gets existing user assigned identities.
+Gets the identity.
 
 ## EXAMPLES
 
-### Example 1
-This example cmdlet gets the User Assigned Identity with name **ID1** under the resource group **PSRG**
-
+### Example 1: Lists user assigned identity under a subscription
 ```powershell
-PS C:\> Get-AzUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
-
-Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
-
-ResourceGroupName : PSRG
-
-Name              : ID1
-
-Location          : westus
-
-TenantId          : 493b860d-2741-480b-8b34-7b1d76e33c50
-
-PrincipalId       : e34192f9-7831-4a02-bfe2-4c6d2fb4360d
-
-ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-Type              : Microsoft.ManagedIdentity/userAssignedIdentities
+Get-AzUserAssignedIdentity
 ```
 
-### Example 2
-This example cmdlet gets all the User Assigned Identities under the resource group **PSRG**
-
-```powershell
-PS C:\> Get-AzUserAssignedIdentity -ResourceGroupName PSRG
-
-Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
-
-ResourceGroupName : PSRG
-
-Name              : ID1
-
-Location          : westus
-
-TenantId          : 493b860d-2741-480b-8b34-7b1d76e33c50
-
-PrincipalId       : e34192f9-7831-4a02-bfe2-4c6d2fb4360d
-
-ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-Type              : Microsoft.ManagedIdentity/userAssignedIdentities
-
-
-Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2
-
-ResourceGroupName : PSRG
-
-Name              : ID2
-
-Location          : westus
-
-TenantId          : 493b860d-2741-480b-8b34-7b1d76e33c50
-
-PrincipalId       : e34192f9-7831-4a02-bfe2-4c6d2fb4360d
-
-ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-Type              : Microsoft.ManagedIdentity/userAssignedIdentities
+```output
+Location      Name                                ResourceGroupName
+--------      ----                                -----------------
+eastus        AzSecPackAutoConfigUA-eastus        AzSecPackAutoConfigRG
+eastus        uai-pwsh01                          azure-rg-test
+eastus2       AzSecPackAutoConfigUA-eastus2       AzSecPackAutoConfigRG
 ```
 
-### Example 3
-This example cmdlet gets all the User Assigned Identities under the subscription.
+This command lists user assigned identity under a subscription.
 
+### Example 2: List user assigned identity under a resource group
 ```powershell
-PS C:\> Get-AzUserAssignedIdentity
-
-Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
-
-ResourceGroupName : PSRG
-
-Name              : ID1
-
-Location          : westus
-
-TenantId          : 493b860d-2741-480b-8b34-7b1d76e33c50
-
-PrincipalId       : e34192f9-7831-4a02-bfe2-4c6d2fb4360d
-
-ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-Type              : Microsoft.ManagedIdentity/userAssignedIdentities
-
-
-Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2
-
-ResourceGroupName : PSRG
-
-Name              : ID2
-
-Location          : westus
-
-TenantId          : 493b860d-2741-480b-8b34-7b1d76e33c50
-
-PrincipalId       : e34192f9-7831-4a02-bfe2-4c6d2fb4360d
-
-ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-Type              : Microsoft.ManagedIdentity/userAssignedIdentities
-
-
-Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
-
-ResourceGroupName : PSRG2
-
-Name              : ID1
-
-Location          : westus
-
-TenantId          : 493b860d-2741-480b-8b34-7b1d76e33c50
-
-PrincipalId       : e34192f9-7831-4a02-bfe2-4c6d2fb4360d
-
-ClientId          : a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-ClientSecretUrl   : https://control-westus.identity.azure.net/subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1/credentials?tid=493b860d-2741-480b-8b34-7b1d76e33c50&oid=e34192f9-7831-4a02-bfe2-4c6d2fb4360d&aid=a5e650a2-fdfe-4652-bb3b-109b64617cfd
-
-Type              : Microsoft.ManagedIdentity/userAssignedIdentities
+Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test
 ```
+
+```output
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   uai-pwsh01 azure-rg-test
+```
+
+This command lists user assigned identity under a resource group.
+
+### Example 3: Get an user assigned identity
+```powershell
+Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01
+```
+
+```output
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   uai-pwsh01 azure-rg-test
+```
+
+This command gets an user assigned identity.
+
+### Example 4: Get an user assigned identity by pipeline
+```powershell
+New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus `
+ | Get-AzUserAssignedIdentity
+```
+
+```output
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   uai-pwsh01 azure-rg-test
+```
+
+This command gets an user assigned identity by pipeline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -177,46 +114,76 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The Identity name.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceGroupParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the identity resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the Resource Group to which the identity belongs.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Id of the Subscription to which the identity belongs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IIdentity
 
 ## NOTES
 

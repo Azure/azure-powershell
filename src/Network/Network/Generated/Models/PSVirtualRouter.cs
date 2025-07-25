@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 };
                 this.Peerings.Add(peering);
             }
+            this.AllowBranchToBranchTraffic = virtualHub.AllowBranchToBranchTraffic;
         }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         public string HostedSubnet { get; set; }
         public List<PSVirtualRouterPeer> Peerings { get; set; }
+        public bool AllowBranchToBranchTraffic { get; set; }
 
         [JsonIgnore]
         public string PeeringsText

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: F6EA099A-D588-49AE-9D2C-865BC32685BA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccountnameavailability
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccountnameavailability
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzStorageAccountNameAvailability** cmdlet checks whether the name of a
 ## EXAMPLES
 
 ### Example 1: Check availability of a Storage account name
-```
-PS C:\>Get-AzStorageAccountNameAvailability -Name 'contosostorage03'
+```powershell
+Get-AzStorageAccountNameAvailability -Name 'contosostorage03'
 ```
 
 This command checks the availability of the name ContosoStorage03.
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -78,5 +78,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Azure Storage Manager Cmdlets](./Az.Storage.md)
-
-

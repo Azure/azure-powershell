@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return this.fqdns; }
             set
             {
-                ValidateFqdns(value);
                 fqdns = value;
             }
         }
@@ -41,40 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return this.ipAddresses; }
             set
             {
-                ValidateIpAddresses(value);
                 ipAddresses = value;
-            }
-        }
-
-        private const string SecureGatewayThreatIntelFqdnRegex = "^\\*?([a-zA-Z0-9\\-\\.]?[a-zA-Z0-9])*$";
-
-        private void ValidateFqdns(string[] fqdns)
-        {
-            if (fqdns == null)
-                return;
-
-            var matchingRegEx = new Regex(SecureGatewayThreatIntelFqdnRegex);
-            foreach (var fqdn in fqdns)
-            {
-                if (!matchingRegEx.IsMatch(fqdn))
-                {
-                    throw new PSArgumentException(String.Format("\'{0}\' is not a valid threat intel whitelist FQDN", fqdn));
-                }
-            }
-        }
-
-        private void ValidateIpAddresses(string[] ipAddresses)
-        {
-            if (ipAddresses == null)
-                return;
-
-            foreach (var ip in ipAddresses)
-            {
-                IPAddress ipVal;
-                if (!IPAddress.TryParse(ip, out ipVal) || ipVal.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
-                {
-                    throw new PSArgumentException(String.Format("\'{0}\' is not a valid threat intel whitelist Ip Address", ip));
-                }
             }
         }
     }

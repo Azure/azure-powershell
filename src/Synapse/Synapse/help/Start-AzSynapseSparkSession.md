@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/start-azsynapsesparksession
+online version: https://learn.microsoft.com/powershell/module/az.synapse/start-azsynapsesparksession
 schema: 2.0.0
 ---
 
@@ -33,15 +33,15 @@ The **Start-AzSynapseSparkSession** cmdlet starts a Synapse Analytics Spark sess
 
 ### Example 1
 ```powershell
-PS C:\> Start-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Name ContosoSessionName -ExecutorCount 3 -ExecutorSize Small
+Start-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -Name ContosoSessionName -ExecutorCount 3 -ExecutorSize Small
 ```
 
 This command starts an Azure Synapse Analytics Spark session.
 
 ### Example 2
 ```powershell
-PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
-PS C:\> $pool | Start-AzSynapseSparkSession -Name ContosoSessionName -ExecutorCount 3 -ExecutorSize Small
+$pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+$pool | Start-AzSynapseSparkSession -Name ContosoSessionName -ExecutorCount 3 -ExecutorSize Small
 ```
 
 This command starts an Azure Synapse Analytics Spark session through pipeline.
@@ -115,7 +115,7 @@ Number of core and memory to be used for executors allocated in the specified Sp
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Small, Medium, Large
+Accepted values: Small, Medium, Large, XLarge, XXLarge, XXXLarge
 
 Required: True
 Position: Named

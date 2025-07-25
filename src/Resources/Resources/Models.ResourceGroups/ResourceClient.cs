@@ -317,9 +317,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace) =>
-            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, "resourceTypes");
 
         public IPage<ProviderOperationsMetadata> ListProviderOperationsMetadata() =>
-            this.AuthorizationManagementClient.ProviderOperationsMetadata.List();
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.List("resourceTypes");
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualwanvpnserverconfigurationvpnprofile
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualwanvpnserverconfigurationvpnprofile
 schema: 2.0.0
 ---
 
@@ -50,7 +50,8 @@ Get-AzVirtualWanVpnServerConfigurationVpnProfile -ResourceId <String>
 ### ByVirtualWanResourceIdByVpnServerConfigurationResourceId
 ```
 Get-AzVirtualWanVpnServerConfigurationVpnProfile -ResourceId <String> -VpnServerConfigurationId <String>
- [-AuthenticationMethod <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AuthenticationMethod <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,8 +61,10 @@ The **Get-AzVirtualWanVpnServerConfigurationVpnProfile** cmdlet enables you to g
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVirtualWanVpnServerConfigurationVpnProfile -Name WestUsVirtualWan -ResourceGroupName P2SCortexGATesting -VpnServerConfiguration $vpnServerConfig -AuthenticationMethod EAPTLS
+Get-AzVirtualWanVpnServerConfigurationVpnProfile -Name WestUsVirtualWan -ResourceGroupName P2SCortexGATesting -VpnServerConfiguration $vpnServerConfig -AuthenticationMethod EAPTLS
+```
 
+```output
 ProfileUrl : https://nfvprodsuppby.blob.core.windows.net/vpnprofileimmutable/aa316f33-d0f6-4e61-994a-9aa24c0e5f70/vpnprofile/eb99aa3d-1106-49eb-9644-791c045c5cca/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=kZinevNqW
              qsEAbWAcYiKfUHFxZzh2hwvtb49dfVtUDA%3D&st=2019-10-25T19%3A52%3A36Z&se=2019-10-25T20%3A52%3A36Z&sp=r&fileExtension=.zip
 ```
@@ -74,7 +77,7 @@ The above command will generate and returns SAS Url for customer to download the
 Authentication Method
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: EAPTLS, EAPMSCHAPv2
@@ -90,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -105,7 +108,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanNameByVpnServerConfigurationObject, ByVirtualWanNameByVpnServerConfigurationResourceId
 Aliases: ResourceName
 
@@ -120,7 +123,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanNameByVpnServerConfigurationObject, ByVirtualWanNameByVpnServerConfigurationResourceId
 Aliases:
 
@@ -135,7 +138,7 @@ Accept wildcard characters: False
 The Azure resource ID for the virtual wan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanResourceIdByVpnServerConfigurationObject, ByVirtualWanResourceIdByVpnServerConfigurationResourceId
 Aliases: VirtualWanId
 
@@ -150,7 +153,7 @@ Accept wildcard characters: False
 The virtual wan object.
 
 ```yaml
-Type: PSVirtualWan
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 Parameter Sets: ByVirtualWanObjectByVpnServerConfigurationObject, ByVirtualWanObjectByVpnServerConfigurationResourceId
 Aliases: VirtualWan
 
@@ -165,7 +168,7 @@ Accept wildcard characters: False
 The VpnServerConfiguration with which this VirtualWan is associated.
 
 ```yaml
-Type: PSVpnServerConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnServerConfiguration
 Parameter Sets: ByVirtualWanNameByVpnServerConfigurationObject, ByVirtualWanObjectByVpnServerConfigurationObject, ByVirtualWanResourceIdByVpnServerConfigurationObject
 Aliases:
 
@@ -177,10 +180,10 @@ Accept wildcard characters: False
 ```
 
 ### -VpnServerConfigurationId
-The id of Vpn server configuraiton object this Virtual wan will be associated with.
+The id of Vpn server configuration object this Virtual wan will be associated with.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanNameByVpnServerConfigurationResourceId, ByVirtualWanObjectByVpnServerConfigurationResourceId, ByVirtualWanResourceIdByVpnServerConfigurationResourceId
 Aliases:
 
@@ -192,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

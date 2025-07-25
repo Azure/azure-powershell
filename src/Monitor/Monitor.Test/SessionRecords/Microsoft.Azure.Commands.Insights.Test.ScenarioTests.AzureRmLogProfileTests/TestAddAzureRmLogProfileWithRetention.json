@@ -1,6 +1,6 @@
 {
   "Entries": [{
-    "RequestUri": "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/providers/microsoft.insights/logprofiles/default?api-version=2016-03-01",
+    "RequestUri": "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/providers/Microsoft.Insights/logprofiles/default?api-version=2016-03-01",
     "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWE2NmNlMDQtYjYzMy00YTBiLWIyYmMtYTkxMmVjODk4NmE2L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvbG9ncHJvZmlsZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
     "RequestMethod": "PUT",
     "RequestBody": "{\"properties\": {\"storageAccountId\": \"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777\", \"locations\": [ \"global\" ], \"categories\": [ \"Delete\", \"Write\", \"Action\" ], \"retentionPolicy\": {\"enabled\": true, \"days\": 90 }}}",
@@ -16,7 +16,7 @@
       "Content-Length": ["409"],
       "Expect": ["100-continue"]
     },
-    "ResponseBody": "{\"id\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/providers/microsoft.insights/logprofiles/default\",\"name\":\"default\",\"location\":null,\"tags\":null,\"properties\":{\"storageAccountId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777\",\"serviceBusRuleId\":null,\"locations\":[\"global\"],\"categories\":[\"Delete\",\"Write\",\"Action\"],\"retentionPolicy\":{\"enabled\":false,\"days\":0}}}\r\n",
+    "ResponseBody": "{\"id\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/providers/Microsoft.Insights/logprofiles/default\",\"name\":\"default\",\"location\":null,\"tags\":null,\"properties\":{\"storageAccountId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777\",\"serviceBusRuleId\":null,\"locations\":[\"global\"],\"categories\":[\"Delete\",\"Write\",\"Action\"],\"retentionPolicy\":{\"enabled\":false,\"days\":0}}}\r\n",
     "ResponseHeaders": {
       "Cache-Control": ["no-cache"],
       "Pragma": ["no-cache"],

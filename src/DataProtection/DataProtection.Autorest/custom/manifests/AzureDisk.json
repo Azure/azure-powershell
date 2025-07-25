@@ -1,0 +1,90 @@
+﻿{
+  "datasourcePermissions": [ "Disk Backup Reader" ],
+  "datasourceRGPermissions": [],
+  "snapshotRGPermissions": [ "Disk Snapshot Contributor" ],
+  "keyVaultPermissions": [],
+  "dataSourceOverSnapshotRGPermissions": [],
+  "supportRestoreGrantPermission": false,
+  "datasourcePermissionsForRestore": [],
+  "storageAccountPermissionsForRestore": [],
+  "isProxyResource": false,
+  "enableDataSourceSetInfo": false,
+  "resourceType": "Microsoft.Compute/disks",
+  "parentResourceType": "Microsoft.Compute/disks",
+  "datasourceType": "Microsoft.Compute/disks",
+  "allowedRestoreModes": [ "RecoveryPointBased" ],
+  "allowedRestoreTargetTypes": [ "AlternateLocation" ],
+  "itemLevelRecoveyEnabled": false,
+  "fileNamePrefixDisabled": false,
+  "addBackupDatasourceParametersList": false,
+  "backupConfigurationRequired": false,
+  "addDataStoreParametersList": true,
+  "friendlyNameRequired": false,
+  "customFriendlyNameAllowed": false,
+  "supportSecretStoreAuthentication": false,
+  "supportCrossRegionRestore": false,
+  "policySettings": {
+    "supportedRetentionTags": [ "Daily", "Weekly" ],
+    "supportedDatastoreTypes": [ "OperationalStore" ],
+    "disableAddRetentionRule": false,
+    "disableCustomRetentionTag": true,
+    "backupScheduleSupported": true,
+    "supportedBackupFrequency": [ "Daily", "Hourly" ],
+    "defaultPolicy": {
+      "policyRules": [
+        {
+          "backupParameters": {
+            "backupType": "Incremental",
+            "objectType": "AzureBackupParams"
+          },
+          "trigger": {
+            "schedule": {
+              "repeatingTimeIntervals": [
+                "R/2020-04-05T13:00:00+00:00/PT4H"
+              ]
+            },
+            "taggingCriteria": [
+              {
+                "tagInfo": {
+                  "tagName": "Default",
+                  "id": "Default_"
+                },
+                "taggingPriority": 99,
+                "isDefault": true
+              }
+            ],
+            "objectType": "ScheduleBasedTriggerContext"
+          },
+          "dataStore": {
+            "dataStoreType": "OperationalStore",
+            "objectType": "DataStoreInfoBase"
+          },
+          "name": "BackupHourly",
+          "objectType": "AzureBackupRule"
+        },
+        {
+          "lifecycles": [
+            {
+              "deleteAfter": {
+                "objectType": "AbsoluteDeleteOption",
+                "duration": "P7D"
+              },
+              "sourceDataStore": {
+                "dataStoreType": "OperationalStore",
+                "objectType": "DataStoreInfoBase"
+              }
+            }
+          ],
+          "isDefault": true,
+          "name": "Default",
+          "objectType": "AzureRetentionRule"
+        }
+      ],
+      "name": "DiskPolicy1",
+      "datasourceTypes": [
+        "Microsoft.Compute/disks"
+      ],
+      "objectType": "BackupPolicy"
+    }
+  }
+}

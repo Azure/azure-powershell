@@ -10,10 +10,6 @@
       "_justification": "Documentation with non-live passwords in sample connection strings"
     },
     {
-      "file": "src\\DeploymentManager\\DeploymentManager.Test\\SessionRecords\\Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests.DeploymentManagerTests\\EndToEndFunctionalTests.json",
-      "_justification": "Expired test session storage SAS"
-    },
-    {
       "file": "src\\Compute\\Compute.Test\\Templates\\tstorgnztn-validator.pem",
       "_justification": "Legitimate test certificate file"
     },
@@ -334,6 +330,50 @@
       "_justification": "Legitimate test session record"
     },
     {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportAuditOnServer.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportBlobAuditDisableServerAudit.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportBlobAuditFailedServerUpdatePolicyWithNoStorage.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportBlobAuditFailWithBadServerIndentity.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportBlobAuditOnServer.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportBlobAuditServerUpdatePolicyKeepPreviousStorage.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportBlobAuditServerUpdatePolicyWithStorage.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportNewServerAuditDiagnosticsAreCreatedOnNeed.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportRemoveAuditOnServer.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestMSSupportServerAuditingToStorageInVNet.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ThreatDetectionTests\\DisablingThreatDetection.json",
       "_justification": "Legitimate test session record"
     },
@@ -510,6 +550,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightAzureMonitorTests\\TestAzureMonitorRelatedCommands.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightSetGatewayCredentialTest\\TestSetGatewayCredential.json",
       "_justification": "Test resource is deleted"
     },
@@ -526,7 +570,7 @@
       "_justification": "Test resource is deleted"
     },
     {
-      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithPrivateLink.json",
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithRelayOutoundAndPrivateLink.json",
       "_justification": "Test resource is deleted"
     },
     {
@@ -555,6 +599,22 @@
     },
     {
       "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithKafkaRestProxy.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithCustomAmbariDatabase.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithComputeIsolation.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithAvailabilityZones.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\\TestCreateClusterWithPrivateLinkConfiguration.json",
       "_justification": "Test resource is deleted"
     },
     {
@@ -728,6 +788,10 @@
     {
       "file": "src\\DataMigration\\DataMigration.Test\\SessionRecords\\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\\TestValidateMigrationInputSqlSqlDbMiSync.json",
       "_justification": "Legitimate session record, Key will be revoked after test"
+    },
+    {
+      "file": "src\\DataMigration\\DataMigration.Autorest\\test\\Remove-AzDataMigrationToSqlDb.Recording.json",
+      "_justification": "Legitimate session record, Resources will be deleted after test"
     },
     {
       "file": "src\\RedisCache\\RedisCache\\help\\Export-AzRedisCache.md",
@@ -1050,6 +1114,14 @@
       "_justification": "Generated cs, specified disallowed password values"
     },
     {
+      "file": "src\\CloudService\\test\\env.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "src\\CloudService\\test\\New-AzCloudService.Recording.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\TimeSeriesInsights\\test\\env.json",
       "_justification": "Test resource is deleted"
     },
@@ -1209,5 +1281,109 @@
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ImportExportTests\\TestImportNewDatabase_NetworkIsolation.json",
       "_justification": "temporary storage account deleted after PR merge"
     },
+    {
+      "file": "src\\DigitalTwins\\test\\New-AzDigitalTwinsEndpoint.Recording.json",
+      "_justification": "eventHubConnectionStringPrimaryKey serviceBusPrimaryConnectionString and eventGridAccessKey1 are deleted"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.SqlPoolTests\\TestSynapseSqlPoolSecurity.json",
+      "_justification": "storage account deleted after the test run"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.WorkspaceTests\\TestSynapseWorkspaceSecurity.json",
+      "_justification": "storage account deleted after the test run"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.VulnerabilityAssessmentTests\\TestVulnerabilityAssessmentBaseline.json",
+      "_justification": "storage account deleted after the test run"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.DataClassificationTests\\TestDataClassificationOnSqlPool.json",
+      "_justification": "storage account deleted after the test run"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.DataClassificationTests\\TestEnableDisableRecommendationsOnSqlPool.json",
+      "_justification": "storage account deleted after the test run"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.VulnerabilityAssessmentTests\\TestVulnerabilityAssessmentScanConvertTest.json",
+      "_justification": "Vulnerability Assessment Scan Convert Tests"
+    },
+    {
+      "file": "src\\Synapse\\Synapse.Test\\SessionRecords\\Microsoft.Azure.Commands.Synapse.Test.ScenarioTests.VulnerabilityAssessmentTests\\TestVulnerabilityAssessmentScanRecordGetListTest.json",
+      "_justification": "Vulnerability Assessment Record Get List Tests"
+    },
+    {
+      "file": "\\src\\RedisEnterpriseCache\\test\\Get-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
+      "_justification": "Legitimate session record. Test resource is deleted."
+    },
+    {
+      "file": "\\src\\RedisEnterpriseCache\\test\\New-AzRedisEnterpriseCacheDatabaseKey.Recording.json",
+      "_justification": "Legitimate session record. Test resource is deleted."
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnSiteLinkConnectionGetIkeSa.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnConnectionPacketCapture.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestVpnGatewayPacketCapture.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\ScenarioTests\\CortexTests.ps1",
+      "_justification": "Generated test resource groups are deleted after test execution"
+    },
+    {
+      "file": "\\src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\\TestWhatIfWithQueryString.json",
+      "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchAccountTests\\TestBatchAccountEndToEnd.json",
+      "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
+    },
+    {
+      "file": "tools\\TestFx\\Live\\LiveTestUtility.psm1",
+      "_justification": "Legitimate test session record, keys are deleted."
+    },
+    {
+      "file": "src\\Resources\\MSGraph.Autorest\\exports\\ProxyCmdletDefinitions.ps1",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\Resources\\MSGraph.Autorest\\exports\\New-AzADUser.ps1",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\RecoveryServices\\RecoveryServices.Backup.Providers\\Providers\\IaasVmPsBackupProvider.cs",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\DataBox\\DataBox.Autorest\\test\\New-AzDataBoxJob.Tests.ps1",
+      "_justification": "The test is for a scenario where the customer chooses to use a password of their choice. There are validations in place for the password. So having it as *** will cause the test to fail"
+    },
+    {
+      "file": "src\\DataBox\\DataBox.Autorest\\test\\New-AzDataBoxJob.Recording.json",
+      "_justification": "Recording of the test New-AzDataBoxJob.Tests.ps1, which is also a part of the cred scan supression."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubKey.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\env.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\Get-AzEventHubKey.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubGeoDRConfiguration.Recording.json",
+      "_justification": "False positive, there are no cred in this file."
+    }
   ]
 }

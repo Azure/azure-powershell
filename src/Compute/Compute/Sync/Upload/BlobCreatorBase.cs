@@ -320,7 +320,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             using (var md5 = MD5.Create())
             {
                 byte[] hash = md5.ComputeHash(bytes);
-                return Convert.ToBase64String(hash);
+                return Convert.ToBase64String(hash).Replace('/', '_');
             }
         }
 

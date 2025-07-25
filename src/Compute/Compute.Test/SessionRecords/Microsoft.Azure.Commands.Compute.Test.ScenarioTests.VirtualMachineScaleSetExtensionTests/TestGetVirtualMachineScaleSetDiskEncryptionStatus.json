@@ -710,7 +710,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualmachines/6/instanceView?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualMachines/6/instanceView?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL2FkZXRzdDNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2FkZXRzdDMvdmlydHVhbG1hY2hpbmVzLzYvaW5zdGFuY2VWaWV3P2FwaS12ZXJzaW9uPTIwMTctMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -783,7 +783,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualmachines/6/instanceView?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualMachines/6/instanceView?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL2FkZXRzdDNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2FkZXRzdDMvdmlydHVhbG1hY2hpbmVzLzYvaW5zdGFuY2VWaWV3P2FwaS12ZXJzaW9uPTIwMTctMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -856,7 +856,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualmachines/6/instanceView?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualMachines/6/instanceView?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL2FkZXRzdDNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2FkZXRzdDMvdmlydHVhbG1hY2hpbmVzLzYvaW5zdGFuY2VWaWV3P2FwaS12ZXJzaW9uPTIwMTctMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -929,7 +929,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualmachines/6?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualMachines/6?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL2FkZXRzdDNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2FkZXRzdDMvdmlydHVhbG1hY2hpbmVzLzY/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1002,7 +1002,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualmachines/7/instanceView?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualMachines/7/instanceView?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL2FkZXRzdDNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2FkZXRzdDMvdmlydHVhbG1hY2hpbmVzLzcvaW5zdGFuY2VWaWV3P2FwaS12ZXJzaW9uPTIwMTctMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1075,7 +1075,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualmachines/7/instanceView?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualMachines/7/instanceView?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL2FkZXRzdDNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2FkZXRzdDMvdmlydHVhbG1hY2hpbmVzLzcvaW5zdGFuY2VWaWV3P2FwaS12ZXJzaW9uPTIwMTctMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1148,7 +1148,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualmachines/7?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualMachines/7?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL2FkZXRzdDNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2FkZXRzdDMvdmlydHVhbG1hY2hpbmVzLzc/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1221,7 +1221,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualmachines/7?api-version=2017-12-01",
+      "RequestUri": "/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/adetst3rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmssadetst3/virtualMachines/7?api-version=2017-12-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTM5M2Y5MTktYTY4YS00M2QwLTkwNjMtNGIyYmRhNmJmZmRmL3Jlc291cmNlR3JvdXBzL2FkZXRzdDNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvdm1zc2FkZXRzdDMvdmlydHVhbG1hY2hpbmVzLzc/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",

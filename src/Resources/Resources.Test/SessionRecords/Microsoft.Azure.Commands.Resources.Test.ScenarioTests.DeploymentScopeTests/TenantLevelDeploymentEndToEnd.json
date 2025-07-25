@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/ps2093?api-version=2018-03-01-preview",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/ps2093?api-version=2021-04-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL3BzMjA5Mz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"ps2093\",\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"parent\": {}\r\n    }\r\n  }\r\n}",
@@ -36,7 +36,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2018-03-01-preview"
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2021-04-01"
         ],
         "Retry-After": [
           "0"
@@ -85,7 +85,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2018-03-01-preview",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2021-04-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2NyZWF0ZS9tYW5hZ2VtZW50R3JvdXBzL3BzMjA5Mz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -105,7 +105,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2018-03-01-preview"
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2021-04-01"
         ],
         "Retry-After": [
           "0"
@@ -154,7 +154,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2018-03-01-preview",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2021-04-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2NyZWF0ZS9tYW5hZ2VtZW50R3JvdXBzL3BzMjA5Mz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -174,7 +174,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2018-03-01-preview"
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2021-04-01"
         ],
         "Retry-After": [
           "0"
@@ -223,7 +223,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2018-03-01-preview",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/ps2093?api-version=2021-04-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2NyZWF0ZS9tYW5hZ2VtZW50R3JvdXBzL3BzMjA5Mz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2872,7 +2872,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/ps2093?api-version=2018-03-01-preview",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/ps2093?api-version=2021-04-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL3BzMjA5Mz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -2901,7 +2901,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/managementGroups/ps2093?api-version=2018-03-01-preview"
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/managementGroups/ps2093?api-version=2021-04-01"
         ],
         "Retry-After": [
           "0"
@@ -2950,7 +2950,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/ps2093?api-version=2018-03-01-preview",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/ps2093?api-version=2021-04-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL3BzMjA5Mz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -3019,7 +3019,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/ps2093?api-version=2018-03-01-preview",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/ps2093?api-version=2021-04-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL3BzMjA5Mz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",

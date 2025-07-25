@@ -20,6 +20,9 @@ using System;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Threading;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Net.Security;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Query
 {
@@ -28,6 +31,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
     {
         private const string ParamSetNameByWorkspaceId = "ByWorkspaceId";
         private const string ParamSetNameByWorkspaceObject = "ByWorkspaceObject";
+        private readonly double _timeoutBufferInSeconds = 30;
 
         [Parameter(Mandatory = true, ParameterSetName = ParamSetNameByWorkspaceId, HelpMessage = "The workspace ID.")]
         [ValidateNotNullOrEmpty]
@@ -43,7 +47,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
         [Parameter(Mandatory = false, HelpMessage = "The timespan to bound the query by.")]
         public TimeSpan? Timespan { get; set; } = null;
 
-        [Parameter(Mandatory = false, HelpMessage = "Puts an upper bound on the amount of time the server will spend processing the query. See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts")]
+        [Parameter(Mandatory = false, HelpMessage = "Puts an upper bound on the amount of time the server will spend processing the query. See: https://learn.microsoft.com/azure/azure-monitor/logs/api/timeouts")]
         [ValidateRange(1, int.MaxValue)]
         public int? Wait { get; set; }
 
@@ -73,11 +77,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
 
                     this._operationalInsightsDataClient =
                         AzureSession.Instance.ClientFactory.CreateCustomArmClient<OperationalInsightsDataClient>(clientCredentials);
+                    ConfigureTimeoutForClient();
+
                     this._operationalInsightsDataClient.Preferences.IncludeRender = IncludeRender.IsPresent;
                     this._operationalInsightsDataClient.Preferences.IncludeStatistics = IncludeStatistics.IsPresent;
                     this._operationalInsightsDataClient.NameHeader = "LogAnalyticsPSClient";
 
-                    Uri targetUri= null;
+                    Uri targetUri = null;
                     DefaultContext.Environment.TryGetEndpointUrl(
                         AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, out targetUri);
                     if (targetUri == null)
@@ -87,9 +93,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
 
                     this._operationalInsightsDataClient.BaseUri = targetUri;
 
-                    if (targetUri.AbsoluteUri.Contains("localhost"))
+                    if (targetUri.Host.Equals("localhost", StringComparison.OrdinalIgnoreCase))
                     {
-                        ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+                        ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+                        {
+                            if (sslPolicyErrors == SslPolicyErrors.None)
+                                return true;
+
+                            // Bypass certificate validation for localhost
+                            if (sender is HttpWebRequest request)
+                                return request.RequestUri.IsLoopback;
+
+                            return false;
+                        };
                     }
                 }
 
@@ -101,6 +117,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
             }
         }
 
+        private void ConfigureTimeoutForClient()
+        {
+            if (this.IsParameterBound(c => c.Wait) && Wait != null)
+            {
+                _operationalInsightsDataClient.HttpClient.Timeout = TimeSpan.FromSeconds(Convert.ToDouble(Wait)).Add(TimeSpan.FromSeconds(_timeoutBufferInSeconds));
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ParamSetNameByWorkspaceId)
@@ -109,7 +133,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
             }
             else if (ParameterSetName == ParamSetNameByWorkspaceObject)
             {
-                // This seems like a weird mapping, but rest assurured, CustomerId is what we want here
+                // This seems like a weird mapping, but rest assured, CustomerId is what we want here
                 OperationalInsightsDataClient.WorkspaceId = Workspace.CustomerId.ToString();
             }
 

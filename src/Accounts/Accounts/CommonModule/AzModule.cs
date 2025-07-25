@@ -12,24 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Profile.CommonModule;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Management.Automation;
-using System.Net.Http;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Linq;
-using System.Collections.Concurrent;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Profile.CommonModule;
 
 namespace Microsoft.Azure.Commands.Common
 {
-
     using GetEventData = Func<EventArgs>;
-    using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;
     using PipelineChangeDelegate = Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>;
+    using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;
 
     /// <summary>
     /// Cheap and dirty implementation of module functions (does not have to look like this!)
@@ -40,14 +45,34 @@ namespace Microsoft.Azure.Commands.Common
         ICommandRuntime _runtime;
         TelemetryProvider _telemetry;
         AdalLogger _logger;
-        internal static readonly string[] ClientHeaders = {"x-ms-client-request-id", "client-request-id", "x-ms-request-id", "request-id" };
+        internal static readonly string[] ClientHeaders = { "x-ms-client-request-id", "client-request-id", "x-ms-request-id", "request-id" };
+
+        private static JsonSerializerSettings DeserializationSettings = null;
+        static AzModule()
+        {
+            DeserializationSettings = new JsonSerializerSettings
+            {
+                DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
+                DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
+                ContractResolver = new ReadOnlyJsonContractResolver(),
+                Converters = new List<JsonConverter>
+                    {
+                        new Iso8601TimeSpanConverter()
+                    }
+            };
+            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
+            DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
+        }
+
         public AzModule(ICommandRuntime runtime, IEventStore eventHandler)
         {
             _runtime = runtime;
             _deferredEvents = eventHandler;
             _logger = new AdalLogger(_deferredEvents.GetDebugLogger());
             _telemetry = TelemetryProvider.Create(
-                _deferredEvents.GetWarningLogger(), _deferredEvents.GetDebugLogger()); 
+                _deferredEvents.GetWarningLogger(), _deferredEvents.GetDebugLogger());
         }
 
         public AzModule(ICommandRuntime runtime) : this(runtime, new EventStore())
@@ -58,10 +83,9 @@ namespace Microsoft.Azure.Commands.Common
         {
             _deferredEvents = store;
             _runtime = runtime;
-            _logger = new AdalLogger(_deferredEvents.GetDebugLogger()); ;
+            _logger = new AdalLogger(_deferredEvents.GetDebugLogger());
             _telemetry = provider;
         }
-
 
         /// <summary>
         /// Called when the module is loading. Allows adding HTTP pipeline steps that will always be present.
@@ -74,7 +98,6 @@ namespace Microsoft.Azure.Commands.Common
         {
             // this will be called once when the module starts up 
             // the common module can prepend or append steps to the pipeline at this point.
-            prependStep(UniqueId.Instance.SendAsync);
         }
 
         /// <summary>
@@ -91,27 +114,60 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="exception">The <see cref="System.Exception" /> that is being thrown (if available)</param>
         public async Task EventListener(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId, System.Exception exception)
         {
-            /// Drain the queue of ADAL events whenever an event is fired
+            // Drain the queue of ADAL events whenever an event is fired
             DrainDeferredEvents(signal, cancellationToken);
             switch (id)
             {
+                case Events.CmdletBeginProcessing:
+                    await OnCmdletBeginProcessing(id, cancellationToken, getEventData, signal, correlationId);
+                    break;
                 case Events.BeforeCall:
-                    await OnBeforeCall(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnBeforeCall(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 case Events.CmdletProcessRecordAsyncStart:
                     await OnProcessRecordAsyncStart(id, cancellationToken, getEventData, signal, processRecordId, invocationInfo, parameterSetName, correlationId);
                     break;
                 case Events.CmdletProcessRecordAsyncEnd:
-                    await OnProcessRecordAsyncEnd(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnProcessRecordAsyncEnd(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 case Events.CmdletException:
-                    await OnCmdletException(id, cancellationToken, getEventData, signal, processRecordId, exception);
+                    await OnCmdletException(id, cancellationToken, getEventData, signal, correlationId, exception);
                     break;
                 case Events.ResponseCreated:
-                    await OnResponseCreated(id, cancellationToken, getEventData, signal, processRecordId);
+                    await OnResponseCreated(id, cancellationToken, getEventData, signal, correlationId);
+                    break;
+                case Events.Polling:
+                    await OnPolling(id, cancellationToken, getEventData, signal, processRecordId);
+                    break;
+                case Events.Finally:
+                    await OnFinally(id, cancellationToken, getEventData, signal, correlationId);
+                    break;
+                case Events.CmdletEndProcessing:
+                    await OnCmdletEndProcessing(id, cancellationToken, getEventData, signal, correlationId);
                     break;
                 default:
-                    getEventData.Print(signal, cancellationToken, Events.Information, id);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// The cmdlet will call this for every event during the pipeline. 
+        /// </summary>
+        /// <param name="id">a <c>string</c> containing the name of the event being raised (well-known events are in <see cref="Microsoft.Azure.Commands.Common.Events"/></param>
+        /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
+        /// <param name="parameterSetName">The <see cref="string" /> containing the name of the parameter set for this invocation (if available></param>
+        /// <param name="pscmdlet"></param>
+        public void Telemetry(string id, InvocationInfo invocationInfo, string parameterSetName, PSCmdlet pscmdlet)
+        {
+            switch (id)
+            {
+                case Telemetries.Create:
+                    OnTelemetryCreated(invocationInfo, parameterSetName, pscmdlet);
+                    break;
+                case Telemetries.Send:
+                    OnTelemetrySent(pscmdlet);
+                    break;
+                default:
                     break;
             }
         }
@@ -136,9 +192,36 @@ namespace Microsoft.Azure.Commands.Common
                     }
                 }
 
-                /// Print formatted response message
+                // Print formatted response message
                 await signal(Events.Debug, cancellationToken,
                     () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
+            }
+        }
+
+        internal async Task OnPolling(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        {
+            var data = EventDataConverter.ConvertFrom(getEventData());
+            // a polling event contains a response, and the response contains the request
+            // so we can print them both in one event
+            if (data?.RequestMessage is HttpRequestMessage request)
+            {
+                try {
+                    // Print formatted request message
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
+                } catch {
+                    // request was disposed, ignore
+                }
+            }
+            if (data?.ResponseMessage is HttpResponseMessage response)
+            {
+                try {
+                    // Print formatted response message
+                    await signal(Events.Debug, cancellationToken,
+                        () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
+                } catch {
+                    // response was disposed, ignore
+                }
             }
         }
 
@@ -150,30 +233,108 @@ namespace Microsoft.Azure.Commands.Common
             AzurePSQoSEvent qos;
             if (_telemetry.TryGetValue(processRecordId, out qos))
             {
-                await signal(Events.Debug, cancellationToken,
-                    () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
-                qos.IsSuccess = false;
                 qos.Exception = exception;
-                _telemetry.LogEvent(processRecordId);
             }
         }
 
+        protected static DateTimeOffset? _previousEndTime = null;
+
         internal async Task OnProcessRecordAsyncStart(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, InvocationInfo invocationInfo, string parameterSetName, string correlationId)
         {
-            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, processRecordId);
+            //AzVersion is null indicates no SDK based cmdlet is invoked. Below properties needs to be filled.
+            if (_runtime != null && AzurePSCmdlet.AzVersion == null)
+            {
+                AzurePSCmdlet.PSHostName = _runtime.Host?.Name;
+                AzurePSCmdlet.PSHostVersion = _runtime.Host?.Version?.ToString();
+            }
+            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, correlationId);
+            qos.PreviousEndTime = _previousEndTime;
             await signal(Events.Debug, cancellationToken,
-                () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos?.CommandName}': {qos?.ToString()}"));
+                () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos?.CommandName}'"));
         }
 
-        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        internal void OnTelemetryCreated(InvocationInfo invocationInfo, string parameterSetName, PSCmdlet pscmdlet)
+        {
+            //AzVersion is null indicates no SDK based cmdlet is invoked. Below properties needs to be filled.
+            if (_runtime != null && AzurePSCmdlet.AzVersion == null)
+            {
+                AzurePSCmdlet.PSHostName = _runtime.Host?.Name;
+                AzurePSCmdlet.PSHostVersion = _runtime.Host?.Version?.ToString();
+            }
+            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, MetricHelper.TelemetryId, MetricHelper.TelemetryId);
+            qos.Parameters = string.Join(" ",
+                    invocationInfo.BoundParameters.Keys.Select(
+                        s => string.Format(System.Globalization.CultureInfo.InvariantCulture, "-{0} ***", s)));
+            qos.PreviousEndTime = _previousEndTime;
+        }
+
+        internal void OnTelemetrySent(PSCmdlet pscmdlet)
+        {
+            AzurePSQoSEvent qos;
+            if (_telemetry.TryGetValue(MetricHelper.TelemetryId, out qos))
+            {
+                qos.IsSuccess = (qos.Exception == null);
+                _telemetry.LogEvent(MetricHelper.TelemetryId);
+                _previousEndTime = DateTimeOffset.Now;
+                pscmdlet.WriteDebug(qos.ToString());
+            }
+        }
+
+        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string correlationId)
+        {
+            await signal(Events.Debug, cancellationToken,
+                () => EventHelper.CreateLogEvent($"[{id}]: Finish HTTP process"));
+        }
+
+        internal async Task OnFinally(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        {
+            var data = EventDataConverter.ConvertFrom(getEventData());
+            if (data?.ResponseMessage is HttpResponseMessage response)
+            {
+                AzurePSQoSEvent qos;
+                if (_telemetry.TryGetValue(processRecordId, out qos))
+                {
+                    if(!response.IsSuccessStatusCode && qos.Exception == null)
+                    {
+                        // add "InternalException" as message because it is just for telemetry tracking.
+                        AzPSCloudException ex = (response.StatusCode == HttpStatusCode.NotFound) ?
+                            new AzPSResourceNotFoundCloudException("InternalException") : new AzPSCloudException("InternalException");
+                        try
+                        {
+                            string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            CloudError cloudError = SafeJsonConvert.DeserializeObject<CloudError>(responseContent, DeserializationSettings);
+                            ex.Body = cloudError;
+                            ex.Data[AzurePSErrorDataKeys.CloudErrorCodeKey] = cloudError.Code;
+                        }
+                        catch (Exception exception)
+                        {
+                            await signal(Events.Debug, cancellationToken,
+                                () => EventHelper.CreateLogEvent($"[{id}]: Cannot deserialize due to {exception.Message}"));
+                        }
+                        qos.Exception = ex;
+                        await signal(Events.Debug, cancellationToken,
+                            () => EventHelper.CreateLogEvent($"[{id}]: Getting exception '{qos.Exception}' from response"));
+                    }
+                }
+            }
+        }
+
+        internal async Task OnCmdletBeginProcessing(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        {
+            await signal(Events.Debug, cancellationToken,
+                () => EventHelper.CreateLogEvent($"[{id}]: Starting command"));
+        }
+
+        internal async Task OnCmdletEndProcessing(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
         {
             AzurePSQoSEvent qos;
             if (_telemetry.TryGetValue(processRecordId, out qos))
             {
-                qos.IsSuccess = qos.Exception == null;
-                await signal(Events.Debug, cancellationToken,
-                    () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
+                qos.IsSuccess = (qos.Exception == null);
+                await signal(Events.Debug, cancellationToken, () => EventHelper.CreateLogEvent(qos.ToString()));
                 _telemetry.LogEvent(processRecordId);
+                await signal(Events.Debug, cancellationToken, () => EventHelper.CreateLogEvent("Finish sending metric."));
+                _previousEndTime = DateTimeOffset.Now;
             }
         }
 
@@ -197,12 +358,49 @@ namespace Microsoft.Azure.Commands.Common
                     }
                 }
 
-                /// Print formatted request message
+                // Print formatted request message
                 await signal(Events.Debug, cancellationToken,
                     () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
             }
         }
 
+        public void SanitizerHandler(object sanitizingObject, string telemetryId)
+        {
+            if (AzureSession.Instance.TryGetComponent<IOutputSanitizer>(nameof(IOutputSanitizer), out var outputSanitizer))
+            {
+                _telemetry.TryGetValue(telemetryId, out var qos);
+                if (outputSanitizer != null
+                    && outputSanitizer.RequireSecretsDetection
+                    && !outputSanitizer.IgnoredModules.Contains(qos?.ModuleName)
+                    && !outputSanitizer.IgnoredCmdlets.Contains(qos?.CommandName))
+                {
+                    outputSanitizer.Sanitize(sanitizingObject, out var telemetry);
+                    qos?.SanitizerInfo?.Combine(telemetry);
+                }
+            }
+        }
+
+        public Dictionary<string, string> GetTelemetryInfo(string telemetryId)
+        {
+            Dictionary<string, string> telemetryInfo = null;
+            if (_telemetry.TryGetValue(telemetryId, out var qos))
+            {
+                if (qos?.SanitizerInfo?.DetectedProperties.IsEmpty == false)
+                {
+                    var showSecretsWarning = qos.SanitizerInfo.ShowSecretsWarning && qos.SanitizerInfo.SecretsDetected;
+                    var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties.PropertyNames);
+                    var invocationName = qos.InvocationName;
+                    telemetryInfo = new Dictionary<string, string>
+                    {
+                        { "ShowSecretsWarning", showSecretsWarning.ToString().ToLower() },
+                        { "SanitizedProperties", sanitizedProperties },
+                        { "InvocationName", invocationName }
+                    };
+                }
+            }
+
+            return telemetryInfo;
+        }
 
         /// <summary>
         /// Free resources associated with this instance
@@ -230,7 +428,6 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
-
         private async void DrainDeferredEvents(SignalDelegate signal, CancellationToken token)
         {
             EventData data;
@@ -240,5 +437,4 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
     }
-
 }

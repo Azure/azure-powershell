@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor.SourceGenerator</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor.SourceGenerator</RootNamespace>
+    <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
+    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor.SourceGenerator\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+      - IsRoslyComponent helps to debug the source generator in Visual Studio. To debug it:
+      - 1. Install the component ".NET compiler platform SDK"
+      - 2. Set the this project as startup project
+      - 3. Configure this project's debug launch profiles: Add an new "Roslyn Component" profile and set the Target Project to Az.Tools.Predictor
+    -->
+    <IsRoslynComponent>true</IsRoslynComponent>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.Tools.AzPredictor.SourceGenerator.xml</DocumentationFile>
+    <PackageId>Az.Tools.Predictor.SourceGenerator</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- The generator projects specific dependencies needs to be added to PackageReference and TargetPathWithTargetPlatformMonikor -->
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="6.0.0" GeneratePathProperty="true" PrivateAssets="all"/>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
+  </PropertyGroup>
+
+  <Target Name="GetDependencyTargetPaths" AfterTargets="ResolvePackageDependenciesForBuild">
+    <!-- We need to add all the (direct and indirect) dependencies. @(ResolvedCompileFileDefinitions) is a way to get that.
+      - See more about Transient Dependencies here https://turnerj.com/blog/the-pain-points-of-csharp-source-generators
+      - Follow up the issue here https://github.com/dotnet/sdk/issues/17775
+    -->
+    <ItemGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+      <None Include="@(ResolvedCompileFileDefinitions)" Pack="true" PackagePath="analyzers/dotnet/cs" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(MSBuildRuntimeType)' == 'Mono'">
+      <Error Text="Doesn't support building with Mono." />
+    </ItemGroup>
+    <ItemGroup Condition="'$(MSBuildRuntimeType)' != 'Core'">
+      <TargetPathWithTargetPlatformMoniker Include="@(ResolvedCompileFileDefinitions)" IncludeRuntimeDependency="false" />
+    </ItemGroup>
+  </Target>
+</Project>

@@ -14,11 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         /// <summary>
         /// Creates a communicator for Managed instance
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedInstanceCommunicator(IAzureContext context)
         {
             Context = context;
@@ -63,33 +59,33 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         /// <summary>
         /// Gets the Managed instance
         /// </summary>
-        public Management.Sql.Models.ManagedInstance Get(string resourceGroupName, string managedInstanceName)
+        public Management.Sql.Models.ManagedInstance Get(string resourceGroupName, string managedInstanceName, string expand = null)
         {
-            return GetCurrentSqlClient().ManagedInstances.Get(resourceGroupName, managedInstanceName);
+            return GetCurrentSqlClient().ManagedInstances.Get(resourceGroupName, managedInstanceName, expand);
         }
 
         /// <summary>
         /// Lists Managed instances in a resource group
         /// </summary>
-        public IList<Management.Sql.Models.ManagedInstance> ListByResourceGroup(string resourceGroupName)
+        public IList<Management.Sql.Models.ManagedInstance> ListByResourceGroup(string resourceGroupName, string expand = null)
         {
-            return GetCurrentSqlClient().ManagedInstances.ListByResourceGroup(resourceGroupName).ToList();
+            return GetCurrentSqlClient().ManagedInstances.ListByResourceGroup(resourceGroupName, expand).ToList();
         }
 
         /// <summary>
         /// Lists managed instances in an instance pool
         /// </summary>
-        public IList<Management.Sql.Models.ManagedInstance> ListByInstancePool(string resourceGroupName, string instancePoolName)
+        public IList<Management.Sql.Models.ManagedInstance> ListByInstancePool(string resourceGroupName, string instancePoolName, string expand = null)
         {
-            return GetCurrentSqlClient().ManagedInstances.ListByInstancePool(resourceGroupName, instancePoolName).ToList();
+            return GetCurrentSqlClient().ManagedInstances.ListByInstancePool(resourceGroupName, instancePoolName, expand).ToList();
         }
 
         /// <summary>
         /// Lists Managed instances
         /// </summary>
-        public IList<Management.Sql.Models.ManagedInstance> List()
+        public IList<Management.Sql.Models.ManagedInstance> List(string expand = null)
         {
-            return GetCurrentSqlClient().ManagedInstances.List().ToList();
+            return GetCurrentSqlClient().ManagedInstances.List(expand).ToList();
         }
 
         /// <summary>
@@ -114,6 +110,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         public void Remove(string resourceGroupName, string managedInstanceName)
         {
             GetCurrentSqlClient().ManagedInstances.Delete(resourceGroupName, managedInstanceName);
+        }
+
+
+        public void Start(string resourceGroupName, string managedInstanceName)
+        {
+            GetCurrentSqlClient().ManagedInstances.Start(resourceGroupName, managedInstanceName);
+        }
+
+        public void Stop(string resourceGroupName, string managedInstanceName)
+        {
+            GetCurrentSqlClient().ManagedInstances.Stop(resourceGroupName, managedInstanceName);
         }
 
         /// <summary>

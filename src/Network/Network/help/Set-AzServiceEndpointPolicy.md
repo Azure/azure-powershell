@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azserviceendpointpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azserviceendpointpolicy
 schema: 2.0.0
 ---
 
@@ -14,17 +14,19 @@ Updates a service endpoint policy.
 
 ```
 Set-AzServiceEndpointPolicy -ServiceEndpointPolicy <PSServiceEndpointPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzServiceEndpointPolicy** cmdlet create a service endpoint policy.
+The **Set-AzServiceEndpointPolicy** cmdlet updates a service endpoint policy.
 
 ## EXAMPLES
 
 ### Example 1: Sets a service endpoint policy
-```
-$serviceEndpointPolicy = Set-AzServiceEndpointPolicy -Name "Policy1" -ServiceEndpointPolicy $serviceEndpointPolicy -ResourceGroup "resourcegroup1"
+```powershell
+$serviceEndpointPolicy = Get-AzServiceEndpointPolicy -Name "Policy1" -ResourceGroupName "resourcegroup1"
+Set-AzServiceEndpointPolicy -ServiceEndpointPolicy $serviceEndpointPolicy
 ```
 
 This command updates a service endpoint policy named Policy1 defined by the object $serviceEndpointPolicy belong to the resourcegroup "resourcegroup1".
@@ -92,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

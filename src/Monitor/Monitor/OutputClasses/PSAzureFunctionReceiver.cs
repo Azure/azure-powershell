@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.FunctionAppResourceId = receiver.FunctionAppResourceId;
             this.FunctionName = receiver.FunctionName;
             this.HttpTriggerUrl = receiver.HttpTriggerUrl;
-            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema.HasValue ? receiver.UseCommonAlertSchema.Value : false;
         }
     }
 }

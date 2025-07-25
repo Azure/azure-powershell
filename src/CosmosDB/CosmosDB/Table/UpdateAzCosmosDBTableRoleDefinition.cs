@@ -1,0 +1,163 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.CosmosDB.Models;
+using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.Management.CosmosDB;
+using Microsoft.Azure.Commands.CosmosDB.Exceptions;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Rest.Azure;
+
+namespace Microsoft.Azure.Commands.CosmosDB
+{
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBTableRoleDefinition", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSTableRoleDefinitionGetResults), typeof(ResourceNotFoundException))]
+    public class UpdateAzCosmosDBTableRoleDefinition : AzureCosmosDBCmdletBase
+    {
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
+        public string ResourceGroupName { get; set; }
+
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
+        public string AccountName { get; set; }
+
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.RoleDefinitionIdHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RoleDefinitionIdHelpMessage)]
+        public string Id { get; set; } = default(Guid).ToString();
+
+        [PSArgumentCompleter("BuiltInRole", "CustomRole")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.TypeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.TypeHelpMessage)]
+        public string Type { get; set; } = RoleDefinitionType.CustomRole.ToString();
+
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.RoleNameHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RoleNameHelpMessage)]
+        public string RoleName { get; set; }
+
+        [ValidateNotNull]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.DataActionsHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.DataActionsHelpMessage)]
+        public List<string> DataAction { get; set; }
+
+        [ValidateNotNull]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.PermissionsHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.PermissionsHelpMessage)]
+        public List<PSPermission> Permission { get; set; }
+
+        [ValidateNotNull]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.AssignableScopesHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AssignableScopesHelpMessage)]
+        public List<string> AssignableScope { get; set; }
+
+        [ValidateNotNull]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
+        public PSDatabaseAccountGetResults ParentObject { get; set; }
+
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.RoleDefinitionHelpMessage)]
+        public PSTableRoleDefinitionGetResults InputObject { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            List<PermissionAutoGenerated> permissions = null;
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                AccountName = resourceIdentifier.ResourceName;
+            }
+            else if (ParameterSetName.Equals(ObjectParameterSet))
+            {
+                RoleName = InputObject.RoleName;
+                Type = InputObject.Type;
+                AssignableScope = new List<String>(InputObject.AssignableScopes);
+                Id = InputObject.Id;
+                permissions = new List<PermissionAutoGenerated>(InputObject.Permissions);
+
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                AccountName = resourceIdentifier.GetDatabaseAccountName();
+            }
+
+            if (DataAction != null && Permission != null)
+            {
+                throw new ArgumentException($"Cannot specify both [{nameof(DataAction)}] and [{nameof(Permission)}]");
+            }
+
+            if (DataAction != null)
+            {
+                permissions = new List<PermissionAutoGenerated>
+                {
+                    new PermissionAutoGenerated
+                    {
+                        DataActions = DataAction
+                    }
+                };
+            }
+            else if (Permission != null)
+            {
+                permissions = new List<PermissionAutoGenerated>(Permission.Select(p => new PermissionAutoGenerated(dataActions: p.DataActions)));
+            }
+
+            Id = TableRoleHelper.ParseToRoleDefinitionId(Id);
+
+            TableRoleDefinitionResource readTableRoleDefinitionGetResults = null;
+            try
+            {
+                readTableRoleDefinitionGetResults = CosmosDBManagementClient.TableResources.GetTableRoleDefinition(ResourceGroupName, AccountName, Id);
+            }
+            catch (ErrorResponseAutoGeneratedException e)
+            {
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFoundTableRoleResourceId, "Definition", Id), innerException: e);
+                }
+                else
+                {
+                    throw e;
+                }
+            }
+
+            AssignableScope = AssignableScope ?? new List<string>(readTableRoleDefinitionGetResults.AssignableScopes);
+            AssignableScope = new List<string>(AssignableScope.Select(s => TableRoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
+
+            TableRoleDefinitionResource tableRoleDefinitionCreateUpdateParameters = new TableRoleDefinitionResource
+            {
+                RoleName = RoleName ?? readTableRoleDefinitionGetResults.RoleName,
+                PropertiesType = (RoleDefinitionType)Enum.Parse(typeof(RoleDefinitionType), Type ?? readTableRoleDefinitionGetResults.Type),
+                AssignableScopes = AssignableScope,
+                Permissions = permissions ?? readTableRoleDefinitionGetResults.Permissions,
+            };
+
+            if (ShouldProcess(Id, "Updating an existing CosmosDB Table Role Definition"))
+            {
+                TableRoleDefinitionResource tableRoleDefinitionGetResults = CosmosDBManagementClient.TableResources.CreateUpdateTableRoleDefinitionWithHttpMessagesAsync(ResourceGroupName, AccountName, Id, tableRoleDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                WriteObject(new PSTableRoleDefinitionGetResults(tableRoleDefinitionGetResults));
+            }
+
+            return;
+        }
+    }
+}

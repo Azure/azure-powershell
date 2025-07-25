@@ -1,0 +1,52 @@
+{
+  "resourceType": "appliances/upgradeGraphs",
+  "apiVersion": "2022-10-27",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.arcresourcebridge"
+  },
+  "commands": [
+    {
+      "name": "Get-AzArcResourceBridgeUpgradeGraph",
+      "description": "Gets the upgrade graph of an Appliance with a specified resource group and name and specific release train.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/upgradeGraphs/{upgradeGraph}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgeupgradegraph"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-UpgradeGraph <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the upgrade graph of an Appliance with a specified resource group and name and specific release train.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-UpgradeGraph",
+              "value": "[Path.upgradeGraph]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

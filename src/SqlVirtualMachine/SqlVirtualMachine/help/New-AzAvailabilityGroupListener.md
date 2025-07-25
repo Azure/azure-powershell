@@ -1,55 +1,65 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 schema: 2.0.0
 ---
 
 # New-AzAvailabilityGroupListener
 
 ## SYNOPSIS
-Creates a new Availability Group Listener.
+Creates or updates an availability group listener.
 
 ## SYNTAX
 
-### Name (Default)
 ```
-New-AzAvailabilityGroupListener -AvailabilityGroupName <String> [-Port <Int32>]
- -LoadBalancerResourceId <String> [-IpAddress <String>] [-SubnetId <String>] -ProbePort <Int32>
- [-PublicIpAddressResourceId <String>] [-AsJob] -SqlVirtualMachineId <String[]> [-ResourceGroupName] <String>
- [-SqlVMGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SqlVmGroupObject
-```
-New-AzAvailabilityGroupListener -AvailabilityGroupName <String> [-Port <Int32>]
- -LoadBalancerResourceId <String> [-IpAddress <String>] [-SubnetId <String>] -ProbePort <Int32>
- [-PublicIpAddressResourceId <String>] [-AsJob] -SqlVirtualMachineId <String[]>
- [-SqlVMGroupObject] <AzureSqlVMGroupModel> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
+ [-SubscriptionId <String>] [-AvailabilityGroupConfigurationReplica <IAgReplica[]>]
+ [-AvailabilityGroupName <String>] [-CreateDefaultAvailabilityGroupIfNotExist] [-IpAddress <String>]
+ [-LoadBalancerResourceId <String>] [-ProbePort <Int32>] [-PublicIpAddressResourceId <String>]
+ [-SqlVirtualMachineId <String[]>] [-SubnetId <String>]
+ [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzAvailabilityGroupListener cmdlet creates a new Availability Group Listener.
+Creates or updates an availability group listener.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAvailabilityGroupListener -AvailabilityGroupName AvailabilityGroup01 -LoadBalancerResourceId $LoadBalanceResourceId -SubnetId $SubnetId -ProbePort 59999 -SqlVirtualMachineId $VmResourceId1,$VmResourceId2 -Name AgListener01  -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -IpAddress 10.0.0.3
+New-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -Name 'AgListener01' -AvailabilityGroupName 'AG01' -IpAddress '192.168.16.7' -LoadBalancerResourceId $LoadBalancerResourceId -SubnetId $SubnetResourceId -ProbePort 9999 -SqlVirtualMachineId $sqlvmResourceId1,$sqlvmResourceId2
 ```
 
-Name         ResourceGroupName GroupName    AvailabilityGroupName
-----         ----------------- ---------    ---------------------
-AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
+```output
+Name         ResourceGroupName
+----         -----------------
+AgListener01 ResourceGroup01
+```
 
-Creates a new Availability Group Listener AgListener01 for the Availability Group AvailabilityGroup01 in SQL Virtual Machine Group SqlVmGroup01.
+Create a new Availability Group Listener "AgListener01" with Load Balancer Configuration for the Availability Group "AG01" in SQL Virtual Machine Group "sqlvmgroup01".
+
+### Example 2
+```powershell
+$msconfig1 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPAddressSubnetResourceId $SubnetResourceId1 -PrivateIPAddressIpaddress '192.168.16.9' -SqlVirtualMachineInstance $sqlvmResourceId1
+$msconfig2 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPAddressSubnetResourceId $SubnetResourceId2 -PrivateIPAddressIpaddress '192.168.17.9' -SqlVirtualMachineInstance $sqlvmResourceId2
+
+New-AzAvailabilityGroupListener -Name 'AgListener02' -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -AvailabilityGroupName 'AG02' -MultiSubnetIPConfiguration $msconfig1,$msconfig2
+```
+
+```output
+Name         ResourceGroupName
+----         -----------------
+AgListener02 ResourceGroup01
+```
+
+Create a new Availability Group Listener "AgListener02" with Multi Subnets Configuration for the Availability Group "AG02" in SQL Virtual Machine Group "sqlvmgroup01".
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background.
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -63,15 +73,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AvailabilityGroupConfigurationReplica
+Replica configurations.
+To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAgReplica[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AvailabilityGroupName
-Availability Group name.
+Name of the availability group.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreateDefaultAvailabilityGroupIfNotExist
+Create a default availability group if it does not exist.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -82,9 +123,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -94,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpAddress
-Private Ip Address
+Private IP address bound to the availability group listener.
 
 ```yaml
 Type: System.String
@@ -109,40 +150,10 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancerResourceId
-Load Balancer Id
+Resource id of the load balancer.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Availability Group Listener name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Port
-Port number of AG Listener. Default Value is 1433.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -153,13 +164,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProbePort
-Probe Port
+### -MultiSubnetIPConfiguration
+List of multi subnet IP configurations for an AG listener.
+To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IMultiSubnetIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the availability group listener.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AvailabilityGroupListenerName
 
 Required: True
 Position: Named
@@ -168,8 +195,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Port
+Listener port.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 1433
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbePort
+Probe port.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIpAddressResourceId
-Public Ip Address Resource Id
+Resource id of the public IP.
 
 ```yaml
 Type: System.String
@@ -184,25 +256,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlVirtualMachineId
-List of Sql VM Resource IDs
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -213,38 +271,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVMGroupName
-SQL virtual machine group name.
+### -SqlVirtualMachineId
+List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
 
 ```yaml
-Type: System.String
-Parameter Sets: Name
-Aliases: GroupName
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVMGroupObject
-SQL virtual machine Group object.
+### -SqlVMGroupName
+Name of the SQL virtual machine group.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
-Parameter Sets: SqlVmGroupObject
-Aliases:
+Type: System.String
+Parameter Sets: (All)
+Aliases: GroupName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubnetId
-Subnet Resource Id
+Subnet used to include private IP.
 
 ```yaml
 Type: System.String
@@ -254,6 +312,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription ID that identifies an Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -294,11 +367,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
 
 ## NOTES
 

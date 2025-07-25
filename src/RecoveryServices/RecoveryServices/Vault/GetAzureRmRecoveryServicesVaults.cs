@@ -19,7 +19,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -30,7 +29,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ARSVault))]
     public class GetAzureRmRecoveryServicesVaults : RecoveryServicesCmdletBase
     {
-
         public const string ByTagObjectParameterSet = "ByTagObjectParameterSet";
         public const string ByTagNameValueParameterSet = "ByTagNameValueParameterSet";
         public const string ByNameVaultResourceGroupParameterSet = "ByNameVaultResourceGroupParameterSet";
@@ -104,7 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Get vaults under a resouce group.
+        /// Get vaults under a resource group.
         /// </summary>
         private void GetVaultsUnderResourceGroup(string resourceGroupName)
         {
@@ -115,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Get vaults under all resouce group.
+        /// Get vaults under all resource groups.
         /// </summary>
         private void GetVaultsUnderAllResourceGroups()
         {
@@ -169,6 +167,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     }
                 }
             }
+
             if (string.IsNullOrEmpty(this.Name))
             {
                 this.WriteObject(filteredVaults.Select(v => new ARSVault(v)), true);

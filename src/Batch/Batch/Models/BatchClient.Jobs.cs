@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
                 Func<CloudJob, PSCloudJob> mappingFunction = j => { return new PSCloudJob(j); };
                 return PSPagedEnumerable<PSCloudJob, CloudJob>.CreateWithMaxCount(
-                    jobs, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    jobs, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 List<EnvironmentSetting> envSettings = new List<EnvironmentSetting>();
                 foreach (DictionaryEntry d in parameters.CommonEnvironmentSettings)
                 {
-                    EnvironmentSetting envSetting = new EnvironmentSetting(d.Key.ToString(), d.Value.ToString());
+                    EnvironmentSetting envSetting = new EnvironmentSetting(d.Key.ToString(), d.Value?.ToString());
                     envSettings.Add(envSetting);
                 }
                 job.CommonEnvironmentSettings = envSettings;
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 job.Metadata = new List<MetadataItem>();
                 foreach (DictionaryEntry d in parameters.Metadata)
                 {
-                    MetadataItem metadata = new MetadataItem(d.Key.ToString(), d.Value.ToString());
+                    MetadataItem metadata = new MetadataItem(d.Key.ToString(), d.Value?.ToString());
                     job.Metadata.Add(metadata);
                 }
             }
@@ -259,21 +259,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             jobOperations.TerminateJob(jobId, parameters.TerminateReason, parameters.AdditionalBehaviors);
         }
 
-        /// <summary>
-        /// Gets lifetime summary statistics for all of the jobs in the specified account.
-        /// </summary>
-        /// <param name="context">The account to use.</param>
-        /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
-        public PSJobStatistics GetAllJobsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-        {
-            WriteVerbose(Resources.GetAllJobsLifetimeStatistics);
-
-            JobOperations jobOperations = context.BatchOMClient.JobOperations;
-            JobStatistics jobStatistics = jobOperations.GetAllLifetimeStatistics(additionalBehaviors);
-            PSJobStatistics psJobStatistics = new PSJobStatistics(jobStatistics);
-
-            return psJobStatistics;
-        }
 
         /// <summary>
         /// Lists the job prep and release status matching the specified filter options.
@@ -303,7 +288,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 j => new PSJobPreparationAndReleaseTaskExecutionInformation(j);
 
             return PSPagedEnumerable<PSJobPreparationAndReleaseTaskExecutionInformation, JobPreparationAndReleaseTaskExecutionInformation>.CreateWithMaxCount(
-                jobPrepAndReleaseDetails, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                jobPrepAndReleaseDetails, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
         }
     }
 }

@@ -12,20 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System;
-using System.IO;
-using System.Diagnostics;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Newtonsoft.Json;
-using TraceLevel = System.Diagnostics.TraceLevel;
-using System.Linq;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Hyak.Common;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
+using Microsoft.Azure.Commands.Common.Authentication.Config;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Identity.Client.Extensions.Msal;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using Newtonsoft.Json;
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+
+using TraceLevel = System.Diagnostics.TraceLevel;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -35,14 +46,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public static class AzureSessionInitializer
     {
         private const string ContextAutosaveSettingFileName = ContextAutosaveSettings.AutoSaveSettingsFile;
+
         private const string DataCollectionFileName = AzurePSDataCollectionProfile.DefaultFileName;
 
         /// <summary>
         /// Initialize the azure session if it is not already initialized
         /// </summary>
-        public static void InitializeAzureSession()
+        public static void InitializeAzureSession(Action<string> writeWarning = null)
         {
-            AzureSession.Initialize(() => CreateInstance());
+            AzureSession.Initialize(() => CreateInstance(null, writeWarning));
         }
 
         /// <summary>
@@ -59,28 +71,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static void CreateOrReplaceSession(IDataStore dataStore)
         {
             AzureSession.Initialize(() => CreateInstance(dataStore), true);
-        }
-
-        static IAzureTokenCache InitializeTokenCache(IDataStore store, string cacheDirectory, string cacheFile, string autoSaveMode)
-        {
-            IAzureTokenCache result = new AuthenticationStoreTokenCache(new AzureTokenCache());
-            if (autoSaveMode == ContextSaveMode.CurrentUser)
-            {
-                try
-                {
-                    FileUtilities.DataStore = store;
-                    FileUtilities.EnsureDirectoryExists(cacheDirectory);
-                    var cachePath = Path.Combine(cacheDirectory, cacheFile);
-                    result = new ProtectedFileTokenCache(cachePath, store);
-                }
-                catch (Exception ex)
-                {
-                    TracingAdapter.Information("[AzureSessionInitializer]: Cannot initialize token cache in 'CurrentUser' mode. Falling back to 'Process' mode.");
-                    TracingAdapter.Information($"[AzureSessionInitializer]: Message: {ex.Message}; Stacktrace: {ex.StackTrace}");
-                }
-            }
-
-            return result;
         }
 
         static bool MigrateSettings(IDataStore store, string oldProfileDirectory, string newProfileDirectory)
@@ -119,15 +109,88 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return false;
         }
 
-        static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string profileDirectory, string settingsFile, bool migrated = false)
+        public static void MigrateAdalCache(IAzureSession session, Func<IAzureContextContainer> getContextContainer, Action<string> writeWarning)
+        {
+            try
+            {
+                if (session.ARMContextSaveMode == ContextSaveMode.Process)
+                {
+                    // Don't attempt to migrate if context autosave is disabled
+                    return;
+                }
+
+                var adalCachePath = Path.Combine(session.ProfileDirectory, "TokenCache.dat");
+                var msalCachePath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
+                var store = session.DataStore;
+                if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
+                {
+                    // Return if
+                    // (1) The ADAL cache doesn't exist (nothing to migrate), or
+                    // (2) The MSAL cache does exist (don't override existing cache)
+                    return;
+                }
+
+                byte[] adalData;
+                try
+                {
+                    adalData = File.ReadAllBytes(adalCachePath);
+                }
+                catch
+                {
+                    // Return if there was an error converting the ADAL data safely
+                    return;
+                }
+
+                if (adalData != null && adalData.Length > 0)
+                {
+                    new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal(session.TokenCacheFile);
+                }
+            }
+            catch (Exception e)
+            {
+                writeWarning(Resources.FailedToMigrateAdal2Msal.FormatInvariant(e.Message));
+            }
+        }
+
+        public static void MigrateMsalCacheWithoutSuffix(IAzureSession session, Action<string> writeWarning)
+        {
+            try
+            {
+                if (session.ARMContextSaveMode == ContextSaveMode.CurrentUser)
+                {
+                    var oldMsalCachePath = Path.Combine(session.TokenCacheDirectory, MsalCacheHelperProvider.LegacyTokenCacheName);
+                    var newMsalCachePath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
+                    var store = session.DataStore;
+                    if (store.FileExists(oldMsalCachePath) && !store.FileExists(newMsalCachePath))
+                    {
+                        MsalCacheHelperProvider.Reset();
+                        MsalCacheHelper oldCacheHelper = MsalCacheHelperProvider.GetCacheHelper(MsalCacheHelperProvider.LegacyTokenCacheName);
+                        var data = oldCacheHelper.LoadUnencryptedTokenCache();
+                        if (data != null && data.Length > 0)
+                        {
+                            MsalCacheHelperProvider.Reset();
+                            MsalCacheHelper newCacheHelper = MsalCacheHelperProvider.GetCacheHelper(session.TokenCacheFile);
+                            newCacheHelper.SaveUnencryptedTokenCache(data);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                writeWarning(Resources.FailedToMigrateMsalCacheWithLegayName.FormatInvariant(e.Message));
+            }
+        }
+
+        static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string cacheDirectory, string cacheFile, string profileDirectory, string settingsFile, bool migrated = false)
         {
             var result = new ContextAutosaveSettings
             {
-                CacheDirectory = profileDirectory,
+                CacheDirectory = cacheDirectory,
                 ContextDirectory = profileDirectory,
                 Mode = ContextSaveMode.Process,
-                CacheFile = "TokenCache.dat",
-                ContextFile = "AzureRmContext.json"
+                CacheFile = cacheFile,
+                ContextFile = "AzureRmContext.json",
+                KeyStoreFile = "keystore.cache"
             };
 
             var settingsPath = Path.Combine(profileDirectory, settingsFile);
@@ -137,13 +200,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 if (store.FileExists(settingsPath))
                 {
                     var settingsText = store.ReadFileAsText(settingsPath);
-                    ContextAutosaveSettings settings = JsonConvert.DeserializeObject<ContextAutosaveSettings>(settingsText);
-                    result.CacheDirectory = migrated ? profileDirectory : settings.CacheDirectory ?? result.CacheDirectory;
-                    result.CacheFile = settings.CacheFile ?? result.CacheFile;
+                    ContextAutosaveSettings settings = JsonConvert.DeserializeObject<ContextAutosaveSettings>(settingsText);         
                     result.ContextDirectory = migrated ? profileDirectory : settings.ContextDirectory ?? result.ContextDirectory;
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
-                    if (migrated)
+                    result.Settings = settings.Settings;
+                    result.KeyStoreFile = settings.KeyStoreFile ?? result.KeyStoreFile;
+                    bool updateSettings = false;
+                    if (!settings.Settings.ContainsKey("InstallationId"))
+                    {
+                        result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
+                        updateSettings = true;
+                    }
+                    //The customer cannot change the values of CacheFile and CacheDirectory
+                    updateSettings = updateSettings || 0 != string.Compare(settings.CacheFile, cacheFile)
+                                     || 0 != string.Compare(settings.CacheDirectory, cacheDirectory);
+                    if (migrated || updateSettings)
                     {
                         string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                         store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
@@ -158,6 +230,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                     result.Mode = ContextSaveMode.CurrentUser;
+                    result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
             }
@@ -172,23 +245,38 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return result;
         }
 
+        private static String GetAzureCLIInstallationId(IDataStore store){
+            if (store.FileExists(AzCLIProfileInfo.AzCLIProfileFile))
+            {
+                try
+                {
+                    AzCLIProfileInfo azInfo = JsonConvert.DeserializeObject<AzCLIProfileInfo>(store.ReadFileAsText(AzCLIProfileInfo.AzCLIProfileFile));
+                    if (!string.IsNullOrEmpty(azInfo?.installationId))
+                    {
+                        return azInfo.installationId;
+                    }
+                }
+                catch (Exception)
+                {
+                    TracingAdapter.Information($"[AzureSessionInitializer]: Cannot read Azure CLI profile from {AzCLIProfileInfo.AzCLIProfileFile}");
+                }
+            }
+            return null;
+        }
         static void InitializeDataCollection(IAzureSession session)
         {
             session.RegisterComponent(DataCollectionController.RegistryKey, () => DataCollectionController.Create(session));
         }
 
-        static IAzureSession CreateInstance(IDataStore dataStore = null)
+        static IAzureSession CreateInstance(IDataStore dataStore = null, Action<string> writeWarning = null)
         {
             string profilePath = Path.Combine(
-#if NETSTANDARD
                     Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                     Resources.AzureDirectoryName);
             string oldProfilePath = Path.Combine(
-#endif
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     Resources.OldAzureDirectoryName);
             dataStore = dataStore ?? new DiskDataStore();
-
             var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
@@ -198,24 +286,72 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
                 ProfileDirectory = profilePath,
                 ProfileFile = "AzureProfile.json",
+                TokenCacheDirectory = MsalCacheHelperProvider.MsalTokenCachePath,
+                TokenCacheFile = MsalCacheHelperProvider.GetTokenCacheName(MsalCacheHelperProvider.LegacyTokenCacheName, caeEnabled:true)
             };
 
             var migrated =
-#if !NETSTANDARD
-                false;
-#else
                 MigrateSettings(dataStore, oldProfilePath, profilePath);
-#endif
-            var autoSave = InitializeSessionSettings(dataStore, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
+            var autoSave = InitializeSessionSettings(dataStore, session.TokenCacheDirectory, session.TokenCacheFile, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
             session.ARMContextSaveMode = autoSave.Mode;
             session.ARMProfileDirectory = autoSave.ContextDirectory;
             session.ARMProfileFile = autoSave.ContextFile;
-            session.TokenCacheDirectory = autoSave.CacheDirectory;
-            session.TokenCacheFile = autoSave.CacheFile;
-            session.TokenCache = InitializeTokenCache(dataStore, session.TokenCacheDirectory, session.TokenCacheFile, autoSave.Mode);
+            session.KeyStoreFile = autoSave.KeyStoreFile;
+            autoSave.Settings.TryGetValue("InstallationId", out string installationId);
+            session.ExtendedProperties.Add("InstallationId", installationId);
+            InitializeConfigs(session, profilePath, writeWarning);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
+
+            session.RegisterComponent<IEndProcessingRecommendationService>(nameof(IEndProcessingRecommendationService),
+                () => new DefaultRecommendationService());
+            session.RegisterComponent<IParameterTelemetryFormatter>(nameof(IParameterTelemetryFormatter),
+                () => new ParameterTelemetryFormatter());
+            session.RegisterComponent<IFrequencyService>(nameof(IFrequencyService),
+                () => new FrequencyService(dataStore));
+            session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
+        }
+
+        private static void InitializeConfigs(AzureSession session, string profilePath, Action<string> writeWarning)
+        {
+            if (writeWarning == null) { writeWarning = (string s) => { }; };
+            var fallbackList = new List<string>()
+            {
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure", "PSConfig.json"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".Azure", "PSConfig.json")
+            };
+            ConfigInitializer configInitializer = new ConfigInitializer(fallbackList);
+
+            using (var mutex = new Mutex(false, @"Global\AzurePowerShellConfigInit"))
+            {
+                if (mutex.WaitOne(1000))
+                {
+                    // regular initialization
+                    try
+                    {
+                        configInitializer.MigrateConfigs(profilePath);
+                        configInitializer.Initialize(session);
+                        return; // done, return.
+                    }
+                    catch (Exception ex)
+                    {
+                        writeWarning($"[AzureSessionInitializer] Failed to initialize the configs, reason: {ex.Message}.");
+                    }
+                    finally
+                    {
+                        mutex.ReleaseMutex();
+                    }
+                }
+                else
+                {
+                    writeWarning($"[AzureSessionInitializer] Timed out when initializing the configs.");
+                }
+
+                // initialize in safe mode and do not try to migrate configs
+                writeWarning($"[AzureSessionInitializer] Config manager will be re-initialized in safe mode. All configs will have only default values.");
+                configInitializer.SafeInitialize(session);
+            }
         }
 
         public class AdalSession : AzureSession
@@ -238,7 +374,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             public AdalSession()
             {
                 AdalLogger = new AdalLogger(WriteToTraceListeners);
-                LoggerCallbackHandler.UseDefaultLogging = false;
+                //LoggerCallbackHandler.UseDefaultLogging = false;
             }
 
             public override TraceLevel AuthenticationLegacyTraceLevel
@@ -274,7 +410,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     catch
                     {
-                        // ignroe any exception
+                        // ignore any exception
                     }
                 }
             }

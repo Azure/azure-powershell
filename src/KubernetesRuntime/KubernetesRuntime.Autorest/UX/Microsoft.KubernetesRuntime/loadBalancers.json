@@ -1,0 +1,75 @@
+{
+  "resourceType": "loadBalancers",
+  "apiVersion": "2024-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKubernetesRuntimeLoadBalancer",
+      "description": "Get a LoadBalancer",
+      "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime/get-azkubernetesruntimeloadbalancer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcConnectedClusterId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a LoadBalancer",
+          "parameters": [
+            {
+              "name": "-ArcConnectedClusterId",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.loadBalancerName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzKubernetesRuntimeLoadBalancer",
+      "description": "Delete a LoadBalancer",
+      "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime/remove-azkubernetesruntimeloadbalancer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcConnectedClusterId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a LoadBalancer",
+          "parameters": [
+            {
+              "name": "-ArcConnectedClusterId",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.loadBalancerName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

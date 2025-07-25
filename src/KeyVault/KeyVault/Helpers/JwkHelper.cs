@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.KeyVault.WebKey;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.KeyVault.WebKey;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -7,6 +21,28 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
     internal static class JwkHelper
     {
+        internal static RSACryptoServiceProvider ConvertToRSAKey(JsonWebKey jwk)
+        {
+            if (!"RSA".Equals(jwk?.Kty))
+            {
+                return null;
+            }
+            try
+            {
+                var csp = new RSACryptoServiceProvider();
+                csp.ImportParameters(new RSAParameters()
+                {
+                    Exponent = jwk.E,
+                    Modulus = jwk.N
+                });
+                return csp;
+            }
+            catch (CryptographicException)
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// Export the public key of a JsonWebKey to PEM format.
         /// </summary>
@@ -137,5 +173,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
                 }
             }
         }
+
+        internal static bool IsEC(string keyType) =>
+            string.Equals(keyType, JsonWebKeyType.EllipticCurve, StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(keyType, JsonWebKeyType.EllipticCurveHsm, StringComparison.OrdinalIgnoreCase);
     }
 }

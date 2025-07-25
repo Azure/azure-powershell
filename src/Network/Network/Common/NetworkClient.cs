@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Network
 
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = new HttpRequestMessage();
-            httpRequest.Method = new HttpMethod("POST");
+            httpRequest.Method = new System.Net.Http.HttpMethod("POST");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
             httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
@@ -212,11 +212,11 @@ namespace Microsoft.Azure.Commands.Network
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
-            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            // Send the Get locationResults request for operationId till either we get StatusCode 200 or it time outs (3 minutes in this case)
             while (true)
             {
                 HttpRequestMessage newHttpRequest = new HttpRequestMessage();
-                newHttpRequest.Method = new HttpMethod("GET");
+                newHttpRequest.Method = new System.Net.Http.HttpMethod("GET");
                 newHttpRequest.RequestUri = new Uri(locationResultsUrl);
 
                 if (NetworkManagementClient.Credentials != null)
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Commands.Network
 
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = new HttpRequestMessage();
-            httpRequest.Method = new HttpMethod("POST");
+            httpRequest.Method = new System.Net.Http.HttpMethod("POST");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
             httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
@@ -364,11 +364,11 @@ namespace Microsoft.Azure.Commands.Network
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
-            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            // Send the Get locationResults request for operationId till either we get StatusCode 200 or it time outs (3 minutes in this case)
             while (true)
             {
                 HttpRequestMessage newHttpRequest = new HttpRequestMessage();
-                newHttpRequest.Method = new HttpMethod("GET");
+                newHttpRequest.Method = new System.Net.Http.HttpMethod("GET");
                 newHttpRequest.RequestUri = new Uri(locationResultsUrl);
 
                 if (NetworkManagementClient.Credentials != null)
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Commands.Network
 
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = new HttpRequestMessage();
-            httpRequest.Method = new HttpMethod("POST");
+            httpRequest.Method = new System.Net.Http.HttpMethod("POST");
             httpRequest.RequestUri = new Uri(url);
 
             // Set Headers
@@ -503,11 +503,11 @@ namespace Microsoft.Azure.Commands.Network
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
-            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            // Send the Get locationResults request for operationId till either we get StatusCode 200 or it time outs (3 minutes in this case)
             while (true)
             {
                 HttpRequestMessage newHttpRequest = new HttpRequestMessage();
-                newHttpRequest.Method = new HttpMethod("GET");
+                newHttpRequest.Method = new System.Net.Http.HttpMethod("GET");
                 newHttpRequest.RequestUri = new Uri(locationResultsUrl);
 
                 if (NetworkManagementClient.Credentials != null)
@@ -688,6 +688,12 @@ namespace Microsoft.Azure.Commands.Network
         /// <param name='parameters'>
         /// Parameters supplied to the Begin the operation through Network resource provider.
         /// </param>
+        /// <param name="apiUrl">
+        /// The api URL of the resource.
+        /// </param>
+        /// <param name="apiVersion">
+        /// The api version of the resource.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -719,7 +725,7 @@ namespace Microsoft.Azure.Commands.Network
 
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = new HttpRequestMessage();
-            httpRequest.Method = new HttpMethod("POST");
+            httpRequest.Method = new System.Net.Http.HttpMethod("POST");
             httpRequest.RequestUri = new Uri(apiUrl);
             // Set Headers
             httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
@@ -779,11 +785,11 @@ namespace Microsoft.Azure.Commands.Network
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 
-            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            // Send the Get locationResults request for operationId till either we get StatusCode 200 or it time outs (3 minutes in this case)
             while (true)
             {
                 HttpRequestMessage newHttpRequest = new HttpRequestMessage();
-                newHttpRequest.Method = new HttpMethod("GET");
+                newHttpRequest.Method = new System.Net.Http.HttpMethod("GET");
                 newHttpRequest.RequestUri = new Uri(locationResultsUrl);
 
                 if (NetworkManagementClient.Credentials != null)

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SourceControlSyncJobStream"/> class.
         /// </summary>
-        /// <param name="syncJobStream">
+        /// <param name="stream">
         /// The source control job stream.
         /// </param>
         /// <param name="resourceGroupName">

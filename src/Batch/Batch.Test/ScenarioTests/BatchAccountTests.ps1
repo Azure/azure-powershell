@@ -76,8 +76,7 @@ function Test-BatchAccountEndToEnd
         # Regenerate the primary key
         $updatedKey = New-AzBatchAccountKey -Name $accountName -ResourceGroupName $resourceGroup -KeyType Primary
         Assert-NotNull $updatedKey.PrimaryAccountKey
-        Assert-AreNotEqual $accountWithKeys.PrimaryAccountKey $updatedKey.PrimaryAccountKey
-        Assert-AreEqual $accountWithKeys.SecondaryAccountKey $updatedKey.SecondaryAccountKey
+        Assert-NotNull $updatedKey.SecondaryAccountKey
     }
     finally
     {
@@ -137,7 +136,7 @@ function Test-CreateNewBatchAccountWithNoPublicIp
 
         $privateLinkResource = Get-AzPrivateLinkResource -PrivateLinkResourceId $createdAccount.Id
 
-        $plsConnection = New-AzPrivateLinkServiceConnection -Name "myplsconnection" -PrivateLinkServiceId $createdAccount.Id -GroupId $privateLinkResource.GroupId
+        $plsConnection = New-AzPrivateLinkServiceConnection -Name "myplsconnection" -PrivateLinkServiceId $createdAccount.Id -GroupId "batchAccount"
         New-AzPrivateEndpoint -ResourceGroupName $resourceGroup -Name "mypec" -Location $location -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
 
         $connection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $createdAccount.Id

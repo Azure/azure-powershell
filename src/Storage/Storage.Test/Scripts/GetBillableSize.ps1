@@ -25,7 +25,7 @@ $VerbosePreference = "Continue"
 
 if(((Get-Module -ListAvailable Azure) -eq $null) -or ((Get-Module -ListAvailable Azure.Storage) -eq $null))
 {
-    throw "Azure Powershell not found! Please install from https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps"
+    throw "Azure Powershell not found! Please install from https://learn.microsoft.com/en-us/powershell/azure/install-azurerm-ps"
 }
 
 # function Retry-OnRequest

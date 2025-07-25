@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityAutoProvisioningSetting
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecurityAutoProvisioningSetting
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets the security automatic provisioning settings
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityAutoProvisioningSetting [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAutoProvisioningSetting [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
@@ -37,7 +38,10 @@ The security agent will monitor your VM to create security alerts and monitor th
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityAutoProvisioningSetting -Name "default"
+Get-AzSecurityAutoProvisioningSetting -Name "default"
+```
+
+```output
 Id                                                                                                                Name    AutoProvision
 --                                                                                                                ----    -------------
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/autoProvisioningSettings/default default On

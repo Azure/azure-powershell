@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 363FA51E-D075-4800-A4BE-BFF63FD25C90
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultcertificate
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -74,62 +74,55 @@ The **Get-AzKeyVaultCertificate** cmdlet gets the specified certificate or the v
 
 ### Example 1: Get a certificate
 ```powershell
-PS C:\> Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+```
+
+```output
 Name        : testCert01
-Certificate : [Subject] 
+Certificate : [Subject]
                 CN=contoso.com
 
-              [Issuer] 
+              [Issuer]
                 CN=contoso.com
 
-              [Serial Number] 
+              [Serial Number]
                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-              [Not Before] 
+              [Not Before]
                 2/8/2016 3:11:45 PM
 
-              [Not After] 
+              [Not After]
                 8/8/2016 4:21:45 PM
 
-              [Thumbprint] 
+              [Thumbprint]
                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 KeyId       : https://contoso.vault.azure.net:443/keys/TestCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 SecretId    : https://contoso.vault.azure.net:443/secrets/TestCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-Tags        : 
+Tags        :
 Enabled     : True
 Created     : 2/8/2016 11:21:45 PM
 Updated     : 2/8/2016 11:21:45 PM
 ```
 
+This command gets the certificate named `TestCert01` from the key vault named `ContosoKV01`
+
 ### Example 2: Get cert and save it as pfx
-This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecretId and then save the content as a pfx file.
-
 ```powershell
-$cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
-$secretValueText = '';
-$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
-try {
-    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
-} finally {
-    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
-}
-$secretByte = [Convert]::FromBase64String($secretValueText)
-$x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
-$x509Cert.Import($secretByte, "", "Exportable,PersistKeySet")
-$type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
-$pfxFileByte = $x509Cert.Export($type, $password)
-
-# Write to a file
-[System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
+$CertBase64 = Get-AzKeyVaultSecret -VaultName $vaultName -Name $certName -AsPlainText
+$CertBytes = [Convert]::FromBase64String($CertBase64)
+Set-Content -Path cert.pfx -Value $CertBytes -AsByteStream
 ```
+
+This command gets the certificate named `$certName` from the key vault named `$vaultName`. These commands access secret `$certName` and then save the content as a pfx file.
 
 ### Example 3: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzKeyVaultCertificate -VaultName 'contoso' -InRemovedState
+Get-AzKeyVaultCertificate -VaultName 'contoso' -InRemovedState
+```
 
+```output
 DeletedDate        : 5/24/2018 6:08:32 PM
 Enabled            : True
 Expires            : 11/24/2018 6:08:13 PM
@@ -160,8 +153,10 @@ This command gets all the certificates that have been previously deleted, but no
 
 ### Example 4: Gets the certificate MyCert that has been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzKeyVaultCertificate -VaultName 'contoso' -Name 'test1' -InRemovedState
+Get-AzKeyVaultCertificate -VaultName 'contoso' -Name 'test1' -InRemovedState
+```
 
+```output
 Certificate        : [Subject]
                        CN=contoso.com
 
@@ -203,8 +198,10 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ### Example 5: List certificates using filtering
 ```powershell
-PS C:\> Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "test*"
+Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "test*"
+```
 
+```output
 Enabled   : True
 Expires   : 8/5/2019 2:39:25 AM
 NotBefore : 2/5/2019 2:29:25 AM
@@ -226,9 +223,9 @@ VaultName : ContosoKV01
 Name      : test2
 Version   :
 Id        : https://ContosoKV01.vault.azure.net:443/certificates/test2
+```
 
 This command gets all certificates starting with "test" from the key vault named ContosoKV01.
-```
 
 ## PARAMETERS
 
@@ -319,7 +316,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -331,7 +328,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
@@ -407,5 +404,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Import-AzKeyVaultCertificate](./Import-AzKeyVaultCertificate.md)
 
 [Remove-AzKeyVaultCertificate](./Remove-AzKeyVaultCertificate.md)
-
-[Undo-AzKeyVaultSecretCertificate](./Undo-AzKeyVaultSecretCertificate.md)

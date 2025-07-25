@@ -1,67 +1,66 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestParent4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestParent4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"TestParent4\",\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"parent\": {}\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "41e708c7-d0d6-4b53-aa6e-8ece3ea0adb3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
+        ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
           "99"
-        ],
-        "x-ms-client-request-id": [
-          "9d3cbc58-3248-401e-84cd-76d0951f6aeb"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"TestParent4\",\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"parent\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "170"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "Retry-After": [
-          "0"
+        "x-ms-ratelimit-remaining-managementgroups-requests": [
+          "59"
         ],
         "x-ms-request-id": [
-          "eastus:94d859d2-c27f-49f2-bfe8-bb815a177622"
+          "westus:99ea8852-588e-4277-b6aa-0cea07320676"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "99ea8852-588e-4277-b6aa-0cea07320676"
         ],
         "request-id": [
-          "9508f228-ba1f-472c-9b6f-27025b74001f"
+          "99ea8852-588e-4277-b6aa-0cea07320676"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-writes": [
-          "1185"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "db27a0a5-8e62-44f2-ae18-0fdccfaae418"
+          "99ea8852-588e-4277-b6aa-0cea07320676"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194324Z:db27a0a5-8e62-44f2-ae18-0fdccfaae418"
+          "WESTUS:20230223T000243Z:99ea8852-588e-4277-b6aa-0cea07320676"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -69,44 +68,11 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Thu, 24 May 2018 19:43:23 GMT"
+          "Thu, 23 Feb 2023 00:02:43 GMT"
         ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/create/managementGroups/TestParent4?api-version=2018-03-01-preview"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/TestParent4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2NyZWF0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"tenantId\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n    \"displayName\": \"TestParent4\",\r\n    \"details\": {\r\n      \"version\": 9,\r\n      \"updatedTime\": \"2018-05-24T19:43:29.27265Z\",\r\n      \"updatedBy\": \"aef7ed39-6482-40be-a70c-8ec0669b0d04\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"name\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"displayName\": \"b1af47f1-138c-4ed2-8bba-119041b95450\"\r\n      }\r\n    }\r\n  }\r\n}",
-      "ResponseHeaders": {
         "Content-Length": [
-          "583"
+          "539"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -114,119 +80,164 @@
         "Expires": [
           "-1"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14960"
-        ],
-        "x-ms-request-id": [
-          "eastus:3446fbbc-e7db-4c68-b8c0-49ba51edbb0a"
-        ],
-        "x-ba-restapi": [
-          "1.0.3.795"
-        ],
-        "request-id": [
-          "ee5433de-d8af-45e2-a2e8-1be1c691f8a1"
-        ],
-        "x-ms-correlation-request-id": [
-          "12e2562c-80f8-43ee-b475-b5eb4a62ff12"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194335Z:12e2562c-80f8-43ee-b475-b5eb4a62ff12"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 24 May 2018 19:43:34 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
         "Retry-After": [
           "0"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestParent4\",\r\n    \"details\": {\r\n      \"version\": 12,\r\n      \"updatedTime\": \"2023-02-22T23:41:11.5990402Z\",\r\n      \"updatedBy\": \"b492d7b4-8b2e-49ce-88fc-1522f5f99e98\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSGroup4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"TestPSGroup4\",\r\n  \"properties\": {\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestParent4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
+      "RequestMethod": "GET",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "41e708c7-d0d6-4b53-aa6e-8ece3ea0adb3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-managementgroups-requests": [
+          "59"
+        ],
+        "x-ms-request-id": [
+          "westus:b4cc2f49-bf1c-489d-896c-c7f7cf590afa"
+        ],
+        "x-ba-restapi": [
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "b4cc2f49-bf1c-489d-896c-c7f7cf590afa"
+        ],
+        "request-id": [
+          "b4cc2f49-bf1c-489d-896c-c7f7cf590afa"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "b4cc2f49-bf1c-489d-896c-c7f7cf590afa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230223T000243Z:b4cc2f49-bf1c-489d-896c-c7f7cf590afa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 23 Feb 2023 00:02:43 GMT"
+        ],
+        "Content-Length": [
+          "539"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestParent4\",\r\n    \"details\": {\r\n      \"version\": 12,\r\n      \"updatedTime\": \"2023-02-22T23:41:11.5990402Z\",\r\n      \"updatedBy\": \"b492d7b4-8b2e-49ce-88fc-1522f5f99e98\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"name\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n        \"displayName\": \"Root Management Group\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSGroup4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e7cc031f-ab03-42fd-96ba-4e3678c24ffe"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
+        ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
           "225"
-        ],
-        "x-ms-client-request-id": [
-          "3acd558d-5ae5-4a64-ba06-f0b529c4e222"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"TestPSGroup4\",\r\n  \"properties\": {\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\"\r\n      }\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "172"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/managementGroups/TestPSGroup4?api-version=2021-04-01"
+        ],
         "Retry-After": [
           "0"
         ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/asyncOperation/status/managementGroups/TestPSGroup4?api-version=2021-04-01"
+        ],
+        "x-ms-ratelimit-remaining-managementgroups-requests": [
+          "58"
+        ],
         "x-ms-request-id": [
-          "eastus:c42f21ac-1590-47c0-8c69-10f9dfdbc6aa"
+          "westus:a5af1a23-b1e3-46c7-bdf3-7461d32fed9d"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "a5af1a23-b1e3-46c7-bdf3-7461d32fed9d"
         ],
         "request-id": [
-          "f73cf2cc-6a87-460b-a0f2-26f3d5ce8d19"
+          "a5af1a23-b1e3-46c7-bdf3-7461d32fed9d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-writes": [
-          "1184"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "77ebcc4f-209f-41f9-936e-f5c293758648"
+          "a5af1a23-b1e3-46c7-bdf3-7461d32fed9d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194337Z:77ebcc4f-209f-41f9-936e-f5c293758648"
+          "WESTUS:20230223T000245Z:a5af1a23-b1e3-46c7-bdf3-7461d32fed9d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -234,74 +245,77 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Thu, 24 May 2018 19:43:36 GMT"
+          "Thu, 23 Feb 2023 00:02:44 GMT"
         ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/create/managementGroups/TestPSGroup4?api-version=2018-03-01-preview"
+        "Content-Length": [
+          "161"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5"
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"NotStarted\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/TestPSGroup4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2NyZWF0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/create/asyncOperation/status/managementGroups/TestPSGroup4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2NyZWF0ZS9hc3luY09wZXJhdGlvbi9zdGF0dXMvbWFuYWdlbWVudEdyb3Vwcy9UZXN0UFNHcm91cDQ/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e7cc031f-ab03-42fd-96ba-4e3678c24ffe"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"tenantId\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"version\": 9,\r\n      \"updatedTime\": \"2018-05-24T19:43:43.8258219Z\",\r\n      \"updatedBy\": \"aef7ed39-6482-40be-a70c-8ec0669b0d04\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n        \"name\": \"TestParent4\",\r\n        \"displayName\": \"TestParent4\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "",
       "ResponseHeaders": {
-        "Content-Length": [
-          "516"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/managementGroups/TestPSGroup4?api-version=2021-04-01"
         ],
-        "x-ms-correlation-request-id": [
-          "b68d3b04-5dfe-4870-8bbe-da6ec3ed87b2"
+        "Retry-After": [
+          "0"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/create/asyncOperation/status/managementGroups/TestPSGroup4?api-version=2021-04-01"
         ],
         "x-ms-request-id": [
-          "eastus:617c6fe7-f2de-4c7d-92b5-8cdee5071dbd"
+          "westus:a40a1445-002a-4de5-99dd-57627c5cf03c"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "a40a1445-002a-4de5-99dd-57627c5cf03c"
         ],
         "request-id": [
-          "5a603907-f7f6-4738-8545-e9455b2358f0"
+          "a40a1445-002a-4de5-99dd-57627c5cf03c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14959"
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "a40a1445-002a-4de5-99dd-57627c5cf03c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194349Z:b68d3b04-5dfe-4870-8bbe-da6ec3ed87b2"
+          "WESTUS:20230223T000255Z:a40a1445-002a-4de5-99dd-57627c5cf03c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -309,83 +323,233 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Date": [
+          "Thu, 23 Feb 2023 00:02:55 GMT"
+        ],
+        "Content-Length": [
+          "157"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/operationResults/create/asyncOperation/status/managementGroups/TestPSGroup4\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"Running\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/operationResults/create/asyncOperation/status/managementGroups/TestPSGroup4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2NyZWF0ZS9hc3luY09wZXJhdGlvbi9zdGF0dXMvbWFuYWdlbWVudEdyb3Vwcy9UZXN0UFNHcm91cDQ/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e7cc031f-ab03-42fd-96ba-4e3678c24ffe"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Thu, 24 May 2018 19:43:49 GMT"
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:b3f7eb46-2d7b-4985-b3ef-e2e28751c173"
+        ],
+        "x-ba-restapi": [
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "b3f7eb46-2d7b-4985-b3ef-e2e28751c173"
+        ],
+        "request-id": [
+          "b3f7eb46-2d7b-4985-b3ef-e2e28751c173"
         ],
         "Server": [
-          "Microsoft-IIS/8.5"
+          "Microsoft-HTTPAPI/2.0"
         ],
-        "X-AspNet-Version": [
-          "4.0.30319"
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "x-ms-correlation-request-id": [
+          "b3f7eb46-2d7b-4985-b3ef-e2e28751c173"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230223T000305Z:b3f7eb46-2d7b-4985-b3ef-e2e28751c173"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 23 Feb 2023 00:03:05 GMT"
+        ],
+        "Content-Length": [
+          "377"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ],
         "Retry-After": [
           "0"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/operationResults/create/asyncOperation/status/managementGroups/TestPSGroup4\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"version\": 13,\r\n      \"updatedTime\": \"2023-02-23T00:02:50.5365686Z\",\r\n      \"updatedBy\": \"b492d7b4-8b2e-49ce-88fc-1522f5f99e98\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSGroup4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSGroup4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e7cc031f-ab03-42fd-96ba-4e3678c24ffe"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-managementgroups-requests": [
+          "58"
+        ],
+        "x-ms-request-id": [
+          "westus:50483475-2432-4ef3-a87d-d13be1a0797a"
+        ],
+        "x-ba-restapi": [
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "50483475-2432-4ef3-a87d-d13be1a0797a"
+        ],
+        "request-id": [
+          "50483475-2432-4ef3-a87d-d13be1a0797a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "50483475-2432-4ef3-a87d-d13be1a0797a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230223T000305Z:50483475-2432-4ef3-a87d-d13be1a0797a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 23 Feb 2023 00:03:05 GMT"
+        ],
+        "Content-Length": [
+          "485"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"properties\": {\r\n    \"tenantId\": \"c7a87cda-9a66-4920-b0f8-869baa04efe0\",\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"version\": 13,\r\n      \"updatedTime\": \"2023-02-23T00:02:50.5365686Z\",\r\n      \"updatedBy\": \"b492d7b4-8b2e-49ce-88fc-1522f5f99e98\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n        \"name\": \"TestParent4\",\r\n        \"displayName\": \"TestParent4\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestPSGroup4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "05ac2844-0f99-4237-91ce-5564b43db333"
+          "aa7ecb7d-d0bf-4735-9d4a-869fb7816833"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "RequestBody": "",
       "ResponseHeaders": {
-        "Content-Length": [
-          "172"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSGroup4?api-version=2021-04-01"
+        ],
         "Retry-After": [
           "0"
         ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestPSGroup4?api-version=2021-04-01"
+        ],
+        "x-ms-ratelimit-remaining-managementgroups-requests": [
+          "59"
+        ],
         "x-ms-request-id": [
-          "eastus:9542200e-512c-4090-9187-21eabe34b004"
+          "centralus:70cd4d93-ece3-4bca-8e09-f42e4325ab32"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "70cd4d93-ece3-4bca-8e09-f42e4325ab32"
         ],
         "request-id": [
-          "bbf1319a-809a-4b4d-a5b6-925e66f1f322"
+          "70cd4d93-ece3-4bca-8e09-f42e4325ab32"
         ],
-        "x-ms-ratelimit-remaining-tenant-writes": [
-          "1183"
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "be5ddf37-7bb9-4221-888c-dc1795fd6068"
+          "70cd4d93-ece3-4bca-8e09-f42e4325ab32"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194353Z:be5ddf37-7bb9-4221-888c-dc1795fd6068"
+          "WESTCENTRALUS:20230223T000306Z:70cd4d93-ece3-4bca-8e09-f42e4325ab32"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -393,74 +557,68 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Thu, 24 May 2018 19:43:52 GMT"
+          "Thu, 23 Feb 2023 00:03:06 GMT"
         ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSGroup4?api-version=2018-03-01-preview"
+        "Content-Length": [
+          "161"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5"
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"NotStarted\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSGroup4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestPSGroup4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9hc3luY09wZXJhdGlvbi9zdGF0dXMvbWFuYWdlbWVudEdyb3Vwcy9UZXN0UFNHcm91cDQ/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aa7ecb7d-d0bf-4735-9d4a-869fb7816833"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "RequestBody": "",
       "ResponseHeaders": {
-        "Content-Length": [
-          "171"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14958"
-        ],
         "x-ms-request-id": [
-          "eastus:5489c61c-17d2-421f-9abe-b378d9a7815e"
+          "centralus:fb5be274-4000-451c-b162-24f094658b44"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "fb5be274-4000-451c-b162-24f094658b44"
         ],
         "request-id": [
-          "33ed8e1b-217a-4e7d-93bc-5633bf2c723e"
+          "fb5be274-4000-451c-b162-24f094658b44"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "013febbd-0d0a-41ad-88ea-28c02ccd5c59"
+          "fb5be274-4000-451c-b162-24f094658b44"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194403Z:013febbd-0d0a-41ad-88ea-28c02ccd5c59"
+          "WESTCENTRALUS:20230223T000316Z:fb5be274-4000-451c-b162-24f094658b44"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -468,44 +626,11 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Thu, 24 May 2018 19:44:03 GMT"
+          "Thu, 23 Feb 2023 00:03:16 GMT"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSGroup4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"Succeeded\"\r\n}",
-      "ResponseHeaders": {
         "Content-Length": [
-          "171"
+          "159"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -513,29 +638,59 @@
         "Expires": [
           "-1"
         ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestPSGroup4\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSGroup4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU0dyb3VwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aa7ecb7d-d0bf-4735-9d4a-869fb7816833"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14957"
-        ],
         "x-ms-request-id": [
-          "eastus:508dc2ba-1c55-4749-a93d-d4b134632562"
+          "centralus:9ee43457-7eba-4585-97ea-45c19bdd2f6c"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "9ee43457-7eba-4585-97ea-45c19bdd2f6c"
         ],
         "request-id": [
-          "559ea25c-8641-4167-b167-41e28f37ce94"
+          "9ee43457-7eba-4585-97ea-45c19bdd2f6c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "36b1183a-eb3d-4844-ac2b-1d8dd0320534"
+          "9ee43457-7eba-4585-97ea-45c19bdd2f6c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194404Z:36b1183a-eb3d-4844-ac2b-1d8dd0320534"
+          "WESTCENTRALUS:20230223T000317Z:9ee43457-7eba-4585-97ea-45c19bdd2f6c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -543,83 +698,89 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Thu, 24 May 2018 19:44:04 GMT"
+          "Thu, 23 Feb 2023 00:03:16 GMT"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5"
+        "Content-Length": [
+          "160"
         ],
-        "X-AspNet-Version": [
-          "4.0.30319"
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "Expires": [
+          "-1"
         ],
         "Retry-After": [
           "0"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSGroup4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSGroup4\",\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestParent4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/TestParent4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "79f7fbc5-a5c0-4e0a-a774-e7cf19c272f0"
+          "27f76dee-2df8-4e25-a955-ac7bbdca63db"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"status\": \"NotStarted\"\r\n}",
+      "RequestBody": "",
       "ResponseHeaders": {
-        "Content-Length": [
-          "170"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/managementGroups/TestParent4?api-version=2021-04-01"
+        ],
         "Retry-After": [
           "0"
         ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestParent4?api-version=2021-04-01"
+        ],
+        "x-ms-ratelimit-remaining-managementgroups-requests": [
+          "58"
+        ],
         "x-ms-request-id": [
-          "eastus:86e1c204-a336-48bd-8d9a-aaa61c0fe58d"
+          "centralus:da3b0f22-6e8f-47a5-8e5f-7280aaf3d0c3"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "da3b0f22-6e8f-47a5-8e5f-7280aaf3d0c3"
         ],
         "request-id": [
-          "16797594-fb65-41c4-a02a-c42ff6ef0c2a"
+          "da3b0f22-6e8f-47a5-8e5f-7280aaf3d0c3"
         ],
-        "x-ms-ratelimit-remaining-tenant-writes": [
-          "1182"
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "9c22d74e-a221-45c1-90b9-ec992a8cfe5a"
+          "da3b0f22-6e8f-47a5-8e5f-7280aaf3d0c3"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194406Z:9c22d74e-a221-45c1-90b9-ec992a8cfe5a"
+          "WESTCENTRALUS:20230223T000318Z:da3b0f22-6e8f-47a5-8e5f-7280aaf3d0c3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -627,74 +788,68 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Thu, 24 May 2018 19:44:05 GMT"
+          "Thu, 23 Feb 2023 00:03:17 GMT"
         ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/delete/managementGroups/TestParent4?api-version=2018-03-01-preview"
+        "Content-Length": [
+          "159"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5"
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"status\": \"NotStarted\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/TestParent4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestParent4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9hc3luY09wZXJhdGlvbi9zdGF0dXMvbWFuYWdlbWVudEdyb3Vwcy9UZXN0UGFyZW50ND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "27f76dee-2df8-4e25-a955-ac7bbdca63db"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "RequestBody": "",
       "ResponseHeaders": {
-        "Content-Length": [
-          "169"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14956"
-        ],
         "x-ms-request-id": [
-          "eastus:62d01510-5ac0-4f32-9ed9-985fe0f37b79"
+          "centralus:27174b9e-f809-47bb-a305-c56f02cc118d"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "27174b9e-f809-47bb-a305-c56f02cc118d"
         ],
         "request-id": [
-          "d646dcde-1308-4909-bc0b-9945c858b4b5"
+          "27174b9e-f809-47bb-a305-c56f02cc118d"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "a6e2facb-4d91-4e1c-9c78-3b44f960fe04"
+          "27174b9e-f809-47bb-a305-c56f02cc118d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194416Z:a6e2facb-4d91-4e1c-9c78-3b44f960fe04"
+          "WESTCENTRALUS:20230223T000328Z:27174b9e-f809-47bb-a305-c56f02cc118d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -702,74 +857,71 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Thu, 24 May 2018 19:44:16 GMT"
+          "Thu, 23 Feb 2023 00:03:28 GMT"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5"
+        "Content-Length": [
+          "157"
         ],
-        "X-AspNet-Version": [
-          "4.0.30319"
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "Expires": [
+          "-1"
         ],
         "Retry-After": [
           "0"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/operationResults/delete/asyncOperation/status/managementGroups/TestParent4\",\r\n  \"name\": \"TestParent4\",\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/TestParent4?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/providers/Microsoft.Management/operationResults/delete/managementGroups/TestParent4?api-version=2021-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2RlbGV0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQYXJlbnQ0P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "27f76dee-2df8-4e25-a955-ac7bbdca63db"
+        ],
         "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "RequestBody": "",
       "ResponseHeaders": {
-        "Content-Length": [
-          "169"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14955"
-        ],
         "x-ms-request-id": [
-          "eastus:2b0f971d-301e-4989-b36e-e16d9c4f66aa"
+          "centralus:6450e156-30a7-44a1-abbc-32f3f83d8406"
         ],
         "x-ba-restapi": [
-          "1.0.3.795"
+          "0.0.0.0"
+        ],
+        "client-request-id": [
+          "6450e156-30a7-44a1-abbc-32f3f83d8406"
         ],
         "request-id": [
-          "96775f5f-41d3-4172-bc4c-e6af8f7b3696"
+          "6450e156-30a7-44a1-abbc-32f3f83d8406"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "7bfd01e1-4cc2-4c94-9004-9fd6a6b9d92c"
+          "6450e156-30a7-44a1-abbc-32f3f83d8406"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180524T194417Z:7bfd01e1-4cc2-4c94-9004-9fd6a6b9d92c"
+          "WESTCENTRALUS:20230223T000329Z:6450e156-30a7-44a1-abbc-32f3f83d8406"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -777,32 +929,28 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Thu, 24 May 2018 19:44:17 GMT"
+          "Thu, 23 Feb 2023 00:03:28 GMT"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5"
+        "Content-Length": [
+          "158"
         ],
-        "X-AspNet-Version": [
-          "4.0.30319"
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "Expires": [
+          "-1"
         ],
         "Retry-After": [
           "0"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestParent4\",\r\n  \"type\": \"Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestParent4\",\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "394ae65d-9e71-4462-930f-3332dedf845c",
-    "TenantId": "b1af47f1-138c-4ed2-8bba-119041b95450",
-    "Domain": ""
+    "SubscriptionId": "5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de"
   }
 }

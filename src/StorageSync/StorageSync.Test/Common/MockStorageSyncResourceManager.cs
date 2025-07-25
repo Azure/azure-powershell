@@ -15,11 +15,16 @@
 using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
+using Microsoft.Azure.Commands.StorageSync.Test.Common;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
+using System.Management.Automation.Runspaces;
 using System.Text.RegularExpressions;
 
 namespace StorageSync.Test.Common
@@ -90,6 +95,19 @@ namespace StorageSync.Test.Common
         public IEcsManagement CreateEcsManagement() => IsPlaybackMode ? new MockEcsManagementInteropClient() as IEcsManagement : new EcsManagementInteropClient();
 
         /// <summary>
+        /// Create Server Managed Identity Provider
+        /// </summary>
+        /// <returns>ServerManagedIdentityProvider interface</returns>
+        public IServerManagedIdentityProvider CreateServerManagedIdentityProvider() => IsPlaybackMode ? new MockServerManagedIdentityProvider(TestName) : new ServerManagedIdentityProvider();
+
+        /// <summary>
+        /// Creates the Sync Server Registration management.
+        /// </summary>
+        /// <returns>IEcsManagement.</returns>
+        public ISyncServerRegistration CreateSyncServerManagement() => IsPlaybackMode ? new MockSyncServerRegistrationClient(TestName,CreateEcsManagement()) as ISyncServerRegistration :
+            new SyncServerRegistrationClient(CreateEcsManagement(),CreateServerManagedIdentityProvider());
+
+        /// <summary>
         /// Gets the unique identifier.
         /// </summary>
         /// <returns>Guid.</returns>
@@ -113,7 +131,7 @@ namespace StorageSync.Test.Common
         /// <returns>System.String.</returns>
         public bool TryGetAfsAgentVersion(out string afsAgentVersion)
         {
-            afsAgentVersion = @"5.0.2.0";
+            afsAgentVersion = @"13.0.0.0";
             return true;
         }
 
@@ -130,7 +148,7 @@ namespace StorageSync.Test.Common
         }
 
         /// <summary>
-        /// Waits for access propogation.
+        /// Waits for access propagation.
         /// </summary>
         public void Wait()
         {
@@ -143,12 +161,26 @@ namespace StorageSync.Test.Common
 
             if (IsPlaybackMode)
             {
-                if (HttpMockServer.Variables.ContainsKey(StorageSyncConstants.TenantId))
-                {
-                    tenantId = HttpMockServer.GetVariable(StorageSyncConstants.TenantId, null);
-                }
+                // The TestFx framework defaults to a dummy tenant id in their automation pipeline, so default to our test tenant in Playback mode if not set.
+                // Failure to do this will cause cross tenant CloudEndpoint creation errors in PR validation automation.
+                tenantId = HttpMockServer.GetVariable(StorageSyncConstants.TenantId, "0483643a-cb2f-462a-bc27-1a270e5bdc0a");
             }
             return tenantId;
+        }
+
+        /// <summary>
+        /// Get Service Principal Or Null
+        /// </summary>
+        /// <returns>MicrosoftGraphServicePrincipal</returns>
+        public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull() => new() { Id = "384dab06-7a70-4ecf-a04e-284602199124" }; // Change Object ID if we are using some other tenant
+
+        LocalServerType IStorageSyncResourceManager.GetServerTypeFromRegistry()
+        {
+            if (TestName == "TestPatchRegisteredServer")
+            {
+                return LocalServerType.ArcEnabledHybridServer;
+            }
+            return LocalServerType.HybridServer;
         }
     }
 }

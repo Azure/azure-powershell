@@ -110,7 +110,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [AllowEmptyCollection]
         [ValidateNotNull]
         public Hashtable Metadata { get; set; }
-        
+
+        [Parameter(Mandatory = false,
+        HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
+        [ValidateSet(RootSquashType.NoRootSquash,
+            RootSquashType.RootSquash,
+            RootSquashType.AllSquash,
+            IgnoreCase = true)]
+        public string RootSquash { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -134,13 +142,36 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 Dictionary<string, string> MetadataDictionary = CreateMetadataDictionary(Metadata, validate: true);
 
+                bool? enableNfsV3RootSquash = null;
+                bool? enableNfsV3AllSquash = null;
+                if (this.RootSquash != null)
+                {
+                    if (this.RootSquash.ToLower() == RootSquashType.RootSquash.ToLower())
+                    {
+                        enableNfsV3RootSquash = true;
+                        enableNfsV3AllSquash = false;
+                    }
+                    if (this.RootSquash.ToLower() == RootSquashType.AllSquash.ToLower())
+                    {
+                        enableNfsV3RootSquash = false;
+                        enableNfsV3AllSquash = true;
+                    }
+                    if (this.RootSquash.ToLower() == RootSquashType.NoRootSquash.ToLower())
+                    {
+                        enableNfsV3RootSquash = false;
+                        enableNfsV3AllSquash = false;
+                    }
+                }
+
                 var container = this.StorageClient.BlobContainers.Update(
                                     this.ResourceGroupName,
                                     this.StorageAccountName,
                                     this.Name,
                                     new BlobContainer(
                                         publicAccess: (PublicAccess?)this.publicAccess,
-                                        metadata: MetadataDictionary));
+                                        metadata: MetadataDictionary,
+                                        enableNfsV3RootSquash: enableNfsV3RootSquash,
+                                        enableNfsV3AllSquash: enableNfsV3AllSquash));
 
                 WriteObject(new PSContainer(container));
             }

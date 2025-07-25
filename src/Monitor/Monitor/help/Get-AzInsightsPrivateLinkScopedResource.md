@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azinsightsprivatelinkscopedresource
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azinsightsprivatelinkscopedresource
 schema: 2.0.0
 ---
 
@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### icrosoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource
 
 ## NOTES
 

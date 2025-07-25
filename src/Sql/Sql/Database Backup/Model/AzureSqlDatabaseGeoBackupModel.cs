@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Model
 {
@@ -55,5 +56,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the resource ID
         /// </summary>
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of database AKV keys.
+        /// </summary>
+        public string[] Keys { get; set; }
     }
 }

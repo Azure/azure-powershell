@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -27,7 +28,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class ModuleAdapterTests
+    public class ModuleAdapterTests : RMTestBase
     {
         [Theory]
         [InlineData("https://manage.windowsazure.com/subscriptions", "https://manage.windowsazure.cn", "https://manage.windowsazure.cn/subscriptions")]
@@ -74,7 +75,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Theory]
         [InlineData(EnvironmentName.AzureChinaCloud)]
-        [InlineData(EnvironmentName.AzureGermanCloud)]
         [InlineData(EnvironmentName.AzureUSGovernment)]
         [InlineData(EnvironmentName.AzureCloud)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -165,7 +165,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Theory]
         [InlineData(EnvironmentName.AzureChinaCloud)]
-        [InlineData(EnvironmentName.AzureGermanCloud)]
         [InlineData(EnvironmentName.AzureUSGovernment)]
         [InlineData(EnvironmentName.AzureCloud)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -256,7 +255,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Theory]
         [InlineData(EnvironmentName.AzureChinaCloud)]
-        [InlineData(EnvironmentName.AzureGermanCloud)]
         [InlineData(EnvironmentName.AzureUSGovernment)]
         [InlineData(EnvironmentName.AzureCloud)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -351,7 +349,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExceptionHandler()
+        public async Task TestExceptionHandler()
         {
             // setup
             var store = new EventStore();
@@ -364,11 +362,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri("https://microsoft.azure.com/subscriptions") };
             var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response };
-            module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.CmdletException;
-            module.OnCmdletException(Events.CmdletException, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, new HttpRequestException("Sample exception")).GetAwaiter().GetResult();
+            await module.OnCmdletException(Events.CmdletException, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, new HttpRequestException("Sample exception"));
             Assert.True(provider.ContainsKey(id));
             var qos = provider[id];
             Assert.NotNull(qos);
@@ -388,7 +386,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [InlineData("X-MS-REQUEST-ID")]
         [InlineData("REQUEST-ID")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestClientRequestHandler(string headerName)
+        public async Task TestClientRequestHandler(string headerName)
         {
             var store = new EventStore();
             var provider = MockTelemetryProvider.Create(store) as MockTelemetryProvider;
@@ -400,10 +398,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response };
             var signalEvents = new List<EventArgs>();
             // Create a QOS record
-            module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.BeforeCall;
-            module.OnBeforeCall(Events.BeforeCall, CancellationToken.None, () => data, (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnBeforeCall(Events.BeforeCall, CancellationToken.None, () => data, (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             var qos = provider[id];
             Assert.NotNull(qos);
@@ -422,7 +420,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [InlineData("X-MS-REQUEST-ID")]
         [InlineData("REQUEST-ID")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResponseCreatedHandler(string headerName)
+        public async Task TestResponseCreatedHandler(string headerName)
         {
             var store = new EventStore();
             var provider = MockTelemetryProvider.Create(store) as MockTelemetryProvider;
@@ -435,11 +433,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage =  request, ResponseMessage = response};
             var signalEvents = new List<EventArgs>();
             // Create a QOS record
-            module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.ResponseCreated;
-            module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             var qos = provider[id];
             Assert.NotNull(qos);
@@ -449,7 +447,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResponseCreatedNegative()
+        public async Task TestResponseCreatedNegative()
         {
             // setup
             var store = new EventStore();
@@ -462,11 +460,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri("https://microsoft.azure.com/subscriptions") };
             var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response };
-            module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.ResponseCreated;
-            module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             var qos = provider[id];
             Assert.NotNull(qos);
@@ -479,11 +477,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             response.Headers.Add("x-ms-test-header", id);
             request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri("https://microsoft.azure.com/subscriptions") };
             data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response };
-            module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.ResponseCreated;
-            module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             qos = provider[id];
             Assert.NotNull(qos);
@@ -493,11 +491,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // No request or response
             id = Guid.NewGuid().ToString();
             data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, Message = "Simple message"};
-            module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.ResponseCreated;
-            module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             qos = provider[id];
             Assert.NotNull(qos);

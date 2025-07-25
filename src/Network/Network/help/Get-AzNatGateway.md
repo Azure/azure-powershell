@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznatgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznatgateway
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets a Nat Gateway resource in a resource group by name or NatGateway Id  or all
 
 ### ListParameterSet (Default)
 ```
-Get-AzNatGateway [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNatGateway [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
@@ -25,7 +26,8 @@ Get-AzNatGateway -ResourceGroupName <String> -Name <String> [-DefaultProfile <IA
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzNatGateway -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNatGateway -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +36,11 @@ Gets a Nat Gateway resource in a resource group by name OR NatGateway Id OR all 
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
-PS C:> Get-AzNatGateway -ResourceGroupName "natgateway_test"
+Get-AzNatGateway -ResourceGroupName "natgateway_test"
 
 
 IdleTimeoutInMinutes  : 4
@@ -83,7 +88,7 @@ Etag                  : W/"bdf98e30-d6c6-4af2-8f62-10d1fdaa6e84"
 Id                    : /subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/ng1
 
 
-PS C:> Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
+Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
 
 
 IdleTimeoutInMinutes  : 4
@@ -110,7 +115,7 @@ Name                  : nat_gateway
 Etag                  : W/"178470d2-7b86-4ddd-b954-e0cd3ab30a90"
 Id                    : /subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
 
-PS C:> Get-AzNatGateway -ResourceId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway"
+Get-AzNatGateway -ResourceId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway"
 
 
 IdleTimeoutInMinutes  : 4

@@ -1,0 +1,176 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b078d0dc-feae-4ab3-a4fd-368e4f36a8e5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "273"
+        ]
+      },
+      "RequestBody": "{\r\n  \"managementGroups\": [\r\n    \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  ],\r\n  \"query\": \"distinct subscriptionId | order by subscriptionId asc\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "c02057cb-9450-401b-be21-cbe0e8f6b80e"
+        ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [
+          "10"
+        ],
+        "x-ms-user-quota-remaining": [
+          "10"
+        ],
+        "x-ms-user-quota-resets-after": [
+          "00:00:05"
+        ],
+        "x-ms-resource-graph-request-duration": [
+          "0:00:00:00.3256040"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-request-id": [
+          "c02057cb-9450-401b-be21-cbe0e8f6b80e"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANWEST:20250210T023708Z:c02057cb-9450-401b-be21-cbe0e8f6b80e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 30BA346D63A24391945BD4EF417CEBC3 Ref B: TYO201100114049 Ref C: 2025-02-10T02:37:08Z"
+        ],
+        "Date": [
+          "Mon, 10 Feb 2025 02:37:07 GMT"
+        ],
+        "Content-Length": [
+          "831"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"totalRecords\": 13,\r\n  \"count\": 13,\r\n  \"data\": [\r\n    {\r\n      \"subscriptionId\": \"45b60d85-fd72-427a-a708-f994d26e593e\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"54b875cc-a81a-4914-8bfd-1a36bc7ddf4d\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"66522bd8-56b0-44fa-bd1f-23485611a6c3\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"6b085460-5f21-477e-ba44-1035046e9101\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"b8faf5eb-39a1-42c4-9e2a-335704d4c740\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"b988efc7-1bc8-4a73-b4a2-5ad864580250\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"bac420ed-c6fc-4a05-8ac1-8c0c52da1d6e\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"bd62906c-0a81-43c3-a2f8-126e4cf66ada\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"dad45786-32e5-4ef3-b90e-8e0838fbadb6\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"de6bc98d-2a4d-4607-919e-67692d1eba2b\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"eb87f285-893a-4f0f-8c55-7b4f67b1d097\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"f0d19b89-f606-48fe-b2b0-c8259f8f25b6\"\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bd1a0cb4-6bba-4db0-a740-83d16ca59ce2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "313"
+        ]
+      },
+      "RequestBody": "{\r\n  \"managementGroups\": [\r\n    \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"makharchMg\",\r\n    \"nonExistentMg\"\r\n  ],\r\n  \"query\": \"distinct subscriptionId | order by subscriptionId asc\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": true\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-correlation-request-id": [
+          "47dc6850-d786-4487-a9fa-d2f3e419a43f"
+        ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [
+          "9"
+        ],
+        "x-ms-user-quota-remaining": [
+          "9"
+        ],
+        "x-ms-user-quota-resets-after": [
+          "00:00:04"
+        ],
+        "x-ms-resource-graph-request-duration": [
+          "0:00:00:00.3242169"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2198"
+        ],
+        "x-ms-request-id": [
+          "47dc6850-d786-4487-a9fa-d2f3e419a43f"
+        ],
+        "x-ms-routing-request-id": [
+          "JAPANWEST:20250210T023709Z:47dc6850-d786-4487-a9fa-d2f3e419a43f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5C9F61794FB447D3A88D916DA739668C Ref B: TYO201100114045 Ref C: 2025-02-10T02:37:08Z"
+        ],
+        "Date": [
+          "Mon, 10 Feb 2025 02:37:09 GMT"
+        ],
+        "Content-Length": [
+          "831"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"totalRecords\": 13,\r\n  \"count\": 13,\r\n  \"data\": [\r\n    {\r\n      \"subscriptionId\": \"45b60d85-fd72-427a-a708-f994d26e593e\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"54b875cc-a81a-4914-8bfd-1a36bc7ddf4d\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"66522bd8-56b0-44fa-bd1f-23485611a6c3\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"6b085460-5f21-477e-ba44-1035046e9101\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"b8faf5eb-39a1-42c4-9e2a-335704d4c740\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"b988efc7-1bc8-4a73-b4a2-5ad864580250\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"bac420ed-c6fc-4a05-8ac1-8c0c52da1d6e\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"bd62906c-0a81-43c3-a2f8-126e4cf66ada\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"dad45786-32e5-4ef3-b90e-8e0838fbadb6\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"de6bc98d-2a4d-4607-919e-67692d1eba2b\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"eb87f285-893a-4f0f-8c55-7b4f67b1d097\"\r\n    },\r\n    {\r\n      \"subscriptionId\": \"f0d19b89-f606-48fe-b2b0-c8259f8f25b6\"\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
+  }
+}

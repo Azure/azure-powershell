@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: AF02FFF8-F00D-4446-968F-F3C9008C39F0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaysslpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewaysslpolicy
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ The **Get-AzApplicationGatewaySslPolicy** cmdlet gets the SSL policy of an appli
 
 ## EXAMPLES
 
-### 1:
-```
-PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $sslpolicy = Get-AzApplicationGatewaySslPolicy -ApplicationGateway $AppGW
+### Example 1:
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$sslpolicy = Get-AzApplicationGatewaySslPolicy -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
@@ -83,5 +83,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewaySslPolicy](./New-AzApplicationGatewaySslPolicy.md)
 
 [Set-AzApplicationGatewaySslPolicy](./Set-AzApplicationGatewaySslPolicy.md)
-
-

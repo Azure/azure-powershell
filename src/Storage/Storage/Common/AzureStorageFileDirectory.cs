@@ -14,26 +14,19 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    using Microsoft.Azure.Storage.Blob;
     using System;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Storage;
     using global::Azure.Storage.Files.Shares;
-    using global::Azure.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Storage.Auth;
 
     /// <summary>
     /// Azure storage file object
     /// </summary>
     public class AzureStorageFileDirectory : AzureStorageBase
     {
-        /// <summary>
-        /// CloudBlob object
-        /// </summary>    
-        [Ps1Xml(Label = "Share Uri", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "if (IsDirectory) {$_.CloudFileDirectory.Share.Uri} else {$_.CloudFile.Share.Uri}")]
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0, TableColumnWidth = 20)]  
-        public CloudFileDirectory CloudFileDirectory { get; private set; }
-        
         /// <summary>
         /// file last modified time
         /// </summary>
@@ -47,10 +40,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             get
             {
-                if (privateFileDirClient == null)
-                {
-                    privateFileDirClient = GetTrack2FileDirClient(this.CloudFileDirectory, (AzureStorageContext)this.Context);
-                }
                 return privateFileDirClient;
             }
         }
@@ -72,48 +61,75 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         }
         private global::Azure.Storage.Files.Shares.Models.ShareDirectoryProperties privateFileDirProperties = null;
 
+        /// <summary>
+        /// XSCL Track2 File List properties
+        /// </summary>
+        public global::Azure.Storage.Files.Shares.Models.ShareFileItem ListFileProperties { get; private set; }
+
+        private ShareClientOptions shareClientOptions { get; set; }
 
         /// <summary>
-        /// Azure storage file constructor
+        /// Azure storage file constructor from Track2 list file item
         /// </summary>
-        /// <param name="file">Cloud file Directory object</param>
-        public AzureStorageFileDirectory(CloudFileDirectory dir, AzureStorageContext storageContext)
+        /// <param name="shareDirectoryClient"></param>
+        /// <param name="storageContext"></param>
+        /// <param name="shareFileItem"></param>
+        /// <param name="clientOptions"></param>
+        public AzureStorageFileDirectory(ShareDirectoryClient shareDirectoryClient, AzureStorageContext storageContext, ShareFileItem shareFileItem, ShareClientOptions clientOptions = null)
         {
-            Name = dir.Name;
-            CloudFileDirectory = dir;
-            LastModified = dir.Properties.LastModified;
+            Name = shareDirectoryClient.Name;
+            this.privateFileDirClient = shareDirectoryClient;
+            if (shareFileItem != null)
+            {
+                ListFileProperties = shareFileItem;
+                if (shareFileItem.Properties != null)
+                {
+                    LastModified = shareFileItem.Properties.LastModified;
+                }
+            }
             Context = storageContext;
+            shareClientOptions = clientOptions;
         }
 
-        // Convert Track1 File Dir object to Track 2 file Dir Client
-        protected static ShareDirectoryClient GetTrack2FileDirClient(CloudFileDirectory cloudFileDir, AzureStorageContext context)
+        /// <summary>
+        /// Azure storage file constructor from Track2 get file properties output
+        /// </summary>
+        /// <param name="shareDirectoryClient"></param>
+        /// <param name="storageContext"></param>
+        /// <param name="shareDirectoryProperties"></param>
+        /// <param name="clientOptions"></param>
+        public AzureStorageFileDirectory(ShareDirectoryClient shareDirectoryClient, AzureStorageContext storageContext, ShareDirectoryProperties shareDirectoryProperties = null, ShareClientOptions clientOptions = null)
         {
-            ShareDirectoryClient fileDirClient;
-            if (cloudFileDir.ServiceClient.Credentials.IsSAS) //SAS
+            Name = shareDirectoryClient.Name;
+            this.privateFileDirClient = shareDirectoryClient;
+            if (shareDirectoryProperties != null)
             {
-                string fullUri = cloudFileDir.SnapshotQualifiedUri.ToString();
-                if (cloudFileDir.Share.IsSnapshot)
-                {
-                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloudFileDir.ServiceClient.Credentials.SASToken.Substring(1);
-                }
-                else
-                {
-                    fullUri = fullUri + cloudFileDir.ServiceClient.Credentials.SASToken;
-                }
-                fileDirClient = new ShareDirectoryClient(new Uri(fullUri));
+                privateFileDirProperties = shareDirectoryProperties;
+                LastModified = shareDirectoryProperties.LastModified;
             }
-            else if (cloudFileDir.ServiceClient.Credentials.IsSharedKey) //Shared Key
-            {
-                fileDirClient = new ShareDirectoryClient(cloudFileDir.SnapshotQualifiedUri,
-                    new StorageSharedKeyCredential(context.StorageAccountName, cloudFileDir.ServiceClient.Credentials.ExportBase64EncodedKey()));
-            }
-            else //Anonymous
-            {
-                fileDirClient = new ShareDirectoryClient(cloudFileDir.SnapshotQualifiedUri);
-            }
+            Context = storageContext;
+            shareClientOptions = clientOptions;
+        }
 
-            return fileDirClient;
+        // Convert Track2 File Dir object to Track 1 file Dir object
+        public static CloudFileDirectory GetTrack1FileDirClient(ShareDirectoryClient shareFileDirClient, StorageCredentials credentials, ShareClientOptions clientOptions = null, bool skipTrailingDotCheck = false)
+        {
+            if (credentials.IsToken)
+            {
+                return new InvalidCloudFileDirectory(shareFileDirClient.Uri, credentials);
+            }
+            // Track1 File not support Trailing Dot
+            if (!skipTrailingDotCheck && Util.PathContainsTrailingDot(shareFileDirClient.Path) && (clientOptions != null && clientOptions.AllowTrailingDot != null && clientOptions.AllowTrailingDot.Value))
+            {
+                return new InvalidCloudFileDirectory(shareFileDirClient.Uri, credentials);
+            }
+            if (credentials.IsSAS) // the Uri already contains credential.
+            {
+                credentials = null;
+            }
+            CloudFileDirectory track1CloudFileDir;
+            track1CloudFileDir = new CloudFileDirectory(shareFileDirClient.Uri, credentials);
+            return track1CloudFileDir;
         }
     }
 }

@@ -108,5 +108,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         {
             return jtoken.ToObject<Resource<TType>>(JsonExtensions.JsonMediaTypeSerializer);
         }
+
+        /// <summary>
+        /// Converts a <see cref="JToken"/> to a <see cref="ResourceWithSystemData{JToken}"/>.
+        /// </summary>
+        /// <param name="jtoken">The <see cref="JToken"/>.</param>
+        internal static ResourceWithSystemData<JToken> ToResourceWithSystemData(this JToken jtoken)
+        {
+            return jtoken.ToObject<ResourceWithSystemData<JToken>>(JsonExtensions.JsonMediaTypeSerializer);
+        }
     }
 }

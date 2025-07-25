@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BF5526C1-11B9-47A8-A5A6-CB275B470A9E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragetablestoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragetablestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -24,15 +24,15 @@ The **Get-AzStorageTableStoredAccessPolicy** cmdlet lists the stored access poli
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in a storage table
-```
-PS C:\>Get-AzStorageTableStoredAccessPolicy -Table "Table02" -Policy "Policy50"
+```powershell
+Get-AzStorageTableStoredAccessPolicy -Table "Table02" -Policy "Policy50"
 ```
 
 This command gets the access policy named Policy50 in the storage table named Table02.
 
 ### Example 2: Get all stored access policies in a storage table
-```
-PS C:\>Get-AzStorageTableStoredAccessPolicy -Table "Table02"
+```powershell
+Get-AzStorageTableStoredAccessPolicy -Table "Table02"
 ```
 
 This command gets all access policies in the table named Table02.
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -124,5 +124,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzStorageTableStoredAccessPolicy](./Set-AzStorageTableStoredAccessPolicy.md)
 
 [New-AzStorageContext](./New-AzStorageContext.md)
-
-

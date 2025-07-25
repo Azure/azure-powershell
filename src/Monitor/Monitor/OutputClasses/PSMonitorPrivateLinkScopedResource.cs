@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Net.Mail;
+using Microsoft.Azure.Management.Monitor.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -57,5 +59,17 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        internal static PSMonitorPrivateLinkScopedResource ToPSMonitorPrivateLinkScopedResource(ScopedResource scope)
+        {
+            return new PSMonitorPrivateLinkScopedResource
+            {
+                Id = scope.Id,
+                Name = scope.Name,
+                Type = scope.Type,
+                LinkedResourceId = scope.LinkedResourceId,
+                ProvisioningState = scope.ProvisioningState
+            };
+        }
     }
 }

@@ -12,14 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -78,8 +82,27 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = true,
             HelpMessage = "The service level of the ANF pool")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
         public string ServiceLevel { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The qos type of the pool. Possible values include: 'Auto', 'Manual'")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Auto", "Manual")]
+        public string QosType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled (true) the pool can contain cool Access enabled volumes.")]
+        public SwitchParameter CoolAccess { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    HelpMessage = "Encryption type of the capacity pool (Single, Double), set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Single", "Double")]
+        public string EncryptionType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -109,7 +132,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                     tagPairs.Add(key, Tag[key].ToString());
                 }
             }
-
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
@@ -117,18 +139,44 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Location = AccountObject.Location;
             }
 
+            //check existing 
+            CapacityPool existingPool = null;
+            try
+            {
+                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, AccountName,  Name);
+            }
+            catch
+            {
+                existingPool = null;
+            }
+            if (existingPool != null)
+            {
+                throw new AzPSResourceNotFoundCloudException($"A Capacity Pool with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Please use Set/Update-AzNetAppFilesPool to update an existing Capacity Pool.");
+            }
+
+
             var capacityPoolBody = new CapacityPool()
             {
                 ServiceLevel = ServiceLevel,
                 Size = PoolSize,
                 Location = Location,
-                Tags = tagPairs
+                Tags = tagPairs,
+                QosType = QosType,
+                CoolAccess = CoolAccess,
+                EncryptionType = EncryptionType
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(capacityPoolBody, ResourceGroupName, AccountName, Name);
-                WriteObject(anfPool);
+                try
+                {
+                    var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(ResourceGroupName, AccountName, Name, capacityPoolBody);
+                    WriteObject(anfPool.ToPsNetAppFilesPool());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

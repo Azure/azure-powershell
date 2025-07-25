@@ -14,10 +14,8 @@
 
 using Microsoft.Azure.Commands.IotCentral.Models;
 using Microsoft.Azure.Management.IotCentral.Models;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.IotCentral.Common
 {
@@ -35,13 +33,13 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
 
         public static AppPatch CreateAppPatch(App iotCentralApp)
         {
-            var copiedIotCenralApp = new AppPatch()
+            var copiedIotCentralApp = new AppPatch()
             {
                 DisplayName = iotCentralApp.DisplayName,
                 Tags = iotCentralApp.Tags,
                 Subdomain = iotCentralApp.Subdomain
             };
-            return copiedIotCenralApp;
+            return copiedIotCentralApp;
         }
     }
 }

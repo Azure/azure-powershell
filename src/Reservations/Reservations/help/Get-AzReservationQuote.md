@@ -1,45 +1,216 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservationquote
+online version: https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationquote
 schema: 2.0.0
 ---
 
 # Get-AzReservationQuote
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Calculate price for placing a `ReservationOrder`.
 
 ## SYNTAX
 
+### CalculateExpanded (Default)
 ```
-Get-AzReservationQuote -ReservedResourceType <String> -Sku <String> [-Location <String>]
- -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> -DisplayName <String>
- -AppliedScopeType <String> [-AppliedScope <String>] [-Renew <Boolean>] [-InstanceFlexibility <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzReservationQuote [-AppliedScope <String[]>] [-AppliedScopePropertyDisplayName <String>]
+ [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
+ [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
+ [-AppliedScopeType <String>] [-BillingPlan <String>] [-BillingScopeId <String>] [-DisplayName <String>]
+ [-InstanceFlexibility <String>] [-Location <String>] [-Quantity <Int32>] [-Renew]
+ [-ReservedResourceType <String>] [-ReviewDateTime <DateTime>] [-Sku <String>] [-Term <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CalculateViaJsonFilePath
+```
+Get-AzReservationQuote -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CalculateViaJsonString
+```
+Get-AzReservationQuote -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Calculate price for placing a reservation order.
+Calculate price for placing a `ReservationOrder`.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get reservation price with 'Upfront' billing plan
 ```powershell
-PS C:\> Get-AzReservationQuote -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
--BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
+Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'yourRIName' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
 ```
 
-After get catalog, customer can get the differe product based on location. By using those infomation, check the price properly
+```output
+BillingCurrencyTotal    : {
+                            "currencyCode": "GBP",
+                            "amount": 24
+                          }
+GrandTotal              : 0
+IsBillingPartnerManaged : 
+IsTaxIncluded           : 
+NetTotal                : 0
+PaymentSchedule         : 
+PricingCurrencyTotal    : {
+                            "currencyCode": "GBP",
+                            "amount": 24
+                          }
+ReservationOrderId      : 846655fa-d9e7-4fb8-9512-3ab7367352f1
+SkuDescription          : Standard_b1ls
+SkuTitle                : Reserved VM Instance, Standard_B1ls, US West, 1 Year
+TaxTotal                : 0
+```
+
+Get reservation price with 'Upfront' billing plan
+
+### Example 2: Get reservation price with 'Monthly' billing plan
+```powershell
+Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Monthly' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'yourRIName' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
+```
+
+```output
+BillingCurrencyTotal    : {
+                            "currencyCode": "GBP",
+                            "amount": 24
+                          }
+GrandTotal              : 0
+IsBillingPartnerManaged : 
+IsTaxIncluded           : 
+NetTotal                : 0
+PaymentSchedule         : {{
+                            "dueDate": "2022-07-07",
+                            "pricingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "billingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "status": "Scheduled"
+                          }, {
+                            "dueDate": "2022-08-07",
+                            "pricingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "status": "Scheduled"
+                          }, {
+                            "dueDate": "2022-09-07",
+                            "pricingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "status": "Scheduled"
+                          }, {
+                            "dueDate": "2022-10-07",
+                            "pricingCurrencyTotal": {
+                              "currencyCode": "GBP",
+                              "amount": 2
+                            },
+                            "status": "Scheduled"
+                          }…}
+PricingCurrencyTotal    : {
+                            "currencyCode": "GBP",
+                            "amount": 24
+                          }
+ReservationOrderId      : 23d4106a-8ec0-4709-839f-0e8073459e83
+SkuDescription          : Standard_b1ls
+SkuTitle                : Reserved VM Instance, Standard_B1ls, US West, 1 Year
+TaxTotal                : 0
+```
+
+Get reservation price with 'Monthly' billing plan
 
 ## PARAMETERS
 
 ### -AppliedScope
-Subscription that the benefit will be applied. Required if --applied-scope-type is Single. Do not specify if --applied-scope-type is Shared.
+List of the subscriptions that the benefit will be applied.
+Do not specify if AppliedScopeType is Shared.
+This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyDisplayName
+Display name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyManagementGroupId
+Fully-qualified identifier of the management group where the benefit must be applied.
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyResourceGroupId
+Fully-qualified identifier of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertySubscriptionId
+Fully-qualified identifier of the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyTenantId
+Tenant ID where the savings plan should apply benefit.
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
 Aliases:
 
 Required: False
@@ -50,14 +221,14 @@ Accept wildcard characters: False
 ```
 
 ### -AppliedScopeType
-Type of the Applied Scope to update the reservation with "Single" or "Shared"
+Type of the Applied Scope.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -65,11 +236,11 @@ Accept wildcard characters: False
 ```
 
 ### -BillingPlan
-The billing plan options available for this SKU. "Monthly" or "Upfront"
+Represent the billing plans.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
 Aliases:
 
 Required: False
@@ -80,14 +251,14 @@ Accept wildcard characters: False
 ```
 
 ### -BillingScopeId
-Subscription that will be charged for purchasing Reservation.
+Subscription that will be charged for purchasing reservation or savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,12 +266,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -110,26 +282,11 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Friendly name for user to easily identified the reservation.
+Friendly name of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceFlexibility
-Type of the Instance Flexibility to update the reservation with.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
 Aliases:
 
 Required: False
@@ -139,12 +296,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location that the SKU is available.
+### -InstanceFlexibility
+Turning this on will apply the reservation discount to other VMs in the same VM size group.
+Only specify for VirtualMachines reserved resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Calculate operation
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Calculate operation
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The Azure region where the reserved resource lives.
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
 Aliases:
 
 Required: False
@@ -155,14 +358,14 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-Quantity of product for calculating price or purchasing.
+Quantity of the skus that are part of the reservation.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: CalculateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,11 +373,11 @@ Accept wildcard characters: False
 ```
 
 ### -Renew
-Set this to true will automatically purchase a new reservation on the expiration date time.
+Setting this to true will automatically purchase a new reservation on the expiration date time.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CalculateExpanded
 Aliases:
 
 Required: False
@@ -185,14 +388,29 @@ Accept wildcard characters: False
 ```
 
 ### -ReservedResourceType
-Type of the resource for which the skus should be provided.
+The type of the resource that is being reserved.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReviewDateTime
+This is the date-time when the Azure hybrid benefit needs to be reviewed.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -200,14 +418,14 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Sku name, get the sku list by using command az reservations catalog show
+.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,14 +433,45 @@ Accept wildcard characters: False
 ```
 
 ### -Term
-Available reservation terms for this resource.
+Represent the term of reservation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CalculateExpanded
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -234,11 +483,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Reservations.Models.CalculatePriceResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculatePriceResponse
 
 ## NOTES
 

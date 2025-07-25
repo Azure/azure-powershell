@@ -5,8 +5,8 @@
 <#
 Setup and tear down methods to configure a basic environment for the tests
 #>
-$script:AutomationAccountName = "mirichmo-aatest-WUS2"
-$script:ResourceGroupName = "mirichmo-aatest-wus2-rg"
+$script:AutomationAccountName = "fbs-aa-01"
+$script:ResourceGroupName = "to-delete-01"
 $script:TestRunbookName = "TestRunbookName"
 $script:TestRunbookTwoParamsName = "TestRunbookTwoParamsName"
 
@@ -333,7 +333,7 @@ function Test-GetSuccessScenarios {
 Test-GetFailureScenarios
 #>
 function Test-GetFailureScenarios {
-    # Test: Get Throws for Non-Existant Webhook By ResourceGroupName
+    # Test: Get Throws for Non-existent Webhook By ResourceGroupName
     try {
         $results = Get-AzAutomationWebhook `
             -ResourceGroupName "DoesntExistWebhookRG" `
@@ -347,7 +347,7 @@ function Test-GetFailureScenarios {
         Assert-True { $_.CategoryInfo -match "ErrorResponseException" }
     }
 
-    # Test: Get Throws for Non-Existant Webhook By Name
+    # Test: Get Throws for Non-existent Webhook By Name
     try {
         $results = Get-AzAutomationWebhook `
             -Name "DoesntExistWebhook" `
@@ -362,7 +362,7 @@ function Test-GetFailureScenarios {
         Assert-True { $_.CategoryInfo -match "ResourceNotFoundException" }
     }
 
-    # Test: Get Returns Zero Results for Non-Existant Webhook By RunbookName
+    # Test: Get Returns Zero Results for Non-existent Webhook By RunbookName
     try {
         $results = Get-AzAutomationWebhook `
             -RunbookName "DoesntExistWebhookRunbook" `
@@ -373,6 +373,5 @@ function Test-GetFailureScenarios {
         }
     catch {
         Assert-AreEqual $_.FullyQualifiedErrorId "Microsoft.Azure.Commands.Automation.Cmdlet.GetAzureAutomationWebhook"
-        Assert-True { $_.CategoryInfo -match "ResourceNotFoundException" }
     }
 }

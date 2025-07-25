@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Gets the CosmosDB Sql Container.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBSqlContainer -ResourceGroupName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String>
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -31,8 +32,10 @@ The **Get-AzCosmosDBSqlContainer** cmdlet gets the list of all existing CosmosDB
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlContainer -AccountName {accountName} -ResourceGroupName {resourceGroupName} -DatabaseName {databaseName}
+Get-AzCosmosDBSqlContainer -AccountName "accountName" -ResourceGroupName "resourceGroupName" -DatabaseName "databaseName"
+```
 
+```output
 Name                     : {containerName1}
 Id                       : Id
 Resource                 : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetPropertiesResource
@@ -44,7 +47,7 @@ Resource                 : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContain
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -59,7 +62,7 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -74,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -89,7 +92,7 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +107,7 @@ Accept wildcard characters: False
 Sql Database object.
 
 ```yaml
-Type: PSSqlDatabaseGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -119,7 +122,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 

@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         /// <param name="options">The options to use when querying for certificates.</param>
         /// <returns>The certificates matching the specified filter options.</returns>
+        [Obsolete("This operation is deprecated and will be removed after February, 2024.")]
         public IEnumerable<PSCertificate> ListCertificates(ListCertificateOptions options)
         {
             if (options == null)
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<Certificate> certificates = certOperations.ListCertificates(listDetailLevel, options.AdditionalBehaviors);
                 Func<Certificate, PSCertificate> mappingFunction = c => { return new PSCertificate(c); };
                 return PSPagedEnumerable<PSCertificate, Certificate>.CreateWithMaxCount(
-                    certificates, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    certificates, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Adds a certificate to the specified Batch account.
         /// </summary>
         /// <param name="parameters">The parameters to use when creating the certificate.</param>
+        [Obsolete("This operation is deprecated and will be removed after February, 2024.")]
         public void AddCertificate(NewCertificateParameters parameters)
         {
             if (parameters == null)

@@ -149,7 +149,8 @@ function Test-AvailabilitySetVM
         # VM Profile & Hardware
         $vmsize = 'Standard_DS1_v2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -AvailabilitySetId $aset.Id;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd -AvailabilitySetId $aset.Id;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP

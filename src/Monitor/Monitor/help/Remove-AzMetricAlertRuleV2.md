@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azmetricalertrulev2
+online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Removes a V2 (non-classic) metric alert rule.
 ### ByMetricRuleResourceName (Default)
 ```
 Remove-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByMetricRuleResourceId
@@ -27,7 +28,8 @@ Remove-AzMetricAlertRuleV2 -ResourceId <String> [-PassThru] [-AsJob] [-DefaultPr
 ### ByRuleObject
 ```
 Remove-AzMetricAlertRuleV2 -InputObject <PSMetricAlertRuleV2> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +40,10 @@ The **Remove-AzMetricAlertRuleV2** cmdlet removes an alert rule. This cmdlet imp
 ### Example 1: Remove an alert rule by name
 
 ```powershell
-PS C:\> Remove-AzMetricAlertRuleV2 -ResourceGroupName xxxxRG -Name PsSdk -PassThru
+Remove-AzMetricAlertRuleV2 -ResourceGroupName xxxxRG -Name PsSdk -PassThru
+```
+
+```output
 True
 ```
 
@@ -47,15 +52,15 @@ This command removes the alert rule named PsSdk
 ### Example 2: Remove an alert rule by ID
 
 ```powershell
-PS C:\>Remove-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/microsoft.insights/metricAlerts/myAlertRule
+Remove-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/Microsoft.Insights/metricAlerts/myAlertRule
 ```
 
-This command removes the alert rule with resource ID `/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/microsoft.insights/metricAlerts/myAlertRule`
+This command removes the alert rule with resource ID `/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/Microsoft.Insights/metricAlerts/myAlertRule`
 
 ### Example 3: Get an alert and remove it
 
 ```powershell
-PS c:\>Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest -Name sampleAlertRule |Remove-AzMetricAlertRuleV2
+Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest -Name sampleAlertRule | Remove-AzMetricAlertRuleV2
 ```
 
 This command gets an alert and removes it.

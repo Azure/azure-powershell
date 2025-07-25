@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
         public string VpnServerConfigurationId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "P2S VpnClient AddressPool for this P2SVpnGateway P2SConnectionConfiguration.")]
         [ValidateNotNullOrEmpty]
         public string[] VpnClientAddressPool { get; set; }
@@ -146,6 +146,21 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Flag to enable internet security feature on this P2SVpnGateway P2SConnectionConfiguration.")]
         public SwitchParameter EnableInternetSecurityFlag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to disable internet security feature on this P2SVpnGateway P2SConnectionConfiguration.")]
+        public SwitchParameter DisableInternetSecurityFlag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable Routing Preference Internet on this P2SVpnGateway.")]
+        public SwitchParameter EnableRoutingPreferenceInternetFlag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of P2SConnectionConfigurations that this P2SVpnGateway needs to have.")]
+        public PSP2SConnectionConfiguration[] P2SConnectionConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -201,31 +216,52 @@ namespace Microsoft.Azure.Commands.Network
             p2sVpnGateway.Location = resolvedVirtualHub.Location;
             p2sVpnGateway.VirtualHub = new PSResourceId() { Id = resolvedVirtualHub.Id };
 
-            //// Set P2SConnectionConfigurations. Currently, only one P2SConnectionConfiguration is allowed.
-            PSP2SConnectionConfiguration p2sConnectionConfig = new PSP2SConnectionConfiguration()
+            // Set P2SConnectionConfigurations.
+            p2sVpnGateway.P2SConnectionConfigurations = new List<PSP2SConnectionConfiguration>();
+            if (this.P2SConnectionConfiguration != null && this.P2SConnectionConfiguration.Any())
             {
-                Name = P2SConnectionConfigurationName,
-                VpnClientAddressPool = new PSAddressSpace()
+                p2sVpnGateway.P2SConnectionConfigurations.AddRange(this.P2SConnectionConfiguration);
+            }
+            else
+            {
+                PSP2SConnectionConfiguration p2sConnectionConfig = new PSP2SConnectionConfiguration()
                 {
-                    AddressPrefixes = new List<string>(this.VpnClientAddressPool)
-                },
-                EnableInternetSecurity = this.EnableInternetSecurityFlag.IsPresent
-            };
+                    Name = P2SConnectionConfigurationName,
+                    VpnClientAddressPool = new PSAddressSpace()
+                    {
+                        AddressPrefixes = new List<string>(this.VpnClientAddressPool)
+                    },
+                };
+                p2sVpnGateway.P2SConnectionConfigurations.Add(p2sConnectionConfig);
+            }
 
+            // By default EnableInternetSecurity will be true if not specified explicitly by customer.
+            p2sVpnGateway.P2SConnectionConfigurations.ForEach(config => config.EnableInternetSecurity = true);
+
+            if (this.EnableInternetSecurityFlag.IsPresent && this.DisableInternetSecurityFlag.IsPresent)
+            {
+                throw new ArgumentException("Both EnableInternetSecurityFlag and DisableInternetSecurityFlag Parameters can not be passed.");
+            }
+
+            if (this.EnableInternetSecurityFlag.IsPresent)
+            {
+                p2sVpnGateway.P2SConnectionConfigurations.ForEach(config => config.EnableInternetSecurity = true);
+            }
+            if (this.DisableInternetSecurityFlag.IsPresent)
+            {
+                p2sVpnGateway.P2SConnectionConfigurations.ForEach(config => config.EnableInternetSecurity = false);
+            }
+
+            // Set Routing configuration
             if (this.RoutingConfiguration != null)
             {
                 if (this.RoutingConfiguration.VnetRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes != null && this.RoutingConfiguration.VnetRoutes.StaticRoutes.Any())
                 {
                     throw new PSArgumentException(Properties.Resources.StaticRoutesNotSupportedForThisRoutingConfiguration);
                 }
-
-                p2sConnectionConfig.RoutingConfiguration = RoutingConfiguration;
+                
+                p2sVpnGateway.P2SConnectionConfigurations.ForEach(config => config.RoutingConfiguration = RoutingConfiguration);
             }
-
-            p2sVpnGateway.P2SConnectionConfigurations = new List<PSP2SConnectionConfiguration>()
-            {
-                p2sConnectionConfig
-            };
 
             //// Scale unit, if specified
             p2sVpnGateway.VpnGatewayScaleUnit = 0;
@@ -260,6 +296,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 p2sVpnGateway.CustomDnsServers = CustomDnsServer?.ToList();
             }
+
+            // Set the Routing Preference Internet, if it is specified by customer.
+            p2sVpnGateway.IsRoutingPreferenceInternet = EnableRoutingPreferenceInternetFlag.IsPresent;
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,

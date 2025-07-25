@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 2E202D0D-076D-431D-9338-9A84ABC0B461
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy
 schema: 2.0.0
 ---
 
@@ -15,27 +15,29 @@ Gets Backup protection policies for a vault.
 
 ### NoParamSet (Default)
 ```
-Get-AzRecoveryServicesBackupProtectionPolicy [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzRecoveryServicesBackupProtectionPolicy [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### PolicyNameParamSet
 ```
-Get-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-IsArchiveSmartTieringEnabled <Boolean>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>]
+ [<CommonParameters>]
 ```
 
 ### WorkloadParamSet
 ```
-Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
+ [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### WorkloadBackupManagementTypeParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
- [-BackupManagementType] <BackupManagementType> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-BackupManagementType] <BackupManagementType> [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,8 +47,11 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ## EXAMPLES
 
 ### Example 1: Get all policies in the vault
+```powershell
+Get-AzRecoveryServicesBackupProtectionPolicy
 ```
-PS C:\> Get-AzRecoveryServicesBackupProtectionPolicy 
+
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek   
 ----                 ------------       -------------------- ----------                ----------   
 DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 PM                   
@@ -57,11 +62,25 @@ NewPolicy2           AzureVM            AzureVM              4/24/2016 1:30:00 A
 This command gets all protection policies created in the vault.
 
 ### Example 2: Get a specific policy
-```
-PS C:\> $Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
+```powershell
+$Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
 ```
 
-This command gets the protection policy named DefaultPolicy, and then stores it in the $Pol variable.
+This command gets the protection policy named DefaultPolicy, and then stores it in the $pol variable.
+
+### Example 3: Get only Enhanced policies in a vault
+```powershell
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM  -PolicySubType Enhanced
+```
+
+This command gets only the Enhanced protection policies in RS vault, and then stores it in the $pol variable.
+
+### Example 4: Get smart tiering enabled policies in a vault
+```powershell
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM  -IsArchiveSmartTieringEnabled $true
+```
+
+This command gets only the policies in RS vault for which archive smart tiering is enabled. To fetch the policies for which smart tiering is disabled, set IsArchiveSmartTieringEnabled parameter to $false. To fetch all the policies, skip this parameter.
 
 ## PARAMETERS
 
@@ -72,7 +91,7 @@ The class of resources being protected. Currently the values supported for this 
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: WorkloadBackupManagementTypeParamSet
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureStorage, AzureWorkload, MAB
+Accepted values: AzureVM, SCDPM, AzureBackupServer, AzureStorage, AzureWorkload, MAB
 
 Required: True
 Position: 3
@@ -96,6 +115,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IsArchiveSmartTieringEnabled
+Parameter to list policies for which smart tiering is Enabled/Disabled. Allowed values are $true, $false.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the policy.
 
@@ -106,6 +140,22 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicySubType
+Type of policy to be fetched: Standard, Enhanced
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PSPolicyType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Standard, Enhanced
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

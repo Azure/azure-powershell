@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
+    
             if (agentRegistration.Keys != null)
             {
                 this.PrimaryKey = agentRegistration.Keys.Primary;

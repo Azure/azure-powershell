@@ -91,9 +91,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSSqlConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlVectorEmbeddingPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlVectorEmbeddingPolicy vectorEmbeddingPolicy { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlDatabaseGetResults ParentObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerAnalyticalStorageTtlHelpMessage)]
+        public int? AnalyticalStorageTtl { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         [ValidateNotNull]
@@ -158,6 +165,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 sqlContainerResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ToSDKModel(ConflictResolutionPolicy);
             }
+
+            if (vectorEmbeddingPolicy != null)
+            {
+                sqlContainerResource.VectorEmbeddingPolicy = PSVectorEmbeddingPolicy.ToSDKModel(vectorEmbeddingPolicy);
+            }
+            
             else if (ConflictResolutionPolicyMode != null)
             {
                 ConflictResolutionPolicy conflictResolutionPolicy = new ConflictResolutionPolicy
@@ -180,6 +193,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (IndexingPolicy != null)
             {
                 sqlContainerResource.IndexingPolicy = PSIndexingPolicy.ToSDKModel(IndexingPolicy);
+            }
+
+            if (AnalyticalStorageTtl != null)
+            {
+                sqlContainerResource.AnalyticalStorageTtl = AnalyticalStorageTtl;
             }
 
             CreateUpdateOptions options = ThroughputHelper.PopulateCreateUpdateOptions(Throughput, AutoscaleMaxThroughput);
@@ -208,7 +226,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 DefaultTtl = sqlContainerGetPropertiesResource.DefaultTtl,
                 Id = sqlContainerGetPropertiesResource.Id,
                 IndexingPolicy = sqlContainerGetPropertiesResource.IndexingPolicy,
-                PartitionKey = sqlContainerGetPropertiesResource.PartitionKey
+                PartitionKey = sqlContainerGetPropertiesResource.PartitionKey,
+                ClientEncryptionPolicy = sqlContainerGetPropertiesResource.ClientEncryptionPolicy,
+                VectorEmbeddingPolicy = sqlContainerGetPropertiesResource.VectorEmbeddingPolicy
             };
         }
     }

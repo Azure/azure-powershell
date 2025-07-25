@@ -1,0 +1,18 @@
+{
+  "flexibleSku": "Standard_B1ms",
+  "firewallRuleName2": "mysqlrule02",
+  "restoreName2": "mysql-test-100-restore-2",
+  "replicaName": "mysql-test-100-replica",
+  "serverName": "mysql-test-100",
+  "flexibleServerName": "mysql-flexible-test-100",
+  "databaseName": "mysqldb",
+  "SubscriptionId": "929287ae-832a-4946-8006-a6cc2a3f7244",
+  "restoreName": "mysql-test-100-restore",
+  "firewallRuleName": "mysqlrule01",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "serverName2": "mysql-test-100-2",
+  "VNetName": "mysqlvnet",
+  "resourceGroup": "MySqlTestGroup",
+  "location": "eastus2euap",
+  "Sku": "GP_Gen5_4"
+}

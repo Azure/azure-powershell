@@ -1,82 +1,75 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/get-azavailabilitygrouplistener
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/get-azavailabilitygrouplistener
 schema: 2.0.0
 ---
 
 # Get-AzAvailabilityGroupListener
 
 ## SYNOPSIS
-Get one or more Availability Group Listeners in a SQL Virtual Machine Group.
+Gets an availability group listener.
 
 ## SYNTAX
 
-### Name (Default)
+### List (Default)
 ```
-Get-AzAvailabilityGroupListener [[-Name] <String>] [-ResourceGroupName] <String> [-SqlVMGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### SqlVmGroupObject
-```
-Get-AzAvailabilityGroupListener [[-Name] <String>] [-SqlVMGroupObject] <AzureSqlVMGroupModel>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceId
-```
-Get-AzAvailabilityGroupListener [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzAvailabilityGroupListener -ResourceGroupName <String> -SqlVMGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzAvailabilityGroupListener -InputObject <ISqlVirtualMachineIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The Get-AzAvailabilityGroupListener gets one or more Availability Group Listener from the SQL Virtual Machine Group.
+Gets an availability group listener.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all Availability Group Listeners of a SQL Virtual Machine Group
 ```powershell
-PS C:\> Get-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -Name AgListener01
+Get-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'SqlVmGroup01'
 ```
 
-Name         ResourceGroupName GroupName    AvailabilityGroupName
-----         ----------------- ---------    ---------------------
-AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
-This command gets information about the Availability Group Listener AgListener01 in the SQL Virtual Machine Group SqlVmGroup01 and Resource Group ResourceGroup01.
-
-### Example 2
-```powershell
-PS C:\> Get-AzAvailabilityGroupListener -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01
+```output
+Name            ResourceGroupName
+----            -----------------
+AgListener01    ResourceGroup01
+AgListener02    ResourceGroup01
 ```
 
-Name         ResourceGroupName GroupName    AvailabilityGroupName
-----         ----------------- ---------    ---------------------
-AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-AgListener02 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
-This command gets information about all Availability Group Listeners in the SQL Virtual Machine Group SqlVmGroup01 and Resource Group ResourceGroup01.
-
-### Example 3
+### Example 2: Get one Availability Group Listener of a SQL Virtual Machine Group
 ```powershell
-PS C:\> $SqlVmGroupObject = Get-AzSqlVMGroup -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01
-PS C:\> Get-AzAvailabilityGroupListener -Name AgListener01 -SqlVMGroupObject $SqlVmGroupObject
+Get-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'SqlVmGroup01' -Name 'AgListener01'
 ```
 
-Name         ResourceGroupName GroupName    AvailabilityGroupName
-----         ----------------- ---------    ---------------------
-AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
+```output
+Name            ResourceGroupName
+----            -----------------
+AgListener01    ResourceGroup01
+```
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -85,78 +78,95 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Availability Group Listener name.
+### -Expand
+The child resources to include in the response.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, SqlVmGroupObject
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the availability group listener.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: AvailabilityGroupListenerName
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Availability Group Listener Resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -SqlVMGroupName
-SQL virtual machine group name.
+Name of the SQL virtual machine group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
+Parameter Sets: List, Get
 Aliases: GroupName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVMGroupObject
-SQL virtual machine Group object.
+### -SubscriptionId
+Subscription ID that identifies an Azure subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
-Parameter Sets: SqlVmGroupObject
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,13 +175,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
 
 ## NOTES
 

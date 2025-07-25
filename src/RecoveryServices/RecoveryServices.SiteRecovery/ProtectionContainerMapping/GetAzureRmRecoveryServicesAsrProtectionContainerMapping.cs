@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Write Protection Container Mappings
         /// </summary>
-        /// <param name="protectableItems">List of protectable items</param>
+        /// <param name="protectionContainerMappings"></param>
         private void WriteProtectionContainerMappings(
             IList<ProtectionContainerMapping> protectionContainerMappings)
         {

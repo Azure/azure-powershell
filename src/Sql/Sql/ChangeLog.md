@@ -18,7 +18,378 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added DiffBackupIntervalInHours to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` 
+* Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
+
+## Version 6.0.4
+* Added server level action groups in enum of action groups to be able to be configured via auditing.
+
+## Version 6.0.3
+* Added Information message to `Set-AzSqlInstance` for migrating Azure Sql database with GeoDr links to Azure Sql Hyperscale Edition
+
+## Version 6.0.2
+* Fixed GitHub issue #12417 "Get-AzSqlElasticPoolDatabase doesn't enumerate output."
+    - fixed the output to enumerate the results.
+
+## Version 6.0.1
+* Upgraded nuget package to signed package.
+* Updated `New-AzSqlDatabaseExport` with support for Managed Identity
+ 	- Added `ManagedIdentity` to `StorageKeyType` auth list
+   	- Added `ManagedIdentity` to `AuthenticationType` auth list
+* Updated `New-AzSqlDatabaseImport` with support for Managed Identity
+  	- Added `ManagedIdentity` to `StorageKeyType` auth list
+	- Added `ManagedIdentity` to `AuthenticationType` auth list
+
+## Version 6.0.0
+* Added `Start-AzSqlInstanceLinkFailover` cmdlet for Managed Instance Link.
+* Updated `New-AzSqlInstanceLink` with new input parameters
+	- Added `DistributedAvailabilityGroupName`, `FailoverMode`, `InstanceLinkRole`, `SeedingMode`
+	- Renamed `SecondaryAvailabilityGroupName` -> `InstanceAvailabilityGroupName`
+			  `SourceEndpoint` -> `PartnerEndpoint`
+			  `PrimaryAvailabilityGroupName` -> `PartnerAvailabilityGroupName`
+	- `TargetDatabase` -> `Database`, parameter type is changed from string to string[].
+* Updated `AzureSqlManagedInstanceLinkModel` that is a return type of `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Update-AzSqlInstanceLink` ,`Remove-AzSqlInstanceLink`
+* Added new optional parameter for `New-AzSqlDatabaseSecondary` to support cross-subscription geo-replication.
+
+## Version 5.3.0
+* Fixed secrets exposure in example documentation.
+* Fixed issues regarding Active Directory Administrator in `Set-AzSqlInstanceActiveDirectoryAdministrator` and `Set-AzSqlInstance` cmdlets.
+* Added new parameter AuthenticationMetadata to `New-AzSqlInstance` and `Set-AzSqlInstance`
+
+## Version 5.2.0
+* Added breaking change announcement for cmdlets: `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Remove-AzSqlInstanceLink`, `Update-AzSqlInstanceLink`.
+* Added `IsGeneralPurposeV2` and `StorageIOps` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of GPv2 instances
+* Added IsGeneralPurposeV2 and StorageIOps fields to the model of the managed instance so that it displays information about GPv2 instances that are returned by `Get-AzSqlInstance`.
+* Added new cmdlet `Set-AzSqlDatabaseReplicationLink` for updating replication link type
+* Updated `Get-AzSqlDatabaseReplicationLink` to use the new sdk
+
+## Version 5.1.0
+* Added cross-subscription support for `Copy-AzSqlInstanceDatabase`, `Move-AzSqlInstanceDatabase`
+* Added new parameter SecondaryType to `Add-AzSqlDatabaseFromFailoverGroup`
+
+## Version 5.0.0
+* Added multi-secondary support for `Get-AzSqlDatabaseFailoverGroup`, `Remove-AzSqlDatabaseFromFailoverGroup` and `Add-AzSqlDatabaseFromFailoverGroup`
+* Changed default FailoverPolicy value for `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup` from `Automatic` to `Manual`
+* Added `ManualCutover` and `PerformCutover` parameters to `Set-AzSqlInstance` for Azure Sql Sterling database to Azure Sql Hyperscale database
+* Added `OperationPhaseDetails` parameter to `Get-AzSqlDatabaseActivity` and updated `DatabaseOperations` Api to version `2022-11-01-preview` for .Net Sdk
+
+## Version 4.14.1
+* Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
+* Fixed an existing issue with `Set-AzSqlInstanceActiveDirectoryAdministrator`
+
+## Version 4.14.0
+* Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
+* Added breaking change message for `New-AzSqlDatabaseFailoverGroup` and `Set-AzSqlDatabaseFailoverGroup`
+    - The default value of `FailoverPolicy` parameter will be changed from `Automatic` to `Manual`
+* Added a new cmdlet for Azure SQL Managed Instance refresh external governance status
+  - 'Invoke-AzSqlInstanceExternalGovernanceStatusRefresh'
+* Updated `Get-AzSqlInstance` to support returning the `ExternalGovernanceStatus` property
+
+## Version 4.13.0
+* Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
+* Added `SecondaryComputeModel`, `AutoPauseDelayInMinutes` and `MinimumCapacity` parameters within `New-AzSqlDatabaseSecondary`
+
+## Version 4.12.0
+* Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
+
+## Version 4.11.0
+* Added new parameters to `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup`
+    - PartnerServers
+    - ReadOnlyEndpointTargetServer
+* Added `UseFreeLimit` and `FreeLimitExhaustionBehavior` parameters to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`
+* Added new cmdlets for Elastic Job Private Endpoints `Get-AzSqlElasticJobPrivateEndpoint`, `New-AzSqlElasticJobPrivateEndpoint`, `Remove-AzSqlElasticJobPrivateEndpoint`
+* Added new parameters `WorkerCount`, `SkuName`, `Identity` to `AzSqlElasticJobAgent` cmdlets
+* Added support for optional SQL auth for Elastic Job Agent cmdlets
+*   - The following parameters are now optional: `CredentialName`, `OutputCredentialName`, `RefreshCredentialName`
+
+## Version 4.10.0
+* Fixed cmdlets to use 2018-06-01-preview api version
+    - 'Set-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Remove-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Enable-AzSqlInstanceDatabaseSensitivityRecommendation',
+    - 'Disable-AzSqlInstanceDatabaseSensitivityRecommendation',
+* Added `EncryptionProtectorAutoRotation` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, `Restore-AzSqlDatabase` cmdlets
+
+## Version 4.9.0
+* Added new cmdlets for Azure SQL Managed Instance start/stop schedule
+    - 'Start-AzSqlInstance',
+    - 'Stop-AzSqlInstance',
+    - 'Get-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceStartStopSchedule',
+    - 'Remove-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceScheduleItem'
+
+## Version 4.8.0
+* Added `TryPlannedBeforeForcedFailover` parameter to `Switch-AzSqlDatabaseFailoverGroup`
+* Added new cmdlets for managed database move and copy operations
+    - 'Copy-AzSqlInstanceDatabase'
+    - 'Move-AzSqlInstanceDatabase'
+    - 'Complete-AzSqlInstanceDatabaseCopy'
+    - 'Stop-AzSqlInstanceDatabaseCopy'
+    - 'Complete-AzSqlInstanceDatabaseMove'
+    - 'Stop-AzSqlInstanceDatabaseMove'
+    - 'Get-AzSqlInstanceDatabaseMoveOperation'
+    - 'Get-AzSqlInstanceDatabaseCopyOperation'
+
+
+## Version 4.7.0
+* Added new cmdlets `Get-AzSqlInstanceDatabaseLedgerDigestUpload`, `Disable-AzSqlInstanceDatabaseLedgerDigestUpload`, and `Enable-AzSqlInstanceDatabaseLedgerDigestUpload`
+* Added `EnableLedger` parameter to `New-AzSqlInstanceDatabase`
+* Added `PreferredEnclaveType` parameter to `NewAzureSqlElasticPool` and `SetAzureSqlElasticPool` cmdlet
+* Added "None" as an option for -MinimalTlsVersion for the cmdlet 'Set-AzSqlServer'
+
+## Version 4.6.0
+* Added new cmdlets for managing server configuration options
+    - 'Set-AzSqlServerConfigurationOption'
+    - 'Get-AzSqlServerConfigurationOption'
+
+## Version 4.5.0
+* Added a new cmdlet to refresh external governance status
+    - 'Invoke-AzSqlServerExternalGovernanceStatusRefresh'
+
+## Version 4.4.0
+* Fixed identity assignment in `Set-AzSqlDatabase` cmdlet
+* Added new parameters to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` cmdlets
+   - AssignIdentity
+   - EncryptionProtector
+   - UserAssignedIdentityId
+   - KeyList
+   - KeysToRemove
+   - FederatedClientId
+* Added 'ExpandKeyList' and 'KeysFilter' parameters to `Get-AzSqlDatabaseGeoBackup` and `Get-SqlDeletedDatabaseBackup`
+* Added new cmdlets for Per DB CMK
+   - 'Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revert-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlServerTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlInstanceTransparentDataEncryptionProtector'
+* Added an optional parameter 'SecondaryType' to:
+    'Set-AzSqlDatabaseInstanceFailoverGroup'
+    'New-AzSqlDatabaseInstanceFailoverGroup'
+
+## Version 4.3.0
+* Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`
+* Added new cmdlets for managed instance DTC
+    `Get-AzSqlInstanceDtc`
+    `Set-AzSqlInstanceDtc`
+* Added `TargetSubscriptionId` to `Restore-AzSqlInstanceDatabase` in order to enable cross subscription restore
+* Enabled support for UserAssignedManagedIdentity in Auditing
+* Fixed WorkspaceResourceId parameter value in `Set-AzSqlServerAudit`
+
+## Version 4.2.0
+* Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`
+* Added `IsManagedIdentityInUse` property to the output of `Get-AzSqlServerMSSupportAudit`
+* Added `PreferredEnclaveType` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase` and `Set-AzSqlDatabase` cmdlet
+
+## Version 4.1.0
+* Added new cmdlets for CRUD operations on SQL server IPv6 Firewall rules
+      `Get-AzSqlServerIpv6FirewallRule`
+      `New-AzSqlServerIpv6FirewallRule`
+      `Remove-AzSqlServerIpv6FirewallRule`
+      `Set-AzSqlServerIpv6FirewallRule`
+* StorageContainerSasToken parameter in the `Start-AzSqlInstanceDatabaseLogReplay` cmdlet is now optional
+
+## Version 4.0.0
+* Added new fields to the `Get-AzSqlInstanceDatabaseLogReplay` cmdlet
+* Improved error handling in the `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet
+* Added StorageContainerIdentity parameter in the `Start-AzSqlInstanceDatabaseLogReplay` cmdlet
+* Removed the following cmdlets: `Clear-AzSqlServerAdvancedThreatProtectionSetting` and `Clear-AzSqlDatabaseAdvancedThreatProtectionSetting`
+* Added the following cmdlets: `Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting`, `Get-AzSqlInstanceAdvancedThreatProtectionSetting`, `Update-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting` and `Update-AzSqlInstanceAdvancedThreatProtectionSetting`
+* Removed the following aliases: `Enable-AzSqlServerAdvancedThreatProtection`, `Disable-AzSqlServerAdvancedThreatProtection`, `Get-AzSqlServerThreatDetectionSetting`, `Remove-AzSqlServerThreatDetectionSetting`, `Set-AzSqlServerThreatDetectionSetting`, `Get-AzSqlDatabaseThreatDetectionSetting`, `Set-AzSqlDatabaseThreatDetectionSetting` and `Remove-AzSqlDatabaseThreatDetectionSetting`
+* Changed the returned object for the following cmdlets: `Get-AzSqlServerAdvancedThreatProtectionSetting` and `Get-AzSqlDatabaseAdvancedThreatProtectionSetting`
+* Changed the parameters for the following cmdlets: `Update-AzSqlServerAdvancedThreatProtectionSetting` and `Update-AzSqlDatabaseAdvancedThreatProtectionSetting`. Only `Enable` parameter is now supported.
+* Changed endpoint used in SQL Server and SQL Instance from AD Graph to MS Graph
+* Added `Standby` option to `SecondaryType` parameter to `New-AzSqlDatabaseSecondary`.
+
+## Version 3.11.0
+* Removed the warning messages for MSGraph migration [#18856] 
+* Moved SQL Server and SQL Instance from ActiveDirectoryClient to MicrosoftGraphClient
+* Supported cross-subscription Failover Group creation using `PartnerSubscriptionId` parameter in `New-AzSqlDatabaseFailoverGroup` cmdlet
+* Added `PausedDate` and `ResumedDate` for cmdlet `Get-AzSqlDatabase`
+
+## Version 3.10.0
+* Added `GeoZone` option to `BackupStorageRedundancy` parameter to `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, and `Restore-AzSqlDatabase` to enable create, update, copy, geo secondary and PITR support for GeoZone hyperscale databases
+* Added additional input validation to `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet to ensure the target database was created by log replay service
+* Bug fix for cmdlet `Restore-AzSqlDatabase`. The optional property `Tags` was not working as expected
+* Added isManagedIdentityInUse get parameter for `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+* Added new cmdlet `Set-AzSqlInstanceDatabase`
+
+## Version 3.9.0
+* Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`
+* Added parameter `HighAvailabilityReplicaCount` to `New-AzSqlElasticPool` and `Set-AzSqlElasticPool`
+
+## Version 3.8.0
+* Added parameter `ServicePrincipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
+* [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
+* Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
+* Added optional property `Tag` to `Restore-AzSqlDatabase`
+* Added new cmdlets for managing Server Trust Certificates
+    - `New-AzSqlInstanceServerTrustCertificate`
+    - `Get-AzSqlInstanceServerTrustCertificate`
+    - `Remove-AzSqlInstanceServerTrustCertificate`
+* Added new cmdlets for managing Managed Instance Link
+    - `New-AzSqlInstanceLink`
+    - `Get-AzSqlInstanceLink`
+    - `Remove-AzSqlInstanceLink`
+    - `Set-AzSqlInstanceLink`
+* Added support for DataWarehouse cross tenant and cross subscription restore operations to `Restore-AzSqlDatabase` cmdlet
+* Upgrading to usage of .NET SDK 3.1.0-preview
+* Declare breaking changes for the AdvancedDataSecurity and AdvancedThreatProtection cmdlets to be effective from 9.0.0.
+
+## Version 3.7.1
+* Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
+* Fixed cmdlets for Azure Active Directory Admin `AzureSqlServerActiveDirectoryAdministratorAdapter` and `AzureSqlInstanceActiveDirectoryAdministratorAdapter` migrate from `AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph` to `AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl`
+
+## Version 3.7.0
+* Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases
+
+## Version 3.6.0
+* Fixed FirewallRuleName wildcard filtering in `Get-AzSqlServerFirewallRule` [#16199]
+
+* Moved SQL Server and SQL Instance AAD from ActiveDirectoryClient to MicrosoftGraphClient 
+
+## Version 3.5.1
+* Fixed `Get-AzSqlDatabaseImportExportStatus` to report the error encountered
+
+## Version 3.5.0
+* Changed the underlying implementation of `Get-AzSqlDatabase` to support a paginated response from the server
+* Added `ZoneRedundant` parameter to `New-AzSqlInstance` and `Set-AzSqlInstance` to enable the creation and the update of zone - redundant instances.
+* Added ZoneRedundant field to the model of the managed instance so that it displays information about zone - redundancy for instance that are returned by `Get-AzSqlInstance`.
+* Extended AuditActionGroups enum in server & database audit. Added DBCC_GROUP, DATABASE_OWNERSHIP_CHANGE_GROUP and DATABASE_CHANGE_GROUP.
+* Added `AsJob` flag to `Remove-AzSqlInstance`
+* Added `SubnetId` parameter to `Set-AzSqlInstance` to support the cross-subnet update SLO
+* Upgraded to newest SDK version
+
+## Version 3.4.1
+* Fixed identity logic in `Set-AzSqlServer` and `Set-AzSqlInstance`
+
+## Version 3.4.0
+* Added `RestrictOutboundNetworkAccess` parameter to following cmdlets
+    - `New-AzSqlServer`
+    - `Set-AzSqlServer`
+* Added new cmdlets for CRUD operations on Allowed FQDNs of Outbound Firewall rules
+      `Get-AzSqlServerOutboundFirewallRule`
+      `New-AzSqlServerOutboundFirewallRule`
+      `Remove-AzSqlServerOutboundFirewallRule`
+* Fixed the identity logic for SystemAssigned,UserAssigned identities for New-AzSqlServer, New-AzSqlInstance
+* Updated cmdlets for getting and updating SQL database's differential backup frequency
+      `Get-AzSqlDatabaseBackupShortTermRetentionPolicy`
+      `Set-AzSqlDatabaseBackupShortTermRetentionPolicy`
+* Fixed Partial PUT issue for Azure Policy in `Set-AzSqlServer` and `Set-AzSqlInstance`
+
+## Version 3.3.0
+* Changed the type of parameter `AutoRotationEnabled` in `Set-AzSqlInstanceTransparentDataEncryptionProtector` to bool?.
+* Fixed Update-AzSqlDatabaseAdvancedThreatProtectionSetting with StorageAccount as an optional parameter instead of required.
+
+## Version 3.2.0
+* Added option to support short version of maintenance configuration id for Managed Instance in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
+* Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
+* Added External Administrator and AAD Only Properties to AzSqlServer and AzSqlInstance
+    - Added option to specify `-ExternalAdminName`, `-ExternalAdminSid`, `-EnableActiveDirectoryOnlyAuthentication` in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
+    - Added option to expand external administrators information using `-ExpandActiveDirectoryAdministrator` in `Get-AzSqlServer` and `Get-AzSqlInstance` cmdlets
+* Fixed `Set-AzSqlDatabase` to no longer default ReadScale to Disabled when not specified
+* Fixed `Set-AzSqlServer` and `Set-AzSqlInstance` for partial PUT with only identity and null properties
+* Added parameters related to UMI in `New-AzSqlServer`, `New-AzSqlInstance`, `Set-AzSqlServer` and `Set-AzSqlInstance` cmdlets.
+* Added -AutoRotationEnabled parameter to following cmdlets:
+    - `Set-AzSqlServerTransparentDataEncryptionProtector`
+    - `Get-AzSqlServerTransparentDataEncryptionProtector`
+    - `Set-AzSqlInstanceTransparentDataEncryptionProtector`
+    - `Get-AzSqlInstanceTransparentDataEncryptionProtector`
+
+## Version 3.1.0
+* Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
+* Added cmdlet `Copy-AzSqlDatabaseLongTermRetentionBackup`
+    - Copy LTR backups to different servers
+* Added cmdlet `Update-AzSqlDatabaseLongTermRetentionBackup`
+    - Update Backup Storage Redundancy values for LTR backups
+* Added CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to `Get-AzSqlDatabase`, `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseSecondary`, `Set-AzSqlDatabaseSecondary`, `New-AzSqlDatabaseCopy`
+    - Changed BackupStorageRedundancy value to CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to reflect both the current value and what has been requested if a change was made
+* Added new cmdlets `Get-AzSqlDatabaseLedgerDigestUpload`, `Disable-AzSqlDatabaseLedgerDigestUpload`, and `Enable-AzSqlDatabaseLedgerDigestUpload`
+* Added -EnableLedger parameter to `New-AzSqlDatabase`
+
+## Version 2.17.1
+* Added cmdlet output breaking change warnings to the following:
+    - `New-AzSqlDatabase`
+    - `Get-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `Remove-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+    - `Remove-AzSqlDatabaseSecondary`
+    - `Get-AzSqlDatabaseReplicationLink`
+    - `New-AzSqlDatabaseCopy`
+    - `Set-AzSqlDatabaseSecondary`
+
+## Version 2.17.0
+* Added cmdlet `New-AzSqlServerTrustGroup`
+* Added cmdlet `Remove-AzSqlServerTrustGroup`
+* Added cmdlet `Get-AzSqlServerTrustGroup`
+
+## Version 2.16.0
+* Added MaintenanceConfigurationId to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'
+* Fixed regression in 'Set-AzSqlServerAudit' when PredicateExpression argument is provided
+
+## Version 2.15.0
+* Made `Start-AzSqlInstanceDatabaseLogReplay` cmdlet synchronous, added -AsJob flag
+
+## Version 2.14.0
+* Fixed parameter description for `InstanceFailoverGroup` command.
+* Updated the logic in which schemaName, tableName and columnName are being extracted from the id of SQL Data Classification commands.
+* Fixed Status and StatusMessage fields in `Get-AzSqlDatabaseImportExportStatus` to conform to documentation
+* Added Microsoft support operations (DevOps) auditing cmdlets: Get-AzSqlServerMSSupportAudit, Set-AzSqlServerMSSupportAudit, Remove-AzSqlServerMSSupportAudit
+
+## Version 2.13.0
+* Added SecondaryType to the following:
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+* Added HighAvailabilityReplicaCount to the following:
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+* Made ReadReplicaCount an alias of HighAvailabilityReplicaCount in the following:
+    - `New-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+
+## Version 2.12.0
+* Fixed issues where Set-AzSqlDatabaseAudit were not support Hyperscale database and database edition cannot be determined
+* Added MaintenanceConfigurationId to 'New-AzSqlInstance' and 'Set-AzSqlInstance'
+* Fixed a bug in GetAzureSqlDatabaseReplicationLink.cs where PartnerServerName parameter was being checked for by value instead of key
+
+## Version 2.11.1
+* Fixed issue where New-AzSqlDatabaseExport fails if networkIsolation not specified [#13097]
+* Fixed issue where New-AzSqlDatabaseExport and New-AzSqlDatabaseImport were not returning OperationStatusLink in the result object [#13097]
+* Update Azure Paired Regions URL in Backup Storage Redundancy Warnings
+
+## Version 2.11.0
+* Added BackupStorageRedundancy to the following:
+    - `Restore-AzureRmSqlDatabase`
+    - `New-AzSqlDatabaseCopy`
+    - `New-AzSqlDatabaseSecondary`
+* Removed case sensitivity for BackupStorageRedundancy parameter for all SQL DB references
+* Updated BackupStorageRedundancy warning message names
+* Added support for Managed HSM Uris for SQL DB and Managed Instance
+
+## Version 2.10.1
+* Added warning for BackupStorageRedundancy configuration in select regions in `New-AzSqlDatabase` (Ignore Case for BackupStorageRedundancy configuration input)
+* Fixed for bug in `New-AzSqlDatabaseExport`
+* Removed case sensitivity for BackupStorageRedundancy parameter for `New-AzSqlInstance`
+
+## Version 2.10.0
+* Added BackupStorageRedundancy to `New-AzSqlInstance` and `Get-AzSqlInstance`
+* Added cmdlet `Get-AzSqlServerActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Enable-AzSqlServerActiveDirectoryOnlyAuthentication`
+* Added Force parameter to `New-AzSqlInstance`
+* Added cmdlets for Managed Database Log Replay service
+	- `Start-AzSqlInstanceDatabaseLogReplay`
+	- `Get-AzSqlInstanceDatabaseLogReplay`
+	- `Complete-AzSqlInstanceDatabaseLogReplay`
+	- `Stop-AzSqlInstanceDatabaseLogReplay`
+* Added cmdlet `Get-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Added cmdlet `Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication`
+* Updated cmdlets `New-AzSqlDatabaseImport` and `New-AzSqlDatabaseExport` to support network isolation functionality
+* Added cmdlet `New-AzSqlDatabaseImportExisting`
+* Updated Databases cmdlets to support backup storage type specification
+* Added Force parameter to `New-AzSqlDatabase`
+* Updated ActiveDirectoryOnlyAuthentication cmdlets for server and instance to include ResourceId and InputObject
+* Added support for Managed HSM Uris for SQL DB and Managed Instance
 
 ## Version 2.9.1
 * Fixed potential server name case insensitive error in `New-AzSqlServer` and `Set-AzSqlServer`
@@ -39,7 +410,7 @@
 * Added UsePrivateLinkConnection to `New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
 * Added SyncMemberAzureDatabaseResourceId to `New-AzSqlSyncMember` and `Update-AzSqlSyncMember`
 * Added Guest user lookup support to Set SQL Server Azure Active Directory Admin cmdlet
-* Remove IsAzureADOnlyAuthentication parameter from Set-AzSqlServerActiveDirectoryAdministrator as it is not usable. 
+* Remove IsAzureADOnlyAuthentication parameter from Set-AzSqlServerActiveDirectoryAdministrator as it is not usable.
 
 ## Version 2.6.1
 * Enhance performance of:
@@ -58,7 +429,7 @@
 ## Version 2.6.0
 * Added cmdlets `Get-AzSqlInstanceOperation` and `Stop-AzSqlInstanceOperation`
 * Supported auditing to a storage account in VNet.
-* Assign 'None' value as StorageKeyKind when a storage account under VNet is a target for the audit records. 
+* Assign 'None' value as StorageKeyKind when a storage account under VNet is a target for the audit records.
 
 ## Version 2.5.0
 * Added readable secondary parameter to `Invoke-AzSqlDatabaseFailover`
@@ -68,9 +439,9 @@
 ## Version 2.4.0
 * Added PublicNetworkAccess to `New-AzSqlServer` and `Set-AzSqlServer`
 * Added support for Long Term Retention backup configuration for Managed Databases
-    - Get/Set LTR policy on a managed database 
-    - Get LTR backup(s) by managed database, managed instance, or by location 
-    - Remove an LTR backup 
+    - Get/Set LTR policy on a managed database
+    - Get LTR backup(s) by managed database, managed instance, or by location
+    - Remove an LTR backup
     - Restore an LTR backup to create a new managed database
 * Added MinimalTlsVersion to `New-AzSqlServer` and `Set-AzSqlServer`
 * Added MinimalTlsVersion to `New-AzSqlInstance` and `Set-AzSqlInstance`

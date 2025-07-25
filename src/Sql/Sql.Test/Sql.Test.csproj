@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <PsModuleName>Sql</PsModuleName>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
@@ -11,19 +12,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.25.2-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.7.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.28.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.2.0-preview" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.45.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
+    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.25.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Sql\Sql.csproj" />
   </ItemGroup>
+  
 
 </Project>

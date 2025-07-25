@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Instance_Pools.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         public AzureSqlInstancePoolModel InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the azure sql instance pool resource identifer
+        /// Gets or sets the azure sql instance pool resource identifier
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
@@ -107,6 +108,41 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Gets or sets the maintenance configuration id.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maintenance configuration id to associate with the instance")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the VCore for instance
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much VCore to associate with instance.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("VCores")]
+        [PSArgumentCompleter("8", "16", "24", "32", "40", "64", "80")]
+        public int? VCore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance compute generation
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The compute generation for the instance pool.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(Constants.ComputeGenerationGen5)]
+        public string ComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance edition
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The edition for the instance pool.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(Constants.GeneralPurposeEdition)]
+        public string Edition { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -155,11 +191,25 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         /// <summary>
         /// Generates the updated model from user input.
         /// </summary>
-        /// <param name="existingEntity">The existing instance pool model</param>
+        /// <param name="model">The existing instance pool model</param>
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<AzureSqlInstancePoolModel> ApplyUserInputToModel(IEnumerable<AzureSqlInstancePoolModel> model)
         {
             var existingEntity = model.FirstOrDefault();
+
+            string miEdition = !string.IsNullOrWhiteSpace(this.Edition) ? this.Edition : existingEntity.Sku.Tier;
+
+            string skuName;
+            if (!string.IsNullOrWhiteSpace(this.ComputeGeneration))
+            {
+                string editionShort = miEdition.Equals(Constants.GeneralPurposeEdition) ? "GP" : 
+                    miEdition.Equals(Constants.BusinessCriticalEdition) ? "BC" : "Unknown";
+                skuName = editionShort + "_" + this.ComputeGeneration;
+            }
+            else
+            {
+                skuName = existingEntity.Sku.Name;
+            }
 
             AzureSqlInstancePoolModel newEntity = new AzureSqlInstancePoolModel
             {
@@ -167,10 +217,17 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
                 ResourceGroupName = this.ResourceGroupName,
                 InstancePoolName = this.Name,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                Sku = existingEntity.Sku,
+                Sku = new Sku()
+                {
+                    Name = skuName,
+                    Tier = miEdition,
+                    Family = !string.IsNullOrWhiteSpace(this.ComputeGeneration) ? this.ComputeGeneration : existingEntity.Sku.Family
+                },
                 SubnetId = existingEntity.SubnetId,
-                VCores = existingEntity.VCores,
-                LicenseType = LicenseType != null ? this.LicenseType : existingEntity.LicenseType,
+                VCores = this.VCore?? existingEntity.VCores,
+                LicenseType = this.LicenseType != null ? this.LicenseType : existingEntity.LicenseType,
+                MaintenanceConfigurationId = !string.IsNullOrWhiteSpace(this.MaintenanceConfigurationId)
+                    ? this.MaintenanceConfigurationId : existingEntity.MaintenanceConfigurationId,
             };
 
             return new List<AzureSqlInstancePoolModel> { newEntity };

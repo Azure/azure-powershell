@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzSecurityWorkspaceSetting
+online version: https://learn.microsoft.com/powershell/module/az.security/Remove-AzSecurityWorkspaceSetting
 schema: 2.0.0
 ---
 
@@ -27,7 +27,8 @@ Remove-AzSecurityWorkspaceSetting -ResourceId <String> [-PassThru] [-DefaultProf
 ### InputObject
 ```
 Remove-AzSecurityWorkspaceSetting -InputObject <PSSecurityWorkspaceSetting> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,7 @@ This action will make the newly installed security agents to report to the defau
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityWorkspaceSetting -Name "default"
+Remove-AzSecurityWorkspaceSetting -Name "default"
 ```
 
 Deletes the security workspace setting for this subscription.

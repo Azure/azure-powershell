@@ -547,6 +547,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh KeyVault Object..
+        /// </summary>
+        internal static string RefreshKeyVaultBasedObject {
+            get {
+                return ResourceManager.GetString("RefreshKeyVaultBasedObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saving &quot;{0}&quot; policy to file &quot;{1}&quot;..
         /// </summary>
         internal static string SavePolicyDescription {

@@ -45,5 +45,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             TestRunner.RunTestScript("Test-ResourceIdCompleter");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnvironmentCompleter()
+        {
+            TestRunner.RunTestScript("Test-EnvironmentCompleter");
+        }
     }
 }

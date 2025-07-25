@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/set-azroledefinition
 schema: 2.0.0
 ---
 
@@ -19,59 +19,60 @@ Finally, save the role definition using this command.
 
 ### InputFileParameterSet
 ```
-Set-AzRoleDefinition -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzRoleDefinition -InputFile <String> [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
-Set-AzRoleDefinition -Role <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzRoleDefinition -Role <PSRoleDefinition> [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control.
-Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object.
-The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes.
-NotActions, DataActions, NotDataActions are optional.
-Following is a sample updated role definition json for Set-AzRoleDefinition
-{
-        "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
-        "Name": "Updated Role",
-        "Description": "Can monitor all resources and start and restart virtual machines",
-        "Actions":
-        \[
-            "*/read",
-            "Microsoft.ClassicCompute/virtualmachines/restart/action",
-            "Microsoft.ClassicCompute/virtualmachines/start/action"
-        \],
-        "NotActions":
-        \[
-            "*/write"
-        \],
-        "DataActions":
-        \[
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-        \],
-        "NotDataActions":
-        \[
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-        \],
-        "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\]
-}
+The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control. Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object. The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes. NotActions, DataActions, NotDataActions are optional.
 
 ## EXAMPLES
 
 ### Example 1: Update using PSRoleDefinitionObject
 ```powershell
-PS C:\> $roleDef = Get-AzRoleDefinition "Contoso On-Call"
-PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
-PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
-PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-PS C:\> Set-AzRoleDefinition -Role $roleDef
+$roleDef = Get-AzRoleDefinition "Contoso On-Call"
+$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
+$roleDef.Description = "Can monitor all resources and start and restart virtual machines"
+$roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+Set-AzRoleDefinition -Role $roleDef
 ```
 
 ### Example 2: Create using JSON file
 ```powershell
-PS C:\> Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
+Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
+<#
+Following is a sample updated role definition json for Set-AzRoleDefinition:
+{
+        "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
+        "Name": "Updated Role",
+        "Description": "Can monitor all resources and start and restart virtual machines",
+        "Actions":
+        [
+            "*/read",
+            "Microsoft.ClassicCompute/virtualmachines/restart/action",
+            "Microsoft.ClassicCompute/virtualmachines/start/action"
+        ],
+        "NotActions":
+        [
+            "*/write"
+        ],
+        "DataActions":
+        [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ],
+        "NotDataActions":
+        [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        ],
+        "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
+}
+#>
 ```
 
 ## PARAMETERS
@@ -123,6 +124,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -SkipClientSideScopeValidation
+If specified, skip client side scope validation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -146,4 +162,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 [New-AzRoleDefinition](./New-AzRoleDefinition.md)
 
 [Remove-AzRoleDefinition](./Remove-AzRoleDefinition.md)
-

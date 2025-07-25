@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         ? this.Name
                         : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName;
 
-                    ResourceManagerSdkClient.DeleteDeploymentAtSubscriptionScope(deploymentName);
+                    NewResourceManagerSdkClient.DeleteDeploymentAtSubscriptionScope(deploymentName);
 
                     if (this.PassThru.IsPresent)
                     {

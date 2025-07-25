@@ -1,42 +1,51 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnedgenode
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
 schema: 2.0.0
 ---
 
 # Get-AzCdnEdgeNode
 
 ## SYNOPSIS
-Gets Azure CDN edgenodes.
+Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.
 
 ## SYNTAX
 
 ```
-Get-AzCdnEdgeNode [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCdnEdgeNode [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> {{ Add example code here }}
+### Example 1: List AzureCDN Edge Noes
+```powershell
+Get-AzCdnEdgeNode
 ```
 
-{{ Add example description here }}
+```output
+Name
+----
+Standard_Verizon
+Premium_Verizon
+Custom_Verizon
+```
+
+List AzureCDN Edge Noes
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -50,11 +59,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Cdn.EdgeNodes.PSEdgeNode
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeNode
 
 ## NOTES
 

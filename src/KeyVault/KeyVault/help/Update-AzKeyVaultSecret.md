@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azkeyvaultsecret
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -16,14 +16,24 @@ Updates attributes of a secret in a key vault.
 ```
 Update-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### BySecretUri
+```
+Update-AzKeyVaultSecret [-Id] <String> [[-Version] <String>] [-Enable <Boolean>] [-Expires <DateTime>]
+ [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,12 +43,14 @@ The **Update-AzKeyVaultSecret** cmdlet updates editable attributes of a secret i
 
 ### Example 1: Modify the attributes of a secret
 ```powershell
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Nbf = (Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'medium'; 'HR' = 'true'}
-PS C:\> $ContentType= 'xml'
-PS C:\> Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
+$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+$Nbf = (Get-Date).ToUniversalTime()
+$Tags = @{ 'Severity' = 'medium'; 'HR' = 'true'}
+$ContentType= 'xml'
+Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
+```
 
+```output
 Vault Name   : ContosoVault
 Name         : HR
 Version      : d476edfcd3544017a03bc49c1f3abec0
@@ -60,18 +72,18 @@ The final command modifies the attributes for the secret named HR in the key vau
 ContosoVault, using the stored variables.
 
 ### Example 2: Delete the tags and content type for a secret
-```
-PS C:\> Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag -@{}
+```powershell
+Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag @{}
 ```
 
 This command deletes the tags and the content type for the specified version of the secret named HR
 in the key vault named Contoso.
 
 ### Example 3: Disable the current version of secrets whose name begins with IT
-```
-PS C:\> $Vault = 'ContosoVault'
-PS C:\> $Prefix = 'IT'
-PS C:\> Get-AzKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '*'} | Update-AzKeyVaultSecret -Enable $False
+```powershell
+$Vault = 'ContosoVault'
+$Prefix = 'IT'
+Get-AzKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '*'} | Update-AzKeyVaultSecret -Enable $False
 ```
 
 The first command stores the string value Contoso in the $Vault variable.
@@ -82,11 +94,11 @@ filters the secrets for names that begin with the characters IT. The command pip
 match the filter to the Update-AzKeyVaultSecret cmdlet, which disables them.
 
 ### Example 4: Set the ContentType for all versions of a secret
-```
-PS C:\> $VaultName = 'ContosoVault'
-PS C:\> $Name = 'HR'
-PS C:\> $ContentType = 'xml'
-PS C:\> Get-AzKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Update-AzKeyVaultSecret -ContentType $ContentType
+```powershell
+$VaultName = 'ContosoVault'
+$Name = 'HR'
+$ContentType = 'xml'
+Get-AzKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Update-AzKeyVaultSecret -ContentType $ContentType
 ```
 
 The first three commands define string variables to use for the *VaultName*, *Name*, and
@@ -94,7 +106,30 @@ The first three commands define string variables to use for the *VaultName*, *Na
 specified keys, and pipes the keys to the Update-AzKeyVaultSecret cmdlet to set their
 content type to XML.
 
+### Example 5: Delete the tags and content type for a secret (using Uri)
+```powershell
+Update-AzKeyVaultSecret -Id 'https://ContosoVault.vault.azure.net:443/secrets/HR/9EEA45C6EE50490B9C3176A80AC1A0DF'  -ContentType '' -Tag @{}
+```
+
+This command deletes the tags and the content type for the specified version of the secret named HR
+in the key vault named Contoso.
+
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ContentType
 Secret's content type.
@@ -102,7 +137,7 @@ If not specified, the existing value of the secret's content type remains unchan
 Remove the existing content type value by specifying an empty string.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +152,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -134,7 +169,7 @@ Disable a secret if value is false.
 If not specified, the existing value of the secret's enabled/disabled state remains unchanged.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +185,7 @@ The expiration time of a secret in UTC time.
 If not specified, the existing value of the secret's expiration time remains unchanged.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -161,11 +196,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+The URI of the KeyVault Secret.
+Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
+
+```yaml
+Type: String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Secret object
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+Type: PSKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -181,7 +232,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Default
 Aliases: SecretName
 
@@ -197,7 +248,7 @@ The UTC time before which secret can't be used.
 If not specified, the existing value of the secret's NotBefore attribute remains unchanged.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +264,7 @@ Cmdlet does not return object by default.
 If this switch is specified, return Secret object.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +281,7 @@ If not specified, the existing tags of the secret remain unchanged.
 Remove a tag by specifying an empty Hashtable.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -246,7 +297,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Default
 Aliases:
 
@@ -262,7 +313,7 @@ Secret version.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: SecretVersion
 
@@ -273,27 +324,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

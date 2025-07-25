@@ -29,6 +29,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
         public bool? EnableInternetSecurity { get; set; }
+        
+        [Ps1Xml(Label = "ConfigurationPolicyGroupAssociation ids", Target = ViewControl.Table)]
+        public List<PSResourceId> ConfigurationPolicyGroupAssociations { get; set; }
+
+        public List<PSVpnServerConfigurationPolicyGroup> PreviousConfigurationPolicyGroupAssociations { get; set; }
 
         [JsonIgnore]
         public string VpnClientAddressPoolText
@@ -40,6 +45,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RoutingConfigurationText
         {
             get { return JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ConfigurationPolicyGroupAssociationsText
+        {
+            get { return JsonConvert.SerializeObject(ConfigurationPolicyGroupAssociations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PreviousConfigurationPolicyGroupAssociationsText
+        {
+            get { return JsonConvert.SerializeObject(PreviousConfigurationPolicyGroupAssociations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

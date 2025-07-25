@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         /// <summary>
         /// Initializes a new instance of the MetricSettings class.
         /// </summary>
-        /// <param name="logSettings">The metric settings</param>
+        /// <param name="metricSettings">The metric settings</param>
         public MetricSettings(Monitor.Models.MetricSettings metricSettings)
             : base()
         {

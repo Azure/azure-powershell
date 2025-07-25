@@ -19,6 +19,66 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+* Upgraded nuget package to signed package.
+
+## Version 2.1.0
+* Fixed an issue that caused some commands ending in `Object` to not work properly.
+
+## Version 2.0.0
+* Updated to use the 2023-06-01-preview API version.
+
+## Version 1.6.1
+* Added breaking change messages due to structure update:
+  - The cmdlet `Set-AzEventGridTopic` will be removed.
+  - In the `Remove-AzEventGridSubscription` parameters will be deprecated.
+  - In the `Get-AzEventGrid*` the parameter `ODataQuery`, `NextLink`, `ResourceId` will be removed.
+  - In the `New/Update-AzEventGrid*` parameters will be deprecated.
+
+## Version 1.6.0
+* Added fix for DeliveryAttributeMapping
+* Added validation for StorageQueueTtl
+
+## Version 1.5.0
+* Updated to use the 2022-06-15 API version.
+* Added new features:
+    - Partner topics
+    - Partner topic event subscriptions
+    - Partner namespaces
+    - Partner namespace keys
+    - Partner configurations
+    - Partner registrations
+    - Verified partners
+    - Channels
+
+## Version 1.4.1
+* Add remaining advanced filters
+  * StringNotContains
+  * StringNotBeginsWith
+  * StringNotEndsWith
+  * NumberInRange
+  * NumberNotInRange
+  * IsNullOrUndefined
+  * IsNotNull
+
+## Version 1.4.0
+* Updated to use the 2021-12-01 API version.
+* Added new features:
+    - System topic
+    - System topic event subscription
+    - System topic event subscription delivery attributes
+* Updated cmdlets:
+    - `New-AzEventGridDomain`:
+        - Add new optional parameters to support auto creation of topic with first subscription.
+        - Add new optional parameters to support auto deletion of topic with last subscription.
+        - Add optional parameters to support azure managed identity
+    - `New-AzEventGridTopic`/`Update-AzEventGridTopic` :
+        - Add optional parameters to support azure managed identity
+    - `New-AzEventGridSubscription `/`Update-AzEventGridSubscription `:
+        - Add new optional parameters to support advanced filtering on arrays.
+        - Add new optional parameters to support delivery attribute mapping.
+        - Add new optional parameters to support storage queue message ttl.
+
 ## Version 1.3.0
 * Updated to use the 2020-06-01 API version.
 * Added new features:

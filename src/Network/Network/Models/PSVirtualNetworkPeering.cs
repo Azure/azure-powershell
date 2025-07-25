@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PeeringState { get; set; }
 
         [JsonProperty(Order = 1)]
+        public string PeeringSyncLevel { get; set; }
+
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? AllowVirtualNetworkAccess { get; set; }
 
@@ -51,7 +54,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId RemoteVirtualNetwork { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? PeerCompleteVnets { get; set; }
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableOnlyIPv6Peering { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] RemoteSubnetNames { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] LocalSubnetNames { get; set; }
+
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> RemoteGateways { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSAddressSpace PeeredRemoteAddressSpace { get; set; }
 
         [JsonProperty(Order = 1)]
         public PSAddressSpace RemoteVirtualNetworkAddressSpace { get; set; }
@@ -60,8 +80,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSVirtualNetworkBgpCommunities RemoteBgpCommunities { get; set; }
 
         [JsonProperty(Order = 1)]
+        public PSVirtualNetworkEncryption RemoteVirtualNetworkEncryption { get; set; }
+
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+
+        [JsonIgnore]
+        public string LocalSubnetNamesText
+        {
+            get { return JsonConvert.SerializeObject(LocalSubnetNames, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RemoteSubnetNamesText
+        {
+            get { return JsonConvert.SerializeObject(RemoteSubnetNames, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string RemoteVirtualNetworkText
@@ -76,6 +112,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string PeeredRemoteAddressSpaceText
+        {
+            get { return JsonConvert.SerializeObject(PeeredRemoteAddressSpace, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string RemoteVirtualNetworkAddressSpaceText
         {
             get { return JsonConvert.SerializeObject(RemoteVirtualNetworkAddressSpace, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -85,6 +127,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RemoteBgpCommunitiesText
         {
             get { return JsonConvert.SerializeObject(RemoteBgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RemoteVirtualNetworkEncryptionText
+        {
+            get { return JsonConvert.SerializeObject(RemoteVirtualNetworkEncryption, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

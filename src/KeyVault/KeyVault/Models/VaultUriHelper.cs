@@ -12,19 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
+
 using System;
 using System.Linq;
+using System.Text;
+
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     internal class VaultUriHelper
     {
-        public VaultUriHelper(string keyVaultDnsSuffix)
+        // it doesn't matter if this class acts as a vault uri helper or hsm uri helper
+        // the logic is basically the same
+        // todo: combine them together
+        public VaultUriHelper(string keyVaultDnsSuffix, string managedHsmDnsSuffix = null)
         {
             if (string.IsNullOrEmpty(keyVaultDnsSuffix))
                 throw new ArgumentNullException("keyVaultDnsSuffix");
             this.KeyVaultDnsSuffix = keyVaultDnsSuffix;
+            ManagedHsmDnsSuffix = managedHsmDnsSuffix;
         }
 
         public string GetVaultName(string vaultAddress)
@@ -39,6 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         public string KeyVaultDnsSuffix { get; private set; }
+        public string ManagedHsmDnsSuffix { get; private set; }
 
         private Uri CreateAndValidateVaultUri(string vaultAddress)
         {
@@ -56,7 +65,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return vaultUri;
         }
 
-        private Uri CreateVaultUri(string vaultName)
+        public Uri CreateVaultUri(string vaultName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -64,6 +73,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             UriBuilder builder = new UriBuilder("https", vaultName + "." + this.KeyVaultDnsSuffix);
 
             return builder.Uri;
+        }
+
+        public Uri CreateManagedHsmUri(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentNullException("name");
+
+            UriBuilder builder = new UriBuilder("https", name+ "." + ManagedHsmDnsSuffix);
+
+            return builder.Uri;
+        }
+
+        public Uri CreateaMagedHsmKeyUri(Uri mhsmUri, string keyName, string version)
+        {
+            if (null == mhsmUri)
+                throw new ArgumentNullException("mhsmUri");
+            if (string.IsNullOrEmpty(keyName))
+                throw new ArgumentNullException("keyName");
+
+            string relativePath = new StringBuilder().Append("keys/").Append(keyName).Append("/").Append(version).ToString();
+            return new Uri(mhsmUri, relativePath);
         }
     }
 }

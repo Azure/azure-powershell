@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB")]
-        [ValidateRange(1024, int.MaxValue)]
+        [ValidateRange(0, int.MaxValue)]
         public int SADataSizeKilobytes { get; set; }
 
         [Parameter(
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.Network
             MNM.IpsecEncryption.AES128,
             MNM.IpsecEncryption.AES192,
             MNM.IpsecEncryption.AES256,
-            MNM.IpsecEncryption.GCMAES128,
-            MNM.IpsecEncryption.GCMAES192,
-            MNM.IpsecEncryption.GCMAES256,
+            MNM.IpsecEncryption.Gcmaes128,
+            MNM.IpsecEncryption.Gcmaes192,
+            MNM.IpsecEncryption.Gcmaes256,
             IgnoreCase = false)]
         public string IpsecEncryption { get; set; }
 
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
             MNM.IpsecIntegrity.MD5,
             MNM.IpsecIntegrity.SHA1,
             MNM.IpsecIntegrity.SHA256,
-            MNM.IpsecEncryption.GCMAES128,
-            MNM.IpsecEncryption.GCMAES192,
-            MNM.IpsecEncryption.GCMAES256,
+            MNM.IpsecEncryption.Gcmaes128,
+            MNM.IpsecEncryption.Gcmaes192,
+            MNM.IpsecEncryption.Gcmaes256,
             IgnoreCase = false)]
         public string IpsecIntegrity { get; set; }
 
@@ -134,6 +134,12 @@ namespace Microsoft.Azure.Commands.Network
             if ((this.IpsecEncryption.Contains("GCM") || this.IpsecIntegrity.Contains("GCM")) && this.IpsecEncryption != this.IpsecIntegrity)
             {
                 throw new ArgumentException("IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
+            }
+
+            // SADataSizeKilobytes either 0 or between 1024 and 2147483647
+            if (ipsecPolicy.SADataSizeKilobytes != 0 && (ipsecPolicy.SADataSizeKilobytes < 1024 || ipsecPolicy.SADataSizeKilobytes > int.MaxValue))
+            {
+                throw new ArgumentException("SA life time in kilobytes must be 0 or between 1024 and 2147483647 included.");
             }
 
             ipsecPolicy.IpsecEncryption = this.IpsecEncryption;

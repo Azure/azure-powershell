@@ -14,21 +14,24 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Cosmos.Table;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using global::Azure.Data.Tables;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using global::Azure.Core;
 
     /// <summary>
     /// Storage table management
     /// </summary>
-    public class StorageTableManagement : IStorageTableManagement
+    public partial class StorageTableManagement : IStorageTableManagement
     {
         /// <summary>
-        /// Cloud table client
+        /// Cloud table client from track 1 sdk
         /// </summary>
         private CloudTableClient tableClient;
 
@@ -38,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         private AzureStorageContext internalStorageContext;
 
         /// <summary>
-        /// The azure storage context assoicated with this IStorageBlobManagement
+        /// The azure storage context associated with this IStorageBlobManagement
         /// </summary>
         public AzureStorageContext StorageContext
         {
@@ -48,14 +51,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             }
         }
 
+        public bool IsTokenCredential
+        {
+            get
+            {
+                return internalStorageContext.StorageAccount.Credentials.IsToken;
+            }
+        }
+
         /// <summary>
         /// Storage table management constructor
         /// </summary>
-        /// <param name="client">Cloud table client</param>
+        /// <param name="context">Cloud table client</param>
         public StorageTableManagement(AzureStorageContext context)
         {
             internalStorageContext = context;
-            tableClient = internalStorageContext.TableStorageAccount.CreateCloudTableClient();
+
+            TableClientOptions clientOptions = new TableClientOptions();
+            clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+
+            if (!context.StorageAccount.Credentials.IsToken)
+            {
+                tableClient = internalStorageContext.TableStorageAccount.CreateCloudTableClient();
+            }
+            else
+            {
+                tableServiceClient = new TableServiceClient(context.StorageAccount.TableEndpoint, context.Track2OauthToken, clientOptions);
+            }
         }
 
         /// <summary>
@@ -67,6 +89,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of tables that begin with the specified prefix</returns>
         public IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
         {
+            EnsureCloudTableClient();
+
             //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
             TableContinuationToken continuationToken = null;
             var results = new List<CloudTable>();
@@ -93,6 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>Cloud table object</returns>
         public CloudTable GetTableReference(string name)
         {
+            EnsureCloudTableClient();
             return tableClient.GetTableReference(name);
         }
 
@@ -219,7 +244,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Get the Table service properties
         /// </summary>
-        /// <param name="account">Cloud storage account</param>
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>The service properties of the specified service type</returns>
@@ -239,7 +263,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Set Table service properties
         /// </summary>
-        /// <param name="account">Cloud storage account</param>
         /// <param name="properties">Service properties</param>
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>
@@ -253,6 +276,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             catch (AggregateException e) when (e.InnerException is XTable.StorageException)
             {
                 throw e.InnerException;
+            }
+        }
+
+        private void EnsureCloudTableClient()
+        {
+            if (tableClient == null)
+            {
+                throw new ApplicationException($"{nameof(tableClient)} is not initialized");
             }
         }
     }

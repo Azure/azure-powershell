@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
@@ -64,6 +65,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         private const string LongTermRetentionBackupRestoreParameterSet =
             "LongTermRetentionBackupRestoreParameter";
 
+        private const string PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet =
+            "PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroup";
+
+        private const string PointInTimeCrossSubscriptionRestoreFromInputObjectParameterSet =
+            "PointInTimeCrossSubscriptionRestoreFromInputObjectParameter";
+
+        private const string PointInTimeCrossSubscriptionRestoreFromResourceIdParameterSet =
+            "PointInTimeCrossSubscriptionRestoreFromResourceIdParameter";
+
+        private const string PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet =
+            "PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroup";
+
         /// <summary>
         /// Gets or sets flag indicating a restore from a point-in-time backup.
         /// </summary>
@@ -99,6 +112,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ParameterSetName = PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             HelpMessage = "Restore from a point-in-time backup of deleted database.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a point-in-time backup.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a point-in-time backup.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a point-in-time backup.")]
+        [Parameter(
+            ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a point-in-time backup.")]
         public SwitchParameter FromPointInTimeBackup { get; set; }
 
         /// <summary>
@@ -150,6 +179,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ParameterSetName = LongTermRetentionBackupRestoreParameterSet,
             Mandatory = false,
             HelpMessage = "Source subscription id.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "Source subscription id different then one from the context.")]
+        [Parameter(
+            ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "Source subscription id different then one from the context.")]
         [Alias("SourceSubscriptionId")]
         public string SubscriptionId { get; set; }
 
@@ -175,6 +214,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(
+            ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            Position = 1,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [Alias("SourceResourceGroupName")]
@@ -204,6 +253,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the instance.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            Position = 2,
+            HelpMessage = "The name of the instance.")]
+        [Parameter(
+            ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            Position = 2,
+            HelpMessage = "The name of the instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [Alias("SourceInstanceName")]
         [ValidateNotNullOrEmpty]
@@ -232,6 +291,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 2,
             HelpMessage = "The instance database name to restore.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            Position = 3,
+            HelpMessage = "The instance database name to restore.")]
+        [Parameter(
+            ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            Position = 3,
+            HelpMessage = "The instance database name to restore.")]
         [Alias("InstanceDatabaseName", "SourceInstanceDatabaseName")]
         public string Name { get; set; }
 
@@ -245,6 +314,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 3,
+            HelpMessage = "The deletion date of deleted database.")]
+        [Parameter(ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
             HelpMessage = "The deletion date of deleted database.")]
         public DateTime DeletionDate { get; set; }
 
@@ -261,6 +333,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The instance database object to restore")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromInputObjectParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The instance database of another subscription object to restore")]
         [ValidateNotNullOrEmpty]
         [Alias("InstanceDatabase")]
         public AzureSqlManagedDatabaseBaseModel InputObject { get; set; }
@@ -278,7 +356,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public AzureSqlRecoverableManagedDatabaseModel GeoBackupObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource id of the instance database to remove
+        /// Gets or sets the resource id of the instance database to restore
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromResourceIdParameterSet,
             Mandatory = true,
@@ -298,6 +376,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the long term retention managed instance backup object to restore.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of source instance database object to restore")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -339,6 +422,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ParameterSetName = PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossSubscriptionRestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
         public DateTime PointInTime { get; set; }
 
         /// <summary>
@@ -375,6 +474,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = LongTermRetentionBackupRestoreParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target instance to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target instance to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target instance to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target instance to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target instance to restore to.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         public string TargetInstanceName { get; set; }
 
@@ -405,8 +516,37 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = LongTermRetentionBackupRestoreParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target resource group to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target resource group to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target resource group to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target resource group to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target resource group to restore to.")]
         [ResourceGroupCompleter]
         public string TargetResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the target subscription id to restore to.
+        /// </summary>
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target subscription id to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target subscription id to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeCrossSubscriptionRestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target subscription id to restore to.")]
+        [Parameter(ParameterSetName = PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target subscription id to restore to.")]
+        public string TargetSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -441,14 +581,64 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
             switch (ParameterSetName)
             {
+                case PointInTimeDeletedCrossSubscriptionRestoreFromNameAndResourceGroupSet:
+                    model.CrossSubscriptionTargetManagedInstanceId = "/subscriptions/" + TargetSubscriptionId +
+                        "/resourceGroups/" + TargetResourceGroupName +
+                        "/providers/Microsoft.Sql/managedInstances/" + TargetInstanceName;
+                    model.CrossSubscriptionRestorableDroppedDatabaseId = "/subscriptions/" + SubscriptionId +
+                        "/resourceGroups/" + ResourceGroupName +
+                        "/providers/Microsoft.Sql/managedInstances/" + InstanceName +
+                        "/restorableDroppedDatabases/" + Name + "," + DeletionDate.ToFileTimeUtc();
+                    break;
+                case PointInTimeCrossSubscriptionRestoreFromNameAndResourceGroupSet:
+                    model.CrossSubscriptionTargetManagedInstanceId = "/subscriptions/" + TargetSubscriptionId +
+                            "/resourceGroups/" + TargetResourceGroupName +
+                            "/providers/Microsoft.Sql/managedInstances/" + TargetInstanceName;
+                    model.CrossSubscriptionSourceDatabaseId = "/subscriptions/" + SubscriptionId +
+                        "/resourceGroups/" + ResourceGroupName +
+                        "/providers/Microsoft.Sql/managedInstances/" + InstanceName +
+                        "/databases/" + Name;
+                    break;
+                case PointInTimeCrossSubscriptionRestoreFromInputObjectParameterSet:
+                    SubscriptionId = new ResourceIdentifier(InputObject.Id).Subscription;
+                    ResourceGroupName = InputObject.ResourceGroupName;
+                    InstanceName = InputObject.ManagedInstanceName;
+                    if (InputObject is AzureSqlDeletedManagedDatabaseBackupModel)
+                    {
+                        model.CrossSubscriptionRestorableDroppedDatabaseId = InputObject.Id;
+                    }
+                    else
+                    {
+                        model.CrossSubscriptionSourceDatabaseId = InputObject.Id;
+                    }
+                    model.CrossSubscriptionTargetManagedInstanceId = "/subscriptions/" + TargetSubscriptionId +
+                            "/resourceGroups/" + TargetResourceGroupName +
+                            "/providers/Microsoft.Sql/managedInstances/" + TargetInstanceName;
+                    break;
+                case PointInTimeCrossSubscriptionRestoreFromResourceIdParameterSet:
+                    var sourceResourceInfo = new ResourceIdentifier(ResourceId);
+                    SubscriptionId = sourceResourceInfo.Subscription;
+                    ResourceGroupName = sourceResourceInfo.ResourceGroupName;
+                    InstanceName = sourceResourceInfo.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                    if (sourceResourceInfo.ResourceType.Equals("Microsoft.Sql/managedInstances/restorableDroppedDatabases", StringComparison.InvariantCulture))
+                    {
+                        model.CrossSubscriptionRestorableDroppedDatabaseId = ResourceId;
+                    }
+                    else
+                    {
+                        model.CrossSubscriptionSourceDatabaseId = ResourceId;
+                    }
+                    model.CrossSubscriptionTargetManagedInstanceId = "/subscriptions/" + TargetSubscriptionId +
+                        "/resourceGroups/" + TargetResourceGroupName +
+                        "/providers/Microsoft.Sql/managedInstances/" + TargetInstanceName;
+                    break;
                 case PointInTimeDeletedDatabasesCrossInstanceRestoreFromNameAndResourceGroupParameterSet:
                 case PointInTimeDeletedDatabasesSameInstanceRestoreFromNameAndResourceGroupParameterSet:
                     model.RestorableDroppedDatabaseId = "/subscriptions/" + SubscriptionId +
                         "/resourceGroups/" + ResourceGroupName +
                         "/providers/Microsoft.Sql/managedInstances/" + InstanceName +
-                        "/restorableDroppedDatabases/" + this.Name + "," + this.DeletionDate.ToFileTimeUtc();
+                        "/restorableDroppedDatabases/" + Name + "," + DeletionDate.ToFileTimeUtc();
                     break;
-
                 case PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet:
                 case PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet:
                     model.SourceDatabaseId = "/subscriptions/" + SubscriptionId +
@@ -456,7 +646,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                         "/providers/Microsoft.Sql/managedInstances/" + InstanceName +
                         "/databases/" + Name;
                     break;
-
                 case PointInTimeSameInstanceRestoreFromInputObjectParameterSet:
                 case PointInTimeCrossInstanceRestoreFromInputObjectParameterSet:
                     ResourceGroupName = InputObject.ResourceGroupName;

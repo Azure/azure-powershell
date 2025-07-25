@@ -1,69 +1,79 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azpeeringreceivedroute
+online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringreceivedroute
 schema: 2.0.0
 ---
 
 # Get-AzPeeringReceivedRoute
 
 ## SYNOPSIS
-Lists the received routes for a Peering.
+Lists the prefixes received over the specified peering under the given subscription and resource group.
 
 ## SYNTAX
 
-### ByResourceGroupAndName (Default)
 ```
-Get-AzPeeringReceivedRoute [-ResourceGroupName] <String> -Name <String> [-Prefix <String>] [-AsPath <String>]
- [-OriginAsValidationState <String>] [-RPKIValidationState <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzPeeringReceivedRoute [-ResourceId] <String> [-Prefix <String>] [-AsPath <String>]
- [-OriginAsValidationState <String>] [-RPKIValidationState <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzPeeringReceivedRoute -PeeringName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-AsPath <String>] [-OriginAsValidationState <String>] [-Prefix <String>] [-RpkiValidationState <String>]
+ [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists recieved routes from a Peering
+Lists the prefixes received over the specified peering under the given subscription and resource group.
 
 ## EXAMPLES
 
-### List top 100 received routes for a peering
+### Example 1: Get all received routes for a specific peering
 ```powershell
-PS C:\> Get-AzPeeringReceivedRoute -ResourceGroupName $resourceGroupName -Name $peeringName
+Get-AzPeeringReceivedRoute -PeeringName DemoPeering -ResourceGroupName DemoRG
 ```
 
-Lists all of the received routes for a peering
-
-### Filter by AS Path
-```powershell
-PS C:\> Get-AzPeeringReceivedRoute -ResourceGroupName $resourceGroupName -Name $peeringName -AsPath "1234 5674 9834"
+```output
+AsPath               NextHop       OriginAsValidationState Prefix         ReceivedTimestamp            RpkiValidationState TrustAnchor
+------               -------       ----------------------- ------         -----------------            ------------------- -----------
+7018 13335           12.90.152.69  Valid                   1.0.0.0/24     2022-12-05T11:51:51.2062620Z Valid               None
+7018 13335           12.90.152.69  Valid                   1.1.1.0/24     2022-12-05T11:51:51.2062620Z Valid               None
+7018 4837 4808       12.90.152.69  Valid                   1.119.192.0/21 2021-12-07T05:21:11.7043790Z Unknown             None
+7018 4837 4808       12.90.152.69  Valid                   1.119.200.0/22 2021-12-07T05:21:11.7043790Z Unknown             None
+7018 4837 4808 59034 12.90.152.69  Valid                   1.119.204.0/24 2021-12-07T05:21:13.7045170Z Unknown             None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.160.0.0/12   2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.160.0.0/16   2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.161.0.0/16   2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.162.0.0/16   2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.163.0.0/16   2022-11-29T07:46:45.2062680Z Valid               None
+7018 15169 396982    12.90.152.69  Unknown                 1.179.112.0/20 2021-12-07T05:21:16.7056160Z Unknown             None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.164.0.0/16   2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.165.0.0/16   2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.166.0.0/16   2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462  12.90.152.69  Valid                   1.167.0.0/16   2022-11-29T07:46:45.2062680Z Valid               None
+...
 ```
 
-Lists all of the received routes for a peering with a filter on AS 
+Gets all the received routes for a specific peering
 
-### Filter by RPKIValidationState
+### Example 2: Filter received routes based on optional parameters
 ```powershell
-PS C:\> Get-AzPeeringReceivedRoute -ResourceGroupName $resourceGroupName -Name $peeringName -RPKIValidationState "Valid"
+Get-AzPeeringReceivedRoute -PeeringName DemoPeering -ResourceGroupName DemoRG -AsPath "7018 9680 9680 3462"
 ```
 
-Lists all of the received routes for a peering with a filter on RPKIValidationState
-
-### Filter by OriginAsValidationState
-```powershell
-PS C:\> Get-AzPeeringReceivedRoute -ResourceGroupName $resourceGroupName -Name $peeringName -OriginAsValidationState "Valid"
+```output
+AsPath                          NextHop       OriginAsValidationState Prefix           ReceivedTimestamp            RpkiValidationState TrustAnchor
+------                          -------       ----------------------- ------           -----------------            ------------------- -----------
+7018 9680 9680 3462             12.90.152.69  Valid                   1.160.0.0/12     2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462             12.90.152.69  Valid                   1.160.0.0/16     2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462             12.90.152.69  Valid                   1.161.0.0/16     2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462             12.90.152.69  Valid                   1.162.0.0/16     2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462             12.90.152.69  Valid                   1.163.0.0/16     2022-11-29T07:46:45.2062680Z Valid               None
+7018 9680 9680 3462             12.90.152.69  Valid                   1.164.0.0/16     2022-11-29T07:46:45.2062680Z Valid               None
+...
 ```
 
-Lists all of the received routes for a peering with a filter on OriginAsValidationState
+Gets all received routes of a peering with a specific AsPath
 
 ## PARAMETERS
 
 ### -AsPath
-Filter by AS Path.
-Example: '9342 1234 4567'
+The optional AS path that can be used to filter the routes.
 
 ```yaml
 Type: System.String
@@ -78,12 +88,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -92,12 +103,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The unique name of the PSPeering.
+### -OriginAsValidationState
+The optional origin AS validation state that can be used to filter the routes.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringName
+The name of the peering.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -107,23 +133,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OriginAsValidationState
-Filter by origin AS validation state.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Prefix
-Filter by prefix.
+The optional prefix that can be used to filter the routes.
 
 ```yaml
 Type: System.String
@@ -138,37 +149,22 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The create or use an existing resource group name.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id string name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RPKIValidationState
-Filter by RPKI validation state.
+### -RpkiValidationState
+The optional RPKI validation state that can be used to filter the routes.
 
 ```yaml
 Type: System.String
@@ -182,16 +178,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+The optional page continuation token that is used in the event of paginated result.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Azure subscription ID.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringReceivedRoute
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringReceivedRoute
 
 ## NOTES
 

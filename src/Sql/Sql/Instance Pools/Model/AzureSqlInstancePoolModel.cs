@@ -78,5 +78,15 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Model
         /// Gets or sets the license type
         /// </summary>
         public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Maintenance Configuration Id.
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the DNS Zone.
+        /// </summary>
+        public string DnsZone { get; set; }
     }
 }

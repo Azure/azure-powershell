@@ -21,6 +21,28 @@
 
 ## Upcoming Release
 
+## Version 2.1.0
+* Upgraded nuget package to signed package.
+
+## Version 2.0.3
+* Migrated Attestation SDK to generated SDK
+    - Removed "Microsoft.Azure.Management.Attestation" Version "0.12.0-preview" PackageReference
+    - Added Attestation.Management.Sdk ProjectReference
+
+## Version 2.0.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 2.0.1
+* Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
+
+## Version 2.0.0
+* [Breaking Change] Replaced `New/Remove/Get-AzAttestation` with `New/Remove/Get-AzAttestationProvider`
+* Added `Get-AzAttestationDefaultProvider` and `Update-AzAttestationProvider`
+* Upgraded API version from 2018-09-01-preview to 2020-10-01
+
+## Version 1.0.0
+* General availability of `Az.Attestation` module
+
 ## Version 0.1.8
 * Added default provider support to `Az.Attestation` module
     - Added `Location` and `DefaultProvider` to `Get-AzAttestation`

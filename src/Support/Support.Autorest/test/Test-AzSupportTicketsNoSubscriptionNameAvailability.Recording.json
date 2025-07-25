@@ -1,0 +1,154 @@
+{
+  "Test-AzSupportTicketsNoSubscriptionNameAvailability+[NoContext]+CheckExpandedSupportTicketTrue+$POST+https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-for-check-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "116" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "4fccc306-7618-4135-a9ef-5c5fc6c7b4cb" ],
+        "x-ms-correlation-request-id": [ "4fccc306-7618-4135-a9ef-5c5fc6c7b4cb" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240423T181654Z:4fccc306-7618-4135-a9ef-5c5fc6c7b4cb" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2D36BA0FCFB248FDB7695FA36990DBBE Ref B: MNZ221060608031 Ref C: 2024-04-23T18:16:54Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:16:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzSupportTicketsNoSubscriptionNameAvailability+[NoContext]+CheckExpandedSupportTicket+$POST+https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "106" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "3f298053-dc89-4788-8ead-66b357ed2654" ],
+        "x-ms-correlation-request-id": [ "3f298053-dc89-4788-8ead-66b357ed2654" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240423T181655Z:3f298053-dc89-4788-8ead-66b357ed2654" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AE64D5053D2B4FB6960027BFD78C7E5F Ref B: MNZ221060608031 Ref C: 2024-04-23T18:16:54Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:16:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "113" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"message\":\"Name already exists. Please select a different name.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzSupportTicketsNoSubscriptionNameAvailability+[NoContext]+CheckExpandedFileWorkspaceTrue+$POST+https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-for-check-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/fileWorkspaces\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "119" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "608a228e-fdeb-463d-94ac-b2db9bf331f9" ],
+        "x-ms-correlation-request-id": [ "608a228e-fdeb-463d-94ac-b2db9bf331f9" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240423T181655Z:608a228e-fdeb-463d-94ac-b2db9bf331f9" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DC3546A0B2B846A58195B36BA438717A Ref B: MNZ221060608031 Ref C: 2024-04-23T18:16:55Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:16:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzSupportTicketsNoSubscriptionNameAvailability+[NoContext]+CheckExpandedFileWorkspaceFalse+$POST+https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/fileWorkspaces\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "109" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "ef0d22a4-dfe7-4a90-b20b-5c3aae545bba" ],
+        "x-ms-correlation-request-id": [ "ef0d22a4-dfe7-4a90-b20b-5c3aae545bba" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T181655Z:ef0d22a4-dfe7-4a90-b20b-5c3aae545bba" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9EDFC1E404E04C50B9C513A34B6BCF51 Ref B: MNZ221060608031 Ref C: 2024-04-23T18:16:55Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:16:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "113" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"message\":\"Name already exists. Please select a different name.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}",
+      "isContentBase64": false
+    }
+  }
+}

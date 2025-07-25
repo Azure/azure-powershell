@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -73,14 +75,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         {
             ICollection<AzureReplicationLinkModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey(PartnerServerName) && !WildcardPattern.ContainsWildcardCharacters(PartnerServerName))
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(PartnerServerName)) && !WildcardPattern.ContainsWildcardCharacters(PartnerServerName))
             {
                 results = new List<AzureReplicationLinkModel>();
-                results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName));
+                results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName, true));
             }
             else
             {
-                results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
+                results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, true);
             }
 
             return SubResourceWildcardFilter(PartnerServerName, results);

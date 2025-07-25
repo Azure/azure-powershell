@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Creates Azure Site Recovery Policy.
         /// </summary>
-        /// <param name="policyName">Policy name</param>
-        /// <param name="CreatePolicyInput">Policy Input</param>
+        /// <param name="policyName">Policy Name</param>
+        /// <param name="input">Policy Input</param>
         /// <returns>Long operation response</returns>
         public PSSiteRecoveryLongRunningOperation CreatePolicy(
             string policyName,
@@ -35,8 +35,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationPolicies.BeginCreateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     policyName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -47,13 +49,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Deletes Azure Site Recovery Policy.
         /// </summary>
-        /// <param name="createAndAssociatePolicyInput">Policy Input</param>
+        /// <param name="policyName">Policy Name</param>
         /// <returns>Long operation response</returns>
         public PSSiteRecoveryLongRunningOperation DeletePolicy(
             string policyName)
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationPolicies.BeginDeleteWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     policyName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -69,7 +73,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public List<Policy> GetAzureSiteRecoveryPolicy()
         {
             var firstPage = this.GetSiteRecoveryClient()
-                .ReplicationPolicies.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
+                .ReplicationPolicies.ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -88,13 +95,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets Azure Site Recovery Policy given the ID.
         /// </summary>
-        /// <param name="PolicyId">Policy Name</param>
+        /// <param name="PolicyName">Policy Name</param>
         /// <returns>Policy response</returns>
         public Policy GetAzureSiteRecoveryPolicy(
             string PolicyName)
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationPolicies.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     PolicyName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -105,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Update Azure Site Recovery Policy.
         /// </summary>
-        /// <param name="UpdatePolicyInput">Policy Input</param>
+        /// <param name="input">Policy Input</param>
         /// <param name="policyName">Policy Name</param>
         /// <returns>Long operation response</returns>
         public PSSiteRecoveryLongRunningOperation UpdatePolicy(
@@ -114,8 +123,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationPolicies.BeginUpdateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     policyName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

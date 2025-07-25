@@ -1,53 +1,53 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringservice
+online version: https://learn.microsoft.com/powershell/module/az.peering/new-azpeeringservice
 schema: 2.0.0
 ---
 
 # New-AzPeeringService
 
 ## SYNOPSIS
-Creates a new peering service.
+create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
 
 ## SYNTAX
 
 ```
-New-AzPeeringService [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
- [-PeeringServiceProvider] <String> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-PeeringServiceLocation <String>] [-PeeringServiceProvider <String>]
+ [-ProviderBackupPeeringLocation <String>] [-ProviderPrimaryPeeringLocation <String>] [-Sku <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates peering service.
+create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a new peering service
 ```powershell
-PS C:\> New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -Location $loc -PeeringServiceProvider $provider
-
-PeeringServiceLocation : Washington
-PeeringServiceProvider : TestPeer1
-ProvisioningState      : Succeeded
-Location               : centralus
-Tags                   : {}
-Name                   : myPeeringService3990
-Id                     : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService3990
-Type                   : Microsoft.Peering/peeringServices
+New-AzPeeringService -Name TestPeeringService -ResourceGroupName DemoRG -Location "East US 2" -PeeringServiceLocation Georgia -PeeringServiceProvider MicrosoftEdge -ProviderPrimaryPeeringLocation Atlanta
 ```
 
-Creates a peering service object with provider and peering location. Use in conjuction with `Get-AzPeeringServiceProvider` and `Get-AzPeeringServiceLocation`
+```output
+Name               ResourceGroupName PeeringServiceLocation Provider      ProvisioningState   Location
+----               ----------------- ---------------------- --------      -----------------   --------
+TestPeeringService DemoRG            Georgia                MicrosoftEdge ProvisioningStarted East US 2
+```
+
+Create a new peering service in the resource group
 
 ## PARAMETERS
 
-### -AsJob
-Run in the background.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases:
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -56,15 +56,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -Location
+The location of the resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -72,53 +72,82 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The unique name of the PSPeering.
+The name of the peering service.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PeeringServiceName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeeringLocation
-The Physical Location Different from Azure Region. Use Get-AzPeeringServiceLocation [-Country <country>]
+### -PeeringServiceLocation
+The location (state/province) of the customer.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PeeringServiceProvider
-The peering service provider name.
-Use Get-AzPeeringServiceProvider cmdlet for a list
+The name of the service provider.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 3
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderBackupPeeringLocation
+The backup peering (Microsoft/service provider) location to be used for customer traffic.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderPrimaryPeeringLocation
+The primary peering (Microsoft/service provider) location to be used for customer traffic.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The create or use an existing resource group name.
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -126,14 +155,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Sku
+The name of the peering service SKU.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SkuName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Azure subscription ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
-The tags to associate with the Microsoft InputObject Service.
+The resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -183,11 +242,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringService
 
 ## NOTES
 

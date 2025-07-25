@@ -12,27 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
-#endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to change current Azure context.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", DefaultParameterSetName = ContextParameterSet,SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", DefaultParameterSetName = ContextParameterSet, SupportsShouldProcess = true)]
     [Alias("Select-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Subscription")]
     [OutputType(typeof(PSAzureContext))]
     public class SetAzureRMContextCommand : AzureContextModificationCmdlet
@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Profile
         public PSAzureSubscription SubscriptionObject { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = false,
-                    HelpMessage = "Tenant name or ID")]
+                    HelpMessage = "Tenant domain name or ID")]
         [Parameter(ParameterSetName = TenantNameParameterSet, Mandatory = true,
-                    HelpMessage = "Tenant name or ID")]
+                    HelpMessage = "Tenant domain name or ID")]
         [Alias("Domain", "TenantId")]
         [ValidateNotNullOrEmpty]
         public string Tenant { get; set; }
@@ -86,9 +86,28 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     SetContextWithOverwritePrompt((profile, client, name) =>
                         {
-                            profile.SetContextWithCache(new AzureContext(Context.Subscription,
+                            profile.TrySetDefaultContext(name, new AzureContext(Context.Subscription,
                               Context.Account,
-                              Context.Environment, Context.Tenant), name);
+                                Context.Environment, Context.Tenant));
+                            if (AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
+                            {
+                                var account = Context.Account;
+                                if (account != null)
+                                {
+                                    var secret = account.GetProperty(AzureAccount.Property.ServicePrincipalSecret);
+                                    if (!string.IsNullOrEmpty(secret))
+                                    {
+                                        keyStore.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, Context.Tenant?.Id)
+                                            , secret.ConvertToSecureString());
+                                    }
+                                    var password = account.GetProperty(AzureAccount.Property.CertificatePassword);
+                                    if (!string.IsNullOrEmpty(password))
+                                    {
+                                        keyStore.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, Context.Tenant?.Id)
+                                            , password.ConvertToSecureString());
+                                    }
+                                }
+                            }
                             CompleteContextProcessing(profile);
                         });
                 }

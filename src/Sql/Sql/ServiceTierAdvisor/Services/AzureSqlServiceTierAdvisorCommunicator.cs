@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Service Tier Advisor
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServiceTierAdvisorCommunicator(IAzureContext context)
         {
             Context = context;
@@ -86,6 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of Azure Sql server</param>
+        /// <param name="expand">Expand string</param>
         /// <returns>List of recommended elastic pools</returns>
         public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> GetRecommendedElasticPoolsExpanded(string resourceGroupName, string serverName, string expand)
         {

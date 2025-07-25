@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.Network.Bastion
 {
-    using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using Microsoft.Azure.Management.Network.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
+    using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.Management.Network.Models;
+
     [Cmdlet(VerbsCommon.Get,
-         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
+         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + Constants.BastionResourceName,
          DefaultParameterSetName = BastionParameterSetNames.ListBySubscription,
          SupportsShouldProcess = true),
          OutputType(typeof(PSBastion), typeof(IEnumerable<PSBastion>))]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName,
             HelpMessage = "The bastion resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
+        [ResourceNameCompleter(Constants.BastionResourceType, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -66,14 +66,14 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             {
                 WriteObject(this.GetBastion(this.ResourceGroupName, this.Name));
             }
-            else if ((ParameterSetName.Equals(BastionParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase)))
+            else if (ParameterSetName.Equals(BastionParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.Name = parsedResourceId.ResourceName;
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 WriteObject(this.GetBastion(this.ResourceGroupName, this.Name));
             }
-            else 
+            else
             {
                 WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, this.ListBastions(this.ResourceGroupName)), true);
             }

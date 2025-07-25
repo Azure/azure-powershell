@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <summary>
         /// Calls SendRequestAsync() for a GET using the default BaseUri and a blank correlationId.
         /// </summary>
-        /// <param name="requestUrl">The Request Url.</param>
+        /// <param name="requestURL">The Request Url.</param>
         /// <returns>The http response message.</returns>
         Task<HttpResponseMessage> CallGetAsync(string requestURL);
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// Calls SendRequestAsync() for a GET.
         /// </summary>
         /// <param name="baseUri">The base Uri to call.</param>
-        /// <param name="requestUrl">The request Url.</param>
+        /// <param name="requestURL">The request Url.</param>
         /// <param name="correlationId">The CorrelationId</param>
         /// <returns>The http response message.</returns>
         Task<HttpResponseMessage> CallGetAsync(Uri baseUri, string requestURL, Guid correlationId);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <summary>
         /// Calls SendRequestAsync() for a POST using the default BaseUri and a blank correlationId.
         /// </summary>
-        /// <param name="requestUrl">The Request Url.</param>
+        /// <param name="requestURL">The Request Url.</param>
         /// <param name="content">The content to post (optional).</param>
         /// <returns>The http response message.</returns>
         Task<HttpResponseMessage> CallPostAsync(string requestURL, HttpContent content = null);
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <summary>
         /// Calls SendRequestAsync() for a POST using a blank correlationId.
         /// </summary>
-        /// <param name="baseUri">The base Uri to call.</param>
-        /// <param name="requestUrl">The request Url.</param>
+        /// <param name="baseURI">The base Uri to call.</param>
+        /// <param name="requestURL">The request Url.</param>
         /// <param name="content">The content to post (optional).</param>
         /// <returns>The http response message.</returns>
         Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, HttpContent content = null);
@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         /// <summary>
         /// Calls SendRequestAsync() for a POST.
         /// </summary>
-        /// <param name="baseUri">The base Uri to call.</param>
-        /// <param name="requestUrl">The request Url.</param>
+        /// <param name="baseURI">The base Uri to call.</param>
+        /// <param name="requestURL">The request Url.</param>
         /// <param name="correlationId">The CorrelationId</param>
         /// <param name="content">The content to post (optional).</param>
         /// <returns>The http response message.</returns>

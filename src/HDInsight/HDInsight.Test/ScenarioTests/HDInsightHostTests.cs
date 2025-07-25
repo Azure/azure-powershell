@@ -12,28 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.HDInsight.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.HDInsight.Test.ScenarioTests
 {
-    public class HDInsightHostTests : TestController
+    public class HDInsightHostTests : HDInsightTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public HDInsightHostTests(ITestOutputHelper output)
+        public HDInsightHostTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHostRelatedCommands()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-HostRelatedCommands");
+            TestRunner.RunTestScript("Test-HostRelatedCommands");
         }
     }
 }

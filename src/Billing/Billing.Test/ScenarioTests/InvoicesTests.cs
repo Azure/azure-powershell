@@ -13,56 +13,50 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
 {
-    public class InvoicesTests
+    public class InvoicesTests : BillingTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public InvoicesTests(Xunit.Abstractions.ITestOutputHelper output)
+        public InvoicesTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListInvoices()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListInvoices");
+            TestRunner.RunTestScript("Test-ListInvoices");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListInvoicesWithDownloadUrl()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListInvoicesWithDownloadUrl");
+            TestRunner.RunTestScript("Test-ListInvoicesWithDownloadUrl");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListInvoicesWithMaxCount()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListInvoicesWithMaxCount");
+            TestRunner.RunTestScript("Test-ListInvoicesWithMaxCount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLatestInvoice()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetLatestInvoice");
+            TestRunner.RunTestScript("Test-GetLatestInvoice");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInvoiceByNameWithDownloadUrl()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoiceByNameWithDownloadUrl");
+            TestRunner.RunTestScript("Test-GetInvoiceByNameWithDownloadUrl");
         }
 
         // Modern invoice
@@ -70,7 +64,7 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetModernInvoiceByName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetModernInvoiceByName");
+            TestRunner.RunTestScript("Test-GetModernInvoiceByName");
         }
 
         // billing Account tests
@@ -78,49 +72,49 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListModernInvoicesByBillingAccountName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListModernInvoicesByBillingAccountName");
+            TestRunner.RunTestScript("Test-ListModernInvoicesByBillingAccountName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListModernInvoicesByBillingAccountNameWithDownloadUrl()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListModernInvoicesByBillingAccountNameWithDownloadUrl");
+            TestRunner.RunTestScript("Test-ListModernInvoicesByBillingAccountNameWithDownloadUrl");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListModernInvoicesByBillingAccountNameWithMaxCount()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListModernInvoicesByBillingAccountNameWithMaxCount");
+            TestRunner.RunTestScript("Test-ListModernInvoicesByBillingAccountNameWithMaxCount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLatestModernInvoiceByBillingAccountName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetLatestModernInvoiceByBillingAccountName");
+            TestRunner.RunTestScript("Test-GetLatestModernInvoiceByBillingAccountName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLatestModernInvoiceByBillingAccountNameWithDownloadUrl()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetLatestModernInvoiceByBillingAccountNameWithDownloadUrl");
+            TestRunner.RunTestScript("Test-GetLatestModernInvoiceByBillingAccountNameWithDownloadUrl");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetModernInvoiceByBillingAccountNameAndInvoiceNameWithDownloadUrl()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetModernInvoiceByBillingAccountNameAndInvoiceNameWithDownloadUrl");
+            TestRunner.RunTestScript("Test-GetModernInvoiceByBillingAccountNameAndInvoiceNameWithDownloadUrl");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetModernInvoiceByBillingAccountNameAndInvoiceName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetModernInvoiceByBillingAccountNameAndInvoiceName");
+            TestRunner.RunTestScript("Test-GetModernInvoiceByBillingAccountNameAndInvoiceName");
         }
 
         // billing Profile tests
@@ -128,35 +122,35 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListModernInvoicesByBillingProfileName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListModernInvoicesByBillingProfileName");
+            TestRunner.RunTestScript("Test-ListModernInvoicesByBillingProfileName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListModernInvoicesByBillingProfileNameWithDownloadUrl()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListModernInvoicesByBillingProfileNameWithDownloadUrl");
+            TestRunner.RunTestScript("Test-ListModernInvoicesByBillingProfileNameWithDownloadUrl");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListModernInvoicesByBillingProfileNameMaxCount()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListModernInvoicesByBillingProfileNameMaxCount");
+            TestRunner.RunTestScript("Test-ListModernInvoicesByBillingProfileNameMaxCount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLatestInvoicesByBillingProfileName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetLatestInvoicesByBillingProfileName");
+            TestRunner.RunTestScript("Test-GetLatestInvoicesByBillingProfileName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetModernInvoicesByBillingAccountNameBillingProfileNameBillingPeriod()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoicesByBillingAccountNameBillingProfileNameBillingPeriod");
+            TestRunner.RunTestScript("Test-GetInvoicesByBillingAccountNameBillingProfileNameBillingPeriod");
         }
     }
 }

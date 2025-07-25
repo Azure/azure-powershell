@@ -4,21 +4,21 @@
       "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "82476edd-3093-4ea2-b185-8fa9d6f1d67e"
+          "a18a89cc-b0f7-44af-9f6a-53320882890e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -27,16 +27,19 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "b8cb6e62-2192-469a-a460-3ff13e7ae00c"
+          "e6b628ab-c0b9-4067-894d-ab993f46740d"
         ],
         "x-ms-correlation-request-id": [
-          "b8cb6e62-2192-469a-a460-3ff13e7ae00c"
+          "e6b628ab-c0b9-4067-894d-ab993f46740d"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052921Z:b8cb6e62-2192-469a-a460-3ff13e7ae00c"
+          "CANADACENTRAL:20250123T234957Z:e6b628ab-c0b9-4067-894d-ab993f46740d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -44,39 +47,44 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C6CE6D93E63B4BAEB80D612E9E5F1BB4 Ref B: CO6AA3150220021 Ref C: 2025-01-23T23:49:57Z"
+        ],
         "Date": [
-          "Thu, 14 Feb 2019 05:29:21 GMT"
+          "Thu, 23 Jan 2025 23:49:56 GMT"
+        ],
+        "Content-Length": [
+          "22905"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "2518"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices\",\r\n  \"namespace\": \"Microsoft.CognitiveServices\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"7d312290-28c8-473c-a0ed-8e53749b6d6d\",\r\n      \"roleDefinitionId\": \"5cb87f79-a7c3-4a95-9414-45b65974b51b\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"accounts\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Central US EUAP\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkSkuAvailability\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Central US EUAP\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/updateAccountsCreationSettings\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Global\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"West Central US\",\r\n        \"East US 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/accountsCreationSettings\",\r\n      \"locations\": [\r\n        \"West US\",\r\n        \"Global\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"West Central US\",\r\n        \"East US 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices\",\r\n  \"namespace\": \"Microsoft.CognitiveServices\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"7d312290-28c8-473c-a0ed-8e53749b6d6d\",\r\n      \"roleDefinitionId\": \"5cb87f79-a7c3-4a95-9414-45b65974b51b\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"accounts\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deleteVirtualNetworkOrSubnets\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkSkuAvailability\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkDomainAvailability\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\",\r\n        \"2016-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/privateLinkResources\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/privateEndpointConnections\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/privateEndpointConnectionProxies\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\",\r\n        \"2017-04-18\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deletedAccounts\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/resourceGroups\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/resourceGroups/deletedAccounts\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\",\r\n        \"2021-04-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/commitmentTiers\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\",\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/models\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/modelCapacities\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"modelCapacities\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"calculateModelCapacity\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/raiContentFilters\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/notifyNetworkSecurityPerimeterUpdatesAvailable\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"East US 2 EUAP\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/networkSecurityPerimeterAssociationProxies\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/encryptionScopes\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\",\r\n        \"2022-10-01\",\r\n        \"2022-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"commitmentPlans\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\",\r\n        \"2022-12-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"attestations\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"attestationDefinitions\",\r\n      \"locations\": [\r\n        \"Global\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"West Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Canada Central\",\r\n        \"Japan East\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Sweden Central\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"Qatar Central\",\r\n        \"Canada East\",\r\n        \"Poland central\",\r\n        \"South India\",\r\n        \"Italy North\",\r\n        \"Spain Central\",\r\n        \"UK West\",\r\n        \"Jio India Central\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2024-10-01\",\r\n        \"2024-06-01-preview\",\r\n        \"2024-04-01-preview\",\r\n        \"2023-10-01-preview\",\r\n        \"2023-06-01-preview\",\r\n        \"2023-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/networkSecurityPerimeterProxies\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/networkSecurityPerimeterProxies/profileProxies\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/networkSecurityPerimeterProxies/profileProxies/accessRuleProxies\",\r\n      \"locations\": [\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-10-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg2157?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMjE1Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg9114?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnOTExND9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6e59f8d-9178-41b6-96b6-d397e9656392"
+          "8a14c2a3-ec6e-451d-a4b6-f106ae9592f0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -85,6 +93,7 @@
           "29"
         ]
       },
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -93,16 +102,19 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
         ],
         "x-ms-request-id": [
-          "0e6b06f9-bda6-4e83-8603-1d36eeb8733f"
+          "066dd0a5-fbd9-4c8f-88a2-3409b252fe25"
         ],
         "x-ms-correlation-request-id": [
-          "0e6b06f9-bda6-4e83-8603-1d36eeb8733f"
+          "066dd0a5-fbd9-4c8f-88a2-3409b252fe25"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052923Z:0e6b06f9-bda6-4e83-8603-1d36eeb8733f"
+          "CANADACENTRAL:20250123T234959Z:066dd0a5-fbd9-4c8f-88a2-3409b252fe25"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -110,8 +122,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: CDE2AE3DA1164D0AA061B5F29776D563 Ref B: CO6AA3150220011 Ref C: 2025-01-23T23:49:57Z"
+        ],
         "Date": [
-          "Thu, 14 Feb 2019 05:29:23 GMT"
+          "Thu, 23 Jan 2025 23:49:58 GMT"
         ],
         "Content-Length": [
           "177"
@@ -123,148 +141,70 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg2157\",\r\n  \"name\": \"pstestrg2157\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg9114\",\r\n  \"name\": \"pstestrg9114\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg2157/providers/Microsoft.CognitiveServices/accounts/csapstestrg2157?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjE1Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMjE1Nz9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {}\r\n}",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/West%20US/usages?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL1dlc3QlMjBVUy91c2FnZXM/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+      "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7c4f790a-fe81-4100-85a6-dc7307c4baef"
+          "3275b1c4-9785-4df9-9d70-5f10a5f07fa0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/4.1.1.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "114"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "ETag": [
-          "\"0a00cf0a-0000-0000-0000-5c64fcb60000\""
-        ],
-        "x-ms-request-id": [
-          "65996089-3ee1-48d6-a113-3af5e0dc12b4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-correlation-request-id": [
-          "f2dadd17-436d-4df5-9b71-38b485cd69d9"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052927Z:f2dadd17-436d-4df5-9b71-38b485cd69d9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:29:26 GMT"
-        ],
-        "Content-Length": [
-          "552"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg2157/providers/Microsoft.CognitiveServices/accounts/csapstestrg2157\",\r\n  \"name\": \"csapstestrg2157\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"0a00cf0a-0000-0000-0000-5c64fcb60000\\\"\",\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://westus.api.cognitive.microsoft.com/text/analytics/v2.0\",\r\n    \"internalId\": \"b28b7c2e9e664365ac0785972b160bf1\",\r\n    \"dateCreated\": \"2019-02-14T05:29:26.5913737Z\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg2157/providers/Microsoft.CognitiveServices/accounts/csapstestrg2157?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjE1Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMjE1Nz9hcGktdmVyc2lvbj0yMDE3LTA0LTE4",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "4ef81e35-a082-48ca-aa12-5ecd2906282d"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/4.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"0a00cf0a-0000-0000-0000-5c64fcb60000\""
-        ],
         "x-ms-request-id": [
-          "8571947f-56c2-4045-b2cb-78ebcdf5810b"
+          "8d617280-e8e4-462b-bc90-7a02e4fd9a8e"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "x-envoy-upstream-service-time": [
+          "199"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "1098"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16498"
         ],
         "x-ms-correlation-request-id": [
-          "f7b2de0e-9d25-485d-8e50-55698da4560a"
+          "dfcb3b25-48d7-4b2b-ae8b-60a312ecc556"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052927Z:f7b2de0e-9d25-485d-8e50-55698da4560a"
+          "CANADACENTRAL:20250123T234959Z:dfcb3b25-48d7-4b2b-ae8b-60a312ecc556"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D000E8BD1282490989A09B64857AD754 Ref B: CO6AA3150219031 Ref C: 2025-01-23T23:49:59Z"
         ],
         "Date": [
-          "Thu, 14 Feb 2019 05:29:27 GMT"
+          "Thu, 23 Jan 2025 23:49:59 GMT"
         ],
         "Content-Length": [
-          "552"
+          "9491"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -273,235 +213,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg2157/providers/Microsoft.CognitiveServices/accounts/csapstestrg2157\",\r\n  \"name\": \"csapstestrg2157\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"0a00cf0a-0000-0000-0000-5c64fcb60000\\\"\",\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://westus.api.cognitive.microsoft.com/text/analytics/v2.0\",\r\n    \"internalId\": \"b28b7c2e9e664365ac0785972b160bf1\",\r\n    \"dateCreated\": \"2019-02-14T05:29:26.5913737Z\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalProvisionedManaged\",\r\n        \"localizedValue\": \"Global Provisioned Managed Throughput Unit\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.Dalle\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - Dalle\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.S0.AccountCount\",\r\n        \"localizedValue\": \"Maximum resources for OpenAI S0 sku.\"\r\n      },\r\n      \"currentValue\": 4,\r\n      \"limit\": 30,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.DataZoneProvisionedManaged\",\r\n        \"localizedValue\": \"Data Zone Provisioned Managed Throughput Unit\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.gpt-35-turbo\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - GPT-35-Turbo\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 300,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalStandard.gpt-35-turbo\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - GPT-35-Turbo - GlobalStandard\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 500,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.LowPriority.gpt-35-turbo\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - GPT-35-Turbo\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 10000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalBatch.gpt-35-turbo\",\r\n        \"localizedValue\": \"Enqueued tokens (thousands) - gpt-35-turbo\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 1000000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-35-turbo\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - GPT-35-Turbo\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 400,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-35-turbo-16k\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - GPT-35-Turbo-16K\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 600,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-35-turbo-1106\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-35-Turbo-1106\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-35-turbo-0125\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-35-Turbo-0125\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-35-turbo-1106\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - GPT-35-Turbo-1106\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalStandard.gpt-4\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - GPT-4 - GlobalStandard\"\r\n      },\r\n      \"currentValue\": 176,\r\n      \"limit\": 300,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.gpt-4-turbo\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - GPT-4-Turbo\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 80,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalStandard.gpt-4-turbo-2024-0409\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - GPT-4-Turbo - GlobalStandard\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 450,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.gptv\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - GPT-4-Turbo-V\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 30,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.LowPriority.gpt-4\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - GPT-4\"\r\n      },\r\n      \"currentValue\": 21,\r\n      \"limit\": 5000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalBatch.gpt-4\",\r\n        \"localizedValue\": \"Enqueued tokens (thousands) - GPT-4\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 30000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalBatch.gpt-4-turbo\",\r\n        \"localizedValue\": \"Enqueued tokens (thousands) - GPT-4-Turbo\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 80000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalBatch.gpt-4o\",\r\n        \"localizedValue\": \"Enqueued tokens (thousands) - GPT-4o\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 200000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalBatch.gpt-4o-mini\",\r\n        \"localizedValue\": \"Enqueued tokens (thousands) - GPT-4o-mini\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 1000000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-4\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - GPT-4\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 900,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-4-turbo\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - GPT-4-Turbo\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-4-0125\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - GPT-4-0125\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-4-turbo-2024-0409\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - GPT-4-Turbo-2024-04-09\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-4\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-4\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-4o-2024-05-13\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-4o-2024-05-13\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-4o-2024-08-06\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-4o-2024-08-06\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-4o-mini-2024-07-18\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-4o-mini-2024-07-18\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-4-1106\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-4-Turbo (1106)\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-4-0125\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-4-Turbo (0125)\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-4-turbo-2024-0409\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-4-Turbo-2024-04-09\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.ProvisionedManaged.gpt-4-32k\",\r\n        \"localizedValue\": \"Provisioned Managed Throughput Unit - GPT-4-32k\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-4-32k\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - GPT-4-32K\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.gpt-4o\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - gpt-4o\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 150,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.gpt-4o-mini\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - gpt-4o-mini\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 450,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-4o\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - gpt-4o\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.gpt-4o-mini\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - gpt-4o-mini\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalStandard.gpt-4o\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - gpt-4o - GlobalStandard\"\r\n      },\r\n      \"currentValue\": 10,\r\n      \"limit\": 450,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalStandard.gpt-4o-mini\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - gpt-4o-mini - GlobalStandard\"\r\n      },\r\n      \"currentValue\": 1003,\r\n      \"limit\": 2000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.DataZoneStandard.gpt-4o\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - gpt-4o - DataZoneStandard\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 300,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.DataZoneStandard.gpt-4o-mini\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - gpt-4o-mini - DataZoneStandard\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 1000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.DataZoneBatch.gpt-4o\",\r\n        \"localizedValue\": \"Enqueued prompt tokens (thousands) - gpt-4o - DataZoneBatch\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 30000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.DataZoneBatch.gpt-4o-mini\",\r\n        \"localizedValue\": \"Enqueued prompt tokens (thousands) - gpt-4o-mini - DataZoneBatch\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 100000,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.o1\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - o1\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 50,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalStandard.o1\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - o1 - GlobalStandard\"\r\n      },\r\n      \"currentValue\": 10,\r\n      \"limit\": 500,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.o1\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - o1\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.o1-mini\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - o1-mini\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 50,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.GlobalStandard.o1-mini\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - o1-mini - GlobalStandard\"\r\n      },\r\n      \"currentValue\": 10,\r\n      \"limit\": 500,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.o1-mini\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - o1-mini\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.text-embedding-ada-002\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - Text-Embedding-Ada-002\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 350,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Standard.text-embedding-3-small\",\r\n        \"localizedValue\": \"Tokens Per Minute (thousands) - text-embedding-3-small\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 350,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.text-embedding-3-small\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - text-embedding-3-small\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"OpenAI.Provisioned.text-embedding-3-large\",\r\n        \"localizedValue\": \"Provisioned Throughput Unit - text-embedding-3-large\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 0,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"AIServices.S0.AccountCount\",\r\n        \"localizedValue\": \"Maximum resources for AIServices S0 sku.\"\r\n      },\r\n      \"currentValue\": 1,\r\n      \"limit\": 50,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"AIServices.GlobalStandard.MaaS\",\r\n        \"localizedValue\": \"Default Quota for Model-as-a-Service Models\"\r\n      },\r\n      \"currentValue\": 0,\r\n      \"limit\": 600,\r\n      \"unit\": \"Count\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"AccountCount\",\r\n        \"localizedValue\": \"Maximum Resources per Region\"\r\n      },\r\n      \"currentValue\": 163,\r\n      \"limit\": 200,\r\n      \"unit\": \"Count\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg2157/providers/Microsoft.CognitiveServices/accounts/csapstestrg2157/usages?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjE1Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMjE1Ny91c2FnZXM/YXBpLXZlcnNpb249MjAxNy0wNC0xOA==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "9ab2885d-cf93-46de-9465-66b6d081a57b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/4.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "20f4aff0-d980-4799-a787-cfbcdb6de53d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-correlation-request-id": [
-          "05ee0104-c164-4082-bd18-753d68d5476b"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052927Z:05ee0104-c164-4082-bd18-753d68d5476b"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:29:27 GMT"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": {\r\n        \"value\": \"textAnalyticsStandardS1\",\r\n        \"localizedValue\": \"textAnalyticsStandardS1\"\r\n      },\r\n      \"status\": \"Included\",\r\n      \"currentValue\": 0.0,\r\n      \"limit\": 100000.0,\r\n      \"nextResetTime\": \"2019-03-01T00:00:00Z\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"CognitiveServices.TextAnalytics.BatchScoring.S1Overage\",\r\n        \"localizedValue\": \"CognitiveServices.TextAnalytics.BatchScoring.S1Overage\"\r\n      },\r\n      \"status\": \"Included\",\r\n      \"currentValue\": 0.0,\r\n      \"limit\": 100000.0,\r\n      \"nextResetTime\": \"2019-03-01T00:00:00Z\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg2157/providers/Microsoft.CognitiveServices/accounts/csapstestrg2157/usages?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjE1Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMjE1Ny91c2FnZXM/YXBpLXZlcnNpb249MjAxNy0wNC0xOA==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "5514608e-6b95-4c21-9292-ab96235f1ba1"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/4.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "39d77b0d-ca2f-43b2-9963-13a164559bf8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-correlation-request-id": [
-          "c5e81e6a-d454-4dbb-b985-46b24782240e"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052927Z:c5e81e6a-d454-4dbb-b985-46b24782240e"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:29:27 GMT"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": {\r\n        \"value\": \"textAnalyticsStandardS1\",\r\n        \"localizedValue\": \"textAnalyticsStandardS1\"\r\n      },\r\n      \"status\": \"Included\",\r\n      \"currentValue\": 0.0,\r\n      \"limit\": 100000.0,\r\n      \"nextResetTime\": \"2019-03-01T00:00:00Z\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"CognitiveServices.TextAnalytics.BatchScoring.S1Overage\",\r\n        \"localizedValue\": \"CognitiveServices.TextAnalytics.BatchScoring.S1Overage\"\r\n      },\r\n      \"status\": \"Included\",\r\n      \"currentValue\": 0.0,\r\n      \"limit\": 100000.0,\r\n      \"nextResetTime\": \"2019-03-01T00:00:00Z\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg2157/providers/Microsoft.CognitiveServices/accounts/csapstestrg2157/usages?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjE1Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMjE1Ny91c2FnZXM/YXBpLXZlcnNpb249MjAxNy0wNC0xOA==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "dfc6d4ef-a29f-48a1-bcfe-7c36eca1c623"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/4.1.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "c863e2ae-9a2d-478f-b30b-ddf239bd491d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-correlation-request-id": [
-          "f666a14f-d205-4a47-86c4-9732757f8d7f"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052928Z:f666a14f-d205-4a47-86c4-9732757f8d7f"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:29:27 GMT"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": {\r\n        \"value\": \"textAnalyticsStandardS1\",\r\n        \"localizedValue\": \"textAnalyticsStandardS1\"\r\n      },\r\n      \"status\": \"Included\",\r\n      \"currentValue\": 0.0,\r\n      \"limit\": 100000.0,\r\n      \"nextResetTime\": \"2019-03-01T00:00:00Z\"\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"CognitiveServices.TextAnalytics.BatchScoring.S1Overage\",\r\n        \"localizedValue\": \"CognitiveServices.TextAnalytics.BatchScoring.S1Overage\"\r\n      },\r\n      \"status\": \"Included\",\r\n      \"currentValue\": 0.0,\r\n      \"limit\": 100000.0,\r\n      \"nextResetTime\": \"2019-03-01T00:00:00Z\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg2157?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMjE1Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg9114?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnOTExND9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "398e2203-eff1-4ecf-b5df-f77f717e30ae"
+          "9fe86210-4a46-4ef5-82ea-466532098724"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -510,22 +243,25 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzkxMTQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01&t=638732730019300006&c=MIIHhzCCBm-gAwIBAgITfAWKQTwBhttpMSs06wAABYpBPDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwOTI0MDEzODIxWhcNMjUwMzIzMDEzODIxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK2dSy75r5r5U3cJBCzE22PUiBo3c9CA_AuEYC2nTJqZ2yRiPE10RQ90S1jDAAFsE05uT5XiCum2p9SEPbe5e9UHnQatm2Th_cx1wEoOhbxFESVlzOs0fNBj-0LM--8Zz-hXnZsvy3KT7WG-qA-kkFlQvW1d7FBq-RBRhWMAdFd8tmpnSkOHeCBSJ2veAbHyxjXtFZB9WRls0cQl6KwfhNLRcq5e8J-gzor28SP_Eq1gkMYsfyMIb63NQtzg_PovMbXNesVUHWwWZvQmSTDsxhw-v_UhOw2Wt1RTN86MtD91_uBIQsu8A1j6Adhtaq5j191GTSUU7ORexZi55sWjeh0CAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBSnNlWMmq3nzgjGfOrGHcijCNxylzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBACQO06lxSFeMRp9So4ixtKwsnWEm81yH4fd2_aSAuu224nItxBEba4_2M2cJwFI6d8s055iW2eyjUWrxk8WmkZC6VJr43LYMWENKKM5dG0OdYyivvAej6pG05AIBhcwTONW8n8nagTF7PKNW02r0QkyIUTkoP_w3JKL54a53ttaSbcZgJTH55vK4kEX2JhzYj-R1U7LOlY21pmeGZpqI75EKXnEGc1-u5_wMr0VROFZtnssYlI9EnPkii3M_dsRUOhxNAzu5loQSAaXD20a4NCWhbbouif7cyWlW8RN79KdNILZZnQzgVvkDaNWu4I6OPl0DX72rEezbMq70AhBJG28&s=BlO9e9vlEW0k3eFyG3YrX_H0gTRF-9Yuxtf9qVKcbe0Q3JjC_l7vZglqv45berSpu4dUyYNBfvltS1NtZvOvYLbA2o3Ay_Jl5xscICLo38aXkPSI7U7gDr29ix-NviSQqrknMscYW057q6k7k0LFjc3pedXL2x2NatG7Kfj0N6vTqGNaLnuEdvAKOHBbNxhPOiOTZHQ3_LhZUJrdjC1EQxOKmNPkq4CXSLS4vCBnYrEF0t0nNM0vGFy7uYu07BlQA4prwdvGvT9Xg37ONIL6AkZxOhG1uefXSEsAdeGL1uzmWBPA7QF8rjnHAwPUnoLqIh1X9qBd16jC0of-7kqNfw&h=u4RbakYn7Zq8Nav5KprhbK4BP_JlWMwYMKZXpGUm4Yc"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [
+          "11999"
         ],
         "x-ms-request-id": [
-          "28ef8395-5a53-4f73-a0c6-45c695cebc31"
+          "8631c452-f111-4a5b-9214-4e7690e6ba17"
         ],
         "x-ms-correlation-request-id": [
-          "28ef8395-5a53-4f73-a0c6-45c695cebc31"
+          "8631c452-f111-4a5b-9214-4e7690e6ba17"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052930Z:28ef8395-5a53-4f73-a0c6-45c695cebc31"
+          "CANADAEAST:20250123T235001Z:8631c452-f111-4a5b-9214-4e7690e6ba17"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -533,8 +269,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A1788214BB7D407EB8AC713993A8FE09 Ref B: CO6AA3150217051 Ref C: 2025-01-23T23:49:59Z"
+        ],
         "Date": [
-          "Thu, 14 Feb 2019 05:29:29 GMT"
+          "Thu, 23 Jan 2025 23:50:01 GMT"
         ],
         "Expires": [
           "-1"
@@ -547,360 +289,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekl4TlRjdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzkxMTQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01&t=638732730019300006&c=MIIHhzCCBm-gAwIBAgITfAWKQTwBhttpMSs06wAABYpBPDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwOTI0MDEzODIxWhcNMjUwMzIzMDEzODIxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK2dSy75r5r5U3cJBCzE22PUiBo3c9CA_AuEYC2nTJqZ2yRiPE10RQ90S1jDAAFsE05uT5XiCum2p9SEPbe5e9UHnQatm2Th_cx1wEoOhbxFESVlzOs0fNBj-0LM--8Zz-hXnZsvy3KT7WG-qA-kkFlQvW1d7FBq-RBRhWMAdFd8tmpnSkOHeCBSJ2veAbHyxjXtFZB9WRls0cQl6KwfhNLRcq5e8J-gzor28SP_Eq1gkMYsfyMIb63NQtzg_PovMbXNesVUHWwWZvQmSTDsxhw-v_UhOw2Wt1RTN86MtD91_uBIQsu8A1j6Adhtaq5j191GTSUU7ORexZi55sWjeh0CAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBSnNlWMmq3nzgjGfOrGHcijCNxylzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBACQO06lxSFeMRp9So4ixtKwsnWEm81yH4fd2_aSAuu224nItxBEba4_2M2cJwFI6d8s055iW2eyjUWrxk8WmkZC6VJr43LYMWENKKM5dG0OdYyivvAej6pG05AIBhcwTONW8n8nagTF7PKNW02r0QkyIUTkoP_w3JKL54a53ttaSbcZgJTH55vK4kEX2JhzYj-R1U7LOlY21pmeGZpqI75EKXnEGc1-u5_wMr0VROFZtnssYlI9EnPkii3M_dsRUOhxNAzu5loQSAaXD20a4NCWhbbouif7cyWlW8RN79KdNILZZnQzgVvkDaNWu4I6OPl0DX72rEezbMq70AhBJG28&s=BlO9e9vlEW0k3eFyG3YrX_H0gTRF-9Yuxtf9qVKcbe0Q3JjC_l7vZglqv45berSpu4dUyYNBfvltS1NtZvOvYLbA2o3Ay_Jl5xscICLo38aXkPSI7U7gDr29ix-NviSQqrknMscYW057q6k7k0LFjc3pedXL2x2NatG7Kfj0N6vTqGNaLnuEdvAKOHBbNxhPOiOTZHQ3_LhZUJrdjC1EQxOKmNPkq4CXSLS4vCBnYrEF0t0nNM0vGFy7uYu07BlQA4prwdvGvT9Xg37ONIL6AkZxOhG1uefXSEsAdeGL1uzmWBPA7QF8rjnHAwPUnoLqIh1X9qBd16jC0of-7kqNfw&h=u4RbakYn7Zq8Nav5KprhbK4BP_JlWMwYMKZXpGUm4Yc",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemt4TVRRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAxJnQ9NjM4NzMyNzMwMDE5MzAwMDA2JmM9TUlJSGh6Q0NCbS1nQXdJQkFnSVRmQVdLUVR3Qmh0dHBNU3MwNndBQUJZcEJQREFOQmdrcWhraUc5dzBCQVFzRkFEQkVNUk13RVFZS0NaSW1pWlB5TEdRQkdSWURSMEpNTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUVUxRk1SZ3dGZ1lEVlFRREV3OUJUVVVnU1c1bWNtRWdRMEVnTURVd0hoY05NalF3T1RJME1ERXpPREl4V2hjTk1qVXdNekl6TURFek9ESXhXakJBTVQ0d1BBWURWUVFERXpWaGMzbHVZMjl3WlhKaGRHbHZibk5wWjI1cGJtZGpaWEowYVdacFkyRjBaUzV0WVc1aFoyVnRaVzUwTG1GNmRYSmxMbU52YlRDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBSzJkU3k3NXI1cjVVM2NKQkN6RTIyUFVpQm8zYzlDQV9BdUVZQzJuVEpxWjJ5UmlQRTEwUlE5MFMxakRBQUZzRTA1dVQ1WGlDdW0ycDlTRVBiZTVlOVVIblFhdG0yVGhfY3gxd0VvT2hieEZFU1Zsek9zMGZOQmotMExNLS04WnotaFhuWnN2eTNLVDdXRy1xQS1ra0ZsUXZXMWQ3RkJxLVJCUmhXTUFkRmQ4dG1wblNrT0hlQ0JTSjJ2ZUFiSHl4alh0RlpCOVdSbHMwY1FsNkt3ZmhOTFJjcTVlOEotZ3pvcjI4U1BfRXExZ2tNWXNmeU1JYjYzTlF0emdfUG92TWJYTmVzVlVIV3dXWnZRbVNURHN4aHctdl9VaE93Mld0MVJUTjg2TXREOTFfdUJJUXN1OEExajZBZGh0YXE1ajE5MUdUU1VVN09SZXhaaTU1c1dqZWgwQ0F3RUFBYU9DQkhRd2dnUndNQ2NHQ1NzR0FRUUJnamNWQ2dRYU1CZ3dDZ1lJS3dZQkJRVUhBd0V3Q2dZSUt3WUJCUVVIQXdJd1BRWUpLd1lCQkFHQ054VUhCREF3TGdZbUt3WUJCQUdDTnhVSWhwRGpEWVRWdEhpRThZcy1oWnZkRnM2ZEVvRmdoZm1SUzRXc21UUUNBV1FDQVFjd2dnSExCZ2dyQmdFRkJRY0JBUVNDQWIwd2dnRzVNR01HQ0NzR0FRVUZCekFDaGxkb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2Y0d0cGFXNW1jbUV2UTJWeWRITXZRMDh4VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd05TNWpjblF3VXdZSUt3WUJCUVVITUFLR1IyaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBOUE1WQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKME1GTUdDQ3NHQVFVRkJ6QUNoa2RvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOURUekZRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBMUxtTnlkREJUQmdnckJnRUZCUWN3QW9aSGFIUjBjRG92TDJOeWJETXVZVzFsTG1kaWJDOWhhV0V2UTA4eFVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOUzVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwTlBNVkJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSjBNQjBHQTFVZERnUVdCQlNuTmxXTW1xM256Z2pHZk9yR0hjaWpDTnh5bHpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFbUJnTlZIUjhFZ2dFZE1JSUJHVENDQVJXZ2dnRVJvSUlCRFlZX2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNUzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzaGpGb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSnNoakZvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNOQzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdFd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JSNjFobUZLSGxzY1hZZVlQanpTLS1pQlVJV0hUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUNRTzA2bHhTRmVNUnA5U280aXh0S3dzbldFbTgxeUg0ZmQyX2FTQXV1MjI0bkl0eEJFYmE0XzJNMmNKd0ZJNmQ4czA1NWlXMmV5alVXcnhrOFdta1pDNlZKcjQzTFlNV0VOS0tNNWRHME9kWXlpdnZBZWo2cEcwNUFJQmhjd1RPTlc4bjhuYWdURjdQS05XMDJyMFFreUlVVGtvUF93M0pLTDU0YTUzdHRhU2JjWmdKVEg1NXZLNGtFWDJKaHpZai1SMVU3TE9sWTIxcG1lR1pwcUk3NUVLWG5FR2MxLXU1X3dNcjBWUk9GWnRuc3NZbEk5RW5Qa2lpM01fZHNSVU9oeE5BenU1bG9RU0FhWEQyMGE0TkNXaGJib3VpZjdjeVdsVzhSTjc5S2ROSUxaWm5RemdWdmtEYU5XdTRJNk9QbDBEWDcyckVlemJNcTcwQWhCSkcyOCZzPUJsTzllOXZsRVcwazNlRnlHM1lyWF9IMGdUUkYtOVl1eHRmOXFWS2NiZTBRM0pqQ19sN3ZaZ2xxdjQ1YmVyU3B1NGRVeVlOQmZ2bHRTMU50WnZPdllMYkEybzNBeV9KbDV4c2NJQ0xvMzhhWGtQU0k3VTdnRHIyOWl4LU52aVNRcXJrbk1zY1lXMDU3cTZrN2swTEZqYzNwZWRYTDJ4Mk5hdEc3S2ZqME42dlRxR05hTG51RWR2QUtPSEJiTnhoUE9pT1RaSFEzX0xoWlVKcmRqQzFFUXhPS21OUGtxNENYU0xTNHZDQm5ZckVGMHQwbk5NMHZHRnk3dVl1MDdCbFFBNHByd2R2R3ZUOVhnMzdPTklMNkFrWnhPaEcxdWVmWFNFc0FkZUdMMXV6bVdCUEE3UUY4cmpuSEF3UFVub0xxSWgxWDlxQmQxNmpDMG9mLTdrcU5mdyZoPXU0UmJha1luN1pxOE5hdjVLcHJoYks0QlBfSmxXTXdZTUtaWHBHVW00WWM=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
-        ],
-        "x-ms-request-id": [
-          "b1f9bf19-b3ce-420d-b701-ad9df9c6d743"
-        ],
-        "x-ms-correlation-request-id": [
-          "b1f9bf19-b3ce-420d-b701-ad9df9c6d743"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T052945Z:b1f9bf19-b3ce-420d-b701-ad9df9c6d743"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:29:45 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekl4TlRjdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
       "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
-        ],
-        "x-ms-request-id": [
-          "f0ea29c1-8f31-45cc-983b-7cc2703affaa"
-        ],
-        "x-ms-correlation-request-id": [
-          "f0ea29c1-8f31-45cc-983b-7cc2703affaa"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T053001Z:f0ea29c1-8f31-45cc-983b-7cc2703affaa"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:30:00 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekl4TlRjdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
-        ],
-        "x-ms-request-id": [
-          "ddcd687a-cb35-4503-a8f8-75ece67ce185"
-        ],
-        "x-ms-correlation-request-id": [
-          "ddcd687a-cb35-4503-a8f8-75ece67ce185"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T053016Z:ddcd687a-cb35-4503-a8f8-75ece67ce185"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:30:15 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekl4TlRjdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11983"
-        ],
-        "x-ms-request-id": [
-          "8c5e3937-a324-4517-96f8-085d19a76830"
-        ],
-        "x-ms-correlation-request-id": [
-          "8c5e3937-a324-4517-96f8-085d19a76830"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T053031Z:8c5e3937-a324-4517-96f8-085d19a76830"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:30:30 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekl4TlRjdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
-        ],
-        "x-ms-request-id": [
-          "9f312499-919d-4c12-9c93-90c6bd97c314"
-        ],
-        "x-ms-correlation-request-id": [
-          "9f312499-919d-4c12-9c93-90c6bd97c314"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T053047Z:9f312499-919d-4c12-9c93-90c6bd97c314"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:30:46 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekl4TlRjdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
-        ],
-        "x-ms-request-id": [
-          "5d752711-1e56-45c9-aac6-068e812df791"
-        ],
-        "x-ms-correlation-request-id": [
-          "5d752711-1e56-45c9-aac6-068e812df791"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T053102Z:5d752711-1e56-45c9-aac6-068e812df791"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 14 Feb 2019 05:31:01 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekl4TlRjdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.27019.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
-        ]
-      },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -909,16 +309,19 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "f4a44795-b750-4f97-a97b-4e40a2abba62"
+          "f9028813-f0b9-4cb1-b5ad-9666010d2bc4"
         ],
         "x-ms-correlation-request-id": [
-          "f4a44795-b750-4f97-a97b-4e40a2abba62"
+          "f9028813-f0b9-4cb1-b5ad-9666010d2bc4"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T053117Z:f4a44795-b750-4f97-a97b-4e40a2abba62"
+          "CANADAEAST:20250123T235017Z:f9028813-f0b9-4cb1-b5ad-9666010d2bc4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -926,8 +329,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 2B0425D2F2FF4AC1BE2DA8A99776EC17 Ref B: CO6AA3150217051 Ref C: 2025-01-23T23:50:17Z"
+        ],
         "Date": [
-          "Thu, 14 Feb 2019 05:31:17 GMT"
+          "Thu, 23 Jan 2025 23:50:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -940,18 +349,18 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzIxNTctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekl4TlRjdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzkxMTQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01&t=638732730019300006&c=MIIHhzCCBm-gAwIBAgITfAWKQTwBhttpMSs06wAABYpBPDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwOTI0MDEzODIxWhcNMjUwMzIzMDEzODIxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK2dSy75r5r5U3cJBCzE22PUiBo3c9CA_AuEYC2nTJqZ2yRiPE10RQ90S1jDAAFsE05uT5XiCum2p9SEPbe5e9UHnQatm2Th_cx1wEoOhbxFESVlzOs0fNBj-0LM--8Zz-hXnZsvy3KT7WG-qA-kkFlQvW1d7FBq-RBRhWMAdFd8tmpnSkOHeCBSJ2veAbHyxjXtFZB9WRls0cQl6KwfhNLRcq5e8J-gzor28SP_Eq1gkMYsfyMIb63NQtzg_PovMbXNesVUHWwWZvQmSTDsxhw-v_UhOw2Wt1RTN86MtD91_uBIQsu8A1j6Adhtaq5j191GTSUU7ORexZi55sWjeh0CAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBSnNlWMmq3nzgjGfOrGHcijCNxylzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBACQO06lxSFeMRp9So4ixtKwsnWEm81yH4fd2_aSAuu224nItxBEba4_2M2cJwFI6d8s055iW2eyjUWrxk8WmkZC6VJr43LYMWENKKM5dG0OdYyivvAej6pG05AIBhcwTONW8n8nagTF7PKNW02r0QkyIUTkoP_w3JKL54a53ttaSbcZgJTH55vK4kEX2JhzYj-R1U7LOlY21pmeGZpqI75EKXnEGc1-u5_wMr0VROFZtnssYlI9EnPkii3M_dsRUOhxNAzu5loQSAaXD20a4NCWhbbouif7cyWlW8RN79KdNILZZnQzgVvkDaNWu4I6OPl0DX72rEezbMq70AhBJG28&s=BlO9e9vlEW0k3eFyG3YrX_H0gTRF-9Yuxtf9qVKcbe0Q3JjC_l7vZglqv45berSpu4dUyYNBfvltS1NtZvOvYLbA2o3Ay_Jl5xscICLo38aXkPSI7U7gDr29ix-NviSQqrknMscYW057q6k7k0LFjc3pedXL2x2NatG7Kfj0N6vTqGNaLnuEdvAKOHBbNxhPOiOTZHQ3_LhZUJrdjC1EQxOKmNPkq4CXSLS4vCBnYrEF0t0nNM0vGFy7uYu07BlQA4prwdvGvT9Xg37ONIL6AkZxOhG1uefXSEsAdeGL1uzmWBPA7QF8rjnHAwPUnoLqIh1X9qBd16jC0of-7kqNfw&h=u4RbakYn7Zq8Nav5KprhbK4BP_JlWMwYMKZXpGUm4Yc",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemt4TVRRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAxJnQ9NjM4NzMyNzMwMDE5MzAwMDA2JmM9TUlJSGh6Q0NCbS1nQXdJQkFnSVRmQVdLUVR3Qmh0dHBNU3MwNndBQUJZcEJQREFOQmdrcWhraUc5dzBCQVFzRkFEQkVNUk13RVFZS0NaSW1pWlB5TEdRQkdSWURSMEpNTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUVUxRk1SZ3dGZ1lEVlFRREV3OUJUVVVnU1c1bWNtRWdRMEVnTURVd0hoY05NalF3T1RJME1ERXpPREl4V2hjTk1qVXdNekl6TURFek9ESXhXakJBTVQ0d1BBWURWUVFERXpWaGMzbHVZMjl3WlhKaGRHbHZibk5wWjI1cGJtZGpaWEowYVdacFkyRjBaUzV0WVc1aFoyVnRaVzUwTG1GNmRYSmxMbU52YlRDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBSzJkU3k3NXI1cjVVM2NKQkN6RTIyUFVpQm8zYzlDQV9BdUVZQzJuVEpxWjJ5UmlQRTEwUlE5MFMxakRBQUZzRTA1dVQ1WGlDdW0ycDlTRVBiZTVlOVVIblFhdG0yVGhfY3gxd0VvT2hieEZFU1Zsek9zMGZOQmotMExNLS04WnotaFhuWnN2eTNLVDdXRy1xQS1ra0ZsUXZXMWQ3RkJxLVJCUmhXTUFkRmQ4dG1wblNrT0hlQ0JTSjJ2ZUFiSHl4alh0RlpCOVdSbHMwY1FsNkt3ZmhOTFJjcTVlOEotZ3pvcjI4U1BfRXExZ2tNWXNmeU1JYjYzTlF0emdfUG92TWJYTmVzVlVIV3dXWnZRbVNURHN4aHctdl9VaE93Mld0MVJUTjg2TXREOTFfdUJJUXN1OEExajZBZGh0YXE1ajE5MUdUU1VVN09SZXhaaTU1c1dqZWgwQ0F3RUFBYU9DQkhRd2dnUndNQ2NHQ1NzR0FRUUJnamNWQ2dRYU1CZ3dDZ1lJS3dZQkJRVUhBd0V3Q2dZSUt3WUJCUVVIQXdJd1BRWUpLd1lCQkFHQ054VUhCREF3TGdZbUt3WUJCQUdDTnhVSWhwRGpEWVRWdEhpRThZcy1oWnZkRnM2ZEVvRmdoZm1SUzRXc21UUUNBV1FDQVFjd2dnSExCZ2dyQmdFRkJRY0JBUVNDQWIwd2dnRzVNR01HQ0NzR0FRVUZCekFDaGxkb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2Y0d0cGFXNW1jbUV2UTJWeWRITXZRMDh4VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd05TNWpjblF3VXdZSUt3WUJCUVVITUFLR1IyaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBOUE1WQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKME1GTUdDQ3NHQVFVRkJ6QUNoa2RvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOURUekZRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBMUxtTnlkREJUQmdnckJnRUZCUWN3QW9aSGFIUjBjRG92TDJOeWJETXVZVzFsTG1kaWJDOWhhV0V2UTA4eFVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOUzVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwTlBNVkJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSjBNQjBHQTFVZERnUVdCQlNuTmxXTW1xM256Z2pHZk9yR0hjaWpDTnh5bHpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFbUJnTlZIUjhFZ2dFZE1JSUJHVENDQVJXZ2dnRVJvSUlCRFlZX2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNUzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzaGpGb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURVdVkzSnNoakZvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFV1WTNKc2hqRm9kSFJ3T2k4dlkzSnNOQzVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EVXVZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdFd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JSNjFobUZLSGxzY1hZZVlQanpTLS1pQlVJV0hUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUNRTzA2bHhTRmVNUnA5U280aXh0S3dzbldFbTgxeUg0ZmQyX2FTQXV1MjI0bkl0eEJFYmE0XzJNMmNKd0ZJNmQ4czA1NWlXMmV5alVXcnhrOFdta1pDNlZKcjQzTFlNV0VOS0tNNWRHME9kWXlpdnZBZWo2cEcwNUFJQmhjd1RPTlc4bjhuYWdURjdQS05XMDJyMFFreUlVVGtvUF93M0pLTDU0YTUzdHRhU2JjWmdKVEg1NXZLNGtFWDJKaHpZai1SMVU3TE9sWTIxcG1lR1pwcUk3NUVLWG5FR2MxLXU1X3dNcjBWUk9GWnRuc3NZbEk5RW5Qa2lpM01fZHNSVU9oeE5BenU1bG9RU0FhWEQyMGE0TkNXaGJib3VpZjdjeVdsVzhSTjc5S2ROSUxaWm5RemdWdmtEYU5XdTRJNk9QbDBEWDcyckVlemJNcTcwQWhCSkcyOCZzPUJsTzllOXZsRVcwazNlRnlHM1lyWF9IMGdUUkYtOVl1eHRmOXFWS2NiZTBRM0pqQ19sN3ZaZ2xxdjQ1YmVyU3B1NGRVeVlOQmZ2bHRTMU50WnZPdllMYkEybzNBeV9KbDV4c2NJQ0xvMzhhWGtQU0k3VTdnRHIyOWl4LU52aVNRcXJrbk1zY1lXMDU3cTZrN2swTEZqYzNwZWRYTDJ4Mk5hdEc3S2ZqME42dlRxR05hTG51RWR2QUtPSEJiTnhoUE9pT1RaSFEzX0xoWlVKcmRqQzFFUXhPS21OUGtxNENYU0xTNHZDQm5ZckVGMHQwbk5NMHZHRnk3dVl1MDdCbFFBNHByd2R2R3ZUOVhnMzdPTklMNkFrWnhPaEcxdWVmWFNFc0FkZUdMMXV6bVdCUEE3UUY4cmpuSEF3UFVub0xxSWgxWDlxQmQxNmpDMG9mLTdrcU5mdyZoPXU0UmJha1luN1pxOE5hdjVLcHJoYks0QlBfSmxXTXdZTUtaWHBHVW00WWM=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27019.06",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.16"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -960,16 +369,19 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "36a2afe7-0bdf-441b-8ba6-ed33f63657ba"
+          "66bf234d-23f1-41f3-8718-afad70085608"
         ],
         "x-ms-correlation-request-id": [
-          "36a2afe7-0bdf-441b-8ba6-ed33f63657ba"
+          "66bf234d-23f1-41f3-8718-afad70085608"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20190214T053117Z:36a2afe7-0bdf-441b-8ba6-ed33f63657ba"
+          "CANADAEAST:20250123T235018Z:66bf234d-23f1-41f3-8718-afad70085608"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -977,8 +389,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3A8C4E6C02A44211897CBC20859EB4D5 Ref B: CO6AA3150217051 Ref C: 2025-01-23T23:50:17Z"
+        ],
         "Date": [
-          "Thu, 14 Feb 2019 05:31:17 GMT"
+          "Thu, 23 Jan 2025 23:50:17 GMT"
         ],
         "Expires": [
           "-1"
@@ -992,8 +410,8 @@
     }
   ],
   "Names": {
-    "Test-GetUsages": [
-      "pstestrg2157"
+    "Test-GetAzureCognitiveServicesUsages": [
+      "pstestrg9114"
     ]
   },
   "Variables": {

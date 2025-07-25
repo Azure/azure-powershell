@@ -22,6 +22,8 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -54,13 +56,16 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the property of 'Location'
         public string Location { get; set; }
 
+        // Gets or sets the property of 'EdgeZone'
+        public ExtendedLocation ExtendedLocation { get; set; }
+
         // Gets or sets the license type
         public string LicenseType { get; set; }
 
         // Gets or sets the property of 'Tags'
         public IDictionary<string, string> Tags { get; set; }
 
-        // Gets or sets the reference Id of the availailbity set to which this virtual machine belongs.
+        // Gets or sets the reference Id of the availability set to which this virtual machine belongs.
         public SubResource AvailabilitySetReference { get; set; }
 
         // Gets or sets the diagnostics profile.
@@ -80,6 +85,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         //Gets or sets the security profile 
         public SecurityProfile SecurityProfile { get; set; }
+
+        //Gets or sets the OS name
+        public string OsName { get; set; }
+        //Gets or sets the OS version
+        public string OsVersion { get; set; }
+        //Gets or sets the HyperV Generation
+        public string HyperVGeneration { get; set; }
 
         // Gets or sets the OS profile.
         public OSProfile OSProfile { get; set; }
@@ -127,5 +139,23 @@ namespace Microsoft.Azure.Commands.Compute.Models
         
         // Gets or sets the HostGroup
         public SubResource HostGroup { get; set; }
+
+        public CapacityReservationProfile CapacityReservation { get; set; }
+        
+        // Gets or sets the UserData
+        public string UserData { get; set; }
+        
+        public PSApplicationProfile ApplicationProfile { get; set; }
+
+        public int? PlatformFaultDomain { get; set; }
+
+        //
+        // Summary:
+        //     Gets specifies the time at which the Virtual Machine resource was created.&lt;br&gt;&lt;br&gt;Minimum
+        //     api-version: 2022-03-01.
+        public DateTime? TimeCreated { get; private set; }
+        public string Etag { get; private set; }
+
+        public Placement Placement { get; set; }
     }
 }

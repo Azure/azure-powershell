@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 11D5BFDF-5E5D-46B2-9F9B-A0524EFA1B42
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -25,6 +25,18 @@ Get-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### GetDeletedAccountParameterSet
+```
+Get-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ListDeletedAccountParameterSet
+```
+Get-AzCognitiveServicesAccount [-InRemovedState] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzCognitiveServicesAccount** cmdlet gets the provisioned Cognitive Services accounts in the resource group specified by the *ResourceGroupName* parameter.
 If you do not specify the *ResourceGroupName* parameter, this cmdlet gets all Cognitive Services accounts for the current subscription.
@@ -33,21 +45,35 @@ If you do not specify the *ResourceGroupName* parameter, this cmdlet gets all Co
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locati
-on 'WestUS'
+Get-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
+```
 
-ResourceGroupName : cognitive-services-resource-group
-AccountName       : myluis
-Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
-                    nitiveServices/accounts/myluis
-Endpoint          : https://westus.api.cognitive.microsoft.com/luis/v2.0
-Location          : WESTUS
-Sku               : Microsoft.Azure.Management.CognitiveServices.Models.Sku
-AccountType       : LUIS
-ResourceType      : Microsoft.CognitiveServices/accounts
-Etag              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-ProvisioningState : Succeeded
-Tags              :
+```output
+ResourceGroupName             : cognitive-services-resource-group
+AccountName                   : myluis
+Id                            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
+                                nitiveServices/accounts/myluis
+Endpoint                      : https://westus.api.cognitive.microsoft.com/luis/v2.0
+Location                      : WESTUS
+Sku                           : Microsoft.Azure.Management.CognitiveServices.Models.Sku
+AccountType                   : LUIS
+ResourceType                  : Microsoft.CognitiveServices/accounts
+Etag                          : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ProvisioningState             : Succeeded
+CustomSubDomainName           : 
+PublicNetworkAccess           : Enabled
+Identity                      : 
+Encryption                    : 
+UserOwnedStorage              : 
+PrivateEndpointConnections    : {}
+ApiProperties                 : 
+Properties                    : Microsoft.Azure.Management.CognitiveServices.Models.AccountProperties
+RestrictOutboundNetworkAccess : 
+AllowedFqdnList               : 
+DisableLocalAuth              : 
+NetworkRuleSet                : 
+Capabilities                  : {DynamicThrottling, VirtualNetworks, Container}
+Tags                          :
 ```
 
 ## PARAMETERS
@@ -67,12 +93,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Specifies whether to only show the deleted accounts in the output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetDeletedAccountParameterSet, ListDeletedAccountParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Cognitive Services Account Location.
+
+```yaml
+Type: System.String
+Parameter Sets: GetDeletedAccountParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Cognitive Services account to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameParameterSet
+Parameter Sets: AccountNameParameterSet, GetDeletedAccountParameterSet
 Aliases: CognitiveServicesAccountName, AccountName
 
 Required: True
@@ -99,7 +155,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameParameterSet
+Parameter Sets: AccountNameParameterSet, GetDeletedAccountParameterSet
 Aliases:
 
 Required: True

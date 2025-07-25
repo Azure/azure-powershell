@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotCentral.dll-Help.xml
 Module Name: Az.IotCentral
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral/new-aziotcentralapp
+online version: https://learn.microsoft.com/powershell/module/az.iotcentral/new-aziotcentralapp
 schema: 2.0.0
 ---
 
@@ -14,22 +14,22 @@ Creates a new IoT Central Application.
 
 ```
 New-AzIotCentralApp [-Subdomain] <String> [-DisplayName <String>] [-Template <String>] [-Sku <String>]
- [-Location <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Location <String>] [-Tag <Hashtable>] [-AsJob] [-Identity <String>] [-ResourceGroupName] <String>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new IoT Central Application with the provided properties and metadata. For an introduction to IoT Central, see https://docs.microsoft.com/en-us/azure/iot-central/.
+Creates a new IoT Central Application with the provided properties and metadata. For an introduction to IoT Central, see https://learn.microsoft.com/azure/iot-central/.
 
 ## EXAMPLES
 
 ### Example 1 Create simple IoT Central Application.
 ```powershell
-PS C:\> New-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "MyAppSubdomain"
+New-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "MyAppSubdomain"
 ```
 
-Example Output:
-
+```output
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
                     .IoTCentral/IoTApps/MyAppResourceName
 Name              : MyAppResourceName
@@ -43,16 +43,17 @@ Subdomain         : MyAppSubdomain
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
+```
 
 Create an IoT Central application in the standard pricing tier ST2, in the region of the resource group.
 
 ### Example 2 Create simple IoT Central Application.
 ```powershell
-PS C:\> New-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "MyAppSubdomain" -Sku "ST2" -DisplayName "My Custom Display Name" -Template "iotc-default" -Location "westus"
+New-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -Subdomain "MyAppSubdomain" -Sku "ST2" -DisplayName "My Custom Display Name" -Template "iotc-default" -Location "westus"
 ```
 
-Example Output:
-
+```output
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft
                     .IoTCentral/IoTApps/MyAppResourceName
 Name              : MyAppResourceName
@@ -66,6 +67,8 @@ Subdomain         : MyAppSubdomain
 Template          : iotc-default@1.0.0
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
+```
 
 Create an IoT Central application with the standard pricing tier ST2 in the 'westus' region, with a custom display name, based on the iotc-default template.
 
@@ -114,6 +117,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Identity
+The type of managed identity for the IoT Central application.
+Default value is None. System-assigned managed identities are supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

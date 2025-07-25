@@ -13,22 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.RecoveryServices.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
     /// Sets Azure Recovery Services Vault Backup Properties.
-    /// </summary>
-    [GenericBreakingChange("Set-AzRecoveryServicesBackupProperties alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProperty", SupportsShouldProcess = true), OutputType(typeof(void))]
-    [Alias("Set-AzRecoveryServicesBackupProperties")]
+    /// </summary>    
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProperty", SupportsShouldProcess = true), OutputType(typeof(void))]    
     public class SetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -38,11 +32,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
+
         /// <summary>
         /// Gets or sets BackupStorageRedundancy type.
         /// </summary>
         [Parameter(Mandatory = false)]
         public AzureRmRecoveryServicesBackupStorageRedundancyType? BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets CrossRegionRestore flag.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter EnableCrossRegionRestore { get; set; }
 
         #endregion Parameters
 
@@ -54,15 +55,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             if (ShouldProcess(Resources.VaultTarget, "set"))
             {
                 try
-                {
-                    if (this.BackupStorageRedundancy.HasValue)
-                    {
-                        BackupResourceConfigResource vaultStorageRequest = new BackupResourceConfigResource();
-                        BackupResourceConfig properties = new BackupResourceConfig();
-                        vaultStorageRequest.Properties = properties;
-                        vaultStorageRequest.Properties.StorageModelType = BackupStorageRedundancy.ToString();
-                        RecoveryServicesClient.UpdateVaultStorageType(
-                            this.Vault.ResourceGroupName, this.Vault.Name, vaultStorageRequest);
+                {                    
+                    PatchVault patchVault = new PatchVault();
+                    patchVault.Properties = new VaultProperties();
+                    patchVault.Properties.RedundancySettings = new VaultPropertiesRedundancySettings();
+
+                    Vault vault = RecoveryServicesClient.GetVault(this.Vault.ResourceGroupName, this.Vault.Name);
+
+                    if (this.BackupStorageRedundancy.HasValue || this.EnableCrossRegionRestore.IsPresent)
+                    {                        
+                        var patchRedundancySettings = patchVault.Properties.RedundancySettings;
+                        var vaultRedundancySettings = vault.Properties?.RedundancySettings;
+
+                        patchRedundancySettings.StandardTierStorageRedundancy = this.BackupStorageRedundancy?.ToString()
+                            ?? vaultRedundancySettings?.StandardTierStorageRedundancy
+                            ?? patchRedundancySettings.StandardTierStorageRedundancy;
+
+                        patchRedundancySettings.CrossRegionRestore = this.EnableCrossRegionRestore.IsPresent
+                            ? "Enabled"
+                            : vaultRedundancySettings?.CrossRegionRestore ?? patchRedundancySettings.CrossRegionRestore;
+
+                        var result = RecoveryServicesClient.UpdateRSVault(this.Vault.ResourceGroupName, this.Vault.Name, patchVault);
                     }
                     else
                     {

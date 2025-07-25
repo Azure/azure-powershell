@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azgallery
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgallery
 schema: 2.0.0
 ---
 
@@ -15,13 +15,14 @@ Delete a gallery.
 ### DefaultParameter (Default)
 ```
 Remove-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Remove-AzGallery [-Force] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzGallery [-Force] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
@@ -37,7 +38,7 @@ Delete a gallery.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName
+Remove-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName
 ```
 
 Delete the given gallery.

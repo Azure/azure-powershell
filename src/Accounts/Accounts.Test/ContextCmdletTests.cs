@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile;
-using Microsoft.Azure.Commands.Profile.Models;
 // TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
@@ -25,15 +23,21 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Xunit;
-using Xunit.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System;
-using Microsoft.Azure.Commands.ScenarioTest.Extensions;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Profile.Context;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
+using Microsoft.Azure.Commands.TestFx.Mocks;
+using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Moq;
+using System;
+using System.IO;
+using System.Linq;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -41,6 +45,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
+        private MockPowerShellTokenCacheProvider tokenCacheProviderMock;
         const string guid1 = "a0cc8bd7-2c6a-47e9-a4c4-3f6ed136e240";
         const string guid2 = "eab635c0-a35a-4f70-9e46-e5351c7b5c8b";
         const string guid3 = "52f66548-2550-417b-941e-9d6e04f3ac8d";
@@ -52,7 +57,16 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            tokenCacheProviderMock = new MockPowerShellTokenCacheProvider();
+            AzureSession.Instance.RegisterComponent<PowerShellTokenCacheProvider>(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenCacheProviderMock);
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "True");
+
+            Mock<IStorage> storageMocker = new Mock<IStorage>();
+            AzKeyStore azKeyStore = null;
+            string profilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName);
+            azKeyStore = new AzKeyStore(profilePath, AzureSession.Instance.KeyStoreFile, true, storageMocker.Object);
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => azKeyStore, true);
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
         }
 
         [Fact]
@@ -243,8 +257,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Single(commandRuntimeMock.OutputPipeline);
             var result = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(result);
-            Assert.True(profile.Contexts != null);
-            Assert.Equal(1, profile.Contexts.Count);
+            Assert.NotNull(profile.Contexts);
+            Assert.Single(profile.Contexts);
             Assert.True(profile.Contexts.ContainsKey("Default"));
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
@@ -625,7 +639,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Single(commandRuntimeMock.OutputPipeline);
             bool testResult = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(testResult);
-            Assert.Equal(1, profile.Contexts.Count);
+            Assert.Single(profile.Contexts);
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
             Assert.Null(profile.DefaultContext.Subscription);
@@ -650,7 +664,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Single(commandRuntimeMock.OutputPipeline);
             bool testResult = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(testResult);
-            Assert.Equal(1, profile.Contexts.Count);
+            Assert.Single(profile.Contexts);
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
             Assert.Null(profile.DefaultContext.Subscription);
@@ -780,12 +794,49 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Assert.Equal(Guid.Empty.ToString(), subscription.Id);
                 Assert.NotNull(context.Environment);
                 Assert.Equal("testCloud", context.Environment.Name);
-                Assert.Equal(5, profile.EnvironmentTable.Count);
+                Assert.Equal(4, profile.EnvironmentTable.Count);
             }
             finally
             {
                 AzureSession.Instance.DataStore = oldDataStore;
             }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CheckHidenServicePrincipalSecret()
+        {
+            var cmdlet = new GetAzureRMContextCommand();
+
+            // Setup
+            cmdlet.CommandRuntime = commandRuntimeMock;
+            var profile = new AzureRmProfile();
+            string subscriptionName = "Contoso Subscription 1";
+            string accountId = "7a5db92d-499a-46be-8d6e-6666eeee0000";
+            string contextName;
+            var contextTemp = (new AzureContext { Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud] })
+                .WithAccount(new AzureAccount { Id = accountId, Type = "ServicePrincipal" })
+                .WithTenant(new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "contoso.com" })
+                .WithSubscription(new AzureSubscription { Id = Guid.NewGuid().ToString(), Name = subscriptionName });
+            contextTemp.Account.SetProperty(AzureAccount.Property.ServicePrincipalSecret, "5P6******************");
+            contextTemp.Account.SetProperty(AzureAccount.Property.Subscriptions, contextTemp.Subscription.Id);
+            contextTemp.Account.SetProperty(AzureAccount.Property.Tenants, contextTemp.Tenant.Id);
+            profile.TryAddContext(contextTemp, out contextName);
+            cmdlet.DefaultProfile = profile;
+
+            // Act
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            // Verify
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
+            Assert.Equal(subscriptionName, context.Subscription.Name);
+            Assert.Equal(accountId, context.Account.Id);
+            var accountExtendedProperties = context.Account.ExtendedProperties;
+            Assert.Equal(2, accountExtendedProperties.Count());
+            Assert.False(accountExtendedProperties.ContainsKey(AzureAccount.Property.ServicePrincipalSecret));
         }
 
         AzureRmProfile CreateMultipleContextProfile()
@@ -803,12 +854,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 .WithTenant(new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "contoso.cn" })
                 .WithSubscription(new AzureSubscription { Id = Guid.NewGuid().ToString(), Name = "Contoso Subscription 2" });
             profile.TryAddContext(context2, out contextName2);
-            string contextName3;
-            var context3 = (new AzureContext { Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureGermanCloud] })
-                .WithAccount(new AzureAccount { Id = "user3@contoso.de" })
-                .WithTenant(new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "contoso.de" })
-                .WithSubscription(new AzureSubscription { Id = Guid.NewGuid().ToString(), Name = "Contoso Subscription 3" });
-            profile.TryAddContext(context3, out contextName3);
             profile.TrySetDefaultContext(context1);
             return profile;
         }

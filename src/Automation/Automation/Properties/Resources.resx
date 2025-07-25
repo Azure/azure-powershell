@@ -183,10 +183,14 @@
   </data>
   <data name="RunbookNotFound" xml:space="preserve">
     <value>The Runbook was not found. Runbook name: {0}.</value>
-    <comment>Autmation</comment>
+    <comment>Automation</comment>
   </data>
   <data name="ScheduleNameExists" xml:space="preserve">
     <value>The Automation schedule name is in use. Schedule name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ScheduleNameInvalid" xml:space="preserve">
+    <value>The name length must be from 1 to 128 characters. The name cannot contain special characters &lt; &gt; * % &amp; : \ ? . + / and cannot end with a whitespace character.</value>
     <comment>Automation</comment>
   </data>
   <data name="ScheduleNotFound" xml:space="preserve">
@@ -492,5 +496,15 @@
   </data>
   <data name="SoftwareUpdateConfigurationInvalidTagFormat" xml:space="preserve">
     <value>The Tag format is invalid. Valid Tag format is hashtable with string key and value of String or array of string.</value>
+  </data>
+  <data name="InsufficientUserPermissions" xml:space="preserve">
+    <value>Insufficient user permissions. Please refer https://docs.microsoft.com/azure/role-based-access-control/built-in-roles for more details.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="HybridRunbookWorkerNotFound" xml:space="preserve">
+    <value>Hybrid Runbook Worker Not Found</value>
+  </data>
+  <data name="MoveAzureAutomationHybridRunbookWorkerDescription" xml:space="preserve">
+    <value>Moving the hybrid runbook worker {0} from {1} worker group to {2} worker group</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>KeyVault</PsModuleName>
@@ -12,9 +12,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Security.KeyVault.Administration" Version="4.4.0-beta.1" />
+    <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.6.0-beta.1" />
+    <PackageReference Include="Azure.Security.KeyVault.Certificates" Version="4.6.0" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.8" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.0" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,9 +30,13 @@
       <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
-  
+
   <ItemGroup>
-    <None Update="SecretManagementExtension\*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Az.KeyVault.Extension\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\skr-policy.json" />
   </ItemGroup>
   
   <ItemGroup>
@@ -32,5 +44,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

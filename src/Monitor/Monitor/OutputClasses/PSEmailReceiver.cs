@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Name = receiver.Name;
             this.EmailAddress = receiver.EmailAddress;
             this.Status = TransitionHelpers.ConvertNamespace(receiver.Status);
-            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema.HasValue ? receiver.UseCommonAlertSchema.Value : false;
         }
     }
 }

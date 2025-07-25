@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 DeploymentName = this.Name ?? (string.IsNullOrEmpty(this.Id) ? null : ResourceIdUtility.GetDeploymentName(this.Id))
             };
 
-            WriteObject(ResourceManagerSdkClient.FilterDeployments(options), true);
+            WriteObject(NewResourceManagerSdkClient.FilterDeployments(options), true);
         }
     }
 }

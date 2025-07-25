@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 5FA8A3F3-F52C-40BC-94C2-4CDA00C6F32F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragecorsrule
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragecorsrule
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Gets CORS rules for a Storage service type.
 ```
 Get-AzStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +26,8 @@ The **Get-AzStorageCORSRule** cmdlet gets Cross-Origin Resource Sharing (CORS) r
 ## EXAMPLES
 
 ### Example 1: Get CORS rules of blob service
-```
-PS C:\>Get-AzStorageCORSRule -ServiceType Blob
+```powershell
+Get-AzStorageCORSRule -ServiceType Blob
 ```
 
 This command gets the CORS rules for the Blob service type.
@@ -137,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -154,5 +155,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzStorageCORSRule](./Remove-AzStorageCORSRule.md)
 
 [Set-AzStorageCORSRule](./Set-AzStorageCORSRule.md)
-
-

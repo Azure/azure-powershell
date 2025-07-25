@@ -1,7 +1,7 @@
 {
     "Entries": [
         {
-            "RequestUri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/chiricutin?api-version=2016-03-01",
+            "RequestUri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-EastUS/providers/Microsoft.Insights/alertrules/chiricutin?api-version=2016-03-01",
             "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjY3ZjdmZWMtNjlmYy00OTc0LTkwOTktYTI2YmQ2ZmZlZGEzL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hpcmljdXRpbj9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
             "RequestMethod": "DELETE",
             "RequestBody": "",

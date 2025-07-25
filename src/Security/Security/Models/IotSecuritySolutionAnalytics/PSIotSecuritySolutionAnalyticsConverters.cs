@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
                 Name = value.Name,
                 Type = value.Type,
                 Metrics = value.Metrics?.ConvertToPSType(),
-                UnhealthyDeviceCount = value.UnhealthyDeviceCount,
+                UnhealthyDeviceCount = (int?)value.UnhealthyDeviceCount,
                 DevicesMetrics = value.DevicesMetrics?.ConvertToPSType(),
                 TopAlertedDevices = value.TopAlertedDevices?.ConvertToPSType(),
                 MostPrevalentDeviceAlerts = value.MostPrevalentDeviceAlerts?.ConvertToPSType(),
@@ -115,9 +115,9 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
         {
             return new PSIoTSeverityMetrics()
             {
-                High = value.High,
-                Medium = value.Medium,
-                Low = value.Low
+                High = (int?)value.High,
+                Medium = (int?)value.Medium,
+                Low = (int?)value.Low
             };
         }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
             return new PSIoTSecurityAlertedDevice()
             {
                 DeviceId = value.DeviceId,
-                AlertsCount = value.AlertsCount
+                AlertsCount = (int?)value.AlertsCount
             };
         }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
             {
                 AlertDisplayName = value.AlertDisplayName,
                 ReportedSeverity = value.ReportedSeverity,
-                AlertsCount = value.AlertsCount
+                AlertsCount = (int?)value.AlertsCount
             };
         }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
             {
                 RecommendationDisplayName = value.RecommendationDisplayName,
                 ReportedSeverity = value.ReportedSeverity,
-                DevicesCount = value.DevicesCount
+                DevicesCount = (int?)value.DevicesCount
             };
         }
 

@@ -12,12 +12,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="39.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="61.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
     <ProjectReference Include="..\Compute\Compute.csproj" />
   </ItemGroup>
 
@@ -29,6 +29,10 @@
 
   <ItemGroup>
     <None Include="..\..\Resources\Resources.Test\ScenarioTests\Common.ps1" Link="ScenarioTests\Common.ps1" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

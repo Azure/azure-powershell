@@ -12,23 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-#else
-using Microsoft.Azure.ActiveDirectory.GraphClient;
-#endif
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
+using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models.ADObject;
+using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using Newtonsoft.Json;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using PSModels = Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     internal static class ModelExtensions
     {
+        public const string UnknownType = "Unknown";
+
         public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
             if (policies == null || !policies.Any()) return string.Empty;
@@ -36,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             const string rowFormat = "{0, -43}  {1, -43}  {2, -43} {3, -43} {4, -43} {5, -43} {6, -43}\r\n";
             var sb = new StringBuilder();
             sb.AppendLine();
-            sb.AppendFormat( rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets", "Permissions to certificates", "Permissions to (Key Vault Managed) storage" );
+            sb.AppendFormat(rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets", "Permissions to certificates", "Permissions to (Key Vault Managed) storage");
             sb.AppendFormat(rowFormat,
                 GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="),
                 GeneralUtilities.GenerateSeparator("Object ID".Length, "="),
@@ -50,7 +60,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName,
                     TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40),
-                    TrimWithEllipsis( policy.PermissionsToCertificatesStr, 40 ), TrimWithEllipsis( policy.PermissionsToStorageStr, 40 ) );
+                    TrimWithEllipsis(policy.PermissionsToCertificatesStr, 40), TrimWithEllipsis(policy.PermissionsToStorageStr, 40));
             }
 
             return sb.ToString();
@@ -62,16 +72,16 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             var sb = new StringBuilder();
             sb.AppendLine();
-            foreach(var policy in policies)
+            foreach (var policy in policies)
             {
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Tenant ID", policy.TenantName );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Object ID", policy.ObjectId );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Display Name", policy.DisplayName );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr );
-                sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to (Key Vault Managed) Storage", policy.PermissionsToStorageStr );
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Tenant ID", policy.TenantName);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Object ID", policy.ObjectId);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Display Name", policy.DisplayName);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Permissions to (Key Vault Managed) Storage", policy.PermissionsToStorageStr);
                 sb.AppendLine();
             }
             return sb.ToString();
@@ -103,76 +113,149 @@ namespace Microsoft.Azure.Commands.KeyVault
             return str;
         }
 
-        public static string GetDisplayNameForADObject(string objectId, ActiveDirectoryClient adClient)
+        public static string GetDisplayNameForADObject(string objectId, IMicrosoftGraphClient graphClient) =>
+            GetDetailsFromADObjectId(objectId, graphClient).Item1;
+
+        public static (string, string) GetDetailsFromADObjectId(string objectId, IMicrosoftGraphClient graphClient)
         {
             var displayName = "";
             var upnOrSpn = "";
+            var objectType = "Unknown";
 
-            if (adClient == null || string.IsNullOrWhiteSpace(objectId))
-                return displayName;
+            if (graphClient == null || string.IsNullOrWhiteSpace(objectId))
+                return (displayName, objectType);
 
             try
             {
-// TODO: Remove IfDef
-#if NETSTANDARD
-                var obj = adClient.GetObjectsByObjectId(new List<string> { objectId }).FirstOrDefault();
+                var obj = graphClient.DirectoryObjects.GetDirectoryObject(objectId);
                 if (obj != null)
                 {
-                    if (obj.Type.Equals("user", StringComparison.InvariantCultureIgnoreCase))
+                    if (obj.IsUser())
                     {
-                        var user = adClient.FilterUsers(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+
+                        var user = JsonConvert.DeserializeObject<MicrosoftGraphUser>(JsonConvert.SerializeObject(obj)).ToPSADUser();
                         displayName = user.DisplayName;
                         upnOrSpn = user.UserPrincipalName;
+                        objectType = "User";
                     }
-                    else if (obj.Type.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    else if (obj.IsServicePrincipal())
                     {
-                        var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ObjectId == objectId);
-                        var servicePrincipal = adClient.FilterServicePrincipals(odataQuery).FirstOrDefault();
+                        var servicePrincipal = JsonConvert.DeserializeObject<MicrosoftGraphServicePrincipal>(JsonConvert.SerializeObject(obj)).ToPSADServicePrincipal();
                         displayName = servicePrincipal.DisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                        objectType = "Service Principal";
                     }
-                    else if (obj.Type.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    else if (obj.IsGroup())
                     {
-                        var group = adClient.FilterGroups(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        var group = graphClient.Groups.GetGroup(objectId);
                         displayName = group.DisplayName;
+                        objectType = "Group";
                     }
                 }
-#else
-                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
-                if (obj != null)
-                {
-                    if (obj.ObjectType.Equals("user", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        var user = adClient.Users.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
-                        displayName = user.DisplayName;
-                        upnOrSpn = user.UserPrincipalName;
-                    }
-                    else if (obj.ObjectType.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
-                        displayName = servicePrincipal.AppDisplayName;
-                        upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
-                    }
-                    else if (obj.ObjectType.Equals("group", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        var group = adClient.Groups.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
-                        displayName = group.DisplayName;
-                        upnOrSpn = group.MailNickname;
-                    }
-                }
-#endif
             }
             catch
             {
                 // Error occurred. Don't get the friendly name
             }
 
-            return displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : "");
+            return (
+                displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : ""),
+                objectType
+            );
+
         }
 
-        public static string GetDisplayNameForTenant(Guid id, ActiveDirectoryClient adClient)
+        public static string GetDisplayNameForTenant(Guid id, IMicrosoftGraphClient graphClient)
         {
+            if (id == null)
+                return string.Empty;
             return id.ToString();
+        }
+
+        private static List<PSADObject> GetObjectsByObjectIds(List<string> objectIds, IMicrosoftGraphClient graphClient)
+        {
+            // todo: do we want to use 1000 as batch count in msgraph API?
+            List<PSADObject> result = new List<PSADObject>();
+
+            if (graphClient == null || objectIds == null || !objectIds.Any())
+                return result;
+            
+            IList<Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject> adObjects;
+            int objectIdBatchCount;
+            const int batchCount = 1000;
+            for (int i = 0; i < objectIds.Count; i += batchCount)
+            {
+                if ((i + batchCount) > objectIds.Count)
+                {
+                    objectIdBatchCount = objectIds.Count - i;
+                }
+                else
+                {
+                    objectIdBatchCount = batchCount;
+                }
+                List<string> objectIdBatch = objectIds.GetRange(i, objectIdBatchCount);
+                try
+                {
+                    adObjects = graphClient.DirectoryObjects.GetByIds(
+                        new Common.MSGraph.Version1_0.DirectoryObjects.Models.Body()
+                        {
+                            Ids = objectIdBatch
+                        })?.Value;
+                    result.AddRange(adObjects?.Select(o => o.ToPSADObject()));
+                }
+                catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
+                {
+                    // Swallow OdataErroException
+                }
+            }
+            return result;
+        }
+
+        internal static IEnumerable<PSKeyVaultAccessPolicy> ToPSKeyVaultAccessPolicies(this IEnumerable<AccessPolicyEntry> accessPolicies, IMicrosoftGraphClient graphClient)
+        {
+            if (graphClient == null)
+            {
+                return accessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, graphClient));
+            }
+            
+            List<PSKeyVaultAccessPolicy> psAccessPolicies = new List<PSKeyVaultAccessPolicy>();
+
+            // The size of accessPolicies is 0
+            if (accessPolicies == null || !accessPolicies.Any())
+                {
+                    return psAccessPolicies;
+            }
+
+            //  size of accessPolicies is 1
+            if (accessPolicies.Count() == 1)
+            {
+                // Get assignment
+                psAccessPolicies.Add(new PSKeyVaultAccessPolicy(accessPolicies.FirstOrDefault(), graphClient));
+                return psAccessPolicies;
+            }
+
+            // The size of accessPolicies > 1
+            // List ad objects
+            List<string> objectIds = accessPolicies.Select(r => r.ObjectId).Distinct().ToList();
+            List<PSADObject> adObjects = null;
+            try
+            {
+                adObjects = GetObjectsByObjectIds(objectIds, graphClient);
+            }
+            catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
+            {
+                // Swallow OdataErrorException
+                adObjects = new List<PSADObject>();
+            }
+
+
+            // Union role definition and ad objects
+            foreach (AccessPolicyEntry accessPolicy in accessPolicies)
+            {
+                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == accessPolicy.ObjectId) ?? new PSADObject() { Id = accessPolicy.ObjectId, Type = UnknownType };
+                psAccessPolicies.Add(new PSKeyVaultAccessPolicy(accessPolicy, adObject.DisplayName));
+            }
+            return psAccessPolicies;
         }
     }
 }

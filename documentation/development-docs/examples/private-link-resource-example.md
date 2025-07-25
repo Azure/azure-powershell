@@ -1,42 +1,57 @@
+## Applicability
+Az.Network supports the retrieval of private link resource in `Get-AzPrivateLinkResource` as well as the management of private endpoint connection by `Get-AzPrivateEndpointConnection`, `Approve-AzPrivateEndpointConnection`, `Deny-AzPrivateEndpointConnection`, `Remove-AzPrivateEndpointConnection` and `Set-AzPrivateEndpointConnection`. 
+
+For provider who 
+- supports the features of private link resource or private endpoint connection already
+- and wants to onboard these features in Azure PowerShell, 
+You need to register provider configuration in [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12).
+
+Notes: No additional commands for the features of PrivateLinkResource and PrivateEndpointConnection need to be added.
+
 ## Prerequisite
-API for `Get` private link resource and private endpoint connection need to be ready at:
+We assume the API for `List` private link resource and `Get` private endpoint connection is available in the provider that claims to support private endpoint connection features. That means it supports following APIs:
 
-#### Private Link Resource API
 ```
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateLinkResources"
+# List Private Link Resource API
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{topResourceType}/{topResourceName}/privateLinkResources"
 ```
 ```
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateLinkResources/{PrivateLinkResource-Name}"
-```
-
-#### Get Private Endpoint Connection API
-```
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateEndpointConnections/{PrivateEndpointConnection-Name}"
-```
-#### List Private Endpoint Connection API
-```
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}/privateEndpointConnections"
+# Get Private Endpoint Connection API
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{topResourceType}/{topResourceName}/privateEndpointConnections/{privateEndpointConnectionName}"
 ```
 
-if "List Private Endpoint Connection API" is not available, `Private Endpoint Connection` will be retrieved from top resource
-"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{Top-Level-Resource}/{Top-Level-Resource-Name}"
-`privateEndpointConnections` need to be defined under this API
+if "List Private Endpoint Connection API" below is not available, `privateEndpointConnections` must be included in the properties of top resource returned by 
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{topResourceType}/{topResourceName}". So that `Get-AzPrivateEndpointConnect` will retrieve connections from the top resource.
+
+```
+# List Private Endpoint Connection API
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{topResourceType}/{topResourceName}/privateEndpointConnections"
+```
 
 ## Code Changes Needed
-Add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12)
-in following pattern:
+To add corresponding {Provider}, {topResourceType} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12), we need to follow in following pattern:
 ```
-RegisterConfiguration("{Provider}/{Top-Level-Resource}", "{API-Version}")
+RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool supportGetPrivateLinkResource = false, bool supportPrivateLinkResource = true)
 ```
-For example:
+- `type` includes resource provider and resource type which supports PrivateLink feature. For example, "Microsoft.Sql/servers".
+- `apiVersion` specifies the API version to be used. For example, "2018-06-01-preview".
+- `hasConnectionsURI` marks whether the provider exposes "List Private Endpoint Connection API". Default value is false.
+```
+# Get Private Link Resource API
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{provider}/{topResourceType}/{topResourceName}/privateLinkResources/{privateLinkResourceName}"
+```
+- `supportGetPrivateLinkResource` marks whether the provider supports Get API of PrivateLinkResource. Default value is false.
 
-if "List Private Endpoint Connection API" is [available](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L74),
+For instance, for provider "Microsoft.Sql/servers" with API version "2018-06-01-preview", it supports "List Private Endpoint Connection API" and "Get Private Link Resource API". So its registration configuration should be:
 ```
-RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview")
+RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview", true, true);
 ```
-if "List Private Endpoint Connection API" is [not available](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L93), provide extra bool parameter 'false'
+
+- `supportListPrivateLinkResource` marks whether the provider supports List API of PrivateLinkResource. Default value is true.
+
+For instance, `Microsoft.Network/privateLinkServices` supports PrivateEndpointConnections but doesn't support resource type PrivateLinkResource (We assume List API is mandatory to resource support). Its configuration should be:
 ```
-RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false)
+RegisterConfiguration("Microsoft.Network/privateLinkServices", "2020-05-01", true, false, false);
 ```
 
 ## End-To-End Test
@@ -45,9 +60,9 @@ RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false)
 
 + Top level resource
 ```
-New-Az{Top-Level-Resource} -ResourceGroupName {rg_name} -Name {top_level_resource_name}
+New-Az{topResourceType} -ResourceGroupName {rgName} -Name {topResourceName}
 
-$TopLevelResource = Get-Az{Top-Level-Resource} -ResourceGroupName {rg_name} -Name {top_level_resource_name}
+$TopLevelResource = Get-Az{topResourceType} -ResourceGroupName {rgName} -Name {topResourceName}
 ```
 
 + private link resource
@@ -57,24 +72,24 @@ $PrivateLinkResource = Get-AzPrivateLinkResource -PrivateLinkResourceId $TopLeve
 
 + subnet config (object in memory)
 ```
-$SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name {config_name} -AddressPrefix "11.0.1.0/24"      -PrivateEndpointNetworkPolicies "Disabled"
+$SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name {configName} -AddressPrefix "11.0.1.0/24"      -PrivateEndpointNetworkPolicies "Disabled"
 ```
 
 + virtual network
 ```
-New-AzVirtualNetwork -ResourceGroupName {rg_name} -Name {vnet_name} -Location {location} -AddressPrefix "11.0.0.0/16" -Subnet $SubnetConfig
+New-AzVirtualNetwork -ResourceGroupName {rgName} -Name {vnetName} -Location {location} -AddressPrefix "11.0.0.0/16" -Subnet $SubnetConfig
 
-$VNet=Get-AzVirtualNetwork -ResourceGroupName {rg_name} -Name {vnet_name}
+$VNet=Get-AzVirtualNetwork -ResourceGroupName {rgName} -Name {vnetName}
 ```
 
 + private link service connection (object in memory)
 ```
-$PLSConnection = New-AzPrivateLinkServiceConnection -Name {pls_connection_name} -PrivateLinkServiceId $TopLevelResource.Id -GroupId $TopLevelResource.GroupId
+$PLSConnection = New-AzPrivateLinkServiceConnection -Name {plsConnectionName} -PrivateLinkServiceId $TopLevelResource.Id -GroupId $PrivateLinkResource.GroupId
 ```
 
 + endpoint
 ```
-New-AzPrivateEndpoint -ResourceGroupName {rg_name} -Name {endpoint_name} -Location {location} -Subnet $VNet.subnets[0] -PrivateLinkServiceConnection $PLSConnection -ByManualRequest
+New-AzPrivateEndpoint -ResourceGroupName {rgName} -Name {endpointName} -Location {location} -Subnet $VNet.subnets[0] -PrivateLinkServiceConnection $PLSConnection -ByManualRequest
 ```
 
 ### step-by-step
@@ -89,7 +104,7 @@ $connection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $TopLevelRe
 
 * To get the connection, if `list` for private endpoint connection was not supported,
 ```
-$TopLevelResource = Get-Az{Top-Level-Resource} -ResourceGroupName {rg_name} -Name {top_level_resource_name}
+$TopLevelResource = Get-Az{topResourceType} -ResourceGroupName {rgName} -Name {topResourceName}
 
 $ConnectionId = $TopLevelResource.PrivateEndpointConnection[0].Id
 

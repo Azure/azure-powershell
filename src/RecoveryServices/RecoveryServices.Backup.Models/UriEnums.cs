@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         OperationResults,
         BackupPolicies,
         Operations,
-        OperationsStatus
+        OperationsStatus,
+        VirtualMachines
     }
 }

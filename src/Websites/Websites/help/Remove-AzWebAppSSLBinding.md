@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-ms.assetid: 3AB3D398-E5DB-4214-BA27-6E3B7D225550
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azwebappsslbinding
+ms.assetid: 3AB3D398-E5DB-4214-BA27-6E3B7D
+online version: https://learn.microsoft.com/powershell/module/az.websites/remove-azwebappsslbinding
 schema: 2.0.0
 ---
 
@@ -17,13 +17,15 @@ Removes an SSL binding from an uploaded certificate.
 ```
 Remove-AzWebAppSSLBinding [-Name] <String> [[-DeleteCertificate] <Boolean>] [-Force]
  [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### S2
 ```
 Remove-AzWebAppSSLBinding [-Name] <String> [[-DeleteCertificate] <Boolean>] [-Force] [-WebApp] <PSSite>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,16 +35,16 @@ SSL bindings are used to associate a Web App with a certificate.
 ## EXAMPLES
 
 ### Example 1: Remove an SSL binding for a web app
-```
-PS C:\>Remove-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp" -Name "www.contoso.com"
+```powershell
+Remove-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp" -Name "www.contoso.com"
 ```
 
 This command removes the SSL binding for the web app ContosoWebApp.
 Since the *DeleteCertificate* parameter is not included, the certificate will be deleted if it no longer has any SSL bindings.
 
 ### Example 2: Remove an SSL binding without removing the certificate
-```
-PS C:\>Remove-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp" -Name "www.contoso.com" -DeleteCertificate $False
+```powershell
+Remove-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp" -Name "www.contoso.com" -DeleteCertificate $False
 ```
 
 Similar to Example 1, this command also removes the SSL binding for the Web App ContosoWebApp.
@@ -50,9 +52,9 @@ In this case, however, the *DeleteCertificate* parameter is included, and the pa
 That means that the certificate will not be deleted regardless of whether it has any SSL bindings or not.
 
 ### Example 3: Use an object reference to remove an SSL binding
-```
-PS C:\>$WebApp = Get-AzWebApp -Name "ContosoWebApp"
-PS C:\> Remove-AzWebAppSSLBinding -WebApp $WebApp -Name "www.contoso.com"
+```powershell
+$WebApp = Get-AzWebApp -Name "ContosoWebApp"
+Remove-AzWebAppSSLBinding -WebApp $WebApp -Name "www.contoso.com"
 ```
 
 This example uses an object reference to the Web App website to remove the SSL binding for a Web App.
@@ -224,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -245,5 +247,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzWebAppSlot](./Get-AzWebAppSlot.md)
 
 [Get-AzWebApp](./Get-AzWebApp.md)
-
-

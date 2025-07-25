@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
-
+        public string FilterTag { get; set; }
+        public string FilterOperator { get; set; }
+        public string[] FilterResourceType { get; set; }
+        public string[] FilterLocation { get; set; }
+        public string[] FilterResourceGroup { get; set; }
+        public string[] FilterOsType { get; set; }
     }
 }

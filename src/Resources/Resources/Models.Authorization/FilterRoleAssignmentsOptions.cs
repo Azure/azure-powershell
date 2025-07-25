@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public ADObjectFilterOptions ADObjectFilter { get; set; }
 
+        public bool AtScope { get; set; }
+
         public bool ExpandPrincipalGroups { get; set; }
 
         public bool IncludeClassicAdministrators { get; set; }
-
-        public bool ExcludeAssignmentsForDeletedPrincipals { get; set; }
 
         public bool CanDelegate { get; set; }
 

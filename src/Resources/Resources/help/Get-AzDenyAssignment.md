@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdenyassignment
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azdenyassignment
 schema: 2.0.0
 ---
 
@@ -12,11 +12,17 @@ Lists Azure RBAC deny assignments at the specified scope.
 By default it lists all deny assignments in the selected Azure subscription.
 Use respective parameters to list deny assignments to a specific user, or to list deny assignments on a specific resource group or resource.
 
+The cmdlet may call below Microsoft Graph API according to input parameters:
+
+- GET /directoryObjects/{id}
+- POST /directoryObjects/getByIds
+
 ## SYNTAX
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzDenyAssignment [-Scope <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDenyAssignment [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
@@ -34,7 +40,8 @@ Get-AzDenyAssignment -ObjectId <Guid> -ResourceGroupName <String> [-DefaultProfi
 ### ResourceWithObjectIdParameterSet
 ```
 Get-AzDenyAssignment -ObjectId <Guid> -ResourceGroupName <String> -ResourceName <String> -ResourceType <String>
- [-ParentResource <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ParentResource <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ScopeWithObjectIdParameterSet
@@ -102,17 +109,19 @@ Get-AzDenyAssignment -ResourceGroupName <String> [-DefaultProfile <IAzureContext
 ### ResourceParameterSet
 ```
 Get-AzDenyAssignment -ResourceGroupName <String> -ResourceName <String> -ResourceType <String>
- [-ParentResource <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ParentResource <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ScopeParameterSet
 ```
-Get-AzDenyAssignment -Scope <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDenyAssignment -Scope <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### DenyAssignmentIdParameterSet
 ```
-Get-AzDenyAssignment [-Scope <String>] -Id <Guid> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDenyAssignment [-Scope <String>] -Id <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -126,9 +135,9 @@ Get-AzDenyAssignment [-Scope <String>] -DenyAssignmentName <String> [-DefaultPro
 Use the Get-AzDenyAssignment command to list all deny assignments that are effective on a scope.
 Without any parameters, this command returns all the deny assignments made under the subscription.
 This list can  be filtered using filtering parameters for principal, deny assignment name and scope.
-To specify a user, use SignInName or Azure AD ObjectId parameters.
-To specify a security group, use Azure AD ObjectId parameter.
-And to specify an Azure AD application, use ServicePrincipalName or ObjectId parameters.
+To specify a user, use SignInName or Microsoft Entra ObjectId parameters.
+To specify a security group, use Microsoft Entra ObjectId parameter.
+And to specify a Microsoft Entra application, use ServicePrincipalName or ObjectId parameters.
 The scope at which access is being denied may be specified.
 It defaults to the selected subscription.
 The scope of the deny assignment can be specified using one of the following parameter combinations
@@ -151,9 +160,12 @@ This will list all deny assignments assigned to the user, and to the groups that
 
 List all deny assignments in the subscription
 
+```powershell
+Get-AzDenyAssignment
 ```
-PS C:\> Get-AzDenyAssignment
-Id                      : 22704996-fbd0-4ab1-8625-722d897825d2
+
+```output
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments/22704996-fbd0-4ab1-8625-722d897825d2
 DenyAssignmentName      : Test deny assignment 1
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -174,7 +186,7 @@ ExcludePrincipals       : {
                           }
 IsSystemProtected       : True
 
-Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG/providers/Microsoft.Authorization/denyAssignments/43af7d0c-0bf8-407f-96c0-96a29d076431
 DenyAssignmentName      : Test deny assignment 2
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -200,10 +212,12 @@ IsSystemProtected       : True
 
 Gets all deny assignments made to user john.doe@contoso.com at the scope testRG and above.
 
+```powershell
+Get-AzDenyAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
 ```
-PS C:\> Get-AzDenyAssignment -ResourceGroupName testRG -SignInName john.doe@contoso.com
 
-Id                      : 22704996-fbd0-4ab1-8625-722d897825d2
+```output
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments/22704996-fbd0-4ab1-8625-722d897825d2
 DenyAssignmentName      : Test deny assignment 1
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -220,7 +234,7 @@ Principals              : {
 ExcludePrincipals       : {}
 IsSystemProtected       : True
 
-Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG/providers/Microsoft.Authorization/denyAssignments/43af7d0c-0bf8-407f-96c0-96a29d076431
 DenyAssignmentName      : Test deny assignment
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -246,10 +260,12 @@ IsSystemProtected       : True
 
 Gets all deny assignments of the specified service principal
 
+```powershell
+Get-AzDenyAssignment -ServicePrincipalName 'http://testapp1.com'
 ```
-PS C:\> Get-AzDenyAssignment -ServicePrincipalName 'http://testapp1.com'
 
-Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+```output
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG/providers/Microsoft.Authorization/denyAssignments/43af7d0c-0bf8-407f-96c0-96a29d076431
 DenyAssignmentName      : Test deny assignment 1
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -266,7 +282,7 @@ Principals              : {
 ExcludePrincipals       : {}
 IsSystemProtected       : True
 
-Id                      : 94e3d9da-3700-4113-aab4-15f6c173d794
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testRG/providers/Microsoft.Web/sites/site1/providers/Microsoft.Authorization/denyAssignments/94e3d9da-3700-4113-aab4-15f6c173d794
 DenyAssignmentName      : Test deny assignment 2
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -292,10 +308,12 @@ IsSystemProtected       : True
 
 Gets deny assignments at the 'site1' website scope.
 
+```powershell
+Get-AzDenyAssignment -Scope '/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/testRG/providers/Microsoft.Web/sites/site1'
 ```
-PS C:\> Get-AzDenyAssignment -Scope '/subscriptions/96231a05-34ce-4eb4-aa6a-70759cbb5e83/resourcegroups/testRG/providers/Microsoft.Web/sites/site1'
 
-Id                      : 43af7d0c-0bf8-407f-96c0-96a29d076431
+```output
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/testRG/providers/Microsoft.Authorization/denyAssignments/43af7d0c-0bf8-407f-96c0-96a29d076431
 DenyAssignmentName      : Test deny assignment 1
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -312,7 +330,7 @@ Principals              : {
 ExcludePrincipals       : {}
 IsSystemProtected       : True
 
-Id                      : 94e3d9da-3700-4113-aab4-15f6c173d794
+Id                      : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testRG/providers/Microsoft.Web/sites/site1/providers/Microsoft.Authorization/denyAssignments/594e3d9da-3700-4113-aab4-15f6c173d794
 DenyAssignmentName      : Test deny assignment 2
 Description             : Test deny assignment for PS cmdlets
 Actions                 : {foo/*}
@@ -383,10 +401,10 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Deny assignment id.
+Deny assignment fully qualified ID or GUID. When Id is provided as a GUID, will take current subscription as default scope.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: DenyAssignmentIdParameterSet
 Aliases:
 
@@ -398,7 +416,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The Azure AD ObjectId of the User, Group or Service Principal.
+The Microsoft Entra ObjectId of the User, Group or Service Principal.
 Filters all deny assignments that are made to the specified principal.
 
 ```yaml
@@ -516,7 +534,7 @@ Accept wildcard characters: False
 
 ### -ServicePrincipalName
 The ServicePrincipalName of the service principal.
-Filters all deny assignments that are made to the specified Azure AD application.
+Filters all deny assignments that are made to the specified Microsoft Entra application.
 
 ```yaml
 Type: System.String

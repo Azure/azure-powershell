@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayfirewallpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayfirewallpolicy
 schema: 2.0.0
 ---
 
 # Get-AzApplicationGatewayFirewallPolicy
 
 ## SYNOPSIS
-Gets an application gateway firewall policy.
+Gets an application gateway or application gateway for containers firewall policy.
 
 ## SYNTAX
 
@@ -18,13 +18,13 @@ Get-AzApplicationGatewayFirewallPolicy [-Name <String>] [-ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-The **Get-AzApplicationGatewayFirewallPolicy** cmdlet gets an application gateway firewall policy..
+The **Get-AzApplicationGatewayFirewallPolicy** cmdlet gets an application gateway or application gateway for containers firewall policy..
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $AppGwFirewallPolicy = Get-AzApplicationGatewayFirewallPolicy -Name "FirewallPolicy1" -ResourceGroupName "ResourceGroup01"
+$AppGwFirewallPolicy = Get-AzApplicationGatewayFirewallPolicy -Name "FirewallPolicy1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets the application gateway firewall policy named FirewallPolicy1 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGwFirewallPolicy variable.

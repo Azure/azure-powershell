@@ -65,7 +65,7 @@ function Test-Pipeline
 <#
 .SYNOPSIS
 Creates a sample pipeline with all of its dependencies. Then does a Get to compare the results.
-Delete sthe created pipeline with resource id at the end.
+Deletes the created pipeline with resource id at the end.
 #>
 function Test-PipelineWithResourceId
 {
@@ -93,6 +93,47 @@ function Test-PipelineWithResourceId
         $pipelineName = "samplePipeline"   
         $actual = Set-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force
         
+        $expected = Get-AzDataFactoryV2Pipeline -ResourceId $actual.Id
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
+        Assert-AreEqual $expected.Name $actual.Name
+
+        Remove-AzDataFactoryV2Pipeline -ResourceId $actual.Id -Force
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a sample pipeline with all of its dependencies. Then does a Get to compare the results.
+Deletes the created pipeline with resource id at the end.
+#>
+function Test-PipelineWithExistsActivity
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+
+    $endDate = [DateTime]::Parse("9/8/2014")
+    $startDate = $endDate.AddHours(-1)
+        
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $df = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+
+        $lsName = "foo1"
+        Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService-AzureFunction.json -Name $lsName -Force
+
+        $pipelineName = "samplePipeline"   
+        $actual = Set-AzDataFactoryV2Pipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipelineExistsActivity.json" -Force
+
         $expected = Get-AzDataFactoryV2Pipeline -ResourceId $actual.Id
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName

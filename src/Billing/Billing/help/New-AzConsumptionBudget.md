@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/new-azconsumptionbudget
+online version: https://learn.microsoft.com/powershell/module/az.billing/new-azconsumptionbudget
 schema: 2.0.0
 ---
 
@@ -37,7 +37,10 @@ The New-AzConsumptionBudget cmdlet creates a budget in either a subscription or 
 
 ### Example 1: Create a cost budget with a budget name at subscription level
 ```powershell
-PS C:\> New-AzConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+New-AzConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -51,7 +54,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Create a cost budget with a budget name at resource group level
 ```powershell
-PS C:\> New-AzConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+New-AzConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+```
+
+```output
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -373,5 +379,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Consumption.Models.PSBudget
 
 ## NOTES
+- Currently, PowerShell SDK for Consumption is only available to Enterprise Agreement customers.
+- PowerShell SDK for Consumption is using an older version of Budgets API and few backwards non-compatible items like listing Budgets with filters will not work as expected.
 
 ## RELATED LINKS

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityAlert
+online version: https://learn.microsoft.com/powershell/module/az.security/Set-AzSecurityAlert
 schema: 2.0.0
 ---
 
@@ -15,25 +15,35 @@ Updates a security alert state.
 ### SubscriptionLevelResource (Default)
 ```
 Set-AzSecurityAlert -Location <String> -Name <String> -ActionType <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
 Set-AzSecurityAlert -ResourceGroupName <String> -Location <String> -Name <String> -ActionType <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Set-AzSecurityAlert -ActionType <String> -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzSecurityAlert [-ActionType <String>] -InputObject <PSSecurityAlert> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### InputObjectV3
+```
+Set-AzSecurityAlert -InputObjectV3 <PSSecurityAlertV3> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +53,7 @@ Sets a security alert state.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAlert -Location "centralus" -ResourceGroupName "RSG" -Name "2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF" -ActionType Dismiss
+Set-AzSecurityAlert -Location "centralus" -ResourceGroupName "RSG" -Name "2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF" -ActionType Dismiss
 ```
 
 Dismisses a security alert that was raised.
@@ -98,6 +108,21 @@ Input Object.
 ```yaml
 Type: Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
 Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InputObjectV3
+Input Object V3.
+
+```yaml
+Type: Microsoft.Azure.Commands.SecurityCenter.Models.Alerts.PSSecurityAlertV3
+Parameter Sets: InputObjectV3
 Aliases:
 
 Required: True

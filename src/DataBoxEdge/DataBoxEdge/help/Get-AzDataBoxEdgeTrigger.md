@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/get-azdataboxedgetrigger
+online version: https://learn.microsoft.com/powershell/module/az.databoxedge/get-azdataboxedgetrigger
 schema: 2.0.0
 ---
 
@@ -37,14 +37,17 @@ Get-AzDataBoxEdgeTrigger [[-Name] <String>] [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeTriger** cmdlet gets the triggers for a device. You can specify the name as a parameter in the cmdlet to fetch the details of a specific  specific Triggers
+The **Get-AzDataBoxEdgeTrigger** cmdlet gets the triggers for a device. You can specify the name as a parameter in the cmdlet to fetch the details of a specific  specific Triggers
  
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName
+Get-AzDataBoxEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName
+```
+
+```output
 Name                  Kind               
 ----                  ----               
 triggerName          PeriodicTimerEvent

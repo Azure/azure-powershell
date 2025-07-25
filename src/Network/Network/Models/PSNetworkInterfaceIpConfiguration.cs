@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PrivateIpAddressVersion { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? PrivateIpAddressPrefixLength { get; set; }
+
+        [JsonProperty(Order = 2)]
         public List<PSBackendAddressPool> LoadBalancerBackendAddressPools { get; set; }
 
         [JsonProperty(Order = 2)]
@@ -45,6 +49,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 2)]
         public PSIpConfigurationConnectivityInformation PrivateLinkConnectionProperties { get; set; }
+
+        [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSResourceId GatewayLoadBalancer { get; set; }
 
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
@@ -82,6 +90,12 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(PrivateLinkConnectionProperties, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        [JsonIgnore]
+        public string GatewayLoadBalancerText
+        {
+            get { return JsonConvert.SerializeObject(GatewayLoadBalancer, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
         public bool ShouldSerializeLoadBalancerBackendAddressPools()
         {
             return !string.IsNullOrEmpty(this.Name);
@@ -98,6 +112,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         public bool ShouldSerializeApplicationSecurityGroups()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeGatewayLoadBalancer()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

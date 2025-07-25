@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/save-azmanagementgroupdeploymenttemplate
+online version: https://learn.microsoft.com/powershell/module/az.resources/save-azmanagementgroupdeploymenttemplate
 schema: 2.0.0
 ---
 
@@ -15,13 +15,15 @@ Saves a deployment template to a file.
 ### SaveByDeploymentName (Default)
 ```
 Save-AzManagementGroupDeploymentTemplate -ManagementGroupId <String> -DeploymentName <String> [-Path <String>]
- [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SaveByDeploymentObject
 ```
 Save-AzManagementGroupDeploymentTemplate -DeploymentObject <PSDeployment> [-Path <String>] [-Force] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,14 +33,14 @@ The **Save-AzManagementGroupDeploymentTemplate**  cmdlet saves a deployment temp
 
 ### Example 1
 ```powershell
-PS C:\> Save-AzManagementGroupDeploymentTemplate -ManagementGroupId "myMG" -DeploymentName "TestDeployment"
+Save-AzManagementGroupDeploymentTemplate -ManagementGroupId "myMG" -DeploymentName "TestDeployment"
 ```
 
 This command gets the deployment template from TestDeployment and saves it as a JSON file in the current directory.
 
 ### Example 2: Get a deployment and save its template
-```
-PS C:\>Get-AzManagementGroupDeploymentTemplate -ManagementGroupId "myMG" -Name "RolesDeployment" | Save-AzManagementGroupDeploymentTemplate
+```powershell
+Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "RolesDeployment" | Save-AzManagementGroupDeploymentTemplate
 ```
 
 This command gets the deployment "RolesDeployment" at the management group "myMG" and saves its template.

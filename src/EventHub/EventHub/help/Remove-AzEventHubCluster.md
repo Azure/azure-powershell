@@ -1,51 +1,48 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version:https://docs.microsoft.com/en-us/powershell/module/az.eventhub/remove-azeventhubcluster
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubcluster
 schema: 2.0.0
 ---
 
 # Remove-AzEventHubCluster
 
 ## SYNOPSIS
-Deletes the specified Dedicated Eventhub Cluster from the ResourceGroup
+Deletes an existing Event Hubs Cluster.
+This operation is idempotent.
 
 ## SYNTAX
 
-### ClusterPropertiesSet (Default)
+### Delete (Default)
 ```
-Remove-AzEventHubCluster [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ClusterInputObjectSet
-```
-Remove-AzEventHubCluster [-InputObject] <PSEventHubAttributes> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### ClusterResourceIdParameterSet
+### DeleteViaIdentity
 ```
-Remove-AzEventHubCluster [-ResourceId] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventHubCluster -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzEventHubCluster cmdlet deletes the given dedicated eventhub Cluster name from the given resourcegroup
+Deletes an existing Event Hubs Cluster.
+This operation is idempotent.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove EventHubs dedicated cluster
 ```powershell
-PS C:\> Remove-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557
+Remove-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster
 ```
 
-Deletes Eventhub-Cluster-5557 Cluster from RSG-Cluster27651 resourcegroup
+Removes EventHubs dedicated cluster by the name `myEventHubsCluster`.
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -60,12 +57,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -75,37 +73,52 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Cluster Object
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
-Parameter Sets: ClusterInputObjectSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Cluster Name
+The name of the Event Hubs Cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClusterPropertiesSet
-Aliases:
+Parameter Sets: Delete
+Aliases: ClusterName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -120,32 +133,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClusterPropertiesSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Cluster Resource Id
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClusterResourceIdParameterSet
+Parameter Sets: Delete
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -185,9 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 

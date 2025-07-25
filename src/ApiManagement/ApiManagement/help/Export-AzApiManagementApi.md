@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 2BA76B02-B786-4A77-86E0-E7D4191120B5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/export-azapimanagementapi
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/export-azapimanagementapi
 schema: 2.0.0
 ---
 
@@ -34,16 +34,16 @@ The **Export-AzApiManagementApi** cmdlet exports an Azure API Management API to 
 
 ### Example 1: Export an API in Web Application Description Language (WADL) format
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Export-AzApiManagementApi -Context $ApiMgmtContext -ApiId "0123456789" -SpecificationFormat "Wadl" -SaveAs "C:\contoso\specifications\0123456789.wadl"
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Export-AzApiManagementApi -Context $ApiMgmtContext -ApiId "0123456789" -SpecificationFormat "Wadl" -SaveAs "C:\contoso\specifications\0123456789.wadl"
 ```
 
 This command exports an API to a WADL file.
 
 ### Example 2: Export an API in OpenApi 3.0 Specification Format as Json Document
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\> Export-AzApiManagementApi -Context $context -ApiId swagger-petstore -SpecificationFormat OpenApiJson -SaveAs D:\github\petstore.json
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Export-AzApiManagementApi -Context $ApiMgmtContext -ApiId swagger-petstore -SpecificationFormat OpenApiJson -SaveAs D:\github\petstore.json
 ```
 
 This command exports an API definitions in Open Api format as Json document

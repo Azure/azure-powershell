@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
-                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null, false));
                     location = WebApp.Location;
                     tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
@@ -236,14 +236,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         if (ContainerRegistryUser != string.Empty)
                         {
                             appSettings[CmdletHelpers.DockerRegistryServerUserName] = ContainerRegistryUser;
-                        }                        
+                        }
                     }
-
-                    appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
 
                     if (ContainerRegistryPassword != null)
                     {
-                        appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        appSettings.Remove(CmdletHelpers.DockerRegistryServerPassword);
+                        if (ContainerRegistryPassword.ConvertToString() != string.Empty)
+                        {
+                            appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                        }
                     }
 
                     if (parameters.Contains("EnableContainerContinuousDeployment"))

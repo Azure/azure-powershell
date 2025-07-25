@@ -7,6 +7,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public PSSubnet Subnet { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
+        public PSPublicIpAddress PublicIPAddress { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
     }
 } 

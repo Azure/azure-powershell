@@ -18,14 +18,14 @@
 #>
 function Test-CreateDatabase
 {
-	Test-CreateDatabaseInternal "westcentralus"
+	Test-CreateDatabaseInternal "eastus"
 }
 
 <#
 	.SYNOPSIS
 	Tests creating a database
 #>
-function Test-CreateDatabaseInternal ($location = "westcentralus")
+function Test-CreateDatabaseInternal ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -35,7 +35,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 	{
 		Write-Debug "Create with default values"
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AsJob
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AsJob -Force
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -47,7 +47,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 
 		Write-Debug "Create with default values via piping"
 		$databaseName = Get-DatabaseName
-		$db = $server | New-AzSqlDatabase -DatabaseName $databaseName
+		$db = $server | New-AzSqlDatabase -DatabaseName $databaseName -Force
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-NotNull $db.Edition
@@ -59,7 +59,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
 		$job2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -AsJob
+				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100c -AsJob -Force
 		$job2 | Wait-Job
 		$dwdb  = $job2.Output
 
@@ -68,13 +68,13 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-AreEqual $dwdb.DatabaseName $databaseName
 		Assert-AreEqual $dwdb.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb.Edition DataWarehouse
-		Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100
+		Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100c
 		Assert-AreEqual $dwdb.CollationName $collationName
 
 		Write-Debug "Create with all parameters"
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"} -Force
 
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
@@ -88,7 +88,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Write-Debug "Create with all parameters"
 		$databaseName = Get-DatabaseName
 		$db = $server | New-AzSqlDatabase -DatabaseName $databaseName `
-			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"}
+			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Tags @{"tag_key"="tag_value"} -Force
 
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
@@ -112,7 +112,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 function Test-CreateVcoreDatabase
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "eastus2euap"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -120,7 +120,7 @@ function Test-CreateVcoreDatabase
 	{
 		# Create with Edition and RequestedServiceObjectiveName
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -AsJob
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -AsJob -Force
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -134,7 +134,7 @@ function Test-CreateVcoreDatabase
 
 		# Create with VCore parameter set
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -AsJob
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -AsJob -Force
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -157,7 +157,7 @@ function Test-CreateVcoreDatabase
 function Test-CreateVcoreDatabaseWithLicenseType
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -165,22 +165,22 @@ function Test-CreateVcoreDatabaseWithLicenseType
 	{
 		# Create with Edition and RequestedServiceObjectiveName - Base Price
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -LicenseType BasePrice
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -LicenseType BasePrice -Force
 		Assert-AreEqual BasePrice $db.LicenseType
 
 		# Create with Edition and RequestedServiceObjectiveName - LicenseIncluded
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -LicenseType LicenseIncluded
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -LicenseType LicenseIncluded -Force
 		Assert-AreEqual LicenseIncluded $db.LicenseType
 
 		# Create with VCore parameter set - BasePrice
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType BasePrice
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType BasePrice -Force
 		Assert-AreEqual BasePrice $db.LicenseType
 
 		# Create with VCore parameter set - LicenseIncluded
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType LicenseIncluded
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -LicenseType LicenseIncluded -Force
 		Assert-AreEqual LicenseIncluded $db.LicenseType
 	}
 	finally
@@ -196,7 +196,7 @@ function Test-CreateVcoreDatabaseWithLicenseType
 function Test-CreateServerlessDatabase
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Japan East"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -229,7 +229,7 @@ function Test-CreateServerlessDatabase
 function Test-CreateDatabaseWithSampleName
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest
 	try
 	{
@@ -239,7 +239,7 @@ function Test-CreateDatabaseWithSampleName
 		$databaseName = Get-DatabaseName
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 			-DatabaseName $databaseName -SampleName "AdventureWorksLT" -RequestedServiceObjectiveName Basic `
-			-Tags @{"tag_key"="tag_value"}
+			-Tags @{"tag_key"="tag_value"} -Force
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.CurrentServiceObjectiveName Basic
 		Assert-NotNull $db.MaxSizeBytes
@@ -263,7 +263,7 @@ function Test-CreateDatabaseWithSampleName
 function Test-CreateDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -307,12 +307,58 @@ function Test-CreateDatabaseWithZoneRedundancy
 
 <#
 	.SYNOPSIS
+	Tests creating a database with maintenance.
+#>
+function Test-CreateDatabaseWithMaintenanceConfigurationId
+{
+	# Setup
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
+	$rg = Create-ResourceGroupForTest $location
+
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database with default maintenance
+		$databaseName = Get-DatabaseName
+		$mId = Get-DefaultPublicMaintenanceConfigurationId $location
+        $serverResourceId = "/subscriptions/${subscriptionId}/resourceGroups/${rgname}/providers/Microsoft.Sql/servers/${serverName}"
+		$job = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -MaintenanceConfigurationId $mId -AsJob -Force
+		$job | Wait-Job
+		$db = $job.Output
+
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $db.MaintenanceConfigurationId.ToLower()
+
+		# Create database with non-default maintenance
+		$databaseName = Get-DatabaseName
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$mName = Get-PublicMaintenanceConfigurationName $location "DB_1"
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -MaintenanceConfigurationId $mName -Force
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $db.MaintenanceConfigurationId.ToLower()
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests creating a database with Backup Storage Redundancy
 #>
 function Test-CreateDatabaseWithBackupStorageRedundancy
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -322,9 +368,122 @@ function Test-CreateDatabaseWithBackupStorageRedundancy
 		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 			-DatabaseName $databaseName -BackupStorageRedundancy "Local"
 		Assert-AreEqual $db.DatabaseName $databaseName
-		Assert-NotNull $db.Edition
-		Assert-NotNull $db.BackupStorageRedundancy
-		Assert-AreEqual $db.BackupStorageRedundancy "Local"
+		Assert-NotNull $db.CurrentBackupStorageRedundancy
+		Assert-AreEqual $db.RequestedBackupStorageRedundancy "Local"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with GeoZone as the Backup Storage Redundancy
+#>
+function Test-CreateDatabaseWithGeoZoneBackupStorageRedundancy
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -BackupStorageRedundancy "GeoZone" -Edition HyperScale -VCore 2 -ComputeGeneration Gen5
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-AreEqual $db.Edition "Hyperscale"
+		Assert-NotNull $db.CurrentBackupStorageRedundancy
+		Assert-AreEqual $db.RequestedBackupStorageRedundancy "GeoZone"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with preferred enclave type.
+#>
+function Test-CreateDatabaseWithPreferredEnclaveType
+{
+	# Setup
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create database with PreferredEnclaveType as Default
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -PreferredEnclaveType Default -Force
+		Assert-AreEqual Default $db.PreferredEnclaveType
+
+		# Create database with PreferredEnclaveType as VBS
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -PreferredEnclaveType VBS -Force
+		Assert-AreEqual VBS $db.PreferredEnclaveType
+
+		# Create database with VCore parameter along with PreferredEnclaveType as Default
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -PreferredEnclaveType Default -Force
+		Assert-AreEqual Default $db.PreferredEnclaveType
+
+		# Create database with VCore parameter along with PreferredEnclaveType as VBS
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -PreferredEnclaveType VBS -Force
+		Assert-AreEqual VBS $db.PreferredEnclaveType
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-FreeLimitDatabaseCreate
+{
+	#Setup 
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_S_Gen5_2 -Edition GeneralPurpose -UseFreeLimit -FreeLimitExhaustionBehavior AutoPause
+		Assert-AreEqual true $db.UseFreeLimit
+		Assert-AreEqual AutoPause $db.FreeLimitExhaustionBehavior
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-FreeLimitDatabaseUpdateFreeLimitExhaustionBehavior
+{
+	#Setup 
+	$location = "eastus"
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	$databaseName = Get-DatabaseName 
+
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-RequestedServiceObjectiveName GP_S_Gen5_2 -Edition GeneralPurpose -UseFreeLimit -FreeLimitExhaustionBehavior AutoPause
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		$job = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -FreeLimitExhaustionBehavior BillOverUsage -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual true $db1.UseFreeLimit
+		Assert-AreEqual BillOverUsage $db1.FreeLimitExhaustionBehavior
 	}
 	finally
 	{
@@ -338,14 +497,14 @@ function Test-CreateDatabaseWithBackupStorageRedundancy
 #>
 function Test-UpdateDatabase
 {
-	Test-UpdateDatabaseInternal "southeastasia"
+	Test-UpdateDatabaseInternal "eastus"
 }
 
 <#
 	.SYNOPSIS
 	Tests updating a database
 #>
-function Test-UpdateDatabaseInternal ($location = "southeastasia")
+function Test-UpdateDatabaseInternal ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -391,17 +550,17 @@ function Test-UpdateDatabaseInternal ($location = "southeastasia")
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -Force
+		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100c -Force
 
 		$job = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName `
-				-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200 -Edition DataWarehouse -AsJob
+				-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200c -Edition DataWarehouse -AsJob
 		$job | Wait-Job
 		$dwdb2 = $job.Output
 
 		Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
 		Assert-AreEqual $dwdb2.Edition DataWarehouse
-		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW200
+		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW200c
 		Assert-AreEqual $dwdb2.CollationName $collationName
 	}
 	finally
@@ -417,13 +576,13 @@ function Test-UpdateDatabaseInternal ($location = "southeastasia")
 function Test-UpdateVcoreDatabase()
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	$databaseName = Get-DatabaseName
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -MaxSizeBytes 250GB
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -MaxSizeBytes 250GB -Force
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
@@ -497,13 +656,13 @@ function Test-UpdateVcoreDatabase()
 function Test-UpdateVcoreDatabaseLicenseType()
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	# Create vcore database
 	$databaseName = Get-DatabaseName
-	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -Force
 	Assert-AreEqual $db.DatabaseName $databaseName
 	Assert-AreEqual $db.LicenseType LicenseIncluded # Default license type
 
@@ -538,7 +697,7 @@ function Test-UpdateVcoreDatabaseLicenseType()
 function Test-UpdateDatabaseWithZoneRedundant ()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	Write-Debug $location
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
@@ -581,12 +740,89 @@ function Test-UpdateDatabaseWithZoneRedundant ()
 
 <#
 	.SYNOPSIS
+	Tests updating a database with maintenance
+#>
+function Test-UpdateDatabaseWithMaintenanceConfigurationId
+{
+	# Setup
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
+	$rg = Create-ResourceGroupForTest $location	
+
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database without specifying maintenance
+		$defaultMId = Get-DefaultPublicMaintenanceConfigurationId $location
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			-Edition Premium -Force
+		Assert-AreEqual $db1.DatabaseName $databaseName
+		Assert-NotNull $db1.MaintenanceConfigurationId
+		Assert-AreEqual $defaultMId.ToLower() $db1.MaintenanceConfigurationId.ToLower()
+
+		# Alter database maintenance
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$mName = Get-PublicMaintenanceConfigurationName $location "DB_1"
+		$sdb1 = Set-AzSqlDatabase -ResourceGroupName $db1.ResourceGroupName -ServerName $db1.ServerName -DatabaseName $db1.DatabaseName `
+			-MaintenanceConfigurationId $mName
+
+		Assert-AreEqual $sdb1.DatabaseName $databaseName
+		Assert-NotNull $sdb1.MaintenanceConfigurationId
+		Assert-AreEqual $mId.ToLower() $sdb1.MaintenanceConfigurationId.ToLower()
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a database with preferred enclave type
+#>
+function Test-UpdateDatabaseWithPreferredEnclaveType()
+{
+	# Setup
+	$location = "uksouth"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	# Create vcore database
+	$databaseName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -PreferredEnclaveType Default -Force
+	Assert-AreEqual $databaseName $db.DatabaseName
+	Assert-AreEqual Default $db.PreferredEnclaveType
+
+	try
+	{
+		# Alter with preferred enclave type - VBS
+		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -PreferredEnclaveType VBS
+		Assert-AreEqual VBS $db1.PreferredEnclaveType
+
+		# Test piping - Default PreferredEnclaveType
+		$db1 = $db1 | Set-AzSqlDatabase -PreferredEnclaveType Default
+		Assert-AreEqual Default $db1.PreferredEnclaveType
+
+		# Test piping - VBS PreferredEnclaveType
+		$db1 = $db1 | Set-AzSqlDatabase -PreferredEnclaveType VBS
+		Assert-AreEqual VBS $db1.PreferredEnclaveType
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests updating a vcore database
 #>
 function Test-UpdateServerlessDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Japan East"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -647,6 +883,69 @@ function Test-UpdateServerlessDatabase()
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests updating a database from Sterling to Hyperscale with Manual Cutover {Azure SQL Forward Migration V2} 
+#>
+function Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover ()
+{
+	# Setup
+	$location = "eastus2euap"
+	$targetEdition = "Hyperscale"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$databaseName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -MaxSizeBytes 250GB -ComputeModel Serverless
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		# Update Sterling database to Hyperscale with manual cutover
+		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition $targetEdition -RequestedServiceObjectiveName "HS_Gen5_8" -ManualCutover -AsJob
+
+		$startTime = Get-Date
+		$timeout = New-TimeSpan -Minutes 20
+
+		do 
+		{  
+			# list database operation to check if the db is ready for cutover
+			$dbactivity = Get-AzSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName
+			Write-Output $dbactivity
+	    
+			if($dbactivity.Length -gt 0)
+			{
+					Assert-AreEqual $dbactivity[0].DatabaseName $databaseName
+					Assert-AreEqual $dbactivity[0].Operation "UpdateLogicalDatabase"
+					if($dbactivity[0].OperationPhaseDetails.Phase -eq "WaitingForCutover")
+					{						
+						break
+					}
+			}
+
+			if ((Get-Date) - $startTime -ge $timeout) {  
+					break
+			}
+		}while ($true) 
+		
+		# Trigger Perform Cutover on the db once the db is waitingforcutover and verify the target db name/slo
+		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+				-PerformCutover
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.CurrentServiceObjectiveName HS_Gen5_8
+
+		$job | Wait-Job
+		$db2 = $job.Output
+		Assert-AreEqual $db2.DatabaseName $db.DatabaseName
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
 <#
 	.SYNOPSIS
 	Tests updating a database with zone redundancy not specified
@@ -654,7 +953,7 @@ function Test-UpdateServerlessDatabase()
 function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 {
 	# Setup
-	$location = "southeastasia"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$databaseName = Get-DatabaseName
@@ -692,7 +991,7 @@ function Test-RenameDatabase
 
 	try
 	{
-		$location = "southeastasia"
+		$location = "eastus"
 		$server = Create-ServerForTest $rg $location
 
 		# Create with default values
@@ -730,14 +1029,14 @@ function Test-RenameDatabase
 #>
 function Test-GetDatabase
 {
-	Test-GetDatabaseInternal "westcentralus"
+	Test-GetDatabaseInternal "eastus"
 }
 
 <#
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseInternal  ($location = "westcentralus")
+function Test-GetDatabaseInternal  ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -745,13 +1044,13 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB -Force
 	Assert-AreEqual $db1.DatabaseName $databaseName
 
 	# Create database with non-defaults
 	$databaseName = Get-DatabaseName
 	$db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
+		-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic -Force
 	Assert-AreEqual $db2.DatabaseName $databaseName
 
 	try
@@ -759,7 +1058,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 		# Create data warehouse database.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-				-CollationName SQL_Latin1_General_CP1_CI_AS -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+				-CollationName SQL_Latin1_General_CP1_CI_AS -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100c -Force
 		$dwdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName 
 		Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 		Assert-AreEqual $dwdb2.MaxSizeBytes $dwdb.MaxSizeBytes
@@ -796,7 +1095,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseWithBackupStorageRedundancy ($location = "southeastasia")
+function Test-GetDatabaseWithBackupStorageRedundancy ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -806,8 +1105,8 @@ function Test-GetDatabaseWithBackupStorageRedundancy ($location = "southeastasia
 	$databaseName = Get-DatabaseName
 	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -BackupStorageRedundancy Geo -Force
 	Assert-AreEqual $db1.DatabaseName $databaseName
-	Assert-NotNull $db1.BackupStorageRedundancy
-	Assert-AreEqual	$db1.BackupStorageRedundancy "Geo"
+	Assert-NotNull $db1.CurrentBackupStorageRedundancy
+	Assert-AreEqual	$db1.CurrentBackupStorageRedundancy "Geo"
 
 	Remove-ResourceGroupForTest $rg
 }
@@ -819,7 +1118,7 @@ function Test-GetDatabaseWithBackupStorageRedundancy ($location = "southeastasia
 function Test-GetDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -849,6 +1148,101 @@ function Test-GetDatabaseWithZoneRedundancy
 	}
 }
 
+<#
+	.SYNOPSIS
+	Tests getting a database with maintenance
+#>
+function Test-GetDatabaseWithMaintenanceConfigurationId
+{
+	# Setup
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
+	$rg = Create-ResourceGroupForTest $location
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create database without specifying maintenance
+		$defaultMId = Get-DefaultPublicMaintenanceConfigurationId $location
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			-Edition Premium -Force
+
+		$gdb1 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
+		Assert-AreEqual $gdb1.DatabaseName $db1.DatabaseName
+		Assert-AreEqual $defaultMId.ToLower() $gdb1.MaintenanceConfigurationId.ToLower()
+
+		# Create database with maintenance (try using name instead of full id)
+		$databaseName = Get-DatabaseName
+		$mName = Get-PublicMaintenanceConfigurationName $location "DB_1"
+		$mId = Get-PublicMaintenanceConfigurationId $location "DB_1"
+		$db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -Edition Premium -MaintenanceConfigurationId $mName -Force
+
+		$gdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db2.DatabaseName
+		Assert-AreEqual $gdb2.DatabaseName $db2.DatabaseName
+		Assert-AreEqual $mId.ToLower() $gdb2.MaintenanceConfigurationId.ToLower()
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests Getting a database with preferred enclave type
+#>
+function Test-GetDatabaseWithPreferredEnclaveType ($location = "eastus2euap")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create with preferred enclave type as Default
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -PreferredEnclaveType Default -Force
+		$gdb1 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
+		Assert-AreEqual $db1.DatabaseName $gdb1.DatabaseName
+		Assert-AreEqual	Default $gdb1.PreferredEnclaveType
+
+		# Create with preferred enclave type as VBS
+		$databaseName = Get-DatabaseName
+		$db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -PreferredEnclaveType VBS -Force
+		$gdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db2.DatabaseName
+		Assert-AreEqual $db2.DatabaseName $gdb2.DatabaseName
+		Assert-AreEqual	VBS $gdb2.PreferredEnclaveType
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with ledger enabled
+#>
+function Test-DatabaseCreateWithLedgerEnabled ($location = "eastus")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	# Create with ledger enabled
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EnableLedger -Force
+	Assert-AreEqual $db1.DatabaseName $databaseName
+	Assert-AreEqual	"True" $db1.EnableLedger
+
+	# Validate Get-AzSqlDatabase returns ledger property
+	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual	"True" $databaseFromGet.EnableLedger
+
+	Remove-ResourceGroupForTest $rg
+}
 
 <#
 	.SYNOPSIS
@@ -856,14 +1250,14 @@ function Test-GetDatabaseWithZoneRedundancy
 #>
 function Test-RemoveDatabase
 {
-	Test-RemoveDatabaseInternal "westcentralus"
+	Test-RemoveDatabaseInternal "eastus"
 }
 
 <#
 	.SYNOPSIS
 	Tests Deleting a database
 #>
-function Test-RemoveDatabaseInternal  ($location = "westcentralus")
+function Test-RemoveDatabaseInternal  ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -885,7 +1279,7 @@ function Test-RemoveDatabaseInternal  ($location = "westcentralus")
 		# Create data warehouse database
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100 -Force
+			-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100c -Force
 		Assert-AreEqual $dwdb.DatabaseName $databaseName
 
 		Remove-AzSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Force
@@ -923,7 +1317,7 @@ function Test-CancelDatabaseOperation
 function Test-CancelDatabaseOperationInternal
 {
 	# Setup
-	$location = Get-Location "southeastasia"
+	$location = Get-Location "Microsoft.Sql" "servers"  "East US"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -955,7 +1349,7 @@ function Test-CancelDatabaseOperationInternal
 		}
 		Catch
 		{
-			$ErrorMessage = $_.Exception.Message
+			$ErrorMessage = (ConvertFrom-Json $_.Exception.Response.Content).error.message
 			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel management operation '" + $dbactivityId + "' in the current state")
 		}
 	}
@@ -963,4 +1357,92 @@ function Test-CancelDatabaseOperationInternal
 	{
 		Remove-ResourceGroupForTest $rg
 	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with db level cmk and identity
+#>
+function Test-DatabaseCreateWithPerDBCMK ($location = "eastus2euap")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+	$encryptionProtector = "https://pstestkv.vault.azure.net/keys/testkey/f62d937858464f329ab4a8c2dc7e0fa4"
+	$umi = "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+
+	# Create with per db cmk enabled
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
+
+	# Validate Get-AzSqlDatabase returns cmk properties
+	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-NotNull $databaseFromGet
+	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+	Assert-AreEqual $databaseFromGet.EncryptionProtectorAutoRotation $true
+
+	Remove-ResourceGroupForTest $rg
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a database with db level cmk and identity
+#>
+function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+	$encryptionProtector = "https://kvpstest.vault.azure.net/keys/pstestkey/1493a5e6d9e34b429276c02457e42c0c"
+	$umi = "/subscriptions/10a238d6-a139-46d0-818d-d091394072b6/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+
+	# Create with per db cmk enabled
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
+
+	# Validate Get-AzSqlDatabase returns cmk properties
+	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+
+	# Update the db with new EncryptionProtector
+	$encryptionProtector2 = "https://kvpstest.vault.azure.net/keys/pstestkey1/f6143120ccd3400c94e244799d6d00d1"
+	$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $encryptionProtector2 -EncryptionProtectorAutoRotation:$false
+	
+	$databaseGetAfterUpdate = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtector $encryptionProtector2
+	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtectorAutoRotation $false
+
+	Remove-ResourceGroupForTest $rg
+}
+
+<#
+	.SYNOPSIS
+	Test to revalidae the encryption protector of a database with db level cmk and identity
+#>
+function Test-RevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK ($location = "eastus2euap")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+	$encryptionProtector = "https://pstestkv.vault.azure.net/keys/testkey/f62d937858464f329ab4a8c2dc7e0fa4"
+	$umi = "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+	$akvRg =  "pstest"
+	$akvName = "pstestkv"
+	$umiObjectId = "781be676-54b8-46e5-ba30-4d9a18b13bf6"
+
+	# Create with per db cmk enabled
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+
+	# Validate Get-AzSqlDatabase returns cmk properties
+	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+
+	# Revalidate AKV key
+	Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+
+	# Revert encryption protector
+	Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+
+	Remove-ResourceGroupForTest $rg
 }

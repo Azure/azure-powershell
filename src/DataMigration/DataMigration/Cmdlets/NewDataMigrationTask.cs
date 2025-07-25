@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            HelpMessage = "Database Migration Service Name.")]
+            HelpMessage = "Azure Database Migration Service (classic) Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         // could save user from writing Get-AzureRmDataMigrationTask commandlet to pull these back.
         private string expandParameterOfTask = "output"; // default: $expand=output
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
             RuntimeDefinedParameterDictionary dynamicParams = null;
 
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                             Properties = properties
                         };
 
-                        response = DataMigrationClient.Tasks.CreateOrUpdate(taskInput, ResourceGroupName, ServiceName, ProjectName, Name);
+                        response = DataMigrationClient.Tasks.CreateOrUpdate(ResourceGroupName, ServiceName, ProjectName, Name, taskInput);
 
                         // wait for the task to finish: not queued or running state:
                         while (this.Wait.IsPresent && response !=null && response.Properties != null &&

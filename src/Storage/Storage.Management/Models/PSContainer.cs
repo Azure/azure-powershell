@@ -16,8 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.Azure.Storage;
 using System;
 using System.Collections.Generic;
@@ -45,6 +44,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LeaseDuration = container.LeaseDuration;
             this.HasLegalHold = container.HasLegalHold;
             this.HasImmutabilityPolicy = container.HasImmutabilityPolicy;
+            this.DefaultEncryptionScope = container.DefaultEncryptionScope;
+            this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
+            this.Deleted = container.Deleted;
+            this.ImmutableStorageWithVersioning = container.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageWithVersioning(container.ImmutableStorageWithVersioning);
+            this.RemainingRetentionDays = container.RemainingRetentionDays;
+            this.DeletedTime = container.DeletedTime;
+            this.Version = container.Version;
+            this.EnableNfsV3AllSquash = container.EnableNfsV3AllSquash;
+            this.EnableNfsV3RootSquash = container.EnableNfsV3RootSquash;
         }
 
         public PSContainer(BlobContainer container)
@@ -65,6 +73,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.LeaseDuration = container.LeaseDuration;
             this.HasLegalHold = container.HasLegalHold;
             this.HasImmutabilityPolicy = container.HasImmutabilityPolicy;
+            this.DefaultEncryptionScope = container.DefaultEncryptionScope;
+            this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
+            this.Deleted = container.Deleted;
+            this.ImmutableStorageWithVersioning = container.ImmutableStorageWithVersioning is null? null : new PSImmutableStorageWithVersioning(container.ImmutableStorageWithVersioning);
+            this.RemainingRetentionDays = container.RemainingRetentionDays;
+            this.DeletedTime = container.DeletedTime;
+            this.Version = container.Version;
+            this.EnableNfsV3AllSquash = container.EnableNfsV3AllSquash;
+            this.EnableNfsV3RootSquash = container.EnableNfsV3RootSquash;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
@@ -106,6 +123,23 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "HasImmutabilityPolicy", Target = ViewControl.List, Position = 6)]
         public bool? HasImmutabilityPolicy { get; set; }
 
+        public string DefaultEncryptionScope { get; set; }
+        
+        public bool? DenyEncryptionScopeOverride { get; set; }
+
+        public int? RemainingRetentionDays { get; }
+
+        public DateTime? DeletedTime { get; }
+
+        public bool? Deleted { get; }
+
+        public string Version { get; }
+
+        public bool? EnableNfsV3RootSquash { get; set; }
+
+        public bool? EnableNfsV3AllSquash { get; set; }
+
+        public PSImmutableStorageWithVersioning ImmutableStorageWithVersioning { get; set; }
 
         public static string ParseResourceGroupFromId(string idFromServer)
         {
@@ -166,10 +200,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 {
                     Tags = ((List<string>)legalHold.Tags).ToArray();
                 }
+                this.AllowProtectedAppendWritesAll = legalHold.AllowProtectedAppendWritesAll;
             }
         }
         public bool? HasLegalHold { get; set; }
         public string[] Tags { get; set; }
+        public bool? AllowProtectedAppendWritesAll { get; set; }
 
     }
 
@@ -189,9 +225,23 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 }
             }
             this.Tags = tagList.ToArray();
+            this.ProtectedAppendWritesHistory = legalHoldProperty.ProtectedAppendWritesHistory is null ? null : new PSProtectedAppendWritesHistory(legalHoldProperty.ProtectedAppendWritesHistory);
         }
         public bool? HasLegalHold { get; set; }
         public PSTagProperty[] Tags { get; set; }
+        public PSProtectedAppendWritesHistory ProtectedAppendWritesHistory { get; set; }
+    }
+
+    public class PSProtectedAppendWritesHistory
+    {
+        public PSProtectedAppendWritesHistory(ProtectedAppendWritesHistory history)
+        {
+            this.AllowProtectedAppendWritesAll = history.AllowProtectedAppendWritesAll;
+            this.Timestamp = history.Timestamp;
+        }
+
+        public bool? AllowProtectedAppendWritesAll { get; set; }
+        public DateTime? Timestamp { get; }
     }
 
     public class PSTagProperty
@@ -223,6 +273,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Type = policy.Type;
             this.Id = policy.Id;
             this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
+            this.AllowProtectedAppendWritesAll = policy.AllowProtectedAppendWritesAll;
         }
 
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
@@ -232,6 +283,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Type { get; set; }
         public string Etag { get; set; }
         public bool? AllowProtectedAppendWrites { get; set; }
+        public bool? AllowProtectedAppendWritesAll { get; set; }
     }
 
     public class PSImmutabilityPolicyProperties
@@ -242,6 +294,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.State = policy.State;
             this.Etag = policy.Etag;
             this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
+            this.AllowProtectedAppendWritesAll = policy.AllowProtectedAppendWritesAll;
 
             List<PSUpdateHistoryProperty> updateHistoryList = new List<PSUpdateHistoryProperty>();
             if (policy.UpdateHistory != null && policy.UpdateHistory.Count != 0)
@@ -259,6 +312,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Etag { get; set; }
         public PSUpdateHistoryProperty[] UpdateHistory { get; set; }
         public bool? AllowProtectedAppendWrites { get; set; }
+        public bool? AllowProtectedAppendWritesAll { get; set; }
     }
 
     public enum PSPublicAccess
@@ -278,13 +332,31 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.ObjectIdentifier = updateHistory.ObjectIdentifier;
             this.TenantId = updateHistory.TenantId;
             this.Upn = updateHistory.Upn;
+            this.AllowProtectedAppendWrites = updateHistory.AllowProtectedAppendWrites;
+            this.AllowProtectedAppendWritesAll = updateHistory.AllowProtectedAppendWritesAll;
         }
-        
+
         public string Update { get; set; }
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public DateTime? Timestamp { get; set; }
         public string ObjectIdentifier { get; set; }
         public string TenantId { get; set; }
         public string Upn { get; set; }
+        public bool? AllowProtectedAppendWrites { get; set; }
+        public bool? AllowProtectedAppendWritesAll { get; set; }
+    }
+
+    public class PSImmutableStorageWithVersioning
+    {
+        public PSImmutableStorageWithVersioning(ImmutableStorageWithVersioning inputValue)
+        {
+            this.Enabled = inputValue.Enabled;
+            this.TimeStamp = inputValue.TimeStamp;
+            this.MigrationState = inputValue.MigrationState;
+        }
+
+        public bool? Enabled { get; set; }
+        public DateTime? TimeStamp { get; }
+        public string MigrationState { get; }
     }
 }

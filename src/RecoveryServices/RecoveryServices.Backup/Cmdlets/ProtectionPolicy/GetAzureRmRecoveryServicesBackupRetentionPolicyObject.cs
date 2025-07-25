@@ -15,11 +15,12 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
-{
+{ 
     /// <summary>
     /// Returns a retention policy PS object which can be modified in the PS shell 
     /// and fed to other cmdlets which accept it.
@@ -53,14 +54,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
+        /// <summary>
+        /// Schedule run frequency for the policy. 
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 2,
+            HelpMessage = ParamHelpMsgs.Policy.ScheduleFrequencyForRetention)]
+        [ValidateSet("Daily", "Hourly", "Weekly")]
+        public ScheduleRunType ScheduleRunFrequency = ScheduleRunType.Daily;
+
+        /// <summary>
+        /// Options to select the Backup Tier type 
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 3,
+            HelpMessage = ParamHelpMsgs.Common.BackupTierType)]
+        [ValidateSet("Snapshot", "VaultStandard")]
+        public BackupTierType BackupTier = BackupTierType.Snapshot;
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
 
+                Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
+                providerParameters.Add(PolicyParams.ScheduleRunFrequency, ScheduleRunFrequency);
+                providerParameters.Add(PolicyParams.BackupTier, BackupTier);
+
+                if (ScheduleRunFrequency != ScheduleRunType.Daily && WorkloadType != WorkloadType.AzureVM && WorkloadType != WorkloadType.AzureFiles)
+                {
+                    throw new ArgumentException(Resources.UnexpectedParamScheduleRunFrequency);
+                }
+
+                if (ScheduleRunFrequency == ScheduleRunType.Weekly && WorkloadType == WorkloadType.AzureFiles)
+                {
+                    throw new ArgumentException(Resources.WeeklyScheduleNotSupported);
+                }
+
                 PsBackupProviderManager providerManager =
-                    new PsBackupProviderManager(new Dictionary<Enum, object>(), ServiceClientAdapter);
+                    new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(WorkloadType, BackupManagementType);

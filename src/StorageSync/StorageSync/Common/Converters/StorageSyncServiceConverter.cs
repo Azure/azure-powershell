@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models;
 using Microsoft.Azure.Management.StorageSync.Models;
 using System.Collections.Generic;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
@@ -23,9 +24,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class StorageSyncServiceConverter.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.Management.StorageSync.Models.StorageSyncService}" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSStorageSyncService, StorageSyncService}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.Management.StorageSync.Models.StorageSyncService}" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSStorageSyncService, StorageSyncService}" />
     public class StorageSyncServiceConverter : ConverterBase<PSStorageSyncService, StorageSyncModels.StorageSyncService>
     {
 
@@ -46,7 +47,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             source.ResourceId,
             source.StorageSyncServiceName,
             StorageSyncConstants.StorageSyncServiceType,
+            new SystemDataConverter().Convert(source.SystemData),
             source.Tags,
+            source.Identity,
             source.IncomingTrafficPolicy);
 
         /// <summary>
@@ -62,7 +65,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             // Convert individual PrivateEndpointConnection objects
             if (source.PrivateEndpointConnections != null)
             {
-                foreach(PrivateEndpointConnection privateEndpointConnection in source.PrivateEndpointConnections)
+                foreach(StorageSyncModels.PrivateEndpointConnection privateEndpointConnection in source.PrivateEndpointConnections)
                 {
                     psPrivateEndpointConnections.Add(new PrivateEndpointConnectionConverter().Convert(privateEndpointConnection));
                 }
@@ -77,7 +80,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 IncomingTrafficPolicy = source.IncomingTrafficPolicy,
                 Tags = source.Tags,
                 Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.StorageSyncServiceType,
-                PrivateEndpointConnections = psPrivateEndpointConnections.Count > 0 ? psPrivateEndpointConnections : null
+                PrivateEndpointConnections = psPrivateEndpointConnections.Count > 0 ? psPrivateEndpointConnections : null,
+                SystemData = new SystemDataConverter().Convert(source.SystemData),
+                UseIdentity = source.UseIdentity,
+                Identity = source.Identity
             };
         }
     }

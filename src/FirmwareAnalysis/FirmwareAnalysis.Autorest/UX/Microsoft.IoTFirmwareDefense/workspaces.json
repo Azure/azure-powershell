@@ -1,0 +1,85 @@
+{
+  "resourceType": "workspaces",
+  "apiVersion": "2024-01-10",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFirmwareAnalysisWorkspace",
+      "description": "Get firmware analysis workspace.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysisworkspace"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get firmware analysis workspace.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.workspaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFirmwareAnalysisWorkspace",
+      "description": "The operation to delete a firmware analysis workspace.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis/remove-azfirmwareanalysisworkspace"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "The operation to delete a firmware analysis workspace.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.workspaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

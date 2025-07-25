@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
@@ -33,15 +34,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string AdminSiteName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|PremiumV3]")]
-        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "PremiumV3", "Isolated")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|Premium0V3|PremiumV3|PremiumMV3|PremiumV4|PremiumMV4] or [Isolated|IsolatedV2]")]
+        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Premium0V3", "PremiumV3", "PremiumMV3", "PremiumV4", "PremiumMV4", "Isolated", "IsolatedV2")]
         public string Tier { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
         public int NumberofWorkers { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]")]
-        [PSArgumentCompleter("Small", "Medium", "Large", "ExtraLarge")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge|ExtraExtraLarge]")]
+        [PSArgumentCompleter("ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "ExtraExtraLarge")]
         public string WorkerSize { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
@@ -65,7 +66,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                     int.TryParse(Regex.Match(AppServicePlan.Sku.Name, @"\d+").Value, out workerSizeAsNumber);
                     AppServicePlan.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, workerSizeAsNumber) : CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, WorkerSize);
                     AppServicePlan.PerSiteScaling = PerSiteScaling;
-                    AppServicePlan.Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag);
+                    if (Tag != null && AppServicePlan.Tags != null)
+                        CmdletHelpers.ConvertToStringDictionary(Tag).ForEach(item =>
+                        {
+                            if (!AppServicePlan.Tags.ContainsKey(item.Key))
+                            {
+                                AppServicePlan.Tags.Add(item);
+                            }
+                            else
+                            {
+                                AppServicePlan.Tags[item.Key] = item.Value;
+                            }
+                        });
+                    else if (Tag != null)
+                        AppServicePlan.Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag);
                     break;
             }
 

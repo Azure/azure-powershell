@@ -13,69 +13,89 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ManagedInstanceCrudScenarioTests : SqlTestsBase
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
+    public class ManagedInstanceCrudScenarioTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
-        }
-
         public ManagedInstanceCrudScenarioTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] { "Microsoft.Sql/managedInstances" };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedInstance()
         {
-            RunPowerShellTest("Test-CreateManagedInstance");
+            TestRunner.RunTestScript("Test-CreateManagedInstance");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedInstanceHermesTesting()
+        {
+            TestRunner.RunTestScript("Test-CreateManagedInstance-HermesTesting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetManagedInstanceHermesTesting()
+        {
+            TestRunner.RunTestScript("Test-SetManagedInstance-HermesTesting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetManagedInstance()
         {
-            RunPowerShellTest("Test-SetManagedInstance");
+            TestRunner.RunTestScript("Test-SetManagedInstance");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetManagedInstance()
+        public void TestSetBackupStorageRedundancy()
         {
-            RunPowerShellTest("Test-GetManagedInstance");
+            TestRunner.RunTestScript("Test-SetRedundancy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagedInstance()
         {
-            RunPowerShellTest("Test-RemoveManagedInstance");
+            TestRunner.RunTestScript("Test-RemoveManagedInstance");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedInstanceWithIdentity()
         {
-            RunPowerShellTest("Test-CreateManagedInstanceWithIdentity");
+            TestRunner.RunTestScript("Test-CreateManagedInstanceWithIdentity");
         }
 
-        [Fact(Skip = "Skip due to bug in backend which is currently deploying")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateUpdateManagedInstanceWithMinimalTlsVersion()
         {
-            RunPowerShellTest("Test-CreateUpdateManagedInstanceWithMinimalTlsVersion");
+            TestRunner.RunTestScript("Test-CreateUpdateManagedInstanceWithMinimalTlsVersion");
+        }
+
+        [Fact(Skip = "It is unknow for now how to fix this.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedInstanceWithMaintenanceConfigurationId()
+        {
+            TestRunner.RunTestScript("Test-CreateManagedInstanceWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedInstanceWithMultiAzEnabled()
+        {
+            TestRunner.RunTestScript("Test-CreateManagedInstanceWithMultiAzEnabled");
         }
     }
 }

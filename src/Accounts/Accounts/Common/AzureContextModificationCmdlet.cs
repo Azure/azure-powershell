@@ -45,7 +45,12 @@ namespace Microsoft.Azure.Commands.Profile.Common
         {
             using (var profile = GetDefaultProfile())
             {
-                contextAction(profile.ToProfile(), new RMProfileClient(profile));
+                var client = new RMProfileClient(profile)
+                {
+                    WarningLog = (s) => WriteWarning(s),
+                    CmdletContext = _cmdletContext
+                };
+                contextAction(profile.ToProfile(), client);
             }
         }
 
@@ -123,12 +128,9 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     {
                         ProtectedProfileProvider.InitializeResourceManagerProfile();
                     }
-                    catch (SystemException e)
+                    catch (Exception e)
                     {
-                        if (!(e is IOException) && !(e is UnauthorizedAccessException))
-                        {
-                            throw e;
-                        }
+                        //Likely the exception is related to IO or permission, fallback to Process save mode
                         WriteInitializationWarnings(string.Format(Resources.ProfileFileNotAccessible, e.Message));
                         ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
                     }
@@ -187,6 +189,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// Generate a runtime parameter with ValidateSet matching the current context
         /// </summary>
         /// <param name="name">The name of the parameter</param>
+        /// <param name="parameterSetName"></param>
         /// <param name="runtimeParameter">The returned runtime parameter for context, with appropriate validate set</param>
         /// <returns>True if one or more contexts were found, otherwise false</returns>
         protected bool TryGetExistingContextNameParameter(string name, string parameterSetName, out RuntimeDefinedParameter runtimeParameter)

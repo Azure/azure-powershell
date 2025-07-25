@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Dns.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Microsoft.Azure.Management.Dns.Models;
+
     /// <summary>
     /// Represents a set of records with the same name, with the same type and in the same zone.
     /// </summary>
@@ -120,10 +120,6 @@ namespace Microsoft.Azure.Commands.Dns
     {
         public abstract object Clone();
 
-        public const int TxtRecordMaxLength = 1024;
-
-        public const int TxtRecordMinLength = 0;
-
         public const int TxtRecordChunkSize = 255;
 
         public const int CaaRecordMaxLength = 1024;
@@ -172,7 +168,7 @@ namespace Microsoft.Azure.Commands.Dns
                 return new MxRecord
                 {
                     Exchange = mamlRecord.Exchange,
-                    Preference = (ushort) mamlRecord.Preference,
+                    Preference = (ushort)mamlRecord.Preference,
                 };
             }
             else if (record is Management.Dns.Models.SrvRecord)
@@ -180,10 +176,10 @@ namespace Microsoft.Azure.Commands.Dns
                 var mamlRecord = (Management.Dns.Models.SrvRecord)record;
                 return new SrvRecord
                 {
-                    Port = (ushort) mamlRecord.Port,
-                    Priority = (ushort) mamlRecord.Priority,
+                    Port = (ushort)mamlRecord.Port,
+                    Priority = (ushort)mamlRecord.Priority,
                     Target = mamlRecord.Target,
-                    Weight = (ushort) mamlRecord.Weight,
+                    Weight = (ushort)mamlRecord.Weight,
                 };
             }
             else if (record is Management.Dns.Models.SoaRecord)
@@ -192,12 +188,12 @@ namespace Microsoft.Azure.Commands.Dns
                 return new SoaRecord
                 {
                     Email = mamlRecord.Email,
-                    ExpireTime = (uint) mamlRecord.ExpireTime.GetValueOrDefault(),
+                    ExpireTime = (uint)mamlRecord.ExpireTime.GetValueOrDefault(),
                     Host = mamlRecord.Host,
-                    MinimumTtl = (uint) mamlRecord.MinimumTtl.GetValueOrDefault(),
-                    RefreshTime = (uint) mamlRecord.RefreshTime.GetValueOrDefault(),
-                    RetryTime = (uint) mamlRecord.RetryTime.GetValueOrDefault(),
-                    SerialNumber = (uint) mamlRecord.SerialNumber.GetValueOrDefault(),
+                    MinimumTtl = (uint)mamlRecord.MinimumTtl.GetValueOrDefault(),
+                    RefreshTime = (uint)mamlRecord.RefreshTime.GetValueOrDefault(),
+                    RetryTime = (uint)mamlRecord.RetryTime.GetValueOrDefault(),
+                    SerialNumber = (uint)mamlRecord.SerialNumber.GetValueOrDefault(),
                 };
             }
             else if (record is Management.Dns.Models.TxtRecord)
@@ -221,9 +217,44 @@ namespace Microsoft.Azure.Commands.Dns
                 var mamlRecord = (Management.Dns.Models.CaaRecord)record;
                 return new CaaRecord
                 {
-                    Flags = (byte) mamlRecord.Flags.GetValueOrDefault(),
+                    Flags = (byte)mamlRecord.Flags.GetValueOrDefault(),
                     Value = mamlRecord.Value,
                     Tag = mamlRecord.Tag,
+                };
+            }
+            else if (record is Management.Dns.Models.DsRecord)
+            {
+                var mamlRecord = (Management.Dns.Models.DsRecord)record;
+                return new DsRecord
+                {
+                    Algorithm = mamlRecord.Algorithm.GetValueOrDefault(),
+                    Digest = mamlRecord.Digest.Value,
+                    DigestType = mamlRecord.Digest.AlgorithmType.GetValueOrDefault(),
+                    KeyTag = mamlRecord.KeyTag.GetValueOrDefault(),
+                };
+            }
+            else if (record is Management.Dns.Models.TlsaRecord)
+            {
+                var mamlRecord = (Management.Dns.Models.TlsaRecord)record;
+                return new TlsaRecord
+                {
+                    Usage = mamlRecord.Usage.GetValueOrDefault(),
+                    CertificateAssociationData = mamlRecord.CertAssociationData,
+                    MatchingType = mamlRecord.MatchingType.GetValueOrDefault(),
+                    Selector = mamlRecord.Selector.GetValueOrDefault(),
+                };
+            }
+            else if (record is Management.Dns.Models.NaptrRecord)
+            {
+                var mamlRecord = (Management.Dns.Models.NaptrRecord)record;
+                return new NaptrRecord
+                {
+                    Flags = mamlRecord.Flags,
+                    Order = (ushort) mamlRecord.Order,
+                    Preference = (ushort) mamlRecord.Preference,
+                    Regexp = mamlRecord.Regexp,
+                    Replacement = mamlRecord.Replacement,
+                    Services = mamlRecord.Services,
                 };
             }
 
@@ -236,7 +267,7 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 return null;
             }
-            
+
             var sb = new StringBuilder();
             foreach (var s in value)
             {
@@ -472,6 +503,69 @@ namespace Microsoft.Azure.Commands.Dns
     }
 
     /// <summary>
+    /// Represents a DNS record of type NAPTR that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
+    public class NaptrRecord : DnsRecordBase
+    {
+        /// <summary>
+        /// Gets or sets the order for this NAPTR record.
+        /// </summary>
+        public ushort Order { get; set; }
+
+        /// <summary>
+        /// Gets or sets the preference metric for this NAPTR record.
+        /// </summary>
+        public ushort Preference { get; set; }
+
+        /// <summary>
+        /// Gets or sets the flags for this NAPTR record.
+        /// </summary>
+        public string Flags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the services for this NAPTR record.
+        /// </summary>
+        public string Services { get; set; }
+
+        /// <summary>
+        /// Gets or sets the regular expression for this NAPTR record.
+        /// </summary>
+        public string Regexp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replacement for this NAPTR record.
+        /// </summary>
+        public string Replacement { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("[{0},{1},{2},{3},{4},{5}]", Order, Preference, Flags, Services, Regexp, Replacement);
+        }
+
+        internal override object ToMamlRecord()
+        {
+            return new Management.Dns.Models.NaptrRecord
+            {
+                Order = this.Order,
+                Preference = this.Preference,
+                Flags = this.Flags,
+                Services = this.Services,
+                Regexp = this.Regexp,
+                Replacement = this.Replacement
+            };
+        }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new NaptrRecord { Order = this.Order, Preference = this.Preference, Flags = this.Flags, Services = this.Services, Regexp = this.Regexp, Replacement = this.Replacement };
+        }
+    }
+
+    /// <summary>
     /// Represents a DNS record of type SRV that is part of a <see cref="DnsRecordSet"/>.
     /// </summary>
     public class SrvRecord : DnsRecordBase
@@ -679,6 +773,109 @@ namespace Microsoft.Azure.Commands.Dns
                 this.Flags,
                 this.Tag,
                 this.Value);
+        }
+    }
+
+    /// <summary>
+    /// Represents a DNS record of type DS that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
+    public class DsRecord : DnsRecordBase
+    {
+        /// <summary>
+        /// Gets or sets the key tag for this record.
+        /// </summary>
+        public int KeyTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the algorithm for this record.
+        /// </summary>
+        public int Algorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the digest type for this record.
+        /// </summary>
+        public int DigestType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the digest for this record.
+        /// </summary>
+        public string Digest { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{this.KeyTag},{this.Algorithm},{this.DigestType},{this.Digest}]";
+        }
+
+        public override object Clone()
+        {
+            return new DsRecord()
+            {
+                KeyTag = this.KeyTag,
+                Algorithm = this.Algorithm,
+                DigestType = this.DigestType,
+                Digest = this.Digest
+            };
+        }
+
+        internal override object ToMamlRecord()
+        {
+            return new Management.Dns.Models.DsRecord(
+                this.KeyTag,
+                this.Algorithm,
+                new Management.Dns.Models.Digest(
+                    this.DigestType,
+                    this.Digest));
+        }
+    }
+
+    /// <summary>
+    /// Represents a DNS record of type TLSA that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
+    public class TlsaRecord : DnsRecordBase
+    {
+        /// <summary>
+        /// Gets or sets the certificate usage for this record.
+        /// </summary>
+        public int Usage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selector for this record.
+        /// </summary>
+        public int Selector { get; set; }
+
+        /// <summary>
+        /// Gets or sets the matching type for this record.
+        /// </summary>
+        public int MatchingType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the certificate association data for this record.
+        /// </summary>
+        public string CertificateAssociationData { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{this.Usage},{this.Selector},{this.MatchingType},{this.CertificateAssociationData}]";
+        }
+
+        public override object Clone()
+        {
+            return new TlsaRecord()
+            {
+                Usage = this.Usage,
+                Selector = this.Selector,
+                MatchingType = this.MatchingType,
+                CertificateAssociationData = this.CertificateAssociationData
+            };
+        }
+
+        internal override object ToMamlRecord()
+        {
+            return new Management.Dns.Models.TlsaRecord(
+                this.Usage,
+                this.Selector,
+                this.MatchingType,
+                this.CertificateAssociationData);
         }
     }
 

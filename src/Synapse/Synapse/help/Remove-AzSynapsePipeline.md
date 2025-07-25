@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/remove-azsynapsepipeline
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsepipeline
 schema: 2.0.0
 ---
 
@@ -14,19 +14,19 @@ Removes a pipeline from workspace.
 
 ### RemoveByName (Default)
 ```
-Remove-AzSynapsePipeline -WorkspaceName <String> -Name <String> [-PassThru] [-AsJob]
+Remove-AzSynapsePipeline -WorkspaceName <String> -Name <String> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByObject
 ```
-Remove-AzSynapsePipeline -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-PassThru] [-AsJob]
+Remove-AzSynapsePipeline -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NewByInputObject
+### RemoveByInputObject
 ```
-Remove-AzSynapsePipeline -Name <String> -InputObject <PSPipelineResource> [-PassThru] [-AsJob]
+Remove-AzSynapsePipeline -InputObject <PSPipelineResource> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,23 +37,23 @@ The **Remove-AzSynapsePipeline** cmdlet removes a pipeline from workspace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
+Remove-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
 ```
 
 This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapsePipeline -Name ContosoPipeline
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapsePipeline -Name ContosoPipeline
 ```
 
 This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $pipeline = Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
-PS C:\> $pipeline | Remove-AzSynapsePipeline
+$pipeline = Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
+$pipeline | Remove-AzSynapsePipeline
 ```
 
 This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace through pipeline.
@@ -90,12 +90,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Do not ask for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The pipeline object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSPipelineResource
-Parameter Sets: NewByInputObject
+Parameter Sets: RemoveByInputObject
 Aliases:
 
 Required: True
@@ -110,7 +125,7 @@ The pipeline name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByName, RemoveByObject
 Aliases: PipelineName
 
 Required: True

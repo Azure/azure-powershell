@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: BD311CEF-378B-463E-8998-CC3E9A5B3A7B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/set-aznotificationhubauthorizationrule
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/set-aznotificationhubauthorizationrule
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ You can then copy those property values to your rule by using *SASRule* paramete
 Alternatively, you can create a JSON (JavaScript Object Notation) file containing the relevant configuration values and then apply those values through the *InputFile* parameter.
 A JSON file is a text file that uses syntax similar to this:
 {      "Name": "ContosoAuthorizationRule",  
-    "PrimaryKey": "WE4qH0398AyXjlekt56gg1gMR3NHoMs29KkUnnpUk01Y=",  
+    "PrimaryKey": "W******Y=",  
     "Rights": \[  
         "Listen",  
         "Send"  
@@ -54,8 +54,8 @@ When used in conjunction with the New-AzNotificationHubAuthorizationRule cmdlet,
 ## EXAMPLES
 
 ### Example 1: Modify an authorization rule assigned to a notification hub
-```
-PS C:\>Set-AzNotificationHubAuthorizationRule -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationGroup" -NotificationHub "ContosoExternalHub" -InputFile "C:\Configuration\AuthorizationRules.json"
+```powershell
+Set-AzNotificationHubAuthorizationRule -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationGroup" -NotificationHub "ContosoExternalHub" -InputFile "C:\Configuration\AuthorizationRules.json"
 ```
 
 This command modifies an authorization rule assigned to the notification hub named ContosoExternalHub.

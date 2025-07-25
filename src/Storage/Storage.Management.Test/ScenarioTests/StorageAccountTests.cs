@@ -211,5 +211,96 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAStorageAccount_RoutingPreference()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccount_RoutingPreference");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountAllowSharedKeyAccess()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccountAllowSharedKeyAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountKeySASPolicy()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountKeySASPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountUserAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobInventory()
+        {
+            TestRunner.RunTestScript("Test-StorageBlobInventory");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountEnableNfsV3()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountEnableNfsV3");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountHierarchicalNamespaceUpgrade()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountHierarchicalNamespaceUpgrade");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountWorm()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountWorm");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzStorageContext()
+        {
+            TestRunner.RunTestScript("Test-NewAzStorageContext");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzStorageAccountFileAADKERB()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccountFileAADKERB");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageLocalUserSftp()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageLocalUserSftp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountDnsEndpointType()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountDnsEndpointType");
+        }
     }
 }

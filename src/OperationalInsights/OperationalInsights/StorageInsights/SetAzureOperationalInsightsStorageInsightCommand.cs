@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,12 +13,13 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsStorageInsight", DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSStorageInsight))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsStorageInsight", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSStorageInsight))]
     public class SetAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
@@ -48,33 +48,52 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string StorageAccountKey { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The full Azure Resource Manager ID of the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountResourceId { get; set; }
+
+        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Storage tables that the storage insight will read data from.")]
         public string[] Tables { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Storage blob containers that the storage insight will read data from.")]
         public string[] Containers { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The ETag of the StorageInsight.")]
+        public string ETag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Tags of the Storage Insight")]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            PSStorageInsightParameters parameters = null;
+
             if (ParameterSetName == ByWorkspaceObject)
             {
                 ResourceGroupName = Workspace.ResourceGroupName;
                 WorkspaceName = Workspace.Name;
             }
 
-            UpdatePSStorageInsightParameters parameters = new UpdatePSStorageInsightParameters
+            parameters = new PSStorageInsightParameters
             {
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = WorkspaceName,
                 Name = Name,
                 StorageAccountKey = StorageAccountKey,
-                Containers = Containers != null ? Containers.ToList() : null,
-                Tables = Tables != null ? Tables.ToList() : null
+                StorageAccountResourceId = StorageAccountResourceId,
+                Containers = Containers?.ToList(),
+                Tables = Tables?.ToList(),
+                Etag = ETag,
+                Tags = Tag
             };
 
-            WriteObject(OperationalInsightsClient.UpdatePSStorageInsight(parameters));
+            if (ShouldProcess(Name, $"Update StorageInsight: {Name}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                WriteObject(OperationalInsightsClient.UpdatePSStorageInsight(parameters));
+            }
         }
     }
 }

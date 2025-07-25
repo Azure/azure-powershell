@@ -16,14 +16,13 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Guest Configuration")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - GuestConfiguration")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("d28548d3-2673-4508-a28b-a69e0470faf7")]
-
-[assembly: AssemblyVersion("0.10.8")]
-[assembly: AssemblyFileVersion("0.10.8")]
+[assembly: Guid("832be84f-ad9c-4115-a75a-10bd38e4364b")]
+[assembly: AssemblyVersion("0.12.0")]
+[assembly: AssemblyFileVersion("0.12.0")]

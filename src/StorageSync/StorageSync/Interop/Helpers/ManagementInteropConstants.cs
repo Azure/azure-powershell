@@ -39,6 +39,16 @@ namespace Commands.StorageSync.Interop.DataObjects
         public static readonly Guid IID_IUnknown = Guid.Parse("00000000-0000-0000-C000-000000000046");
 
         /// <summary>
+        /// the iid of stable version deep gc progress.
+        /// </summary>
+        public static readonly Guid IID_IStableVersionDeepGcProgress = Guid.Parse("737EADF1-B170-D548-76F2-80F4638F3787");
+
+        /// <summary>
+        /// the iid of scrubbing engine connection point.
+        /// </summary>
+        public static readonly Guid IID_IScrubbingEngineConnectionPoint = Guid.Parse("03057D98-C8F3-4B70-B1CF-5768DF69EE16");
+
+        /// <summary>
         /// The CLSCTX local server
         /// </summary>
         public static readonly uint CLSCTX_LOCAL_SERVER = 4;

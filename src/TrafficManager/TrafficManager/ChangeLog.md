@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Upgraded nuget package to signed package.
+
+## Version 1.2.2
+* Fixed some minor issues
+
+## Version 1.2.1
+Added a new API `CheckTrafficManagerNameAvailabilityV2`.
+
+## Version 1.2.0
+* Added a new optional parameter `AlwaysServe` for endpoints.
+
+## Version 1.1.0
+* Added two new optional parameters 'MinChildEndpointsIPv4' and 'MinChildEndpointsIPv6' for nested endpoints
+
 ## Version 1.0.4
 * Fixed incorrect profile name in `DisableAzureTrafficManagerEndpoint` verbose output
 

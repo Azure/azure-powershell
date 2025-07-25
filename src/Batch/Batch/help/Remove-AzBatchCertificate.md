@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 3DFFD0F2-6CD8-4FBE-B15C-8505CBF8F44E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchcertificate
+online version: https://learn.microsoft.com/powershell/module/az.batch/remove-azbatchcertificate
 schema: 2.0.0
 ---
 
@@ -25,28 +25,26 @@ The **Remove-AzBatchCertificate** cmdlet removes a certificate from the specifie
 ## EXAMPLES
 
 ### Example 1: Remove a certificate
-```
-PS C:\>Remove-AzBatchCertificate -ThumbprintAlgorithm "sha1" -Thumbprint "c1e494a415149c5f211c4778b52f2e834a07247c" -BatchContext $Context
+```powershell
+Remove-AzBatchCertificate -ThumbprintAlgorithm "sha1" -Thumbprint "c1e494a415149c5f211c4778b52f2e834a07247c" -BatchContext $Context
 ```
 
 This command removes the certificate that has the specified thumbprint.
 
 ### Example 2:Remove all active certificates
-```
-PS C:\>Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzBatchCertificate -Force -BatchContext $Context
+```powershell
+Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzBatchCertificate -BatchContext $Context
 ```
 
 This command gets all certificates that are active by using the Get-AzBatchCertificate cmdlet.
 The command passes the active certificates to the current cmdlet by using the pipeline operator.
 That cmdlet removes each certificate.
-The command specifies the *Force* parameter.
-Therefore, the command does not prompt you for confirmation.
 
 ## PARAMETERS
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

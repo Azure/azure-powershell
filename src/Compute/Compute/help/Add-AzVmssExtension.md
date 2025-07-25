@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7EC166C7-151D-4DA0-9B10-165E735D4F12
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmssextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmssextension
 schema: 2.0.0
 ---
 
@@ -17,8 +17,9 @@ Adds an extension to the VMSS.
 Add-AzVmssExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
  [[-Publisher] <String>] [[-Type] <String>] [[-TypeHandlerVersion] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [[-Setting] <Object>] [[-ProtectedSetting] <Object>]
- [-ForceUpdateTag <String>] [-ProvisionAfterExtension <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAutomaticUpgrade <Boolean>] [-ForceUpdateTag <String>] [-ProvisionAfterExtension <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,20 +28,57 @@ The **Add-AzVmssExtension** cmdlet adds an extension to the Virtual Machine Scal
 ## EXAMPLES
 
 ### Example 1: Add an extension to the VMSS
-```
-PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
+```powershell
+Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
 ```
 
 This command adds an extension to the VMSS.
 
 ### Example 2: Add an extension to the VMSS with settings and protected settings
-```
-PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
-PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
+```powershell
+$Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+$ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
 
-PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
   -Type $vmssExtensionType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True  `
   -Setting $Settings -ProtectedSetting $ProtectedSettings
+```
+
+### Example 3: Add an extension to the VMSS with settings and protected settings
+```powershell
+$BatchFile = "runbook.sh"
+$ResourceGroupName = "HelloRG"
+$VMScaleSetName = "HelloVmSS"
+$TypeHandlerVersion = 2.1
+
+#Best Practice for secured parameters.
+$protectedSettings = @{
+"managedIdentity" = @{ "clientId" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"};
+}
+
+$publicSettings = @{ 
+"fileUris"= (,"https://storage.blob.core.windows.net/itfiles/$($BatchFile)");
+"commandToExecute"= "sh $($BatchFile)"
+}
+
+# Get information about the scale set
+$vmss = Get-AzVmss `
+            -ResourceGroupName $ResourceGroupName `
+            -VMScaleSetName $VMScaleSetName
+
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
+    -Name "CustomScript" `
+    -Publisher "Microsoft.Azure.Extensions" `
+    -Type "CustomScript" `
+    -TypeHandlerVersion $TypeHandlerVersion `
+    -AutoUpgradeMinorVersion $true `
+    -Setting $publicSettings `
+    -ProtectedSetting $protectedSettings
+
+Update-AzVmss `
+    -ResourceGroupName $ResourceGroupName `
+    -Name $VMScaleSetName `
+    -VirtualMachineScaleSet $vmss
 ```
 
 This command adds an extension to the VMSS with a sample bash script on a blob storage, specify the url of blob storage and executable command in settings and security access in protected settings. 
@@ -69,6 +107,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticUpgrade
+Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

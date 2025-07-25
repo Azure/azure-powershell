@@ -13,21 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ContainerTests : RMTestBase
+    public partial class ContainerTests : RecoveryServicesBackupTestRunner
     {
-        public XunitTracingInterceptor _logger;
+        private readonly string _AzureSqlcommonModule = $"ScenarioTests/Common.ps1";
+        private readonly string _AzureSqltestModule = $"ScenarioTests/{PsBackupProviderTypes.AzureSql}/ContainerTests.ps1";
 
-        public ContainerTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ContainerTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "This workload is not supported anymore")]
@@ -35,8 +33,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlGetContainers()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetContainers");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
+                "Test-AzureSqlGetContainers"
+            );
         }
 
         [Fact(Skip = "This workload is not supported anymore")]
@@ -44,8 +45,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlUnregisterContainer()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlUnregisterContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureSqlcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureSqltestModule.AsAbsoluteLocation()}",
+                "Test-AzureSqlUnregisterContainer"
+            );
         }
     }
 }

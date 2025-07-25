@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 }
 
                 var cognitiveServicesUsages = this.CognitiveServicesClient.Accounts
-                                                   .GetUsages(ResourceGroupName, Name)
+                                                   .ListUsages(ResourceGroupName, Name)
                                                    .Value?.Select(u => new PSCognitiveServicesUsage(u));
 
                 if (cognitiveServicesUsages != null)

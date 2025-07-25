@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEdgeZoneConfigurations()
+        {
+            TestRunner.RunTestScript("Test-EdgeZoneConfigurations");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshot()
         {
             TestRunner.RunTestScript("Test-Snapshot");
@@ -107,5 +114,90 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetDiskEncryptionSetAssociatedResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSnapshotDuplicateCreationFails()
+        {
+            TestRunner.RunTestScript("Test-SnapshotDuplicateCreationFails");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskPurchasePlan()
+        {
+            TestRunner.RunTestScript("Test-DiskPurchasePlan");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskSupportsHibernation()
+        {
+            TestRunner.RunTestScript("Test-SupportsHibernation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskSkuPremiumZRSStandardSSDZRS()
+        {
+            TestRunner.RunTestScript("Test-DiskSkuPremiumZRSStandardSSDZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-SecurityProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAutomaticKeyRotation()
+        {
+            TestRunner.RunTestScript("Test-AutomaticKeyRotation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskAcceleratedNetworkAndPublicNetworkAccess()
+        {
+            TestRunner.RunTestScript("Test-DiskAcceleratedNetworkAndPublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSecurityProfileStandard()
+        {
+            TestRunner.RunTestScript("Test-SecurityProfileStandard");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestNewDiskSecurityTypeDefaulting()
+        {
+            TestRunner.RunTestScript("Test-NewDiskSecurityTypeDefaulting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSnapshotConfigElasticSanResourceId()
+        {
+            TestRunner.RunTestScript("Test-SnapshotConfigElasticSanResourceId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSnapshotConfigTierOptionEnhancedSpeed()
+        {
+            TestRunner.RunTestScript("Test-SnapshotConfigTierOptionEnhancedSpeed");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestDiskGrantAccessGetSASWithTL()
+        {
+            TestRunner.RunTestScript("Test-DiskGrantAccessGetSASWithTL");
+        }
+
     }
 }

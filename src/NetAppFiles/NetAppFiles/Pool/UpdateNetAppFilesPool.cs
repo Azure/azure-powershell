@@ -21,6 +21,8 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -82,9 +84,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The service level of the ANF pool")]
+            HelpMessage = "The qos type of the pool. Possible values include: 'Auto', 'Manual'")]
         [ValidateNotNullOrEmpty]
-        public string ServiceLevel { get; set; }
+        [PSArgumentCompleter("Auto", "Manual")]
+        public string QosType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled (true) the pool can contain cool Access enabled volumes.")]
+        public SwitchParameter CoolAccess { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -155,17 +163,28 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
 
             var capacityPoolBody = new CapacityPoolPatch()
-            {
-                ServiceLevel = ServiceLevel,
+            {                
                 Size = PoolSize,
                 Location = Location,
-                Tags = tagPairs
+                Tags = tagPairs,
+                QosType = QosType                
             };
+            if (CoolAccess.IsPresent)
+            {
+                capacityPoolBody.CoolAccess = CoolAccess;
+            }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfPool = AzureNetAppFilesManagementClient.Pools.Update(capacityPoolBody, ResourceGroupName, AccountName, Name);
-                WriteObject(anfPool);
+                try
+                {
+                    var anfPool = AzureNetAppFilesManagementClient.Pools.Update(ResourceGroupName, AccountName, Name, capacityPoolBody).ToPsNetAppFilesPool();
+                    WriteObject(anfPool);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

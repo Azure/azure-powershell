@@ -20,6 +20,18 @@
 
 ## Upcoming Release
 
+## Version 1.1.1
+* Removed "Microsoft.Azure.Management.DataShare" Version "1.0.1" PackageReference
+
+## Version 1.1.0
+* Upgraded nuget package to signed package.
+
+## Version 1.0.2
+* Removed the outdated deps.json file.
+
+## Version 1.0.1
+* Added breaking change warning message due to update API version.
+
 ## Version 1.0.0
 * General availability of `Az.DataShare` module
 

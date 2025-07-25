@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 {
@@ -127,10 +128,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 RemoteVolumeResourceId = DataProtectionVolumeId
             };
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.ApproveVolumeReplicationMessage, Name)))
             {
-                AzureNetAppFilesManagementClient.Volumes.AuthorizeReplication(ResourceGroupName, AccountName, PoolName, Name, authorizeRequest);
-                success = true;
+                try
+                {
+                    AzureNetAppFilesManagementClient.Volumes.AuthorizeReplication(ResourceGroupName, AccountName, PoolName, Name, authorizeRequest);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
             if (PassThru)

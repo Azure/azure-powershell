@@ -120,7 +120,7 @@
   <data name="ADObjectIDRetrievalFailed" xml:space="preserve">
     <value>Retrieving object ID from Azure Active Directory failed. {0}
 
-Please provide object ID for the user or service principle to set a vault access policy.
+Please provide object ID for the user or service principal to set a vault access policy.
 You can find the object ID using Azure Active Directory Module for Windows PowerShell.</value>
   </data>
   <data name="ADObjectNotFound" xml:space="preserve">
@@ -211,13 +211,13 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Invalid vault name.</value>
   </data>
   <data name="InvalidManagedStorageAccountName" xml:space="preserve">
-    <value>Invalid key vault managed storage acccount name.</value>
+    <value>Invalid key vault managed storage account name.</value>
   </data>
   <data name="InvalidVaultUri" xml:space="preserve">
     <value>Invalid vault uri '{0}'. Vault uri must contain valid dns host name with domain suffix '{1}'.</value>
   </data>
-  <data name="KeyFileNotFound" xml:space="preserve">
-    <value>Can not find key file '{0}'.</value>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Can not find file '{0}'.</value>
   </data>
   <data name="NoDefaultUserAccount" xml:space="preserve">
     <value>There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault.</value>
@@ -232,25 +232,25 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>At least one permission should be selected for key access or secret access.</value>
   </data>
   <data name="RemoveCertWarning" xml:space="preserve">
-    <value>Are you sure you want to remove certificate '{0}'.</value>
+    <value>Are you sure you want to remove certificate '{0}'?</value>
   </data>
   <data name="RemoveCertWhatIfMessage" xml:space="preserve">
     <value>Remove certificate</value>
   </data>
   <data name="RemoveKeyWarning" xml:space="preserve">
-    <value>Are you sure you want to remove key '{0}'.</value>
+    <value>Are you sure you want to remove key '{0}'?</value>
   </data>
   <data name="RemoveKeyWhatIfMessage" xml:space="preserve">
     <value>Remove key</value>
   </data>
   <data name="RemoveSecretWarning" xml:space="preserve">
-    <value>Are you sure you want to remove secret '{0}'</value>
+    <value>Are you sure you want to remove secret '{0}'?</value>
   </data>
   <data name="RemoveSecretWhatIfMessage" xml:space="preserve">
     <value>Remove secret</value>
   </data>
   <data name="RemoveManagedStorageAccountWarning" xml:space="preserve">
-    <value>Are you sure you want to remove managed storage account '{0}'</value>
+    <value>Are you sure you want to remove managed storage account '{0}'?</value>
   </data>
   <data name="RemoveManagedStorageAccountWhatIfMessage" xml:space="preserve">
     <value>Remove managed storage account</value>
@@ -281,6 +281,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="VaultAlreadyExists" xml:space="preserve">
     <value>The specified vault already exists.</value>
+  </data>
+  <data name="HsmAlreadyExists" xml:space="preserve">
+    <value>The specified HSM already exists.</value>
   </data>
   <data name="VaultNoAccessPolicyWarning" xml:space="preserve">
     <value>Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzKeyVaultAccessPolicy to set access policies.</value>
@@ -481,7 +484,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Purge managed storage account</value>
   </data>
   <data name="VaultDoesNotExist" xml:space="preserve">
-    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault.</value>
+    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modify the Access Policies of this vault.</value>
   </data>
   <data name="ActiveDirectoryClientNull" xml:space="preserve">
     <value>The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory.</value>
@@ -498,7 +501,139 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="KeyOpsImportIsExclusive" xml:space="preserve">
     <value>The "import" operation is exclusive, it cannot be combined with any other value(s).</value>
   </data>
+  <data name="ApplicationNotFoundBy" xml:space="preserve">
+    <value>Could not find application by '{0}'.</value>
+  </data>
+  <data name="AssignRole" xml:space="preserve">
+    <value>Assign role '{0}' to principal '{1}' at scope '{2}'.</value>
+  </data>
+  <data name="RemoveRole" xml:space="preserve">
+    <value>Remove role '{0}' of principal '{1}' at scope '{2}'.</value>
+  </data>
+  <data name="RoleAssignmentNotFound" xml:space="preserve">
+    <value>Could not find the role assignment by given parameters.</value>
+  </data>
+  <data name="RoleDefinitionNotFound" xml:space="preserve">
+    <value>Could not to find role definition by '{0}'.</value>
+  </data>
+  <data name="UserNotFoundBy" xml:space="preserve">
+    <value>Could not find user by '{0}'.</value>
+  </data>
+  <data name="DoFullBackup" xml:space="preserve">
+    <value>Perform a full backup and stores it in {0}.</value>
+  </data>
+  <data name="DoFullRestore" xml:space="preserve">
+    <value>Restores the managed HSM from the backup stored in {0}.</value>
+  </data>
+  <data name="FullBackupFailed" xml:space="preserve">
+    <value>Failed to backup managed HSM {0}.</value>
+  </data>
+  <data name="FullRestoreFailed" xml:space="preserve">
+    <value>Failed to restore managed HSM {0}.</value>
+  </data>
+  <data name="HsmCertRangeWarning" xml:space="preserve">
+    <value>To encrypt the security domain data, please provide at least {0} and at most {1} certificates.</value>
+  </data>
+  <data name="LoadSecurityDomainFileFailed" xml:space="preserve">
+    <value>Failed to load security domain data from {0}. Please make sure the file exists and is not modified.</value>
+  </data>
+  <data name="RestoreSecurityDomainBadKey" xml:space="preserve">
+    <value>"PublicKey" and "PrivateKey" are mandatory properties in each object in "Keys".</value>
+  </data>
+  <data name="RestoreSecurityDomainNotEnoughKey" xml:space="preserve">
+    <value>There need to be at least {0} keys to decrypt exported security domain data.</value>
+  </data>
+  <data name="DecryptSecurityDomainFailure" xml:space="preserve">
+    <value>Failed to decrypt security domain data. Please make sure the file is not modified and the keys / passwords are correct.</value>
+  </data>
+  <data name="DecryptSecurityDomainKeyNotEnough" xml:space="preserve">
+    <value>Not enough keys to decrypt security domain backup. {0} required, {0} provided.</value>
+  </data>
+  <data name="DownloadSecurityDomainFail" xml:space="preserve">
+    <value>Failed to export security domain data.</value>
+  </data>
+  <data name="DownloadSecurityDomainKeyFail" xml:space="preserve">
+    <value>Failed to download security domain exchange key.</value>
+  </data>
+  <data name="RestoreSecurityDomainFailure" xml:space="preserve">
+    <value>Failed to import security domain.</value>
+  </data>
+  <data name="InvalidKeyProperties" xml:space="preserve">
+    <value>Invalid key properties</value>
+  </data>
+  <data name="InvalidHsmName" xml:space="preserve">
+    <value>Invalid HSM name.</value>
+  </data>
+  <data name="ImportNotSupported" xml:space="preserve">
+    <value>Key type '{0}' is not supported for importing. (Supported types: RSA-HSM)</value>
+  </data>
+  <data name="HsmNotFound" xml:space="preserve">
+    <value>Cannot find HSM '{0}' in resource group '{1}'.</value>
+  </data>
+  <data name="RemoveHsmWarning" xml:space="preserve">
+    <value>Are you sure you want to remove HSM '{0}'?</value>
+  </data>
+  <data name="RemoveHsmWhatIfMessage" xml:space="preserve">
+    <value>Remove HSM</value>
+  </data>
   <data name="ADGraphPermissionWarning" xml:space="preserve">
-    <value>Please make sure you have sufficient permissions in AD Graph to get and list graph objects for validation to work. Otherwise skip witch `-BypassObjectIdValidation`.</value>
+    <value>Please make sure you have sufficient permissions in Microsoft Graph to get and list directory objects for validation to work. Otherwise skip with `-BypassObjectIdValidation`.</value>
+  </data>
+  <data name="UpdateHsmShouldProcessMessage" xml:space="preserve">
+    <value>Updating managed HSM '{0}' in resource group '{1}'.</value>
+  </data>
+  <data name="SelectiveRestoreFailed" xml:space="preserve">
+    <value>Failed to selective restore key {0} of managed HSM {1}.</value>
+  </data>
+  <data name="EcButNoCurveName" xml:space="preserve">
+    <value>Please input a valid 'CurveName' when KeyType is 'EC'.</value>
+  </data>
+  <data name="CurveNameButNotEc" xml:space="preserve">
+    <value>When '-CurveName' is specified, '-KeyType' must be 'EC'.</value>
+  </data>
+  <data name="RotateKey" xml:space="preserve">
+    <value>Rotate Key</value>
+  </data>
+  <data name="SetKeyRotationPolicy" xml:space="preserve">
+    <value>Set key rotation policy</value>
+  </data>
+  <data name="DeletedManagedHsmNotFound" xml:space="preserve">
+    <value>Cannot find deleted managed HSM '{0}' in location '{1}'</value>
+  </data>
+  <data name="PurgeManagedHsmWarning" xml:space="preserve">
+    <value>Are you sure you want to remove managed HSM '{0}' forever.</value>
+  </data>
+  <data name="PurgeManagedHsmWarningWhatIf" xml:space="preserve">
+    <value>Purge managed HSM</value>
+  </data>
+  <data name="FetchDefaultCVMPolicyFailedWithErrorMessage" xml:space="preserve">
+    <value>Fetch default CVM Policy failed, {0}</value>
+  </data>
+  <data name="RecoverHsm" xml:space="preserve">
+    <value>Recover HSM?</value>
+  </data>
+  <data name="UpdateKeyVaultSetting" xml:space="preserve">
+    <value>Update vault setting</value>
+  </data>
+  <data name="SasTokenNotNull" xml:space="preserve">
+    <value>Please provide a valid SasToken or use Managed Identity for authentication.</value>
+  </data>
+  <data name="UseManagedIdentityAndSasTokenBothExist" xml:space="preserve">
+    <value>Parameter SasToken and UseUserManagedIdentity can not exist at the same time. Please choose either one as authentication method.</value>
+  </data>
+  <data name="UseManagedIdentityAndSasTokenNeitherExist" xml:space="preserve">
+    <value>Please choose either SasToken or UseUserManagedIdentity as authentication method.</value>
+  </data>
+  <data name="NoVaultWithGivenNameFound" xml:space="preserve">
+    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription.</value>
+  </data>
+  <data name="ProcessingCertError" xml:space="preserve">
+    <value>Error happens when processing certificate '{0}'. See detailed error: {1}</value>
+  </data>
+  <data name="InvalidRangeDaysBeforeExpiry" xml:space="preserve">
+    <value>Value must be between 1 and int.MaxValue.</value>
+  </data>
+  <data name="InvalidRangePercentageLifetime" xml:space="preserve">
+    <value>"Value must be between 0 and 99."</value>
   </data>
 </root>

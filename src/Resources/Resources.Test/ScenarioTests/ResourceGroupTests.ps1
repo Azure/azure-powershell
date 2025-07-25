@@ -243,16 +243,14 @@ function Test-RemoveDeployment
 {
     # Setup
     $deploymentName = "Test"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/b5a68ce5005bc186070506b8d42a25b865f047a6/100-blank-template/azuredeploy.json"
     $rgName = "TestSDK0123"
 
     try
     {
         # First create new resource group deployment
         New-AzResourceGroup -Name $rgName -Location "East US"
-        $job = New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
-		Wait-Job $job
-		$deployment = Receive-Job $job
+        $deployment = New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
 
         # Test
         $res = Remove-AzResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName
@@ -396,6 +394,37 @@ function Test-ExportResourceGroup
 
 <#
 .SYNOPSIS
+Tests export resource group template file as bicep.
+#>
+function Test-ExportResourceGroupBicep
+{
+	# Setup
+        $rgname = Get-ResourceGroupName
+        $rname = Get-ResourceName
+        $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+        $apiversion = "2014-04-01"
+        $resourceType = "Providers.Test/statefulResources"
+
+        try {
+            # Test
+            New-AzResourceGroup -Name $rgname -Location $rglocation
+            
+            $r = New-AzResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval" } -ResourceGroupName $rgname -ResourceType $resourceType -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+            Assert-AreEqual $r.ResourceGroupName $rgname
+
+            $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -OutputFormat Bicep -Force
+            Assert-NotNull $exportOutput
+            Assert-True { $exportOutput.Path.Contains($rgname + ".bicep") }
+        }
+        finally {
+            # Cleanup
+            Clean-ResourceGroup $rgname
+        }
+    }
+
+
+<#
+.SYNOPSIS
 Tests async export to export resource group template file.
 #>
 function Test-ExportResourceGroup-AsyncRoute
@@ -500,5 +529,43 @@ function Test-ResourceGroupWithPositionalParams
     catch
     {
         Assert-True { $Error[0].Contains("Provided resource group does not exist.") }
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Get-AzResourceGroup returns CreatedTime and ChangedTime properties.
+#>
+function Test-GetResourceGroupWithCreatedTimeAndChangedTime
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+
+    try
+    {
+        # Act
+        $createdResourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Wait for the resources to be ready
+        Start-Sleep -Seconds 10
+        
+        $resourceGroup = Get-AzResourceGroup -Name $rgname -ExpandProperties
+
+        # Assert
+        Assert-NotNull $resourceGroup
+        Assert-AreEqual $rgname $resourceGroup.ResourceGroupName
+        Assert-NotNull $resourceGroup.CreatedTime "CreatedTime should not be null"
+        Assert-NotNull $resourceGroup.ChangedTime "ChangedTime should not be null"
+        Write-Host "CreatedTime: $($resourceGroup.CreatedTime)"
+        Write-Host "ChangedTime: $($resourceGroup.ChangedTime)"
+        Assert-True { $resourceGroup.CreatedTime -is [DateTime] } "CreatedTime should be a DateTime object"
+        Assert-True { $resourceGroup.ChangedTime -is [DateTime] } "ChangedTime should be a DateTime object"
+        Assert-True { $resourceGroup.ChangedTime -ge $resourceGroup.CreatedTime } "ChangedTime should be greater than or equal to CreatedTime"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }

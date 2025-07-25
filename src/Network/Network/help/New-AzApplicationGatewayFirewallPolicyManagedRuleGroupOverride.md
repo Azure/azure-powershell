@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedrulegroupoverride
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedrulegroupoverride
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates RuleGroupOverride entry in ManagedRuleSets for the firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName <String>
- -Rule <PSApplicationGatewayFirewallPolicyManagedRuleOverride[]> [-DefaultProfile <IAzureContextContainer>]
+ [-Rule <PSApplicationGatewayFirewallPolicyManagedRuleOverride[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride** creates a
 
 ### Example 1
 ```powershell
-PS C:\> $overrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $ruleName -Rules $rule1,$rule2
+$overrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName $ruleName -Rule $rule1,$rule2
 ```
 
 Creates a RuleGroupOverride entry with group name as $ruleName and Rules as $rule1, $rule2. Assigns the same to $overrideEntry
@@ -55,7 +55,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicy
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

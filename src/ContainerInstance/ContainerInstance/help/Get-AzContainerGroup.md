@@ -1,120 +1,157 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.dll-Help.xml
+---
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/get-azcontainergroup
+online version: https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainergroup
 schema: 2.0.0
 ---
 
 # Get-AzContainerGroup
 
 ## SYNOPSIS
-Gets container groups.
+Gets the properties of the specified container group in the specified subscription and resource group.
+The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
 
 ## SYNTAX
 
-### ListContainerGroupParamSet (Default)
+### List (Default)
 ```
-Get-AzContainerGroup [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetContainerGroupInResourceGroupParamSet
+### Get
 ```
-Get-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzContainerGroup -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetContainerGroupByResourceIdParamSet
+### GetViaIdentity
 ```
-Get-AzContainerGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzContainerGroup** cmdlet gets a specified container group or all the container groups in a resource group or the subscription.
+Gets the properties of the specified container group in the specified subscription and resource group.
+The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
 
 ## EXAMPLES
 
-### Example 1: Gets a specified container group
+### Example 1: List all container groups in the current subscription
+```powershell
+Get-AzContainerGroup
 ```
-PS C:\> Get-AzContainerGroup -ResourceGroupName demo -Name mycontainer
 
-ResourceGroupName        : demo
-Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
-Name                     : mycontainer
-Type                     : Microsoft.ContainerInstance/containerGroups
-Location                 : westus
-Tags                     :
-ProvisioningState        : Succeeded
-Containers               : {mycontainer}
-ImageRegistryCredentials :
-RestartPolicy            :
-IpAddress                : 13.88.10.240
-Ports                    : {8000}
-OsType                   : Linux
-Volumes                  :
-State                    : Running
-Events                   : {}
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
+eastus   test-cg2      test-rg
+```
+
+This command gets all container groups in the current subscription.
+
+### Example 2: Get a specific container group
+```powershell
+Get-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg | Format-List
+```
+
+```output
+Container                      : {test-container1}
+DnsConfigNameServer            :
+DnsConfigOption                :
+DnsConfigSearchDomain          :
+EncryptionPropertyKeyName      :
+EncryptionPropertyKeyVersion   :
+EncryptionPropertyVaultBaseUrl :
+IPAddressDnsNameLabel          :
+IPAddressFqdn                  :
+IPAddressIP                    : 000.000.000.000
+IPAddressPort                  : {Microsoft.Azure.PowerShell.Cmdlets.ContainerInsta 
+                                 nce.Models.Api20210301.Port, Microsoft.Azure.Power 
+                                 Shell.Cmdlets.ContainerInstance.Models.Api20210301 
+                                 .Port}
+IPAddressType                  : Public
+Id                             : /subscriptions/00000000-0000-0000-0000-000000000000 
+                                 0/resourceGroups/test-rg/providers/Microsoft.Contai 
+                                 nerInstance/containerGroups/test-cg1
+IdentityPrincipalId            :
+IdentityTenantId               :
+IdentityType                   :
+IdentityUserAssignedIdentity   : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
+                                 ce.Models.Api20210301.ContainerGroupIdentityUserAs 
+                                 signedIdentities
+ImageRegistryCredentials       :
+InitContainer                  : {}
+InstanceViewEvent              :
+InstanceViewState              :
+Location                       : eastus
+LogAnalyticLogType             : 
+LogAnalyticMetadata            : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
+                                 ce.Models.Api20210301.LogAnalyticsMetadata
+LogAnalyticWorkspaceId         :
+LogAnalyticWorkspaceKey        :
+LogAnalyticWorkspaceResourceId : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
+                                 ce.Models.Api20210301.LogAnalyticsWorkspaceResourc 
+                                 eId
+Name                           : test-cg1
+NetworkProfileId               :
+OSType                         : Linux
+ProvisioningState              : Succeeded
+ResourceGroupName              : test-rg
+RestartPolicy                  : Never
+Sku                            : Standard
+Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
+                                 ce.Models.Api20210301.ResourceTags
+Type                           : Microsoft.ContainerInstance/containerGroups        
+Volume                         :
 ```
 
 The command gets the specified container group.
 
-### Example 2: Gets container groups in a resource group
-```
-PS C:\> Get-AzContainerGroup -ResourceGroupName demo
-
-ResourceGroupName Name                     Location   OsType  Image                         IP                   Resources        ProvisioningState
------------------ ----                     --------   ------  -----                         --                   ---------        -----------------
-demo              container1               west us    Linux   alpine:latest                 40.83.144.50:8002    1 cores/1 gb             Succeeded
-demo              container2               west us    Linux   alpine:latest                 104.42.228.253:8001  1 cores/1 gb             Succeeded
+### Example 3: Get container groups in a resource group
+```powershell
+Get-AzContainerGroup -ResourceGroupName test-rg
 ```
 
-The command gets the container groups in the resource group `demo`.
-
-### Example 3: Gets container groups in the current subscription
-```
-PS C:\> Get-AzContainerGroup
-
-ResourceGroupName Name                     Location   OsType  Image                         IP                   Resources        ProvisioningState
------------------ ----                     --------   ------  -----                         --                   ---------        -----------------
-demo1             container1               west us    Linux   alpine:latest                 40.83.144.50:8002    1 cores/1 gb             Succeeded
-demo2             container2               west us    Linux   alpine:latest                 104.42.228.253:8001  1 cores/1 gb             Succeeded
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
+eastus   test-cg2      test-rg
 ```
 
-The command gets the container groups in the current subscription.
+The command gets the container groups in the resource group `test-rg`.
 
-### Example 4: Gets container groups using resource Id.
-```
-PS C:\> Find-AzResource -ResourceGroupEquals demo -ResourceNameEquals mycontainer | Get-AzContainerGroup
-
-ResourceGroupName        : demo
-Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
-Name                     : mycontainer
-Type                     : Microsoft.ContainerInstance/containerGroups
-Location                 : westus
-Tags                     :
-ProvisioningState        : Succeeded
-Containers               : {mycontainer}
-ImageRegistryCredentials :
-RestartPolicy            :
-IpAddress                : 13.88.10.240
-Ports                    : {8000}
-OsType                   : Linux
-Volumes                  :
-State                    : Running
-Events                   : {}
+### Example 4: Get a container group by piping
+```powershell
+Update-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg -Tag @{"test"="value"} | Get-AzContainerGroup
 ```
 
-The command gets the container group with the resource Id.
+```output
+Location Name    Zone ResourceGroupName
+-------- ----    ---- -----------------
+eastus   test-cg1      test-rg
+```
+
+The command gets the updated container group by piping.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -123,73 +160,79 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The container group Name.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetContainerGroupInResourceGroupParamSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource Group Name.
-
-```yaml
-Type: System.String
-Parameter Sets: ListContainerGroupParamSet
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetContainerGroupInResourceGroupParamSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id.
-
-```yaml
-Type: System.String
-Parameter Sets: GetContainerGroupByResourceIdParamSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the container group.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: ContainerGroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroup
 
 ## NOTES
 

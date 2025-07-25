@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/SOC%20TSP?api-version=2019-01-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcmVndWxhdG9yeUNvbXBsaWFuY2VTdGFuZGFyZHMvU09DJTIwVFNQP2FwaS12ZXJzaW9uPTIwMTktMDEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards/SOC%20TSP?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjI2ZDFmMTMtNjdkNS00YWQ2LTkwMTItNjdjYTEyZDI0MzZmL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcmVndWxhdG9yeUNvbXBsaWFuY2VTdGFuZGFyZHMvU09DJTIwVFNQP2FwaS12ZXJzaW9uPTIwMTktMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b8f6be12-2284-4f1f-9284-c543b8269709"
+          "0c0ff47a-a754-4183-b308-95ce10c6b5c4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.1.1.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/2.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "250d348b-058b-4602-ba56-d627e31f6876"
+          "474da47f-d362-4edf-8f10-c9ed83b5e138"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -36,10 +36,10 @@
           "749"
         ],
         "x-ms-correlation-request-id": [
-          "4d237878-7fd9-4746-9c61-fe02d34a253e"
+          "aa2f918d-d835-4808-8925-00c7d13a2f8b"
         ],
         "x-ms-routing-request-id": [
-          "GERMANYWESTCENTRAL:20200401T100924Z:4d237878-7fd9-4746-9c61-fe02d34a253e"
+          "FRANCESOUTH:20210621T130827Z:aa2f918d-d835-4808-8925-00c7d13a2f8b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,7 +48,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 01 Apr 2020 10:09:24 GMT"
+          "Mon, 21 Jun 2021 13:08:26 GMT"
         ],
         "Content-Length": [
           "318"
@@ -60,12 +60,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/SOC-TSP\",\r\n  \"name\": \"SOC TSP\",\r\n  \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n  \"properties\": {\r\n    \"state\": \"Passed\",\r\n    \"passedControls\": 12,\r\n    \"failedControls\": 0,\r\n    \"skippedControls\": 0,\r\n    \"unsupportedControls\": 25\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f26d1f13-67d5-4ad6-9012-67ca12d2436f/providers/Microsoft.Security/regulatoryComplianceStandards/SOC-TSP\",\r\n  \"name\": \"SOC TSP\",\r\n  \"type\": \"Microsoft.Security/regulatoryComplianceStandards\",\r\n  \"properties\": {\r\n    \"state\": \"Failed\",\r\n    \"passedControls\": 3,\r\n    \"failedControls\": 10,\r\n    \"skippedControls\": 0,\r\n    \"unsupportedControls\": 24\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "487bb485-b5b0-471e-9c0d-10717612f869"
+    "SubscriptionId": "f26d1f13-67d5-4ad6-9012-67ca12d2436f"
   }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/restart-azhdinsighthost
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost
 schema: 2.0.0
 ---
 
@@ -15,13 +15,14 @@ Restarts the specific hosts of HDInsight cluster.
 ### SetByNameParameterSet (Default)
 ```
 Restart-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String> [-Name] <String[]> [-AsJob]
- [[-DefaultProfile] <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByAzureHDInsightHostInfoParameterSet
 ```
 Restart-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [-AzureHDInsightHostInfo] <AzureHDInsightHostInfo[]> [-AsJob] [[-DefaultProfile] <IAzureContextContainer>]
+ [-AzureHDInsightHostInfo] <AzureHDInsightHostInfo[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,19 +33,19 @@ This **Restart-AzHDInsightHost** cmdlet restart the specific hosts of HDInsight 
 
 ### Example 1
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> Restart-AzHDInsightHost -ClusterName $clusterName -Name wn0, wn1
+# Cluster info
+$clusterName = "your-hadoop-001"
+Restart-AzHDInsightHost -ClusterName $clusterName -Name wn0, wn1
 ```
 
 This command restarts two hosts of the cluster: worknode1, worknode2.
 
 ### Example 2
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $worknode1= Get-AzHDInsightHost -ClusterName $clusterName | Where-Object {$_.Name -like "wn1*"}
-PS C:\> $worknode1 | Restart-AzHDInsightHost -ClusterName $clusterName
+# Cluster info
+$clusterName = "your-hadoop-001"
+$worknode1= Get-AzHDInsightHost -ClusterName $clusterName | Where-Object {$_.Name -like "wn1*"}
+$worknode1 | Restart-AzHDInsightHost -ClusterName $clusterName
 ```
 
 This command shows how to cooperate with the cmdlet 'Get-AzHDInsightHost'.
@@ -192,11 +193,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightHostInfo, Microsoft.Azure.PowerShell.Cmdlets.HDInsight, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.String[]
+
+### Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightHostInfo[]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.Cluster
+### System.Boolean
 
 ## NOTES
 

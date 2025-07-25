@@ -15,7 +15,8 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Azure.Management.Resources.Models;
     using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
@@ -31,14 +32,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
         public PackagedTemplate(TemplateSpecVersion versionModel)
         {
-            this.RootTemplate = (JObject)versionModel?.Template;
-            this.Artifacts = versionModel?.Artifacts?.ToArray() 
-                ?? new TemplateSpecArtifact[0];
+            this.RootTemplate = (JObject)versionModel?.MainTemplate;
+            this.Artifacts = versionModel?.LinkedTemplates?.ToArray() 
+                ?? new LinkedTemplateArtifact[0];
+            this.UIFormDefinition = (JObject)versionModel?.UiFormDefinition;
         }
 
         public JObject RootTemplate { get; set; }
 
-        public TemplateSpecArtifact[] Artifacts { get; set; }
+        public JObject UIFormDefinition { get; set; }
+
+        public LinkedTemplateArtifact[] Artifacts { get; set; }
     }
 
     /// <summary>
@@ -64,8 +68,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             public string CurrentDirectory { get; set; }
 
-            public IList<TemplateSpecArtifact> Artifacts { get; private set; }
-                = new List<TemplateSpecArtifact>();
+            public IList<LinkedTemplateArtifact> Artifacts { get; private set; }
+                = new List<LinkedTemplateArtifact>();
         }
 
         /// <summary>
@@ -81,12 +85,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             PackingContext context = new PackingContext(
                 Path.GetDirectoryName(rootTemplateFilePath)
             );
-
+            
             PackArtifacts(rootTemplateFilePath, context, out JObject templateObj);
+
             return new PackagedTemplate
             {
                 RootTemplate = templateObj,
                 Artifacts = context.Artifacts.ToArray()
+            };
+        }
+
+        public static PackagedTemplate PackBicep(string filePath, Action<string> writeVerbose, Action<string> writeWarning)
+        {
+            // Complex packaging is unneccessary for Bicep because it doesn't support usage of 'relativePath'.
+            var templateJson = BicepUtility.Create().BuildBicepFile(filePath, msg => writeVerbose(msg), msg => writeWarning(msg));
+            
+            return new PackagedTemplate
+            {
+                RootTemplate = JObject.Parse(templateJson),
+                Artifacts = Array.Empty<LinkedTemplateArtifact>(),
             };
         }
 
@@ -168,7 +185,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
                     PackArtifacts(absoluteLocalPath, context, out JObject templateObjForArtifact);
 
-                    TemplateSpecArtifact artifact = new TemplateSpecTemplateArtifact
+                    LinkedTemplateArtifact artifact = new LinkedTemplateArtifact
                     {
                         Path = asRelativePath,
                         Template = templateObjForArtifact
@@ -193,10 +210,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="templateFileName">
         /// The name of the file to use for the root template json
         /// </param>
+        /// <param name="uiFormDefinitionFileName">
+        /// The name of the file to use for the ui form definition json (if any). If set to
+        /// null, the ui definition won't be unpacked even if present within the packaged template.
+        /// </param>
         public static void Unpack(
             PackagedTemplate packagedTemplate,
             string targetDirectory,
-            string templateFileName)
+            string templateFileName,
+            string uiFormDefinitionFileName)
         {
             // Ensure paths are normalized:
             templateFileName = Path.GetFileName(templateFileName);
@@ -238,7 +260,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             foreach (var artifact in packagedTemplate.Artifacts)
             {
-                if (!(artifact is TemplateSpecTemplateArtifact templateArtifact))
+                if (!(artifact is LinkedTemplateArtifact templateArtifact))
                 {
                     throw new NotSupportedException("Unknown artifact type encountered...");
                 }
@@ -254,12 +276,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 FileUtilities.DataStore.WriteFile(absoluteLocalPath,
                     ((JObject)templateArtifact.Template).ToString());
             }
+
+            // Lastly, let's write the UIFormDefinition file if a UIFormDefinition is present within
+            // the packaged template:
+
+            if (!string.IsNullOrWhiteSpace(uiFormDefinitionFileName) && 
+                packagedTemplate.UIFormDefinition != null)
+            {
+                string absoluteUIFormDefinitionFilePath = Path.Combine(
+                    targetDirectory, 
+                    uiFormDefinitionFileName
+                );
+
+                FileUtilities.DataStore.WriteFile(
+                    absoluteUIFormDefinitionFilePath,
+                    packagedTemplate.UIFormDefinition.ToString()
+                );
+            }
         }
 
         /// <summary>
         /// Gets all of the deployment resource JObjects within the specified template
         /// JObject.
         /// </summary>
+        /// <param name="templateObj"></param>
         /// <param name="includeNested">If true, deployment resource objects from nested
         /// templates will be included in the results</param>
         /// <remarks>
@@ -296,6 +336,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Gets all of the TemplateLink JObjects within the specified template object that
         /// are representing references to Template Spec artifacts.
         /// </summary>
+        /// <param name="templateObj"></param>
         /// <param name="includeNested">If true, template links from nested templates 
         /// will be included in the results</param>
         /// <remarks>

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     resourceGroupName,
                     dataFactoryName,
                     linkedServiceName,
-                    linkedService);
+                    linkedService?.Properties);
         }
 
         public virtual PSLinkedService GetLinkedService(string resourceGroupName, string dataFactoryName,

@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSPublicIpAddressDnsSettings
     {
         [Ps1Xml(Target = ViewControl.Table)]
+        public PSDomainNameLabelScopeType? DomainNameLabelScope { get; set; } = null;
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string DomainNameLabel { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string Fqdn { get; set; }

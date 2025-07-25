@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,9 +42,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// The SQL administrator credentials for the server
         /// </summary>
-        [Parameter(Mandatory = true,
-            HelpMessage = "The SQL administrator credentials for the server")]
-        [ValidateNotNull]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The SQL administrator credentials for the server. Optional when Azure Active Directory only is enabled and an Azure Active Directory administrator is specified.")]
         public PSCredential SqlAdministratorCredentials { get; set; }
 
         /// <summary>
@@ -72,22 +72,56 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string ServerVersion { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra Identity for this server for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not. When disabled, only connections made through Private Links can reach this server.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
+        
+        [Parameter(Mandatory = false,
+            HelpMessage = "When enabled, only outbound connections allowed by the outbound firewall rules will succeed.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string RestrictOutboundNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets the managed instance minimal tls version
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Minimal Tls Version for the Sql Azure Managed Instance. Options are: 1.0, 1.1 and 1.2 ")]
-        [ValidateSet("1.0", "1.1", "1.2")]
-        [PSArgumentCompleter("1.0", "1.1", "1.2")]
+        [ValidateSet("None", "1.0", "1.1", "1.2")]
+        [PSArgumentCompleter("None", "1.0", "1.1", "1.2")]
         public string MinimalTlsVersion { get; set; }
+
+        /// <summary>
+        /// Id of the primary user assigned identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The primary user managed identity(UMI) id")]
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// URI of the key to use for encryption
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Key Vault URI for encryption")]
+        public string KeyId { get; set; }
+
+        /// <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// Type of identity to be assigned to the server..
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "\"SystemAssigned,UserAssigned\"", "None")]
+        public string IdentityType { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -96,10 +130,48 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Enable Active Directory Only Authentication on the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Enable Active Directory Only Authentication on the server.")]
+        public SwitchParameter EnableActiveDirectoryOnlyAuthentication { get; set; }
+
+        /// <summary>
+        /// Azure Active Directory display name for a user or group
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the display name of the user, group or application which is the Microsoft Entra administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
+        public string ExternalAdminName { get; set; }
+
+        /// <summary>
+        /// Azure Active Directory object id for a user, group or application
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the object ID of the user, group or application which is the Microsoft Entra administrator.")]
+        public Guid? ExternalAdminSID { get; set; }
+
+        /// <summary>
+        /// The Federated Client id use in server for cross tenant cmk
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the Federated client ID of the server when using Cross-Tenant CMK, Do not set this value if you do not intent to use Cross-Tenant CMK")]
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            if (this.EnableActiveDirectoryOnlyAuthentication.IsPresent && this.ExternalAdminName == null)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingExternalAdmin, "ExternalAdminName");
+            }
+
+            if (!this.EnableActiveDirectoryOnlyAuthentication.IsPresent && this.SqlAdministratorCredentials == null)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "SqlAdministratorCredentials");
+            }
+
             base.ExecuteCmdlet();
         }
 
@@ -150,12 +222,22 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 ServerVersion = this.ServerVersion,
-                SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
-                SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
+                SqlAdministratorPassword = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.Password : null,
+                SqlAdministratorLogin = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
-                MinimalTlsVersion = this.MinimalTlsVersion,
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, null),
+                MinimalTlsVersion = (this.MinimalTlsVersion != null) ? this.MinimalTlsVersion : "1.2",
                 PublicNetworkAccess = this.PublicNetworkAccess,
+                RestrictOutboundNetworkAccess = this.RestrictOutboundNetworkAccess,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
+                KeyId = this.KeyId,
+                FederatedClientId = this.FederatedClientId,
+                Administrators = new Management.Sql.Models.ServerExternalAdministrator()
+                {
+                    AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
+                    Login = this.ExternalAdminName,
+                    Sid = this.ExternalAdminSID
+                }              
             });
             return newEntity;
         }

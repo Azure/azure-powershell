@@ -1,0 +1,95 @@
+{
+  "resourceType": "l3IsolationDomains/externalNetworks",
+  "apiVersion": "2023-06-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkFabricExternalNetwork",
+      "description": "Implements ExternalNetworks GET method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricexternalnetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-L3IsolationDomainName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements ExternalNetworks GET method.",
+          "parameters": [
+            {
+              "name": "-L3IsolationDomainName",
+              "value": "[Path.l3IsolationDomainName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.externalNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkFabricExternalNetwork",
+      "description": "Implements ExternalNetworks DELETE method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabricexternalnetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-L3IsolationDomainName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements ExternalNetworks DELETE method.",
+          "parameters": [
+            {
+              "name": "-L3IsolationDomainName",
+              "value": "[Path.l3IsolationDomainName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.externalNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

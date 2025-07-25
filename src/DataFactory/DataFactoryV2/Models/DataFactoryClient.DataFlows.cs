@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 resourceGroupName,
                 dataFactoryName,
                 dataFlowName,
-                dataFlow);
+                dataFlow?.Properties);
         }
 
         public virtual PSDataFlow GetDataFlow(string resourceGroupName, string dataFactoryName, string dataFlowName)

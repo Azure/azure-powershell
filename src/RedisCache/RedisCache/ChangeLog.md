@@ -19,6 +19,46 @@
 -->
 ## Upcoming Release
 
+## Version 1.11.0
+* Upgraded nuget package to signed package.
+* Added support for choosing Zonal Allocation Policy
+
+## Version 1.10.0
+* Added support for Disabling Access Keys Authentication
+
+## Version 1.9.1
+* Fixed pattern for access policy resource names
+
+## Version 1.9.0
+* Upgraded API version to 2023-08-01
+* Added support for flush operation
+* Added support for update channels
+* Added support for Microsoft Entra Authentication
+
+## Version 1.8.1
+* Fixed minor issues
+
+## Version 1.8.0
+* Upgraded API version to 2023-04-01
+
+## Version 1.7.1
+* Updated `Get-AzRedisCacheLink` and `New-AzRedisCacheLink` to print `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`.
+
+## Version 1.7.0
+* Added optional parameter `PreferredDataArchiveAuthMethod` in `Export-AzRedisCache`
+* Added optional parameter `PreferredDataArchiveAuthMethod` in `Import-AzRedisCache`
+* Added 4 additional properties for a geo replication link: `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`in `Get-AzRedisCacheLink` and `New-AzRedisCacheLink`
+
+## Version 1.6.0
+* Added `IdentityType` and `UserAssignedIdentity` parameter in `New-AzRedisCache` and `Set-AzRedisCache` cmdlets.
+    - It is used to assign and modify the Identity of Azure Cache for Redis.
+
+## Version 1.5.1
+* Created new examples in documentation of `New-AzRedisCache` and `Set-AzRedisCache`.
+
+## Version 1.5.0
+* Added `RedisVersion` parameter in `New-AzRedisCache` and `Set-AzRedisCache`
+
 ## Version 1.4.0
 * Made `New-AzRedisCache` and `Set-AzRedisCache` cmdlets not fail because of permission issue related to registering Microsoft.Cache RP
 

@@ -19,6 +19,35 @@
 -->
 ## Upcoming Release
 
+## Version 2.8.0
+* Upgraded nuget package to signed package.
+* Removed "Microsoft.Azure.Management.IotHub" Version "4.2.0" PackageReference
+
+## Version 2.7.7
+* Fixed secrets exposure in example documentation.
+
+## Version 2.7.6
+* Removed the outdated deps.json file.
+
+## Version 2.7.5
+* Updated IoT Hub Management SDK to version 4.2.0 (api-version 2021-07-02)
+* Fixed `Get-AzIoTHub` to work with DigiCert hubs
+
+## Version 2.7.4
+* Updated IoT Hub Management SDK to version 4.1.0 (api-version 2021-07-10)
+
+## Version 2.7.3
+* Updated IoT Hub Management SDK and models to version 3.0.0 (api-version 2020-03-01)
+
+## Version 2.7.2
+* Fixed a regression regarding SAS token generation
+
+## Version 2.7.1
+* Fixed an issue of SAS token.
+
+## Version 2.7.0
+* Allowed tags in IoT Hub create cmdlet.
+
 ## Version 2.6.0
 * Updated devices sdk.
 
@@ -101,7 +130,7 @@
 
 ## Version 1.3.1
 * Add new routing source: DigitalTwinChangeEvents
-* Minor bug fix: Get-AzIothub not returning subscriptionId 
+* Minor bug fix: Get-AzIothub not returning subscriptionId
 
 ## Version 1.3.0
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.

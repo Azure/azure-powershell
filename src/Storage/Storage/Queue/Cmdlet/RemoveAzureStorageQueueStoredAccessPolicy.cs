@@ -14,11 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
+    using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Queue;
-    using Microsoft.Azure.Storage.Queue.Protocol;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -60,25 +61,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             EnableMultiThread = false;
         }
 
-        internal bool RemoveAzureQueueStoredAccessPolicy(IStorageQueueManagement localChannel, string queueName, string policyName)
+        internal bool RemoveAzureQueueStoredAccessPolicy(string queueName, string policyName)
         {
             bool success = false;
-            string result = string.Empty;
 
-            //Get existing permissions
-            CloudQueue queue = Channel.GetQueueReference(queueName);
-            QueuePermissions queuePermissions = localChannel.GetPermissions(queue, this.RequestOptions, this.OperationContext);
+            QueueClient queueClient = Util.GetTrack2QueueClient(queueName, (AzureStorageContext)this.Context, this.ClientOptions);
+            IEnumerable<QueueSignedIdentifier> signedIdentifiers = queueClient.GetAccessPolicy(this.CmdletCancellationToken).Value;
 
-            //remove the specified policy
-            if (!queuePermissions.SharedAccessPolicies.Keys.Contains(policyName))
+            QueueSignedIdentifier signedIdentifier = null;
+            foreach (QueueSignedIdentifier identifier in signedIdentifiers)
+            {
+                if (identifier.Id == policyName)
+                {
+                    signedIdentifier = identifier;
+                }
+            }
+
+            if (signedIdentifier == null)
             {
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
             if (ShouldProcess(policyName, "Remove policy"))
             {
-                queuePermissions.SharedAccessPolicies.Remove(policyName);
-                localChannel.SetPermissions(queue, queuePermissions, null, OperationContext);
+                List<QueueSignedIdentifier> newSignedIdentifiers = new List<QueueSignedIdentifier>(signedIdentifiers);
+                newSignedIdentifiers.Remove(signedIdentifier);
+
+                queueClient.SetAccessPolicy(newSignedIdentifiers, this.CmdletCancellationToken);
                 success = true;
             }
 
@@ -92,9 +101,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Queue) || String.IsNullOrEmpty(Policy)) return;
-            bool success = RemoveAzureQueueStoredAccessPolicy(Channel, Queue, Policy);
-            string result = string.Empty;
-
+            bool success = RemoveAzureQueueStoredAccessPolicy(Queue, Policy);
+            string result;
             if (success)
             {
                 result = String.Format(CultureInfo.CurrentCulture, Resources.RemovePolicySuccessfully, Policy);

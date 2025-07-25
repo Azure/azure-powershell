@@ -35,9 +35,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Network Interface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Private IPAddress Prefix Length")]
+        public int? PrivateIPAddressPrefixLength { get; set; }
 
         public override void Execute()
-        {     
+        {
             base.Execute();
 
             var existingIpConfig = this.NetworkInterface.IpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
@@ -107,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
             ipconfig.Name = this.Name;
             if (this.Primary.IsPresent)
             {
-                foreach(var item in NetworkInterface.IpConfigurations)
+                foreach (var item in NetworkInterface.IpConfigurations)
                 {
                     item.Primary = false;
                 }
@@ -129,6 +133,16 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     ipconfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Dynamic;
                 }
+            }
+
+            if (!string.IsNullOrEmpty(this.GatewayLoadBalancerId))
+            {
+                // Gateway
+                if (ipconfig.GatewayLoadBalancer == null)
+                {
+                    ipconfig.GatewayLoadBalancer = new PSFrontendIPConfiguration();
+                }
+                ipconfig.GatewayLoadBalancer.Id = this.GatewayLoadBalancerId;
             }
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
@@ -174,6 +188,21 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
+
+            if (this.PrivateIPAddressPrefixLength != null)
+            {
+                if (ipconfig.Primary)
+                {
+                    throw new ArgumentException("Primary property must be false when PrivateIPAddressPrefixLength is set.");
+                }
+
+                if (!string.Equals(this.PrivateIpAddressVersion, "IPv4", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException("PrivateIPAddressVersion must be IPv4 when PrivateIPAddressPrefixLength is set.");
+                }
+
+                ipconfig.PrivateIpAddressPrefixLength = this.PrivateIPAddressPrefixLength;
+            }
 
             this.NetworkInterface.IpConfigurations.Add(ipconfig);
 

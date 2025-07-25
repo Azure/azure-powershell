@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityAlert
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecurityAlert
 schema: 2.0.0
 ---
 
@@ -14,12 +14,14 @@ Gets security alerts that were detected by Azure Security Center
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityAlert [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAlert [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzSecurityAlert -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAlert -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
@@ -36,7 +38,8 @@ Get-AzSecurityAlert -Name <String> -Location <String> [-DefaultProfile <IAzureCo
 
 ### ResourceId
 ```
-Get-AzSecurityAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,9 +49,10 @@ Gets security alerts that were detected by Azure Security Center
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityAlert
+Get-AzSecurityAlert
+```
 
-
+```output
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/RSG/providers/Microsoft.Securit
                      y/locations/centralus/alerts/2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF
 Name               : 2518710774294070750_FFF23C70-80EF-4A8B-9122-507B0EA8DFFF
@@ -76,7 +80,7 @@ InstanceId         : fff23c70-80ef-4a8b-9122-507b0ea8dfff
 RemediationSteps   : 1. If WordPress is installed, make sure that the application is up to date and automatic updates 
                      are enabled.
                      2. If only specific IPs should access to the web application, use IP Restrictions 
-                     (https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions).
+                     (https://learn.microsoft.com/azure/app-service/app-service-ip-restrictions).
 ReportedSeverity   : High
 ReportedTimeUtc    : 10/07/2018 16:31:52
 State              : Active
@@ -184,9 +188,10 @@ Gets all the security alerts that were detected on resources inside a subscripti
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSecurityAlert -ResourceGroupName "myService1"
+Get-AzSecurityAlert -ResourceGroupName "myService1"
+```
 
-
+```output
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.
                      Security/locations/westeurope/alerts/2518675199999999999_0501972d-06cd-47c7-a276-036f67d89262
 Name               : 2518675199999999999_0501972d-06cd-47c7-a276-036f67d89262
@@ -312,9 +317,10 @@ Gets all the security alerts that were detected on resources inside the "myServi
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzSecurityAlert -ResourceGroupName "myService1" -Location "westeurope" -Name "2518675235999999999_0cd957d9-8101-47f7-88cc-0c5d0ebdbfd0"
+Get-AzSecurityAlert -ResourceGroupName "myService1" -Location "westeurope" -Name "2518675235999999999_0cd957d9-8101-47f7-88cc-0c5d0ebdbfd0"
+```
 
-
+```output
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.
                      Security/locations/westeurope/alerts/2518675235999999999_0cd957d9-8101-47f7-88cc-0c5d0ebdbfd0
 Name               : 2518675235999999999_0cd957d9-8101-47f7-88cc-0c5d0ebdbfd0

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Initializes a new instance of the <see cref="ASRAlertSetting" /> class with required
         ///     parameters.
         /// </summary>
-        /// <param name="alertSetting">AlertSetting Object</param>
+        /// <param name="alertSettings">AlertSetting Object</param>
         public ASRAlertSetting(Alert alertSettings)
         {
             this.CustomEmailAddress = alertSettings.Properties.CustomEmailAddresses;

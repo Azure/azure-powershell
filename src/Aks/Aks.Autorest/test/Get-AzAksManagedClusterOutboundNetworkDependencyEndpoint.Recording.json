@@ -1,0 +1,43 @@
+{
+  "Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/outboundNetworkDependenciesEndpoints?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/outboundNetworkDependenciesEndpoints?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "83523d5a-aee3-4014-8a11-33e3d28fecb7" ],
+        "CommandName": [ "Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T094623Z:f05b1c48-ba0a-456e-9a59-59f153d4b494" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "f05b1c48-ba0a-456e-9a59-59f153d4b494" ],
+        "x-ms-request-id": [ "f787f783-2a3e-401c-8161-75b56a255c31" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "Date": [ "Fri, 31 Mar 2023 09:46:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2247" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n   {\n    \"category\": \"azure-resource-management\",\n    \"endpoints\": [\n     {\n      \"domainName\": \"management.azure.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 443,\n        \"protocol\": \"Https\"\n       }\n      ]\n     },\n     {\n      \"domainName\": \"login.microsoftonline.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 443,\n        \"protocol\": \"Https\"\n       }\n      ]\n     }\n    ]\n   },\n   {\n    \"category\": \"images\",\n    \"endpoints\": [\n     {\n      \"domainName\": \"mcr.microsoft.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 443,\n        \"protocol\": \"Https\"\n       }\n      ]\n     },\n     {\n      \"domainName\": \"*.data.mcr.microsoft.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 443,\n        \"protocol\": \"Https\",\n        \"description\": \"mcr cdn\"\n       }\n      ]\n     }\n    ]\n   },\n   {\n    \"category\": \"artifacts\",\n    \"endpoints\": [\n     {\n      \"domainName\": \"packages.microsoft.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 443,\n        \"protocol\": \"Https\"\n       }\n      ]\n     },\n     {\n      \"domainName\": \"acs-mirror.azureedge.net\",\n      \"endpointDetails\": [\n       {\n        \"port\": 443,\n        \"protocol\": \"Https\"\n       }\n      ]\n     }\n    ]\n   },\n   {\n    \"category\": \"time-sync\",\n    \"endpoints\": [\n     {\n      \"domainName\": \"ntp.ubuntu.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 123,\n        \"protocol\": \"UDP\"\n       }\n      ]\n     }\n    ]\n   },\n   {\n    \"category\": \"ubuntu-optional\",\n    \"endpoints\": [\n     {\n      \"domainName\": \"security.ubuntu.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 80,\n        \"protocol\": \"Http\"\n       }\n      ]\n     },\n     {\n      \"domainName\": \"azure.archive.ubuntu.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 80,\n        \"protocol\": \"Http\"\n       }\n      ]\n     },\n     {\n      \"domainName\": \"changelogs.ubuntu.com\",\n      \"endpointDetails\": [\n       {\n        \"port\": 80,\n        \"protocol\": \"Http\"\n       }\n      ]\n     }\n    ]\n   },\n   {\n    \"category\": \"apiserver\",\n    \"endpoints\": [\n     {\n      \"domainName\": \"aks0b1f-idb7vuoi.hcp.eastus.azmk8s.io\",\n      \"endpointDetails\": [\n       {\n        \"port\": 443,\n        \"protocol\": \"Https\"\n       }\n      ]\n     }\n    ]\n   }\n  ]\n }",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using System.Collections.Generic;
@@ -21,6 +19,7 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             IPage<Cluster> list = string.IsNullOrWhiteSpace(resourceGroupName)
                 ? this.OperationalInsightsManagementClient.Clusters.List()
                 : this.OperationalInsightsManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
-            
+
             return list.Select(item => new PSCluster(item)).ToList();
         }
 
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 existingCluster = GetPSCluster(resourceGroupName, clusterName);
             }
-            catch(RestException)
+            catch (RestException)
             {
                 existingCluster = null;
             }
@@ -72,53 +71,32 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 throw new PSInvalidOperationException(string.Format("cluster: '{0}' already exists in '{1}'. Please use Update-AzOperationalInsightsCluster for updating.", clusterName, resourceGroupName));
             }
 
-            return new PSCluster(this.OperationalInsightsManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, parameters.getCluster()));
+            return new PSCluster(this.OperationalInsightsManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, parameters.GetCluster()));
         }
 
-        public virtual PSCluster UpdatePSCluster(string resourceGroupName, string clusterName, PSClusterPatch parameters)
+        public virtual PSCluster UpdatePSCluster(string resourceGroupName, string clusterName, PSCluster parameters)
         {
             PSCluster existingCluster;
             try
             {
                 existingCluster = GetPSCluster(resourceGroupName, clusterName);
             }
-            catch(RestException)
+            catch (RestException)
             {
-                throw new System.ArgumentException($"Cluster {clusterName} under {resourceGroupName} is not existed");
+                throw new PSArgumentException($"Cluster {clusterName} under {resourceGroupName} is not existed");
             }
 
-            parameters.Tags = parameters.Tags == null 
-                ? existingCluster.Tags 
-                : parameters.Tags;
+            parameters.Tags = parameters.Tags ?? existingCluster.Tags;
 
-            if (parameters.KeyVaultProperties != null)
-            {
-                parameters.KeyVaultProperties.KeyName = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyName)
-                    ? existingCluster.KeyVaultProperties?.KeyName
-                    : parameters.KeyVaultProperties.KeyName;
+            parameters.BillingType = string.IsNullOrEmpty(parameters.BillingType)
+                ? existingCluster.BillingType
+                : parameters.BillingType;
 
-                parameters.KeyVaultProperties.KeyVaultUri = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyVaultUri)
-                    ? existingCluster.KeyVaultProperties?.KeyVaultUri
-                    : parameters.KeyVaultProperties.KeyVaultUri;
+            parameters.CapacityReservationProperties = parameters.CapacityReservationProperties ?? existingCluster.CapacityReservationProperties;
 
-                parameters.KeyVaultProperties.KeyVersion = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyVersion)
-                    ? existingCluster.KeyVaultProperties?.KeyVersion
-                    : parameters.KeyVaultProperties.KeyVersion;
-            }
+            var response = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
 
-            if (parameters.Sku != null)
-            {
-                parameters.Sku.Name = string.IsNullOrEmpty(parameters.Sku?.Name)
-                    ? existingCluster.Sku?.Name
-                    : parameters.Sku.Name;
-
-                parameters.Sku.Capacity = parameters.Sku?.Capacity == 0
-                    ? existingCluster.Sku?.Capacity
-                    : parameters.Sku.Capacity;
-            }
-
-            Cluster cluster = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
-            return new PSCluster(cluster);
+            return new PSCluster(response);
         }
 
         public virtual HttpStatusCode DeletePSCluster(string resourceGroupName, string clusterName)

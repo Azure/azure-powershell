@@ -136,10 +136,10 @@
     <value>Using SSH public key data as command line string.</value>
   </data>
   <data name="CouldNotFindSshPublicKeyInError" xml:space="preserve">
-    <value>Could not find SSH public key in {0}. See {1} for help generating a key pair.</value>
+    <value>Could not find SSH public key in default path '{0}' which is required for creating k8s cluster. See https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys or https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows for generating a key pair manually; or you could try to add switch parameter -GenerateSshKey during calling New-AzAksCluster which will automatically generate SSH key file if you have ssh-keygen installed.</value>
   </data>
   <data name="NoServicePrincipalFoundCreatingANewServicePrincipal" xml:space="preserve">
-    <value>No Service Principal found in {0} for this subscription. Creating a new Service Principal.</value>
+    <value>No Service Principal found in {0} for current subscription {1}. Trying to create a new Service Principal with Contributor role for the subscription.</value>
   </data>
   <data name="CreatedANewServicePrincipalAndAssignedTheContributorRole" xml:space="preserve">
     <value>Created a new Service Principal and assigned the contributor role for this subscription.</value>
@@ -148,7 +148,7 @@
     <value>Service Principal Create</value>
   </data>
   <data name="CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner" xml:space="preserve">
-    <value>Could not create a service principal with the right permissions. Are you an Owner on this project?</value>
+    <value>Could not create a service principal. Do you have enough permission to create service principal? Or you could use parameter -ClientIdAndSecret to specify one existing service principal id and secret.</value>
   </data>
   <data name="ClusterExists" xml:space="preserve">
     <value>Cluster exists: {0}</value>
@@ -310,7 +310,7 @@
     <value>Creating a new cluster Node pool.</value>
   </data>
   <data name="DoYouWantToCreateClusterAgentPool" xml:space="preserve">
-    <value>Do you want to craete a new Node pool?</value>
+    <value>Do you want to create a new Node pool?</value>
   </data>
   <data name="DoYouWantToDeleteTheAgentPool" xml:space="preserve">
     <value>Do you want to delete the Node pool?</value>
@@ -349,19 +349,19 @@
     <value>Could not find object id of service principal : {0}, please make sure you have graph directory.read permission which is required for grant acrpull permission.</value>
   </data>
   <data name="CouldNotFindSpecifiedAcr" xml:space="preserve">
-    <value>Could not find specified Acr '{0}' to attach.</value>
+    <value>Could not find specified Acr '{0}' to attach or detach.</value>
   </data>
   <data name="AgentPoolAlreadyExistsError" xml:space="preserve">
     <value>The node pool already exists. Please use Update-AzAksNodePool for update.</value>
   </data>
   <data name="AksNodePoolAutoScalingParametersMustAppearTogether" xml:space="preserve">
-    <value>The following three paramters must appear together if one of them appears: NodeMinCount, NodeMaxCount and EnableNodeAutoScaling.</value>
+    <value>The following three parameters must appear together if one of them appears: NodeMinCount, NodeMaxCount and EnableNodeAutoScaling.</value>
   </data>
   <data name="K8sVersionNotSupported" xml:space="preserve">
     <value>The specified KubernetesVersion is not supported in this region. Please run 'Get-AzAksVersion' to get supported version.</value>
   </data>
   <data name="NodePoolAutoScalingParametersMustAppearTogether" xml:space="preserve">
-    <value>The following three paramters must appear together if one of them appears: MinCount, MaxCount and EnableAutoScaling.</value>
+    <value>The following three parameters must appear together if one of them appears: MinCount, MaxCount and EnableAutoScaling.</value>
   </data>
   <data name="VmSetTypeIsIncorrectForWindowsPool" xml:space="preserve">
     <value>You must set VmSetType as 'VirtualMachineScaleSets' for Windows node pool.</value>
@@ -370,16 +370,13 @@
     <value>Windows agent pool name can not be longer than 6 characters.</value>
   </data>
   <data name="AddonMonitoringShouldWorkWithWorkspaceResourceId" xml:space="preserve">
-    <value>Add-on Monitoring should work with WorkspaceResourceId.</value>
+    <value>WorkspaceResourceId must not be null when enabling add-on Monitoring.</value>
   </data>
   <data name="DonotUseGenerateSshKeyWithSshKeyValue" xml:space="preserve">
-    <value>Don't use -GenerateSshKey and -SshKeyVaule at the same time.</value>
+    <value>Don't use -GenerateSshKey and -SshKeyValue at the same time.</value>
   </data>
   <data name="DefaultSshKeyAlreadyExist" xml:space="preserve">
-    <value>Default ssh key already exists. Please use -SshKeyVaule.</value>
-  </data>
-  <data name="EnableSsh" xml:space="preserve">
-    <value>Cannot find ssh-keygen. Please enable OpenSSH on your local machine.</value>
+    <value>Default ssh key file {0} already exists. Please use parameter -SshKeyValue '{0}' instead of -GenerateSshKey.</value>
   </data>
   <data name="UpdatingNodePoolMode" xml:space="preserve">
     <value>Updating NodePoolMode.</value>
@@ -393,16 +390,73 @@
   <data name="NetworkPluginShouldBeAzure" xml:space="preserve">
     <value>NetworkPlugin must be azure if you want to use Windows.</value>
   </data>
-  <data name="AddonMonitoringShouldWorkWithWorkspaceResourceId" xml:space="preserve">
-    <value />
-  </data>
   <data name="AddonIsNotInstalled" xml:space="preserve">
-    <value>Add-on {0} is not installed.</value>
+    <value>Add-on {0} is not installed for this cluster.</value>
   </data>
   <data name="AddonNotDefined" xml:space="preserve">
-    <value>Add-on {0} is not defined.</value>
+    <value>Add-on {0} is not defined. The accepted add-on names are {1}.</value>
   </data>
   <data name="AddonVirtualNodeShouldWorkWithSubnetName" xml:space="preserve">
-    <value>Add-on VirtualNode should work with SubnetName.</value>
+    <value>SubnetName must not be null when enabling add-on VirtualNode.</value>
+  </data>
+  <data name="ParentResourceMustNotBeEmpty" xml:space="preserve">
+    <value>Parent source must not be null or empty.</value>
+  </data>
+  <data name="FailedToRunSshKeyGen" xml:space="preserve">
+    <value>Failed to run 'ssh-keygen' to generate SSH key with detail error: {0}. \nPlease make sure 'ssh-keygen' is runable from cmd on Windows or shell on Linux/MacOS, usually you just need to install OpenSSH client which contains 'ssh-keygen', then restart PowerShell and try again.</value>
+  </data>
+  <data name="FailedToGenerateSshKey" xml:space="preserve">
+    <value>Failed to generate SSH key with detail error: {0}.\nPlease create one issue at https://github.com/Azure/azure-powershell/issues if issue remains.</value>
+  </data>
+  <data name="CouldNotAssignServicePrincipalWithSubsContributorPermission" xml:space="preserve">
+    <value>Could not assign subscription contributor permission to service principal just created. Please make sure you have permission to assign subscription contributor role, or you could use parameter -ClientIdAndSecret to specify one existing service principal id and secret.</value>
+  </data>
+  <data name="CouldNotDeleteAcrRoleAssignment" xml:space="preserve">
+    <value>Could not delete 'acrpull' role assignment, please make sure you have right permission.</value>
+  </data>
+  <data name="CouldNotGetAcrRoleAssignment" xml:space="preserve">
+    <value>Could not get 'acrpull' role assignment, please make sure you have right permission.</value>
+  </data>
+  <data name="AcrRoleAssignmentIsAlreadyExist" xml:space="preserve">
+    <value>Acr role assignment {0} is already exist.</value>
+  </data>
+  <data name="ResetingTheCredentialOfAksCluster" xml:space="preserve">
+    <value>Resetting the credential of the aks cluster.</value>
+  </data>
+  <data name="ResetTheCredentialOfAksCluster" xml:space="preserve">
+    <value>Do you want to reset the credential of the aks cluster?</value>
+  </data>
+  <data name="ConfirmControlPlaneOnly" xml:space="preserve">
+    <value>Since control-plane-only argument is specified, this will upgrade only the control plane to {0}. Node pool will not change. Continue?</value>
+  </data>
+  <data name="ConfirmControlPlaneOnlyInVMASCluster" xml:space="preserve">
+    <value>Legacy clusters do not support control plane only upgrade. All node pools will be upgraded to {0} as well. Continue?</value>
+  </data>
+  <data name="ConfirmNotControlPlaneOnly" xml:space="preserve">
+    <value>Since control-plane-only argument is not specified, this will upgrade the control plane AND all node pools to version {0}. Continue?</value>
+  </data>
+  <data name="ConfirmOnlyUpgradeNodeVersion" xml:space="preserve">
+    <value>This node image upgrade operation will run across every node pool in the cluster and might take a while, do you wish to continue?</value>
+  </data>
+  <data name="NotUsingVirtualMachineScaleSets" xml:space="preserve">
+    <value>This cluster is not using VirtualMachineScaleSets. Node image upgrade only operation can only be applied on VirtualMachineScaleSets cluster.</value>
+  </data>
+  <data name="UpdateKubernetesVersionAndNodeImageOnlyConflict" xml:space="preserve">
+    <value>Conflicting flags. Upgrading the Kubernetes version will also upgrade node image version. If you only want to upgrade the node version please use the "-NodeImageOnly" option only.</value>
+  </data>
+  <data name="NeedSameParentFolder" xml:space="preserve">
+    <value>Cannot attach folder with another file or folder at the same time. Please put them in a same parent folder.</value>
+  </data>
+  <data name="DoYouWantToExecuteCommandOnCluster" xml:space="preserve">
+    <value>Do you want to execute the command on cluster {0}?</value>
+  </data>
+  <data name="ExecutingCommandOnCluster" xml:space="preserve">
+    <value>Executing command on cluster {0}.</value>
+  </data>
+  <data name="NeedEnableManagedIdentity" xml:space="preserve">
+    <value>Please set '-EnableManagedIdentity' first if you want to set 'AssignIdentity'.</value>
+  </data>
+  <data name="UpdatingNodePoolLabels" xml:space="preserve">
+    <value>Updating node pool labels</value>
   </data>
 </root>

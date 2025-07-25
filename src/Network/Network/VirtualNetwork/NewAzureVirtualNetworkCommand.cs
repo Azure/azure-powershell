@@ -54,17 +54,29 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
-        [ValidateNotNullOrEmpty]
         public string[] AddressPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "IpamPool to auto allocate from for virtual network address prefixes.")]
+        [ValidateNotNullOrEmpty]
+        public PSIpamPoolPrefixAllocation[] IpamPoolPrefixAllocation { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
         public string[] DnsServer { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "FlowTimeout enables connection tracking for intra-VM flows. The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking.")]
+        public int? FlowTimeout { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -77,6 +89,18 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The BGP Community advertised over ExpressRoute.")]
         public string BgpCommunity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Indicates if encryption is enabled on the virtual network. The value should be true to enable encryption on the virtual network, false to disable encryption.")]
+        public string EnableEncryption { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Set the Encryption EnforcementPolicy. The value should be allowUnencrypted to allow VMs without encryption capability inside an encrypted virtual network, or dropUnencrypted to disable any VM without encryption capability from being added into an encrypted virtual network.")]
+        public string EncryptionEnforcementPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -100,6 +124,18 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpAllocation")]
         public PSIpAllocation[] IpAllocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the virtual network.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The PrivateEndpointVNetPolicies of the virtual network")]
+        public string PrivateEndpointVNetPoliciesValue { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -136,9 +172,19 @@ namespace Microsoft.Azure.Commands.Network
                 AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
 
+            if (IpamPoolPrefixAllocation?.Length > 0)
+            {
+                vnet.AddressSpace.IpamPoolPrefixAllocations = IpamPoolPrefixAllocation.ToList();
+            }
+
             if (DnsServer != null)
             {
                 vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
+            }
+            
+            if (this.FlowTimeout > 0)
+            {
+                vnet.FlowTimeoutInMinutes = this.FlowTimeout;
             }
 
             vnet.Subnets = this.Subnet?.ToList();
@@ -154,6 +200,21 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.BgpCommunity};
             }
 
+            if (!string.IsNullOrWhiteSpace(EnableEncryption))
+            {
+                vnet.Encryption = new PSVirtualNetworkEncryption { Enabled = this.EnableEncryption, Enforcement = this.EncryptionEnforcementPolicy };
+            }
+           
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                vnet.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
+            if(!string.IsNullOrEmpty(this.PrivateEndpointVNetPoliciesValue))
+            {
+                vnet.PrivateEndpointVNetPolicies = this.PrivateEndpointVNetPoliciesValue;
+            }
+
             // Map to the sdk object
             var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
@@ -163,7 +224,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var ipAllocation in this.IpAllocation)
                 {
                     var ipAllocationReference = new MNM.SubResource(ipAllocation.Id);
-                    vnetModel.IpAllocations.Add(ipAllocationReference);
+                    vnetModel.IPAllocations.Add(ipAllocationReference);
                 }
             }
 

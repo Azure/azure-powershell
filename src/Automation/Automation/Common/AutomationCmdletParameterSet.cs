@@ -266,5 +266,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// Parameter set for By SoftwareUpdateConfiguration RebootOnly
         /// </summary>
         internal const string RebootOnly = "RebootOnly";
+
+        /// <summary>
+        /// Parameter set for By HybridRunbookWorkerGroupName
+        /// </summary>
+        internal const string ByHybridRunbookWorkerGroupName = "ByHybridRunbookWorkerGroupName";
     }
 }

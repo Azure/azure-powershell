@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: A2B4ACC1-6F53-47DE-A2D4-831E8AC89A5C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -17,8 +17,10 @@ Creates a Cognitive Services account.
 ```
 New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
  [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-CustomSubdomainName <String>]
- [-AssignIdentity] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>]
+ [-AssignIdentity] [-UserAssignedIdentityId <String[]>] [-IdentityType <IdentityType>]
+ [-StorageAccountId <String[]>] [-CognitiveServicesEncryption] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>]
+ [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
  [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -27,8 +29,11 @@ New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
 ```
 New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
  [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-CustomSubdomainName <String>]
- [-AssignIdentity] [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>]
+ [-AssignIdentity] [-UserAssignedIdentityId <String[]>] [-IdentityType <IdentityType>]
+ [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String>
+ -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>]
+ [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
  [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -39,12 +44,12 @@ specified type and SKU.
 
 ## EXAMPLES
 
-### 1:
+### Example 1:
+```powershell
+New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Location 'WestUS'
 ```
-PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
-n 'WestUS'
 
-
+```output
 ResourceGroupName : cognitive-services-resource-group
 AccountName       : myluis
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
@@ -60,6 +65,21 @@ Tags              :
 ```
 
 ## PARAMETERS
+
+### -AllowedFqdnList
+List of Allowed FQDN.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApiProperty
 The ApiProperties of Cognitive Services Account. Required by specific account types.
@@ -136,6 +156,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableLocalAuth
+True if disable Local authentication methods.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -143,6 +178,22 @@ Forces the command to run without asking for user confirmation.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Set the new Cognitive Services Account Identity type, the identity is for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, SystemAssigned, UserAssigned, SystemAssignedUserAssigned
 
 Required: False
 Position: Named
@@ -171,6 +222,21 @@ Whether to set Cognitive Services Account encryption keySource to Microsoft.KeyV
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultIdentityClientId
+Set IdentityClientId to access Azure KeyVault of Cognitive Services Account Encryption.
+
+```yaml
+Type: System.String
 Parameter Sets: KeyVaultEncryption
 Aliases:
 
@@ -223,6 +289,21 @@ Required: True
 Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MultiRegionSetting
+Multi-region settings for multi-region account.
+
+```yaml
+Type: Microsoft.Azure.Management.CognitiveServices.Models.MultiRegionSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -285,6 +366,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RestrictOutboundNetworkAccess
+True if restrict outbound network access.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -353,6 +449,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+Set resource ids for the the new Cognitive Services Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

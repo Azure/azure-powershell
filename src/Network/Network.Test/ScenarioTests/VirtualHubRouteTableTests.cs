@@ -29,7 +29,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
         public void TestVirtualHubRouteTableCRUD()
         {
             TestRunner.RunTestScript("Test-VirtualHubRouteTableCRUD");

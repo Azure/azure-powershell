@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Both Token and SecureToken parameters cannot be provided together.
+        /// </summary>
+        internal static string BothTokenProvided {
+            get {
+                return ResourceManager.GetString("BothTokenProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
         ///.
         /// </summary>
@@ -134,6 +143,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IdentityId can&apos;t be empty for UserAssigned Identities.
+        /// </summary>
+        internal static string IdentityIdRequired {
+            get {
+                return ResourceManager.GetString("IdentityIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Immutability can only be locked when it is Unlocked(Enabled)..
+        /// </summary>
+        internal static string ImmutabilityCantBeLocked {
+            get {
+                return ResourceManager.GetString("ImmutabilityCantBeLocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Immutability State can&apos;t be updated once enabled and locked..
+        /// </summary>
+        internal static string ImmutabilityNotUnlocked {
+            get {
+                return ResourceManager.GetString("ImmutabilityNotUnlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
         /// </summary>
         internal static string IncorrectReplicationProvider {
@@ -158,6 +194,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string InvalidCloudExceptionErrorMessage {
             get {
                 return ResourceManager.GetString("InvalidCloudExceptionErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IdentityId &apos;{0}&apos; is invalid.
+        /// </summary>
+        internal static string InvalidIdentityId {
+            get {
+                return ResourceManager.GetString("InvalidIdentityId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserAssigned and SystemAssigned identities can&apos;t be removed together.
+        /// </summary>
+        internal static string InvalidIdentityRemove {
+            get {
+                return ResourceManager.GetString("InvalidIdentityRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter IdentityId. IdentityId can&apos;t be set for SystemAssigned Identities.
+        /// </summary>
+        internal static string InvalidParameterIdentityId {
+            get {
+                return ResourceManager.GetString("InvalidParameterIdentityId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter set.
+        /// </summary>
+        internal static string InvalidParameterSet {
+            get {
+                return ResourceManager.GetString("InvalidParameterSet", resourceCulture);
             }
         }
         
@@ -221,6 +293,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string MissingChannelIntergrityKey {
             get {
                 return ResourceManager.GetString("MissingChannelIntergrityKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide the value for DisableAzureMonitorAlertsForJobFailure, DisableClassicAlerts, DisableAzureMonitorAlertsForAllReplicationIssues, DisableAzureMonitorAlertsForAllReplicationIssues and DisableEmailNotificationsForSiteRecovery parameters to configure alerts.
+        /// </summary>
+        internal static string MissingParameterForAlerts {
+            get {
+                return ResourceManager.GetString("MissingParameterForAlerts", resourceCulture);
             }
         }
         
@@ -320,6 +401,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string ProtectionEntityNotProtected {
             get {
                 return ResourceManager.GetString("ProtectionEntityNotProtected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet.
+        /// </summary>
+        internal static string PublicNetworkAccessEnabledByDefault {
+            get {
+                return ResourceManager.GetString("PublicNetworkAccessEnabledByDefault", resourceCulture);
             }
         }
         
@@ -492,6 +582,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string SubscriptionIsNotAssociatedWithTheAccount {
             get {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.
+        /// </summary>
+        internal static string TokenParameterDepricate {
+            get {
+                return ResourceManager.GetString("TokenParameterDepricate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not protected via MUA, either protect or try without the Token parameter.
+        /// </summary>
+        internal static string UnexpectedParameterToken {
+            get {
+                return ResourceManager.GetString("UnexpectedParameterToken", resourceCulture);
             }
         }
         

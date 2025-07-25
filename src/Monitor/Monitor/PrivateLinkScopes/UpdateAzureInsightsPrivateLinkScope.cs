@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Insights.Utils;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                    .PrivateLinkScopes
                                    .UpdateTagsWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Tags.ToDictionary(s => s.Split(':')[0], s => s.Split(':')[1]))
                                    .Result;
-                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body));
+                WriteObject(PSMonitorPrivateLinkScope.ToPSMonitorPrivateLinkScope(response.Body));
             }
         }
     }

@@ -1,58 +1,52 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.ActionGroup.psm1-help.xml
 Module Name: Az.Monitor
-ms.assetid: 8D8FE2FE-03E7-453E-B968-E28B07E42EF2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azactiongroup
+online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azactiongroup
 schema: 2.0.0
 ---
 
 # Remove-AzActionGroup
 
 ## SYNOPSIS
-Removes an action group.
+Delete an action group.
 
 ## SYNTAX
 
-### ByPropertyName (Default)
+### Delete (Default)
 ```
-Remove-AzActionGroup -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Remove-AzActionGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzActionGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ByInputObject
+### DeleteViaIdentity
 ```
-Remove-AzActionGroup -InputObject <PSActionGroupResource> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzActionGroup -InputObject <IActionGroupIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzActionGroup** cmdlet removes an action group.
+Delete an action group.
 
 ## EXAMPLES
 
-### Example 1: Remove an action group
+### Example 1: delete action group
+```powershell
+Remove-AzActionGroup -ResourceGroupName Monitor-Action -Name actiongroup1
 ```
-PS C:\>Remove-AzActionGroup -ResourceGroup "Default-Web-CentralUS" -Name "myActionGroup"
-RequestId                                                                                                    StatusCode
----------                                                                                                    ----------
-2c6c159b-0e73-4a01-a67b-c32c1a0008a3                                                                                 OK
-```
+
+This command deletes specific action group.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -62,11 +56,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The action group resource
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -81,43 +75,59 @@ The name of the action group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByPropertyName
-Aliases:
+Parameter Sets: Delete
+Aliases: ActionGroupName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group nam
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByPropertyName
+Parameter Sets: Delete
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource i
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: Delete
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -137,7 +147,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -156,18 +167,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.AzureOperationResponse
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzActionGroup](./Set-AzActionGroup.md)
-[Get-AzActionGroup](./Get-AzActionGroup.md)
-[New-AzActionGroupReceiver](./New-AzActionGroupReceiver.md)

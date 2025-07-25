@@ -14,10 +14,17 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Rest.Azure.OData;
+using System;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -49,6 +56,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
 
         /// <summary>
+        /// If this option is used, all the data backed up for this item will 
+        /// expire as per the protection policy retention settings
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.SuspendBackupOption)]
+        public SwitchParameter RetainRecoveryPointsAsPerPolicy { get; set; }
+
+        /// <summary>
+        /// Parameter deprecated. Please use SecureToken instead.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public string Token;
+
+        /// <summary>
+        /// Auxiliary access token for authenticating critical operation to resource guard subscription
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public System.Security.SecureString SecureToken;
+
+        /// <summary>
         /// Prevents the confirmation dialog when specified.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.ForceOption)]
@@ -72,6 +100,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         string vaultName = resourceIdentifier.ResourceName;
                         string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
+                        string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
+                        
+                        if (DeleteBackupData && RetainRecoveryPointsAsPerPolicy.IsPresent)
+                        {
+                            throw new AzPSArgumentException(String.Format(Resources.CantRemoveAndRetainRPsSimultaneously), "RetainRecoveryPointsAsPerPolicy");
+                        }
+
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                             {
@@ -79,15 +114,80 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { VaultParams.ResourceGroupName, resourceGroupName },
                                 { ItemParams.Item, Item },
                                 { ItemParams.DeleteBackupData, this.DeleteBackupData },
+                                { ResourceGuardParams.Token, plainToken },
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =
                             providerManager.GetProviderInstance(Item.WorkloadType,
                             Item.BackupManagementType);
 
-                        if(DeleteBackupData)
+                        if (DeleteBackupData)
                         {
-                            var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
+                            #region Archived RPs 
+                            // Fetch RecoveryPoints in Archive Tier, if yes throw warning and confirmation prompt
+                            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(Item.Id);
+                            string containerUri = HelperUtils.GetContainerUri(uriDict, Item.Id);
+                            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, Item.Id);
+
+                            ODataQuery<ServiceClientModel.BmsrpQueryObject> queryFilter = null;
+                            if (string.Compare(Item.BackupManagementType.ToString(), BackupManagementType.AzureWorkload.ToString()) == 0)
+                            {
+                                var restorePointQueryType = "FullAndDifferential";
+
+                                string queryFilterString = QueryBuilder.Instance.GetQueryString(new ServiceClientModel.BmsrpQueryObject()
+                                {
+                                    RestorePointQueryType = restorePointQueryType,
+                                    ExtendedInfo = true
+                                });
+                                queryFilter = new ODataQuery<ServiceClientModel.BmsrpQueryObject>();
+                                queryFilter.Filter = queryFilterString;
+                            }
+
+                            var rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+                               containerUri,
+                               protectedItemName,
+                               queryFilter,
+                               vaultName: vaultName,
+                               resourceGroupName: resourceGroupName);
+
+                            var recoveryPointList = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, Item);
+
+                            recoveryPointList = RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, RecoveryPointTier.VaultArchive);
+
+                            #endregion
+
+                            if (recoveryPointList.Count != 0)
+                            {
+                                bool yesToAll = Force.IsPresent;
+                                bool noToAll = false;
+                                if (ShouldContinue(Resources.DeleteArchiveRecoveryPoints, Resources.DeleteRecoveryPoints, ref yesToAll, ref noToAll))
+                                {
+                                    var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
+                                    Logger.Instance.WriteDebug("item Response " + JsonConvert.SerializeObject(itemResponse));
+                                    // Track Response and display job details
+                                    HandleCreatedJob(
+                                            itemResponse,
+                                            Resources.DisableProtectionOperation,
+                                            vaultName: vaultName,
+                                            resourceGroupName: resourceGroupName);
+                                }
+                            }
+                            else
+                            {
+                                var itemResponse = psBackupProvider.DisableProtectionWithDeleteData();
+
+                                // Track Response and display job details
+                                HandleCreatedJob(
+                                        itemResponse,
+                                        Resources.DisableProtectionOperation,
+                                        vaultName: vaultName,
+                                        resourceGroupName: resourceGroupName);
+                            }
+                        }
+                        else if (RetainRecoveryPointsAsPerPolicy.IsPresent)
+                        {
+                            var itemResponse = psBackupProvider.SuspendBackup();
+                            Logger.Instance.WriteDebug("Suspend backup response " + JsonConvert.SerializeObject(itemResponse));
 
                             // Track Response and display job details
                             HandleCreatedJob(
@@ -99,7 +199,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         else
                         {
                             var itemResponse = psBackupProvider.DisableProtection();
-
+                            Logger.Instance.WriteDebug("Disable protection response " + JsonConvert.SerializeObject(itemResponse));
                             // Track Response and display job details
                             HandleCreatedJob(
                                     itemResponse,
@@ -110,7 +210,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                 );
             }, ShouldProcess(Item.Name, VerbsLifecycle.Disable));
-
-        }
+        }        
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualappliancesite
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualappliancesite
 schema: 2.0.0
 ---
 
@@ -20,7 +20,8 @@ Get-AzVirtualApplianceSite [-Name <String>] [-NetworkVirtualApplianceId <String>
 
 ### ResourceIdParameterSet
 ```
-Get-AzVirtualApplianceSite -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualApplianceSite -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,9 +31,10 @@ The Get-AzVirtualApplianceSite gets or lists sites connected to one or more Netw
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVirtualApplianceSite -Name testsite -NetworkVirtualApplianceId $nva.Id -ResourceGroupName testrg
+Get-AzVirtualApplianceSite -Name testsite -NetworkVirtualApplianceId $nva.Id -ResourceGroupName testrg
+```
 
-
+```output
 AddressPrefix     : 10.0.1.0/24
 O365Policy        : Microsoft.Azure.Commands.Network.Models.PSOffice365PolicyProperties
 ProvisioningState : Succeeded
@@ -45,9 +47,10 @@ Get a Virtual Appliance site resource.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzVirtualApplianceSite -NetworkVirtualApplianceId $nva.Id -ResourceGroupName testrg
+Get-AzVirtualApplianceSite -NetworkVirtualApplianceId $nva.Id -ResourceGroupName testrg
+```
 
-
+```output
 AddressPrefix     : 10.0.1.0/24
 O365Policy        : Microsoft.Azure.Commands.Network.Models.PSOffice365PolicyProperties
 ProvisioningState : Succeeded
@@ -64,7 +67,6 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 ```
 
 List Virtual Appliance site resources in a Network Virtual Appliance.
-
 
 ## PARAMETERS
 

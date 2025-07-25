@@ -21,11 +21,23 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         public AzureHDInsightHostInfo(HostInfo hostInfo)
         {
             name = hostInfo?.Name;
+            Fqdn = hostInfo?.Fqdn;
+            EffectiveDiskEncryptionKeyUrl = hostInfo?.EffectiveDiskEncryptionKeyUrl;
         }
 
         /// <summary>
         /// The name of hosts.
         /// </summary>
         public string name { get; set; }
+
+        /// <summary>
+        /// The full qualified dns name.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        /// The effective disk encryption key url.
+        /// </summary>
+        public string EffectiveDiskEncryptionKeyUrl { get; set; }
     }
 }

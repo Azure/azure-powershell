@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/get-azsmartgrouphistory
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/get-azsmartgrouphistory
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets smart group history
 
 ### BySmartGroupId (Default)
 ```
-Get-AzSmartGroupHistory -SmartGroupId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSmartGroupHistory -SmartGroupId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
@@ -30,7 +31,7 @@ Get-AzSmartGroupHistory -InputObject <PSSmartGroup> [-DefaultProfile <IAzureCont
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSmartGroupHistory -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
+Get-AzSmartGroupHistory -SmartGroupId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
 ```
 
 Gets smart group history details.

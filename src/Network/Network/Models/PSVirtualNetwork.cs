@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Internal.Network.Common;
+    using Microsoft.Azure.Management.Network.Models;
     using Newtonsoft.Json;
     using WindowsAzure.Commands.Common.Attributes;
 
@@ -26,9 +27,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSDhcpOptions DhcpOptions { get; set; }
 
+        public int? FlowTimeoutInMinutes { get; set; }
+
         public List<PSSubnet> Subnets { get; set; }
 
         public PSVirtualNetworkBgpCommunities BgpCommunities { get; set; }
+
+        public PSVirtualNetworkEncryption Encryption { get; set; }
 
         public List<PSVirtualNetworkPeering> VirtualNetworkPeerings { get; set; }
 
@@ -41,6 +46,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId DdosProtectionPlan { get; set; }
 
         public List<PSResourceId> IpAllocations { get; set; }
+
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateEndpointVNetPolicies { get; set; }
+
+        public PSResourceId DefaultPublicNatGateway { get; set; }
 
         [JsonIgnore]
         public string AddressSpaceText
@@ -55,6 +67,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string FlowTimeoutInMinutesText
+        {
+            get { return JsonConvert.SerializeObject(FlowTimeoutInMinutes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string SubnetsText
         {
             get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -64,6 +82,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BgpCommunitiesText
         {
             get { return JsonConvert.SerializeObject(BgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string EncryptionText
+        {
+            get { return JsonConvert.SerializeObject(Encryption, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -88,6 +112,26 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpAllocationsText
         {
             get { return JsonConvert.SerializeObject(IpAllocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DefaultPublicNatGatewayText
+        {
+            get
+            {
+                if (DefaultPublicNatGateway?.Id != null)
+                {
+                    string resourceName = DefaultPublicNatGateway.Id.Substring(DefaultPublicNatGateway.Id.LastIndexOf('/') + 1);
+                    return resourceName;
+                }
+                return null;
+            }
         }
     }
 }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -39,7 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const string separator = ";";
         private const CmdletModel.RetentionDurationType defaultFileRetentionType =
             CmdletModel.RetentionDurationType.Days;
+        private const int defaultSnapshotRetentionInDays = 5;
         private const int defaultFileRetentionCount = 30;
+        private const int defaultDailyRetentionCountForHourly = 5;
         private const int defaultWeeklyRetentionCount = 12;
         private const int defaultMonthlyRetentionCount = 60;
         private const int defaultYearlyRetentionCount = 10;
@@ -82,13 +85,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
                 (bool)ProviderData[ItemParams.DeleteBackupData] : false;
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
 
             AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
-
+                        
             return EnableOrModifyProtection(disableWithRetentionData: true);
 
         }
@@ -99,7 +103,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
                 (bool)ProviderData[ItemParams.DeleteBackupData] : false;
-
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token]: null;
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
@@ -118,7 +122,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 containerUri,
                                 protectedItemUri,
                                 vaultName: vaultName,
-                                resourceGroupName: vaultResourceGroupName);
+                                resourceGroupName: vaultResourceGroupName,
+                                auxiliaryAccessToken,
+                                item.Id);
+        }
+
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> SuspendBackup()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAProtected = true;
+
+            // do validations
+            ValidateAzureFileShareDisableProtectionRequest(itemBase);
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(itemBase.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, itemBase.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, itemBase.Id);
+
+            AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
+
+            properties.ProtectionState = ProtectionState.BackupsSuspended;
+            properties.SourceResourceId = itemBase.SourceResourceId;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected,
+                true);
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
@@ -151,7 +195,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureFileShareItem azureFileShareItem = item as AzureFileShareItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             AzureFileShareBackupRequest azureFileShareBackupRequest = new AzureFileShareBackupRequest();
-            azureFileShareBackupRequest.RecoveryPointExpiryTimeInUTC = expiryDateTime;
+            azureFileShareBackupRequest.RecoveryPointExpiryTimeInUtc = expiryDateTime;
             triggerBackupRequest.Properties = azureFileShareBackupRequest;
 
             return ServiceClientAdapter.TriggerBackup(
@@ -183,6 +227,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFolder] : null;
             string[] multipleSourceFilePaths = ProviderData.ContainsKey(RestoreFSBackupItemParams.MultipleSourceFilePath) ?
                 (string[])ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePath] : null;
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
@@ -199,8 +245,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             GenericResource targetStorageAccountResource = null;
             string targetStorageAccountLocation = null;
             if (targetStorageAccountName != null)
-            {
+            {                
                 targetStorageAccountResource = ServiceClientAdapter.GetStorageAccountResource(targetStorageAccountName);
+                
+                if(targetStorageAccountResource == null)
+                {
+                    throw new ArgumentException(string.Format(Resources.InvalidTargetStorageAccount));
+                }
+
                 targetStorageAccountLocation = targetStorageAccountResource.Location;
             }
 
@@ -209,6 +261,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             RestoreFileSpecs restoreFileSpec = new RestoreFileSpecs();
             AzureFileShareRestoreRequest restoreRequest = new AzureFileShareRestoreRequest();
             restoreRequest.CopyOptions = copyOptions;
+
             restoreRequest.SourceResourceId = storageAccountResource.Id;
             if (sourceFilePath != null)
             {
@@ -288,13 +341,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
             triggerRestoreRequest.Properties = restoreRequest;
 
+            // check for MUA
+            bool isMUAProtected = isMUAOperation;
+
             var response = ServiceClientAdapter.RestoreDisk(
                 recoveryPoint,
                 targetStorageAccountLocation = targetStorageAccountLocation ?? storageAccountResource.Location,
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
-                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
+                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation(),
+                auxiliaryAccessToken,
+                isMUAProtected);
             return response;
         }
 
@@ -329,6 +387,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             string policyName = ProviderData.ContainsKey(PolicyParams.PolicyName) ?
                 (string)ProviderData[PolicyParams.PolicyName] : null;
+
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+            ProtectionPolicyResource existingPolicy = ProviderData.ContainsKey(PolicyParams.ExistingPolicy) ? (ProtectionPolicyResource)ProviderData[PolicyParams.ExistingPolicy] : null;
+
             RetentionPolicyBase retentionPolicy =
                 ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
                 (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
@@ -341,14 +404,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
                 (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
                 null;
-            ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource();
 
-            if (policy != null)
+            CmdletModel.ScheduleRunType ScheduleRunFrequency = (schedulePolicy != null) ? ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunFrequency :
+                ((policy != null) ? ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunFrequency : 0);
+
+
+            if (schedulePolicy != null && ScheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly &&
+                ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleWindowStartTime != null)
             {
+                ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleWindowStartTime = ((DateTime)(((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleWindowStartTime)).ToUniversalTime();
+            }
+
+            ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource();
+            
+            if (policy != null) // modify policy
+            {                
                 // do validations
                 ValidateAzureFileProtectionPolicy(policy);
                 Logger.Instance.WriteDebug("Validation of Protection Policy is successful");
-
+                
                 // RetentionPolicy and SchedulePolicy both should not be empty
                 if (retentionPolicy == null && schedulePolicy == null)
                 {
@@ -362,11 +436,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     ((AzureFileSharePolicy)policy).SchedulePolicy = schedulePolicy;
                     Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
                 }
+                                
                 if (retentionPolicy != null)
                 {
-                    AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy, BackupManagementType.AzureStorage);
-                    ((AzureFileSharePolicy)policy).RetentionPolicy = retentionPolicy;
-                    Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                    if (ProviderData.TryGetValue(PolicyParams.RetentionPolicy, out var retentionPolicyObj) && retentionPolicyObj != null)
+                    {
+                        if (retentionPolicyObj.GetType() == typeof(CmdletModel.VaultRetentionPolicy))
+                        {
+                            AzureWorkloadProviderHelper.ValidateVaultRetentionPolicy((CmdletModel.VaultRetentionPolicy)retentionPolicyObj, BackupManagementType.AzureStorage, ScheduleRunFrequency);
+                            ((AzureFileSharePolicy)policy).RetentionPolicy = retentionPolicy;
+                            Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                        }
+                        else if (retentionPolicyObj.GetType() == typeof(CmdletModel.LongTermRetentionPolicy))
+                        {
+                            AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy((CmdletModel.LongTermRetentionPolicy)retentionPolicyObj, BackupManagementType.AzureStorage, ScheduleRunFrequency);
+                            ((AzureFileSharePolicy)policy).RetentionPolicy = retentionPolicy;
+                            Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                        }
+                    }
                 }
 
                 // copy the backupSchedule time to retentionPolicy after converting to UTC
@@ -376,65 +463,136 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
                 // Now validate both RetentionPolicy and SchedulePolicy matches or not
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                     (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy,
                     (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
-                // construct Service Client policy request            
+                // construct Service Client policy request                           
                 AzureFileShareProtectionPolicy azureFileShareProtectionPolicy = new AzureFileShareProtectionPolicy();
-                azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy);
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                 (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
-                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString().ToUpper();
-                azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
-                serviceClientRequest.Properties = azureFileShareProtectionPolicy;
+                
+                if (((AzureFileSharePolicy)policy).RetentionPolicy is CmdletModel.VaultRetentionPolicy)
+                {
+                    int SnapshotRetentionInDays = ((CmdletModel.VaultRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy).SnapshotRetentionInDays;
+                    ServiceClientModel.RetentionPolicy retPol = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
+                                                    (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy);
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = new ServiceClientModel.VaultRetentionPolicy(retPol, SnapshotRetentionInDays);
+                    azureFileShareProtectionPolicy.RetentionPolicy = null;
+                }
+                else
+                {
+                    azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
+                                                    (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy);
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = null;
+                }
 
+                // timeZone should be customizable                
+                string timeZone = ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunTimeZone;
+                if (timeZone != null)
+                {
+                    azureFileShareProtectionPolicy.TimeZone = timeZone;
+                }
+                else
+                {
+                    azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString().ToUpper();
+                }
+
+                azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                
+                
+
+                serviceClientRequest.Properties = azureFileShareProtectionPolicy;
             }
             else
-            {
+            {                
                 CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[PolicyParams.WorkloadType];
-
+                
                 // do validations
                 ValidateAzureFilesWorkloadType(workloadType);
-                AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy, BackupManagementType.AzureStorage);
+                
+                AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy, BackupManagementType.AzureStorage);                
                 Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
 
                 // validate RetentionPolicy
-                AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy, BackupManagementType.AzureStorage);
-                Logger.Instance.WriteDebug("Validation of Retention policy is successful");
-
+                if (ProviderData.TryGetValue(PolicyParams.RetentionPolicy, out var retentionPolicyObj) && retentionPolicyObj != null)
+                {
+                    if (retentionPolicyObj.GetType() == typeof(CmdletModel.VaultRetentionPolicy))
+                    {
+                        AzureWorkloadProviderHelper.ValidateVaultRetentionPolicy((CmdletModel.VaultRetentionPolicy)retentionPolicyObj, BackupManagementType.AzureStorage, ScheduleRunFrequency);
+                        Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                    }
+                    else if (retentionPolicyObj.GetType() == typeof(CmdletModel.LongTermRetentionPolicy))
+                    {
+                        AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy((CmdletModel.LongTermRetentionPolicy)retentionPolicyObj, BackupManagementType.AzureStorage, ScheduleRunFrequency);
+                        Logger.Instance.WriteDebug("Validation of Retention policy is successful");
+                    }
+                }
+                
                 // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
                 AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes((CmdletModel.LongTermRetentionPolicy)retentionPolicy,
                                                  (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
                 Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
                 // Now validate both RetentionPolicy and SchedulePolicy together
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                                     (CmdletModel.LongTermRetentionPolicy)retentionPolicy,
                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
-                // construct Service Client policy request            
+                // construct Service Client policy request                            
                 AzureFileShareProtectionPolicy azureFileShareProtectionPolicy = new AzureFileShareProtectionPolicy();
-                azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
-                azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
-                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
-                azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString().ToUpper();
+                
+                if (retentionPolicy is CmdletModel.VaultRetentionPolicy)
+                {
+                    int SnapshotRetentionInDays = ((CmdletModel.VaultRetentionPolicy)retentionPolicy).SnapshotRetentionInDays;
+                    ServiceClientModel.RetentionPolicy retPol = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
+                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = new ServiceClientModel.VaultRetentionPolicy(retPol, SnapshotRetentionInDays);
+                    azureFileShareProtectionPolicy.RetentionPolicy = null;
+                }
+                else
+                {
+                    azureFileShareProtectionPolicy.RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
+                                                    (CmdletModel.LongTermRetentionPolicy)retentionPolicy);
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = null;
+                }
+
+                // timeZone should be customizable                
+                string timeZone = ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunTimeZone;
+                if (timeZone != null)
+                {
+                    azureFileShareProtectionPolicy.TimeZone = timeZone;
+                }
+                else
+                {
+                    azureFileShareProtectionPolicy.TimeZone = DateTimeKind.Utc.ToString().ToUpper();
+                }
+
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(workloadType.ToString());
+
+
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
+            }
+
+            // check for MUA
+            bool isMUAProtected = false;
+            if (existingPolicy != null)
+            {
+                isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(existingPolicy, serviceClientRequest, isMUAOperation);
             }
 
             return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(
                 policyName = policyName ?? policy.Name,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected);
         }
 
         public RPMountScriptDetails ProvisionItemLevelRecoveryAccess()
@@ -484,7 +642,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Storage account was already registered");
             }
 
-            //get unregistered storage account, trigger dicovery if not found.
+            //get unregistered storage account, trigger discovery if not found.
             bool isBreak = false;
             bool isRefreshed = false; // have we triggered discovery yet
             while (!isRegistered && !isBreak )
@@ -576,7 +734,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string azureFileShareName, string storageAccountName)
         {
             WorkloadProtectableItemResource protectableObjectResource = null;
-            ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
+            ODataQuery<BmspoQueryObject> queryParam = new ODataQuery<BmspoQueryObject>(
                 q => q.BackupManagementType
                      == ServiceClientModel.BackupManagementType.AzureStorage);
 
@@ -641,29 +799,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public SchedulePolicyBase GetDefaultSchedulePolicyObject()
         {
-            CmdletModel.SimpleSchedulePolicy defaultSchedule = new CmdletModel.SimpleSchedulePolicy();
-            defaultSchedule.ScheduleRunFrequency = CmdletModel.ScheduleRunType.Daily;
+            CmdletModel.ScheduleRunType scheduleRunFrequency = (CmdletModel.ScheduleRunType)ProviderData[PolicyParams.ScheduleRunFrequency];
 
-            DateTime scheduleTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
-            defaultSchedule.ScheduleRunTimes = new List<DateTime>();
-            defaultSchedule.ScheduleRunTimes.Add(scheduleTime);
+            CmdletModel.SimpleSchedulePolicy defaultSchedule = new CmdletModel.SimpleSchedulePolicy();
+            defaultSchedule.ScheduleRunFrequency = scheduleRunFrequency;
+
+            if (scheduleRunFrequency == CmdletModel.ScheduleRunType.Daily)
+            {
+                DateTime scheduleTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
+                defaultSchedule.ScheduleRunTimes = new List<DateTime>();
+                defaultSchedule.ScheduleRunTimes.Add(scheduleTime);
+            }
+            else if(scheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly)
+            {
+                int hour = 08, minute = 00;
+                DateTime scheduleTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+                    DateTime.Now.Day, hour, minute, 00, 00, DateTimeKind.Utc);
+                defaultSchedule.ScheduleWindowStartTime = scheduleTime;
+                defaultSchedule.ScheduleInterval = 4;
+                defaultSchedule.ScheduleWindowDuration = 12;
+                defaultSchedule.ScheduleRunTimeZone = DateTimeKind.Utc.ToString().ToUpper(); 
+            }
 
             return defaultSchedule;
         }
 
         public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
-            string backupMnagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage;
+            CmdletModel.ScheduleRunType scheduleRunFrequency = (CmdletModel.ScheduleRunType)ProviderData[PolicyParams.ScheduleRunFrequency];
+
+            string backupManagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage;
             CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();
             DateTime retentionTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
+
+            //Backup Tier
+            CmdletModel.BackupTierType backupTier = (CmdletModel.BackupTierType)ProviderData[PolicyParams.BackupTier];
+
+            
 
             //Daily Retention policy
             defaultRetention.IsDailyScheduleEnabled = true;
             defaultRetention.DailySchedule = new CmdletModel.DailyRetentionSchedule();
+            defaultRetention.DailySchedule.DurationCountInDays = (scheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly)? defaultDailyRetentionCountForHourly : defaultFileRetentionCount;
+            defaultRetention.DailySchedule.BackupManagementType = backupManagementType;
+
+            if (scheduleRunFrequency != CmdletModel.ScheduleRunType.Hourly)
+            {
             defaultRetention.DailySchedule.RetentionTimes = new List<DateTime>();
             defaultRetention.DailySchedule.RetentionTimes.Add(retentionTime);
-            defaultRetention.DailySchedule.DurationCountInDays = defaultFileRetentionCount;
-            defaultRetention.DailySchedule.BackupManagementType = backupMnagementType;
+            }            
 
             // Weekly Retention Policy
             defaultRetention.IsWeeklyScheduleEnabled = false;
@@ -671,19 +855,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.WeeklySchedule.DaysOfTheWeek = new List<System.DayOfWeek>();
             defaultRetention.WeeklySchedule.DaysOfTheWeek.Add(System.DayOfWeek.Sunday);
             defaultRetention.WeeklySchedule.DurationCountInWeeks = defaultWeeklyRetentionCount;
-            defaultRetention.WeeklySchedule.RetentionTimes = new List<DateTime>();
-            defaultRetention.WeeklySchedule.RetentionTimes.Add(retentionTime);
-            defaultRetention.WeeklySchedule.BackupManagementType = backupMnagementType;
+            defaultRetention.WeeklySchedule.BackupManagementType = backupManagementType;
+
+            if (scheduleRunFrequency != CmdletModel.ScheduleRunType.Hourly)
+            {
+                defaultRetention.WeeklySchedule.RetentionTimes = new List<DateTime>();
+                defaultRetention.WeeklySchedule.RetentionTimes.Add(retentionTime);
+            }            
 
             //Monthly retention policy
             defaultRetention.IsMonthlyScheduleEnabled = false;
             defaultRetention.MonthlySchedule = new CmdletModel.MonthlyRetentionSchedule();
-            defaultRetention.MonthlySchedule.DurationCountInMonths = defaultMonthlyRetentionCount;
-            defaultRetention.MonthlySchedule.RetentionTimes = new List<DateTime>();
-            defaultRetention.MonthlySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.MonthlySchedule.DurationCountInMonths = defaultMonthlyRetentionCount;            
             defaultRetention.MonthlySchedule.RetentionScheduleFormatType =
                 CmdletModel.RetentionScheduleFormat.Weekly;
-            defaultRetention.MonthlySchedule.BackupManagementType = backupMnagementType;
+            defaultRetention.MonthlySchedule.BackupManagementType = backupManagementType;            
+
+            if (scheduleRunFrequency != CmdletModel.ScheduleRunType.Hourly)
+            {
+                defaultRetention.MonthlySchedule.RetentionTimes = new List<DateTime>();
+                defaultRetention.MonthlySchedule.RetentionTimes.Add(retentionTime);
+            }
 
             //Initialize day based schedule
             defaultRetention.MonthlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
@@ -694,18 +886,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             //Yearly retention policy
             defaultRetention.IsYearlyScheduleEnabled = false;
             defaultRetention.YearlySchedule = new CmdletModel.YearlyRetentionSchedule();
-            defaultRetention.YearlySchedule.DurationCountInYears = 10;
-            defaultRetention.YearlySchedule.RetentionTimes = new List<DateTime>();
-            defaultRetention.YearlySchedule.RetentionTimes.Add(retentionTime);
+            defaultRetention.YearlySchedule.DurationCountInYears = defaultYearlyRetentionCount;
             defaultRetention.YearlySchedule.RetentionScheduleFormatType =
-                CmdletModel.RetentionScheduleFormat.Weekly;
+                CmdletModel.RetentionScheduleFormat.Weekly; 
             defaultRetention.YearlySchedule.MonthsOfYear = new List<Month>();
             defaultRetention.YearlySchedule.MonthsOfYear.Add(Month.January);
             defaultRetention.YearlySchedule.RetentionScheduleDaily = AzureWorkloadProviderHelper.GetDailyRetentionFormat();
             defaultRetention.YearlySchedule.RetentionScheduleWeekly = AzureWorkloadProviderHelper.GetWeeklyRetentionFormat();
-            defaultRetention.YearlySchedule.BackupManagementType = backupMnagementType;
+            defaultRetention.YearlySchedule.BackupManagementType = backupManagementType;
 
-            defaultRetention.BackupManagementType = backupMnagementType;
+            if (scheduleRunFrequency != CmdletModel.ScheduleRunType.Hourly)
+            {
+                defaultRetention.YearlySchedule.RetentionTimes = new List<DateTime>();
+                defaultRetention.YearlySchedule.RetentionTimes.Add(retentionTime);
+            }
+
+            defaultRetention.BackupManagementType = backupManagementType;
+
+            if (backupTier == CmdletModel.BackupTierType.VaultStandard)
+            {
+                CmdletModel.VaultRetentionPolicy vaultRetention = new CmdletModel.VaultRetentionPolicy();
+                CopyProperties(source: defaultRetention, target: vaultRetention);
+                vaultRetention.SnapshotRetentionInDays = defaultSnapshotRetentionInDays;
+                return vaultRetention;
+            }
 
             return defaultRetention;
         }
@@ -798,6 +1002,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             throw new NotImplementedException();
         }
+        public void UndeleteContainer()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            string containerName = (string)ProviderData[ContainerParams.Name];
+            string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
+            string workloadType = (string)ProviderData[ContainerParams.ContainerType];
+
+            AzureFileShareContainer container = (AzureFileShareContainer)ProviderData[ContainerParams.Container];
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(container.Id),
+                container.Id);
+
+            ProtectionContainerResource protectionContainerResource = null;
+            protectionContainerResource = new ProtectionContainerResource(container.Id, containerUri);
+
+            AzureStorageContainer storageContainer = new AzureStorageContainer(
+                backupManagementType: backupManagementType,
+                sourceResourceId: container.SourceResourceId,
+                operationType: "Rehydrate");
+
+            protectionContainerResource.Properties = storageContainer;
+
+            AzureWorkloadProviderHelper.UndeleteContainer(containerUri,
+            protectionContainerResource,
+            vaultName,
+            vaultResourceGroupName);
+        }
+
+        public static void CopyProperties<TSource, TTarget>(TSource source, TTarget target)
+        {
+            var sourceProperties = typeof(TSource).GetProperties();
+            var targetProperties = typeof(TTarget).GetProperties();
+
+            foreach (var sourceProperty in sourceProperties)
+            {
+                var targetProperty = targetProperties.FirstOrDefault(p => p.Name == sourceProperty.Name && p.PropertyType == sourceProperty.PropertyType);
+                if (targetProperty != null && targetProperty.CanWrite)
+                {
+                    targetProperty.SetValue(target, sourceProperty.GetValue(source));
+                }
+            }
+        }
 
         private RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableOrModifyProtection(bool disableWithRetentionData = false)
         {
@@ -816,6 +1064,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
+
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+
+            ProtectionPolicyResource oldPolicy = null;
+            ProtectionPolicyResource newPolicy = null;
+            
+            if (parameterSetName != null && parameterSetName.Contains("Modify") && policy != null && policy.Id != null && item.PolicyId != null)
+            {
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
+                string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);
+
+                keyValueDict = HelperUtils.ParseUri(policy.Id);
+                string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policy.Id);
+
+                // fetch old and new Policy 
+                oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                    oldPolicyName,
+                    vaultName: vaultName,
+                    resourceGroupName: vaultResourceGroupName);
+
+                newPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                    newPolicyName,
+                    vaultName: vaultName,
+                    resourceGroupName: vaultResourceGroupName);
+            }
 
             string containerUri = "";
             string protectedItemUri = "";
@@ -887,12 +1161,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Properties = properties
             };
 
+            // check for MUA
+            bool isMUAProtected = false;
+            if (parameterSetName != null && parameterSetName.Contains("Modify") && oldPolicy != null && newPolicy != null)
+            {
+                isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
+            }
+            if (disableWithRetentionData)
+            {
+                isMUAProtected = true;
+            }
+
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: vaultResourceGroupName);
+                resourceGroupName: vaultResourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected,
+                disableWithRetentionData);
         }
 
         private void ValidateAzureStorageBackupManagementType(

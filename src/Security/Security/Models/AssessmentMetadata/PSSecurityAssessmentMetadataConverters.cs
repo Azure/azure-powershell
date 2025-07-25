@@ -35,7 +35,27 @@ namespace Microsoft.Azure.Commands.Security.Models.AssessmentMetadata
             };
         }
 
+        public static PSSecurityAssessmentMetadata ConvertToPSType(this SecurityAssessmentMetadataResponse value)
+        {
+            return new PSSecurityAssessmentMetadata()
+            {
+                Id = value.Id,
+                Name = value.Name,
+                AssessmentType = value.AssessmentType,
+                Description = value.Description,
+                DisplayName = value.DisplayName,
+                PolicyDefinitionId = value.PolicyDefinitionId,
+                RemediationDescription = value.RemediationDescription,
+                Severity = value.Severity
+            };
+        }
+
         public static List<PSSecurityAssessmentMetadata> ConvertToPSType(this IEnumerable<SecurityAssessmentMetadata> value)
+        {
+            return value.Select(sc => sc.ConvertToPSType()).ToList();
+        }
+
+        public static List<PSSecurityAssessmentMetadata> ConvertToPSType(this IEnumerable<SecurityAssessmentMetadataResponse> value)
         {
             return value.Select(sc => sc.ConvertToPSType()).ToList();
         }

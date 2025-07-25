@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotCentral.dll-Help.xml
 Module Name: Az.IotCentral
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral/remove-aziotcentralapp
+online version: https://learn.microsoft.com/powershell/module/az.iotcentral/remove-aziotcentralapp
 schema: 2.0.0
 ---
 
@@ -21,13 +21,15 @@ Remove-AzIotCentralApp [-PassThru] -ResourceId <String> [-AsJob] [-DefaultProfil
 ### InputObjectParameterSet
 ```
 Remove-AzIotCentralApp [-PassThru] -InputObject <PSIotCentralApp> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
 Remove-AzIotCentralApp [-PassThru] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +39,7 @@ Deletes an existing IoT Central Application.
 
 ### Example 1 Delete and IoT Central Application
 ```powershell
-PS C:\> Remove-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName"
+Remove-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName"
 ```
 
 Deletes the provided IoT Central Application.

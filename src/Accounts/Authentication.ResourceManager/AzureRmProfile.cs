@@ -12,19 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-#endif
-using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Management.Automation;
 using System.Xml.Serialization;
-using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
-using System.Collections.Concurrent;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
+using Microsoft.WindowsAzure.Commands.Common;
+
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -42,6 +46,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public IDictionary<string, IAzureContext> Contexts { get; set; } = new ConcurrentDictionary<string, IAzureContext>(StringComparer.CurrentCultureIgnoreCase);
 
+        [JsonIgnore]
+        [XmlIgnore]
+        public bool ShouldRefreshContextsFromCache { get; set; } = false;
+
         /// <summary>
         /// Gets the path of the profile file.
         /// </summary>
@@ -58,10 +66,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
+                if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
+                {
+                    // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
+                    RefreshContextsFromCache(AzureCmdletContext.CmdletNone);
+                }
+
                 IAzureContext result = null;
+                if (DefaultContextKey == Constants.DefaultValue && Contexts.Any(c => c.Key != Constants.DefaultValue))
+                {
+                    // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first available context as default
+                    EnqueueDebugMessage($"Incorrect default context key '{DefaultContextKey}' found. Trying to remove it and falling back to the first available context.");
+                    TryRemoveContext(Constants.DefaultValue);
+                }
+
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
                 {
                     result = this.Contexts[DefaultContextKey];
+                }
+                else if (DefaultContextKey == null)
+                {
+                    throw new PSInvalidOperationException(Resources.DefaultContextMissing);
                 }
 
                 return result;
@@ -149,11 +174,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         bool SafeDeserializeObject<T>(string serialization, out T result, JsonConverter converter = null)
         {
-            result = default(T);
+            result = default;
             bool success = false;
             try
             {
-                result = converter == null? JsonConvert.DeserializeObject<T>(serialization) : JsonConvert.DeserializeObject<T>(serialization, converter);
+                result = converter == null ? JsonConvert.DeserializeObject<T>(serialization) : JsonConvert.DeserializeObject<T>(serialization, converter);
                 success = true;
             }
             catch (JsonException)
@@ -182,20 +207,81 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     EnvironmentTable[environment.Key] = environment.Value;
                 }
 
+                AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore);
+
                 foreach (var context in profile.Contexts)
                 {
-                    context.Value.TokenCache = AzureSession.Instance.TokenCache;
-                    this.Contexts.Add(context.Key, context.Value);
+                    this.Contexts.Add(context.Key, MigrateSecretToKeyStore(context.Value, keystore));
                 }
 
-                DefaultContextKey = profile.DefaultContextKey ?? "Default";
+                DefaultContextKey = profile.DefaultContextKey ?? (profile.Contexts.Any() ? null : "Default");
             }
+        }
+
+        private IAzureContext MigrateSecretToKeyStore(IAzureContext context, AzKeyStore keystore)
+        {
+            if (keystore != null)
+            {
+                var account = context.Account;
+                if (account != null && account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
+                {
+                    keystore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())
+                        , account.ExtendedProperties.GetProperty(AzureAccount.Property.ServicePrincipalSecret).ConvertToSecureString());
+                    account.ExtendedProperties.Remove(AzureAccount.Property.ServicePrincipalSecret);
+                }
+                if (account != null && account.IsPropertySet(AzureAccount.Property.CertificatePassword))
+                {
+                    keystore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())
+    , account.ExtendedProperties.GetProperty(AzureAccount.Property.CertificatePassword).ConvertToSecureString());
+                    account.ExtendedProperties.Remove(AzureAccount.Property.CertificatePassword);
+                }
+            }
+            return context;
         }
 
         private void LoadImpl(string contents)
         {
         }
 
+        /// <summary>
+        /// Refill the credentials from AzKeyStore to profile. Used for profile export.
+        /// </summary>
+        public AzureRmProfile RefillCredentialsFromKeyStore()
+        {
+            AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore);
+            AzureRmProfile ret = this.DeepCopy();
+            if (keystore != null)
+            {
+                foreach (var context in ret.Contexts)
+                {
+                    var account = context.Value.Account;
+                    if (account?.Type == AzureAccount.AccountType.ServicePrincipal && !account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
+                    {
+                        try
+                        {
+                            var secret = keystore.GetSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())).ConvertToString();
+                            account.ExtendedProperties.SetProperty(AzureAccount.Property.ServicePrincipalSecret, secret);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                    if (account?.Type == AzureAccount.AccountType.ServicePrincipal && !account.IsPropertySet(AzureAccount.Property.CertificatePassword))
+                    {
+                        try
+                        {
+                            var secret = keystore.GetSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())).ConvertToString();
+                            account.ExtendedProperties.SetProperty(AzureAccount.Property.CertificatePassword, secret);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+
+            }
+            return ret;
+        }
 
         /// <summary>
         /// Creates new instance of AzureRMProfile.
@@ -211,12 +297,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+
+        /// <summary>
+        /// Creates new instance of AzureRMProfile with other EnvironmentTable..
+        /// </summary>
+        public AzureRmProfile(IDictionary<string, IAzureEnvironment> otherEnvironmentTable)
+        {
+            foreach (var environment in otherEnvironmentTable)
+            {
+                EnvironmentTable.Add(environment.Key, environment.Value.DeepCopy());
+            }
+        }
+
         /// <summary>
         /// Initializes a new instance of AzureRMProfile and loads its content from specified path.
         /// </summary>
         /// <param name="path">The location of profile file on disk.</param>
-        public AzureRmProfile(string path) : this()
+        /// <param name="shouldRefreshContextsFromCache"></param>
+        public AzureRmProfile(string path, bool shouldRefreshContextsFromCache = true) : this()
         {
+            this.ShouldRefreshContextsFromCache = shouldRefreshContextsFromCache;
             Load(path);
         }
 
@@ -244,7 +344,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Writes profile to a specified path.
         /// </summary>
         /// <param name="path">File path on disk to save profile to</param>
-        public void Save(string path)
+        /// <param name="serializeCache">true if the TokenCache should be serialized, false otherwise</param>
+        public void Save(string path, bool serializeCache = true)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -253,7 +354,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             using (var provider = ProtectedFileProvider.CreateFileProvider(path, FileProtection.ExclusiveWrite))
             {
-                Save(provider);
+                Save(provider, serializeCache);
             }
         }
 
@@ -261,6 +362,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Writes the profile using the specified file provider
         /// </summary>
         /// <param name="provider">The file provider used to save the profile</param>
+        /// <param name="serializeCache">true if the TokenCache should be serialized, false otherwise</param>
         public void Save(IFileProvider provider, bool serializeCache = true)
         {
             foreach (string env in AzureEnvironment.PublicEnvironments.Keys)
@@ -270,6 +372,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             try
             {
+                TryRemoveContext(Constants.DefaultValue);
                 string contents = ToString(serializeCache);
                 string diskContents = string.Empty;
                 diskContents = provider.CreateReader().ReadToEnd();
@@ -315,7 +418,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         /// <summary>
-        /// Set the contaienr to its default state
+        /// Set the container to its default state
         /// </summary>
         public void Clear()
         {
@@ -398,6 +501,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             name = null;
             if (context != null)
             {
+
                 if (null != context.Tenant && context.Subscription != null && null != context.Account)
                 {
                     name = string.Format("{0} ({1}) - {2} - {3}", context.Subscription.Name, context.Subscription.Id, context.Tenant.Id, context.Account.Id);
@@ -434,6 +538,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
+        private bool TryCacheRemoveContext(string name)
+        {
+            bool result = Contexts.Remove(name);
+            if (string.Equals(name, DefaultContextKey))
+            {
+                DefaultContextKey = Contexts.Keys.Any() ? null : "Default";
+            }
+
+            return result;
+        }
+
         public bool TryRenameContext(string sourceName, string targetName)
         {
             bool result = false;
@@ -452,15 +567,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
+        /// <summary>
+        /// Add the input context with the specified name.
+        /// If the context with the same tenant, subscription, accountId does not exist, add the input into context list.
+        /// If the context with the same tenant, subscription, accountId already exist, merge 2 contexts and add the merged context to the context list.
+        /// </summary>
+        /// <param name="name">The specified new name of the context.</param>
+        /// <param name="context">The new context to set as default.</param>
         public bool TrySetContext(string name, IAzureContext context)
         {
             bool result = false;
-            if (Contexts!= null)
+            if (Contexts != null)
             {
+                if (TryFindContext(context, out string oldName))
+                {
+                    var oldContext = Contexts[oldName].DeepCopy();
+                    oldContext.Update(context);
+                    context = oldContext;
+                }
                 Contexts[name] = context;
                 result = true;
             }
-
             return result;
         }
 
@@ -491,6 +618,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             return result;
         }
+
+        /// <summary>
+        /// Set the default context with the input context.
+        /// If the context with the same name does not exist, add the input into context list and set as default.
+        /// If the context with the same name already exist, update the attributes with the same names and add the missing attributes.
+        /// </summary>
+        /// <param name="context">The new context to set as default.</param>
 
         public bool TrySetDefaultContext(IAzureContext context)
         {
@@ -536,7 +670,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
                 if (EnvironmentTable.ContainsKey(environment.Name))
                 {
-                    mergedEnvironment = mergedEnvironment.Merge( EnvironmentTable[environment.Name]);
+                    mergedEnvironment = mergedEnvironment.Merge(EnvironmentTable[environment.Name]);
                 }
 
                 EnvironmentTable[environment.Name] = mergedEnvironment;
@@ -563,7 +697,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             bool result = false;
             environment = null;
-            if (HasEnvironment(name))
+            if (name != null && HasEnvironment(name))
             {
                 environment = EnvironmentTable[name];
                 result = true;
@@ -605,12 +739,35 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return true;
         }
 
+        /// <summary>
+        /// Deep clone the instance of AzureRMProfile.
+        /// </summary>
+        public AzureRmProfile DeepCopy()
+        {
+            var profile = new AzureRmProfile(this.EnvironmentTable);
+
+            foreach (var context in this.Contexts)
+            {
+                profile.Contexts.Add(context.Key, context.Value.DeepCopy());
+            }
+
+            if (this.DefaultContext != null)
+            {
+                profile.DefaultContext = this.DefaultContext.DeepCopy();
+            }
+            profile.DefaultContextKey = this.DefaultContextKey;
+            profile.ProfilePath = this.ProfilePath;
+            profile.ShouldRefreshContextsFromCache = this.ShouldRefreshContextsFromCache;
+            profile.CopyPropertiesFrom(this);
+            return profile;
+        }
+
         public AzureRmProfile ToProfile()
         {
             return this;
         }
 
-        protected virtual void Dispose( bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             // do nothing
         }
@@ -627,13 +784,172 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 int i = text.IndexOf('{');
 
-                if ( i >= 0 && i < text.Length)
+                if (i >= 0 && i < text.Length)
                 {
                     result = text.Substring(i);
                 }
             }
 
             return result;
+        }
+
+        private void WriteWarningMessage(string message)
+        {
+            EventHandler<StreamEventArgs> writeWarningEvent;
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent))
+            {
+                writeWarningEvent(this, new StreamEventArgs() { Message = message });
+            }
+        }
+
+        private void EnqueueDebugMessage(string message)
+        {
+            EventHandler<StreamEventArgs> enqueueDebugEvent;
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.EnqueueDebugKey, out enqueueDebugEvent))
+            {
+                enqueueDebugEvent(this, new StreamEventArgs() { Message = message });
+            }
+        }
+
+        public void RefreshContextsFromCache(ICmdletContext cmdletContext)
+        {
+            // Authentication factory is already registered in `OnImport()`
+            AzureSession.Instance.TryGetComponent(
+                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                out PowerShellTokenCacheProvider tokenCacheProvider);
+
+            string authority = null;
+            if (TryGetEnvironment(AzureSession.Instance.GetProperty(AzureSession.Property.Environment), out IAzureEnvironment sessionEnvironment))
+            {
+                authority = $"{sessionEnvironment.ActiveDirectoryAuthority}organizations";
+            }
+            var accounts = tokenCacheProvider.ListAccounts(authority);
+            if (!accounts.Any())
+            {
+                if (!Contexts.Any(c => c.Key != "Default" && c.Value.Account.Type == AzureAccount.AccountType.User))
+                {
+                    // If there are no accounts in the cache, but we never had any existing contexts, return
+                    return;
+                }
+
+                WriteWarningMessage($"No accounts found in the shared token cache; removing all user contexts.");
+                var removedContext = false;
+                foreach (var contextName in Contexts.Keys)
+                {
+                    var context = Contexts[contextName];
+                    if (context.Account.Type != AzureAccount.AccountType.User)
+                    {
+                        continue;
+                    }
+
+                    removedContext |= TryCacheRemoveContext(contextName);
+                }
+
+                // If no contexts were removed, return now to avoid writing to file later
+                if (!removedContext)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                var removedUsers = new HashSet<string>();
+                var updatedContext = false;
+                foreach (var contextName in Contexts.Keys)
+                {
+                    var context = Contexts[contextName];
+                    if ((string.Equals(contextName, "Default") && context.Account == null) || context.Account.Type != AzureAccount.AccountType.User)
+                    {
+                        continue;
+                    }
+
+                    if (accounts.Any(a => string.Equals(a.Username, context.Account.Id, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        continue;
+                    }
+
+                    if (!removedUsers.Contains(context.Account.Id))
+                    {
+                        removedUsers.Add(context.Account.Id);
+                        WriteWarningMessage(string.Format(Resources.UserMissingFromSharedTokenCache, context.Account.Id));
+                    }
+
+                    updatedContext |= TryCacheRemoveContext(contextName);
+                }
+
+                // Check to see if each account has at least one context
+                foreach (var account in accounts)
+                {
+                    if (Contexts.Values.Where(v => v.Account != null && v.Account.Type == AzureAccount.AccountType.User)
+                                       .Any(v => string.Equals(v.Account.Id, account.Username, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        continue;
+                    }
+
+                    WriteWarningMessage(string.Format(Resources.CreatingContextsWarning, account.Username));
+                    var environment = sessionEnvironment ?? AzureEnvironment.PublicEnvironments
+                                        .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
+                                        .Select(env => env.Value)
+                                        .FirstOrDefault();
+                    var azureAccount = new AzureAccount()
+                    {
+                        Id = account.Username,
+                        Type = AzureAccount.AccountType.User
+                    };
+
+                    List<IAccessToken> tokens = null;
+                    try
+                    {
+                        tokens = tokenCacheProvider.GetTenantTokensForAccount(account, environment, WriteWarningMessage, cmdletContext);
+                    }
+                    catch (Exception e)
+                    {
+                        //In SSO scenario, if the account from token cache has multiple tenants, e.g. MSA account, MSAL randomly picks up
+                        //one tenant to ask for token, MSAL will throw exception if MSA home tenant is chosen. The exception is swallowed here as short term fix.
+                        WriteWarningMessage(string.Format(Resources.NoTokenFoundWarning, account.Username));
+                        EnqueueDebugMessage(e.ToString());
+                        continue;
+                    }
+
+                    foreach (var token in tokens)
+                    {
+                        var azureTenant = new AzureTenant() { Id = token.TenantId };
+                        azureAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, token.TenantId);
+                        var subscriptions = tokenCacheProvider.GetSubscriptionsFromTenantToken(account, environment, token, WriteWarningMessage);
+                        if (!subscriptions.Any())
+                        {
+                            subscriptions.Add(null);
+                        }
+
+                        foreach (var subscription in subscriptions)
+                        {
+                            var context = new AzureContext(subscription, azureAccount, environment, azureTenant);
+                            if (!TryGetContextName(context, out string name))
+                            {
+                                WriteWarningMessage(string.Format(Resources.NoContextNameForSubscription, subscription.Id));
+                                continue;
+                            }
+
+                            if (!TrySetContext(name, context))
+                            {
+                                WriteWarningMessage(string.Format(Resources.UnableToCreateContextForSubscription, subscription.Id));
+                            }
+                            else
+                            {
+                                updatedContext = true;
+                            }
+                        }
+                    }
+                }
+
+                // If the context list was not updated, return now to avoid writing to file later
+                if (!updatedContext)
+                {
+                    return;
+                }
+            }
+
+            Save(ProfilePath, false);
         }
     }
 }

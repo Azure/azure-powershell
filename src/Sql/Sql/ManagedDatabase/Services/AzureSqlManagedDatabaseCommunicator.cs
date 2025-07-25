@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Managed Databases
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedDatabaseCommunicator(IAzureContext context)
         {
             Context = context;
@@ -89,9 +88,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Restore a given Sql Azure Managed Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
-        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
+        /// <param name="managedDatabaseName">The name of the Azure SQL Managed database</param>
         /// <param name="model">Model describing the managed database restore request</param>
         /// <returns>Restored database object</returns>
         public Management.Sql.Models.ManagedDatabase RestoreDatabase(string resourceGroupName, string managedInstanceName, string managedDatabaseName, Management.Sql.Models.ManagedDatabase model)
@@ -102,10 +101,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Restore a given Sql Azure Managed Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
-        /// <param name="databaseName">The name of the Azure SQL Managed database</param>
-        /// <param name="parameters">Parameters describing the managed database restore request</param>
+        /// <param name="managedDatabaseName">The name of the Azure SQL Managed database</param>
+        /// <param name="resourceId">The resource ID of the Azure SQL Managed database</param>
+        /// <param name="model">Model describing the managed database restore request</param>
         /// <returns>Restored database object</returns>
         public Management.Sql.Models.ManagedDatabase RecoverDatabase(string resourceGroupName, string managedInstanceName, string managedDatabaseName, string resourceId, AzureSqlRecoverableManagedDatabaseModel model)
         {
@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
         /// <param name="databaseName">The name of the Azure SQL Managed database</param>
         /// <param name="model">Model describing the managed database log replay request</param>
-        public Task StartLogReplay(string resourceGroupName, string managedInstanceName, string databaseName, Management.Sql.Models.ManagedDatabase model)
+        public Management.Sql.Models.ManagedDatabase StartLogReplay(string resourceGroupName, string managedInstanceName, string databaseName, Management.Sql.Models.ManagedDatabase model)
         {
-            return GetCurrentSqlClient().ManagedDatabases.CreateOrUpdateAsync(
+            return GetCurrentSqlClient().ManagedDatabases.CreateOrUpdate(
                 resourceGroupName,
                 managedInstanceName,
                 databaseName,
@@ -178,6 +178,56 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 databaseName);
         }
 
+        public void Move(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId, OperationMode operationMode)
+        {
+            GetCurrentSqlClient().ManagedDatabases.StartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
+            {
+                DestinationManagedDatabaseId = targetManagedDatabaseId,
+                OperationMode = operationMode.ToString()
+            });
+        }
+
+
+        public void CompleteMoveCopy(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
+        {
+            GetCurrentSqlClient().ManagedDatabases.CompleteMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseMoveDefinition() 
+            {
+                DestinationManagedDatabaseId = targetManagedDatabaseId
+            });
+        }
+
+        public void CancelMoveCopy(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
+        {
+            GetCurrentSqlClient().ManagedDatabases.CancelMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseMoveDefinition()
+            {
+                DestinationManagedDatabaseId = targetManagedDatabaseId
+            });
+        }
+
+        public IList<ManagedDatabaseMoveOperationResult> GetMoveOperations(string resourceGroupName, string location, string managedInstanceName, string databaseName, string targetManagedInstanceName, OperationMode mode, bool onlyLatestPerDatabase)
+        {
+            var operationMode = mode.ToString();
+            string filter = $"Properties/OperationMode eq '{operationMode}' and Properties/SourceManagedInstanceName eq '{managedInstanceName}'";
+
+            if (!string.IsNullOrEmpty(targetManagedInstanceName))
+            {
+                filter += $" and Properties/TargetManagedInstanceName eq '{targetManagedInstanceName}'";
+            }
+
+            if (!string.IsNullOrEmpty(databaseName))
+            {
+                // We currently do not support rename of database, so source and target db have same name
+                filter += $" and Properties/SourceDatabaseName eq '{databaseName}'";
+            }
+
+            return new List<ManagedDatabaseMoveOperationResult>(GetCurrentSqlClient().ManagedDatabaseMoveOperations.ListByLocation(
+                resourceGroupName, location, new Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult>()
+                {
+                    Filter = filter
+                },
+                onlyLatestPerDatabase));
+        }
+
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
@@ -192,7 +242,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         }
 
         /// <summary>
-        /// Lazy creation of a single instance of a resoures client
+        /// Lazy creation of a single instance of a resources client
         /// </summary>
         private ResourceManagementClient GetCurrentResourcesClient()
         {

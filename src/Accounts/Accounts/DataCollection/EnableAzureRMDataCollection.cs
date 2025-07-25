@@ -16,7 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.PowerShell.Common.Config;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -24,14 +25,14 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
     {
-        protected override void BeginProcessing()
+        protected override bool RequireDefaultContext()
         {
-            // do not call begin processing there is no context needed for this cmdlet
+            return false;
         }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Resources.EnableDataCollection, Resources.DataCollectionEnabledWarning, 
+            if (ShouldProcess(Resources.EnableDataCollection, Resources.DataCollectionEnabledWarning,
                 string.Empty))
             {
 
@@ -41,11 +42,10 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected void SetDataCollectionProfile(bool enable)
         {
-            var profile = _dataCollectionProfile;
-            profile.EnableAzureDataCollection = enable;
+            // update config
             var session = AzureSession.Instance;
-            DataCollectionController.WritePSDataCollectionProfile(session, profile);
-            AzureSession.Instance.RegisterComponent(DataCollectionController.RegistryKey, () => DataCollectionController.Create(profile), true);
+            session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager);
+            configManager.UpdateConfig(ConfigKeys.EnableDataCollection, enable, ConfigScope.CurrentUser);
         }
     }
 }

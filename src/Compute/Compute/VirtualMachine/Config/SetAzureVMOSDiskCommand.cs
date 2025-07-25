@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string LinuxParamSet = "LinuxParamSet";
         protected const string WindowsAndDiskEncryptionParameterSet = "WindowsDiskEncryptionParameterSet";
         protected const string LinuxAndDiskEncryptionParameterSet = "LinuxDiskEncryptionParameterSet";
+        protected const string DiffDiskPlacementPresentButNotSetting = "The DiffDiskPlacement parameter can only be used when the DiffDiskSetting parameter is set to 'Local'. Please provide the DiffDiskSetting parameter.";
 
         [Alias("VMProfile")]
         [Parameter(
@@ -177,6 +178,33 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string DiffDiskSetting { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e. cache disk, resource disk or Nvme disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. This parameter can only be used if the parameter DiffDiskSetting is set to 'Local'.")]
+        [PSArgumentCompleter("CacheDisk", "ResourceDisk", "NvmeDisk")]
+        public string DiffDiskPlacement { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Detach", "Delete")]
+        public string DeleteOption { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the SecurityEncryptionType value on the managed disk of the VM. possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+        [PSArgumentCompleter("DiskWithVMGuestState", "VMGuestStateOnly")]
+        public string SecurityEncryptionType { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ARM Resource ID for Disk Encryption Set. Allows customer to provide ARM ID for Disk Encryption Set created with ConfidentialVmEncryptedWithCustomerKey encryption type. This will allow customer to use Customer Managed Key (CMK) encryption with Confidential VM. Parameter SecurityEncryptionType value should be DiskwithVMGuestState.")]
+        public string SecureVMDiskEncryptionSet { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -200,6 +228,7 @@ namespace Microsoft.Azure.Commands.Compute
             this.VM.StorageProfile.OsDisk.Name = this.Name ?? this.VM.StorageProfile.OsDisk.Name;
             this.VM.StorageProfile.OsDisk.Caching = this.Caching ?? this.VM.StorageProfile.OsDisk.Caching;
             this.VM.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeInGB ?? this.VM.StorageProfile.OsDisk.DiskSizeGB;
+            this.VM.StorageProfile.OsDisk.DeleteOption = this.DeleteOption ?? this.VM.StorageProfile.OsDisk.DeleteOption;
 
             if (this.Windows.IsPresent)
             {
@@ -260,6 +289,13 @@ namespace Microsoft.Azure.Commands.Compute
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
 
+            if (this.IsParameterBound(c => c.DiffDiskPlacement) & !this.IsParameterBound(c => c.DiffDiskSetting))
+            {
+                WriteError(new ErrorRecord(
+                        new Exception(DiffDiskPlacementPresentButNotSetting),
+                        string.Empty, ErrorCategory.InvalidArgument, null));
+            }
+
             if (this.IsParameterBound(c => c.DiffDiskSetting))
             {
                 if (this.VM.StorageProfile.OsDisk.DiffDiskSettings == null)
@@ -267,6 +303,58 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.StorageProfile.OsDisk.DiffDiskSettings = new DiffDiskSettings();
                 }
                 this.VM.StorageProfile.OsDisk.DiffDiskSettings.Option = this.DiffDiskSetting;
+
+                if (this.IsParameterBound(c => c.DiffDiskPlacement))
+                {
+                    this.VM.StorageProfile.OsDisk.DiffDiskSettings.Placement = this.DiffDiskPlacement;
+                }
+            }
+
+            // Disk Encryption set for Confidential VMs. 
+            if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
+            {
+                if (this.VM.StorageProfile == null)
+                {
+                    this.VM.StorageProfile = new StorageProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk = new OSDisk();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet = new DiskEncryptionSetParameters();
+                }
+                this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = SecureVMDiskEncryptionSet;
+            }
+            // SecurityEncryptionType for Confidential VMs. 
+            if (this.IsParameterBound(c => c.SecurityEncryptionType))
+            {
+                if (this.VM.StorageProfile == null)
+                {
+                    this.VM.StorageProfile = new StorageProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk = new OSDisk();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
+                }
+                this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType = SecurityEncryptionType;
             }
 
             WriteObject(this.VM);

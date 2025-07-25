@@ -89,11 +89,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string SecretName { get; set; }
 
         /// <summary>
-        /// The version of the Key Vault secret representing the full certificate PFX
+        /// The version of the Key Vault secret representing the full certificate PFX.
+        /// If not specified, the 'Latest' version will always been used and the deployed certificate will be automatically rotated to the latest version when a newer version of the certificate is available.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = FieldsWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
-        [Parameter(Mandatory = true, ParameterSetName = ObjectWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX. If not specified, the 'Latest' version will always been used and the deployed certificate will be automatically rotated to the latest version when a newer version of the certificate is available.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX. If not specified, the 'Latest' version will always been used and the deployed certificate will be automatically rotated to the latest version when a newer version of the certificate is available.")]
+        [Parameter(Mandatory = false, ParameterSetName = ObjectWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX. If not specified, the 'Latest' version will always been used and the deployed certificate will be automatically rotated to the latest version when a newer version of the certificate is available.")]
         public string SecretVersion { get; set; }
 
         /// <summary>

@@ -119,8 +119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.EdgeStor
             edgeStorageAccount = this.DataBoxEdgeManagementClient.StorageAccounts.CreateOrUpdate(
                 DeviceName,
                 Name,
-                edgeStorageAccount,
-                this.ResourceGroupName
+                this.ResourceGroupName,
+                edgeStorageAccount
             );
             return new PSDataBoxEdgeStorageAccount(edgeStorageAccount
             );

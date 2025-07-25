@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject
+online version: https://learn.microsoft.com/powershell/module/az.security/New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject
 schema: 2.0.0
 ---
 
@@ -14,18 +14,21 @@ Create new deny list custom alert rule for device security group (IoT Security)
 
 ```
 New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled <Boolean> -Type <String>
- -DenylistValue <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -DenylistValue <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject cmdlet creates a new list of denyed custom alert rules for device security group in IoT security solution.
+The New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject cmdlet creates a new list of denied custom alert rules for device security group in IoT security solution.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled $false -Type "SomeRuleType" -DenylistValue @()
+New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled $false -Type "SomeRuleType" -DenylistValue @()
+```
 
+```output
 RuleType: "SomeRuleType"
 DisplayName: "Display name for some rule type"
 Description: "Description for some rule type"
@@ -34,7 +37,7 @@ ValueType: "String"
 DenylistValues: []
 ```
 
-Create new deny list custom alert rule with rull type "SomeRuleType" and status set to desable
+Create new deny list custom alert rule with rule type "SomeRuleType" and status set to disable
 
 ## PARAMETERS
 

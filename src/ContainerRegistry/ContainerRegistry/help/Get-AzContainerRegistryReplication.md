@@ -1,86 +1,84 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/get-azcontainerregistryreplication
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryreplication
 schema: 2.0.0
 ---
 
 # Get-AzContainerRegistryReplication
 
 ## SYNOPSIS
-Gets a replication of a container registry.
+Gets the properties of the specified replication.
 
 ## SYNTAX
 
-### ListReplicationByNameResourceGroupParameterSet (Default)
+### List (Default)
 ```
-Get-AzContainerRegistryReplication [-ResourceGroupName] <String> [-RegistryName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ShowReplicationByNameResourceGroupParameterSet
-```
-Get-AzContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ShowReplicationByRegistryObjectParameterSet
-```
-Get-AzContainerRegistryReplication [-Name] <String> -Registry <PSContainerRegistry>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListReplicationByRegistryObjectParameterSet
-```
-Get-AzContainerRegistryReplication -Registry <PSContainerRegistry> [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerRegistryReplication -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### Get
 ```
-Get-AzContainerRegistryReplication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerRegistryReplication -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzContainerRegistryReplication -InputObject <IContainerRegistryIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByRegistry
+```
+Get-AzContainerRegistryReplication -Registry <IRegistry> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzContainerRegistryReplication cmdlet gets a specified replication of a container registry or all the replications of a container registry.
+Gets the properties of the specified replication.
 
 ## EXAMPLES
 
-### Example 1: Gets a specified replication of a container registry
+### Example 1: Gets all the replications of a container registry
 ```powershell
-PS C:\>Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "myreplication"
-
-Name                 Location   Provisioni Status               StatusTimestamp                Tags
-                                ngState
-----                 --------   ---------- ------               ---------------                ----
-myreplication       westus     Succeeded  Ready                 11/17/2017 10:19:45 PM         {[tagName, MyTag]}
+Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample"
 ```
 
-Gets a specified replication of a container registry
-
-### Example 2: Gets all the replications of a container registry
-```powershell
-PS C:\>Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry"
-
-Name                 Location   Provisioni Status               StatusTimestamp                Tags
-                                ngState
-----                 --------   ---------- ------               ---------------                ----
-eastus               eastus     Succeeded  Ready                11/6/2017 6:14:47 PM           {}
-myreplication        westus     Succeeded  Ready                11/17/2017 10:19:45 PM         {[tagName, MyTag]}
+```output
+Name           Location ProvisioningState StatusTimestamp
+----           -------- ----------------- ---------------
+replication001 westus   Succeeded         1/19/2023 5:57:00 AM
+eastus2        eastus2  Succeeded         1/19/2023 5:56:51 AM
 ```
 
 Gets all the replications of a container registry
 
+### Example 2: Gets a specified replication of a container registry
+```powershell
+Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample"  -Name "replication001"
+```
+
+```output
+Name           Location ProvisioningState StatusTimestamp
+----           -------- ----------------- ---------------
+replication001 westus   Succeeded         1/19/2023 5:57:00 AM
+```
+
+Gets a specified replication of a container registry
+
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -89,27 +87,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Container Registry Replication Name.
+The name of the replication.
 
 ```yaml
 Type: System.String
-Parameter Sets: ShowReplicationByNameResourceGroupParameterSet, ShowReplicationByRegistryObjectParameterSet
+Parameter Sets: Get
 Aliases: ReplicationName, ResourceName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Registry
-Container Registry Object.
+The Registry Object.
+To construct, see NOTES section for REGISTRY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
-Parameter Sets: ShowReplicationByRegistryObjectParameterSet, ListReplicationByRegistryObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
+Parameter Sets: GetByRegistry
 Aliases:
 
 Required: True
@@ -120,47 +135,49 @@ Accept wildcard characters: False
 ```
 
 ### -RegistryName
-Container Registry Name.
+The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListReplicationByNameResourceGroupParameterSet, ShowReplicationByNameResourceGroupParameterSet
+Parameter Sets: List, Get
 Aliases: ContainerRegistryName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListReplicationByNameResourceGroupParameterSet, ShowReplicationByNameResourceGroupParameterSet
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The container registry replication resource id
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: Id
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -169,18 +186,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzContainerRegistryReplication](New-AzContainerRegistryReplication.md)
-
-[Remove-AzContainerRegistryReplication](Remove-AzContainerRegistryReplication.md)

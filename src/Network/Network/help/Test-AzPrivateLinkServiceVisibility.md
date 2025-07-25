@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azprivatelinkservicevisibility
+online version: https://learn.microsoft.com/powershell/module/az.network/test-azprivatelinkservicevisibility
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ The **Test-AzPrivateLinkServiceVisibility** checks whether a private link servic
 
 ```
 Test-AzPrivateLinkServiceVisibility -Location <String> [-ResourceGroupName <String>]
- -PrivateLinkServiceAlias <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -PrivateLinkServiceAlias <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ Check whether a private link service is visible for current use.
 ## EXAMPLES
 
 ### Example 1: Check if contoso.cloudapp.azure.com is available for use.
-```
+```powershell
 Test-AzPrivateLinkServiceVisibility -Location westus -PrivateLinkServiceAlias "TestPLS.00000000-0000-0000-0000-000000000000.azure.privatelinkservice"
 ```
 
@@ -82,7 +83,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

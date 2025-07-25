@@ -69,7 +69,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                DatabaseId = databaseId
+                DatabaseId = databaseId,
+                Sku = GetJobAgentSkuFromModel(model),
+                Identity = model.Identity
             };
 
             // Send response
@@ -77,6 +79,26 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
 
             // Return formatted response
             return CreateAgentModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+        }
+
+        public Sku GetJobAgentSkuFromModel(AzureSqlElasticJobAgentModel model)
+        {
+            if (model.SkuName == null && model.WorkerCount == null)
+            {
+                return null;
+            }
+
+            if (!String.IsNullOrWhiteSpace(model.SkuName))
+            {
+                return new Sku(name: model.SkuName, capacity: model.WorkerCount);
+            }
+
+            if (model.WorkerCount.HasValue)
+            {
+                return new Sku(name: $"JA{model.WorkerCount.Value}", capacity: model.WorkerCount);
+            }
+
+            throw new ArgumentException("Invalid WorkerCount. Must be an int");
         }
 
         /// <summary>
@@ -88,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         {
             var param = new JobAgentUpdate
             {
-                Tags = model.Tags
+                Tags = model.Tags,
             };
 
             var resp = Communicator.UpdateAgent(model.ResourceGroupName, model.ServerName, model.AgentName, param);
@@ -142,6 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         {
             string databaseName = new ResourceIdentifier(resp.DatabaseId).ResourceName;
             int? workerCount = resp.Sku.Capacity;
+            string skuName = resp.Sku.Name;
 
             AzureSqlElasticJobAgentModel agent = new AzureSqlElasticJobAgentModel
             {
@@ -151,11 +174,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 Location = resp.Location,
                 DatabaseName = databaseName,
                 WorkerCount = workerCount,
+                SkuName = skuName,
                 ResourceId = resp.Id,
                 Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false),
                 DatabaseId = resp.DatabaseId,
                 State = resp.State,
-                Type = resp.Type
+                Type = resp.Type,
+                Identity = resp.Identity,
             };
 
             return agent;
@@ -166,7 +191,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
-        /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
         /// <remarks>
         /// These 2 operations (get location, throw if not supported) are combined in order to minimize round trips.
@@ -405,10 +429,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Upserts a job
         /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="agentServerName">The server name</param>
-        /// <param name="agentName">The agent name</param>
-        /// <param name="jobName">The job name</param>
         /// <param name="model">The job parameters</param>
         /// <returns></returns>
         public AzureSqlElasticJobModel UpsertJob(AzureSqlElasticJobModel model)
@@ -650,7 +670,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Creates an AzureSqlElasticJobStepOutputModel from a JobStep model
         /// </summary>
-        /// <param name="model">The JobStep model repsonse</param>
+        /// <param name="model">The JobStep model response</param>
         /// <returns>An AzureSqlElasticJobStepOutputModel</returns>
         private static AzureSqlElasticJobStepOutputModel CreateJobStepOutputModel(JobStep model)
         {
@@ -704,6 +724,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group</param>
         /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
         /// <returns>The converted agent model</returns>
         public AzureSqlElasticJobExecutionModel GetJobExecution(string resourceGroupName, string serverName, string agentName, string jobName, Guid jobExecutionId)
         {
@@ -714,8 +736,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Cancels a job execution
         /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="serverName">The server the agents are in</param>
+        /// <param name="model"></param>
         /// <returns>The converted agent model(s)</returns>
         public void CancelJobExecution(AzureSqlElasticJobExecutionModel model)
         {
@@ -728,6 +749,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
         public List<AzureSqlElasticJobExecutionModel> ListByAgent(
             string resourceGroupName,
             string serverName,
@@ -760,6 +788,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
         public List<AzureSqlElasticJobExecutionModel> ListByJob(
             string resourceGroupName,
             string serverName,
@@ -821,7 +857,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="agentName"></param>
         /// <param name="jobName"></param>
         /// <param name="jobExecutionId"></param>
-        /// <param name="stepName"></param>
+        /// <param name="createTimeMin"></param>
+        /// <param name="createTimeMax"></param>
+        /// <param name="endTimeMin"></param>
+        /// <param name="endTimeMax"></param>
+        /// <param name="isActive"></param>
+        /// <param name="skip"></param>
+        /// <param name="top"></param>
         /// <returns></returns>
         public List<AzureSqlElasticJobStepExecutionModel> ListJobExecutionSteps(
             string resourceGroupName,
@@ -887,6 +929,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="jobName"></param>
         /// <param name="jobExecutionId"></param>
         /// <param name="stepName"></param>
+        /// <param name="createTimeMin"></param>
+        /// <param name="createTimeMax"></param>
+        /// <param name="endTimeMin"></param>
+        /// <param name="endTimeMax"></param>
+        /// <param name="isActive"></param>
+        /// <param name="skip"></param>
+        /// <param name="top"></param>
         /// <returns></returns>
         public List<AzureSqlElasticJobTargetExecutionModel> ListJobTargetExecutionsByStep(
             string resourceGroupName,
@@ -924,7 +973,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="agentName"></param>
         /// <param name="jobName"></param>
         /// <param name="jobExecutionId"></param>
-        /// <param name="stepName"></param>
+        /// <param name="createTimeMin"></param>
+        /// <param name="createTimeMax"></param>
+        /// <param name="endTimeMin"></param>
+        /// <param name="endTimeMax"></param>
+        /// <param name="isActive"></param>
+        /// <param name="skip"></param>
+        /// <param name="top"></param>
         /// <returns></returns>
         public List<AzureSqlElasticJobTargetExecutionModel> ListJobTargetExecutions(
             string resourceGroupName,
@@ -958,6 +1013,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The server the agent is in</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted agent model</returns>
         private static AzureSqlElasticJobExecutionModel CreateJobExecutionModelFromResponse(
@@ -1057,5 +1114,91 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         }
 
         #endregion
+
+        #region Job Private Endpoints
+
+        /// <summary>
+        /// Upserts an elastic job private endpoint 
+        /// </summary>
+        /// <param name="model">The job private endpoint object</param>
+        /// <returns>The job private endpoint object</returns>
+        public AzureSqlElasticJobPrivateEndpointModel UpsertJobPrivateEndpoint(AzureSqlElasticJobPrivateEndpointModel model)
+        {
+            var param = new JobPrivateEndpoint
+            {
+                TargetServerAzureResourceId = model.TargetServerAzureResourceId,
+            };
+
+            var resp = Communicator.CreateOrUpdatePrivateEndpoint(model.ResourceGroupName, model.ServerName, model.AgentName, model.PrivateEndpointName, param);
+            return CreateAgentPrivateEndpointModelFromResponse(model.ResourceGroupName, model.ServerName, model.AgentName, resp);
+        }
+
+        /// <summary>
+        /// Gets a job private endpoint 
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="privateEndpointName">The job private endpoint name</param>
+        /// <returns></returns>
+        public AzureSqlElasticJobPrivateEndpointModel GetJobPrivateEndpoint(string resourceGroupName, string serverName, string agentName, string privateEndpointName)
+        {
+
+            var resp = Communicator.GetPrivateEndpoint(resourceGroupName, serverName, agentName, privateEndpointName);
+            return CreateAgentPrivateEndpointModelFromResponse(resourceGroupName, serverName, agentName, resp);
+        }
+
+        /// <summary>
+        /// Gets a list of job private endpoints by agent
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <returns>A list of job private endpoint model</returns>
+        public List<AzureSqlElasticJobPrivateEndpointModel> ListJobPrivateEndpoints(string resourceGroupName, string serverName, string agentName)
+        {
+            var resp = Communicator.ListPrivateEndpointsByAgent(resourceGroupName, serverName, agentName);
+            return resp.Select(privateEndpoint => CreateAgentPrivateEndpointModelFromResponse(resourceGroupName, serverName, agentName, privateEndpoint)).ToList();
+        }
+
+        /// <summary>
+        /// Removes a job private endpoint
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="privateEndpointName">The job private endpoint name</param>
+        public void RemoveJobPrivateEndpoint(string resourceGroupName, string serverName, string agentName, string privateEndpointName)
+        {
+            Communicator.RemovePrivateEndpoint(resourceGroupName, serverName, agentName, privateEndpointName);
+        }
+
+        /// <summary>
+        /// Converts a job private endpoint response to a AzureSqlElasticJobPrivateEndpointModel object
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="resp">The job private endpoint response</param>
+        /// <returns></returns>
+        private static AzureSqlElasticJobPrivateEndpointModel CreateAgentPrivateEndpointModelFromResponse(string resourceGroupName, string serverName, string agentName, JobPrivateEndpoint resp)
+        {
+            AzureSqlElasticJobPrivateEndpointModel privateEndpoint = new AzureSqlElasticJobPrivateEndpointModel
+            {
+                ResourceGroupName = resourceGroupName,
+                ServerName = serverName,
+                AgentName = agentName,
+                ResourceId = resp.Id,
+                Type = resp.Type,
+                PrivateEndpointName = resp.Name,
+                TargetServerAzureResourceId = resp.TargetServerAzureResourceId,
+                PrivateEndpointId = resp.PrivateEndpointId,
+            };
+
+            return privateEndpoint;
+        }
+
+
+        #endregion Job Private Endpoints
     }
 }

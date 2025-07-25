@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchPoolNodeCounts alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolNodeCount",DefaultParameterSetName = Constants.AzureBatchPoolNodeCounts),OutputType(typeof(PSPoolNodeCounts))]
     [Alias("Get-AzBatchPoolNodeCounts")]
     public class GetBatchPoolNodeCountCommand : BatchObjectModelCmdletBase

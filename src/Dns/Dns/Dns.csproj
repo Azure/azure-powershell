@@ -10,8 +10,10 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.1" />
+    <ProjectReference Include="..\Dns.Management.Sdk\Dns.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

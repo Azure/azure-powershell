@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Commands.Network
     {
         public const string P2SConnectionConfigurationName = "P2SConnectionConfigDefault";
 
-        public IP2sVpnGatewaysOperations P2SVpnGatewayClient
+        public IP2SVpnGatewaysOperations P2SVpnGatewayClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.P2sVpnGateways;
+                return NetworkClient.NetworkManagementClient.P2SVpnGateways;
             }
         }
 

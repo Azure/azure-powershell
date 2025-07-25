@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorobject
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorobject
 schema: 2.0.0
 ---
 
@@ -17,7 +17,8 @@ Create a connection monitor V2 object.
 New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcher <PSNetworkWatcher> -Name <String>
  [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
  [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByName
@@ -25,7 +26,8 @@ New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcher <PSNetworkWatcher> -
 New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcherName <String> -ResourceGroupName <String>
  -Name <String> [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
  [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByLocation
@@ -33,7 +35,8 @@ New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcherName <String> -Resour
 New-AzNetworkWatcherConnectionMonitorObject -Location <String> -Name <String>
  [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
  [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,10 +46,11 @@ The New-AzNetworkWatcherConnectionMonitorObject cmdlet creates a connection moni
 
 ### Example 1
 ```powershell
-PS> $cmtest = New-AzNetworkWatcherConnectionMonitorObject -Location westcentralus -Name cmV2test -TestGroup $testGroup1, $testGroup2 -Tag @{"name" = "value"}
-PS> $cmtest
+$cmtest = New-AzNetworkWatcherConnectionMonitorObject -Location westcentralus -Name cmV2test -TestGroup $testGroup1, $testGroup2 -Tag @{"name" = "value"}
+$cmtest
 ```
 
+```output
 NetworkWatcherName : NetworkWatcher_westcentralus
 ResourceGroupName  : NetworkWatcherRG
 Name               : cmV2test
@@ -160,8 +164,7 @@ Notes              :
 Tags               : {
                        "name": "value"
                      }
-        
-   
+```
 
 ## PARAMETERS
 

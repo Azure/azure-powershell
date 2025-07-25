@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/get-azsynapsefirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsefirewallrule
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Get-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> 
 
 ### GetByParentObjectParameterSet
 ```
-Get-AzSynapseFirewallRule -WorkSpaceObject <PSSynapseWorkspace> [-Name <String>]
+Get-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,22 +32,22 @@ If you do not specify a rule name, this cmdlet gets all rules.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace
+Get-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace
 ```
 
 This command gets all firewall rules under a workspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule
+Get-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule
 ```
 
 This command gets the firewall rule under workspace ContosoWorkspace with name ContosoFirewallRule.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseFirewallRule
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseFirewallRule
 ```
 
 This command gets all firewall rules under a workspace through pipeline.
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The firerwall rule name for the workspace.
+The firewall rule name for the workspace.
 
 ```yaml
 Type: System.String
@@ -114,7 +114,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkSpaceObject
+### -WorkspaceObject
 workspace input object, usually passed through the pipeline.
 
 ```yaml

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections;
     using System.Linq;
     using System.Management.Automation;
+    using System.Text.RegularExpressions;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CustomIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSCustomIpPrefix))]
@@ -56,6 +57,55 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The customIpPrefix CIDR.")]
         [ValidateNotNullOrEmpty]
         public string Cidr { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The customIpPrefix ASN code.")]
+        public string Asn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The customIpPrefix GEO code.")]
+        [ValidateSet(
+            MNM.Geo.Afri,
+            MNM.Geo.Apac,
+            MNM.Geo.AQ,
+            MNM.Geo.Euro,
+            MNM.Geo.Latam,
+            MNM.Geo.ME,
+            MNM.Geo.NAM,
+            MNM.Geo.Oceania,
+            IgnoreCase = true)]
+        public string Geo { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Signed message for WAN validation.",
+            ValueFromPipelineByPropertyName = true)]
+        public string SignedMessage { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Authorization message for WAN validation.",
+            ValueFromPipelineByPropertyName = true)]
+        public string AuthorizationMessage { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Using expressRoute advertise.",
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter ExpressRouteAdvertise { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Parent CustomIpPrefix for Child CustomIpPrefix",
+            ValueFromPipelineByPropertyName = true)]
+        public PSCustomIpPrefix CustomIpPrefixParent { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Denotes that resource is being created as a Parent CustomIpPrefix")]
+        public SwitchParameter IsParent { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,9 +147,27 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 Cidr = this.Cidr,
-                Zones = this.Zone?.ToList()
+                Zones = this.Zone?.ToList(),
+                SignedMessage = this.SignedMessage,
+                AuthorizationMessage = this.AuthorizationMessage,
+                CustomIpPrefixParent = this.CustomIpPrefixParent,
+                Geo = this.Geo,
+                Asn = this.Asn,
+                ExpressRouteAdvertise = this.ExpressRouteAdvertise
             };
-            
+
+            if (IsIPv4CIDR())
+            {
+                if (this.IsParent)
+                {
+                    psModel.PrefixType = "Parent";
+                }
+                else if (this.CustomIpPrefixParent != null)
+                {
+                    psModel.PrefixType = "Child";
+                }
+            }
+
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(psModel);
 
             sdkModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
@@ -114,6 +182,18 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return null;
+        }
+
+        private bool IsIPv4CIDR()
+        {
+            if (this.Cidr != null)
+            {
+                return Regex.IsMatch(this.Cidr, @"^\d+\.\d+\.\d+\.\d+/\d+$");
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

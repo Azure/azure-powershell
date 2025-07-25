@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using System.Management.Automation;
 
     /// <summary>
-    /// A helper class that handles common tasks that deal with the <see cref="ResourcePropertyObject"/> class.
+    /// A helper class that handles common tasks that deal with the <see cref="PSObject"/> class.
     /// </summary>
     public static class PsObjectExtensions
     {
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         };
 
         /// <summary>
-        /// Converts a <see cref="ResourcePropertyObject"/> to <see cref="JToken"/>
+        /// Converts a <see cref="PSObject"/> to <see cref="JToken"/>
         /// </summary>
-        /// <param name="propertyObject">The <see cref="ResourcePropertyObject"/></param>
+        /// <param name="propertyObject">The ResourcePropertyObject.</param>
         internal static JToken ToResourcePropertiesBody(this PSObject propertyObject)
         {
             return PsObjectExtensions.ToJToken(propertyObject);

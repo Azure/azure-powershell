@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/new-azdatasharedataset
+online version: https://learn.microsoft.com/powershell/module/az.datashare/new-azdatasharedataset
 schema: 2.0.0
 ---
 
@@ -17,7 +17,7 @@ Adds data sets to azure data share.
 New-AzDataShareDataSet [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByBlobDataSetParamaterSet
+### ByBlobDataSetParameterSet
 ```
 New-AzDataShareDataSet -ResourceGroupName <String> -AccountName <String> -ShareName <String> -Name <String>
  -StorageAccountResourceId <String> -Container <String> [-FilePath <String>] [-FolderPath <String>]
@@ -44,8 +44,11 @@ The **New-AzDataShareDataSet** cmdlet add data sets in azure data share of data 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsDataSet" -StorageAccountResourceId "/subscriptions/271cc6ec-e5fe-4813-83bd-8f3b04973e38/resourceGroups/ADS/providers/Microsoft.Storage/storageAccounts/AdsStorage" -Container "AdsContainer"
 ```
-PS C:\> New-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsDataSet" -StorageAccountResourceId "/subscriptions/271cc6ec-e5fe-4813-83bd-8f3b04973e38/resourceGroups/ADS/providers/Microsoft.Storage/storageAccounts/AdsStorage" -Container "AdsContainer"
+
+```output
 ContainerName  : AdsContainer
 DataSetId      : d2411889-5357-4ca8-8d65-9363e46ef2ed
 ResourceGroup  : ADS
@@ -65,7 +68,7 @@ Azure data share account name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByBlobDataSetParamaterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
+Parameter Sets: ByBlobDataSetParameterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
 Aliases:
 
 Required: True
@@ -95,7 +98,7 @@ Azure storage account container name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByBlobDataSetParamaterSet
+Parameter Sets: ByBlobDataSetParameterSet
 Aliases:
 
 Required: True
@@ -140,7 +143,7 @@ Azure storage file path
 
 ```yaml
 Type: System.String
-Parameter Sets: ByBlobDataSetParamaterSet, ByAdlsGen2DataSetParameterSet
+Parameter Sets: ByBlobDataSetParameterSet, ByAdlsGen2DataSetParameterSet
 Aliases:
 
 Required: False
@@ -170,7 +173,7 @@ Azure storage folder path
 
 ```yaml
 Type: System.String
-Parameter Sets: ByBlobDataSetParamaterSet, ByAdlsGen2DataSetParameterSet
+Parameter Sets: ByBlobDataSetParameterSet, ByAdlsGen2DataSetParameterSet
 Aliases:
 
 Required: False
@@ -185,7 +188,7 @@ Azure data set name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByBlobDataSetParamaterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
+Parameter Sets: ByBlobDataSetParameterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
 Aliases:
 
 Required: True
@@ -200,7 +203,7 @@ The resource group name of the azure data share account
 
 ```yaml
 Type: System.String
-Parameter Sets: ByBlobDataSetParamaterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
+Parameter Sets: ByBlobDataSetParameterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
 Aliases:
 
 Required: True
@@ -215,7 +218,7 @@ Azure data share name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByBlobDataSetParamaterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
+Parameter Sets: ByBlobDataSetParameterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
 Aliases:
 
 Required: True
@@ -230,7 +233,7 @@ Azure storage account resourceId
 
 ```yaml
 Type: System.String
-Parameter Sets: ByBlobDataSetParamaterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
+Parameter Sets: ByBlobDataSetParameterSet, ByAdlsGen2DataSetParameterSet, ByAdlsGen1DataSetParameterSet
 Aliases:
 
 Required: True

@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> SuspendBackup()
+        {
+            throw new NotImplementedException();
+        }
+
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
             throw new Exception(Resources.SoftdeleteNotImplementedException);
@@ -172,6 +177,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        public void UndeleteContainer()
+        {
+            throw new NotImplementedException();
+        }
         public List<PointInTimeBase> GetLogChains()
         {
             throw new NotImplementedException();

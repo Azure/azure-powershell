@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 9D4A68A8-0A39-4C9A-8EA6-391A5E7A0E25
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/add-azapimanagementregion
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/add-azapimanagementregion
 schema: 2.0.0
 ---
 
@@ -15,8 +15,9 @@ Adds new deployment regions to a PsApiManagement instance.
 
 ```
 Add-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> [-Sku <PsApiManagementSku>]
- [-Capacity <Int32>] [-VirtualNetwork <PsApiManagementVirtualNetwork>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Capacity <Int32>] [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-Zone <String[]>]
+ [-DisableGateway <Boolean>] [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,17 +28,17 @@ To update a deployment of an API Management pass the modified **PsApiManagement*
 ## EXAMPLES
 
 ### Example 1: Add new deployment regions to a PsApiManagement instance
-```
-PS C:\>Add-AzApiManagementRegion -ApiManagement $ApiManagement -Location "East US" -Sku "Premium" -Capacity 2
+```powershell
+Add-AzApiManagementRegion -ApiManagement $ApiManagement -Location "East US" -Sku "Premium" -Capacity 2
 ```
 
 This command adds two premium SKU units and the region named East US to the **PsApiManagement** instance.
 
 ### Example 2: Add new deployment regions to a PsApiManagement instance and then update deployment
 ```powershell
-PS C:\>$service = Get-AzApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi"
-PS C:\>$service = Add-AzApiManagementRegion -ApiManagement $service -Location $secondarylocation -VirtualNetwork $additionalRegionVirtualNetwork
-PS C:\>$service = Set-AzApiManagement -InputObject $service -PassThru
+$service = Get-AzApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi"
+$service = Add-AzApiManagementRegion -ApiManagement $service -Location $secondarylocation -VirtualNetwork $additionalRegionVirtualNetwork
+$service = Set-AzApiManagement -InputObject $service -PassThru
 ```
 
 This command gets a **PsApiManagement** object, adds two premium SKU units for the region named East US, and then updates deployment.
@@ -89,6 +90,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableGateway
+Flag only meant to be used for Premium SKU ApiManagement Service and Non Internal VNET deployments. This is useful in case we want to take a gateway region out of rotation. This can also be used to standup a new region in Passive mode, test it and then make it Live later.
+ Default behavior is to make the region live immediately.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location of the new deployment region amongst the supported region for Api Management service.
 To obtain valid locations, use the cmdlet
@@ -106,6 +123,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicIpAddressId
+Standard SKU PublicIpAddress ResourceId for integration into stv2 Virtual Network Deployments
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Sku
 Specifies the tier of the deployment region.
 Valid values are: 
@@ -117,7 +149,7 @@ Valid values are:
 Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Developer, Standard, Premium, Basic, Consumption
+Accepted values: Developer, Standard, Premium, Basic, Consumption, Isolated
 
 Required: False
 Position: Named
@@ -138,6 +170,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of availability zones denoting where the api management service is deployed into.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

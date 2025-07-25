@@ -1,0 +1,210 @@
+parameters:
+- name: targetBranch
+  displayName: Target branch where the PR will be submitted
+  type: string
+  default: main
+
+- name: scope
+  displayName: Select target Autorest modules
+  type: string
+  default: autorest-selected
+  values:
+  - autorest-selected
+  - autorest-v3-only
+  - autorest-v4-only
+  - autorest-all
+
+- name: selectedServices
+  displayName: Input service names you want to refresh separated by semi-colon (;). Wildcard match is supported.
+  type: string
+  default: ' '
+
+- name: changeLogMessage
+  displayName: Input change log message for the Autorest modules
+  type: string
+
+pr: none
+trigger: none
+
+jobs:
+- job:
+  displayName: Refresh Autorest Modules
+  timeoutInMinutes: 360
+  pool: pool-windows-2019
+  steps:
+  - template: util/get-github-pat-steps.yml
+
+  - task: NodeTool@0
+    displayName: Use Node 14.15.5
+    inputs:
+      versionSpec: 14.15.5
+
+  - task: Npm@1
+    displayName: Install Autorest
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: install autorest@latest -g
+
+  - task: PowerShell@2
+    displayName: Get services list
+    inputs:
+      pwsh: true
+      targetType: inline
+      workingDirectory: ./src
+      script: |
+        $autorestPaths = @()
+        $autorestModules = Get-ChildItem -Filter "*.Autorest" -Directory -Recurse | Select-Object -ExpandProperty FullName
+        if ("${{ parameters.scope }}" -eq "autorest-all") {
+          $autorestPaths = $autorestModules
+        }
+        elseif ("${{ parameters.scope }}" -eq "autorest-selected") {
+          $selectedModulesList = '${{ parameters.selectedServices }}'
+          if (![System.String]::IsNullOrWhiteSpace($selectedModulesList)) {
+            $selectedModulePatterns = $selectedModulesList -split ";"
+            $autorestPaths = $selectedModulePatterns | Foreach-Object {
+              $modulePattern = $_.Trim()
+              $autorestModules | Where-Object {
+                $modulePath = Split-Path -Path $_ -Parent
+                $moduleName = (Get-Item -Path $modulePath).Name
+                $moduleName -like $modulePattern
+              }
+            }
+          }
+        }
+        else {
+          $isV3Only = "${{ parameters.scope }}" -eq "autorest-v3-only"
+          $isV4Only = "${{ parameters.scope }}" -eq "autorest-v4-only"
+          $readmeMDs = $autorestModules | Get-ChildItem -Filter "README.md" -File
+          $readmeMDs | Foreach-Object {
+            $content = Get-Content -Path $_ -Raw
+            $pattern = 'use-extension:\s*"@autorest/powershell":\s*"([^"]+)"'
+            if ($content -match $pattern) {
+              $version = $Matches[1].Substring(0, 1)
+              if (($version -eq "3" -and $isV3Only) -or ($version -eq "4" -and $isV4Only)) {
+                $autorestPaths += $_.Directory.FullName
+              }
+            }
+            elseif ($isV4Only) {
+              $autorestPaths += $_.Directory.FullName
+            }
+          }
+        }
+
+        $autorestPaths = $autorestPaths | Sort-Object -Unique
+        Write-Host "##[section]Autorest modules to refresh: `n`t$($autorestPaths -join "`n`t")"
+        $autorestPathsList = $autorestPaths -join ";"
+        Write-Host "##vso[task.setvariable variable=selectedAutorestPaths;isreadonly=true]$autorestPathsList"
+
+  - task: PowerShell@2
+    displayName: Generate & Build
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        # Autorest and build the modules
+        '$(selectedAutorestPaths)'.Split(";") | Foreach-Object {
+          Write-Host "##[group]Start generating module $_"
+
+          Set-Location -Path $_
+
+          Write-Host "##[section]Start running autorest command."
+          autorest --max-memory-size=8192
+          Write-Host "##[section]Finish running autorest command."
+
+          Write-Host "##[section]Start building the module."
+          ./build-module.ps1
+          Write-Host "##[section]Finish building the module."
+
+          Write-Host "##[endgroup]"
+          Write-Host
+        }
+
+        # Backup the modules in the artifacts folder and restore the changes
+        $modules = '$(selectedAutorestPaths)' -split ";" | Foreach-Object { Split-Path -Path $_ -Parent } | Select-Object -Unique
+        $modules | Foreach-Object {
+          Write-Host "##[group]Start backing up module $_"
+
+          Set-Location -Path $_
+          $servicePath = Get-Item -Path .
+          $serviceName = $servicePath.Name
+
+          Write-Host "##[section]Start copying content to artifacts."
+          New-Item -Path ../../artifacts/src/$serviceName -ItemType Directory
+          Copy-Item -Path ./* -Destination ../../artifacts/src/$serviceName -Recurse
+          Write-Host "##[section]Finish copying content to artifacts."
+
+          Set-Location ..
+
+          Write-Host "##[section]Start restoring the changes."
+          Remove-Item -Path ./$serviceName -Recurse -Force
+          git checkout $serviceName/
+          Write-Host "##[section]Finish restoring the changes."
+
+          Write-Host "##[endgroup]"
+          Write-Host
+        }
+        $buildId = $(Build.BuildId)
+
+        Set-Location ..
+        git checkout -b "codegen/${{ parameters.scope }}-$buildId" 'origin/${{ parameters.targetBranch }}'
+
+  - task: PowerShell@2
+    displayName: Migrate from generation to target branch
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        Install-Module -Name PowerShellGet -RequiredVersion 2.2.3 -Force
+        Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force
+        Install-Module -Name Az.Accounts -Force
+        Import-Module ./tools/Gen2Master/MoveFromGeneration2Master.ps1
+
+        $modules = '$(selectedAutorestPaths)' -split ";" | Foreach-Object { Split-Path -Path $_ -Parent } | Select-Object -Unique
+        $modules | Foreach-Object {
+          Write-Host "##[group]Start migrating module $_"
+
+          Set-Location -Path $_
+          $servicePath = Get-Item -Path .
+          $serviceName = $servicePath.Name
+
+          Write-Host "##[section]Start migrating from generation to target."
+          Move-Generation2Master -SourcePath ../../artifacts/src/$serviceName -DestPath .
+          Write-Host "##[section]Finish migrating from generation to target."
+
+          Write-Host "##[section]Start updating change log for module."
+          $changeLog = $servicePath | Get-ChildItem -Filter "ChangeLog.md" -File -Recurse | Select-Object -First 1
+          $changeLogPath = $changeLog.FullName
+          $changeLogMessage = '${{ parameters.changeLogMessage }}'
+          (Get-Content -Path $changeLogPath -Raw) -replace "`n## Upcoming Release", ("`n## Upcoming Release`n" + "* $changeLogMessage") | Set-Content -Path $changeLogPath -NoNewline
+          Write-Host "##[section]Finish updating change log for module."
+
+          Write-Host "##[endgroup]"
+          Write-Host
+        }
+
+  - task: PowerShell@2
+    displayName: Create PR to target branch
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        $sourceBranch = '$(Build.SourceBranch)'.Replace("refs/heads/", "")
+        $buildId = $(Build.BuildId)
+        $headBranch = "codegen/${{ parameters.scope }}-$buildId"
+        $baseBranch = '${{ parameters.targetBranch }}'
+        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+        git config user.name "azure-powershell-bot"
+        git add src
+        git add tools/CreateMappings_rules.json
+        git commit -m "Refresh ${{ parameters.scope }} modules from $sourceBranch to $baseBranch"
+        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git
+        git push origin $headBranch --force
+
+        $title = "Refresh ${{ parameters.scope }} modules from $sourceBranch to $baseBranch"
+        $description = "Refresh ${{ parameters.scope }} modules from $sourceBranch to $baseBranch."
+        if ("${{ parameters.scope }}" -eq "autorest-selected") {
+          $description = "$description `nSelected services are: ${{ parameters.selectedServices }}."
+        }
+
+        ./tools/Github/CreatePR.ps1 -Title $title -HeadBranch $headBranch -BaseBranch $baseBranch -BotAccessToken $(GithubToken) -Description $description

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageblobrangetorestore
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstorageblobrangetorestore
 schema: 2.0.0
 ---
 
@@ -24,28 +24,28 @@ The **New-AzStorageBlobRangeToRestore** cmdlet creates a Blob range object, whic
 
 ### Example 1: Creates a blob range to restore
 ```powershell
-PS C:\> $range = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
+$range = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
 ```
 
 This command creates a blob range to restore, which starts at container1/blob1 (include), and ends at container2/blob2 (exclude).
 
 ### Example 2: Creates a blob range which will restore from first blob in alphabetical order, to a specific blob (exclude)
 ```powershell
-PS C:\> $range = New-AzStorageBlobRangeToRestore -StartRange "" -EndRange container2/blob2
+$range = New-AzStorageBlobRangeToRestore -StartRange "" -EndRange container2/blob2
 ```
 
 This command creates a blob range which will restore from first blob of alphabetical order, to a specific blob container2/blob2 (exclude)
 
 ### Example 3: Creates a blob range which will restore from a specific blob (include), to the last blob in alphabetical order
 ```powershell
-PS C:\> $range = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange ""
+$range = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange ""
 ```
 
 This command creates a blob range which will restore from a specific blob container1/blob1 (include), to the last blob in alphabetical order.
 
 ### Example 4: Creates a blob range which will restore all blobs
 ```powershell
-PS C:\> $range = New-AzStorageBlobRangeToRestore -StartRange "" -EndRange ""
+$range = New-AzStorageBlobRangeToRestore -StartRange "" -EndRange ""
 ```
 
 This command creates a blob range which will restore all blobs.
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ### -EndRange
 Specify the blob restore End range.
 End range will be excluded in restore blobs.
-Set it as empty strng to restore to the end.
+Set it as empty string to restore to the end.
 
 ```yaml
 Type: System.String
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ### -StartRange
 Specify the blob restore start range.
 Start range will be included in restore blobs.
-Set it as empty string to restore from begining.
+Set it as empty string to restore from beginning.
 
 ```yaml
 Type: System.String
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

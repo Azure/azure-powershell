@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azkeyvaultkey
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -16,14 +16,24 @@ Updates the attributes of a key in a key vault.
 ```
 Update-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### HsmInteractive
+```
+Update-AzKeyVaultKey -HsmName <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Immutable] [-ReleasePolicyPath <String>]
+ [-Tag <Hashtable>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,10 +43,12 @@ The **Update-AzKeyVaultKey** cmdlet updates the editable attributes of a key in 
 
 ### Example 1: Modify a key to enable it, and set the expiration date and tags
 ```powershell
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
-PS C:\> Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+$Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
+Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+```
 
+```output
 Vault Name     : Contoso
 Name           : ITSoftware
 Version        : 394f9379a47a4e2086585468de6c7ae5
@@ -61,8 +73,10 @@ time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
 ### Example 2: Modify a key to delete all tags
 ```powershell
-PS C:\> Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '394f9379a47a4e2086585468de6c7ae5' -Tag @{}
+Update-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '394f9379a47a4e2086585468de6c7ae5' -Tag @{}
+```
 
+```output
 Vault Name     : Contoso
 Name           : ITSoftware
 Version        : 394f9379a47a4e2086585468de6c7ae5
@@ -96,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -Enable
-Value of true enables the key and a value of false disabless the key.
+Value of true enables the key and a value of false disables the key.
 If not specified, the existing enabled/disabled state remains unchanged.
 
 ```yaml
@@ -114,10 +128,41 @@ Accept wildcard characters: False
 ### -Expires
 The expiration time of a key in UTC time.
 If not specified, the existing expiration time of the key remains unchanged.
+Please notice that expires is ignored for Key Exchange Key used in BYOK process.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmName
+HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmInteractive
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Immutable
+Sets the release policy as immutable state. Once marked immutable, this flag cannot be reset and the policy cannot be changed under any circumstances.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: HsmInteractive
 Aliases:
 
 Required: False
@@ -164,7 +209,7 @@ Cmdlet constructs the FQDN of a key from vault name, currently selected environm
 
 ```yaml
 Type: System.String
-Parameter Sets: Default
+Parameter Sets: Default, HsmInteractive
 Aliases: KeyName
 
 Required: True
@@ -206,9 +251,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReleasePolicyPath
+A path to a file containing JSON policy definition. The policy rules under which a key can be exported.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmInteractive
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 A hashtable represents key tags.
-If not specified, the existings tags of the key remain unchanged.
+If not specified, the existing tags of the key remain unchanged.
 
 ```yaml
 Type: System.Collections.Hashtable

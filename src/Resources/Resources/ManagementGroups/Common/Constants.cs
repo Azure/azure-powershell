@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups.Common
             public const string GroupId = "Management Group Id";
             public const string Recurse = "Recursively list the children of the management group";
             public const string ParentId = "Parent Id of the management group";
-            public const string GroupName = "Management Group Id";
+            public const string GroupName = "Management Group Name";
             public const string DisplayName = "Display Name of the management group";
             public const string Expand = "Expand the output to list the children of the management group";
             public const string Force = "Force the action and skip confirmations";

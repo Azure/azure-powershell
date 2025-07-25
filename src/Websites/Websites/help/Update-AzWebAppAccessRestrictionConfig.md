@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzWebAppAccessRestrictionConfig
 
 ## SYNOPSIS
-Updates the inheritance of Main site Access Restiction config to SCM Site for an Azure Web App.
+Updates the inheritance of Main site Access Restriction config to SCM Site for an Azure Web App.
 
 ## SYNTAX
 
@@ -15,13 +15,15 @@ Updates the inheritance of Main site Access Restiction config to SCM Site for an
 ```
 Update-AzWebAppAccessRestrictionConfig [-ResourceGroupName] <String> [-Name] <String>
  [-ScmSiteUseMainSiteRestrictionConfig] [-SlotName <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzWebAppAccessRestrictionConfig [-PassThru] -InputObject <PSAccessRestrictionConfig>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +35,10 @@ The **Update-AzWebAppAccessRestrictionConfig** cmdlet updates Access Restriction
 
 The following example updates a Web App named IpRule that belongs to the resource group MyResourceGroup to use access restriction config of main site on the scm site.
 
-```powershell <!-- Aladdin Generated Example --> 
+<!-- Aladdin Generated Example -->
+
+
+```powershell
 Update-AzWebAppAccessRestrictionConfig -Name IpRule -ResourceGroupName MyResourceGroup -ScmSiteUseMainSiteRestrictionConfig
 ```
 

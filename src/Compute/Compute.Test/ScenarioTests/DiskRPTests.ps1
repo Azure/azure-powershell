@@ -246,7 +246,7 @@ function Test-Snapshot
         $snapshotconfig.EncryptionSettingsCollection.Enabled = $false;
         $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings = $null;
         $snapshotconfig.CreationData.ImageReference = $null;
-        $job = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
@@ -619,7 +619,7 @@ function Test-SnapshotEncrypt
         Assert-AreEqual 0 $snapshotconfig.CreationData.ImageReference.Lun;
 
         $snapshotconfig.CreationData.ImageReference = $null;
-        $job = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
@@ -1101,11 +1101,12 @@ function Test-DiskConfigDiskAccessNetworkAccess
         #Testing disk access
         $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
         $diskconfig = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
-                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id;
+                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id -OptimizedForFrequentAttach $true;
         New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Disk $diskconfig;
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
         
         Assert-AreEqual $diskAccess.Id $disk.DiskAccessId;
+        Assert-AreEqual $true $disk.OptimizedForFrequentAttach;
 
         Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Force;
 
@@ -1336,4 +1337,530 @@ function Test-DiskConfigTierSectorSizeReadOnly
             # Cleanup
             Clean-ResourceGroup $rgname
 		}
+}
+
+<#
+.SYNOPSIS
+Test the New-AzSnapshot cmdlet throws an error when attempting to create a snapshot with 
+the same name in the same resource group. 
+#>
+function Test-SnapshotDuplicateCreationFails
+{
+    # Setup 
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $snapshotName = "test1";
+
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty;
+        
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig;
+        Assert-NotNull $snapshot;
+
+        # Assert duplicate snapshot fails to create.
+        Assert-ThrowsContains { $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -Snapshot $snapshotconfig; } "Please use Update-AzSnapshot to update an existing Snapshot.";
+
+        # Assert update snapshot succeeds. 
+        $snapshotconfig2 = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Standard_LRS -OsType Windows;
+        $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName -SnapshotUpdate $snapshotconfig2 -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-EdgeZoneConfigurations
+{
+	$rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+	$edge = "eastus2euapmockedge";
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+		$diskconfig = New-AzDiskConfig -Location $loc -EdgeZone $edge -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+		$diskname = "disk" + $rgname;
+		$disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+		Assert-AreEqual $disk.Location $loc;
+		Assert-AreEqual $disk.ExtendedLocation.Name $edge;
+
+		$snapshotconfig = New-AzSnapshotConfig -Location $loc -EdgeZone $edge -DiskSizeGB 5 -SkuName Premium_LRS -OsType Windows -CreateOption Empty;
+		$snapshotname = "snapshot" + $rgname
+		$snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig;
+		Assert-AreEqual $snapshot.Location $loc;
+		Assert-AreEqual $snapshot.ExtendedLocation.Name $edge
+
+		$imageConfig = New-AzImageConfig -Location $loc -EdgeZone $edge -HyperVGeneration "V1";
+		Assert-AreEqual $imageConfig.ExtendedLocation.Name $edge
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Test the New-AzDiskPurchasePlanConfig and New-AzDisk with PurchasePlan param 
+Also Test New-AzSnapshotConfig and New-AzDiskUpdateConfig
+#>
+function Test-DiskPurchasePlan
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try{
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $diskPurchasePlan = New-AzDiskPurchasePlanConfig -Name "planName" -Publisher "planPublisher" -Product "planPorduct" -PromotionCode "planPromotionCode";
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1" -PurchasePlan $diskPurchasePlan -Tag @{test1 = "testval1"; test2 = "testval2" };
+        $diskname = "disk" + $rgname;
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        Assert-AreEqual $disk.PurchasePlan.Product "planPorduct";
+        Assert-AreEqual $disk.PurchasePlan.PromotionCode "planPromotionCode";
+        Assert-AreEqual $disk.PurchasePlan.Publisher "planPublisher";
+        Assert-AreEqual $disk.PurchasePlan.Name "planName";
+
+        $diskPurchasePlanUpdate = New-AzDiskPurchasePlanConfig -Name "planNameupdate" -Publisher "planPublisherupdate" -Product "planPorductupdate" -PromotionCode "planPromotionCodeupdate";
+        $updateconfig = New-AzDiskUpdateConfig -PurchasePlan $diskPurchasePlanUpdate;
+        $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual "testval1" $disk.Tags.test1;
+        Assert-AreEqual "testval2" $disk.Tags.test2;
+        Assert-AreEqual $disk.PurchasePlan.Product "planPorductupdate";
+        Assert-AreEqual $disk.PurchasePlan.PromotionCode "planPromotionCodeupdate";
+        Assert-AreEqual $disk.PurchasePlan.Publisher "planPublisherupdate";
+        Assert-AreEqual $disk.PurchasePlan.Name "planNameupdate";
+        $snapshotConfig = New-AzSnapshotConfig -Location 'Central US' -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -PurchasePlan $diskPurchasePlan;
+        New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'Snapshot02' -Snapshot $snapshotConfig;
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'Snapshot02';
+        Assert-AreEqual $snapshot.PurchasePlan.Product "planPorduct";
+        Assert-AreEqual $snapshot.PurchasePlan.PromotionCode "planPromotionCode";
+        Assert-AreEqual $snapshot.PurchasePlan.Publisher "planPublisher";
+        Assert-AreEqual $snapshot.PurchasePlan.Name "planName";
+    }
+
+    finally{
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Disk Sku Premium_ZRS and StandardSSD_ZRS
+#>
+function Test-DiskSkuPremiumZRSStandardSSDZRS
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $diskConfig = New-AzDiskConfig -Location $loc -SkuName 'Premium_ZRS' -CreateOption 'Empty' -DiskSizeGB 2;
+        $diskname = "disk" + $rgname;
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-AreEqual $disk.Sku.Name "Premium_ZRS";
+        $diskupdateconfig = New-AzDiskUpdateConfig -SkuName 'StandardSSD_ZRS';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $diskupdateconfig;
+        $updatedDisk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-AreEqual $updatedDisk.Sku.Name "StandardSSD_ZRS";
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Set-AzDiskSecurityProfile
+#>
+function Test-SecurityProfile
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "disk" + $rgname;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "TrustedLaunch";
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "disk" + $rgname;
+        $diskSt = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -EdgeZone $edge -DiskSizeGB 5 -SkuName Premium_LRS -OsType Windows -CreateOption Empty;
+        $snapshotname = "snapshot" + $rgname;
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig;
+        Assert-AreEqual $snapshot.Location $loc;
+        Assert-AreEqual $snapshot.ExtendedLocation.Name $edge;
+        $imageConfig = New-AzImageConfig -Location $loc -EdgeZone $edge -HyperVGeneration "V1";
+        Assert-AreEqual $imageConfig.ExtendedLocation.Name $edge;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Set-AzDiskSecurityProfile with the Standard securityType.
+There should be no securityProfile made for Standard at this time. 
+#>
+function Test-SecurityProfileStandard
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Standard SecurityType
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "diskstnd" + $rgname;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "Standard";
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-Null $disk.SecurityProfile;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test SupportsHibernation Parameter
+#>
+function Test-SupportsHibernation
+{
+	$rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+
+    try{
+    	New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $diskConfig = New-AzDiskConfig -Location 'eastus2euap' -AccountType 'Premium_LRS' -CreateOption 'Empty' -DiskSizeGB 2 -SupportsHibernation $true;
+		$diskname = "disk" + $rgname;
+		New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-AreEqual $disk.SupportsHibernation $true;
+
+        $updateconfig = New-AzDiskUpdateConfig -SupportsHibernation $false;
+        $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual $disk.SupportsHibernation $false;
+
+        $snapshotConfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -SupportsHibernation $true -Tag @{test1 = "testval1"; test2 = "testval2" };
+        $snapshotname = "snapshot" + $rgname;
+        New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname  -Snapshot $snapshotConfig;
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
+        Assert-AreEqual $snapshot.SupportsHibernation $true;
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
+        $snapshotUpdateConfig = New-AzSnapshotUpdateConfig -SupportsHibernation $false;
+        $snapshot = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $snapshotUpdateConfig;
+        Assert-AreEqual "testval1" $snapshot.Tags.test1;
+        Assert-AreEqual "testval2" $snapshot.Tags.test2;
+        $newSnapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
+        Assert-AreEqual $newSnapshot.SupportsHibernation $false;
+    }
+    finally
+    {
+    	# Cleanup
+		Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test AutomaticKeyRotation parameter
+#>
+function Test-AutomaticKeyRotation
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $config = New-AzDiskEncryptionSetConfig -Location 'eastus2' -KeyUrl "https://diskrptest.vault.azure.net/keys/test2/f8d94ab139cf4596a947a27f1de7bef8" -SourceVaultId '/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/haagha_pwshelltest/providers/Microsoft.KeyVault/vaults/diskrptest' -IdentityType 'SystemAssigned' -RotationToLatestKeyVersionEnabled $true;
+        New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name 'encd1' -DiskEncryptionSet $config;
+        $des = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name 'encd1';
+        Assert-AreEqual $des.RotationToLatestKeyVersionEnabled $true;
+
+        Update-AzDiskEncryptionSet -ResourceGroupName $rgname -Name 'encd1' -RotationToLatestKeyVersionEnabled $false;
+        $desUpdated = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name 'encd1';
+        Assert-AreEqual $desUpdated.RotationToLatestKeyVersionEnabled $false;
+
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+
+<#
+.SYNOPSIS
+Test AcceleratedNetwork and PublicNetworkAccess parameters for 
+Disk and Snapshot objects. 
+Also tested the CopyStart and CompletionPercent features for snapshots. 
+#>
+function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2euap';
+    $snapLoc = 'Central US';
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup
+        $diskName = 'disk' + $rgname;
+        $snapName = "snap" + $rgname;
+        $diskAccountType = 'Premium_LRS';
+        $snapAccountType = 'Standard_LRS';
+        $publicNetworkAccess1 = 'Disabled';
+        $publicNetworkAccess2 = 'Enabled';
+        $acceleratedNetwork1 = $true;
+        $acceleratedNetwork2 = $false;
+        $createOption = 'Empty';
+        $diskSize = 32;
+        $snapSize = 5;
+
+        # Disks
+        $diskConfig = New-AzDiskConfig -Location $loc -AccountType $diskAccountType -CreateOption $createOption -DiskSizeGB 32 -PublicNetworkAccess $publicNetworkAccess1 -AcceleratedNetwork $acceleratedNetwork1;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+        Assert-AreEqual $disk.PublicNetworkAccess $publicNetworkAccess1;
+        Assert-AreEqual $disk.SupportedCapabilities.AcceleratedNetwork $acceleratedNetwork1;
+
+        $diskupdateconfig = New-AzDiskUpdateConfig -PublicNetworkAccess $publicNetworkAccess2 -AcceleratedNetwork $acceleratedNetwork2;
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskName -DiskUpdate $diskupdateconfig;
+        $diskUpdated = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+        Assert-AreEqual $diskUpdated.PublicNetworkAccess $publicNetworkAccess2;
+        Assert-AreEqual $diskUpdated.SupportedCapabilities.AcceleratedNetwork $acceleratedNetwork2;
+
+        # Snapshots
+        $snapshotConfig = New-AzSnapshotConfig -Location $snapLoc -DiskSizeGB $snapSize -AccountType $snapAccountType -OsType Windows -CreateOption $createOption -PublicNetworkAccess $publicNetworkAccess1 -AcceleratedNetwork $acceleratedNetwork1;
+        New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName -Snapshot $snapshotConfig;
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName;
+        Assert-AreEqual $snapshot.PublicNetworkAccess $publicNetworkAccess1;
+        Assert-AreEqual $snapshot.SupportedCapabilities.AcceleratedNetwork $acceleratedNetwork1;
+
+        # Currently AcceleratedNetwork cannot be updated in the Snapshot resource because SupportedCapabilities has not been added to the SnapshotUpdate model.
+        # This oversight is being worked on.
+        $snapshotUpdateConfig = New-AzSnapshotUpdateConfig -PublicNetworkAccess $publicNetworkAccess2;
+        Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName -SnapshotUpdate $snapshotUpdateConfig;
+        $snapshotUpdated = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName;
+        Assert-AreEqual $snapshotUpdated.PublicNetworkAccess $publicNetworkAccess2;
+
+        # CopyStart and CompletionPercent features in Snapshots
+        $baseRegion = "eastus2euap";
+        $otherRegion = "centraluseuap";
+        $diskName = "diskA" + $rgname;
+        $snapName = "snapB" + $rgname;
+        $snapName2 = "snapC" + $rgname;
+        $diskConfig = New-AzDiskConfig -Location $baseRegion  -AccountType $diskAccountType -CreateOption $createOption -DiskSizeGB $diskSize -PublicNetworkAccess $publicNetworkAccess1 -AcceleratedNetwork $acceleratedNetwork1;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+        $diskSourceId = $disk.Id.substring(1);
+        $snapshotconfigB = New-AzSnapshotConfig -Location $baseRegion -CreateOption Copy -Incremental -SourceResourceId $diskSourceId;
+
+        $snapB =New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName -Snapshot $snapshotconfigB;
+        $snapSourceId = $snapB.Id.substring(1);
+        Assert-Null $snapB.CompletionPercent;
+
+        $snapshotconfigC = New-AzSnapshotConfig -Location $otherRegion -CreateOption CopyStart -Incremental -SourceResourceId $snapSourceId;
+        $snapC = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName2 -Snapshot $snapshotconfigC;
+        Assert-NotNull $snapC.CompletionPercent;
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}
+
+<#
+.SYNOPSIS
+Disk creation defaults to TL when being created from an Image that is HyperVGeneration V2.
+Feature request 1248
+#>
+function Test-NewDiskSecurityTypeDefaulting
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2';
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $diskname = "d" + $rgname;
+        $securityTypeTL = "TrustedLaunch";
+        $hyperVGen2 = "V2";
+        
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        Assert-AreEqual $disk.SecurityProfile.securityType $securityTypeTL;
+        Assert-AreEqual $disk.HyperVGeneration $hyperVGen2;
+        
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}
+
+<#
+.SYNOPSIS
+Testing SnapshotConfig create with ElasticSanResourceId
+#>
+function Test-SnapshotConfigElasticSanResourceId
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $snapshotname = 'snapshot' + $rgname;
+
+    try
+    {
+        #
+        # Note: In order to record this test, you need to run the following commands to create ElasticSan volumn snapshot in a separate Powershell window.
+        # 
+        # New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # New-AzElasticSan -ResourceGroupName $rgname -Name $ElasticSanName -BaseSizeTiB 1 -SkuName 'Premium_LRS' -Location $loc -ExtendedCapacitySizeTiB 3 
+        # New-AzElasticSanVolumeGroup -ResourceGroupName $rgname -ElasticSanName $ElasticSanName  -Name $VolumeGroupName -Encryption 'EncryptionAtRestWithPlatformKey'  -ProtocolType 'Iscsi'
+        # $volumn = New-AzElasticSanVolume -ResourceGroupName $rgname -ElasticSanName $ElasticSanName -VolumeGroupName $VolumeGroupName -Name $volumnName -SizeGiB 100 
+        # $volumnSnapshot = New-AzElasticSanVolumeSnapshot -ResourceGroupName $rgname -ElasticSanName $ElasticSanName -VolumeGroupName $VolumeGroupName -Name $volumnSnapshotName -CreationDataSourceId $volumn.Id
+        # $mockElasticSanVolumeSnapshotResourceId = $volumnSnapshot.Id
+
+        # Common
+        $loc = Get-Location "Microsoft.Compute" "snapshots" "France Central"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $mockElasticSanVolumeSnapshotResourceId = "/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.ElasticSan/elasticSans/san1/volumeGroups/volumegroup1/snapshots/snapshot1"
+
+        # Config and create test
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -AccountType Standard_LRS -CreateOption CopyFromSanSnapshot -ElasticSanResourceId $mockElasticSanVolumeSnapshotResourceId -Incremental        
+        Assert-AreEqual CopyFromSanSnapshot $snapshotconfig.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshotconfig.CreationData.ElasticSanResourceId
+
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshot.CreationData.ElasticSanResourceId
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshot.CreationData.ElasticSanResourceId
+
+        # Remove test
+        $job = Remove-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Testing SnapshotConfig create with TierOption 'EnhancedSpeed'
+#>
+function Test-SnapshotConfigTierOptionEnhancedSpeed
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2';
+
+    try
+    {
+        
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Config and create test
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -AccountType Standard_LRS -CreateOption CopyFromSanSnapshot -TierOption 'Enhanced'
+        Assert-AreEqual EnhancedSpeed $snapshotconfig.CreationData.ProvisionedBandwidthCopySpeed
+
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual EnhancedSpeed $snapshot.CreationData.ProvisionedBandwidthCopySpeed
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Using a TL disk, use the SecureVmGuestStateSas parameter to get the securityDataAccessSAS value.
+#>
+function Test-DiskGrantAccessGetSASWithTL
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = Get-ComputeVMLocation;
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskname = "d" + $rgname;
+
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60 -SecureVMGuestStateSAS;
+        Assert-NotNull $grantAccess.securityDataAccessSAS;
+        Assert-NotNull $grantAccess.AccessSAS;
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60;
+        Assert-NotNull $grantAccess.AccessSAS;
+        Assert-Null $grantAccess.securityDataAccessSAS;
+
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
 }

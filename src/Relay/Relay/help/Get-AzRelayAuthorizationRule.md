@@ -1,78 +1,189 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
+---
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azrelayauthorizationrule
+online version: https://learn.microsoft.com/powershell/module/az.relay/get-azrelayauthorizationrule
 schema: 2.0.0
 ---
 
 # Get-AzRelayAuthorizationRule
 
 ## SYNOPSIS
-Gets the description of a specified authorization rule for a given Relay entities (Namespace/WcfRelay/HybridConnection).
+Authorization rule for a namespace by name.
 
 ## SYNTAX
 
-### NamespaceAuthorizationRuleSet (Default)
+### List (Default)
 ```
-Get-AzRelayAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### WcfRelayAuthorizationRuleSet
-```
-Get-AzRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String>
- [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### HybridConnectionAuthorizationRuleSet
+### List1
 ```
-Get-AzRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-HybridConnection] <String>
- [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -HybridConnection <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WcfRelay <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Name <String> -HybridConnection <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get2
+```
+Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Name <String> -WcfRelay <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzRelayAuthorizationRule -InputObject <IRelayIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzRelayAuthorizationRule** cmdlet gets the description of the specified authorization rule in the given Relay entities (Namespace/WcfRelay/HybridConnection).
+Authorization rule for a namespace by name.
 
 ## EXAMPLES
 
-### Example 1: Namespace
+### Example 1: List all Authorization Rules of the Relay namespace
 ```powershell
-PS C:\> Get-AzRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
-
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/Aut
-         hoRule1
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01
 ```
 
-Returns the specified authorization rule description for a specified namespace.
-
-### Example 2: WcfRelay
-```powershell
-PS C:\>Get-AzWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
-
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
-         1/authorizationRules/AuthoRule1
+```output
+Location Name                      ResourceGroupName
+-------- ----                      -----------------
+eastus   RootManageSharedAccessKey lucas-relay-rg
+eastus   authRule-03               lucas-relay-rg
 ```
 
-Returns the specified authorization rule description for a given WcfRelay.
+This cmdlet lists all Authorization Rules of the Relay namespace.
 
-### Example 3: HybridConnection
+### Example 2: Get the specified authorization rule description for a given Relay namespace
 ```powershell
-PS C:\> Get-AzRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
-
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/Test
-         HybridConnection/authorizationRules/AuthoRule1
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name authRule-03 | Format-List
 ```
 
-Returns the specified authorization rule description for a given HybridConnection.
+```output
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespa
+                               ce-pwsh01/authorizationrules/authRule-03
+Location                     : eastus
+Name                         : authRule-03
+ResourceGroupName            : lucas-relay-rg
+Rights                       : {Listen, Send}
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/Namespaces/AuthorizationRules
+```
+
+This cmdlet gets the specified authorization rule description for a given Relay namespace.
+
+### Example 3: List all Authorization Rules of the Hybrid Connection
+```powershell
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01
+```
+
+```output
+Location Name        ResourceGroupName
+-------- ----        -----------------
+eastus   authRule-01 lucas-relay-rg
+```
+
+This cmdlet lists all Authorization Rules of the Hybrid Connection.
+
+### Example 4: Get the specified authorization rule description for a given Hybrid Connection
+```powershell
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01 | Format-List
+```
+
+```output
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespa
+                               ce-pwsh01/hybridconnections/connection-01/authorizationrules/authRule-01
+Location                     : eastus
+Name                         : authRule-01
+ResourceGroupName            : lucas-relay-rg
+Rights                       : {Listen, Send}
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/hybridconnections/authorizationrules
+```
+
+This cmdlet gets the specified authorization rule description for a given Hybrid Connection.
+
+### Example 5: List all Authorization Rules of the Wcf Relay
+```powershell
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01
+```
+
+```output
+Location Name        ResourceGroupName
+-------- ----        -----------------
+eastus   authRule-01 lucas-relay-rg
+```
+
+This cmdlet lists all Authorization Rules of the Wcf Relay.
+
+### Example 6: Get the specified authorization rule description for a given Wcf Relay
+```powershell
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay connection-01 -Name authRule-01 | Format-List
+```
+
+```output
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespa
+                               ce-pwsh01/wcfrelays/connection-01/authorizationrules/authRule-01
+Location                     : eastus
+Name                         : authRule-01
+ResourceGroupName            : lucas-relay-rg
+Rights                       : {Listen, Send}
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/wcfrelays/authorizationrules
+```
+
+This cmdlet gets the specified authorization rule description for a given Wcf Relay.
+
+### Example 7: Get the specified authorization rule description by pipeline
+```powershell
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 | Get-AzRelayAuthorizationRule
+```
+
+```output
+Location Name                      ResourceGroupName
+-------- ----                      -----------------
+eastus   RootManageSharedAccessKey lucas-relay-rg
+eastus   authRule-03               lucas-relay-rg
+```
+
+This cmdlet gets the specified authorization rule description by pipeline.
 
 ## PARAMETERS
 
@@ -80,9 +191,9 @@ Returns the specified authorization rule description for a given HybridConnectio
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -92,102 +203,122 @@ Accept wildcard characters: False
 ```
 
 ### -HybridConnection
-HybridConnection Name.
+The hybrid connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: HybridConnectionAuthorizationRuleSet
+Parameter Sets: List1, Get1
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-AuthorizationRule Name.
+The authorization rule name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Get, Get1, Get2
+Aliases: AuthorizationRuleName
 
-Required: False
-Position: 3
+Required: True
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespaceAuthorizationRuleSet
+Parameter Sets: List, List1, List2, Get, Get1, Get2
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, List1, List2, Get, Get1, Get2
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, List1, List2, Get, Get1, Get2
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WcfRelay
-WcfRelay Name.
+The relay name.
 
 ```yaml
 Type: System.String
-Parameter Sets: WcfRelayAuthorizationRuleSet
+Parameter Sets: List2, Get2
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
 
 ## NOTES
 

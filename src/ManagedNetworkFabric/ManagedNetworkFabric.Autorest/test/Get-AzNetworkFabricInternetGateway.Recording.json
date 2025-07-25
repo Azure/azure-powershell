@@ -1,0 +1,126 @@
+{
+  "Get-AzNetworkFabricInternetGateway+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "fd5562b1-6c46-4bd6-818d-0c5f56a7ebcf" ],
+        "CommandName": [ "Get-AzNetworkFabricInternetGatewayRule" ],
+        "FullCommandName": [ "Get-AzNetworkFabricInternetGatewayRule_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "28e03acf-e025-476f-8b25-59f3079e8fe4", "3d4ed899-03cd-4cb2-b7ea-1741e10178b3", "87973048-9f0b-4ee9-94ea-06611990b7e1", "69871f21-9ad4-4e38-83ea-20d3d41c5c8d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "f324a4c0-ed04-4372-b2de-34af0b2d5ff5" ],
+        "x-ms-correlation-request-id": [ "f324a4c0-ed04-4372-b2de-34af0b2d5ff5" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T114219Z:f324a4c0-ed04-4372-b2de-34af0b2d5ff5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 11:42:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "3663" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab3LabNFC-4-1/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/nfcfab3-4-1-GF1-infra-system\",\"name\":\"nfcfab3-4-1-GF1-infra-system\",\"type\":\"microsoft.managednetworkfabric/internetgatewayrules\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-21T08:47:10.1151953Z\",\"lastModifiedBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-21T08:47:22.2104181Z\"},\"properties\":{\"ruleProperties\":{\"action\":\"Allow\",\"addressList\":[\"allowall.infra.igw.nni\"]},\"internetGatewayIds\":[\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab3LabNFC-4-1/providers/Microsoft.ManagedNetworkFabric/internetGateways/nfcfab3-4-1-GF1-infra\"],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-GA3.2-clisdktest-nfrg081023/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/nfa-tool-ts-GA-IGwRule081023\",\"name\":\"nfa-tool-ts-GA-IGwRule081023\",\"type\":\"microsoft.managednetworkfabric/internetgatewayrules\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-10T11:05:30.3575284Z\",\"lastModifiedBy\":\"427cb791-d1e7-4a20-b5b5-60b5d51d96de\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-04T15:35:53.7860784Z\"},\"properties\":{\"ruleProperties\":{\"action\":\"Allow\",\"addressList\":[\"allowall.infra.igw.nni\"]},\"internetGatewayIds\":[\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-GA3.2-clisdktest-nfcrg081023/providers/Microsoft.ManagedNetworkFabric/internetGateways/nfa-tool-ts-GA-nfc081023-infra\"],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab1LabNFC-4-1/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/nfcfab1-4-1-BF-infra-system\",\"name\":\"nfcfab1-4-1-BF-infra-system\",\"type\":\"microsoft.managednetworkfabric/internetgatewayrules\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-22T02:33:21.1548797Z\",\"lastModifiedBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-22T02:33:29.9991549Z\"},\"properties\":{\"ruleProperties\":{\"action\":\"Allow\",\"addressList\":[\"allowall.infra.igw.nni\"]},\"internetGatewayIds\":[\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab1LabNFC-4-1/providers/Microsoft.ManagedNetworkFabric/internetGateways/nfcfab1-4-1-BF-infra\"],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/controller092123-infra-system\",\"name\":\"controller092123-infra-system\",\"type\":\"microsoft.managednetworkfabric/internetgatewayrules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-21T12:14:52.0316581Z\",\"lastModifiedBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-21T12:15:03.5953078Z\"},\"properties\":{\"ruleProperties\":{\"action\":\"Allow\",\"addressList\":[\"allowall.infra.igw.nni\"]},\"internetGatewayIds\":[\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra\"],\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkFabricInternetGateway+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "8872308f-f7de-4a4c-af51-ed929121f55d" ],
+        "CommandName": [ "Get-AzNetworkFabricInternetGateway" ],
+        "FullCommandName": [ "Get-AzNetworkFabricInternetGateway_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"92002144-0000-0100-0000-650c33c70000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "11d05542-9ff4-443c-b1b4-738e703cc700" ],
+        "x-ms-correlation-request-id": [ "f489710c-fda5-4283-9e37-9c782c38f588" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T114219Z:f489710c-fda5-4283-9e37-9c782c38f588" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 11:42:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1123" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra\",\"name\":\"controller092123-infra\",\"type\":\"microsoft.managednetworkfabric/internetgateways\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-21T12:11:48.5053045Z\",\"lastModifiedBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-21T12:11:48.5053045Z\"},\"properties\":{\"port\":0,\"networkFabricControllerId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controller092123\",\"type\":\"Infrastructure\",\"provisioningState\":\"Succeeded\",\"ipv4Address\":\"http://10.0.3.253:3128\",\"internetGatewayRuleId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/controller092123-infra-system\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkFabricInternetGateway+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "a2353610-e89f-4990-ba61-e47c233b59fa" ],
+        "CommandName": [ "Get-AzNetworkFabricInternetGateway" ],
+        "FullCommandName": [ "Get-AzNetworkFabricInternetGateway_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "3d209345-5623-471e-8cc9-99a46a356e48", "cfc54e17-f6c3-49a1-b824-178eee7530e9", "869b00ed-b8f3-470d-a78f-77f15881f6ec", "234366c8-8a5a-405b-9528-a99df090ac67" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "9b5e312a-aad3-4867-a8bd-da804b21f0fc" ],
+        "x-ms-correlation-request-id": [ "9b5e312a-aad3-4867-a8bd-da804b21f0fc" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T114220Z:9b5e312a-aad3-4867-a8bd-da804b21f0fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 11:42:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2043" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra\",\"name\":\"controller092123-infra\",\"type\":\"microsoft.managednetworkfabric/internetgateways\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-21T12:11:48.5053045Z\",\"lastModifiedBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-21T12:11:48.5053045Z\"},\"properties\":{\"port\":0,\"networkFabricControllerId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controller092123\",\"type\":\"Infrastructure\",\"provisioningState\":\"Succeeded\",\"ipv4Address\":\"http://10.0.3.253:3128\",\"internetGatewayRuleId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/controller092123-infra-system\"}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-workload\",\"name\":\"controller092123-workload\",\"type\":\"microsoft.managednetworkfabric/internetgateways\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-21T12:15:05.5953308Z\",\"lastModifiedBy\":\"a893dadc-5c8e-47f4-8379-6afb34bdbe12\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-21T12:15:05.5953308Z\"},\"properties\":{\"port\":0,\"networkFabricControllerId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controller092123\",\"type\":\"Workload\",\"provisioningState\":\"Succeeded\",\"ipv4Address\":\"http://10.0.29.253:3128\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

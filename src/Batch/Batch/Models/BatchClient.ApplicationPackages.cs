@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationName, string version, out bool didCreateAppPackage)
+        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationName, string version, out bool appPackageAlreadyExists)
         {
             try
             {
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     applicationName,
                     version);
 
-                didCreateAppPackage = false;
+                appPackageAlreadyExists = true;
                 return response.StorageUrl;
             }
             catch (CloudException exception)
@@ -221,8 +221,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     applicationName,
                     version);
 
-                // If Application was created we need to return a flag.
-                didCreateAppPackage = true;
+                //Package didn't exist before we created it
+                appPackageAlreadyExists = false;
                 return addResponse.StorageUrl;
             }
             catch (Exception exception)

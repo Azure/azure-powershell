@@ -12,13 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
-    public class AuthorizationHelper
+    public static class AuthorizationHelper
     {
         private static Regex subscriptionRegex = new Regex("/subscriptions/([^/]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex scopeRegex = new Regex("^(?:(?!/providers/).)*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
 
         public static string ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(string scope, string Id)
         {
@@ -50,6 +53,22 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return string.Concat("/subscriptions/", subscriptionId);
         }
 
+        public static string GetScopeFromFullyQualifiedId(string fullyQualifiedId)
+        {
+            if (string.IsNullOrEmpty(fullyQualifiedId))
+            {
+                return null;
+            }
+            var match = scopeRegex.Match(fullyQualifiedId);
+
+            if (match.Success != true)
+            {
+                return null;
+            }
+
+            return match.Groups[0].Value;
+        }
+
         public static string GetResourceSubscription(string id)
         {
             var match = subscriptionRegex.Match(id);
@@ -60,6 +79,21 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
 
             return match.Groups[1].Value;
+        }
+
+        public static string GuidFromFullyQualifiedId(this string Id)
+        {
+            return Id.TrimEnd('/').Substring(Id.LastIndexOf('/') + 1);
+        }
+
+        public static Guid GetGuidFromId(this string Id)
+        {
+            if(Guid.TryParse(Id, out Guid result))
+            {
+                return result;
+            }
+
+            return new Guid(Id.GuidFromFullyQualifiedId());
         }
     }
 }

@@ -1,0 +1,10 @@
+{
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "Location": "centraluseuap",
+  "ClusterName2": "ps-cache-test2-tdslxi7z",
+  "SubscriptionId": "9508734a-8a49-4b3e-bd1e-d039b249a023",
+  "ClusterName": "ps-cache-test1-87l6deo9",
+  "ClusterName3": "ps-cache-test3-2dtjmy8n",
+  "ResourceGroupName": "ps-redisenterprise-rg-9qbke5f6",
+  "ClusterName4": "ps-cache-test4-tnhjpfbo"
+}

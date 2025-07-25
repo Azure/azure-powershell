@@ -1,80 +1,68 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: 04B1E3A6-6D52-46A3-8241-2CCDB5E71642
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadspcredential
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azadspcredential
 schema: 2.0.0
 ---
 
 # Remove-AzADSpCredential
 
 ## SYNOPSIS
-Removes a credential from a service principal.
+Removes key credentials or password credentials for an service principal.
 
 ## SYNTAX
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzADSpCredential -ObjectId <String> [-KeyId <Guid>] [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADSpCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithKeyIdParameterSet
 ```
-Remove-AzADSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADSpCredential [-KeyId <Guid>] -ServicePrincipalName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyIdParameterSet
 ```
-Remove-AzADSpCredential -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADSpCredential [-KeyId <Guid>] -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectParameterSet
 ```
-Remove-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-KeyId <Guid>] [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADSpCredential [-KeyId <Guid>] -ServicePrincipalObject <IMicrosoftGraphServicePrincipal>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzADSpCredential cmdlet can be used to remove a credential key from a service principal in the case of a compromise or as part of credential key rollover expiration.
-The service principal is identified by supplying either the object ID or service principal name (SPN).
-The credential to be removed is identified by its key ID if an individual credential is to be removed or with an 'All' switch to delete all credentials associated with the service principal.
+Removes key credentials or password credentials for an service principal.
 
 ## EXAMPLES
 
-### Example 1: Remove a specific credential from a service principal
-
+### Example 1: Remove service principal credentials by key id
 ```powershell
-PS C:\> Remove-AzADSpCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
+Remove-AzADSpCredential -DisplayName $name -KeyId $keyid
 ```
 
-Removes the credential with key id '9044423a-60a3-45ac-9ab1-09534157ebb' from the service principal with object id '7663d3fb-6f86-4352-9e6d-cf9d50d5ee82'.
+Remove service principal credentials by key id
 
-### Example 2: Remove all credentials from a service principal
-
+### Example 2: Remove all credentials from service principal
 ```powershell
-PS C:\> Remove-AzADSpCredential -ServicePrincipalName http://test123
+Get-AzADServicePrincipal -DisplayName $name | Remove-AzADSpCredential
 ```
 
-Removes all credentials from the service principal with the SPN "http://test123".
-
-### Example 3: Remove all credentials from a service principal using piping
-
-```powershell
-PS C:\> Get-AzADServicePrincipal -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 | Remove-AzADSpCredential
-```
-
-Gets the service principal with object id '7663d3fb-6f86-4352-9e6d-cf9d50d5ee82' and pipes that to the Remove-AzADSpCredential cmdlet to remove all credentials from that service principal.
+Remove all credentials from service principal
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -86,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The display name of the service principal.
+The display name of service principal.
 
 ```yaml
 Type: System.String
@@ -96,15 +84,15 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Switch to delete credential without a confirmation.
+### -KeyId
+The key Id of credentials to be removed.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Guid
 Parameter Sets: (All)
 Aliases:
 
@@ -115,39 +103,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyId
-Specifies the credential key to be removed.
-The key Ids for a service principal can be obtained using the Get-AzADSpCredential cmdlet.
-
-```yaml
-Type: System.Guid
-Parameter Sets: ObjectIdWithKeyIdParameterSet, SPNWithKeyIdParameterSet, ServicePrincipalObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ObjectId
-The object id of the service principal to remove the credentials from.
+The object Id of service principal.
 
 ```yaml
 Type: System.String
 Parameter Sets: ObjectIdWithKeyIdParameterSet
-Aliases:
+Aliases: Id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Specifying this will return true if the command was successful.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -162,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServicePrincipalName
-The name (SPN) of the service principal to remove the credentials from.
+The service principal name.
 
 ```yaml
 Type: System.String
@@ -172,15 +144,15 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ServicePrincipalObject
-The service principal object to remove the credentials from.
+The service principal object, could be used as pipeline input.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 Parameter Sets: ServicePrincipalObjectParameterSet
 Aliases:
 
@@ -227,11 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
-
-### System.Guid
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 
 ## OUTPUTS
 
@@ -239,11 +207,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+Remove-AzADServicePrincipalCredential
+
 ## RELATED LINKS
-
-[Get-AzADSpCredential](./Get-AzADSpCredential.md)
-
-[New-AzADSpCredential](./New-AzADSpCredential.md)
-
-[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
-

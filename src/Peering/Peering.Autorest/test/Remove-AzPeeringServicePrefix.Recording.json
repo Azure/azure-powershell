@@ -1,0 +1,40 @@
+{
+  "Remove-AzPeeringServicePrefix+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestPrefixForAtlanta/prefixes/TestPrefix2?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestPrefixForAtlanta/prefixes/TestPrefix2?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "b9a04c41-603b-4e9f-bbb4-f63eaf8ab585" ],
+        "CommandName": [ "Remove-AzPeeringServicePrefix" ],
+        "FullCommandName": [ "Remove-AzPeeringServicePrefix_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "95862dda-bd94-46ae-b53d-a1e081457291" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "f1c38a13-b1d2-49af-b946-e3556c0abdc9" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T013244Z:f1c38a13-b1d2-49af-b946-e3556c0abdc9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:32:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

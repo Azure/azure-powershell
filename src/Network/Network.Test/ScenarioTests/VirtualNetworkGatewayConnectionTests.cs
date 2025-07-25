@@ -76,6 +76,15 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+        public void TestVirtualNetworkGatewayConnectionWithZeroSaData()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithZeroSaData");
+        }
+        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
         public void TestVirtualNetworkGatewayVpnDeviceConfigurationScripts()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
@@ -95,6 +104,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVirtualNetworkGatewayConnectionWithTrafficSelectorCRUD()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithTrafficSelector");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayConnectionGetIkeSa()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionGetIkeSa");
         }
     }
 }

@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "threatIntelligenceIndicatorId": {
+            "defaultValue": "threatIntelligenceIndicatorId",
+            "type": "string"
+        },
+        "threatIntelligenceIndicatorName": {
+            "defaultValue": "threatIntelligenceIndicatorName",
+            "type": "string"
+        },
+        "threatIntelligenceIndicatorDate": {
+            "defaultValue": "threatIntelligenceIndicatorDate",
+            "type": "string"
+        },
+        "ip": {
+            "defaultValue": "ip",
+            "type": "string"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        }
+    },
+    "variables": {
+        "ipPattern": "[concat('[ipv4-addr:value = ''', parameters('ip'), ''']')]"
+    },
+    "resources": [
+        {
+            "id": "",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/threatIntelligence/main/indicators",
+            "apiVersion": "2021-04-01",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/threatIntelligence/main/', parameters('threatIntelligenceIndicatorId'))]",
+            "kind": "indicator",
+            "properties": {
+                "confidence": 0,
+                "threatTypes": [
+                    "unknown"
+                ],
+                "displayName": "[parameters('threatIntelligenceIndicatorName')]",
+                "pattern": "[variables('ipPattern')]",
+                "patternType": "ipv4-addr",
+                "revoked": false,
+                "validFrom": "[parameters('threatIntelligenceIndicatorDate')]",
+                "validUntil": null,
+                "source": "Azure Sentinel",
+                "threatIntelligenceTags": []
+            }
+        }
+    ]
+}

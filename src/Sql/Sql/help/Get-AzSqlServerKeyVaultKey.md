@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverkeyvaultkey
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserverkeyvaultkey
 schema: 2.0.0
 ---
 
@@ -24,11 +24,11 @@ You can view all keys on a server or view a specific key by providing the KeyId.
 ## EXAMPLES
 
 ### Example 1: Get all Key Vault keys
-```
-PS C:\> Get-AzSqlServerKeyVaultKey -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
+```powershell
+Get-AzSqlServerKeyVaultKey -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
 
-This command gets all the Key Vault keys on a SQL server.
+```output
 ResourceGroupName : ContosoResourceGroup
 ServerName        : ContosoServer
 ServerKeyName     : contoso_contosokey_01234567890123456789012345678901
@@ -43,10 +43,13 @@ Type              : AzureKeyVault
 Uri               : https://contoso.vault.azure.net/keys/contosokey2/09876543210987654321098765432109
 Thumbprint        : 0099887766554433221100998877665544332211
 CreationDate      : 1/1/2017 12:00:00 AM
+```
+
+This command gets all the Key Vault keys on a SQL server.
 
 ### Example 2: Get a specific Key Vault key
-```
-PS C:\> $MyServerKeyVaultKey = Get-AzSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
+```powershell
+$MyServerKeyVaultKey = Get-AzSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
 
 This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901', and then stores it in the $MyServerKeyVaultKey variable.
@@ -160,4 +163,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

@@ -12,57 +12,50 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityWorkspaceSettingTests
+    public class SecurityWorkspaceSettingTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityWorkspaceSettingTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityWorkspaceSettingTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityWorkspaceSetting-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmSecurityWorkspaceSetting-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityWorkspaceSetting-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmSecurityWorkspaceSetting-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Set-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Remove-AzureRmSecurityWorkspaceSetting-SubscriptionLevelResource");
         }
     }
 }

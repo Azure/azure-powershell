@@ -58,7 +58,7 @@ function New-ModulePsm1 {
     PROCESS {
         $manifestDir = Get-Item -Path $ModulePath
         $moduleName = $manifestDir.Name + ".psd1"
-        $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
+        $manifestPath = (Get-Item "$manifestDir/$moduleName").FullName
         $file = Get-Item $manifestPath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
 
@@ -84,8 +84,30 @@ function New-ModulePsm1 {
         # Create imports for nested modules.
         if ($ModuleMetadata.NestedModules -ne $null) {
             foreach ($dll in $ModuleMetadata.NestedModules) {
-                $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll + ")`r`n"
+                if ($dll.EndsWith("dll")) {
+                    $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll + ")`r`n"
+                } elseif ($dll -eq ($manifestDir.Name + ".psm1")) {
+                    $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath Microsoft.Azure.PowerShell.Cmdlets." + $manifestDir.Name.Split(".")[-1] + ".dll" + ")`r`n"
+                }
             }
+        }
+
+        # Scripts to preload dependency assemblies on Windows PowerShell
+        # https://stackoverflow.com/a/60068470
+        $preloadAssemblies = ""
+        $isAzAccounts = $file.BaseName -ieq 'Az.Accounts'
+        if ($isAzAccounts) {
+            $preloadAssemblies += 'if ($PSEdition -eq "Desktop") {
+    [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyProvider]::GetAssemblies().Values | ForEach-Object {
+        $path = $$_.Item1
+        try {
+            Add-Type -Path $path -ErrorAction Ignore | Out-Null
+        }
+        catch {
+            Write-Verbose "Could not preload $path"
+        }
+    }
+}'
         }
 
         # Grab the template and replace with information.
@@ -93,6 +115,7 @@ function New-ModulePsm1 {
         $template = $template -replace "%MODULE-NAME%", $file.BaseName
         $template = $template -replace "%DATE%", [string](Get-Date)
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
+        $template = $template -replace "%PRELOAD-ASSEMBLY%", $preloadAssemblies
 
         #Az.Storage is using Azure.Core, so need to check PS version
         if ($IsNetcore)
@@ -101,9 +124,26 @@ function New-ModulePsm1 {
             {
                 $template = $template -replace "%AZURECOREPREREQUISITE%", ""
             }
+            elseif($file.BaseName -ieq 'Az.Accounts')
+            {
+                $template = $template -replace "%AZURECOREPREREQUISITE%",
+@"
+if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
+{
+    if (`$PSVersionTable.PSVersion -lt [Version]'6.2.4')
+    {
+        throw "Current Az version doesn't support PowerShell Core versions lower than 6.2.4. Please upgrade to PowerShell Core 6.2.4 or higher."
+    }
+    if (`$PSVersionTable.PSVersion -lt [Version]'7.0.6')
+    {
+        Write-Warning "This version of Az.Accounts is only supported on Windows PowerShell 5.1 and PowerShell 7.0.6 or greater, open https://aka.ms/install-powershell to learn how to upgrade. For further information, go to https://aka.ms/azpslifecycle."
+    }
+}
+"@
+            }
             else
             {
-                $template = $template -replace "%AZURECOREPREREQUISITE%", 
+                $template = $template -replace "%AZURECOREPREREQUISITE%",
 @"
 if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
 {
@@ -125,6 +165,19 @@ if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
         {
             $template = $template -replace "%AZORAZURERM%", "`Az"
             $template = $template -replace "%ISAZMODULE%", "`$false"
+        }
+
+        # Register CommandNotFound event in Az.Accounts
+        if ($IsNetcore -and $file.BaseName -ieq 'Az.Accounts')
+        {
+            $template = $template -replace "%COMMAND-NOT-FOUND%",
+@"
+[Microsoft.Azure.Commands.Profile.Utilities.CommandNotFoundHelper]::RegisterCommandNotFoundAction(`$ExecutionContext.InvokeCommand)
+"@
+        }
+        else
+        {
+            $template = $template -replace "%COMMAND-NOT-FOUND%"
         }
 
         # Handle
@@ -157,10 +210,16 @@ function Get-Cmdlets {
     $nestedModules = $ModuleMetadata.NestedModules
     $cmdlets = @()
     foreach ($module in $nestedModules) {
+        if('.dll' -ne [System.IO.Path]::GetExtension($module))
+        {
+            continue;
+        }
         $dllPath = Join-Path -Path $ModulePath -ChildPath $module
-        $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
-        $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
-        $cmdlets += $dllCmdlets
+        if ($dllPath.EndsWith("dll")) {
+            $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
+            $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
+            $cmdlets += $dllCmdlets
+        }
     }
     return $cmdlets
 }
@@ -424,6 +483,11 @@ function Update-Netcore {
     }
 
     $modulePath = "$PSScriptRoot\Az"
+    Write-Host "Updating Netcore module from $modulePath"
+    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsNetcore
+    Write-Host "Updated Netcore module"
+
+    $modulePath = "$PSScriptRoot\AzPreview"
     Write-Host "Updating Netcore module from $modulePath"
     New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsNetcore
     Write-Host "Updated Netcore module"

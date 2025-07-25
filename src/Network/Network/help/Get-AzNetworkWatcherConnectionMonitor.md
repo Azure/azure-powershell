@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherconnectionmonitor
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkwatcherconnectionmonitor
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ The Get-AzNetworkWatcherConnectionMonitor cmdlet returns the connection monitor 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
+Get-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
 ```
 
 Name                        : cm
@@ -116,7 +116,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -NetworkWatcher

@@ -1,76 +1,42 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
+---
+external help file: Az.ApplicationInsights-help.xml
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
 schema: 2.0.0
 ---
 
 # Set-AzApplicationInsightsPricingPlan
 
 ## SYNOPSIS
-Set pricing plan and daily data volume information for an application insights resource
+Update current billing features for an Application Insights component.
 
 ## SYNTAX
 
-### ComponentNameParameterSet (Default)
 ```
-Set-AzApplicationInsightsPricingPlan [-ResourceGroupName] <String> [-Name] <String> [-PricingPlan <String>]
- [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ComponentObjectParameterSet
-```
-Set-AzApplicationInsightsPricingPlan [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
- [-PricingPlan <String>] [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceIdParameterSet
-```
-Set-AzApplicationInsightsPricingPlan [-ResourceId] <String> [-PricingPlan <String>] [-DailyCapGB <Double>]
- [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
+ [-PricingPlan <String>] [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Set pricing plan and daily data volume information for an application insights resource
+Update current billing features for an Application Insights component.
 
 ## EXAMPLES
 
-### Example 1 Set pricing plan and daily data volume information for an application insights resource
-```
-PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
-
- Cap ResetTime StopSendNotificationWhenHitCap PricingPlan
---- --------- ------------------------------ -----------
-400         0                           False Basic
+### Example 1: Set pricing plan and daily data volume information for an application insights resource
+```powershell
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
 ```
 
 Set the pricing plan to "Basic", set the daily data volume cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
 
 ## PARAMETERS
 
-### -ApplicationInsightsComponent
-Application Insights Component Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-Parameter Sets: ComponentObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DailyCapGB
-Daily Cap.
+Daily data volume cap in GB.
 
 ```yaml
-Type: System.Nullable`1[System.Double]
+Type: System.Double
 Parameter Sets: (All)
 Aliases:
 
@@ -82,12 +48,12 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -112,63 +78,64 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Application Insights Component Name.
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ComponentNameParameterSet
+Parameter Sets: (All)
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PricingPlan
-Pricing plan name.
+Current enabled pricing plan.
+When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Application Insights Enterprise, Limited Basic
 
 Required: False
 Position: Named
-Default value: "Basic"
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ComponentNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Application Insights Component Resource Id.
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,7 +155,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -203,17 +171,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
-
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSPricingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
 
 ## NOTES
 

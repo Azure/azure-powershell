@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/resolve-azerror
+online version: https://learn.microsoft.com/powershell/module/az.accounts/resolve-azerror
 schema: 2.0.0
 ---
 
@@ -31,10 +31,12 @@ that caused the error.
 ## EXAMPLES
 
 ### Example 1: Resolve the Last Error
+```powershell
+Resolve-AzError -Last
 ```
-PS C:\> Resolve-AzError -Last
 
-   HistoryId: 3
+```Output
+HistoryId: 3
 
 
 Message        : Run Connect-AzAccount to login.
@@ -57,11 +59,12 @@ HistoryId      : 3
 Get details of the last error.
 
 ### Example 2: Resolve all Errors in the Session
+```powershell
+Resolve-AzError
 ```
-PS C:\> Resolve-AzError
 
-
-   HistoryId: 8
+```Output
+HistoryId: 8
 
 
 RequestId      : b61309e8-09c9-4f0d-ba56-08a6b28c731d
@@ -125,11 +128,12 @@ HistoryId      : 5
 Get details of all errors that have occurred in the current session.
 
 ### Example 3: Resolve a Specific Error
+```powershell
+Resolve-AzError $Error[0]
 ```
-PS C:\> Resolve-AzError $Error[0]
 
-
-   HistoryId: 8
+```Output
+HistoryId: 8
 
 
 RequestId      : b61309e8-09c9-4f0d-ba56-08a6b28c731d

@@ -1,164 +1,107 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll-Help.xml
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://docs.microsoft.com/en-us/powershell/module/az.databox/get-azdataboxjob
+online version: https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjob
 schema: 2.0.0
 ---
 
 # Get-AzDataBoxJob
 
 ## SYNOPSIS
-Gets information about Databox Jobs
+Gets information about the specified job.
 
 ## SYNTAX
 
-### ListParameterSet (Default)
+### List (Default)
 ```
-Get-AzDataBoxJob [-ResourceGroupName <String>] [-Completed] [-CompletedWithError] [-Cancelled] [-Aborted]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByNameParameterSet
-```
-Get-AzDataBoxJob -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataBoxJob [-SubscriptionId <String[]>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetByResourceIdParameterSet
+### Get
 ```
-Get-AzDataBoxJob -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzDataBoxJob -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxJobs** cmdlet gets information about databox jobs in an Azure subscription.
-If you specify the Resource Group, this cmdlet gets all the databox jobs under that resource group. If you specify the Name of the job along with the resource group name, this cmdlet gets information about that specific databox job.
-If you do not specify anything other than subscription id, this cmdlet gets information about all of the databox jobs under that subscription.
+Gets information about the specified job.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Gets a particular job
 ```powershell
-PS C:\> Get-AzDataBoxJob
-
-jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
-----------------        -------------------- ------------------  --------------------- -------------------- -------------
-testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               TestRg1
-cleanbox                DataBox              Aborted             04-12-2018 16:07:41   westus               TestRg2
-cleanbox-Clone          DataBox              Cancelled           25-04-2019 11:31:36   westus               TestRg2
-.
-.
-.
+Get-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"  -SubscriptionId "SubscriptionId"
 ```
 
-Get-AzDataBoxJob without any parameter fetches all the databox jobs under the subscription
-
-### Example 2
-```powershell
-PS C:\> Get-AzDataBoxJob -ResourceGroupName TestRg1
-
-jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
-----------------        -------------------- ------------------  --------------------- -------------------- -------------
-testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               TestRg1
-.
-.
-.
+```output
+Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
+----         -------- ------        ------------  ------- ------------ ------------ ------
+Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
-Get-AzDataBoxJob with ResourceGroupName parameter fetches all the databox jobs under the specified resource group
+Gets a particular job
 
-### Example 3
+### Example 2: List all job under a subscription
 ```powershell
-PS C:\> Get-AzDataBoxJob -ResourceGroupName TestRg1 -Name testtip2
-
-jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
-----------------        -------------------- ------------------  --------------------- -------------------- -------------
-testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               TestRg1
-
+Get-AzDataBoxJob -SubscriptionId "SubscriptionId"
 ```
 
-Get-AzDataBoxJob with ResourceGroupName and Name specified will fetch that specific databox job
-
-### Example 4
-```powershell
-PS C:\> Get-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/TestRg1/providers/Microsoft.DataBox/jobs/testtip2"
-
-jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
-----------------        -------------------- ------------------  --------------------- -------------------- -------------
-testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               TestRg1
-
+```output
+Name        Location      Status        TransferType    SkuName    IdentityType  DeliveryType Detail
+----        --------      ------        ------------    -------    ------------  ------------ ------
+brtestdbd  brazilsouth   DeviceOrdered ImportToAzure   DataBoxDisk None          NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
+testorder  uksouth       Cancelled     ImportToAzure   DataBoxDisk None          NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
 ```
 
-Get-AzDataBoxJob with ResourceId specified will fetch that specific databox job
+List all job under a subscription
+
+### Example 3: List all job under a resourcegroup
+```powershell
+Get-AzDataBoxJob -ResourceGroupName "resourceGroupName"
+```
+
+```output
+Name                   Location Status        TransferType    SkuName IdentityType   DeliveryType Detail
+----                   -------- ------        ------------    ------- ------------   ------------ ------
+abcbnkndnkndn          westus   DeviceOrdered ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
+abcbnkndnkndn-Clone    westus   DeviceOrdered ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
+abcOrder               westus   Cancelled     ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
+```
+
+List all job under a resource group
 
 ## PARAMETERS
 
-### -Aborted
-Switch Parameter to fetch Aborted jobs
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Cancelled
-Switch Parameter to fetch Cancelled jobs
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Completed
-Switch Parameter to fetch Completed jobs
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CompletedWithError
-Switch Parameter to fetch jobs completed with errors
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+$expand is supported on details parameter for job, which provides details on the job stages.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
 
 Required: False
 Position: Named
@@ -168,12 +111,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Databox Job Name
+The name of the job Resource within the specified resource group.
+job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
+Parameter Sets: Get
+Aliases: JobName
 
 Required: True
 Position: Named
@@ -183,11 +127,26 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Databox Job Resource Group Name
+The Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: ListParameterSet
+Parameter Sets: Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipToken
+$skipToken is supported on Get list of jobs, which provides the next page in the list of jobs.
+
+```yaml
+Type: System.String
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -197,30 +156,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionId
+The Subscription Id
+
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Databox Job Resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -229,11 +176,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.PSDataBoxJob
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
 
 ## NOTES
 

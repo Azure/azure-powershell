@@ -1,0 +1,22 @@
+{
+  "location": "eastus2",
+  "extendedLocation": {
+      "type": "CustomLocation",
+      "name": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-test-pwsh-rg/providers/Microsoft.ExtendedLocation/customLocations/location-a6n5o"
+  },
+  "tags": {
+      "type": "opcua"
+  },
+  "properties": {
+      "targetAddress": "opc.tcp://foo",
+      "endpointProfileType": "OpcUa",
+      "authentication": {
+          "method": "Certificate",
+          "x509Credentials": {
+              "certificateSecretName": "myCertSecretRef"
+          }
+      },
+      "discoveredAssetEndpointProfileRef": "myDiscoveredAssetEndpointProfile",
+      "additionalConfiguration": "{\"defaultPublishingInterval\": 200, \"defaultSamplingInterval\": 500, \"defaultQueueSize\": 10}"
+  }
+}

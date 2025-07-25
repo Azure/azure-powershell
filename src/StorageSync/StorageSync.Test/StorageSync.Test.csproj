@@ -11,13 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="17.0.0" />
-    <PackageReference Include="System.Management" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
   </ItemGroup>
 	
   <ItemGroup>
     <ProjectReference Include="..\..\Storage\Storage\Storage.csproj" />
+    <ProjectReference Include="..\StorageSync.Management.Sdk\StorageSync.Management.Sdk.csproj" />
     <ProjectReference Include="..\StorageSync\StorageSync.csproj" />
   </ItemGroup>
 

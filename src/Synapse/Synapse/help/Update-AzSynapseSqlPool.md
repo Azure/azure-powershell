@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/update-azsynapsesqlpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsesqlpool
 schema: 2.0.0
 ---
 
@@ -19,60 +19,10 @@ Update-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -N
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PauseByNameParameterSet
-```
-Update-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
- [-Suspend] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ResumeByNameParameterSet
-```
-Update-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
- [-Resume] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ### UpdateByParentObjectParameterSet
 ```
 Update-AzSynapseSqlPool -Name <String> [-Version <Int32>] -WorkspaceObject <PSSynapseWorkspace>
  [-Tag <Hashtable>] [-PerformanceLevel <String>] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PauseByParentObjectParameterSet
-```
-Update-AzSynapseSqlPool -Name <String> [-Version <Int32>] [-Suspend] -WorkspaceObject <PSSynapseWorkspace>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResumeByParentObjectParameterSet
-```
-Update-AzSynapseSqlPool -Name <String> [-Version <Int32>] [-Resume] -WorkspaceObject <PSSynapseWorkspace>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PauseByInputObjectParameterSet
-```
-Update-AzSynapseSqlPool [-Version <Int32>] [-Suspend] -InputObject <PSSynapseSqlPool> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PauseByResourceIdParameterSet
-```
-Update-AzSynapseSqlPool [-Version <Int32>] [-Suspend] -ResourceId <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResumeByInputObjectParameterSet
-```
-Update-AzSynapseSqlPool [-Version <Int32>] [-Resume] -InputObject <PSSynapseSqlPool> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResumeByResourceIdParameterSet
-```
-Update-AzSynapseSqlPool [-Version <Int32>] [-Resume] -ResourceId <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -96,30 +46,30 @@ The **Update-AzSynapseSqlPool** cmdlet updates an Azure Synapse Analytics SQL po
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -Tag @{'key'='value'} -PerformanceLevel DW300c
+Update-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -Tag @{'key'='value'} -PerformanceLevel DW300c
 ```
 
 This command updates an Azure Synapse Analytics SQL pool.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Update-AzSynapseSqlPool -Name ContosoSqlPool -Tag @{'key'='value1'}
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Update-AzSynapseSqlPool -Name ContosoSqlPool -Tag @{'key'='value1'}
 ```
 
 This command updates an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-PS C:\> $pool | Update-AzSynapseSqlPool -Tag @{'key'='value2'}
+$pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+$pool | Update-AzSynapseSqlPool -Tag @{'key'='value2'}
 ```
 
 This command updates an Azure Synapse Analytics SQL pool through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Update-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd3/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool -Tag @{'key'='value3'}
+Update-AzSynapseSqlPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd3/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool -Tag @{'key'='value3'}
 ```
 
 This command updates an Azure Synapse Analytics SQL pool with resource ID.
@@ -161,7 +111,7 @@ SQL pool input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
-Parameter Sets: PauseByInputObjectParameterSet, ResumeByInputObjectParameterSet, UpdateByInputObjectParameterSet
+Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -176,8 +126,8 @@ Name of Synapse SQL pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, PauseByNameParameterSet, ResumeByNameParameterSet, UpdateByParentObjectParameterSet, PauseByParentObjectParameterSet, ResumeByParentObjectParameterSet
-Aliases:
+Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
+Aliases: SqlPoolName
 
 Required: True
 Position: Named
@@ -207,7 +157,7 @@ For example, DW2000c.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet, UpdateByInputObjectParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -222,7 +172,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, PauseByNameParameterSet, ResumeByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
@@ -237,37 +187,7 @@ Resource identifier of Synapse SQL Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: PauseByResourceIdParameterSet, ResumeByResourceIdParameterSet, UpdateByResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Resume
-Indicates to resume the SQL pool
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ResumeByNameParameterSet, ResumeByParentObjectParameterSet, ResumeByInputObjectParameterSet, ResumeByResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Suspend
-Indicates to pause the SQL pool
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PauseByNameParameterSet, PauseByParentObjectParameterSet, PauseByInputObjectParameterSet, PauseByResourceIdParameterSet
+Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -282,7 +202,7 @@ A string,string dictionary of tags associated with the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet, UpdateByInputObjectParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -312,7 +232,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, PauseByNameParameterSet, ResumeByNameParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
@@ -327,7 +247,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: UpdateByParentObjectParameterSet, PauseByParentObjectParameterSet, ResumeByParentObjectParameterSet
+Parameter Sets: UpdateByParentObjectParameterSet
 Aliases:
 
 Required: True

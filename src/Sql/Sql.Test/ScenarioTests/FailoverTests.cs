@@ -14,82 +14,78 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class FailoverTests : SqlTestsBase
+    public class FailoverTests : SqlTestRunner
     {
         public FailoverTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverDatabase()
         {
-            RunPowerShellTest("Test-FailoverDatabase");
+            TestRunner.RunTestScript("Test-FailoverDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverDatabasePassThru()
         {
-            RunPowerShellTest("Test-FailoverDatabasePassThru");
+            TestRunner.RunTestScript("Test-FailoverDatabasePassThru");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverDatabaseWithDatabasePiping()
         {
-            RunPowerShellTest("Test-FailoverDatabaseWithDatabasePiping");
+            TestRunner.RunTestScript("Test-FailoverDatabaseWithDatabasePiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverDatabaseWithServerPiping()
         {
-            RunPowerShellTest("Test-FailoverDatabaseWithServerPiping");
+            TestRunner.RunTestScript("Test-FailoverDatabaseWithServerPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverDatabaseReadableSecondary()
         {
-            RunPowerShellTest("Test-FailoverDatabaseReadableSecondary");
+            TestRunner.RunTestScript("Test-FailoverDatabaseReadableSecondary");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverStandardDatabaseReadableSecondary()
         {
-            RunPowerShellTest("Test-FailoverStandardDatabaseReadableSecondary");
+            TestRunner.RunTestScript("Test-FailoverStandardDatabaseReadableSecondary");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverElasticPool()
         {
-            RunPowerShellTest("Test-FailoverElasticPool");
+            TestRunner.RunTestScript("Test-FailoverElasticPool");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverElasticPoolPassThru()
         {
-            RunPowerShellTest("Test-FailoverElasticPoolPassThru");
+            TestRunner.RunTestScript("Test-FailoverElasticPoolPassThru");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverElasticPoolWithPoolPiping()
         {
-            RunPowerShellTest("Test-FailoverElasticPoolWithPoolPiping");
+            TestRunner.RunTestScript("Test-FailoverElasticPoolWithPoolPiping");
         }
     }
 }

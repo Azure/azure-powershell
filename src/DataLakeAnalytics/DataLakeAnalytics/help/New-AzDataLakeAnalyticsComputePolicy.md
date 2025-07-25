@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/new-azdatalakeanalyticscomputepolicy
+online version: https://learn.microsoft.com/powershell/module/az.datalakeanalytics/new-azdatalakeanalyticscomputepolicy
 schema: 2.0.0
 ---
 
 # New-AzDataLakeAnalyticsComputePolicy
 
 ## SYNOPSIS
-Creates a Data Lake Analytics compute policy rule for a specific AAD entity.
+Creates a Data Lake Analytics compute policy rule for a specific Microsoft Entra entity.
 
 ## SYNTAX
 
@@ -19,20 +19,20 @@ New-AzDataLakeAnalyticsComputePolicy [-ResourceGroupName <String>] [-Account] <S
 ```
 
 ## DESCRIPTION
-The **New-AzDataLakeAnalyticsComputePolicy** creates the specified compute policy rule for a specific AAD entity in an Azure Data Lake Analytics account.
+The **New-AzDataLakeAnalyticsComputePolicy** creates the specified compute policy rule for a specific Microsoft Entra entity in an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 
 ### Example 1: Create a compute policy with only one rule
-```
-PS C:\>New-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name "myPolicy" -ObjectId 83cb7ad2-3523-4b82-b909-d478b0d8aea3 -ObjectType User -MaxAnalyticsUnitsPerJob 5
+```powershell
+New-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name "myPolicy" -ObjectId 83cb7ad2-3523-4b82-b909-d478b0d8aea3 -ObjectType User -MaxAnalyticsUnitsPerJob 5
 ```
 
 This command creates a policy called "myPolicy" in account "contosoadla" for the user with id "83cb7ad2-3523-4b82-b909-d478b0d8aea3" that ensures they cannot submit any job with more than 5 analytics units.
 
 ### Example 2: Create a compute policy with both rules set
-```
-PS C:\>New-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name "myPolicy" -ObjectId 83cb7ad2-3523-4b82-b909-d478b0d8aea3 -ObjectType User -MaxAnalyticsUnitsPerJob 5 -MinPriorityPerJob 100
+```powershell
+New-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name "myPolicy" -ObjectId 83cb7ad2-3523-4b82-b909-d478b0d8aea3 -ObjectType User -MaxAnalyticsUnitsPerJob 5 -MinPriorityPerJob 100
 ```
 
 This command creates a policy called "myPolicy" in account "contosoadla" for the user with id "83cb7ad2-3523-4b82-b909-d478b0d8aea3" that ensures they cannot submit any job with more than 5 analytics units or with a priority lower than 100
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The Azure Active Directory object id for the user or group to apply the policy to.
+The Microsoft Entra object id for the user or group to apply the policy to.
 
 ```yaml
 Type: System.Guid
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectType
-The Azure Active Directory object type for the object ID passed in.
+The Microsoft Entra object type for the object ID passed in.
 
 ```yaml
 Type: System.String

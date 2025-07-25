@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll-Help.xml
 Module Name: Az.ManagementPartner
-online version: https://docs.microsoft.com/en-us/powershell/module/az.managementpartner/get-azmanagementpartner
+online version: https://learn.microsoft.com/powershell/module/az.managementpartner/get-azmanagementpartner
 schema: 2.0.0
 ---
 
@@ -23,10 +23,13 @@ Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzManagementPartner
+Get-AzManagementPartner
+```
+
+```output
 PartnerId   : 4977985
 PartnerName : Test_Test_DPORTest
-TenantId    : 1b1121dd-6900-412a-af73-e8d44f81e1c1
+TenantId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 ObjectId    : aa67f786-0552-423e-8849-244ed12bf581
 State       : Active
 ```
@@ -35,10 +38,13 @@ Get the current management partner id
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzManagementPartner -PartnerId 4977985
+Get-AzManagementPartner -PartnerId 4977985
+```
+
+```output
 PartnerId   : 4977985
 PartnerName : Test_Test_DPORTest
-TenantId    : 1b1121dd-6900-412a-af73-e8d44f81e1c1
+TenantId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 ObjectId    : aa67f786-0552-423e-8849-244ed12bf581
 State       : Active
 ```

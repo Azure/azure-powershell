@@ -1,0 +1,30 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceCount": {
+      "type": "int"
+    },
+    "resourceNamePrefix": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "locations": [ "westus", "eastus", "northcentralus", "southcentralus", "centralus", "eastus2", "westcentralus", "westus2", "westus3" ]
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "apiVersion": "2020-11-01",
+      "name": "[format('{0}{1}', parameters('resourceNamePrefix'), copyIndex('nsgCopy'))]",
+      "location": "[variables('locations')[mod(copyIndex('nsgCopy'), length(variables('locations')))]]",
+      "properties": {},
+      "copy": {
+        "name": "nsgCopy",
+        "count": "[parameters('resourceCount')]",
+        "mode": "Serial",
+        "batchSize":  4
+      }
+    }
+  ]
+}

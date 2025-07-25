@@ -14,14 +14,16 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,9 +44,10 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string CertificateFilePathSet = "CertificateFilePath";
         private const string CertificateFileContentsSet = "CertificateFileContents";
         private const string DefaultParameterSet = "Default";
+        private const string DefaultClusterVersion = "4.0";
 
         #region These fields are marked obsolete in ClusterCreateParameters
-        private OSType? _osType;
+        private string _osType;
         #endregion
 
         #region Input Parameter Definitions
@@ -95,6 +98,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the type of the storage account.")]
         public StorageType? StorageAccountType { get; set; }
 
+        [Parameter(
+            HelpMessage = "Enable secure channel or not, it's an optional field.")]
+        public bool? EnableSecureChannel { get; set; }
+
         [Parameter(ValueFromPipeline = true,
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config
@@ -108,12 +115,14 @@ namespace Microsoft.Azure.Commands.HDInsight
                     StorageAccountType = StorageAccountType ?? StorageType.AzureStorage,
                     StorageAccountResourceId = StorageAccountResourceId,
                     StorageAccountKey = StorageAccountKey,
+                    EnableSecureChannel = EnableSecureChannel,
                     WorkerNodeSize = WorkerNodeSize,
                     HeadNodeSize = HeadNodeSize,
                     EdgeNodeSize = EdgeNodeSize,
                     ZookeeperNodeSize = ZookeeperNodeSize,
                     HiveMetastore = HiveMetastore,
                     OozieMetastore = OozieMetastore,
+                    AmbariDatabase = AmbariDatabase,
                     ObjectId = ObjectId,
                     ApplicationId = ApplicationId,
                     AADTenantId = AadTenantId,
@@ -169,12 +178,14 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     StorageAccountKey = value.StorageAccountKey;
                 }
+                EnableSecureChannel = value.EnableSecureChannel;
                 WorkerNodeSize = value.WorkerNodeSize;
                 HeadNodeSize = value.HeadNodeSize;
                 EdgeNodeSize = value.EdgeNodeSize;
                 ZookeeperNodeSize = value.ZookeeperNodeSize;
                 HiveMetastore = value.HiveMetastore;
                 OozieMetastore = value.OozieMetastore;
+                AmbariDatabase = value.AmbariDatabase;
                 CertificateFileContents = value.CertificateFileContents;
                 CertificateFilePath = value.CertificateFilePath;
                 AadTenantId = value.AADTenantId;
@@ -219,6 +230,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Hive.")]
         public AzureHDInsightMetastore HiveMetastore { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the database for ambari.")]
+        public AzureHDInsightMetastore AmbariDatabase { get; set; }
 
         [Parameter(HelpMessage = "Gets additional Azure Storage Account that you want to enable access to.")]
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
@@ -269,28 +283,23 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SubnetName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
-        public OSType OSType
+        [PSArgumentCompleter(Management.HDInsight.Models.OSType.Linux)]
+        public string OSType
+
         {
-            get { return _osType ?? OSType.Linux; }
+            get { return string.IsNullOrEmpty(_osType)? Management.HDInsight.Models.OSType.Linux : _osType; }
             set { _osType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
-        public Tier ClusterTier { get; set; }
+        [PSArgumentCompleter(Tier.Standard, Tier.Premium)]
+        public string ClusterTier { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets SSH credential.")]
         public PSCredential SshCredential { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the public key to be used for SSH.")]
         public string SshPublicKey { get; set; }
-
-        [CmdletParameterBreakingChange("RdpCredential", ChangeDescription = "This parameter is being deprecated.")]
-        [Parameter(HelpMessage = "Gets or sets the credential for RDP access to the cluster.")]
-        public PSCredential RdpCredential { get; set; }
-
-        [CmdletParameterBreakingChange("RdpAccessExpiry", ChangeDescription = "This parameter is being deprecated.")]
-        [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
-        public DateTime RdpAccessExpiry { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Object Id for accessing Azure Data Lake.")]
         public Guid ObjectId { get; set; }
@@ -309,7 +318,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate Password for accessing Azure Data Lake.")]
         public string CertificatePassword { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Microsoft Entra Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets Security Profile which is used for creating secure cluster.")]
@@ -328,7 +337,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string StorageAccountManagedIdentity { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        [ValidateSet(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOaep, JsonWebKeyEncryptionAlgorithm.RSAOaep256, JsonWebKeyEncryptionAlgorithm.RSA15)]
         public string EncryptionAlgorithm { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption key name.")]
@@ -357,6 +366,35 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the client group name for Kafka Rest Proxy access.")]
         public string KafkaClientGroupName { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the resource provider connection type.")]
+        [PSArgumentCompleter(Management.HDInsight.Models.ResourceProviderConnection.Inbound, Management.HDInsight.Models.ResourceProviderConnection.Outbound)]
+        public string ResourceProviderConnection { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the private link type.")]
+        [PSArgumentCompleter(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
+        public string PrivateLink { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the ipTag type: Example FirstPartyUsage.")]
+        public string PublicIpTagType { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets value of the IpTag associated with the public IP. Example HDInsight, SQL, Storage etc")]
+        public string PublicIpTag { get; set; }
+
+        [Parameter(HelpMessage = "A value to describe how the outbound dependencies of a HDInsight cluster are managed. 'Managed' means that the outbound dependencies are managed by the HDInsight service. 'External' means that the outbound dependencies are managed by a customer specific solution.")]
+        public string OutboundDependenciesManagedType { get; set; }
+
+        [Parameter(HelpMessage = "Enables HDInsight compute isolation feature.")]
+        public SwitchParameter EnableComputeIsolation { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the dedicated host sku for compute isolation.")]
+        public string ComputeIsolationHostSku { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the availability zones.")]
+        public string[] Zone { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the private link configuration.")]
+        public AzureHDInsightPrivateLinkConfiguration[] PrivateLinkConfiguration { get; set; }
 
 
         #endregion
@@ -399,7 +437,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (StorageAccountType == null || StorageAccountType == StorageType.AzureStorage)
             {
-                var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, this.DefaultContext.Environment.StorageEndpointSuffix);
+                var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, EnableSecureChannel, this.DefaultContext.Environment.StorageEndpointSuffix);
                 storageProfile.Storageaccounts.Add(azureStorageAccount);
             }
             else if (StorageAccountType == StorageType.AzureDataLakeStore)
@@ -408,7 +446,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             else if (StorageAccountType == StorageType.AzureDataLakeStorageGen2)
             {
-                var adlsgen2Account = ClusterCreateHelper.CreateAdlsGen2StorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageFileSystem, StorageAccountManagedIdentity, this.DefaultContext.Environment.StorageEndpointSuffix);
+                var adlsgen2Account = ClusterCreateHelper.CreateAdlsGen2StorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageFileSystem, EnableSecureChannel, StorageAccountManagedIdentity, this.DefaultContext.Environment.StorageEndpointSuffix);
                 storageProfile.Storageaccounts.Add(adlsgen2Account);
             }
 
@@ -439,6 +477,12 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ClusterCreateHelper.AddHiveMetastoreToConfigurations(HiveMetastore, clusterConfigurations);
             }
 
+            // Handle Custom Ambari Database
+            if (AmbariDatabase != null)
+            {
+                ClusterCreateHelper.AddCustomAmbariDatabaseToConfigurations(AmbariDatabase, clusterConfigurations);
+            }
+
             // Handle ADLSGen1 identity
             if (!string.IsNullOrEmpty(CertificatePassword))
             {
@@ -462,8 +506,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
+            bool isKafkaRestProxyEnable = kafkaRestProperties != null;
+            var defaultVmSizeConfigurations = GetDefaultVmsizesConfigurations(Location);
+
             // Compute profile contains headnode, workernode, zookeepernode, edgenode, kafkamanagementnode, idbrokernode, etc.
-            ComputeProfile computeProfile = ClusterCreateHelper.CreateComputeProfile(osProfile, vnetProfile, clusterScriptActions, ClusterType, ClusterSizeInNodes, HeadNodeSize, WorkerNodeSize, ZookeeperNodeSize, EdgeNodeSize, KafkaManagementNodeSize, EnableIDBroker.IsPresent);
+            ComputeProfile computeProfile = ClusterCreateHelper.CreateComputeProfile(osProfile, vnetProfile, clusterScriptActions, ClusterType, ClusterSizeInNodes, HeadNodeSize, WorkerNodeSize, ZookeeperNodeSize, EdgeNodeSize, isKafkaRestProxyEnable, KafkaManagementNodeSize, EnableIDBroker.IsPresent, defaultVmSizeConfigurations);
 
             // Handle SecurityProfile
             SecurityProfile securityProfile = ClusterCreateHelper.ConvertAzureHDInsightSecurityProfileToSecurityProfile(SecurityProfile, AssignedIdentity);
@@ -488,15 +535,15 @@ namespace Microsoft.Azure.Commands.HDInsight
                 clusterIdentity = new ClusterIdentity
                 {
                     Type = ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, ClusterIdentityUserAssignedIdentitiesValue>()
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
                 };
                 if (AssignedIdentity != null)
                 {
-                    clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new ClusterIdentityUserAssignedIdentitiesValue());
+                    clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new UserAssignedIdentity());
                 }
-                if (StorageAccountManagedIdentity != null)
+                if (StorageAccountManagedIdentity != null && !clusterIdentity.UserAssignedIdentities.ContainsKey(StorageAccountManagedIdentity))
                 {
-                    clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new ClusterIdentityUserAssignedIdentitiesValue());
+                    clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new UserAssignedIdentity());
                 }
             }
 
@@ -509,7 +556,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     KeyName = EncryptionKeyName,
                     KeyVersion = EncryptionKeyVersion,
                     VaultUri = EncryptionVaultUri,
-                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RSAOAEP,
+                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RSAOaep,
                     MsiResourceId = AssignedIdentity
                 };
             }
@@ -538,11 +585,38 @@ namespace Microsoft.Azure.Commands.HDInsight
                 workerNode.AutoscaleConfiguration = autoscaleParameter;
             }
 
+            // Handle relay outound and private link feature
+            NetworkProperties networkProperties = null;
+            if (ResourceProviderConnection != null || PrivateLink != null)
+            {
+                networkProperties = new NetworkProperties(null,resourceProviderConnection:ResourceProviderConnection, PrivateLink);
+            }
+            if (OutboundDependenciesManagedType != null && networkProperties != null)
+            {
+                networkProperties.OutboundDependenciesManagedType = OutboundDependenciesManagedType;
+            }
+            if (PublicIpTag != null && PublicIpTagType != null)
+            {
+                if(networkProperties == null)
+                {
+                    networkProperties = new NetworkProperties();
+                }
+                networkProperties.PublicIPTag = new IpTag(PublicIpTagType, PublicIpTag);
+            }
+
+            // Handle compute isolation properties
+            ComputeIsolationProperties computeIsolationProperties = null;
+            if (EnableComputeIsolation.IsPresent)
+            {
+                computeIsolationProperties = new ComputeIsolationProperties(EnableComputeIsolation.IsPresent, ComputeIsolationHostSku);
+            }
+
             // Construct cluster create parameter
             ClusterCreateParametersExtended createParams = new ClusterCreateParametersExtended
             {
                 Location = Location,
-                //Tags = Tags,  //To Do add this Tags parameter
+                //Tags = Tags, //To Do add this Tags parameter
+                Zones = Zone,
                 Properties = new ClusterCreateProperties
                 {
                     Tier = ClusterTier,
@@ -552,7 +626,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                         ComponentVersion = clusterComponentVersion,
                         Configurations = clusterConfigurations
                     },
-                    ClusterVersion = Version ?? "default",
+                    ClusterVersion = Version ?? DefaultClusterVersion,
                     KafkaRestProperties = kafkaRestProperties,
                     ComputeProfile = computeProfile,
                     OsType = OSType,
@@ -564,8 +638,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                     {
                         IsEncryptionInTransitEnabled = EncryptionInTransit
                     } : null,
-                    MinSupportedTlsVersion = MinSupportedTlsVersion
-
+                    MinSupportedTlsVersion = MinSupportedTlsVersion,
+                    NetworkProperties = networkProperties,
+                    ComputeIsolationProperties= computeIsolationProperties,
+                    PrivateLinkConfigurations = PrivateLinkConfiguration !=null ? PrivateLinkConfiguration.Select(item=> item.ToPrivateLinkConfiguration()).ToList(): null
                 },
                 Identity = clusterIdentity
             };
@@ -610,20 +686,20 @@ namespace Microsoft.Azure.Commands.HDInsight
                 return applicationId;
             }
 
-            GraphRbacManagementClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
-                DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
+            MicrosoftGraphClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(
+                DefaultProfile.DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
 
             graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
 
-            Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal sp = null;
+            MicrosoftGraphServicePrincipal sp = null;
             try
             {
-                sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
+                sp = graphClient.ServicePrincipals.GetServicePrincipal(ObjectId.ToString());
             }
-            catch (Microsoft.Azure.Graph.RBAC.Version1_6.Models.GraphErrorException e)
+            catch (Exception e)
             {
-                string errorMessage = e.Message + ". Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
-                throw new Microsoft.Azure.Graph.RBAC.Version1_6.Models.GraphErrorException(errorMessage);
+                string errorMessage =$"Can not find service princaipl per the parameter ObjectId:{ObjectId}, the error message is '{e.Message}'."+ " Please specify Application Id explicitly by providing ApplicationId parameter and retry.";
+                throw new AzPSArgumentException(errorMessage, nameof(ObjectId));
             }
 
             var spApplicationId = Guid.Empty;

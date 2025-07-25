@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator
 schema: 2.0.0
 ---
 
 # Remove-AzSqlInstanceActiveDirectoryAdministrator
 
 ## SYNOPSIS
-Removes an Azure AD administrator for SQL Managed Instance.
+Removes a Microsoft Entra administrator for SQL Managed Instance.
 
 ## SYNTAX
 
@@ -32,13 +32,16 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-Resource
 ```
 
 ## DESCRIPTION
-The **Remove-AzSqlInstanceActiveDirectoryAdministrator** cmdlet removes an Azure Active Directory (Azure AD) administrator for AzureSQL Managed Instance in the current subscription.
+The **Remove-AzSqlInstanceActiveDirectoryAdministrator** cmdlet removes a Microsoft Entra administrator for AzureSQL Managed Instance in the current subscription.
 
 ## EXAMPLES
 
 ### Example 1: Remove an administrator
+```powershell
+Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
 ```
-PS C:\>Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
+
+```output
 Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on managed instance 'ManagedInstanceName01'? 
 [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"): Y 
 
@@ -47,11 +50,14 @@ ResourceGroupName InstanceName          DisplayName ObjectId
 ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command removes the Azure AD administrator for the managed instance named ManagedInstanceName01 associated with the resource group ResourceGroup01.
+This command removes the Microsoft Entra administrator for the managed instance named ManagedInstanceName01 associated with the resource group ResourceGroup01.
 
 ### Example 2
 ```powershell
-PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance1" | Remove-AzSqlInstanceActiveDirectoryAdministrator -Confirm -PassThru
+Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance1" | Remove-AzSqlInstanceActiveDirectoryAdministrator -Confirm -PassThru
+```
+
+```output
 Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on managed instance 'ManagedInstanceName01'? 
 [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"): Y 
 
@@ -60,11 +66,14 @@ ResourceGroupName InstanceName          DisplayName ObjectId
 ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command removes the Azure AD administrator from the managed instance object.
+This command removes the Microsoft Entra administrator from the managed instance object.
 
 ### Example 3
 ```powershell
-PS C:\>Get-AzSqlInstance -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance1" | Remove-AzSqlInstanceActiveDirectoryAdministrator -Confirm -PassThru
+Get-AzSqlInstance -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance1" | Remove-AzSqlInstanceActiveDirectoryAdministrator -Confirm -PassThru
+```
+
+```output
 Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on managed instance 'ManagedInstanceName01'? 
 [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"): Y 
 
@@ -73,7 +82,7 @@ ResourceGroupName InstanceName          DisplayName ObjectId
 ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command removes the Azure AD administrator using managed instance resource identifier.
+This command removes the Microsoft Entra administrator using managed instance resource identifier.
 
 ## PARAMETERS
 

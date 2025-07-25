@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/revoke-azsnapshotaccess
+online version: https://learn.microsoft.com/powershell/module/az.compute/revoke-azsnapshotaccess
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Revokes an access to a snapshot.
 
 ```
 Revoke-AzSnapshotAccess [-ResourceGroupName] <String> [-SnapshotName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,8 @@ The **Revoke-AzSnapshotAccess** cmdlet revokes an access to a snapshot.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Revoke-AzSnapshotAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01'
+```powershell
+Revoke-AzSnapshotAccess -ResourceGroupName 'ResourceGroup01' -SnapshotName 'Snapshot01'
 ```
 
 Revoke the access to the snapshot named 'Snapshot01' in the resource group named 'ResourceGroup01'

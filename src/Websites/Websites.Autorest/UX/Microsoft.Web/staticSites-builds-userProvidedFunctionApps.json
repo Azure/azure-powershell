@@ -1,0 +1,105 @@
+{
+  "resourceType": "staticSites/builds/userProvidedFunctionApps",
+  "apiVersion": "2020-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.websites"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStaticWebAppUserProvidedFunctionApp",
+      "description": "Description for Gets the details of the user provided function app registered with a static site build",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps/{functionAppName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappuserprovidedfunctionapp"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EnvironmentName <String>",
+              "-FunctionAppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Description for Gets the details of the user provided function app registered with a static site build",
+          "parameters": [
+            {
+              "name": "-EnvironmentName",
+              "value": "[Path.environmentName]"
+            },
+            {
+              "name": "-FunctionAppName",
+              "value": "[Path.functionAppName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Unregister-AzStaticWebAppBuildUserProvidedFunctionApp",
+      "description": "Description for Detach the user provided function app from the static site build",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps/{functionAppName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappbuilduserprovidedfunctionapp"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EnvironmentName <String>",
+              "-FunctionAppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Description for Detach the user provided function app from the static site build",
+          "parameters": [
+            {
+              "name": "-EnvironmentName",
+              "value": "[Path.environmentName]"
+            },
+            {
+              "name": "-FunctionAppName",
+              "value": "[Path.functionAppName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

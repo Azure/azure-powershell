@@ -1,63 +1,69 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/update-azsqlvmgroup
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvmgroup
 schema: 2.0.0
 ---
 
 # Update-AzSqlVMGroup
 
 ## SYNOPSIS
-Updates a sql virtual machine group.
+Updates SQL virtual machine group.
 
 ## SYNTAX
 
-### Name (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzSqlVMGroup [-AsJob] [-ClusterOperatorAccount <String>] [-SqlServiceAccount <String>]
- [-StorageAccountUrl <String>] [-StorageAccountPrimaryKey <SecureString>] [-DomainFqdn <String>]
- [-OuPath <String>] [-FileShareWitnessPath <String>] [-ClusterBootstrapAccount <String>] [-Tag <Hashtable>]
- [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>]
+ [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>] [-FileShareWitnessPath <String>]
+ [-OuPath <String>] [-SqlServiceAccount <String>] [-StorageAccountPrimaryKey <SecureString>]
+ [-StorageAccountUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzSqlVMGroup -InputObject <ISqlVirtualMachineIdentity> [-ClusterBootstrapAccount <String>]
+ [-ClusterOperatorAccount <String>] [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>]
+ [-FileShareWitnessPath <String>] [-OuPath <String>] [-SqlServiceAccount <String>]
+ [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### InputObject
-```
-Update-AzSqlVMGroup [-InputObject] <AzureSqlVMGroupModel> [-AsJob] [-ClusterOperatorAccount <String>]
- [-SqlServiceAccount <String>] [-StorageAccountUrl <String>] [-StorageAccountPrimaryKey <SecureString>]
- [-DomainFqdn <String>] [-OuPath <String>] [-FileShareWitnessPath <String>] [-ClusterBootstrapAccount <String>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceId
-```
-Update-AzSqlVMGroup [-ResourceId] <String> [-AsJob] [-ClusterOperatorAccount <String>]
- [-SqlServiceAccount <String>] [-StorageAccountUrl <String>] [-StorageAccountPrimaryKey <SecureString>]
- [-DomainFqdn <String>] [-OuPath <String>] [-FileShareWitnessPath <String>] [-ClusterBootstrapAccount <String>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The Update-AzSqlVMGroup cmdlet updates a sql virtual machine group.
+Updates SQL virtual machine group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $tags = @{'key'='value'}
-PS C:\> $group = Update-AzSqlVMGroup -InputObject $group -Tags $tags
-PS C:\>	$group.Tags
-Name                           Value
-----                           -----
-key                            value
+Update-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -ClusterBootstrapAccount 'newbootstrapuser@yourdomain.com' -ClusterOperatorAccount 'newoperatoruser@yourdomain.com' -Tag @{'newkey'='newvalue'}
 ```
 
-Updates the tags of a sql virtual machine group.
+```output
+Location Name           ResourceGroupName
+-------- ----           -----------------
+eastus   sqlvmgroup01	ResourceGroup01
+```
+
+### Example 2
+```powershell
+$group = Get-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01'
+$group | Update-AzSqlVMGroup -ClusterBootstrapAccount 'newbootstrapuser@yourdomain.com' -ClusterOperatorAccount 'newoperatoruser@yourdomain.com' -Tag @{'newkey'='newvalue'}
+```
+
+```output
+Location Name           ResourceGroupName
+-------- ----           -----------------
+eastus   sqlvmgroup01	ResourceGroup01
+```
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background.
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -72,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterBootstrapAccount
-Name used for creating cluster
+Account name used for creating cluster (at minimum needs permissions to 'Create Computer Objects' in domain).
 
 ```yaml
 Type: System.String
@@ -87,10 +93,26 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterOperatorAccount
-Name used for operating cluster
+Account name used for operating cluster i.e.
+will be part of administrators group on all the participating virtual machines in the cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterSubnetType
+Cluster subnet type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType
 Parameter Sets: (All)
 Aliases:
 
@@ -105,9 +127,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -117,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -DomainFqdn
-Fully qualified name of the domain
+Fully qualified name of the domain.
 
 ```yaml
 Type: System.String
@@ -132,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileShareWitnessPath
-Optional path for fileshare witness
+Optional path for fileshare witness.
 
 ```yaml
 Type: System.String
@@ -147,37 +169,53 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-SQL virtual machine object.
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
-Parameter Sets: InputObject
-Aliases: SqlVMGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
+Parameter Sets: UpdateViaIdentity
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-SQL virtual machine group name.
+Name of the SQL virtual machine group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases: SqlVMGroupName
+Parameter Sets: UpdateExpanded
+Aliases: SqlVirtualMachineGroupName, SqlVMGroupName
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -OuPath
-Organizational Unit path in which the nodes and cluster will be present
+Organizational Unit path in which the nodes and cluster will be present.
 
 ```yaml
 Type: System.String
@@ -192,37 +230,23 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-SQL virtual machine group resource id.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceId
-Aliases: SqlVMGroupId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -SqlServiceAccount
-Name under which SQL service will run on all participating SQL virtual machines in the cluster
+Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
 
 ```yaml
 Type: System.String
@@ -237,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountPrimaryKey
-Primary key of the witness storage account
+Primary key of the witness storage account.
 
 ```yaml
 Type: System.Security.SecureString
@@ -252,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountUrl
-Primary key of the witness storage account
+Fully qualified ARM resource id of the witness storage account.
 
 ```yaml
 Type: System.String
@@ -266,8 +290,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionId
+Subscription ID that identifies an Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
-The tags to associate with the SQL virtual machine group.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -317,13 +356,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
 
 ## NOTES
 

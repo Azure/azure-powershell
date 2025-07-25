@@ -80,6 +80,14 @@ namespace Commands.StorageSync.Interop.Enums
         /// </summary>
         EnsureSyncServerCertificateFailed,
         /// <summary>
+        /// The reset server certificate settings registry failed
+        /// </summary>
+        ResetServerCertificateSettingsRegistryFailed,
+        /// <summary>
+        /// The get server type failed
+        /// </summary>
+        GetServerTypeFailed,
+        /// <summary>
         /// The get sync server certificate failed
         /// </summary>
         GetSyncServerCertificateFailed,
@@ -87,6 +95,10 @@ namespace Commands.StorageSync.Interop.Enums
         /// The get sync server identifier failed
         /// </summary>
         GetSyncServerIdFailed,
+        /// <summary>
+        /// Check is in cluster failed
+        /// </summary>
+        CheckIsInClusterFailed,
         /// <summary>
         /// The get cluster information failed
         /// </summary>

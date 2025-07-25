@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 48D6288A-EBE1-44FD-B871-80A0681BBEA3
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlservercommunicationlink
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlservercommunicationlink
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Remove-AzSqlServerCommunicationLink** cmdlet deletes a server-to-server co
 ## EXAMPLES
 
 ### Example 1: Delete a communication link
-```
-PS C:\>Remove-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
+```powershell
+Remove-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
 ```
 
 This command deletes a server-to-server communication link named Link01 on ContosoServer17.
@@ -160,4 +160,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzSqlServerCommunicationLink](./New-AzSqlServerCommunicationLink.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

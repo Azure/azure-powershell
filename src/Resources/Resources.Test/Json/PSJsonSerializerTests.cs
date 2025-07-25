@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
     using System.Collections;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Newtonsoft.Json.Linq;
@@ -90,7 +91,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
 
             string result = PSJsonSerializer.Serialize(hashtable);
 
-            JToken parsedResult = JToken.Parse(result);
+            JToken parsedResult = result.FromJson<JToken>();
+
             JToken expected = JToken.FromObject(new
             {
                 foo = "fooValue",

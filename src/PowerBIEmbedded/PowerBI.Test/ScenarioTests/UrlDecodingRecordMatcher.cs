@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using Microsoft.Azure.Commands.TestFx.Recorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests

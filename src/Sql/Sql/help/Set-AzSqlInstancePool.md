@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlinstancepool
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqlinstancepool
 schema: 2.0.0
 ---
 
@@ -15,18 +15,21 @@ Sets properties for an Azure SQL Instance pool.
 ### DefaultSetInstancePoolParameterSet (Default)
 ```
 Set-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String> [-LicenseType <String>] [-Tag <Hashtable>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSetInstancePoolParameterSet
 ```
 Set-AzSqlInstancePool [-InputObject] <AzureSqlInstancePoolModel> [-LicenseType <String>] [-Tag <Hashtable>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSetInstancePoolParameterSet
 ```
-Set-AzSqlInstancePool [-ResourceId] <String> [-LicenseType <String>] [-Tag <Hashtable>] [-AsJob]
+Set-AzSqlInstancePool [-ResourceId] <String> [-LicenseType <String>] [-Tag <Hashtable>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,27 +40,35 @@ The **Set-AzSqlInstancePool** cmdlet modifies properties of an Azure SQL Instanc
 
 ### Example 1 : Set an instance pool license type
 ```powershell
-PS C:\> Set-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancePool0 -LicenseType LicenseIncluded
-ResourceGroupName : resourcegroup01
-Type              : Microsoft.Sql/instancePools
-Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
-InstancePoolName  : instancePool0
-SubnetId          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-VCores            : 8
-ComputeGeneration : Gen5
-Edition           : GeneralPurpose
-Tags              :
-Sku               : Microsoft.Azure.Management.Sql.Models.Sku
-Location          : canadacentral
-LicenseType       : LicenseIncluded
+Set-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancePool0 -LicenseType LicenseIncluded
+```
+
+```output
+ResourceGroupName          : resourcegroup01
+Type                       : Microsoft.Sql/instancePools
+Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
+InstancePoolName           : instancePool0
+SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+VCores                     : 8
+ComputeGeneration          : Gen5
+Edition                    : GeneralPurpose
+Tags                       :
+Sku                        : Microsoft.Azure.Management.Sql.Models.Sku
+Location                   : canadacentral
+LicenseType                : LicenseIncluded
+DnsZone                    : 1234567890
+MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
 ```
 
 This command sets the license type and/or tags for an instance pool named instancePool0.
 
 ### Example 2 : Set an instance pool license type using an instance pool object
 ```powershell
-PS C:\> $instancePool = Get-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancePool0
-PS C:\> Set-AzSqlInstancePool -InputObject $instancePool -LicenseType LicenseIncluded
+$instancePool = Get-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancePool0
+Set-AzSqlInstancePool -InputObject $instancePool -LicenseType LicenseIncluded
+```
+
+```output
 ResourceGroupName : resourcegroup01
 Type              : Microsoft.Sql/instancePools
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
@@ -70,13 +81,18 @@ Tags              :
 Sku               : Microsoft.Azure.Management.Sql.Models.Sku
 Location          : canadacentral
 LicenseType       : LicenseIncluded
+DnsZone                    : 1234567890
+MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
 ```
 
 This command sets the license type and/or tags for an instance pool using an instance pool object.
 
 ### Example 3 : Set an instance pool license type using an instance pool resource id
 ```powershell
-PS C:\> Set-AzSqlInstancePool -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0" -LicenseType LicenseIncluded
+Set-AzSqlInstancePool -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0" -LicenseType LicenseIncluded
+```
+
+```output
 ResourceGroupName : resourcegroup01
 Type              : Microsoft.Sql/instancePools
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
@@ -89,6 +105,8 @@ Tags              :
 Sku               : Microsoft.Azure.Management.Sql.Models.Sku
 Location          : canadacentral
 LicenseType       : LicenseIncluded
+DnsZone                    : 1234567890
+MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
 ```
 
 This command sets the license type and/or tags for an instance pool named instancePool0.

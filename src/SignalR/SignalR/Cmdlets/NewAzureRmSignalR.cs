@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             Mandatory = false,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
         [ValidateNotNullOrEmpty()]
+        [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(

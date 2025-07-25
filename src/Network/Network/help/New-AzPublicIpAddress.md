@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 8D84F81A-F6B5-413D-B349-50947FCD5CFC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azpublicipaddress
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azpublicipaddress
 schema: 2.0.0
 ---
 
@@ -14,11 +14,13 @@ Creates a public IP address.
 ## SYNTAX
 
 ```
-New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
- -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>] [-IpTag <PSPublicIpTag[]>]
- [-PublicIpPrefix <PSPublicIpPrefix>] [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
- [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
+ [-Sku <String>] [-Tier <String>] -AllocationMethod <String> [-IpAddressVersion <String>]
+ [-DomainNameLabel <String>] [-DomainNameLabelScope <PSDomainNameLabelScopeType>] [-IpTag <PSPublicIpTag[]>]
+ [-PublicIpPrefix <PSPublicIpPrefix>] [-DdosProtectionMode <String>] [-DdosProtectionPlanId <String>]
+ [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-IpAddress <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +53,7 @@ $dnsPrefix.$location.cloudapp.azure.com.
 ### Example 3: Create a new public IP address with IpTag
 ```powershell
 $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
-$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTags $ipTag
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTag $ipTag
 ```
 
 This command creates a new public IP address resource.A DNS record is created for
@@ -64,14 +66,43 @@ and passed as input through -IpTags.
 
 ### Example 4: Create a new public IP address from a Prefix
 ```powershell
-$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location
--PublicIpPrefix publicIpPrefix -Sku Standard
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -PublicIpPrefix $publicIpPrefix -Sku Standard
 ```
 
 This command creates a new public IP address resource. A DNS record is created for
 $dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of this resource. A
 public IP address is immediately allocated to this resource from the publicIpPrefix specified.
 This option is only supported for the 'Standard' Sku and 'Static' AllocationMethod.
+
+### Example 5: Create a specific public IP address from a BYOIP Prefix
+```powershell
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -Location $location -IpAddress 0.0.0.0 -PublicIpPrefix $publicIpPrefix -Sku Standard
+```
+
+This command creates a new public IP address resource with specific IP. NRP would check if the
+given IP is inside the PublicIpPrefix and if the given PublicIpPrefix is BYOIP PublicIpPrefix.
+the given public IP address is immediately allocated to this resource from the publicIpPrefix
+specified. This option is only supported for the 'Standard' Sku and 'Static' AllocationMethod
+and BYOIP PublicIpPrefix.
+
+### Example 6: Create a new global public IP address
+```powershell
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $domainNameLabel -Location $location -Sku Standard -Tier Global
+```
+
+This command creates a new global public IP address resource.A DNS record is created for
+$dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of this resource. A
+global public IP address is immediately allocated to this resource.
+This option is only supported for the 'Standard' Sku and 'Static' AllocationMethod.
+
+### Example 7: Create a public IP address with a DomainNameLabelScope
+```powershell
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -DomainNameLabelScope $hasedReusePolicy -Location $location
+```
+
+This command creates a new public IP address resource. With the -DomainNameLabelScope parameter, Azure
+creates a DNS record with a hashed value in FQDN for the public IP address allocated to this resource 
+with the policy suggested by $hasedReusePolicy.
 
 ## PARAMETERS
 
@@ -107,6 +138,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DdosProtectionMode
+The DdosProtectionMode to use for Public IP address
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: VirtualNetworkInherited, Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DdosProtectionPlanId
+The DdosProtectionPlan id to attach to the Public IP address
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -124,6 +186,37 @@ Accept wildcard characters: False
 
 ### -DomainNameLabel
 Specifies the relative DNS name for a public IP address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DomainNameLabelScope
+Specifies the HashedReusePolicy for DNS name for a public IP address.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Network.Models.PSDomainNameLabelScopeType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: TenantReuse, SubscriptionReuse, ResourceGroupReuse, NoReuse
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+The name of the extended location.
 
 ```yaml
 Type: System.String
@@ -157,6 +250,21 @@ Specifies the idle time-out, in minutes.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpAddress
+Specifies the IP address when creating a BYOIP publicIpAddress.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +314,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -280,7 +388,7 @@ The public IP Sku name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard
+Accepted values: Basic, Standard, StandardV2
 
 Required: False
 Position: Named
@@ -297,6 +405,22 @@ Key-value pairs in the form of a hash table. For example:
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tier
+The public IP Sku Tier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Regional, Global
 
 Required: False
 Position: Named
@@ -352,7 +476,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

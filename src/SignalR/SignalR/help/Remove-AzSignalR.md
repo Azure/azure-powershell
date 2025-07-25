@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/remove-azsignalr
+online version: https://learn.microsoft.com/powershell/module/az.signalr/remove-azsignalr
 schema: 2.0.0
 ---
 
@@ -15,19 +15,21 @@ Remove a SignalR service.
 ### ResourceGroupParameterSet (Default)
 ```
 Remove-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzSignalR -InputObject <PSSignalRResource> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,16 +37,18 @@ Remove a SignalR service.
 
 ## EXAMPLES
 
-### Remove a SignalR service
+### Example 1: Remove a SignalR service
+```powershell
+Remove-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 ```
-PS C:\> Remove-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 
+```output
 True
 ```
 
-### Remove all SignalR service from pipe
-```
-PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup | Remove-AzSignalR
+### Example 2: Remove all SignalR service from pipe
+```powershell
+Get-AzSignalR -ResourceGroupName myResourceGroup | Remove-AzSignalR
 ```
 
 ## PARAMETERS
@@ -191,10 +195,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS

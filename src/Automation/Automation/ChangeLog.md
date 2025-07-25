@@ -19,6 +19,82 @@
 -->
 ## Upcoming Release
 
+## Version 1.11.1
+* Fixed Bug: Start-AzAutomationRunbook throws object reference error when the automation account is not available in the subscription 
+
+## Version 1.11.0
+* Upgraded nuget package to signed package.
+
+## Version 1.10.0
+* Updated Module operation cmdlets to support Powershell 7.2
+
+## Version 1.9.1
+* Fixed bug: Runbooks Name Pattern failures. 
+
+## Version 1.9.0
+* Updated Example: Start-AzAutomationRunbook should pass ordered dictionary for parameters [#20408]
+
+## Version 1.8.0
+* Added cmdlets for Hybrid Runbook Worker group management
+  * `Remove-AzAutomationHybridRunbookWorker`
+  * `Remove-AzAutomationHybridRunbookWorkerGroup`
+  * `Set-AzAutomationHybridRunbookWorkerGroup`
+  * `Get-AzAutomationHybridRunbookWorker`
+  * `Get-AzAutomationHybridRunbookWorkerGroup`
+  * `Move-AzAutomationHybridRunbookWorker`
+  * `New-AzAutomationHybridRunbookWorker`
+  * `New-AzAutomationHybridRunbookWorkerGroup`
+
+## Version 1.7.4
+* Fixed bug: Export-AzAutomationRunbook no longer adds extra '\' to file names [#11101]
+* Fixed bug: Get-AzAutomationDscCompilationJobOutput returns complete summaries [#12322]
+* Fixed bug: Get-AzAutomationDscNode [#10404]
+* Fixed bug: Get-AzAutomationJob fails for some jobIds
+
+## Version *
+* Added logic of returning error if insufficient user permissions are there for `GetAgentRegistrationInfo`
+
+## Version 1.7.3
+* `New-AzAutomationSchedule` allows defining StartTime with offsets.
+*  Fixed bug: updated 'Set-AzAutomationModule' to use PUT call while updating modules with specific versions   [#12552]
+
+## Version 1.7.2
+* Fixed example in reference doc for `Remove-AzAutomationHybridWorkerGroup`
+
+## Version 1.7.1
+* Fixed bug: Add Schedule name validation in New-AzAutomationSchedule
+
+## Version 1.7.1
+* Fixed bug: Closing in input file handle in Import-AzAutomationRunbook
+
+## Version 1.7.0
+* Added support for User Assigned Identities and PublicNetworkAccess flag
+
+## Version 1.6.0
+* Added support for Customer Managed Key Encryption with System Assigned Identity
+* Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
+
+## Version 1.5.2
+* Fixed the issue for starting Python3 runbooks with parameters
+* Fixed time zone issue while creating an update deployment schedule.
+
+## Version 1.5.1
+* Fixed te issue that complex object cannot be serialized correctly. [#14431]
+
+## Version 1.5.0
+* Fixed the issue that string cannot be serialized correctly. [#14215]
+* Added Support for Python3 Runbook Type
+
+## Version 1.4.3
+* Fixed the issue of processing `PSCustomObject` and `Array`.
+
+## Version 1.4.2
+* Fixed issue where description was not populated for update management schedules
+
+## Version 1.4.1
+* Fixed issue that parameters of `Start-AzAutomationRunbook` cannot convert PSObject wrapped string to JSON string [#13240]
+* Fixed location completer for New-AzAutomationUpdateManagementAzureQuery cmdlet
+
 ## Version 1.4.0
 * Added `-RunOn` parameters to `Set-AzAutomationWebhook` to specify a Hybrid Worker Group
 
@@ -71,7 +147,7 @@
     * Reboot Setting
 
 ## Version 1.1.2
-* Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+* Fixed issue when retrieving certain monthly schedules in several Azure Automation cmdlets
 * Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes
 
 ## Version 1.1.1

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 87A79215-5688-474D-822A-6B84B3D10E3F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/remove-azcognitiveservicesaccount
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/remove-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -13,9 +13,17 @@ Deletes a Cognitive Services account.
 
 ## SYNTAX
 
+### AccountParameterSet (Default)
 ```
 Remove-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeletedAccountParameterSet
+```
+Remove-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-InRemovedState]
+ [-Location] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,8 +35,7 @@ The **Remove-AzCognitiveServicesAccount** cmdlet deletes the specified Cognitive
 This command doesn't return anything.
 
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
-PS C:\>
+Remove-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
 ```
 
 ## PARAMETERS
@@ -58,6 +65,36 @@ Aliases:
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to only show the deleted accounts in the output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DeletedAccountParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Cognitive Services Account Location.
+
+```yaml
+Type: System.String
+Parameter Sets: DeletedAccountParameterSet
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

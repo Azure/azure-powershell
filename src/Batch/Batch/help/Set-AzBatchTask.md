@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 6A6D6C7D-EED7-4AD4-ACE6-BFA64404455E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchtask
+online version: https://learn.microsoft.com/powershell/module/az.batch/set-azbatchtask
 schema: 2.0.0
 ---
 
@@ -26,11 +26,11 @@ Modify the properties of that object, and then use the current cmdlet to commit 
 ## EXAMPLES
 
 ### Example 1: Update a task
-```
-PS C:\>$Task = Get-AzBatchTask -JobId "Job16" -Id "Task22" -BatchContext $Context
-PS C:\> $Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan}::FromDays(5), [TimeSpan]::FromDays(2), 3)
-PS C:\> $Task.Constraints = $Constraints
-PS C:\> Set-AzBatchTask -Task $Task -BatchContext $Context
+```powershell
+$Task = Get-AzBatchTask -JobId "Job16" -Id "Task22" -BatchContext $Context
+$Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan]::FromDays(5), [TimeSpan]::FromDays(2), 3)
+$Task.Constraints = $Constraints
+Set-AzBatchTask -Task $Task -BatchContext $Context
 ```
 
 The first command gets a task by using **Get-AzBatchTask**, and then stores it in the $Task variable.
@@ -41,7 +41,7 @@ The final command updates the Batch service to match the local object in $Task.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

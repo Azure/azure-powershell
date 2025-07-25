@@ -1,42 +1,50 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
-online version:https://docs.microsoft.com/en-us/powershell/module/az.subscription/remove-azsubscriptionalias
+online version: https://learn.microsoft.com/powershell/module/az.subscription/remove-azsubscriptionalias
 schema: 2.0.0
 ---
 
 # Remove-AzSubscriptionAlias
 
 ## SYNOPSIS
-Deletes the subscription alias
+Delete Alias.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-Remove-AzSubscriptionAlias -AliasName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSubscriptionAlias -AliasName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzSubscriptionAlias -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSubscriptionAlias** cmdlet removes the subscription alias
+Delete Alias.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Delete Alias.
 ```powershell
-PS C:\> Remove-AzSubscriptionAlias -AliasName "ExistingAliasName"
+Remove-AzSubscriptionAlias -AliasName test-subscription
 ```
 
-Deletes the subscription alias
+Delete Alias.
 
 ## PARAMETERS
 
 ### -AliasName
-Alias for the subscription
+AliasName is the name for the subscription creation request.
+Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -46,13 +54,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AsJob
-Run cmdlet in the background
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases:
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -61,13 +70,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -112,11 +136,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription
+### System.Boolean
 
 ## NOTES
 

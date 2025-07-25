@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 DeploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName
             };
 
-            var deploymentOperations = ResourceManagerSdkClient.ListDeploymentOperationsAtManagementGroup(
+            var deploymentOperations = NewResourceManagerSdkClient.ListDeploymentOperationsAtManagementGroup(
                 options.ManagementGroupId, options.DeploymentName, this.OperationId);
 
             WriteObject(deploymentOperations, true);

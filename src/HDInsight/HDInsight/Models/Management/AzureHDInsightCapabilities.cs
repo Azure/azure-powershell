@@ -20,15 +20,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightCapabilities
     {
-        public AzureHDInsightCapabilities(CapabilitiesResult capabilitiesResult)
+        public AzureHDInsightCapabilities(CapabilitiesResult capabilitiesResult, BillingResponseListResult billingResponseListResult)
         {
             this.Versions = capabilitiesResult?.Versions?.ToDictionary(item => item.Key, item => new AzureHDInsightVersionsCapability(item.Value));
 
             this.Regions = capabilitiesResult?.Regions?.ToDictionary(item => item.Key, item => new AzureHDInsightRegionsCapability(item.Value));
 
-            this.VmSizes = capabilitiesResult?.VmSizes?.ToDictionary(item => item.Key, item => new AzureHDInsightVmSizesCapability(item.Value));
+            this.VmSizes = billingResponseListResult?.VMSizes;
 
-            this.VmSizeFilters = capabilitiesResult?.VmSizeFilters?.Select(val => new AzureHDInsightVmSizeCompatibilityFilter(val)).ToList();
+            this.VmSizeFilters = billingResponseListResult?.VMSizeFilters?.Select(val => new AzureHDInsightVmSizeCompatibilityFilter(val)).ToList();
 
             this.Features = capabilitiesResult?.Features;
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         /// <summary>
         /// The available vm sizes.
         /// </summary>
-        public IDictionary<string, AzureHDInsightVmSizesCapability> VmSizes { get; set; }
+        public IList<string> VmSizes { get; set; }
 
         /// <summary>
         /// The vmsize filters.

@@ -35,8 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <summary>
         /// Constructs a firewall rule adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlCapabilitiesAdapter(IAzureContext context)
         {
             Context = context;
@@ -121,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <summary>
         /// Converts from an API object to a PowerShell object
         /// </summary>
-        /// <param name="e">The object to transform</param>
+        /// <param name="m">The object to transform</param>
         /// <returns>The converted database max size capability model</returns>
         private MaxSizeRangeCapabilityModel CreateSupportedMaxSizeModel(Management.Sql.Models.MaxSizeRangeCapability m)
         {

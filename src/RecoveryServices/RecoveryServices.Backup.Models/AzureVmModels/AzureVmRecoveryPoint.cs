@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Identifies whether this recovery point represents 
         /// an encrypted VM at the time of backup.
         /// </summary>
-        public bool EncryptionEnabled { get; set; }
+        public bool EncryptionEnabled { get; set; }        
 
         /// <summary>
         /// Identifies whether an ILR session is already active 
@@ -65,9 +67,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public bool OriginalSAEnabled { get; set; }
 
+        /// <summary>
+        /// Zone pinned information for the Recovery point
+        /// </summary>
+        public IList<string> Zones { get; set; }
+
+        /// <summary>
+        /// Recovery Type information for Recovery point: "Vault", "Snapshot", "Snapshot and Vault" 
+        /// </summary>
+        public RecoveryPointTier RecoveryPointTier;
+
+        /// <summary>
+        /// Rehydration expiry time
+        /// </summary>
+        public DateTime? RehydrationExpiryTime;
+
+        /// <summary>
+        /// Recovery point move readiness info
+        /// </summary>
+        public IDictionary<string, RecoveryPointMoveReadinessInfo> RecoveryPointMoveReadinessInfo;
+        
+        /// <summary>
+        /// Gets or sets extended location of the VM recovery point,
+        /// should be null if VM is in public cloud
+        /// </summary>        
+        public ExtendedLocation ExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Identifies whether any of the disks in the VM are using
+        /// Private access network setting
+        /// </summary>
+        public bool? IsPrivateAccessEnabledOnAnyDisk { get; set; }
+
         public AzureVmRecoveryPoint()
         {
 
         }
+    }
+
+    public class RecoveryPointMoveReadinessInfo
+    {
+        /// <summary>
+        /// determines the move readiness of a recovery point
+        /// </summary>
+        public bool? IsReadyForMove { get; set; }
+
+        /// <summary>
+        /// additional move message from service
+        /// </summary>
+        public string AdditionalInfo { get; set; }
+
     }
 }

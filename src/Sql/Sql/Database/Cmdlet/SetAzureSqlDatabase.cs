@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +17,15 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -225,15 +228,107 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.",
             ParameterSetName = VcoreDatabaseParameterSet)]
-        public int ReadReplicaCount { get; set; }
+        [Alias("ReadReplicaCount")]
+        public int HighAvailabilityReplicaCount { get; set; }
 
         /// <summary>
         /// Gets or sets the database backup storage redundancy.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
-        [ValidateSet("Local", "Zone", "Geo")]
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone, Geo and GeoZone.")]
+        [ValidateSet("Local", "Zone", "Geo", "GeoZone")]
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo and Named.")]
+        [ValidateSet("Named", "Geo")]
+        public string SecondaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maintenance configuration id for the database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the SQL Database.")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The encryption protector key for SQL Database.")]
+        public string EncryptionProtector { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of user assigned identity for the SQL Database.")]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys for the SQL Database.")]
+        public string[] KeyList { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys to remove from the SQL Database.")]
+        public string[] KeysToRemove { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the preferred enclave type requested on the database.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The preferred enclave type for the Azure Sql database. Possible values are Default and VBS.")]
+        [PSArgumentCompleter(
+            "Default",
+            "VBS")]
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The AKV Key Auto Rotation status")]
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value indicating if free limit will be used on this database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Use free limit on this database.")]
+        public SwitchParameter UseFreeLimit { get; set; }
+
+        /// <summary>
+        /// Gets or sets the exhaustion behavior of database if free limit is selected
+        /// </summary>
+        [Parameter(Mandatory = false,
+        HelpMessage = "Exhaustion behavior of free limit database.")]
+        [PSArgumentCompleter(
+            "AutoPause",
+            "BillOverUsage")]
+        public string FreeLimitExhaustionBehavior { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not customer controlled manual cutover needs to be
+        /// done during Update Database operation to Hyperscale tier.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Use Manual Cutover for migrating to Hyperscale.")]
+        public SwitchParameter ManualCutover { get; set; }
+
+        /// <summary>
+        /// Gets or sets to trigger customer controlled manual cutover during the wait
+        /// state while Scaling operation is in progress.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Trigger Cutover for migrating to Hyperscale.")]
+        public SwitchParameter PerformCutover { get; set; }
+
 
         /// <summary>
         /// Overriding to add warning message
@@ -246,9 +341,32 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
                 }
             }
+
+            // Adding Check to display info message to customer if they are trying to Migrate db with GeoDr link to Hyperscale sku (Forward Migration).
+            //
+            var database = ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
+
+            if (database != null && !string.IsNullOrEmpty(database.SkuName))
+            {
+                string currentSku = database.SkuName;
+                string targetSku = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName)
+                    ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition)
+                    : RequestedServiceObjectiveName;
+                bool isHyperscalePool = ModelAdapter.CheckIfHyperscalePool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);
+                bool isForwardMigration = !currentSku.Contains("HS") &&
+                         ((targetSku != null && targetSku.Contains("HS")) || isHyperscalePool);
+
+                // Check if source database has GeoDr Link
+                //
+                if (isForwardMigration && ModelAdapter.CheckIfDatabaseHasGeoDrLink(this.ResourceGroupName, this.ServerName, this.DatabaseName))
+                {
+                    WriteInformation(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ForwardMigrationWithGeoDRInfo));
+                }
+            }
+
             base.ExecuteCmdlet();
         }
 
@@ -258,8 +376,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
         {
+            ODataQuery<Management.Sql.Models.Database> oDataQuery = new ODataQuery<Management.Sql.Models.Database>();
+
+            oDataQuery.Expand = "keys";
+
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName)
+                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, oDataQuery)
             };
         }
 
@@ -280,13 +402,24 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ElasticPoolName = ElasticPoolName,
                 Location = model.FirstOrDefault().Location,
-                ReadScale = ReadScale,
+                ReadScale = this.IsParameterBound(p => p.ReadScale) ? ReadScale : (DatabaseReadScale?)null,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
-                ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
-                BackupStorageRedundancy = BackupStorageRedundancy,
+                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
+                RequestedBackupStorageRedundancy = BackupStorageRedundancy,
+                SecondaryType = SecondaryType,
+                MaintenanceConfigurationId = MaintenanceConfigurationId,
+                PreferredEnclaveType = PreferredEnclaveType,
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
+                EncryptionProtector = this.EncryptionProtector ?? model.FirstOrDefault().EncryptionProtector,
+                FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null,
+                UseFreeLimit = this.IsParameterBound(p => p.UseFreeLimit) ? UseFreeLimit.ToBool() : (bool?)null,
+                FreeLimitExhaustionBehavior = this.FreeLimitExhaustionBehavior,
+                ManualCutover = this.IsParameterBound(p => p.ManualCutover) ? ManualCutover.ToBool() : (bool?)null,
+                PerformCutover = this.IsParameterBound(p => p.PerformCutover) ? PerformCutover.ToBool() : (bool?)null
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
@@ -297,6 +430,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Family = database.Family,
                 Capacity = database.Capacity
             };
+
+            // DB level CMK keys
+            //
+            if (MyInvocation.BoundParameters.ContainsKey("KeyList") && this.KeyList.Length > 0)
+            {
+                newDbModel.Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList);
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey("KeysToRemove") && this.KeysToRemove.Length > 0)
+            {
+                DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionaryToRemove(this.KeysToRemove, ref newDbModel);
+            }
 
             // check if current db is serverless
             string databaseCurrentComputeModel = database.CurrentServiceObjectiveName.Contains("_S_") ? DatabaseComputeModel.Serverless : DatabaseComputeModel.Provisioned;

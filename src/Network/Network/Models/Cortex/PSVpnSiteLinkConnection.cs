@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
 
     public class PSVpnSiteLinkConnection : PSChildResource
     {
@@ -41,5 +42,35 @@
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Label = "IngressNatRules", Target = ViewControl.Table)]
+        public List<PSResourceId> IngressNatRules { get; set; }
+
+        [Ps1Xml(Label = "EgressNatRules", Target = ViewControl.Table)]
+        public List<PSResourceId> EgressNatRules { get; set; }
+
+        [Ps1Xml(Label = "VpnGatewayCustomBgpAddresses", Target = ViewControl.Table)]
+        public List<PSGatewayCustomBgpIpConfiguration> VpnGatewayCustomBgpAddresses { get; set; }
+
+        [Ps1Xml(Label = "VpnLinkConnectionMode", Target = ViewControl.Table)]
+        public string VpnLinkConnectionMode { get; set; }
+
+        [JsonIgnore]
+        public string IngressNatRulesText
+        {
+            get { return JsonConvert.SerializeObject(IngressNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string EgressNatRulesText
+        {
+            get { return JsonConvert.SerializeObject(EgressNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VpnGatewayCustomBgpAddressesText
+        {
+            get { return JsonConvert.SerializeObject(VpnGatewayCustomBgpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

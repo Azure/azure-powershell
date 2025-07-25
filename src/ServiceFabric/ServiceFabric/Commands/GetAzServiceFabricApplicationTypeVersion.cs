@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 switch (ParameterSetName)
                 {
                     case ByResourceGroupAndCluster:
-                        var appTypeVersionList = this.SFRPClient.ApplicationTypeVersions.
-                        List(this.ResourceGroupName, this.ClusterName, this.Name).Value.
-                        Select(typeVersion => new PSApplicationTypeVersion(typeVersion));
-                        WriteObject(appTypeVersionList, true);
+                        var appTypeVersionList = this.ReturnListByPageResponse(
+                            this.SFRPClient.ApplicationTypeVersions.List(this.ResourceGroupName, this.ClusterName, this.Name),
+                            this.SFRPClient.ApplicationTypeVersions.ListNext);
+                        WriteObject(appTypeVersionList.Select(appType => new PSApplicationTypeVersion(appType)), true);
                         break;
                     case ByVersion:
                         GetByVersion();

@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
         public void TestDdosProtectionPlanCrud()
         {
             TestRunner.RunTestScript(string.Format("Test-DdosProtectionPlanCRUD"));
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
         public void TestDdosProtectionPlanCrudWithVirtualNetwork()
         {
             TestRunner.RunTestScript(string.Format("Test-DdosProtectionPlanCRUDWithVirtualNetwork"));
@@ -43,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
         public void TestDdosProtectionPlanCollections()
         {
             TestRunner.RunTestScript(string.Format("Test-DdosProtectionPlanCollections"));

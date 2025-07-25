@@ -14,7 +14,6 @@
 
 
 using ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -24,20 +23,14 @@ namespace StorageSyncTests
     /// <summary>
     /// Class ServerEndpointTests.
     /// </summary>
-    public class ServerEndpointTests
+    public class ServerEndpointTests : StorageSyncTestRunner
     {
-        /// <summary>
-        /// The logger
-        /// </summary>
-        private readonly XunitTracingInterceptor _logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ServerEndpointTests"/> class.
         /// </summary>
         /// <param name="output">The output.</param>
-        public ServerEndpointTests(ITestOutputHelper output)
+        public ServerEndpointTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(_logger = new XunitTracingInterceptor(output));
         }
 
         /// <summary>
@@ -47,8 +40,27 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerEndpoint()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-ServerEndpoint");
+            TestRunner.RunTestScript("Test-ServerEndpoint");
         }
 
+        /// <summary>
+        /// Defines the test method ServerEndpointWithIdentityMigration.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerEndpointWithIdentityMigration()
+        {
+            TestRunner.RunTestScript("Test-ServerEndpointWithIdentityMigration");
+        }
+
+        /// <summary>
+        /// Defines the test method ServerEndpoint After Identity Migration.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerEndpointAfterIdentityMigration()
+        {
+            TestRunner.RunTestScript("Test-ServerEndpointAfterIdentityMigration");
+        }
     }
 }

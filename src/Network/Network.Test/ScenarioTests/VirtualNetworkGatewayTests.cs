@@ -59,6 +59,14 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetVirtualNetworkGatewayCRUD");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        public void VirtualNetworkGatewayDisableIPsecProtection()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayDisableIPsecProtection");
+        }
+
         [Fact(Skip = "Skipped due to intermittent backend failures")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
@@ -146,6 +154,69 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestDisconnectVirtualNetworkGatewayVpnConnection()
         {
             TestRunner.RunTestScript("Test-DisconnectVNGVpnConnection");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        public void TestVirtualNetworkGatewayNatRuleCRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayNatRuleCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        public void TestVirtualNetworkGatewayPolicyGroupCRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayPolicyGroupCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
+        public void TestVirtualNetworkGatewayMultiAuth()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayMultiAuth");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestVirtualNetworkExpressRouteGatewayCRUDwithAdminState()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayCRUDwithAdminState");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestVirtualNetworkExpressRouteGatewayUpdatesForDifferentCustomerBlockTrafficPreferences()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayForDifferentCustomerBlockTrafficPreferences");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestVirtualNetworkExpressRouteGatewayCRUDwithResiliencyModel()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayCRUDwithResiliencyModel");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestHighBandwidthVpnGatewayCreation()
+        {
+            TestRunner.RunTestScript("Test-HighBandwidthVpnGatewayCreation");
+        }
+
+        [Fact]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayMigrationFromBasicIPToSatndardIP()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayBasicIPToStandardIPMigration");
         }
     }
 }

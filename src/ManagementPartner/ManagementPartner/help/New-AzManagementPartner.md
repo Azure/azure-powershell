@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll-Help.xml
 Module Name: Az.ManagementPartner
-online version: https://docs.microsoft.com/en-us/powershell/module/az.managementpartner/new-azmanagementpartner
+online version: https://learn.microsoft.com/powershell/module/az.managementpartner/new-azmanagementpartner
 schema: 2.0.0
 ---
 
@@ -24,10 +24,13 @@ Associates a Microsoft Partner Network(MPN) ID to the current authenticated user
 
 ### Example 1
 ```powershell
-PS C:\> New-AzManagementPartner -PartnerId 4977985
+New-AzManagementPartner -PartnerId 4977985
+```
+
+```output
 PartnerId   : 4977985
 PartnerName : Test_Test_DPORTest
-TenantId    : 1b1121dd-6900-412a-af73-e8d44f81e1c1
+TenantId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 ObjectId    : aa67f786-0552-423e-8849-244ed12bf581
 State       : Active
 ```

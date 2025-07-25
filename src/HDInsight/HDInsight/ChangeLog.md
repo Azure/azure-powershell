@@ -17,7 +17,85 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+
+## Version 6.3.1
+* Upgraded nuget package to signed package.
+
+## Version 6.3.0
+* Changed the type of parameter `-IdentityId` in command `Update-AzHDInsightCluster` from `string`  to `string[]`.
+
+## Version 6.2.1
+* Fixed a bug: Error occurs when setting the same assigned identity for storage and esp configurations.
+
+## Version 6.2.0
+* Added new feature: Enable adding public IP tags to clusters. 
+* Added commands for manage Azure Monitor Agent
+    - Command `Get-AzHDInsightAzureMonitorAgent` to get the Azure Monitor Agent status of HDInsight cluster.
+    - Command `Enable-AzHDInsightAzureMonitorAgent` to enable the Azure Monitor Agent in HDInsight cluster.
+    - Command `Disable-AzHDInsightAzureMonitorAgent` to disable the Azure Monitor Agent in HDInsight cluster.
+    - Command `Update-AzHDInsightCluster` to update tags or identity for HDInsight cluster.
+
+## Version 6.1.0
+* Added new feature: Enable secure channels while creating a new cluster.
+* Fixed a bug: When creating a cluster without passing the version, the default version cannot be set to 'default'.
+
+## Version 6.0.2
+* Fixed a bug where the get cluster command does not display abfss storage information.
+
+## Version 6.0.1
+* This change adds some warning messages to the incoming break changes for the next version, with detailed information as follows:
+  * Added warning message for planning to replace the type of property `DiskEncryption` of type `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster` from `Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties` to `Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties`.
+  * Added warning message for planning to replace the type of property `WorkerNodeDataDisksGroups` of type `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster`  from `List<Microsoft.Azure.Management.HDInsight.Models.DataDisksGroups>` to `List<Azure.ResourceManager.HDInsight.Models.HDInsightClusterDataDiskGroup>`.
+  * Added warning message for planning to replace the parameter `NodeType` type from `Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType` to `Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType`.
+
+## Version 6.0.0
+* Breaking Change:
+  - Removed the parameter `-RdpAccessExpiry` which has been marked as deprecated for a long time from cmdlet `New-AzHDInsightCluster`
+  - Removed the parameter `-RdpCredential` which has been marked as deprecated for a long time from cmdlet `New-AzHDInsightCluster`
+
+## Version 5.0.1
+This release migrates Microsoft.Azure.Graph SDK to MicrosoftGraph SDK.
+
+## Version 5.0.0
+* Added two parameters `-Zone` and `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster`
+  - Added parameter `-Zone` to cmdlet `New-AzHDInsightCluster` to support to create cluster with availability zones feature
+  - Added parameter `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster` to support to add private link configuration when creating cluster with private link feature.
+* Added cmdlet New-AzHDInsightIPConfiguration to create ip configuration object in memory.
+* Added cmdlet New-AzHDInsightPrivateLinkConfiguration to create private link configuration object in memory.
+* Fixed the output type in help doc of Set-AzHDInsightClusterDiskEncryptionKey cmdlet from `Microsoft.Azure.Management.HDInsight.Models.Cluster` to  `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster` to keep consistent with the real type of returned object.
+* Breaking change:
+  - Changed the type of parameter "OSType" from `Microsoft.Azure.Management.HDInsight.Models.OSType` to `System.string` in cmdlet `New-AzHDInsightCluster`.
+  - Changed the type of parameter "ClusterTier" from `Microsoft.Azure.Management.HDInsight.Models.ClusterTier` to `System.string` in cmdlets `New-AzHDInsightCluster` and `New-AzHDInsightClusterConfig`.
+  - Changed the type of property "VmSizes" in class `AzureHDInsightCapabilities` from "IDictionary<string, AzureHDInsightVmSizesCapability>" to "IList<string>".
+  - Changed the type of property "AssignedIdentity" in class `AzureHDInsightCluster` from `Microsoft.Azure.Management.HDInsight.Models.ClusterIdentity`  to `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightClusterIdentity`.
+
+## Version 4.3.0
+* Support new azure monitor feature in HDInsight:
+    - Add cmdlet `Get-AzHDInsightAzureMonitor` to allow customer to get the Azure Monitor status of HDInsight cluster.
+    - Add cmdlet `Enable-AzHDInsightAzureMonitor` to allow customer to enable the Azure Monitor in HDInsight cluster.
+    - Add cmdlet `Disable-AzHDInsightAzureMonitor` to allow customer to disable the Azure Monitor in HDInsight cluster.
+
+
+## Version 4.2.1
+* Supported getting default vmsize from backend if customer does not provide the related parameters: `-WorkerNodeSize`, `-HeadNodeSize`, `-ZookeeperNodeSize`, `-EdgeNodeSize`, `-KafkaManagementNodeSize`.
+
+## Version 4.2.0
+* Added new parameter `-EnableComputeIsolation` and `-ComputeIsolationHostSku` to the cmdlet `New-AzHDInsightCluster` to support compute isolation feature
+* Added property `ComputeIsolationProperties` and `ConnectivityEndpoints` in the class AzureHDInsightCluster.
+
+
+## Version 4.1.1
+* Added properties: Fqdn and EffectiveDiskEncryptionKeyUrl in the class AzureHDInsightHostInfo.
+
+## Version 4.1.0
+
+* Add parameters `ResourceProviderConnection` and `PrivateLink` to cmdlet `New-AzHDInsightCluster` to support relay outbound and private link feature
+* Add parameter `AmbariDatabase` to cmdlet `New-AzHDInsightCluster` to support custom Ambari database feature
+* Add accept value "AmbariDatabase" to the parameter `MetastoreType` of the cmdlet `Add-AzHDInsightMetastore`
+
+## Version 4.0.0
  * For New-AzHDInsightCluster cmdlet:
      - Replaced parameter `DefaultStorageAccountName` with `StorageAccountResourceId`
      - Replaced parameter `DefaultStorageAccountKey` with `StorageAccountKey`

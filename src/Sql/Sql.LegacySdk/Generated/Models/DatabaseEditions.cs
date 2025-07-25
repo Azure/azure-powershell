@@ -35,33 +35,33 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
         /// and workgroup or departmental applications.
         /// </summary>
         public const string Web = "Web";
-        
+
         /// <summary>
         /// The Business Edition Database is best suited for independent
         /// software vendors (ISVs), line-of-business (LOB) applications, and
         /// enterprise applications.
         /// </summary>
         public const string Business = "Business";
-        
+
         /// <summary>
         /// The Basic Edition Database is best suited for small databases with
-        /// few transactions (<100) per minute and only a couple users.
+        /// few transactions (&lt;100) per minute and only a couple users.
         /// </summary>
         public const string Basic = "Basic";
-        
+
         /// <summary>
         /// The Standard Edition Database is best suited for a group of users
         /// makingfewer than 1000 transactions per minute.
         /// </summary>
         public const string Standard = "Standard";
-        
+
         /// <summary>
         /// The Premium Edition Database is for situations requiring a high
-        /// number of transactionsper second (>100).  Supports more users than
+        /// number of transactionsper second (&gt;100).  Supports more users than
         /// Basic and Standard editions.
         /// </summary>
         public const string Premium = "Premium";
-        
+
         /// <summary>
         /// The Free Edition Database is available for certain offers and
         /// product bundles.

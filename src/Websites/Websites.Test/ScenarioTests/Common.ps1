@@ -153,7 +153,7 @@ function PingWebApp($webApp)
 	if ((Get-WebsitesTestMode) -ne 'Playback') 
 	{
 		# Give the app time to stabilize
-		Start-Sleep -Seconds 30
+		Start-TestSleep -Seconds 30
 
 		try 
 		{

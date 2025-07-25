@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class IpAllocationBaseCmdlet : NetworkBaseCmdlet
     {
-        public IIpAllocationsOperations IpAllocationClient
+        public IIPAllocationsOperations IpAllocationClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.IpAllocations;
+                return NetworkClient.NetworkManagementClient.IPAllocations;
             }
         }
 

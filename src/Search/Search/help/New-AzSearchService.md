@@ -1,33 +1,37 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchservice
+online version: https://learn.microsoft.com/powershell/module/az.search/new-azsearchservice
 schema: 2.0.0
 ---
 
 # New-AzSearchService
 
 ## SYNOPSIS
-Creates an Azure Search service.
+Creates an Azure Cognitive Search service.
 
 ## SYNTAX
 
 ```
 New-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSkuName> [-Location] <String>
  [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <PSHostingMode>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
+ [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
+ [-SemanticSearchMode <PSSemanticSearchMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzSearchService** cmdlet creates an Azure Search service with specified parameters.
+The **New-AzSearchService** cmdlet creates an Azure Cognitive Search service with specified parameters.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -Sku "Standard" -Location "West US" -PartitionCount 1 -ReplicaCount 1 -HostingMode Default -Force
+New-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -Sku "Standard" -Location "West US" -PartitionCount 1 -ReplicaCount 1 -HostingMode Default
+```
 
-
+```output
 ResourceGroupName : TestAzureSearchPsGroup
 Name              : pstestazuresearch01
 Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/TestAzureSearchPsGroup/providers/Microsoft.Search/searchServices/pstestazuresearch01
@@ -39,9 +43,41 @@ HostingMode       : Default
 Tags              :
 ```
 
-The command creates an Azure Search service.
+The command creates an Azure Cognitive Search service.
 
 ## PARAMETERS
+
+### -AadAuthFailureMode
+(Optional) What status code to return when failing AAD authentication, if both api key and AAD authentication are allowed for the Azure Cognitive Search service
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Http403, Http401WithBearerChallenge
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthOption
+(Optional) Whether to only allow API key authentication or both API key authentication and AAD authentication for the Azure Cognitive Search service
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]
+Parameter Sets: (All)
+Aliases:
+Accepted values: ApiKeyOnly, AadOrApiKey
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -58,8 +94,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableLocalAuth
+(Optional) Disable API key authentication for the Azure Cognitive Search service (true/false/null)
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HostingMode
-Search Service hosting mode.
+Azure Cognitive Search Service hosting mode.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]
@@ -74,8 +125,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+(Optional) Azure Cognitive Search Service Identity (None/SystemAssigned)
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, SystemAssigned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPRuleList
+(Optional) Azure Cognitive Search Service IP rules
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSIpRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
-Search Service location.
+Azure Cognitive Search Service location.
 
 ```yaml
 Type: System.String
@@ -90,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Search Service name.
+Azure Cognitive Search Service name.
 
 ```yaml
 Type: System.String
@@ -105,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartitionCount
-Search Service partition count.
+Azure Cognitive Search Service partition count.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -119,8 +201,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+(Optional) Azure Cognitive Search Service public network access (Enabled/Disabled)
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReplicaCount
-Search Service replica count.
+Azure Cognitive Search Service replica count.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -149,14 +247,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SemanticSearchMode
+(Optional) Option to control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Free, Standard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Sku
-Search Service Sku.
+Azure Cognitive Search Service Sku.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSkuName
 Parameter Sets: (All)
 Aliases:
-Accepted values: Free, Basic, Standard, Standard2, Standard3
+Accepted values: Free, Basic, Standard, Standard2, Standard3, Storage_Optimized_L1, Storage_Optimized_L2
 
 Required: True
 Position: 2
@@ -196,7 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

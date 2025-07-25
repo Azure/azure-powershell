@@ -49,5 +49,70 @@ namespace Microsoft.Azure.Commands.Profile.Test.UnitTest
             Assert.Equal(psAzureSubscription.SubscriptionPolicies.QuotaId, quotaId);
             Assert.Equal(psAzureSubscription.SubscriptionPolicies.SpendingLimit, spendingLimit.ToString());
         }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ConvertAzureSubscripitonToPSAzureSubscriptionWithTags()
+        {
+            string tenants = new Guid().ToString(), homeTenant = new Guid().ToString();
+            var subscription = new AzureSubscription()
+            {
+                Id = new Guid().ToString(),
+                Name = "Playground-01",
+                State = "Enabled",
+                ExtendedProperties =
+                {
+                    { "SubscriptionPolices", @"{""locationPlacementId"":""Internal_2014-09-01"",""quotaId"":""Internal_2014-09-01"",""spendingLimit"":""Off""}" },
+                    { "Environment",  "AzureCloud" },
+                    { "AuthorizationSource", "RoleBased" },
+                    { "Account", "fakeuser@microsoft.com" },
+                    { "ManagedByTenants", tenants },
+                    { "Tenants", tenants },
+                    { "Tags", @"{""CigdemTestTag"":""Enabled""}" },
+                    { "HomeTenant", homeTenant }
+                }
+            };
+
+            var psSubscription = new PSAzureSubscription(subscription);
+            Assert.Equal(subscription.Id, psSubscription.Id);
+            Assert.Equal(subscription.Name, psSubscription.Name);
+            Assert.Equal(subscription.State, psSubscription.State);
+            Assert.Equal(homeTenant, psSubscription.TenantId);
+            Assert.Equal(homeTenant, psSubscription.HomeTenantId);
+            Assert.Equal("Internal_2014-09-01", psSubscription.SubscriptionPolicies.LocationPlacementId);
+            Assert.Single(psSubscription.Tags);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ConvertAzureSubscripitonToPSAzureSubscriptionWithoutTags()
+        {
+            string tenants = new Guid().ToString(), homeTenant = new Guid().ToString();
+            var subscription = new AzureSubscription()
+            {
+                Id = new Guid().ToString(),
+                Name = "Playground-01",
+                State = "Enabled",
+                ExtendedProperties =
+                {
+                    { "SubscriptionPolices", @"{""locationPlacementId"":""Internal_2014-09-01"",""quotaId"":""Internal_2014-09-01"",""spendingLimit"":""Off""}" },
+                    { "AuthorizationSource", "RoleBased" },
+                    { "Account", "fakeuser@microsoft.com" },
+                    { "ManagedByTenants", tenants },
+                    { "Tenants", tenants },
+                    { "HomeTenant", homeTenant }
+                }
+            };
+
+            var psSubscription = new PSAzureSubscription(subscription);
+            Assert.Equal(subscription.Id, psSubscription.Id);
+            Assert.Equal(subscription.Name, psSubscription.Name);
+            Assert.Equal(subscription.State, psSubscription.State);
+            Assert.Equal(homeTenant, psSubscription.TenantId);
+            Assert.Equal(homeTenant, psSubscription.HomeTenantId);
+            Assert.Equal("Internal_2014-09-01", psSubscription.SubscriptionPolicies.LocationPlacementId);
+            Assert.Null(psSubscription.Tags);
+        }
     }
 }

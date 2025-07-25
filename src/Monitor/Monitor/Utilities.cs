@@ -22,10 +22,11 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights
 {
+    using System.IO;
     using System.Linq;
 
     /// <summary>
-    /// Static class contaning common functions
+    /// Static class containing common functions
     /// </summary>
     public static class Utilities
     {
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Gets a string with a default description for artifacts like alert rules or autoscale settings
         /// </summary>
-        /// <param name="artifactName">The name of the artifact to deacribe, e.g.: alert rule, autoscale setting</param>
+        /// <param name="artifactName">The name of the artifact to describe, e.g.: alert rule, autoscale setting</param>
         /// <returns>A string with a default description for artifacts like alert rules or autoscale settings</returns>
         public static string GetDefaultDescription(string artifactName)
         {
@@ -75,6 +76,18 @@ namespace Microsoft.Azure.Commands.Insights
                     records.Add(fullDetails ? new PSEventData(current) : new PSEventDataNoDetails(current));
                 }
             }
+        }
+
+        public static string ReadFileContent(string path)
+        {
+            if (!File.Exists(path)) throw new FileNotFoundException(path);
+            using (TextReader reader = new StreamReader(path))
+                return reader.ReadToEnd();
+        }
+
+        public static bool IsGuid(string str)
+        {
+            return Guid.TryParse(str, out _);
         }
     }
 }

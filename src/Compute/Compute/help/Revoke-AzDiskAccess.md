@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/revoke-azdiskaccess
+online version: https://learn.microsoft.com/powershell/module/az.compute/revoke-azdiskaccess
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Revokes an access to a disk.
 
 ```
 Revoke-AzDiskAccess [-ResourceGroupName] <String> [-DiskName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,8 @@ The **Revoke-AzDiskAccess** cmdlet revokes an access to a disk.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Revoke-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
+```powershell
+Revoke-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
 ```
 
 Revoke the access to the disk named 'Disk01' in the resource group named 'ResourceGroup01'

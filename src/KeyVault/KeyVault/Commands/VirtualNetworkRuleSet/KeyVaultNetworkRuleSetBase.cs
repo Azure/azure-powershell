@@ -13,14 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.KeyVault.Models;
-
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -32,7 +28,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies allowed network IP address range of network rule.")]
-        [ValidateCount(0, 127)]
         public string[] IpAddressRange { get; set; }
 
         /// <summary>
@@ -40,7 +35,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies allowed virtual network resource identifier of network rule.")]
-        [ValidateCount(0, 127)]
         public string[] VirtualNetworkResourceId { get; set; }
 
         /// <summary>
@@ -117,7 +111,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 existingVault.EnableRbacAuthorization,
                 existingVault.SoftDeleteRetentionInDays,
                 updatedNetworkAcls,
-                ActiveDirectoryClient);
+                GraphClient);
         }
     }
 }

@@ -33,24 +33,54 @@ namespace Microsoft.Azure.Commands.Maintenance
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+                var psObject = new List<PSConfigurationAssignment>();
                 string resourceGroupName = this.ResourceGroupName;
                 string providerName = this.ProviderName;
                 string resourceParentType = this.ResourceParentType;
                 string resourceParentName = this.ResourceParentName;
                 string resourceType = this.ResourceType;
                 string resourceName = this.ResourceName;
+                string configurationAssignmentName = this.ConfigurationAssignmentName;
 
-                var result = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
-                    ConfigurationAssignmentsClient.ListParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName) :
-                    ConfigurationAssignmentsClient.List(resourceGroupName, providerName, resourceType, resourceName);
-
-                var psObject = new List<PSConfigurationAssignment>();
-
-                foreach (var configurationAssignment in result)
+                if (IsSubcriptionAssignment(this.ResourceGroupName, this.ProviderName, this.ResourceParentType, this.ResourceName))
                 {
+                    var configurationAssignment = ConfigurationAssignmentsForSubscriptionsClient.Get(this.ConfigurationAssignmentName);
                     PSConfigurationAssignment psConfigurationAssignment = new PSConfigurationAssignment();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<ConfigurationAssignment, PSConfigurationAssignment>(configurationAssignment, psConfigurationAssignment);
                     psObject.Add(psConfigurationAssignment);
+                }
+                else if (IsResourceGroupAssignment(this.ResourceGroupName, this.ProviderName, this.ResourceParentType, this.ResourceName))
+                {
+                    var configurationAssignment = ConfigurationAssignmentsForResourceGroupClient.Get(this.ResourceGroupName, this.ConfigurationAssignmentName);
+                    PSConfigurationAssignment psConfigurationAssignment = new PSConfigurationAssignment();
+                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<ConfigurationAssignment, PSConfigurationAssignment>(configurationAssignment, psConfigurationAssignment);
+                    psObject.Add(psConfigurationAssignment);
+                }
+                else if (string.IsNullOrEmpty(this.ConfigurationAssignmentName))
+                {
+                    var result = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
+                        ConfigurationAssignmentsClient.ListParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName) :
+                        ConfigurationAssignmentsClient.List(resourceGroupName, providerName, resourceType, resourceName);
+
+                    foreach (var configurationAssignment in result)
+                    {
+                        PSConfigurationAssignment psConfigurationAssignment = new PSConfigurationAssignment();
+                        MaintenanceAutomationAutoMapperProfile.Mapper.Map<ConfigurationAssignment, PSConfigurationAssignment>(configurationAssignment, psConfigurationAssignment);
+                        psObject.Add(psConfigurationAssignment);
+                    }
+                }
+                else
+                {
+                    // Get single configuration assignment
+
+                    var configurationAssignment = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
+                        ConfigurationAssignmentsClient.GetParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName, configurationAssignmentName) :
+                        ConfigurationAssignmentsClient.Get(resourceGroupName, providerName, resourceType, resourceName, configurationAssignmentName);
+
+                    PSConfigurationAssignment psConfigurationAssignment = new PSConfigurationAssignment();
+                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<ConfigurationAssignment, PSConfigurationAssignment>(configurationAssignment, psConfigurationAssignment);
+                    psObject.Add(psConfigurationAssignment);
+
                 }
 
                 WriteObject(psObject);
@@ -60,7 +90,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource Group Name.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -69,7 +99,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource provider Name.",
             ValueFromPipelineByPropertyName = true)]
         public string ProviderName { get; set; }
@@ -91,7 +121,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource type.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceType { get; set; }
@@ -99,9 +129,17 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource name.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = false,
+            HelpMessage = "Configuration assignment name.",
+            ValueFromPipelineByPropertyName = true)]
+        public string ConfigurationAssignmentName { get; set; }
+
     }
 }

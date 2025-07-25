@@ -39,7 +39,7 @@ function Test-NetworkInterfaceExpandResource
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
         $job = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
@@ -56,7 +56,7 @@ function Test-NetworkInterfaceExpandResource
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod 
 
 		Assert-Null $expectedNic.IpConfigurations[0].PublicIpAddress.Name
 		Assert-Null $expectedNic.IpConfigurations[0].Subnet.Name
@@ -118,9 +118,9 @@ function Test-NetworkInterfaceCRUD
     $publicIpName = Get-ResourceName
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = Get-ProviderLocation ResourceManagement "East US 2 EUAP"
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent "East US 2 EUAP"
     
     try 
     {
@@ -132,10 +132,10 @@ function Test-NetworkInterfaceCRUD
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking -Tag @{ fastpathenabled = "true"}
         $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
@@ -147,7 +147,8 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-NotNull $expectedNic.DefaultOutboundConnectivityEnabled
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
 
         $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
 
@@ -160,7 +161,7 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
 
         # Check publicIp address reference
         $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
@@ -182,9 +183,7 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $actualNic.Etag $list[0].Etag
 
         # Delete NetworkInterface
-        $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force -AsJob
-		$job | Wait-Job
-		$delete = $job | Receive-Job
+        $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
         Assert-AreEqual true $delete
         
         $list = Get-AzNetworkInterface -ResourceGroupName $rgname
@@ -224,7 +223,7 @@ function Test-NetworkInterfaceCRUDUsingId
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
         $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicip.Id
@@ -238,7 +237,7 @@ function Test-NetworkInterfaceCRUDUsingId
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
 
         
         # Check publicIp address reference
@@ -276,6 +275,69 @@ function Test-NetworkInterfaceCRUDUsingId
 
 <#
 .SYNOPSIS
+Tests creating new simple public networkinterface.
+#>
+function Test-NetworkInterface-GatewayLoadBalancerConsumer
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+
+    $vnetProviderName = Get-ResourceName
+    $subnetProviderName = Get-ResourceName
+    $lbProviderName = Get-ResourceName
+    $frontendProviderName = Get-ResourceName
+
+    $vnetConsumerName = Get-ResourceName
+    $subnetConsumerName = Get-ResourceName
+    $publicIpConsumerName = Get-ResourceName
+    $nicConsumerName = Get-ResourceName
+    $ipconfigConsumerName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create Provider Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetProviderName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetProviderName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create Provider LoadBalancer
+        $frontendProvider = New-AzLoadBalancerFrontendIpConfig -Name $frontendProviderName -Subnet $vnet.Subnets[0]
+        $lbProvider = New-AzLoadBalancer -Name $lbProviderName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontendProvider -Sku Gateway
+
+        # Create Consumer Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetConsumerName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetConsumerName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create Consumer publicip
+        $publicipConsumer = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpConsumerName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+		# Create the ipconfiguration
+        $ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id
+
+        # Create NetworkInterface
+        $nicConsumer = New-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1 -Tag @{ testtag = "testval" }
+
+        # Get NetworkInterface
+        $expectedNicConsumer = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $frontendProvider.Id $expectedNicConsumer.ipconfigurations[0].GatewayLoadBalancer    
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple virtualNetwork with static allocation.
 #>
 function Test-NetworkInterfaceCRUDStaticAllocation
@@ -301,10 +363,10 @@ function Test-NetworkInterfaceCRUDStaticAllocation
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static
 
         # Create NetworkInterface
-        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -PrivateIpAddress "10.0.1.5" -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -PrivateIpAddress "10.0.1.5" -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AuxiliaryMode None
         $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
@@ -313,7 +375,7 @@ function Test-NetworkInterfaceCRUDStaticAllocation
         Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
         Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
-        Assert-AreEqual "Static" $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
         Assert-AreEqual "10.0.1.5" $actualNic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         
@@ -428,7 +490,7 @@ function Test-NetworkInterfaceSet
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
         $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicip.Id
@@ -453,7 +515,7 @@ function Test-NetworkInterfaceSet
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
         # Create the publicip
-        $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2
+        $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel2
         $nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         # Edit Nic with a new publicIpAddress
@@ -638,7 +700,7 @@ function Test-NetworkInterfaceIpv6
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$subnet2
         
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
         $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
@@ -664,14 +726,14 @@ function Test-NetworkInterfaceIpv6
         Assert-AreEqual $actualNic.Etag $list[0].Etag
 
 		# Add a ipv6 ipconfig
-		$nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname | Add-AzNetworkInterfaceIpConfig -Name $ipconfigName -PrivateIpAddressVersion ipv6  | Set-AzNetworkInterface
+		$nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname | Add-AzNetworkInterfaceIpConfig -Name $ipconfigName -PrivateIpAddressVersion ipv6 | Set-AzNetworkInterface
 		Assert-AreEqual 2 @($nic.IpConfigurations).Count
 
 		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $nic.IpConfigurations[0].Name
         Assert-AreEqual $publicip.Id $nic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $vnet.Subnets[0].Id $nic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $nic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual "Dynamic" $nic.IpConfigurations[1].PrivateIpAllocationMethod
 		Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
 
 		Assert-AreEqual $ipconfigName $nic.IpConfigurations[1].Name
@@ -711,7 +773,6 @@ function Test-NetworkInterfaceIpv6
 		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $ipconfigList[0].Name
         Assert-Null $ipconfigList[0].PublicIpAddress.Id
         Assert-NotNull $ipconfigList[0].PrivateIpAddress
-        Assert-AreEqual "Static" $nic.IpConfigurations[0].PrivateIpAllocationMethod
 		Assert-AreEqual $ipconfigList[0].PrivateIpAddressVersion IPv4
 
 		Assert-AreEqual $ipconfigName $ipconfigList[1].Name
@@ -728,7 +789,6 @@ function Test-NetworkInterfaceIpv6
         Assert-Null $nic.IpConfigurations[0].PublicIpAddress
         Assert-AreEqual $vnet.Subnets[1].Id $nic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "Static" $nic.IpConfigurations[0].PrivateIpAllocationMethod
 		Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
 
         # Delete NetworkInterface
@@ -774,7 +834,7 @@ function Test-NetworkInterfaceWithIpConfiguration
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
 		# Create the ipconfiguration
 		$ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfig1Name -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
@@ -858,7 +918,7 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
         $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking
@@ -874,7 +934,7 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
 		Assert-AreEqual $expectedNic.EnableAcceleratedNetworking $true
-        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual $actualNic.IpConfigurations[0].PrivateIpAllocationMethod $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
 
         
         # Check publicIp address reference
@@ -921,6 +981,56 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
 
 <#
 .SYNOPSIS
+Tests creating new simple public networkinterface with disableTcpStateTracking Property.
+#>
+function Test-NetworkInterfaceWithDisableTcpStateTracking
+{
+   # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface with DisableTcpStateTracking Property set to true
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -DisableTcpStateTracking true
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $true $expectedNic.DisableTcpStateTracking
+
+        # Delete ResourceGroup
+        $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test creating new NetworkInterfaceTapConfiguration using minimal set of parameters
 #>
 function Test-NetworkInterfaceTapConfigurationCRUD
@@ -951,7 +1061,7 @@ function Test-NetworkInterfaceTapConfigurationCRUD
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create the publicip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
         $job = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
@@ -965,7 +1075,7 @@ function Test-NetworkInterfaceTapConfigurationCRUD
 
         # Create source Nic which is getting tapped
         $sourceIpConfig = New-AzNetworkInterfaceIpConfig -Name $sourceIpConfigName -Subnet $vnet.Subnets[0]
-        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" }
+        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" } -EnableAcceleratedNetworking
 
         # Add tap configuration
         Add-AzNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name $rname
@@ -1086,5 +1196,142 @@ function Test-NetworkInterfaceVmss
     {
         # Cleanup
         Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test that network interface can be put in an edge zone. Subscriptions need to be explicitly whitelisted for access to edge zones.
+#>
+function Test-NetworkInterfaceInEdgeZone
+{
+    $resourceGroup = Get-ResourceGroupName
+    $locationName = "westus"
+    $edgeZone = "microsoftlosangeles1"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroup -Location $locationName -Force
+
+        $networkName = "MyNet"
+        $nicName = "MyNIC"
+        $subnetName = "MySubnet"
+        $subnetAddressPrefix = "10.0.0.0/24"
+        $vnetAddressPrefix = "10.0.0.0/16"
+
+        $singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix
+        $vnet = New-AzVirtualNetwork -Name $networkName -ResourceGroupName $resourceGroup -Location $locationName -EdgeZone $edgeZone -AddressPrefix $vnetAddressPrefix -Subnet $singleSubnet
+        New-AzNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $locationName -EdgeZone $edgeZone -SubnetId $vnet.Subnets[0].Id
+
+		$nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup
+        Assert-AreEqual $nic.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $nic.ExtendedLocation.Type "EdgeZone"
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}
+
+<#
+.SYNOPSIS
+Test that network interface can be put with AuxiliarySku. Subscriptions need to be explicitly whitelisted for access to AuxiliaryMode and AuxiliarySku properties.
+#>
+function Test-NetworkInterfaceWithAuxiliarySku
+{
+ # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "Central US EUAP"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent "Central US EUAP"
+    $vmName = Get-ResourceName
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking -AuxiliaryMode MaxConnections -AuxiliarySku A2 -Tag @{ fastpathenabled = "true"}
+                
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname 
+
+        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $expectedNic.Name $actualNic.Name	
+        Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "MaxConnections" $actualNic.AuxiliaryMode
+        Assert-AreEqual "A2" $actualNic.AuxiliarySku
+
+
+        $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
+
+        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName
+        Assert-AreEqual $expectedNic.Name $actualNic.Name
+        Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "MaxConnections" $actualNic.AuxiliaryMode
+        Assert-AreEqual "A2" $actualNic.AuxiliarySku
+
+
+        # Check publicIp address reference
+        $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
+
+        # Check Subnet address reference
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+
+        # list
+        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $list[0].ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $list[0].Name $actualNic.Name	
+        Assert-AreEqual $list[0].Location $actualNic.Location
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+        Assert-AreEqual $actualNic.Etag $list[0].Etag
+
+        # Delete NetworkInterface
+        $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force -AsJob
+		$job | Wait-Job
+		$delete = $job | Receive-Job
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }

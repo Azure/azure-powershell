@@ -1,304 +1,193 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: D602F910-B26F-473D-B5B6-C7BDFB0A14CB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadserviceprincipal
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
 schema: 2.0.0
 ---
 
 # New-AzADServicePrincipal
 
 ## SYNOPSIS
-Creates a new Azure active directory service principal.
+Adds new entity to servicePrincipals
 
 ## SYNTAX
 
 ### SimpleParameterSet (Default)
-
 ```
-New-AzADServicePrincipal [-ApplicationId <Guid>] [-DisplayName <String>] [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-Scope <String>] [-Role <String>] [-SkipAssignment]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ApplicationWithoutCredentialParameterSet
-
-```
-New-AzADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ApplicationWithPasswordPlainParameterSet
-
-```
-New-AzADServicePrincipal -ApplicationId <Guid> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ApplicationWithPasswordCredentialParameterSet
-
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -PasswordCredential <PSADPasswordCredential[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ApplicationWithKeyPlainParameterSet
-
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ApplicationWithKeyCredentialParameterSet
-
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -KeyCredential <PSADKeyCredential[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DisplayNameWithoutCredentialParameterSet
-
-```
-New-AzADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### DisplayNameWithPasswordPlainParameterSet
-
-```
-New-AzADServicePrincipal -DisplayName <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADServicePrincipal [-DisplayName <String>] [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
+ [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordCredentialParameterSet
-
 ```
-New-AzADServicePrincipal -DisplayName <String> -PasswordCredential <PSADPasswordCredential[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DisplayNameWithKeyPlainParameterSet
-
-```
-New-AzADServicePrincipal -DisplayName <String> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADServicePrincipal -DisplayName <String> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
+ [-AppDescription <String>] [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>]
+ -PasswordCredential <IMicrosoftGraphPasswordCredential[]> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyCredentialParameterSet
-
 ```
-New-AzADServicePrincipal -DisplayName <String> -KeyCredential <PSADKeyCredential[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ApplicationObjectWithPasswordPlainParameterSet
-
-```
-New-AzADServicePrincipal -ApplicationObject <PSADApplication> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ApplicationObjectWithPasswordCredentialParameterSet
-
-```
-New-AzADServicePrincipal -ApplicationObject <PSADApplication> -PasswordCredential <PSADPasswordCredential[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ApplicationObjectWithKeyPlainParameterSet
-
-```
-New-AzADServicePrincipal -ApplicationObject <PSADApplication> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADServicePrincipal -DisplayName <String> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
+ [-AppDescription <String>] [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -KeyCredential <IMicrosoftGraphKeyCredential[]>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ApplicationObjectWithKeyCredentialParameterSet
-
+### DisplayNameWithKeyPlainParameterSet
 ```
-New-AzADServicePrincipal -ApplicationObject <PSADApplication> -KeyCredential <PSADKeyCredential[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADServicePrincipal -DisplayName <String> [-Role <String>] [-Scope <String>] [-Homepage <String>]
+ [-ReplyUrl <String[]>] [-StartDate <DateTime>] [-EndDate <DateTime>] [-AccountEnabled]
+ [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
+ [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -CertValue <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationObjectParameterSet
+```
+New-AzADServicePrincipal [-Role <String>] [-Scope <String>] [-Homepage <String>] [-ReplyUrl <String[]>]
+ [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
+ [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] -ApplicationObject <IMicrosoftGraphApplication>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ApplicationIdParameterSet
+```
+New-AzADServicePrincipal [-Role <String>] [-Scope <String>] [-Homepage <String>] [-ReplyUrl <String[]>]
+ [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
+ [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
+ [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
+ [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
+ [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
+ [-Endpoint <IMicrosoftGraphEndpoint[]>]
+ [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
+ [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
+ [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
+ [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>]
+ [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-ServicePrincipalName <String[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
+ [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-ApplicationId <Guid>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-Creates a new Azure active directory service principal. The default parameter set uses default
-values for parameters if they are not provided. For more information on default values, see the
-description for each parameter. This cmdlet has the ability to assign a role to the service
-principal with the **Role** and **Scope** parameters. If both are omitted, the contributor role is
-assigned to the service principal. The default values for the **Role** and **Scope** parameters are
-**Contributor** for the current subscription. The cmdlet creates an application and sets its
-properties if an ApplicationId is not provided. To update the application-specific parameters, use
-the [Update-AzADApplication](./update-azadapplication.md) cmdlet.
+Adds new entity to servicePrincipals
 
 ## EXAMPLES
 
-### Example 1: Simple AD service principal creation
-
-The following example creates an AD service principal using default values for parameters not
-specified. Since an application ID is not provided, an application is created for the service
-principal. Since no values are provided for **Role** or **Scope**, the created service principal is
-assigned the **contributor** role for the current subscription.
-
+### Example 1: Create service principal without application or display name
 ```powershell
 New-AzADServicePrincipal
 ```
 
-```Output
-Secret                : System.Security.SecureString
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://azure-powershell-05-22-2018-18-23-43}
-ApplicationId         : 00000000-0000-0000-0000-000000000000
-DisplayName           : azure-powershell-05-22-2018-18-23-43
-Id                    : 00000000-0000-0000-0000-000000000000
-Type                  : ServicePrincipal
-```
+Create application with display name "azure-powershell-MM-dd-yyyy-HH-mm-ss" and new service principal associate with it
 
-### Example 2: Simple AD service principal creation with a specified role and default scope
-
-The following example creates an AD service principal using the default values for parameters not
-specified. Since the application ID is not provided, an application is created for the service
-principal. The service principal is created with **Reader** permissions for the current subscription
-since no value is provided for the **Scope** parameter.
-
+### Example 2: Create service principal with existing application
 ```powershell
-New-AzADServicePrincipal -Role Reader
+New-AzADServicePrincipal -ApplicationId $appid
 ```
 
-```Output
-Secret                : System.Security.SecureString
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://azure-powershell-05-22-2018-18-23-43}
-ApplicationId         : 00000000-0000-0000-0000-000000000000
-DisplayName           : azure-powershell-05-22-2018-18-23-43
-Id                    : 00000000-0000-0000-0000-000000000000
-Type                  : ServicePrincipal
+Create service principal with existing application
 
-WARNING: Assigning role 'Reader' over scope '/subscriptions/00000000-0000-0000-0000-000000000000' to the new service principal.
-```
-
-### Example 3: Simple AD service principal creation with a specified scope and default role
-
-The following example creates an AD service principal using the default values for parameters not
-specified. Since the application ID is not provided, an application is created for the service
-principal. The service principal is created with **Contributor** permissions for the provided
-resource group scope since no value is provided for the **Role** parameter.
-
+### Example 3: Create application with display name and associated new service principal with it
 ```powershell
-New-AzADServicePrincipal -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup
+New-AzADServicePrincipal -DisplayName $name
 ```
 
-```Output
-Secret                : System.Security.SecureString
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://azure-powershell-05-22-2018-18-23-43}
-ApplicationId         : 00000000-0000-0000-0000-000000000000
-DisplayName           : azure-powershell-05-22-2018-18-23-43
-Id                    : 00000000-0000-0000-0000-000000000000
-Type                  : ServicePrincipal
-
-WARNING: Assigning role 'Contributor' over scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup' to the new service principal.
-```
-
-### Example 4: Simple AD service principal creation with a specified scope and role
-
-The following example creates an AD service principal using the default values for parameters not
-specified. Since the application ID is not provided, an application is created for the service
-principal. The service principal is created with **Reader** permissions for the provided resource
-group scope.
-
-```powershell
-New-AzADServicePrincipal -Role Reader -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup
-```
-
-```Output
-Secret                : System.Security.SecureString
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://azure-powershell-05-22-2018-18-23-43}
-ApplicationId         : 00000000-0000-0000-0000-000000000000
-DisplayName           : azure-powershell-05-22-2018-18-23-43
-Id                    : 00000000-0000-0000-0000-000000000000
-Type                  : ServicePrincipal
-
-WARNING: Assigning role 'Reader' over scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup' to the new service principal.
-```
-
-### Example 5: Create a new AD service principal using application ID with role assignment
-
-The following example creates a new AD service principal for the application with application ID
-'00000000-0000-0000-0000-000000000000'. Since no values are provided for **Role** or **Scope**, the
-created service principal is assigned the **contributor** role for the current subscription.
-
-```powershell
-New-AzADServicePrincipal -ApplicationId 00000000-0000-0000-0000-000000000000
-```
-
-```Output
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://my-temp-app}
-ApplicationId         : 00000000-0000-0000-0000-000000000000
-DisplayName           : my-temp-app
-Id                    : 00000000-0000-0000-0000-000000000000
-Type                  : ServicePrincipal
-```
-
-### Example 6: Create a new AD service principal using piping
-
-The following example retrieves the application with object ID
-'3ede3c26-b443-4e0b-9efc-b05e68338dc3' using the [Get-AzADApplication](./get-azadapplication.md)
-cmdlet. The results are piped to the `New-AzADServicePrincipal` cmdlet to create a new AD service
-principal for that application.
-
-```powershell
-Get-AzADApplication -ObjectId 3ede3c26-b443-4e0b-9efc-b05e68338dc3 | New-AzADServicePrincipal
-```
-
-### Example 7: Create a new AD service principal using DisplayName and password credential
-
-The following example creates a new application with the name **ServicePrincipalName** and a
-password of **StrongPassworld!23**. It creates the service principal based on the created
-application. The start date and end date are added to the password credential.
-
-```powershell
-$credentials = New-Object -TypeName Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential -Property @{
-  StartDate=Get-Date; EndDate=Get-Date -Year 2024; Password='StrongPassworld!23'}
-$sp = New-AzAdServicePrincipal -DisplayName ServicePrincipalName -PasswordCredential $credentials
-```
-
-```Output
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://ServicePrincipalName}
-ApplicationId         : 00000000-0000-0000-0000-000000000000c
-ObjectType            : ServicePrincipal
-DisplayName           : ServicePrincipalName
-Id                    : 00000000-0000-0000-0000-000000000000
-Type                  :
-```
-
-### Example 8: Create a new AD service principal using DisplayName and plain key credential
-
-The following example creates a new application with the name **ServicePrincipalName** and a
-certificate **$cert**. It creates the service principal based on the application created. The end
-date is added to key credential.
-
-```powershell
-$cert = 'public certificate as Base64 encoded string'
-$sp = New-AzADServicePrincipal -DisplayName ServicePrincipalName -CertValue $cert  -EndDate '2021-01-01'
-```
-
-```Output
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://ServicePrincipalName}
-ApplicationId         : 00000000-0000-0000-0000-000000000000
-ObjectType            : ServicePrincipal
-DisplayName           : ServicePrincipalName
-Id                    : 00000000-0000-0000-0000-000000000000
-Type                  :
-```
+Create application with display name and associated new service principal with it
 
 ## PARAMETERS
 
-### -ApplicationId
-
-The unique application ID for a service principal in a tenant. Once created this property cannot be
-changed. If an application ID for an existing application is not specified, an application is
-created.
+### -AccountEnabled
+true if the service principal account is enabled; otherwise, false.
+Supports $filter (eq, ne, NOT, in).
 
 ```yaml
-Type: System.Guid
-Parameter Sets: SimpleParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -308,12 +197,64 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AddIn
+Defines custom behavior that a consuming service can use to call an app in specific contexts.
+For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality.
+This will let services like Microsoft 365 call the application in the context of a document the user is working on.
+To construct, see NOTES section for ADDIN properties and create a hash table.
+
 ```yaml
-Type: System.Guid
-Parameter Sets: ApplicationWithoutCredentialParameterSet, ApplicationWithPasswordPlainParameterSet, ApplicationWithPasswordCredentialParameterSet, ApplicationWithKeyPlainParameterSet, ApplicationWithKeyCredentialParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AlternativeName
+Used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+Supports $filter (eq, NOT, ge, le, startsWith).
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppDescription
+The description exposed by the associated application.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApplicationId
+The unique identifier for the associated application (its appId property).
+
+```yaml
+Type: System.Guid
+Parameter Sets: ApplicationIdParameterSet
+Aliases: AppId
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -321,12 +262,11 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationObject
-
-The object representing the application for which the service principal is created.
+The application object, could be used as pipeline input.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
-Parameter Sets: ApplicationObjectWithPasswordPlainParameterSet, ApplicationObjectWithPasswordCredentialParameterSet, ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithKeyCredentialParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
+Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
 Required: True
@@ -336,42 +276,198 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -CertValue
-
-The value of the asymmetric credential type. It represents the Base64 encoded certificate.
+### -AppOwnerOrganizationId
+Contains the tenant id where the application is registered.
+This is applicable only to service principals backed by applications.Supports $filter (eq, ne, NOT, ge, le).
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AppRole
+The roles exposed by the application which this service principal represents.
+For more information see the appRoles property definition on the application entity.
+Not nullable.
+To construct, see NOTES section for APPROLE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppRoleAssignedTo
+App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.
+To construct, see NOTES section for APPROLEASSIGNEDTO properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppRoleAssignment
+App role assignment for another app or service, granted to this service principal.
+Supports $expand.
+To construct, see NOTES section for APPROLEASSIGNMENT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppRoleAssignmentRequired
+Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens.
+The default value is false.
+Not nullable.
+Supports $filter (eq, ne, NOT).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertValue
+The value of the 'asymmetric' credential type.
+It represents the base 64 encoded certificate.
+
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationObjectWithKeyPlainParameterSet
+Parameter Sets: DisplayNameWithKeyPlainParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClaimsMappingPolicy
+The claimsMappingPolicies assigned to this service principal.
+Supports $expand.
+To construct, see NOTES section for CLAIMSMAPPINGPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedPermissionClassification
+The permission classifications for delegated permissions exposed by the app that this service principal represents.
+Supports $expand.
+To construct, see NOTES section for DELEGATEDPERMISSIONCLASSIFICATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeletedDateTime
+.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+Free text field to provide an internal end-user facing description of the service principal.
+End-user portals such MyApps will display the application description in this field.
+The maximum allowed size is 1024 characters.
+Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisabledByMicrosoftStatus
+Specifies whether Microsoft has disabled the registered application.
+Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).
+Supports $filter (eq, ne, NOT).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -381,10 +477,8 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-
-The friendly name of the service principal. If a display name is not provided, this value will
-default to **azure-powershell-MM-dd-yyyy-HH-mm-ss** where the suffix is the time of application
-creation.
+The display name for the service principal.
+Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
 
 ```yaml
 Type: System.String
@@ -400,7 +494,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: DisplayNameWithoutCredentialParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithPasswordCredentialParameterSet, DisplayNameWithKeyPlainParameterSet, DisplayNameWithKeyCredentialParameterSet
+Parameter Sets: DisplayNameWithPasswordCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet, DisplayNameWithKeyPlainParameterSet
 Aliases:
 
 Required: True
@@ -411,14 +505,13 @@ Accept wildcard characters: False
 ```
 
 ### -EndDate
-
-The effective end date of the credential usage. The default end date value is one year from today.
-For an asymmetric type credential, this must be set to on or before the date that the X509
-certificate is valid.
+The effective end date of the credential usage.
+The default end date value is one year from today.
+For an 'asymmetric' type credential, this must be set to on or before the date that the X509 certificate is valid.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: SimpleParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationObjectWithKeyPlainParameterSet
+Parameter Sets: SimpleParameterSet, DisplayNameWithKeyPlainParameterSet
 Aliases:
 
 Required: False
@@ -428,9 +521,62 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Endpoint
+Endpoints available for discovery.
+Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.
+To construct, see NOTES section for ENDPOINT properties and create a hash table.
+
 ```yaml
-Type: System.DateTime
-Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithKeyPlainParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Homepage
+Home page or landing page of the application.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HomeRealmDiscoveryPolicy
+The homeRealmDiscoveryPolicies assigned to this service principal.
+Supports $expand.
+To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Info
+informationalUrl
+To construct, see NOTES section for INFO properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -441,69 +587,190 @@ Accept wildcard characters: False
 ```
 
 ### -KeyCredential
-
-The collection of key credentials associated with the application.
+key credentials associated with the service principal.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]
-Parameter Sets: ApplicationWithKeyCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]
+Parameter Sets: DisplayNameWithKeyCredentialParameterSet
 Aliases: KeyCredentials
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]
-Parameter Sets: ApplicationObjectWithKeyCredentialParameterSet
-Aliases: KeyCredentials
+### -LoginUrl
+Specifies the URL where the service provider redirects the user to Azure AD to authenticate.
+Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps.
+When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.
 
-Required: True
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogoutUrl
+Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Note
+Free text field to capture information about the service principal, typically used for operational purposes.
+Maximum allowed size is 1024 characters.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationEmailAddress
+Specifies the list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date.
+This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Oauth2PermissionScope
+The delegated permissions exposed by the application.
+For more information see the oauth2PermissionScopes property on the application entity's api property.
+Not nullable.
+To construct, see NOTES section for OAUTH2PERMISSIONSCOPE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PasswordCredential
-
-The collection of password credentials associated with the application.
+Password credentials associated with the service principal.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]
-Parameter Sets: ApplicationWithPasswordCredentialParameterSet, DisplayNameWithPasswordCredentialParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]
+Parameter Sets: DisplayNameWithPasswordCredentialParameterSet
 Aliases: PasswordCredentials
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]
-Parameter Sets: ApplicationObjectWithPasswordCredentialParameterSet
-Aliases: PasswordCredentials
+### -PreferredSingleSignOnMode
+Specifies the single sign-on mode configured for this application.
+Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+The supported values are password, saml, notSupported, and oidc.
 
-Required: True
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferredTokenSigningKeyThumbprint
+Reserved for internal use only.
+Do not write or otherwise rely on this property.
+May be removed in future versions.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplyUrl
+The URLs that user tokens are sent to for sign in with the associated application, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to for the associated application.
+Not nullable.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Role
-
-The role that the service principal has over the scope. If no value is provided, **Role** defaults
-to the **Contributor** role.
+The role that the service principal has over the scope.
 
 ```yaml
 Type: System.String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SamlSingleSignOnSetting
+samlSingleSignOnSettings
+To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -514,13 +781,11 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-
-The scope that the service principal has permissions for. If no value is provided, **Scope**
-defaults to the current subscription.
+The scope that the service principal has permissions for.
 
 ```yaml
 Type: System.String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -530,13 +795,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkipAssignment
-
-If set, skip creating the default role assignment for the service principal.
+### -ServicePrincipalName
+Contains the list of identifiersUris, copied over from the associated application.
+Additional values can be added to hybrid applications.
+These values can be used to identify the permissions exposed by this app within Azure AD.
+For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties.
+Not nullable.
+Supports $filter (eq, NOT, ge, le, startsWith).
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SimpleParameterSet
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalType
+Identifies if the service principal represents an application or a managed identity.
+This is set by Azure AD internally.
+For a service principal that represents an application this is set as Application.
+For a service principal that represent a managed identity this is set as ManagedIdentity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -547,14 +834,13 @@ Accept wildcard characters: False
 ```
 
 ### -StartDate
-
-The effective start date of the credential usage. The default start date value is today. For an
-asymmetric type credential, this must be set to on or after the date that the X509 certificate is
-valid from.
+The effective start date of the credential usage.
+The default start date value is today.
+For an 'asymmetric' type credential, this must be set to on or after the date that the X509 certificate is valid from.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: SimpleParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationObjectWithKeyPlainParameterSet
+Parameter Sets: SimpleParameterSet, DisplayNameWithKeyPlainParameterSet
 Aliases:
 
 Required: False
@@ -564,9 +850,81 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Custom strings that can be used to categorize and identify the service principal.
+Not nullable.
+Supports $filter (eq, NOT, ge, le, startsWith).
+
 ```yaml
-Type: System.DateTime
-Parameter Sets: ApplicationWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithPasswordPlainParameterSet, DisplayNameWithKeyPlainParameterSet
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TokenEncryptionKeyId
+Specifies the keyId of a public key from the keyCredentials collection.
+When configured, Azure AD issues tokens for this application encrypted using the key specified by this property.
+The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TokenIssuancePolicy
+The tokenIssuancePolicies assigned to this service principal.
+Supports $expand.
+To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TokenLifetimePolicy
+The tokenLifetimePolicies assigned to this service principal.
+Supports $expand.
+To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TransitiveMemberOf
+.
+To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -577,7 +935,6 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -593,8 +950,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -609,46 +966,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.Guid
-
-### System.String
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]
-
-### System.DateTime
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
-
-### Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 
 ## NOTES
 
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
-
 ## RELATED LINKS
-
-[Remove-AzADServicePrincipal](./Remove-AzADServicePrincipal.md)
-
-[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
-
-[New-AzADApplication](./New-AzADApplication.md)
-
-[Remove-AzADApplication](./Remove-AzADApplication.md)
-
-[Get-AzADSpCredential](./Get-AzADSpCredential.md)
-
-[New-AzADSpCredential](./New-AzADSpCredential.md)
-
-[Remove-AzADSpCredential](./Remove-AzADSpCredential.md)

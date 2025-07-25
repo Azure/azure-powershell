@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 
@@ -20,187 +23,90 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     internal static class ActiveDirectoryClientExtensions
     {
-        public static PSADObject ToPSADObject(this User user)
-        {
-            return new PSADObject()
-            {
-                DisplayName = user.DisplayName,
-                Id = user.ObjectId
-            };
-        }
-
-        public static PSADObject ToPSADObject(this ADGroup group)
-        {
-            return new PSADObject()
-            {
-                DisplayName = group.DisplayName,
-                Id = group.ObjectId
-            };
-        }
-
-        public static PSADObject ToPSADObject(this AADObject obj)
+        public static PSADObject ToPSADObject(this Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
         {
             if (obj == null) throw new ArgumentNullException();
 
-            if (obj.ObjectType == typeof(User).Name)
+            if (obj.IsUser())
             {
-                return new PSADUser()
-                {
-                    DisplayName = obj.DisplayName,
-                    Id = obj.ObjectId,
-                    Type = obj.ObjectType,
-                    UserPrincipalName = obj.UserPrincipalName
-                };
+                return JsonConvert.DeserializeObject<MicrosoftGraphUser>(JsonConvert.SerializeObject(obj)).ToPSADUser();
             }
-            else if (obj.ObjectType == "Group")
+            if (obj.IsServicePrincipal())
             {
-                return new PSADGroup()
-                {
-                    DisplayName = obj.DisplayName,
-                    Id = obj.ObjectId,
-                    Type = obj.ObjectType,
-                    SecurityEnabled = obj.SecurityEnabled,
-                    MailNickname = !string.IsNullOrEmpty(obj.Mail) ? obj.Mail :
-                        !string.IsNullOrEmpty(obj.MailNickname) ? obj.MailNickname :
-                        obj.AdditionalProperties.ContainsKey("mailNickname") ? obj.AdditionalProperties["mailNickname"]?.ToString() : null,
-                    Description = obj.AdditionalProperties.ContainsKey("description") ? obj.AdditionalProperties["description"]?.ToString() : null
-                };
+                return JsonConvert.DeserializeObject<MicrosoftGraphServicePrincipal>(JsonConvert.SerializeObject(obj)).ToPSADServicePrincipal();
             }
-            else if (obj.ObjectType == typeof(ServicePrincipal).Name)
+            if (obj.IsGroup())
             {
-                return new PSADServicePrincipal()
-                {
-                    DisplayName = obj.DisplayName,
-                    Id = obj.ObjectId,
-                    Type = obj.ObjectType,
-                    ServicePrincipalNames = obj.ServicePrincipalNames.ToArray()
-                };
+                return JsonConvert.DeserializeObject<MicrosoftGraphGroup>(JsonConvert.SerializeObject(obj)).ToPSADGroup();
             }
-            else
-            {
-                return new PSADObject()
-                {
-                    DisplayName = obj.DisplayName,
-                    Id = obj.ObjectId,
-                    Type = obj.ObjectType
-                };
-            }
-        }
 
-        public static PSADObject ToPSADGroup(this AADObject obj)
-        {
             return new PSADObject()
             {
-                DisplayName = obj.DisplayName,
-                Id = obj.ObjectId
+                Id = obj.Id,
+                DeletionTimestamp = obj.DeletedDateTime
             };
         }
 
-        public static PSADUser ToPSADUser(this User user)
+        public static bool IsUser(this Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
+        {
+            return string.Equals(obj.Odatatype, "#microsoft.graph.user", StringComparison.OrdinalIgnoreCase);
+        }
+        public static bool IsServicePrincipal(this Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
+        {
+            return string.Equals(obj.Odatatype, "#microsoft.graph.servicePrincipal", StringComparison.OrdinalIgnoreCase);
+        }
+        public static bool IsGroup(this Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
+        {
+            return string.Equals(obj.Odatatype, "#microsoft.graph.group", StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static PSADUser ToPSADUser(this MicrosoftGraphUser user)
         {
             return new PSADUser()
             {
                 DisplayName = user.DisplayName,
-                Id = user.ObjectId,
+                Id = user.Id,
+                DeletionTimestamp = user.DeletedDateTime,
                 UserPrincipalName = user.UserPrincipalName,
-                Type = user.UserType,
+                Type = user.UserType ?? "User",
                 UsageLocation = user.UsageLocation,
                 GivenName = user.GivenName,
                 Surname = user.Surname,
                 AccountEnabled = user.AccountEnabled,
                 MailNickname = user.MailNickname,
-                Mail = user.Mail
+                Mail = user.Mail,
+                ImmutableId = user.OnPremisesImmutableId,
+                AdditionalProperties = user.AdditionalProperties
             };
         }
 
-        public static PSADGroup ToPSADGroup(this ADGroup group)
+        public static PSADGroup ToPSADGroup(this MicrosoftGraphGroup group)
         {
             return new PSADGroup()
             {
                 DisplayName = group.DisplayName,
-                Id = group.ObjectId,
+                Id = group.Id,
+                DeletionTimestamp = group.DeletedDateTime,
+                Type = "Group",
                 SecurityEnabled = group.SecurityEnabled,
-                MailNickname =  !string.IsNullOrEmpty(group.Mail) ? group.Mail : group.AdditionalProperties.ContainsKey("mailNickname") ? group.AdditionalProperties["mailNickname"]?.ToString() : null,
-                Description = group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"]?.ToString() : null
+                MailNickname = !string.IsNullOrEmpty(group.Mail) ? group.Mail : group.AdditionalProperties.ContainsKey("mailNickname") ? group.AdditionalProperties["mailNickname"]?.ToString() : null,
+                Description = group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"]?.ToString() : null,
+                MailEnabled = group.MailEnabled,
+                AdditionalProperties = group.AdditionalProperties
             };
         }
 
-        public static PSADServicePrincipal ToPSADServicePrincipal(this ServicePrincipal servicePrincipal)
+        public static PSADServicePrincipal ToPSADServicePrincipal(this MicrosoftGraphServicePrincipal servicePrincipal)
         {
             return new PSADServicePrincipal()
             {
                 DisplayName = servicePrincipal.DisplayName,
-                Id = servicePrincipal.ObjectId,
-                ApplicationId = Guid.Parse(servicePrincipal.AppId),
-                ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray()
-            };
-        }
-
-        public static PSADApplication ToPSADApplication(this Application application)
-        {
-            if (application != null)
-            {
-                return new PSADApplication()
-                {
-                    ObjectId = application.ObjectId,
-                    DisplayName = application.DisplayName,
-                    ApplicationId = Guid.Parse(application.AppId),
-                    IdentifierUris = application.IdentifierUris,
-                    HomePage = application.Homepage,
-                    ReplyUrls = application.ReplyUrls,
-                    AppPermissions = application.AppPermissions,
-                    AvailableToOtherTenants = application.AvailableToOtherTenants ?? false
-                };
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public static KeyCredential ToGraphKeyCredential(this PSADKeyCredential PSKeyCredential)
-        {
-            return new KeyCredential
-            {
-                StartDate = PSKeyCredential.StartDate,
-                EndDate = PSKeyCredential.EndDate,
-                KeyId = PSKeyCredential.KeyId.ToString(),
-                Value = PSKeyCredential.CertValue,
-                Type = "AsymmetricX509Cert",
-                Usage = "Verify"
-            };
-        }
-
-        public static PasswordCredential ToGraphPasswordCredential(this PSADPasswordCredential PSPasswordCredential)
-        {
-            return new PasswordCredential
-            {
-                StartDate = PSPasswordCredential.StartDate,
-                EndDate = PSPasswordCredential.EndDate,
-                KeyId = PSPasswordCredential.KeyId.ToString(),
-                Value = PSPasswordCredential.Password
-            };
-        }
-
-        public static PSADCredential ToPSADCredential(this KeyCredential credential)
-        {
-            return new PSADCredential
-            {
-                KeyId = credential.KeyId,
-                StartDate = credential.StartDate == null ? string.Empty : credential.StartDate.ToString(),
-                EndDate = credential.EndDate == null ? string.Empty : credential.EndDate.ToString(),
-                Type = credential.Type
-            };
-        }
-
-        public static PSADCredential ToPSADCredential(this PasswordCredential credential)
-        {
-            return new PSADCredential
-            {
-                KeyId = credential.KeyId,
-                StartDate = credential.StartDate == null ? string.Empty : credential.StartDate.ToString(),
-                EndDate = credential.EndDate == null ? string.Empty : credential.EndDate.ToString(),
-                Type = "Password"
+                Id = servicePrincipal.Id,
+                DeletionTimestamp = servicePrincipal.DeletedDateTime,
+                ApplicationId = String.IsNullOrEmpty(servicePrincipal.AppId)? (Guid?)null : Guid.Parse(servicePrincipal.AppId),
+                Type = "ServicePrincipal",
+                ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray(),
+                AdditionalProperties = servicePrincipal.AdditionalProperties
             };
         }
     }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/update-azfrontdoorwafpolicy
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/update-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
@@ -16,24 +16,30 @@ Update WAF policy
 ```
 Update-AzFrontDoorWafPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
  [-Mode <String>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
+ [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-CaptchaExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Update-AzFrontDoorWafPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledState>] [-Mode <String>]
  [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
+ [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-CaptchaExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Update-AzFrontDoorWafPolicy -ResourceId <String> [-EnabledState <PSEnabledState>] [-Mode <String>]
  [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-RequestBodyCheck <String>]
+ [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-CaptchaExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,8 +49,10 @@ The **Update-AzFrontDoorWafPolicy** cmdlet updates an existing WAF policy. If in
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
+```
 
+```output
 Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----         ---------- ------------------ ----------------------------- -----------
 {policyName} Prevention            Enabled                           403 https://www.bing.com/
@@ -54,8 +62,10 @@ Update an existing WAF policy custom status code.
 
 ### Example 2
 ```powershell
-PS C:\> Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
+```
 
+```output
 Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----         ---------- ------------------ ----------------------------- -----------
 {policyName} Detection            Enabled                           403 https://www.bing.com/
@@ -65,8 +75,10 @@ Update an existing WAF policy mode.
 
 ### Example 3
 ```powershell
-PS C:\> Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
+Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
+```
 
+```output
 Name          PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----          ---------- ------------------ ----------------------------- -----------
 {policyName}  Detection           Disabled                           403 https://www.bing.com/
@@ -76,12 +88,27 @@ Update an existing WAF policy enabled state and mode.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Mode Detection -EnabledState Disabled
+Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Mode Detection -EnabledState Disabled
 ```
 
 Update all WAF policies in $resourceGroupName
 
 ## PARAMETERS
+
+### -CaptchaExpirationInMinutes
+setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomBlockResponseBody
 Custom Response Body
@@ -175,6 +202,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JavascriptChallengeExpirationInMinutes
+setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogScrubbingSetting
+Defines rules that scrub sensitive fields in the Web Application Firewall.
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ManagedRule
 Managed rules inside the policy
 
@@ -223,6 +280,21 @@ Accept wildcard characters: False
 
 ### -RedirectUrl
 Redirect URL
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestBodyCheck
+Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'
 
 ```yaml
 Type: System.String

@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 3C6DCC81-82F7-4044-AFBC-4EE1BCC306F2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/invoke-azhdinsighthivejob
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/invoke-azhdinsighthivejob
 schema: 2.0.0
 ---
 
@@ -27,28 +27,28 @@ Use the Use-AzHDInsightCluster cmdlet before calling **Invoke-AzHDInsightHiveJob
 ## EXAMPLES
 
 ### Example 1: Submit a Hive query to an Azure HDInsight cluster
-```
-PS C:\># Primary storage account info
-PS C:\> $storageAccountResourceGroupName = "Group"
-PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+```powershell
+# Primary storage account info
+$storageAccountResourceGroupName = "Group"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
-PS C:\> $storageContainer = "container001"
+$storageContainer = "container001"
 
 # Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
 # Hive job details
-PS C:\> $statusFolder = "tempStatusFolder/"
-PS C:\> $query = "SHOW TABLES"
+$statusFolder = "tempStatusFolder/"
+$query = "SHOW TABLES"
 
-PS C:\> Use-AzHDInsightCluster `
+Use-AzHDInsightCluster `
             -ClusterCredential $clusterCreds `
             -ClusterName $clusterName
 
-PS C:\> Invoke-AzHDInsightHiveJob -StatusFolder $statusFolder `
+Invoke-AzHDInsightHiveJob -StatusFolder $statusFolder `
             -Query $query `
             -DefaultContainer $storageContainer `
             -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -260,5 +260,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Use-AzHDInsightCluster](./Use-AzHDInsightCluster.md)
-
-

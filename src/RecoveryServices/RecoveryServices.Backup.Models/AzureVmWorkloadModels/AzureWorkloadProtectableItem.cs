@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Collections.Generic;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -64,6 +65,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public bool? IsAutoProtected { get; set; }
 
         /// <summary>
+        /// Auto protection policy for protectable item
+        /// </summary>
+        public string AutoProtectionPolicy { get; set; }
+
+        /// <summary>
         /// for instance or AG, indicates number of DB's present
         /// </summary>
         public int? Subinquireditemcount { get; set; }
@@ -79,10 +85,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public PreBackupValidation Prebackupvalidation { get; set; }
 
         /// <summary>
+        /// NodesList for SQLAG protectable objects
+        /// </summary>
+        public IList<DistributedNodesInfo> NodesList { get; set; }
+
+        /// <summary>
         /// Constructor. Takes the service client object representing the protected item 
         /// and converts it in to the PS protected item model
         /// </summary>
-        /// <param name="protectedItemResource">Service client object representing the protected item resource</param>
+        /// <param name="workloadProtectableItemResource">Service client object representing the protected item resource</param>
         /// <param name="containerName">Name of the container associated with this protected item</param>
         /// <param name="containerType">Type of the container associated with this protected item</param>
         public AzureWorkloadProtectableItem(WorkloadProtectableItemResource workloadProtectableItemResource,
@@ -101,6 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             Subprotectableitemcount = protectedItem.Subprotectableitemcount;
             Prebackupvalidation = protectedItem.Prebackupvalidation;
             ProtectableItemType = workloadProtectableItemResource.Properties.GetType().ToString();
+
             if (workloadProtectableItemResource.Properties.GetType() == typeof(AzureVmWorkloadSQLAvailabilityGroupProtectableItem))
             {
                 ProtectableItemType = CmdletModel.ProtectableItemType.SQLAvailabilityGroup.ToString();

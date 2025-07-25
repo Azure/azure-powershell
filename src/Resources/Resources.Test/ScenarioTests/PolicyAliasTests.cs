@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.TestFx;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Azure.ServiceManagement.Common.Models;
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Moq;
     using Xunit;
     using Xunit.Abstractions;
+    using Xunit.Sdk;
 
     public class PolicyAliasTests : RMTestBase
     {
@@ -377,6 +379,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             providers.AddProvider("Provider6").AddResourceType("ResourceType6").AddAlias("Alias6").AddAliasPath("AliasPath6");
             providers.AddProvider("Provider7").AddResourceType("ResourceType7").AddAlias("Alias7").AddAliasPath("AliasPath7", new[] { "ApiVersion7" });
 
+            // Special provider values
+            providers.AddProvider("Provider8").AddResourceType("ResourceType8").AddNullAlias();
+            providers.AddProvider("Provider9").AddResourceType("ResourceType9").AddNullLocation();
+            providers.AddProvider("Provider10").AddResourceType("ResourceType10").AddNullApiVersion();
+            providers.AddProvider("Provider11").AddResourceType("ResourceType11").AddAlias("Alias11").AddNullAliasPath();
+
             var listResult = providers.List;
             this.SetupAliasListResult(listResult);
 
@@ -435,7 +443,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>(), It.IsAny<bool>()))
-                .Callback((object obj, bool listAll) => { this.AssertResult(obj, listResult, 6); });
+                .Callback((object obj, bool listAll) => { this.AssertResult(obj, listResult, 10); });
 
             this.cmdlet.ExecuteCmdlet();
             this.VerifyListCallPatternAndReset();
@@ -573,25 +581,25 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     {
                         count++;
                     }
-                    else if (expectedResourceType.Aliases.Any())
+                    else if (expectedResourceType.Aliases.Coalesce().Any())
                     {
-                        if (!string.IsNullOrEmpty(locationMatch) && expectedResourceType.Locations.Any(l => isMatch(l, locationMatch)))
+                        if (!string.IsNullOrEmpty(locationMatch) && expectedResourceType.Locations.Coalesce().Any(l => isMatch(l, locationMatch)))
                         {
                             count++;
                         }
-                        else if (!string.IsNullOrEmpty(apiVersionMatch) && expectedResourceType.ApiVersions.Any(v => isMatch(v, apiVersionMatch)))
+                        else if (!string.IsNullOrEmpty(apiVersionMatch) && expectedResourceType.ApiVersions.Coalesce().Any(v => isMatch(v, apiVersionMatch)))
                         {
                             count++;
                         }
-                        else if (!string.IsNullOrEmpty(aliasMatch) && expectedResourceType.Aliases.Any(a => isMatch(a.Name, aliasMatch)))
+                        else if (!string.IsNullOrEmpty(aliasMatch) && expectedResourceType.Aliases.Coalesce().Any(a => isMatch(a.Name, aliasMatch)))
                         {
                             count++;
                         }
-                        else if (!string.IsNullOrEmpty(pathMatch) && expectedResourceType.Aliases.SelectMany(a => a.Paths).Any(p => isMatch(p.Path, pathMatch)))
+                        else if (!string.IsNullOrEmpty(pathMatch) && expectedResourceType.Aliases.Coalesce().Any(a => a.Paths.Coalesce().Any(p => isMatch(p.Path, pathMatch))))
                         {
                             count++;
                         }
-                        else if (!string.IsNullOrEmpty(apiVersionMatch) && expectedResourceType.Aliases.Any(a => a.Paths.Coalesce().Any(p => p.ApiVersions.Any(v => isMatch(v, apiVersionMatch)))))
+                        else if (!string.IsNullOrEmpty(apiVersionMatch) && expectedResourceType.Aliases.Coalesce().Any(a => a.Paths.Coalesce().Any(p => p.ApiVersions.Coalesce().Any(v => isMatch(v, apiVersionMatch)))))
                         {
                             count++;
                         }
@@ -612,7 +620,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private void VerifyListCallPatternAndReset()
         {
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
-            this.commandRuntimeMock.ResetCalls();
+            this.commandRuntimeMock.Invocations.Clear();
         }
     }
 }

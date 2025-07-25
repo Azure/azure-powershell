@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string administratorEmail,
             Dictionary<string, string> tags,
             bool enableClientCertificate,
-            PsApiManagementSku sku = PsApiManagementSku.Developer,
+            string sku = SkuType.Developer,
             int? capacity = null,
             PsApiManagementVpnType vpnType = PsApiManagementVpnType.None,
             PsApiManagementVirtualNetwork virtualNetwork = null,
@@ -138,13 +138,18 @@ namespace Microsoft.Azure.Commands.ApiManagement
             PsApiManagementSystemCertificate[] systemCertificates = null,
             PsApiManagementSslSetting sslSettings = null,
             bool createSystemResourceIdentity = false,
-            string[] userAssignedIdentity = null)
+            string[] userAssignedIdentity = null,
+            string[] zone = null,
+            bool? disableGateway = null,
+            string minimalControlPlaneApiVersion = null,
+            string publicNetworkAccess = null,
+            string publicIpAddressId = null)
         {
             string skuType = Mappers.MapSku(sku);
 
             if(capacity == null)
             {
-                capacity = (sku == PsApiManagementSku.Consumption ? 0 : 1);
+                capacity = (sku == SkuType.Consumption ? 0 : 1);
             }
 
             var skuProperties = new ApiManagementServiceSkuProperties(skuType, capacity.Value);
@@ -171,22 +176,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             {
                 parameters.AdditionalLocations =
                     additionalRegions
-                        .Select(region =>
-                            new AdditionalLocation
-                            {
-                                Location = region.Location,
-                                Sku = new ApiManagementServiceSkuProperties()
-                                {
-                                    Name = Mappers.MapSku(region.Sku),
-                                    Capacity = region.Capacity
-                                },
-                                VirtualNetworkConfiguration = region.VirtualNetwork == null
-                                    ? null
-                                    : new VirtualNetworkConfiguration
-                                    {
-                                        SubnetResourceId = region.VirtualNetwork.SubnetResourceId
-                                    }
-                            })
+                        .Select(region => region.GetAdditionalLocation())
                         .ToList();
             }
 
@@ -215,10 +205,38 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 parameters.EnableClientCertificate = enableClientCertificate;
             }
 
+            if (zone != null)
+            {
+                parameters.Zones = zone;
+            }
+
+            if (disableGateway != null && disableGateway.HasValue)
+            {
+                parameters.DisableGateway = disableGateway.Value;
+            }
+
+            if (!string.IsNullOrWhiteSpace(minimalControlPlaneApiVersion))
+            {
+                parameters.ApiVersionConstraint = new ApiVersionConstraint()
+                {
+                    MinApiVersion = minimalControlPlaneApiVersion
+                };
+            }
+
+            if (publicIpAddressId != null)
+            {
+                parameters.PublicIpAddressId = publicIpAddressId;
+            }
+
+            if (publicNetworkAccess != null)
+            {
+                parameters.PublicNetworkAccess = publicNetworkAccess;
+            }
+
             parameters.Identity = Mappers.MapAssignedIdentity(createSystemResourceIdentity, userAssignedIdentity);
 
             var apiManagementResource = Client.ApiManagementService.CreateOrUpdate(resourceGroupName, serviceName, parameters);
-            return new PsApiManagement(apiManagementResource);      
+            return new PsApiManagement(apiManagementResource);
         }
 
         IList<HostnameConfiguration> BuildHostNameConfiguration(PsApiManagementCustomHostNameConfiguration[] pshostnameConfigurations)
@@ -241,7 +259,9 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string storageAccountName,
             string storageAccountKey,
             string backupContainer,
-            string backupBlob)
+            string backupBlob,
+            string accessType,
+            string identityClientId = null)
         {
             if (string.IsNullOrWhiteSpace(backupBlob))
             {
@@ -251,10 +271,20 @@ namespace Microsoft.Azure.Commands.ApiManagement
             var parameters = new ApiManagementServiceBackupRestoreParameters
             {
                 StorageAccount = storageAccountName,
-                AccessKey = storageAccountKey,
                 ContainerName = backupContainer,
-                BackupName = backupBlob
+                BackupName = backupBlob,
+                AccessType = accessType
             };
+
+            if (!string.IsNullOrWhiteSpace(storageAccountKey))
+            {
+                parameters.AccessKey = storageAccountKey;
+            }
+
+            if (!string.IsNullOrWhiteSpace(identityClientId))
+            {
+                parameters.ClientId = identityClientId;
+            }
 
             var apiManagementServiceResource = Client.ApiManagementService.Backup(resourceGroupName, serviceName, parameters);
             return new PsApiManagement(apiManagementServiceResource);
@@ -273,15 +303,27 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string storageAccountName,
             string storageAccountKey,
             string backupContainer,
-            string backupBlob)
+            string backupBlob,
+            string accessType,
+            string identityClientId)
         {
             var parameters = new ApiManagementServiceBackupRestoreParameters
             {
                 StorageAccount = storageAccountName,
-                AccessKey = storageAccountKey,
                 ContainerName = backupContainer,
-                BackupName = backupBlob
+                BackupName = backupBlob,
+                AccessType = accessType
             };
+
+            if (!string.IsNullOrWhiteSpace(storageAccountKey))
+            {
+                parameters.AccessKey = storageAccountKey;
+            }
+
+            if (!string.IsNullOrWhiteSpace(identityClientId))
+            {
+                parameters.ClientId = identityClientId;
+            }
 
             var apiManagementServiceResource = Client.ApiManagementService.Restore(resourceGroupName, serviceName, parameters);
             return new PsApiManagement(apiManagementServiceResource);

@@ -23,11 +23,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Id { get; set; }
 
         public string Location { get; set; }
+
+        public string EdgeZone { get; set; }
+
     }
 
     public class PSVirtualMachineImagePublisher : PSVirtualMachineImageBase
     {
-
         public string PublisherName { get; set; }
     }
 
@@ -41,20 +43,23 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Skus { get; set; }
     }
 
+    // VirtualMachineImageResource in API definition
     public class PSVirtualMachineImage : PSVirtualMachineImageSku
     {
         public string Version { get; set; }
 
         public string FilterExpression { get; set; }
+        public string HyperVGeneration { get; set; }
+        public ImageDeprecationStatus ImageDeprecationStatus { get; set; }
+        public string Architecture { get; set; }
     }
 
+    // VirtualMachineImage in API definition
     public class PSVirtualMachineImageDetail : PSVirtualMachineImage
     {
         public string Name { get; set; }
 
         public OSDiskImage OSDiskImage { get; set; }
-
-        public string HyperVGeneration { get; set; }
 
         [JsonIgnore]
         public string OSDiskImageText
@@ -63,6 +68,12 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public PurchasePlan PurchasePlan { get; set; }
+
+        [JsonIgnore]
+        public string ImageDeprecationStatusText
+        {
+            get { return JsonConvert.SerializeObject(ImageDeprecationStatus, Formatting.Indented); }
+        }
 
         [JsonIgnore]
         public string PurchasePlanText

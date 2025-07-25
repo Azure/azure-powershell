@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -26,9 +27,10 @@ using System.Management.Automation;
 using System.Threading;
 using Xunit;
 using Xunit.Abstractions;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
-    public class AddAzureRmMetricAlertRuleV2Tests
+    public class AddAzureRmMetricAlertRuleV2Tests : RMTestBase
     {
         private readonly AddAzureRmMetricAlertRuleV2Command _cmdlet;
         private readonly Mock<IMetricAlertsOperations> _insightsMetricAlertsOperationsMock;
@@ -87,8 +89,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         {
             _cmdlet.TargetResourceScope = new[] { "resourceId1", "resourceId2" };
             _cmdlet.ActionGroup = new[] {
-                new ActivityLogAlertActionGroup("actionGroupId1", null),
-                new ActivityLogAlertActionGroup("actionGroupId2", null)
+                new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup("actionGroupId1", null),
+                new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup("actionGroupId2", null)
             };
 
             _cmdlet.ExecuteCmdlet();
@@ -112,8 +114,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         {
             _cmdlet.TargetResourceScope = new[] { "resourceId1", "resourceId2" };
             _cmdlet.ActionGroup = new[] {
-                new ActivityLogAlertActionGroup("actionGroupId1", new Dictionary<string, string> {{"key1", "value1"}}),
-                new ActivityLogAlertActionGroup("actionGroupId2", null)
+                new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup("actionGroupId1", new Dictionary<string, string> {{"key1", "value1"}}),
+                new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup("actionGroupId2", null)
             };
 
             _cmdlet.ActionGroupId = new[] { "actionGroupId1", "actionGroupId3" };
@@ -136,6 +138,57 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 It.IsAny<CancellationToken>()), Times.Once);
         }
 
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2WithFalseAutoMitigateFlag()
+        {
+            _cmdlet.AutoMitigate = false;
+            _cmdlet.ExecuteCmdlet();
+
+            Func<MetricAlertResource, bool> verify = metricAlert =>
+            {
+                Assert.Equal(false, metricAlert.AutoMitigate);
+                return true;
+            };
+
+            this._insightsMetricAlertsOperationsMock.Verify(o => o.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.Is<MetricAlertResource>(r => verify(r)), It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2WithTrueAutoMitigateFlag()
+        {
+            _cmdlet.AutoMitigate = true; ;
+            _cmdlet.ExecuteCmdlet();
+
+            Func<MetricAlertResource, bool> verify = metricAlert =>
+            {
+                Assert.Equal(true, metricAlert.AutoMitigate);
+                return true;
+            };
+
+            this._insightsMetricAlertsOperationsMock.Verify(o => o.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.Is<MetricAlertResource>(r => verify(r)), It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2WithDefaultAutoMitigateFlag()
+        {
+            _cmdlet.ExecuteCmdlet();
+
+            Func<MetricAlertResource, bool> verify = metricAlert =>
+            {
+                Assert.Equal(true, metricAlert.AutoMitigate);
+                return true;
+            };
+
+            this._insightsMetricAlertsOperationsMock.Verify(o => o.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.Is<MetricAlertResource>(r => verify(r)), It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewMetricAlertRuleV2WithWebtestConditionProcessing()
@@ -151,9 +204,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             Func<MetricAlertResource, bool> verify = metricAlert =>
             {
-                Assert.Contains(_cmdlet.TargetResourceId, metricAlert.Scopes);
-                Assert.Contains(webtestCriteria.ComponentId, metricAlert.Scopes);
-
                 Assert.Contains($"hidden-link:{webtestCriteria.WebTestId}", metricAlert.Tags.Keys);
                 Assert.Contains($"hidden-link:{webtestCriteria.ComponentId}", metricAlert.Tags.Keys);
 

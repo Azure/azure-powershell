@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstance
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlinstance
 schema: 2.0.0
 ---
 
@@ -14,31 +14,32 @@ Returns information about Azure SQL Managed Database Instance.
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzSqlInstance [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInstance [-Name <String>] [-ResourceGroupName <String>] [-ExpandActiveDirectoryAdministrator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolObjectParameterSet
 ```
-Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-ExpandActiveDirectoryAdministrator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListByInstancePoolResourceIdentiferParameterSet
+### ListByInstancePoolResourceIdentifierParameterSet
 ```
-Get-AzSqlInstance [-InstancePoolResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInstance [-InstancePoolResourceId] <String> [-ExpandActiveDirectoryAdministrator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByManagedInstanceResourceIdentifierParameterSet
 ```
-Get-AzSqlInstance [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSqlInstance [-ResourceId] <String> [-ExpandActiveDirectoryAdministrator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolParameterSet
 ```
 Get-AzSqlInstance [-InstancePoolName] <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ExpandActiveDirectoryAdministrator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +50,10 @@ Specify the name of an instance to see information for only that instance.
 
 ### Example 1: Get all instances assigned to a resource group
 ```powershell
-PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01"
+Get-AzSqlInstance -ResourceGroupName "ResourceGroup01"
+```
+
+```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -57,6 +61,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -64,6 +69,8 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -72,6 +79,7 @@ ManagedInstanceName      : managedInstance2
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin2
 AdministratorPassword    :
@@ -79,14 +87,19 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances assigned to the resource group ResourceGroup01.
 
-### Example 2: Get information about an  instance
+### Example 2: Get information about an instance
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
+Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
+```
+
+```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -94,6 +107,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -101,14 +115,19 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
+ZoneRedundant            : false
 ```
 
 This command gets information about the instance named managedInstance1.
 
 ### Example 3: Get all instances assigned to a resource group using filtering
 ```powershell
-PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "managedInstance*"
+Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "managedInstance*"
+```
+
+```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -116,6 +135,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -123,7 +143,9 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -132,6 +154,7 @@ ManagedInstanceName      : managedInstance2
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin2
 AdministratorPassword    :
@@ -139,14 +162,19 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances assigned to the resource group ResourceGroup01 that start with "managedInstance".
 
 ### Example 4: Get all instances within an instance pool
 ```powershell
-PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -InstancePoolName "instancePool0"
+Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -InstancePoolName "instancePool0"
+```
+
+```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -163,6 +191,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -180,14 +209,18 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances within the instance pool "instancePool0".
 
 ### Example 5: Get all instances within an instance pool using instance pool object
 ```powershell
-PS C:\> $instancePool = Get-AzSqlInstancePool -ResourceGroupName "ResourceGroup01" -Name "instancePool0"
-PS C:\> Get-AzSqlInstance -InstancePool $instancePool
+$instancePool = Get-AzSqlInstancePool -ResourceGroupName "ResourceGroup01" -Name "instancePool0"
+Get-AzSqlInstance -InstancePool $instancePool
+```
+
+```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -204,6 +237,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -221,13 +255,17 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances within the instance pool "instancePool0".
 
 ### Example 6: Get all instances within an instance pool using instance pool resource identifier
 ```powershell
-PS C:\> Get-AzSqlInstance -InstancePoolResourceIdentifier "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
+Get-AzSqlInstance -InstancePoolResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
+```
+
+```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -244,6 +282,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -261,13 +300,17 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances within the instance pool "instancePool0".
 
 ### Example 7: Get a managed instance using its resource identifier
 ```powershell
-PS C:\> Get-AzSqlInstance -ResourceIdentifier "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1"
+Get-AzSqlInstance -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1"
+```
+
+```output
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -275,6 +318,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -282,8 +326,108 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
 InstancePoolName         :
+ZoneRedundant            : false
+```
+
+This command gets information about the instance named managedInstance1.
+
+### Example 8: Get all instances assigned to a resource group with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
+```powershell
+$val = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
+
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+StorageIOps              :
+Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+ZoneRedundant            : false
+
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance2
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
+FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin2
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+StorageIOps              :
+DnsZone                  : ad35cna0mw
+Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+ZoneRedundant            : false
+
+$val.Administrators
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
+AzureADOnlyAuthentication : True
+
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy2
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
+AzureADOnlyAuthentication : True
+```
+
+This command gets information about all instances assigned to the resource group ResourceGroup01. .
+
+### Example 9: Get information about an instance with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
+```powershell
+$val = Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
+
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+StorageIOps              :
+DnsZone                  : ad35cna0mw
+Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+ZoneRedundant            : false
+
+$val.Administrators
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
+AzureADOnlyAuthentication : True
 ```
 
 This command gets information about the instance named managedInstance1.
@@ -297,6 +441,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandActiveDirectoryAdministrator
+Expand Active Directory Administrator Information on the server.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -332,7 +491,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -InstancePoolResourceId
@@ -340,7 +499,7 @@ The instance pool resource identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByInstancePoolResourceIdentiferParameterSet
+Parameter Sets: ListByInstancePoolResourceIdentifierParameterSet
 Aliases:
 
 Required: True
@@ -362,7 +521,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName

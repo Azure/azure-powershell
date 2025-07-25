@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 5C1C51FE-747F-4176-84ED-A28AA3475581
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/remove-azoperationalinsightsdatasource
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightsdatasource
 schema: 2.0.0
 ---
 
@@ -29,6 +29,13 @@ Remove-AzOperationalInsightsDataSource [-Workspace] <PSWorkspace> [-Name] <Strin
 The **Remove-AzOperationalInsightsDataSource** cmdlet deletes a data source.
 
 ## EXAMPLES
+
+### Example 1
+```powershell
+Remove-AzOperationalInsightsDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace -Name DataSource_CustomLog_Customlog_CL
+```
+
+Delete a data source.
 
 ## PARAMETERS
 
@@ -154,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

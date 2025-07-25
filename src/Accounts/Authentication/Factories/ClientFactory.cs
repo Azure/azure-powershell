@@ -16,9 +16,13 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -54,18 +58,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
+            return CreateArmClient<TClient>(context, endpoint, AzureCmdletContext.CmdletNone);
+        }
+
+        public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint, ICmdletContext cmdletContext) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
             if (context == null)
             {
-                throw new ApplicationException(Resources.NoSubscriptionInContext);
+                throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
             }
 
-            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint, cmdletContext);
             var baseUri = context.Environment.GetEndpointAsUri(endpoint);
             TClient client = CreateCustomArmClient<TClient>(baseUri, creds);
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
             if (subscriptionId != null && context.Subscription != null)
             {
-                subscriptionId.SetValue(client, context.Subscription.Id.ToString());
+                if (subscriptionId.PropertyType == typeof(Guid))
+                {
+                    subscriptionId.SetValue(client, Guid.Parse(context.Subscription.Id));
+                }
+                else
+                {
+                    subscriptionId.SetValue(client, context.Subscription.Id);
+                }
             }
 
             return client;
@@ -76,6 +92,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             List<Type> types = new List<Type>();
             List<object> parameterList = new List<object>();
             List<DelegatingHandler> handlerList = new List<DelegatingHandler> { DefaultCancelRetryHandler.Clone() as CancelRetryHandler};
+            if (parameters.FirstOrDefault(parameter => parameter is IClaimsChallengeProcessor) is IClaimsChallengeProcessor claimsChallengeProcessor)
+            {
+                handlerList.Add(new ClaimsChallengeHandler(claimsChallengeProcessor));
+            }
+
             var customHandlers = GetCustomHandlers();
             if (customHandlers != null && customHandlers.Any())
             {
@@ -119,6 +140,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 client.UserAgent.Add(userAgent);
             }
 
+            client.TrySetMaxTimesForRetryAfterHandler();
+            client.TrySetRetryCountofRetryPolicy();
+
             return client;
         }
 
@@ -129,7 +153,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 var exceptionMessage = endpoint == AzureEnvironment.Endpoint.ServiceManagement
                     ? Resources.InvalidDefaultSubscription
                     : Resources.NoSubscriptionInContext;
-                throw new ApplicationException(exceptionMessage);
+                throw new AzPSApplicationException(exceptionMessage, ErrorKind.UserError);
             }
 
             SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
@@ -165,21 +189,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (subscription == null)
             {
-                throw new ApplicationException(Resources.InvalidDefaultSubscription);
+                throw new AzPSApplicationException(Resources.InvalidDefaultSubscription, ErrorKind.UserError);
             }
 
             var account = profile.Accounts.FirstOrDefault((a) => string.Equals(a.Id, (subscription.GetAccount()), StringComparison.OrdinalIgnoreCase));
 
             if (null == account)
             {
-                throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.GetAccount()), "accountName");
+                throw new AzPSArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.GetAccount()), "accountName", ErrorKind.UserError);
             }
 
             var environment = profile.Environments.FirstOrDefault((e) => string.Equals(e.Name, subscription.GetEnvironment(), StringComparison.OrdinalIgnoreCase));
 
             if (null == environment)
             {
-                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.GetEnvironment()));
+                throw new AzPSArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.GetEnvironment()), "environment", ErrorKind.UserError);
             }
 
             AzureContext context = new AzureContext(subscription, account, environment);
@@ -360,13 +384,39 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         /// <summary>
+        /// AddUserAgent is method from ClientFactory singleton. When user terminate cmdlet execution on Console, the module name in 
+        /// useragent cannot be removed. It leads multiple module names in useragent if user execute cmdlet of another module after 
+        /// previous terminated cmdlet. The solution here is to share the same key to all modules which name leads "Az.". It is not accurate
+        /// but can cover the majority of cases.
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns></returns>
+        private static string GetProductInfoHeaderKey(string productName)
+        {
+            string productInfoHeaderKey = productName;
+            if (!string.IsNullOrWhiteSpace(productName) && productName.StartsWith("Az."))
+            {
+                productInfoHeaderKey = "Az.ModuleKey";
+            }
+            return productInfoHeaderKey;
+        }
+        /// <summary>
         /// Adds user agent to UserAgents collection.
         /// </summary>
         /// <param name="productName">Product name.</param>
         /// <param name="productVersion">Product version.</param>
         public void AddUserAgent(string productName, string productVersion)
         {
-            _userAgents.TryAdd(new ProductInfoHeaderValue(productName, productVersion), productName);
+            //the value may be null in test cases
+            if (string.IsNullOrWhiteSpace(productName))
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(productVersion))
+            {
+                productVersion = "";
+            }
+            _userAgents.TryAdd(new ProductInfoHeaderValue(productName, productVersion ?? ""), GetProductInfoHeaderKey(productName));
         }
 
         /// <summary>

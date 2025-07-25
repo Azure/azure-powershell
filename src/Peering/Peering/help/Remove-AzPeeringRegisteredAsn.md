@@ -1,86 +1,59 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/remove-azpeeringregisteredasn
+online version: https://learn.microsoft.com/powershell/module/az.peering/remove-azpeeringregisteredasn
 schema: 2.0.0
 ---
 
 # Remove-AzPeeringRegisteredAsn
 
 ## SYNOPSIS
-Delete or remove a registered ASN from the parent peering resource.
+Deletes an existing registered ASN with the specified name under the given subscription, resource group and peering.
 
 ## SYNTAX
 
-### ByName (Default)
+### Delete (Default)
 ```
-Remove-AzPeeringRegisteredAsn [-ResourceGroupName] <String> [-PeeringName] <String> [-Name] <String> [-Force]
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObject
-```
-Remove-AzPeeringRegisteredAsn -InputObject <PSPeeringServicePrefix> [-Force] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPeeringRegisteredAsn -Name <String> -PeeringName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceId
+### DeleteViaIdentityPeering
 ```
-Remove-AzPeeringRegisteredAsn [-ResourceId] <String> [-Force] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPeeringRegisteredAsn -Name <String> -PeeringInputObject <IPeeringIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzPeeringRegisteredAsn -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Allows the removal of registered ASN from parent peering resource.
+Deletes an existing registered ASN with the specified name under the given subscription, resource group and peering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a registered asn from the peering
 ```powershell
-PS C:\> Remove-AzPeeringRegisteredAsn -ResourceId $resourceId
+Remove-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo
 ```
 
-Remove a registerd ASN by resource id.
+Remove a registered asn from the peering object
 
 ## PARAMETERS
 
-### -AsJob
-Run in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Force the operation to complete
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -90,11 +63,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Use a Get-AzPeeringServicePrefix
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringServicePrefix
-Parameter Sets: InputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -105,22 +78,22 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the registered ASN
+The name of the registered ASN.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
+Parameter Sets: Delete, DeleteViaIdentityPeering
+Aliases: RegisteredAsnName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -134,48 +107,63 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeeringName
-The unique name of the PSPeering.
+### -PeeringInputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: ByName
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Parameter Sets: DeleteViaIdentityPeering
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PeeringName
+The name of the peering.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The create or use an existing resource group name.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id string name.
+### -SubscriptionId
+The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: Delete
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -215,9 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringServicePrefix
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 
 ## OUTPUTS
 

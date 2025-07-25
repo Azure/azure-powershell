@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2, PropertyName = "priority")]
         public uint Priority { get; set; }
 
+        [JsonProperty("size")]
+        public string Size { get; set; }
+
         [JsonProperty("ruleCollections")]
         public List<PSAzureFirewallPolicyBaseRuleCollection> RuleCollection { get; set; }
 

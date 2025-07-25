@@ -1,0 +1,86 @@
+{
+  "Invoke-AzBillingBenefitsElevateSavingPlanOrder+[NoContext]+Elevate+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/e0b1f446-5684-4fa6-a0c8-d394368eda11/elevate?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/e0b1f446-5684-4fa6-a0c8-d394368eda11/elevate?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "139999e9-f467-4ad8-83e6-e8370bd7353e" ],
+        "CommandName": [ "Invoke-AzBillingBenefitsElevateSavingPlanOrder" ],
+        "FullCommandName": [ "Invoke-AzBillingBenefitsElevateSavingPlanOrder_Elevate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.BillingBenefits/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "139999e9-f467-4ad8-83e6-e8370bd7353e" ],
+        "x-ms-version": [ "1.0.2141.1412" ],
+        "x-ms-correlation-request-id": [ "74f5857f-73a4-4bca-8711-9c5ae7a6a4e0" ],
+        "x-ms-routing-request-id": [ "WESTUS:20221130T212711Z:74f5857f-73a4-4bca-8711-9c5ae7a6a4e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Nov 2022 21:27:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"roleDefinitionId\":\"/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\"principalId\":\"067e7443-3a55-40b6-a2d8-0a7a12a9da2d\",\"scope\":\"/providers/Microsoft.BillingBenefits/savingsplanorders/e0b1f446-5684-4fa6-a0c8-d394368eda11\"},\"id\":\"/providers/Microsoft.BillingBenefits/savingsplanorders/e0b1f446-5684-4fa6-a0c8-d394368eda11/providers/Microsoft.Authorization/roleAssignments/916f99c5-1a1f-47c9-b0e0-3503593b6a60\",\"name\":\"916f99c5-1a1f-47c9-b0e0-3503593b6a60\"}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzBillingBenefitsElevateSavingPlanOrder+[NoContext]+ElevateViaIdentity+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/e45905d2-9207-4f24-8549-f615c203b49b/elevate?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/e45905d2-9207-4f24-8549-f615c203b49b/elevate?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "a77c61e1-1d70-4f48-98d6-631ed1712302" ],
+        "CommandName": [ "Invoke-AzBillingBenefitsElevateSavingPlanOrder" ],
+        "FullCommandName": [ "Invoke-AzBillingBenefitsElevateSavingPlanOrder_ElevateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.BillingBenefits/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "x-ms-request-id": [ "a77c61e1-1d70-4f48-98d6-631ed1712302" ],
+        "x-ms-version": [ "1.0.2141.1412" ],
+        "x-ms-correlation-request-id": [ "fef2df49-9358-4af4-97cc-55f6611febe1" ],
+        "x-ms-routing-request-id": [ "WESTUS:20221130T212715Z:fef2df49-9358-4af4-97cc-55f6611febe1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 30 Nov 2022 21:27:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"roleDefinitionId\":\"/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\"principalId\":\"067e7443-3a55-40b6-a2d8-0a7a12a9da2d\",\"scope\":\"/providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b\"},\"id\":\"/providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b/providers/Microsoft.Authorization/roleAssignments/c1057d23-c363-436a-b300-c08fd2758a9b\",\"name\":\"c1057d23-c363-436a-b300-c08fd2758a9b\"}",
+      "isContentBase64": false
+    }
+  }
+}

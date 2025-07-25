@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 1EC19069-B64C-4F0F-99A3-07C16E46C0A0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/new-aznotificationhubsnamespacekey
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/new-aznotificationhubsnamespacekey
 schema: 2.0.0
 ---
 
@@ -20,16 +20,24 @@ New-AzNotificationHubsNamespaceKey [-ResourceGroup] <String> [-Namespace] <Strin
 ```
 
 ## DESCRIPTION
-New-AzNotificationHubNamespaceKey cmdlet regenerates the Primary Key/Secondary Key for the Namespace Authorization Rule.
+New-AzNotificationHubsNamespaceKey cmdlet regenerates the Primary Key/Secondary Key for the Namespace Authorization Rule.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+New-AzNotificationHubsNamespaceKey -ResourceGroup "ContosoNotificationsGroup" -Namespace "ContosoNamespace" -AuthorizationRule "RootManageSharedAccessKey" -PolicyKey "PrimaryKey"
 ```
 
-{{ Add example description here }}
+```Output
+PrimaryConnectionString   : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAc
+                            cessKey;SharedAccessKey=V******z0=
+SecondaryConnectionString : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAc
+                            cessKey;SharedAccessKey=V******HV=
+PrimaryKey                : V******z0=
+SecondaryKey              : V******HV=
+KeyName                   : RootManageSharedAccessKey
+```
 
 ## PARAMETERS
 

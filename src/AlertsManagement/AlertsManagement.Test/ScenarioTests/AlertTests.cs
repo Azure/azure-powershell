@@ -12,43 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
-    public class AlertTests : RMTestBase
+    public class AlertTests : AlertsManagementTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AlertTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAlertChangeState()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AlertChangeState");
+            TestRunner.RunTestScript("Test-AlertChangeState");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAlertsFilteredByParameters()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetAlertsFilteredByParameters");
+            TestRunner.RunTestScript("Test-GetAlertsFilteredByParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAlertsSummary()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AlertsSummary");
+            TestRunner.RunTestScript("Test-AlertsSummary");
         }
     }
 }

@@ -53,16 +53,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The front end ip configuration")]
-        [ValidateNotNullOrEmpty]
-        public PSFrontendIPConfiguration[] LoadBalancerFrontendIpConfiguration { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = "The ip configuration")]
         [ValidateNotNullOrEmpty]
         public PSPrivateLinkServiceIpConfiguration[] IpConfiguration { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The front end ip configuration")]
+        [ValidateNotNullOrEmpty]
+        public PSFrontendIPConfiguration[] LoadBalancerFrontendIpConfiguration { get; set; }
 
         [Parameter(
           Mandatory = false,
@@ -85,6 +85,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the private link service")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -97,6 +103,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The destination IP address")]
+        public string DestinationIPAddress { get; set; }
 
         private PSPrivateLinkService CreatePSPrivateLinkService()
         {
@@ -123,6 +135,13 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             psPrivateLinkService.EnableProxyProtocol = this.EnableProxyProtocol.IsPresent;
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                psPrivateLinkService.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
+            psPrivateLinkService.DestinationIPAddress = this.DestinationIPAddress;
 
             var plsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateLinkService>(psPrivateLinkService);
             plsModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2A3B7343-9AA0-4505-AEDE-31C0C5B98694
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutecircuit
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azexpressroutecircuit
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **Set-AzExpressRouteCircuit** cmdlet saves the modified ExpressRoute circuit
 ## EXAMPLES
 
 ### Example 1: Change the ServiceKey of an ExpressRoute circuit
-```
+```powershell
 $ckt = Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 $ckt.ServiceKey = '64ce99dd-ee70-4e74-b6b8-91c6307433a0'
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

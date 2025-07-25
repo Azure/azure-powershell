@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azprivateendpoint
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azprivateendpoint
 schema: 2.0.0
 ---
 
@@ -32,7 +32,9 @@ The **Get-AzPrivateEndpoint** cmdlet gets one or more private endpoints.
 ### Example 1: Retrieve a private endpoint
 ```powershell
 Get-AzPrivateEndpoint -Name MyPrivateEndpoint1 -ResourceGroupName TestResourceGroup
+```
 
+```output
 Name                                : MyPrivateEndpoint1
 ResourceGroupName                   : TestResourceGroup
 Location                            : eastus2euap
@@ -71,7 +73,9 @@ This command gets the private endpoint named MyPrivateEndpoint1 in the resource 
 ### Example 2: List all private endpoints in ResourceGroup
 ```powershell
 Get-AzPrivateEndpoint -ResourceGroupName TestResourceGroup
+```
 
+```output
 Name                                : MyPrivateEndpoint1
 ResourceGroupName                   : TestResourceGroup
 Location                            : eastus2euap
@@ -151,7 +155,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -163,7 +167,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -178,7 +182,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -190,7 +194,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

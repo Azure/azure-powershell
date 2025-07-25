@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections;
@@ -65,24 +66,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
-                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    pools, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
-        }
-
-        /// <summary>
-        /// Gets all pools lifetime summary statistics
-        /// </summary>
-        /// <param name="context">The account to use.</param>
-        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
-        public PSPoolStatistics GetAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
-        {
-            PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
-
-            WriteVerbose(string.Format(Resources.GetAllPoolsLifetimeStatistics));
-
-            PoolStatistics poolStatistics = poolOperations.GetAllLifetimeStatistics(additionBehaviors);
-            PSPoolStatistics psPoolStatistics = new PSPoolStatistics(poolStatistics);
-            return psPoolStatistics;
         }
 
         /// <summary>
@@ -103,7 +88,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             pool.VirtualMachineSize = parameters.VirtualMachineSize;
             pool.DisplayName = parameters.DisplayName;
             pool.ResizeTimeout = parameters.ResizeTimeout;
-            pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
+            pool.TaskSlotsPerNode = parameters.TaskSlotsPerNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
 
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
@@ -116,6 +101,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 pool.TargetDedicatedComputeNodes = parameters.TargetDedicatedComputeNodes;
                 pool.TargetLowPriorityComputeNodes = parameters.TargetLowPriorityComputeNodes;
+            }
+
+            if (parameters.UpgradePolicy != null)
+            {
+                pool.UpgradePolicy = parameters.UpgradePolicy.omObject;
             }
 
             if (parameters.TaskSchedulingPolicy != null)
@@ -134,7 +124,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.Metadata = new List<MetadataItem>();
                 foreach (DictionaryEntry m in parameters.Metadata)
                 {
-                    pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value.ToString()));
+                    pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value?.ToString()));
+                }
+            }
+
+            if (parameters.ResourceTags != null)
+            {
+                pool.ResourceTags = new Dictionary<string, string>();
+
+                foreach (DictionaryEntry m in parameters.ResourceTags)
+                {
+                    pool.ResourceTags.Add(m.Key.ToString(), m.Value?.ToString());
                 }
             }
 
@@ -186,6 +186,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 pool.ApplicationLicenses = parameters.ApplicationLicenses;
             }
+
+            pool.TargetNodeCommunicationMode = (NodeCommunicationMode)parameters.TargetCommunicationMode;
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
             pool.Commit(parameters.AdditionalBehaviors);
@@ -383,7 +385,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             Func<PoolNodeCounts, PSPoolNodeCounts> mappingFunction = p => { return new PSPoolNodeCounts(p); };
 
             return PSPagedEnumerable<PSPoolNodeCounts, PoolNodeCounts>.CreateWithMaxCount(poolNodeCounts, mappingFunction,
-                options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                options.MaxCount, () => WriteMaxCount(options.MaxCount));
         }
     }
 }

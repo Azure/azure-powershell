@@ -1,80 +1,92 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/get-azsqlvmgroup
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/get-azsqlvmgroup
 schema: 2.0.0
 ---
 
 # Get-AzSqlVMGroup
 
 ## SYNOPSIS
-Gets one or more sql virtual machine groups.
+Gets a SQL virtual machine group.
 
 ## SYNTAX
 
-### ResourceGroupOnly (Default)
+### List1 (Default)
 ```
-Get-AzSqlVMGroup [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlVMGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### Name
+### Get
 ```
-Get-AzSqlVMGroup [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzSqlVMGroup -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ResourceId
+### GetViaIdentity
 ```
-Get-AzSqlVMGroup [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSqlVMGroup -InputObject <ISqlVirtualMachineIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzSqlVMGroup cmdlet gets one or more sql virtual machine groups.
+Gets a SQL virtual machine group.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List all SQL Virtual Machine Groups
 ```powershell
-PS C:\> Get-AzSqlVMGroup
-
-Name       ResourceGroupName  Sku       Offer
-----       -----------------  ---       -----
-test-group ResourceGroup01	  Developer SQL2017-WS2016
-group1     ResourceGroup02	  Developer SQL2017-WS2016
+Get-AzSqlVMGroup
 ```
 
-This command gets information about all the Azure SQL virtual machine groups in the current subscription.
-
-### Example 2
-```powershell
-PS C:\> Get-AzSqlVMGroup -ResourceGroupName "ResourceGroup01"
-Name       ResourceGroupName  Sku       Offer
-----       -----------------  ---       -----
-test-group ResourceGroup01	  Developer SQL2017-WS2016
+```output
+Location Name           ResourceGroupName
+-------- ----           -----------------
+eastus   sqlvmgroup01	ResourceGroup01
+eastus   sqlvmgroup02	ResourceGroup01
+eastus   sqlvmgroup03	ResourceGroup02
 ```
 
-This command gets information about all the Azure SQL virtual machine groups in the current subscription assigned to the resource group ResourceGroup01.
-
-### Example 3
+### Example 2: List all SQL Virtual Machine Groups in a Resource Group
 ```powershell
-PS C:\> Get-AzSqlVMGroup -ResourceGroupName "ResourceGroup01" -Name "test-group"
-Name       ResourceGroupName  Sku       Offer
-----       -----------------  ---       -----
-test-group ResourceGroup01	  Developer SQL2017-WS2016
+Get-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01'
 ```
 
-This command gets information about the SQL virtual machine group "test-group" assigned to the resource group ResourceGroup01.
+```output
+Location Name           ResourceGroupName
+-------- ----           -----------------
+eastus   sqlvmgroup01	ResourceGroup01
+eastus   sqlvmgroup02	ResourceGroup01
+```
+
+### Example 3: Get a SQL Virtual Machine Group
+```powershell
+Get-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01'
+```
+
+```output
+Location Name           ResourceGroupName
+-------- ----           -----------------
+eastus   sqlvmgroup01	ResourceGroup01
+```
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -83,60 +95,65 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-SQL virtual machine group name.
+Name of the SQL virtual machine group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases: SqlVMGroupName
+Parameter Sets: Get
+Aliases: SqlVirtualMachineGroupName, SqlVMGroupName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupOnly
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription ID that identifies an Azure subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-SQL virtual machine group resource id.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceId
-Aliases: SqlVMGroupId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -145,11 +162,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
 
 ## NOTES
 

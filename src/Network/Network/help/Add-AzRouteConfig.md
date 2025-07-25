@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C868DFA4-8A9D-4108-B88B-ACD7F100A63C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azrouteconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azrouteconfig
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ Adds a route to a route table.
 
 ```
 Add-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,8 +26,8 @@ The **Add-AzRouteConfig** cmdlet adds a route to an Azure route table.
 
 ### Example 1: Add a route to a route table
 ```powershell
-PS C:\>$RouteTable = Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
-PS C:\> Add-AzRouteConfig -Name "Route13" -AddressPrefix 10.3.0.0/16 -NextHopType "VnetLocal" -RouteTable $RouteTable
+$RouteTable = Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
+Add-AzRouteConfig -Name "Route13" -AddressPrefix 10.3.0.0/16 -NextHopType "VnetLocal" -RouteTable $RouteTable
 ```
 
 The first command gets a route table named RouteTable01 by using the Get-AzRouteTable cmdlet.
@@ -37,7 +37,10 @@ This route forwards packets to the local virtual network.
 
 ### Example 2: Add a route to a route table by using the pipeline
 ```powershell
-PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Add-AzRouteConfig -Name "Route02" -AddressPrefix 10.2.0.0/16 -NextHopType VnetLocal | Set-AzRouteTable
+Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Add-AzRouteConfig -Name "Route02" -AddressPrefix 10.2.0.0/16 -NextHopType VnetLocal | Set-AzRouteTable
+```
+
+```output
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -84,10 +87,21 @@ This command gets the route table named RouteTable01 by using **Get-AzRouteTable
 The command passes that table to the current cmdlet by using the pipeline operator.
 The current cmdlet adds the route named Route02, and then passes the result to the **Set-AzRouteTable** cmdlet, which updates the table to reflect your changes.
 
+### Example 3: Add a route with a Service Tag to a route table (Public Preview)
+```powershell
+$RouteTable = Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
+Add-AzRouteConfig -Name "Route13" -AddressPrefix "AppService" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.2.4" -RouteTable $RouteTable
+```
+
+The first command gets a route table named RouteTable01 by using the Get-AzRouteTable cmdlet.
+The command stores the table in the $RouteTable variable.
+The second command adds a route named Route13 to the route table stored in $RouteTable.
+This route forwards traffic to IP prefixes contained in the AppService Service Tag to a virtual appliance. 
+
 ## PARAMETERS
 
 ### -AddressPrefix
-Specifies the destination, in Classless Interdomain Routing (CIDR) format, to which the route applies.
+Specifies the destination, in Classless Interdomain Routing (CIDR) format, to which the route applies. You can also specify a Service Tag here (this feature is in Public Preview).
 
 ```yaml
 Type: System.String
@@ -221,7 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -248,5 +262,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzRouteConfig](./Set-AzRouteConfig.md)
 
 [Set-AzRouteTable](./Set-AzRouteTable.md)
-
-

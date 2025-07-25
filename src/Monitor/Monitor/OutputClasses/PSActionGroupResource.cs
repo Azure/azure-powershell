@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
 
         /// <summary>
         /// Gets or sets indicates whether this action group is enabled. If an
-        ///             action group is not enabled, then none of its receviers will
+        ///             action group is not enabled, then none of its receivers will
         ///             receive communications.
         /// 
         /// </summary>
@@ -64,6 +64,13 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// 
         /// </summary>
         public IList<PSWebhookReceiver> WebhookReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of event hub receivers that are part of this
+        ///             action group.
+        /// 
+        /// </summary>
+        public IList<PSEventHubReceiver> EventHubReceivers { get; set; }
 
         /// <summary>
         /// Gets or sets the list of Itsm receivers that are part of this
@@ -130,6 +137,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             EmailReceivers = actionGroupResource.EmailReceivers?.Select(o => new PSEmailReceiver(o)).ToList();
             SmsReceivers = actionGroupResource.SmsReceivers?.Select(o => new PSSmsReceiver(o)).ToList();
             WebhookReceivers = actionGroupResource.WebhookReceivers?.Select(o => new PSWebhookReceiver(o)).ToList();
+            EventHubReceivers = actionGroupResource.EventHubReceivers?.Select(o => new PSEventHubReceiver(o)).ToList();
             ArmRoleReceivers = actionGroupResource.ArmRoleReceivers?.Select(o => new PSArmRoleReceiver(o)).ToList();
             ItsmReceivers = actionGroupResource.ItsmReceivers?.Select(o => new PSItsmReceiver(o)).ToList();
             VoiceReceivers = actionGroupResource.VoiceReceivers?.Select(o => new PSVoiceReceiver(o)).ToList();

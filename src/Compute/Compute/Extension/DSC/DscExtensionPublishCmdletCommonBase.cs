@@ -547,7 +547,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
         }
 
         /// <summary>
-        /// Recursively turns off the ReadOnly attribute from the given directory and then attemps to delete it
+        /// Recursively turns off the ReadOnly attribute from the given directory and then attempts to delete it
         /// </summary>
         private static void DeleteReadOnlyDirectory(string path)
         {

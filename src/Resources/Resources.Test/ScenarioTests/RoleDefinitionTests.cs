@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleDefinitionTests : ResourceTestRunner
+    public class RoleDefinitionTests : ResourcesTestRunner
     {
         public RoleDefinitionTests(ITestOutputHelper output) : base(output)
         {
@@ -116,6 +116,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RDGetScenario()
         {
             TestRunner.RunTestScript("Test-RDGet");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDWithConditionGetScenario()
+        {
+            TestRunner.RunTestScript("Test-RDWithAbacConditionsGet");
         }
 
         [Fact]

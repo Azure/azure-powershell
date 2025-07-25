@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -22,36 +20,31 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
     /// <summary>
     /// Policy metadata scenario tests.
     /// </summary>
-    public class PolicyMetadataTests
+    public class PolicyMetadataTests : PolicyInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public PolicyMetadataTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PolicyMetadataTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListAll()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "PolicyMetadata-ListAll");
+            TestRunner.RunTestScript("PolicyMetadata-ListAll");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListTop()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "PolicyMetadata-ListTop");
+            TestRunner.RunTestScript("PolicyMetadata-ListTop");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNamedResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "PolicyMetadata-GetNamedResource");
+            TestRunner.RunTestScript("PolicyMetadata-GetNamedResource");
         }
     }
 }

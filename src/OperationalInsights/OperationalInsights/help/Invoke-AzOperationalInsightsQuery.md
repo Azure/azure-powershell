@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery
 schema: 2.0.0
 ---
 
@@ -30,48 +30,50 @@ The **Invoke-AzOperationalInsightsQuery** cmdlet returns the search results base
 You can access the status of the search in the Metadata property of the returned object.
 If the status is Pending, then the search has not completed, and the results will be from the archive.
 You can retrieve the results of the search from the Value property of the returned object.
+Please check detail of general query limits here: 
+https://learn.microsoft.com/azure/azure-monitor/service-limits#log-queries-and-language.
+
+Note: try setting `-Wait` to a larger value if you experience the error 'The request was canceled due to the configured HttpClient.Timeout of 100 seconds elapsing'.
 
 ## EXAMPLES
 
 ### Example 1: Get search results using a query
-```
-PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
-PS C:\> $queryResults.Results
-...
+```powershell
+$query = "union * | take 10"
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query $query
+$queryResults.Results
 ```
 
 Once invoked, $queryResults.Results will contain all of the resulting rows from your query.
 
 ### Example 2: Convert $results.Result IEnumerable to an array
-```
-PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
-PS C:\> $resultsArray = [System.Linq.Enumerable]::ToArray($queryResults.Results)
-...
+```powershell
+$query = "union * | take 10"
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query $query
+$resultsArray = [System.Linq.Enumerable]::ToArray($queryResults.Results)
 ```
 
 Some queries can result in very large data sets being returned. Because of this, the default behavior of the cmdlet is to return an IEnumerable to reduce memory costs. If you'd prefer to have an array of results, you can use the LINQ Enumerable.ToArray() extension method to convert the IEnumerable to an array.
 
 ### Example 3: Get search results using a query over a specific timeframe
-```
-PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -Timespan (New-TimeSpan -Hours 24)
-PS C:\> $queryResults.Results
-...
+```powershell
+$query = "union * | take 10"
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query $query -Timespan (New-TimeSpan -Hours 24)
+$queryResults.Results
 ```
 
 The results from this query will be limited to the past 24 hours.
 
 ### Example 4: Include render & statistics in query result
-```
-PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -IncludeRender -IncludeStatistics
-PS C:\> $queryResults.Results
-...
-PS C:\> $queryResults.Render
-...
-PS C:\> $queryResults.Statistics
-...
-```
+```powershell
+$query = "union * | take 10"
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query $query -IncludeRender -IncludeStatistics
+$queryResults.Results
 
-See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions) for details on the render and statistics info.
+$queryResults.Render
+
+$queryResults.Statistics
+```
 
 ## PARAMETERS
 
@@ -166,8 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -Wait
-Puts an upper bound on the amount of time the server will spend processing the query.
-See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts
+Puts an upper bound on the amount of time the server will spend processing the query. See: https://learn.microsoft.com/azure/azure-monitor/logs/api/timeouts
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -212,7 +213,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

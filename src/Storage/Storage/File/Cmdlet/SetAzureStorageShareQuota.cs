@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.Azure.Storage.File;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Azure.Storage.Files.Shares;
+using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -40,15 +40,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share whose quota to set.")]
+            HelpMessage = "ShareClient object indicated the share whose quota to set.")]
         [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
+        public ShareClient ShareClient { get; set; }
 
         [Alias("QuotaGiB")]
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Share Quota")]
         public int Quota { get; set; }
+
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         /// <summary>
         /// execute command
@@ -56,31 +58,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            CloudFileShare fileShare = null;
+            ShareClient share;
 
             switch (this.ParameterSetName)
             {
                 case Constants.ShareNameParameterSetName:
-                    fileShare = this.BuildFileShareObjectFromName(this.ShareName);
+                    NamingUtil.ValidateShareName(this.ShareName, false);
+                    share = Util.GetTrack2ShareReference(this.ShareName,
+                                (AzureStorageContext)this.Context,
+                                null,
+                                ClientOptions);
                     break;
 
                 case Constants.ShareParameterSetName:
-                    fileShare = this.Share;
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    share = this.ShareClient;
                     break;
 
                 default:
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            this.Channel.FetchShareAttributes(fileShare, null, this.RequestOptions, this.OperationContext);
+            ShareProperties shareProperties = share.GetProperties(this.CmdletCancellationToken).Value;
 
-            if (fileShare.Properties.Quota != this.Quota)
+            if (shareProperties.QuotaInGB != this.Quota)
             {
-                fileShare.Properties.Quota = this.Quota;
-                this.Channel.SetShareProperties(fileShare, null, this.RequestOptions, this.OperationContext);
+                share.SetQuota(this.Quota);
+                shareProperties = share.GetProperties(this.CmdletCancellationToken).Value;
             }
 
-            WriteObject( new AzureStorageFileShare(fileShare, this.Channel.StorageContext));
+            WriteObject( new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));
         }
     }
 }

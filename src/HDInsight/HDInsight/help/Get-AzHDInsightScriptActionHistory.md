@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: CE690DB0-0CD4-4841-B219-C208173D4730
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsightscriptactionhistory
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightscriptactionhistory
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Gets the script action history for a cluster and lists it in reverse chronologic
 
 ```
 Get-AzHDInsightScriptActionHistory [-ClusterName] <String> [[-ScriptExecutionId] <Int64>]
- [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +25,8 @@ The **Get-AzHDInsightScriptActionHistory** cmdlet gets the script action history
 ## EXAMPLES
 
 ### Example 1: Get the history of script actions executions for a cluster
-```
-PS C:\>Get-AzHDInsightScriptActionHistory -ClusterName "your-hadoop-001"
+```powershell
+Get-AzHDInsightScriptActionHistory -ClusterName "your-hadoop-001"
 ```
 
 This command gets the history of script actions for the cluster your-hadoop-001.
@@ -93,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

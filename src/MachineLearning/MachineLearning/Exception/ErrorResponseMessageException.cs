@@ -66,7 +66,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
          /// Converts <see cref="ErrorResponseMessageException"/> objects into 
          /// <see cref="ErrorRecord"/>
          /// </summary>
-         /// <param name="exception">The exception</param>
         internal ErrorRecord ToErrorRecord()
         {
             var errorReport = new StringBuilder();

@@ -1,109 +1,142 @@
 ---
 Module Name: Az.Peering
-Module Guid: 6c848b97-4dd4-49ef-b385-43c64905d25a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.peering.md
-Help Version: 0.1.0
-Locale: e-US
+Module Guid: 78c6a853-5ea3-4374-9c5f-5b532d62c892
+Download Help Link: https://learn.microsoft.com/powershell/module/az.peering
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.Peering Module
 ## Description
-Microsoft Peering Service allows customers and Microsoft to connect to Azure and represent their network resources as ARM objects.
+Microsoft Azure PowerShell: Peering cmdlets
 
 ## Az.Peering Cmdlets
-### [Get-AzLegacyPeering](Get-AzLegacyPeering.md)
-Used to Convert Legacy Peering resources to Azure Resource Management (ARM) Resources. 
-
-### [Get-AzPeerAsn](Get-AzPeerAsn.md)
-Gets PeerAsn object from ARM.
-
 ### [Get-AzPeering](Get-AzPeering.md)
-Gets the Peering Resources for a subscription
+Gets an existing peering with the specified name under the given subscription and resource group.
+
+### [Get-AzPeeringAsn](Get-AzPeeringAsn.md)
+Gets the peer ASN with the specified name under the given subscription.
+
+### [Get-AzPeeringCdnPrefix](Get-AzPeeringCdnPrefix.md)
+Lists all of the advertised prefixes for the specified peering location
+
+### [Get-AzPeeringConnectionMonitorTest](Get-AzPeeringConnectionMonitorTest.md)
+Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
+
+### [Get-AzPeeringLegacy](Get-AzPeeringLegacy.md)
+Lists all of the legacy peerings under the given subscription matching the specified kind and location.
 
 ### [Get-AzPeeringLocation](Get-AzPeeringLocation.md)
-Gets the Peering locations offered by Microsoft
+Lists all of the available peering locations for the specified kind of peering.
 
 ### [Get-AzPeeringReceivedRoute](Get-AzPeeringReceivedRoute.md)
-Lists the received routes for a Peering.
+Lists the prefixes received over the specified peering under the given subscription and resource group.
 
 ### [Get-AzPeeringRegisteredAsn](Get-AzPeeringRegisteredAsn.md)
-Gets the registered ASN for internet exchange route server type peerings.
+Gets an existing registered ASN with the specified name under the given subscription, resource group and peering.
 
 ### [Get-AzPeeringRegisteredPrefix](Get-AzPeeringRegisteredPrefix.md)
-Gets or lists the registered prefix for peerings.
+Gets an existing registered prefix with the specified name under the given subscription, resource group and peering.
+
+### [Get-AzPeeringRpUnbilledPrefix](Get-AzPeeringRpUnbilledPrefix.md)
+Lists all of the RP unbilled prefixes for the specified peering
 
 ### [Get-AzPeeringService](Get-AzPeeringService.md)
-Get a list of peering service objects of a single object.
+Gets an existing peering service with the specified name under the given subscription and resource group.
 
 ### [Get-AzPeeringServiceCountry](Get-AzPeeringServiceCountry.md)
-Lists the countries available for peering service.
+Lists all of the available countries for peering service.
 
 ### [Get-AzPeeringServiceLocation](Get-AzPeeringServiceLocation.md)
-Gets a list of peering service locations offered by Microsoft.
+Lists all of the available locations for peering service.
 
 ### [Get-AzPeeringServicePrefix](Get-AzPeeringServicePrefix.md)
-Gets a list of peering service prefixes for a subscription.
+Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
 
 ### [Get-AzPeeringServiceProvider](Get-AzPeeringServiceProvider.md)
-Gets a list of peering service providers partnered with Microsoft.
+Lists all of the available peering service locations for the specified kind of peering.
 
-### [New-AzPeerAsn](New-AzPeerAsn.md)
-Creates a new Peer ASN 
-
-### [New-AzPeerAsnContactDetail](New-AzPeerAsnContactDetail.md)
-Creates an in memory contact detail for PeerAsn. 
+### [Initialize-AzPeeringServiceConnectionMonitor](Initialize-AzPeeringServiceConnectionMonitor.md)
+Initialize Peering Service for Connection Monitor functionality
 
 ### [New-AzPeering](New-AzPeering.md)
-Creates a new Peering ARM Resource
+create a new peering or create an existing peering with the specified name under the given subscription and resource group.
+
+### [New-AzPeeringAsn](New-AzPeeringAsn.md)
+create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
+
+### [New-AzPeeringCheckServiceProviderAvailabilityInputObject](New-AzPeeringCheckServiceProviderAvailabilityInputObject.md)
+Create an in-memory object for CheckServiceProviderAvailabilityInput.
+
+### [New-AzPeeringConnectionMonitorTest](New-AzPeeringConnectionMonitorTest.md)
+create a connection monitor test with the specified name under the given subscription, resource group and peering service.
+
+### [New-AzPeeringContactDetailObject](New-AzPeeringContactDetailObject.md)
+Create an in-memory object for ContactDetail.
 
 ### [New-AzPeeringDirectConnectionObject](New-AzPeeringDirectConnectionObject.md)
-Creates a in memory PSObject to be used for creating or modifying a Peering.
+Create an in-memory object for DirectConnection.
 
 ### [New-AzPeeringExchangeConnectionObject](New-AzPeeringExchangeConnectionObject.md)
-Creates a in memory PSObject to be used for creating or modifying a Peering.
+Create an in-memory object for ExchangeConnection.
 
 ### [New-AzPeeringRegisteredAsn](New-AzPeeringRegisteredAsn.md)
-Create registered ASN for peering
+create a new registered ASN with the specified name under the given subscription, resource group and peering.
 
 ### [New-AzPeeringRegisteredPrefix](New-AzPeeringRegisteredPrefix.md)
-Create registered prefixes for peering objects.
+create a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ### [New-AzPeeringService](New-AzPeeringService.md)
-Creates a new peering service.
+create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
 
 ### [New-AzPeeringServicePrefix](New-AzPeeringServicePrefix.md)
-Creates a new peering service prefix
-
-### [Remove-AzPeerAsn](Remove-AzPeerAsn.md)
-Remove Peer Asn
+create a new prefix with the specified name under the given subscription, resource group and peering service.
 
 ### [Remove-AzPeering](Remove-AzPeering.md)
-Delete or remove a peering. This will delete all child resources or alerting on the resource.
+Deletes an existing peering with the specified name under the given subscription and resource group.
+
+### [Remove-AzPeeringAsn](Remove-AzPeeringAsn.md)
+Deletes an existing peer ASN with the specified name under the given subscription.
+
+### [Remove-AzPeeringConnectionMonitorTest](Remove-AzPeeringConnectionMonitorTest.md)
+Deletes an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
 
 ### [Remove-AzPeeringRegisteredAsn](Remove-AzPeeringRegisteredAsn.md)
-Delete or remove a registered ASN from the parent peering resource.
+Deletes an existing registered ASN with the specified name under the given subscription, resource group and peering.
 
 ### [Remove-AzPeeringRegisteredPrefix](Remove-AzPeeringRegisteredPrefix.md)
-Delete or remove a registered prefix from the parent peering resource.
+Deletes an existing registered prefix with the specified name under the given subscription, resource group and peering.
+
+### [Remove-AzPeeringService](Remove-AzPeeringService.md)
+Deletes an existing peering service with the specified name under the given subscription and resource group.
 
 ### [Remove-AzPeeringServicePrefix](Remove-AzPeeringServicePrefix.md)
-Removes a new peering service prefix
+Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
 
-### [Set-AzPeerAsn](Set-AzPeerAsn.md)
-Update Contact Information
+### [Start-AzPeeringInvokeLookingGlass](Start-AzPeeringInvokeLookingGlass.md)
+Run looking glass functionality
 
-### [Set-AzPeeringDirectConnectionObject](Set-AzPeeringDirectConnectionObject.md)
-Sets or updates the Direct Connection information. 
+### [Test-AzPeeringRegisteredPrefix](Test-AzPeeringRegisteredPrefix.md)
+Validates an existing registered prefix with the specified name under the given subscription, resource group and peering.
 
-### [Set-AzPeeringExchangeConnectionObject](Set-AzPeeringExchangeConnectionObject.md)
-Sets or updates the Exchange Connection information. 
-
-### [Set-AzPeeringRegisteredAsn](Set-AzPeeringRegisteredAsn.md)
-Sets or updates a registered ASN from the parent peering resource.
-
-### [Set-AzPeeringRegisteredPrefix](Set-AzPeeringRegisteredPrefix.md)
-Sets or updates a registered prefix from the parent peering resource.
+### [Test-AzPeeringServiceProviderAvailability](Test-AzPeeringServiceProviderAvailability.md)
+Checks if the peering service provider is present within 1000 miles of customer's location
 
 ### [Update-AzPeering](Update-AzPeering.md)
-Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConnectionObject` or `Set-AzExchangePeeringConnectionObject`.
+update tags for a peering with the specified name under the given subscription and resource group.
+
+### [Update-AzPeeringAsn](Update-AzPeeringAsn.md)
+update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
+
+### [Update-AzPeeringConnectionMonitorTest](Update-AzPeeringConnectionMonitorTest.md)
+update a connection monitor test with the specified name under the given subscription, resource group and peering service.
+
+### [Update-AzPeeringRegisteredAsn](Update-AzPeeringRegisteredAsn.md)
+update a new registered ASN with the specified name under the given subscription, resource group and peering.
+
+### [Update-AzPeeringRegisteredPrefix](Update-AzPeeringRegisteredPrefix.md)
+update a new registered prefix with the specified name under the given subscription, resource group and peering.
+
+### [Update-AzPeeringService](Update-AzPeeringService.md)
+update tags for a peering service with the specified name under the given subscription and resource group.
 

@@ -14,7 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
 
     /// <summary>
     /// Storage management interface
@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     public interface IStorageManagement
     {
         /// <summary>
-        /// The azure storage context assoicated with this IStorageBlobManagement
+        /// The azure storage context associated with this IStorageBlobManagement
         /// </summary>
         AzureStorageContext StorageContext { get; }
     }

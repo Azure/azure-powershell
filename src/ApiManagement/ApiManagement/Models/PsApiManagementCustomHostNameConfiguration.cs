@@ -35,9 +35,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             CertificateInformation = hostnameConfigurationResource.Certificate != null ? new PsApiManagementCertificateInformation(hostnameConfigurationResource.Certificate) : null;
             Hostname = hostnameConfigurationResource.HostName;
             KeyVaultId = hostnameConfigurationResource.KeyVaultId;
+            IdentityClientId = hostnameConfigurationResource.IdentityClientId;
             DefaultSslBinding = hostnameConfigurationResource.DefaultSslBinding;
             NegotiateClientCertificate = hostnameConfigurationResource.NegotiateClientCertificate;
             HostnameType = Mappers.MapHostnameType(hostnameConfigurationResource.Type);
+            CertificateSource = hostnameConfigurationResource.CertificateSource;
+            CertificateStatus = hostnameConfigurationResource.CertificateStatus;
         }
 
         public PsApiManagementCertificateInformation CertificateInformation { get; set; }
@@ -55,5 +58,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         public bool? DefaultSslBinding { get; set; }
 
         public bool? NegotiateClientCertificate { get; set; }
+
+        public string IdentityClientId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets certificate Status. Possible values include: 'Completed', 'Failed',
+        //     'InProgress'
+        public string CertificateStatus { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets certificate Source. Possible values include: 'Managed', 'KeyVault',
+        //     'Custom', 'BuiltIn'
+        public string CertificateSource { get; set; }
     }
 }

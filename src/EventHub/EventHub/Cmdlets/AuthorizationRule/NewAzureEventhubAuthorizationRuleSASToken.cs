@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubAuthorizationRuleSASToken", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessSignatureAttributes))]
     public class NewAzureAuthorizationRuleSASToken : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "ARM ResourceId of the Authoraization Rule")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "ARM ResourceId of the Authorization Rule")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceId)]
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 PSListKeysAttributes listkeys;
                 if (identifier.ParentResource1 != null)
                 {
-                    listkeys =  Client.GetEventHubListKeys(identifier.ResourceGroupName, identifier.ParentResource, identifier.ParentResource1, identifier.ResourceName);
+                    listkeys =  UtilityClient.GetEventHubListKeys(identifier.ResourceGroupName, identifier.ParentResource, identifier.ParentResource1, identifier.ResourceName);
                 }
                 else
                 {
-                    listkeys = Client.GetNamespaceListKeys(identifier.ResourceGroupName, identifier.ParentResource, identifier.ResourceName);
+                    listkeys = UtilityClient.GetNamespaceListKeys(identifier.ResourceGroupName, identifier.ParentResource, identifier.ResourceName);
                 }
 
                 string[] connectionstring = KeyType == "Primary" ? listkeys.PrimaryConnectionString.Split(';') : listkeys.SecondaryConnectionString.Split(';');
@@ -91,15 +91,24 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                         }
                 }
 
-                TimeSpan secondsFromBaseTime = ExpiryTime.Value.Subtract(EpochTime);
-                long seconds = Convert.ToInt64(secondsFromBaseTime.TotalSeconds, CultureInfo.InvariantCulture);
-                string stringToSign = StartTime.HasValue ? StartTime.ToString() + "\n" + System.Web.HttpUtility.UrlEncode(resourceUri) + "\n" + seconds : System.Web.HttpUtility.UrlEncode(resourceUri) + "\n" + seconds;
+                var encodedResourceUri = System.Web.HttpUtility.UrlEncode(resourceUri);
+                var expiry = Convert.ToInt64(ExpiryTime.Value.Subtract(EpochTime).TotalSeconds, CultureInfo.InvariantCulture);
+                var stringToSign = StartTime == null ? "" : Convert.ToInt64(StartTime.Value.Subtract(EpochTime).TotalSeconds, CultureInfo.InvariantCulture) + "\n";
+                stringToSign = stringToSign + encodedResourceUri + "\n" + expiry;
+
                 HMACSHA256 hmac = new HMACSHA256(System.Text.Encoding.UTF8.GetBytes(sakey));
                 var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
-                string sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), seconds, KeyType);
-                PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
-                WriteObject(psSastoken, true);
 
+                string sasToken = String.Format(CultureInfo.InvariantCulture,
+                                                "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}",
+                                                HttpUtility.UrlEncode(resourceUri),
+                                                HttpUtility.UrlEncode(signature),
+                                                expiry,
+                                                identifier.ResourceName);
+
+                PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
+
+                WriteObject(psSastoken, true);
             }
             catch (Management.EventHub.Models.ErrorResponseException ex)
             {

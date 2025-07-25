@@ -12,31 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.HDInsight.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.HDInsight.Test.ScenarioTests
 {
-    public class HDInsightAutoscaleTests : TestController
+    public class HDInsightAutoscaleTests : HDInsightTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public HDInsightAutoscaleTests(ITestOutputHelper output)
+        public HDInsightAutoscaleTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAutoscaleRelatedCommands()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AutoscaleRelatedCommands");
+            TestRunner.RunTestScript("Test-AutoscaleRelatedCommands");
         }
     }
 }

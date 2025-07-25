@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSPublicIpAddress : PSTopLevelResource
     {
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public string PublicIpAllocationMethod { get; set; }
 
@@ -28,6 +30,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSIPConfiguration IpConfiguration { get; set; }
 
         public PSPublicIpAddressDnsSettings DnsSettings { get; set; }
+
+        public PSDdosSettings DdosSettings { get; set; }
 
         public List<PSPublicIpTag> IpTags {get; set;}
 
@@ -54,6 +58,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string DdosSettingsText
+        {
+            get { return JsonConvert.SerializeObject(DdosSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string DnsSettingsText
         {
             get { return JsonConvert.SerializeObject(DnsSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -68,13 +78,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string SkuText
         {
-            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return Sku != null ? JsonConvert.SerializeObject(Sku.Name, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }) : null; }
         }
 
         [JsonIgnore]
         public string PublicIpPrefixText
         {
             get { return JsonConvert.SerializeObject(PublicIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewaycustomerror
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Adds a custom error to an application gateway.
 
 ```
 Add-AzApplicationGatewayCustomError -ApplicationGateway <PSApplicationGateway> -StatusCode <String>
- -CustomErrorPageUrl <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -CustomErrorPageUrl <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,19 +25,19 @@ The **Add-AzApplicationGatewayCustomError** cmdlet adds a custom error to an app
 
 ### Example 1: Adds custom error to application gateway level
 ```powershell
-PS C:\> $resourceGroupName = "resourceGroupName"
-PS C:\> $AppGWName = "applicationGatewayName"
-PS C:\> $AppGw = Get-AzApplicationGateway -Name $AppGWName -ResourceGroup $resourceGroupName
-PS C:\> $customError502Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
-PS C:\> $updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $AppGw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGw
+$resourceGroupName = "resourceGroupName"
+$AppGWName = "applicationGatewayName"
+$AppGw = Get-AzApplicationGateway -Name $AppGWName -ResourceGroupName $resourceGroupName
+$customError502Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
+$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $AppGw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url
+Set-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
 This command adds a custom error of http status code 502 to the application gateway $appgw, and return the updated gateway.
 
 ### Example 2: Adds custom error to application gateway listener level
 ```powershell
- $resourceGroupName = "resourceGroupName"
+$resourceGroupName = "resourceGroupName"
  $AppGWName = "applicationGatewayName"
  $customError502Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
  $listenerName = "listenerName"
@@ -111,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

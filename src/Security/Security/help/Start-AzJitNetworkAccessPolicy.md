@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Start-AzJitNetworkAccessPolicy
+online version: https://learn.microsoft.com/powershell/module/az.security/Start-AzJitNetworkAccessPolicy
 schema: 2.0.0
 ---
 
@@ -16,19 +16,22 @@ Invokes a temporary network access request.
 ```
 Start-AzJitNetworkAccessPolicy -ResourceGroupName <String> -Location <String> -Name <String>
  -VirtualMachine <PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Start-AzJitNetworkAccessPolicy -VirtualMachine <PSSecurityJitNetworkAccessPolicyInitiateVirtualMachine[]>
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Start-AzJitNetworkAccessPolicy -InputObject <PSSecurityJitNetworkAccessPolicyInitiateInputObject>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,19 +43,20 @@ The request will be logged in the policy for later review and will be terminated
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default" -Kind "Basic" -VirtualMachine $vms
-
-Id                : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.S
-                    ecurity/locations/centralus/jitNetworkAccessPolicies/default
-Name              : default
-Kind              : Basic
-VirtualMachines   : {/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.
-                    Compute/virtualMachines/testService}
-Requests          : {}
-ProvisioningState : Succeeded
+$MyResource = Get-AzResource -Id /subscriptions/xxxxxxx-xxxxx-xxxxx-xxxxxxx/resourceGroups/PolicyDemo/providers/Microsoft.Compute/virtualMachines/PolicyDemoVM1
+$JitPolicy = (@{
+        id    = $MyResource.ResourceId; 
+        ports = (@{
+                number                     = 22
+                endTimeUtc                 = Get-Date (Get-Date -AsUTC).AddHours(1) -Format O
+                allowedSourceAddressPrefix = @($MyPublicIP) 
+            })
+    })
+$ActivationVM = @($JitPolicy)
+Start-AzJitNetworkAccessPolicy -ResourceGroupName $($MyResource.ResourceGroupName) -Location $MyResource.Location -Name "default" -VirtualMachine $ActivationVM
 ```
 
-Opens up a network connection according to the specified connection request data.
+Opens up a network connection for 1 hour over port 22 from my public IP (not shown).
 
 ## PARAMETERS
 

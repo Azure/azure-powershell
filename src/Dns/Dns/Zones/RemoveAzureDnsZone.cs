@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Models;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
-    using System;
-    using Rest.Azure;
-    using ResourceManager.Common.ArgumentCompleters;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
     /// <summary>
     /// Deletes an existing zone.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
     public class RemoveAzureDnsZone : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = "Fields")]

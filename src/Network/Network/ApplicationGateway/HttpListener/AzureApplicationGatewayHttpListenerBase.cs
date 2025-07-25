@@ -75,6 +75,16 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewaySslCertificate SslCertificate { get; set; }
 
         [Parameter(
+           ParameterSetName = "SetByResourceId",
+           HelpMessage = "SslProfileId")]
+        public string SslProfileId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "SslProfile")]
+        public PSApplicationGatewaySslProfile SslProfile { get; set; }
+
+        [Parameter(
                HelpMessage = "Host name")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
@@ -127,6 +137,11 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.FirewallPolicyId = this.FirewallPolicy.Id;
                 }
+
+                if (SslProfile != null)
+                {
+                    this.SslProfileId = this.SslProfile.Id;
+                }
             }
         }
 
@@ -173,6 +188,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 httpListener.FirewallPolicy = new PSResourceId();
                 httpListener.FirewallPolicy.Id = this.FirewallPolicyId;
+            }
+
+            if (!string.IsNullOrEmpty(this.SslProfileId))
+            {
+                httpListener.SslProfile = new PSResourceId();
+                httpListener.SslProfile.Id = this.SslProfileId;
             }
 
             if (this.HostNames != null)

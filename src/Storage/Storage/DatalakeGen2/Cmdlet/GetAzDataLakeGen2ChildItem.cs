@@ -80,14 +80,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         [Alias("UserPrincipalName")]
-        [Parameter(Mandatory = false, HelpMessage = "If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Azure Active Directory Object IDs to User Principal Names. " 
-            + "If not speicify this parameter, the values will be returned as Azure Active Directory Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.")]
+        [Parameter(Mandatory = false, HelpMessage = "If you specify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Microsoft Entra Object IDs to User Principal Names. "
+            + "If you do not specify this parameter, the values will be returned as Microsoft Entra Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.")]
         public SwitchParameter OutputUserPrincipalName { get; set; }
 
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzDataLakeGen2ChildItemCommand class.
@@ -118,21 +119,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
             bool useFlatBlobListing = this.Recurse.IsPresent ? true : false;
 
-            IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(this.Path, this.Recurse, this.OutputUserPrincipalName.IsPresent)
-                .AsPages(this.ContinuationToken, this.MaxCount)
-                .GetEnumerator();
-
+            int listCount = InternalMaxCount;
             Page<PathItem> page;
-            enumerator.MoveNext();
-            page = enumerator.Current;
-            if(page.ContinuationToken != null && (MaxCount == null || page.Values.Count < MaxCount.Value))
+            do
             {
-                WriteWarning(string.Format("Not all result returned, to list the left items run this cmdlet again with parameter: '-ContinuationToken {0}'.", page.ContinuationToken));
-            }
-            foreach (PathItem item in page.Values)
-            {
-                WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken, this.FetchProperty.IsPresent);
-            }
+                IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(this.Path, this.Recurse, this.OutputUserPrincipalName.IsPresent)
+                    .AsPages(this.ContinuationToken, listCount)
+                    .GetEnumerator();
+
+                enumerator.MoveNext();
+                page = enumerator.Current;
+                foreach (PathItem item in page.Values)
+                {
+                    WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken, this.FetchProperty.IsPresent);
+                }
+                if (listCount != int.MaxValue)
+                {
+                    listCount -= page.Values.Count;
+                }
+                this.ContinuationToken = page.ContinuationToken;
+            } while (!string.IsNullOrEmpty(this.ContinuationToken) && (listCount > 0));
         }
     }
 }

@@ -1,0 +1,119 @@
+[
+    {
+        "appGwWaf": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "vnetModifyDdos": {
+            "type": "string",
+            "defaultValue": "Modify"
+        },
+        "ddosPlanResourceId": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "wafMode": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "wafModeRequirement": {
+            "type": "string",
+            "defaultValue": "Prevention"
+        },
+        "wafFwRules": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "wafModeAppGw": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "wafModeAppGwRequirement": {
+            "type": "string",
+            "defaultValue": "Prevention"
+        },
+        "afwEnbaleTlsForAllAppRules": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "afwEnableTlsInspection": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "afwEmptyIDPSBypassList": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "afwEnableAllIDPSSignatureRules": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "afwEnableIDPS": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "wafAfdEnabled": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        },
+        "vpnAzureAD": {
+            "type": "string",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ]
+        }
+    }
+]

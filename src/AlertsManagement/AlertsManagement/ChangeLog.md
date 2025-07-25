@@ -19,6 +19,42 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.0
+* Bugfix of default pageCount from 0 to 25.
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+## Version 0.6.3
+* Upgraded nuget package to signed package.
+
+## Version 0.6.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.6.1
+* Fixed null reference bug when 'ScheduleEndDateTime' was not provided
+
+## Version 0.6.0
+* Added cmdlets for Prometheus rule group
+
+## Version 0.5.0
+* Added parameter `comment` for `Update-AzAlertState`
+
+## Version 0.4.1
+* Added support for 24-hour clock in `Set-AzAlertProcessingRule` [#17762]
+
+## Version 
+* Fixed bug for `Get-AzAlertProcessingRule` does not fetch more than 50 Alert Processing Rules
+* Fixed bug for `Get-AzAlert` rounds down the number of alerts to multiple of 100
+
+## Version 0.4.0
+* Substitute cmdlets:
+  - `Get-AzActionRule` with `Get-AzAlertProcessingRule`
+  - `Set-AzActionRule` with `Set-AzAlertProcessingRule`
+  - `Update-AzActionRule` with `Update-AzAlertProcessingRule`
+  - `Remove-AzActionRule` with `Remove-AzAlertProcessingRule`
+
+## Version 0.3.0
+* Fixed bug for `Set-AzActionRule` when RecurrenceType is "Once" and no "ReccurentValue" provided [#14476]
+
 ## Version 0.2.0
 * Fixed bug for `Set-AzActionRule` incorrectly parsed `TargetResourceTypeCondition` to `MonitorCondition` [#12258]
 

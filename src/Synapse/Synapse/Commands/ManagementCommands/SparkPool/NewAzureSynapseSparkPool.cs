@@ -1,8 +1,22 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -63,10 +77,14 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateRange(3, 200)]
         public int NodeCount { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.IsolatedCompute)]
+        public SwitchParameter EnableIsolatedCompute { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
             HelpMessage = HelpMessages.NodeSize)]
-        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
-        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
+        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge, IgnoreCase = true)]
+        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge)]
         public string NodeSize { get; set; }
 
         private SwitchParameter enableAutoScale;
@@ -93,7 +111,18 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.AutoPauseDelayInMinute)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(5, 10080)]
-        public int AutoPauseDelayInMinute { get; set; }
+        public int AutoPauseDelayInMinute { get; set; } = int.Parse(SynapseConstants.DefaultAutoPauseDelayInMinute);
+       
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.EnableDynamicExecutorAllocation)]
+        public SwitchParameter EnableDynamicExecutorAllocation { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.MinExecutorCount)]
+        [ValidateNotNullOrEmpty]
+        public int MinExecutorCount { get; set; } = int.Parse(SynapseConstants.DefaultMinExecutorCount);
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.MaxExecutorCount)]
+        [ValidateNotNullOrEmpty]
+        public int MaxExecutorCount { get; set; } = int.Parse(SynapseConstants.DefaultMaxExecutorCount);
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
             HelpMessage = HelpMessages.SparkVersion)]
@@ -101,9 +130,8 @@ namespace Microsoft.Azure.Commands.Synapse
         public string SparkVersion { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.LibraryRequirementsFilePath)]
-        [ValidateNotNullOrEmpty]
-        public string LibraryRequirementsFilePath { get; set; }
+          HelpMessage = HelpMessages.SparkConfigurationResource)]
+        public PSSparkConfigurationResource SparkConfiguration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -141,7 +169,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (existingSparkPool != null)
             {
-                throw new SynapseException(string.Format(Resources.SynapseSparkPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                throw new AzPSInvalidOperationException(string.Format(Resources.SynapseSparkPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
             }
 
             Workspace existingWorkspace = null;
@@ -156,41 +184,51 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (existingWorkspace == null)
             {
-                throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
+                throw new AzPSResourceNotFoundCloudException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
-            LibraryRequirements libraryRequirements = null;
-            if (this.IsParameterBound(c => c.LibraryRequirementsFilePath))
-            {
-                var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
+            SparkConfigProperties sparkConfigProperties = null;
 
-                libraryRequirements = new LibraryRequirements
+            if (this.IsParameterBound(c => c.SparkConfiguration))
+            {
+                if (this.SparkConfiguration != null)
                 {
-                    Filename = Path.GetFileName(powerShellDestinationPath),
-                    Content = this.ReadFileAsText(powerShellDestinationPath),
-                };
+                    sparkConfigProperties = new SparkConfigProperties()
+                    {
+                        Filename = SparkConfiguration.Name,
+                        ConfigurationType = ConfigurationType.Artifact,
+                        Content = Newtonsoft.Json.JsonConvert.SerializeObject(SparkConfiguration)
+                    };                   
+                }
             }
 
             var createParams = new BigDataPoolResourceInfo
             {
                 Location = existingWorkspace.Location,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                NodeCount = this.enableAutoScale ? (int?) null : this.NodeCount,
+                IsComputeIsolationEnabled = EnableIsolatedCompute.IsPresent,
+                NodeCount = this.enableAutoScale ? (int?)null : this.NodeCount,
                 NodeSizeFamily = NodeSizeFamily.MemoryOptimized,
                 NodeSize = NodeSize,
-                AutoScale = !this.enableAutoScale ? null : new AutoScaleProperties
+                AutoScale = !this.enableAutoScale ? new AutoScaleProperties { Enabled = false } : new AutoScaleProperties
                 {
                     Enabled = this.enableAutoScale,
                     MinNodeCount = AutoScaleMinNodeCount,
                     MaxNodeCount = AutoScaleMaxNodeCount
                 },
-                AutoPause = !EnableAutoPause ? null : new AutoPauseProperties
+                AutoPause = !EnableAutoPause ? new AutoPauseProperties { Enabled = false } : new AutoPauseProperties
                 {
                     Enabled = EnableAutoPause.IsPresent,
                     DelayInMinutes = AutoPauseDelayInMinute
                 },
+                DynamicExecutorAllocation = !EnableDynamicExecutorAllocation ? new DynamicExecutorAllocation { Enabled = false } : new DynamicExecutorAllocation
+                { 
+                    Enabled = EnableDynamicExecutorAllocation.IsPresent,
+                    MinExecutors = MinExecutorCount,
+                    MaxExecutors = MaxExecutorCount
+                },
                 SparkVersion = this.SparkVersion,
-                LibraryRequirements = libraryRequirements
+                SparkConfigProperties = sparkConfigProperties
             };
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSparkPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))

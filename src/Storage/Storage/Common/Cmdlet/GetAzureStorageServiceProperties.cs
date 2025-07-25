@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using global::Azure.Data.Tables.Models;
 
     /// <summary>
     /// Show Azure Storage service properties
@@ -34,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
+        public override string TagCondition { get; set; }
 
         public GetAzureStorageServicePropertyCommand()
         {
@@ -54,8 +56,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             else //Table use old XSCL
             {
                 StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
-                WriteObject(new PSSeriviceProperties(serviceProperties));
+
+                if (!tableChannel.IsTokenCredential)
+                {
+                    XTable.ServiceProperties serviceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                    WriteObject(new PSSeriviceProperties(serviceProperties));
+                }
+                else
+                {
+                    TableServiceProperties serviceProperties = tableChannel.GetProperties(this.CmdletCancellationToken);
+                    WriteObject(new PSSeriviceProperties(serviceProperties));
+                }
             }
         }
     }

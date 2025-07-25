@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
         public void TestRouteTableCRUDMinimalParameters()
         {
             TestRunner.RunTestScript("Test-RouteTableCRUDMinimalParameters");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
         public void TestRouteTableCRUDAllParameters()
         {
             TestRunner.RunTestScript("Test-RouteTableCRUDAllParameters");
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
         public void TestRouteCRUDMinimalParameters()
         {
             TestRunner.RunTestScript("Test-RouteCRUDMinimalParameters");
@@ -63,7 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
         public void TestRouteCRUDAllParameters()
         {
             TestRunner.RunTestScript("Test-RouteCRUDAllParameters");

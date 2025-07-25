@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccounttype
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccounttype
 schema: 2.0.0
 ---
 
@@ -31,22 +31,40 @@ The **Get-AzCognitiveServicesAccountType** cmdlet gets the available Cognitive S
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountType
+Get-AzCognitiveServicesAccountType
+```
+
+```output
+CognitiveServices
+ComputerVision
+Face
+FormRecognizer
+LUIS
 ```
 
 Get the list of available Types.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountType -Location westus
+Get-AzCognitiveServicesAccountType -Location westus
+```
+
+```output
+CognitiveServices
+ComputerVision
+Face
+FormRecognizer
+LUIS
 ```
 
 Get the list of available Types in westus.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountType -TypeName Face
+Get-AzCognitiveServicesAccountType -TypeName Face
+```
 
+```output
 Face
 ```
 

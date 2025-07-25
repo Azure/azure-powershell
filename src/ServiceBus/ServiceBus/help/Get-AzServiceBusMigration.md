@@ -1,64 +1,77 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+---
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusmigration
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusmigration
 schema: 2.0.0
 ---
 
 # Get-AzServiceBusMigration
 
 ## SYNOPSIS
-Retrieves MigrationConfiguration for the namespace
+Retrieves Migration Config
 
 ## SYNTAX
 
-### MigrationConfigurationPropertiesSet (Default)
+### Get (Default)
 ```
-Get-AzServiceBusMigration [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### NamespaceInputObjectSet
-```
-Get-AzServiceBusMigration [-InputObject] <PSNamespaceAttributes> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### List
 ```
-Get-AzServiceBusMigration [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzServiceBusMigration -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzServiceBusMigration** Retrieves Migration Configuration for the namespace
+Retrieves Migration Config
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Gets the migration configuration of a ServiceBus namespace
 ```powershell
-PS C:\> Get-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMigration
-
-Name              : TestingNamespaceStandardMigration
-Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMigration/migrationConfigurations/$default
-Type              : Microsoft.ServiceBus/Namespaces/migrationconfigurations
-ProvisioningState : Succeeded
-PendingReplicationOperationsCount : 40
-TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMigration
-PostMigrationName : TestingNamespaceStandardMigrationPostMigration
+Get-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
-Gets the Migration Configuration properties of 'TestingNamespaceStandardMigration'
+```output
+Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces
+                                    /myNamespace/migrationConfigurations/$default
+Location                          :
+MigrationState                    : Active
+Name                              : myNamespace
+PendingReplicationOperationsCount :
+PostMigrationName                 : myPremiumNamespace
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : myResourceGroup
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
+TargetNamespace                   : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces
+                                    /myPremiumNamespace
+```
+
+Gets the details of migration configuration related to namespace `myNamespace`.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -68,77 +81,76 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Namespace Object
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
-Parameter Sets: NamespaceInputObjectSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Namespace Name
+### -NamespaceName
+The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrationConfigurationPropertiesSet
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrationConfigurationPropertiesSet
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Namespace Resource Id
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties
 
 ## NOTES
 

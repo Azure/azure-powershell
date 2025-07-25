@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
-// TODO: Remove IfDef
-#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
-#endif
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Management.Automation;
-using System;
-using System.Linq;
-using System.Collections.ObjectModel;
-using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.Profile
     public class GetAzureRMContextCommand : AzureRMCmdlet, IDynamicParameters
     {
         public const string ListAllParameterSet = "ListAllContexts", GetSingleParameterSet = "GetSingleContext";
+
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the context", ParameterSetName = GetSingleParameterSet)]
+        [ContextNameCompleter]
+        public string Name { get; set; }
+
         /// <summary>
         /// Gets the current default context.
         /// </summary>
@@ -43,7 +48,14 @@ namespace Microsoft.Azure.Commands.Profile
         {
             get
             {
-                if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
+                try
+                {
+                    if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
+                    {
+                        return null;
+                    }
+                }
+                catch (InvalidOperationException)
                 {
                     return null;
                 }
@@ -52,26 +64,48 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        [Parameter(Mandatory =true, ParameterSetName = ListAllParameterSet, HelpMessage ="List all available contexts in the current session.")]
+        [Parameter(Mandatory = true, ParameterSetName = ListAllParameterSet, HelpMessage = "List all available contexts in the current session.")]
         public SwitchParameter ListAvailable { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ListAllParameterSet, HelpMessage = "Refresh contexts from token cache")]
+        public SwitchParameter RefreshContextFromTokenCache { get; set; }
+
+        protected override bool RequireDefaultContext()
+        {
+            return false;
+        }
 
         public override void ExecuteCmdlet()
         {
+            if (ListAvailable.IsPresent && RefreshContextFromTokenCache.IsPresent)
+            {
+                try
+                {
+                    var defaultProfile = DefaultProfile as AzureRmProfile;
+                    if (defaultProfile != null && string.Equals(AzureSession.Instance?.ARMContextSaveMode, "CurrentUser"))
+                    {
+                        defaultProfile.RefreshContextsFromCache(_cmdletContext);
+                    }
+                }
+                catch (Exception e)
+                {
+                    WriteWarning(e.ToString());
+                }
+            }
+
             // If no context is found, return
-            if (DefaultContext == null)
+            if (DefaultContext == null && !this.ListAvailable.IsPresent)
             {
                 return;
             }
 
-            if (ListAvailable.IsPresent)
+            if (this.ListAvailable.IsPresent)
             {
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)
                 {
-                    foreach( var context in profile.Contexts)
-                    {
-                        WriteContext(context.Value, context.Key);
-                    }
+                    WritePSAzureContext(profile.Contexts.Select(context => ToPSAzureContext(context.Value, context.Key))?.Where(context => null != context) // remove null contexts
+                        ?.OrderBy(context => context?.Tenant?.Id ?? "").ThenBy(context => context?.Subscription?.Name ?? ""));
                 }
 
             }
@@ -95,44 +129,44 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        void WriteContext(IAzureContext azureContext, string name)
+        /// <summary>
+        /// Convert AzureContext to PSAzureContext with given name
+        /// Notice that returned context may be null
+        /// </summary>
+        /// <param name="azureContext"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private PSAzureContext ToPSAzureContext(IAzureContext azureContext, string name)
         {
             var context = new PSAzureContext(azureContext);
-            if (name != null)
+            if (null != name && null != context)
             {
                 context.Name = name;
             }
 
+            return context;
+        }
+
+        private void WritePSAzureContext(IEnumerable<PSAzureContext> psAzureContext) => 
+            psAzureContext?.ForEach(context => WritePSAzureContext(context));
+        
+        private void WritePSAzureContext(PSAzureContext psAzureContext)
+        {
+            if (psAzureContext == null) return;
+
             // Don't write the default (empty) context to the output stream
-            if (context.Account == null &&
-                context.Environment == null &&
-                context.Subscription == null &&
-                context.Tenant == null)
+            if (psAzureContext.Account == null &&
+                psAzureContext.Environment == null &&
+                psAzureContext.Subscription == null &&
+                psAzureContext.Tenant == null)
             {
                 return;
             }
 
-            WriteObject(context);
+            WriteObject(psAzureContext);
         }
 
-        public object GetDynamicParameters()
-        {
-            var parameters = new RuntimeDefinedParameterDictionary();
-            AzureRmProfile localProfile = DefaultProfile as AzureRmProfile;
-            if (localProfile != null && localProfile.Contexts != null && localProfile.Contexts.Count > 0)
-            {
-                var nameParameter = new RuntimeDefinedParameter(
-                "Name", typeof(string),
-                    new Collection<Attribute>()
-                    {
-                        new ParameterAttribute { Position =0, Mandatory=false, HelpMessage="The name of the context", ParameterSetName=GetSingleParameterSet },
-                        new ValidateSetAttribute((DefaultProfile as AzureRmProfile).Contexts.Keys.ToArray())
-                    }
-                );
-                parameters.Add(nameParameter.Name, nameParameter);
-            }
-
-            return parameters;
-        }
+        void WriteContext(IAzureContext azureContext, string name) =>
+            WritePSAzureContext(ToPSAzureContext(azureContext, name));
     }
 }

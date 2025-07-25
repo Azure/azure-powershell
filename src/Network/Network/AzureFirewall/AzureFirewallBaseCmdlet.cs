@@ -17,7 +17,7 @@ using System.Net;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network
@@ -87,7 +87,6 @@ namespace Microsoft.Azure.Commands.Network
         public PSAzureFirewall GetAzureFirewall(string resourceGroupName, string name)
         {
             var azureFirewall = this.AzureFirewallClient.Get(resourceGroupName, name);
-
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(azureFirewall);
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
             return psAzureFirewall;
         }
 
-        public PSAzureFirewall ToPsAzureFirewall(AzureFirewall firewall)
+        public PSAzureFirewall ToPsAzureFirewall(MNM.AzureFirewall firewall)
         {
             var azureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(firewall);
 

@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+         "incidentId": {
+            "defaultValue": "incidentId",
+            "type": "String"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/incidents",
+            "apiVersion": "2021-04-01",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('incidentId'))]",
+            "properties": {
+                "severity": "Informational",
+                "status": "New",
+                "title": "IncidentTest"
+            }
+        }
+    ]
+}

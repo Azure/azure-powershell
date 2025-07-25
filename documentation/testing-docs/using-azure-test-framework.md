@@ -1,132 +1,153 @@
-# Using Microsoft.Rest.ClientRuntime.Azure.TestFramework #
+# Using Azure PowerShell Test Framework
 
-- [Getting Started](#getting-started)
-- [Acquiring TestFramework](#acquiring-testframework)
-- [Setup prior to Record/Playback tests](#setup-prior-to-record-or-playback-of-tests)
-	- [New-TestCredential](#new-testcredential)
-		- [Create New Service Principal](#create-new-service-principal)
-		- [Use Existing Service Principal](#use-existing-service-principal)
-	- [Set-TestEnvironment](#set-testenvironment)
-		- [Existing Service Principal](#existing-service-principal)
-	- [Manually Set Environment Variables](#manually-set-environment-variables)
-		- [Environment Variables](#environment-variables)
-		- [Playback Test](#playback-test)
-		- [Record Test with Interactive login using OrgId](#record-test-with-interactive-login-using-orgid)
-		- [Record Test with ServicePrincipal](#record-test-with-serviceprincipal)
-- [Record/Playback tests](#record-or-playback-tests)
-- [Change Test Environment settings at run-time](#change-test-environment-settings-at-run-time)
-- [Troubleshooting](#troubleshooting)
-- [Supported Key Value pairs in ConnectionString](#supported-key-value-pairs-in-connectionstring)
-- [Environment Variable Reference](#supported-environment-in-test-framework)
+- [Using Azure PowerShell Test Framework](#using-azure-powershell-test-framework)
+  - [Getting Started](#getting-started)
+  - [Azure PowerShell Test Framework](#azure-powershell-test-framework)
+  - [Setup prior to Record or Playback of tests](#setup-prior-to-record-or-playback-of-tests)
+    - [Run Command Set-TestFxEnvironment to Build Connection String](#run-command-set-testfxenvironment-to-build-connection-string)
+      - [Use user account to record test cases (Recommended)](#use-user-account-to-record-test-cases-recommended)
+      - [Create New Service Principal (Not Recommended)](#create-new-service-principal-not-recommended)
+      - [Use Existing Service Principal (Not Recommended)](#use-existing-service-principal-not-recommended)
+    - [Manually Set Environment Variables to Build Connection String](#manually-set-environment-variables-to-build-connection-string)
+      - [Environment Variables](#environment-variables)
+      - [Record Tests](#record-tests)
+      - [Playback Tests](#playback-tests)
+  - [JSON Config File V.S. Environment Variables](#json-config-file-vs-environment-variables)
+  - [Record or Playback Tests](#record-or-playback-tests)
+  - [Change Test Environment settings at run-time](#change-test-environment-settings-at-run-time)
+      - [Once you set your connection string, you can add or update key/value settings](#once-you-set-your-connection-string-you-can-add-or-update-keyvalue-settings)
+    - [Note:](#note)
+  - [Troubleshooting](#troubleshooting)
+      - [Issue: exceptions in Microsoft.Azure.Test.HttpRecorder](#issue-exceptions-in-microsoftazuretesthttprecorder)
+  - [Supported Environments in Test Framework](#supported-environments-in-test-framework)
+      - [Default Environments and associated Uri](#default-environments-and-associated-uri)
+        - [Environment = Prod](#environment--prod)
+        - [Environment = Dogfood](#environment--dogfood)
+        - [Environment = Next](#environment--next)
+        - [Environment = Current](#environment--current)
+        - [Environment = Custom](#environment--custom)
 
 ## Getting Started
--  Double click `.\tools\PS-VSPrompt` shortcut
-	- This starts the VS Developer command prompt in PowerShell inside the `azure-powershell/tools` directory
-- Import the `Repo-Tasks` module that helps to perform basic repository tasks
-	- Run the command `Import-Module .\Repo-Tasks.psd1`
 
-## Acquiring TestFramework
+- Install the latest `Az.Resources` from the [PSGallery](https://www.powershellgallery.com/) into PowerShell
+  - Run PowerShell as administrator and execute the following command
+    - `Install-Module -Name Az.Resources -Scope AllUsers -AllowClobber -Force`
+- Import the `TestFx-Tasks` module that helps to configure the settings
+  - Run the command `Import-Module ./tools/Modules/TestFx-Tasks.psd1`
 
-The `TestFramework` library is available on NuGet at https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/ .
+## Azure PowerShell Test Framework
 
-Instructions on manually downloading the library are available on NuGet, however, `TestFramework` will automatically be downloaded as part of the build process, so the manual download is usually not necessary.
+Azure PowerShell repo now has its own test framework located under `tools\TestFx`, which supports recording all the HTTP requests from behind Azure PowerShell cmdlets and then playing them back.
+
+The target framework of test is .Net 6, please ensure .Net runtime Microsoft.NETCore.App 6.0 is installed. You can list all installed version via `dotnet --info`.
 
 ## Setup prior to Record or Playback of tests
 
-In order to Record/Playback a test, you need to setup a connection string that consists of various key/value pairs that provide information to the test environment.  
+To Record/Playback a test case, the test framework must establish a connection string comprising multiple key/value pairs that supply essential information.
 
-You have three options to set up the connection string: 
-- Run the [`New-TestCredential` cmdlet](#new-testcredential) (recommended for PowerShell development)
-- Run the [`Set-TestEnvironment` cmdlet](#set-testenvironment)
-- [Manually set the environment variables](#manually-set-environment-variables).
+You can choose either option to configure the settings:
 
-### New-TestCredential
+- [Run the Set-TestFxEnvironment cmdlet](#use-user-account-to-record-test-cases)
+- [Manually set the environment variables](#manually-set-environment-variables-to-build-connection-string)
 
-This cmdlet, located in the [`Repo-Tasks` module](/tools/Repo-Tasks.psd1), which pulls in the [`TestFx-Tasks` module](/tools/Modules/TestFx-Tasks.psd1) and [`Build-Tasks` module](/tools/Modules/Build-Tasks.psd1), will allow you to create a credentials file (located in `C:/Users/\<currentuser\>/.azure/testcredentials.json`) that will be used to set the environment variable when scenario tests are run. This credentials file will be used in all future sessions unless it is deleted or the environment variables are manually set.  This cmdlet is not currently available for .NET SDK development.
+### Run Command Set-TestFxEnvironment to Build Connection String
 
-#### Create New Service Principal
+This cmdlet enables you to generate a credentials file (located in `C:/Users/<currentuser>/.Azure/testcredentials.json`) that sets the connection string during scenario test execution. This credentials file persists across sessions unless manually deleted.
 
-Using a service principal is the preferred option for recording tests because it works with both .NET Framework and .NET Core.  In order to create a new service principal, run this command with an unused service principal display name:
+#### Use user account to record test cases (Recommended)
 
-```powershell
-New-TestCredential -ServicePrincipalDisplayName "ScenarioTestCredentials" -SubscriptionId `
-<subscriptionId> -TenantId <tenantId> -RecordMode "Record"
-```
-
-This command will create a new service principal, set the correct role assignment for this service principal based upon the subscription provided, and place the service principal id and automatically generated secret into the credentials file.
-
-Alternatively, to create a service principal, follow the [Azure AD guide to create a Application Service Principal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application). The application type should be `Web app / API` and the sign-on URL value is irrelevant (you can set any value).
-
-#### Use Existing Service Principal
-
-If you would like to use an existing service principal, run this command with an existing service principal display name and secret:
+Using a user account is the preferred method for recording test cases as it avoids storing secret in the local file with plain text. The value of the UserId is your **email account** in the tenant where you plan to record the test.
 
 ```powershell
-New-TestCredential -ServicePrincipalDisplayName "Existing Service Principal" -ServicePrincipalSecret `
-"testpassword" -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
+Set-TestFxEnvironment -UserId <EmailAccount> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
-### Set-TestEnvironment
+#### Create New Service Principal (Not Recommended)
 
-This cmdlet, located in the [`Repo-Tasks` module](/tools/Repo-Tasks.psd1), will directly set the environment variable for the session.
-
-#### Existing Service Principal
-
-This is the preferred option for recording tests because it works with both .NET Framework and .NET Core.
+Using a service principal is not recommended due to security concerns, but it remains an available option for your use.
+To create a new service principal, execute the following command with a brand new service principal display name:
 
 ```powershell
-Set-TestEnvironment -ServicePrincipalId <servicePrincipalId> -ServicePrincipalSecret `
-"testpassword" -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
+Set-TestFxEnvironment -ServicePrincipalDisplayName <DisplayName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
-### Manually Set Environment Variables
+This command will initially create a new service principal, then assign the `Contributor` role to this service principal according to the specified subscription. Subsequently, it will update the credentials file with the application ID and an automatically generated secret for the service principal.
+
+If the display name of the service principal already exists, you will be prompted to decide whether to create a new one with the same name. If you choose "Y", the newly generated application ID and secret will be stored.
+
+Alternatively, if you prefer to create a service principal manually through the Azure portal, you can refer to [Azure AD guide to create a Application Service Principal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application).
+
+#### Use Existing Service Principal (Not Recommended)
+
+If you wish to utilize an existing service principal, execute the following command with the application ID and secret of the desired service principal:
+
+```powershell
+Set-TestFxEnvironment -ServicePrincipalId <ServicePrincipalApplicationId> -ServicePrincipalSecret <ServicePrincipalSecret> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
+```
+
+For an existing service principal, this command will respect your current settings and won't assign the `Contributor` role automatically.
+
+
+
+### Manually Set Environment Variables to Build Connection String
 
 #### Environment Variables
 
 `TEST_CSM_ORGID_AUTHENTICATION`
-* This is the connection string that determines how to connect to Azure. This includes both your authentication and the Azure environment to connect to.
+
+* This variable determines how to connect to Azure. It encompasses both your authentication credentials and the Azure environment information.
 
 `AZURE_TEST_MODE`
-* This specifies whether the test framework will `Record` test sessions or `Playback` previously recorded test sessions.
 
-#### Playback Test
+* This variable specifies whether the test framework will `Record` test sessions or `Playback` recorded test sessions.
 
-The default test mode is `Playback` mode, so setting up the connection string is not required. You can optionally set environment variables:
+#### Record Tests
 
-```
-TEST_CSM_ORGID_AUTHENTICATION=
-AZURE_TEST_MODE=Playback
-```
+You can use either a user account (Recommended) or a Service Principal to record test cases with appropriate permissions.
 
-#### Record Test with service principal
-
-After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command, with the [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) (this is a guid, not the display name of the service principal) substituted in for `{clientId}`.
-
-```powershell
-New-AzRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contributor
-```
-
-To use this option, set the following environment variable before starting Visual Studio. The following values are substituted into the below connection string:
-
-`clientId`
-* The [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
-
-`clientSecret`
-* A [Service Principal Authentication Key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
-
-`tenantId`
-* The [AAD Tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+With user account, you may set the following environment variables:
 
 ```
-TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;UserId=<EmailAccount>;
 AZURE_TEST_MODE=Record
 ```
 
+For service principal, you may set the following environment variables:
+
+```
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;
+AZURE_TEST_MODE=Record
+```
+
+#### Playback Tests
+
+The default test mode is `Playback`, so there is no need to set up the `AZURE_TEST_MODE` variable. You may optionally set the environment variables:
+
+```
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;
+AZURE_TEST_MODE=Playback
+```
+
+## JSON Config File V.S. Environment Variables
+
+The recommended approach for building the connection string is using a config file, as any changes made will take effect immediately without needing to restart Visual Studio. However, updating environment variables is a different process and requires a restart of Visual Studio for the updated values to be recognized. Here are the steps the Test Framework follows to detect settings:
+
+- If JSON config file exists
+  - The Test Framework will use it to build the connection string, ignoring any settings from environment variables.
+- If JSON config file does not exist
+  - The Test Framework will check the `TEST_CSM_ORGID_AUTHENTICATION` environment variable and use its value to build the connection string.
+  - The Test Framework will check the `AZURE_TEST_MODE` environment variable and use its value to build the test mode.
+    - If `AZURE_TEST_MODE` is set, its value will be used as the test mode.
+    - If `AZURE_TEST_MODE` is not set, the default test mode will be `Playback`.
+
+If you are unsure about the settings on your machine, you can run the command `Get-TestFxEnvironment` to consolidate the steps mentioned above and display the final result.
+
 ## Record or Playback Tests
 
-- [Run the tests](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests) and make sure that you got a generated `.json` file that matches the test name in the bin folder under the `SessionRecords` folder
-- Copy the `SessionRecords` folder inside the test project and add all `*.json` files in Visual Studio setting "Copy to Output Directory" property to "Copy if newer"
-- To assure that the records work fine, delete the connection string (default mode is Playback mode) OR change HttpRecorderMode within the connection string to "Playback" and run the tests
+- [Run the tests](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests) and make sure that you have a generated `.json` file that corresponds to the test name, and it should be located under the `SessionRecords` folder within the test project.
+- If you want to switch from Record to Playback or from Playback to Record, consider below steps.
+  - If you choose to use a JSON config file, update the value of the property `HttpRecorderMode` in the JSON file directly.
+  - If you prefer environment variables, update the value of environment variable `AZURE_TEST_MODE`.
 
 ## Change Test Environment settings at run-time
 
@@ -144,13 +165,14 @@ TestEnvironment.Endpoints.GraphUri = new Uri("https://newGraphUri.windows.net");
 ```
 
 ### Note:
+
 Changing the above properties at run-time has the potential to hard code few things in your tests. Best practice would be to use these properties to change values at run-time from immediate window at run-time and avoid hard-coding certain values.
 
 ## Troubleshooting
 
 #### Issue: exceptions in Microsoft.Azure.Test.HttpRecorder
 
-Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` environment variable is consistent with the value in `AZURE_TEST_MODE` environment variable.
+The `HttpRecorderMode` key in the `TEST_CSM_ORGID_AUTHENTICATION` environment variable has been deprecated. Please remove this key/value pair and use `AZURE_TEST_MODE` instead for recording mode.
 
 ## Supported Environments in Test Framework
 
@@ -158,21 +180,21 @@ Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` enviro
 
 ##### Environment = Prod
 
-	AADAuthUri = "https://login.microsoftonline.com"
-	GalleryUri = "https://gallery.azure.com/"
-	GraphUri = "https://graph.windows.net/"
-	IbizaPortalUri = "https://portal.azure.com/"
-	RdfePortalUri = "http://go.microsoft.com/fwlink/?LinkId=254433"
-	ResourceManagementUri = "https://management.azure.com/"
-	ServiceManagementUri = "https://management.core.windows.net"
-	AADTokenAudienceUri = "https://management.core.windows.net"
-	GraphTokenAudienceUri = "https://graph.windows.net/"
-	DataLakeStoreServiceUri = "https://azuredatalakestore.net"
-	DataLakeAnalyticsJobAndCatalogServiceUri = "https://azuredatalakeanalytics.net"
+    AADAuthUri = "https://login.microsoftonline.com"
+    GalleryUri = "https://gallery.azure.com/"
+    GraphUri = "https://graph.windows.net/"
+    IbizaPortalUri = "https://portal.azure.com/"
+    RdfePortalUri = "http://go.microsoft.com/fwlink/?LinkId=254433"
+    ResourceManagementUri = "https://management.azure.com/"
+    ServiceManagementUri = "https://management.core.windows.net"
+    AADTokenAudienceUri = "https://management.core.windows.net"
+    GraphTokenAudienceUri = "https://graph.windows.net/"
+    DataLakeStoreServiceUri = "https://azuredatalakestore.net"
+    DataLakeAnalyticsJobAndCatalogServiceUri = "https://azuredatalakeanalytics.net"
 
 ##### Environment = Dogfood
 
-	AADAuthUri = "https://login.windows-ppe.net";
+    AADAuthUri = "https://login.windows-ppe.net";
         GalleryUri = "https://df.gallery.azure-test.net/";
         GraphUri = "https://graph.ppe.windows.net/";
         IbizaPortalUri = "http://df.onecloud.azure-test.net";
@@ -186,7 +208,7 @@ Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` enviro
 
 ##### Environment = Next
 
-	AADAuthUri = "https://login.windows-ppe.net"
+    AADAuthUri = "https://login.windows-ppe.net"
         GalleryUri = "https://next.gallery.azure-test.net/"
         GraphUri = "https://graph.ppe.windows.net/"
         IbizaPortalUri = "http://next.onecloud.azure-test.net"
@@ -200,7 +222,7 @@ Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` enviro
 
 ##### Environment = Current
 
-	AADAuthUri = "https://login.windows-ppe.net"
+    AADAuthUri = "https://login.windows-ppe.net"
         GalleryUri = "https://df.gallery.azure-test.net/"
         GraphUri = "https://graph.ppe.windows.net/"
         IbizaPortalUri = "http://df.onecloud.azure-test.net"
@@ -210,9 +232,10 @@ Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` enviro
         AADTokenAudienceUri = "https://management.core.windows.net"
         GraphTokenAudienceUri = "https://graph.ppe.windows.net/"
         DataLakeStoreServiceUri = "https://caboaccountdogfood.net"
-        DataLakeAnalyticsJoAbndCatalogServiceUri = "https://konaaccountdogfood.net"
+        DataLakeAnalyticsJobAndCatalogServiceUri = "https://konaaccountdogfood.net"
 
 ##### Environment = Custom
+
 When specified, test framework expect all Uri's to be provided by the user as part of the connection string.
 
 What is also supported is as below (connections string example)

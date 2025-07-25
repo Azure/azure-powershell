@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <PsModuleName>PrivateDns</PsModuleName>
   </PropertyGroup>
@@ -11,7 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.PrivateDns" Version="1.0.0" />
+    <ProjectReference Include="..\PrivateDns.Management.Sdk\PrivateDns.Management.Sdk.csproj" />
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

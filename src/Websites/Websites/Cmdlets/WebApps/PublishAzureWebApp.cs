@@ -14,15 +14,21 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
+using System.Web;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -32,12 +38,39 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet2Name), OutputType(typeof(PSSite))]
     public class PublishAzureWebAppCmdlet : WebAppOptionalSlotBaseCmdlet
     {
-        // Poll status for a maximum of 20 minutes (1200 seconds / 2 seconds per status check)
-        private const int NumStatusChecks = 600;
+        // Poll status for a maximum of 35 minutes (2100 seconds / 2 seconds per status check)
+        private const int NumStatusChecks = 1050;
 
-        [Parameter(Mandatory = true, HelpMessage = "The path of the archive file. ZIP, WAR, and JAR are supported.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = "The path of the archive file. ZIP, WAR, and JAR are supported.")]
         public string ArchivePath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "URL of the artifact. The webapp will pull the artifact from this URL. Ex: \"http://mysite.com/files/myapp.war")]
+        public string ArchiveURL { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Used to override the type of artifact being deployed.")]
+        [ValidateSet("war", "jar", "ear", "zip", "static")]
+        public string Type { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Cleans the target directory prior to deploying the file(s).")]
+        public SwitchParameter Clean { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The artifact is deployed asynchronously. (The command will exit once the artifact is pushed to the web app.)")]
+        public SwitchParameter Async { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The web app will be restarted following the deployment. Set this to false if you are deploying multiple artifacts and do not want to restart the site on the earlier deployments.")]
+        public SwitchParameter Restart { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Absolute path that the artifact should be deployed to.")]
+        public string TargetPath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "AAD identity used for pull based deployments. 'system' will use the app's system assigned identity. An user assigned identity can be used by providing the client ID. Only available for Windows WebApps. Support for Linux WebApps coming soon.")]
+        public string PullIdentity { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Disables any language-specific defaults")]
+        public SwitchParameter IgnoreStack { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Reset Java web apps to default parking page")]
+        public SwitchParameter Reset { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Deploy the web app without prompting for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -45,38 +78,165 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Configurable timeout in milliseconds to wait for deployment operation to complete. The default timeout is 100000 milliseconds")]
+        [ValidateRange(100000, 3600000)]
+        public double Timeout { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             User user = WebsitesClient.GetPublishingCredentials(ResourceGroupName, Name, Slot);
 
+            PSSite app = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+            bool isLinuxApp = app.Kind != null && app.Kind.ToLower().Contains("linux");
+
             HttpResponseMessage r;
-            string deployUrl;
             string deploymentStatusUrl = user.ScmUri + "/api/deployments/latest";
 
-            if (ArchivePath.ToLower().EndsWith("war"))
+            string apiPath = "/api/publish";
+            var scmUrl = new Uri(user.ScmUri);
+            var deployUri = new Uri(scmUrl, apiPath);
+
+            var uriBuilder = new UriBuilder(deployUri);
+            var paramValues = HttpUtility.ParseQueryString(uriBuilder.Query);
+
+            string fileExtention = Path.GetExtension(ArchivePath);
+            string[] validTypes = { "war", "jar", "ear", "zip", "static" };
+
+            if (string.IsNullOrEmpty(ArchivePath) && string.IsNullOrEmpty(ArchiveURL))
             {
-                deployUrl = user.ScmUri + "/api/wardeploy?isAsync=true";
+                var rec = new ErrorRecord(new Exception("Either ArchivePath or ArchiveURL need to be provided."), string.Empty, ErrorCategory.InvalidArgument, null);
+                WriteError(rec);
+                return;
             }
-            else if (ArchivePath.ToLower().EndsWith("zip") || ArchivePath.ToLower().EndsWith("jar"))
+
+            if (!string.IsNullOrEmpty(ArchiveURL) && string.IsNullOrEmpty(Type))
             {
-                deployUrl = user.ScmUri + "/api/zipdeploy?isAsync=true";
+                var rec = new ErrorRecord(new Exception("Deployment type is mandatory when deploying from URLs. Use -type"), string.Empty, ErrorCategory.InvalidArgument, null);
+                WriteError(rec);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(PullIdentity) && isLinuxApp)
+            {
+                var rec = new ErrorRecord(new Exception("Pull with MSI support is not yet available for Linux webapps"), string.Empty, ErrorCategory.InvalidArgument, null);
+                WriteError(rec);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(Type))
+            {
+                paramValues["type"] = Type;
+            }
+
+            else if (!string.IsNullOrEmpty(fileExtention))
+            {
+                if (validTypes.Contains(fileExtention.Substring(1)))
+                {
+                    paramValues["type"] = fileExtention.Substring(1);
+                }
+
+                else
+                {
+                    paramValues["type"] = "static";
+                }
+            }
+
+            else
+            {
+                throw new Exception("Unknown artifact type.");
+            }
+
+            paramValues.Add("path", TargetPath);
+
+            // Purposely using IsParameterBound to check if the parameter is passed or not. In this case we want to return true if $false is passed. 
+            // We only want to set the parameter if a value is passed.
+            // default async to true if not provided to match old behavior
+            if (this.IsParameterBound(c => c.Async))
+            {
+                paramValues.Add("async", Async.ToString());
             }
             else
             {
-                throw new Exception("Unknown archive type.");
+                paramValues.Add("async", "true");
             }
+
+            if (this.IsParameterBound(c => c.Restart))
+            {
+                paramValues.Add("restart", Restart.ToString());
+            }
+
+            if (this.IsParameterBound(c => c.Clean))
+            {
+                paramValues.Add("clean", Clean.ToString());
+            }
+
+            if (this.IsParameterBound(c => c.IgnoreStack))
+            {
+                paramValues.Add("ignorestack", IgnoreStack.ToString());
+            }
+
+            if (this.IsParameterBound(c => c.Reset))
+            {
+                paramValues.Add("reset", Reset.ToString());
+            }
+
+            uriBuilder.Query = paramValues.ToString();
+
+            string deployUrl = uriBuilder.Uri.ToString();
 
             Action zipDeployAction = () =>
             {
-                using (var s = File.OpenRead(ArchivePath))
+                using (HttpClient client = new HttpClient())
                 {
-                    HttpClient client = new HttpClient();
-                    var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-                    HttpContent fileContent = new StreamContent(s);
-                    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/zip");
-                    r = client.PostAsync(deployUrl, fileContent).Result;
+                    if (this.IsParameterBound(cmdlet => cmdlet.Timeout))
+                    {
+                        // Considering the deployment of large packages the default time(150 seconds) is not sufficient. So increased the timeout based on user choice.
+                        client.Timeout = TimeSpan.FromMilliseconds(Timeout);
+                    }
+
+                    var token = WebsitesClient.GetAccessToken(DefaultContext);
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
+                    client.DefaultRequestHeaders.UserAgent.ParseAdd(AzurePSCmdlet.UserAgent);
+
+                    HttpContent archiveContent = null;
+
+                    // pull based deployment
+                    if (!string.IsNullOrEmpty(ArchiveURL) && string.IsNullOrEmpty(ArchivePath))
+                    {
+                        archiveContent = new StringContent(JsonConvert.SerializeObject(new { packageUri = ArchiveURL, pullIdentity = PullIdentity }));
+                        archiveContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+                        r = client.PostAsync(deployUrl, archiveContent).Result;
+                    }
+                    //push based deployment
+                    else if (string.IsNullOrEmpty(ArchiveURL) && !string.IsNullOrEmpty(ArchivePath))
+                    {
+                        if (!Path.IsPathRooted(ArchivePath))
+                        {
+                            ArchivePath = Path.Combine(this.SessionState.Path.CurrentFileSystemLocation.Path, ArchivePath);
+                        }
+                        using (var s = File.OpenRead(ArchivePath))
+                        {
+                            archiveContent = new StreamContent(s);
+                            archiveContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/zip");
+                            r = client.PostAsync(deployUrl, archiveContent).Result;
+                        }
+                    }
+                    else
+                    {
+                        var rec = new ErrorRecord(new Exception("Could not find artifact source"), string.Empty, ErrorCategory.InvalidArgument, null);
+                        WriteError(rec);
+                        return;
+                    }
+
+                    // Checking the response of the post request. If the post request fails with 502 or 503 HTTP status 
+                    // then deployments/latest endpoint may give false positive result.  
+                    if (r.StatusCode != HttpStatusCode.OK && r.StatusCode != HttpStatusCode.Accepted)
+                    {
+                        var rec = new ErrorRecord(new Exception("Deployment failed with status code " + r.StatusCode), string.Empty, ErrorCategory.InvalidResult, null);
+                        WriteError(rec);
+                        return;
+                    }
 
                     int numChecks = 0;
                     do
@@ -101,9 +261,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             ConfirmAction(this.Force.IsPresent, $"Contents of {ArchivePath} will be deployed to the web app {Name}.", "The web app has been deployed.", Name, zipDeployAction);
 
-            PSSite app = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
             WriteObject(app);
         }
-
     }
 }

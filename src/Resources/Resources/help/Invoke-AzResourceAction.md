@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 427F7300-0FEB-4F28-9C1D-27592AEBF6A0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/invoke-azresourceaction
+online version: https://learn.microsoft.com/powershell/module/az.resources/invoke-azresourceaction
 schema: 2.0.0
 ---
 
@@ -16,8 +16,8 @@ Invokes an action on a resource.
 ### ByResourceId (Default)
 ```
 Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceId <String> [-ODataQuery <String>]
- [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BySubscriptionLevel
@@ -25,7 +25,8 @@ Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceId <
 Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceName <String>
  -ResourceType <String> [-ExtensionResourceName <String>] [-ExtensionResourceType <String>]
  [-ODataQuery <String>] [-ResourceGroupName <String>] [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTenantLevel
@@ -33,7 +34,8 @@ Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceName
 Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceName <String>
  -ResourceType <String> [-ExtensionResourceName <String>] [-ExtensionResourceType <String>]
  [-ODataQuery <String>] [-TenantLevel] [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,10 +47,12 @@ To get a list of supported actions, use the Azure Resource Explorer tool.
 ### Example 1: Invoke starting a VM with ResourceId
 
 ```powershell
-PS C:\>Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Compute/virtualMachines/testVM -Action start
+Invoke-AzResourceAction -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testVM -Action start
+```
 
+```output
 Confirm
-Are you sure you want to invoke the 'start' action on the following resource: /subscriptions/{subId}/resourceGroups/testGroup/providers/Microsoft.Compute/virtualMachines/testVM
+Are you sure you want to invoke the 'start' action on the following resource: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testVM
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
@@ -57,7 +61,7 @@ This command starts the Virtual Machine with {ResourceId}.
 ### Example 2: Invoke poweroffing a VM with ResourceName
 
 ```powershell
-PS C:\>Invoke-AzResourceAction -ResourceGroupName testGroup -ResourceName testVM -ResourceType Microsoft.Compute/virtualMachines/ -Action Poweroff -Force
+Invoke-AzResourceAction -ResourceGroupName testGroup -ResourceName testVM -ResourceType Microsoft.Compute/virtualMachines/ -Action Poweroff -Force
 ```
 
 This command stops the Virtual Machine with {ResourceId}.
@@ -66,9 +70,11 @@ The command specifies the *Force* parameter, therefore, it does not prompt you f
 ### Example 3: Invoke registering a resource provider with ResourceId
 
 ```powershell
-PS C:\>Invoke-AzResourceAction -ResourceId /subscriptions/{subId}/providers/Microsoft.Network -action register -Force
+Invoke-AzResourceAction -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Network -action register -Force
+```
 
-id                : /subscriptions/{subId}/providers/Microsoft.Network
+```output
+id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Network
 namespace         : Microsoft.Network
 authorizations    : {…}
 resourceTypes     : {@{resourceType=virtualNetworks; locations=System.Object[]; apiVersions=System.Object[]},

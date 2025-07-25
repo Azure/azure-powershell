@@ -54,23 +54,13 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// of 1 to 100 (inclusive). The default value is 1.
         /// </summary>
         public int? Count { get; set; }
-
+		
         /// <summary>
-        /// Validate the object.
+        /// Gets or sets the desired number of IPv6 outbound IPs
+        /// created/managed by Azure for the cluster load balancer. Allowed
+        /// values must be in the range of 1 to 100 (inclusive). The default
+        /// value is 0 for single-stack and 1 for dual-stack.
         /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Count > 100)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "Count", 100);
-            }
-            if (Count < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "Count", 1);
-            }
-        }
+        public int? CountIPv6 { get; set; }
     }
 }

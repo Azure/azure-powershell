@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public abstract class AzureSqlElasticJobCredentialCmdletBase<TInputObject> : AzureSqlElasticJobsCmdletBase<TInputObject, IEnumerable<AzureSqlElasticJobCredentialModel>, AzureSqlElasticJobAdapter>
     {
         /// <summary>
-        /// Intialize the job credential adapter
+        /// Initialize the job credential adapter
         /// </summary>
         /// <returns>The Azure Elastic Job adapter</returns>
         protected override AzureSqlElasticJobAdapter InitModelAdapter()
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// We clear these properties so that during piping scenarios we can ensure we initialize the minimum properties
         /// for either getting, creating, updating, or removing the correct resource
         /// Resource group name, server name, agent name, credential name, and name are cleared
-        /// so that during the next iteration in list, they will be initialized properly during <see cref="InitializeInputObjectProperties"/>
+        /// so that during the next iteration in list, they will be initialized properly during <see cref="AzureSqlElasticJobsCmdletBase{TInputObject, TModel, TAdapter}.InitializeInputObjectProperties(TInputObject)"/>
         /// </remarks>
         protected void ClearProperties()
         {

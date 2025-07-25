@@ -25,11 +25,11 @@ This document serves as both a breaking change notification and migration guide 
 
 ### Minimum PowerShell version required bumped to 5.0
 
-Previously, Azure PowerShell required _at least_ version 3.0 of PowerShell to run any cmdlet. Moving forward, this requirement will be raised to version 5.0 of PowerShell. For information on upgrading to PowerShell 5.0, please see [this table](https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+Previously, Azure PowerShell required _at least_ version 3.0 of PowerShell to run any cmdlet. Moving forward, this requirement will be raised to version 5.0 of PowerShell. For information on upgrading to PowerShell 5.0, please see [this table](https://learn.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
 
 ### Context autosave enabled by default
 
-Context autosave is the storage of Azure login information that can be used between new and different PowerShell sessions. For more information on context autosave, please see [this document](https://docs.microsoft.com/en-us/powershell/azure/context-persistence).
+Context autosave is the storage of Azure login information that can be used between new and different PowerShell sessions. For more information on context autosave, please see [this document](https://learn.microsoft.com/en-us/powershell/azure/context-persistence).
 
 Previously by default, context autosave was disabled, which meant the user's Azure login information was not stored between sessions until they ran the `Enable-AzureRmContextAutosave` cmdlet to turn on context persistence. Moving forward, context autosave will be enabled by default, which means that users _with no saved context autosave settings_ will have their context stored the next time they login. Users can opt out of this functionality by using the `Disable-AzureRmContextAutosave` cmdlet.
 
@@ -239,8 +239,8 @@ Remove-AzureRmDataLakeStoreItem -Account "ContosoADL" -path /myFolder -Recurse
 - The cmdlet no longer accepts individual parameters that compose the access token; instead, the cmdlet replaces explicit token parameters, such as `Service` or `Permissions`, with a generic `TemplateUri` parameter, corresponding to a sample access token defined elsewhere (presumably using Storage PowerShell cmdlets, or composed manually according to the Storage documentation.) The cmdlet retains the `ValidityPeriod` parameter.
 	
 For more information on composing shared access tokens for Azure Storage, please refer to the documentation pages, respectively:
-- [Constructing a Service SAS] (https://docs.microsoft.com/en-us/rest/api/storageservices/Constructing-a-Service-SAS)
-- [Constructing an Account SAS] (https://docs.microsoft.com/en-us/rest/api/storageservices/constructing-an-account-sas)
+- [Constructing a Service SAS] (https://learn.microsoft.com/en-us/rest/api/storageservices/Constructing-a-Service-SAS)
+- [Constructing an Account SAS] (https://learn.microsoft.com/en-us/rest/api/storageservices/constructing-an-account-sas)
     
 ```powershell
 # Old

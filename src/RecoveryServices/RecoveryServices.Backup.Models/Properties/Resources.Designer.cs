@@ -10,8 +10,8 @@
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,40 +22,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
-        
+    public class Resources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        public static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.RecoveryServices.Backup.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
-            get {
+        public static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
@@ -86,39 +94,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Handling aggregate exception.
         /// </summary>
-        public static string AggregateException {
-            get {
+        public static string AggregateException
+        {
+            get
+            {
                 return ResourceManager.GetString("AggregateException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Retention count in Weeks should be in between 1-520, in Months should be in between 1-120 and Years should be in between 1-10.
         /// </summary>
-        public static string AllowedSqlRetentionRange {
-            get {
+        public static string AllowedSqlRetentionRange
+        {
+            get
+            {
                 return ResourceManager.GetString("AllowedSqlRetentionRange", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. Alteast one is expected..
+        ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. At least one is expected..
         /// </summary>
-        public static string AllRetentionSchedulesEmptyException {
-            get {
+        public static string AllRetentionSchedulesEmptyException
+        {
+            get
+            {
                 return ResourceManager.GetString("AllRetentionSchedulesEmptyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Received ArgumentException.
         /// </summary>
-        public static string ArgumentException {
-            get {
+        public static string ArgumentException
+        {
+            get
+            {
                 return ResourceManager.GetString("ArgumentException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Looks like File Shares similar to specified Azure File Share are not found. Possible causes are
         ///1. The Azure File Share does not exist
@@ -126,26 +142,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         ///3. The Azure File Share is already protected with another Vault. Please unprotect the Azure File Share first, unregister the Storage Account from that Vault and protect it again. 
         ///Please contact Microsoft for further assistance..
         /// </summary>
-        public static string AzureFileShareNotFound {
-            get {
+        public static string AzureFileShareNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureFileShareNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Provide SourceFilePath for File restore or remove SourceFileType for file share restore.
         /// </summary>
-        public static string AzureFileSourceFilePathMissingException {
-            get {
+        public static string AzureFileSourceFilePathMissingException
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureFileSourceFilePathMissingException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Provide SourceFileType for File restore or remove SourceFilePath for file share restore.
         /// </summary>
-        public static string AzureFileSourceFileTypeMissingException {
-            get {
+        public static string AzureFileSourceFileTypeMissingException
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureFileSourceFileTypeMissingException", resourceCulture);
             }
         }
@@ -164,48 +186,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Provide TargetFileShareName for Alternate Location restore or remove TargetStorageAccountName for Original Location restore.
         /// </summary>
-        public static string AzureFileTargetFSNameMissingException {
-            get {
+        public static string AzureFileTargetFSNameMissingException
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureFileTargetFSNameMissingException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Provide TargetStorageAccountName for Alternate Location restore or remove TargetFileShareName for Original Location restore.
         /// </summary>
-        public static string AzureFileTargetSANameMissingException {
-            get {
+        public static string AzureFileTargetSANameMissingException
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureFileTargetSANameMissingException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureFiles..
         /// </summary>
-        public static string AzureFileUnsupportedBackupManagementTypeException {
-            get {
+        public static string AzureFileUnsupportedBackupManagementTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureFileUnsupportedBackupManagementTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Azure Sql does not support disable protection with retain data.
         /// </summary>
-        public static string AzureSqlRetainDataException {
-            get {
+        public static string AzureSqlRetainDataException
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureSqlRetainDataException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureSql.
         /// </summary>
-        public static string AzureSqlUnsupportedBackupManagementTypeException {
-            get {
+        public static string AzureSqlUnsupportedBackupManagementTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureSqlUnsupportedBackupManagementTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The specified Azure Virtual Machine Not Found. Possible causes are
         ///1. VM does not exist
@@ -214,17 +246,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         ///
         ///Please contact Microsoft for further assistance..
         /// </summary>
-        public static string AzureVMNotFound {
-            get {
+        public static string AzureVMNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureVMNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureVM.
         /// </summary>
-        public static string AzureVMUnsupportedBackupManagementTypeException {
-            get {
+        public static string AzureVMUnsupportedBackupManagementTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("AzureVMUnsupportedBackupManagementTypeException", resourceCulture);
             }
         }
@@ -247,7 +283,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         {
             get
             {
-                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+                return ResourceManager.GetString("AzureWorkloadRestoreProtectableItemException", resourceCulture);
             }
         }
 
@@ -258,177 +294,215 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         {
             get
             {
-                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+                return ResourceManager.GetString("AzureWorkloadRestoreLocationException", resourceCulture);
             }
-        }        
+        }
 
         /// <summary>
         ///   Looks up a localized string similar to RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy.
         /// </summary>
-        public static string BackupAndRetentionTimesMismatch {
-            get {
+        public static string BackupAndRetentionTimesMismatch
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupAndRetentionTimesMismatch", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to BackupManagementType provider for ContainerType {0} is incorrect..
         /// </summary>
-        public static string BackupManagementTypeIncorrectForContainerType {
-            get {
+        public static string BackupManagementTypeIncorrectForContainerType
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupManagementTypeIncorrectForContainerType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to BackupManagementType is not expected for WorkloadType: {0}.
         /// </summary>
-        public static string BackupManagementTypeNotExpectedForWorkloadType {
-            get {
+        public static string BackupManagementTypeNotExpectedForWorkloadType
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupManagementTypeNotExpectedForWorkloadType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to BackupManagementType needs to be specified for ContainerType {0}.
         /// </summary>
-        public static string BackupManagementTypeRequiredForContainerType {
-            get {
+        public static string BackupManagementTypeRequiredForContainerType
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupManagementTypeRequiredForContainerType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to BackupManagementType is also required for WorkloadType: {0}.
         /// </summary>
-        public static string BackupManagementTypeRequiredForWorkloadType {
-            get {
+        public static string BackupManagementTypeRequiredForWorkloadType
+        {
+            get
+            {
                 return ResourceManager.GetString("BackupManagementTypeRequiredForWorkloadType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to For Azure VM, both cloud service name and resource group name can not be empty.
         /// </summary>
-        public static string BothCloudServiceNameAndResourceGroupNameShouldNotEmpty {
-            get {
+        public static string BothCloudServiceNameAndResourceGroupNameShouldNotEmpty
+        {
+            get
+            {
                 return ResourceManager.GetString("BothCloudServiceNameAndResourceGroupNameShouldNotEmpty", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Both RetentionPolicy and SchedulePolicy are empty, nothing to update.
         /// </summary>
-        public static string BothRetentionAndSchedulePoliciesEmpty {
-            get {
+        public static string BothRetentionAndSchedulePoliciesEmpty
+        {
+            get
+            {
                 return ResourceManager.GetString("BothRetentionAndSchedulePoliciesEmpty", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Received CloudException, ErrorCode: {0}, Message: {1}.
         /// </summary>
-        public static string CloudException {
-            get {
+        public static string CloudException
+        {
+            get
+            {
                 return ResourceManager.GetString("CloudException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Received CloudException, StatusCode: {0}.
         /// </summary>
-        public static string CloudExceptionCodeNotFound {
-            get {
+        public static string CloudExceptionCodeNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("CloudExceptionCodeNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Count of containers after BackupManagementType and friendlyName filter = {0}.
         /// </summary>
-        public static string ContainerCountAfterFilter {
-            get {
+        public static string ContainerCountAfterFilter
+        {
+            get
+            {
                 return ResourceManager.GetString("ContainerCountAfterFilter", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Container is not discovered.
         /// </summary>
-        public static string ContainerNotDiscovered {
-            get {
+        public static string ContainerNotDiscovered
+        {
+            get
+            {
                 return ResourceManager.GetString("ContainerNotDiscovered", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Daily Retention Schedule can&apos;t be null (or) IsDailyScheduleEnabled should be &apos;true&apos;  if Daily Backup Schedule is enabled.
         /// </summary>
-        public static string DailyRetentionScheduleNullException {
-            get {
+        public static string DailyRetentionScheduleNullException
+        {
+            get
+            {
                 return ResourceManager.GetString("DailyRetentionScheduleNullException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionPolicy: IsDailyScheduleEnabled=true but DailySchedule is NULL.
         /// </summary>
-        public static string DailyScheduleEnabledButScheduleIsNullException {
-            get {
+        public static string DailyScheduleEnabledButScheduleIsNullException
+        {
+            get
+            {
                 return ResourceManager.GetString("DailyScheduleEnabledButScheduleIsNullException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule.
         /// </summary>
-        public static string DaysofTheWeekInWeeklyRetentionException {
-            get {
+        public static string DaysofTheWeekInWeeklyRetentionException
+        {
+            get
+            {
                 return ResourceManager.GetString("DaysofTheWeekInWeeklyRetentionException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Disabling protection for the item.
         /// </summary>
-        public static string DisableProtectionMessage {
-            get {
+        public static string DisableProtectionMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("DisableProtectionMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Disable Protection Operation.
         /// </summary>
-        public static string DisableProtectionOperation {
-            get {
+        public static string DisableProtectionOperation
+        {
+            get
+            {
                 return ResourceManager.GetString("DisableProtectionOperation", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to disable protection for the item &apos;{0}&apos;.
         /// </summary>
-        public static string DisableProtectionWarning {
-            get {
+        public static string DisableProtectionWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("DisableProtectionWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Failed to discover VM {0} under {1} {2}. Please make sure names are correct and VM is not deleted&quot;.
         /// </summary>
-        public static string DiscoveryFailure {
-            get {
+        public static string DiscoveryFailure
+        {
+            get
+            {
                 return ResourceManager.GetString("DiscoveryFailure", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Discovery operation failed with ErrorCode: {0}.
         /// </summary>
-        public static string DiscoveryFailureErrorCode {
-            get {
+        public static string DiscoveryFailureErrorCode
+        {
+            get
+            {
                 return ResourceManager.GetString("DiscoveryFailureErrorCode", resourceCulture);
             }
         }
@@ -447,8 +521,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Going to retry Discovery if retry count is not exceeded&quot;.
         /// </summary>
-        public static string DiscoveryFailureErrorMessage {
-            get {
+        public static string DiscoveryFailureErrorMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("DiscoveryFailureErrorMessage", resourceCulture);
             }
         }
@@ -478,44 +554,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Empty response received from Service Client.
         /// </summary>
-        public static string EmptyServiceClientResponseException {
-            get {
+        public static string EmptyServiceClientResponseException
+        {
+            get
+            {
                 return ResourceManager.GetString("EmptyServiceClientResponseException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Enable Protection Operation.
         /// </summary>
-        public static string EnableProtectionOperation {
-            get {
+        public static string EnableProtectionOperation
+        {
+            get
+            {
                 return ResourceManager.GetString("EnableProtectionOperation", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Caught exception, type: {0}.
         /// </summary>
-        public static string ExceptionInExecution {
-            get {
+        public static string ExceptionInExecution
+        {
+            get
+            {
                 return ResourceManager.GetString("ExceptionInExecution", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to File share is not discovered.
         /// </summary>
-        public static string FileShareNotDiscovered {
-            get {
+        public static string FileShareNotDiscovered
+        {
+            get
+            {
                 return ResourceManager.GetString("FileShareNotDiscovered", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Final operation status:.
         /// </summary>
-        public static string FinalOperationStatus {
-            get {
+        public static string FinalOperationStatus
+        {
+            get
+            {
                 return ResourceManager.GetString("FinalOperationStatus", resourceCulture);
             }
         }
@@ -525,7 +611,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// </summary>
         public static string FriendlyNamePassedWarning
         {
-            get {
+            get
+            {
                 return ResourceManager.GetString("FriendlyNamePassedWarning", resourceCulture);
             }
         }
@@ -533,108 +620,131 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Name parameter will be deprecated. Please use FriendlyName instead for filtering by name..
         /// </summary>
-        public static string GetContainerNameParamDeprecated {
-            get {
+        public static string GetContainerNameParamDeprecated
+        {
+            get
+            {
                 return ResourceManager.GetString("GetContainerNameParamDeprecated", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please specify startdate and enddate in UTC format.
         /// </summary>
-        public static string GetRPErrorInputDatesShouldBeInUTC {
-            get {
+        public static string GetRPErrorInputDatesShouldBeInUTC
+        {
+            get
+            {
                 return ResourceManager.GetString("GetRPErrorInputDatesShouldBeInUTC", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Start date\time should be less than current UTC date\time.
         /// </summary>
-        public static string GetRPErrorStartTimeShouldBeLessThanUTCNow {
-            get {
+        public static string GetRPErrorStartTimeShouldBeLessThanUTCNow
+        {
+            get
+            {
                 return ResourceManager.GetString("GetRPErrorStartTimeShouldBeLessThanUTCNow", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to GetRecoveryPointResponse is null.
         /// </summary>
-        public static string GetRPResponseIsNull {
-            get {
+        public static string GetRPResponseIsNull
+        {
+            get
+            {
                 return ResourceManager.GetString("GetRPResponseIsNull", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Another connection is already alive to this recovery point. You can either choose to terminate this or extend the deadline for access. Please run the appropriate command.
         /// </summary>
-        public static string ILRAnotherConnectionAlreadyAlive {
-            get {
+        public static string ILRAnotherConnectionAlreadyAlive
+        {
+            get
+            {
                 return ResourceManager.GetString("ILRAnotherConnectionAlreadyAlive", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No connection present to revoke.
         /// </summary>
-        public static string ILRConnectionDoesntExist {
-            get {
+        public static string ILRConnectionDoesntExist
+        {
+            get
+            {
                 return ResourceManager.GetString("ILRConnectionDoesntExist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The connection has been extended for another 12 hours.
         /// </summary>
-        public static string ILRConnectionExtensionSuccessful {
-            get {
+        public static string ILRConnectionExtensionSuccessful
+        {
+            get
+            {
                 return ResourceManager.GetString("ILRConnectionExtensionSuccessful", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please connect to the recovery point by running the connect command.
         /// </summary>
-        public static string ILRConnectionNotAlive {
-            get {
+        public static string ILRConnectionNotAlive
+        {
+            get
+            {
                 return ResourceManager.GetString("ILRConnectionNotAlive", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to File recovery from encrypted VM backups is not supported.
         /// </summary>
-        public static string ILREncryptedVmError {
-            get {
+        public static string ILREncryptedVmError
+        {
+            get
+            {
                 return ResourceManager.GetString("ILREncryptedVmError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Service didn&apos;t return any client scripts for this file / folder restore operation.
         /// </summary>
-        public static string ILRNoClientScriptsReturned {
-            get {
+        public static string ILRNoClientScriptsReturned
+        {
+            get
+            {
                 return ResourceManager.GetString("ILRNoClientScriptsReturned", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Provided target location doesn&apos;t exist. Please provide a valid directory to download the script..
         /// </summary>
-        public static string ILRTargetLocationInvalid {
-            get {
+        public static string ILRTargetLocationInvalid
+        {
+            get
+            {
                 return ResourceManager.GetString("ILRTargetLocationInvalid", resourceCulture);
             }
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
+        ///   Looks up a localized string similar to For Standard policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
         /// </summary>
         public static string InstantRPRetentionDaysException
         {
-            get {
+            get
+            {
                 return ResourceManager.GetString("InstantRPRetentionDaysException", resourceCulture);
             }
         }
@@ -642,107 +752,131 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Azure VM name can not be null or empty.
         /// </summary>
-        public static string InvalidAzureVMName {
-            get {
+        public static string InvalidAzureVMName
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidAzureVMName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Only one BackupTime is Allowed in SchedulePolicy.
         /// </summary>
-        public static string InvalidBackupTimesInSchedulePolicyException {
-            get {
+        public static string InvalidBackupTimesInSchedulePolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidBackupTimesInSchedulePolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In Monthly/Yearly retention schedule, Day in DaysOfMonth should be 1-28 (or) IsLast=true set for one day only.
         /// </summary>
-        public static string InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException {
-            get {
+        public static string InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In Monthly/Yearly retention schedule, DaysOfMonth is NULL or empty or contains duplicate entires.
         /// </summary>
-        public static string InvalidDaysOfMonthInMonthlyYearlyRetentionPolicyException {
-            get {
+        public static string InvalidDaysOfMonthInMonthlyYearlyRetentionPolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidDaysOfMonthInMonthlyYearlyRetentionPolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In Monthly/Yearly retention schedule, DaysOfWeek is NULL or empty or contains duplicate entires.
         /// </summary>
-        public static string InvalidDaysOfWeekInMonthlyYearlyRetentionPolicyException {
-            get {
+        public static string InvalidDaysOfWeekInMonthlyYearlyRetentionPolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidDaysOfWeekInMonthlyYearlyRetentionPolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to InvalidDurationType - {0}.
         /// </summary>
-        public static string InvalidDurationTypeException {
-            get {
+        public static string InvalidDurationTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidDurationTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Azure file share name cannot be null or empty.
         /// </summary>
-        public static string InvalidFileShareName {
-            get {
+        public static string InvalidFileShareName
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidFileShareName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid Item - either NULL or NOT of type: {0}.
         /// </summary>
-        public static string InvalidProtectionItemException {
-            get {
+        public static string InvalidProtectionItemException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidProtectionItemException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid ProtectionPolicy - either NULL or NOT of type: {0}.
         /// </summary>
-        public static string InvalidProtectionPolicyException {
-            get {
+        public static string InvalidProtectionPolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidProtectionPolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid RetentionPolicy - either NULL or NOT of type: {0}.
         /// </summary>
-        public static string InvalidRetentionPolicyException {
-            get {
+        public static string InvalidRetentionPolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidRetentionPolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Only one RetentionTime is Allowed in RetentionSchedules.
         /// </summary>
-        public static string InvalidRetentionTimesInPolicyException {
-            get {
+        public static string InvalidRetentionTimesInPolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidRetentionTimesInPolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Invalid SchedulePolicy - either NULL or NOT of type: {0}.
         /// </summary>
-        public static string InvalidSchedulePolicyException {
-            get {
+        public static string InvalidSchedulePolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidSchedulePolicyException", resourceCulture);
             }
         }
@@ -750,165 +884,201 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to In Schedule, if ScheduleRunFrequency is Weekly then ScheduleRunDays should not be empty and not contain duplicate entries.
         /// </summary>
-        public static string InvalidScheduleRunDaysInScheduleException {
-            get {
+        public static string InvalidScheduleRunDaysInScheduleException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidScheduleRunDaysInScheduleException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ScheduleTimes in Schedule should be in UTC Timezone, have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0.
         /// </summary>
-        public static string InvalidScheduleTimeInScheduleException {
-            get {
+        public static string InvalidScheduleTimeInScheduleException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidScheduleTimeInScheduleException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In Monthly/Yearly retention schedule, WeeksOfMonth is NULL or empty or contains duplicate entires.
         /// </summary>
-        public static string InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException {
-            get {
+        public static string InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException
+        {
+            get
+            {
                 return ResourceManager.GetString("InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to To filter should not be more than 30 days away from From filter..
         /// </summary>
-        public static string JobAllowedDateTimeRangeExceeded {
-            get {
+        public static string JobAllowedDateTimeRangeExceeded
+        {
+            get
+            {
                 return ResourceManager.GetString("JobAllowedDateTimeRangeExceeded", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Failed to cancel the job. Error code: {0}.
         /// </summary>
-        public static string JobCouldNotCancelJob {
-            get {
+        public static string JobCouldNotCancelJob
+        {
+            get
+            {
                 return ResourceManager.GetString("JobCouldNotCancelJob", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please provide From filter along with To filter..
         /// </summary>
-        public static string JobFromNotProvided {
-            get {
+        public static string JobFromNotProvided
+        {
+            get
+            {
                 return ResourceManager.GetString("JobFromNotProvided", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to JobID and Job object provided don&apos;t match each other..
         /// </summary>
-        public static string JobJobIdAndJobMismatch {
-            get {
+        public static string JobJobIdAndJobMismatch
+        {
+            get
+            {
                 return ResourceManager.GetString("JobJobIdAndJobMismatch", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to There are more than 1000 jobs for the filter combination you have provided. Kindly refine your filters to fetch the job you want..
         /// </summary>
-        public static string JobRefineFilters {
-            get {
+        public static string JobRefineFilters
+        {
+            get
+            {
                 return ResourceManager.GetString("JobRefineFilters", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to From date should be less than current UTC time.
         /// </summary>
-        public static string JobStartTimeShouldBeLessThanCurrent {
-            get {
+        public static string JobStartTimeShouldBeLessThanCurrent
+        {
+            get
+            {
                 return ResourceManager.GetString("JobStartTimeShouldBeLessThanCurrent", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please specify From and To filter values in UTC. Other timezones are not supported..
         /// </summary>
-        public static string JobTimeFiltersShouldBeSpecifiedInUtc {
-            get {
+        public static string JobTimeFiltersShouldBeSpecifiedInUtc
+        {
+            get
+            {
                 return ResourceManager.GetString("JobTimeFiltersShouldBeSpecifiedInUtc", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to To filter should not be less than From filter..
         /// </summary>
-        public static string JobToShouldBeGreaterThanFrom {
-            get {
+        public static string JobToShouldBeGreaterThanFrom
+        {
+            get
+            {
                 return ResourceManager.GetString("JobToShouldBeGreaterThanFrom", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please pass Job or List of Jobs as input. Your input is of type: {0}.
         /// </summary>
-        public static string JobWaitJobInvalidInput {
-            get {
+        public static string JobWaitJobInvalidInput
+        {
+            get
+            {
                 return ResourceManager.GetString("JobWaitJobInvalidInput", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Making client call.
         /// </summary>
-        public static string MakingClientCall {
-            get {
+        public static string MakingClientCall
+        {
+            get
+            {
                 return ResourceManager.GetString("MakingClientCall", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionPolicy: IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL.
         /// </summary>
-        public static string MonthlyScheduleEnabledButScheduleIsNullException {
-            get {
+        public static string MonthlyScheduleEnabledButScheduleIsNullException
+        {
+            get
+            {
                 return ResourceManager.GetString("MonthlyScheduleEnabledButScheduleIsNullException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In Monthly and Yearly retention schedules, RetentionFormatType cannot be &apos;Daily&apos; if Weekly BackupSchedule is selected.
         /// </summary>
-        public static string MonthlyYearlyInvalidDailyRetentionFormatTypeException {
-            get {
+        public static string MonthlyYearlyInvalidDailyRetentionFormatTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("MonthlyYearlyInvalidDailyRetentionFormatTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Daily then RetentionScheduleDaily should NOT be null.
         /// </summary>
-        public static string MonthlyYearlyRetentionDailySchedulePolicyNULLException {
-            get {
+        public static string MonthlyYearlyRetentionDailySchedulePolicyNULLException
+        {
+            get
+            {
                 return ResourceManager.GetString("MonthlyYearlyRetentionDailySchedulePolicyNULLException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The DaysOfWeek specified for monthly and yearly retention policies should be a subset of the DaysOfWeek value specified in the backup schedule.
         /// </summary>
-        public static string MonthlyYearlyRetentionDaysOfWeekException {
-            get {
+        public static string MonthlyYearlyRetentionDaysOfWeekException
+        {
+            get
+            {
                 return ResourceManager.GetString("MonthlyYearlyRetentionDaysOfWeekException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Weekly then RetentionScheduleWeekly should NOT be null.
         /// </summary>
-        public static string MonthlyYearlyRetentionWeeklySchedulePolicyNULLException {
-            get {
+        public static string MonthlyYearlyRetentionWeeklySchedulePolicyNULLException
+        {
+            get
+            {
                 return ResourceManager.GetString("MonthlyYearlyRetentionWeeklySchedulePolicyNULLException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Run this script on the machine where you want to copy the files
         ///
@@ -916,68 +1086,82 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         ///
         ///Password to run the file: {1}.
         /// </summary>
-        public static string MountRecoveryPointInfoMessage {
-            get {
+        public static string MountRecoveryPointInfoMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("MountRecoveryPointInfoMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} failed. Error Code: {1}. Error Message: {2}.
         /// </summary>
-        public static string OperationFailed {
-            get {
+        public static string OperationFailed
+        {
+            get
+            {
                 return ResourceManager.GetString("OperationFailed", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ParentContainerFabricId is NULL or Empty. Please enter valid ParentContainerFabricId.
         /// </summary>
-        public static string ParentContainerFabricIdIsEmptyOrNull {
-            get {
+        public static string ParentContainerFabricIdIsEmptyOrNull
+        {
+            get
+            {
                 return ResourceManager.GetString("ParentContainerFabricIdIsEmptyOrNull", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A backup policy with the specified name already exists: {0}.
         /// </summary>
-        public static string PolicyAlreadyExistException {
-            get {
+        public static string PolicyAlreadyExistException
+        {
+            get
+            {
                 return ResourceManager.GetString("PolicyAlreadyExistException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to PolicyId is NULL or Empty. Please enter valid PolicyId.
         /// </summary>
-        public static string PolicyIdIsEmptyOrNull {
-            get {
+        public static string PolicyIdIsEmptyOrNull
+        {
+            get
+            {
                 return ResourceManager.GetString("PolicyIdIsEmptyOrNull", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to PolicyName is NULL or Empty. Please enter valid PolicyName.
         /// </summary>
-        public static string PolicyNameIsEmptyOrNull {
-            get {
+        public static string PolicyNameIsEmptyOrNull
+        {
+            get
+            {
                 return ResourceManager.GetString("PolicyNameIsEmptyOrNull", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup Policy not found with name: {0}.
         /// </summary>
-        public static string PolicyNotFoundException {
-            get {
+        public static string PolicyNotFoundException
+        {
+            get
+            {
                 return ResourceManager.GetString("PolicyNotFoundException", resourceCulture);
             }
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Cannot configure backup for more than 100 VMs per policy
+        ///   Looks up a localized string similar to Cannot configure backup for more than 1000 VMs per policy
         /// </summary>
         public static string ProtectedItemsCountExceededException
         {
@@ -990,71 +1174,87 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Successfully deleted policy.
         /// </summary>
-        public static string ProtectionPolicyDeleted {
-            get {
+        public static string ProtectionPolicyDeleted
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtectionPolicyDeleted", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup policy name should contain alphanumeric characters and cannot start with a number.
         /// </summary>
-        public static string ProtectionPolicyNameException {
-            get {
+        public static string ProtectionPolicyNameException
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtectionPolicyNameException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backup policy name must contain between 3 and 150 characters.
         /// </summary>
-        public static string ProtectionPolicyNameLengthException {
-            get {
+        public static string ProtectionPolicyNameLengthException
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtectionPolicyNameLengthException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Given Protection state is not valid for AzureSqlItem. Provided state : {0}.
         /// </summary>
-        public static string ProtectionStateInvalidForAzureSqlItem {
-            get {
+        public static string ProtectionStateInvalidForAzureSqlItem
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtectionStateInvalidForAzureSqlItem", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Protection Status is not allowed for AzureSqlItem. protectionStatus : {0}.
         /// </summary>
-        public static string ProtectionStatusNotAllowedForAzureSqlItem {
-            get {
+        public static string ProtectionStatusNotAllowedForAzureSqlItem
+        {
+            get
+            {
                 return ResourceManager.GetString("ProtectionStatusNotAllowedForAzureSqlItem", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to End date should be greater than start date.
         /// </summary>
-        public static string RecoveryPointEndDateShouldBeGreater {
-            get {
+        public static string RecoveryPointEndDateShouldBeGreater
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoveryPointEndDateShouldBeGreater", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cant convert input Item to AzureRmRecoveryServicesItemBase.
         /// </summary>
-        public static string RecoveryPointItemTypeConversionError {
-            get {
+        public static string RecoveryPointItemTypeConversionError
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoveryPointItemTypeConversionError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Unsupported Parameter set.
         /// </summary>
-        public static string RecoveryPointUnsupportedParamet {
-            get {
+        public static string RecoveryPointUnsupportedParamet
+        {
+            get
+            {
                 return ResourceManager.GetString("RecoveryPointUnsupportedParamet", resourceCulture);
             }
         }
@@ -1064,7 +1264,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// </summary>
         public static string RegisterContainerMessage
         {
-            get {
+            get
+            {
                 return ResourceManager.GetString("RegisterContainerMessage", resourceCulture);
             }
         }
@@ -1074,7 +1275,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// </summary>
         public static string RegisterContainerWarning
         {
-            get {
+            get
+            {
                 return ResourceManager.GetString("RegisterContainerWarning", resourceCulture);
             }
         }
@@ -1082,8 +1284,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Register operation failed with ErrorCode: {0}.
         /// </summary>
-        public static string RegisterFailureErrorCode {
-            get {
+        public static string RegisterFailureErrorCode
+        {
+            get
+            {
                 return ResourceManager.GetString("RegisterFailureErrorCode", resourceCulture);
             }
         }
@@ -1091,71 +1295,87 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing the protection policy.
         /// </summary>
-        public static string RemoveProtectionPolicyMessage {
-            get {
+        public static string RemoveProtectionPolicyMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveProtectionPolicyMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the protection policy &apos;{0}&apos;.
         /// </summary>
-        public static string RemoveProtectionPolicyWarning {
-            get {
+        public static string RemoveProtectionPolicyWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("RemoveProtectionPolicyWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The specified resource does not exist.
         /// </summary>
-        public static string ResourceNotFoundMessage {
-            get {
+        public static string ResourceNotFoundMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("ResourceNotFoundMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Storage account not found.
         /// </summary>
-        public static string RestoreAzureStorageNotFound {
-            get {
+        public static string RestoreAzureStorageNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("RestoreAzureStorageNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Found more than one StorageAccount with same name. Some thing went wrong.
         /// </summary>
-        public static string RestoreDiskMoreThanOneAccFound {
-            get {
+        public static string RestoreDiskMoreThanOneAccFound
+        {
+            get
+            {
                 return ResourceManager.GetString("RestoreDiskMoreThanOneAccFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please provide {0} storage type to restore the vm.
         /// </summary>
-        public static string RestoreDiskStorageTypeError {
-            get {
+        public static string RestoreDiskStorageTypeError
+        {
+            get
+            {
                 return ResourceManager.GetString("RestoreDiskStorageTypeError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Time difference should not be more than 30 days.
         /// </summary>
-        public static string RestoreDiskTimeRangeError {
-            get {
+        public static string RestoreDiskTimeRangeError
+        {
+            get
+            {
                 return ResourceManager.GetString("RestoreDiskTimeRangeError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Restore Azure Backup Item Operation.
         /// </summary>
-        public static string RestoreOperation {
-            get {
+        public static string RestoreOperation
+        {
+            get
+            {
                 return ResourceManager.GetString("RestoreOperation", resourceCulture);
             }
         }
@@ -1163,71 +1383,87 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to RetentionDuration in Days should be from 7 - 9999.
         /// </summary>
-        public static string RetentionDurationCountInDaysInvalidException {
-            get {
+        public static string RetentionDurationCountInDaysInvalidException
+        {
+            get
+            {
                 return ResourceManager.GetString("RetentionDurationCountInDaysInvalidException", resourceCulture);
             }
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
+        ///   Looks up a localized string similar to RetentionDuration in {0} should be from {1} - {2}.
         /// </summary>
-        public static string RetentionDurationCountInvalidException {
-            get {
+        public static string RetentionDurationCountInvalidException
+        {
+            get
+            {
                 return ResourceManager.GetString("RetentionDurationCountInvalidException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionPolicy is empty, nothing to update.
         /// </summary>
-        public static string RetentionPolicyEmptyInAzureSql {
-            get {
+        public static string RetentionPolicyEmptyInAzureSql
+        {
+            get
+            {
                 return ResourceManager.GetString("RetentionPolicyEmptyInAzureSql", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to RecoveryServicesBackupVault.Name.
         /// </summary>
-        public static string RsVaultResNameNullOrEmpty {
-            get {
+        public static string RsVaultResNameNullOrEmpty
+        {
+            get
+            {
                 return ResourceManager.GetString("RsVaultResNameNullOrEmpty", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to RecoveryServicesBackupVault.ResourceGroupName.
         /// </summary>
-        public static string RsVaultRGNameNullOrEmpty {
-            get {
+        public static string RsVaultRGNameNullOrEmpty
+        {
+            get
+            {
                 return ResourceManager.GetString("RsVaultRGNameNullOrEmpty", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SchedulePolicy Object is not required for WorkloadType AzureSql.
         /// </summary>
-        public static string SchedulePolicyObjectNotRequiredForAzureSql {
-            get {
+        public static string SchedulePolicyObjectNotRequiredForAzureSql
+        {
+            get
+            {
                 return ResourceManager.GetString("SchedulePolicyObjectNotRequiredForAzureSql", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to ScheduleRunTimes in Schedule Policy should be in UTC Timezone.
+        ///   Looks up a localized string similar to ScheduleRunTimes in Schedule Policy should be in UTC Time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute
         /// </summary>
-        public static string ScheduleTimeNotInUTCTimeZoneException {
-            get {
+        public static string ScheduleTimeNotInUTCTimeZoneException
+        {
+            get
+            {
                 return ResourceManager.GetString("ScheduleTimeNotInUTCTimeZoneException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Set vault context first using cmdlet Set-AzRecoveryServicesVaultContext.
         /// </summary>
-        public static string SetVaultContextFirst {
-            get {
+        public static string SetVaultContextFirst
+        {
+            get
+            {
                 return ResourceManager.GetString("SetVaultContextFirst", resourceCulture);
             }
         }
@@ -1246,8 +1482,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to For Azure File share, Storage account  name can not be empty.
         /// </summary>
-        public static string StorageAccountNameShouldNotBeEmpty {
-            get {
+        public static string StorageAccountNameShouldNotBeEmpty
+        {
+            get
+            {
                 return ResourceManager.GetString("StorageAccountNameShouldNotBeEmpty", resourceCulture);
             }
         }
@@ -1264,163 +1502,210 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Target ResourceGroup parameter is not supported for Unmanaged Virtual machine restore.
+        /// </summary>
+        public static string TargetResourcegroupNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetResourcegroupNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Tracking operation status URL for completion:.
         /// </summary>
-        public static string TrackingOperationStatusURLForCompletion {
-            get {
+        public static string TrackingOperationStatusURLForCompletion
+        {
+            get
+            {
                 return ResourceManager.GetString("TrackingOperationStatusURLForCompletion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Trigger Backup Operation.
         /// </summary>
-        public static string TriggerBackupOperation {
-            get {
+        public static string TriggerBackupOperation
+        {
+            get
+            {
                 return ResourceManager.GetString("TriggerBackupOperation", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Trigger Enquiry operation failed with ErrorCode: {0}.
         /// </summary>
-        public static string TriggerEnquiryFailureErrorCode {
-            get {
+        public static string TriggerEnquiryFailureErrorCode
+        {
+            get
+            {
                 return ResourceManager.GetString("TriggerEnquiryFailureErrorCode", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Storage account location should be same as vault location.
         /// </summary>
-        public static string TriggerRestoreIncorrectRegion {
-            get {
+        public static string TriggerRestoreIncorrectRegion
+        {
+            get
+            {
                 return ResourceManager.GetString("TriggerRestoreIncorrectRegion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Unexpected BackupManagementType - expected:{0}, current:{1}.
         /// </summary>
-        public static string UnExpectedBackupManagementTypeException {
-            get {
+        public static string UnExpectedBackupManagementTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnExpectedBackupManagementTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Unexpected ContainerType - expected:{0}, current:{1}.
         /// </summary>
-        public static string UnExpectedContainerTypeException {
-            get {
+        public static string UnExpectedContainerTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnExpectedContainerTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Unexpected WorkloadType - expected:{0}, current:{1}.
         /// </summary>
-        public static string UnExpectedWorkLoadTypeException {
-            get {
+        public static string UnExpectedWorkLoadTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnExpectedWorkLoadTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The backup VM is unmanaged and hence the disks will be restored to the storage account provided..
         /// </summary>
-        public static string UnManagedBackupVmWarning {
-            get {
+        public static string UnManagedBackupVmWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("UnManagedBackupVmWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid..
         /// </summary>
-        public static string UnsupportedAzureRmBackupManagementServerException {
-            get {
+        public static string UnsupportedAzureRmBackupManagementServerException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedAzureRmBackupManagementServerException", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL or Container of containerType as AzureStorage and backupManagementType as AzureStorage. Provided Container has containerType {0} and backupManagementType {1} which is invalid..
+        ///   Looks up a localized string similar to Please provide Container of containerType as Windows and backupManagementType as MAB or Container of containerType as AzureSQL and backupManagementType as AzureSQL or Container of containerType as AzureStorage and backupManagementType as AzureStorage. Provided Container has containerType {0} and backupManagementType {1} which is invalid..
         /// </summary>
-        public static string UnsupportedContainerException {
-            get {
+        public static string UnsupportedContainerException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedContainerException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Unsupported containerType: {0}.
         /// </summary>
-        public static string UnsupportedContainerType {
-            get {
+        public static string UnsupportedContainerType
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedContainerType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Got some unsupported jobs.
         /// </summary>
-        public static string UnsupportedJobWarning {
-            get {
+        public static string UnsupportedJobWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedJobWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The resource type {0} is currently not supported..
         /// </summary>
-        public static string UnsupportedResourceTypeException {
-            get {
+        public static string UnsupportedResourceTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedResourceTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Selected storage account is of type: {0}. Blob storage accounts are not supported for Restore. Please select a Page blob type storage account..
         /// </summary>
-        public static string UnsupportedStorageAccountException {
-            get {
+        public static string UnsupportedStorageAccountException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedStorageAccountException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Unsupported combination for WorkloadType: {0}, BackupManagementType:{1}.
         /// </summary>
-        public static string UnsupportedWorkloadBackupManagementTypeException {
-            get {
+        public static string UnsupportedWorkloadBackupManagementTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedWorkloadBackupManagementTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Unsupported WorkloadType: {0}.
         /// </summary>
-        public static string UnsupportedWorkloadTypeException {
-            get {
+        public static string UnsupportedWorkloadTypeException
+        {
+            get
+            {
                 return ResourceManager.GetString("UnsupportedWorkloadTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Data truncated. Please upgrade to latest version of Azure Powershell.
         /// </summary>
-        public static string UpdateToNewAzurePowershellWarning {
-            get {
+        public static string UpdateToNewAzurePowershellWarning
+        {
+            get
+            {
                 return ResourceManager.GetString("UpdateToNewAzurePowershellWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0} Uri value not found in Id {1}.
         /// </summary>
-        public static string URIValueNotFound {
-            get {
+        public static string URIValueNotFound
+        {
+            get
+            {
                 return ResourceManager.GetString("URIValueNotFound", resourceCulture);
             }
         }
@@ -1437,7 +1722,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.
+        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be specified. Please give Only one parameter and retry.
         /// </summary>
         public static string TargetRGUnmanagedRestoreDuplicateParamsException
         {
@@ -1450,80 +1735,98 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///   Looks up a localized string similar to VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId.
         /// </summary>
-        public static string VirtualMachineIdIsEmptyOrNull {
-            get {
+        public static string VirtualMachineIdIsEmptyOrNull
+        {
+            get
+            {
                 return ResourceManager.GetString("VirtualMachineIdIsEmptyOrNull", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to VM {0} is not yet discovered. Triggering Discovery.
         /// </summary>
-        public static string VMNotDiscovered {
-            get {
+        public static string VMNotDiscovered
+        {
+            get
+            {
                 return ResourceManager.GetString("VMNotDiscovered", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Received WebException, Response: {0}, Status: {1}.
         /// </summary>
-        public static string WebException {
-            get {
+        public static string WebException
+        {
+            get
+            {
                 return ResourceManager.GetString("WebException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to For a weekly retention policy, DaysOfTheWeek is mandatory and should not contain duplicate entries.
         /// </summary>
-        public static string WeeklyRetentionScheduleDaysOfWeekException {
-            get {
+        public static string WeeklyRetentionScheduleDaysOfWeekException
+        {
+            get
+            {
                 return ResourceManager.GetString("WeeklyRetentionScheduleDaysOfWeekException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to If Weekly backup schedule is enabled, then IsDailyScheduleEnabled should be false and Weekly retention schedule should not be null, IsWeeklyScheduleEnabled should be true.
         /// </summary>
-        public static string WeeklyRetentionScheduleNullException {
-            get {
+        public static string WeeklyRetentionScheduleNullException
+        {
+            get
+            {
                 return ResourceManager.GetString("WeeklyRetentionScheduleNullException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to For a weekly backup schedule, DaysOfWeek parameter is mandatory.
         /// </summary>
-        public static string WeeklyScheduleDaysOfWeekException {
-            get {
+        public static string WeeklyScheduleDaysOfWeekException
+        {
+            get
+            {
                 return ResourceManager.GetString("WeeklyScheduleDaysOfWeekException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionPolicy: IsWeeklyScheduleEnabled=true but WeeklySchedule is NULL.
         /// </summary>
-        public static string WeeklyScheduleEnabledButScheduleIsNullException {
-            get {
+        public static string WeeklyScheduleEnabledButScheduleIsNullException
+        {
+            get
+            {
                 return ResourceManager.GetString("WeeklyScheduleEnabledButScheduleIsNullException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionPolicy: IsYearlyScheduleEnabled=true but YearlySchedule is NULL.
         /// </summary>
-        public static string YearlyScheduleEnabledButScheduleIsNullException {
-            get {
+        public static string YearlyScheduleEnabledButScheduleIsNullException
+        {
+            get
+            {
                 return ResourceManager.GetString("YearlyScheduleEnabledButScheduleIsNullException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to MonthsOfYear list in YearlyRetentionSchedule should not be NULL and not contain duplicate entires.
         /// </summary>
-        public static string YearlyScheduleMonthsOfYearException {
-            get {
+        public static string YearlyScheduleMonthsOfYearException
+        {
+            get
+            {
                 return ResourceManager.GetString("YearlyScheduleMonthsOfYearException", resourceCulture);
             }
         }
@@ -1540,7 +1843,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to copy items to the <TargetVault> whose storage redundancy is <StorageRedundancyType>.
+        ///   Looks up a localized string similar to Are you sure you want to copy items to the {TargetVault} whose storage redundancy is {StorageRedundancyType}.
         /// </summary>
         public static string TargetVaultStorageRedundancy
         {
@@ -1551,13 +1854,1024 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to container name is invalid.
+        ///   Looks up a localized string similar to please provide a valid target storage account.
         /// </summary>
-        public static string ContainerNameIsInvalid
+        public static string InvalidTargetStorageAccount
         {
             get
             {
-                return ResourceManager.GetString("ContainerNameIsInvalid", resourceCulture);
+                return ResourceManager.GetString("InvalidTargetStorageAccount", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the Recovery point is Zone pinned or remove TargetZone.
+        /// </summary>
+        public static string RecoveryPointZonePinnedException
+        {
+            get
+            {
+                return ResourceManager.GetString("RecoveryPointZonePinnedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the given RP tier is VaultStandard tier or remove TargetZone.
+        /// </summary>
+        public static string RecoveryPointVaultRecoveryTypeException
+        {
+            get
+            {
+                return ResourceManager.GetString("RecoveryPointVaultRecoveryTypeException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please check whether the vault storageRedundancy is ZRS or RA-GRS or remove TargetZone.
+        /// </summary>
+        public static string ZonalRestoreVaultStorageRedundancyException
+        {
+            get
+            {
+                return ResourceManager.GetString("ZonalRestoreVaultStorageRedundancyException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to WorkloadRecoveryConfig TargetVirtualMachineId cannot be null for Alternate location restore.
+        /// </summary>
+        public static string TargetVirtualMachineIdRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetVirtualMachineIdRequiredException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Archive is currently not supported for the workload type of the BackupItem passed in the cmdlet.
+        /// </summary>
+        public static string ArchiveNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("ArchiveNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Recommendation for Archival RP groups is not applicable for the workload type of the backup item passed in the cmdlet.
+        /// </summary>
+        public static string ArchiveRecommendationNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("ArchiveRecommendationNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide RehydrationPriority and RehydrationDuration for the Archived Recovery Point. Default RehydrationDuration is 15 Days
+        /// </summary>
+        public static string InvalidRehydration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidRehydration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Rehydrate duration should be between 10 and 30.
+        /// </summary>
+        public static string InvalidRehydrateDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidRehydrateDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to You will incur early deletion fees for this operation as there are archived recovery points for the backup item you are trying to unprotect. Do you want to continue?  
+        /// </summary>
+        public static string DeleteArchiveRecoveryPoints
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteArchiveRecoveryPoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disable protection with delete recovery points
+        /// </summary>
+        public static string DeleteRecoveryPoints
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteRecoveryPoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Move Azure Backup Recovery Point Operation
+        /// </summary>
+        public static string MoveRPOperation
+        {
+            get
+            {
+                return ResourceManager.GetString("MoveRPOperation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Move Readiness cannot be checked for given recovery points
+        /// </summary>
+        public static string MoveReadinessInfoUndefined
+        {
+            get
+            {
+                return ResourceManager.GetString("MoveReadinessInfoUndefined", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MSI based Restore can't use both SystemAssigned and UserAssigned identities
+        /// </summary>
+        public static string MultipleMSIProvidedForRestore
+        {
+            get
+            {
+                return ResourceManager.GetString("MultipleMSIProvidedForRestore", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MSI based Restore is only applicable to Managed VM Recovery Points
+        /// </summary>
+        public static string MSIRestoreNotSupportedForUnmanagedVM
+        {
+            get
+            {
+                return ResourceManager.GetString("MSIRestoreNotSupportedForUnmanagedVM", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter IdentityId. IdentityId can't be set for SystemAssigned Identities
+        /// </summary>
+        public static string InvalidParameterIdentityId
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterIdentityId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to IdentityId can't be empty for UserAssigned Identities
+        /// </summary>
+        public static string IdentityIdRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("IdentityIdRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to UserAssigned and SystemAssigned identities can't be removed together
+        /// </summary>
+        public static string InvalidIdentityRemove
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidIdentityRemove", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to IdentityId '{0}' is invalid
+        /// </summary>
+        public static string InvalidIdentityId
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidIdentityId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please input a valid UserAssignedIdentity
+        /// </summary>
+        public static string IdentityIdRequiredForCMK
+        {
+            get
+            {
+                return ResourceManager.GetString("IdentityIdRequiredForCMK", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting server's registration is a destructive operation and cannot be undone. All backup data (recovery points required to restore the data) and Backup items associated with protected server will be permanently deleted. Learn more about deleting your protected servers at https://aka.ms/deletebkp.
+        /// </summary>
+        public static string DeleteContainerRegistration
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteContainerRegistration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unregister container
+        /// </summary>
+        public static string UnregisterContainer
+        {
+            get
+            {
+                return ResourceManager.GetString("UnregisterContainer", resourceCulture);
+            }
+        }
+
+        /// <summary>        
+        ///   Looks up a localized string similar to Number of restore points are more than {Limit}, please reduce the
+        ///   retention duration count for Daily Schedule or reduce number of backups per day
+        /// </summary>
+        public static string DailyRetentionPointsLimitExceeded
+        {
+            get
+            {
+                return ResourceManager.GetString("DailyRetentionPointsLimitExceeded", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration, ScheduleRunTimeZone can't be null for Hourly policy
+        /// </summary>
+        public static string HourlyScheduleNullValueException
+        {
+            get
+            {
+                return ResourceManager.GetString("HourlyScheduleNullValueException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration should be less than or equal to (23:30 - ScheduleWindowStartTime)
+        /// </summary>
+        public static string InvalidLastBackupTime
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidLastBackupTime", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect value for ScheduleInterval, allowed values are {Valid List of Intervals}
+        /// </summary>
+        public static string InvalidScheduleInterval
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidScheduleInterval", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration can't be lesser than ScheduleInterval and should exist in range from MinDuration to MaxDuration
+        /// </summary>
+        public static string InvalidScheduleWindowDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidScheduleWindowDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowStartTime is out of range, valid range is from MinstartTime to MaxStartTime
+        /// </summary>
+        public static string ScheduleWindowStartTimeOutOfRange
+        {
+            get
+            {
+                return ResourceManager.GetString("ScheduleWindowStartTimeOutOfRange", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore
+        /// </summary>
+        public static string TargetRGNotRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetRGNotRequiredException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName can't be empty for restoring to AlternateLocation with create new VM option
+        /// </summary>
+        public static string TargetParamsMissingException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetParamsMissingException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleRunFrequency parameter is only expected for WorkloadTypes: AzureVM, AzureFiles
+        /// </summary>
+        public static string UnexpectedParamScheduleRunFrequency
+        {
+            get
+            {
+                return ResourceManager.GetString("UnexpectedParamScheduleRunFrequency", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration must be empty for non-Hourly policy
+        /// </summary>
+        public static string HourlyScheduleNotNull
+        {
+            get
+            {
+                return ResourceManager.GetString("HourlyScheduleNotNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleRunTimes and ScheduleRunDays must be empty for Hourly policy
+        /// </summary>
+        public static string NonHourlyAttributesNotNull
+        {
+            get
+            {
+                return ResourceManager.GetString("NonHourlyAttributesNotNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration can't be less than ScheduleInterval for Hourly policy
+        /// </summary>
+        public static string WindowDurationLessThanInterval
+        {
+            get
+            {
+                return ResourceManager.GetString("WindowDurationLessThanInterval", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowStartTime in Hourly schedule policy should be in UTC time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute
+        /// </summary>
+        public static string WindowStartTimeNotInUTC
+        {
+            get
+            {
+                return ResourceManager.GetString("WindowStartTimeNotInUTC", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Hourly policy is not supported for WorkloadType AzureIaasVM, please try with Enhanced policy or different schedule frequency: Daily, Weekly
+        /// </summary>
+        public static string StandardHourlyPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("StandardHourlyPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Hourly schedule is not supported for WorkloadType AzureVM
+        /// </summary>
+        public static string StandardHourlyScheduleNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("StandardHourlyScheduleNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For Enhanced policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 30. For weekly backup policies, the minimum allowed value is 5. Please set the value accordingly
+        /// </summary>
+        public static string SnapshotRetentionOutOfRange
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotRetentionOutOfRange", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly ScheduleRunFrequency isn't supported for WorkloadType: AzureFiles
+        /// </summary>
+        public static string WeeklyScheduleNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("WeeklyScheduleNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enhanced policy is only supported for workloadType AzureVM. Please provide correct PolicySubType and WorkloadType
+        /// </summary>
+        public static string EnhancedPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("EnhancedPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enhanced Hourly policy is currently not supported for WorkloadType AzureIaasVM. This will be supported soon
+        /// </summary>
+        public static string EnhancedHourlyPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("EnhancedHourlyPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Trusted VM can only be protected using Enhanced policy. Please provide a valid AzureVM Enhanced policy
+        /// </summary>
+        public static string InvalidPolicyForTrustedVMProtection
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidPolicyForTrustedVMProtection", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to ProtectedItemURI can't be null as the operation is protected with ResourceGuard
+        /// </summary>
+        public static string ProtectedItemURICantBeNull
+        {
+            get
+            {
+                return ResourceManager.GetString("ProtectedItemURICantBeNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Operation not critical, please try without the Token parameter. MUA currently only protects reducing or disabling retention times
+        /// </summary>
+        public static string PolicyUpdateNotCritical
+        {
+            get
+            {
+                return ResourceManager.GetString("PolicyUpdateNotCritical", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to {0} is not protected via MUA, either protect or try without the Token parameter
+        /// </summary>
+        public static string UnexpectedParameterToken
+        {
+            get
+            {
+                return ResourceManager.GetString("UnexpectedParameterToken", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Operation not critical, please try without the Token parameter. MUA currently protects disabling SoftDelete or SecurityFeatures only when it was previously enabled
+        /// </summary>
+        public static string BackupConfigUpdateNotCritical
+        {
+            get
+            {
+                return ResourceManager.GetString("BackupConfigUpdateNotCritical", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to ResourceGuardMapping not found
+        /// </summary>
+        public static string ResourceGuardMappingNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ResourceGuardMappingNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Invalid parameter Token: Stop protection with retain backup data as per policy is not MUA protected
+        /// </summary>
+        public static string DisableWithRetainBackupNotCrititcal{
+            get
+            {
+                return ResourceManager.GetString("DisableWithRetainBackupNotCrititcal", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both
+        /// </summary>
+        public static string CRRNotSupportedWIthCSR
+        {
+            get
+            {
+                return ResourceManager.GetString("CRRNotSupportedWIthCSR", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hourly policy ScheduleWindowDuration should be multiple of ScheduleInterval and less than or equal to 24 Hrs. for WorkloadType AzureVM
+        /// </summary>
+        public static string InvalidScheduleWindow
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidScheduleWindow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Smart tiering is only supported for BackupManagementType AzureVM, AzureWorkload. Please try again after removing MoveToArchiveTier parameter.
+        /// </summary>
+        public static string SmartTieringNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("SmartTieringNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please remove TieringMode, TierAfterDuration, TierAfterDurationType parameters to disable smart tiering
+        /// </summary>
+        public static string InvalidParametersForTiering
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParametersForTiering", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tiering mode TierRecommended is not supported for BackupManagementType AzureWorkload
+        /// </summary>
+        public static string TierRecommendedNotSupportedForAzureWorkload
+        {
+            get
+            {
+                return ResourceManager.GetString("TierRecommendedNotSupportedForAzureWorkload", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration, TierAfterDurationType is only acceptable for TieringMode: TierAllEligible
+        /// </summary>
+        public static string InvalidParameterTierAfterDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterTierAfterDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration, TierAfterDurationType is required for tiering mode TierAllEligible and the values should either be in Months or Days
+        /// </summary>
+        public static string MissingParameterTierAfterDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("MissingParameterTierAfterDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Smart tiering is not supported for this subscription, please remove MoveToArchiveTier parameter and try again.
+        /// </summary>
+        public static string SmartTieringNotSupportedForSubscription
+        {
+            get
+            {
+                return ResourceManager.GetString("SmartTieringNotSupportedForSubscription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Monthly or Yearly retention needs to be set to enable Archive smart tiering
+        /// </summary>
+        public static string MissingMonthlyOrYearlyRetention
+        {
+            get
+            {
+                return ResourceManager.GetString("MissingMonthlyOrYearlyRetention", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Monthly or Yearly retention needs to be set as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.
+        /// </summary>
+        public static string IncompatibleRetentionAndTieringPolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("IncompatibleRetentionAndTieringPolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to At least one of monthly or yearly retention should be >= 9 months for enabling TierRecommended mode for smart tiering
+        /// </summary>
+        public static string IncompatibleRetentionPolicyForTierRecommended
+        {
+            get
+            {
+                return ResourceManager.GetString("IncompatibleRetentionPolicyForTierRecommended", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to At least one of monthly or yearly retention should be >= 9 months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.
+        /// </summary>
+        public static string RetentionShouldBeGreaterThan9MonthsOrDisableSmartTiering
+        {
+            get
+            {
+                return ResourceManager.GetString("RetentionShouldBeGreaterThan9MonthsOrDisableSmartTiering", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDurationType should be in Months for workload type AzureVM
+        /// </summary>
+        public static string InvalidDurationTypeForAzureVM
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidDurationTypeForAzureVM", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months
+        /// </summary>
+        public static string InvalidDurationForTierAllEligiblePolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidDurationForTierAllEligiblePolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.
+        /// </summary>
+        public static string IncompatibleRetentionDurationWithTierAfterDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("IncompatibleRetentionDurationWithTierAfterDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to FullBackupRetentionPolicy can't be null while enabling Archive smart tiering for BackupManagementType AzureWorkload
+        /// </summary>
+        public static string FullBackupRetentionPolicyCantBeNull
+        {
+            get
+            {
+                return ResourceManager.GetString("FullBackupRetentionPolicyCantBeNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDurationType should be in Days for workload type AzureWorkload
+        /// </summary>
+        public static string InvalidDurationTypeForAzureWorkload
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidDurationTypeForAzureWorkload", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days
+        /// </summary>
+        public static string IncompatibleRetentionPolicyWithTierAfterDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("IncompatibleRetentionPolicyWithTierAfterDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.
+        /// </summary>
+        public static string TierAfterDurationCheckFailedWithRetentionDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("TierAfterDurationCheckFailedWithRetentionDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the recovery point is zone pinned. Please remove TargetZone parameter or try a valid scenario.
+        /// </summary>
+        public static string UnsupportedCZRWithNonZonePinnedVMForCRRVault
+        {
+            get
+            {
+                return ResourceManager.GetString("UnsupportedCZRWithNonZonePinnedVMForCRRVault", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the restore is triggered for secondary region. Please remove TargetZone parameter or try a valid scenario.
+        /// </summary>
+        public static string UnsupportedCZRForCRRVaultToPrimaryRegion
+        {
+            get
+            {
+                return ResourceManager.GetString("UnsupportedCZRForCRRVaultToPrimaryRegion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to RemoveRecoveryPoints and RetainRecoveryPointsAsPerPolicy parameters can't be used simultaneously.
+        /// </summary>
+        public static string CantRemoveAndRetainRPsSimultaneously
+        {
+            get
+            {
+                return ResourceManager.GetString("CantRemoveAndRetainRPsSimultaneously", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VaultLocation can't be empty for fetching jobs from secondary region.
+        /// </summary>
+        public static string VaultLocationRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("VaultLocationRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VaultLocation can't be empty for cross region restore.
+        /// </summary>
+        public static string VaultLocationRequiredForCRR
+        {
+            get
+            {
+                return ResourceManager.GetString("VaultLocationRequiredForCRR", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default to Trusted Launch configuration. You need to ensure Policy Name used with this command is of type Enhanced Policy for Trusted Launch VMs. Non-Trusted Launch Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, please visit https://aka.ms/TLaD.
+        /// </summary>
+        public static string TrustedLaunchDefaultWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("TrustedLaunchDefaultWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to RestoreToEdgeZone parameter can't be used for cross region or cross subscription restore.
+        /// </summary>
+        public static string CSRAndCRRNotSupportedWithEdgeZoneRestore
+        {
+            get
+            {
+                return ResourceManager.GetString("CSRAndCRRNotSupportedWithEdgeZoneRestore", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please make sure that the recovery point belongs to an edge zone VM and contains extended location.
+        /// </summary>
+        public static string InvalidEdgeZoneVM
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidEdgeZoneVM", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.
+        /// </summary>
+        public static string RequiredBackupSnapshotResourceGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("RequiredBackupSnapshotResourceGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Snapshot recovery point time is less than 4 Hrs ago, please try later or with another recovery point.
+        /// </summary>
+        public static string UnbakedSnapshotRecoveryPoint
+        {
+            get
+            {
+                return ResourceManager.GetString("UnbakedSnapshotRecoveryPoint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Upgrading to enhanced policy can incur additional charges. Once upgraded to the enhanced policy, it is not possible to revert back to the standard policy.
+        /// </summary>
+        public static string StdToEnhPolicyMigrationWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("StdToEnhPolicyMigrationWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy.
+        /// </summary>
+        public static string SnapshotConsistencyTypeCantBeSetForStandardPolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotConsistencyTypeCantBeSetForStandardPolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotConsistencyType parameter can only be used for WorkloadType AzureVM.
+        /// </summary>
+        public static string InvalidParameterSnapshotConsistencyType
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterSnapshotConsistencyType", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while fetching AAD properties, this property is needed to get CRR access token.
+        /// </summary>
+        public static string AADPropertiesCouldNotBeFetchedException
+        {
+            get
+            {
+                return ResourceManager.GetString("AADPropertiesCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists.
+        /// </summary>
+        public static string CRRAccessTokenCouldNotBeFetchedException
+        {
+            get
+            {
+                return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups.
+        /// </summary>
+        public static string AFSPolicyUpdateNotAllowed
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateNotAllowed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Changing the backup tier keeps current snapshots as-is under the existing policy. Future backups will be stored in the vault with new retention settings. This action is irreversible and incurs additional costs. Switching from vault to snapshot requires reconfiguration. Learn more at https://learn.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview?tabs=snapshot.
+        /// </summary>
+        public static string AFSPolicyUpdateWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Changing Policy to VaultStandard tier.
+        /// </summary>
+        public static string AFSPolicyUpdate
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Canceled Operation.
+        /// </summary>
+        public static string AFSPolicyUpdateCanceled
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateCanceled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotRetentionInDays should be from 1 - 30.
+        /// </summary>
+        public static string SnapshotRetentionInDaysInvalidException
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotRetentionInDaysInvalidException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to UndeleteContainer operation failed with ErrorCode: {0}.
+        /// </summary>
+        public static string UndeleteContainerFailureErrorCode
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerFailureErrorCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to undelete the container '{0}'.
+        /// </summary>
+        public static string UndeleteContainerWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Undeleting container.
+        /// </summary>
+        public static string UndeleteContainerMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Setting SoftDeleteFeatureState to 'AlwaysON' will automatically set HybridBackupSecurityFeature to AlwaysON. Please remove the DisableHybridBackupSecurityFeature parameter or use a different value for the SoftDeleteFeatureState parameter.
+        /// </summary>
+        public static string InvalidSoftDeleteFeatureStateException
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidSoftDeleteFeatureStateException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both Token and SecureToken parameters cannot be provided together.
+        /// </summary>
+        public static string BothTokenProvided
+        {
+            get
+            {
+                return ResourceManager.GetString("BothTokenProvided", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.
+        /// </summary>
+        public static string TokenParameterDepricate
+        {
+            get
+            {
+                return ResourceManager.GetString("TokenParameterDepricate", resourceCulture);
             }
         }
     }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
@@ -72,14 +72,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation if there is no changes in the What-If result. Applicable when the -Confirm switch is set.")]
+        public SwitchParameter ProceedIfNoChange { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Aux tenant ids for cross tenant references in deployments.")]
+        public string[] AuxTenant { get; set; }
 
         protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
             typeof(NewAzureResourceGroupDeploymentCmdlet),
             typeof(CmdletAttribute))).ConfirmImpact;
 
-        protected override PSDeploymentCmdletParameters DeploymentParameters => new PSDeploymentCmdletParameters
+        protected override PSDeploymentCmdletParameters BuildDeploymentParameters() => new PSDeploymentCmdletParameters
         {
             ScopeType = DeploymentScopeType.ResourceGroup,
             ResourceGroupName = ResourceGroupName,
@@ -88,7 +94,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
             TemplateObject = TemplateObject,
             TemplateSpecId = TemplateSpecId,
-            TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+            QueryString = QueryString,
+            TemplateParameterObject = GetTemplateParameterObject(),
             ParameterUri = TemplateParameterUri,
             DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
             Tags = TagsHelper.ConvertToTagsDictionary(Tag),
@@ -98,21 +105,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
                     DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
                 }
-                : null
+                : null,
+            AuxTenantHeaders = GetAuxiliaryAuthHeaderFromTenantIds(AuxTenant)
         };
 
-        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+        protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
             DeploymentScopeType.ResourceGroup,
             deploymentName: this.Name,
             mode: this.Mode,
+            queryString: this.QueryString,
             resourceGroupName: this.ResourceGroupName,
             templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             templateObject: this.TemplateObject,
             templateSpecId: TemplateSpecId,
             templateParametersUri: this.TemplateParameterUri,
-            templateParametersObject: this.GetTemplateParameterObject(this.TemplateParameterObject),
+            templateParametersObject: this.GetTemplateParameterObject(),
             resultFormat: this.WhatIfResultFormat,
-            excludeChangeTypes: this.WhatIfExcludeChangeType);
+            excludeChangeTypes: this.WhatIfExcludeChangeType,
+            validationLevel: this.ValidationLevel);
 
         protected override void OnProcessRecord()
         {
@@ -136,5 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     () => this.Mode == DeploymentMode.Complete);
             }
         }
+
+        protected override bool ShouldSkipConfirmationIfNoChange() => this.ProceedIfNoChange;
     }
 }

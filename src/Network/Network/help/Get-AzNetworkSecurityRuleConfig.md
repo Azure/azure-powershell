@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5A0D9326-3A8A-4156-8372-EBA93C1BB4E4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworksecurityruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
@@ -23,17 +23,17 @@ The **Get-AzNetworkSecurityRuleConfig** cmdlet gets a network security rule conf
 
 ## EXAMPLES
 
-### 1: Retrieving a network security rule config
-```
-Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 
+### Example 1: Retrieving a network security rule config
+```powershell
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 `
     | Get-AzNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules
 ```
 
 This command retrieves the default rule named "AllowInternetOutBound" from Azure network security group named "nsg1" in resource group "rg1"
 
-### 2: Retrieving a network security rule config using only the name
-```
-Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 
+### Example 2: Retrieving a network security rule config using only the name
+```powershell
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 `
     | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
 ```
 
@@ -123,5 +123,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
 [Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
-
-

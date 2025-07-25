@@ -33,7 +33,8 @@ function Test-NoWaitParameter
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
-        $vmobject = New-AzVm -Name $vmname -ResourceGroupName $rgname -Credential $cred -DomainNameLabel $domainNameLabel;
+        $stnd = "Standard";
+        $vmobject = New-AzVm -Name $vmname -ResourceGroupName $rgname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd;
 
 		$response = Start-AzVm -ResourceGroupName $rgname -Name $vmname -NoWait
 		Assert-NotNull $response.RequestId

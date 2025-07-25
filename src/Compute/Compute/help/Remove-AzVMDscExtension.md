@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: C7FCF2CA-2C8D-4280-BF68-10DEA96642A5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmdscextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmdscextension
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Removes a DSC extension handler from a virtual machine in a resource group.
 
 ```
 Remove-AzVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-NoWait]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +25,8 @@ The **Remove-AzVMDscExtension** cmdlet removes a Desired State Configuration (DS
 ## EXAMPLES
 
 ### Example 1: Remove a DSC extension
-```
-PS C:\> Remove-AzVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"
+```powershell
+Remove-AzVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"
 ```
 
 This command removes the extension named DSC on virtual machine named VM07.
@@ -157,5 +158,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMDscExtension](./Get-AzVMDscExtension.md)
 
 [Set-AzVMDscExtension](./Set-AzVMDscExtension.md)
-
-

@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 {
@@ -114,10 +116,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 Name = NameParts[2];
             }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveVolumeReplicationMessage, ResourceGroupName)))
             {
-                AzureNetAppFilesManagementClient.Volumes.DeleteReplication(ResourceGroupName, AccountName, PoolName, Name);
-                success = true;
+                try
+                {
+                    AzureNetAppFilesManagementClient.Volumes.DeleteReplication(ResourceGroupName, AccountName, PoolName, Name);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
             if (PassThru)

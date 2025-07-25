@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 1B2AA717-ECD6-4CC0-AB6D-A199AF21A4A5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/set-aznotificationhubsnamespace
+online version: https://learn.microsoft.com/powershell/module/az.notificationhubs/set-aznotificationhubsnamespace
 schema: 2.0.0
 ---
 
@@ -34,18 +34,18 @@ To remove a critical namespace you must first remove the Critical tag.
 ## EXAMPLES
 
 ### Example 1: Disable a namespace
-```
-PS C:\>Set-AzNotificationHubsNamespace -Namespace "ContosoPartners" -Location "West US" -ResourceGroup "ContosoNotificationsGroup" -State "Disabled"
+```powershell
+Set-AzNotificationHubsNamespace -Namespace "ContosoPartners" -Location "West US" -ResourceGroup "ContosoNotificationsGroup" -State "Disabled" -SkuTier "Standard"
 ```
 
-This command disables the namespace named ContosoPartners located in the West US datacenter and assigned to the ContosoNotificationsGroup resource group.
+This command disables the Standard tier namespace named ContosoPartners located in the West US datacenter and assigned to the ContosoNotificationsGroup resource group.
 
 ### Example 2: Enable a namespace
-```
-PS C:\>Set-AzNotificationHubsNamespace -Namespace "ContosoPartners" -Location "West US" -ResourceGroup "ContosoNotificationsGroup" -State "Active"
+```powershell
+Set-AzNotificationHubsNamespace -Namespace "ContosoPartners" -Location "West US" -ResourceGroup "ContosoNotificationsGroup" -State "Active" -SkuTier "Standard"
 ```
 
-This command enables the namespace named ContosoPartners located in the West US datacenter and assigned to the ContosoNotificationsGroup resource group.
+This command enables the Standard tier namespace named ContosoPartners located in the West US datacenter and assigned to the ContosoNotificationsGroup resource group.
 
 ## PARAMETERS
 

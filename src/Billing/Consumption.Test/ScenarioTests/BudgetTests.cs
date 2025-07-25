@@ -13,44 +13,36 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
-    public class BudgetTests : RMTestBase
+    public class BudgetTests : ConsumptionTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public BudgetTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BudgetTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBudgetAtSubscriptionLevel()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-BudgetAtSubscriptionLevel");
+            TestRunner.RunTestScript("Test-BudgetAtSubscriptionLevel");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBudgetAtResourceGroupLevel()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-BudgetAtResourceGroupLevel");
+            TestRunner.RunTestScript("Test-BudgetAtResourceGroupLevel");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBudgets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBudgets");
+            TestRunner.RunTestScript("Test-GetBudgets");
         }
     }
 }

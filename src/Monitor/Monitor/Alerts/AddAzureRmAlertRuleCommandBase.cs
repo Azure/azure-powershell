@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the Location parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Location name")]
-        [LocationCompleter("microsoft.insights/alertrules")]
+        [LocationCompleter("Microsoft.Insights/alertrules")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         }
 
         /// <summary>
-        /// When overriden by a descendant class this method creates the set of parameters for the call to the sdk
+        /// When overridden by a descendant class this method creates the set of parameters for the call to the sdk
         /// </summary>
         /// <returns>The set of parameters for the call to the sdk</returns>
         protected abstract AlertRuleResource CreateSdkCallParameters();

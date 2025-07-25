@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azfirewallpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azfirewallpolicy
 schema: 2.0.0
 ---
 
@@ -12,22 +12,25 @@ Removes an Azure Firewall Policy
 
 ## SYNTAX
 
-### RemoveByNameParameterSet
+### RemoveByNameParameterSet (Default)
 ```
 Remove-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByResourceIdParameterSet
 ```
 Remove-AzFirewallPolicy [-Force] [-PassThru] [-AsJob] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByInputObjectParameterSet
 ```
 Remove-AzFirewallPolicy [-Force] [-PassThru] [-AsJob] -InputObject <PSAzureFirewallPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +40,21 @@ The **Remove-AzFirewallPolicy** cmdlet removes an Azure Firewall Policy.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceGroupName TestRg
+Remove-AzFirewallPolicy -Name firewallpolicy -ResourceGroupName TestRg
 ```
 
 This example removes the firewall policy named "firewallpolicy" in the resourcegroup "TestRg"
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceId "/subscriptions/12345/resourceGroups/TestRg/providers/Microsoft.Network/firewallpolicies/firewallPolicy1"
+Remove-AzFirewallPolicy -ResourceId "/subscriptions/12345/resourceGroups/TestRg/providers/Microsoft.Network/firewallpolicies/firewallPolicy1"
 ```
 
 This example removes the firewall policy by the Id.
 
 ### Example 3
 ```powershell
-PS C:\> Remove-AzFirewallPolicy -InputObject $fp
+Remove-AzFirewallPolicy -InputObject $fp
 ```
 
 This example removes the firewall policy $fp
@@ -172,11 +175,11 @@ Type: System.String
 Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Confirm

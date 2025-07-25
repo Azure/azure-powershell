@@ -477,6 +477,10 @@ namespace Microsoft.Azure.Management.WebSites
         {
             certificate.Delete(resourceGroupName, name);
         }
+        public static IAppServiceEnvironmentsOperations AppServiceEnvironments(this WebSiteManagementClient client)
+        {
+            return client.AppServiceEnvironments;
+        }
 #else
         public static IWebAppsOperations WebApps(this WebSiteManagementClient client)
         {

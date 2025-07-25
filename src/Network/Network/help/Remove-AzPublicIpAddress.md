@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 00236BC2-61D8-49C2-91BE-923C567153F3
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azpublicipaddress
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azpublicipaddress
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Removes a public IP address.
 
 ```
 Remove-AzPublicIpAddress -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +24,8 @@ The **Remove-AzPublicIpAddress** cmdlet removes an Azure public IP address.
 
 ## EXAMPLES
 
-### 1: Remove a public IP address resource
-```
+### Example 1: Remove a public IP address resource
+```powershell
 Remove-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
@@ -155,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -174,5 +175,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPublicIpAddress](./New-AzPublicIpAddress.md)
 
 [Set-AzPublicIpAddress](./Set-AzPublicIpAddress.md)
-
-

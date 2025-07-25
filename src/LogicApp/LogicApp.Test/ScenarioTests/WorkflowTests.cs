@@ -16,21 +16,15 @@
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     /// <summary>
     /// Scenario tests for the Create logic app command
     /// </summary>
-    public class WorkflowTests : RMTestBase
+    public class WorkflowTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public WorkflowTests(ITestOutputHelper output)
+        public WorkflowTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -42,7 +36,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndRemoveLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAndRemoveLogicApp");
+            TestRunner.RunTestScript("Test-CreateAndRemoveLogicApp");
         }
 
         /// <summary>
@@ -52,7 +46,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateLogicAppWithDuplicateName()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateLogicAppWithDuplicateName");
+            TestRunner.RunTestScript("Test-CreateLogicAppWithDuplicateName");
         }
 
         /// <summary>
@@ -62,7 +56,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateLogicAppUsingInputfromWorkflowObject()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateLogicAppUsingInputfromWorkflowObject");
+            TestRunner.RunTestScript("Test-CreateLogicAppUsingInputfromWorkflowObject");
         }
 
         /// <summary>
@@ -72,7 +66,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateLogicAppUsingInputParameterAsHashTable()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateLogicAppUsingInputParameterAsHashTable");
+            TestRunner.RunTestScript("Test-CreateLogicAppUsingInputParameterAsHashTable");
         }
 
         /// <summary>
@@ -82,7 +76,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateLogicAppUsingDefinitionWithTriggers()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateLogicAppUsingDefinitionWithTriggers");
+            TestRunner.RunTestScript("Test-CreateLogicAppUsingDefinitionWithTriggers");
         }
 
         /// <summary>
@@ -94,7 +88,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndGetLogicAppUsingDefinitionWithActions()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAndGetLogicAppUsingDefinitionWithActions");
+            TestRunner.RunTestScript("Test-CreateAndGetLogicAppUsingDefinitionWithActions");
         }
 
         /// <summary>
@@ -104,7 +98,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNonExistingLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveNonExistingLogicApp");
+            TestRunner.RunTestScript("Test-RemoveNonExistingLogicApp");
         }
 
         /// <summary>
@@ -118,7 +112,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateLogicApp");
+            TestRunner.RunTestScript("Test-UpdateLogicApp");
         }
 
         /// <summary>
@@ -128,7 +122,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestValidateLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ValidateLogicApp");
+            TestRunner.RunTestScript("Test-ValidateLogicApp");
         }
 
         /// <summary>
@@ -142,7 +136,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUpgradedDefinitionForLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetUpgradedDefinitionForLogicApp");
+            TestRunner.RunTestScript("Test-GetUpgradedDefinitionForLogicApp");
         }
 
         /// <summary>
@@ -153,7 +147,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLogicAppWithIntegrationAccount()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateLogicAppWithIntegrationAccount");
+            TestRunner.RunTestScript("Test-UpdateLogicAppWithIntegrationAccount");
         }
     }
 }

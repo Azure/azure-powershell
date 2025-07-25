@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayprobeconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayprobeconfig
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The Get-AzApplicationGatewayProbeConfig cmdlet gets an existing health probe con
 ## EXAMPLES
 
 ### Example 1: Get an existing probe from an application gateway
-```
-PS C:\>Get-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe02"
+```powershell
+Get-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe02"
 ```
 
 This command gets the health probe named Probe02 from the application gateway named Gateway.
@@ -91,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add a probe to an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#add-a-probe-to-an-existing-application-gateway)
+[Add a probe to an existing application gateway](/azure/application-gateway/application-gateway-create-probe-ps#add-a-probe-to-an-existing-application-gateway)
 
 [Add-AzApplicationGatewayProbeConfig](./Add-AzApplicationGatewayProbeConfig.md)
 
@@ -100,4 +100,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzApplicationGatewayProbeConfig](./Remove-AzApplicationGatewayProbeConfig.md)
 
 [Set-AzApplicationGatewayProbeConfig](./Set-AzApplicationGatewayProbeConfig.md)
-

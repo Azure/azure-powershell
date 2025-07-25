@@ -12,6 +12,7 @@
 // limitations under the License.
 // ------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
@@ -20,6 +21,7 @@ using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Security.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 {
@@ -34,6 +36,12 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
         [ValidateNotNullOrEmpty]
         public string PricingTier { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.SubPlan)]
+        public string SubPlan { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Extension)]
+        public string Extension { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
         public PSSecurityPricing InputObject { get; set; }
@@ -42,6 +50,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
         {
             var name = Name;
             var tier = PricingTier;
+            var subPlan = SubPlan;
+            var extensions = Extension;
 
             switch (ParameterSetName)
             {
@@ -50,6 +60,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
                 case ParameterSetNames.InputObject:
                     name = InputObject.Name;
                     tier = InputObject.PricingTier;
+                    subPlan = string.IsNullOrEmpty(InputObject.SubPlan) ? null : InputObject.SubPlan;
+                    extensions = string.IsNullOrEmpty(InputObject.Extensions) ? null : InputObject.Extensions;
                     break;
                 default:
                     throw new PSInvalidOperationException();
@@ -57,7 +69,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 
             if (ShouldProcess(name, VerbsCommon.Set))
             {
-                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, tier).GetAwaiter().GetResult().Body;
+                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, new Pricing(pricingTier:tier, subPlan:subPlan, name:name, extensions: string.IsNullOrEmpty(extensions) ? null : JsonConvert.DeserializeObject<IList<Extension>>(extensions))).GetAwaiter().GetResult().Body;
 
                 WriteObject(pricing.ConvertToPSType(), enumerateCollection: false); 
             }

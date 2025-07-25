@@ -1,0 +1,124 @@
+{
+  "New-AzNetworkFabricL2Domain+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName?api-version=2023-06-15",
+      "Content": "{\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"networkFabricId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName\",\n    \"vlanId\": 1234,\n    \"mtu\": 1501\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "277" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8600fb76-0000-0100-0000-650d70180000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "ea9cea34-609a-4463-a0d8-de6303b19586" ],
+        "x-ms-request-id": [ "c01e6e67-8c80-466e-9e8c-b1d1467025f4" ],
+        "x-ms-correlation-request-id": [ "6eae614e-7531-41b4-b177-19d6009665fe" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/1979b8b9-1740-4dbd-a79b-b8eb1c54e3b4*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T104441Z:6eae614e-7531-41b4-b177-19d6009665fe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 10:44:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "815" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName\",\"name\":\"l2DomainName\",\"type\":\"microsoft.managednetworkfabric/l2isolationdomains\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T10:44:39.4999547Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T10:44:39.4999547Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"vlanId\":1234,\"mtu\":1501,\"networkFabricId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName\",\"administrativeState\":\"Disabled\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricL2Domain+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/1979b8b9-1740-4dbd-a79b-b8eb1c54e3b4*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/1979b8b9-1740-4dbd-a79b-b8eb1c54e3b4*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "0313cad4-ea6e-488a-a5ae-ec421141ab89" ],
+        "CommandName": [ "New-AzNetworkFabricL2Domain" ],
+        "FullCommandName": [ "New-AzNetworkFabricL2Domain_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a90162d1-0000-0100-0000-650d701b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "a4b6e537-13f1-4668-9e4f-dce59fe9d8bb" ],
+        "x-ms-correlation-request-id": [ "ed0d04fb-9c8e-4997-87cd-794937f53560" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T104512Z:ed0d04fb-9c8e-4997-87cd-794937f53560" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 10:45:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/1979b8b9-1740-4dbd-a79b-b8eb1c54e3b4*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5\",\"name\":\"1979b8b9-1740-4dbd-a79b-b8eb1c54e3b4*B92458FC39A5205262EC27F84D5A3F591FEBF955838F1C29D86E675713E38CB5\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T10:44:40.7298609Z\",\"endTime\":\"2023-09-22T10:44:43.3901878Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricL2Domain+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName?api-version=2023-06-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "0313cad4-ea6e-488a-a5ae-ec421141ab89" ],
+        "CommandName": [ "New-AzNetworkFabricL2Domain" ],
+        "FullCommandName": [ "New-AzNetworkFabricL2Domain_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"86005577-0000-0100-0000-650d701b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7cefcdc0-5bcf-4f2a-af6d-14aa5cd0a350" ],
+        "x-ms-correlation-request-id": [ "5c5f64b6-995a-480c-84d0-43dc613042df" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T104512Z:5c5f64b6-995a-480c-84d0-43dc613042df" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 10:45:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "833" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/l2DomainName\",\"name\":\"l2DomainName\",\"type\":\"microsoft.managednetworkfabric/l2isolationdomains\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T10:44:39.4999547Z\",\"lastModifiedBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-22T10:44:43.6815087Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"vlanId\":1234,\"mtu\":1501,\"networkFabricId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName\",\"administrativeState\":\"Disabled\"}}",
+      "isContentBase64": false
+    }
+  }
+}

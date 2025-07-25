@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <summary>
         /// Reads the JSON content from the http response message.
         /// </summary>
-        /// <typeparam name="T">The type of object contained in the JSON.</typeparam>
         /// <param name="message">The response message to be read.</param>
         /// <param name="rewindContentStream">Rewind content stream if set to true.</param>
         /// <returns>An object of type T instantiated from the response message's body.</returns>

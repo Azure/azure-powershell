@@ -28,7 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpPrefixCRUD()
         {
             TestRunner.RunTestScript("Test-PublicIpPrefixCRUD");
@@ -36,10 +36,26 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestGlobalPublicIpPrefixCRUD()
+        {
+            TestRunner.RunTestScript("Test-GlobalPublicIpPrefixCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpPrefixAllocatePublicIpAddress()
         {
             TestRunner.RunTestScript("Test-PublicIpPrefixAllocatePublicIpAddress");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpPrefixInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-PublicIpPrefixInEdgeZone");
         }
     }
 }

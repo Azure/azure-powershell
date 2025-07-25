@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: 8EF45FCE-5475-4A18-BFB0-C016E239612E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscache
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/get-azrediscache
 schema: 2.0.0
 ---
 
@@ -25,10 +25,12 @@ If you specify no parameters, this operation gets every Redis Cache for the curr
 ## EXAMPLES
 
 ### Example 1: Get a Redis Cache by name
+```powershell
+Get-AzRedisCache -Name "myexists"
 ```
-PS C:\>Get-AzRedisCache -Name "myexists"
 
-        ResourceGroupName  : myGroup
+```output
+ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US
         Name               : myexists
@@ -49,10 +51,12 @@ PS C:\>Get-AzRedisCache -Name "myexists"
 This command gets the Redis Cache named myexists.
 
 ### Example 2: Get every Redis Cache in a resource group
+```powershell
+Get-AzRedisCache -ResourceGroupName "myGroup"
 ```
-PS C:\>Get-AzRedisCache -ResourceGroupName "myGroup"
 
-        ResourceGroupName  : myGroup
+```output
+ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US
         Name               : myexists
@@ -90,10 +94,12 @@ PS C:\>Get-AzRedisCache -ResourceGroupName "myGroup"
 This command gets every Redis Cache in the specified resource group.
 
 ### Example 3: Get every Redis Cache in the current subscription
+```powershell
+Get-AzRedisCache
 ```
-PS C:\>Get-AzRedisCache
 
-        ResourceGroupName  : myGroup
+```output
+ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US
         Name               : myexists
@@ -197,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

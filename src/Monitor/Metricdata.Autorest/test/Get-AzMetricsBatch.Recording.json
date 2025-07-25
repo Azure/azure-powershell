@@ -1,0 +1,36 @@
+{
+  "Get-AzMetricsBatch+[NoContext]+BatchExpanded+$POST+https://eastus.metrics.monitor.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/metrics:getBatch?starttime=2023-12-19T02%3A00%3A00.000Z\u0026endtime=2023-12-19T02%3A30%3A00.000Z\u0026metricnamespace=Microsoft.Storage%2FstorageAccounts\u0026metricnames=ingress%2Cegress\u0026api-version=2023-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://eastus.metrics.monitor.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/metrics:getBatch?starttime=2023-12-19T02%3A00%3A00.000Z\u0026endtime=2023-12-19T02%3A30%3A00.000Z\u0026metricnamespace=Microsoft.Storage%2FstorageAccounts\u0026metricnames=ingress%2Cegress\u0026api-version=2023-10-01",
+      "Content": "{\r\n  \"resourceids\": [ \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-Metric/providers/Microsoft.Storage/storageAccounts/monitortestps01\" ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "170" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Tue, 19 Dec 2023 08:34:12 GMT" ],
+        "Transfer-Encoding": [ "chunked" ],
+        "Connection": [ "keep-alive" ],
+        "Request-Context": [ "appId=cid-v1:b021da79-5252-4375-9df5-2e17c1dcd822" ],
+        "x-ms-request-id": [ "840b09ab7bd230ba23626292fc209a99" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Rate-Limit-Limit": [ "30s" ],
+        "X-Rate-Limit-Remaining": [ "2998" ],
+        "X-Rate-Limit-Reset": [ "2023-12-19T08:34:18.6430120Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"values\":[{\"starttime\":\"2023-12-19T02:00:00Z\",\"endtime\":\"2023-12-19T02:30:00Z\",\"interval\":\"PT1M\",\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-Metric/providers/Microsoft.Storage/storageAccounts/monitortestps01/providers/Microsoft.Insights/metrics/Ingress\",\"type\":\"Microsoft.Insights/metrics\",\"name\":{\"value\":\"Ingress\",\"localizedValue\":\"Ingress\"},\"displayDescription\":\"The amount of ingress data, in bytes. This number includes ingress from an external client into Azure Storage as well as ingress within Azure.\",\"unit\":\"Bytes\",\"timeseries\":[],\"errorCode\":\"Success\"},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-Metric/providers/Microsoft.Storage/storageAccounts/monitortestps01/providers/Microsoft.Insights/metrics/Egress\",\"type\":\"Microsoft.Insights/metrics\",\"name\":{\"value\":\"Egress\",\"localizedValue\":\"Egress\"},\"displayDescription\":\"The amount of egress data. This number includes egress to external client from Azure Storage as well as egress within Azure. As a result, this number does not reflect billable egress.\",\"unit\":\"Bytes\",\"timeseries\":[],\"errorCode\":\"Success\"}],\"namespace\":\"Microsoft.Storage/storageAccounts\",\"resourceregion\":\"eastus\",\"resourceid\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-Metric/providers/Microsoft.Storage/storageAccounts/monitortestps01\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

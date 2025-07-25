@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsValidResourceId(ResourceIdentifier id, string expectedResourceType, bool validateParent = false, string expectedParentType = null)
         {
-            if (id == null || string.IsNullOrEmpty(id.ResourceName) || string.IsNullOrEmpty(id.ResourceGroupName) || string.IsNullOrEmpty(id.Subscription) 
-                || !string.Equals(id.ResourceType, expectedResourceType))
+            if (id == null || string.IsNullOrEmpty(id.ResourceName) || string.IsNullOrEmpty(id.ResourceGroupName) || string.IsNullOrEmpty(id.Subscription)
+                || !string.Equals(id.ResourceType, expectedResourceType, StringComparison.OrdinalIgnoreCase))
             {
                 return false;
             }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 string[] tokens = id.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-                if (tokens.Count() != 2 || (!string.IsNullOrEmpty(expectedParentType) && !string.Equals(tokens[0], expectedParentType)))
+                if (tokens.Count() != 2 || (!string.IsNullOrEmpty(expectedParentType) && !string.Equals(tokens[0], expectedParentType, StringComparison.OrdinalIgnoreCase)))
                 {
                     return false;
                 }
@@ -72,11 +72,14 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public void ValidateFlowLogParameters(string targetResourceId, string storageId, int? formatVersion, string formatType,
-            bool enableTrafficAnalytics, string trafficAnalyticsWorkspaceId, int? trafficAnalyticsInterval, int? retentionPolicyDays)
+        public void ValidateFlowLogParameters(string targetResourceId, string storageId, string enabledFilteringCriteria, int? formatVersion, string formatType,
+            bool enableTrafficAnalytics, string trafficAnalyticsWorkspaceId, int? trafficAnalyticsInterval, int? retentionPolicyDays, string userAssignedIdentityId)
         {
             ResourceIdentifier targetResourceInfo = new ResourceIdentifier(targetResourceId);
-            if (!this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/networkSecurityGroups"))
+            if (!this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/networkSecurityGroups") &&
+                !this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/virtualNetworks") &&
+                !this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/virtualNetworks/subnets") &&
+                !this.IsValidResourceId(targetResourceInfo, "Microsoft.Network/networkInterfaces"))
             {
                 throw new PSArgumentException(Properties.Resources.InvalidTargetResourceId);
             }
@@ -92,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
             }
 
-            if (!string.IsNullOrEmpty(formatType) && !string.Equals(formatType, "JSON", StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(formatType) && (!string.Equals(formatType, "JSON", StringComparison.OrdinalIgnoreCase) && !string.Equals(formatType, "FlowLogJSON", StringComparison.OrdinalIgnoreCase)))
             {
                 throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
             }
@@ -102,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.TrafficAnalyticsWorkspaceResourceIdIsMissing);
             }
 
-            if (trafficAnalyticsInterval != null && trafficAnalyticsInterval != 10 && trafficAnalyticsInterval != 60)
+            if (trafficAnalyticsInterval != null && trafficAnalyticsInterval != 10 && trafficAnalyticsInterval != 60 && trafficAnalyticsInterval != 0)
             {
                 throw new PSArgumentException(Properties.Resources.InvalidTrafficAnalyticsInterval);
             }
@@ -116,9 +119,26 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            if (!string.IsNullOrEmpty(enabledFilteringCriteria))
+            {
+                if (enabledFilteringCriteria.Length > 1000)
+                {
+                    throw new PSArgumentException(Properties.Resources.FlowLogFilteringCriteriaExceedsLimit);
+                }
+            }
+
             if (retentionPolicyDays != null && retentionPolicyDays < 0)
             {
                 throw new PSArgumentException(Properties.Resources.InvalidTrafficAnalyticsInterval);
+            }
+
+            if (userAssignedIdentityId != null && !string.Equals(userAssignedIdentityId, "none", StringComparison.OrdinalIgnoreCase))
+            {
+                ResourceIdentifier userAssignedIdentityInfo = new ResourceIdentifier(userAssignedIdentityId);
+                if (!this.IsValidResourceId(userAssignedIdentityInfo, "Microsoft.ManagedIdentity/userAssignedIdentities"))
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidUserAssignedManagedIdentity);
+                }
             }
         }
     }

@@ -13,81 +13,96 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ManagedDatabaseCrudScenarioTests : SqlTestsBase
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
+    public class ManagedDatabaseCrudScenarioTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
-        }
-
         public ManagedDatabaseCrudScenarioTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/managedInstances",
-                "Microsoft.Sql/managedInstances/databases",
-                "Microsoft.Sql/managedInstances/managedDatabases"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedDatabase()
         {
-            RunPowerShellTest("Test-CreateManagedDatabase");
+            TestRunner.RunTestScript("Test-CreateManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to bug in ignore api version plus long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabase()
         {
-            RunPowerShellTest("Test-GetManagedDatabase");
+            TestRunner.RunTestScript("Test-GetManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagedDatabase()
         {
-            RunPowerShellTest("Test-RemoveManagedDatabase");
+            TestRunner.RunTestScript("Test-RemoveManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreManagedDatabase()
         {
-            RunPowerShellTest("Test-RestoreManagedDatabase");
+            TestRunner.RunTestScript("Test-RestoreManagedDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedManagedDatabase()
         {
-            RunPowerShellTest("Test-RestoreDeletedManagedDatabase");
+            TestRunner.RunTestScript("Test-RestoreDeletedManagedDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabaseGeoBackup()
         {
-            RunPowerShellTest("Test-GetManagedDatabaseGeoBackup");
+            TestRunner.RunTestScript("Test-GetManagedDatabaseGeoBackup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGeoRestoreManagedDatabase()
         {
-            RunPowerShellTest("Test-GeoRestoreManagedDatabase");
+            TestRunner.RunTestScript("Test-GeoRestoreManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetManagedDatabase()
+        {
+            TestRunner.RunTestScript("Test-SetManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedDatabaseCrossSubscriptionRestore()
+        {
+            TestRunner.RunTestScript("Test-CrossSubscriptionRestoreManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDeletedManagedDatabaseCrossSubscriptionRestore()
+        {
+            TestRunner.RunTestScript("Test-CrossSubscriptionRestoreDeletedManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedDatabaseCreationWithLedgerEnabled()
+        {
+            TestRunner.RunTestScript("Test-ManagedDatabaseCreationWithLedgerEnabled");
         }
     }
 }

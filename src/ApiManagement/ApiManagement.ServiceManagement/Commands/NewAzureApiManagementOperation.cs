@@ -1,4 +1,4 @@
-﻿//  
+//  
 // Copyright (c) Microsoft.  All rights reserved.
 // 
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
     using Management.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementOperation")]
     [OutputType(typeof(PsApiManagementOperation))]
@@ -88,12 +89,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                           " Use the parameter to give more details on parameters like description, type, possible values.")]
         public PsApiManagementParameter[] TemplateParameters { get; set; }
 
+        public const String ChangeDesc = "Change Request.Representations.Sample to Request.Representations.Example";
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Operation request details. This parameter is optional.")]
         public PsApiManagementRequest Request { get; set; }
 
+        public const String ChangeDesc2 = "Change Responses.Representations.Sample to Responses.Representations.Example";
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,

@@ -1,108 +1,54 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll-Help.xml
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://docs.microsoft.com/en-us/powershell/module/az.databox/stop-azdataboxjob
+online version: https://learn.microsoft.com/powershell/module/az.databox/stop-azdataboxjob
 schema: 2.0.0
 ---
 
 # Stop-AzDataBoxJob
 
 ## SYNOPSIS
-Cancels an ongoing databox job if the job is in cancellable state.
+CancelJob.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
 ```
-Stop-AzDataBoxJob -ResourceGroupName <String> -Name <String> -Reason <String>
- [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetByResourceIdParameterSet
-```
-Stop-AzDataBoxJob -Reason <String> -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
- [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetByInputObjectParameterSet
-```
-Stop-AzDataBoxJob -Reason <String> -InputObject <PSDataBoxJob> [-DefaultProfile <IAzureContextContainer>]
- [-PassThru] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Reason <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzDataBoxJob** cmdlet is used to cancel a databox job.
+CancelJob.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1:  Cancel a Job
 ```powershell
-PS C:\> Stop-AzDataBoxJob -ResourceGroupName "TestRg" -name "test" -Reason "Random"
-Confirm
-"Removing Databox Job "test
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
+Stop-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName" -Reason "Powershell demo job"
+Get-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"
 ```
 
-Cancels the specified databox job
-
-### Example 2
-```powershell
-PS C:\> Stop-AzDataBoxJob -ResourceGroupName "TestRg" -name "test" -Reason "Random" -Force
-
+```output
+Name         Location Status    TransferType  SkuName IdentityType DeliveryType Detail
+----         -------- ------    ------------  ------- ------------ ------------ ------
+Powershell10 WestUS   Cancelled ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
-Cancels the specified databox job forcefully without confirmation
-
-### Example 3
-```powershell
-PS C:\> Stop-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/TestRg/providers/Microsoft.DataBox/jobs/test"
-
-```
-
-Cancels the specified databox job
+Cancel a job
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Force stop without confirmation
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-InputObject of type PSDataBoxJob
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.PSDataBoxJob
-Parameter Sets: GetByInputObjectParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,12 +56,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Databox Job Name
+The name of the job Resource within the specified resource group.
+job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
+Parameter Sets: (All)
+Aliases: JobName
 
 Required: True
 Position: Named
@@ -125,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -140,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Reason
-Reason For Cancellation
+Reason for cancellation.
 
 ```yaml
 Type: System.String
@@ -155,11 +102,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Databox Job Resource Group Name
+The Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -169,18 +116,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Databox Resource Id
+### -SubscriptionId
+The Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
-Aliases: Id
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -200,7 +147,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -219,11 +167,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 ## NOTES
 

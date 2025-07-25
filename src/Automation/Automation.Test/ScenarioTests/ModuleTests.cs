@@ -71,5 +71,29 @@ namespace Commands.Automation.Test
         {
             TestRunner.RunTestScript("Test-RemoveModule");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
+        public void NewPowershell72Module()
+        {
+            TestRunner.RunTestScript("Test-NewPowershell72Module");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
+        public void SetPowershell72Module()
+        {
+            TestRunner.RunTestScript("Test-SetPowershell72Module");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
+        public void RemovePowershell72Module()
+        {
+            TestRunner.RunTestScript("Test-RemovePowershell72Module");
+        }
     }
 }

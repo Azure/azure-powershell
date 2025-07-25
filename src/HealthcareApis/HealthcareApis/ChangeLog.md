@@ -19,6 +19,36 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Upgraded nuget package to signed package.
+
+## Version 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 2.0.0
+* Migrated module to generated codebase.
+* Added cmdlets:
+    - New/Get/Update/Remove-AzHealthcareApisService
+    - New/Get/Update/Remove-AzHealthcareApisWorkspace
+    - New/Get/Update/Remove-AzHealthcareFhirService
+    - New/Get/Update/Remove-AzHealthcareDicomService
+    - New/Get/Update/Remove-AzHealthcareIoTConnector
+    - New/Get/Remove-AzHealthcareIotConnectorFhirDestination
+    - Get-AzHealthcareFhirDestination
+
+## Version 1.3.2
+* HealthcareApis cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+## Version 1.3.1
+* Added support for Acr LoginServers
+
+## Version 1.2.0
+* Added support for customer managed keys
+
+## Version 3.0.0
+* Updated the SDK version to 3.0.0
+* Added support for Private Link
+
 ## Version 1.1.0
 * Updated the SDK version to 1.1.0
 * Added support for Export settings and Managed Identity

@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,30 +43,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             };
 
             return result;
-        }
-
-        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)
-        {
-            PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
-
-            if (result != null)
-            {
-                deployment = CreatePSResourceGroupDeployment(result, resourceGroup);
-            }
-
-            return deployment;
-        }
-
-        public static PSDeployment ToPSDeployment(this DeploymentExtended result, string managementGroupId = null, string resourceGroupName = null)
-        {
-            PSDeployment deployment = new PSDeployment();
-
-            if (result != null)
-            {
-                deployment = CreatePSDeployment(result, managementGroupId, resourceGroupName);
-            }
-
-            return deployment;
         }
 
         public static PSDeploymentOperation ToPSDeploymentOperation(this DeploymentOperation result)
@@ -137,6 +115,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     ResourceTypeName = resourceType.ResourceType,
                     Locations = resourceType.Locations != null ? resourceType.Locations.ToArray() : null,
                     ApiVersions = resourceType.ApiVersions != null ? resourceType.ApiVersions.ToArray() : null,
+                    DefaultApiVersion = resourceType.DefaultApiVersion
                 }).ToArray(),
             };
         }
@@ -163,6 +142,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 GeneralUtilities.GenerateSeparator(maxValueLength, "="));
 
             foreach (var tag in tagsDictionary)
+            {
+                if (tag.Key.StartsWith(TagsClient.ExecludedTagPrefix))
+                {
+                    continue;
+                }
+
+                resourcesTable.AppendFormat(rowFormat, tag.Key, tag.Value);
+            }
+
+            return resourcesTable.ToString();
+        }
+
+        // TODO: This function and the above tags contruction function could be combined into one function.
+        // Leaving for now to avoid introducing problems in existing code.
+        public static string ConstructTagsTableFromIDictionary(IDictionary<string, string> tags)
+        {
+            if (tags == null || tags.Count == 0)
+            {
+                return null;
+            }
+
+            StringBuilder resourcesTable = new StringBuilder();
+
+            int maxNameLength = Math.Max("Name".Length, tags.Max(tag => tag.Key.Length));
+            int maxValueLength = Math.Max("Value".Length, tags.Max(tag => tag.Value.Length));
+
+            string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
+            resourcesTable.AppendLine();
+            resourcesTable.AppendFormat(rowFormat, "Name", "Value");
+            resourcesTable.AppendFormat(rowFormat,
+                GeneralUtilities.GenerateSeparator(maxNameLength, "="),
+                GeneralUtilities.GenerateSeparator(maxValueLength, "="));
+
+            foreach (var tag in tags)
             {
                 if (tag.Key.StartsWith(TagsClient.ExecludedTagPrefix))
                 {
@@ -202,7 +215,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
 
             StringBuilder output = new StringBuilder();
-                
+
                 if (dictionary.Count > 0)
                 {
                     string rowFormat = "{0, -" + maxNameLength + "}  {1}\r\n";
@@ -218,6 +231,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 }
 
             return output.ToString();
+        }
+        public static string Indent(this string value, int size)
+        {
+            string[] lines = value.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            var sb = new StringBuilder();
+            foreach (var s in lines)
+            {
+                sb.Append(new string(' ', size)).Append(s).Append(Environment.NewLine);
+            }
+            return sb.ToString().TrimEnd();
         }
 
         public static string ConstructDeploymentVariableTable(Dictionary<string, DeploymentVariable> dictionary)
@@ -244,81 +267,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
                 foreach (KeyValuePair<string, DeploymentVariable> pair in dictionary)
                 {
-                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type, pair.Value.Value);
+                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type,
+                        JsonConvert.SerializeObject(pair.Value.Value).Indent(maxNameLength + maxTypeLength + 4).Trim());
                 }
             }
 
             return result.ToString();
-        }
-
-        private static PSDeployment CreatePSDeployment(
-            DeploymentExtended deployment,
-            string managementGroupId,
-            string resourceGroup)
-        {
-            PSDeployment deploymentObject = new PSDeployment
-            {
-                Id = deployment.Id,
-                DeploymentName = deployment.Name,
-                Location = deployment.Location,
-                ManagementGroupId = managementGroupId,
-                ResourceGroupName = resourceGroup,
-                Tags = deployment.Tags == null ? new Dictionary<string, string>() : new Dictionary<string, string>(deployment.Tags)
-            };
-
-            SetDeploymentProperties(deploymentObject, deployment.Properties);
-
-            return deploymentObject;
-        }
-
-        private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
-            DeploymentExtended deployment,
-            string resourceGroup)
-        {
-            PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment
-            {
-                DeploymentName = deployment.Name,
-                ResourceGroupName = resourceGroup,
-                Tags = deployment.Tags == null ? null : new Dictionary<string, string>(deployment.Tags)
-            };
-
-            SetDeploymentProperties(deploymentObject, deployment.Properties);
-
-            return deploymentObject;
-        }
-
-        private static void SetDeploymentProperties(PSDeploymentObject deploymentObject, DeploymentPropertiesExtended properties)
-        {
-            if (properties != null)
-            {
-                deploymentObject.Mode = properties.Mode.Value;
-                deploymentObject.ProvisioningState = properties.ProvisioningState;
-                deploymentObject.TemplateLink = properties.TemplateLink;
-                deploymentObject.Timestamp = properties.Timestamp == null ? default(DateTime) : properties.Timestamp.Value;
-                deploymentObject.CorrelationId = properties.CorrelationId;
-
-                if (properties.DebugSetting != null && !string.IsNullOrEmpty(properties.DebugSetting.DetailLevel))
-                {
-                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSetting.DetailLevel;
-                }
-
-                if (properties.Outputs != null)
-                {
-                    Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
-                    deploymentObject.Outputs = outputs;
-                }
-
-                if (properties.Parameters != null)
-                {
-                    Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
-                    deploymentObject.Parameters = parameters;
-                }
-
-                if (properties.TemplateLink != null)
-                {
-                    deploymentObject.TemplateLinkString = ConstructTemplateLinkView(properties.TemplateLink);
-                }
-            }
         }
 
         public static PSProviderFeature ToPSProviderFeature(this FeatureResult feature)
@@ -338,5 +292,62 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
 
         }
+
+        public static PSSubscriptionFeatureRegistration ToPSSubscriptionFeatureRegistration(this SubscriptionFeatureRegistration feature)
+        {
+            return new PSSubscriptionFeatureRegistration
+            {
+                Id = feature.Id,
+                Name = feature.Name,
+                Properties = feature.Properties
+            };
+        }
+
+        // public static string GetStackResourcesAsString(IList<ManagedResourceReference> list)
+        // {
+        //     StringBuilder result = new StringBuilder();
+        //     int listElement = 0;
+        //     while (listElement < list.Count - 1)
+        //     {
+        //         result.AppendLine(list[listElement].Id);
+        //         listElement += 1;
+        //     }
+        //     result.Append(list[listElement].Id);
+
+        //     return result.ToString();
+        // }
+
+        public static string GetStackResourcesAsString(IList<ResourceReference> list)
+        {
+            StringBuilder result = new StringBuilder();
+            int listElement = 0;
+            while (listElement < list.Count - 1)
+            {
+                result.AppendLine(list[listElement].Id);
+                listElement += 1;
+            }
+            result.Append(list[listElement].Id);
+
+            return result.ToString();
+        }
+
+        // public static string GetStackResourcesAsString(IList<ResourceReferenceExtended> list)
+        // {
+        //     StringBuilder result = new StringBuilder();
+        //     int listElement = 0;
+        //     string rowFormat = "{0, -" + 4 + "}  {1, -" + 4 + "}\r\n";
+        //     string lastRowFormat = "{0, -" + 4 + "}  {1, -" + 4 + "}";
+        //     while (listElement < list.Count - 1)
+        //     {
+        //         result.AppendFormat(rowFormat, "Id:", list[listElement].Id);
+        //         result.AppendFormat(rowFormat, "Error:", list[listElement].Error.Message);
+        //         result.AppendLine();
+        //         listElement += 1;
+        //     }
+        //     result.AppendFormat(rowFormat, "Id:", list[listElement].Id);
+        //     result.AppendFormat(lastRowFormat, "Error:", list[listElement].Error.Message);
+
+        //     return result.ToString();
+        // }
     }
 }

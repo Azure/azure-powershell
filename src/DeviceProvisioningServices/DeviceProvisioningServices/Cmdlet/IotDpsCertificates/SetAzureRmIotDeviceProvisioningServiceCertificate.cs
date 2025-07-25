@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             VerificationCodeRequest verificationCodeRequest = new VerificationCodeRequest();
             verificationCodeRequest.Certificate = certificate;
 
-            CertificateResponse certificateResponse = this.IotDpsClient.DpsCertificate.VerifyCertificate(this.CertificateName, this.Etag, verificationCodeRequest, this.ResourceGroupName, this.Name);
+            CertificateResponse certificateResponse = this.IotDpsClient.DpsCertificate.VerifyCertificate(this.CertificateName, this.Etag,this.ResourceGroupName, this.Name, verificationCodeRequest);
             this.WriteObject(IotDpsUtils.ToPSCertificateResponse(certificateResponse));
         }
     }

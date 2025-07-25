@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
+    using Microsoft.Azure.Management.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
     public class VirtualHubBaseCmdlet : NetworkBaseCmdlet
@@ -51,12 +52,12 @@ namespace Microsoft.Azure.Commands.Network
         public PSVirtualHub ToPsVirtualHub(Management.Network.Models.VirtualHub virtualHub)
         {
             var psVirtualHub = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHub);
-
+            
             psVirtualHub.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
 
             return psVirtualHub;
         }
-
+         
         public PSVirtualHub GetVirtualHub(string resourceGroupName, string name)
         {
             try
@@ -160,6 +161,30 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return hubsToReturn;
+        }
+
+        public PSVirtualHubEffectiveRouteList GetVirtualHubEffectiveRouteList(string resourceGroupName, string virtualHubName, EffectiveRoutesParameters effectiveRoutesParameters)
+        {
+            var effectiveRouteList = VirtualHubClient.GetEffectiveVirtualHubRoutes(resourceGroupName, virtualHubName, effectiveRoutesParameters);
+            var pSEffectiveRouteList = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHubEffectiveRouteList>(effectiveRouteList);
+
+            return pSEffectiveRouteList;
+        }
+
+        public PSVirtualHubEffectiveRouteMapRouteList GetVirtualHubInboundRoutes(string resourceGroupName, string virtualHubName, GetInboundRoutesParameters inboundRoutesParameters)
+        {
+            var inboundRoutes = VirtualHubClient.GetInboundRoutes(resourceGroupName, virtualHubName, inboundRoutesParameters);
+            var inboundRouteMapRouteList = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHubEffectiveRouteMapRouteList>(inboundRoutes);
+
+            return inboundRouteMapRouteList;
+        }
+
+        public PSVirtualHubEffectiveRouteMapRouteList GetVirtualHubOutboundRoutes(string resourceGroupName, string virtualHubName, GetOutboundRoutesParameters outboundRoutesParameters)
+        {
+            var outboundRoutes = VirtualHubClient.GetOutboundRoutes(resourceGroupName, virtualHubName, outboundRoutesParameters);
+            var outboundRouteMapRouteList = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHubEffectiveRouteMapRouteList>(outboundRoutes);
+
+            return outboundRouteMapRouteList;
         }
     }
 }

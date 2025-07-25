@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Commands.Tags.Model;
-using SDKTagsObject = Microsoft.Azure.Management.ResourceManager.Models.Tags;
+using SDKTagsObject = Microsoft.Azure.Management.Resources.Models.Tags;
 
 namespace Microsoft.Azure.Commands.Tags.Client
 {
@@ -66,20 +66,32 @@ namespace Microsoft.Azure.Commands.Tags.Client
 
         public List<PSTag> ListTags()
         {
-            var result = ResourceManagementClient.Tags.List();
-            List<PSTag> tags = new List<PSTag>();
-
-            do
+            var result = new List<TagDetails>();
+            var pageOfTags = ResourceManagementClient.Tags.List();
+            AddOrMergeTags(result, pageOfTags);
+            while (!string.IsNullOrEmpty(pageOfTags.NextPageLink))
             {
-                result.Where(t => !t.TagName.StartsWith(ExecludedTagPrefix)).ForEach(t => tags.Add(t.ToPSTag()));
+                pageOfTags = ResourceManagementClient.Tags.ListNext(pageOfTags.NextPageLink);
+                AddOrMergeTags(result, pageOfTags);
+            }
+            return new List<PSTag>(result.Select(t => t.ToPSTag()));
+        }
 
-                if (!string.IsNullOrEmpty(result.NextPageLink))
+        private void AddOrMergeTags(List<TagDetails> results, IEnumerable<TagDetails> tags)
+        {
+            tags.Where(t => !t.TagName.StartsWith(ExecludedTagPrefix)).ForEach(t =>
+            {
+                var tagNameFound = results.FirstOrDefault(pst => pst.TagName.Equals(t.TagName, StringComparison.OrdinalIgnoreCase));
+                if (tagNameFound != null)
                 {
-                    result = ResourceManagementClient.Tags.ListNext(result.NextPageLink);
+                    // tag name already in previous page, merge instead of add
+                    tagNameFound.Values = new List<TagValue>(tagNameFound.Values.Concat(t.Values));
                 }
-            } while (!string.IsNullOrEmpty(result.NextPageLink));
-
-            return tags;
+                else
+                {
+                    results.Add(t);
+                }
+            });
         }
 
         public PSTag GetTag(string tag)

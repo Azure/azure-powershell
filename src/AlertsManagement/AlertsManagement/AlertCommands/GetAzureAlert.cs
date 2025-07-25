@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Filter on Moniter Service")]
+                   HelpMessage = "Filter on Monitor Service")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
-                   HelpMessage = "Filter on Moniter Service")]
+                   HelpMessage = "Filter on Monitor Service")]
         [PSArgumentCompleter("Application Insights", "ActivityLog Administrative", "ActivityLog Security",
                                 "ActivityLog Recommendation", "ActivityLog Policy", "ActivityLog Autoscale",
                                 "Log Analytics", "Nagios", "Platform", "SCOM", "ServiceHealth", "SmartDetector",
@@ -171,12 +171,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Page count
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Number of alerts to be fetched in a page.")]
+            ParameterSetName = AlertsListByFilterParameterSet,
+            HelpMessage = "Number of alerts to be fetched in a page.")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
-                   HelpMessage = "Number of alerts to be fetched in a page.")]
-        public int PageCount { get; set; }
+            ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
+            HelpMessage = "Number of alerts to be fetched in a page.")]
+        public int PageCount { get; set; } = 25;
 
         /// <summary>
         /// Alert property to use while sorting
@@ -278,6 +278,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                     do
                     {
+                        nextPageLink = pageResult.NextPageLink;
                         List<Alert> tempList = pageResult.ToList();
                         if (currentCount + (ulong)tempList.Count - 1 < skip)
                         {
@@ -304,7 +305,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         if (!string.IsNullOrEmpty(nextPageLink))
                         {
                             pageResult = this.AlertsManagementClient.Alerts.GetAllNextWithHttpMessagesAsync(nextPageLink).Result.Body;
-                            nextPageLink = pageResult.NextPageLink;
                         }
 
                     } while (!string.IsNullOrEmpty(nextPageLink) && currentCount < lastCount);

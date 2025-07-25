@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 84FDB0F7-E6DE-4E1B-BD71-89535EDC6AA1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azeffectiveroutetable
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azeffectiveroutetable
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzEffectiveRouteTable** cmdlet returns the effective route table that 
 ## EXAMPLES
 
 ### Example 1: Get the effective route table on a network interface
-```
-PS C:\>Get-AzEffectiveRouteTable -NetworkInterfaceName "MyNetworkInterface" -ResourceGroupName "MyResourceGroup"
+```powershell
+Get-AzEffectiveRouteTable -NetworkInterfaceName "MyNetworkInterface" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command gets the effective route table associated with network interface named MyNetworkInterface in the resource group named MyResourceGroup.
@@ -108,5 +108,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzEffectiveNetworkSecurityGroup](./Get-AzEffectiveNetworkSecurityGroup.md)
-
-

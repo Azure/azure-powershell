@@ -12,78 +12,71 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityAlertTests
+    public class SecurityAlertTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityAlertTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityAlertTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityAlert-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmSecurityAlert-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceGroupScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityAlert-ResourceGroupScope");
+            TestRunner.RunTestScript("Get-AzureRmSecurityAlert-ResourceGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityAlert-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmSecurityAlert-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityAlert-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmSecurityAlert-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityAlert-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmSecurityAlert-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetResourceGroupLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityAlert-ResourceGroupLevelResource");
+            TestRunner.RunTestScript("Set-AzureRmSecurityAlert-ResourceGroupLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityAlert-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Set-AzureRmSecurityAlert-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityAlert-ResourceId");
+            TestRunner.RunTestScript("Set-AzureRmSecurityAlert-ResourceId");
         }
     }
 }

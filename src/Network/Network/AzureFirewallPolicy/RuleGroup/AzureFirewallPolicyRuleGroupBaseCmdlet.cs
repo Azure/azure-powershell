@@ -97,6 +97,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var ruleCollectionGroupWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper();
             ruleCollectionGroup.Priority = (uint)getRuleCollectionGroup.Priority;
+            ruleCollectionGroup.Size = getRuleCollectionGroup.Size;
             ruleCollectionGroupWrapper.Properties = ruleCollectionGroup;
             ruleCollectionGroupWrapper.Name = getRuleCollectionGroup.Name;
             ruleCollectionGroupWrapper.Properties.Id = getRuleCollectionGroup.Id;

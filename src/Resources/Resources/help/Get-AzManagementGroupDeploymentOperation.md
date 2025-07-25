@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azmanagementgroupdeploymentoperation
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azmanagementgroupdeploymentoperation
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Get deployment operation for management group deployment
 ### GetByDeploymentName (Default)
 ```
 Get-AzManagementGroupDeploymentOperation -ManagementGroupId <String> -DeploymentName <String>
- [-OperationId <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-OperationId <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByDeploymentObject
@@ -31,15 +32,15 @@ This is the same information provided in the deployment details on the portal.
 ## EXAMPLES
 
 ### Example 1: Get deployment operations given a deployment name
-```
-PS C:\>Get-AzManagementGroupDeploymentOperation -ManagementGroupId myMG -DeploymentName Deploy01
+```powershell
+Get-AzManagementGroupDeploymentOperation -ManagementGroupId myMG -DeploymentName Deploy01
 ```
 
 Gets deployment operations with name "Deploy01" at the management group "myMG".
 
 ### Example 2: Get a deployment and get its deployment operations
-```
-PS C:\>Get-AzManagementGroupDeployment -ManagementGroupId myMG -Name Deploy01 | Get-AzManagementGroupDeploymentOperation
+```powershell
+Get-AzManagementGroupDeployment -ManagementGroupId myMG -Name Deploy01 | Get-AzManagementGroupDeploymentOperation
 ```
 
 This command gets the deployment "Deploy01" at the management group "myMG" and get its deployment operations.

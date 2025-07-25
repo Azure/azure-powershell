@@ -21,6 +21,15 @@
 
 ## Upcoming Release
 
+## Version 1.2.1
+* Removed "Microsoft.Azure.Management.DataBoxEdge" Version "1.0.0" PackageReference
+
+## Version 1.2.0
+* Upgraded nuget package to signed package.
+
+## Version 1.1.1
+* Removed the outdated deps.json file.
+
 ## Version 1.1.0
 * Added cmdlet `Get-AzDataBoxEdgeStorageContainer`
   - Get the Edge Storage Container
@@ -84,7 +93,7 @@
   - Fetch the available roles for a device
 
 * Added cmdlet `Get-AzDataBoxEdgeShare`
-  - Gets the creted shares for this device
+  - Gets the created shares for this device
 
 * Added cmdlet `Get-AzDataBoxEdgeStorageAccountCredential`
   - Get the Storage Account credential corresponding to device and storage account
@@ -117,13 +126,13 @@
   - Remove a device
 
 * Added cmdlet `Remove-AzDataBoxEdgeRole`
-  - Removes the assosciated Role for the device
+  - Removes the associated Role for the device
 
 * Added cmdlet `Remove-AzDataBoxEdgeRole`
-  - Removes the assosciated Role for the device
+  - Removes the associated Role for the device
 
 * Added cmdlet `Remove-AzDataBoxEdgeStorageAccountCredential`
-  - Removes a storage account credentail object for the device
+  - Removes a storage account credential object for the device
 
 * Added cmdlet `Remove-AzDataBoxEdgeUser`
   - Removes the user
@@ -132,7 +141,7 @@
   - Update a Bandwidth Schedule for the device
 
 * Added cmdlet `Set-AzDataBoxEdgeShare`
-  - Update the share 
+  - Update the share
 
 * Added cmdlet `Set-AzDataBoxEdgeUser`
   - Set the new password for the user

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -83,9 +84,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string AutoScaleFormula { get; set; }
 
         /// <summary>
-        /// The maximum number of tasks that can run on a compute node.
+        /// The number of task slots for each compute node.
         /// </summary>
-        public int? MaxTasksPerComputeNode { get; set; }
+        public int? TaskSlotsPerNode { get; set; }
 
         /// <summary>
         /// The task scheduling policy.
@@ -93,9 +94,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
         /// <summary>
+        /// The upgrade policy for the pool.
+        /// </summary>
+        public PSUpgradePolicy UpgradePolicy { get; set; }
+
+        /// <summary>
         /// Metadata to add to the new pool.
         /// </summary>
         public IDictionary Metadata { get; set; }
+
+        /// <summary>
+        /// The user-specified tags associated with the pool.
+        /// </summary>
+        public IDictionary ResourceTags { get; set; }
 
         /// <summary>
         /// Specifies whether the pool permits direct communication between compute nodes.
@@ -136,5 +147,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The list of application licenses the Batch service will make available on each compute node in the pool.
         /// </summary>
         public List<string> ApplicationLicenses { get; set; }
+
+        /// <summary>
+        /// The desired node communication mode for the pool.
+        /// </summary>
+        public NodeCommunicationMode TargetCommunicationMode { get; set; }
+
     }
 }

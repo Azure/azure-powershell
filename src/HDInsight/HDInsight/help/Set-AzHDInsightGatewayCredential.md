@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential
 schema: 2.0.0
 ---
 
@@ -15,21 +15,22 @@ Sets the gateway HTTP credentials of an Azure HDInsight cluster.
 ### SetByNameParameterSet (Default)
 ```
 Set-AzHDInsightGatewayCredential [-Name] <String> [-HttpCredential] <PSCredential>
- [-ResourceGroupName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceGroupName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
 Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] -InputObject <AzureHDInsightCluster> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] -InputObject <AzureHDInsightCluster>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
 Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] -ResourceId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] -ResourceId <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,11 +40,11 @@ The **Set-AzHDInsightGatewayCredential** cmdlet sets gateway credential of an Az
 
 ### Example 1
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
-PS C:\> Set-AzHDInsightGatewayCredential `
+Set-AzHDInsightGatewayCredential `
             -ClusterName $clusterName `
             -HttpCredential $clusterCreds
 ```
@@ -52,7 +53,7 @@ This command sets gateway credential of the cluster named your-hadoop-001 by nam
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzHDInsightGatewayCredential `
+Set-AzHDInsightGatewayCredential `
             -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/your-hadoop-001" `
             -HttpCredential $clusterCreds
 ```
@@ -61,11 +62,11 @@ This command sets gateway credential of the cluster named your-hadoop-001 by Res
 
 ### Example 3
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
-PS C:\> Get-AzHDInsightCluster -ClusterName $clusterName | Set-AzHDInsightGatewayCredential `
+Get-AzHDInsightCluster -ClusterName $clusterName | Set-AzHDInsightGatewayCredential `
             -HttpCredential $clusterCreds
 ```
 

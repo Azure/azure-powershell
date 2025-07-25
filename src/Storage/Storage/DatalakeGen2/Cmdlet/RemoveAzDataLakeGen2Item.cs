@@ -70,6 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override int? ConcurrentTaskCount { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the RemoveAzDataLakeGen2ItemCommand class.
@@ -103,48 +104,42 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override void ExecuteCmdlet()
         {
             IStorageBlobManagement localChannel = Channel;
-            BlobRequestOptions requestOptions = RequestOptions;
 
-            bool foundAFolder = false;
+            if (ShouldProcess(ParameterSetName == ManualParameterSet ? this.Path : InputObject.Path, "remove"))
+            {
+                if (ParameterSetName == ManualParameterSet)
+                {
+                    DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
+                    DataLakePathClient pathClient = new DataLakePathClient(fileSystem, this.Path);
+                    if (force || ShouldContinue(string.Format("Remove DatalakeGen2 Item: {0}", GetDataLakeItemUriWithoutSas(pathClient)), ""))
+                    {
+                        pathClient.Delete(true, cancellationToken: this.CmdletCancellationToken);
+                    }
+                }
+                else //ItemPipeline
+                {
+                    if (!InputObject.IsDirectory)
+                    {
+                        DataLakeFileClient fileClient = InputObject.File;
+                        if (force || ShouldContinue(string.Format("Remove File: {0}", GetDataLakeItemUriWithoutSas(fileClient)), ""))
+                        {
+                            fileClient.Delete(cancellationToken: this.CmdletCancellationToken);
+                        }
+                    }
+                    else
+                    {
+                        DataLakeDirectoryClient dirClient = InputObject.Directory;
+                        if (force || ShouldContinue(string.Format("Remove Directory: {0}", GetDataLakeItemUriWithoutSas(dirClient)), ""))
+                        {
+                            dirClient.Delete(true, cancellationToken: this.CmdletCancellationToken);
+                        }
+                    }
+                }
 
-            DataLakeFileClient fileClient = null;
-            DataLakeDirectoryClient dirClient = null;
-            if (ParameterSetName == ManualParameterSet)
-            {
-                DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);
-                foundAFolder = GetExistDataLakeGen2Item(fileSystem, this.Path, out fileClient, out dirClient);
-            }
-            else //BlobParameterSet
-            {
-                if (!InputObject.IsDirectory)
+                if (PassThru)
                 {
-                    fileClient = InputObject.File;
+                    WriteObject(true);
                 }
-                else
-                {
-                    dirClient = InputObject.Directory;
-                    foundAFolder = true;
-                }
-            }
-
-            if (foundAFolder)
-            {
-                if (force || ShouldContinue(string.Format("Remove Directory: {0}", GetDataLakeItemUriWithoutSas(dirClient)), ""))
-                {
-                    dirClient.Delete(true);
-                }
-            }
-            else
-            {
-                if (force || ShouldContinue(string.Format("Remove File: {0}", GetDataLakeItemUriWithoutSas(fileClient)), ""))
-                {
-                    fileClient.Delete();
-                }
-            }
-
-            if (PassThru)
-            {
-                WriteObject(true);
             }
         }
     }

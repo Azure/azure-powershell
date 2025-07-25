@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateChangeTypes]
         public string[] WhatIfExcludeChangeType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation if there is no changes in the What-If result. Applicable when the -Confirm switch is set.")]
+        public SwitchParameter ProceedIfNoChange { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -69,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             typeof(NewAzureSubscriptionDeploymentCmdlet),
             typeof(CmdletAttribute))).ConfirmImpact;
 
-        protected override PSDeploymentCmdletParameters DeploymentParameters => new PSDeploymentCmdletParameters()
+        protected override PSDeploymentCmdletParameters BuildDeploymentParameters() => new PSDeploymentCmdletParameters()
         {
             ScopeType = DeploymentScopeType.Subscription,
             Location = this.Location,
@@ -78,13 +81,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             TemplateObject = this.TemplateObject,
             TemplateSpecId = TemplateSpecId,
-            TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
+            QueryString = QueryString,
+            TemplateParameterObject = this.GetTemplateParameterObject(),
             ParameterUri = this.TemplateParameterUri,
             DeploymentDebugLogLevel = this.GetDeploymentDebugLogLevel(this.DeploymentDebugLogLevel),
             Tags = TagsHelper.ConvertToTagsDictionary(this.Tag)
         };
 
-        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+        protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
             DeploymentScopeType.Subscription,
             deploymentName: this.Name,
             location: this.Location,
@@ -92,9 +96,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateUri: TemplateUri ?? this.TryResolvePath(TemplateFile),
             templateObject: this.TemplateObject,
             templateSpecId: TemplateSpecId,
+            queryString: QueryString,
             templateParametersUri: this.TemplateParameterUri,
-            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            templateParametersObject: GetTemplateParameterObject(),
             resultFormat: this.WhatIfResultFormat,
-            excludeChangeTypes: this.WhatIfExcludeChangeType);
+            excludeChangeTypes: this.WhatIfExcludeChangeType,
+            validationLevel: this.ValidationLevel);
+
+        protected override bool ShouldSkipConfirmationIfNoChange() => this.ProceedIfNoChange;
     }
 }

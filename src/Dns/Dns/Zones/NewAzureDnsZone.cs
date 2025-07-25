@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Dns.Models;
-using Microsoft.Azure.Management.Internal.Network.Common;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Dns.Models;
+    using Microsoft.Azure.Management.Internal.Network.Common;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
     /// <summary>
     /// Creates a new zone.
     /// </summary>
@@ -197,7 +196,7 @@ namespace Microsoft.Azure.Commands.Dns
                     throw new PSArgumentException(string.Format(ProjectResources.Error_NSDelegationSubscriptionMisMatch, this.Name, parentZoneName));
                 }
             }
-            if(parentZoneName != null)
+            if (parentZoneName != null)
             {
                 parent = new DnsZone();
                 parent.Name = parentZoneName;

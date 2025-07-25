@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application;
     using Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Operations;
 
     /// <summary>
     /// Base class for policy assignment cmdlets.
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Converts the resource object to specified resource type object.
         /// </summary>
+        /// <param name="resourceType">The resource type.</param>
         /// <param name="resources">The policy definition resource object.</param>
         protected PSObject[] GetOutputObjects(string resourceType, params JToken[] resources)
         {
@@ -145,6 +147,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return File.Exists(path)
                 ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(path))
                 : JToken.FromObject(parameter);
+        }
+
+        /// <summary>
+        /// Processes and outputs the result of the operation.
+        /// </summary>
+        protected void ProcessResult(string result, string resourceId, string apiVersion)
+        {
+            if (result.TryConvertTo<AzureAsyncOperationResource>(out var operationResource) && operationResource != null)
+            {
+                if (String.Equals(operationResource.Status, "Succeeded", StringComparison.OrdinalIgnoreCase))
+                {
+                    var getResult = this.GetResourcesClient()
+                        .GetResource<JObject>(
+                            resourceId: resourceId,
+                            apiVersion: apiVersion,
+                            cancellationToken: this.CancellationToken.Value)
+                        .Result;
+                    this.WriteObject(this.GetOutputObjects("ManagedApplicationId", getResult), enumerateCollection: true);
+                }
+                else
+                {
+                    this.WriteObject(operationResource.Error.ToJToken());
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("The operation failed because the operation status could not be de-serialized.");
+            }
         }
     }
 }

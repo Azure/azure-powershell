@@ -70,6 +70,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         string fileContent = Commands.Common.Authentication.Abstractions.FileUtilities.DataStore.ReadFileAsText(filePath.FullName);
                         parameters.Script = fileContent.Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
                     }
+                    else if (this.ScriptString != null)
+                    {
+                        parameters.Script = new List<string>() { this.ScriptString };
+                    }
                     if (this.Parameter != null)
                     {
                         var vParameter = new List<RunCommandInputParameter>();
@@ -117,6 +121,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [AllowNull]
         public string ScriptPath { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public string ScriptString { get; set; }
 
         [Parameter(
             Mandatory = false)]

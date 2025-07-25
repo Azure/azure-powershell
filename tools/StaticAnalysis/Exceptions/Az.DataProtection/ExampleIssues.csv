@@ -1,0 +1,4 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.DataProtection","New-AzDataProtectionBackupConfigurationClientObject","2","1","Invalid_Cmdlet","5000","1","Get-AzStorageAccount is not a valid command name.","Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName","Check the spell of Get-AzStorageAccount."
+"Az.DataProtection","New-AzDataProtectionBackupConfigurationClientObject","2","2","Invalid_Cmdlet","5000","1","Get-AzStorageContainer is not a valid command name.","Get-AzStorageContainer -Context $storageAccount.Context","Check the spell of Get-AzStorageContainer."
+"Az.DataProtection","Start-AzDataProtectionBackupInstanceRestore","9","4","Invalid_Cmdlet","5000","1","Get-AzStorageAccount is not a valid command name.","Get-AzStorageAccount -ResourceGroupName 'teststorageaccountRG' -Name 'teststorageaccount'","Check the spell of Get-AzStorageAccount."

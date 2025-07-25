@@ -12,7 +12,7 @@
     RootModule = 'Az.Tools.Installer.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.1.0'
+    ModuleVersion = '1.0.0'
     
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -55,7 +55,7 @@
     
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @(
-        '.\assembly\Microsoft.ApplicationInsights.2.12.0\Microsoft.ApplicationInsights.dll'
+        '.\assembly\Microsoft.ApplicationInsights.2.13.1\Microsoft.ApplicationInsights.dll'
     )
     
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -109,7 +109,7 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* the first preview release'
+            ReleaseNotes = '* General Availability of Az.Tools.Installer.'
     
             # Prerelease string of this module
             # Prerelease = ''

@@ -1,58 +1,185 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/update-azreservation
+online version: https://learn.microsoft.com/powershell/module/az.reservations/update-azreservation
 schema: 2.0.0
 ---
 
 # Update-AzReservation
 
 ## SYNOPSIS
-Update a `Reservation`.
+Update the applied scopes of the `Reservation`.
 
 ## SYNTAX
 
-### CommandLine (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzReservation -ReservationOrderId <Guid> -ReservationId <Guid> -AppliedScopeType <String>
- [-AppliedScope <String>] [-InstanceFlexibility <String>] [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzReservation -Id <String> -OrderId <String> [-AppliedScope <String[]>]
+ [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
+ [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
+ [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <String>] [-InstanceFlexibility <String>]
+ [-Name <String>] [-Renew] [-RenewProperty <IPatchPropertiesRenewProperties>] [-ReviewDateTime <DateTime>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### PipeObject
+### UpdateViaJsonString
 ```
-Update-AzReservation -AppliedScopeType <String> [-AppliedScope <String>] [-InstanceFlexibility <String>]
- -Reservation <PSReservation> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzReservation -Id <String> -OrderId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzReservation -Id <String> -OrderId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityReservationOrderExpanded
+```
+Update-AzReservation -Id <String> -ReservationOrderInputObject <IReservationsIdentity>
+ [-AppliedScope <String[]>] [-AppliedScopePropertyDisplayName <String>]
+ [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
+ [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
+ [-AppliedScopeType <String>] [-InstanceFlexibility <String>] [-Name <String>] [-Renew]
+ [-RenewProperty <IPatchPropertiesRenewProperties>] [-ReviewDateTime <DateTime>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzReservation -InputObject <IReservationsIdentity> [-AppliedScope <String[]>]
+ [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
+ [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
+ [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <String>] [-InstanceFlexibility <String>]
+ [-Name <String>] [-Renew] [-RenewProperty <IPatchPropertiesRenewProperties>] [-ReviewDateTime <DateTime>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the applied scopes of the `Reservation`.
+Update the applied scopes of the `Reservation`.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> Update-AzReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedScopeType "Single" -appliedscope "/subscriptions/1111aaaa-b1b2-c0c2-d0d2-00000fffff" -InstanceFlexibility "On"
-```
-
-Updates the AppliedScopeType of the specified `Reservation` to Single and InstanceFlexibility to On.
-
-### Example 2
-```
-PS C:\> Update-AzReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedscopetype "Shared" -InstanceFlexibility "Off"
+### Example 1: Update Reservation's properties
+```powershell
+Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -Name "testName"
 ```
 
-Updates the AppliedScopeType of the specified `Reservation` to Shared and InstanceFlexibility to Off.
+```output
+Location   ReservationOrderId/ReservationId                                             Sku           State     BenefitStartTime     ExpiryDate            LastUpdatedDateTime  SkuDescription
+--------   --------------------------------                                             ---           -----     ----------------     ----------            -------------------  --------------
+westeurope 30000000-aaaa-bbbb-cccc-200000000013/10000000-aaaa-bbbb-cccc-200000000007/16 Standard_B4ms Succeeded 6/14/2022 9:41:17 PM 6/14/2025 12:00:00 AM 7/7/2022 11:37:58 PM Reserved VM In…
+```
+
+Update Reservation's properties including name, renew, appliedScopeType, appliedScope
+
+### Example 2: Update Reservation's AppliedScopeType
+```powershell
+# Shared scope:
+Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Shared"
+
+# Single scope:
+Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Single" -AppliedScope "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018"
+
+# Single scope with resource group:
+Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Single" -AppliedScope "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018/resourcegroups/{your resource group name}"
+```
+
+```output
+Similar to example 1
+```
+
+Update Reservation's applied scope type.
+For Shared scope, don't pass in any applied scope id.
+For Single scope, pass in applied scope id and for Single scope with resource group, also pass in resource group name in the applied scope id
 
 ## PARAMETERS
 
 ### -AppliedScope
-SubscriptionId for this `Reservation` to be applied
+List of the subscriptions that the benefit will be applied.
+Do not specify if AppliedScopeType is Shared.
+This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyDisplayName
+Display name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyManagementGroupId
+Fully-qualified identifier of the management group where the benefit must be applied.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyResourceGroupId
+Fully-qualified identifier of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertySubscriptionId
+Fully-qualified identifier of the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyTenantId
+Tenant ID where the savings plan should apply benefit.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -63,12 +190,58 @@ Accept wildcard characters: False
 ```
 
 ### -AppliedScopeType
-Type of the Applied Scope
+Type of the Applied Scope.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Id of the reservation item
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityReservationOrderExpanded
+Aliases: ReservationId
 
 Required: True
 Position: Named
@@ -77,57 +250,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceFlexibility
-If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value remains unchanged.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of Reservation
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Reservation
-Pipe object parameter for `Reservation`
-
-```yaml
-Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation
-Parameter Sets: PipeObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -137,12 +265,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ReservationId
-Id of the `Reservation` to update
+### -InstanceFlexibility
+Turning this on will apply the reservation discount to other VMs in the same VM size group.
+Only specify for VirtualMachines reserved resource type.
 
 ```yaml
-Type: System.Guid
-Parameter Sets: CommandLine
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -152,15 +296,120 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReservationOrderId
-Id of the `ReservationOrder` to update
+### -JsonString
+Json string supplied to the Update operation
 
 ```yaml
-Type: System.Guid
-Parameter Sets: CommandLine
+Type: System.String
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Display name of the reservation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrderId
+Order Id of the reservation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases: ReservationOrderId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Renew
+Setting this to true will automatically purchase a new reservation on the expiration date time.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RenewProperty
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesRenewProperties
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservationOrderInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+Parameter Sets: UpdateViaIdentityReservationOrderExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ReviewDateTime
+This is the date-time when the Azure hybrid benefit needs to be reviewed.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentityReservationOrderExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,7 +432,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -202,11 +452,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Reservations.Models.PSReservation
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Reservations.Models.PSReservation
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 
 ## NOTES
 

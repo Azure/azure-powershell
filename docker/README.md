@@ -19,7 +19,7 @@ The release containers derive from the [Powershell image][powershell image], and
 
 [powershell image]: https://hub.docker.com/_/microsoft-powershell
 
-Azure PowerShell [release notes](https://docs.microsoft.com/en-us/powershell/azure/release-notes-azureps)
+Azure PowerShell [release notes](https://learn.microsoft.com/en-us/powershell/azure/release-notes-azureps)
 
 ## Examples
 
@@ -29,27 +29,12 @@ Azure PowerShell [release notes](https://docs.microsoft.com/en-us/powershell/azu
 docker pull mcr.microsoft.com/azure-powershell
 ```
 
-### Run azure-powershell container 
+### Run azure-powershell container
 
 - To run azure-powershell using a container in an interactive mode:
 
 ```sh
 $ docker run -it mcr.microsoft.com/azure-powershell pwsh 
-```
-
-- To run azure-powershell from using a container in an interactive mode using host authentication: 
-
-    1- Make sure that `$HOME/.Azure` is present on the host (default location) 
-    2- You may need to grant access this location for the docker process.
-
-```sh
-$ docker run -it -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azure-powershell pwsh 
-```
-
-Verify the host authentication:
-
-```sh
-docker run -it --rm -v ~/.Azure/AzureRmContext.json:/root/.Azure/AzureRmContext.json -v ~/.Azure/TokenCache.dat:/root/.Azure/TokenCache.dat mcr.microsoft.com/azure-powershell pwsh -c Get-AzContext
 ```
 
 ### Building image

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -26,8 +27,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, AzureRMConstants.AzureRMPrefix + "Deployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
     [Alias("Test-AzSubscriptionDeployment")]
-    public class TestAzureSubscriptionDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    public class TestAzureSubscriptionDeploymentCmdlet : TestDeploymentCmdletBase
     {
+        [Alias("DeploymentName")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the deployment it's going to test. If not specified, defaults to the template file name when a template file is provided")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+        
         [Parameter(Mandatory = true, HelpMessage = "The location to store deployment data.")]
         [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
@@ -39,13 +46,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 ScopeType = DeploymentScopeType.Subscription,
                 Location = Location,
+                DeploymentName = this.Name,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,
-                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri
+                QueryString = QueryString,
+                TemplateParameterObject = GetTemplateParameterObject(),
+                ParameterUri = TemplateParameterUri,
+                ValidationLevel = ValidationLevel
             };
 
-            WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters));
+            var validationInfo = NewResourceManagerSdkClient.ValidateDeployment(parameters);
+
+            WriteOutput(validationInfo);
         }
     }
 }

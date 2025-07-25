@@ -16,22 +16,16 @@
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
 
     /// <summary>
     /// Scenario tests for the Workflow trigger commands
     /// </summary>
-    public class WorkflowTriggerTests : RMTestBase
+    public class WorkflowTriggerTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public WorkflowTriggerTests(ITestOutputHelper output)
+        public WorkflowTriggerTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -41,7 +35,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzLogicAppTrigger()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppTrigger");
+            TestRunner.RunTestScript("Test-GetAzLogicAppTrigger");
         }
 
         /// <summary>
@@ -51,7 +45,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzLogicAppTriggerHistory()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppTriggerHistory");
+            TestRunner.RunTestScript("Test-GetAzLogicAppTriggerHistory");
         }
 
         /// <summary>
@@ -61,7 +55,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzLogicAppTriggerCallbackUrl()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppTriggerCallbackUrl");
+            TestRunner.RunTestScript("Test-GetAzLogicAppTriggerCallbackUrl");
         }
 
         /// <summary>
@@ -71,7 +65,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartAzLogicAppTrigger()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StartAzLogicAppTrigger");
+            TestRunner.RunTestScript("Test-StartAzLogicAppTrigger");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +23,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using Microsoft.Azure.Commands.Sql.ReplicationLink.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
@@ -98,6 +103,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string PartnerDatabaseName { get; set; }
 
         /// <summary>
+        /// Gets or sets the subscription id of the secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The subscription id of the secondary database to create.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerSubscriptionId { get; set; }
+
+        /// <summary>
         /// Gets or sets the read intent of the secondary (ReadOnly is not yet supported).
         /// </summary>
         [Parameter(Mandatory = false,
@@ -111,7 +124,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-
         /// <summary>
         /// Gets or sets the compute generation of the database copy
         /// </summary>
@@ -121,6 +133,16 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [PSArgumentCompleter("Gen4", "Gen5")]
         [ValidateNotNullOrEmpty]
         public string SecondaryComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the compute model for Azure Sql database
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
+            HelpMessage="The compute model for secondary database. Serverless or Provisioned")]
+        [PSArgumentCompleter(
+            SecondaryDatabaseComputeModel.Provisioned,
+            SecondaryDatabaseComputeModel.Serverless)]
+        public string SecondaryComputeModel { get; set; }
 
         /// <summary>
         /// Gets or sets the Vcore numbers of the database copy
@@ -142,12 +164,77 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the Auto Pause delay for Azure Sql Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The auto pause delay in minutes for secondary database(serverless only), -1 to opt out from pausing")]
+        public int AutoPauseDelayInMinutes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Minimal capacity that the secondary database will always have allocated, if not paused. For serverless database only.")]
+        [Alias("MinVCore", "MinCapacity")]
+        public double MinimumCapacity { get; set; }
+
+        /// <summary>
         /// Gets or sets the database backup storage redundancy.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
-        [ValidateSet("Local", "Zone", "Geo")]
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone, Geo, GeoZone.")]
+        [ValidateSet("Local", "Zone", "Geo", "GeoZone")]
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.")]
+        [ValidateSet("Named", "Geo", "Standby")]
+        public string SecondaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of high availability readonly replicas for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.")]
+        public int HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database. This property is only settable for Hyperscale edition databases.")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign a Microsoft Entra Identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The encryption protector key for SQL Database copy.")]
+        public string EncryptionProtector { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of user assigned identity for the SQL Database copy.")]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys for the SQL Database copy.")]
+        public string[] KeyList { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The AKV Key Auto Rotation status")]
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
 
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
@@ -166,7 +253,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
 
                 }
             }
@@ -182,7 +269,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             // We try to get the database.  Since this is a create secondary database operation, we don't want the secondary database to already exist
             try
             {
-                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName));
+                ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, GetEffectivePartnerDatabaseName(this.DatabaseName, this.PartnerDatabaseName), this.PartnerSubscriptionId);
             }
             catch (CloudException ex)
             {
@@ -209,7 +296,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureReplicationLinkModel> ApplyUserInputToModel(IEnumerable<AzureReplicationLinkModel> model)
         {
-            string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName);
+            string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName, this.PartnerSubscriptionId);
             List<Model.AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
             Database.Model.AzureSqlDatabaseModel primaryDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
             
@@ -226,7 +313,17 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType,
-                BackupStorageRedundancy = BackupStorageRedundancy,
+                AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
+                MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
+                RequestedBackupStorageRedundancy = this.BackupStorageRedundancy,
+                SecondaryType = SecondaryType,
+                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
+                ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
+                Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
+                Keys = Common.DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
+                EncryptionProtector = this.EncryptionProtector,
+                FederatedClientId = this.FederatedClientId,
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
@@ -245,7 +342,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             }
             else
             {
-                linkModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(primaryDb.Edition);
+                linkModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(primaryDb.Edition, SecondaryComputeModel == SecondaryDatabaseComputeModel.Serverless);
                 linkModel.Edition = primaryDb.Edition;
                 linkModel.Capacity = SecondaryVCore;
                 linkModel.Family = SecondaryComputeGeneration;
@@ -262,9 +359,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
+            string partnerSubscriptionId = MyInvocation.BoundParameters.ContainsKey("PartnerSubscriptionId") ? this.PartnerSubscriptionId : null;
             return new List<AzureReplicationLinkModel>()
             {
-                ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
+                ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First(), partnerSubscriptionId)
             };
         }
 

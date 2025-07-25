@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private PSAsrComputeManagementClient computeManagementClient;
 
         /// <summary>
+        ///     Recovery Services client.
+        /// </summary>
+        private PSAsrFabricDiscoveryClient fabricDiscoveryClient;
+
+        /// <summary>
         ///     Gets or sets a value indicating whether stop processing has been triggered.
         /// </summary>
         internal bool StopProcessingFlag { get; set; }
@@ -73,6 +78,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
 
                 return this.computeManagementClient;
+            }
+        }
+
+        internal PSAsrFabricDiscoveryClient FabricDiscoveryClient
+        {
+            get
+            {
+                if (this.fabricDiscoveryClient == null)
+                {
+                    this.fabricDiscoveryClient = new PSAsrFabricDiscoveryClient(this.DefaultProfile);
+                }
+
+                return this.fabricDiscoveryClient;
             }
         }
 

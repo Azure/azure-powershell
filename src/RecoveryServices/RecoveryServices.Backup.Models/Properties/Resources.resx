@@ -199,7 +199,7 @@
     <value>Unexpected ContainerType - expected:{0}, current:{1}</value>
   </data>
   <data name="AllRetentionSchedulesEmptyException" xml:space="preserve">
-    <value>All retention schedules are empty in RetentionPolicy. Alteast one is expected.</value>
+    <value>All retention schedules are empty in RetentionPolicy. At least one is expected.</value>
   </data>
   <data name="BackupAndRetentionTimesMismatch" xml:space="preserve">
     <value>RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy</value>
@@ -226,7 +226,7 @@
     <value>In Monthly and Yearly retention schedules, RetentionFormatType cannot be 'Daily' if Weekly BackupSchedule is selected</value>
   </data>
   <data name="RetentionDurationCountInvalidException" xml:space="preserve">
-    <value>RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999</value>
+    <value>RetentionDuration in {0} should be from {1} - {2}</value>
   </data>
   <data name="WeeklyRetentionScheduleNullException" xml:space="preserve">
     <value>If Weekly backup schedule is enabled, then IsDailyScheduleEnabled should be false and Weekly retention schedule should not be null, IsWeeklyScheduleEnabled should be true</value>
@@ -289,7 +289,7 @@
     <value>Please pass Job or List of Jobs as input. Your input is of type: {0}</value>
   </data>
   <data name="ScheduleTimeNotInUTCTimeZoneException" xml:space="preserve">
-    <value>ScheduleRunTimes in Schedule Policy should be in UTC Timezone</value>
+    <value>ScheduleRunTimes in Schedule Policy should be in UTC Time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute</value>
   </data>
   <data name="InvalidProtectionItemException" xml:space="preserve">
     <value>Invalid Item - either NULL or NOT of type: {0}</value>
@@ -414,7 +414,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid.</value>
   </data>
   <data name="UnsupportedContainerException" xml:space="preserve">
-    <value>Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL or Container of containerType as AzureStorage and backupManagementType as AzureStorage. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
+    <value>Please provide Container of containerType as Windows and backupManagementType as MAB or Container of containerType as AzureSQL and backupManagementType as AzureSQL or Container of containerType as AzureStorage and backupManagementType as AzureStorage. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
   </data>
   <data name="GetRPErrorInputDatesShouldBeInUTC" xml:space="preserve">
     <value>Please specify startdate and enddate in UTC format</value>
@@ -566,7 +566,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Please provide the target of the restore operation using the switch -OriginalWorkloadRestore or -AlternateWorkloadRestore</value>
   </data>
   <data name="InstantRPRetentionDaysException" xml:space="preserve">
-    <value>For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly</value>
+    <value>For Standard policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly</value>
   </data>
   <data name="RetentionDurationCountInDaysInvalidException" xml:space="preserve">
     <value>RetentionDuration in Days should be from 7 - 9999</value>
@@ -596,10 +596,10 @@ Please contact Microsoft for further assistance.</value>
     <value>Both Inclusion and Exclusion lists provided. Please provide only one of them.</value>
   </data>
   <data name="TargetRGUnmanagedRestoreDuplicateParamsException" xml:space="preserve">
-    <value>Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.</value>
+    <value>Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be specified. Please give Only one parameter and retry.</value>
   </data>
   <data name="UnmanagedVMRestoreWarning" xml:space="preserve">
-    <value>The disks of the managed VM will be restored as unmanaged since TargetResourceGroupName parameter is not provided. This will NOT leverage the instant restore functionality and hence can be significantly slow based on given storage account. To leverage instant restore, provide the TargetResourceGroupName parameter. Otherwise, provide the intent next time by passing the RestoreAsUnmanagedDisks parameter</value>
+    <value>This is a managed disk recovery point and hence please provide a target resource group for the managed disks to be restored into with the TargetResourceGroupName parameter. Otherwise, please explicitly state that the managed disks should be restored into the staging storage account as unmanaged disks with restoreAsUnmanagedDisks parameter</value>
   </data>
   <data name="AzureFileSourceFilePathRedundantException" xml:space="preserve">
     <value>Both source file path and multiple source file paths provided. Please give only one option</value>
@@ -610,7 +610,286 @@ Please contact Microsoft for further assistance.</value>
   <data name="TargetVaultStorageRedundancy" xml:space="preserve">
     <value>Are you sure you want to copy items to the {0} whose storage redundancy is {1}</value>
   </data>
-  <data name="ContainerNameIsInvalid" xml:space="preserve">
-    <value>container name is invalid.</value>
+  <data name="TargetResourcegroupNotSupported" xml:space="preserve">
+    <value>Target ResourceGroup is not applicable and restore will proceed as unmanaged disk restore since this is unmanaged VM</value>
+  </data>
+  <data name="InvalidTargetStorageAccount" xml:space="preserve">
+    <value>Please provide a valid target storage account</value>
+  </data>
+  <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
+    <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>
+  </data>
+  <data name="RecoveryPointZonePinnedException" xml:space="preserve">
+    <value>Please ensure that the Recovery point is Zone pinned or remove TargetZone</value>
+  </data>
+  <data name="ZonalRestoreVaultStorageRedundancyException" xml:space="preserve">
+    <value>Please check whether the vault storageRedundancy is ZRS or RA-GRS  or remove TargetZone</value>
+  </data>
+  <data name="TargetVirtualMachineIdRequiredException" xml:space="preserve">
+    <value>WorkloadRecoveryConfig TargetVirtualMachineId cannot be null for Alternate location restore</value>
+  </data>
+  <data name="ArchiveNotSupported" xml:space="preserve">
+    <value>Archive is currently not supported for the workload type of the BackupItem passed in the cmdlet</value>
+  </data>
+  <data name="ArchiveRecommendationNotSupported" xml:space="preserve">
+    <value>Recommendation for Archival RP groups is not applicable for the workload type of the backup item passed in the cmdlet.</value>
+  </data>
+  <data name="DeleteArchiveRecoveryPoints" xml:space="preserve">
+    <value>You will incur early deletion fees for this operation as there are archived recovery points for the backup item you are trying to unprotect. Do you want to continue?</value>
+  </data>
+  <data name="InvalidRehydrateDuration" xml:space="preserve">
+    <value>Rehydrate duration should be between 10 and 30</value>
+  </data>
+  <data name="InvalidRehydration" xml:space="preserve">
+    <value>Please provide RehydrationPriority and RehydrationDuration for the Archived Recovery Point. Default RehydrationDuration is 15 Days</value>
+  </data>
+  <data name="DeleteRecoveryPoints" xml:space="preserve">
+    <value>Disable protection with delete recovery points</value>
+  </data>
+  <data name="MoveRPOperation" xml:space="preserve">
+    <value>Move Azure Backup Recovery Point Operation</value>
+  </data>
+  <data name="MoveReadinessInfoUndefined" xml:space="preserve">
+    <value>Move Readiness cannot be checked for given recovery points</value>
+  </data>
+  <data name="MSIRestoreNotSupportedForUnmanagedVM" xml:space="preserve">
+    <value>MSI based Restore is only applicable to Managed VM Recovery Points</value>
+  </data>
+  <data name="MultipleMSIProvidedForRestore" xml:space="preserve">
+    <value>MSI based Restore can't use both SystemAssigned and UserAssigned identities</value>
+  </data>
+  <data name="IdentityIdRequired" xml:space="preserve">
+    <value>IdentityId can't be empty for UserAssigned Identities</value>
+  </data>
+  <data name="IdentityIdRequiredForCMK" xml:space="preserve">
+    <value>Please input a valid UserAssignedIdentity</value>
+  </data>
+  <data name="InvalidIdentityId" xml:space="preserve">
+    <value>IdentityId '{0}' is invalid</value>
+  </data>
+  <data name="InvalidIdentityRemove" xml:space="preserve">
+    <value>UserAssigned and SystemAssigned identities can't be removed together</value>
+  </data>
+  <data name="InvalidParameterIdentityId" xml:space="preserve">
+    <value>Invalid parameter IdentityId. IdentityId can't be set for SystemAssigned Identities</value>
+  </data>
+  <data name="DeleteContainerRegistration" xml:space="preserve">
+    <value>Deleting server's registration is a destructive operation and cannot be undone. All backup data (recovery points required to restore the data) and Backup items associated with protected server will be permanently deleted. Learn more about deleting your protected servers at https://aka.ms/deletebkp. Do you want to continue?</value>
+  </data>
+  <data name="UnregisterContainer" xml:space="preserve">
+    <value>Unregister container</value>
+  </data>
+  <data name="DailyRetentionPointsLimitExceeded" xml:space="preserve">
+    <value>Number of restore points are more than {0}, please reduce the retention duration count for Daily Schedule or reduce number of backups per day</value>
+  </data>
+  <data name="HourlyScheduleNullValueException" xml:space="preserve">
+    <value>ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration, ScheduleRunTimeZone can't be null for Hourly policy</value>
+  </data>
+  <data name="InvalidLastBackupTime" xml:space="preserve">
+    <value>ScheduleWindowDuration should be less than or equal to (23:30 - ScheduleWindowStartTime)</value>
+  </data>
+  <data name="InvalidScheduleInterval" xml:space="preserve">
+    <value>Incorrect value for ScheduleInterval, allowed values are {0}</value>
+  </data>
+  <data name="InvalidScheduleWindowDuration" xml:space="preserve">
+    <value>ScheduleWindowDuration can't be lesser than ScheduleInterval and should exist in range from {0} to {1}</value>
+  </data>
+  <data name="ScheduleWindowStartTimeOutOfRange" xml:space="preserve">
+    <value>ScheduleWindowStartTime is out of range, valid range is from 00:00 to 19:30</value>
+  </data>
+  <data name="TargetParamsMissingException" xml:space="preserve">
+    <value>TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName can't be empty for restoring to AlternateLocation with create new VM option</value>
+  </data>
+  <data name="TargetRGNotRequiredException" xml:space="preserve">
+    <value>TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore</value>
+  </data>
+  <data name="EnhancedHourlyPolicyNotSupported" xml:space="preserve">
+    <value>Enhanced Hourly policy is currently not supported for WorkloadType AzureIaasVM. This will be supported soon</value>
+  </data>
+  <data name="EnhancedPolicyNotSupported" xml:space="preserve">
+    <value>Enhanced policy is only supported for workloadType AzureVM. Please provide correct PolicySubType and WorkloadType</value>
+  </data>
+  <data name="HourlyScheduleNotNull" xml:space="preserve">
+    <value>ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration must be empty for non-Hourly policy</value>
+  </data>
+  <data name="NonHourlyAttributesNotNull" xml:space="preserve">
+    <value>ScheduleRunTimes and ScheduleRunDays must be empty for Hourly policy</value>
+  </data>
+  <data name="SnapshotRetentionOutOfRange" xml:space="preserve">
+    <value>For Enhanced policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 30. For weekly backup policies, the minimum allowed value is 5. Please set the value accordingly</value>
+  </data>
+  <data name="StandardHourlyPolicyNotSupported" xml:space="preserve">
+    <value>Standard Hourly policy is not supported for WorkloadType AzureIaasVM, please try with Enhanced policy or different schedule frequency: Daily, Weekly</value>
+  </data>
+  <data name="StandardHourlyScheduleNotSupported" xml:space="preserve">
+    <value>Standard Hourly schedule is not supported for WorkloadType AzureVM</value>
+  </data>
+  <data name="UnexpectedParamScheduleRunFrequency" xml:space="preserve">
+    <value>ScheduleRunFrequency parameter is only expected for WorkloadTypes: AzureVM, AzureFiles</value>
+  </data>
+  <data name="WeeklyScheduleNotSupported" xml:space="preserve">
+    <value>Weekly ScheduleRunFrequency isn't supported for WorkloadType: AzureFiles</value>
+  </data>
+  <data name="WindowDurationLessThanInterval" xml:space="preserve">
+    <value>ScheduleWindowDuration can't be less than ScheduleInterval for Hourly policy</value>
+  </data>
+  <data name="WindowStartTimeNotInUTC" xml:space="preserve">
+    <value>ScheduleWindowStartTime in Hourly schedule policy should be in UTC time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute</value>
+  </data>
+  <data name="InvalidPolicyForTrustedVMProtection" xml:space="preserve">
+    <value>Trusted VM can only be protected using Enhanced policy. Please provide a valid AzureVM Enhanced policy</value>
+  </data>
+  <data name="ProtectedItemURICantBeNull" xml:space="preserve">
+    <value>ProtectedItemURI can't be null as the operation is protected with ResourceGuard</value>
+  </data>
+  <data name="PolicyUpdateNotCritical" xml:space="preserve">
+    <value>Operation not critical, please try without the Token parameter. MUA currently only protects reducing or disabling retention times</value>
+  </data>
+  <data name="UnexpectedParameterToken" xml:space="preserve">
+    <value>{0} is not protected via MUA, either protect or try without the Token parameter</value>
+  </data>
+  <data name="BackupConfigUpdateNotCritical" xml:space="preserve">
+    <value>Operation not critical, please try without the Token parameter. MUA currently protects disabling SoftDelete or SecurityFeatures only when it was previously enabled</value>
+  </data>
+  <data name="ResourceGuardMappingNotFound" xml:space="preserve">
+    <value>ResourceGuardMapping not found</value>
+  </data>
+  <data name="DisableWithRetainBackupNotCrititcal" xml:space="preserve">
+    <value>Invalid parameter Token. Stop protection with retain backup data as per policy is not MUA protected</value>
+  </data>
+  <data name="CRRNotSupportedWIthCSR" xml:space="preserve">
+    <value>Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both</value>
+  </data>
+  <data name="InvalidScheduleWindow" xml:space="preserve">
+    <value>Hourly policy ScheduleWindowDuration should be multiple of ScheduleInterval and less than or equal to 24 Hrs. for WorkloadType AzureVM</value>
+  </data>
+  <data name="SmartTieringNotSupported" xml:space="preserve">
+    <value>Smart tiering is only supported for BackupManagementType AzureVM, AzureWorkload. Please try again after removing MoveToArchiveTier parameter.</value>
+  </data>
+  <data name="InvalidParametersForTiering" xml:space="preserve">
+    <value>Please remove TieringMode, TierAfterDuration, TierAfterDurationType parameters to disable smart tiering</value>
+  </data>
+  <data name="TierRecommendedNotSupportedForAzureWorkload" xml:space="preserve">
+    <value>Tiering mode TierRecommended is not supported for BackupManagementType AzureWorkload</value>
+  </data>
+  <data name="InvalidParameterTierAfterDuration" xml:space="preserve">
+    <value>TierAfterDuration, TierAfterDurationType is only acceptable for TieringMode: TierAllEligible</value>
+  </data>
+  <data name="MissingParameterTierAfterDuration" xml:space="preserve">
+    <value>TierAfterDuration, TierAfterDurationType is required for tiering mode TierAllEligible and the values should either be in Months or Days</value>
+  </data>
+  <data name="SmartTieringNotSupportedForSubscription" xml:space="preserve">
+    <value>Smart tiering is not supported for this subscription, please remove MoveToArchiveTier parameter and try again.</value>
+  </data>
+  <data name="MissingMonthlyOrYearlyRetention" xml:space="preserve">
+    <value>Monthly or Yearly retention needs to be set to enable Archive smart tiering</value>
+  </data>
+  <data name="IncompatibleRetentionAndTieringPolicy" xml:space="preserve">
+    <value>Monthly or Yearly retention needs to be set as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+  </data>
+  <data name="IncompatibleRetentionPolicyForTierRecommended" xml:space="preserve">
+    <value>At least one of monthly or yearly retention should be &gt;= 9 months for enabling TierRecommended mode for smart tiering</value>
+  </data>
+  <data name="RetentionShouldBeGreaterThan9MonthsOrDisableSmartTiering" xml:space="preserve">
+    <value>At least one of monthly or yearly retention should be &gt;= 9 months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+  </data>
+  <data name="InvalidDurationTypeForAzureVM" xml:space="preserve">
+    <value>TierAfterDurationType should be in Months for workload type AzureVM</value>
+  </data>
+  <data name="InvalidDurationForTierAllEligiblePolicy" xml:space="preserve">
+    <value>TierAfterDuration needs to be &gt;= 3 months, at least one of monthly or yearly retention should be &gt;= (TierAfterDuration + 6) months</value>
+  </data>
+  <data name="IncompatibleRetentionDurationWithTierAfterDuration" xml:space="preserve">
+    <value>TierAfterDuration needs to be &gt;= 3 months, at least one of monthly or yearly retention should be &gt;= (TierAfterDuration + 6) months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+  </data>
+  <data name="FullBackupRetentionPolicyCantBeNull" xml:space="preserve">
+    <value>FullBackupRetentionPolicy can't be null while enabling Archive smart tiering for BackupManagementType AzureWorkload</value>
+  </data>
+  <data name="InvalidDurationTypeForAzureWorkload" xml:space="preserve">
+    <value>TierAfterDurationType should be in Days for workload type AzureWorkload</value>
+  </data>
+  <data name="IncompatibleRetentionPolicyWithTierAfterDuration" xml:space="preserve">
+    <value>TierAfterDuration needs to be &gt;= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be &gt;= (TierAfter + 180) days</value>
+  </data>
+  <data name="TierAfterDurationCheckFailedWithRetentionDuration" xml:space="preserve">
+    <value>TierAfterDuration needs to be &gt;= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be &gt;= (TierAfter + 180) days as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+  </data>
+  <data name="UnsupportedCZRWithNonZonePinnedVMForCRRVault" xml:space="preserve">
+    <value>For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the recovery point is zone pinned. Please remove TargetZone parameter or try a valid scenario.</value>
+  </data>
+  <data name="UnsupportedCZRForCRRVaultToPrimaryRegion" xml:space="preserve">
+    <value>For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the restore is triggered for secondary region. Please remove TargetZone parameter or try a valid scenario.</value>
+  </data>
+  <data name="CantRemoveAndRetainRPsSimultaneously" xml:space="preserve">
+    <value>RemoveRecoveryPoints and RetainRecoveryPointsAsPerPolicy parameters can't be used simultaneously.</value>
+  </data>
+  <data name="VaultLocationRequired" xml:space="preserve">
+    <value>VaultLocation can't be empty for fetching jobs from secondary region.</value>
+  </data>
+  <data name="VaultLocationRequiredForCRR" xml:space="preserve">
+    <value>VaultLocation can't be empty for cross region restore.</value>
+  </data>
+  <data name="CSRAndCRRNotSupportedWithEdgeZoneRestore" xml:space="preserve">
+    <value>RestoreToEdgeZone parameter can't be used for cross region or cross subscription restore</value>
+  </data>
+  <data name="InvalidEdgeZoneVM" xml:space="preserve">
+    <value>Please make sure that the recovery point belongs to an edge zone VM and contains extended location</value>
+  </data>
+  <data name="RequiredBackupSnapshotResourceGroup" xml:space="preserve">
+    <value>The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.</value>
+  </data>
+  <data name="TrustedLaunchDefaultWarning" xml:space="preserve">
+    <value>Starting in May 2025, Trusted Launch virtual machines can be protected with both standard and enhanced policies via PS and CLI</value>
+  </data>
+  <data name="UnbakedSnapshotRecoveryPoint" xml:space="preserve">
+    <value>Snapshot recovery point time is less than 4 Hrs ago, please try later or with another recovery point</value>
+  </data>
+  <data name="StdToEnhPolicyMigrationWarning" xml:space="preserve">
+    <value>Upgrading to enhanced policy can incur additional charges. Once upgraded to the enhanced policy, it is not possible to revert back to the standard policy</value>
+  </data>
+  <data name="SnapshotConsistencyTypeCantBeSetForStandardPolicy" xml:space="preserve">
+    <value>SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy</value>
+  </data>
+  <data name="InvalidParameterSnapshotConsistencyType" xml:space="preserve">
+    <value>SnapshotConsistencyType parameter can only be used for WorkloadType AzureVM</value>
+  </data>
+  <data name="AADPropertiesCouldNotBeFetchedException" xml:space="preserve">
+    <value>An error occured while fetching AAD properties, this property is needed to get CRR access token</value>
+  </data>
+  <data name="CRRAccessTokenCouldNotBeFetchedException" xml:space="preserve">
+    <value>Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists</value>
+  </data>
+  <data name="AFSPolicyUpdateNotAllowed" xml:space="preserve">
+    <value>Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups.</value>
+  </data>
+  <data name="AFSPolicyUpdateWarning" xml:space="preserve">
+    <value>Changing the backup tier keeps current snapshots as-is under the existing policy. Future backups will be stored in the vault with new retention settings. This action is irreversible and incurs additional costs. Switching from vault to snapshot requires reconfiguration. Learn more at https://learn.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview?tabs=snapshot.</value>
+  </data>
+  <data name="AFSPolicyUpdate" xml:space="preserve">
+    <value>Changing Policy to VaultStandard tier.</value>
+  </data>
+  <data name="AFSPolicyUpdateCanceled" xml:space="preserve">
+    <value>Canceled Operation.</value>
+  </data>
+  <data name="SnapshotRetentionInDaysInvalidException" xml:space="preserve">
+    <value>SnapshotRetentionInDays should be from 1 - 30</value>
+  </data>
+  <data name="UndeleteContainerFailureErrorCode" xml:space="preserve">
+    <value>UndeleteContainer operation failed with ErrorCode: {0}</value>
+  </data>
+  <data name="UndeleteContainerWarning" xml:space="preserve">
+    <value>Are you sure you want to undelete the container '{0}'</value>
+  </data>
+  <data name="UndeleteContainerMessage" xml:space="preserve">
+    <value>Undeleting container</value>
+  </data>
+  <data name="InvalidSoftDeleteFeatureStateException" xml:space="preserve">
+    <value>Setting SoftDeleteFeatureState to 'AlwaysON' will automatically set HybridBackupSecurityFeature to AlwaysON. Please remove the DisableHybridBackupSecurityFeature parameter or use a different value for the SoftDeleteFeatureState parameter.</value>
+  </data>
+  <data name="BothTokenProvided" xml:space="preserve">
+    <value>Both Token and SecureToken parameters cannot be provided together</value>
+  </data>
+  <data name="TokenParameterDepricate" xml:space="preserve">
+    <value>The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead</value>
   </data>
 </root>

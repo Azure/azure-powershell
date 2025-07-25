@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 9F29DFCB-A02B-45A5-99B9-C054BF4FCA6C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroupdeploymentoperation
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azresourcegroupdeploymentoperation
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Gets the resource group deployment operation
 ## SYNTAX
 
 ```
-Get-AzResourceGroupDeploymentOperation -DeploymentName <String> [-SubscriptionId <Guid>]
- -ResourceGroupName <String> [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResourceGroupDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ For more on this setting and how to enable it, see New-AzResourceGroupDeployment
 
 ### Example 1: Get1
 ```powershell
-PS C:\>Get-AzResourceGroupDeploymentOperation -DeploymentName test -ResourceGroupName test
+Get-AzResourceGroupDeploymentOperation -DeploymentName test -ResourceGroupName test
 ```
 
 Gets deployment operation with name "test" under resource group "test"
@@ -94,21 +94,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The subscription to use.
-
-```yaml
-Type: System.Nullable`1[System.Guid]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

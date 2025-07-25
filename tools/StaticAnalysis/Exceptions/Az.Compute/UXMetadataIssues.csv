@@ -1,0 +1,2 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Compute","1","Microsoft.Compute","virtualMachineScaleSets","Stop-AzVmss","The value of -StayProvisioned is not defined."

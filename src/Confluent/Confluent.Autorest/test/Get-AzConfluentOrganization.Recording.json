@@ -1,0 +1,210 @@
+{
+  "Get-AzConfluentOrganization+[NoContext]+List+$GET+https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/providers/Microsoft.Confluent/organizations?api-version=2020-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/providers/Microsoft.Confluent/organizations?api-version=2020-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "a721772d-c907-4406-8d8a-c4d79590c595" ],
+        "CommandName": [ "Get-AzConfluentOrganization" ],
+        "FullCommandName": [ "Get-AzConfluentOrganization_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "96ab6b93-94da-4afe-9f52-ba1c78779650", "c655d10e-29c1-42a1-9591-e5ad720627ac" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "98f73a48-c3cd-40b0-8fb5-921456682530" ],
+        "x-ms-correlation-request-id": [ "98f73a48-c3cd-40b0-8fb5-921456682530" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210223T070310Z:98f73a48-c3cd-40b0-8fb5-921456682530" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 23 Feb 2021 07:03:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2237" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/srallurirg/providers/Microsoft.Confluent/organizations/ppe-metrics-2\",\"name\":\"ppe-metrics-2\",\"type\":\"Microsoft.Confluent/organizations\",\"location\":\"eastus2euap\",\"tags\":{\"test\":\"metrics\"},\"properties\":{\"createdTime\":\"2021-02-20T03:27:56.2878473Z\",\"provisioningState\":\"Succeeded\",\"organizationId\":\"cb95f250-e8a7-4b40-9ca4-fdf2954eceb0\",\"ssoUrl\":\"https://stag.cpdev.cloud/login/sso/cb95f250-e8a7-4b40-9ca4-fdf2954eceb0\",\"offerDetail\":{\"publisherId\":\"confluentinc\",\"id\":\"confluent-cloud-azure-stag\",\"planId\":\"confluent-cloud-azure-payg-stag\",\"planName\":\"Confluent Cloud - Pay as you Go\",\"termUnit\":\"P1M\",\"status\":\"Subscribed\"},\"userDetail\":{\"firstName\":null,\"lastName\":null,\"emailAddress\":\"sralluri@microsoft.com\"}}},{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/lucas-rg-test/providers/Microsoft.Confluent/organizations/confluentorg-01-portal\",\"name\":\"confluentorg-01-portal\",\"type\":\"Microsoft.Confluent/organizations\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"createdTime\":\"2021-02-23T06:46:09.9593156Z\",\"provisioningState\":\"Failed\",\"organizationId\":null,\"ssoUrl\":null,\"offerDetail\":{\"publisherId\":\"confluentinc\",\"id\":\"confluent-cloud-azure-prod\",\"planId\":\"confluent-cloud-azure-payg-prod\",\"planName\":\"Confluent Cloud - Pay as you Go\",\"termUnit\":\"P1M\",\"status\":\"Failed\"},\"userDetail\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"LucasYao01@mpliftrconfluent20210509out.onmicrosoft.com\"}}},{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8\",\"name\":\"confluentorg-godiy8\",\"type\":\"Microsoft.Confluent/organizations\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"createdTime\":\"2021-02-23T06:58:39.7215523Z\",\"provisioningState\":\"Failed\",\"organizationId\":null,\"ssoUrl\":null,\"offerDetail\":{\"publisherId\":\"confluentinc\",\"id\":\"confluent-cloud-azure-prod\",\"planId\":\"confluent-cloud-azure-payg-prod\",\"planName\":\"Confluent Cloud - Pay as you Go\",\"termUnit\":\"P1M\",\"status\":\"Failed\"},\"userDetail\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"LucasYao02@mpliftrconfluent20210509out.onmicrosoft.com\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConfluentOrganization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8?api-version=2020-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8?api-version=2020-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "a54ae22a-5ac6-4994-8954-8f4b40880f3d" ],
+        "CommandName": [ "Get-AzConfluentOrganization" ],
+        "FullCommandName": [ "Get-AzConfluentOrganization_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00004e0f-0000-3400-0000-6034a8a10000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "871198d2-5778-419b-9c59-3a72d4f47cdd" ],
+        "x-ms-correlation-request-id": [ "d36b7308-911a-432e-b57d-d4bf2e6d9fac" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210223T070311Z:d36b7308-911a-432e-b57d-d4bf2e6d9fac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 23 Feb 2021 07:03:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "720" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8\",\"name\":\"confluentorg-godiy8\",\"type\":\"Microsoft.Confluent/organizations\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"createdTime\":\"2021-02-23T06:58:39.7215523Z\",\"provisioningState\":\"Failed\",\"organizationId\":null,\"ssoUrl\":null,\"offerDetail\":{\"publisherId\":\"confluentinc\",\"id\":\"confluent-cloud-azure-prod\",\"planId\":\"confluent-cloud-azure-payg-prod\",\"planName\":\"Confluent Cloud - Pay as you Go\",\"termUnit\":\"P1M\",\"status\":\"Failed\"},\"userDetail\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"LucasYao02@mpliftrconfluent20210509out.onmicrosoft.com\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConfluentOrganization+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations?api-version=2020-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations?api-version=2020-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "612bd97d-4638-47f0-8f2b-1efad280b4c5" ],
+        "CommandName": [ "Get-AzConfluentOrganization" ],
+        "FullCommandName": [ "Get-AzConfluentOrganization_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-request-id": [ "fcede1f5-b0dc-47db-9dd8-8e0165b04b7f" ],
+        "x-ms-correlation-request-id": [ "fd7ab513-3e9f-496a-9fb9-0ce78f56d507" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210223T070311Z:fd7ab513-3e9f-496a-9fb9-0ce78f56d507" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 23 Feb 2021 07:03:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "732" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8\",\"name\":\"confluentorg-godiy8\",\"type\":\"Microsoft.Confluent/organizations\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"createdTime\":\"2021-02-23T06:58:39.7215523Z\",\"provisioningState\":\"Failed\",\"organizationId\":null,\"ssoUrl\":null,\"offerDetail\":{\"publisherId\":\"confluentinc\",\"id\":\"confluent-cloud-azure-prod\",\"planId\":\"confluent-cloud-azure-payg-prod\",\"planName\":\"Confluent Cloud - Pay as you Go\",\"termUnit\":\"P1M\",\"status\":\"Failed\"},\"userDetail\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"LucasYao02@mpliftrconfluent20210509out.onmicrosoft.com\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConfluentOrganization+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8?api-version=2020-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8?api-version=2020-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "ea5e7cac-6faf-4184-ab76-c6c29b0a76bb" ],
+        "CommandName": [ "Get-AzConfluentOrganization" ],
+        "FullCommandName": [ "Get-AzConfluentOrganization_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00004e0f-0000-3400-0000-6034a8a10000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-request-id": [ "74dad663-3d05-4212-a928-623d934b6d98" ],
+        "x-ms-correlation-request-id": [ "d8ead16e-16ae-4026-b7e2-5585116a9d81" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210223T070312Z:d8ead16e-16ae-4026-b7e2-5585116a9d81" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 23 Feb 2021 07:03:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "720" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8\",\"name\":\"confluentorg-godiy8\",\"type\":\"Microsoft.Confluent/organizations\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"createdTime\":\"2021-02-23T06:58:39.7215523Z\",\"provisioningState\":\"Failed\",\"organizationId\":null,\"ssoUrl\":null,\"offerDetail\":{\"publisherId\":\"confluentinc\",\"id\":\"confluent-cloud-azure-prod\",\"planId\":\"confluent-cloud-azure-payg-prod\",\"planName\":\"Confluent Cloud - Pay as you Go\",\"termUnit\":\"P1M\",\"status\":\"Failed\"},\"userDetail\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"LucasYao02@mpliftrconfluent20210509out.onmicrosoft.com\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConfluentOrganization+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8?api-version=2020-03-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8?api-version=2020-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "42c04c5f-d0b2-45da-8f2e-f197b7591cf6" ],
+        "CommandName": [ "Get-AzConfluentOrganization" ],
+        "FullCommandName": [ "Get-AzConfluentOrganization_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00004e0f-0000-3400-0000-6034a8a10000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-request-id": [ "4bea659d-9936-48a8-b8c9-914448b1cfe3" ],
+        "x-ms-correlation-request-id": [ "9ee2199a-1301-4b01-8b28-6a120bcaaa41" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210223T070313Z:9ee2199a-1301-4b01-8b28-6a120bcaaa41" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 23 Feb 2021 07:03:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "720" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/24ef61d8-5946-424d-9071-836a721d6a43/resourceGroups/confluentorg-rg-dcn09p/providers/Microsoft.Confluent/organizations/confluentorg-godiy8\",\"name\":\"confluentorg-godiy8\",\"type\":\"Microsoft.Confluent/organizations\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"createdTime\":\"2021-02-23T06:58:39.7215523Z\",\"provisioningState\":\"Failed\",\"organizationId\":null,\"ssoUrl\":null,\"offerDetail\":{\"publisherId\":\"confluentinc\",\"id\":\"confluent-cloud-azure-prod\",\"planId\":\"confluent-cloud-azure-payg-prod\",\"planName\":\"Confluent Cloud - Pay as you Go\",\"termUnit\":\"P1M\",\"status\":\"Failed\"},\"userDetail\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"LucasYao02@mpliftrconfluent20210509out.onmicrosoft.com\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A96A1A67-6C9C-499F-9935-B90F7ACEB50E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/start-azstoragefilecopy
+online version: https://learn.microsoft.com/powershell/module/az.storage/start-azstoragefilecopy
 schema: 2.0.0
 ---
 
@@ -16,10 +16,10 @@ Starts to copy a source file.
 ### ContainerName
 ```
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
- -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
+ [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerInstance
@@ -40,7 +40,8 @@ Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePa
 
 ### BlobInstanceFileInstance
 ```
-Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestFile <CloudFile> [-Force] [-ServerTimeoutPerRequest <Int32>]
+Start-AzStorageFileCopy -SrcBlob <CloudBlob> [-DestShareFileClient <ShareFileClient>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -48,31 +49,38 @@ Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestFile <CloudFile> [-Force] [-Se
 ### ShareName
 ```
 Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareName <String>
- -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
+ -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
+ [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-FileMode <String>] [-Owner <String>]
+ [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareInstance
 ```
-Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <CloudFileShare> -DestShareName <String>
- -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <ShareClient> -DestShareName <String>
+ -DestFilePath <String> [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>]
+ [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFilePath
 ```
-Start-AzStorageFileCopy -SrcFile <CloudFile> -DestShareName <String> -DestFilePath <String>
- [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+Start-AzStorageFileCopy -SrcFile <ShareFileClient> -DestShareName <String> -DestFilePath <String>
+ [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>] [-Group <String>]
+ [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFileInstance
 ```
-Start-AzStorageFileCopy -SrcFile <CloudFile> -DestFile <CloudFile> [-Force] [-ServerTimeoutPerRequest <Int32>]
+Start-AzStorageFileCopy -SrcFile <ShareFileClient> [-DestShareFileClient <ShareFileClient>]
+ [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>] [-Group <String>]
+ [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -87,31 +95,43 @@ Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFileP
 
 ### UriToFileInstance
 ```
-Start-AzStorageFileCopy -AbsoluteUri <String> -DestFile <CloudFile> [-Force] [-ServerTimeoutPerRequest <Int32>]
+Start-AzStorageFileCopy -AbsoluteUri <String> [-DestShareFileClient <ShareFileClient>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Start-AzStorageFileCopy** cmdlet starts to copy a source file to a destination file.
+This cmdlet will trigger asynchronous blob copy, the copy process is handled by server. If this is a cross account blob copy, there is no SLA for the blob copy.
 
 ## EXAMPLES
 
 ### Example 1: Start copy operation from file to file by using share name and file name
-```
-PS C:\>Start-AzStorageFileCopy -SrcShareName "ContosoShare01" -SrcFilePath "FilePath01" -DestShareName "ContosoShare02" -DestFilePath "FilePath02"
+```powershell
+Start-AzStorageFileCopy -SrcShareName "ContosoShare01" -SrcFilePath "FilePath01" -DestShareName "ContosoShare02" -DestFilePath "FilePath02"
 ```
 
 This command starts a copy operation from file to file.
 The command specifies share name and file name
 
 ### Example 2: Start copy operation from blob to file by using container name and blob name
-```
-PS C:\>Start-AzStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "ContosoBlob01" -DestShareName "ContosoShare" -DestFilePath "FilePath02"
+```powershell
+Start-AzStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "ContosoBlob01" -DestShareName "ContosoShare" -DestFilePath "FilePath02"
 ```
 
 This command starts a copy operation from blob to file.
 The command specifies container name and blob name
+
+### Example 3: Start copy operation from file to file with specific FileMode, Owner, Group on destination file
+```powershell
+Start-AzStorageFileCopy -SrcShareName "contososhare01" -SrcFilePath "FilePath01" -DestShareName "contososhare02" -DestFilePath "FilePath02" -FileMode rw-rwx-wT -Owner 1 -Group 1 -FileModeCopyMode Override -OwnerCopyMode Override
+```
+
+This command starts a copy operation from file to file, with specific FileMode, Owner, Group on destination file.
+If the destination file should have same FileMode, Owner, Group as source file, specify "-FileModeCopyMode Source" and "-OwnerCopyMode Source", the parameters FileMode, Owner, Group should not be specified.
+If all the parameters FileModeCopyMode, OwnerCopyMode, FileMode, Owner, Group are not specified, the destination file will have the default FileMode, Owner, Group.
+FileMode, Owner, Group only works on NFS file share. 
 
 ## PARAMETERS
 
@@ -204,26 +224,10 @@ To obtain a context, use **New-AzStorageContext**.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter Sets: ContainerName, ContainerInstance, BlobInstanceFilePath, ShareName, ShareInstance, FileInstanceToFilePath, UriToFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestFile
-Specifies a **CloudFile** object.
-You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFile
-Parameter Sets: BlobInstanceFileInstance, FileInstanceToFileInstance, UriToFileInstance
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -245,6 +249,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DestShareFileClient
+ShareFileClient object indicated the Dest file.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareFileClient
+Parameter Sets: BlobInstanceFileInstance, FileInstanceToFileInstance, UriToFileInstance
+Aliases: DestFile
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DestShareName
 Specifies the name of the destination share.
 
@@ -260,12 +279,117 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisAllowDestTrailingDot
+Disallow trailing dot (.) to suffix destination directory and destination file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ContainerName, ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisAllowSourceTrailingDot
+Disallow trailing dot (.) to suffix source directory and source file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileMode
+The mode permissions to be set on the destination file. Only applicable to NFS Files. Only work together with parameter `-FileModeCopyMode Override`. Symbolic (rwxrw-rw-) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileModeCopyMode
+Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-FileMode`. If not specified, the destination file will have the default File Mode.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Group
+The owner group identifier (GID) to be set on the destination file. Only applicable to NFS Files. Need specify together with parameter `-OwnerCopyMode Override`.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Owner
+The owner user identifier (UID) to be set on the destination file. Only applicable to NFS Files. Need specify together with parameter `-OwnerCopyMode Override`.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OwnerCopyMode
+Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the destination file will have the default Owner and Group.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
 Aliases:
 
 Required: False
@@ -353,13 +477,13 @@ Accept wildcard characters: False
 ```
 
 ### -SrcFile
-Specifies a **CloudFile** object.
-You can create a cloud file or obtain one by using **Get-AzStorageFile**.
+Specifies a **ShareFileClient** object.
+You can create a ShareFileClient or obtain one by using **Get-AzStorageFile**.
 
 ```yaml
-Type: Microsoft.Azure.Storage.File.CloudFile
+Type: Azure.Storage.Files.Shares.ShareFileClient
 Parameter Sets: FileInstanceToFilePath, FileInstanceToFileInstance
-Aliases: CloudFile
+Aliases: ShareFileClient
 
 Required: True
 Position: Named
@@ -388,9 +512,9 @@ Specifies a cloud file share object.
 You can create a cloud file share or obtain one by using the Get-AzStorageShare cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileShare
+Type: Azure.Storage.Files.Shares.ShareClient
 Parameter Sets: ShareInstance
-Aliases: CloudFileShare
+Aliases: ShareClient
 
 Required: True
 Position: Named
@@ -446,13 +570,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Storage.Blob.CloudBlob
 
-### Microsoft.Azure.Storage.File.CloudFile
+### Azure.Storage.Files.Shares.ShareFileClient
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

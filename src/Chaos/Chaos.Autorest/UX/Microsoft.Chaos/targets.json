@@ -1,0 +1,115 @@
+{
+  "resourceType": "targets",
+  "apiVersion": "2024-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.chaos"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChaosTarget",
+      "description": "Get a Target resource that extends a tracked regional resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaostarget"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ParentProviderNamespace <String>",
+              "-ParentResourceName <String>",
+              "-ParentResourceType <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Target resource that extends a tracked regional resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.targetName]"
+            },
+            {
+              "name": "-ParentProviderNamespace",
+              "value": "[Path.parentProviderNamespace]"
+            },
+            {
+              "name": "-ParentResourceName",
+              "value": "[Path.parentResourceName]"
+            },
+            {
+              "name": "-ParentResourceType",
+              "value": "[Path.parentResourceType]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzChaosTarget",
+      "description": "Delete a Target resource that extends a tracked regional resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaostarget"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ParentProviderNamespace <String>",
+              "-ParentResourceName <String>",
+              "-ParentResourceType <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Target resource that extends a tracked regional resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.targetName]"
+            },
+            {
+              "name": "-ParentProviderNamespace",
+              "value": "[Path.parentProviderNamespace]"
+            },
+            {
+              "name": "-ParentResourceName",
+              "value": "[Path.parentResourceName]"
+            },
+            {
+              "name": "-ParentResourceType",
+              "value": "[Path.parentResourceType]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

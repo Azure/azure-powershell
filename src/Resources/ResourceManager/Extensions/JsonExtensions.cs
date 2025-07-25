@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using Newtonsoft.Json.Serialization;
+
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -43,13 +45,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             TypeNameHandling = TypeNameHandling.None,
             DateParseHandling = DateParseHandling.None,
             DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
             MissingMemberHandling = MissingMemberHandling.Ignore,
             ContractResolver = new CamelCasePropertyNamesWithOverridesContractResolver(),
             Converters = new List<JsonConverter>
             {
                 new TimeSpanConverter(),
-                new StringEnumConverter { CamelCaseText = false },
+                new StringEnumConverter(new DefaultNamingStrategy()),
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AdjustToUniversal },
             },
         };
@@ -62,12 +65,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             TypeNameHandling = TypeNameHandling.None,
             DateParseHandling = DateParseHandling.None,
             DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
             ContractResolver = new CamelCasePropertyNamesWithOverridesContractResolver(),
             Converters = new List<JsonConverter>
             {
                 new TimeSpanConverter(),
-                new StringEnumConverter { CamelCaseText = false },
+                new StringEnumConverter(new DefaultNamingStrategy()),
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AdjustToUniversal },
             },
         };
@@ -97,7 +101,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="obj">The object.</param>
         public static string ToFormattedJson(this object obj)
         {
-            return JsonConvert.SerializeObject(obj, Formatting.Indented);
+            return JsonConvert.SerializeObject(obj, Formatting.Indented, JsonExtensions.ObjectSerializationSettings);
         }
 
         /// <summary>

@@ -15,9 +15,11 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Common;
-    using Microsoft.Azure.Storage.File;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
     using Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -57,25 +59,69 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Set ExpiryTime as null for the policy")]
         public SwitchParameter NoExpiryTime { get; set; }
 
-        internal string SetAzureShareStoredAccessPolicy(IStorageFileManagement localChannel, string shareName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime, bool noExpiryTime)
-        {
-            //Get existing permissions
-            CloudFileShare share = localChannel.GetShareReference(shareName);
-            FileSharePermissions permissions = localChannel.GetSharePermissions(share);
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
-            //Set the policy with new value
-            if (!permissions.SharedAccessPolicies.Keys.Contains(policyName))
+        internal string SetAzureShareStoredAccessPolicy(IStorageFileManagement localChannel, string shareName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime, bool noExpiryTime)
+        {          
+            NamingUtil.ValidateShareName(this.ShareName, false);
+
+            if (!NameUtil.IsValidStoredAccessPolicyName(this.Policy))
+            {
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, this.Policy));
+            }
+
+            //Get share instance
+            ShareClient share = Util.GetTrack2ShareReference(ShareName,
+                 (AzureStorageContext)this.Context,
+                 null,
+                 ClientOptions);
+
+            //Get existing permissions  
+            IEnumerable<ShareSignedIdentifier> signedIdentifiers = share.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value;
+
+            // find the policy to set
+            ShareSignedIdentifier signedIdentifier = null;
+            foreach (ShareSignedIdentifier identifier in signedIdentifiers)
+            {
+                if (identifier.Id == policyName)
+                {
+                    signedIdentifier = identifier;
+                }
+            }
+            if (signedIdentifier == null)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
-            SharedAccessFilePolicy policy = permissions.SharedAccessPolicies[policyName];
-            AccessPolicyHelper.SetupAccessPolicy<SharedAccessFilePolicy>(policy, startTime, expiryTime, permission, noStartTime, noExpiryTime);
-            permissions.SharedAccessPolicies[policyName] = policy;
+            // Set the policy
+            if (noStartTime)
+            {
+                signedIdentifier.AccessPolicy.PolicyStartsOn = null;
+            }
+
+            else if (startTime != null)
+            {
+                signedIdentifier.AccessPolicy.PolicyStartsOn = StartTime.Value.ToUniversalTime();
+            }
+            if (noExpiryTime)
+            {
+                signedIdentifier.AccessPolicy.PolicyExpiresOn = null;
+            }
+            else if (ExpiryTime != null)
+            {
+                signedIdentifier.AccessPolicy.PolicyExpiresOn = ExpiryTime.Value.ToUniversalTime();
+            }
+
+            if (this.Permission != null)
+            {
+                signedIdentifier.AccessPolicy.Permissions = this.Permission;
+                signedIdentifier.AccessPolicy.Permissions = AccessPolicyHelper.OrderBlobPermission(this.Permission);
+            }
 
             //Set permission back to share
-            localChannel.SetSharePermissions(share, permissions, null, null, OperationContext);
-            WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessFilePolicy>(permissions.SharedAccessPolicies, policyName));
+            share.SetAccessPolicy(signedIdentifiers, cancellationToken: CmdletCancellationToken);
+            WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<ShareSignedIdentifier>(signedIdentifier));
             return policyName;
         }
 

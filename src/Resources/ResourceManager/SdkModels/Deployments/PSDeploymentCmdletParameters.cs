@@ -6,7 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string TemplateSpecId { get; set; }
 
+        public string QueryString { get; set; }
+
         public Hashtable TemplateObject { get; set; }
 
         public Hashtable TemplateParameterObject { get; set; }
@@ -39,5 +41,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string DeploymentDebugLogLevel { get; set; }
 
         public OnErrorDeployment OnErrorDeployment { get; set; }
+
+        public IDictionary<string, IList<string>> AuxTenantHeaders { get; set; }
+
+        public string ValidationLevel { get; set; }
     }
 }

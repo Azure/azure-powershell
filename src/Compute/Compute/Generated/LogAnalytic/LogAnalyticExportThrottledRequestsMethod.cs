@@ -50,22 +50,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     parameters.ToTime = this.ToTime;
                     parameters.GroupByResourceName = this.GroupByResourceName;
                     parameters.GroupByThrottlePolicy = this.GroupByThrottlePolicy;
+                    parameters.GroupByClientApplicationId = this.GroupByApplicationId;
+                    parameters.GroupByUserAgent = this.GroupByUserAgent;
                     string location = this.Location.Canonicalize();
 
                     if (NoWait.IsPresent)
                     {
-                        var result = LogAnalyticsClient.BeginExportThrottledRequests(parameters, location);
+                        var result = LogAnalyticsClient.BeginExportThrottledRequests(location, parameters);
                         var psObject = new PSLogAnalyticsOperationResult();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
                         WriteObject(psObject);
                     }
                     else
                     {
-                        var result = LogAnalyticsClient.ExportThrottledRequests(parameters, location);
+                        var result = LogAnalyticsClient.ExportThrottledRequests(location, parameters);
                         var psObject = new PSLogAnalyticsOperationResult();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
                         WriteObject(psObject);
                     }
+                    WriteWarning("Please go to https://aka.ms/requestRateByInterval to learn more about this cmdlet.");
                 }
             });
         }
@@ -110,6 +113,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
         public SwitchParameter GroupByThrottlePolicy { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "Group query result by Application Id.")]
+        public SwitchParameter GroupByApplicationId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "Group query result by UserAgent.")]
+        public SwitchParameter GroupByUserAgent { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

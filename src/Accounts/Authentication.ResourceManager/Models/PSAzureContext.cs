@@ -12,22 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-#if NETSTANDARD
 namespace Microsoft.Azure.Commands.Profile.Models.Core
-#else
-namespace Microsoft.Azure.Commands.Profile.Models
-#endif
 {
     /// <summary>
     /// The context for connecting cmdlets in the current session to Azure.
@@ -78,7 +71,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                       context.Tenant);
             }
 
-            result.TokenCache = context.TokenCache;
+            result.TokenCache = null;
             result.VersionProfile = context.VersionProfile;
             result.CopyPropertiesFrom(context);
             return result;
@@ -103,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 Environment = context.Environment == null ? null : new PSAzureEnvironment(context.Environment);
                 Subscription = context.Subscription == null ? null : new PSAzureSubscription(context.Subscription);
                 Tenant = context.Tenant == null ? null : new PSAzureTenant(context.Tenant);
-                TokenCache = context.TokenCache;
+                TokenCache = null;
                 this.VersionProfile = context.VersionProfile;
                 this.CopyPropertiesFrom(context);
             }
@@ -136,12 +129,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             {
                 Tenant = new PSAzureTenant(property);
             }
-            if (other.TryGetProperty(nameof(TokenCache), out property))
-            {
-                AzureTokenCache cache = new AzureTokenCache();
-                cache.Populate(property);
-                TokenCache = new AuthenticationStoreTokenCache(cache);
-            }
 
             VersionProfile = other.GetProperty<string>(nameof(VersionProfile));
             this.PopulateExtensions(other);
@@ -150,12 +137,19 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The name of the context. The context may be selected by name
         /// </summary>
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The subscription targeted in Azure.
+        /// </summary>
+        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 0)]
+        [Ps1Xml(Label = "SubscriptionId", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Id", Position = 1)]
+        public IAzureSubscription Subscription { get; set; }
+
         /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
-        [Ps1Xml(Label = "Account", Target = ViewControl.Table, Position = 1)]
+        [Ps1Xml(Label = "Account", Target = ViewControl.Table, Position = 2)]
         public IAzureAccount Account { get; set; }
 
         /// <summary>
@@ -165,18 +159,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
-        /// The subscription targeted in Azure.
-        /// </summary>
-        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 2)]
-        public IAzureSubscription Subscription { get; set; }
-
-        /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
-        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.ToString()", Position = 4)]
+        [Ps1Xml(Label = "Tenant", GroupByThis = true, Target = ViewControl.Table, ScriptBlock = "if([System.String]::IsNullOrEmpty($_.Tenant.Name)){$_.Tenant.Id}else{\"$($_.Tenant.Name) ($($_.Tenant.Id))\"}")]
         public IAzureTenant Tenant { get; set; }
 
-        public IAzureTokenCache TokenCache { get; set; }
+        public IAzureTokenCache TokenCache { get; set; } = null;
 
         public string VersionProfile { get; set; }
 

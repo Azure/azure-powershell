@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     {
         public string Location { get; set; }
 
+        public string PublicNetworkAccess { get; set; }
+
         public Hashtable Tags { get; set; }
 
         public FactoryRepoConfiguration RepoConfiguration { get; set; }

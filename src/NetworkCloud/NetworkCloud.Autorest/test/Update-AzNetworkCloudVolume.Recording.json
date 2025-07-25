@@ -1,0 +1,43 @@
+{
+  "Update-AzNetworkCloudVolume+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/powershell-test/providers/Microsoft.NetworkCloud/volumes/ps-test-volume?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/powershell-test/providers/Microsoft.NetworkCloud/volumes/ps-test-volume?api-version=2025-02-01",
+      "Content": "{\n  \"tags\": {\n    \"tag\": \"tag1Update\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "43" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"b501e60c-0000-1000-0000-67fd60cf0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ddc48a27-87bb-4cca-8efd-4be65541c446/westus2/37db97ac-ca8f-4de3-b5be-ee75de3c2839" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "754329a4-7f9c-4b32-b4eb-ec3ef64783a8" ],
+        "x-ms-correlation-request-id": [ "6a49e7f8-41c4-4ecc-b3ad-4e0ef745ac32" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250414T192400Z:6a49e7f8-41c4-4ecc-b3ad-4e0ef745ac32" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8DCAB9994C19421298B38A08573A15D6 Ref B: CO6AA3150219035 Ref C: 2025-04-14T19:23:57Z" ],
+        "Date": [ "Mon, 14 Apr 2025 19:24:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "954" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/powershell-test/providers/Microsoft.NetworkCloud/volumes/ps-test-volume\",\"name\":\"ps-test-volume\",\"type\":\"microsoft.networkcloud/volumes\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev09-95c12731d206-HostedResources-6F514C8C/providers/Microsoft.ExtendedLocation/customLocations/dev09-95c12731d206-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"b501650b-0000-1000-0000-67fd60af0000\\\"\",\"tags\":{\"tag\":\"tag1Update\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-14T19:23:22.0455814Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-14T19:23:59.1066378Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"sizeMiB\":10,\"attachedTo\":[],\"detailedStatus\":\"Active\",\"detailedStatusMessage\":\"Volume provisioning Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

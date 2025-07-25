@@ -1,0 +1,89 @@
+{
+  "Get-AzAlbAssociation+[NoContext]+List+$GET+https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations?api-version=2025-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations?api-version=2025-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "87f04db0-1a87-4f0d-862e-c1d54aed2355" ],
+        "CommandName": [ "Get-AzAlbAssociation" ],
+        "FullCommandName": [ "Get-AzAlbAssociation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.4.6", "Az.Alb/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "19e50b80-9c89-4d7e-b9ad-f502637a3aba" ],
+        "x-ms-correlation-request-id": [ "19e50b80-9c89-4d7e-b9ad-f502637a3aba" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250317T224849Z:19e50b80-9c89-4d7e-b9ad-f502637a3aba" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C22D8255557E43A1893C0EE41D1FD820 Ref B: CO6AA3150220009 Ref C: 2025-03-17T22:48:49Z" ],
+        "Date": [ "Mon, 17 Mar 2025 22:48:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "839" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"associationType\":\"subnets\",\"subnet\":{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/alb-subnet\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations/test-association\",\"name\":\"test-association\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers/Associations\",\"etag\":\"c22d3ba5-aef7-45f5-8574-fb8abd48a11c\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T18:30:28.8522414Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:30:05.0283558Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAlbAssociation+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations/test-association?api-version=2025-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations/test-association?api-version=2025-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "11664f69-c256-4f14-baef-0ff918a7fd26" ],
+        "CommandName": [ "Get-AzAlbAssociation" ],
+        "FullCommandName": [ "Get-AzAlbAssociation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.4.6", "Az.Alb/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-request-id": [ "aab46aa9-b563-4523-9c0e-2b0bf7eb63cc" ],
+        "x-ms-correlation-request-id": [ "aab46aa9-b563-4523-9c0e-2b0bf7eb63cc" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250317T224850Z:aab46aa9-b563-4523-9c0e-2b0bf7eb63cc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1042DC0CBDCA436D8F8063C3D67E6A27 Ref B: CO6AA3150220009 Ref C: 2025-03-17T22:48:49Z" ],
+        "Date": [ "Mon, 17 Mar 2025 22:48:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "950" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"associationType\": \"subnets\",\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/alb-subnet\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations/test-association\",\r\n  \"name\": \"test-association\",\r\n  \"type\": \"Microsoft.ServiceNetworking/TrafficControllers/Associations\",\r\n  \"etag\": \"c22d3ba5-aef7-45f5-8574-fb8abd48a11c\",\r\n  \"location\": \"NorthCentralUS\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"chengdexu@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-03-17T18:30:28.8522414Z\",\r\n    \"lastModifiedBy\": \"chengdexu@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-03-17T22:30:05.0283558Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

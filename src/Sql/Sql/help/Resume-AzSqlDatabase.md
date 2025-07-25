@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 84CF049A-D293-4FEB-8608-179146EADE41
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/resume-azsqldatabase
+online version: https://learn.microsoft.com/powershell/module/az.sql/resume-azsqldatabase
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Resume-AzSqlDatabase** cmdlet resumes an Azure SQL Data Warehouse database
 ## EXAMPLES
 
 ### Example 1: Resumes an Azure SQL Data Warehouse database
-```
-PS C:\>Resume-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+```powershell
+Resume-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command resumes a suspended Azure SQL Data Warehouse database.
@@ -164,6 +164,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Suspend-AzSqlDatabase](./Suspend-AzSqlDatabase.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 
 

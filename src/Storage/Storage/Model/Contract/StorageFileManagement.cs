@@ -14,7 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.File;
     using System;
@@ -64,150 +64,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             return this.Client.GetShareReference(shareName, snapshotTime);
         }
 
-        public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
-        {
-            try
-            {
-                Task.Run(() => share.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
-            }
-            catch (AggregateException e) when (e.InnerException is StorageException)
-            {
-                throw e.InnerException;
-            }
-        }
-
-        public void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
-        {
-            try
-            {
-                Task.Run(() => share.SetPropertiesAsync(accessCondition, options, operationContext)).Wait();
-            }
-            catch (AggregateException e) when (e.InnerException is StorageException)
-            {
-                throw e.InnerException;
-            }
-        }
-
-        public async Task EnumerateFilesAndDirectoriesAsync(CloudFileDirectory directory, Action<IListFileItem> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
-        {
-            FileContinuationToken continuationToken = null;
-            do
-            {
-                var segment = await directory.ListFilesAndDirectoriesSegmentedAsync(null, continuationToken, options, operationContext, token).ConfigureAwait(false);
-                foreach (var item in segment.Results)
-                {
-                    enumerationAction(item);
-                }
-
-                continuationToken = segment.ContinuationToken;
-            }
-            while (continuationToken != null);
-        }
-
-        public Task FetchShareAttributesAsync(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
-        {
-            return share.FetchAttributesAsync(accessCondition, options, operationContext, token);
-        }
-
-        public async Task EnumerateSharesAsync(string prefix, ShareListingDetails detailsIncluded, Action<CloudFileShare> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
-        {
-            FileContinuationToken continuationToken = null;
-            do
-            {
-                var segment = await this.Client.ListSharesSegmentedAsync(prefix, detailsIncluded, null, continuationToken, options, operationContext, token).ConfigureAwait(false);
-                foreach (var item in segment.Results)
-                {
-                    enumerationAction(item);
-                }
-
-                continuationToken = segment.ContinuationToken;
-            }
-            while (continuationToken != null);
-        }
-
-        public Task CreateDirectoryAsync(CloudFileDirectory directory, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            return directory.CreateAsync(options, operationContext, cancellationToken);
-        }
-
         public Task<bool> DirectoryExistsAsync(CloudFileDirectory directory, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
             return directory.ExistsAsync(options, operationContext, cancellationToken);
-        }
-
-        public Task<bool> FileExistsAsync(CloudFile file, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            return file.ExistsAsync(options, operationContext, cancellationToken);
-        }
-
-        public Task CreateShareAsync(CloudFileShare share, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            return share.CreateAsync(options, operationContext, cancellationToken);
-        }
-
-        public Task DeleteDirectoryAsync(CloudFileDirectory directory, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            return directory.DeleteAsync(accessCondition, options, operationContext, cancellationToken);
-        }
-
-        public Task DeleteShareAsync(CloudFileShare share, DeleteShareSnapshotsOption deleteShareSnapshotsOption, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            return share.DeleteAsync(deleteShareSnapshotsOption, accessCondition, options, operationContext, cancellationToken);
-        }
-
-        public Task DeleteFileAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            return file.DeleteAsync(accessCondition, options, operationContext, cancellationToken);
-        }
-
-        public Task<FileSharePermissions> GetSharePermissionsAsync(CloudFileShare share, AccessCondition accessCondition,
-            FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            return share.GetPermissionsAsync(accessCondition, options, operationContext, cancellationToken);
-        }
-
-        public FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null,
-            FileRequestOptions options = null, OperationContext operationContext = null)
-        {
-            try
-            {
-                return share.GetPermissionsAsync(accessCondition, options, operationContext).Result;
-            }
-            catch (AggregateException e) when (e.InnerException is StorageException)
-            {
-                throw e.InnerException;
-            }
-        }
-
-        public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions,
-            AccessCondition accessCondition = null,
-            FileRequestOptions options = null, OperationContext operationContext = null)
-        {
-            try
-            {
-                Task.Run(() => share.SetPermissionsAsync(permissions, accessCondition, options, operationContext)).Wait();
-            }
-            catch (AggregateException e) when (e.InnerException is StorageException)
-            {
-                throw e.InnerException;
-            }
-        }
-
-        public Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
-        {
-            return file.FetchAttributesAsync(accessCondition, options, operationContext, token);
-        }
-
-        public Task FetchDirectoryAttributesAsync(CloudFileDirectory directory, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
-        {
-            return directory.FetchAttributesAsync(accessCondition, options, operationContext, token);
-        }
-
-        public Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
-        {
-            // Workaround for XSCL 8.4.0 issue: File abort copy fail with null reference. Will remove the line with the issue fixed.
-            CloudFileShare share = file.Share;
-            return file.AbortCopyAsync(copyId, accessCondition, requestOptions, operationContext, cancellationToken);
         }
     }
 }

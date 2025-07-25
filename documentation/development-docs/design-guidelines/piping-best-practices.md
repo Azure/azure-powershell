@@ -2,6 +2,17 @@
 
 _Note_: for the below examples, the string "TopLevelResource" would be replaced with the name of your top-level resource (_e.g._, "VirtualMachine", "VirtualNetwork", "SqlServer"), and the string "ChildResource" would be replaced with the name of your child resource (_e.g._, "VirtualMachineExtension", "VirtualNetworkPeering", "SqlDatabase")
 
+- [Piping in PowerShell](#piping-in-powershell)
+  - [Understanding Piping](#understanding-piping)
+- [Piping in Azure PowerShell](#piping-in-azure-powershell)
+  - [Using the `-InputObject` Parameter](#using-the--inputobject-parameter)
+    - [Short explanation](#short-explanation)
+    - [Long explanation](#long-explanation)
+  - [Using the `-ResourceId` Parameter](#using-the--resourceid-parameter)
+    - [Short explanation](#short-explanation-1)
+    - [Long explanation](#long-explanation-1)
+  - [Full examples](#full-examples)
+
 ## Piping in PowerShell
 
 ### Understanding Piping
@@ -18,7 +29,7 @@ The cmdlet `Get-AzEnvironment` will return a set of `Environment` objects, and t
 
 When an object is being piped to a cmdlet, PowerShell will first check to see if it can bind the input object to a parameter with the same type and has the property `ValueFromPipeline = true`. If no parameters are bound at this point, PowerShell will do the same check for parameters with the `ValueFromPipeline = true` parameter, but it will see if it can convert the input object to the type of the parameter. If no parameters are bound at this point, PowerShell will then see if it can bind the properties of the input object with parameters that share the same name and have the property `ValueFromPipelineByPropertyName = true` that are all in the same parameter set.
 
-For more information on piping, see the article [_Understanding pipelines_](https://docs.microsoft.com/en-us/powershell/scripting/learn/understanding-the-powershell-pipeline).
+For more information on piping, see the article [_Understanding pipelines_](https://learn.microsoft.com/en-us/powershell/scripting/learn/understanding-the-powershell-pipeline).
 
 ## Piping in Azure PowerShell
 

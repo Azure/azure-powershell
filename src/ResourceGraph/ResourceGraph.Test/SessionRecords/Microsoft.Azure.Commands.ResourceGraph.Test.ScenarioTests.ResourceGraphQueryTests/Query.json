@@ -1,90 +1,30 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "31537677-7032-4654-becb-372f2eeebf21"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3163.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Internal.Subscriptions.SubscriptionClient/4.1.0"
-        ]
-      },
-      "ResponseBody": "{\"value\": [{\"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000\", \"subscriptionId\": \"00000000-0000-0000-0000-000000000000\", \"displayName\": \"Test Subscription\", \"state\": \"Enabled\", \"authorizationSource\": \"RoleBased\"}]}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "987"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
-        ],
-        "x-ms-request-id": [
-          "dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "x-ms-correlation-request-id": [
-          "dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180926T232942Z:dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 26 Sep 2018 23:29:41 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAxOS0wNC0wMQ==",
+      "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"00000000-0000-0000-0000-000000000000\"\r\n  ],\r\n  \"query\": \"project id, tags, properties |where tags != '' | where properties != '' | limit 2\",\r\n  \"options\": {\r\n    \"$top\": 2,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d56a964d-df96-4e23-ad5c-9ae16d8b4c5d"
+          "8d99ea56-88cc-40bc-9879-e8befb84aa85"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27617.04",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "221"
+          "288"
         ]
       },
+      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"9e223dbe-3399-4e19-88eb-0975f02ac87f\"\r\n  ],\r\n  \"query\": \"Resources | where tags != \\\"\\\" | project id, tags, properties | limit 2\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -95,38 +35,44 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-user-quota-resets-after": [
-          "00:00:05"
-        ],
-        "x-ms-user-quota-remaining": [
-          "13"
+        "x-ms-correlation-request-id": [
+          "0b50b8b3-4093-415a-a591-d5901cc6f822"
         ],
         "x-ms-ratelimit-remaining-tenant-resource-requests": [
-          "13"
+          "11"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "x-ms-user-quota-remaining": [
+          "11"
+        ],
+        "x-ms-user-quota-resets-after": [
+          "00:00:04"
+        ],
+        "x-ms-resource-graph-request-duration": [
+          "0:00:00:00.4492267"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
+          "2199"
         ],
         "x-ms-request-id": [
-          "e27e652e-d30b-4e49-bbd3-a58a3f430d42"
-        ],
-        "x-ms-correlation-request-id": [
-          "e27e652e-d30b-4e49-bbd3-a58a3f430d42"
+          "0b50b8b3-4093-415a-a591-d5901cc6f822"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190710T225645Z:e27e652e-d30b-4e49-bbd3-a58a3f430d42"
+          "JAPANEAST:20250210T023711Z:0b50b8b3-4093-415a-a591-d5901cc6f822"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: FD5C78A7447C4D4FBD7E978C4C3C91E6 Ref B: TYO201151002029 Ref C: 2025-02-10T02:37:11Z"
+        ],
         "Date": [
-          "Wed, 10 Jul 2019 22:56:45 GMT"
+          "Mon, 10 Feb 2025 02:37:11 GMT"
         ],
         "Content-Length": [
-          "4542"
+          "1737"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -135,12 +81,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"totalRecords\": 2,\r\n  \"count\": 2,\r\n  \"data\": [\r\n      {\r\n        \"id\":        \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MEMVM/providers/Microsoft.Compute/virtualMachines/memvm/extensions/MicrosoftMonitoringAgent\",\r\n        \"tags\":        {},\r\n         \"properties\":        {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"type\": \"MicrosoftMonitoringAgent\",\r\n          \"autoUpgradeMinorVersion\": true,\r\n          \"typeHandlerVersion\": \"1.0\",\r\n          \"publisher\": \"Microsoft.EnterpriseCloud.Monitoring\",\r\n          \"settings\": {\r\n            \"stopOnMultipleConnections\": true,\r\n            \"workspaceId\": \"0f3577b5-fd56-4f52-81d3-43d1eab26618\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n         \"id\":        \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Workerbackup/providers/Microsoft.ClassicCompute/domainNames/worker-b\",\r\n         \"tags\":        {},\r\n         \"properties\":        {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"status\": \"Created\",\r\n          \"hostName\": \"worker-b.cloudapp.net\",\r\n          \"label\": \"worker-b\"\r\n        }\r\n      }\r\n      ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n}",
+      "ResponseBody": "{\r\n  \"totalRecords\": 2,\r\n  \"count\": 2,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.DocumentDB/mongoClusters/lnx\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publicNetworkAccess\": \"Enabled\",\r\n        \"privateEndpointConnections\": [],\r\n        \"administratorLogin\": \"liunanxiang\",\r\n        \"infrastructureVersion\": \"1.0\",\r\n        \"serverVersion\": \"7.0\",\r\n        \"connectionString\": \"Sanitized\",\r\n        \"earliestRestoreTime\": \"2025-01-31T05:17:08Z\",\r\n        \"nodeGroupSpecs\": [\r\n          {\r\n            \"name\": \"\",\r\n            \"diskSizeGB\": 32,\r\n            \"sku\": \"Free\",\r\n            \"kind\": \"Shard\",\r\n            \"nodeCount\": 1,\r\n            \"enableHa\": false\r\n          }\r\n        ],\r\n        \"clusterStatus\": \"Ready\",\r\n        \"previewFeatures\": [\r\n          \"GeoReplicas\"\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AzAccountsTest/providers/Microsoft.Automation/automationAccounts/AzAccountsTestAutomation/runbooks/AzAccountsTestRunbook\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"description\": null,\r\n        \"parameters\": {\r\n          \"ResourceGroupName\": {\r\n            \"type\": \"System.String\",\r\n            \"position\": 0,\r\n            \"defaultValue\": null,\r\n            \"isMandatory\": true\r\n          },\r\n          \"Method\": {\r\n            \"type\": \"System.String\",\r\n            \"position\": 3,\r\n            \"defaultValue\": null,\r\n            \"isMandatory\": true\r\n          },\r\n          \"UserManagedIdentity\": {\r\n            \"type\": \"System.String\",\r\n            \"position\": 1,\r\n            \"defaultValue\": null,\r\n            \"isMandatory\": true\r\n          },\r\n          \"AutomationAccount\": {\r\n            \"type\": \"System.String\",\r\n            \"position\": 2,\r\n            \"defaultValue\": null,\r\n            \"isMandatory\": true\r\n          }\r\n        },\r\n        \"creationTime\": \"2024-03-07T08:23:04.2566667Z\",\r\n        \"state\": \"Edit\",\r\n        \"lastModifiedTime\": \"2024-04-03T06:44:18.4266667Z\",\r\n        \"serviceManagementTags\": null,\r\n        \"lastModifiedBy\": null,\r\n        \"logActivityTrace\": 0,\r\n        \"runbookType\": \"PowerShell72\",\r\n        \"outputTypes\": [],\r\n        \"logProgress\": false,\r\n        \"logVerbose\": false,\r\n        \"jobCount\": 0\r\n      }\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
   }
 }

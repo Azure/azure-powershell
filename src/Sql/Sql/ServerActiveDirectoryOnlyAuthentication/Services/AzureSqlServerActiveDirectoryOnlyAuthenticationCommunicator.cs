@@ -53,8 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
         /// <summary>
         /// Creates a communicator for Azure SQL Server Active Directory administrator
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerActiveDirectoryOnlyAuthenticationCommunicator(IAzureContext context)
         {
             Context = context;
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
         /// </summary>
         public Management.Sql.Models.ServerAzureADOnlyAuthentication Get(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().ServerAzureADOnlyAuthentications.GetAsync(resourceGroupName, serverName).Result;
+            return GetCurrentSqlClient().ServerAzureAdOnlyAuthentications.GetAsync(resourceGroupName, serverName).Result;
         }
 
         /// <summary>
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
         /// </summary>
         public Management.Sql.Models.ServerAzureADOnlyAuthentication CreateOrUpdate(string resourceGroupName, string serverName, ServerAzureADOnlyAuthentication parameters)
         {
-            return GetCurrentSqlClient().ServerAzureADOnlyAuthentications.CreateOrUpdate(resourceGroupName, serverName, parameters);
+            return GetCurrentSqlClient().ServerAzureAdOnlyAuthentications.CreateOrUpdate(resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
         /// </summary>
         public IEnumerable<Management.Sql.Models.ServerAzureADOnlyAuthentication> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().ServerAzureADOnlyAuthentications.ListByServer(resourceGroupName, serverName);
+            return GetCurrentSqlClient().ServerAzureAdOnlyAuthentications.ListByServer(resourceGroupName, serverName);
         }
 
         /// <summary>

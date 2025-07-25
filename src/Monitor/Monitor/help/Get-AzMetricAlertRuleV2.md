@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricalertrulev2
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -26,7 +26,8 @@ Get-AzMetricAlertRuleV2 -ResourceGroupName <String> -Name <String> [-DefaultProf
 
 ### ByRuleId
 ```
-Get-AzMetricAlertRuleV2 -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzMetricAlertRuleV2 -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,10 +37,13 @@ The **Get-AzMetricAlertRuleV2** cmdlet gets a metric alert rule by its name or U
 
 ### Example 1: Get all metric alert rules in current subscription
 ```powershell
-PS C:\>Get-AzMetricAlertRuleV2
+Get-AzMetricAlertRuleV2
+```
+
+```output
 TargetResourceId     : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricResourceGroup/providers/Microsoft.KeyVault/vaults/GenevaRPKeyVault
 Criteria             : {Metric1}
-Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/sampleresourcegroup/providers/microsoft.insights/actiongroups/scnewactiongroup}
+Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/sampleresourcegroup/providers/Microsoft.Insights/actiongroups/scnewactiongroup}
 ResourceGroup        : metricResourceGroup
 Description          : fdafda
 Severity             : 3
@@ -51,14 +55,14 @@ TargetResourceType   :
 TargetResourceRegion :
 AutoMitigate         :
 LastUpdatedTime      :
-Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricResourceGroup/providers/microsoft.insights/metricAlerts/Rule1
+Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricResourceGroup/providers/Microsoft.Insights/metricAlerts/Rule1
 Name                 : Rule1
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global
 Tags                 : {}
 
 Criteria             : {Metric1}
-Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/sampleresourcegroup/providers/microsoft.insights/actiongroups/scnewactiongroup}
+Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/sampleresourcegroup/providers/Microsoft.Insights/actiongroups/scnewactiongroup}
 ResourceGroup        : SampleResourceGroup
 Description          : Testing 1 minute granuarity
 Severity             : 3
@@ -70,7 +74,7 @@ TargetResourceType   : Microsoft.Compute/virtualMachines
 TargetResourceRegion : eastus
 AutoMitigate         : True
 LastUpdatedTime      :
-Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/microsoft.insights/metricAlerts/Rule2
+Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/Microsoft.Insights/metricAlerts/Rule2
 Name                 : Rule2
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global
@@ -82,10 +86,13 @@ This command gets all the metric alert rules in the current subscription.
 ### Example 2: Get all metric alert rules in a resource group
 
 ```powershell
-PS C:\>Get-AzMetricAlertRuleV2 -ResourceGroupName metricAlertsRG
+Get-AzMetricAlertRuleV2 -ResourceGroupName metricAlertsRG
+```
+
+```output
 Criteria             : {Metric1}
 Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/pr
-                       oviders/microsoft.insights/actiongroups/emails}
+                       oviders/Microsoft.Insights/actiongroups/emails}
 ResourceGroup        : metricAlertsRG
 Description          : Test Classic VM alert - CPU Usage
 Severity             : 3
@@ -111,10 +118,12 @@ This command gets all the metric alert rules in the resource group named metricA
 ### Example 3: Get a metric alert rule by name
 
 ```powershell
-PS C:\> Get-AzMetricAlertRuleV2 -ResourceGroupName metricAlertsRG -Name PS3182019
+Get-AzMetricAlertRuleV2 -ResourceGroupName metricAlertsRG -Name PS3182019
+```
 
+```output
 Criteria             : {metric1}
-Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/demo}
+Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/Microsoft.Insights/actiongroups/demo}
 ResourceGroup        : metricAlertsRG
 Description          : This is description 
 Severity             : 1
@@ -139,22 +148,25 @@ This command gets the metric alert rule named PS3182019 in the resource group na
 ### Example 4: Get a metric alert rule by ruleID
 
 ```powershell
-PS C:\>Get-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/microsoft.insights/metricAlerts/MyMetricAlertRule
-TargetResourceId     : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/microsoft.insights/components/alertstestFunction
+Get-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/Microsoft.Insights/metricAlerts/MyMetricAlertRule
+```
+
+```output
+TargetResourceId     : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/Microsoft.Insights/components/alertstestFunction
 Criteria             : {Metric1}
-Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/emails}
+Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/Microsoft.Insights/actiongroups/emails}
 ResourceGroup        : SampleResourceGroup
 Description          : Test Description
 Severity             : 3
 Enabled              : True
-Scopes               : {/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/microsoft.insights/components/alertstestFunction}
+Scopes               : {/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/Microsoft.Insights/components/alertstestFunction}
 EvaluationFrequency  : 00:01:00
 WindowSize           : 00:05:00
 TargetResourceType   : 
 TargetResourceRegion : 
 AutoMitigate         : 
 LastUpdatedTime      :
-Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/microsoft.insights/metricAlerts/MyMetricAlertRule
+Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/SampleResourceGroup/providers/Microsoft.Insights/metricAlerts/MyMetricAlertRule
 Name                 : MyMetricAlertRule
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global

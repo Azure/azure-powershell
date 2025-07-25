@@ -18,9 +18,8 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Rest.Azure.OData;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
@@ -52,8 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Database backup REST endpoints.
         /// </summary>
-        /// <param name="profile">Azure profile</param>
-        /// <param name="subscription">Associated subscription</param>
+        /// <param name="context">Azure context</param>
         public AzureSqlDatabaseBackupCommunicator(IAzureContext context)
         {
             Context = context;
@@ -67,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Lists the restore points for a given Sql Azure Database.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
@@ -79,9 +77,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Creates a new restore point for a given Sql Azure Database.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="restoreDefinition">The definition for creating the restore point of this database</param>
         /// <returns>A restore point</returns>
         public Management.Sql.Models.RestorePoint NewRestorePoint(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.CreateDatabaseRestorePointDefinition restoreDefinition)
         {
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Removes a given restore point for a given Sql Azure Database.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <param name="restorePointCreationDate">The name of the restore point</param>
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Lists the geo backups for a given Sql Azure Server
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <returns>List of restore points</returns>
         public IList<Management.Sql.LegacySdk.Models.GeoBackup> ListGeoBackups(string resourceGroupName, string serverName)
@@ -115,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Lists the restorable deleted databases for a given Sql Azure Server
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <returns>List of restore points</returns>
         public IList<Management.Sql.LegacySdk.Models.DeletedDatabaseBackup> ListDeletedDatabaseBackups(string resourceGroupName, string serverName)
@@ -126,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Get a geo backup for a given Sql Azure Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
@@ -136,9 +135,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Gets recoverable database for the given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="oDataQuery">Additional query filter parameters</param>
+        /// <returns>Recoverable database</returns>
+        public Management.Sql.Models.RecoverableDatabase GetRecoverableDatabase(string resourceGroupName, string serverName, string databaseName, ODataQuery<Management.Sql.Models.RecoverableDatabase> oDataQuery = null)
+        {
+            return GetCurrentSqlClient().RecoverableDatabases.Get(resourceGroupName, serverName, databaseName, oDataQuery);
+        }
+
+        /// <summary>
         /// Get a restorable deleted database for a given Sql Azure Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
@@ -148,10 +160,24 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Get a restorable dropped database for a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseId">The id of the Azure SQL database</param>
+        /// <param name="oDataQuery">Additional query filter parameters</param>
+        /// <returns>Restoreable dropped database</returns>
+        public Management.Sql.Models.RestorableDroppedDatabase GetRestorableDroppedDatabase(string resourceGroupName, string serverName, string databaseId, ODataQuery<Management.Sql.Models.RestorableDroppedDatabase> oDataQuery = null)
+        {
+            return GetCurrentSqlClient().RestorableDroppedDatabases.Get(resourceGroupName, serverName, databaseId, oDataQuery);
+        }
+
+        /// <summary>
         /// Get a backup LongTermRetention vault for a given Azure SQL Server
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="baVaultName">The name of the Azure SQL Database backup LongTermRetention vault.</param>
         /// <returns>A backup vault</returns>
         public Management.Sql.LegacySdk.Models.BackupLongTermRetentionVault GetBackupLongTermRetentionVault(
             string resourceGroupName,
@@ -167,9 +193,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Get a backup LongTermRetention policy for a Azure SQL Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="baPolicyName">The name of the Azure SQL Database backup LongTermRetention policy.</param>
         /// <returns>A backup LongTermRetention policy</returns>
         public Management.Sql.LegacySdk.Models.DatabaseBackupLongTermRetentionPolicy GetDatabaseBackupLongTermRetentionPolicy(
             string resourceGroupName,
@@ -224,12 +251,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The resource group name.</param>
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
-        public Management.Sql.Models.BackupLongTermRetentionPolicy GetDatabaseLongTermRetentionPolicy(
+        public Management.Sql.Models.LongTermRetentionPolicy GetDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
             string databaseName)
         {
-            return GetCurrentSqlClient().BackupLongTermRetentionPolicies.Get(resourceGroup, serverName, databaseName);
+            return GetCurrentSqlClient().LongTermRetentionPolicies.Get(resourceGroup, serverName, databaseName);
         }
 
         /// <summary>
@@ -239,13 +266,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="policy">The Long Term Retention policy to apply.</param>
-        public Management.Sql.Models.BackupLongTermRetentionPolicy SetDatabaseLongTermRetentionPolicy(
+        public Management.Sql.Models.LongTermRetentionPolicy SetDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
             string databaseName,
-            Management.Sql.Models.BackupLongTermRetentionPolicy policy)
+            Management.Sql.Models.LongTermRetentionPolicy policy)
         {
-            return GetCurrentSqlClient().BackupLongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
+            return GetCurrentSqlClient().LongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
         }
 
         /// <summary>
@@ -326,6 +353,61 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Copies a Long Term Retention backup to another server/database.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="parameters">The parameters needed for long term retention copy request</param>
+        public Management.Sql.Models.LongTermRetentionBackupOperationResult CopyDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName,
+            Management.Sql.Models.CopyLongTermRetentionBackupParameters parameters)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.Copy(locationName, serverName, databaseName, backupName, parameters);
+            }
+            else
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.CopyByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName, parameters);
+            }
+        }
+
+        /// <summary>
+        /// Updates a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="parameters">The requested backup resource state</param>
+        public Management.Sql.Models.LongTermRetentionBackupOperationResult UpdateDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName,
+            Management.Sql.Models.UpdateLongTermRetentionBackupParameters parameters)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.Update(locationName, serverName, databaseName, backupName, parameters);
+            }
+            else
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.UpdateByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName, parameters);
+            }
+        }
+
+
+        /// <summary>
         /// Removes a Long Term Retention backup.
         /// </summary>
         /// <param name="locationName">The location name.</param>
@@ -353,9 +435,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Get a geo backup policy for a Azure SQL Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="policyName">The name of the geo backup policy</param>
         /// <returns>A geo backup policy</returns>
         public Management.Sql.LegacySdk.Models.GeoBackupPolicy GetDatabaseGeoBackupPolicy(
             string resourceGroupName,
@@ -391,7 +474,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Restore a given Sql Azure Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <param name="parameters">Parameters describing the database restore request</param>
@@ -404,14 +487,27 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Restore a given Sql Azure Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <param name="model">Sql Database Model with required parameters</param>
+        /// <param name="customHeaders">Custom headers</param>
         /// <returns>Restored database object</returns>
-        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database model)
+        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database model, Dictionary<string, List<string>> customHeaders = null)
         {
-            return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, model);
+            if (customHeaders == null)
+            {
+                // Execute the create call without the custom headers. 
+                return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, model);
+            }
+            else
+            {
+                // Execute the create call and pass the custom headers. 
+                using (var _result = GetCurrentSqlClient().Databases.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, model, customHeaders).ConfigureAwait(false).GetAwaiter().GetResult())
+                {
+                    return _result.Body;
+                }
+            }
         }
 
         /// <summary>
@@ -438,7 +534,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The resource group name.</param>
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
-        /// <param name="policy">The Long Term Retention policy to apply.</param>
+        /// <param name="policy">The Short Term Retention policy to apply.</param>
         /// <returns>A backup ShortTermRetention policy</returns>
         public Management.Sql.Models.BackupShortTermRetentionPolicy SetDatabaseBackupShortTermRetentionPolicy(
             string resourceGroup,
@@ -477,7 +573,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Lazy creation of a single instance of a resoures client
+        /// Lazy creation of a single instance of a resources client
         /// </summary>
         private ResourceManagementClient GetCurrentResourcesClient()
         {

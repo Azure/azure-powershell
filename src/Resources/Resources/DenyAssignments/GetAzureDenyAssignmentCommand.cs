@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
+
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -138,9 +139,9 @@ namespace Microsoft.Azure.Commands.Resources
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DenyAssignmentIdParameterSet, HelpMessage = "Deny assignment id.")]
-        [ValidateGuidNotEmpty]
-        public Guid Id { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DenyAssignmentIdParameterSet, HelpMessage = "Deny assignment fully qualified ID or GUID. When Id is provided as a GUID, will take current subscription as default scope.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DenyAssignmentNameParameterSet,
             HelpMessage = "Name of the deny assignment.")]
@@ -175,7 +176,6 @@ namespace Microsoft.Azure.Commands.Resources
                     Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id.ToString()
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
-                ExcludeAssignmentsForDeletedPrincipals = false
             };
 
             AuthorizationClient.ValidateScope(options.Scope, true);

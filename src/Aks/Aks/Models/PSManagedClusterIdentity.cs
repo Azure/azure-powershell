@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Aks.Models
 {
     /// <summary>
@@ -32,12 +34,26 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string TenantId { get; private set; }
 
         /// <summary>
+        /// Gets or sets the user identity associated with the managed cluster. This identity
+        /// will be used in control plane. Only one user assigned identity is allowed.
+        ///
+        /// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// </summary>
+        public IDictionary<string, PSManagedClusterIdentityUserAssignedIdentitiesValue> UserAssignedIdentities
+        {
+            get;
+            set;
+        }
+
+
+
+        /// <summary>
         /// Gets or sets the type of identity used for the managed cluster.
         /// Type 'SystemAssigned' will use an implicitly created identity in
         /// master components and an auto-created user assigned identity in MC_
         /// resource group in agent nodes. Type 'None' will not use MSI for the
         /// managed cluster, service principal will be used instead. Possible
-        /// values include: 'SystemAssigned', 'None'
+        /// values include: 'SystemAssigned', 'None', 'UserAssigned'
         /// </summary>
         public PSResourceIdentityType? Type { get; set; }
     }

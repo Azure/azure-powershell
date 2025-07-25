@@ -13,16 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
-using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 {
@@ -49,8 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Constructs a managed database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedDatabaseAdapter(IAzureContext context)
         {
             Context = context;
@@ -98,6 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 Location = model.Location,
                 Tags = model.Tags,
                 Collation = model.Collation,
+                IsLedgerOn = model.EnableLedger
             });
 
             return CreateManagedDatabaseModelFromResponse(resourceGroup, managedInstanceName, resp);
@@ -129,7 +128,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 RecoverableDatabaseId = model.RecoverableDatabaseId,
                 RestorableDroppedDatabaseId = model.RestorableDroppedDatabaseId,
                 SourceDatabaseId = model.SourceDatabaseId,
-                LongTermRetentionBackupResourceId = model.LongTermRetentionBackupResourceId
+                LongTermRetentionBackupResourceId = model.LongTermRetentionBackupResourceId,
+                CrossSubscriptionRestorableDroppedDatabaseId = model.CrossSubscriptionRestorableDroppedDatabaseId,
+                CrossSubscriptionSourceDatabaseId = model.CrossSubscriptionSourceDatabaseId,
+                CrossSubscriptionTargetManagedInstanceId = model.CrossSubscriptionTargetManagedInstanceId,
             };
 
             Management.Sql.Models.ManagedDatabase database = Communicator.RestoreDatabase(model.ResourceGroupName, model.ManagedInstanceName, model.Name, dbModel);
@@ -155,7 +157,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the managed instance</param>
-        /// <param name="managedDatabaseName">The name of the managed databse</param>
+        /// <param name="managedDatabaseName">The name of the managed database</param>
         /// <returns></returns>
         public string GetManagedDatabaseResourceId(string resourceGroupName, string managedInstanceName, string managedDatabaseName)
         {
@@ -169,7 +171,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the managed instance</param>
-        /// <param name="managedDatabaseName">The name of the managed databse</param>
+        /// <param name="managedDatabaseName">The name of the managed database</param>
         /// <returns></returns>
         public string GetDeletedManagedDatabaseResourceId(string resourceGroupName, string managedInstanceName, string managedDatabaseName)
         {
@@ -182,7 +184,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// Start the managed database log replay
         /// </summary>
         /// <param name="parameters">The parameters for log replay</param>
-        public void StartManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
+        public AzureSqlManagedDatabaseModel StartManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
         {
             var model = new Management.Sql.Models.ManagedDatabase()
             {
@@ -192,9 +194,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 LastBackupName = parameters.LastBackupName,
                 CreateMode = CreateMode.RestoreExternalBackup,
                 StorageContainerUri = parameters.StorageContainerUri,
-                StorageContainerSasToken = parameters.StorageContainerSasToken
+                StorageContainerSasToken = parameters.StorageContainerSasToken,
+                StorageContainerIdentity = parameters.StorageContainerIdentity
             };
-            Communicator.StartLogReplay(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name, model);
+            var response = Communicator.StartLogReplay(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name, model);
+            return CreateManagedDatabaseModelFromResponse(parameters.ResourceGroupName, parameters.ManagedInstanceName, response);
         }
 
         /// <summary>
@@ -236,10 +240,63 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <param name="parameters">The parameters for log replay cancel action</param>
         public void StopManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
         {
-            Communicator.Remove(
-                parameters.ResourceGroupName,
-                parameters.ManagedInstanceName,
-                parameters.Name);
+            try
+            {
+                // Check if the database provided by the caller is indeed created by Log Replay migration
+                var dbRestoreDetails = Communicator.GetLogReplayStatus(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
+                if (dbRestoreDetails.Type.Equals("lrsrestore", StringComparison.OrdinalIgnoreCase))
+                {
+                    Communicator.Remove(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
+                }
+                else throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
+            } 
+            catch (CloudException ex)
+            {
+                // This err is returned when we call GetLogReplayStatus (ManagedDatabaseRestoreDetails API) for a DB that wasn't created with LRS - so we map it to a more friendly err in the context of Stop-LRS cmd
+                if (ex.Body.Code == "RestoreDetailsNotAvailableOrExpired")
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
+                }
+                throw ex;
+            }
+        }
+
+        public void MoveManagedDatabase(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.Move(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId(), model.OperationMode);
+        }
+
+        public void CompleteMove(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.CompleteMoveCopy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
+        }
+
+        public void CancelMove(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.CancelMoveCopy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
+        }
+
+        public IList<ManagedDatabaseMoveCopyOperation> ListMoveCopyOperations(MoveCopyManagedDatabaseModel model, bool onlyLatestPerDatabase)
+        {
+            var operations = Communicator.GetMoveOperations(
+                model.ResourceGroupName,
+                model.Location,
+                model.InstanceName,
+                model.DatabaseName,
+                model.TargetInstanceName,
+                model.OperationMode,
+                onlyLatestPerDatabase)
+                .Select(operation => new ManagedDatabaseMoveCopyOperation(operation));
+
+            // OData filter does not support 'has' or 'contains', so we do not have ability use Odata for target RG filtration
+            // Instead filteration is done on the client side
+            if (!string.IsNullOrEmpty(model.TargetResourceGroupName))
+            {
+                return operations
+                    .Where(operation => operation.TargetManagedInstanceId.ToLower().Contains($"resourceGroups/{model.TargetResourceGroupName}/".ToLower()))
+                    .ToList();
+            }
+            return operations.ToList();
         }
 
         /// <summary>
@@ -247,7 +304,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// </summary>
         /// <param name="resourceGroup">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the Azure Sql Database Managed Instance</param>
-        /// <param name="database">The service response</param>
+        /// <param name="managedDatabase">The service response</param>
         /// <returns>The converted model</returns>
         public static AzureSqlManagedDatabaseModel CreateManagedDatabaseModelFromResponse(string resourceGroup, string managedInstanceName, Management.Sql.Models.ManagedDatabase managedDatabase)
         {

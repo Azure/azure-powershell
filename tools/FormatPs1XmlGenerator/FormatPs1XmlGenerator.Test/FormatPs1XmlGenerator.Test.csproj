@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="$(MSBuildThisFileDirectory)..\..\Common.Netcore.Dependencies.Test.targets" />
+	<Import Project="$(MSBuildThisFileDirectory)..\..\..\Repo.props" />
+	<Import Project="$(RepoTools)Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 

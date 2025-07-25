@@ -33,14 +33,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     public class PrivateDnsClient
     {
         public const string DnsResourceLocation = "global";
-        public const int TxtRecordMaxLength = 1024;
-        public const int TxtRecordMinLength = 0;
 
         private readonly Dictionary<RecordType, Type> recordTypeValidationEntries = new Dictionary<RecordType, Type>()
         {
             {RecordType.A, typeof (ARecord)},
-            {RecordType.AAAA, typeof (AaaaRecord)},
-            {RecordType.CNAME, typeof (CnameRecord)},
+            {RecordType.Aaaa, typeof (AaaaRecord)},
+            {RecordType.Cname, typeof (CnameRecord)},
             {RecordType.MX, typeof (MxRecord)},
             {RecordType.SOA, typeof (SoaRecord)},
             {RecordType.PTR, typeof (PtrRecord)},
@@ -183,6 +181,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             string zoneName,
             string virtualNetworkId,
             bool isRegistrationEnabled,
+            string resolutionPolicy,
             Hashtable tags,
             Dictionary<string, List<string>> customHeaders = null)
         {
@@ -199,7 +198,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                         Id = virtualNetworkId,
                     },
                     RegistrationEnabled = isRegistrationEnabled,
-
+                    ResolutionPolicy = resolutionPolicy,
                 },
                 ifMatch: null,
                 ifNoneMatch: "*",
@@ -225,6 +224,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                         Id = link.VirtualNetworkId,
                     },
                     RegistrationEnabled = link.RegistrationEnabled,
+                    ResolutionPolicy = link.ResolutionPolicy,
                 },
                 ifMatch: overwrite ? null : link.Etag);
 
@@ -293,6 +293,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                 Tags = TagsConversionHelper.CreateTagHashtable(link.Tags),
                 VirtualNetworkId = link.VirtualNetwork.Id,
                 RegistrationEnabled = link.RegistrationEnabled != null && (bool)link.RegistrationEnabled,
+                ResolutionPolicy = link.ResolutionPolicy,
                 ProvisioningState = link.ProvisioningState,
                 VirtualNetworkLinkState = link.VirtualNetworkLinkState,
             };
@@ -360,10 +361,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                 case RecordType.A:
                     properties.ARecords = resourceRecords.Select(x => (Sdk.ARecord)(x as ARecord)?.ToMamlRecord()).ToList();
                     break;
-                case RecordType.AAAA:
+                case RecordType.Aaaa:
                     properties.AaaaRecords = resourceRecords.Select(x => (Sdk.AaaaRecord)(x as AaaaRecord)?.ToMamlRecord()).ToList();
                     break;
-                case RecordType.CNAME:
+                case RecordType.Cname:
                     if (resourceRecords.Count > 1)
                     {
                         throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
@@ -391,9 +392,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
         private static void FillEmptyRecordsForType(RecordSet properties, RecordType recordType)
         {
-            properties.AaaaRecords = recordType == RecordType.AAAA ? new List<Sdk.AaaaRecord>() : null;
+            properties.AaaaRecords = recordType == RecordType.Aaaa ? new List<Sdk.AaaaRecord>() : null;
             properties.ARecords = recordType == RecordType.A ? new List<Sdk.ARecord>() : null;
-            properties.CnameRecord = recordType == RecordType.CNAME ? new Sdk.CnameRecord(string.Empty) : null;
+            properties.CnameRecord = recordType == RecordType.Cname ? new Sdk.CnameRecord(string.Empty) : null;
             properties.MxRecords = recordType == RecordType.MX ? new List<Sdk.MxRecord>() : null;
             properties.PtrRecords = recordType == RecordType.PTR ? new List<Sdk.PtrRecord>() : null;
             properties.SoaRecord = null;
@@ -420,7 +421,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                     Ttl = recordSet.Ttl,
                     Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, true),
                     AaaaRecords =
-                        recordSet.RecordType == RecordType.AAAA
+                        recordSet.RecordType == RecordType.Aaaa
                             ? GetMamlRecords<AaaaRecord, Sdk.AaaaRecord>(recordSet.Records)
                             : null,
                     ARecords =
@@ -448,7 +449,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
                             ? GetMamlRecords<SoaRecord, Sdk.SoaRecord>(recordSet.Records).SingleOrDefault()
                             : null,
                     CnameRecord =
-                        recordSet.RecordType == RecordType.CNAME
+                        recordSet.RecordType == RecordType.Cname
                             ? GetMamlRecords<CnameRecord, Sdk.CnameRecord>(recordSet.Records).SingleOrDefault()
                             : null,
                 },

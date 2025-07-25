@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azdelegation
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azdelegation
 schema: 2.0.0
 ---
 
@@ -24,11 +24,11 @@ The **New-AzDelegation** cmdlet creates a service delegation that can be added t
 
 ### Example 1
 ```powershell
-PS C:\> $delegation = New-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers"
-PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
-PS C:\> $subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
-PS C:\> $subnet.Delegations.Add($delegation)
-PS C:\> Set-AzVirtualNetwork $vnet
+$delegation = New-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers"
+$vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
+$subnet.Delegations.Add($delegation)
+Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
 
 The first cmdlet creates a delegation that can be added to a subnet, and stores it in the $delegation variable. The second and third cmdlets retrieve the subnet to be delegated. The fourth cmdlet adds the created delegation to the subnet of interest, and the final cmdlet sends the updated configuration to the server.
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Batch.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -70,16 +72,24 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public int? MaxTasksPerComputeNode { get; set; }
+        [Alias("MaxTasksPerComputeNode")]
+        public int? TaskSlotsPerNode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The upgrade policy for the pool")]
+        [ValidateNotNullOrEmpty]
+        public PSUpgradePolicy UpgradePolicy { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
         public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The user  defined tags to be associated with the Azure Batch Pool.When specified, these tags are propagated to the backing Azure resources associated with the pool.This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.")]
+        [ValidateNotNullOrEmpty]
+        public IDictionary ResourceTag { get; set; }
+
         [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }
-
         [Parameter]
         public SwitchParameter InterComputeNodeCommunicationEnabled { get; set; }
 
@@ -124,6 +134,15 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSUserAccount[] UserAccount { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public NodeCommunicationMode CurrentNodeCommunicationMode { get; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Default", "Classic", "Simplified")]
+        public NodeCommunicationMode TargetNodeCommunicationMode { get; set; }
+
         protected override void ExecuteCmdletImpl()
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
@@ -135,8 +154,9 @@ namespace Microsoft.Azure.Commands.Batch
                 TargetLowPriorityComputeNodes = this.TargetLowPriorityComputeNodes,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
                 AutoScaleFormula = this.AutoScaleFormula,
-                MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,
+                TaskSlotsPerNode = this.TaskSlotsPerNode,
                 TaskSchedulingPolicy = this.TaskSchedulingPolicy,
+                UpgradePolicy = this.UpgradePolicy,
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
@@ -147,7 +167,9 @@ namespace Microsoft.Azure.Commands.Batch
                 NetworkConfiguration = this.NetworkConfiguration,
                 UserAccounts = this.UserAccount,
                 ApplicationLicenses = this.ApplicationLicenses,
-                MountConfiguration = this.MountConfiguration
+                MountConfiguration = this.MountConfiguration,
+                TargetCommunicationMode = this.TargetNodeCommunicationMode,
+                ResourceTags = this.ResourceTag,
             };
 
             if (ShouldProcess("AzureBatchPool"))

@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.RecoveryServices.Models;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to list Azure Recovery Services Vaults
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <returns>vault list response object.</returns>
         public List<Vault> GetVaultsInResouceGroup(string resouceGroupName)
         {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to get Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="resourceName">Name of the resource</param>
         /// <returns>vault response object.</returns>
         public Vault GetVault(string resouceGroupName, string resourceName)
@@ -53,22 +54,76 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to create Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="vault">Vault creation input object</param>
         /// <returns>Create response object.</returns>
         public Vault CreateVault(string resouceGroupName, string vaultName, Vault vault)
         {
             return GetRecoveryServicesClient.Vaults.CreateOrUpdateWithHttpMessagesAsync(
-                resouceGroupName, vaultName, vault, GetRequestHeaders()).Result.Body;
+                resouceGroupName, vaultName, vault, default(string), GetRequestHeaders()).Result.Body;
+        }
+
+        /// <summary>
+        /// Method to create or update Recovery Services Vault.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="vaultName">Name of the vault</param>
+        /// <param name="vault">patch vault object to patch the recovery services Vault</param>
+        /// <param name="auxiliaryAccessToken">cross tenant access token for MUA</param>
+        /// <param name="isMUAProtected">whether operation is MUA protected</param>
+        /// <returns>Azure Recovery Services Vault.</returns>
+        public Vault UpdateRSVault(string resourceGroupName, string vaultName, PatchVault vault, string auxiliaryAccessToken = null, bool isMUAProtected = false)
+        {
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            if (isMUAProtected)
+            {
+                List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
+                string operationRequest = null;
+
+                if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+                {
+                    string criticalOp = "Microsoft.RecoveryServices/vaults/write#reduceImmutabilityState";
+                    
+                    foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                    {
+                        if (operationDetail.VaultCriticalOperation == criticalOp)
+                        {
+                            operationRequest = operationDetail.DefaultResourceRequest;
+                        }
+                    }
+
+                    if (operationRequest != null)
+                    {
+                        vault.Properties.ResourceGuardOperationRequests = new List<string>();
+                        vault.Properties.ResourceGuardOperationRequests.Add(operationRequest);
+                    }
+                }
+
+                if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+                {
+                    if (operationRequest != null)
+                    {
+                        customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+                    }
+                    else
+                    {
+                        // resx
+                        throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "Reducing immutability state for recovery services vault"));
+                    }
+                }
+            }
+
+            var response = GetRecoveryServicesClient.Vaults.UpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, default(string), customHeaders).Result;
+            return response.Body;
         }
 
         /// <summary>
         /// Method to delete Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
-        public Rest.Azure.AzureOperationResponse DeleteVault(string resouceGroupName, string vaultName)
+        public Rest.Azure.AzureOperationHeaderResponse<VaultsDeleteHeaders> DeleteVault(string resouceGroupName, string vaultName)
         {
             return GetRecoveryServicesClient.Vaults.DeleteWithHttpMessagesAsync(
                 resouceGroupName, vaultName, GetRequestHeaders()).Result;
@@ -92,30 +147,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
 
-        /// <summary>  
-        /// Method to Update Azure Recovery Services Vault Backup Properties  
-        /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
-        /// <param name="vaultName">Name of the vault</param>  
-        /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
-        /// <returns>Azure Operation response object.</returns>  
+        /// <summary>
+        /// Method to Update Azure Recovery Services Vault Backup Properties
+        /// </summary>
+        /// <param name="resouceGroupName">Name of the resource group</param>
+        /// <param name="vaultName">Name of the vault</param>
+        /// <param name="backupStorageConfig">Backup Properties Update</param>
+        /// <returns>Azure Operation response object.</returns>
         public void UpdateVaultStorageType(string resouceGroupName, string vaultName,
             BackupResourceConfigResource backupStorageConfig)
         {
-            GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.UpdateWithHttpMessagesAsync(
+            GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.UpdateWithHttpMessagesAsync(
                 vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
         }
 
-        /// <summary>  
-        /// Method to Get Azure Recovery Services Vault Backup Properties  
-        /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
-        /// <param name="vaultName">Name of the vault</param>  
-        /// <returns>Azure Resource Storage response object.</returns>  
-        public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
+        /// <summary>
+        /// Method to Patch Azure Recovery Services Vault Backup Properties
+        /// </summary>
+        /// <param name="resouceGroupName">Name of the resource group</param>
+        /// <param name="vaultName">Name of the vault</param>
+        /// <param name="backupStorageConfig">Backup Properties Update</param>
+        /// <returns>Azure Operation response object.</returns>
+        public void PatchVaultStorageConfigProperties(string resouceGroupName, string vaultName,
+            BackupResourceConfigResource backupStorageConfig)
         {
-            return GetRecoveryServicesBackupClient.BackupResourceStorageConfigs.GetWithHttpMessagesAsync(
+            GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.PatchWithHttpMessagesAsync(
+                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Method to Get Azure Recovery Services Vault Backup Properties
+        /// </summary>
+        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="vaultName">Name of the vault</param>
+        /// <returns>Azure Resource Storage response object.</returns>
+        public BackupResourceConfigResource GetVaultStorageConfig(string resouceGroupName, string vaultName)
+        {
+            return GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.GetWithHttpMessagesAsync(
                 vaultName, resouceGroupName, GetRequestHeaders()).Result.Body;
+        }
+
+        /// <summary>
+        /// Method to fetch resource guard proxy list.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns></returns>
+        public List<ResourceGuardProxyBaseResource> ListResourceGuardMapping(string vaultName, string resourceGroupName)
+        {
+            Func<IPage<ResourceGuardProxyBaseResource>> proxyPagedList = () => GetRecoveryServicesBackupClient.ResourceGuardProxies.GetWithHttpMessagesAsync(vaultName, resourceGroupName).Result.Body;
+
+            Func<string, IPage<ResourceGuardProxyBaseResource>> proxyPagedListNext = nextLink => GetRecoveryServicesBackupClient.ResourceGuardProxies.GetNextWithHttpMessagesAsync(
+                    nextLink).Result.Body;
+
+            var proxyList = Utilities.GetPagedList(proxyPagedList, proxyPagedListNext);
+
+            return proxyList;
         }
     }
 }

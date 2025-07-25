@@ -1,0 +1,37 @@
+{
+    "parameters": {
+        "tagName": {
+            "type": "String",
+            "defaultValue": "RequiredTag",
+            "metadata": {
+                "displayName": "Tag Name",
+                "description": "Name of the tag"
+            }
+        }
+    },
+    "policyRule": {
+        "if": {
+            "allOf": [
+                {
+                    "field": "type",
+                    "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                },
+                {
+                    "anyOf": [
+                        {
+                            "field": "[concat('tags[', parameters('tagName'), ']')]",
+                            "exists": false
+                        },
+                        {
+                            "field": "[concat('tags[', parameters('tagName'), ']')]",
+                            "equals": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        "then": {
+            "effect": "deny"
+        }
+    }
+}

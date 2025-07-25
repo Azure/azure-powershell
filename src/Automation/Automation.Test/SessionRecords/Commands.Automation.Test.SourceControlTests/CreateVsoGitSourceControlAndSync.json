@@ -142,7 +142,7 @@
       "RequestUri": "/subscriptions/52d8cf1b-bcac-493a-bbae-f234b5ff38b0/resourceGroups/frangom-test/providers/Microsoft.Automation/automationAccounts/frangom-sdkCmdlet-tests/sourceControls/AASourceControl-VsoGit?api-version=2017-05-15-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJkOGNmMWItYmNhYy00OTNhLWJiYWUtZjIzNGI1ZmYzOGIwL3Jlc291cmNlR3JvdXBzL2ZyYW5nb20tdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2ZyYW5nb20tc2RrQ21kbGV0LXRlc3RzL3NvdXJjZUNvbnRyb2xzL0FBU291cmNlQ29udHJvbC1Wc29HaXQ/YXBpLXZlcnNpb249MjAxNy0wNS0xNS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"repoUrl\": \"https://francisco-gamino.visualstudio.com/_git/VsoGit-SwaggerAndCmdletsTests\",\r\n    \"branch\": \"preview\",\r\n    \"folderPath\": \"Azure/MyRunbooks\",\r\n    \"autoSync\": false,\r\n    \"publishRunbook\": false,\r\n    \"sourceType\": \"VsoGit\",\r\n    \"securityToken\": {\r\n      \"accessToken\": \"3qdxa22lutnhezd4atpna74jn3m7wgo6o6kfbwezjfnvgbjhvoca\",\r\n      \"tokenType\": \"PersonalAccessToken\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"repoUrl\": \"https://francisco-gamino.visualstudio.com/_git/VsoGit-SwaggerAndCmdletsTests\",\r\n    \"branch\": \"preview\",\r\n    \"folderPath\": \"Azure/MyRunbooks\",\r\n    \"autoSync\": false,\r\n    \"publishRunbook\": false,\r\n    \"sourceType\": \"VsoGit\",\r\n    \"securityToken\": {\r\n      \"accessToken\": \"Sanitized\",\r\n      \"tokenType\": \"PersonalAccessToken\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"

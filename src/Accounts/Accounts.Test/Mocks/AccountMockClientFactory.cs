@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile.Test.Mocks
         public delegate object NextClient();
 
         private NextClient nextClient;
-        public AccountMockClientFactory(NextClient next,  bool throwIfClientNotSpecified = true):base(new List<object>(), throwIfClientNotSpecified)
+        public AccountMockClientFactory(NextClient next, bool throwIfClientNotSpecified = true) : base(null, null)
         {
             nextClient = next;
         }

@@ -15,13 +15,15 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Version2019_06_01.Customized;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Version2021_01_01.Utilities;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models.Utilities;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -409,7 +411,11 @@ namespace Common.Authentication.Test.Cmdlets
                 password,
                 promptBehavior,
                 promptAction,
-                _cache);
+                new Dictionary<string, object>()
+                {
+                    {AuthenticationFactory.TokenCacheParameterName, _cache},
+                    {AuthenticationFactory.CmdletContextParameterName,  _cmdletContext}
+                });
         }
 
         private IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
@@ -643,6 +649,10 @@ namespace Common.Authentication.Test.Cmdlets
             public string LoginType { get { return Microsoft.Azure.Commands.Common.Authentication.LoginType.OrgId; } }
             public string TenantId { get; private set; }
             public string UserId { get; private set; }
+
+            public string HomeAccountId => throw new NotImplementedException();
+
+            public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
 
             public SimpleAccessToken(IAzureAccount account, string tenantId, string tokenType = _defaultTokenType)
             {

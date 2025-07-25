@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Sql.Models;
 
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public long MaxSizeBytes { get; set; }
 
         /// <summary>
-        /// Gets or sets the status of the databse
+        /// Gets or sets the status of the database
         /// </summary>
         public string Status { get; set; }
 
@@ -176,14 +177,103 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public double? MinimumCapacity { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of readonly replicas for the database
+        /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
         /// </summary>
         public int? ReadReplicaCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the backup storage redundancy for the database
+        /// Gets or sets the number of readonly secondary replicas for the database that are used to provide high availability
         /// </summary>
-        public string BackupStorageRedundancy { get; set; }
+        public int? HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current backup storage redundancy for the database
+        /// </summary>
+        public string CurrentBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested backup storage redundancy for the database
+        /// </summary>
+        public string RequestedBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        public string SecondaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maintenance configuration id for the database
+        /// </summary>
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ledger property for the database
+        /// </summary>
+        public bool? EnableLedger { get; set; }
+
+        /// <summary>
+        /// Gets or sets type of enclave requested on the database i.e. Default
+        /// or VBS enclaves. Possible values include: 'Default', 'VBS'
+        /// </summary>
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PausedDate
+        /// </summary>
+        public DateTime? PausedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ResumeDate
+        /// </summary>
+        public DateTime? ResumedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the database.
+        /// </summary>
+        public DatabaseIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector
+        /// </summary>
+        public string EncryptionProtector { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of AKV keys
+        /// </summary>
+        public IDictionary<string, DatabaseKey> Keys { get; set; }
+
+        /// <summary>
+        /// Gets or sets a federated client id to use in xtcmk scenario
+        /// </summary>
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of AKV key auto rotation flag.
+        /// </summary>
+        public bool? EncryptionProtectorAutoRotation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value that indicates if use free limit is selected for database 
+        /// </summary>
+        public bool? UseFreeLimit { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of free limit exhaustion behavior if use free limit is enabled
+        /// Can be AutoPause or BillOverUsage
+        /// </summary>
+        public string FreeLimitExhaustionBehavior { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not customer controlled manual cutover needs to be
+        /// done during Update Database operation to Hyperscale tier. 
+        /// </summary>
+        public bool? ManualCutover { get; set; }
+
+        /// <summary>
+        /// Gets or sets to trigger customer controlled manual cutover during the wait
+        /// state while Scaling operation is in progress.
+        /// </summary>
+        public bool? PerformCutover { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseModel
@@ -238,7 +328,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             AutoPauseDelayInMinutes = null;
             MinimumCapacity = null;
             ReadReplicaCount = null;
-            BackupStorageRedundancy= null;
+            HighAvailabilityReplicaCount = null;
+            CurrentBackupStorageRedundancy = null;
+            RequestedBackupStorageRedundancy = null;
+            SecondaryType = null;
+            MaintenanceConfigurationId = null;
+            EnableLedger = false;
+            PausedDate = null;
+            ResumedDate = null;
+            PreferredEnclaveType = null;
         }
 
         /// <summary>
@@ -289,12 +387,28 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
-            ReadReplicaCount = database.ReadReplicaCount;
-            BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
+            HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
+            CurrentBackupStorageRedundancy = database.CurrentBackupStorageRedundancy;
+            RequestedBackupStorageRedundancy = database.RequestedBackupStorageRedundancy;
+            SecondaryType = database.SecondaryType;
+            MaintenanceConfigurationId = database.MaintenanceConfigurationId;
+            EnableLedger = database.IsLedgerOn;
+            PausedDate = database.PausedDate;
+            ResumedDate = database.ResumedDate;
+            PreferredEnclaveType = database.PreferredEnclaveType;
+            Keys = database.Keys;
+            EncryptionProtector = database.EncryptionProtector;
+            Identity = database.Identity;
+            FederatedClientId = database.FederatedClientId;
+            EncryptionProtectorAutoRotation = database.EncryptionProtectorAutoRotation;
+            UseFreeLimit = database.UseFreeLimit;
+            FreeLimitExhaustionBehavior = database.FreeLimitExhaustionBehavior;
+            ManualCutover = database.ManualCutover;
+            PerformCutover = database.PerformCutover;
         }
 
         /// <summary>
-        /// Map internal BackupStorageRedundancy value (GRS/LRS/ZRS) to external (Geo/Local/Zone)
+        /// Map internal BackupStorageRedundancy value (GZRS/GRS/LRS/ZRS) to external (GeoZone/Geo/Local/Zone)
         /// </summary>
         /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
         /// <returns>internal backupStorageRedundancy</returns>
@@ -302,6 +416,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         {
             switch (backupStorageRedundancy)
             {
+                case "GZRS":
+                    return "GeoZone";
                 case "GRS":
                     return "Geo";
                 case "LRS":

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -313,6 +313,24 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hybrid Runbook Worker Not Found.
+        /// </summary>
+        internal static string HybridRunbookWorkerNotFound {
+            get {
+                return ResourceManager.GetString("HybridRunbookWorkerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insufficient user permissions. Please refer https://learn.microsoft.com/azure/role-based-access-control/built-in-roles for more details..
+        /// </summary>
+        internal static string InsufficientUserPermissions {
+            get {
+                return ResourceManager.GetString("InsufficientUserPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid configuration parameters..
         /// </summary>
         internal static string InvalidConfigurationParameters {
@@ -444,6 +462,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string MonthlyScheduleNeedsDayOfWeekAndOccurrence {
             get {
                 return ResourceManager.GetString("MonthlyScheduleNeedsDayOfWeekAndOccurrence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moving the hybrid runbook worker {0} from {1} worker group to {2} worker group.
+        /// </summary>
+        internal static string MoveAzureAutomationHybridRunbookWorkerDescription {
+            get {
+                return ResourceManager.GetString("MoveAzureAutomationHybridRunbookWorkerDescription", resourceCulture);
             }
         }
         
@@ -750,6 +777,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string ScheduleNameExists {
             get {
                 return ResourceManager.GetString("ScheduleNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name length must be from 1 to 128 characters. The name cannot contain special characters &lt; &gt; * % &amp; : \ ? . + / and cannot end with a whitespace character..
+        /// </summary>
+        internal static string ScheduleNameInvalid {
+            get {
+                return ResourceManager.GetString("ScheduleNameInvalid", resourceCulture);
             }
         }
         

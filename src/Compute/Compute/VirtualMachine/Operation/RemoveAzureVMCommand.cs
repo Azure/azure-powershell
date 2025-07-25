@@ -37,6 +37,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(
+            HelpMessage = "Optional parameter to force delete a VM.")]
+        public bool? ForceDeletion { get; set; }
+
+        [Parameter(
             Position = 2,
             HelpMessage = "To force the removal.")]
         [ValidateNotNullOrEmpty]
@@ -48,6 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            bool? forcedelete = ForceDeletion.HasValue ? ForceDeletion.Value : (bool?)null;
             ExecuteClientAction(() =>
             {
                 if (!string.IsNullOrEmpty(Id) && string.IsNullOrEmpty(Name))
@@ -66,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         var op = this.VirtualMachineClient.BeginDeleteWithHttpMessagesAsync(
                             this.ResourceGroupName,
-                            this.Name).GetAwaiter().GetResult();
+                            this.Name, forceDeletion:forcedelete).GetAwaiter().GetResult();
                         var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                         WriteObject(result);
                     }
@@ -74,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         var op = this.VirtualMachineClient.DeleteWithHttpMessagesAsync(
                             this.ResourceGroupName,
-                            this.Name).GetAwaiter().GetResult();
+                            this.Name, forceDeletion:forcedelete).GetAwaiter().GetResult();
                         var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                         result.StartTime = this.StartTime;
                         result.EndTime = DateTime.Now;

@@ -14,9 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using System.Linq;
 using System.Management.Automation;
 
@@ -30,17 +30,21 @@ namespace Microsoft.Azure.Commands.Profile
     public class GetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The environment name")]
+        [EnvironmentCompleter()]
         public string Name { get; set; }
 
-        protected override void BeginProcessing()
+        protected override bool RequireDefaultContext()
         {
-            // do not call begin processing there is no context needed for this cmdlet
+            return false;
         }
-
 
         public override void ExecuteCmdlet()
         {
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>())
+            {
+                WarningLog = (s) => WriteWarning(s),
+                CmdletContext = _cmdletContext
+            };
             var result = profileClient.ListEnvironments(Name).Select(s => new PSAzureEnvironment(s)).ToList();
             WriteObject(result, enumerateCollection: true);
         }

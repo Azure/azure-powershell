@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Available Skus for Cognitive Services Account
     /// </summary>
-    [GenericBreakingChange("Get-AzCognitiveServicesAccountSkus alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountSku", DefaultParameterSetName = GetSkusWithFilterParamSetName),
         OutputType(typeof(ResourceSku))]
     [Alias("Get-AzCognitiveServicesAccountSkus")]

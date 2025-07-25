@@ -124,8 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     new HyperVReplicaAzureApplyRecoveryPointInput
                     {
                         PrimaryKekCertificatePfx = this.primaryKekCertpfx,
-                        SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
-                        VaultLocation = "dummy"
+                        SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                     };
                 input.Properties.ProviderSpecificDetails =
                     hyperVReplicaAzureApplyRecoveryPointInput;
@@ -155,6 +154,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             else if (Constants.A2A.Equals(this.ReplicationProtectedItem.ReplicationProvider,StringComparison.OrdinalIgnoreCase))
             {
                 input.Properties.ProviderSpecificDetails = new A2AApplyRecoveryPointInput();
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageRcm,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                input.Properties.ProviderSpecificDetails = new InMageRcmApplyRecoveryPointInput
+                {
+                    RecoveryPointId = this.RecoveryPoint.ID
+                };
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageRcmFailback,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.UnsupportedReplicationProviderForApplyRecoveryPoint,
+                        this.ReplicationProtectedItem.ReplicationProvider));
             }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(

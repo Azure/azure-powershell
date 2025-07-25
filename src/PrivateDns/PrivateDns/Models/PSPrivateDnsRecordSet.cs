@@ -115,10 +115,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     {
         public abstract object Clone();
 
-        public const int TxtRecordMaxLength = 1024;
-
-        public const int TxtRecordMinLength = 0;
-
         public const int TxtRecordChunkSize = 255;
 
         internal abstract object ToMamlRecord();
@@ -376,7 +372,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     }
 
     /// <summary>
-    /// Represents a Private DNS record of type MX that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a Private DNS record of type MX that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
     public class MxRecord : PSPrivateDnsRecordBase
     {
@@ -415,7 +411,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     }
 
     /// <summary>
-    /// Represents a Private DNS record of type SRV that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a Private DNS record of type SRV that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
     public class SrvRecord : PSPrivateDnsRecordBase
     {
@@ -472,12 +468,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     }
 
     /// <summary>
-    /// Represents a Private DNS record of type SOA that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a Private DNS record of type SOA that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
     public class SoaRecord : PSPrivateDnsRecordBase
     {
         /// <summary>
-        /// Gets or sets the domain name of the authoritative name server for this SOA record, without a temrinating dot.
+        /// Gets or sets the domain name of the authoritative name server for this SOA record, without a terminating dot.
         /// </summary>
         public string Host { get; set; }
 
@@ -550,7 +546,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     }
 
     /// <summary>
-    /// Represents a Private DNS record of type PTR that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a Private DNS record of type PTR that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
     public class PtrRecord : PSPrivateDnsRecordBase
     {

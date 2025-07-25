@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -125,7 +125,6 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceIdCompleter("Microsoft.Network/virtualNetworks")]
         public string RemoteVirtualNetworkId { get; set; }
 
-        [CmdletParameterBreakingChange("EnableInternetSecurity", OldParamaterType = typeof(SwitchParameter), NewParameterTypeName = "EnableInternetSecurityFlag")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable internet security for this connection")]

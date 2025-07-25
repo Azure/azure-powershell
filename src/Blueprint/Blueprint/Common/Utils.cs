@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
     public class Utils
     {
         /// <summary>
-        /// Get definition location. Either a subcscription or a management group.
+        /// Get definition location. Either a subscription or a management group.
         /// </summary>
         /// <param name="scope"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         public static void ValidateName(string name)
         {
-            var regex = @"^[0-9a-zA-Z_-]*$";
+            var regex = @"^[-\w\._\(\)]+(?<!\.)$";
 
             Match match = Regex.Match(name, regex, RegexOptions.CultureInvariant);
 

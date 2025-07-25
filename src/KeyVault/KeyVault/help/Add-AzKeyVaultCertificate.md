@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 89299823-3382-402D-9458-519466748051
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultcertificate
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -13,10 +13,19 @@ Adds a certificate to a key vault.
 
 ## SYNTAX
 
+### EnrollCertWithPolicyPath (Default)
+```
+Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath] <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### EnrollCertWithPolicyObject
 ```
 Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
  [-CertificatePolicy] <PSKeyVaultCertificatePolicy> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,9 +34,12 @@ The **Add-AzKeyVaultCertificate** cmdlet starts the process of enrolling for a c
 ## EXAMPLES
 
 ### Example 1: Add a certificate
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
-PS C:\> $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
-PS C:\> Add-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" -CertificatePolicy $Policy
+$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
+Add-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" -CertificatePolicy $Policy
 
 Status                    : inProgress
 CancellationRequested     : False
@@ -40,7 +52,7 @@ CertificateSigningRequest : MIICpjCCAY4CAQAwFjEUMBIGA1UEAxMLY29udG9zby5jb20wggEi
 ErrorCode                 :
 ErrorMessage              : 
 
-PS C:\> Get-AzKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01"
+Get-AzKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01"
 Status                    : completed
 CancellationRequested     : False
 CertificateSigningRequest : MIICpjCCAY4CAQAwFjEUMBIGA1UEAxMLY29udG9zby5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC73w3VRBOlgJ5Od1PjDh+2ytngNZp+ZP4fkuX8K1Ti5LA6Ih7eWx1fgAN/iTb6l
@@ -52,7 +64,7 @@ CertificateSigningRequest : MIICpjCCAY4CAQAwFjEUMBIGA1UEAxMLY29udG9zby5jb20wggEi
 ErrorCode                 :
 ErrorMessage              : 
 
-PS C:\> Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
 
 Name        : testCert01
 Certificate : [Subject]
@@ -92,7 +104,7 @@ Specifies a **KeyVaultCertificatePolicy** object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
-Parameter Sets: (All)
+Parameter Sets: EnrollCertWithPolicyObject
 Aliases:
 
 Required: True
@@ -129,6 +141,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyPath
+A file path to specify management policy for the certificate that contains JSON encoded policy definition.
+
+```yaml
+Type: System.String
+Parameter Sets: EnrollCertWithPolicyPath
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

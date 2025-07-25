@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbgremlincompositepath
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlincompositepath
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Object corresponding to Gremlin API's CompositePath.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
+New-AzCosmosDBGremlinCompositePath -Path "/abc" -Order Ascending
+```
 
+```output
 Path Order
 ---- -----
 /abc Ascending
@@ -37,7 +39,7 @@ Path Order
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -53,7 +55,7 @@ Gets or sets sort order for composite paths.
 Possible values include: 'Ascending', 'Descending'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +71,7 @@ The path for which the indexing behavior applies to.
 Index paths typically start with root and end with wildcard (/path/*)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

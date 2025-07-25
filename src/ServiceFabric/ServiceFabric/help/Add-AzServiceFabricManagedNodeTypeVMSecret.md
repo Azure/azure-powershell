@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmsecret
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmsecret
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ Add-AzServiceFabricManagedNodeTypeVMSecret [-ResourceGroupName] <String> [-Clust
 ```
 
 ## DESCRIPTION
-Add certificate secret to the node type. The secret must be stored in an Azure Key Vault. For more information relating to Key Vault, see What is Azure Key Vault? (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/). For more information about the cmdlets, see Azure Key Vault Cmdlets (https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the Set-AzKeyVaultSecret cmdlet.
+Add certificate secret to the node type. The secret must be stored in an Azure Key Vault. For more information relating to Key Vault, see What is Azure Key Vault? (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/). For more information about the cmdlets, see Azure Key Vault Cmdlets (/powershell/module/az.keyvault/) in the Microsoft Developer Network library or the Set-AzKeyVaultSecret cmdlet.
 
 ## EXAMPLES
 
@@ -39,7 +39,7 @@ $NodeTypeName = "nt1"
 Add-AzServiceFabricManagedNodeTypeVMSecret -ResourceGroupName $rgName -ClusterName $clusterName -NodeTypeName $NodeTypeName -SourceVaultId /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/testRG/providers/Microsoft.KeyVault/vaults/testkv -CertificateUrl https://testskv.vault.azure.net:443/secrets/TestCert/xxxxxxxxxxxxxxxxxxxxxxxx -CertificateStore My -Verbose
 ```
 
-This commad adds a certificate secret from the keyvault and secret identifier specified.
+This command adds a certificate secret from the keyvault and secret identifier specified.
 
 ### Example 2
 ```powershell
@@ -51,7 +51,7 @@ $nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -Clust
 $nodeType | Add-AzServiceFabricManagedNodeTypeVMSecret -SourceVaultId /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/testRG/providers/Microsoft.KeyVault/vaults/testkv -CertificateUrl https://testskv.vault.azure.net:443/secrets/TestCert/xxxxxxxxxxxxxxxxxxxxxxxx -CertificateStore My -Verbose
 ```
 
-This commad adds a certificate secret from the keyvault and secret identifier specified, with piping.
+This command adds a certificate secret from the keyvault and secret identifier specified, with piping.
 
 ## PARAMETERS
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 
 ### -CertificateUrl
 This is the URL of a certificate that has been uploaded to Key Vault as a secret.
-For adding a secret to the Key Vault, see \[Add a key or secret to the key vault\](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+For adding a secret to the Key Vault, see \[Add a key or secret to the key vault\](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: \<br\>\<br\> {\<br\>  "data":"\<Base64-encoded-certificate\>",\<br\>  "dataType":"pfx",\<br\>  "password":"\<pfx-file-password\>"\<br\>}/
 
 ```yaml

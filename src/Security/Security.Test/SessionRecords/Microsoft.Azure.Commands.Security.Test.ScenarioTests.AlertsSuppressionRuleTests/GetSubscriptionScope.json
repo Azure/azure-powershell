@@ -1,0 +1,128 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/alertsSuppressionRules/Powershell-UT-RuleName?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvYWxlcnRzU3VwcHJlc3Npb25SdWxlcy9Qb3dlcnNoZWxsLVVULVJ1bGVOYW1lP2FwaS12ZXJzaW9uPTIwMTktMDEtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b2b0b346-b199-408d-af35-5b002b89795b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-request-id": [
+          "d2d094b8-cfa5-49b6-a7df-845299955940"
+        ],
+        "x-ms-correlation-request-id": [
+          "d2d094b8-cfa5-49b6-a7df-845299955940"
+        ],
+        "x-ms-routing-request-id": [
+          "SWITZERLANDNORTH:20220407T091540Z:d2d094b8-cfa5-49b6-a7df-845299955940"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Apr 2022 09:15:39 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/alertsSuppressionRules?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvYWxlcnRzU3VwcHJlc3Npb25SdWxlcz9hcGktdmVyc2lvbj0yMDE5LTAxLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1e118ede-d0c1-4262-ba0c-03abfee69a71"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.11601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "748"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "67fde3fd-1998-49e3-af54-72a137e7ffed"
+        ],
+        "x-ms-correlation-request-id": [
+          "67fde3fd-1998-49e3-af54-72a137e7ffed"
+        ],
+        "x-ms-routing-request-id": [
+          "SWITZERLANDNORTH:20220407T091548Z:67fde3fd-1998-49e3-af54-72a137e7ffed"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Apr 2022 09:15:48 GMT"
+        ],
+        "Content-Length": [
+          "1285"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/alertsSuppressionRules/SDK_Test1\",\r\n      \"name\": \"SDK_Test1\",\r\n      \"type\": \"Microsoft.Security/alertsSuppressionRules\",\r\n      \"properties\": {\r\n        \"alertType\": \"Storage.Blob_ApplicationAnomaly\",\r\n        \"lastModifiedUTC\": \"2021-12-05T16:41:05.6018728Z\",\r\n        \"expirationDateUTC\": \"2032-10-18T16:32:12Z\",\r\n        \"state\": \"Enabled\",\r\n        \"reason\": \"Other\",\r\n        \"comment\": \"Test Rule \",\r\n        \"suppressionAlertsScope\": {\r\n          \"allOf\": []\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/alertsSuppressionRules/2a71184ea21e42a1947330e47d442b80\",\r\n      \"name\": \"2a71184ea21e42a1947330e47d442b80\",\r\n      \"type\": \"Microsoft.Security/alertsSuppressionRules\",\r\n      \"properties\": {\r\n        \"alertType\": \"SKDAlertType\",\r\n        \"lastModifiedUTC\": \"2021-12-05T16:42:57.9624898Z\",\r\n        \"expirationDateUTC\": \"2022-06-05T16:42:57.9624898Z\",\r\n        \"state\": \"Enabled\",\r\n        \"reason\": \"Other\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/alertsSuppressionRules/85a979d9847c45bba607dc250fddaec0\",\r\n      \"name\": \"85a979d9847c45bba607dc250fddaec0\",\r\n      \"type\": \"Microsoft.Security/alertsSuppressionRules\",\r\n      \"properties\": {\r\n        \"alertType\": \"SKDAlertType\",\r\n        \"lastModifiedUTC\": \"2021-12-07T11:24:25.2968931Z\",\r\n        \"expirationDateUTC\": \"2022-06-07T11:24:25.2968931Z\",\r\n        \"state\": \"Enabled\",\r\n        \"reason\": \"Other\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "487bb485-b5b0-471e-9c0d-10717612f869"
+  }
+}

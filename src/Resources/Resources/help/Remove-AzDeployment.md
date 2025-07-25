@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azdeployment
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azdeployment
 schema: 2.0.0
 ---
 
@@ -27,7 +27,8 @@ Remove-AzDeployment -Id <String> [-AsJob] [-PassThru] [-Pre] [-DefaultProfile <I
 ### RemoveByInputObject
 ```
 Remove-AzDeployment -InputObject <PSDeployment> [-AsJob] [-PassThru] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,15 +37,15 @@ The **Remove-AzDeployment** cmdlet removes an Azure deployment at subscription s
 ## EXAMPLES
 
 ### Example 1: Remove a deployment with a given name
-```
-PS C:\>Remove-AzDeployment -Name "RolesDeployment"
+```powershell
+Remove-AzDeployment -Name "RolesDeployment"
 ```
 
 This command removes the deployment "RolesDeployment" at the current subscription scope.
 
 ### Example 2: Get a deployment and remove it
-```
-PS C:\>Get-AzDeployment -Name "RolesDeployment" | Remove-AzDeployment
+```powershell
+Get-AzDeployment -Name "RolesDeployment" | Remove-AzDeployment
 ```
 
 This command gets the deployment "RolesDeployment" at the current subscription scope and removes it.

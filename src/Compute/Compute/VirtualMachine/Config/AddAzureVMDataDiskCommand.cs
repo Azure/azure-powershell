@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
+        [PSArgumentCompleter("Attach", "Empty", "FromImage", "Copy", "Restore")]
         public string CreateOption { get; set; }
 
         [Alias("SourceImage")]
@@ -139,6 +140,18 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Detach", "Delete")]
+        public string DeleteOption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ARM ID of snapshot or disk restore point from which to create a disk.")]
+        [ValidateNotNullOrEmpty]
+        public string SourceResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
@@ -169,6 +182,11 @@ namespace Microsoft.Azure.Commands.Compute
                     Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                     {
                         Uri = this.SourceImageUri
+                    },
+                    DeleteOption = this.DeleteOption,
+                    SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference 
+                    { 
+                        Id = this.SourceResourceId 
                     }
                 });
 
@@ -206,7 +224,12 @@ namespace Microsoft.Azure.Commands.Compute
                     Lun = this.Lun.GetValueOrDefault(),
                     CreateOption = this.CreateOption,
                     ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.DiskEncryptionSetId, this.StorageAccountType),
-                    WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
+                    WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent,
+                    DeleteOption = this.DeleteOption,
+                    SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference
+                    {
+                        Id = this.SourceResourceId
+                    }
                 });
 
                 this.VM.StorageProfile = storageProfile;

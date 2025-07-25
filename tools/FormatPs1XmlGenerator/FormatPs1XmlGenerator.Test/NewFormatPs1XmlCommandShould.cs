@@ -11,17 +11,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
+using Xunit;
+using System.IO;
+using System.Collections.Generic;
+using System.Xml.Linq;
+
 namespace FormatPs1XmlGenerator.Test
 {
-    using System;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Management.Automation.Runspaces;
-    using Xunit;
-    using System.IO;
-    using System.Collections.Generic;
-    using System.Xml.Linq;
-
     public class NewFormatPs1XmlCommandShould
     {
         private const string CmdletName = "New-FormatPs1Xml";

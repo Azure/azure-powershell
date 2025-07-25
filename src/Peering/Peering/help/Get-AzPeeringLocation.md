@@ -1,106 +1,59 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azpeeringlocation
+online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringlocation
 schema: 2.0.0
 ---
 
 # Get-AzPeeringLocation
 
 ## SYNOPSIS
-Gets the Peering locations offered by Microsoft
+Lists all of the available peering locations for the specified kind of peering.
 
 ## SYNTAX
 
-### Default (Default)
 ```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### LocationByFacilityId
-```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### LocationByDirectType
-```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DirectPeeringType <String>]
- [-PeeringDbFacilityId <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeeringLocation [-SubscriptionId <String[]>] -Kind <String> [-DirectPeeringType <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the Peering Facilities where users can connect with ARM.
+Lists all of the available peering locations for the specified kind of peering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all direct peering locations
 ```powershell
-PS C:> Get-AzPeeringLocation -Kind Direct
-
-#...More above
-PeeringLocation       : Dublin
-Address               : Unit 2, North West Business Park
-Country               : IE
-PeeringDBFacilityId   : 1065
-PeeringDBFacilityLink : https://www.peeringdb.com/fac/1065
-BandwidthOffers       : {10Gbps, 100Gbps}
-
-PeeringLocation       : Frankfurt
-Address               : Hanauer Landstrasse 298
-Country               : DE
-PeeringDBFacilityId   : 58
-PeeringDBFacilityLink : https://www.peeringdb.com/fac/58
-BandwidthOffers       : {10Gbps, 100Gbps}
-#...More below
+Get-AzPeeringLocation -Kind Direct
 ```
 
-Its a long list of locations. Gets the all the Direct Peering Facilities.
+```output
+Get-AzPeeringLocation -Kind Direct
 
-### Example 2
-```powershell
-PS C:> Get-AzPeeringLocation -Kind Exchange -PeeringLocation "Honolulu" 
-
-ExchangeName          : DRF IX
-PeeringLocation       : Honolulu
-Country               : US
-PeeringDBFacilityId   : 267
-PeeringDBFacilityLink : https://www.peeringdb.com/ix/267
-MicrosoftIPv4Address  : 206.197.210.37
-MicrosoftIPv6Address  : 2606:7c80:3375:50::37
-FacilityIPv4Prefix    : 206.197.210.0/24
-FacilityIPv6Prefix    : 2606:7c80:3375:50::/64
+Name             Country AzureRegion         Kind
+----             ------- -----------         ----
+Amsterdam        NL      West Europe         Direct
+Ashburn          US      East US             Direct
+Athens           GR      France Central      Direct
+Atlanta          US      East US 2           Direct
+Auckland         NZ      Australia East      Direct
+Barcelona        ES      France Central      Direct
+Berlin           DE      West Europe         Direct
+...
 ```
 
-Gets the exchange peering location for Honolulu. 
-
-### Example 3
-```powershell
-PS C:> Get-AzPeeringLocation -Kind Exchange -PeeringDbFacilityId 71 
-
-ExchangeName          : NIX.CZ
-PeeringLocation       : Prague
-Country               : CZ
-PeeringDBFacilityId   : 71
-PeeringDBFacilityLink : https://www.peeringdb.com/ix/71
-MicrosoftIPv4Address  : 91.210.16.115
-MicrosoftIPv6Address  : 2001:7f8:14::6b:1
-FacilityIPv4Prefix    : 91.210.16.0/22
-FacilityIPv6Prefix    : 2001:7f8:14::/64
-```
-
-Gets the exchange peering location for peering facility id 71. 
+Gets all peering locations for direct peers
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -110,11 +63,11 @@ Accept wildcard characters: False
 ```
 
 ### -DirectPeeringType
-Select 'Edge', 'CDN', and 'Transit'.
+The type of direct peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: LocationByDirectType
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -125,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Shows all Peering resource by Kind.
+The kind of the peering.
 
 ```yaml
 Type: System.String
@@ -133,38 +86,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringDbFacilityId
-The PeeringDB.com Facility ID
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: LocationByFacilityId, LocationByDirectType
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeeringLocation
-The location of the resource.
+### -SubscriptionId
+The Azure subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Default, LocationByDirectType
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -174,11 +112,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocation
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringLocation
 
 ## NOTES
 

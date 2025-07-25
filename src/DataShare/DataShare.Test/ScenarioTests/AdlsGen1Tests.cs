@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,21 +17,17 @@ namespace Microsoft.Azure.Commands.DataShare.Test.ScenarioTests.ScenarioTest
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class AdlsGen1Tests
+    public class AdlsGen1Tests : DataShareTestRunner
     {
-        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
-        public AdlsGen1Tests(Xunit.Abstractions.ITestOutputHelper output)
+        public AdlsGen1Tests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
-
-        [Fact]
+        //Retire Azure Data Lake Storage Gen1 on 29 February 2024. https://azure.microsoft.com/en-us/updates?id=action-required-switch-to-azure-data-lake-storage-gen2-by-29-february-2024
+        [Fact(Skip = "The Gen1 was retired.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsGen1Crud()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-AdlsGen1Crud");
+            TestRunner.RunTestScript("Test-AdlsGen1Crud");
         }
     }
 }

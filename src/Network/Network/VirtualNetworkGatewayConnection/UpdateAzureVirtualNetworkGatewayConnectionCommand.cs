@@ -24,6 +24,7 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -49,6 +50,12 @@ namespace Microsoft.Azure.Commands.Network
         public int? DpdTimeoutInSeconds { get; set; }
 
         [Parameter(
+        Mandatory = false,
+        HelpMessage = "Virtual Network Gateway Connection Mode.")]
+        [PSArgumentCompleter("Default", "ResponderOnly", "InitiatorOnly")]
+        public string ConnectionMode { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
         public bool? UsePolicyBasedTrafficSelectors { get; set; }
@@ -69,6 +76,23 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of traffic selector policies.")]
         public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of ingress NAT rules that are associated with this Connection.")]
+        public PSResourceId[] IngressNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of egress  NAT rules that are associated with this Connection.")]
+        public PSResourceId[] EgressNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The GatewayCustomBgpIpAddress of Virtual network gateway used in this connection.")]
+        [AllowEmptyCollection]
+        public PSGatewayCustomBgpIpConfiguration[] GatewayCustomBgpIpAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -110,6 +134,11 @@ namespace Microsoft.Azure.Commands.Network
                         this.VirtualNetworkGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds.Value;
                     }
 
+                    if (!String.IsNullOrEmpty(this.ConnectionMode))
+                    {
+                        this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode;
+                    }
+
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)
                     {
                         this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
@@ -130,6 +159,91 @@ namespace Microsoft.Azure.Commands.Network
                         this.VirtualNetworkGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
                     }
 
+                    if (this.IngressNatRule != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.IngressNatRules = new List<PSResourceId>();
+                        foreach (var resource in this.IngressNatRule)
+                        {
+                            this.VirtualNetworkGatewayConnection.IngressNatRules.Add(
+                                new PSResourceId()
+                                {
+                                    Id = resource.Id
+                                });
+                        }
+                    }
+
+                    if (this.EgressNatRule != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.EgressNatRules = new List<PSResourceId>();
+                        foreach (var resource in this.EgressNatRule)
+                        {
+                            this.VirtualNetworkGatewayConnection.EgressNatRules.Add(
+                                new PSResourceId()
+                                {
+                                    Id = resource.Id
+                                });
+                        }
+                    }
+
+                    if (this.GatewayCustomBgpIpAddress != null && this.GatewayCustomBgpIpAddress.Length > 0)
+                    {
+                        if (this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses == null)
+                        {
+                            this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses = new List<PSGatewayCustomBgpIpConfiguration>();
+
+                            foreach (var reqaddress in this.GatewayCustomBgpIpAddress)
+                            {
+                                this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Add(reqaddress);
+                            }
+                        }
+                        else
+                        {
+                            foreach (var reqaddress in this.GatewayCustomBgpIpAddress)
+                            {
+                                bool isGatewayIpConfigurationExists = this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Any(
+                                bgpaddress => bgpaddress.IpconfigurationId.Equals(reqaddress.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                                if (isGatewayIpConfigurationExists)
+                                {
+                                    var bgpPeeringPropertiesInRequest = this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.FirstOrDefault(
+                                        x => x.IpconfigurationId.Equals(reqaddress.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                                    bgpPeeringPropertiesInRequest.CustomBgpIpAddress = reqaddress.CustomBgpIpAddress;
+                                }
+                                else
+                                {
+                                    this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Add(reqaddress);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses != null && this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Count > 0)
+                        {
+                            this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Clear();
+                        }
+                    }
+
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    List<string> resourceIds = new List<string>();
+
+                    // Get the aux header for the LNG2/VNG2
+                    if (this.VirtualNetworkGatewayConnection.VirtualNetworkGateway2 != null)
+                    {
+                        resourceIds.Add(this.VirtualNetworkGatewayConnection.VirtualNetworkGateway2.Id);
+                    }
+
+                    if (this.VirtualNetworkGatewayConnection.LocalNetworkGateway2 != null)
+                    {
+                        resourceIds.Add(this.VirtualNetworkGatewayConnection.LocalNetworkGateway2.Id);
+                    }
+                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                    {
+                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                    }
+
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
                     
                     vnetGatewayConnectionModel.Tags =
@@ -137,9 +251,8 @@ namespace Microsoft.Azure.Commands.Network
                         TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) :
                         TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
 
-                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(
-                        this.VirtualNetworkGatewayConnection.ResourceGroupName,
-                        this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel);
+                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel, auxAuthHeader).GetAwaiter().GetResult();
+
                     var getvnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name);
                     WriteObject(getvnetGatewayConnection);
                 });

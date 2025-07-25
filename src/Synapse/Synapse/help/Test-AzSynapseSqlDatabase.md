@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/test-azsynapsesqldatabase
+online version: https://learn.microsoft.com/powershell/module/az.synapse/test-azsynapsesqldatabase
 schema: 2.0.0
 ---
 
 # Test-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Checks for the existence of a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Checks for the existence of a Synapse Analytics SQL database.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ The **Test-AzSynapseSqlDatabase** cmdlet checks for the existence of a Synapse A
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
+Test-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
 ```
 
 This command checks the existence of the specified SQL database.

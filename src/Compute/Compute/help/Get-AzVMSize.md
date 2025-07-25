@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: B7A675D3-EF79-4EE2-9330-D4C690739006
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmsize
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmsize
 schema: 2.0.0
 ---
 
@@ -13,9 +13,10 @@ Gets available virtual machine sizes.
 
 ## SYNTAX
 
-### ListVirtualMachineSizeParamSet (Default)
+### ListAvailableSizesForVirtualMachine (Default)
 ```
-Get-AzVMSize [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMSize [-ResourceGroupName] <String> [-VMName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListAvailableSizesForAvailabilitySet
@@ -24,34 +25,24 @@ Get-AzVMSize [-ResourceGroupName] <String> [-AvailabilitySetName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListAvailableSizesForVirtualMachine
-```
-Get-AzVMSize [-ResourceGroupName] <String> [-VMName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Get-AzVMSize** cmdlet gets available virtual machine sizes.
 
+For listing available VM sizes by subscription or location, use instead [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku).
+
 ## EXAMPLES
 
-### Example 1: Get virtual machine sizes for a location
-```
-PS C:\> Get-AzVMSize -Location "Central US"
-```
 
-This command gets the available sizes for virtual machines in the specified location.
-
-### Example 2: Get sizes for an availability set
-```
-PS C:\> Get-AzVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"
+### Example 1: Get sizes for an availability set
+```powershell
+Get-AzVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"
 ```
 
 This command gets available sizes for virtual machines that you can deploy in the availability set named AvailabilitySet17.
 
-### Example 3: Get sizes for an existing virtual machine
-```
-PS C:\> Get-AzVMSize -ResourceGroupName "ResourceGroup03" -VMName "VirtualMachine12"
+### Example 2: Get sizes for an existing virtual machine
+```powershell
+Get-AzVMSize -ResourceGroupName "ResourceGroup03" -VMName "VirtualMachine12"
 ```
 
 This command gets available sizes for the existing virtual machine named VirtualMachine12.
@@ -89,27 +80,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies the location for which this cmdlet gets the available virtual machine sizes.
-
-```yaml
-Type: System.String
-Parameter Sets: ListVirtualMachineSizeParamSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListAvailableSizesForAvailabilitySet, ListAvailableSizesForVirtualMachine
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -150,5 +126,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzVM](./Get-AzVM.md)
-
-

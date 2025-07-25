@@ -32,5 +32,26 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
         public bool? EnablePrivateCluster { get; set; }
 
+        /// <summary>
+        /// Gets or sets the private DNS zone mode for the cluster.
+        /// </summary>
+        /// <remarks>
+        /// The default is System. For more details see [configure private DNS
+        /// zone](https://learn.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
+        /// Allowed values are 'system' and 'none'.
+        /// </remarks>
+        public string PrivateDNSZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to create additional public FQDN for private
+        /// cluster or not.
+        /// </summary>
+        public bool? EnablePrivateClusterPublicFQDN { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to disable run command for the cluster or not.
+        /// </summary>
+        public bool? DisableRunCommand { get; set; }
+
     }
 }

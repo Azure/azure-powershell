@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
 {
@@ -45,14 +47,31 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         public ReadWriteEndpoint FailoverGroupReadWriteEndpoint { get; set; }
 
         /// <summary>
-        /// Gets or sets the read-only endpoint
+        /// Gets or sets the read-only endpoint (legacy field)
         /// </summary>
         public ReadOnlyEndpoint FailoverGroupReadOnlyEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the read-only endpoint.
+        /// This field is used in the newest client and has support for multiple-partner FG's.
+        /// </summary>
+        public FailoverGroupReadOnlyEndpoint FailoverGroupReadOnlyEndpointV2 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the read-write endpoint.
+        /// This field is used in the newest client and has support for multiple-partner FG's.
+        /// </summary>
+        public FailoverGroupReadWriteEndpoint FailoverGroupReadWriteEndpointV2 { get; set; }
 
         /// <summary>
         /// Gets or sets the partner servers
         /// </summary>
         public IList<FailoverGroupPartnerServer> PartnerServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Id of partner subscription id
+        /// </summary>
+        public string PartnerSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the partner resource group name
@@ -105,6 +124,11 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         public string ReadOnlyFailoverPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets the databases secondary type on partner server.
+        /// </summary>
+        public string SecondaryType { get; set; }
+
+        /// <summary>
         /// Gets or sets the Id of the failover group
         /// </summary>
         public string Id { get; set; }
@@ -136,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
-        /// <param name="advisorName">Advisor name</param>
+        /// <param name="failoverGroupName">The name of the Azure Sql Database FailoverGroup</param>
         /// <param name="failoverGroup">Recommended Action object</param>
         public AzureSqlFailoverGroupModel(string resourceGroupName, string serverName, string failoverGroupName, Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
         {

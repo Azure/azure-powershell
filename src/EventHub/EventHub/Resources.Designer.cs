@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting ConsumerGrop:{0} from Eventhub:{1}.
+        ///   Looks up a localized string similar to Deleting ConsumerGroup:{0} from Eventhub:{1}.
         /// </summary>
         internal static string RemoveConsumerGroup {
             get {
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removeing AtuhorizationRule:{0} from EventHub:{1} of Namespace: {2}.
+        ///   Looks up a localized string similar to Removing AuthorizationRule:{0} from EventHub:{1} of Namespace: {2}.
         /// </summary>
         internal static string RemoveEventHubAuthorizationRule {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing AtuhorizationRule:{0} of Namespace: {1}.
+        ///   Looks up a localized string similar to Removing AuthorizationRule:{0} of Namespace: {1}.
         /// </summary>
         internal static string RemoveNamespaceAuthorizationRule {
             get {
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove AtuhorizationRule:{0} from EventHub: {1} of Namespace: {2}.
+        ///   Looks up a localized string similar to Are you sure you want to remove AuthorizationRule:{0} from EventHub: {1} of Namespace: {2}.
         /// </summary>
         internal static string RemovingEventHubAuthorizationRule {
             get {
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}.
+        ///   Looks up a localized string similar to Are you sure you want to delete  AuthorizationRule:{0} of Namespace: {1}.
         /// </summary>
         internal static string RemovingNamespaceAuthorizationRule {
             get {
@@ -273,6 +273,160 @@ namespace Microsoft.Azure.Commands.EventHub {
         internal static string UpdateNamespaceAuthorizationrule {
             get {
                 return ResourceManager.GetString("UpdateNamespaceAuthorizationrule", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Schema Group named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string CreateNamespaceSchemaGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("CreateEventHubSchemaGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Schema Group named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string UpdateNamespaceSchemaGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("UpdateEventHubSchemaGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string RemoveNamespacesSchemaGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveEventHubSchemaGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new application group: {0} for Namespace: {1} of resource group: {2}
+        /// </summary>
+        internal static string CreateApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("CreateApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Updating application group: {0} for Namespace: {1} of resource group: {2}
+        /// </summary>
+        internal static string UpdateApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("UpdateApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Get application group: {0} for Namespace: {1} of resource group: {2}
+        /// </summary>
+        internal static string GetApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("GetApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to List application groups for Namespace: {0} of resource group: {1} 
+        /// </summary>
+        internal static string ListApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("ListApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing application group: {0} for Namespace: {1} of resource group: {2}
+        /// </summary>
+        internal static string RemoveApplicationGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveApplicationGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string ApproveNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("ApproveNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string RejectNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("RejectNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string RemoveNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string GetNamespacePrivateLinks
+        {
+            get
+            {
+                return ResourceManager.GetString("GetNamespacePrivateLinks", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string GetNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("GetNamespacePrivateEndpoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Schema Group NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string ListNamespacePrivateEndpoints
+        {
+            get
+            {
+                return ResourceManager.GetString("ListNamespacePrivateEndpoints", resourceCulture);
             }
         }
     }

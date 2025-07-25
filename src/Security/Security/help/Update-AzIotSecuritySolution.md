@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Update-AzIotSecuritySolution
+online version: https://learn.microsoft.com/powershell/module/az.security/Update-AzIotSecuritySolution
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Update-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-Tag <Hashtab
 ```
 
 ## DESCRIPTION
-The Update-AzIotSecuritySolution cmdlet updayes one or more of the following properties in a specific IoT security solution: tags, recommendation configuration, user defined resources.
+The Update-AzIotSecuritySolution cmdlet updates one or more of the following properties in a specific IoT security solution: tags, recommendation configuration, user defined resources.
 Only the specified properties will be updated inside the iot security solution.
 The IoT security solution collects security data and events from iot devices and iot hub to help prevent and detect threats.
 
@@ -45,11 +45,13 @@ The IoT security solution collects security data and events from iot devices and
 
 ### Example 1
 ```powershell
-PS C:\> $RecConfig = New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Enabled $false
-PS C:\> $UserDefinedResource = New-AzIotSecuritySolutionUserDefinedResourcesObject -Query 'where type != "microsoft.devices/iothubs" | where name contains "v2"' 
--QuerySubscriptionList @("XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX")	
-PS C:\> Update-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup" -RecommendationsConfiguration @($RecConfig) -UserDefinedResource $UserDefinedResource
+$RecConfig = New-AzIotSecuritySolutionRecommendationConfigurationObject -RecommendationType "IoT_OpenPorts" -Enabled $false
+$UserDefinedResource = New-AzIotSecuritySolutionUserDefinedResourcesObject -Query 'where type != "microsoft.devices/iothubs" | where name contains "v2"' `
+-QuerySubscriptionList @("XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX")
+Update-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup" -RecommendationsConfiguration @($RecConfig) -UserDefinedResource $UserDefinedResource
+```
 
+```output
 Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/IoTSecuritySolutions/MySample"
 Name: "MySample"
 Type: "Microsoft.Security/IoTSecuritySolutions"

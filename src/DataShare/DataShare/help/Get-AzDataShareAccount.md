@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatashareaccount
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatashareaccount
 schema: 2.0.0
 ---
 
@@ -30,14 +30,17 @@ Get-AzDataShareAccount -ResourceId <String> [-DefaultProfile <IAzureContextConta
 
 ## DESCRIPTION
 The **Get-AzDataShareAccount** cmdlet gets information about datashare accounts in an Azure subscription / resource group.
-If you specify the name of an account, this cmdlet gets information about that datshare account.
+If you specify the name of an account, this cmdlet gets information about that datashare account.
 If you do not specify a name, this cmdlet gets information about all of the datashare accounts in an Azure subscription / resource group.
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareAccount -ResourceGroupName "ADS"
 ```
-PS C:\> Get-AzDataShareAccount -ResourceGroupName "ADS"
+
+```output
 DataShareAccountName    : WikiADS
 ResourceGroupName       : ADS
 Location                : WestUS

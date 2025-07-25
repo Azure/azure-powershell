@@ -55,22 +55,27 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallHubIpAddresses HubIPAddresses { get; set; }
 
-        public string[] PrivateRange {
+        public PSAzureFirewallIpPrefix LearnedIPPrefixes { get; set; }
+
+        public PSAzureFirewallAutoscaleConfiguration AutoscaleConfiguration { get; set; }
+
+        public string[] PrivateRange
+        {
             get
             {
-                return this.privateRange; 
+                return this.privateRange;
             }
             set
             {
                 if (value != null)
+                {
                     ValidatePrivateRange(value);
-                privateRange = value;
+                    privateRange = value;
+                }
             }
         }
 
         public string DNSEnableProxy { get; set; }
-
-        public string DNSRequireProxyForNetworkRules { get; set; }
 
         public string[] DNSServer { get; set; }
 
@@ -79,6 +84,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> Zones { get; set; }
 
         public string AllowActiveFTP { get; set; }
+
+        public string EnableFatFlowLogging { get; set; }
+
+        public string EnableDnstapLogging { get; set; }
+
+        public string EnableUDPLogOptimization { get; set; }
+
+        public string RouteServerId { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
@@ -130,6 +143,50 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         #region Ip Configuration Operations
+        public void Allocate(Management.Network.Models.SubResource virtualHub)
+        {
+            if (this.Sku.Name.Equals("AZFW_Hub", StringComparison.OrdinalIgnoreCase))
+            {
+                this.VirtualHub = virtualHub;
+            }
+            else
+            {
+                throw new ArgumentException($"Hub firewall allocation attempted on a Non-hub firewall. Firewall name = {this.Name}, Sku name = {this.Sku.Name}");
+            }
+        }
+        public void Allocate(Management.Network.Models.SubResource virtualHub, PSPublicIpAddress[] publicIpAddresses)
+        {
+            if (this.Sku.Name.Equals("AZFW_Hub", StringComparison.OrdinalIgnoreCase))
+            {
+                this.VirtualHub = virtualHub;
+            }
+            else
+            {
+                throw new ArgumentException($"Hub firewall allocation attempted on a Non-hub firewall. Firewall name = {this.Name}, Sku name = {this.Sku.Name}");
+            }
+
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+            else
+            {
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
+            }
+
+            // Making HubIpAddresses property null because it is an allocate for Byopip Hub firewall, where HubIpAddress should be kept null
+            this.HubIPAddresses = null;
+        }          
 
         public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress = null)
         {
@@ -138,9 +195,12 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
             }
 
-            if (publicIpAddresses == null || publicIpAddresses.Count() == 0)
+            if (ManagementPublicIpAddress == null)
             {
-                throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
+                if (publicIpAddresses == null || publicIpAddresses.Count() == 0)
+                {
+                    throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
+                }
             }
 
             PSSubnet firewallSubnet = null;
@@ -166,32 +226,105 @@ namespace Microsoft.Azure.Commands.Network.Models
                 }
 
                 this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration
-                    {
-                        Name = AzureFirewallMgmtIpConfigurationName,
-                        PublicIpAddress = new PSResourceId { Id = ManagementPublicIpAddress.Id },
-                        Subnet = new PSResourceId { Id = firewallMgmtSubnet.Id }
-                    };
+                {
+                    Name = AzureFirewallMgmtIpConfigurationName,
+                    PublicIpAddress = new PSResourceId { Id = ManagementPublicIpAddress.Id },
+                    Subnet = new PSResourceId { Id = firewallMgmtSubnet.Id }
+                };
             }
 
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
 
-            for (var i = 0; i < publicIpAddresses.Count(); i++)
+            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
             {
-                this.IpConfigurations.Add(
-                    new PSAzureFirewallIpConfiguration
-                    {
-                        Name = $"{AzureFirewallIpConfigurationName}{i}",
-                        PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
-                    });
+                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+            else
+            {
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
             }
 
             this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
         }
+        public void AllocateBasicSku(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress)
+        {
+            if (virtualNetwork == null)
+            {
+                throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
+            }
 
+            if (ManagementPublicIpAddress == null)
+            {
+                throw new ArgumentNullException(nameof(ManagementPublicIpAddress), "ManagementPublicIpAddress is required for Azure Firewalls with Basic SKU!");
+            }
+
+            PSSubnet firewallMgmtSubnet = null;
+            try
+            {
+                firewallMgmtSubnet = virtualNetwork.Subnets.Single(subnet => AzureFirewallMgmtSubnetName.Equals(subnet.Name));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallMgmtSubnetName}");
+            }
+
+            PSSubnet firewallSubnet = null;
+            try
+            {
+                firewallSubnet = virtualNetwork.Subnets.Single(subnet => AzureFirewallSubnetName.Equals(subnet.Name));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
+            }
+
+            this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration
+            {
+                Name = AzureFirewallMgmtIpConfigurationName,
+                PublicIpAddress = new PSResourceId { Id = ManagementPublicIpAddress.Id },
+                Subnet = new PSResourceId { Id = firewallMgmtSubnet.Id }
+            };
+
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+            else
+            {
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
+            }
+
+            this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
+        }
         public void Deallocate()
         {
-            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
-            this.ManagementIpConfiguration = null;
+            if (this.Sku.Name.Equals("AZFW_Hub", StringComparison.OrdinalIgnoreCase))
+            {
+                this.VirtualHub = null;
+            }
+            else
+            {
+                this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+                this.ManagementIpConfiguration = null;
+            }
         }
 
         public void AddPublicIpAddress(PSPublicIpAddress publicIpAddress)
@@ -218,24 +351,33 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new InvalidOperationException($"Please invoke {nameof(Allocate)} to attach the firewall to a Virtual Network");
             }
 
-            var i = 0;
-            conflictingIpConfig = null;
-            var newIpConfigName = "";
+            PSAzureFirewallIpConfiguration configWithoutIP = this.IpConfigurations.SingleOrDefault
+                    (ipConfig => (ipConfig.Subnet != null && ipConfig.PublicIpAddress == null));
 
-            do
+            if (configWithoutIP != null)
             {
-                newIpConfigName = $"{AzureFirewallIpConfigurationName}{this.IpConfigurations.Count + i}";
-                conflictingIpConfig = this.IpConfigurations.SingleOrDefault
-                    (ipConfig => string.Equals(ipConfig.Name, newIpConfigName, System.StringComparison.CurrentCultureIgnoreCase));
-                i++;
-            } while (conflictingIpConfig != null);
-
-            this.IpConfigurations.Add(
-                new PSAzureFirewallIpConfiguration
+                configWithoutIP.PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id };
+            }
+            else
+            {
+                var i = 0;
+                conflictingIpConfig = null;
+                var newIpConfigName = "";
+                do
                 {
-                    Name = newIpConfigName,
-                    PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id }
-                });
+                    newIpConfigName = $"{AzureFirewallIpConfigurationName}{this.IpConfigurations.Count + i}";
+                    conflictingIpConfig = this.IpConfigurations.SingleOrDefault
+                        (ipConfig => string.Equals(ipConfig.Name, newIpConfigName, System.StringComparison.CurrentCultureIgnoreCase));
+                    i++;
+                } while (conflictingIpConfig != null);
+
+                this.IpConfigurations.Add(
+                    new PSAzureFirewallIpConfiguration
+                    {
+                        Name = newIpConfigName,
+                        PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id }
+                    });
+            }
         }
 
         public void RemovePublicIpAddress(PSPublicIpAddress publicIpAddress)
@@ -253,21 +395,51 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Public IP Address {publicIpAddress.Id} is not attached to firewall {this.Name}");
             }
 
-            if (this.IpConfigurations.Count > 1 && ipConfigToRemove.Subnet != null)
+            if (this.ManagementIpConfiguration != null)
             {
-                throw new InvalidOperationException($"Cannot remove IpConfiguration {ipConfigToRemove.Name} because it references subnet {ipConfigToRemove.Subnet.Id}. Move the subnet reference to another IpConfiguration and try again.");
+                if (ipConfigToRemove.Subnet != null)
+                {
+                    ipConfigToRemove.PublicIpAddress = null;
+                }
+                else
+                {
+                    this.IpConfigurations.Remove(ipConfigToRemove);
+                }
             }
-
-            if (this.IpConfigurations.Count == 1)
+            else
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"WARNING: Removing the last Public IP Address, this will deallocate the firewall. You will have to invoke {nameof(Allocate)} to reallocate it.");
-                Console.ResetColor();
+                if (this.IpConfigurations.Count > 1 && ipConfigToRemove.Subnet != null)
+                {
+                    throw new InvalidOperationException($"Cannot remove IpConfiguration {ipConfigToRemove.Name} because it references subnet {ipConfigToRemove.Subnet.Id}. Move the subnet reference to another IpConfiguration and try again.");
+                }
 
-                this.ManagementIpConfiguration = null;
+                if (this.IpConfigurations.Count == 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"WARNING: Removing the last Public IP Address, this will deallocate the firewall. You will have to invoke {nameof(Allocate)} to reallocate it.");
+                    Console.ResetColor();
+                }
+
+                this.IpConfigurations.Remove(ipConfigToRemove);
             }
+        }
 
-            this.IpConfigurations.Remove(ipConfigToRemove);
+        public void AddIpAddressesForByopipHubFirewall(PSPublicIpAddress[] publicIpAddresses)
+        {
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Length > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Length; i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
         }
 
         #endregion // Ip Configuration Operations
@@ -374,41 +546,10 @@ namespace Microsoft.Azure.Commands.Network.Models
                     continue;
 
                 if (ip.Contains("/"))
-                    ValidateMaskedIpAddress(ip);
+                    NetworkValidationUtils.ValidateSubnet(ip);
                 else
-                    ValidateSingleIpAddress(ip);
+                    NetworkValidationUtils.ValidateIpAddress(ip);
             }
-        }
-
-        private void ValidateSingleIpAddress(string ipAddress)
-        {
-            IPAddress ipVal;
-            if (!IPAddress.TryParse(ipAddress, out ipVal) || ipVal.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
-            {
-                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address", ipAddress));
-            }
-        }
-
-        private void ValidateMaskedIpAddress(string ipAddress)
-        {
-            var split = ipAddress.Split('/');
-            if (split.Length != 2)
-                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address", ipAddress));
-
-            // validate the ip
-            ValidateSingleIpAddress(split[0]);
-
-            // validate mask
-            var bit = 0;
-            if (!Int32.TryParse(split[1], out bit) || bit < 0 || bit > 32)
-                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, subnet mask should between 0 and 32", ipAddress));
-
-            // validated that unmasked bits are 0
-            var splittedIp = split[0].Split('.');
-            var ip = Int32.Parse(splittedIp[0]) << 24;
-            ip = ip + Int32.Parse(splittedIp[1]) << 16 + Int32.Parse(splittedIp[2]) << 8 + Int32.Parse(splittedIp[3]);
-            if (ip << bit != 0)
-                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, bits not covered by subnet mask should be all 0", ipAddress));
         }
 
         #endregion
@@ -420,12 +561,6 @@ namespace Microsoft.Azure.Commands.Network.Models
             if (string.Equals(this.DNSEnableProxy, "true", StringComparison.OrdinalIgnoreCase))
             {
                 // Nothing to validate since they have enabled DNS Proxy
-                return;
-            }
-
-            if (string.Equals(this.DNSRequireProxyForNetworkRules, "false", StringComparison.OrdinalIgnoreCase))
-            {
-                // Nothing to validate since both DNS Proxy and Requiring Proxy for Network Rules is disabled
                 return;
             }
 

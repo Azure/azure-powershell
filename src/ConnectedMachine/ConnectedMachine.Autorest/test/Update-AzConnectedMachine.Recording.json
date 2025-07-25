@@ -1,0 +1,39 @@
+{
+  "Update-AzConnectedMachine+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine?api-version=2024-07-31-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine?api-version=2024-07-31-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"privateLinkScopeResourceId\": \"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "203" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "319" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1692e42c-1975-45ce-a345-67a57b9632b6" ],
+        "x-ms-correlation-request-id": [ "d9aebf25-d036-4eb9-b31b-29425722f744" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241105T224228Z:d9aebf25-d036-4eb9-b31b-29425722f744" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 92EA86934A844E03B88718521BC0DA54 Ref B: MNZ221060608007 Ref C: 2024-11-05T22:42:24Z" ],
+        "Date": [ "Tue, 05 Nov 2024 22:42:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4031" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine\",\"name\":\"testmachine\",\"location\":\"eastus\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"68015b1c-57fa-4bf7-ad90-3f3695155089\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Updating\",\"agentVersion\":\"1.47.02843.1892\",\"status\":\"Connected\",\"lastStatusChange\":\"2024-11-05T22:41:09.0439762Z\",\"errorDetails\":[],\"displayName\":\"LAPTOP-S0HSJ7FB\",\"machineFqdn\":\"LAPTOP-S0HSJ7FB\",\"osName\":\"windows\",\"osVersion\":\"10.0.19045.5011\",\"osType\":\"windows\",\"osProfile\":{\"computerName\":\"LAPTOP-S0HSJ7FB\"},\"vmId\":\"3ada8807-3f4b-473e-90a8-df9b34f67775\",\"vmUuid\":\"1A9E1B42-3894-11EC-80F0-84A9388B55FE\",\"clientPublicKey\":\"MIIBCgKCAQEA0eWkiPGo04KwarrSb8WC4TwRKxFgk7AJ35F9DgkrJm5eXga3WHpuYZ05FEGu86QNI6q5s3kMqi+KlKfVAYhiGwmvuCZ1AAa/BHQQFjV9pKQlJLcoaTyn45XT1262gVstYCrg2cm98TJLGu5OIqfVmG027PDqeLE4fo1WxdNef+kMVPdPSO3HBSgJiatYHJnUx7hGszukMj2f6WFiZWGyTkYcjxG8+yzLoqrC9KaRUiwbIKv577OfMYBJJTOFC/0oflzZZAAlt3I48aB5Kbos73ET1w6Q2Di7RWZVXgZD4uf+cXLDguFL9nOG7opQxWkO9n+51u9RY2obKTzgRyULzwIDAQAB\",\"osSku\":\"Windows 10 Enterprise\",\"osEdition\":\"enterprise\",\"osInstallDate\":\"2023-02-07T08:27:20+00:00\",\"domainName\":\"WORKGROUP\",\"adFqdn\":\"LAPTOP-S0HSJ7FB\",\"dnsFqdn\":\"LAPTOP-S0HSJ7FB\",\"mssqlDiscovered\":\"false\",\"cloudMetadata\":{\"provider\":\"N/A\"},\"detectedProperties\":{\"architecture\":\"amd64\",\"cloudprovider\":\"N/A\",\"coreCount\":\"4\",\"logicalCoreCount\":\"8\",\"manufacturer\":\"LENOVO\",\"model\":\"20Y0S2PE00\",\"mssqldiscovered\":\"false\",\"processorCount\":\"1\",\"processorNames\":\"11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz\",\"productType\":\"4\",\"serialNumber\":\"PF33PR6M\",\"smbiosAssetTag\":\"14765144\",\"totalPhysicalMemoryInBytes\":\"34359738368\",\"totalPhysicalMemoryInGigabytes\":\"32\",\"vmuuidEsu2012\":\"1A9E1B42-3894-11EC-80F0-84A9388B55FE\"},\"privateLinkScopeResourceId\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3\",\"agentConfiguration\":{\"proxyUrl\":\"\",\"incomingConnectionsPorts\":[],\"extensionsAllowList\":[],\"extensionsBlockList\":[],\"proxyBypass\":[],\"extensionsEnabled\":\"true\",\"guestConfigurationEnabled\":\"true\",\"configMode\":\"full\"},\"serviceStatuses\":{\"extensionService\":{\"status\":\"running\",\"startupType\":\"automatic\"},\"guestConfigurationService\":{\"status\":\"running\",\"startupType\":\"automatic\"}},\"agentUpgrade\":{\"enableAutomaticUpgrade\":false},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddresses\":[{\"address\":\"192.168.32.1\",\"ipAddressVersion\":\"IPv4\",\"subnet\":{\"addressPrefix\":\"192.168.32.0/20\"}}],\"macAddress\":\"00:15:5d:eb:86:f7\",\"id\":\"29\",\"name\":\"vEthernet (Default Switch)\"},{\"ipAddresses\":[{\"address\":\"192.168.1.243\",\"ipAddressVersion\":\"IPv4\",\"subnet\":{\"addressPrefix\":\"192.168.1.0/24\"}}],\"macAddress\":\"7c:70:db:1b:2c:22\",\"id\":\"12\",\"name\":\"Wi-Fi\"},{\"ipAddresses\":[{\"address\":\"2001:0:2841:f634:1c12:2f8a:52bb:ceed\",\"ipAddressVersion\":\"IPv6\",\"subnet\":{\"addressPrefix\":\"2001:0:2841:f634::/64\"}}],\"macAddress\":\"00:00:00:00:00:00:00:e0\",\"id\":\"18\",\"name\":\"Teredo Tunneling Pseudo-Interface\"},{\"ipAddresses\":[{\"address\":\"172.20.80.1\",\"ipAddressVersion\":\"IPv4\",\"subnet\":{\"addressPrefix\":\"172.20.80.0/20\"}}],\"macAddress\":\"00:15:5d:e1:27:46\",\"id\":\"44\",\"name\":\"vEthernet (nat)\"}]},\"licenseProfile\":{\"licenseStatus\":\"Licensed\",\"licenseChannel\":\"Retail\",\"esuProfile\":{\"licenseAssignmentState\":\"NotAssigned\",\"serverType\":\"Unknown\",\"esuEligibility\":\"Ineligible\",\"esuKeyState\":\"Inactive\"}},\"storageProfile\":{\"disks\":[{\"path\":\"\\\\\\\\.\\\\PHYSICALDRIVE0\",\"diskType\":\"Fixed hard disk media\",\"generatedId\":\"\\\\\\\\.\\\\PHYSICALDRIVE0\",\"id\":\"\\\\\\\\.\\\\PHYSICALDRIVE0\",\"name\":\"SKHynix_HFS512GDE9X081N\",\"maxSizeInBytes\":512105932800,\"usedSpaceInBytes\":276265564160}]},\"firmwareProfile\":{\"serialNumber\":\"PF33PR6M\",\"type\":\"EFI\"},\"hardwareProfile\":{\"totalPhysicalMemoryInBytes\":34359738368,\"numberOfCpuSockets\":1,\"processors\":[{\"name\":\"11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz\",\"numberOfCores\":4}]}}}",
+      "isContentBase64": false
+    }
+  }
+}

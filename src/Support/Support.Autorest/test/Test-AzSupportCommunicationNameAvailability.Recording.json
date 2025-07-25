@@ -1,0 +1,78 @@
+{
+  "Test-AzSupportCommunicationNameAvailability+[NoContext]+CheckExpandedTrue+$POST+https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6/checkNameAvailability?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-for-check-msg-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/communications\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "120" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "1fdc12c3-7444-4c16-a2f5-47f983cbabfc" ],
+        "x-ms-correlation-request-id": [ "1fdc12c3-7444-4c16-a2f5-47f983cbabfc" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T180804Z:1fdc12c3-7444-4c16-a2f5-47f983cbabfc" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 57573DA2FD684D7A9C9CE2D780B16E24 Ref B: MNZ221060619009 Ref C: 2024-04-23T18:08:04Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:08:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzSupportCommunicationNameAvailability+[NoContext]+CheckExpandedFalse+$POST+https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6/checkNameAvailability?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-msg-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/communications\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "110" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "f1c81554-d1ad-4aa8-989f-27e3a508baf5" ],
+        "x-ms-correlation-request-id": [ "f1c81554-d1ad-4aa8-989f-27e3a508baf5" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240423T180804Z:f1c81554-d1ad-4aa8-989f-27e3a508baf5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 97B7A0BA510A40698ED37253115E3A31 Ref B: MNZ221060619009 Ref C: 2024-04-23T18:08:04Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:08:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "113" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"message\":\"Name already exists. Please select a different name.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}",
+      "isContentBase64": false
+    }
+  }
+}

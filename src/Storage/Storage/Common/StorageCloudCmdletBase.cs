@@ -18,9 +18,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
-using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Storage;
@@ -246,7 +245,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get a request options
         /// </summary>
-        /// <param name="type">Service type</param>
         /// <returns>Request options</returns>
         public XTable.TableRequestOptions GetTableRequestOptions()
         {
@@ -268,18 +266,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get cloud storage account 
         /// </summary>
+        /// <param name="outputErrorMessage">If fail, set true will output error message, set false will throw exception.</param>
         /// <returns>Storage account</returns>
-        internal AzureStorageContext GetCmdletStorageContext()
+        internal AzureStorageContext GetCmdletStorageContext(bool outputErrorMessage = true)
         {
-            var context = GetCmdletStorageContext(Context);
+            var context = GetCmdletStorageContext(Context, outputErrorMessage);
             Context = context;
             return context;
         }
 
-        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext)
+        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext, bool outputErrorMessage = true, bool isDestContext = false)
         {
             var context = inContext as AzureStorageContext;
-            if (context == null && inContext != null)
+
+            // if TableStorageAccount == null and not using Oauth, need create the TableStorageAccount (from CosmosDB table SDK) object for table cmdlets.
+            if ((context == null && inContext != null) || (context != null && context.TableStorageAccount == null && (context.StorageAccount != null && context.StorageAccount.Credentials != null && !context.StorageAccount.Credentials.IsToken)))
             {
                 context = new AzureStorageContext(inContext.GetCloudStorageAccount(), null, DefaultContext, WriteDebug);
             }
@@ -303,13 +304,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                     else
                     {
-                        throw new InvalidOperationException("Could not get the storage context.  Please pass in a storage context or set the current storage context.");
+                        if (isDestContext)
+                        {
+                            throw new InvalidOperationException("Could not get the destination storage context. Please pass in a storage context with \"-DestContext\" parameter (can be created with New-AzStorageContext cmdlet).");
+                        } 
+                        else
+                        {
+                            throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
+                            "or set the current storage context with Set-AzCurrentStorageAccount cmdlet.");
+                        }
                     }
                 }
                 catch (Exception e)
                 {
-                    //stop the pipeline if storage account is missed.
-                    WriteTerminatingError(e);
+                    if (outputErrorMessage)
+                    {
+                        //stop the pipeline if storage account is missed.
+                        WriteTerminatingError(e);
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
 
                 //Set the storage context and use it in pipeline
@@ -653,24 +669,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             //ctrl + c and etc
             _cancellationTokenSource.Cancel();
             base.StopProcessing();
-        }
-
-        /// <summary>
-        /// true if FIPS policy is enabled on the current machine
-        /// </summary>
-        public static bool fipsEnabled { get; } = IsFIPSEnabled();
-
-        internal static bool IsFIPSEnabled()
-        {
-            try
-            {
-                System.Security.Cryptography.MD5.Create();
-                return false;
-            }
-            catch (System.Reflection.TargetInvocationException)
-            {
-                return true;
-            }
         }
     }
 }

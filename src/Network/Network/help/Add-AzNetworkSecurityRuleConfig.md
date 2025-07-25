@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9160A21D-0F83-415B-830B-F35C8B863E90
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-aznetworksecurityruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
@@ -20,7 +20,8 @@ Add-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkS
  [-SourceAddressPrefix <String[]>] [-DestinationAddressPrefix <String[]>]
  [-SourceApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-DestinationApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -38,25 +39,25 @@ The **Add-AzNetworkSecurityRuleConfig** cmdlet adds a network security rule conf
 
 ## EXAMPLES
 
-### 1: Adding a network security group
-```
+### Example 1: Adding a network security group
+```powershell
 Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 | 
-Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access 
-    Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet 
-    -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 | 
+Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access `
+    Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet `
+    -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 |
     Set-AzNetworkSecurityGroup
 ```
 
 The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command adds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
 
-### 2: Adding a new security rule with application security groups
-```
+### Example 2: Adding a new security rule with application security groups
+```powershell
 $srcAsg = New-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name srcAsg -Location "West US"
 $destAsg = New-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name destAsg -Location "West US"
 
 Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 |
-Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access
-    Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceApplicationSecurityGroup
+Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access `
+    Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceApplicationSecurityGroup `
     $srcAsg -SourcePortRange * -DestinationApplicationSecurityGroup $destAsg -DestinationPortRange 3389 |
 Set-AzNetworkSecurityGroup
 ```
@@ -117,7 +118,7 @@ Specifies a destination address prefix.
 The acceptable values for this parameter are:
 - A Classless Interdomain Routing (CIDR) address
 - A destination IP address range
-- A wildcard character (*) to match any IP address
+- A wildcard character (*) to match any IP address.
 You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 
 ```yaml
@@ -252,13 +253,16 @@ Specifies the network protocol that a rule configuration applies to.
 The acceptable values for this parameter are:
 - Tcp
 - Udp
-- Wildcard character (*) to match both
+- Icmp
+- Esp
+- Ah
+- Wildcard character (*) to match all
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Tcp, Udp, *
+Accepted values: Tcp, Udp, Icmp, Esp, Ah, *
 
 Required: False
 Position: Named
@@ -334,7 +338,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -355,5 +359,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
 [Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
-
-

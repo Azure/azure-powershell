@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,10 +29,14 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The address prefixes of the subnet")]
-        [ValidateNotNullOrEmpty]
         public string[] AddressPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "IpamPool to auto allocate from for subnet address prefixes.")]
+        public PSIpamPoolPrefixAllocation[] IpamPoolPrefixAllocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -62,7 +66,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 
-        [GenericBreakingChange("Update Property Name", OldWay = "-ResourceId", NewWay = "-NatGatewayId")]
         [Alias("NatGatewayId")]
         [Parameter(
             Mandatory = false,
@@ -71,7 +74,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Specifies the Id of NAT Gateway resource associated with the subnet configuration")]
         public string ResourceId { get; set; }
 
-        [GenericBreakingChange("Update Property Name", OldWay = "-InputObject", NewWay = "-NatGateway")]
         [Alias("NatGateway")]
         [Parameter(
             Mandatory = false,
@@ -96,6 +98,18 @@ namespace Microsoft.Azure.Commands.Network
             "Microsoft.ServiceBus"
         )]
         public string[] ServiceEndpoint { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "NetworkIdentifier Value for ServiceEndpoint")]
+        public PSResourceId NetworkIdentifier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Service Endpoint with NetworkIdentifier Value")]
+        public PSServiceEndpoint[] ServiceEndpointConfig { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -128,5 +142,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpAllocation")]
         public PSIpAllocation[] IpAllocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Default outbound connectivity for all VMs in the subnet")]
+        public bool? DefaultOutboundAccess { get; set; }
     }
 }

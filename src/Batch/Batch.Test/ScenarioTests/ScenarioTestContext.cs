@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public ScenarioTestContext() : base(null)
         {
             // Only set the properties needed for interacting with the Batch service.
-            this.AccountName = BatchController.BatchAccount;
-            this.PrimaryAccountKey = BatchController.BatchAccountKey;
-            this.TaskTenantUrl = BatchController.BatchAccountUrl;
-            this.ResourceGroupName = BatchController.BatchResourceGroup;
-            this.Subscription = BatchController.Subscription;
+            this.AccountName = BatchTestRunner.BatchAccount;
+            this.PrimaryAccountKey = BatchTestRunner.BatchAccountKey;
+            this.TaskTenantUrl = BatchTestRunner.BatchAccountUrl;
+            this.ResourceGroupName = BatchTestRunner.BatchResourceGroup;
+            this.Subscription = BatchTestRunner.Subscription;
         }
 
         protected override BatchServiceClient CreateBatchRestClient(string url, ServiceClientCredentials credentials, DelegatingHandler handler = default(DelegatingHandler))

@@ -27,11 +27,17 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressConfig", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancerBackendAddress))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerBackendAddressConfig", DefaultParameterSetName = "SetByIpAndSubnet", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancerBackendAddress))]
     public partial class NewAzureLoadBalancerBackendAddress : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "SetByIpAndVnet",
+            HelpMessage = "The IPAddress to add to the Backend pool",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByIpAndSubnet",
             HelpMessage = "The IPAddress to add to the Backend pool",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -46,33 +52,81 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The virtual network associated with Backend Address config",
+            ParameterSetName = "SetByIpAndVnet",
+            HelpMessage = "The virtual network associated with the Backend Address config",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByIpAndSubnet",
+            HelpMessage = "The subnet associated with the Backend Address config",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string SubnetId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByResourceFrontendIPConfiguration",
+            HelpMessage = "The Loadbalancer Frontend IP Configuration associated with the Backend Address config",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string LoadBalancerFrontendIPConfigurationId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The admin state associated with the Backend Address config",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "Up",
+            "Down",
+            "None"
+        )]
+        public string AdminState { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (!ValidateIpAddress(this.IpAddress))
+            var loadBalancerBackendAddress = new PSLoadBalancerBackendAddress
             {
-                throw new PSArgumentException($"Invalid IPAddress : {Properties.Resources.InvalidIPAddress}");
-            }
-
-            var loadBalancerBackendAddress = new PSLoadBalancerBackendAddress();
-
-            loadBalancerBackendAddress.VirtualNetwork = new PSResourceId { 
-                Id = VirtualNetworkId
+                Name = this.Name,
+                AdminState = this.AdminState
             };
 
-            loadBalancerBackendAddress.IpAddress = this.IpAddress;
-            loadBalancerBackendAddress.Name = this.Name;
+            if (string.Equals(ParameterSetName, "SetByIpAndVnet"))
+            {
+                this.ValidateAndSetIpAddress(loadBalancerBackendAddress);
+
+                loadBalancerBackendAddress.VirtualNetwork = new PSResourceId
+                {
+                    Id = VirtualNetworkId
+                };
+            }
+
+            if (string.Equals(ParameterSetName, "SetByIpAndSubnet"))
+            {
+                this.ValidateAndSetIpAddress(loadBalancerBackendAddress);
+
+                loadBalancerBackendAddress.Subnet = new PSResourceId
+                {
+                    Id = SubnetId
+                };
+            }
+
+            if (string.Equals(ParameterSetName, "SetByResourceFrontendIPConfiguration"))
+            {
+                loadBalancerBackendAddress.LoadBalancerFrontendIPConfiguration = new PSResourceId
+                {
+                    Id = LoadBalancerFrontendIPConfigurationId
+                };
+            }
 
             WriteObject(loadBalancerBackendAddress);
         }
 
-        public bool ValidateIpAddress(string ipAddress)
+        private bool ValidateIpAddress(string ipAddress)
         {
             IPAddress result = null;
 
@@ -82,6 +136,16 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return IPAddress.TryParse(ipAddress, out result);
+        }
+
+        private void ValidateAndSetIpAddress(PSLoadBalancerBackendAddress backendAddress)
+        {
+            if (!ValidateIpAddress(this.IpAddress))
+            {
+                throw new PSArgumentException($"Invalid IPAddress : {Properties.Resources.InvalidIPAddress}");
+            }
+
+            backendAddress.IpAddress = this.IpAddress;
         }
     }
 }

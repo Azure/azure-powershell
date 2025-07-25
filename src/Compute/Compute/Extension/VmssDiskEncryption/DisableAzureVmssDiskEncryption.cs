@@ -127,11 +127,20 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     bool extensionFound = false;
                     foreach (var ext in vmss.VirtualMachineProfile.ExtensionProfile.Extensions)
                     {
-                        if (ext.Type1.Equals(this.ExtensionName))
+                        if (ext.VirtualMachineScaleSetExtensionPropertiesType.Equals(this.ExtensionName))
                         {
                             ext.Settings = GetDisalbeEncryptionSetting();
                             ext.ProtectedSettings = null;
                             ext.ForceUpdateTag = this.ForceUpdate.IsPresent ? Guid.NewGuid().ToString() : null;
+
+                            if (OperatingSystemTypes.Windows.Equals(this.CurrentOSType))
+                            {
+                                this.ExtensionName = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName;
+                            }
+                            else if (OperatingSystemTypes.Linux.Equals(this.CurrentOSType))
+                            {
+                                this.ExtensionName = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+                            }
 
                             VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
                                 this.ResourceGroupName,

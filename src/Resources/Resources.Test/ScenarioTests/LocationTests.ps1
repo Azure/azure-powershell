@@ -18,7 +18,7 @@
 #>
 function Test-AzureLocation
 {
-    $providerLocations = Get-AzLocation
+    $providerLocations = Get-AzLocation -ExtendedLocation $true
 
     Assert-True { $providerLocations.Count -gt 0 }
     foreach ($location in $providerLocations)

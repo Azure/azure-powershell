@@ -65,10 +65,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 switch (ParameterSetName)
                 {
                     case ByResourceGroupAndCluster:
-                        var appTypeList = this.SFRPClient.ApplicationTypes.
-                            List(this.ResourceGroupName, this.ClusterName).Value.
-                            Select(type => new PSApplicationType(type));
-                        WriteObject(appTypeList, true);
+                        var appTypeList = this.ReturnListByPageResponse(
+                            this.SFRPClient.ApplicationTypes.List(this.ResourceGroupName, this.ClusterName),
+                            this.SFRPClient.ApplicationTypes.ListNext);
+                        WriteObject(appTypeList.Select(appType => new PSApplicationType(appType)), true);
                         break;
                     case ByName:
                         GetByName();

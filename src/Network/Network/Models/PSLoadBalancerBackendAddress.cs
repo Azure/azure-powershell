@@ -29,7 +29,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId VirtualNetwork { get; set; }
 
         [JsonProperty(Order = 3)]
+        public PSResourceId Subnet { get; set; }
+
+        [JsonProperty(Order = 4)]
         public string IpAddress { get; set; }
+
+        [JsonProperty(Order = 5)]
+        public PSResourceId LoadBalancerFrontendIPConfiguration { get; set; }
+
+        [JsonProperty(Order = 6)]
+        public List<PSNatRulePortMapping> InboundNatRulesPortMapping { get; set; }
+
+        [JsonProperty(Order = 7)]
+        public string AdminState { get; set; }
 
         [JsonIgnore]
         public string NetworkInterfaceIpConfigurationIdText
@@ -38,11 +50,35 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string LoadBalancerFrontendIPConfigurationIdText
+        {
+            get { return JsonConvert.SerializeObject(LoadBalancerFrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string VirtualNetworkIdText
         {
             get
             {
                 return JsonConvert.SerializeObject(VirtualNetwork, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+            }
+        }
+
+        [JsonIgnore]
+        public string SubnetIdText
+        {
+            get
+            {
+                return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+            }
+        }
+
+        [JsonIgnore]
+        public string InboundNatRulesPortMappingText
+        {
+            get
+            {
+                return JsonConvert.SerializeObject(InboundNatRulesPortMapping, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
             }
         }
     }

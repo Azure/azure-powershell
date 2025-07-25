@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriteruleheaderconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleheaderconfiguration
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Creates a rewrite rule header configuration for an application gateway.
 
 ```
 New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName <String> [-HeaderValue <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-HeaderValueMatcher <PSApplicationGatewayHeaderValueMatcher>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName <String> [-He
 
 ### Example 1
 ```powershell
-PS C:\> $hc = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
+$hc = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
 ```
 
 This command creates a rewrite rule header configuration and stores the result in the variable named $hc.
@@ -77,8 +78,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HeaderValueMatcher
+An optional field under 'Rewrite Action'. It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderValueMatcher
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -105,3 +121,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayRewriteRule](./New-AzApplicationGatewayRewriteRule.md)
 
 [New-AzApplicationGatewayRewriteRuleActionSet](./New-AzApplicationGatewayRewriteRuleActionSet.md)
+
+[New-AzApplicationGatewayHeaderValueMatcher](./New-AzApplicationGatewayHeaderValueMatcher.md)

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Copy Constructor
         /// </summary>
-        /// <param name="other">The tenanht to copy</param>
+        /// <param name="other">The tenant to copy</param>
         public PSAzureTenant(IAzureTenant other)
         {
             this.CopyFrom(other);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The tenant id.
         /// </summary>
-        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 0)]
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 1)]
         public string Id { get; set; }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string TenantId { get { return Id; } }
 
         /// <summary>
-        /// Extended proeprties of the tenant
+        /// Extended properties of the tenant
         /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
@@ -106,14 +106,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             return this.Id;
         }
 
-        public string[] Domains
-        {
-            get
-            {
-                return this.GetPropertyAsArray(AzureTenant.Property.Domains);
-            }
-        }
-
+        [Ps1Xml(Label = "TenantCategory", Target = ViewControl.Table, Position = 2)]
         public string TenantCategory
         {
             get
@@ -122,11 +115,60 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        public string Country
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.Country);
+            }
+        }
+
+        public string CountryCode
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.CountryCode);
+            }
+        }
+
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name
         {
             get
             {
                 return this.GetProperty(AzureTenant.Property.DisplayName);
+            }
+        }
+
+        [Ps1Xml(Label = "Domains", Target = ViewControl.Table, Position = 3)]
+        public string[] Domains
+        {
+            get
+            {
+                return this.GetPropertyAsArray(AzureTenant.Property.Domains);
+            }
+        }
+        public string DefaultDomain
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.DefaultDomain);
+            }
+        }
+
+        public string TenantType
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.TenantType);
+            }
+        }
+
+        public string TenantBrandingLogoUrl
+        {
+            get
+            {
+                return this.GetProperty(AzureTenant.Property.TenantBrandingLogoUrl);
             }
         }
     }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azrmstorageshare
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azrmstorageshare
 schema: 2.0.0
 ---
 
@@ -15,31 +15,34 @@ Gets or lists Storage file shares.
 ### AccountNameSingle (Default)
 ```
 Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>]
- [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SnapshotTime <DateTime>] [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountName
 ```
 Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-IncludeDeleted]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludeSnapshot] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountObjectSingle
 ```
-Get-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-GetShareUsage]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-SnapshotTime <DateTime>]
+ [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-IncludeDeleted]
+Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-IncludeDeleted] [-IncludeSnapshot] [-Filter <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ShareResourceId
 ```
-Get-AzRmStorageShare [-ResourceId] <String> [-Name <String>] [-GetShareUsage]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRmStorageShare [-ResourceId] <String> [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,26 +51,30 @@ The **Get-AzRmStorageShare** cmdlet gets or lists Storage file shares.
 ## EXAMPLES
 
 ### Example 1: Get a Storage file share with Storage account name and share name
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare"
 ```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare"
 
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  5120
 ```
 
 This command gets a Storage file share with Storage account name and share name.
 
 ### Example 2: List all Storage file shares of a Storage account
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount"
 ```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount"
 
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier           Deleted Version ShareUsageBytes
-----     -------- --------------- ----------           ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes
+----     -------- ---------------- ----------           ------- ------- ---------------
 share1   5120                     TransactionOptimized
 share2   5120                     TransactionOptimized
 ```
@@ -75,44 +82,82 @@ share2   5120                     TransactionOptimized
 This command lists all Storage file shares of a Storage account with Storage account name.
 
 ### Example 3: Get a Storage blob container with Storage account object and container name.
-```
+```powershell
 Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | Get-AzRmStorageShare -Name "myshare"
+```
 
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  5120
 ```
 
 This command gets a Storage blob container with Storage account object and container name.
 
 ### Example 4: Get a Storage file share with the share usage in bytes
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -GetShareUsage
 ```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -GetShareUsage
 
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  5120                                                2097152
 ```
 
 This command gets a Storage file share with Storage account name and share name, and include the share usage in bytes.
 
-### Example 5: List all Storage file shares of a Storage account, include the deleted shares
-```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted 
-
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
-
-Name     QuotaGiB EnabledProtocol AccessTier           Deleted Version          ShareUsageBytes
-----     -------- --------------- ----------           ------- -------          ---------------
-test     100                      TransactionOptimized                                         
-share1   100                      TransactionOptimized True    01D61FD1FC5498B6
+### Example 5: List all Storage file shares of a Storage account, include the deleted shares, include the share snapshots
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted -IncludeSnapshot
 ```
 
-This command lists all Storage file shares include the deleted shares of a Storage account with Storage account name.
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name       QuotaGiB EnabledProtocols AccessTier           Deleted Version          ShareUsageBytes snapshotTime       
+----       -------- ---------------- ----------           ------- -------          --------------- ------------       
+testshare1 5120                     TransactionOptimized                                          2021-05-10T08:04:08Z
+testshare1 5120                     TransactionOptimized                                                      
+share1     100                      TransactionOptimized True    01D61FD1FC5498B6
+```
+
+This command lists all Storage file shares include the deleted shares and share snapshots.
+
+### Example 6: Get a single share snapshot
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "testshare1" -SnapshotTime "2021-05-10T08:04:08Z"
+```
+
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name       QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes snapshotTime       
+----       -------- ---------------- ----------           ------- ------- --------------- ------------       
+testshare1 5120                     TransactionOptimized                                 2021-05-10T08:04:08Z
+```
+
+This command gets a single file share snapshot with share name and snapshot time.
+
+### Example 7: List Storage file shares of a Storage account with a filter
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Filter "startswith(name, test)"
+```
+
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name       QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes snapshotTime
+----       -------- ---------------- ----------           ------- ------- --------------- ------------
+testshare1 5120     SMB              TransactionOptimized
+testshare2 5120     SMB              TransactionOptimized
+```
+
+This command lists all Storage file shares with names that begin with "test".
 
 ## PARAMETERS
 
@@ -123,6 +168,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+The filter of share name. When specified, only share names starting with the filter will be listed. The filter must be in format: startswith(name, `<prefix>`)
+
+```yaml
+Type: System.String
+Parameter Sets: AccountName, AccountObject
+Aliases:
 
 Required: False
 Position: Named
@@ -161,12 +221,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeSnapshot
+Include share snapshots, by default list shares won't include share snapshots.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AccountName, AccountObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Share Name
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameSingle, ShareResourceId
+Parameter Sets: AccountNameSingle
 Aliases: N, ShareName
 
 Required: False
@@ -218,6 +293,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SnapshotTime
+Share SnapshotTime
+
+```yaml
+Type: System.Nullable`1[System.DateTime]
+Parameter Sets: AccountNameSingle, AccountObjectSingle
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageAccount
 Storage account object
 
@@ -249,13 +339,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
+
+### System.String
 
 ## OUTPUTS
 

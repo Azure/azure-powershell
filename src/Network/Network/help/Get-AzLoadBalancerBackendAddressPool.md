@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:https://docs.microsoft.com/en-us/powershell/module/az.network/get-azloadbalancerbackendaddresspool
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalancerbackendaddresspool
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools
 
 ## SYNTAX
 
-### GetByNameParameterSet
+### GetByNameParameterSet (Default)
 ```
 Get-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -38,23 +38,24 @@ Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools
 ### Example 1
 ```powershell
 ## Get single backend under loadbalancer
-PS C:\> $lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
+$lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerName
 ```
 
 ```powershell
 ## Get all backends under loadbalancer
-PS C:\> $lb | Get-AzLoadBalancerBackendAddressPool
+$lb | Get-AzLoadBalancerBackendAddressPool
 ```
+
 ### Example 2
 ```powershell
 #Get specific backend from loadbalancer
-PS C:\> $lb | Get-AzLoadBalancerBackendAddressPool -Name $backendPool1
+$lb | Get-AzLoadBalancerBackendAddressPool -Name $backendPool1
 ```
 
 ### Example 3
 ```powershell
 #Get a backend by resource Id
-PS C:\> Get-AzLoadBalancerBackendAddressPool -ResourceId $backendPool1.Id
+Get-AzLoadBalancerBackendAddressPool -ResourceId $backendPool1.Id
 ```
 
 ## PARAMETERS
@@ -63,7 +64,7 @@ PS C:\> Get-AzLoadBalancerBackendAddressPool -ResourceId $backendPool1.Id
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,7 +79,7 @@ Accept wildcard characters: False
 {{ Fill LoadBalancer Description }}
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: GetByParentObjectParameterSet
 Aliases:
 
@@ -93,7 +94,7 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -108,7 +109,7 @@ Accept wildcard characters: False
 The name of the backend address pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet
 Aliases:
 
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 The resource group name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -137,7 +138,7 @@ Accept wildcard characters: False
 ### -ResourceId
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 

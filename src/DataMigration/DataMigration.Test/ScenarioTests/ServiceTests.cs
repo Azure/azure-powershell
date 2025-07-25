@@ -12,147 +12,141 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 {
-    public class ServiceTests
+    public class ServiceTests : DataMigrationTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ServiceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ServiceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndGetService()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-CreateAndGetService");
+            TestRunner.RunTestScript("Test-CreateAndGetService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndGetProjectSqlSqlDb()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-CreateAndGetProjectSqlSqlDb");
+            TestRunner.RunTestScript("Test-CreateAndGetProjectSqlSqlDb");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveService()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-RemoveService");
+            TestRunner.RunTestScript("Test-RemoveService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveProject()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-RemoveProject");
+            TestRunner.RunTestScript("Test-RemoveProject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopStartService()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-StopStartDataMigrationService");
+            TestRunner.RunTestScript("Test-StopStartDataMigrationService");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectToSourceSqlServer()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToSourceSqlServer");
+            TestRunner.RunTestScript("Test-ConnectToSourceSqlServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectToTargetSqlDb()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetSqlDb");
+            TestRunner.RunTestScript("Test-ConnectToTargetSqlDb");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUserTableTask()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-GetUserTableTask");
+            TestRunner.RunTestScript("Test-GetUserTableTask");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMigrateSqlSqlDb()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateSqlSqlDB");
+            TestRunner.RunTestScript("Test-MigrateSqlSqlDB");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectToTargetSqlDbMi()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetSqlDbMi");
+            TestRunner.RunTestScript("Test-ConnectToTargetSqlDbMi");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMigrateSqlSqlDbMi()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateSqlSqlDbMi");
+            TestRunner.RunTestScript("Test-MigrateSqlSqlDbMi");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestValidateMigrationInputSqlSqlDbMi()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ValidateMigrationInputSqlSqlDbMi");
+            TestRunner.RunTestScript("Test-ValidateMigrationInputSqlSqlDbMi");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectToSourceSqlServerSync()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToSourceSqlServerSync");
+            TestRunner.RunTestScript("Test-ConnectToSourceSqlServerSync");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectToTargetSqlDbSync()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetSqlDbSync");
+            TestRunner.RunTestScript("Test-ConnectToTargetSqlDbSync");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUserTableSyncTask()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-GetUserTableSyncTask");
+            TestRunner.RunTestScript("Test-GetUserTableSyncTask");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestValidateMigrationInputSqlSqlDbSync()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ValidateMigrationInputSqlSqlDbSync");
+            TestRunner.RunTestScript("Test-ValidateMigrationInputSqlSqlDbSync");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMigrateSqlSqlDBSync()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateSqlSqlDBSync");
+            TestRunner.RunTestScript("Test-MigrateSqlSqlDBSync");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectToSourceMongoDb()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToSourceMongoDb");
+            TestRunner.RunTestScript("Test-ConnectToSourceMongoDb");
         }
 
 
@@ -160,35 +154,35 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectToTargetCosmosDb()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetCosmosDb");
+            TestRunner.RunTestScript("Test-ConnectToTargetCosmosDb");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMigrateMongoDb()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateMongoDb");
+            TestRunner.RunTestScript("Test-MigrateMongoDb");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectToTargetSqlDbMiSync()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetSqlDbMiSync");
+            TestRunner.RunTestScript("Test-ConnectToTargetSqlDbMiSync");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestValidateMigrationInputSqlSqlDbMiSync()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ValidateMigrationInputSqlSqlDbMiSync");
+            TestRunner.RunTestScript("Test-ValidateMigrationInputSqlSqlDbMiSync");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMigrateSqlSqlDbMiSync()
         {
-            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateSqlSqlDbMiSync");
+            TestRunner.RunTestScript("Test-MigrateSqlSqlDbMiSync");
         }
     }
 }

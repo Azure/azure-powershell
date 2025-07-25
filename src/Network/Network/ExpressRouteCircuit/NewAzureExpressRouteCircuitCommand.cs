@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,6 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuit", SupportsShouldProcess = true, DefaultParameterSetName = "ServiceProvider"),OutputType(typeof(PSExpressRouteCircuit))]
     public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
@@ -105,6 +104,12 @@ namespace Microsoft.Azure.Commands.Network
         public double BandwidthInGbps { get; set; }
 
         [Parameter(
+             ParameterSetName = "ExpressRoutePort",
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true)]
+        public string AuthorizationKey { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -161,7 +166,7 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Name = this.Name;
             circuit.ResourceGroupName = this.ResourceGroupName;
             circuit.Location = this.Location;
-
+            circuit.AuthorizationKey = this.AuthorizationKey;
             // Construct sku
             if (!string.IsNullOrEmpty(this.SkuTier))
             {

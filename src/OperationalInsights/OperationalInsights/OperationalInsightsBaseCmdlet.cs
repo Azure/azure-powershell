@@ -23,6 +23,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         protected const string ByWorkspaceObject = "ByWorkspaceObject";
         protected const string ByName = "ByName";
         protected const string ByObject = "ByObject";
+        protected const string GetByNameParameterSet = "GetByNameParameterSet";
+        protected const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
+        protected const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+        protected const string ListParameterSet = "ListParameterSet";
+        protected const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
+        protected const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
+        protected const string UpdateByInputObjectParameterSet = "UpdateByInputObjectParameterSet";
+        protected const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
+        protected const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
+        protected const string DeleteByResourceIdParameterSet = "DeleteByResourceIdParameterSet";
+        protected const string CreateByNameParameterSet = "CreateByNameParameterSet";
+        protected const string CreateByObjectParameterSet = "CreateByObjectParameterSet";
+        protected const string AllParameterSet = "AllParameterSet";
 
         private OperationalInsightsClient operationalInsightsClient;
 
@@ -52,6 +65,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 exception = cloudException.CreateFormattedException();
             }
 
+            // Override the default error message so it will include information passed from Backend
+            Management.OperationalInsights.Models.ErrorResponseException errorException = exception as Management.OperationalInsights.Models.ErrorResponseException;
+            if (errorException != null)
+            {                
+                exception = new Exception(string.Format("{0}\n{1}\n{2}", errorException.Message, errorException.Response?.ReasonPhrase, errorException.Response?.Content), errorException);
+            }
             base.WriteExceptionError(exception);
         }
     }

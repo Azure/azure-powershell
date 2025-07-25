@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 "Update Mobility Service",
                 ReplicationProtectedItem.FriendlyName))
             {
-                // Validate the Replication Provider for InMageAzureV2 / InMage.
+                // Validate the Replication Provider for InMageAzureV2 / InMage / A2A / InMageRcm.
                 if (string.Compare(
                     this.ReplicationProtectedItem.ReplicationProvider,
                     Constants.InMageAzureV2,
@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 string.Compare(
                     this.ReplicationProtectedItem.ReplicationProvider,
                     Constants.A2A,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageRcm,
                     StringComparison.OrdinalIgnoreCase) !=
                 0)
                 {

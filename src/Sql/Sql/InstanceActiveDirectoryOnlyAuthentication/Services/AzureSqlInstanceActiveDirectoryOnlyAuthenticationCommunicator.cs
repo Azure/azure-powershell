@@ -53,8 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// <summary>
         /// Creates a communicator for Azure SQL Managed Instance Active Directory administrator
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceActiveDirectoryOnlyAuthenticationCommunicator(IAzureContext context)
         {
             Context = context;
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// </summary>
         public Management.Sql.Models.ManagedInstanceAzureADOnlyAuthentication Get(string resourceGroupName, string InstanceName)
         {
-            return GetCurrentSqlClient().ManagedInstanceAzureADOnlyAuthentications.GetAsync(resourceGroupName, InstanceName).Result;
+            return GetCurrentSqlClient().ManagedInstanceAzureAdOnlyAuthentications.GetAsync(resourceGroupName, InstanceName).Result;
         }
 
         /// <summary>
@@ -78,15 +77,15 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// </summary>
         public Management.Sql.Models.ManagedInstanceAzureADOnlyAuthentication CreateOrUpdate(string resourceGroupName, string InstanceName, ManagedInstanceAzureADOnlyAuthentication parameters)
         {
-            return GetCurrentSqlClient().ManagedInstanceAzureADOnlyAuthentications.CreateOrUpdate(resourceGroupName, InstanceName, parameters);
+            return GetCurrentSqlClient().ManagedInstanceAzureAdOnlyAuthentications.CreateOrUpdate(resourceGroupName, InstanceName, parameters);
         }
 
         /// <summary>
-        /// Lists Azure SQL Managed Instance Active Directory only authenctications
+        /// Lists Azure SQL Managed Instance Active Directory only authentications
         /// </summary>
         public IEnumerable<Management.Sql.Models.ManagedInstanceAzureADOnlyAuthentication> List(string resourceGroupName, string InstanceName)
         {
-            return GetCurrentSqlClient().ManagedInstanceAzureADOnlyAuthentications.ListByInstance(resourceGroupName, InstanceName);
+            return GetCurrentSqlClient().ManagedInstanceAzureAdOnlyAuthentications.ListByInstance(resourceGroupName, InstanceName);
         }
 
         /// <summary>

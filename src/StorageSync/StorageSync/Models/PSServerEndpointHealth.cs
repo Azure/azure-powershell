@@ -71,5 +71,40 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The offline data transfer status.</value>
         public string OfflineDataTransferStatus { get; set; }
+        /// <summary>
+        /// Gets or sets the total persistent files not syncing count.
+        /// </summary>
+        /// <value>The total persistent files not syncing count.</value>
+        public long? TotalPersistentFilesNotSyncingCount { get; set; }
+        /// <summary>
+        /// Gets or sets the background download activity.
+        /// </summary>
+        /// <value>The background download activity.</value>
+        public PSBackgroundDataDownloadActivity BackgroundDataDownloadActivity { get; set; }
+    }
+
+    public class PSBackgroundDataDownloadActivity
+    {
+        /// <summary>
+        /// Gets or sets the timestamp.
+        /// </summary>
+        /// <value>The timestamp.</value>
+        public DateTime? Timestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the started timestamp.
+        /// </summary>
+        /// <value>The started timestamp.</value>
+        public DateTime? StartedTimestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the percent progress.
+        /// </summary>
+        /// <value>The percent progress.</value>
+        public int? PercentProgress { get; set; }
+        /// <summary>
+        /// Gets or sets the downloaded bytes.
+        /// </summary>
+        /// <value>The downloaded bytes.</value>
+        public long? DownloadedBytes { get; set; }
     }
 }
+

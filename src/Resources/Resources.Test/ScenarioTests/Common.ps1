@@ -119,6 +119,7 @@ function New-AzRoleAssignmentWithId
         [string] [Parameter()] $Description,
         [string] [Parameter()] $Condition,
         [string] [Parameter()] $ConditionVersion,
+        [string] [Parameter()] $ObjectType,
         [Guid]   [Parameter()] $RoleAssignmentId
     )
 
@@ -200,6 +201,11 @@ function New-AzRoleAssignmentWithId
     if (-not ([string]::IsNullOrEmpty($ConditionVersion)))
     {
         $cmdlet.ConditionVersion = $ConditionVersion
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ObjectType)))
+    {
+        $cmdlet.ObjectType = $ObjectType
     }
 
     $cmdlet.ExecuteCmdlet()
@@ -371,7 +377,7 @@ function Test-AzResourceGroupDeploymentWithName
         [switch] [Parameter()] $Pre,
         [hashtable] [Parameter()] $TemplateObject,
         [hashtable] [Parameter()] $TemplateParameterObject,
-        [Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode] [Parameter()] $Mode
+        [Microsoft.Azure.Management.Resources.Models.DeploymentMode] [Parameter()] $Mode
     )
 
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile

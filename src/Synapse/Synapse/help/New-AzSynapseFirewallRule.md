@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/en-us/powershell/module/az.synapse/new-azsynapsefirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsefirewallrule
 schema: 2.0.0
 ---
 
@@ -19,9 +19,15 @@ New-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> 
  [-Confirm] [<CommonParameters>]
 ```
 
+### CreateByNameAllowAllAzureIpParameterSet
+```
+New-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> [-AllowAllAzureIp] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CreateByNameAllowAllIpParameterSet
 ```
-New-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> [-AllowAllAzureIP] [-AsJob]
+New-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> [-AllowAllIp] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,9 +38,15 @@ New-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> -Name <String> -
  [<CommonParameters>]
 ```
 
+### CreateByParentObjectAllowAllAzureIpParameterSet
+```
+New-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> [-AllowAllAzureIp] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CreateByParentObjectAllowAllIpParameterSet
 ```
-New-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> [-AllowAllAzureIP] [-AsJob]
+New-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> [-AllowAllIp] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,30 +57,45 @@ The **New-AzSynapseFirewallRule** cmdlet creates an Azure Synapse Analytics Fire
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
+New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
 ```
 
 This command creates firewall rule named ContosoFirewallRule under workspace ContosoWorkspace with name ContosoFirewallRule.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | New-AzSynapseFirewallRule -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | New-AzSynapseFirewallRule -Name ContosoFirewallRule -StartIpAddress "0.0.0.0" -EndIpAddress "255.255.255.255"
 ```
 
 This command creates firewall rule named ContosoFirewallRule under a workspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -AllowAllAzureIP
+New-AzSynapseFirewallRule -WorkspaceName ContosoWorkspace -AllowAllAzureIP
 ```
 
 This command creates firewall rule that allow all azure ips under a workspace.
 
 ## PARAMETERS
 
-### -AllowAllAzureIP
+### -AllowAllAzureIp
 Creates a special firewall rule that permits all Azure IPs to have access.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateByNameAllowAllAzureIpParameterSet, CreateByParentObjectAllowAllAzureIpParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowAllIp
+Creates a special firewall rule that allows connections from all IP addresses. The Start IP is 0.0.0.0. The End IP is 255.255.255.255.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -130,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The firerwall rule name for the workspace.
+The firewall rule name for the workspace.
 
 ```yaml
 Type: System.String
@@ -149,7 +176,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameParameterSet, CreateByNameAllowAllIpParameterSet
+Parameter Sets: CreateByNameParameterSet, CreateByNameAllowAllAzureIpParameterSet, CreateByNameAllowAllIpParameterSet
 Aliases:
 
 Required: False
@@ -180,7 +207,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameParameterSet, CreateByNameAllowAllIpParameterSet
+Parameter Sets: CreateByNameParameterSet, CreateByNameAllowAllAzureIpParameterSet, CreateByNameAllowAllIpParameterSet
 Aliases:
 
 Required: True
@@ -195,7 +222,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: CreateByParentObjectParameterSet, CreateByParentObjectAllowAllIpParameterSet
+Parameter Sets: CreateByParentObjectParameterSet, CreateByParentObjectAllowAllAzureIpParameterSet, CreateByParentObjectAllowAllIpParameterSet
 Aliases:
 
 Required: True

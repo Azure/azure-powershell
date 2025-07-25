@@ -69,6 +69,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubCRUDWithZones()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubCRUDWithZones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallThreatIntelWhitelistCRUD()
         {
             TestRunner.RunTestScript("Test-AzureFirewallThreatIntelWhitelistCRUD");
@@ -111,6 +119,127 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestAzureFirewallCRUDWithAllowActiveFTP()
         {
             TestRunner.RunTestScript("Test-AzureFirewallCRUDAllowActiveFTP");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallNoDataPip()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallNoDataPip");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubAllocateDeallocated()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubAllocateDeallocated");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallBasicSku()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallBasicSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallManagementNICBasicSku()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallManagementNICBasicSku");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDEnableFatFlowLogging()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDEnableFatFlowLogging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDEnableDnstapLogging()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDEnableDnstapLogging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubPrivateIPAddress()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubPrivateIPAddress");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDEnableUDPLogOptimization()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDEnableUDPLogOptimization");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDRouteServerId()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDRouteServerId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDRouteServerIdHub()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDRouteServerIdHub");
+        }
+
+        [Fact(Skip = "Skipped due to LearnedIpPrefixes feature not available in most regions")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestGetAzureFirewallLearnedIpPrefixes()
+        {
+            TestRunner.RunTestScript("Test-GetAzureFirewallLearnedIpPrefixes");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestInvokeAzureFirewallPacketCapture()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzureFirewallPacketCapture");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestByopipAzureHubFirewall()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzureByopipHubFirewall");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAllocateByopipAzureHubFirewall()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzureAllocateByopipHubFirewall");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallAutoscaleConfiguration()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallAutoscaleConfiguration");
         }
     }
 }

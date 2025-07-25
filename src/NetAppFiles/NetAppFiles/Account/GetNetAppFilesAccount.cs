@@ -19,7 +19,9 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -63,16 +65,27 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 Name = resourceIdentifier.ResourceName;
             }
-
-            if (Name != null)
+            try
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, Name);
-                WriteObject(anfAccount.ToPsNetAppFilesAccount());
+                if (Name != null)
+                {
+                    var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, Name);
+                    WriteObject(anfAccount.ConvertToPs());
+                }
+                else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    var anfAccounts = AzureNetAppFilesManagementClient.Accounts.List(ResourceGroupName).Select(e => e.ConvertToPs());
+                    WriteObject(anfAccounts, true);
+                }
+                else
+                {
+                        var anfAccounts = AzureNetAppFilesManagementClient.Accounts.ListBySubscription().Select(e => e.ConvertToPs());
+                        WriteObject(anfAccounts, true);
+                }
             }
-            else
+            catch (ErrorResponseException ex)
             {
-                var anfAccounts = AzureNetAppFilesManagementClient.Accounts.List(ResourceGroupName).Select(e => e.ToPsNetAppFilesAccount());
-                WriteObject(anfAccounts, true);
+                throw new CloudException(ex.Body.Error.Message, ex);
             }
         }
     }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-aztenantdeployment
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-aztenantdeployment
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Removes a deployment at tenant scope and any associated operations
 ### RemoveByDeploymentName (Default)
 ```
 Remove-AzTenantDeployment [-Name] <String> [-AsJob] [-PassThru] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByDeploymentId
@@ -27,7 +28,8 @@ Remove-AzTenantDeployment -Id <String> [-AsJob] [-PassThru] [-Pre] [-DefaultProf
 ### RemoveByInputObject
 ```
 Remove-AzTenantDeployment -InputObject <PSDeployment> [-AsJob] [-PassThru] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,15 +38,15 @@ The **Remove-AzTenantDeployment** cmdlet removes an Azure deployment at the curr
 ## EXAMPLES
 
 ### Example 1: Remove a deployment with a given name
-```
-PS C:\>Remove-AzTenantDeployment -Name "RolesDeployment"
+```powershell
+Remove-AzTenantDeployment -Name "RolesDeployment"
 ```
 
 This command removes the deployment "RolesDeployment" at the current tenant scope.
 
 ### Example 2: Get a deployment and remove it
-```
-PS C:\>Get-AzTenantDeployment -Name "RolesDeployment" | Remove-AzTenantDeployment
+```powershell
+Get-AzTenantDeployment -Name "RolesDeployment" | Remove-AzTenantDeployment
 ```
 
 This command gets the deployment "RolesDeployment" at the current tenant scope and removes it.

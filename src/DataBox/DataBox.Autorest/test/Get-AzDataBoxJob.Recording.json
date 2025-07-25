@@ -1,0 +1,46 @@
+{
+  "Get-AzDataBoxJob+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellRandomsoc8?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellRandomsoc8?api-version=2025-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "9b727aaa-eb29-4e5c-ae26-220618647e38" ],
+        "CommandName": [ "Get-AzDataBoxJob" ],
+        "FullCommandName": [ "Get-AzDataBoxJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.0", "Az.DataBox/0.3.3" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "62d0301d-e0d9-41cc-b18a-fef67412d457" ],
+        "x-ms-client-request-id": [ "9b727aaa-eb29-4e5c-ae26-220618647e38" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "62d0301d-e0d9-41cc-b18a-fef67412d457" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T213212Z:62d0301d-e0d9-41cc-b18a-fef67412d457" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6049F76C4EA64855BD7DA7427F2E8A19 Ref B: MAA201060515023 Ref C: 2025-04-17T21:32:11Z" ],
+        "Date": [ "Thu, 17 Apr 2025 21:32:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3017" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"transferType\": \"ImportToAzure\",\r\n    \"isCancellable\": true,\r\n    \"isDeletable\": false,\r\n    \"isShippingAddressEditable\": true,\r\n    \"reverseShippingDetailsUpdate\": \"NotSupported\",\r\n    \"reverseTransportPreferenceUpdate\": \"NotSupported\",\r\n    \"isPrepareToShipEnabled\": true,\r\n    \"status\": \"DeviceOrdered\",\r\n    \"startTime\": \"2025-04-17T21:31:47.6944062+00:00\",\r\n    \"details\": {\r\n      \"contactDetails\": {\r\n        \"emailList\": [\r\n          \"dhja@microsoft.com\"\r\n        ],\r\n        \"notificationPreference\": [\r\n          {\r\n            \"stageName\": \"DevicePrepared\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Dispatched\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Delivered\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"PickedUp\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"AtAzureDC\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"DataCopy\",\r\n            \"sendNotification\": true\r\n          }\r\n        ],\r\n        \"contactName\": \"random\",\r\n        \"phone\": \"1234567891\"\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"101 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"Commercial\"\r\n      },\r\n      \"dataImportDetails\": [\r\n        {\r\n          \"accountDetails\": {\r\n            \"storageAccountId\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/dhja/providers/Microsoft.Storage/storageAccounts/dhjapowershellstorage\",\r\n            \"dataAccountType\": \"StorageAccount\"\r\n          }\r\n        }\r\n      ],\r\n      \"dataExportDetails\": [],\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"preferences\": {\r\n        \"encryptionPreferences\": {\r\n          \"doubleEncryption\": \"Disabled\"\r\n        }\r\n      },\r\n      \"reverseShippingDetails\": {},\r\n      \"keyEncryptionKey\": {\r\n        \"kekType\": \"MicrosoftManaged\"\r\n      }\r\n    },\r\n    \"deliveryType\": \"NonScheduled\",\r\n    \"deliveryInfo\": {\r\n      \"scheduledDateTime\": \"0001-01-01T00:00:00+00:00\"\r\n    },\r\n    \"isCancellableWithoutFee\": true,\r\n    \"allDevicesLost\": false\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"govardhanadk@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-04-17T21:31:47.0879966+00:00\",\r\n    \"lastModifiedBy\": \"govardhanadk@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-04-17T21:31:47.0879966+00:00\"\r\n  },\r\n  \"location\": \"WestUS\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\",\r\n    \"model\": \"DataBox\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"name\": \"powershellRandomsoc8\",\r\n  \"id\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-hx/providers/Microsoft.DataBox/jobs/powershellRandomsoc8\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

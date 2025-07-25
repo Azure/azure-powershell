@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityAssessment
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecurityAssessment
 schema: 2.0.0
 ---
 
@@ -14,12 +14,14 @@ Gets security assessments and their results on a subscription
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityAssessment [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAssessment [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzSecurityAssessment -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAssessment -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdScope
@@ -30,17 +32,18 @@ Get-AzSecurityAssessment -Name <String> -AssessedResourceId <String> [-DefaultPr
 
 ### ResourceId
 ```
-Get-AzSecurityAssessment -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAssessment -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets security assessment and their results on subscription. Security assessments will let you know which best practices are recommanded by Azure Security Center to be mitigated on your Azure subscription.
+Gets security assessment and their results on subscription. Security assessments will let you know which best practices are recommended by Azure Security Center to be mitigated on your Azure subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityAssessment
+Get-AzSecurityAssessment
 ```
 
 Gets all the security assessment in a subscription
@@ -51,7 +54,7 @@ Gets all the security assessment in a subscription
 Full resource ID of the resource that the assessment is calculated on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdScope
 Aliases:
 
@@ -66,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,7 +84,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 
@@ -93,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdScope
 Aliases:
 
@@ -108,7 +111,7 @@ Accept wildcard characters: False
 ID of the security resource that you want to invoke the command on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

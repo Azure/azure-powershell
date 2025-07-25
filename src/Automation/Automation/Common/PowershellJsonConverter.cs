@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Management.Automation;
 using System.Text;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
+    
     public static class PowerShellJsonConverter
     {
         public static string Serialize(object inputObject)
@@ -32,33 +33,69 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 return null;
             }
 
-            return JsonConvert.SerializeObject(inputObject);
-        }
+            Hashtable parameters = new Hashtable();
+            parameters.Add(Constants.PsCommandParamInputObject, inputObject);
+            parameters.Add(Constants.PsCommandParamDepth, Constants.PsCommandValueDepth);
+            parameters.Add(Constants.PsCommandParamCompress, true);
+            var result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertToJson, parameters);
 
-        public static PSObject Deserialize(string json)
-        {
-            if (String.IsNullOrEmpty(json))
+            if (result.Count != 1)
             {
                 return null;
             }
 
-            try
+            return result[0].ToString();
+        }
+  public static PSObject Deserialize(string json)
+        {
+            if (string.IsNullOrEmpty(json))
             {
-                object result = JsonConvert.DeserializeObject(json);
-                return new PSObject(result);
-            } catch
-            {
-                return json;
+                return null;
             }
+
+            Hashtable parameters = new Hashtable();
+            int PSVersion = 5;
+            Collection<PSObject> result=null;
+            PSVersion = Int32.Parse(AzurePSCmdlet.PowerShellVersion[0].ToString());
+            parameters.Add(Constants.PsCommandParamInputObject, json);
+            if (PSVersion > 6)
+            {
+                try
+                {
+                    result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters,true);
+                    if (result.Count != 1)
+                    {
+                        return null;
+                    }
+                    return result[0];
+                }
+                catch (Exception)
+                {
+                    return json;
+                }
+                
+            }
+            else
+            {
+                try
+                {
+                    result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters);
+                    if (result.Count != 1)
+                    {
+                        return null;
+                    }
+                    return result[0];
+                }
+                catch (Exception)
+                {
+                    return json;
+                }
+                
+            }
+
         }
 
-        /// <summary>
-        /// Invokes a powershell script using the same runspace as the caller.
-        /// </summary>
-        /// <param name="scriptName">script name</param>
-        /// <param name="parameters">parameters for the script</param>
-        /// <returns></returns>
-        private static Collection<PSObject> InvokeScript(string scriptName, Hashtable parameters)
+        private static Collection<PSObject> InvokeScript(string scriptName, Hashtable parameters, bool addNoEnumerateSwitchToParameters=false)
         {
             using (var powerShell = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace))
             {
@@ -67,10 +104,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     powerShell.AddParameter(parameter.Key.ToString(), parameter.Value);
                 }
-
-
+                if(addNoEnumerateSwitchToParameters)
+                {
+                    powerShell.AddParameter("NoEnumerate");
+                }
                 var result = powerShell.Invoke();
-
                 //Error handling
                 if (powerShell.HadErrors)
                 {
@@ -80,13 +118,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         errorStringBuilder.AppendLine(error.InvocationInfo.MyCommand.Name + " : " + error.Exception.Message);
                         errorStringBuilder.AppendLine(error.InvocationInfo.PositionMessage);
                     }
-
                     throw new AzureAutomationOperationException(string.Format(CultureInfo.CurrentCulture,
                        Resources.PowershellJsonDecrypterFailed, errorStringBuilder.ToString()));
                 }
-
                 return result;
             }
         }
     }
 }
+

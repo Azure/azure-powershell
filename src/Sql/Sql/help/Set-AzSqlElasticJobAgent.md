@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/set-Azsqlelasticjobagent
+online version: https://learn.microsoft.com/powershell/module/Az.sql/set-Azsqlelasticjobagent
 schema: 2.0.0
 ---
 
@@ -15,18 +15,21 @@ Updates an elastic job agent
 ### DefaultSet (Default)
 ```
 Set-AzSqlElasticJobAgent [-ResourceGroupName] <String> [-ServerName] <String> [-Name] <String>
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-IdentityType <String>] [-WorkerCount <Int32>]
+ [-SkuName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectSet
 ```
 Set-AzSqlElasticJobAgent [-InputObject] <AzureSqlElasticJobAgentModel> [-Tag <Hashtable>]
+ [-UserAssignedIdentityId <String[]>] [-IdentityType <String>] [-WorkerCount <Int32>] [-SkuName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Set-AzSqlElasticJobAgent [-ResourceId] <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+Set-AzSqlElasticJobAgent [-ResourceId] <String> [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>]
+ [-IdentityType <String>] [-WorkerCount <Int32>] [-SkuName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,15 +39,31 @@ The Set-AzSqlElasticJobAgent cmdlet updates an Elastic Job agents
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Set-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent -Tag @{ Octopus = "Agent" }
 ```
-PS C:\> Set-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent -Tag @{ Octopus = "Agent" }
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready {[Octopus, Agent]}
 ```
 
 Updates an Elastic Job agent
+
+### Example 2
+```powershell
+$umi = Get-AzUserAssignedIdentity -ResourceGroupName rg -Name pstestumi
+New-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -DatabaseName jobdb -Name agent -IdentityType "UserAssigned" -UserAssignedIdentityId $umi.Id -SkuName JA200 -WorkerCount 200
+```
+
+```output
+ResourceGroupName ServerName       DatabaseName AgentName State Tags
+----------------- ----------       ------------ --------- ----- ----
+rg                elasticjobserver jobdb        agent     Ready
+```
+
+Updates an Elastic Job agent with specific Sku and Identity 
 
 ## PARAMETERS
 
@@ -55,6 +74,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of Identity to be used. Possible values are UserAssigned and None.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -138,6 +172,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuName
+The name of the service objective to assign to the Azure SQL Job Agent.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: RequestedServiceObjectiveName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 The tags to associate with the Azure SQL Database Agent
 
@@ -145,6 +194,36 @@ The tags to associate with the Azure SQL Database Agent
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+List of user assigned identities
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkerCount
+WorkerCount is the capacity of the Azure SQL Job Agent which controls the number of concurrent targets that can be executed.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases: Capacity
 
 Required: False
 Position: Named

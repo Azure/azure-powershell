@@ -1,0 +1,41 @@
+{
+  "New-AzMapsAccount+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6?api-version=2021-02-01",
+      "Content": "{\r\n  \"location\": \"westcentralus\",\r\n  \"sku\": {\r\n    \"name\": \"G2\"\r\n  },\r\n  \"kind\": \"Gen2\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "90" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-3c6a6088c9e2cfe81bc99fa94b3ec453-77a5570abb405ea7-01" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/japanwest/51718024-97a5-497d-9d11-e236c8f365ba" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "7b33675d-a49e-4b1e-b7e7-f218f5988915" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020204Z:7b33675d-a49e-4b1e-b7e7-f218f5988915" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1D2D037D41D14B51BE4B9F4A62BCEA98 Ref B: TYO201100113023 Ref C: 2025-04-16T02:02:01Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:02:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "731" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"kind\": \"Gen2\",\n  \"type\": \"Microsoft.Maps/accounts\",\n  \"sku\": {\n    \"name\": \"G2\",\n    \"tier\": \"Standard\"\n  },\n  \"properties\": {\n    \"uniqueId\": \"55e4a809-2f6c-4fd9-85e0-68cd7c096cf7\",\n    \"provisioningState\": \"Succeeded\",\n    \"disableLocalAuth\": false\n  },\n  \"systemData\": {\n    \"createdBy\": \"v-jiaji@microsoft.com\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2025-04-16T02:02:03.7522573Z\",\n    \"lastModifiedBy\": \"v-jiaji@microsoft.com\",\n    \"lastModifiedByType\": \"User\",\n    \"lastModifiedAt\": \"2025-04-16T02:02:03.7522573Z\"\n  },\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/maps5y1mz6\",\n  \"name\": \"maps5y1mz6\",\n  \"location\": \"westcentralus\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

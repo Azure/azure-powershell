@@ -1,0 +1,157 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "String"
+        },
+        "location": {
+            "type": "String"
+        },
+        "sku": {
+            "type": "String"
+        },
+        "mi1ObjectId": {
+            "type": "string"
+        },
+        "mi2ObjectId": {
+            "type": "string"
+        },
+        "tenant": {
+            "type": "String"
+        },
+        "enabledForDeployment": {
+            "type": "Bool"
+        },
+        "enabledForTemplateDeployment": {
+            "type": "Bool"
+        },
+        "enabledForDiskEncryption": {
+            "type": "Bool"
+        },
+        "enableRbacAuthorization": {
+            "type": "Bool"
+        },
+        "publicNetworkAccess": {
+            "type": "String"
+        },
+        "enableSoftDelete": {
+            "type": "Bool"
+        },
+        "softDeleteRetentionInDays": {
+            "type": "Int"
+        },
+        "enablePurgeProtection": {
+            "type": "Bool"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2021-10-01",
+            "name": "[parameters('name')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [],
+            "tags": {},
+            "properties": {
+                "enabledForDeployment": "[parameters('enabledForDeployment')]",
+                "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
+                "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+                "enableRbacAuthorization": "[parameters('enableRbacAuthorization')]",
+                "accessPolicies": [
+                    {
+                        "objectId": "[parameters('mi1ObjectId')]",
+                        "tenantId": "[parameters('tenant')]",
+                        "permissions": {
+                            "keys": [
+                                "Get",
+                                "Create",
+                                "UnwrapKey",
+                                "WrapKey"
+                            ],
+                            "secrets": [
+                                "Get"
+                            ],
+                            "certificates": [
+                                "Get"
+                            ]
+                        },
+                        "applicationId": ""
+                    },
+                    {
+                        "objectId": "[parameters('mi2ObjectId')]",
+                        "tenantId": "[parameters('tenant')]",
+                        "permissions": {
+                            "keys": [
+                                "Get",
+                                "UnwrapKey",
+                                "WrapKey"
+                            ],
+                            "secrets": [
+                                "Get"
+                            ],
+                            "certificates": [
+                                "Get"
+                            ]
+                        },
+                        "applicationId": ""
+                    },
+                    {
+                        "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+                        "objectId": "b2ce67ee-5de9-4b0f-acd6-2f6465e7aa2f",
+                        "permissions": {
+                            "keys": [
+                                "Get",
+                                "List",
+                                "Update",
+                                "Create",
+                                "Import",
+                                "Delete",
+                                "Recover",
+                                "Backup",
+                                "Restore"
+                            ],
+                            "secrets": [
+                                "Get",
+                                "List",
+                                "Set",
+                                "Delete",
+                                "Recover",
+                                "Backup",
+                                "Restore"
+                            ],
+                            "certificates": [
+                                "Get",
+                                "List",
+                                "Update",
+                                "Create",
+                                "Import",
+                                "Delete",
+                                "Recover",
+                                "Backup",
+                                "Restore",
+                                "ManageContacts",
+                                "ManageIssuers",
+                                "GetIssuers",
+                                "ListIssuers",
+                                "SetIssuers",
+                                "DeleteIssuers"
+                            ]
+                        }
+                    }
+                ],
+                "tenantId": "[parameters('tenant')]",
+                "sku": {
+                    "name": "[parameters('sku')]",
+                    "family": "A"
+                },
+                "publicNetworkAccess": "[parameters('publicNetworkAccess')]",
+                "enableSoftDelete": "[parameters('enableSoftDelete')]",
+                "softDeleteRetentionInDays": "[parameters('softDeleteRetentionInDays')]",
+                "enablePurgeProtection": "[parameters('enablePurgeProtection')]"
+            }
+        }
+    ],
+    "outputs": {}
+}

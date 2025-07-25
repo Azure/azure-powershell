@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Commands.Network
 
     public class VirtualHubRouteTableBaseCmdlet : VirtualHubBaseCmdlet
     {
-        public IVirtualHubRouteTableV2sOperations VirtualHubRouteTablesClient
+        public IVirtualHubRouteTableV2SOperations VirtualHubRouteTablesClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.VirtualHubRouteTableV2s;
+                return NetworkClient.NetworkManagementClient.VirtualHubRouteTableV2S;
             }
         }
 

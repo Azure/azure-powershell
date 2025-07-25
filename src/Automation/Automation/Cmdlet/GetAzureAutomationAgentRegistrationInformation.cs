@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Automation.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -34,11 +36,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             IEnumerable<AgentRegistration> ret = null;
 
+            var agentRegInfo = this.AutomationClient.GetAgentRegistration(
+                                  this.ResourceGroupName,
+                                  this.AutomationAccountName);
+
+            if (agentRegInfo.PrimaryKey == null && agentRegInfo.SecondaryKey == null)
+            {
+                throw new AzureAutomationOperationException(Resources.InsufficientUserPermissions);
+            }
+
             ret = new List<AgentRegistration>
                           {
-                              this.AutomationClient.GetAgentRegistration(
-                                  this.ResourceGroupName,
-                                  this.AutomationAccountName)
+                              agentRegInfo
                           };
 
             this.GenerateCmdletOutput(ret);

@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet as a job in the background.")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Managed Identity Type. Can be SystemAssigned or None.")]
+        [ValidateNotNullOrEmpty]
+        public string Identity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
@@ -91,14 +97,14 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                     Template = this.Template,
                     Sku = new AppSkuInfo() { Name = this.GetAppSkuName() },
                     Location = this.GetLocation(),
-                    Tags = this.GetTags()
+                    Tags = this.GetTags(),
+                    Identity = new SystemAssignedServiceIdentity(this.GetIdentity()),
                 };
 
                 this.IotCentralClient.Apps.CreateOrUpdate(this.ResourceGroupName, this.Name, iotCentralApp);
                 App createdIotCentralApp = this.IotCentralClient.Apps.Get(this.ResourceGroupName, this.Name);
                 this.WriteObject(IotCentralUtils.ToPSIotCentralApp(createdIotCentralApp), false);
             }
-
         }
 
         private IDictionary<string, string> GetTags()
@@ -131,6 +137,11 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                 return this.ResourceManagementClient.ResourceGroups.Get(ResourceGroupName).Location;
             }
             return this.Location;
+        }
+
+        private string GetIdentity()
+        {
+            return this.Identity ?? SystemAssignedServiceIdentityType.None;
         }
     }
 }

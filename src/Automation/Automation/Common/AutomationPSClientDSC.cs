@@ -1743,7 +1743,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 odataFilter.Add("properties/endTime le " + this.FormatDateTime(endTime.Value));
             }
-            if (string.IsNullOrWhiteSpace(type))
+            if (!string.IsNullOrWhiteSpace(type))
             {
                 odataFilter.Add("properties/type eq '" + Uri.EscapeDataString(type) + "'");
             }

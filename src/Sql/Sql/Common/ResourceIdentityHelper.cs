@@ -12,27 +12,124 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Sql.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using System.Runtime.CompilerServices;
+
 namespace Microsoft.Azure.Commands.Sql.Common
 {
     public enum ResourceIdentityType
     {
-        SystemAssigned
+        SystemAssigned,
+        SystemAssignedUserAssigned,
+        UserAssigned,
+        None
     }
 
     public class ResourceIdentityHelper
     {
-        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent)
+        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent, string resourceIdentityType, List<string> userAssignedIdentities, Management.Sql.Models.ResourceIdentity existingResourceIdentity)
         {
             Management.Sql.Models.ResourceIdentity identityResult = null;
-            if (assignIdentityIsPresent)
+            
+            // If the user passes in IdentityType as None, then irrespective of previous config, we set the IdentityType to be None.
+            //
+            if (resourceIdentityType != null && resourceIdentityType.Equals(ResourceIdentityType.None.ToString()))
+            {
+                identityResult = new Management.Sql.Models.ResourceIdentity()
+                {
+                    Type = ResourceIdentityType.None.ToString()
+                };
+
+                return identityResult;
+            }
+
+            if (resourceIdentityType != null && assignIdentityIsPresent && 
+                (resourceIdentityType.Equals("SystemAssigned,UserAssigned") || resourceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned.ToString())))
+            {
+                Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
+
+                if (userAssignedIdentities == null)
+                {
+                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssigned,UserAssigned");
+                }
+
+                if (existingResourceIdentity != null && userAssignedIdentities.Any()
+                    && existingResourceIdentity.UserAssignedIdentities != null)
+                {
+                    foreach (string identity in userAssignedIdentities)
+                    {
+                        existingResourceIdentity.UserAssignedIdentities.Add(identity, new UserIdentity());
+                    }
+
+                    identityResult = existingResourceIdentity;
+                    identityResult.Type = "SystemAssigned,UserAssigned";
+                }
+                else if (userAssignedIdentities.Any())
+                {
+                    foreach (string identity in userAssignedIdentities)
+                    {
+                        umiDict.Add(identity, new UserIdentity());
+                    }
+
+                    identityResult = new Management.Sql.Models.ResourceIdentity()
+                    {
+                        Type = "SystemAssigned,UserAssigned",
+                        UserAssignedIdentities = umiDict
+                    };
+                }
+            }
+            else if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdentityType.Equals(ResourceIdentityType.UserAssigned.ToString()))
+            {
+                Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
+
+                if (userAssignedIdentities == null)
+                {
+                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssigned,UserAssigned");
+                }
+
+                if (existingResourceIdentity != null && userAssignedIdentities.Any()
+                    && existingResourceIdentity.UserAssignedIdentities != null)
+                {
+                    foreach (string identity in userAssignedIdentities)
+                    {
+                        existingResourceIdentity.UserAssignedIdentities.Add(identity, new UserIdentity());
+                    }
+
+                    identityResult = existingResourceIdentity;
+                    identityResult.Type = ResourceIdentityType.UserAssigned.ToString();
+                }
+                else if (userAssignedIdentities.Any())
+                {
+                    foreach (string identity in userAssignedIdentities)
+                    {
+                        umiDict.Add(identity, new UserIdentity());
+                    }
+
+                    identityResult = new Management.Sql.Models.ResourceIdentity()
+                    {
+                        Type = ResourceIdentityType.UserAssigned.ToString(),
+                        UserAssignedIdentities = umiDict
+                    };
+                }
+            }
+            else if (assignIdentityIsPresent)
             {
                 identityResult = new Management.Sql.Models.ResourceIdentity()
                 {
                     Type = ResourceIdentityType.SystemAssigned.ToString()
-                };
+                };  
+            }
+            
+            if (!assignIdentityIsPresent && existingResourceIdentity != null && existingResourceIdentity.PrincipalId != null)
+            {
+                identityResult = existingResourceIdentity;
             }
 
             return identityResult;
+
         }
     }
 }

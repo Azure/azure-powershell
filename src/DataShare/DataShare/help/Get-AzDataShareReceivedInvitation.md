@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatasharereceivedinvitation
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharereceivedinvitation
 schema: 2.0.0
 ---
 
@@ -18,14 +18,16 @@ Get-AzDataShareReceivedInvitation [-Location <String>] [-InvitationId <String>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataShareReceivedInvitation** cmdlet provides information about all the invitations that the consumer has receieved. If you provide location or invitation id, this cmdlet provides information about invitation in particular location or having invitation id. Otherwise, it provides a list of invitations sent to the consumer.
+The **Get-AzDataShareReceivedInvitation** cmdlet provides information about all the invitations that the consumer has received. If you provide location or invitation id, this cmdlet provides information about invitation in particular location or having invitation id. Otherwise, it provides a list of invitations sent to the consumer.
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareReceivedInvitation -location "westus"
 ```
-PS C:\> Get-AzDataShareReceivedInvitation -location "westus"
 
+```output
 DataSetCount      : 3
 InvitationId      : 167e06ff-567f-4bc7-be0c-645a6de710f3
 InvitationStatus  : Pending
@@ -42,7 +44,7 @@ Name              : AdsInvitation
 Type              : Microsoft.DataShare/consumerInvitations
 ```
 
-This commant provides information about consumer invitations.
+This command provides information about consumer invitations.
 
 ## PARAMETERS
 

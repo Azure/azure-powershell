@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
-    public class NewAzureRmMetricAlertRuleV2DimensionSelectionTests
+    public class NewAzureRmMetricAlertRuleV2DimensionSelectionTests : RMTestBase
     {
         private readonly NewAzureRmMetricAlertRuleV2DimensionSelectionCommand cmdlet;
         private Mock<ICommandRuntime> commandRuntimeMock;

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector
 schema: 2.0.0
 ---
 
@@ -23,14 +23,17 @@ The Get-AzSqlServerTransparentDataEncryptionProtector cmdlet gets information ab
 ## EXAMPLES
 
 ### Example 1: Get the Transparent Data Encryption (TDE) protector
+```powershell
+Get-AzSqlServerTransparentDataEncryptionProtector -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
-PS C:\> Get-AzSqlServerTransparentDataEncryptionProtector -ServerName 'ContosoServer' -ResourceGroup 'ContosoResourceGroup'
+
+```output
+ResourceGroupName       ServerName                   Type ServerKeyVaultKeyName
+-----------------       ----------                   ---- ---------------------
+ContosoResourceGroup    ContosoServer      ServiceManaged ServiceManaged
 ```
 
 This command gets the TDE protector for the server named ContosoServer in resource group named ContosoResourceGroup.
-ResourceGroupName ServerName                   Type ServerKeyVaultKeyName
------------------ ----------                   ---- ---------------------
-ContosoResourceGroup ContosoServer ServiceManaged ServiceManaged
 
 ## PARAMETERS
 
@@ -125,4 +128,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

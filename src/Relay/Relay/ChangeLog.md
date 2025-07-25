@@ -18,6 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update the outputs of breaking change announcements.
+
+## Version 2.1.1
+* Added breaking change announcement for below commands.
+  - `Get-AzRelayNamespace`
+  - `Get-AzRelayNamespaceNetworkRuleSet`
+  - `Set-AzRelayNamespaceNetworkRuleSet`
+
+## Version 2.1.0
+* Upgraded nuget package to signed package.
+
+## Version 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 2.0.0
+* Updated API version to 2021-11-01
+
+## Version 1.0.4
+* Added breaking change message for cmdlets.
+    * `Set-AzRelayNamespace`
+    * `Get-AzRelayOperation`
 
 ## Version 1.0.3
 * Update references in .psd1 to use relative path

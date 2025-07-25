@@ -61,9 +61,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, ParameterSetName = ByInputObject, ValueFromPipeline = true, HelpMessage = "The service resource.")]
         public PSService InputObject { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup)]
-        [Parameter(Mandatory = false, ParameterSetName = ByInputObject)]
-        [Parameter(Mandatory = false, ParameterSetName = ByResourceId)]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Returns True if the command succeeds and False if it fails. By default, this cmdlet does not return any output.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
+            HelpMessage = "Returns True if the command succeeds and False if it fails. By default, this cmdlet does not return any output.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Returns True if the command succeeds and False if it fails. By default, this cmdlet does not return any output.")]
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup, HelpMessage = "Remove without prompt.")]

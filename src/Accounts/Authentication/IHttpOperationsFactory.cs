@@ -27,5 +27,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         IHttpOperations<T> GetHttpOperations<T>() where T : class, ICacheable; 
         IHttpOperations<T> GetHttpOperations<T>(bool useCaching) where T: class, ICacheable;
+        Task<string> ReadAsStringAsync(Uri requestUri);
     }
 }

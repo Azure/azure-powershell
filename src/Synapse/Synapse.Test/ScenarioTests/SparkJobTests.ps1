@@ -34,7 +34,7 @@ function Test-SynapseSparkJob
             -Language Spark `
             -MainDefinitionFile "$defaultStorageUrl/$defaultFileSystem/samples/java/wordcount/wordcount.jar" `
             -MainClassName WordCount `
-            -CommandLineArguments "$defaultStorageUrl/$defaultFileSystem/samples/java/wordcount/shakespeare.txt","$defaultStorageUrl/$defaultFileSystem/samples/java/wordcount/result/" `
+            -CommandLineArgument "$defaultStorageUrl/$defaultFileSystem/samples/java/wordcount/shakespeare.txt","$defaultStorageUrl/$defaultFileSystem/samples/java/wordcount/result/" `
             -ExecutorCount 2 `
             -ExecutorSize Small
 

@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         public static Dictionary<string, string> AEMExtensionDefaultNamev2 = new Dictionary<string, string>() { { OSTypeWindows, "MonitorX64Windows" }, { OSTypeLinux, "MonitorX64Linux" } };
         public static Dictionary<string, string> AEMExtensionPublisherv2 = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.AzureCAT.AzureEnhancedMonitoring" }, { OSTypeLinux, "Microsoft.AzureCAT.AzureEnhancedMonitoring" } };
         public static Dictionary<string, string> AEMExtensionPublisherv2_Test = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Edp" }, { OSTypeLinux, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Edp" } };
+        public static Dictionary<string, string> AEMExtensionPublisherv2_TestAfterMigration = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Test" }, { OSTypeLinux, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Test" } };
         public static Dictionary<string, string> AEMExtensionTypev2 = new Dictionary<string, string>() { { OSTypeWindows, "MonitorX64Windows" }, { OSTypeLinux, "MonitorX64Linux" } };
         public static Dictionary<string, Version> AEMExtensionVersionv2 = new Dictionary<string, Version>() { { OSTypeWindows, new Version(1, 0) }, { OSTypeLinux, new Version(1, 0) } };
 
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute
         public const string WadTableName = "WADPerformanceCountersTable";
         public const string AzureEndpoint = "core.windows.net";
         public const int ContentAgeInMinutes = 5;
-        public const string MissingGuestAgentWarning = "Provision Guest Agent is not installed on this Azure Virtual Machine. Please read the documentation on how to download and install the Provision Guest Agent. After you have installed the Provision Guest Agent, enable it with the Enable-ProvisionGuestAgent_GUI commandlet that is part of this Powershell Module.";
+        public const string MissingGuestAgentWarning = "Provision Guest Agent is not installed on this Azure Virtual Machine. Please read the documentation on how to download and install the Provision Guest Agent. After you have installed the Provision Guest Agent, enable it with the Enable-ProvisionGuestAgent_GUI cmdlet that is part of this Powershell Module.";
         public const string ROLECONTENT = "IaaS";
         public const string SchemasTable = "SchemasTable";
         public const string SchemasTablePhysicalTableName = "PhysicalTableName";

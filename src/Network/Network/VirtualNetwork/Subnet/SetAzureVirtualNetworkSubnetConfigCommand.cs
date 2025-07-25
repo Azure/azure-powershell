@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Network.VirtualNetwork.Subnet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,9 +67,23 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.RouteTableId = null;
                 }
+
+                if (this.InputObject != null)
+                {
+                    this.ResourceId = this.InputObject.Id;
+                }
+                else if (this.MyInvocation.BoundParameters.ContainsKey("InputObject"))
+                {
+                    this.ResourceId = null;
+                }
             }
 
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
+
+            if (IpamPoolPrefixAllocation?.Length > 0)
+            {
+                subnet.IpamPoolPrefixAllocations = IpamPoolPrefixAllocation.ToList();
+            }
 
             if (this.IpAllocation != null)
             {
@@ -98,15 +113,23 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.RouteTable = null;
             }
 
-            if (this.ServiceEndpoint != null)
+            if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
-                foreach (var item in this.ServiceEndpoint)
-                {
-                    var service = new PSServiceEndpoint();
-                    service.Service = item;
-                    subnet.ServiceEndpoints.Add(service);
-                }
+                subnet.NatGateway = new PSNatGateway();
+                subnet.NatGateway.Id = this.ResourceId;
+            }
+            else if (this.MyInvocation.BoundParameters.ContainsKey("InputObject") || this.MyInvocation.BoundParameters.ContainsKey("ResourceId"))
+            {
+                subnet.NatGateway = null;
+            }
+
+            if (this.ServiceEndpoint != null || this.ServiceEndpointConfig != null)
+            {
+                AzureVirtualNetworkSubnetConfigHelper helper = new AzureVirtualNetworkSubnetConfigHelper();
+                if (helper.MultipleNetworkIdentifierExists(this.ServiceEndpointConfig)) 
+                    throw new ArgumentException("Multiple Service Endpoints with different Network Identifiers are not allowed");
+                
+                helper.ConfigureServiceEndpoint(this.ServiceEndpoint, this.NetworkIdentifier, this.ServiceEndpointConfig, subnet);
             }
             else
             {
@@ -131,7 +154,12 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.Delegations = null;
             }
 
-            if(!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))
+            if (this.DefaultOutboundAccess != null)
+            {
+                subnet.DefaultOutboundAccess = this.DefaultOutboundAccess;
+            }
+
+            if (!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))
             {
                 subnet.PrivateEndpointNetworkPolicies = this.PrivateEndpointNetworkPoliciesFlag;
             }

@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class PrivateLinkServiceConnectionStateConverter.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSPrivateLinkServiceConnectionState, Microsoft.Azure.Management.StorageSync.Models.PrivateLinkServiceConnectionState}" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSPrivateLinkServiceConnectionState, PrivateLinkServiceConnectionState}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSPrivateLinkServiceConnectionState, Microsoft.Azure.Management.StorageSync.Models.PrivateLinkServiceConnectionState}" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{PSPrivateLinkServiceConnectionState, PrivateLinkServiceConnectionState}" />
     public class PrivateLinkServiceConnectionStateConverter : ConverterBase<PSPrivateLinkServiceConnectionState, StorageSyncModels.PrivateLinkServiceConnectionState>
     {
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         protected override StorageSyncModels.PrivateLinkServiceConnectionState Transform(PSPrivateLinkServiceConnectionState source) => new StorageSyncModels.PrivateLinkServiceConnectionState(
             source.Status,
             source.Description,
-            source.ActionRequired);
+            source.ActionsRequired);
 
         /// <summary>
         /// Transforms the specified source.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             {
                 Status = source.Status,
                 Description = source.Description,
-                ActionRequired = source.ActionRequired,
+                ActionsRequired = source.ActionsRequired,
             };
         }
     }

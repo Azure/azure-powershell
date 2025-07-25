@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabriccluster
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/new-azservicefabriccluster
 schema: 2.0.0
 ---
 
@@ -59,7 +59,7 @@ The four options are detailed below. Scroll down for explanations of each of the
 ### Example 1: Specify only the cluster size, the cert subject name, and the OS to deploy a cluster
 
 ```powershell
-$password = "Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $resourceGroupName = "quickstart-sf-group"
 $azureRegion = "southcentralus"
 $clusterDnsName = "{0}.{1}.cloudapp.azure.com" -f $resourceGroupName, $azureRegion
@@ -88,7 +88,7 @@ This command specifies an existing Certificate resource in a key vault and a cus
 ### Example 3: Create a new cluster using a custom template. Specify a different resource group name for the key vault and have the system upload a new certificate to it
 
 ```powershell
-$password = "Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $resourceGroupName = "quickstart-sf-group"
 $keyVaultResourceGroupName = " quickstart-kv-group"
 $keyVaultName = "quickstart-kv"
@@ -106,7 +106,7 @@ This command creates a new cluster using a custom template. Specify a different 
 ### Example 4: Bring your own Certificate and custom template and create a new cluster
 
 ```powershell
-$password = "Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $resourceGroupName = "test20"
 $keyVaultResourceGroupName = "test20kvrg"
 $keyVaultName = "test20kv"
@@ -273,7 +273,7 @@ Azure key vault resource group name, if not given it will be defaulted to resour
 ```yaml
 Type: System.String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases: KeyVaultResouceGroupName
+Aliases: KeyVaultResourceGroupName
 
 Required: False
 Position: Named
@@ -322,7 +322,7 @@ The Operating System of the VMs that make up the cluster.
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
 Parameter Sets: ByDefaultArmTemplate
 Aliases: VmImage
-Accepted values: WindowsServer2012R2Datacenter, WindowsServer2016Datacenter, WindowsServer2016DatacenterwithContainers, UbuntuServer1604
+Accepted values: WindowsServer2012R2Datacenter, WindowsServer2016Datacenter, WindowsServer2016DatacenterwithContainers, UbuntuServer1604, UbuntuServer1804, UbuntuServer2004, WindowsServer2022
 
 Required: False
 Position: Named
@@ -428,7 +428,7 @@ Accept wildcard characters: False
 ```
 
 ### -Thumbprint
-The thumbprint for the certificate correspoinding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retreive the thumbprint.
+The thumbprint for the certificate corresponding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retrieve the thumbprint.
 
 ```yaml
 Type: System.String

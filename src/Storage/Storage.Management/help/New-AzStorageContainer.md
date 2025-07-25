@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 2B12BC19-EF8F-43F5-AF04-C570FEEA1AE6
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragecontainer
 schema: 2.0.0
 ---
 
@@ -13,10 +13,21 @@ Creates an Azure storage container.
 
 ## SYNTAX
 
+### ContainerName (Default)
 ```
 New-AzStorageContainer [-Name] <String> [[-Permission] <BlobContainerPublicAccessType>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
+```
+
+### EncryptionScope
+```
+New-AzStorageContainer [-Name] <String> [[-Permission] <BlobContainerPublicAccessType>]
+ -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,19 +36,35 @@ The **New-AzStorageContainer** cmdlet creates an Azure storage container.
 ## EXAMPLES
 
 ### Example 1: Create an Azure storage container
-```
-PS C:\>New-AzStorageContainer -Name "ContainerName" -Permission Off
+```powershell
+New-AzStorageContainer -Name "ContainerName" -Permission Off
 ```
 
 This command creates a storage container.
 
 ### Example 2: Create multiple Azure storage containers
-```
-PS C:\>"container1 container2 container3".split() | New-AzStorageContainer -Permission Container
+```powershell
+"container1 container2 container3".split() | New-AzStorageContainer -Permission Container
 ```
 
 This example creates multiple storage containers.
 It uses the **Split** method of the .NET **String** class and then passes the names on the pipeline.
+
+### Example 3: Create an Azure storage container with Encryption Scope
+<!-- Skip: Output cannot be splitted from code -->
+
+
+```
+$container = New-AzStorageContainer  -Name "mycontainer" -DefaultEncryptionScope "myencryptscope" -PreventEncryptionScopeOverride $true 
+
+$container.BlobContainerProperties.DefaultEncryptionScope
+myencryptscope
+
+$container.BlobContainerProperties.PreventEncryptionScopeOverride
+True
+```
+
+This command creates a storage container, with default Encryption Scope as myencryptscope, and prevent blob upload with different Encryption Scope to this container.
 
 ## PARAMETERS
 
@@ -89,6 +116,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultEncryptionScope
+Default the container to use specified encryption scope for all writes.
+
+```yaml
+Type: System.String
+Parameter Sets: EncryptionScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,6 +192,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PreventEncryptionScopeOverride
+Block override of encryption scope from the container default.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: EncryptionScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServerTimeoutPerRequest
 Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
@@ -167,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -188,5 +245,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzStorageContainer](./Remove-AzStorageContainer.md)
 
 [Set-AzStorageContainerAcl](./Set-AzStorageContainerAcl.md)
-
-

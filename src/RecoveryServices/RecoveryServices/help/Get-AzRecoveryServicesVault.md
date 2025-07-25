@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 818B5302-91EE-425F-B1CD-86B626F1B7A3
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesvault
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ The **Get-AzRecoveryServicesVault** cmdlet gets a list of Recovery Services vaul
 ### Example 1
 
 ```powershell
-PS C:\> Get-AzRecoveryServicesVault
+Get-AzRecoveryServicesVault
 ```
 
 Get the list of vault in selected subscription.
@@ -43,18 +43,56 @@ Get the list of vault in selected subscription.
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup"
+Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup"
 ```
 
 Get the list of vault in resource group in selected subscription.
 
-### Example 3
+### Example 3: Get vault MSI, PublicNetworkAccess, ImmutabilityState, CrossSubscriptionRestoreState
 
 ```powershell
-PS C:\> Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$vault.Identity | Format-List
+$vault.Properties.PublicNetworkAccess
+$vault.Properties.ImmutabilitySettings.ImmutabilityState
+$vault.Properties.RestoreSettings.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState
 ```
 
-Get the vault in resource group with given name.
+```output
+PrincipalId : XXXXXXXX-XXXX-XXXX
+TenantId    : XXXXXXXX-XXXX-XXXX
+Type        : SystemAssigned
+
+Enabled
+Disabled
+Enabled
+```
+
+The first cmdlet gets the vault in resource group with given name. Then we access the MSI information from the vault. Third and fourth commands are used to fetch the public network access, immutability state, cross subscription restore state of the vault.
+
+### Example 4: Get Encryption properties of the vault
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+
+$vault.Properties.EncryptionProperty.KeyVaultProperties
+$vault.Properties.EncryptionProperty.KekIdentity
+$vault.Properties.EncryptionProperty.InfrastructureEncryption
+```
+
+```output
+KeyUri
+------
+https://oss-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key2
+
+UseSystemAssignedIdentity UserAssignedIdentity
+------------------------- --------------------
+                    False /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-uami
+
+Enabled
+```
+
+The first cmdlet gets the vault in resource group with given name. The second, third and fourth commands are used to fetch the encryption properties (KeyUri, KekIdentity and infrastructure encryption) of the vault for CMK.
 
 ## PARAMETERS
 

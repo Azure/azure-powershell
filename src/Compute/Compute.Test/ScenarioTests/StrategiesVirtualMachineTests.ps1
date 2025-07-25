@@ -27,9 +27,10 @@ function Test-SimpleNewVm
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
 
         # Common
-        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
@@ -38,6 +39,41 @@ function Test-SimpleNewVm
         $nic = Get-AzNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
         Assert-False { $nic.EnableAcceleratedNetworking }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmWithDeleteOptions
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
+
+        # Common
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -NetworkInterfaceDeleteOption "Delete" -OSDiskDeleteOption "Delete" -DataDiskSizeInGb 32 -DataDiskDeleteOption "Delete" -SecurityType $stnd
+
+        Assert-AreEqual $vmname $x.Name;
+        Assert-Null $x.Identity
+        Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
+
+        Assert-AreEqual $x.NetworkProfile.NetworkInterfaces[0].DeleteOption "Delete"
+        Assert-AreEqual $x.StorageProfile.OSDisk.DeleteOption "Delete"
+        
     }
     finally
     {
@@ -66,9 +102,10 @@ function Test-SimpleNewVmFromSIGImage
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
-
+        $stnd = "Standard";
+        
         # Common
-        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "East US 2" -Size "Standard_D2s_v3" -Image "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" 
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd -Location "East US 2" -Size "Standard_D2s_v3" -Image "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/SIGTestGroupoDoNotDelete/providers/Microsoft.Compute/galleries/SIGTestGalleryDoNotDelete/images/SIGTestImageWindowsDoNotDelete" 
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
@@ -100,12 +137,13 @@ function Test-SimpleNewVmWithUltraSSD
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
 
         # Common
         #As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
         #Use the follwing command to figure out the one to use 
         #Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
-        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "eastus2" -EnableUltraSSD -Zone 2 -Size "Standard_D2s_v3"
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "eastus2" -EnableUltraSSD -Zone 2 -Size "Standard_D2s_v3" -SecurityType $stnd;
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
@@ -137,9 +175,10 @@ function Test-SimpleNewVmWithAccelNet
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
 
         # Common
-        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size "Standard_D12_v2"
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size "Standard_D12_v2" -SecurityType $stnd;
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
@@ -170,9 +209,10 @@ function Test-SimpleNewVmSystemAssignedIdentity
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
 
         # Common
-        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity -SecurityType $stnd;
 
         Assert-AreEqual $vmname $x.Name;
         Assert-AreEqual "SystemAssigned" $x.Identity.Type     
@@ -194,6 +234,7 @@ Test Simple Paremeter Set for New Vm win Win10 and data disks
 function Test-NewVmWin10
 {
     $vmname = Get-ResourceName
+    $stnd = "Standard"
     
     try {
         $username = "admin01"
@@ -205,7 +246,8 @@ function Test-NewVmWin10
                   -Credential $cred `
                   -DomainNameLabel $domainNameLabel `
                   -ImageName "Win10" `
-                  -DataDiskSizeInGb 32,64
+                  -DataDiskSizeInGb 32,64 `
+                  -SecurityType $stnd;
 
             Assert-AreEqual 2 $x.StorageProfile.DataDisks.Count
         Assert-AreEqual $vmname $x.Name; 
@@ -248,7 +290,8 @@ function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity
+        $stnd = "Standard";
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity -SecurityType $stnd
 
         Assert-AreEqual $vmname $x.Name;
         Assert-AreEqual "UserAssigned" $x.Identity.Type     
@@ -284,6 +327,7 @@ function Test-SimpleNewVmWithAvailabilitySet
         [string]$vmname = $rgname
         [string]$asname = $rgname
         [string]$domainNameLabel = "$vmname-$rgname".tolower();
+        $stnd = "Standard";
 
         # Common
         $r = New-AzResourceGroup -Name $rgname -Location "eastus"
@@ -300,7 +344,8 @@ function Test-SimpleNewVmWithAvailabilitySet
             -Name $vmname `
             -Credential $cred `
             -DomainNameLabel $domainNameLabel `
-            -AvailabilitySetName $asname
+            -AvailabilitySetName $asname `
+            -SecurityType $stnd;
 
         Assert-AreEqual $vmname $x.Name;        
         Assert-AreEqual $a.Id $x.AvailabilitySetReference.Id
@@ -327,9 +372,10 @@ function Test-SimpleNewVmWithDefaultDomainName
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string] $vmname = "ps9301"
+        $stnd = "Standard";
 
         # Common
-        $x = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
+        $x = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType $stnd
 
         Assert-AreEqual $vmname $x.Name
         $fqdn = $x.FullyQualifiedDomainName
@@ -362,20 +408,23 @@ function Test-SimpleNewVmWithDefaultDomainName2
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string] $vmname = "vm"
+        $stnd = "Standard";
 
         # Common
         $x = New-AzVM `
             -ResourceGroupName $rgname `
             -Name $vmname `
             -Credential $cred `
-            -ImageName "ubuntults"
+            -ImageName "ubuntu2204" `
+            -SecurityType $stnd
 
         # second VM
         $x2 = New-AzVM `
             -ResourceGroupName $rgname2 `
             -Name $vmname `
             -Credential $cred `
-            -ImageName "ubuntults"
+            -ImageName "ubuntu2204" `
+            -SecurityType $stnd
     }
     finally
     {
@@ -401,6 +450,7 @@ function Test-SimpleNewVmWithAvailabilitySet2
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$vmname = "myVM"
         [string]$asname = "myAvailabilitySet"
+        $stnd = "Standard"
 
         # Common
         $r = New-AzResourceGroup -Name $rgname -Location "eastus"
@@ -422,7 +472,8 @@ function Test-SimpleNewVmWithAvailabilitySet2
             -PublicIpAddressName "myPublicIpAddress" `
             -SecurityGroupName "myNetworkSecurityGroup" `
             -AvailabilitySetName $asname `
-            -DomainNameLabel "myvm-ad9300"
+            -DomainNameLabel "myvm-ad9300" `
+            -SecurityType $stnd;
 
         Assert-AreEqual $vmname $x.Name;        
         Assert-AreEqual $a.Id $x.AvailabilitySetReference.Id
@@ -449,6 +500,7 @@ function Test-SimpleNewVmImageName
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname-$vmname".tolower()
+        $stnd = "Standard";
 
         # Common
         $imgversion = Get-VMImageVersion -publisher "MicrosoftWindowsServer" -offer "WindowsServer" -sku "2016-Datacenter"
@@ -456,7 +508,8 @@ function Test-SimpleNewVmImageName
             -Name $vmname `
             -Credential $cred `
             -DomainNameLabel $domainNameLabel `
-            -ImageName ("MicrosoftWindowsServer:WindowsServer:2016-Datacenter:" + $imgversion)
+            -ImageName ("MicrosoftWindowsServer:WindowsServer:2016-Datacenter:" + $imgversion) `
+            -SecurityType $stnd
 
         Assert-AreEqual $vmname $x.Name
     }
@@ -482,13 +535,15 @@ function Test-SimpleNewVmImageNameMicrosoftSqlUbuntu
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "xsd3490285".tolower()
+        $stnd = "Standard";
 
         # Common
         $x = New-AzVM `
             -Name $vmname `
             -Credential $cred `
             -DomainNameLabel $domainNameLabel `
-            -ImageName "MicrosoftSQLServer:SQL2017-Ubuntu1604:Enterprise:latest"
+            -ImageName "MicrosoftSQLServer:SQL2017-Ubuntu1604:Enterprise:latest" `
+            -SecurityType $stnd
 
         Assert-AreEqual $vmname $x.Name
     }
@@ -516,6 +571,7 @@ function Test-SimpleNewVmPpg
         $ppgname = "MyPpg"
         $vmname = "MyVm"
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
 
         # Common
         $rg = New-AzResourceGroup -Name $rgname -Location "eastus"
@@ -523,7 +579,7 @@ function Test-SimpleNewVmPpg
             -ResourceGroupName $rgname `
             -Name $ppgname `
             -Location "eastus"
-        $vm = New-AzVM -Name $vmname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroup $ppgname
+        $vm = New-AzVM -Name $vmname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroup $ppgname -SecurityType $stnd
 
         Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id
     }
@@ -551,6 +607,7 @@ function Test-SimpleNewVmPpgId
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         $ppgname = "MyPpg"
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
 
         # Common
         $rg = New-AzResourceGroup -Name $rgname -Location "eastus"
@@ -558,7 +615,7 @@ function Test-SimpleNewVmPpgId
             -ResourceGroupName $rgname `
             -Name $ppgname `
             -Location "eastus"
-        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroupId $ppg.Id
+        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroupId $ppg.Id -SecurityType $stnd
 
         Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id
     }
@@ -585,9 +642,10 @@ function Test-SimpleNewVmBilling
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
 
         # Common
-        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EvictionPolicy 'Deallocate' -Priority 'Low' -MaxPrice 0.2;
+        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EvictionPolicy 'Deallocate' -Priority 'Low' -MaxPrice 0.2 -SecurityType $stnd;
 
         Assert-AreEqual $vmname $vm.Name;
         Assert-AreEqual 'Deallocate' $vm.EvictionPolicy;
@@ -623,9 +681,10 @@ function Test-SimpleGalleryCrossTenant
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $password);
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
 
         # Virtual Machine
-        New-AzVM -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -ImageName $imageId
+        New-AzVM -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -ImageName $imageId -SecurityType $stnd
 
         $vm = Get-AzVM -ResourceGroupName $vmname -Name $vmname;
         Assert-AreEqual $imageId $vm.StorageProfile.ImageReference.Id;

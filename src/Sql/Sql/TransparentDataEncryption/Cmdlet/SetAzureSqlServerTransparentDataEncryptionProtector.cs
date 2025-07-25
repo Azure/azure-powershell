@@ -49,6 +49,15 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         public string KeyId { get; set; }
 
         /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Key Auto Rotation status")]
+        [ValidateNotNullOrEmpty]
+        public bool? AutoRotationEnabled { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of setting Transparent Data Encryption protector confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -84,7 +93,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
                 ServerName = this.ServerName,
                 Type = this.Type,
                 ServerKeyVaultKeyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(this.KeyId),
-                KeyId = this.KeyId
+                KeyId = this.KeyId,
+                AutoRotationEnabled = this.AutoRotationEnabled
             });
             return newEntity;
         }

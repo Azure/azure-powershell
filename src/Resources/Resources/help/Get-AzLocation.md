@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: DC870E11-2129-4906-8357-D9BC1CF2E08E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azlocation
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azlocation
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets all locations and the supported resource providers for each location.
 ## SYNTAX
 
 ```
-Get-AzLocation [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzLocation [-ExtendedLocation <Boolean>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,11 +24,33 @@ The **Get-AzLocation** cmdlet gets all locations and the supported resource prov
 ## EXAMPLES
 
 ### Example 1: Get all locations and the supported resource providers
-```
-PS C:\>Get-AzLocation
+```powershell
+Get-AzLocation
 ```
 
 This command gets all locations and the supported resource providers for each location.
+
+### Example 2: Get all locations supporting resource provider Microsoft.AppConfiguration
+```powershell
+Get-AzLocation | Where-Object {$_.Providers -contains "Microsoft.AppConfiguration"}
+```
+
+```output
+Location    : eastasia
+DisplayName : East Asia
+Providers   : {Microsoft.Devices, Microsoft.Cache, Microsoft.AppConfiguration, microsoft.insights…}
+
+Location    : southeastasia
+DisplayName : Southeast Asia
+Providers   : {Microsoft.Devices, Microsoft.Cache, Microsoft.AppConfiguration, microsoft.insights…}
+
+Location    : centralus
+DisplayName : Central US
+Providers   : {Microsoft.Devices, Microsoft.Cache, Microsoft.AppConfiguration, microsoft.insights…}
+...
+```
+
+This example gets all locations which supports resource provider "Microsoft.AppConfiguration".
 
 ## PARAMETERS
 
@@ -54,6 +77,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocation
+Whether to include extended locations.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

@@ -15,17 +15,28 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
+
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContextAutosaveSetting")]
     [OutputType(typeof(ContextAutosaveSettings))]
-    public class GetzureRmContextAutosaveSetting : AzureContextModificationCmdlet
+    public class GetAzureRmContextAutosaveSetting : AzureContextModificationCmdlet
     {
         const string NoDirectory = "None";
+
+        protected override bool RequireDefaultContext() { return false; }
+
         public override void ExecuteCmdlet()
         {
+            if (!SharedTokenCacheProvider.SupportCachePersistence(out string message))
+            {
+                WriteDebug(Resources.TokenCacheEncryptionNotSupportedWithFallback);
+                WriteDebug(message);
+            }
+
             var session = AzureSession.Instance;
             ContextModificationScope scope;
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.CurrentUser)
@@ -46,27 +57,12 @@ namespace Microsoft.Azure.Commands.Profile.Context
             switch(scope)
             {
                 case ContextModificationScope.CurrentUser:
-                    settings = new ContextAutosaveSettings
-                    {
-                        CacheDirectory = session.TokenCacheDirectory,
-                        CacheFile = session.TokenCacheFile,
-                        ContextDirectory = session.ARMProfileDirectory,
-                        ContextFile = session.ARMProfileFile,
-                        Mode = ContextSaveMode.CurrentUser
-                    };
+                    settings = ContextAutosaveSettings.FromAzureSession(session, ContextSaveMode.CurrentUser);
                     break;
                 default:
-                    settings = new ContextAutosaveSettings
-                    {
-                        CacheDirectory = NoDirectory,
-                        CacheFile = NoDirectory,
-                        ContextDirectory = NoDirectory,
-                        ContextFile = NoDirectory,
-                        Mode = ContextSaveMode.Process
-                    };
+                    settings = ContextAutosaveSettings.FromAzureSession(session, ContextSaveMode.Process);
                     break;
             }
-
             return settings;
         }
 

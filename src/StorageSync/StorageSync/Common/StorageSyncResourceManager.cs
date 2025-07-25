@@ -15,7 +15,10 @@
 using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Win32;
 using System;
 
@@ -23,19 +26,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 {
     /// <summary>
     /// Class StorageSyncResourceManager.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncResourceManager" />
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncResourceManager" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncResourceManager" />
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncResourceManager" />
     public class StorageSyncResourceManager : IStorageSyncResourceManager
     {
+        public StorageSyncResourceManager(IServerManagedIdentityProvider serverManagedIdentityProvider)
+        {
+            ServerManagedIdentityProvider = serverManagedIdentityProvider;
+        }
 
         /// <summary>
         /// Creates the ecs management.
         /// </summary>
         /// <returns>IEcsManagement.</returns>
         public IEcsManagement CreateEcsManagement() => new EcsManagementInteropClient();
+
+        public IServerManagedIdentityProvider ServerManagedIdentityProvider { get; private set; }
+
+        /// <summary>
+        /// Creates the ecs management.
+        /// </summary>
+        /// <returns>IEcsManagement.</returns>
+        public ISyncServerRegistration CreateSyncServerManagement() => new SyncServerRegistrationClient(CreateEcsManagement(), ServerManagedIdentityProvider);
 
         /// <summary>
         /// Gets the afs agent installer path.
@@ -82,6 +95,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         }
 
         /// <summary>
+        /// Gets the Server Type from the the StorageSync registry path. Default to <see cref="LocalServerType.HybridServer"/>
+        /// Not using ServerManagedIdentityProvider.GetServerType because it does not necessarily do a direct registry key read. 
+        /// </summary>
+        /// <returns>The server type</returns>
+        public LocalServerType GetServerTypeFromRegistry()
+        {
+            if (RegistryUtility.TryGetValue(
+                    StorageSyncConstants.ServerTypeRegistryKeyName,
+                    StorageSyncConstants.AfsRegistryKey,
+                    out string serverTypeFromRegistryString,
+                    RegistryValueKind.String,
+                    RegistryValueOptions.None))
+            {
+                if (Enum.TryParse(serverTypeFromRegistryString, out LocalServerType serverTypeFromRegistry))
+                {
+                    return serverTypeFromRegistry;
+                }
+            }
+
+            return LocalServerType.HybridServer;
+        }
+
+        /// <summary>
         /// Updates the server registration data.
         /// </summary>
         /// <param name="pServerRegistrationData">The p server registration data.</param>
@@ -89,7 +125,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public ServerRegistrationData UpdateServerRegistrationData(ServerRegistrationData pServerRegistrationData) => pServerRegistrationData;
 
         /// <summary>
-        /// Waits for access propogation.
+        /// Waits for access propagation.
         /// </summary>
         public void Wait()
         {
@@ -101,5 +137,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         /// <returns>System.String.</returns>
         public string GetTenantId() => null;
+
+        /// <summary>
+        /// Get Service Principal Or Null
+        /// </summary>
+        /// <returns>MicrosoftGraphServicePrincipal</returns>
+        public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull() => null;
     }
 }

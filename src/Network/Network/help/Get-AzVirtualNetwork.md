@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: CBDF4BCB-7EB3-4D64-B19C-1314D4AB84E4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetwork
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetwork
 schema: 2.0.0
 ---
 
@@ -26,14 +26,16 @@ Get-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -ExpandResource 
 ```
 
 ## DESCRIPTION
-The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks n a resource group.
+The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks in a resource group.
 
 ## EXAMPLES
 
-### 1: Retrieve a virtual network
-```
+### Example 1: Retrieve a virtual network
+```powershell
 Get-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
+```
 
+```output
 Name                   : MyVirtualNetwork1
 ResourceGroupName      : TestResourceGroup
 Location               : eastus
@@ -49,6 +51,7 @@ AddressSpace           : {
                            ]
                          }
 DhcpOptions            : {}
+FlowTimeoutInMinutes   : null
 Subnets                : []
 VirtualNetworkPeerings : []
 EnableDdosProtection   : false
@@ -57,10 +60,12 @@ DdosProtectionPlan     : null
 
 This command gets the virtual network named MyVirtualNetwork in the resource group TestResourceGroup
 
-### 2: List virtual networks using filter
-```
+### Example 2: List virtual networks using filter
+```powershell
 Get-AzVirtualNetwork -Name MyVirtualNetwork*
+```
 
+```output
 Name                   : MyVirtualNetwork1
 ResourceGroupName      : TestResourceGroup
 Location               : eastus
@@ -76,6 +81,7 @@ AddressSpace           : {
                            ]
                          }
 DhcpOptions            : {}
+FlowTimeoutInMinutes   : null
 Subnets                : []
 VirtualNetworkPeerings : []
 EnableDdosProtection   : false
@@ -188,5 +194,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVirtualNetwork](./Remove-AzVirtualNetwork.md)
 
 [Set-AzVirtualNetwork](./Set-AzVirtualNetwork.md)
-
-

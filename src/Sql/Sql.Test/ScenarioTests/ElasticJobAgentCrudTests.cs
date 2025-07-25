@@ -19,14 +19,10 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ElasticJobAgentCrudTests : SqlTestsBase
+    public class ElasticJobAgentCrudTests : SqlTestRunner
     {
         public ElasticJobAgentCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers",
-                "Microsoft.Sql/servers/databases"
-            };
         }
 
         #region Create Tests
@@ -35,7 +31,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAgentCreate()
         {
-            RunPowerShellTest("Test-CreateAgent");
+            TestRunner.RunTestScript("Test-CreateAgent");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAgentCreateWithSku()
+        {
+            TestRunner.RunTestScript("Test-CreateAgentWithSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAgentCreateWithIdentity()
+        {
+            TestRunner.RunTestScript("Test-CreateAgentWithIdentity");
         }
 
         #endregion
@@ -46,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAgentUpdate()
         {
-            RunPowerShellTest("Test-UpdateAgent");
+            TestRunner.RunTestScript("Test-UpdateAgent");
         }
 
         #endregion
@@ -57,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAgentGet()
         {
-            RunPowerShellTest("Test-GetAgent");
+            TestRunner.RunTestScript("Test-GetAgent");
         }
 
         #endregion
@@ -68,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAgentRemove()
         {
-            RunPowerShellTest("Test-RemoveAgent");
+            TestRunner.RunTestScript("Test-RemoveAgent");
         }
 
         #endregion

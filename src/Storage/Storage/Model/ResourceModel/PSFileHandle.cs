@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Storage.Shared.Protocol;
-using XTable = Microsoft.Azure.Cosmos.Table;
-using System.Collections.Generic;
 using System;
-using System.Linq;
-using Microsoft.Azure.Storage.File;
 using System.Net;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
@@ -52,17 +48,46 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         [Ps1Xml(Label = "SessionId", Target = ViewControl.Table, Position = 8)]
         public ulong SessionId { get; set; }
 
-        public PSFileHandle(FileHandle handle)
+        [Ps1Xml(Label = "ClientName", Target = ViewControl.Table, Position = 9)]
+        public string ClientName { get; set; }
+
+        public PSFileHandle(ShareFileHandle handle)
         {
-            this.HandleId = handle.HandleId;
+            if (!String.IsNullOrEmpty(handle.HandleId))
+            {
+                this.HandleId = Convert.ToUInt64(handle.HandleId);
+            }
             this.Path = handle.Path;
-            this.ClientIp = handle.ClientIp;
-            this.ClientPort = handle.ClientPort;
-            this.OpenTime = handle.OpenTime;
-            this.LastReconnectTime = handle.LastReconnectTime;
-            this.FileId = handle.FileId;
-            this.ParentId = handle.ParentId;
-            this.SessionId = handle.SessionId;
+            this.ClientName = handle.ClientName;
+            if (!String.IsNullOrEmpty(handle.ClientIp))
+            {
+                string[] clientIPs = handle.ClientIp.Split(new char[] { ':'}, StringSplitOptions.RemoveEmptyEntries);
+                if (clientIPs.Length >= 1)
+                {
+                    this.ClientIp = IPAddress.Parse(clientIPs[0]);
+                }
+                if (clientIPs.Length >= 2 && !String.IsNullOrEmpty(clientIPs[1]))
+                {
+                    this.ClientPort = Convert.ToInt32(clientIPs[1]);
+                }
+            }
+            if (handle.OpenedOn != null)
+            {
+                this.OpenTime = handle.OpenedOn.Value;
+            }
+            this.LastReconnectTime = handle.LastReconnectedOn;
+            if (!String.IsNullOrEmpty(handle.FileId))
+            {
+                this.FileId = Convert.ToUInt64(handle.FileId);
+            }
+            if (!String.IsNullOrEmpty(handle.ParentId))
+            {
+                this.ParentId = Convert.ToUInt64(handle.ParentId);
+            }
+            if (!String.IsNullOrEmpty(handle.SessionId))
+            {
+                this.SessionId = Convert.ToUInt64(handle.SessionId);
+            }
         }
     }
 }

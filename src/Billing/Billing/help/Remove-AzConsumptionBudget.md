@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/remove-azconsumptionbudget
+online version: https://learn.microsoft.com/powershell/module/az.billing/remove-azconsumptionbudget
 schema: 2.0.0
 ---
 
@@ -31,19 +31,28 @@ The Remove-AzConsumptionBudget cmdlet removes a budget in either a subscription 
 
 ### Example 1: Remove a budget with a budget name at subscription level
 ```powershell
-PS C:\> Remove-AzConsumptionBudget -Name PSBudget -PassThru
+Remove-AzConsumptionBudget -Name PSBudget -PassThru
+```
+
+```output
 True
 ```
 
 ### Example 2: Remove a budget with a budget name at resource group level
 ```powershell
-PS C:\> Remove-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
+Remove-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
+```
+
+```output
 True
 ```
 
 ### Example 3: Remove a budget through piping at subscription level
 ```powershell
-PS C:\> Get-AzConsumptionBudget -Name PSBudget | Remove-AzConsumptionBudget -PassThru
+Get-AzConsumptionBudget -Name PSBudget | Remove-AzConsumptionBudget -PassThru
+```
+
+```output
 True
 ```
 
@@ -167,5 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
+- Currently, PowerShell SDK for Consumption is only available to Enterprise Agreement customers.
+- PowerShell SDK for Consumption is using an older version of Budgets API and few backwards non-compatible items like listing Budgets with filters will not work as expected.
 
 ## RELATED LINKS

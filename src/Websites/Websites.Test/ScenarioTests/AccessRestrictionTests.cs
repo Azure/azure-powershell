@@ -13,86 +13,108 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class AccessRestrictionTests : RMTestBase
+    public class AccessRestrictionTests : WebsitesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public AccessRestrictionTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppAccessRestriction()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppAccessRestriction");
+            TestRunner.RunTestScript("Test-GetWebAppAccessRestriction");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateWebAppAccessRestrictionSimple()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-UpdateWebAppAccessRestrictionSimple");
+            TestRunner.RunTestScript("Test-UpdateWebAppAccessRestrictionSimple");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateWebAppAccessRestrictionComplex()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-UpdateWebAppAccessRestrictionComplex");
+            TestRunner.RunTestScript("Test-UpdateWebAppAccessRestrictionComplex");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddWebAppAccessRestriction()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestriction");
+            TestRunner.RunTestScript("Test-AddWebAppAccessRestriction");
         }
 
-        // Currently no mock for Network exists in the Test Framework
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestAddWebAppAccessRestrictionServiceEndpoint()
-        //{
-        //    WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestrictionServiceEndpoint");
-        //}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddWebAppAccessRestrictionServiceTag()
+        {
+            TestRunner.RunTestScript("Test-AddWebAppAccessRestrictionServiceTag");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddWebAppAccessRestrictionHttpHeaders()
+        {
+            TestRunner.RunTestScript("Test-AddWebAppAccessRestrictionHttpHeaders");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddWebAppAccessRestrictionServiceEndpoint()
+        {
+            TestRunner.RunTestScript("Test-AddWebAppAccessRestrictionServiceEndpoint");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveWebAppAccessRestriction()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebAppAccessRestriction");
+            TestRunner.RunTestScript("Test-RemoveWebAppAccessRestriction");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveWebAppAccessRestrictionServiceTag()
+        {
+            TestRunner.RunTestScript("Test-RemoveWebAppAccessRestrictionServiceTag");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddWebAppAccessRestrictionScm()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestrictionScm");
+            TestRunner.RunTestScript("Test-AddWebAppAccessRestrictionScm");
         }
                 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveWebAppAccessRestrictionScm()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebAppAccessRestrictionScm");
+            TestRunner.RunTestScript("Test-RemoveWebAppAccessRestrictionScm");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddWebAppAccessRestrictionSlot()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-AddWebAppAccessRestrictionSlot");
+            TestRunner.RunTestScript("Test-AddWebAppAccessRestrictionSlot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddWebAppAccessRestrictionDuplicate()
+        {
+            TestRunner.RunTestScript("Test-AddWebAppAccessRestrictionDuplicate");
         }
     }
 }

@@ -1,51 +1,90 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
+---
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
-ms.assetid: 04A6FD47-482C-4EA6-9375-D8B6FD1F2659
-online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticsoutput
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoutput
 schema: 2.0.0
 ---
 
 # Get-AzStreamAnalyticsOutput
 
 ## SYNOPSIS
-Gets the outputs defined in a specified Stream Analytics job or output.
+Gets details about the specified output.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzStreamAnalyticsOutput [-JobName] <String> [[-Name] <String>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStreamAnalyticsOutput -JobName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-Select <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzStreamAnalyticsOutput -JobName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzStreamAnalyticsOutput -InputObject <IStreamAnalyticsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzStreamAnalyticsOutput** cmdlet lists all of the outputs that are defined in a specified Stream Analytics job or gets information about a specific output.
+Gets details about the specified output.
 
 ## EXAMPLES
 
 ### Example 1: Get information about job outputs
 ```powershell
-PS C:\>Get-AzStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob"
+Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh
 ```
 
-This command returns information about the outputs defined on the job StreamingJob.
+```output
+Name      Type                                            ETag
+----      ----                                            ----
+output-01 Microsoft.StreamAnalytics/streamingjobs/outputs
+```
+
+This command returns information about the outputs defined on the job.
 
 ### Example 2: Get information about a specific job output
 ```powershell
-PS C:\>Get-AzStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "Output"
+Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01
 ```
 
-This command returns information about the output named Output defined on the job StreamingJob.
+```output
+Name      Type                                            ETag
+----      ----                                            ----
+output-01 Microsoft.StreamAnalytics/streamingjobs/outputs 3819fb65-07f5-4dc3-83e1-d3149596f8d0
+```
+
+This command returns information about the output defined on the job.
+
+### Example 3: Get information about a specific job output by pipeline
+```powershell
+New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StorageAccount.json | Get-AzStreamAnalyticsOutput
+```
+
+```output
+Name      Type                                            ETag
+----      ----                                            ----
+output-05 Microsoft.StreamAnalytics/streamingjobs/outputs 3a11e210-2a7f-4856-8d5a-25d4ecabee06
+```
+
+This command returns information about the output defined on the job.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -54,70 +93,112 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobName
-Specifies the name of the Azure Stream Analytics job to which the Azure Stream Analytics output belongs.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JobName
+The name of the streaming job.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Azure Stream Analytics output to retrieve.
+The name of the output.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Get
+Aliases: OutputName
 
-Required: False
-Position: 2
+Required: True
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group to which the Azure Stream Analytics output belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Select
+The $select OData query parameter.
+This is a comma-separated list of structural properties to include in the response, or "*" to include all properties.
+By default, all properties are returned except diagnostics.
+Currently only accepts '*' as a valid value.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzStreamAnalyticsOutput](./New-AzStreamAnalyticsOutput.md)
-
-[Remove-AzStreamAnalyticsOutput](./Remove-AzStreamAnalyticsOutput.md)
-
-[Test-AzStreamAnalyticsOutput](./Test-AzStreamAnalyticsOutput.md)
-
-

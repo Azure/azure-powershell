@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public string Id { get; set; }
 
+        public string ObjectType { get; set; }
+
         public bool Paging { get; set; }
 
         /// <summary>

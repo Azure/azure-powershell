@@ -37,10 +37,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId CustomIpPrefix { get; set; }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         [JsonIgnore]
         public string PublicIpAddressesText
         {
            get { return JsonConvert.SerializeObject(PublicIpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string CustomIpPrefixText
+        {
+            get { return JsonConvert.SerializeObject(CustomIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -52,7 +60,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string SkuText
         {
-            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return Sku != null ? JsonConvert.SerializeObject(Sku.Name, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }) : null; }
+        }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

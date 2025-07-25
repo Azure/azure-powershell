@@ -1,0 +1,133 @@
+{
+  "Get-AzAlb+[NoContext]+List+$GET+https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/providers/Microsoft.ServiceNetworking/trafficControllers?api-version=2025-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/providers/Microsoft.ServiceNetworking/trafficControllers?api-version=2025-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "646818a8-8b9d-4737-ad8a-0b314531ddd9" ],
+        "CommandName": [ "Get-AzAlb" ],
+        "FullCommandName": [ "Get-AzAlb_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.4.6", "Az.Alb/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "", "", "", "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "d22f422e-7b3d-466a-b77b-1e70819f231b" ],
+        "x-ms-correlation-request-id": [ "d22f422e-7b3d-466a-b77b-1e70819f231b" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250317T224845Z:d22f422e-7b3d-466a-b77b-1e70819f231b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3E4AC490C2FF492A9EDAE0D1691D6622 Ref B: CO6AA3150220009 Ref C: 2025-03-17T22:48:45Z" ],
+        "Date": [ "Mon, 17 Mar 2025 22:48:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "10675" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"configurationEndpoints\":[\"03c4bd93c381425a92591a834f68c6b2.alb.azure.com\"],\"frontends\":[],\"associations\":[],\"securityPolicies\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/sbportaltesting/providers/Microsoft.ServiceNetworking/trafficControllers/delete\",\"name\":\"delete\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"31884043-b918-4b41-b85e-79b331fb3b3f\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"sarahbarton@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-19T19:59:03.3707533Z\",\"lastModifiedBy\":\"sarahbarton@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-01-19T19:59:03.3707533Z\"}},{\"properties\":{\"configurationEndpoints\":[\"6c86848330bf4abab000f70856c08851.alb.azure.com\"],\"frontends\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/faranbari-dev/providers/Microsoft.ServiceNetworking/trafficControllers/test-portal-agc-3/Frontends/fe-test-1\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/faranbari-dev/providers/Microsoft.ServiceNetworking/trafficControllers/test-portal-agc-3/Frontends/fe-test-2\"}],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/faranbari-dev/providers/Microsoft.ServiceNetworking/trafficControllers/test-portal-agc-3/Associations/new-assoc-test\"}],\"securityPolicies\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/faranbari-dev/providers/Microsoft.ServiceNetworking/trafficControllers/test-portal-agc-3/securityPolicies/sc-test-new-withbot-2\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/faranbari-dev/providers/Microsoft.ServiceNetworking/trafficControllers/test-portal-agc-3/securityPolicies/sc-test-existing-1\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/faranbari-dev/providers/Microsoft.ServiceNetworking/trafficControllers/test-portal-agc-3/securityPolicies/sc-test-create-3\"}],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/faranbari-dev/providers/Microsoft.ServiceNetworking/trafficControllers/test-portal-agc-3\",\"name\":\"test-portal-agc-3\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"cb522ee7-8e28-4a3d-b38c-55e8a4c5ecb5\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"faranbari@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-07T17:13:27.176465Z\",\"lastModifiedBy\":\"faranbari@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-07T17:13:27.176465Z\"}},{\"properties\":{\"configurationEndpoints\":[\"890d604ac43441259913d7c480e91e63.alb.azure.com\"],\"frontends\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/scale-test/providers/Microsoft.ServiceNetworking/trafficControllers/long-running-scale-alb/Frontends/frontend-2\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/scale-test/providers/Microsoft.ServiceNetworking/trafficControllers/long-running-scale-alb/Frontends/frontend-1\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/scale-test/providers/Microsoft.ServiceNetworking/trafficControllers/long-running-scale-alb/Frontends/frontend-4\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/scale-test/providers/Microsoft.ServiceNetworking/trafficControllers/long-running-scale-alb/Frontends/frontend-3\"}],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/scale-test/providers/Microsoft.ServiceNetworking/trafficControllers/long-running-scale-alb/associations/association-test\"}],\"securityPolicies\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/scale-test/providers/Microsoft.ServiceNetworking/trafficControllers/long-running-scale-alb\",\"name\":\"long-running-scale-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"e997d8d5-1788-48b4-855b-a069bc1c9cd9\",\"location\":\"eastus2\",\"tags\":{},\"systemData\":{\"lastModifiedBy\":\"zhiyan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-21T23:39:17.1824945Z\"}},{\"properties\":{\"configurationEndpoints\":[\"188cfe196fcc4c63947b78936af2a0fd.alb.azure.com\"],\"frontends\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/snchh-test/providers/Microsoft.ServiceNetworking/trafficControllers/agc-test/Frontends/test-frontend\"}],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/snchh-test/providers/Microsoft.ServiceNetworking/trafficControllers/agc-test/Associations/association\"}],\"securityPolicies\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/snchh-test/providers/Microsoft.ServiceNetworking/trafficControllers/agc-test\",\"name\":\"agc-test\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"3538fb21-bdb4-48b3-b3e4-05d4f8abcb91\",\"location\":\"eastus2\",\"tags\":{},\"systemData\":{\"createdBy\":\"snchh@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-02T21:47:22.6037759Z\",\"lastModifiedBy\":\"snchh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-02T21:47:22.6037759Z\"}},{\"properties\":{\"configurationEndpoints\":[\"4df94cd54c1240abb07f21682f89cd66.alb.azure.com\"],\"frontends\":[],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb/associations/test-association\"}],\"securityPolicies\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb\",\"name\":\"association-test-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"77200290-0507-4427-ac89-7a9bc4d7c6a9\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T18:27:07.7856581Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:07.2885563Z\"}},{\"properties\":{\"configurationEndpoints\":[\"4824dc8da72a4376874c09fa0255fafa.alb.azure.com\"],\"frontends\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontend1\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontend2\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontendnew\"}],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations/test-association\"}],\"securityPolicies\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securitypolicies/test-wafSecurityPolicy\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securityPolicies/test-wafSecurityPolicynew\"}],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb\",\"name\":\"test-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"6532edbc-f830-4924-b31c-7897d65bd02e\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T18:27:07.8481553Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:07.2885563Z\"}},{\"properties\":{\"configurationEndpoints\":[\"36ba848175cd478cad369b5cd86712bb.alb.azure.com\"],\"frontends\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb/frontends/test-frontend\"}],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb/associations/test-association\"}],\"securityPolicies\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb/securitypolicies/test-wafSecurityPolicy\"}],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb\",\"name\":\"remove-test-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"5e50e703-f19b-4296-812d-a9a5b28696fe\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T18:27:07.7544077Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:07.304179Z\"}},{\"properties\":{\"configurationEndpoints\":[\"92c61e381d5d4ee2a256e182ed5abed4.alb.azure.com\"],\"frontends\":[],\"associations\":[],\"securityPolicies\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/delete-test-alb\",\"name\":\"delete-test-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"e916077d-60ca-48af-8a37-d186edb3f2b9\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T22:05:27.5719113Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:07.2885563Z\"}},{\"properties\":{\"configurationEndpoints\":[\"0751c200752a4a3d81ebcf78f7cc31e0.alb.azure.com\"],\"frontends\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/sbRg/providers/Microsoft.ServiceNetworking/trafficControllers/sbAGC/Frontends/sbFrontend\"}],\"associations\":[],\"securityPolicies\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/sbRg/providers/Microsoft.ServiceNetworking/trafficControllers/sbAGC\",\"name\":\"sbAGC\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"a5baea6c-159f-42ac-9f1c-f518ffdda09a\",\"location\":\"northeurope\",\"tags\":{}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAlb+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb?api-version=2025-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb?api-version=2025-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "a3ceae30-3e1d-4d76-8b3d-cdb24a914c38" ],
+        "CommandName": [ "Get-AzAlb" ],
+        "FullCommandName": [ "Get-AzAlb_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.4.6", "Az.Alb/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "0255caea-4288-4dab-83b2-7699d7a6da4b" ],
+        "x-ms-correlation-request-id": [ "0255caea-4288-4dab-83b2-7699d7a6da4b" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250317T224846Z:0255caea-4288-4dab-83b2-7699d7a6da4b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FB8D78980F1F436090C8B836127E05AF Ref B: CO6AA3150220009 Ref C: 2025-03-17T22:48:46Z" ],
+        "Date": [ "Mon, 17 Mar 2025 22:48:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2116" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"configurationEndpoints\": [\r\n      \"4824dc8da72a4376874c09fa0255fafa.alb.azure.com\"\r\n    ],\r\n    \"frontends\": [\r\n      {\r\n        \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontend1\"\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontend2\"\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontendnew\"\r\n      }\r\n    ],\r\n    \"associations\": [\r\n      {\r\n        \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations/test-association\"\r\n      }\r\n    ],\r\n    \"securityPolicies\": [\r\n      {\r\n        \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securitypolicies/test-wafSecurityPolicy\"\r\n      },\r\n      {\r\n        \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securityPolicies/test-wafSecurityPolicynew\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb\",\r\n  \"name\": \"test-alb\",\r\n  \"type\": \"Microsoft.ServiceNetworking/TrafficControllers\",\r\n  \"etag\": \"6532edbc-f830-4924-b31c-7897d65bd02e\",\r\n  \"location\": \"NorthCentralUS\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"chengdexu@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-03-17T18:27:07.8481553Z\",\r\n    \"lastModifiedBy\": \"chengdexu@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-03-17T22:29:07.2885563Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAlb+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers?api-version=2025-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers?api-version=2025-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "cf5cdc65-806b-4079-8e53-cd73d4058e31" ],
+        "CommandName": [ "Get-AzAlb" ],
+        "FullCommandName": [ "Get-AzAlb_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.4.6", "Az.Alb/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "3d4cfd8b-7b0c-4d51-aa52-d59da0356ea5" ],
+        "x-ms-correlation-request-id": [ "3d4cfd8b-7b0c-4d51-aa52-d59da0356ea5" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250317T224847Z:3d4cfd8b-7b0c-4d51-aa52-d59da0356ea5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9BF4C03D018C4617A4499C29BF2072FD Ref B: CO6AA3150220009 Ref C: 2025-03-17T22:48:46Z" ],
+        "Date": [ "Mon, 17 Mar 2025 22:48:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4758" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"configurationEndpoints\":[\"4df94cd54c1240abb07f21682f89cd66.alb.azure.com\"],\"frontends\":[],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb/associations/test-association\"}],\"securityPolicies\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb\",\"name\":\"association-test-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"77200290-0507-4427-ac89-7a9bc4d7c6a9\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T18:27:07.7856581Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:07.2885563Z\"}},{\"properties\":{\"configurationEndpoints\":[\"4824dc8da72a4376874c09fa0255fafa.alb.azure.com\"],\"frontends\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontend1\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontend2\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/frontends/test-frontendnew\"}],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/associations/test-association\"}],\"securityPolicies\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securitypolicies/test-wafSecurityPolicy\"},{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securityPolicies/test-wafSecurityPolicynew\"}],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb\",\"name\":\"test-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"6532edbc-f830-4924-b31c-7897d65bd02e\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T18:27:07.8481553Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:07.2885563Z\"}},{\"properties\":{\"configurationEndpoints\":[\"36ba848175cd478cad369b5cd86712bb.alb.azure.com\"],\"frontends\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb/frontends/test-frontend\"}],\"associations\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb/associations/test-association\"}],\"securityPolicies\":[{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb/securitypolicies/test-wafSecurityPolicy\"}],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb\",\"name\":\"remove-test-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"5e50e703-f19b-4296-812d-a9a5b28696fe\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T18:27:07.7544077Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:07.304179Z\"}},{\"properties\":{\"configurationEndpoints\":[\"92c61e381d5d4ee2a256e182ed5abed4.alb.azure.com\"],\"frontends\":[],\"associations\":[],\"securityPolicies\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/delete-test-alb\",\"name\":\"delete-test-alb\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers\",\"etag\":\"e916077d-60ca-48af-8a37-d186edb3f2b9\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T22:05:27.5719113Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:07.2885563Z\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

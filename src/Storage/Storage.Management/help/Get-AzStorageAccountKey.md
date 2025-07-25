@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A57A9EFA-47AC-44D8-BFA7-CDE0E2A612B3
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccountkey
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey
 schema: 2.0.0
 ---
 
@@ -24,24 +24,33 @@ The **Get-AzStorageAccountKey** cmdlet gets the access keys for an Azure Storage
 ## EXAMPLES
 
 ### Example 1: Get the access keys for a Storage account
-```
-PS C:\>Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+```powershell
+Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
 
 This command gets the keys for the specified Azure Storage account.
 
 ### Example 2: Get a specific access key for a Storage account
-```
-This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.4, and later versions.
-PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount")| Where-Object {$_.KeyName -eq "key1"}
+<!-- Skip: Output cannot be splitted from code -->
 
-This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.3.2, and previous versions.
-PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount").Key1
+
+```
+This command gets a specific key for a Storage account.
+(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")| Where-Object {$_.KeyName -eq "key1"}
+
+KeyName Value             Permissions CreationTime
+------- -----             ----------- ------------
+key1    <KeyValue>        Full             
+
+This command gets a specific key value for a Storage account. 
+(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")[0].Value
+
+<KeyValue>
 ```
 
 ### Example 3: Lists the access keys for a Storage account, include the Kerberos keys (if active directory enabled)
-```
-PS C:\>Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount" -ListKerbKey
+```powershell
+Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount" -ListKerbKey
 ```
 
 This command gets the keys for the specified Azure Storage account.
@@ -65,7 +74,7 @@ Accept wildcard characters: False
 
 ### -ListKerbKey
 Lists the Kerberos keys (if active directory enabled) for the specified storage account.
-Kerberos key is generated per storage account for Azure Files identity based authentication either with Azure Active Directory Domain Service (Azure AD DS) or Active Directory Domain Service (AD DS). 
+Kerberos key is generated per storage account for Azure Files identity based authentication either with Microsoft Entra Domain Service (Microsoft Entra Domain Services) or Active Directory Domain Service (AD DS). 
 It is used as the password of the identity registered in the domain service that represents the storage account. 
 Kerberos key does not provide access permission to perform any control or data plane read or write operations against the storage account.
 
@@ -112,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -127,5 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzStorageAccountKey](./New-AzStorageAccountKey.md)
-
-

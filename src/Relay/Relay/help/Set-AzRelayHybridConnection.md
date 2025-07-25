@@ -1,82 +1,105 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
+---
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/set-azrelayhybridconnection
+online version: https://learn.microsoft.com/powershell/module/az.relay/set-azrelayhybridconnection
 schema: 2.0.0
 ---
 
 # Set-AzRelayHybridConnection
 
 ## SYNOPSIS
-Updates the description of a HybridConnection in the specified Relay namespace.
+Creates or updates a service hybrid connection.
+This operation is idempotent.
 
 ## SYNTAX
 
-### HybridConnectionInputObjectSet
+### UpdateExpanded (Default)
 ```
-Set-AzRelayHybridConnection [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-InputObject <PSHybridConnectionAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzRelayHybridConnection -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### HybridConnectionPropertiesSet
+### Update
 ```
-Set-AzRelayHybridConnection [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-UserMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzRelayHybridConnection -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -InputObject <IHybridConnection> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzRelayHybridConnection cmdlet updates the description for the HybridConnection in the specified Relay namespace.
+Creates or updates a service hybrid connection.
+This operation is idempotent.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\>
-PS C:\> $GetHybrid = Get-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
-PS C:\> $GetHybrid.UserMetadata = "Test UserMetadata"
-PS C:\> Set-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -InputObject $GetHybrid
-
-CreatedAt                   : 4/26/2017 10:04:15 PM
-UpdatedAt                   : 4/26/2017 10:08:11 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-UserMetadata                : Test UserMetadata
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
-                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
-                              n2
-Name                        : TestHybirdConnection2
-Type                        : Microsoft.Relay/HybridConnections
+### Example 1: Updates the specified HybridConnection with a new UserMetadata in the specified namespace.
+```powershell
+Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Update UserMetaData" | Format-List
 ```
 
-### Example 2
+```output
+CreatedAt                    : 1/1/0001 12:00:00 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Relay-ServiceBus-EastUS/providers/Microsoft.Relay/namespaces/namespace-pwsh01/hybridconnectio 
+                               ns/connection-01
+ListenerCount                : 0
+Location                     : eastus
+Name                         : connection-01
+RequiresClientAuthorization  : True
+ResourceGroupName            : Relay-ServiceBus-EastUS
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/hybridconnections
+UpdatedAt                    : 1/1/0001 12:00:00 AM
+UserMetadata                 : Update UserMetaData
 ```
-PS C:\> Set-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -UserMetadata = "Test UserMetadata updated"
 
-CreatedAt                   : 4/26/2017 10:04:15 PM
-UpdatedAt                   : 4/26/2017 10:10:25 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-UserMetadata                : Test UserMetadata updated
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
-                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
-                              n1
-Name                        : TestHybirdConnection1
-Type                        : Microsoft.Relay/HybridConnections
-```
-
-Updates the specified HybridConnection with a new description in the specified namespace.
+This command updates the specified HybridConnection with a new UserMetadata in the specified namespace.
 This example updates the UserMetadata property with new value.
+
+### Example 2: Updates a HybridConnection in the specified Relay namespace
+```powershell
+$connection = Get-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01
+$connection.UserMetadata = "testHybridConnection"
+Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection | Format-List
+```
+
+```output
+CreatedAt                    : 3/30/2023 3:34:25 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Relay-ServiceBus-EastUS/providers/Microsoft.Relay/namespaces/namespace-pwsh01/hybridconnectio 
+                               ns/connection-01
+ListenerCount                : 0
+Location                     : eastus
+Name                         : connection-01
+RequiresClientAuthorization  : True
+ResourceGroupName            : Relay-ServiceBus-EastUS
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/hybridconnections
+UpdatedAt                    : 3/30/2023 6:28:37 AM
+UserMetadata                 : testHybridConnection
+```
+
+This command updates a HybridConnection in the specified Relay namespace.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -86,14 +109,15 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-HybridConnections object.
+Description of hybrid connection resource.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
-Parameter Sets: HybridConnectionInputObjectSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
+Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -101,22 +125,22 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-HybridConnections Name.
+The hybrid connection name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: HybridConnectionName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+The namespace name
 
 ```yaml
 Type: System.String
@@ -124,14 +148,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -139,25 +163,42 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -UserMetadata
-Gets or sets usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g.
-it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
+The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint.
+For example, it can be used to store descriptive data, such as a list of teams and their contact information.
+Also, user-defined configuration settings can be stored.
 
 ```yaml
 Type: System.String
-Parameter Sets: HybridConnectionPropertiesSet
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -193,17 +234,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IHybridConnection
 
 ## NOTES
 

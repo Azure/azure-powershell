@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/add-azsqlelasticjobstep
+online version: https://learn.microsoft.com/powershell/module/az.sql/add-azsqlelasticjobstep
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Adds a job step to a job
 ### DefaultSet (Default)
 ```
 Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> -TargetGroupName <String> -CredentialName <String> -CommandText <String> -Name <String>
+ [-JobName] <String> -TargetGroupName <String> [-CredentialName <String>] -CommandText <String> -Name <String>
  [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -24,8 +24,8 @@ Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-A
 ### WithOutputDb
 ```
 Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> -TargetGroupName <String> -CredentialName <String> -CommandText <String>
- -OutputDatabaseObject <AzureSqlDatabaseModel> -OutputCredentialName <String> -OutputTableName <String>
+ [-JobName] <String> -TargetGroupName <String> [-CredentialName <String>] -CommandText <String>
+ -OutputDatabaseObject <AzureSqlDatabaseModel> [-OutputCredentialName <String>] -OutputTableName <String>
  -Name <String> [-OutputSchemaName <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
  [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -35,8 +35,8 @@ Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-A
 ### WithOutputDbId
 ```
 Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> -TargetGroupName <String> -CredentialName <String> -CommandText <String>
- -OutputDatabaseResourceId <String> -OutputCredentialName <String> -OutputTableName <String> -Name <String>
+ [-JobName] <String> -TargetGroupName <String> [-CredentialName <String>] -CommandText <String>
+ -OutputDatabaseResourceId <String> [-OutputCredentialName <String>] -OutputTableName <String> -Name <String>
  [-OutputSchemaName <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
  [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -46,7 +46,7 @@ Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-A
 ### ObjectSet
 ```
 Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupName <String>
- -CredentialName <String> -CommandText <String> -Name <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-CredentialName <String>] -CommandText <String> -Name <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>]
  [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -55,8 +55,8 @@ Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupNa
 ### WithOutputDbUsingParentObject
 ```
 Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupName <String>
- -CredentialName <String> -CommandText <String> -OutputDatabaseObject <AzureSqlDatabaseModel>
- -OutputCredentialName <String> -OutputTableName <String> -Name <String> [-OutputSchemaName <String>]
+ [-CredentialName <String>] -CommandText <String> -OutputDatabaseObject <AzureSqlDatabaseModel>
+ [-OutputCredentialName <String>] -OutputTableName <String> -Name <String> [-OutputSchemaName <String>]
  [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -65,8 +65,8 @@ Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupNa
 ### WithOutputDbIdUsingParentObject
 ```
 Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupName <String>
- -CredentialName <String> -CommandText <String> -OutputDatabaseResourceId <String>
- -OutputCredentialName <String> -OutputTableName <String> -Name <String> [-OutputSchemaName <String>]
+ [-CredentialName <String>] -CommandText <String> -OutputDatabaseResourceId <String>
+ [-OutputCredentialName <String>] -OutputTableName <String> -Name <String> [-OutputSchemaName <String>]
  [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -74,7 +74,7 @@ Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupNa
 
 ### ResourceIdSet
 ```
-Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> -CredentialName <String>
+Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> [-CredentialName <String>]
  -CommandText <String> -Name <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
  [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -83,8 +83,8 @@ Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> -
 
 ### WithOutputDbUsingParentResourceId
 ```
-Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> -CredentialName <String>
- -CommandText <String> -OutputDatabaseObject <AzureSqlDatabaseModel> -OutputCredentialName <String>
+Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> [-CredentialName <String>]
+ -CommandText <String> -OutputDatabaseObject <AzureSqlDatabaseModel> [-OutputCredentialName <String>]
  -OutputTableName <String> -Name <String> [-OutputSchemaName <String>] [-StepId <Int32>]
  [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
@@ -93,8 +93,8 @@ Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> -
 
 ### WithOutputDbIdUsingParentResourceId
 ```
-Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> -CredentialName <String>
- -CommandText <String> -OutputDatabaseResourceId <String> -OutputCredentialName <String>
+Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> [-CredentialName <String>]
+ -CommandText <String> -OutputDatabaseResourceId <String> [-OutputCredentialName <String>]
  -OutputTableName <String> -Name <String> [-OutputSchemaName <String>] [-StepId <Int32>]
  [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
@@ -108,9 +108,11 @@ The Add-AzSqlElasticJobStep cmdlet adds a job step to a job
 
 ### Example 1: Adds a step to a job
 ```powershell
-PS C:\> $job = Get-AzSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -Name job1
+$job = Get-AzSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -Name job1
 $job | Add-AzSqlElasticJobStep -Name step1 -TargetGroupName tg1 -CredentialName cred1 -CommandText "SELECT 1"
+```
 
+```output
 JobName StepName StepId TargetGroupName CredentialName Output CommandText
 ------- -------- ------ --------------- -------------- ------ -----------
 job1    step1    1      tg1             cred1                 SELECT 1
@@ -158,7 +160,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -248,7 +250,7 @@ Type: System.String
 Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDbUsingParentObject, WithOutputDbIdUsingParentObject, WithOutputDbUsingParentResourceId, WithOutputDbIdUsingParentResourceId
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

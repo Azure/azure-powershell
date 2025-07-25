@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public virtual void DeleteDebugSession(string resourceGroupName, string dataFactoryName, string sessionId)
         {
-            this.DataFactoryManagementClient.DataFlowDebugSession.Delete(resourceGroupName, dataFactoryName, new DeleteDataFlowDebugSessionRequest(sessionId));
+            this.DataFactoryManagementClient.DataFlowDebugSession.Delete(resourceGroupName, dataFactoryName, sessionId);
         }
 
         public virtual List<PSDataFlowDebugSessionInfo> GetDebugSessions(string resourceGroupName, string dataFactoryName)

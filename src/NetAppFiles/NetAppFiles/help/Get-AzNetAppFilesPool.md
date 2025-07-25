@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/get-aznetappfilespool
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilespool
 schema: 2.0.0
 ---
 
@@ -18,14 +18,15 @@ Get-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> [-Name <
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
-```
-Get-AzNetAppFilesPool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesPool -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
+Get-AzNetAppFilesPool [-Name <String>] -AccountObject <PSNetAppFilesAccount>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Get-AzNetAppFilesPool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -35,11 +36,11 @@ The **Get-AzNetAppFilesPool** cmdlet gets details of an ANF pool.
 ## EXAMPLES
 
 ### Example 1: Get an ANF pool
+```powershell
+Get-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool"
 ```
-PS C:\>Get-AzAnfPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool"
 
-Output:
-
+```output
 Location          : westus2
 Id                : /subscriptions/subsID/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool
 Name              : MyAnfAccount/MyAnfPool
@@ -47,7 +48,10 @@ Type              : Microsoft.NetApp/netAppAccounts/capacityPools
 Tags              :
 PoolId            : a3a53a09-fd70-37ab-39dc-392a04cba525
 Size              : 4398046511104
-ServiceLevel      : Premium
+ServiceLevel	  : Premium
+TotalThroughputMibps: 262.144
+UtilizedThroughputMibps: 164.221
+QosType			  : Auto
 ProvisioningState : Succeeded
 ```
 
@@ -105,7 +109,7 @@ The name of the ANF pool
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: PoolName
 
 Required: False
@@ -161,3 +165,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetAppFilesPool](./New-AzNetAppFilesPool.md)
+[Remove-AzNetAppFilesPool](./Remove-AzNetAppFilesPool.md)
+[Set-AzNetAppFilesPool](./Set-AzNetAppFilesPool.md)
+[Update-AzNetAppFilesPool](./Update-AzNetAppFilesPool.md)

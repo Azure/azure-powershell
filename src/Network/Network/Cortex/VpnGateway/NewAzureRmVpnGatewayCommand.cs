@@ -82,9 +82,29 @@ namespace Microsoft.Azure.Commands.Network
         public PSVpnConnection[] VpnConnection { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "Flag to enable Routing Preference Internet on this VpnGateway.")]
+        public SwitchParameter EnableRoutingPreferenceInternetFlag { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Flag to enable Bgp route translation for NAT on this VpnGateway.")]
+        public SwitchParameter EnableBgpRouteTranslationForNat { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of VpnGatewayNatRules that are associated with this VpnGateway.")]
+        public PSVpnGatewayNatRule[] VpnGatewayNatRule { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The vpn gateway's ASN for BGP over VPN")]
+        public uint Asn { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -141,6 +161,13 @@ namespace Microsoft.Azure.Commands.Network
                 vpnGateway.Connections.AddRange(this.VpnConnection);
             }
 
+            //// VpnGatewayNatRules, if specified
+            vpnGateway.NatRules = new List<PSVpnGatewayNatRule>();
+            if (this.VpnGatewayNatRule != null && this.VpnGatewayNatRule.Any())
+            {
+                vpnGateway.NatRules.AddRange(this.VpnGatewayNatRule);
+            }
+
             //// Scale unit, if specified
             vpnGateway.VpnGatewayScaleUnit = 0;
             if (this.VpnGatewayScaleUnit > 0)
@@ -148,9 +175,22 @@ namespace Microsoft.Azure.Commands.Network
                 vpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.VpnGatewayScaleUnit);
             }
 
+            // Set the Routing Preference Internet, if it is specified by customer.
+            vpnGateway.IsRoutingPreferenceInternet = EnableRoutingPreferenceInternetFlag.IsPresent;
+
+            // Set the Bgp route translation for NAT on this VpnGateway, if it is specified by customer.
+            vpnGateway.EnableBgpRouteTranslationForNat = this.EnableBgpRouteTranslationForNat.IsPresent;
+
             vpnGateway.BgpSettings = null;
 
-            ConfirmAction(
+            if (this.Asn > 0)
+            {
+                vpnGateway.BgpSettings = new PSBgpSettings();
+                vpnGateway.BgpSettings.BgpPeeringAddress = null; // We block modifying the gateway's BgpPeeringAddress (CA)
+                vpnGateway.BgpSettings.Asn = this.Asn;
+            }
+
+                ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
                 this.Name,
                 () =>

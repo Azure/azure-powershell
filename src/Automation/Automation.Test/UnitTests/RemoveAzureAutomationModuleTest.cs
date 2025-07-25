@@ -50,17 +50,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string moduleName = "module";
 
-            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName));
+            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName, false));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = moduleName;
             this.cmdlet.Force = true;
+            
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteModule(resourceGroupName, accountName, moduleName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.DeleteModule(resourceGroupName, accountName, moduleName, false), Times.Once());
+
+        }
+
+        [TestMethod]
+        public void RemoveAzureAutomationPowershell72ModuleByNameSuccessfull()
+        {
+            // Setup
+            string resourceGroupName = "resourceGroup";
+            string accountName = "automation";
+            string moduleName = "module";
+
+            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName, true));
+
+            // Test
+            this.cmdlet.ResourceGroupName = resourceGroupName;
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = moduleName;
+            this.cmdlet.Force = true;
+            this.cmdlet.RuntimeVersion = "7.2";
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient.Verify(f => f.DeleteModule(resourceGroupName, accountName, moduleName, true), Times.Once());
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Extracts the GUID from ARM id
         /// </summary>
-        /// <param name="input">input string</param>
+        /// <param name="resourceId"></param>
         /// <returns></returns>
         public static string GetIdFromARMResourceId(string resourceId)
         {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Extracts resource and resource group from ARM Id
         /// </summary>
-        /// <param name="input">input string</param>
+        /// <param name="resourceId"></param>
         /// <returns></returns>
         public static ExtractedInfo ExtractFromActionRuleResourceId(string resourceId)
         {

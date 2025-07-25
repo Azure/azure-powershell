@@ -48,8 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                                      vhdFooter.CreatorVersion.Data);
                 dataWriter.WriteUInt(attributeHelper.GetAttribute(() => vhdFooter.CreatorHostOsType).Offset,
                                      (uint)vhdFooter.CreatorHostOsType);
-                dataWriter.WriteLong(attributeHelper.GetAttribute(() => vhdFooter.PhsyicalSize).Offset, vhdFooter.PhsyicalSize);
-                dataWriter.WriteLong(attributeHelper.GetAttribute(() => vhdFooter.VirtualSize).Offset, vhdFooter.VirtualSize);
+                dataWriter.WriteLong(attributeHelper.GetAttribute(() => vhdFooter.OriginalSize).Offset, vhdFooter.OriginalSize);
+                dataWriter.WriteLong(attributeHelper.GetAttribute(() => vhdFooter.CurrentSize).Offset, vhdFooter.CurrentSize);
 
                 dataWriter.SetPosition(attributeHelper.GetAttribute(() => vhdFooter.DiskGeometry).Offset);
                 WriteDiskGeometry(dataWriter, vhdFooter.DiskGeometry);

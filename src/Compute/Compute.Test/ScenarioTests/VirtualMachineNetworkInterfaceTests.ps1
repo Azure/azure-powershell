@@ -30,7 +30,8 @@ function Test-SingleNetworkInterface
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -152,7 +153,8 @@ function Test-SingleNetworkInterfaceDnsSettings
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -258,7 +260,8 @@ function Test-MultipleNetworkInterface
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -372,7 +375,8 @@ function Test-AddNetworkInterface
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -388,10 +392,11 @@ function Test-AddNetworkInterface
 
         $nicList = Get-AzNetworkInterface -ResourceGroupName $rgname;
         $nicList[0].Primary = $true;
-        $p = Add-AzVMNetworkInterface -VM $p -NetworkInterface $nicList;
+        $p = Add-AzVMNetworkInterface -VM $p -NetworkInterface $nicList -DeleteOption "Detach";
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicList[0].Id;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].DeleteOption "Detach";
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -453,6 +458,7 @@ function Test-AddNetworkInterface
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].DeleteOption "Detach";
     }
     finally
     {
@@ -479,7 +485,8 @@ function Test-EffectiveRoutesAndNsg
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -614,7 +621,8 @@ function Test-SingleNetworkInterfaceWithAcceleratedNetworking
         # VM Profile & Hardware
         $vmsize = 'Standard_DS15_v2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -737,7 +745,8 @@ function Test-VMNicWithAcceleratedNetworkingValidations
         # VM Profile & Hardware
         $vmsize = 'Standard_DS15_v2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -840,3 +849,5 @@ function Test-VMNicWithAcceleratedNetworkingValidations
         Clean-ResourceGroup $rgname
     }
 }
+
+

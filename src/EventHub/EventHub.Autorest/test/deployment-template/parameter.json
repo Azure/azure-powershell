@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "secondaryLocation": {
+      "value": "southcentralus"
+    },
+    "namespace_name": {
+      "value": "namespaceName6xazrb"
+    },
+    "system_assigned_namespace_name": {
+      "value": "namespaceNamelzvg4y"
+    },
+    "primary_namespace_name": {
+      "value": "namespaceNamenxqfh4"
+    },
+    "secondary_namespace_name": {
+      "value": "namespaceNamem3hun9"
+    },
+    "namespace_auth_rule_name": {
+      "value": "auth-ruleultwf8"
+    },
+    "eventhub_auth_rule_name": {
+      "value": "auth-ruleg465d0"
+    },
+    "eventhub_name": {
+      "value": "eventHubs758f4"
+    },
+    "schema_group_name": {
+      "value": "schemaGroupijkz8r"
+    },
+    "appgroup_name": {
+      "value": "appGroup0exmij"
+    },
+    "subnet1Id": {
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default"
+    },
+    "peName1": {
+      "value": "privateEndpoint-uedzlo"
+    },
+    "peName2": {
+      "value": "privateEndpoint-iq47tv"
+    },
+    "namespaceResourceId": {
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb"
+    },
+    "useZoneRedundancy": {
+      "value": true
+    }
+  }
+}

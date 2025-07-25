@@ -1,0 +1,173 @@
+parameters:
+  - name: GalleryName
+    displayName: Gallery Name
+    type: string
+    default: DailyBuild
+    values:
+      - DailyBuild
+      - Sign
+      - PSGallery
+  - name: PipelineBuildId
+    displayName: Pipeline Build Id for Artifacts
+    type: string
+    default: ' '
+
+variables:
+  os_windows: windows-latest
+  os_linux: ubuntu-latest
+  os_macos: macOS-latest
+  win_ps_5_1: 5.1
+  ps_7_4_x: 7.4.*
+  ps_7_5_x: 7.5.*
+  ps_latest: latest
+  dotnet_sdk_8: 8.x
+  dotnet_sdk_9: 9.x
+  ArtifactsName: LiveTestArtifacts
+  DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
+  SuppressAzurePowerShellBreakingChangeWarnings: true
+
+pr: none
+trigger: none
+
+stages:
+- stage: Test
+  displayName: Run Live Test
+  jobs:
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_5_1_windows'
+      vmImage: ${{ variables.os_windows }}
+      osType: 'Windows'
+      psVersion: ${{ variables.win_ps_5_1 }}
+      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_7_4_x_windows'
+      vmImage: ${{ variables.os_windows }}
+      osType: 'Windows'
+      psVersion: ${{ variables.ps_7_4_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_7_5_x_windows'
+      vmImage: ${{ variables.os_windows }}
+      osType: 'Windows'
+      psVersion: ${{ variables.ps_7_5_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_latest_windows'
+      vmImage: ${{ variables.os_windows }}
+      osType: 'Windows'
+      psVersion: ${{ variables.ps_latest }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_7_4_x_linux'
+      vmImage: ${{ variables.os_linux }}
+      osType: 'Linux'
+      psVersion: ${{ variables.ps_7_4_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_7_5_x_linux'
+      vmImage: ${{ variables.os_linux }}
+      osType: 'Linux'
+      psVersion: ${{ variables.ps_7_5_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_latest_linux'
+      vmImage: ${{ variables.os_linux }}
+      osType: 'Linux'
+      psVersion: ${{ variables.ps_latest }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_7_4_x_macos'
+      vmImage: ${{ variables.os_macos }}
+      osType: 'MacOS'
+      psVersion: ${{ variables.ps_7_4_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_8 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_7_5_x_macos'
+      vmImage: ${{ variables.os_macos }}
+      osType: 'MacOS'
+      psVersion: ${{ variables.ps_7_5_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - template: util/live-test-steps.yml
+    parameters:
+      name: 'ps_latest_macos'
+      vmImage: ${{ variables.os_macos }}
+      osType: 'MacOS'
+      psVersion: ${{ variables.ps_latest }}
+      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      galleryName: ${{ parameters.GalleryName }}
+      pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+- stage: Report
+  displayName: Send Report
+  condition: always()
+  jobs:
+  - job:
+    displayName: Send Live Test Status Report
+    steps:
+    - task: PowerShell@2
+      displayName: Create data location directory
+      inputs:
+        pwsh: true
+        targetType: inline
+        script:
+          New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
+
+    - task: DownloadPipelineArtifact@2
+      displayName: Download live test results
+      inputs:
+        buildType: 'current'
+        targetPath: $(DataLocation)
+
+    - task: PowerShell@2
+      displayName: Send live test report
+      inputs:
+        pwsh: true
+        targetType: filePath
+        filePath: ./tools/TestFx/Live/SendLiveTestReport.ps1
+        arguments: -EmailServiceConnectionString '$(EmailServiceConnectionString)' -EmailFrom '$(EmailFrom)'
+
+    - task: AzurePowerShell@5
+      displayName: Save live test results
+      condition: or(in(variables['Build.SourceBranch'], 'refs/heads/main', 'refs/heads/internal/release'), startsWith(variables['Build.SourceBranch'], 'refs/heads/Daily/Release_'))
+      inputs:
+        pwsh: true
+        azurePowerShellVersion: latestVersion
+        azureSubscription: $(KustoServiceConnectionName)
+        scriptType: filePath
+        scriptPath: ./tools/TestFx/Live/SaveLiveTestResult.ps1

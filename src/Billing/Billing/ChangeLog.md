@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
+* Upgraded nuget package to signed package.
+
+## Version 2.1.0
+* Renamed `Get-UsageAggregates` to `Get-AzUsageAggregate` and added `Get-UsageAggregates` as the alias to avoid breaking change.
+
+## Version 2.0.4
+* Removed the outdated deps.json file.
+
+## Version 2.0.3
+* Fixed page continuation for Consumption PriceSheet cmdlet
+
+## Version 2.0.2
+* Fixed skip token for Consumption PriceSheet cmdlet
+
+## Version 2.0.1
+* Fixed pagination for `Get-AzConsumptionPriceSheet` cmdlet
+
+## Version 2.0.0
 * Added `Get-AzBillingAccount` cmdlet
 * Added `Get-AzBillingProfile` cmdlet
 * Added `Get-AzInvoiceSection` cmdlet

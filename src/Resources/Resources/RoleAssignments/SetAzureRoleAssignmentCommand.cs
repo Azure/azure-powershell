@@ -15,14 +15,15 @@
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using Newtonsoft.Json;
+
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
@@ -43,6 +44,9 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
         public PSRoleAssignment InputObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
         #endregion
@@ -50,7 +54,7 @@ namespace Microsoft.Azure.Commands.Resources
         public override void ExecuteCmdlet()
         {
             // Build the new Role assignment
-            if(ParameterSetName == ParameterSet.InputFile)
+            if (ParameterSetName == ParameterSet.InputFile)
             {
                 string fileName = this.TryResolvePath(InputFile);
                 if (!(new FileInfo(fileName)).Exists)
@@ -71,9 +75,8 @@ namespace Microsoft.Azure.Commands.Resources
 
             // Build the Update Request
             var Subscription = DefaultProfile.DefaultContext.Subscription.Id;
-            var RaIndex = InputObject.RoleAssignmentId.LastIndexOf("/") + 1;
             var scope = InputObject.Scope;
-            var RoleAssignmentGUID = RaIndex != -1 ? InputObject.RoleAssignmentId.Substring(RaIndex) : InputObject.RoleAssignmentId;
+            var RoleAssignmentGUID =InputObject.RoleAssignmentId.GuidFromFullyQualifiedId();
 
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
@@ -94,8 +97,11 @@ namespace Microsoft.Azure.Commands.Resources
                 fetchedRole = InputObject;
             }
 
-            // Validate the requestk
-            AuthorizationClient.ValidateScope(parameters.Scope, false);
+            // Validate the request
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(parameters.Scope, false);
+            }
             bool isValidRequest = true;
 
             // Check that only Description, Condition and ConditionVersion have been changed, if anything else is changed the whole request fails
@@ -112,12 +118,13 @@ namespace Microsoft.Azure.Commands.Resources
             }
 
             // If ConditionVersion is changed, validate it's in the allowed values
-            var oldConditionVersion = double.Parse(InputObject.ConditionVersion ?? "0.0");
-            var newConditionVersion = double.Parse(fetchedRole.ConditionVersion ?? "2.0");
+
+            var oldConditionVersion = string.IsNullOrWhiteSpace(fetchedRole.ConditionVersion)? Version.Parse("0.0") : Version.Parse(fetchedRole.ConditionVersion);
+            var newConditionVersion = string.IsNullOrWhiteSpace(InputObject.ConditionVersion) ? Version.Parse("0.0") : Version.Parse(InputObject.ConditionVersion);
 
             // A condition version can change but currently we don't support downgrading to 1.0
             // we only verify the change if it's a downgrade
-            if ((oldConditionVersion > newConditionVersion) && (newConditionVersion < 2.0))
+            if ((oldConditionVersion > newConditionVersion) && (newConditionVersion.Major < 2))
             {
                 throw new ArgumentException("Condition version different than '2.0' is not supported for update operations");
             }

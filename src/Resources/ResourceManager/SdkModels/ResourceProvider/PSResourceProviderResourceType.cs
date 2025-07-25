@@ -39,5 +39,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         /// Gets or sets the zone mappings that this resource supports.
         /// </summary>
         public Hashtable ZoneMappings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default api version for this resource.
+        /// </summary>
+        public string DefaultApiVersion { get; set; }
     }
 }

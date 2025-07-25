@@ -102,23 +102,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetSummaryUpdateParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetNetworkSettingParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetExtendedInfoParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetAlertParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]

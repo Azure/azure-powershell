@@ -38,6 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
+        public override string TagCondition { get; set; }
 
         public EnableAzureStorageServiceDeleteRetentionPolicyCommand()
         {
@@ -47,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Update the specified DeleteRetentionPolicyProperties according to the input
         /// </summary>
-        /// <param name="policy">Delete Retention Policy Properties</param>
+        /// <param name="serviceProperties">Service properties</param>
         internal void EnableDeleteRetentionProperties(ServiceProperties serviceProperties)
         {
             if (serviceProperties.DeleteRetentionPolicy == null)

@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.IotSecuritySolutions
                 RecommendationsConfiguration = RecommendationsConfiguration?.CreatePSType(),
                 Status = Enabled? "Enabled" : "Disabled",
                 Tags = Tag?.Cast<DictionaryEntry>().ToDictionary(t => (string)t.Key, t => (string)t.Value),
-                UnmaskedIpLoggingStatus = UnmaskedIpLoggingStatus,
+                UnmaskedIPLoggingStatus = UnmaskedIpLoggingStatus,
                 UserDefinedResources = UserDefinedResource?.CreatePSType(),
                 Workspace = Workspace
             };

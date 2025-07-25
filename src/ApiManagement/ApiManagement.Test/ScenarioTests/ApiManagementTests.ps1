@@ -298,7 +298,7 @@ function Test-ApiManagementHostnamesCRUD {
     $portalHostName = "portalsdk.msitesting.net"
     $devPortalHostName = "devportalsdk.msitesting.net"
     $proxyHostName1 = "gateway1.msitesting.net"
-    $proxyHostName2 = "gateway2.msitesting.net"
+    $proxyHostName2 = "powershelltest.current.int-azure-api.net"
     $managementHostName = "mgmt.msitesting.net"
     $resourceGroupName = Get-ResourceGroupName
     $apiManagementName = Get-ApiManagementServiceName
@@ -306,6 +306,9 @@ function Test-ApiManagementHostnamesCRUD {
     $adminEmail = "apim@powershell.org"
     $sku = "Premium" # Multiple hostname is only supported in Premium SKU
     $capacity = 1
+    $keyVaultId = "https://powershell-apim-kv.vault.azure.net/secrets/powershell-current"
+    $identityClientId = "4b7fdc4d-a154-4830-b399-46a12da1a1e2"
+    $userIdentity = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/powershellTestUserIdentity"
     
     try {
         # Create resource group    
@@ -313,15 +316,22 @@ function Test-ApiManagementHostnamesCRUD {
 
         #Create Custom Hostname configuration
         $securePfxPassword = ConvertTo-SecureString $certPassword -AsPlainText -Force
-        $customProxy1 = New-AzApiManagementCustomHostnameConfiguration -Hostname $proxyHostName1 -HostnameType Proxy -PfxPath $certFilePath -PfxPassword $securePfxPassword -DefaultSslBinding
-        $customProxy2 = New-AzApiManagementCustomHostnameConfiguration -Hostname $proxyHostName2 -HostnameType Proxy -PfxPath $certFilePath -PfxPassword $securePfxPassword
+        $customProxy1 = New-AzApiManagementCustomHostnameConfiguration -Hostname $proxyHostName1 `
+                          -HostnameType Proxy -PfxPath $certFilePath -PfxPassword $securePfxPassword -DefaultSslBinding
+        $customProxy2 = New-AzApiManagementCustomHostnameConfiguration -Hostname $proxyHostName2 `
+                          -HostnameType Proxy -KeyVaultId $keyVaultId -IdentityClientId $identityClientId
         $customPortal = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostName -HostnameType Portal -PfxPath $certFilePath -PfxPassword $securePfxPassword
         $customDevPortal = New-AzApiManagementCustomHostnameConfiguration -Hostname $devPortalHostName -HostnameType DeveloperPortal -PfxPath $certFilePath -PfxPassword $securePfxPassword
         $customMgmt = New-AzApiManagementCustomHostnameConfiguration -Hostname $managementHostName -HostnameType Management -PfxPath $certFilePath -PfxPassword $securePfxPassword
         $customHostnames = @($customProxy1, $customProxy2, $customPortal, $customMgmt, $customDevPortal)
 
+        # UserAssigned Identity
+        $userIdentities = @($userIdentity)
+
         # Create API Management service
-        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -CustomHostnameConfiguration $customHostnames
+        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location `
+                   -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku `
+                   -UserAssignedIdentity $userIdentities -Capacity $capacity -CustomHostnameConfiguration $customHostnames
 
         Assert-AreEqual $resourceGroupName $result.ResourceGroupName
         Assert-AreEqual $apiManagementName $result.Name
@@ -329,6 +339,8 @@ function Test-ApiManagementHostnamesCRUD {
         Assert-AreEqual $sku $result.Sku
         Assert-AreEqual 1 $result.Capacity
         Assert-AreEqual "None" $result.VpnType
+         # validate ApiManagement Identity
+        Assert-AreEqual "UserAssigned" $result.Identity.Type;
         
         #validate the Proxy Custom Hostname configuration
         Assert-NotNull $result.ProxyCustomHostnameConfiguration
@@ -337,19 +349,21 @@ function Test-ApiManagementHostnamesCRUD {
             if ($result.ProxyCustomHostnameConfiguration[$i].Hostname -eq $proxyHostName1) {
                 $found = $found + 1
                 Assert-AreEqual Proxy $result.ProxyCustomHostnameConfiguration[$i].HostnameType
-                Assert-AreEqual $certThumbprint $result.ProxyCustomHostnameConfiguration[$i].CertificateInformation.Thumbprint
+                Assert-NotNull $result.ProxyCustomHostnameConfiguration[$i].CertificateInformation.Thumbprint
                 Assert-True {$result.ProxyCustomHostnameConfiguration[$i].DefaultSslBinding}
-                Assert-False {$result.ProxyCustomHostnameConfiguration[$i].NegotiateClientCertificate}
+                Assert-False {$result.ProxyCustomHostnameConfiguration[$i].NegotiateClientCertificate}                
                 Assert-Null $result.ProxyCustomHostnameConfiguration[$i].KeyVaultId
+                Assert-Null $result.ProxyCustomHostnameConfiguration[$i].IdentityClientId
             }
             if ($result.ProxyCustomHostnameConfiguration[$i].Hostname -eq $proxyHostName2) {
                 $found = $found + 1
                 Assert-AreEqual Proxy $result.ProxyCustomHostnameConfiguration[$i].HostnameType
-                Assert-AreEqual $certThumbprint $result.ProxyCustomHostnameConfiguration[$i].CertificateInformation.Thumbprint
+                Assert-NotNull $result.ProxyCustomHostnameConfiguration[$i].CertificateInformation.Thumbprint
                 # default sslbinding is true for second hostname also, as the ssl certificate is same
-                Assert-True {$result.ProxyCustomHostnameConfiguration[$i].DefaultSslBinding}
+                Assert-False {$result.ProxyCustomHostnameConfiguration[$i].DefaultSslBinding}
                 Assert-False {$result.ProxyCustomHostnameConfiguration[$i].NegotiateClientCertificate}
-                Assert-Null $result.ProxyCustomHostnameConfiguration[$i].KeyVaultId
+                Assert-AreEqual $keyVaultId $result.ProxyCustomHostnameConfiguration[$i].KeyVaultId
+                Assert-AreEqual $identityClientId $result.ProxyCustomHostnameConfiguration[$i].IdentityClientId
             }
         }
 
@@ -374,7 +388,7 @@ function Test-ApiManagementHostnamesCRUD {
         #scm configuration is null
         Assert-Null $result.ScmCustomHostnameConfiguration
         
-        # now delete all but one Proxy Custom Hostname         
+        # now delete all but one Proxy Custom Hostname
         $result.ManagementCustomHostnameConfiguration = $null
         $result.PortalCustomHostnameConfiguration = $null
         $result.DeveloperPortalHostnameConfiguration = $null
@@ -436,13 +450,14 @@ Then remove one Additional Region and scale up another additional region and Ena
 #>
 function Test-ApiManagementWithAdditionalRegionsCRUD {
     # Setup
-    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"  
-    $resourceGroupName = Get-ResourceGroupName    
+    $location = "West US 2"  
+    $resourceGroupName = Get-ResourceGroupName
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
     $adminEmail = "apim@powershell.org"
     $sku = "Premium"
-    $capacity = 1
+    $capacity = 2
+    $zones = @("1", "2")
     $firstAdditionalRegionLocation = "East US"
     $secondAdditionalRegionLocation = "South Central US"
     $userIdentity = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/powershellTestUserIdentity"
@@ -451,14 +466,19 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         # Create Resource Group
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 		
-        $firstAdditionalRegion = New-AzApiManagementRegion -Location $firstAdditionalRegionLocation
-        $secondAdditionalRegion = New-AzApiManagementRegion -Location $secondAdditionalRegionLocation
+        $firstAdditionalRegion = New-AzApiManagementRegion -Location $firstAdditionalRegionLocation `
+                                  -Capacity $capacity -Zone $zones -DisableGateway $true
+        $secondAdditionalRegion = New-AzApiManagementRegion -Location $secondAdditionalRegionLocation `
+                                   -Capacity $capacity -Zone $zones -DisableGateway $true
         $regions = @($firstAdditionalRegion, $secondAdditionalRegion)
         
         $userIdentities = @($userIdentity)
 
         # Create API Management service
-        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -AdditionalRegions $regions -UserAssignedIdentity $userIdentities 
+        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName `
+                       -Location $location -Name $apiManagementName -Organization $organization `
+                       -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -AdditionalRegions $regions `
+                       -UserAssignedIdentity $userIdentities -Zone $zones -DisableGateway $false -MinimalControlPlaneApiVersion "2019-12-01"
 
         Assert-AreEqual $resourceGroupName $result.ResourceGroupName
         Assert-AreEqual $apiManagementName $result.Name
@@ -466,6 +486,8 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         Assert-AreEqual $sku $result.Sku
         Assert-AreEqual $capacity $result.Capacity
         Assert-AreEqual "None" $result.VpnType
+        Assert-AreEqual 2 $result.Zone.Count
+        Assert-AreEqual $false $result.DisableGateway
 		
         Assert-AreEqual 2 $result.AdditionalRegions.Count
         $found = 0
@@ -473,14 +495,18 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
             if ($result.AdditionalRegions[$i].Location.Replace(" ", "") -eq $firstAdditionalRegionLocation.Replace(" ", "")) {
                 $found = $found + 1
                 Assert-AreEqual $sku $result.AdditionalRegions[$i].Sku
-                Assert-AreEqual 1 $result.AdditionalRegions[$i].Capacity
+                Assert-AreEqual $capacity $result.AdditionalRegions[$i].Capacity
                 Assert-Null $result.AdditionalRegions[$i].VirtualNetwork
+                Assert-AreEqual $true $result.AdditionalRegions[$i].DisableGateway
+                Assert-AreEqual 2 $result.AdditionalRegions[$i].Zone.Count
             }
             if ($result.AdditionalRegions[$i].Location.Replace(" ", "") -eq $secondAdditionalRegionLocation.Replace(" ", "")) {
                 $found = $found + 1
                 Assert-AreEqual $sku $result.AdditionalRegions[$i].Sku
-                Assert-AreEqual 1 $result.AdditionalRegions[$i].Capacity
+                Assert-AreEqual $capacity $result.AdditionalRegions[$i].Capacity
                 Assert-Null $result.AdditionalRegions[$i].VirtualNetwork
+                Assert-AreEqual $true $result.AdditionalRegions[$i].DisableGateway
+                Assert-AreEqual 2 $result.AdditionalRegions[$i].Zone.Count
             }
         }
 
@@ -499,10 +525,11 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         $newAdditionalRegionCapacity = 2
         $apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
         $apimService = Remove-AzApiManagementRegion -ApiManagement $apimService -Location $firstAdditionalRegionLocation
-        $apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location $secondAdditionalRegionLocation -Capacity $newAdditionalRegionCapacity -Sku $sku
+        $apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location $secondAdditionalRegionLocation `
+                                -Capacity $newAdditionalRegionCapacity -Sku $sku -Zone "1" -DisableGateway $false
 
-        # Set the ApiManagement service and Enable Msi idenity on the service
-        $updatedService = Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity -PassThru
+        # Set the ApiManagement service and Enable Msi identity on the service
+        $updatedService = Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity -UserAssignedIdentity $userIdentities -PassThru
         Assert-AreEqual $resourceGroupName $updatedService.ResourceGroupName
         Assert-AreEqual $apiManagementName $updatedService.Name
         Assert-AreEqual $location $updatedService.Location
@@ -513,12 +540,14 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         Assert-AreEqual 1 $updatedService.AdditionalRegions.Count
         $found = 0
         # Validate the Additional Region capacity
-        for ($i = 0; $i -lt $updatedService.AdditionalRegions.Count; $i++) {            
+        for ($i = 0; $i -lt $updatedService.AdditionalRegions.Count; $i++) {
             if ($updatedService.AdditionalRegions[$i].Location.Replace(" ", "") -eq $secondAdditionalRegionLocation.Replace(" ", "")) {
                 $found = $found + 1
                 Assert-AreEqual $sku $updatedService.AdditionalRegions[$i].Sku
                 Assert-AreEqual $newAdditionalRegionCapacity $updatedService.AdditionalRegions[$i].Capacity
                 Assert-Null $updatedService.AdditionalRegions[$i].VirtualNetwork
+                Assert-AreEqual $false $updatedService.AdditionalRegions[$i].DisableGateway
+                Assert-AreEqual 1 $updatedService.AdditionalRegions[$i].Zone.Count
             }
         }
 
@@ -587,4 +616,163 @@ function Test-CrudApiManagementWithExternalVpn {
         # Cleanup
         Clean-ResourceGroup $resourceGroupName
     }
+}
+
+<#
+.SYNOPSIS
+Tests ApiManagementVirtualNetworkCRUD
+#>
+function Test-ApiManagementVirtualNetworkStv2CRUD {
+    # Setup
+    $primarylocation = "East US"
+    $secondarylocation = "South Central US"
+    $resourceGroupName = Get-ResourceGroupName
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $sku = "Developer"
+    $capacity = 1
+    $primarySubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvneteastus/subnets/stv2subnet"
+    $primaryPublicIPAddressId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/publicIPAddresses/powershellvneteastusip";
+    $primaryPublicIPAddressId2 = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/publicIPAddresses/powershellvneteastusip2";
+    $additionalSubnetResourceId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/powershellvnetscu/subnets/stv2subnet"
+    $additionalPublicIPAddressId = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.Network/publicIPAddresses/powershellvnetscuip";
+    $vpnType = "External" 
+ 
+    try {
+        # Create Resource Group
+        New-AzResourceGroup -Name $resourceGroupName -Location $primarylocation
+ 
+        # Create a Virtual Network Object
+        $virtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $primarySubnetResourceId
+         
+        # Create API Management service in External VNET
+        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $primarylocation -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -VpnType $vpnType `
+                    -VirtualNetwork $virtualNetwork -PublicIpAddressId $primaryPublicIPAddressId -Sku $sku -Capacity $capacity 
+ 
+        Assert-AreEqual $resourceGroupName $result.ResourceGroupName
+        Assert-AreEqual $apiManagementName $result.Name
+        Assert-AreEqual $primarylocation $result.Location
+        Assert-AreEqual $sku $result.Sku
+        Assert-AreEqual 1 $result.Capacity
+        Assert-AreEqual $vpnType $result.VpnType
+        Assert-Null $result.PrivateIPAddresses
+        Assert-NotNull $result.PublicIPAddresses
+        Assert-AreEqual $primarySubnetResourceId $result.VirtualNetwork.SubnetResourceId
+        
+
+		$networkStatus = Get-AzApiManagementNetworkStatus -ResourceGroupName $resourceGroupName -Name $apiManagementName
+        Assert-NotNull $networkStatus
+		Assert-NotNull $networkStatus.DnsServers
+		Assert-NotNull $networkStatus.ConnectivityStatus
+
+        # Get the service and switch to internal Virtual Network
+        $service = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+        $vpnType = "Internal"
+        $service.VirtualNetwork = $virtualNetwork
+        $service.PublicIpAddressId = $primaryPublicIPAddressId2
+        $service.VpnType = $vpnType
+        # update the SKU to Premium SKU
+        $sku = "Premium"
+        $service.Sku = $sku
+        
+        # Create Virtual Network Object for Additional region
+        $additionalRegionVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $additionalSubnetResourceId
+
+        $service = Add-AzApiManagementRegion -ApiManagement $service -Location $secondarylocation `
+                    -VirtualNetwork $additionalRegionVirtualNetwork -PublicIpAddressId $additionalPublicIPAddressId
+        # Update the Deployment into Internal Virtual Network
+        $service = Set-AzApiManagement -InputObject $service -PassThru
+
+        Assert-AreEqual $resourceGroupName $service.ResourceGroupName
+        Assert-AreEqual $apiManagementName $service.Name
+        Assert-AreEqual $sku $service.Sku
+        Assert-AreEqual $primarylocation $service.Location
+        Assert-AreEqual "Succeeded" $service.ProvisioningState
+        Assert-AreEqual $vpnType $service.VpnType
+        Assert-NotNull $service.VirtualNetwork
+        Assert-NotNull $service.VirtualNetwork.SubnetResourceId
+        Assert-NotNull $service.PrivateIPAddresses
+        Assert-NotNull $service.PublicIPAddresses
+        Assert-AreEqual $primarySubnetResourceId $service.VirtualNetwork.SubnetResourceId
+
+        # Validate the additional region
+        Assert-AreEqual 1 $service.AdditionalRegions.Count
+        $found = 0
+        for ($i = 0; $i -lt $service.AdditionalRegions.Count; $i++) {
+            if ($service.AdditionalRegions[$i].Location -eq $secondarylocation) {
+                $found = $found + 1
+                Assert-AreEqual $sku $service.AdditionalRegions[$i].Sku
+                Assert-AreEqual 1 $service.AdditionalRegions[$i].Capacity
+                Assert-NotNull $service.AdditionalRegions[$i].VirtualNetwork
+                Assert-AreEqual $additionalSubnetResourceId $service.AdditionalRegions[$i].VirtualNetwork.SubnetResourceId
+                Assert-NotNull $service.AdditionalRegions[$i].PrivateIPAddresses
+                Assert-NotNull $service.AdditionalRegions[$i].PublicIPAddresses
+                Assert-NotNull $service.AdditionalRegions[$i].PublicIpAddressId
+            }
+        }
+        
+        Assert-True {$found -eq 1} "Api Management regions created earlier is not found."
+
+		# check the network status for the service.
+		$networkStatus = Get-AzApiManagementNetworkStatus -ApiManagementObject $service
+        Assert-NotNull $networkStatus
+		Assert-NotNull $networkStatus.DnsServers
+		Assert-NotNull $networkStatus.ConnectivityStatus
+
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName    
+    }
+}
+
+<#
+.SYNOPSIS
+Tests API Management Backup/Restore operations.
+#>
+function Test-BackupRestoreApiManagementUsingManagedIdentity {
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
+    $resourceGroupName = Get-ResourceGroupName
+    $storageLocation = "westus2"
+    $storageAccountName = "apimbackupmsi"
+    $msiClientId = "a6270d0c-7d86-478b-8cbe-dc9047ba54f7"
+    $msiUserAssignedId = "/subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/net-sdk-backup-restore/providers/Microsoft.ManagedIdentity/userAssignedIdentities/apim-backup-restore-msi"
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $containerName = "backups"
+    $backupName = $apiManagementName + ".apimbackup"
+
+    
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+
+        # Create storage account context
+        $storageContext = New-AzStorageContext -StorageAccountName $storageAccountName
+        
+        # Create API Management service
+        $apiManagementService = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName `
+                -Organization $organization -AdminEmail $adminEmail -UserAssignedIdentity @($msiUserAssignedId)
+
+        # Backup API Management service
+        Backup-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext `
+                    -TargetContainerName $containerName -TargetBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId
+
+        # Restore API Management service
+        $restoreResult = Restore-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext `
+                -SourceContainerName $containerName -SourceBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId -PassThru
+
+        Assert-AreEqual $resourceGroupName $restoreResult.ResourceGroupName
+        Assert-AreEqual $apiManagementName $restoreResult.Name
+        Assert-AreEqual $location $restoreResult.Location
+        Assert-AreEqual "Developer" $restoreResult.Sku
+        Assert-AreEqual 1 $restoreResult.Capacity
+        Assert-AreEqual "Succeeded" $restoreResult.ProvisioningState
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName    
+    }   
 }

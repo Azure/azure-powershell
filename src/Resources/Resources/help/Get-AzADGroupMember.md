@@ -1,72 +1,64 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-ms.assetid: 52C5CD8B-2489-4FE6-9F33-B3350531CD8E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadgroupmember
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 schema: 2.0.0
 ---
 
 # Get-AzADGroupMember
 
 ## SYNOPSIS
-Lists members of an AD group in the current tenant.
+Lists members from group.
 
 ## SYNTAX
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADGroupMember [-GroupObjectId <String>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember -GroupObjectId <String> [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>]
+ [-Search <String>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADGroupMember -GroupDisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] -GroupDisplayName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
 ```
-Get-AzADGroupMember -GroupObject <PSADGroup> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] -GroupObject <IMicrosoftGraphGroup>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists members of an AD group in the current tenant.
+Lists members from group.
 
 ## EXAMPLES
 
-### Example 1: List members by AD group object id
-
+### Example 1: List members by group display name
 ```powershell
-PS C:\> Get-AzADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+Get-AzADGroupMember -GroupDisplayName $name
 ```
 
-Lists members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
+List members by group display name
 
-### Example 2: List members by AD group object id using paging
-
+### Example 2: List members by pipeline input
 ```powershell
-PS C:\> Get-AzADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE -First 100
+Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 ```
 
-Lists the first 100 members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
-
-### Example 3: List members by piping
-
-```powershell
-PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Get-AzADGroupMember
-```
-
-Gets the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes it to the Get-AzADGroupMember cmdlet to list all members in that group. 
+List members by pipeline input
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -77,8 +69,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Expand
+Expand related entities
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GroupDisplayName
-The display name of the group.
+The display name of target group.
 
 ```yaml
 Type: System.String
@@ -93,10 +115,10 @@ Accept wildcard characters: False
 ```
 
 ### -GroupObject
-The group object that you are listing members from.
+The target group object, could be used as pipeline input.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 Parameter Sets: GroupObjectParameterSet
 Aliases:
 
@@ -108,25 +130,55 @@ Accept wildcard characters: False
 ```
 
 ### -GroupObjectId
-Object Id of the group.
+The object Id of target group.
 
 ```yaml
 Type: System.String
 Parameter Sets: ObjectIdParameterSet
 Aliases: Id, ObjectId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeTotalCount
-Reports the number of objects in the data set. Currently, this parameter does nothing.
+### -Orderby
+Order items by property values
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Search
+Search items by search phrases
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Select
+Select properties to be returned
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -Skip
-Ignores the first N objects and then gets the remaining objects.
+Ignores the first 'n' objects and then gets the remaining objects.
 
 ```yaml
 Type: System.UInt64
@@ -153,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -First
-The maximum number of objects to return.
+Gets only the first 'n' objects.
 
 ```yaml
 Type: System.UInt64
@@ -172,19 +224,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADObject
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzADUser](./Get-AzADUser.md)
-
-[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
-

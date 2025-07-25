@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     /// <summary>
     /// Wrapper of SDK type BlobServiceProperties
     /// </summary>
-    public class PSBlobServiceProperties
+    public class PSBlobServiceProperties 
     {
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
         public string ResourceGroupName { get; set; }
@@ -43,8 +43,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "RestorePolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Days", Position = 6)]
         [Ps1Xml(Label = "RestorePolicy.MinRestoreTime", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.MinRestoreTime", Position = 7)]
         public PSRestorePolicy RestorePolicy { get; set; }
+        [Ps1Xml(Label = "ContainerDeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.ContainerDeleteRetentionPolicy.Days", Position = 8)]
+        public PSDeleteRetentionPolicy ContainerDeleteRetentionPolicy { get; set; }
         public PSCorsRules Cors { get; set; }
         public bool? IsVersioningEnabled { get; set; }
+        public PSLastAccessTimeTrackingPolicy LastAccessTimeTrackingPolicy { get; set; }
 
         public PSBlobServiceProperties()
         { }
@@ -62,6 +65,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.RestorePolicy = policy.RestorePolicy is null ? null : new PSRestorePolicy(policy.RestorePolicy);
             this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
             this.IsVersioningEnabled = policy.IsVersioningEnabled;
+            this.ContainerDeleteRetentionPolicy = policy.ContainerDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ContainerDeleteRetentionPolicy);
+            this.LastAccessTimeTrackingPolicy = policy.LastAccessTimeTrackingPolicy is null? null : new PSLastAccessTimeTrackingPolicy(policy.LastAccessTimeTrackingPolicy);
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -72,7 +77,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
                 RestorePolicy = this.RestorePolicy is null ? null : this.RestorePolicy.ParseRestorePolicy(),
                 ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
-                IsVersioningEnabled = this.IsVersioningEnabled                
+                IsVersioningEnabled = this.IsVersioningEnabled,
+                ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
+                LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy()
             };
         }
 
@@ -108,6 +115,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSChangeFeed
     {
         public bool? Enabled { get; set; }
+        public int? RetentionInDays { get; set; }
 
         public PSChangeFeed()
         {
@@ -116,13 +124,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSChangeFeed(ChangeFeed changeFeed)
         {
             this.Enabled = changeFeed.Enabled;
+            this.RetentionInDays = changeFeed.RetentionInDays;
         }
 
         public ChangeFeed ParseChangeFeed()
         {
             return new ChangeFeed
             {
-                Enabled = this.Enabled
+                Enabled = this.Enabled,
+                RetentionInDays = this.RetentionInDays
             };
         }
     }
@@ -134,6 +144,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public bool? Enabled { get; set; }
         public int? Days { get; set; }
+        public bool? AllowPermanentDelete { get; set; }
 
         public PSDeleteRetentionPolicy()
         {
@@ -143,13 +154,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.Enabled = policy.Enabled;
             this.Days = policy.Days;
+            this.AllowPermanentDelete = policy.AllowPermanentDelete;
         }
         public DeleteRetentionPolicy ParseDeleteRetentionPolicy()
         {
             return new DeleteRetentionPolicy
             {
                 Enabled = this.Enabled,
-                Days = this.Days
+                Days = this.Days,
+                AllowPermanentDelete = this.AllowPermanentDelete
             };
         }
     }
@@ -262,14 +275,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public CorsRule ParseCorsRule()
         {
-            return new CorsRule
+            CorsRule corsRule = new CorsRule
             {
-                AllowedOrigins = this.AllowedOrigins,
-                AllowedMethods = this.AllowedMethods,
+                AllowedOrigins = ArrayToList(this.AllowedOrigins),
                 MaxAgeInSeconds = this.MaxAgeInSeconds,
-                ExposedHeaders = this.ExposedHeaders,
-                AllowedHeaders = this.AllowedHeaders
+                ExposedHeaders = ArrayToList(this.ExposedHeaders),
+                AllowedHeaders = ArrayToList(this.AllowedHeaders),
+                AllowedMethods = new List<string>(),
             };
+            
+            if (this.AllowedMethods != null)
+            {
+                foreach(string method in this.AllowedMethods)
+                {
+                    corsRule.AllowedMethods.Add(method.ToUpper());
+                }
+            }
+
+            return corsRule;
         }
 
         /// <summary>
@@ -287,6 +310,43 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             string[] stringArray = new string[stringList.Count];
             stringList.CopyTo(stringArray, 0);
             return stringArray;
+        }
+
+        private List<string> ArrayToList(string[] stringArray)
+        {
+            return stringArray == null ? new List<string>() : new List<string>(stringArray);
+        }
+    }
+
+    /// <summary>
+    ///  Wrapper of SDK type LastAccessTimeTrackingPolicy
+    /// </summary>
+    public class PSLastAccessTimeTrackingPolicy
+    {
+        public bool Enable { get; set; }
+        public string Name { get; set; }
+        public int? TrackingGranularityInDays { get; set; }
+        public string[] BlobType { get; set; }
+
+
+        public PSLastAccessTimeTrackingPolicy(LastAccessTimeTrackingPolicy policy)
+        {
+            this.Name = policy.Name;
+            this.Enable = policy.Enable;
+            this.TrackingGranularityInDays = policy.TrackingGranularityInDays;
+            this.BlobType = policy.BlobType is null ? null : new List<string>(policy.BlobType).ToArray();
+        }
+
+        public LastAccessTimeTrackingPolicy ParseLastAccessTimeTrackingPolicy()
+        {
+            return new LastAccessTimeTrackingPolicy()
+            {
+
+                Name = this.Name,
+                Enable = this.Enable,
+                TrackingGranularityInDays = this.TrackingGranularityInDays,
+                BlobType = this.BlobType is null ? null : new List<string>(this.BlobType)
+            };
         }
     }
 }

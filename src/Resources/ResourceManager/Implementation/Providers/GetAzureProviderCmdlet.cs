@@ -86,7 +86,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                             ResourceTypeName = type.ResourceTypeName,
                                             Locations = type.Locations,
                                             ApiVersions = type.ApiVersions,
-                                            ZoneMappings = type.ZoneMappings
+                                            ZoneMappings = type.ZoneMappings,
+                                            DefaultApiVersion = type.DefaultApiVersion 
                                         }
                                     },
                                     ZoneMappings = type.ZoneMappings

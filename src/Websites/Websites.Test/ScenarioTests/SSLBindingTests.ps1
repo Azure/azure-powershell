@@ -17,12 +17,12 @@ assign a custom domain to it and update global variable values.
 #>
 
 #Global variables
-$rgname = "lketmtestantps10"
-$appname = "lketmtestantps10"
+$rgname = "RG-PS-UnitTesting"
+$appname = "AppService-PS-UnitTesting"
 $slot = "testslot"
-$prodHostname = "www.adorenow.net"
-$slotHostname = "testslot.adorenow.net"
-$thumbprint = "16659E73A97D079A389CD8FC8C78B9F2DDD1BABE"
+$prodHostname = "psunittesting.com"
+$slotHostname = "testslot.psunittesting.com"
+$thumbprint = "D1E31552350B24D89EEE38265BF1E19EEF698E6D"
 
 <#
 .SYNOPSIS
@@ -175,11 +175,11 @@ function Test-GetWebAppCertificate
 		New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
 
 		# Tests - Retrieve web app certificate objects
-		$certificates = Get-AzWebAppCertificate
+		$certificates = Get-AzWebAppCertificate -ResourceGroupName $rgname
 		$thumbprints = $certificates | Select -expand Thumbprint
 		Assert-True { $thumbprints -contains $thumbprint }
 
-		$certificate = Get-AzWebAppCertificate -Thumbprint $thumbprint
+		$certificate = Get-AzWebAppCertificate -ResourceGroupName $rgname -Thumbprint $thumbprint
 		Assert-AreEqual $thumbprint $certificate.Thumbprint
 	}
     finally

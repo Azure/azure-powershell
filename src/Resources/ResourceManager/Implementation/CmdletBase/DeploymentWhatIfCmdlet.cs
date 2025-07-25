@@ -18,9 +18,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 
-    public abstract class DeploymentWhatIfCmdlet: ResourceWithParameterCmdletBase, IDynamicParameters
+    public abstract class DeploymentWhatIfCmdlet: DeploymentCmdletBase, IDynamicParameters
     {
-        protected abstract PSDeploymentWhatIfCmdletParameters WhatIfParameters { get; }
+        [Parameter(Mandatory = false, HelpMessage = "Sets the validation level for validate/what-if. ValidationLevel can be Template(Skips provider validation), Provider(Performs full validation), " +
+                                                   "or ProviderNoRbac(Performs full validation using RBAC read checks instead of RBAC write checks for provider validation).")]
+        public string ValidationLevel { get; set; }
+
+        /// <summary>
+        /// It's important not to call this function more than once during an invocation, as it can call the Bicep CLI.
+        /// This is slow, and can also cause diagnostics to be emitted multiple times.
+        /// </summary>
+        protected abstract PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters();
 
         protected override void OnProcessRecord()
         {
@@ -42,7 +50,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 // Write status message.
                 this.WriteInformation(information, tags);
 
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(this.WhatIfParameters);
+                var parameters = this.BuildWhatIfParameters();
+                var whatIfResult = NewResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
 
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);

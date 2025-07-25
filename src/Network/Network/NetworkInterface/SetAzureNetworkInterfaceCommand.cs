@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -43,13 +44,31 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            // Verify if PublicIpAddress is empty
+            List<string> resourceIdsRequiringAuthToken = new List<string>();
+            Dictionary<string, List<string>> auxAuthHeader = null;
+
             foreach (var ipconfig in NetworkInterface.IpConfigurations)
             {
+                // Verify if PublicIpAddress is empty
                 if (ipconfig.PublicIpAddress != null &&
                     string.IsNullOrEmpty(ipconfig.PublicIpAddress.Id))
                 {
                     ipconfig.PublicIpAddress = null;
+                }
+
+                if (ipconfig.GatewayLoadBalancer != null)
+                {
+                    //Get the aux header for the remote vnet
+                    resourceIdsRequiringAuthToken.Add(ipconfig.GatewayLoadBalancer.Id);
+                }
+            }
+
+            if (resourceIdsRequiringAuthToken.Count > 0)
+            {
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIdsRequiringAuthToken);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
                 }
             }
 
@@ -60,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
 
 			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
 
-            this.NetworkInterfaceClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel);
+            this.NetworkInterfaceClient.CreateOrUpdateWithHttpMessagesAsync(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel, auxAuthHeader).GetAwaiter().GetResult();
 
             var getNetworkInterface = this.GetNetworkInterface(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name);
             WriteObject(getNetworkInterface);

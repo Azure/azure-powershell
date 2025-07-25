@@ -1,55 +1,53 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadgroup
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azadgroup
 schema: 2.0.0
 ---
 
 # Remove-AzADGroup
 
 ## SYNOPSIS
-Deletes an active directory group.
+Deletes entity from groups.
 
 ## SYNTAX
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADGroup -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzADGroup -ObjectId <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Remove-AzADGroup -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADGroup [-IfMatch <String>] -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzADGroup -InputObject <PSADGroup> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADGroup [-IfMatch <String>] -InputObject <IMicrosoftGraphGroup> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an active directory group.
+Deletes entity from groups.
 
 ## EXAMPLES
 
-### Example 1: Remove a group by object id
-
+### Example 1: Remove group by display name
 ```powershell
-PS C:\> Remove-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+Remove-AzADGroup -DisplayName $name
 ```
 
-Removes the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' from the tenant.
+Remove group by display name
 
-### Example 2: Remove a group by piping
-
+### Example 2: Remove group by pipeline input
 ```powershell
-PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Remove-AzADGroup
+Get-AzADGroup -ObjectId $id | Remove-AzADGroup
 ```
 
-Gets the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes that to Remove-AzADGroup to remove the group from the tenant.
+Remove group by pipeline input
 
 ## PARAMETERS
 
@@ -57,7 +55,7 @@ Gets the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes t
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -83,11 +81,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-If specified, doesn't ask for confirmation for deleting the group.
+### -IfMatch
+ETag
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,10 +97,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The object representation of the group to be removed.
+user input object
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -114,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The object id of the group to be removed.
+key: id of group
 
 ```yaml
 Type: System.String
@@ -124,12 +122,12 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Specifying this will return true if the command was successful.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -179,9 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 
 ## OUTPUTS
 

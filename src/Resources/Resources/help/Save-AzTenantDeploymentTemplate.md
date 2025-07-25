@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/save-aztenantdeploymenttemplate
+online version: https://learn.microsoft.com/powershell/module/az.resources/save-aztenantdeploymenttemplate
 schema: 2.0.0
 ---
 
@@ -15,13 +15,15 @@ Saves a deployment template to a file.
 ### SaveByDeploymentName (Default)
 ```
 Save-AzTenantDeploymentTemplate -DeploymentName <String> [-Path <String>] [-Force] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SaveByDeploymentObject
 ```
 Save-AzTenantDeploymentTemplate -DeploymentObject <PSDeployment> [-Path <String>] [-Force] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,14 +33,14 @@ The **Save-AzTenantDeploymentTemplate**  cmdlet saves a deployment template to a
 
 ### Example 1
 ```powershell
-PS C:\> Save-AzTenantDeploymentTemplate -DeploymentName "TestDeployment"
+Save-AzTenantDeploymentTemplate -DeploymentName "TestDeployment"
 ```
 
 This command gets the deployment template from TestDeployment and saves it as a JSON file in the current directory.
 
 ### Example 2: Get a deployment and save its template
-```
-PS C:\>Get-AzTenantDeploymentTemplate -Name "RolesDeployment" | Save-AzTenantDeploymentTemplate
+```powershell
+Get-AzTenantDeployment -Name "RolesDeployment" | Save-AzTenantDeploymentTemplate
 ```
 
 This command gets the deployment "RolesDeployment" at the current tenant scope and saves its template.

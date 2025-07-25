@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: B9153CA9-06D1-4EF3-9863-D649C2EBAEAA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azvpnclientrootcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azvpnclientrootcertificate
 schema: 2.0.0
 ---
 
@@ -32,10 +32,10 @@ Multiple root certificates are often deployed by organizations that include user
 ## EXAMPLES
 
 ### Example 1: Add a client root certificate to a virtual gateway
-```
-PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
-PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
-PS C:\> Add-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoClientRootCertificate"
+```powershell
+$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
+$CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
+Add-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoClientRootCertificate"
 ```
 
 This example adds a client root certificate to a virtual gateway named ContosoVirtualGateway.
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -150,5 +150,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVpnClientRootCertificate](./New-AzVpnClientRootCertificate.md)
 
 [Remove-AzVpnClientRootCertificate](./Remove-AzVpnClientRootCertificate.md)
-
-

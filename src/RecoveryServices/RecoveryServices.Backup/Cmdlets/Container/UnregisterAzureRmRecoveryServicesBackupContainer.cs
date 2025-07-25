@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Unregisters container from the recovery services vault.
     /// </summary>
-    [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer", SupportsShouldProcess = true), OutputType(typeof(ContainerBase))]
+    [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer", SupportsShouldProcess = true), OutputType(typeof(ContainerBase), typeof(JobBase))]
     public class UnregisterAzureRmRecoveryServicesBackupContainer
         : RSBackupVaultCmdletBase
     {
@@ -43,6 +43,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Return the container to be deleted.")]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Prevents the confirmation dialog when specified.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Container.ForceUnregister)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -54,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                 if (!((Container.ContainerType == ContainerType.Windows &&
-                       Container.BackupManagementType == BackupManagementType.MARS) ||
+                       Container.BackupManagementType == BackupManagementType.MAB) ||
                     (Container.ContainerType == ContainerType.AzureSQL &&
                      Container.BackupManagementType == BackupManagementType.AzureSQL) ||
                      (Container.ContainerType == ContainerType.AzureStorage &&
@@ -65,53 +71,71 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(string.Format(Resources.UnsupportedContainerException,
                         Container.ContainerType, Container.BackupManagementType));
                 }
-                string containerName = Container.Name;
 
-                if (Container.ContainerType == ContainerType.AzureSQL)
+                bool yesToAll = Force.IsPresent;
+                bool noToAll = false;
+                if (ShouldContinue(Resources.DeleteContainerRegistration, Resources.UnregisterContainer, ref yesToAll, ref noToAll))
                 {
-                    containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
-                }
+                    string containerName = Container.Name;
 
-                if (Container.ContainerType == ContainerType.AzureVMAppContainer ||
-                Container.ContainerType == ContainerType.AzureStorage)
-                {
-                    if(Container.ContainerType == ContainerType.AzureStorage)
+                    if (Container.ContainerType == ContainerType.AzureSQL)
                     {
-                        containerName = "StorageContainer;" + containerName;
+                        containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
                     }
-                    var unRegisterResponse = ServiceClientAdapter.UnregisterWorkloadContainers(
-                    containerName,
-                    vaultName: vaultName,
-                    resourceGroupName: resourceGroupName);
 
-                    var operationStatus = TrackingHelpers.GetOperationResult(
-                        unRegisterResponse,
-                        operationId =>
-                            ServiceClientAdapter.GetContainerRefreshOrInquiryOperationResult(
-                                operationId,
-                                vaultName: vaultName,
-                                resourceGroupName: resourceGroupName));
-
-                    //Now wait for the operation to Complete
-                    if (unRegisterResponse.Response.StatusCode
-                            != SystemNet.HttpStatusCode.NoContent)
+                    if (Container.ContainerType == ContainerType.AzureVMAppContainer ||
+                    Container.ContainerType == ContainerType.AzureStorage)
                     {
-                        string errorMessage = string.Format(Resources.UnRegisterFailureErrorCode,
-                            unRegisterResponse.Response.StatusCode);
-                        Logger.Instance.WriteDebug(errorMessage);
-                    }
-                }
-                else
-                {
-                    ServiceClientAdapter.UnregisterContainers(
-                    containerName,
-                    vaultName: vaultName,
-                    resourceGroupName: resourceGroupName);
-                }
+                        if (Container.ContainerType == ContainerType.AzureStorage)
+                        {
+                            containerName = "StorageContainer;" + containerName;
+                        }
+                        var unRegisterResponse = ServiceClientAdapter.UnregisterWorkloadContainers(
+                        containerName,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
 
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(Container);
+                        if(!(PassThru.IsPresent))
+                        {
+                            HandleCreatedJob(
+                            unRegisterResponse,
+                            Resources.UnregisterContainer,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
+                        }
+                        else // we don't output the job when PassThru is given to prevent breaking change
+                        {
+                            var operationStatus = TrackingHelpers.GetOperationResult(
+                            unRegisterResponse,
+                            operationId =>
+                                ServiceClientAdapter.GetContainerRefreshOrInquiryOperationResult(
+                                    operationId,
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName));
+
+                            //Now wait for the operation to Complete
+                            if (unRegisterResponse.Response.StatusCode
+                                    != SystemNet.HttpStatusCode.NoContent)
+                            {
+                                string errorMessage = string.Format(Resources.UnRegisterFailureErrorCode,
+                                    unRegisterResponse.Response.StatusCode);
+                                Logger.Instance.WriteDebug(errorMessage);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        ServiceClientAdapter.UnregisterContainers(
+                        containerName,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
+                    }
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(Container);
+                    }
                 }
             }, ShouldProcess(Container.Name, VerbsLifecycle.Unregister));
         }

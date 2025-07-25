@@ -19,6 +19,9 @@ using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -123,6 +126,23 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             return managedDisk;
+        }
+
+        private ResourceManagementClient _armClient;
+
+        public ResourceManagementClient ArmClient
+        {
+            get
+            {
+                return this._armClient ??
+                       (this._armClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                           context: this.DefaultContext,
+                           endpoint: AzureEnvironment.Endpoint.ResourceManager));
+            }
+            set
+            {
+                this._armClient = value;
+            }
         }
     }
 }

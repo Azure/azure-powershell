@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/new-aziothubsastoken
+online version: https://learn.microsoft.com/powershell/module/az.iothub/new-aziothubsastoken
 schema: 2.0.0
 ---
 
@@ -34,35 +34,35 @@ New-AzIotHubSasToken [-ResourceId] <String> [-DeviceId <String>] [-ModuleId <Str
 ```
 
 ## DESCRIPTION
-For device SAS tokens, the policy parameter is used to access the the device registry only. Therefore the policy should have read access to the registry.
+For device SAS tokens, the policy parameter is used to access the device registry only. Therefore the policy should have read access to the registry.
 For IoT Hub tokens the policy is part of the SAS.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzIotHubSasToken -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
+New-AzIotHubSasToken -ResourceGroupName "myresourcegroup" -IotHubName "myiothub"
 ```
 
 Generate an IoT Hub SAS token using the iothubowner policy and primary key.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzIotHubSasToken -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -KeyName "registryRead" -KeyType "secondary"
+New-AzIotHubSasToken -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -KeyName "registryRead" -KeyType "secondary"
 ```
 
 Generate an IoT Hub SAS token using the registryRead policy and secondary key.
 
 ### Example 3
 ```powershell
-PS C:\> New-AzIotHubSasToken -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
+New-AzIotHubSasToken -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
 ```
 
 Generate a device SAS token using the iothubowner policy to access the {iothub_name} device registry.
 
 ### Example 4
 ```powershell
-PS C:\> New-AzIotHubSasToken -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1"
+New-AzIotHubSasToken -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1"
 ```
 
 Generate a module SAS token using the iothubowner policy to access the {iothub_name} device registry.

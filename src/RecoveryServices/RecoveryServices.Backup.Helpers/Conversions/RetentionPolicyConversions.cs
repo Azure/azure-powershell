@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region public
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps long term retention policy from service response.
         /// </summary>
         public static LongTermRetentionPolicy GetPSLongTermRetentionPolicy(
@@ -73,6 +73,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             ltrPolicy.BackupManagementType = backupManagementType;
             return ltrPolicy;
+        }
+
+        /// <summary>
+        /// Helper function to convert ps long term retention policy from service response.
+        /// </summary>
+        public static VaultRetentionPolicy GetPSVaultRetentionPolicy(
+            ServiceClientModel.VaultRetentionPolicy serviceClientRetPolicy, string timeZone, string backupManagementType = "")
+        {
+            if (serviceClientRetPolicy == null)
+            {
+                return null;
+            }
+
+            VaultRetentionPolicy vaultPolicy = new VaultRetentionPolicy();
+
+            if (((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).DailySchedule != null)
+            {
+                vaultPolicy.IsDailyScheduleEnabled = true;
+                vaultPolicy.DailySchedule = GetPSLTRDailySchedule(((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).DailySchedule, timeZone);
+                vaultPolicy.DailySchedule.BackupManagementType = backupManagementType;
+            }
+
+            if (((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).WeeklySchedule != null)
+            {
+                vaultPolicy.IsWeeklyScheduleEnabled = true;
+                vaultPolicy.WeeklySchedule = GetPSLTRWeeklySchedule(((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).WeeklySchedule, timeZone);
+                vaultPolicy.WeeklySchedule.BackupManagementType = backupManagementType;
+            }
+
+            if (((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).MonthlySchedule != null)
+            {
+                vaultPolicy.IsMonthlyScheduleEnabled = true;
+                vaultPolicy.MonthlySchedule = GetPSLTRMonthlySchedule(((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).MonthlySchedule, timeZone);
+                vaultPolicy.MonthlySchedule.BackupManagementType = backupManagementType;
+            }
+
+            if (((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).YearlySchedule != null)
+            {
+                vaultPolicy.IsYearlyScheduleEnabled = true;
+                vaultPolicy.YearlySchedule = GetPSLTRYearlySchedule(((ServiceClientModel.LongTermRetentionPolicy)serviceClientRetPolicy.VaultRetention).YearlySchedule, timeZone);
+                vaultPolicy.YearlySchedule.BackupManagementType = backupManagementType;
+            }
+
+            vaultPolicy.SnapshotRetentionInDays = serviceClientRetPolicy.SnapshotRetentionInDays;
+            vaultPolicy.BackupManagementType = backupManagementType;
+            return vaultPolicy;
         }
 
         public static SimpleRetentionPolicy GetPSSimpleRetentionPolicy(
@@ -261,7 +307,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             DailyRetentionSchedule psDaily = new DailyRetentionSchedule();
 
             psDaily.DurationCountInDays = GetRetentionDurationInDays(serviceClientDaily.RetentionDuration);
-            psDaily.RetentionTimes = ParseDateTimesToUTC(serviceClientDaily.RetentionTimes, timeZone);
+            psDaily.RetentionTimes = ParseDateTimesToLocal(serviceClientDaily.RetentionTimes, timeZone);
 
             return psDaily;
         }
@@ -277,7 +323,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             WeeklyRetentionSchedule psWeekly = new WeeklyRetentionSchedule();
 
             psWeekly.DurationCountInWeeks = GetRetentionDurationInWeeks(serviceClientWeekly.RetentionDuration);
-            psWeekly.RetentionTimes = ParseDateTimesToUTC(serviceClientWeekly.RetentionTimes, timeZone);
+            psWeekly.RetentionTimes = ParseDateTimesToLocal(serviceClientWeekly.RetentionTimes, timeZone);
             psWeekly.DaysOfTheWeek =
                 HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(
                     serviceClientWeekly.DaysOfTheWeek);
@@ -296,7 +342,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             MonthlyRetentionSchedule psMonthly = new MonthlyRetentionSchedule();
 
             psMonthly.DurationCountInMonths = GetRetentionDurationInMonths(serviceClientMonthly.RetentionDuration);
-            psMonthly.RetentionTimes = ParseDateTimesToUTC(serviceClientMonthly.RetentionTimes, timeZone);
+            psMonthly.RetentionTimes = ParseDateTimesToLocal(serviceClientMonthly.RetentionTimes, timeZone);
             psMonthly.RetentionScheduleFormatType =
                 serviceClientMonthly.RetentionScheduleFormatType.ToEnum<RetentionScheduleFormat>();
             psMonthly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(serviceClientMonthly.RetentionScheduleDaily);
@@ -316,7 +362,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             YearlyRetentionSchedule psYearly = new YearlyRetentionSchedule();
 
             psYearly.DurationCountInYears = GetRetentionDurationInYears(serviceClientYearly.RetentionDuration);
-            psYearly.RetentionTimes = ParseDateTimesToUTC(serviceClientYearly.RetentionTimes, timeZone);
+            psYearly.RetentionTimes = ParseDateTimesToLocal(serviceClientYearly.RetentionTimes, timeZone);
             psYearly.RetentionScheduleFormatType =
                 serviceClientYearly.RetentionScheduleFormatType.ToEnum<RetentionScheduleFormat>();
             psYearly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(serviceClientYearly.RetentionScheduleDaily);
@@ -410,7 +456,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert service long term retention policy from ps retention policy.
         /// </summary>
         public static ServiceClientModel.LongTermRetentionPolicy GetServiceClientLongTermRetentionPolicy(
@@ -442,11 +488,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 serviceClientRetPolicy.YearlySchedule = GetServiceClientLTRYearlySchedule(psRetPolicy.YearlySchedule);
             }
-
             return serviceClientRetPolicy;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert service simple retention policy from ps simple policy.
         /// </summary>
         public static ServiceClientModel.SimpleRetentionPolicy GetServiceClientSimpleRetentionPolicy(
@@ -626,6 +671,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #endregion
+
+        #region Tiering Policy conversions 
+
+        /// <summary>
+        /// Helper function to convert service tiering policy from ps tiering policy.
+        /// </summary>
+        public static IDictionary<string, ServiceClientModel.TieringPolicy> GetServiceClientTieringPolicy(
+            TieringPolicy tierPolicy, bool isSmartTieringEnabled = false)
+        {  
+            IDictionary<string, ServiceClientModel.TieringPolicy> tieringPolicy = null;
+
+            if (isSmartTieringEnabled)
+            {
+                tieringPolicy = new Dictionary<string, ServiceClientModel.TieringPolicy>();
+                ServiceClientModel.TieringPolicy newTeringPolicy = new ServiceClientModel.TieringPolicy();
+                if (tierPolicy != null)
+                {
+                    // tierPolicy.Validate();
+
+                    newTeringPolicy.TieringMode = (tierPolicy.TieringMode == TieringMode.TierAllEligible) ? ServiceClientModel.TieringMode.TierAfter.ToString() : tierPolicy.TieringMode.ToString();
+                    newTeringPolicy.DurationType = tierPolicy.TierAfterDurationType;
+                    newTeringPolicy.Duration = tierPolicy.TierAfterDuration;
+
+                    tieringPolicy.Add(ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString(), newTeringPolicy);
+                }
+                else // DO NOT TIER
+                {
+                    newTeringPolicy.TieringMode = ServiceClientModel.TieringMode.DoNotTier.ToString();
+                    tieringPolicy.Add(ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString(), newTeringPolicy);
+                }
+            }
+            else if (tierPolicy != null)
+            {
+                throw new ArgumentException(Resources.SmartTieringNotSupportedForSubscription);
+            }
+                        
+            return tieringPolicy;
+        }
+
+        #endregion
+
 
         private static int GetIntegerFromNullableIntgerValue(int? value)
         {

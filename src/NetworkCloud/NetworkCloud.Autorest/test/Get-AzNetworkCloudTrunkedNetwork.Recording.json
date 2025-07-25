@@ -1,0 +1,135 @@
+{
+  "Get-AzNetworkCloudTrunkedNetwork+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/trunkedNetworks?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/trunkedNetworks?api-version=2025-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "28e5e837-9fd7-413c-ab14-d08951f1079d" ],
+        "CommandName": [ "Get-AzNetworkCloudTrunkedNetwork" ],
+        "FullCommandName": [ "Get-AzNetworkCloudTrunkedNetwork_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.3.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "335a0a54-5202-4977-ad0a-f3ccf1959006" ],
+        "x-ms-correlation-request-id": [ "3619b3e3-697a-4050-aa0e-947bf946d591" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250401T043827Z:3619b3e3-697a-4050-aa0e-947bf946d591" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7E078F47BCCF429F87E9A0A93C15BA6C Ref B: MWH011020808060 Ref C: 2025-04-01T04:38:26Z" ],
+        "Date": [ "Tue, 01 Apr 2025 04:38:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5141" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep01-cluster/providers/Microsoft.NetworkCloud/trunkedNetworks/trunk-537-542\",\"name\":\"trunk-537-542\",\"type\":\"microsoft.networkcloud/trunkednetworks\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep01-4c2671266e11-HostedResources-53C3BD37/providers/Microsoft.ExtendedLocation/customLocations/aep01-4c2671266e11-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"26005937-0000-1000-0000-6773c82f0000\\\"\",\"tags\":{\"ResourceType\":\"trunkednetwork\",\"ManagedBy\":\"nc-labs\",\"LabEnvironment\":\"aep01\",\"ResourceTest\":\"deployment\"},\"systemData\":{\"createdBy\":\"38f84252-c3f0-4bfd-bc44-06d493055463\",\"createdByType\":\"Application\",\"createdAt\":\"2024-12-31T10:19:53.5583702Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-12-31T10:32:15.3986023Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"isolationDomainIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep01-cluster/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/aep01-l3domain-2\"],\"interfaceName\":\"trunk--6767f\",\"vlans\":[537,538,539,540,541,542],\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep01-cluster/providers/Microsoft.NetworkCloud/clusters/aep01-4c2671266e11\",\"associatedResourceIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep01-cluster/providers/Microsoft.NetworkCloud/kubernetesClusters/pipelinenaks-u3mVsQbb5OhuNQ\",\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep01-cluster/providers/Microsoft.NetworkCloud/kubernetesClusters/pipelinenaks-u3mVsQbb5OhuNQ/agentPools/systemagentpool\",\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/aep01-cluster/providers/Microsoft.NetworkCloud/kubernetesClusters/pipelinenaks-u3mVsQbb5OhuNQ/agentPools/workerAgentpool1\"],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev02-1-cluster/providers/Microsoft.NetworkCloud/trunkedNetworks/trunk-537-542\",\"name\":\"trunk-537-542\",\"type\":\"microsoft.networkcloud/trunkednetworks\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev02-1-6dfad85e8fe3-HostedResources-6E613920/providers/Microsoft.ExtendedLocation/customLocations/dev02-1-6dfad85e8fe3-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"450047ac-0000-1000-0000-67e6d54c0000\\\"\",\"tags\":{\"ResourceType\":\"trunkednetwork\",\"ManagedBy\":\"nc-labs\",\"LabEnvironment\":\"dev02-1\",\"ResourceTest\":\"deployment\"},\"systemData\":{\"createdBy\":\"38f84252-c3f0-4bfd-bc44-06d493055463\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-22T04:03:58.5358045Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-28T16:58:51.9995153Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"isolationDomainIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev02-1-cluster/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/dev02-1-l3domain-2\"],\"interfaceName\":\"trunk--cbc6a\",\"vlans\":[537,538,539,540,541,542],\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev02-1-cluster/providers/Microsoft.NetworkCloud/clusters/dev02-1-6dfad85e8fe3\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}},{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetwork-ps-test\",\"name\":\"trunkedNetwork-ps-test\",\"type\":\"microsoft.networkcloud/trunkednetworks\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.ExtendedLocation/customLocations/simdev-3323985-cluster-1-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"4d001fdb-0000-1000-0000-67eb6da80000\\\"\",\"tags\":{\"tag\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-01T04:37:53.2211708Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-04-01T04:37:59.9830719Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"isolationDomainIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/sim01-l3domain-1\"],\"vlans\":[501],\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/clusters/simdev-3323985-cluster-1\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkCloudTrunkedNetwork+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetwork-ps-test?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetwork-ps-test?api-version=2025-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "fa684417-d0e9-4f7e-8275-5e8991c24f3c" ],
+        "CommandName": [ "Get-AzNetworkCloudTrunkedNetwork" ],
+        "FullCommandName": [ "Get-AzNetworkCloudTrunkedNetwork_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.3.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"4d001fdb-0000-1000-0000-67eb6da80000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "c1d4c136-be67-48d8-b3fe-88f9a3cb83d2" ],
+        "x-ms-correlation-request-id": [ "9ef59112-3301-4604-a05b-8d959855cdd5" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250401T043827Z:9ef59112-3301-4604-a05b-8d959855cdd5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 35D0DD5C2F4B434CA9C36E01B315DD30 Ref B: MWH011020808060 Ref C: 2025-04-01T04:38:27Z" ],
+        "Date": [ "Tue, 01 Apr 2025 04:38:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1502" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetwork-ps-test\",\"name\":\"trunkedNetwork-ps-test\",\"type\":\"microsoft.networkcloud/trunkednetworks\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.ExtendedLocation/customLocations/simdev-3323985-cluster-1-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"4d001fdb-0000-1000-0000-67eb6da80000\\\"\",\"tags\":{\"tag\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-01T04:37:53.2211708Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-04-01T04:37:59.9830719Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"isolationDomainIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/sim01-l3domain-1\"],\"vlans\":[501],\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/clusters/simdev-3323985-cluster-1\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkCloudTrunkedNetwork+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.NetworkCloud/trunkedNetworks?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.NetworkCloud/trunkedNetworks?api-version=2025-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "cf20c947-4b75-4cbb-a9db-61058afa82cc" ],
+        "CommandName": [ "Get-AzNetworkCloudTrunkedNetwork" ],
+        "FullCommandName": [ "Get-AzNetworkCloudTrunkedNetwork_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.3.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "78466221-7a0d-42d6-baf0-791577cb863d" ],
+        "x-ms-correlation-request-id": [ "03e45e0f-aa68-490b-8732-022fed05af6f" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250401T043829Z:03e45e0f-aa68-490b-8732-022fed05af6f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4E1A8C27B90F4D73A514D482D7F37FD4 Ref B: MWH011020808060 Ref C: 2025-04-01T04:38:27Z" ],
+        "Date": [ "Tue, 01 Apr 2025 04:38:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1514" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.NetworkCloud/trunkedNetworks/trunkedNetwork-ps-test\",\"name\":\"trunkedNetwork-ps-test\",\"type\":\"microsoft.networkcloud/trunkednetworks\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simdev-3323985-cluster-1-HostedResources-55678C72/providers/Microsoft.ExtendedLocation/customLocations/simdev-3323985-cluster-1-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"4d001fdb-0000-1000-0000-67eb6da80000\\\"\",\"tags\":{\"tag\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-01T04:37:53.2211708Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-04-01T04:37:59.9830719Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"interfaceName\":\"eth0\",\"isolationDomainIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/sim01-l3domain-1\"],\"vlans\":[501],\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/nc-cli-testing_id-simdev-3323985/providers/Microsoft.NetworkCloud/clusters/simdev-3323985-cluster-1\",\"associatedResourceIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

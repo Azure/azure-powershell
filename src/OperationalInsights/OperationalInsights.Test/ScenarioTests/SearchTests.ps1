@@ -30,7 +30,7 @@ function Test-SearchGetSearchResultsAndUpdate
 	Assert-NotNull $searchResult.Value
 	Assert-AreEqual $searchResult.Value.Count $top
 
-	# Makesure we return each doc as string for backward compatiable.
+	# Make sure we return each doc as string for backward compatible.
 	$stringType = "string".GetType()
 	$valueType = $searchResult.Value.GetType()
 	$valueIsString = $valueType.GenericTypeArguments.Contains($stringType)
@@ -59,7 +59,7 @@ function Test-SearchGetSchema
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data sources
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Force
 	$schema = Get-AzOperationalInsightsSchema -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-NotNull $schema
 	Assert-NotNull $schema.Metadata
@@ -83,7 +83,7 @@ function Test-SearchGetSavedSearchesAndResults
     try
 	{
 		# Create a workspace to house the data sources
-		$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+		$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Force
 
 		$savedSearches = Get-AzOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	

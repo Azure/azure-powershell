@@ -43,8 +43,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string StorageAccountKey { get; set; }
 
         /// <summary>
+        /// Enable secure channel or not, it's an optional field.
+        /// </summary>
+        public bool? EnableSecureChannel { get; set; }
+
+        /// <summary>
         /// Gets or sets the size of the Head Node.
         /// </summary>
+        /// 
         public string HeadNodeSize { get; set; }
 
         /// <summary>
@@ -75,7 +81,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the cluster tier.
         /// </summary>
-        public Tier ClusterTier { get; set; }
+        public string ClusterTier { get; set; }
 
         /// <summary>
         /// Gets or sets the database to store the metadata for Oozie.
@@ -86,6 +92,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the database to store the metadata for Hive.
         /// </summary>
         public AzureHDInsightMetastore HiveMetastore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the database for ambari.
+        /// </summary>
+        public AzureHDInsightMetastore AmbariDatabase { get; set; }
 
         /// <summary>
         /// Gets Object id of the service principal. 

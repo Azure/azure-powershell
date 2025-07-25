@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public PSResourceId VirtualMachine { get; set; }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         public List<PSNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
 
         public List<PSNetworkInterfaceTapConfiguration> TapConfigurations { get; set; }
@@ -41,6 +43,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableIPForwarding { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string DisableTcpStateTracking { get; set; }
+
         public List<string> HostedWorkloads { get; set; }
 
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
@@ -49,6 +54,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool VnetEncryptionSupported { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool DefaultOutboundConnectivityEnabled { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string AuxiliaryMode { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string AuxiliarySku { get; set; }
 
         [JsonIgnore]
         public string VirtualMachineText
@@ -84,6 +101,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PrivateEndpointText
         {
             get { return JsonConvert.SerializeObject(PrivateEndpoint, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeIpConfigurations()

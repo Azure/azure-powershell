@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,24 +61,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I certify that use of this service is not by or for a police department in the United States..
-        /// </summary>
-        internal static string NewAccount_LegalTerm_NotPolice {
-            get {
-                return ResourceManager.GetString("NewAccount_LegalTerm_NotPolice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Microsoft will use data you send to Bing Search Services to improve Microsoft products and services. Where you send personal data to these Cognitive Services, you are responsible for obtaining sufficient consent from the data subjects. The General Privacy and Security Terms in the Online Services Terms do not apply to these Cognitive Services. Please refer to the Microsoft Cognitive Services section in the Online Services Terms (https://www.microsoft.com/en-us/Licensing/product-licensing/products.aspx) for  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string NewAccount_Notice {
-            get {
-                return ResourceManager.GetString("NewAccount_Notice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Creating new Cognitive Services account {0} of type {1}, Sku {2} at location {3}..
         /// </summary>
         internal static string NewAccount_ProcessMessage {
@@ -102,6 +84,15 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Properties {
         internal static string RemoveAccount_ProcessMessage {
             get {
                 return ResourceManager.GetString("RemoveAccount_ProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting resource {0}..
+        /// </summary>
+        internal static string RemoveResource_ProcessMessage {
+            get {
+                return ResourceManager.GetString("RemoveResource_ProcessMessage", resourceCulture);
             }
         }
         

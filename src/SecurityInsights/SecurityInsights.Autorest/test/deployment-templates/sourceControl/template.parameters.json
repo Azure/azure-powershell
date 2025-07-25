@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sourceControlId": {
+      "value": "f37698f7-ff0b-48ae-8876-3a817069722c"
+    },
+    "sourceControlName": {
+      "value": "GetsourceControl1gabnr"
+    },
+    "url": {
+      "value": "https://github.com/dicolanl/gettest"
+    },
+    "workspaceName": {
+      "value": "asptestk9wyb8"
+    }
+  }
+}

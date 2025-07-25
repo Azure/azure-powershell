@@ -101,9 +101,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.DeviceSecurityGroups
 
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
-                var outputGroup = SecurityCenterClient.DeviceSecurityGroups.CreateOrUpdateWithHttpMessagesAsync(HubResourceId, Name, group).GetAwaiter().GetResult().Body;
+                var outputGroup = SecurityCenterClient.DeviceSecurityGroups.CreateOrUpdateWithHttpMessagesAsync(HubResourceId, Name, group).GetAwaiter().GetResult();
+                var result = outputGroup.Body;
 
-                WriteObject(outputGroup?.ConvertToPSType(), enumerateCollection: false);
+                WriteObject(result?.ConvertToPSType(), enumerateCollection: false);
             }
         }
     }

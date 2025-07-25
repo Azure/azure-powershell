@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Aks
 {
     public static class Constants
     {
-        public const string AksHelpUri = "https://docs.microsoft.com/en-us/powershell/module/?view=azurermps-5.0.0";
+        public const string AksHelpUri = "https://learn.microsoft.com/en-us/powershell/module/?view=azurermps-5.0.0";
         public const string Name = "Name";
         public const string DefaultParameterSet = "defaultParameterSet";
         public const string IdParameterSet = "IdParameterSet";
@@ -36,10 +36,14 @@ namespace Microsoft.Azure.Commands.Aks
             { "HttpApplicationRouting", "httpapplicationrouting" },
             { "Monitoring", "omsagent" },
             { "VirtualNode", "aciConnector" },
-            { "AzurePolicy", "azurepolicy " },
+            { "AzurePolicy", "azurepolicy" },
             { "KubeDashboard", "kubeDashboard" },
         };
         public const string AddOnNameMonitoring = "Monitoring";
         public const string AddOnNameVirtualNode = "VirtualNode";
+
+        internal const string DotNetApiParameterResourceGroupName = "resourceGroupName";
+        internal const string DotNetApiParameterResourceName = "resourceName";
+        internal const string DotNetApiParameterAgentPoolName = "agentPoolName";
     }
 }

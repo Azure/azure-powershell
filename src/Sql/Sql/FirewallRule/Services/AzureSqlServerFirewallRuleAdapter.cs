@@ -41,8 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <summary>
         /// Constructs a firewall rule adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerFirewallRuleAdapter(IAzureContext context)
         {
             Context = context;
@@ -80,8 +79,6 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <summary>
         /// Upserts a Firewall Rule
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of ther server</param>
         /// <param name="model">The firewall rule to create</param>
         /// <returns>The updated server model</returns>
         public AzureSqlServerFirewallRuleModel UpsertFirewallRule(AzureSqlServerFirewallRuleModel model)

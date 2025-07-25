@@ -12,18 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Management.Dns.Models;
-
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 
 {
+    using System.Management.Automation;
+
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
     /// <summary>
     /// Constructs an in-memory dns record object
     /// </summary>
@@ -35,10 +30,13 @@ namespace Microsoft.Azure.Commands.Dns
         private const string ParameterSetCName = "CName";
         private const string ParameterSetTxt = "Txt";
         private const string ParameterSetSrv = "Srv";
-        private const string ParameterSetPtr = "Ptr" ;
+        private const string ParameterSetPtr = "Ptr";
+        private const string ParameterSetNaptr = "Naptr";
         private const string ParameterSetNs = "Ns";
         private const string ParameterSetMx = "Mx";
         private const string ParameterSetCaa = "Caa";
+        private const string ParameterSetDs = "Ds";
+        private const string ParameterSetTlsa = "Tlsa";
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The IPv4 address for the A record to add.", ParameterSetName = ParameterSetA)]
         [ValidateNotNullOrEmpty]
@@ -57,6 +55,7 @@ namespace Microsoft.Azure.Commands.Dns
         public string Exchange { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The preference value for the MX record to add.", ParameterSetName = ParameterSetMx)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The preference value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
         [ValidateNotNullOrEmpty]
         public ushort Preference { get; set; }
 
@@ -66,7 +65,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The text value for the TXT record to add.", ParameterSetName = ParameterSetTxt)]
         [ValidateNotNullOrEmpty]
-        [ValidateLength(DnsRecordBase.TxtRecordMinLength, DnsRecordBase.TxtRecordMaxLength)]
         public string Value { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = ParameterSetSrv)]
@@ -102,6 +100,59 @@ namespace Microsoft.Azure.Commands.Dns
         [AllowEmptyString]
         [ValidateLength(DnsRecordBase.CaaRecordMinLength, DnsRecordBase.CaaRecordMaxLength)]
         public string CaaValue { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The key tag field of the DS record to add.", ParameterSetName = ParameterSetDs)]
+        [ValidateNotNullOrEmpty]
+        public int KeyTag { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The algorithm field of the DS record to add.", ParameterSetName = ParameterSetDs)]
+        [ValidateNotNullOrEmpty]
+        public int Algorithm { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The digest type field of the DS record to add.", ParameterSetName = ParameterSetDs)]
+        [ValidateNotNullOrEmpty]
+        public int DigestType { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The digest field of the DS record to add.", ParameterSetName = ParameterSetDs)]
+        [ValidateNotNullOrEmpty]
+        public string Digest { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The usage field of the TLSA record to add.", ParameterSetName = ParameterSetTlsa)]
+        [ValidateNotNullOrEmpty]
+        public int Usage { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The selector field of the TLSA record to add.", ParameterSetName = ParameterSetTlsa)]
+        [ValidateNotNullOrEmpty]
+        public int Selector { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The matching type field of the TLSA record to add.", ParameterSetName = ParameterSetTlsa)]
+        [ValidateNotNullOrEmpty]
+        public int MatchingType { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The certificate association data field of the TLSA record to add.", ParameterSetName = ParameterSetTlsa)]
+        [ValidateNotNullOrEmpty]
+        public string CertificateAssociationData { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The order value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNullOrEmpty]
+        public ushort Order { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flags value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNullOrEmpty]
+        public string Flags { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The service value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNullOrEmpty]
+        public string Services { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The regular expression value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNull]
+        [AllowEmptyString]
+        public string Regexp { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The replacement value for the NAPTR record to add.", ParameterSetName = ParameterSetNaptr)]
+        [ValidateNotNullOrEmpty]
+        public string Replacement { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -148,12 +199,27 @@ namespace Microsoft.Azure.Commands.Dns
                     }
                 case ParameterSetPtr:
                     {
-                        result = new PtrRecord {Ptrdname = this.Ptrdname};
+                        result = new PtrRecord { Ptrdname = this.Ptrdname };
                         break;
                     }
                 case ParameterSetCaa:
                     {
-                        result = new CaaRecord { Flags = this.CaaFlags, Tag = this.CaaTag, Value = this.CaaValue};
+                        result = new CaaRecord { Flags = this.CaaFlags, Tag = this.CaaTag, Value = this.CaaValue };
+                        break;
+                    }
+                case ParameterSetDs:
+                    {
+                        result = new DsRecord { KeyTag = this.KeyTag, Algorithm = this.Algorithm, DigestType = this.DigestType, Digest = this.Digest };
+                        break;
+                    }
+                case ParameterSetTlsa:
+                    {
+                        result = new TlsaRecord { Usage = this.Usage, Selector = this.Selector, MatchingType = this.MatchingType, CertificateAssociationData = this.CertificateAssociationData };
+                        break;
+                    }
+                case ParameterSetNaptr:
+                    {
+                        result = new NaptrRecord { Order = this.Order, Preference = this.Preference, Flags = this.Flags, Services = this.Services, Regexp = this.Regexp, Replacement = this.Replacement };
                         break;
                     }
                 default:

@@ -15,23 +15,29 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test.Mocks;
+using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
+using Microsoft.Azure.Commands.TestFx.Mocks;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+
+using Moq;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
-    public class SubscriptionClientSwitchTest
+    public class SubscriptionClientSwitchTest : IDisposable
     {
         private const string DefaultAccount = "admin@contoso.com";
         private static Guid DefaultSubscription = Guid.NewGuid();
@@ -57,6 +63,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 AccessToken = "bbb",
                 TenantId = DefaultTenant.ToString()
             };
+        }
+
+        public void Dispose()
+        {
+            SubscritpionClientCandidates.Reset();
         }
 
         private RMProfileClient GetProfileClient()
@@ -86,10 +97,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var firstList = new List<string> { Guid.NewGuid().ToString() };
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
-            MockSubscriptionClientFactory.TenantListQueueVer2019 = new Queue<Func<AzureOperationResponse<IPage<TenantIdDescription>>>>();
-            MockSubscriptionClientFactory.TenantListQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.TenantListQueueVerLatest = new Queue<Func<AzureOperationResponse<IPage<TenantIdDescription>>>>();
+            MockSubscriptionClientFactory.TenantListQueueVerLatest.Enqueue(() =>
             {
                 var e = new CloudException("The api-version is invalid. The supported versions are '2018-09-01,2018-08-01,2018-07-01,2018-06-01,2018-05-01,2018-02-01,2018-01-01,2017-12-01,2017-08-01,2017-06-01,2017-05-10,2017-05-01,2017-03-01,2016-09-01,2016-07-01,2016-06-01,2016-02-01,2015-11-01,2015-01-01,2014-04-01-preview,2014-04-01,2014-01-01,2013-03-01,2014-02-26,2014-04'.");
                 e.Body = new CloudError();
@@ -97,12 +110,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 throw e;
             });
 
-            clientFactory.ListTenantQueueDequeueVer2019 = () =>
+            clientFactory.ListTenantQueueDequeueVerLatest = () =>
             {
                 AzureOperationResponse<IPage<TenantIdDescription>> result = null;
                 try
                 {
-                    result = MockSubscriptionClientFactory.TenantListQueueVer2019.Dequeue().Invoke();
+                    result = MockSubscriptionClientFactory.TenantListQueueVerLatest.Dequeue().Invoke();
                 }
                 catch (CloudException e)
                 {
@@ -110,13 +123,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     {
                         subscriptionClients.Dequeue();
                     }
-                    throw e;
+                    throw;
                 }
                 return Task.FromResult(result);
             };
 
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019());
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest());
             subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2016());
 
             var mock = new AccountMockClientFactory(() =>
@@ -125,6 +138,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }, true);
             mock.MoqClients = true;
             AzureSession.Instance.ClientFactory = mock;
+
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
 
             var client = GetProfileClient();
             var azureRmProfile = client.Login(
@@ -135,6 +151,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null,
                 false,
+                mockOpenIDConfig.Object,
                 null);
 
             Assert.Equal("2016-06-01", client.SubscriptionAndTenantClient.ApiVersion);
@@ -150,10 +167,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var firstList = new List<string> { Guid.NewGuid().ToString() };
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
-            MockSubscriptionClientFactory.SubGetQueueVer2019 = new Queue<Func<AzureOperationResponse<Subscription>>>();
-            MockSubscriptionClientFactory.SubGetQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.SubGetQueueVerLatest = new Queue<Func<AzureOperationResponse<Subscription>>>();
+            MockSubscriptionClientFactory.SubGetQueueVerLatest.Enqueue(() =>
             {
                 var e = new CloudException("The api-version is invalid. The supported versions are '2018-09-01,2018-08-01,2018-07-01,2018-06-01,2018-05-01,2018-02-01,2018-01-01,2017-12-01,2017-08-01,2017-06-01,2017-05-10,2017-05-01,2017-03-01,2016-09-01,2016-07-01,2016-06-01,2016-02-01,2015-11-01,2015-01-01,2014-04-01-preview,2014-04-01,2014-01-01,2013-03-01,2014-02-26,2014-04'.");
                 e.Body = new CloudError();
@@ -161,12 +180,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 throw e;
             });
 
-            clientFactory.GetSubQueueDequeueVer2019 = () =>
+            clientFactory.GetSubQueueDequeueVerLatest = () =>
             {
                 AzureOperationResponse<Subscription> result = null;
                 try
                 {
-                    result = MockSubscriptionClientFactory.SubGetQueueVer2019.Dequeue().Invoke();
+                    result = MockSubscriptionClientFactory.SubGetQueueVerLatest.Dequeue().Invoke();
                 }
                 catch (CloudException e)
                 {
@@ -174,13 +193,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     {
                         subscriptionClients.Dequeue();
                     }
-                    throw e;
+                    throw;
                 }
                 return Task.FromResult(result);
             };
 
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019());
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest());
             subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2016());
 
             var mock = new AccountMockClientFactory(() =>
@@ -189,6 +208,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }, true);
             mock.MoqClients = true;
             AzureSession.Instance.ClientFactory = mock;
+
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
 
             var client = GetProfileClient();
             var azureRmProfile = client.Login(
@@ -199,6 +221,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null,
                 false,
+                mockOpenIDConfig.Object,
                 null);
 
             Assert.Equal("2016-06-01", client.SubscriptionAndTenantClient.ApiVersion);
@@ -216,10 +239,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
             subscriptionList.Enqueue(secondList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
-            MockSubscriptionClientFactory.SubListQueueVer2019 = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
-            MockSubscriptionClientFactory.SubListQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.SubListQueueVerLatest = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
+            MockSubscriptionClientFactory.SubListQueueVerLatest.Enqueue(() =>
             {
                 var e = new CloudException("The api-version is invalid. The supported versions are '2018-09-01,2018-08-01,2018-07-01,2018-06-01,2018-05-01,2018-02-01,2018-01-01,2017-12-01,2017-08-01,2017-06-01,2017-05-10,2017-05-01,2017-03-01,2016-09-01,2016-07-01,2016-06-01,2016-02-01,2015-11-01,2015-01-01,2014-04-01-preview,2014-04-01,2014-01-01,2013-03-01,2014-02-26,2014-04'.");
                 e.Body = new CloudError();
@@ -227,12 +252,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 throw e;
             });
 
-            clientFactory.ListSubQueueDequeueVer2019 = () =>
+            clientFactory.ListSubQueueDequeueVerLatest = () =>
             {
                 AzureOperationResponse<IPage<Subscription>> result = null;
                 try
                 {
-                    result = MockSubscriptionClientFactory.SubListQueueVer2019.Dequeue().Invoke();
+                    result = MockSubscriptionClientFactory.SubListQueueVerLatest.Dequeue().Invoke();
                 }
                 catch (CloudException e)
                 {
@@ -240,13 +265,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     {
                         subscriptionClients.Dequeue();
                     }
-                    throw e;
+                    throw;
                 }
                 return Task.FromResult(result);
             };
 
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019());
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest());
             subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2016());
 
             var mock = new AccountMockClientFactory(() =>
@@ -255,6 +280,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }, true);
             mock.MoqClients = true;
             AzureSession.Instance.ClientFactory = mock;
+
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
 
             var client = GetProfileClient();
             var azureRmProfile = client.Login(
@@ -265,6 +293,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null,
                 false,
+                mockOpenIDConfig.Object,
                 null);
 
             Assert.Equal("2016-06-01", client.SubscriptionAndTenantClient.ApiVersion);

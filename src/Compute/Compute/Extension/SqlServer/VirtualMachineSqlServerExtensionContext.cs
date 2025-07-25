@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
         /// <summary>
         /// SQLVM Extension's default version 
         /// </summary>
-        public const string ExtensionDefaultVersion = "1.2";
+        public const string ExtensionDefaultVersion = "2.0";
 
         /// <summary>
         /// Auto-patching settings

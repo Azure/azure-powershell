@@ -1,64 +1,67 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll-Help.xml
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/en-us/powershell/module/az.healthcareapis/new-azhealthcareapisservice
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
 schema: 2.0.0
 ---
 
 # New-AzHealthcareApisService
 
 ## SYNOPSIS
-Creates the metadata of a service instance.
+Create or update the metadata of a service instance.
 
 ## SYNTAX
 
 ```
-New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-Kind <String>]
- [-AccessPolicyObjectId <String[]>] [-AllowCorsCredential] [-Audience <String>] [-Authority <String>]
- [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>] [-CorsOrigin <String[]>]
- [-CosmosOfferThroughput <Int32>] [-ExportStorageAccountName <String>] [-EnableSmartProxy] [-ManagedIdentity]
- [-FhirVersion <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind>
+ -Location <String> -CosmosOfferThroughput <Int32> [-AccessPolicyObjectId <IServiceAccessPolicyEntry[]>]
+ [-AcrConfigurationLoginServer <String[]>] [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>]
+ [-AllowCorsCredential] [-Audience <String>] [-Authority <String>] [-CorsHeader <String[]>]
+ [-CorsMaxAge <Int32>] [-CorsMethod <String[]>] [-CorsOrigin <String[]>] [-CosmosKeyVaultKeyUri <String>]
+ [-EnableSmartProxy] [-Etag <String>] [-ExportStorageAccountName <String>]
+ [-IdentityType <ManagedServiceIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates the metadata of a service instance.
+Create or update the metadata of a service instance.
 
 ## EXAMPLES
 
-### Example 1 : Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400
+### Example 1: Create or update the metadata of a service instance.
 ```powershell
-PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput  400
-
-ResourceGroupName Name Location        Kind   CosmosOfferThroughput
------------------ ----------- -------------------------------
-MyResourceGroup   MyService   westus2    fhir-R4   400
-
-AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
-Audience                : https://azurehealthcareapis.com
-Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47
-CorsAllowCredentials    : False
-CorsHeaders             : {}
-CorsMaxAge              : 0
-CorsMethods             : {}
-CorsOrigins             : {}
-CosmosDbOfferThroughput : 400
-Etag                    : "00000000-0000-0000-0000-000000000000"
-Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                          .HealthcareApis/services/MyService
-Kind                    : fhir-R4
-Location                : westus2
-Name                    : MyService
-ResourceGroupName       : MyResourceGroup
-Tags                    : {}
-ResourceType            : Microsoft.HealthcareApis/services
-SmartProxyEnabled       : False
+New-AzHealthcareApisService -ResourceGroupName azps_test_group -Name azpsapiservice -Kind 'fhir' -Location eastus2 -CosmosOfferThroughput 400
 ```
+
+```output
+Location Name           Kind ResourceGroupName
+-------- ----           ---- -----------------
+eastus2  azpsapiservice fhir azps_test_group
+```
+
+Create or update the metadata of a service instance.
 
 ## PARAMETERS
 
 ### -AccessPolicyObjectId
-List of Access Policy Object IDs.
+The access policies of the service instance.
+To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AcrConfigurationLoginServer
+The list of the ACR login servers.
 
 ```yaml
 Type: System.String[]
@@ -72,8 +75,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AcrConfigurationOciArtifact
+The list of Open Container Initiative (OCI) artifacts.
+To construct, see NOTES section for ACRCONFIGURATIONOCIARTIFACT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AllowCorsCredential
-HealthcareApis Fhir Service AllowCorsCredential.
+If credentials are allowed via CORS.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -88,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run cmdlet as a job in the background.
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -103,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Audience
-HealthcareApis Fhir Service Audience.
+The audience url for the service
 
 ```yaml
 Type: System.String
@@ -118,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -Authority
-HealthcareApis Fhir Service Authority.
+The authority url for the service
 
 ```yaml
 Type: System.String
@@ -133,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsHeader
-HealthcareApis Fhir Service List of Cors Header. Specify HTTP headers which can be used during the request. Use * for any header.
+The headers to be allowed via CORS.
 
 ```yaml
 Type: System.String[]
@@ -148,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsMaxAge
-HealthcareApis Fhir Service Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.
+The max age to be allowed via CORS.
 
 ```yaml
 Type: System.Int32
@@ -163,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsMethod
-HealthcareApis Fhir Service List of Cors Method.
+The methods to be allowed via CORS.
 
 ```yaml
 Type: System.String[]
@@ -178,7 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsOrigin
-HealthcareApis Fhir Service List of Cors Origin. Specify URLs of origin sites that can access this API, or use * to allow access from any site.
+The origins to be allowed via CORS.
 
 ```yaml
 Type: System.String[]
@@ -192,11 +211,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CosmosOfferThroughput
-HealthcareApis Fhir Service CosmosOfferThroughput.
+### -CosmosKeyVaultKeyUri
+The URI of the customer-managed key for the backing database.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -207,13 +226,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CosmosOfferThroughput
+The provisioned throughput for the backing database.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -223,10 +257,25 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSmartProxy
-HealthcareApis Fhir Service EnableSmartProxy.
+If the SMART on FHIR proxy is enabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Etag
+An etag associated with the resource, used for optimistic concurrency when editing it.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +287,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExportStorageAccountName
-HealthcareApis Fhir Service Export Storage Account Name.
+The name of the default export storage account.
 
 ```yaml
 Type: System.String
@@ -252,11 +301,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FhirVersion
-Fhir Version.
+### -IdentityType
+Type of identity being specified, currently SystemAssigned and None are allowed.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -268,23 +317,22 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Kind of HealthcareApis Service.
-The default value is Fhir
+The kind of the service.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.Kind
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Location
-HealthcareApis Service Location.
+The resource location.
 
 ```yaml
 Type: System.String
@@ -294,12 +342,27 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedIdentity
-Use Managed Identity?
+### -Name
+The name of the service instance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -313,23 +376,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-HealthcareApis Service Name.
+### -PrivateEndpointConnection
+The list of private endpoint connections that are set up for this resource.
+To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10.IPrivateEndpointConnection[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Control permission for data plane traffic coming from public networks while private endpoint is enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group that contains the service instance.
 
 ```yaml
 Type: System.String
@@ -339,17 +418,32 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Tag
-HealthcareApis Fhir Service Account Tags.
+The resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named
@@ -394,11 +488,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisService
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription
 
 ## NOTES
 

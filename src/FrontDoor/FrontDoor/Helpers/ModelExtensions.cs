@@ -28,8 +28,11 @@ using SdkBackend = Microsoft.Azure.Management.FrontDoor.Models.Backend;
 using SdkBackendPool = Microsoft.Azure.Management.FrontDoor.Models.BackendPool;
 using SdkBackendPoolsSettings = Microsoft.Azure.Management.FrontDoor.Models.BackendPoolsSettings;
 using SdkCacheConfiguration = Microsoft.Azure.Management.FrontDoor.Models.CacheConfiguration;
+using SdkCustomRuleGroupByVariable = Microsoft.Azure.Management.FrontDoor.Models.GroupByVariable;
 using SdkCustomRule = Microsoft.Azure.Management.FrontDoor.Models.CustomRule;
 using SdkCustomRuleList = Microsoft.Azure.Management.FrontDoor.Models.CustomRuleList;
+using SdkLogScrubbingSetting = Microsoft.Azure.Management.FrontDoor.Models.PolicySettingsLogScrubbing;
+using SdkLogScrubbingRule = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules;
 using SdkFirewallPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy;
 using SdkForwardingConfiguration = Microsoft.Azure.Management.FrontDoor.Models.ForwardingConfiguration;
 using SdkFrontDoor = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorModel;
@@ -88,6 +91,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Type = sdkFrontDoor.Type,
                 Tags = sdkFrontDoor.Tags.ToHashTableTags(),
                 FriendlyName = sdkFrontDoor.FriendlyName,
+                FrontDoorId = sdkFrontDoor.FrontdoorId,
                 RoutingRules = sdkFrontDoor.RoutingRules?.Select(x => x.ToPSRoutingRule()).ToList(),
                 BackendPools = sdkFrontDoor.BackendPools?.Select(x => x.ToPSBackendPool()).ToList(),
                 HealthProbeSettings = sdkFrontDoor.HealthProbeSettings?.Select(x => x.ToPSHealthProbeSetting()).ToList(),
@@ -118,6 +122,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     BackendPoolId = SDKForwardingConfiguration.BackendPool?.Id,
                     EnableCaching = SDKForwardingConfiguration.CacheConfiguration != null,
                     QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration?.QueryParameterStripDirective,
+                    QueryParameters = SDKForwardingConfiguration.CacheConfiguration?.QueryParameters,
+                    CacheDuration = SDKForwardingConfiguration.CacheConfiguration?.CacheDuration,
                     DynamicCompression = SDKForwardingConfiguration.CacheConfiguration?.DynamicCompression == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
                 };
             }
@@ -148,7 +154,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     CustomForwardingPath = psForwardingConfiguration.CustomForwardingPath,
                     ForwardingProtocol = psForwardingConfiguration.ForwardingProtocol,
                     BackendPool = new SdkRefId(psForwardingConfiguration.BackendPoolId),
-                    CacheConfiguration = psForwardingConfiguration.EnableCaching ? new SdkCacheConfiguration(psForwardingConfiguration.QueryParameterStripDirective.ToString(), psForwardingConfiguration.DynamicCompression.ToString()) : null
+                    CacheConfiguration = psForwardingConfiguration.EnableCaching ? new SdkCacheConfiguration(psForwardingConfiguration.QueryParameterStripDirective,
+                                                                                                             psForwardingConfiguration.QueryParameters,
+                                                                                                             psForwardingConfiguration.DynamicCompression?.ToString(),
+                                                                                                             psForwardingConfiguration.CacheDuration) : null
                 };
             }
             else if (psRoutingConfiguration is PSRedirectConfiguration)
@@ -500,6 +509,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             };
         }
 
+        public static PSFrontDoorWafCustomRuleGroupByVariable ToPSFrontDoorWafCustomRuleGroupByVariable(this SdkCustomRuleGroupByVariable sdkCustomRuleGroupByVariable)
+        {
+            return new PSFrontDoorWafCustomRuleGroupByVariable { VariableName = sdkCustomRuleGroupByVariable.VariableName, };
+        }
+
         public static PSCustomRule ToPSCustomRule(this SdkCustomRule sdkRule)
         {
             return new PSCustomRule
@@ -511,7 +525,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 RuleType = sdkRule.RuleType,
                 Priority = sdkRule.Priority,
                 MatchConditions = sdkRule.MatchConditions?.Select(x => x.ToPSMatchCondition()).ToList(),
-                EnabledState = sdkRule.EnabledState
+                EnabledState = sdkRule.EnabledState,
+                CustomRule = sdkRule.GroupBy?.Select(x => x.ToPSFrontDoorWafCustomRuleGroupByVariable()).ToArray(),
             };
         }
 
@@ -551,7 +566,28 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 RuleSetType = sdkRule.RuleSetType,
                 RuleSetVersion = sdkRule.RuleSetVersion,
                 RuleGroupOverrides = sdkRule.RuleGroupOverrides?.Select(ruleGroupOverride => ruleGroupOverride.ToPSAzRuleGroupOverride()).ToList(),
-                Exclusions = sdkRule.Exclusions?.Select(exclusion => exclusion.ToPSAzManagedRuleExclusion()).ToList()
+                Exclusions = sdkRule.Exclusions?.Select(exclusion => exclusion.ToPSAzManagedRuleExclusion()).ToList(),
+                RuleSetAction = sdkRule.RuleSetAction
+            };
+        }
+
+        public static PSFrontDoorWafLogScrubbingRule ToPSFrontDoorWafLogScrubbingRule(this SdkLogScrubbingRule sdkLogScrubbingRule)
+        {
+            return new PSFrontDoorWafLogScrubbingRule
+            {
+                MatchVariable = sdkLogScrubbingRule.MatchVariable,
+                State = sdkLogScrubbingRule.State,
+                Selector = sdkLogScrubbingRule.Selector,
+                SelectorMatchOperator = sdkLogScrubbingRule?.SelectorMatchOperator,
+            };
+        }
+
+        public static PSFrontDoorWafLogScrubbingSetting ToPSFrontDoorWafLogScrubbingSetting(this SdkLogScrubbingSetting sdkLogScrubbingSetting)
+        {
+            return new PSFrontDoorWafLogScrubbingSetting
+            {
+                ScrubbingRule = sdkLogScrubbingSetting.ScrubbingRules?.Select(x => x.ToPSFrontDoorWafLogScrubbingRule()).ToArray(),
+                State = sdkLogScrubbingSetting.State,
             };
         }
 
@@ -569,7 +605,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 ProvisioningState = sdkPolicy.ProvisioningState,
                 CustomBlockResponseBody = sdkPolicy.PolicySettings?.CustomBlockResponseBody == null ? null : Encoding.UTF8.GetString(Convert.FromBase64String(sdkPolicy.PolicySettings?.CustomBlockResponseBody)),
                 CustomBlockResponseStatusCode = (ushort?)sdkPolicy.PolicySettings?.CustomBlockResponseStatusCode,
-                RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl
+                RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl,
+                RequestBodyCheck = sdkPolicy.PolicySettings?.RequestBodyCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.RequestBodyCheck),
+                Sku = sdkPolicy.Sku == null ? null : sdkPolicy.Sku.Name,
+                JavascriptChallengeExpirationInMinutes = sdkPolicy.PolicySettings?.JavascriptChallengeExpirationInMinutes,
+                CaptchaExpirationInMinutes = sdkPolicy.PolicySettings?.CaptchaExpirationInMinutes,
+                LogScrubbing = sdkPolicy.PolicySettings.LogScrubbing?.ToPSFrontDoorWafLogScrubbingSetting()
             };
         }
 
@@ -655,7 +696,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 RuleSetType = psAzRule.RuleSetType,
                 RuleSetVersion = psAzRule.RuleSetVersion,
                 RuleGroupOverrides = psAzRule.RuleGroupOverrides?.Select(x => x.ToSdkAzRuleGroupOverride()).ToList(),
-                Exclusions = psAzRule.Exclusions?.Select(x => x.ToSdkAzManagedRuleExclusion()).ToList()
+                Exclusions = psAzRule.Exclusions?.Select(x => x.ToSdkAzManagedRuleExclusion()).ToList(),
+                RuleSetAction = psRule.RuleSetAction
             };
         }
 
@@ -672,6 +714,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             };
         }
 
+        public static SdkCustomRuleGroupByVariable ToSdkCustomRuleGroupByVariable(this PSFrontDoorWafCustomRuleGroupByVariable psFrontDoorWafCustomRuleGroupByVariable)
+        {
+            return new SdkCustomRuleGroupByVariable
+            {
+                VariableName = psFrontDoorWafCustomRuleGroupByVariable.VariableName,
+            };
+        }
+
         public static SdkCustomRule ToSdkCustomRule(this PSCustomRule psRule)
         {
             return new SdkCustomRule
@@ -683,7 +733,28 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 MatchConditions = psRule.MatchConditions?.Select(x => x.ToSdkMatchCondition()).ToList(),
                 Priority = psRule.Priority,
                 RuleType = psRule.RuleType,
-                EnabledState = psRule.EnabledState
+                EnabledState = psRule.EnabledState,
+                GroupBy = psRule.CustomRule?.Select(x => x.ToSdkCustomRuleGroupByVariable()).ToList(),
+            };
+        }
+
+        public static SdkLogScrubbingRule ToSdkLogScrubbingRule(this PSFrontDoorWafLogScrubbingRule psFrontDoorWafLogScrubbingRule)
+        {
+            return new SdkLogScrubbingRule 
+            {
+                MatchVariable = psFrontDoorWafLogScrubbingRule.MatchVariable,
+                Selector = psFrontDoorWafLogScrubbingRule?.Selector,
+                SelectorMatchOperator = psFrontDoorWafLogScrubbingRule.SelectorMatchOperator,
+                State = psFrontDoorWafLogScrubbingRule.State,
+            };
+        }
+
+        public static SdkLogScrubbingSetting ToSdkLogScrubbingSetting(this PSFrontDoorWafLogScrubbingSetting psFrontDoorWafLogScrubbingSetting)
+        {
+            return new SdkLogScrubbingSetting 
+            {   
+                ScrubbingRules = psFrontDoorWafLogScrubbingSetting.ScrubbingRule?.Select(x => x.ToSdkLogScrubbingRule()).ToArray(),
+                State = psFrontDoorWafLogScrubbingSetting.State
             };
         }
 
@@ -695,7 +766,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 PolicySettings = new sdkPolicySetting()
                 {
                     EnabledState = psPolicy.PolicyEnabledState.ToString(),
-                    Mode = psPolicy.PolicyMode
+                    Mode = psPolicy.PolicyMode,
+                    CustomBlockResponseBody = psPolicy.CustomBlockResponseBody == null ? psPolicy.CustomBlockResponseBody : Convert.ToBase64String(Encoding.UTF8.GetBytes(psPolicy.CustomBlockResponseBody)),
+                    CustomBlockResponseStatusCode = psPolicy.CustomBlockResponseStatusCode,
+                    RedirectUrl = psPolicy.RedirectUrl,
+                    RequestBodyCheck = psPolicy.RequestBodyCheck?.ToString(),
+                    JavascriptChallengeExpirationInMinutes = psPolicy.JavascriptChallengeExpirationInMinutes,
+                    CaptchaExpirationInMinutes = psPolicy.CaptchaExpirationInMinutes,
+                    LogScrubbing = psPolicy.LogScrubbing?.ToSdkLogScrubbingSetting(),
                 },
                 CustomRules = new SdkCustomRuleList()
                 {
@@ -704,7 +782,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 ManagedRules = new SdkManagedRuleList()
                 {
                     ManagedRuleSets = psPolicy.ManagedRules?.Select(x => x.ToSdkAzManagedRule()).ToList()
-                }
+                },
+                Sku = new Management.FrontDoor.Models.Sku(psPolicy.Sku)
             };
         }
 

@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: 99E6C4DD-11AF-4DC0-848B-39811240BE06
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/set-azdnsrecordset
+online version: https://learn.microsoft.com/powershell/module/az.dns/set-azdnsrecordset
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Updates a DNS record set.
 ## SYNTAX
 
 ```
-Set-AzDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,15 +29,15 @@ You can suppress this behavior using the *Overwrite* parameter, which updates th
 ## EXAMPLES
 
 ### Example 1: Update a record set
-```
-PS C:\>$RecordSet = Get-AzDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
-PS C:\> Add-AzDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.16.0.0
-PS C:\> Add-AzDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.31.255.255
-PS C:\> Set-AzDnsRecordSet -RecordSet $RecordSet
+```powershell
+$RecordSet = Get-AzDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
+Add-AzDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.16.0.0
+Add-AzDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.31.255.255
+Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # These cmdlets can also be piped:
 
-PS C:\> Get-AzDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzDnsRecordSet
 ```
 
 The first command uses the Get-AzDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable.
@@ -45,10 +45,11 @@ The second and third commands are off-line operations to add two A records to th
 The final command uses the **Set-AzDnsRecordSet** cmdlet to commit the update.
 
 ### Example 2: Update an SOA record
-```
-PS C:\>$RecordSet = Get-AzDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
-PS C:\> $RecordSet.Records[0].Email = "admin.myzone.com"
-PS C:\> Set-AzDnsRecordSet -RecordSet $RecordSet
+```powershell
+$Zone = Get-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+$RecordSet = Get-AzDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
+$RecordSet.Records[0].Email = "admin.myzone.com"
+Set-AzDnsRecordSet -RecordSet $RecordSet
 ```
 
 The first command uses the **Get-AzDnsRecordset** cmdlet to get the specified record set, and then stores it in the $RecordSet variable.
@@ -136,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubmoduletwin
+online version: https://learn.microsoft.com/powershell/module/az.iothub/get-aziothubmoduletwin
 schema: 2.0.0
 ---
 
@@ -31,13 +31,13 @@ Get-AzIotHubModuleTwin [-ResourceId] <String> [-DeviceId] <String> -ModuleId <St
 ```
 
 ## DESCRIPTION
-Gets an IoT device module twin. See https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-module-twins for more information.
+Gets an IoT device module twin. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins for more information.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1"
+Get-AzIotHubModuleTwin -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -ModuleId "myModule1"
 ```
 
 Returns the device module twin object.

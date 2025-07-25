@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzDiscoveredSecuritySolution
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzDiscoveredSecuritySolution
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets security solutions that were discovered by Azure Security Center
 
 ### SubscriptionScope (Default)
 ```
-Get-AzDiscoveredSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDiscoveredSecuritySolution [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
@@ -36,7 +37,10 @@ Security solutions are automatically discovered by Azure Security Center, use th
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDiscoveredSecuritySolution
+Get-AzDiscoveredSecuritySolution
+```
+
+```output
 Id             : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Secu
                  rity/locations/centralus/discoveredSecuritySolutions/ContosoWAF2
 Name           : ContosoWAF2
@@ -50,7 +54,10 @@ Get all the discovered security solutions in the subscription
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDiscoveredSecuritySolution -ResourceGroupName "myService1" -Location "centralus" -Name "ContosoWAF2"
+Get-AzDiscoveredSecuritySolution -ResourceGroupName "myService1" -Location "centralus" -Name "ContosoWAF2"
+```
+
+```output
 Id             : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Secu
                  rity/locations/centralus/discoveredSecuritySolutions/ContosoWAF2
 Name           : ContosoWAF2

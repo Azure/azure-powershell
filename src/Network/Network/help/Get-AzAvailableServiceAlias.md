@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:  https://docs.microsoft.com/en-us/powershell/module/az.network/get-azavailableservicealias
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azavailableservicealias
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Get available service aliases in the region.
 ## SYNTAX
 
 ```
-Get-AzAvailableServiceAlias -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAvailableServiceAlias -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,13 +24,14 @@ The **Get-AzAvailableServiceAlias** cmdlet allows you to retrieve all of the ava
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAvailableServiceAlias -Location "westus"
+Get-AzAvailableServiceAlias -Location "westus"
+```
 
+```output
 Name                         Id                                                                                                                                   Type                                      ResourceName
 ----                         --                                                                                                                                   ----                                      ------------
 servicesAzure                /subscriptions/61dc4623-b5f8-41a0-acfc-29537dcf6e5d/providers/Microsoft.Network/AvailableServiceAliases/servicesAzure                Microsoft.Network/AvailableServiceAliases /services/Azure
 servicesAzureManagedInstance /subscriptions/61dc4623-b5f8-41a0-acfc-29537dcf6e5d/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureManagedInstance Microsoft.Network/AvailableServiceAliases /services/Azure/ManagedInstance
-
 ```
 
 ## PARAMETERS

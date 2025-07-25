@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Track2Models = global::Azure.Storage.Blobs.Models;
     using global::Azure.Storage.Sas;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerSASToken", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class NewAzureStorageContainerSasTokenCommand : StorageCloudBlobCmdletBase
@@ -35,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string SasPermissionParameterSet = "SasPermission";
 
         /// <summary>
-        /// Sas policy paremeter set name
+        /// Sas policy parameter set name
         /// </summary>
         private const string SasPolicyParmeterSet = "SasPolicy";
 
@@ -85,18 +86,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
         public SwitchParameter FullUri { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Encryption scope to use when sending requests authorized with this SAS URI.")]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionScope { get; set; }
+
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
-        protected override bool UseTrack2Sdk()
-        {
-            if (SasTokenHelper.IsTrack2Permission(this.Permission))
-            {
-                return true;
-            }
-            return base.UseTrack2Sdk();
-        }
+        public override string TagCondition { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageContainerSasCommand class.
@@ -126,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel!=null && Channel.StorageContext!= null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
                 if (ShouldProcess(Name, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {
@@ -141,84 +139,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     return;
                 }
             }
+            //Get container instance
+            CloudBlobContainer container_Track1 = Channel.GetContainerReference(Name);
+            BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(container_Track1, Channel.StorageContext, ClientOptions);
 
-            if (!UseTrack2Sdk()) // Track1
+            // Get container saved policy if any
+            Track2Models.BlobSignedIdentifier identifier = null;
+            if (ParameterSetName == SasPolicyParmeterSet)
             {
-                CloudBlobContainer container = Channel.GetContainerReference(Name);
-                SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
-                bool shouldSetExpiryTime = SasTokenHelper.ValidateContainerAccessPolicy(Channel, container.Name, accessPolicy, accessPolicyIdentifier);
-                SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-                string sasToken;
-
-                if (generateUserDelegationSas)
-                {
-                    UserDelegationKey userDelegationKey = Channel.GetUserDelegationKey(accessPolicy.SharedAccessStartTime, accessPolicy.SharedAccessExpiryTime, null, null, OperationContext);
-                    sasToken = container.GetUserDelegationSharedAccessSignature(userDelegationKey, accessPolicy, null, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
-                }
-                else
-                {
-                    sasToken = container.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
-                }
-
-                if (FullUri)
-                {
-                    string fullUri = SasTokenHelper.GetFullUriWithSASToken(container.Uri.AbsoluteUri.ToString(), sasToken);
-                    WriteObject(fullUri);
-                }
-                else
-                {
-                    WriteObject(sasToken);
-                }
+                identifier = SasTokenHelper.GetBlobSignedIdentifier(container, this.Policy, CmdletCancellationToken);
             }
-            else //Track2
+
+            //Create SAS builder
+            BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromContainer(container, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope);
+
+            //Create SAS and output it
+            string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);
+
+            // remove prefix "?" of SAS if any
+            sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
+
+            if (FullUri)
             {
-                //Get container instance
-                CloudBlobContainer container_Track1 = Channel.GetContainerReference(Name);
-                BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(container_Track1, Channel.StorageContext, ClientOptions);
-
-                // Get contaienr saved policy if any
-                Track2Models.BlobSignedIdentifier identifier = null;
-                if (ParameterSetName == SasPolicyParmeterSet)
-                {
-                    identifier = SasTokenHelper.GetBlobSignedIdentifier(container, this.Policy, CmdletCancellationToken);
-                }
-
-                //Create SAS builder
-                BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromContainer(container, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
-
-                //Create SAS and output it
-                string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);
-                if (sasToken[0] != '?')
-                {
-                    sasToken = "?" + sasToken;
-                }
-
-                if (FullUri)
-                {
-                    string fullUri = SasTokenHelper.GetFullUriWithSASToken(container.Uri.AbsoluteUri.ToString(), sasToken);
-                    WriteObject(fullUri);
-                }
-                else
-                {
-                    WriteObject(sasToken);
-                }
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(container.Uri.AbsoluteUri.ToString(), sasToken);
+                WriteObject(fullUri);
             }
-        }
-
-        /// <summary>
-        /// Update the access policy
-        /// </summary>
-        /// <param name="policy">Access policy object</param>
-        /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
-        private void SetupAccessPolicy(SharedAccessBlobPolicy policy, bool shouldSetExpiryTime)
-        {
-            DateTimeOffset? accessStartTime;
-            DateTimeOffset? accessEndTime;
-            SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
-                out accessStartTime, out accessEndTime, shouldSetExpiryTime);
-            policy.SharedAccessStartTime = accessStartTime;
-            policy.SharedAccessExpiryTime = accessEndTime;
-            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
+            else
+            {
+                WriteObject(sasToken);
+            }
         }
     }
 }

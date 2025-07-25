@@ -1,50 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusauthorizationrulesastoken
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusauthorizationrulesastoken
 schema: 2.0.0
 ---
 
 # New-AzServiceBusAuthorizationRuleSASToken
 
 ## SYNOPSIS
-Generates a SAS tolen for Azure servicebus authorization rule of namespace/queue/topic. 
+Generates a SAS token for Azure servicebus authorization rule of namespace/queue/topic. 
 
 ## SYNTAX
 
 ```
 New-AzServiceBusAuthorizationRuleSASToken [-AuthorizationRuleId] <String> [-KeyType] <String>
- [-ExpiryTime] <DateTime> [-StartTime <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ExpiryTime] <DateTime> [-StartTime <DateTime>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzServiceBusAuthorizationRuleSASToken cmdlet generates a Shared Access Signature (SAS) token for an Azure Eventhub Namesapce or Azure Eventhub
+The New-AzServiceBusAuthorizationRuleSASToken cmdlet generates a Shared Access Signature (SAS) token for an Azure Eventhub Namespace or Azure Eventhub
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> $SasToken = New-AzServiceBusAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
+$StartTime = Get-Date
+$EndTime = $StartTime.AddHours(2.0)
+$SasToken = New-AzServiceBusAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 ```
 
-Generate SAS token for the given authorixation rule for Namespace with start and expiry time..
+Generate SAS token for the given authorization rule for Namespace with start and expiry time..
 
 ### Example 2
 ```powershell
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> $SasToken = New-AzServiceBusAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
+$StartTime = Get-Date
+$EndTime = $StartTime.AddHours(2.0)
+$SasToken = New-AzServiceBusAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
 ```
 
-Generate SAS token for the given authorixation rule for Namespace with expiry time.
+Generate SAS token for the given authorization rule for Namespace with expiry time.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleId
-ARM ResourceId of the Authoraization Rule
+ARM ResourceId of the Authorization Rule
 
 ```yaml
 Type: System.String
@@ -150,8 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

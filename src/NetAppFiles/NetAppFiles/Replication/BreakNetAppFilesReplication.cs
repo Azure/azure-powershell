@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 {
@@ -80,6 +82,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
         public string ResourceId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ParameterSetName = FieldsParameterSet,
+            HelpMessage = "If replication is in status transferring and you want to force break the replication, set to true")]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(
+        "Microsoft.NetApp/netAppAccounts",
+        nameof(ResourceGroupName))]
+        public SwitchParameter ForceBreak { get; set; }
+
+        [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -114,10 +126,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 Name = NameParts[2];
             }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.SuspendVolumeReplicationMessage, Name)))
             {
-                AzureNetAppFilesManagementClient.Volumes.BreakReplication(ResourceGroupName, AccountName, PoolName, Name);
-                success = true;
+                BreakReplicationRequest breakBody = null;
+                if (ForceBreak)
+                {
+                    breakBody = new BreakReplicationRequest(ForceBreak.ToBool());
+                }
+                try
+                {
+                    AzureNetAppFilesManagementClient.Volumes.BreakReplication(ResourceGroupName, AccountName, PoolName, Name, body: breakBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
             if (PassThru)

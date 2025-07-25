@@ -1,0 +1,121 @@
+{
+  "Update-AzSecurityConnector+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01?api-version=2023-10-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"pwshsdktest\": \"true\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "49" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "a914766b-4c53-46cb-ba32-71a1c37492d9" ],
+        "x-ms-correlation-request-id": [ "a914766b-4c53-46cb-ba32-71a1c37492d9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T021144Z:a914766b-4c53-46cb-ba32-71a1c37492d9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 384311590B0945199001A726D3336712 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:11:43Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:11:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "831" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"pwshsdktest\":\"true\"},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:11:43.7724172Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityConnector+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01?api-version=2023-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "75ae0af8-b716-44f6-ab63-5ff8bed40b22" ],
+        "CommandName": [ "Get-AzSecurityConnector" ],
+        "FullCommandName": [ "Get-AzSecurityConnector_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-request-id": [ "bd6eaf32-5e58-4895-96a9-72ecd803fc40" ],
+        "x-ms-correlation-request-id": [ "bd6eaf32-5e58-4895-96a9-72ecd803fc40" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T021145Z:bd6eaf32-5e58-4895-96a9-72ecd803fc40" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C681319AD792481DAEA4DCC0E132ACAA Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:11:45Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:11:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "831" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"pwshsdktest\":\"true\"},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:11:43.7724172Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSecurityConnector+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01?api-version=2023-10-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01?api-version=2023-10-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"pwshsdktest2\": \"true\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "50" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "e2252d28-6673-4f85-ac08-f5075e3ee0c2" ],
+        "x-ms-correlation-request-id": [ "e2252d28-6673-4f85-ac08-f5075e3ee0c2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T021147Z:e2252d28-6673-4f85-ac08-f5075e3ee0c2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 92ABB1C940F449D3ABC0B51680D3680C Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:11:46Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:11:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "832" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"pwshsdktest2\":\"true\"},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:11:46.3283398Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

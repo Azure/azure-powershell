@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageAccountRuleNounStr = StorageAccountNounStr + "NetworkRule";
         protected const string StorageAccountRuleSetNounStr = StorageAccountRuleNounStr + "Set";
         protected const string StorageAccountFailoverNounStr = StorageAccountNounStr + "Failover";
+        protected const string StorageAccountHierarchicalNamespaceUpgradeNounStr = StorageAccountNounStr + "HierarchicalNamespaceUpgrade";
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
         protected const string AccountNameAlias = "AccountName";
@@ -56,18 +58,29 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             internal const string Hot = "Hot";
             internal const string Cool = "Cool";
+            internal const string Cold = "Cold";
         }
         protected struct AzureBlobType
         {
-            internal const string BlockBlob = "blockBlob";
-            internal const string PageBlob = "pageBlob";
-            internal const string AppendBlob = "appendBlob";
+            public const string BlockBlob = "blockBlob";
+            public const string PageBlob = "pageBlob";
+            public const string AppendBlob = "appendBlob";
         }
         protected struct ManagementPolicyAction
         {
             internal const string TierToCool = "TierToCool";
             internal const string TierToArchive = "TierToArchive";
             internal const string Delete = "Delete";
+            internal const string TierToCold = "TierToCold";
+            internal const string TierToHot = "TierToHot";
+        }
+
+        protected struct AccountIdentityType
+        {
+            internal const string systemAssigned = "SystemAssigned";
+            internal const string userAssigned = "UserAssigned";
+            internal const string systemAssignedUserAssigned = "SystemAssignedUserAssigned";
+            internal const string none = "None";
         }
 
         [Flags]
@@ -76,6 +89,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             None = 0,
             Blob = 1,
             File = 2
+        }
+
+        protected struct DefaultSharePermissionType
+        {
+            internal const string None = "None";
+            internal const string StorageFileDataSmbShareReader = "StorageFileDataSmbShareReader";
+            internal const string StorageFileDataSmbShareContributor = "StorageFileDataSmbShareContributor";
+            internal const string StorageFileDataSmbShareElevatedContributor = "StorageFileDataSmbShareElevatedContributor";
+            internal const string StorageFileDataSmbShareOwner = "StorageFileDataSmbShareOwner";
         }
 
         public IStorageManagementClient StorageClient
@@ -129,16 +151,71 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return accountEncryption;
         }
 
-        protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount)
+        protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount, IAzureContext DefaultContext)
         {
-            WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient));
+            WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient, DefaultContext));
         }
 
-        protected void WriteStorageAccountList(IEnumerable<StorageModels.StorageAccount> storageAccounts)
+        protected void WriteStorageAccountList(IEnumerable<StorageModels.StorageAccount> storageAccounts, IAzureContext DefaultContext)
         {
             List<PSStorageAccount> output = new List<PSStorageAccount>();
-            storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient)));
+            storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient, DefaultContext)));
             WriteObject(output, true);
+        }
+
+        public static string GetIdentityTypeString(string inputIdentityType)
+        {
+            if (inputIdentityType == null)
+            {
+                return null;
+            }
+
+            // The parameter validate set make sure the value must be systemAssigned or userAssigned or systemAssignedUserAssigned or None
+            if (inputIdentityType.ToLower() == AccountIdentityType.systemAssigned.ToLower())
+            {
+                return IdentityType.SystemAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.userAssigned.ToLower())
+            {
+                return IdentityType.UserAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.systemAssignedUserAssigned.ToLower())
+            {
+                return IdentityType.SystemAssignedUserAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.none.ToLower())
+            {
+                return IdentityType.None;
+            }
+            throw new ArgumentException("The value for AssignIdentityType is not valid, the valid value are: \"None\", \"SystemAssigned\", \"UserAssigned\", or \"SystemAssignedUserAssigned\"", "AssignIdentityType");
+        }
+
+        // Make the input string value case is aligned with the test API definition.
+        public static string NormalizeString<T>(string input)
+        {
+            foreach (var field in typeof(T).GetFields())
+            {
+                if (input.ToLower() == field.GetRawConstantValue().ToString().ToLower())
+                {
+                    return (string)field.GetRawConstantValue().ToString();
+                }
+            }
+            return input;
+        }
+
+        // Make the input string[] value case is aligned with the test API definition.
+        public static string[] NormalizeStringArray<T>(string[] input)
+        {
+            if (input != null)
+            {
+                List<string> stringList = new List<string>();
+                foreach (string s in input)
+                {
+                    stringList.Add(NormalizeString<T>(s));
+                }
+                return stringList.ToArray();
+            }
+            return input;
         }
     }
 }

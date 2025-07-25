@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class DeploymentTests : ResourceTestRunner
+    public class DeploymentTests : ResourcesTestRunner
     {
         public DeploymentTests(ITestOutputHelper output) : base(output)
         {
@@ -53,6 +53,38 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestNewDeploymentTemplateSpec()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewSubscriptionDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewSubscriptionDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewFailedSubscriptionDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewFailedSubscriptionDeploymentFromTemplateSpec");
+        }
+
+        [Fact(Skip = "Need to update the Resources")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewMGDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewMGDeploymentFromTemplateSpec");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
+        public void TestNewTenantDeploymentTemplateSpec()
+        {
+            TestRunner.RunTestScript("Test-NewTenantDeploymentFromTemplateSpec");
         }
 
         [Fact]
@@ -92,7 +124,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Fix acquisition of TenantId in KeyVault Test.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewDeploymentWithKeyVaultReference()
         {
             TestRunner.RunTestScript("Test-NewDeploymentWithKeyVaultReference");
@@ -147,6 +179,110 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestNewDeploymentFromNonexistentTemplateParameterFile()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromNonexistentTemplateParameterFile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromBicepFile()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromBicepFile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestTestDeploymentFromBicepFile()
+        {
+            TestRunner.RunTestScript("Test-TestDeploymentFromBicepFile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromBicepFileAndBicepparamFile()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromBicepFileAndBicepparamFile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNullableParametersAreNotRequired()
+            => TestRunner.RunTestScript("Test-NullableParametersAreNotRequired");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromBicepparamFileOnly()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromBicepparamFileOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromBicepparamFileWithOverrides()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromBicepparamFileWithOverrides");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentWithCustomTypes()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentWithCustomTypes");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentWithCustomTypesAndInlineOverrides()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentWithCustomTypesAndInlineOverrides");
+        }
+
+        //Please make sure to re-record this test if any changes are made to WhatIf, QueryString or ResourceGroupDeployments
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWhatIfWithQueryString()
+        {
+            TestRunner.RunTestScript("Test-WhatIfWithQueryString");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromTemplateFileContainingDatetimeOutput()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromTemplateFileContainingDatetimeOutput");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromTemplateAndParameterFileContainingDatetimeOutput()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromTemplateAndParameterFileContainingDatetimeOutput");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromTemplateFileContainingTagsOutput()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromTemplateFileContainingTagsOutput");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromTemplateAndParameterFileContainingTagsOutput()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromTemplateAndParameterFileContainingTagsOutput");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSymbolicNameDeployment()
+        {
+            TestRunner.RunTestScript("Test-SymbolicNameDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExtensibleResourceDeployment()
+        {
+            TestRunner.RunTestScript("Test-ExtensibleResourceDeployment");
         }
     }
 }

@@ -13,45 +13,36 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
-    public class PriceSheetTests : RMTestBase
+    public class PriceSheetTests : ConsumptionTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public PriceSheetTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PriceSheetTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPriceSheets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListPriceSheets");
+            TestRunner.RunTestScript("Test-ListPriceSheets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPriceSheetsWithMeterDetailsExpand()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListPriceSheetsWithMeterDetailsExpand");
+            TestRunner.RunTestScript("Test-ListPriceSheetsWithMeterDetailsExpand");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriodPriceSheets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriodPriceSheets");
+            TestRunner.RunTestScript("Test-ListBillingPeriodPriceSheets");
         }
     }
 }

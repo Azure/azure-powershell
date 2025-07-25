@@ -1,74 +1,56 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+---
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusnamespace
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespace
 schema: 2.0.0
 ---
 
 # Remove-AzServiceBusNamespace
 
 ## SYNOPSIS
-Removes the namespace from the specified resource group. 
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ## SYNTAX
 
-### NamespacePropertiesSet (Default)
+### Delete (Default)
 ```
-Remove-AzServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NamespaceInputObjectSet
-```
-Remove-AzServiceBusNamespace [-InputObject] <PSNamespaceAttributes> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### NamespaceResourceIdParameterSet
+### DeleteViaIdentity
 ```
-Remove-AzServiceBusNamespace [-ResourceId] <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusNamespace -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzServiceBusNamespace** cmdlet removes the namespace from the specified resource group.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> Remove-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
-```
-
-Removes the Service Bus namespace `SB-Example1` from the specified resource group `Default-ServiceBus-WestUS`.
-
-### Example 2.1 - InputObject - Using variable:
-```
-PS C:\> $inputobject = Get-AzServiceBusNamespace <params>
-PS C:\> Remove-AzServiceBusNamespace -InputObject $inputobject
+### Example 1: Deletes an existing namespace.
+```powershell
+Remove-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
-Removes the Service Bus namespace provided through the $inputobject.
+Deletes an ServiceBus namespace `myNamespace` under resource group `myResourceGroup`.
 
-### Example 2.2 - InputObject - Using Piping:
-```
-PS C:\> Get-AzServiceBusNamespace <params> | Remove-AzServiceBusNamespace
-```
-
-Removes the Service Bus namespace using Piping.
-
-### Example 3 - ResourceId
-```
-PS c:\> $ResourceId = (Get-AzResource -ResourceType Microsoft.ServiceBus/namespaces).ResourceId
-PS C:\> Remove-AzServiceBusNamespace -ResourceId $resourceid
+### Example 2: Delete an ServiceBus namespace using InputObject parameter set
+```powershell
+$namespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzServiceBusNamespace -InputObject $namespace
 ```
 
-Removes the Service Bus namespace provided through ARM id in $resourceid for -ResourceId parameter or through piping.
+Deletes an ServiceBus namespace `myNamespace` under resource group `myResourceGroup` using InputObject parameter set.
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -83,12 +65,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -98,37 +81,52 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Service Bus Namespace Object
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
-Parameter Sets: NamespaceInputObjectSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Namespace Name.
+The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespacePropertiesSet
+Parameter Sets: Delete
 Aliases: NamespaceName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Specifying this will return true if the command was successful.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -143,32 +141,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespacePropertiesSet
-Aliases: ResourceGroup
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Service Bus Namespace Resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: NamespaceResourceIdParameterSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -204,13 +203,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 
 ## OUTPUTS
 
@@ -218,4 +215,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+Remove-AzServiceBusNamespaceV2
+
 ## RELATED LINKS
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639389.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639389.aspx)

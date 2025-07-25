@@ -15,13 +15,14 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Sync.Upload;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -31,9 +32,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Sync.Upload;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -75,10 +73,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <summary>
         /// find the snapshot with the tags
         /// </summary>
+        /// <param name="azContext"></param>
         /// <param name="blobUris"></param>
-        /// <param name="snapshotTag"></param>
-        /// <param name="taskId"></param>
         /// <param name="storageCredentialsFactory"></param>
+        /// <param name="snapshotQuery"></param>
         /// <returns></returns>
         public List<CloudPageBlob> FindSnapshot(IAzureContext azContext, List<string> blobUris, List<StorageCredentialsFactory> storageCredentialsFactory, Dictionary<string, string> snapshotQuery)
         {
@@ -180,13 +178,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <summary>
         /// remove the vmbackups with the metadata  key "vmbackuptag" and value snapshotTag, snapshotTag is the parameter passed in.
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="vmName"></param>
-        /// <param name="virtualMachineExtensionType"></param>
-        /// <param name="location"></param>
-        /// <param name="virtualMachineResponse"></param>
-        /// <param name="profile"></param>
-        /// <param name="VirtualMachineExtensionClient"></param>
+        /// <param name="vmConfig"></param>
+        /// <param name="virtualMachineExtensionBaseCmdlet"></param>
         /// <param name="snapshotTag"></param>
         public void RemoveSnapshot(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
@@ -218,11 +211,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <summary>
         /// we only support the Linux box now, if it's a windows, one AzureVMBackupException would be thrown.
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="vmName"></param>
-        /// <param name="virtualMachineExtensionType"></param>
-        /// <param name="location"></param>
-        /// <param name="virtualMachineResponse"></param>
+        /// <param name="vmConfig"></param>
         /// <param name="snapshotTag"></param>
         /// <param name="virtualMachineExtensionBaseCmdlet"></param>
         public void CreateSnapshotForDisks(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)

@@ -1,79 +1,84 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadgroupmember
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
 schema: 2.0.0
 ---
 
 # Remove-AzADGroupMember
 
 ## SYNOPSIS
-Removes a user from an AD group.
+Deletes member from group
+Users, contacts, and groups that are members of this group.
+HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
+Nullable.
+Supports $expand.
 
 ## SYNTAX
 
-### ExplicitParameterSet (Default)
+### ExplicitParameterSet  (Default)
 ```
-Remove-AzADGroupMember [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzADGroupMember [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### MemberObjectIdWithGroupObjectId
+```
+Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String[]> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObjectIdParameterSet
+```
+Remove-AzADGroupMember -GroupObjectId <String> -MemberUserPrincipalName <String[]> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObjectParameterSet
+```
+Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupObject <MicrosoftGraphGroup>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### MemberUPNWithGroupDisplayNameParameterSet
+```
+Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupDisplayName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### MemberObjectIdWithGroupObject
+```
+Remove-AzADGroupMember -MemberObjectId <String[]> -GroupObject <MicrosoftGraphGroup>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupDisplayName
 ```
-Remove-AzADGroupMember -MemberObjectId <String[]> -GroupDisplayName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberObjectIdWithGroupObject
-```
-Remove-AzADGroupMember -MemberObjectId <String[]> -GroupObject <PSADGroup> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberObjectIdWithGroupObjectId
-```
-Remove-AzADGroupMember -MemberObjectId <String[]> -GroupObjectId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberUPNWithGroupDisplayNameParameterSet
-```
-Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupDisplayName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberUPNWithGroupObjectParameterSet
-```
-Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupObject <PSADGroup> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberUPNWithGroupObjectIdParameterSet
-```
-Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupObjectId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADGroupMember -MemberObjectId <String[]> -GroupDisplayName <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes a user from an AD group.
+Deletes member from group
+Users, contacts, and groups that are members of this group.
+HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
+Nullable.
+Supports $expand.
 
 ## EXAMPLES
 
-### Example 1: Remove a user from a group by object id
-
+### Example 1: Remove members from group
 ```powershell
-PS C:\> Remove-AzADGroupMember -MemberObjectId D9076BBC-D62C-4105-9C78-A7F5BC4A3405 -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+$members = @()
+$members += (Get-AzADUser -DisplayName $uname).Id
+$members += (Get-AzADServicePrincipal -ApplicationId $appid).Id
+Get-AzADGroupMember -GroupDisplayName $gname | Remove-AzADGroupMember -MemberObjectId $member
 ```
 
-Removes the user with object id 'D9076BBC-D62C-4105-9C78-A7F5BC4A3405' from the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
-
-### Example 2: Remove a user from a group by piping
-
-```powershell
-PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Remove-AzADGroupMember -MemberObjectId D9076BBC-D62C-4105-9C78-A7F5BC4A3405
-```
-
-Gets the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes it to the Remove-AzADGroupMember cmdlet to remove the user to that group.
+Remove members from group
 
 ## PARAMETERS
 
@@ -81,7 +86,7 @@ Gets the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes i
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -93,11 +98,11 @@ Accept wildcard characters: False
 ```
 
 ### -GroupDisplayName
-The display name of the group to remove the member(s) from.
+The display name of target group.
 
 ```yaml
 Type: System.String
-Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayNameParameterSet
+Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberObjectIdWithGroupDisplayName
 Aliases:
 
 Required: True
@@ -108,11 +113,11 @@ Accept wildcard characters: False
 ```
 
 ### -GroupObject
-The object representation of the group to remove the member from.
+The target group object, could be used as pipeline input.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
-Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
+Parameter Sets: MemberUPNWithGroupObjectParameterSet, MemberObjectIdWithGroupObject
 Aliases:
 
 Required: True
@@ -123,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupObjectId
-The object id of the group to remove the member from.
+The object Id of target group.
 
 ```yaml
 Type: System.String
@@ -138,11 +143,11 @@ Accept wildcard characters: False
 ```
 
 ### -MemberObjectId
-The object id of the member.
+The object Id of member to be removed from target group.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberObjectIdWithGroupObject, MemberObjectIdWithGroupObjectId
+Parameter Sets: MemberObjectIdWithGroupObjectId, MemberObjectIdWithGroupObject, MemberObjectIdWithGroupDisplayName
 Aliases:
 
 Required: True
@@ -153,11 +158,11 @@ Accept wildcard characters: False
 ```
 
 ### -MemberUserPrincipalName
-The UPN of the member(s) to remove.
+The user principal name of member to be removed from target group.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupObjectIdParameterSet
+Parameter Sets: MemberUPNWithGroupObjectIdParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupDisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -168,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Specifying this will return true if the command was successful.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -218,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
 
 ## OUTPUTS
 

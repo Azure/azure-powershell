@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azprivatelinkservice
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azprivatelinkservice
 schema: 2.0.0
 ---
 
@@ -22,11 +22,11 @@ The **Set-AzPrivateLinkService** cmdlet updates a private link service.
 
 ## EXAMPLES
 
-### 1: Creates a private link service and update its
-```
+### Example 1: Creates a private link service and update its
+```powershell
 $vnet = Get-AzVirtualNetwork -ResourceName "myvnet" -ResourceGroupName "myresourcegroup"
 $IPConfig = New-AzPrivateLinkServiceIpConfig -Name "IP-Config" -Subnet $vnet.subnets[1] -PrivateIpAddress "10.0.0.5"
-$publicip = Get-AzPublicIpAddress -ResourceGroupName "myresourcegroup"
+$publicip = Get-AzPublicIpAddress -Name "myPublicIp1" -ResourceGroupName "myresourcegroup"
 $frontend = New-AzLoadBalancerFrontendIpConfig -Name "FrontendIpConfig01" -PublicIpAddress $publicip
 $lb = New-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "myresourcegroup" -Location "West US" -FrontendIpConfiguration $frontend  
 $privateLinkService = New-AzPrivateLinkService -ServiceName "mypls" -ResourceGroupName myresourcegroup -Location "West US" -LoadBalancerFrontendIpConfiguration $frontend -IpConfiguration $IPConfig
@@ -36,7 +36,7 @@ $privateLinkService.IpConfigurations[0] = $newIPConfig
 $privateLinkService | Set-AzPrivateLinkService
 ```
 
-This example creates a private link service called mypls. Then it replace its ipConfigurations from the in-memory ipConfiguratiuon object. The Set-AzPrivateLinkService cmdlet is then used to write the modified private link service state on the service side. 
+This example creates a private link service called mypls. Then it replace its ipConfigurations from the in-memory ipConfiguration object. The Set-AzPrivateLinkService cmdlet is then used to write the modified private link service state on the service side. 
 
 ## PARAMETERS
 
@@ -105,5 +105,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPrivateLinkService](./New-AzPrivateLinkService.md)
 
 [Remove-AzPrivateLinkService](./Remove-AzPrivateLinkService.md)
-
-

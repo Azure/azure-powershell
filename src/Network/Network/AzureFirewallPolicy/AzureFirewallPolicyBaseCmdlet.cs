@@ -41,6 +41,14 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        public IFirewallPolicyDeploymentsOperations AzureFirewallPolicyDeploymentsClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.FirewallPolicyDeployments;
+            }
+        }
+
         public PSAzureFirewallPolicy GetAzureFirewallPolicy(string resourceGroupName, string name)
         {
             var azureFirewallPolicy = this.AzureFirewallPolicyClient.Get(resourceGroupName, name);

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityAutoProvisioningSetting
+online version: https://learn.microsoft.com/powershell/module/az.security/Set-AzSecurityAutoProvisioningSetting
 schema: 2.0.0
 ---
 
@@ -15,19 +15,22 @@ Updates automatic provisioning setting
 ### SubscriptionLevelResource (Default)
 ```
 Set-AzSecurityAutoProvisioningSetting -Name <String> [-EnableAutoProvision]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Set-AzSecurityAutoProvisioningSetting [-EnableAutoProvision] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzSecurityAutoProvisioningSetting -InputObject <PSSecurityAutoProvisioningSetting>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +42,10 @@ The security agent will monitor your VM to create security alerts and monitor th
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+```
+
+```output
 Id                                                                                                                Name    AutoProvision
 --                                                                                                                ----    -------------
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/autoProvisioningSettings/default default On
@@ -49,7 +55,10 @@ Turns on automatic provisioning setting for a subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzSecurityAutoProvisioningSetting -Name "default"
+Set-AzSecurityAutoProvisioningSetting -Name "default"
+```
+
+```output
 Id                                                                                                                Name 
 --                                                                                                                ---- 
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/autoProvisioningSettings/default de...

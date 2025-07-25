@@ -1,0 +1,84 @@
+{
+  "Get-AzSelfHelpTroubleshooter+[NoContext]+Get+$PUT+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/troubleshooters/094e82a0-65b0-47b0-96c6-62aef1251921?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/troubleshooters/094e82a0-65b0-47b0-96c6-62aef1251921?api-version=2024-03-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"solutionId\": \"e104dbdf-9e14-4c9f-bc78-21ac90382231\",\n    \"parameters\": {\n      \"ResourceUri\": \"/subscriptions/02d59989-f8a9-4b69-9919-1ef51df4eff6\"\n    }\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "184" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "0e944151-885c-49ba-9caf-3372747e341e" ],
+        "x-ms-correlation-request-id": [ "0e944151-885c-49ba-9caf-3372747e341e" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204503Z:0e944151-885c-49ba-9caf-3372747e341e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D0CAA4DC045240038C1F37889C8ADBC4 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:45:01Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:45:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "980" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/troubleshooters/094e82a0-65b0-47b0-96c6-62aef1251921\",\"name\":\"094e82a0-65b0-47b0-96c6-62aef1251921\",\"type\":\"Microsoft.Help/troubleshooters\",\"properties\":{\"provisioningState\":\"AutoContinue\",\"solutionId\":\"e104dbdf-9e14-4c9f-bc78-21ac90382231\",\"steps\":[{\"id\":\"72b61ee7-132e-4cb1-8ee7-e279bcf33189\",\"title\":\"Intro Step\",\"type\":\"Decision\",\"executionStatus\":\"Success\",\"isLastStep\":false,\"inputs\":[{\"questionId\":\"0\",\"questionType\":\"MultiLineInfoBox\",\"questionContent\":\"{\\\"title\\\":\\\"Connectivity Guided Troubleshooter\\\",\\\"content\\\":\\\"This guided troubleshooter will enable you to self-troubleshoot your Virtual Machine (VM) SSH issues by checking VM health state, network settings, CPU and memory usage, etc. It typically takes between 3 to 5 minutes to complete the flow.\\\"}\",\"questionContentType\":\"Text\"}]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSelfHelpTroubleshooter+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/troubleshooters/094e82a0-65b0-47b0-96c6-62aef1251921?api-version=2024-03-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/troubleshooters/094e82a0-65b0-47b0-96c6-62aef1251921?api-version=2024-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "0fedcb6d-1677-49f3-b987-67f707e53351" ],
+        "CommandName": [ "Get-AzSelfHelpTroubleshooter" ],
+        "FullCommandName": [ "Get-AzSelfHelpTroubleshooter_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.SelfHelp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "f374bb22-5079-4931-a98d-6e439d9d7497" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "f374bb22-5079-4931-a98d-6e439d9d7497" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204504Z:f374bb22-5079-4931-a98d-6e439d9d7497" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DF3B86FA40A545BA873DFB5131C35E9A Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:45:03Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:45:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "887" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/troubleshooters/094e82a0-65b0-47b0-96c6-62aef1251921\",\"name\":\"094e82a0-65b0-47b0-96c6-62aef1251921\",\"type\":\"Microsoft.Help/troubleshooters\",\"properties\":{\"provisioningState\":\"AutoContinue\",\"solutionId\":\"e104dbdf-9e14-4c9f-bc78-21ac90382231\",\"steps\":[{\"id\":\"72b61ee7-132e-4cb1-8ee7-e279bcf33189\",\"title\":\"Intro Step\",\"type\":\"Decision\",\"executionStatus\":\"Success\",\"isLastStep\":false,\"inputs\":[{\"questionId\":\"0\",\"questionType\":\"MultiLineInfoBox\",\"questionContent\":\"{\\\"title\\\":\\\"Connectivity Guided Troubleshooter\\\",\\\"content\\\":\\\"This guided troubleshooter will enable you to self-troubleshoot your Virtual Machine (VM) SSH issues by checking VM health state, network settings, CPU and memory usage, etc. It typically takes between 3 to 5 minutes to complete the flow.\\\"}\",\"questionContentType\":\"Text\"}]}]}}",
+      "isContentBase64": false
+    }
+  }
+}

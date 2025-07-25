@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
     using Xunit.Abstractions;
+    using Microsoft.Azure.Commands.TestFx;
+
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>
@@ -144,8 +146,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
 
-            this.featureOperationsMock.ResetCalls();
-            this.commandRuntimeMock.ResetCalls();
+            this.featureOperationsMock.Invocations.Clear();
+            this.commandRuntimeMock.Invocations.Clear();
         }
     }
 }

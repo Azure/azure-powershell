@@ -1,107 +1,75 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.dll-Help.xml
+external help file: Az.ApplicationInsights-help.xml
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/get-azapplicationinsights
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 schema: 2.0.0
 ---
 
 # Get-AzApplicationInsights
 
 ## SYNOPSIS
-Get application insights resources
+Returns an Application Insights component.
 
 ## SYNTAX
 
-### ResourceGroupParameterSet (Default)
+### ListBySubscription (Default)
 ```
-Get-AzApplicationInsights [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationInsights [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ComponentNameParameterSet
+### Get
 ```
-Get-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Full]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationInsights [-SubscriptionId <String[]>] -ResourceGroupName <String> -Name <String> [-Full]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ListByResourceGroupName
 ```
-Get-AzApplicationInsights [-ResourceId] <String> [-Full] [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationInsights [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByResourceId
+```
+Get-AzApplicationInsights -ResourceId <String> [-Full] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByInputObject
+```
+Get-AzApplicationInsights -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get application insights resources in a resource group or specific resource
+Returns an Application Insights component.
 
 ## EXAMPLES
 
-### Example 1 Get application insights resource
-```
-PS C:\> Get-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test"
-
-Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test
-ResourceGroupName  : testgroup
-Name               : test
-Kind               : web
-Location           : eastus
-Type               : microsoft.insights/components
-AppId              : 7c8f0641-d307-41bc-b8f2-d30701adb4b3
-ApplicationType    : web
-Tags               : {}
-CreationDate       : 7/5/2017 4:37:22 PM
-FlowType           : Redfield
-HockeyAppId        :
-HockeyAppToken     :
-InstrumentationKey : 1e30d092-4b4b-47c6-ad39-7c10785d80f5
-ProvisioningState  : Succeeded
-RequestSource      : IbizaAIExtension
-SamplingPercentage :
-TenantId           : b90b0dec-9b9a-4778-a84e-4ffb73bb17f7
+### Example 1: Get application insights resource
+```powershell
+Get-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test"
 ```
 
-Get application insights resource named "test" in resource group "testgroup"
+Get application insights resource
 
-### Example 2 Get application insights resource with pricing plan information
-```
-PS C:\> Get-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test" -IncludePricingPlan
-
-Cap                            : 330
-ResetTime                      : 0
-StopSendNotificationWhenHitCap : True
-CapExpirationTime              :
-IsCapped                       : False
-Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test
-ResourceGroupName  : testgroup
-Name               : test
-Kind               : web
-Location           : eastus
-Type               : microsoft.insights/components
-AppId              : 7c8f0641-d307-41bc-b8f2-d30701adb4b3
-ApplicationType    : web
-Tags               : {}
-CreationDate       : 7/5/2017 4:37:22 PM
-FlowType           : Redfield
-HockeyAppId        :
-HockeyAppToken     :
-InstrumentationKey : 1e30d092-4b4b-47c6-ad39-7c10785d80f5
-ProvisioningState  : Succeeded
-RequestSource      : IbizaAIExtension
-SamplingPercentage :
-TenantId           : b90b0dec-9b9a-4778-a84e-4ffb73bb17f7
-PricingPlan        : Basic
+### Example 2: Get application insights resource with pricing plan information
+```powershell
+Get-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test" -IncludePricingPlan
 ```
 
-Get application insights resource and include pricing plan information for resource named "test" in resource group "testgroup"
+Get application insights resource with pricing plan information
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -111,11 +79,10 @@ Accept wildcard characters: False
 ```
 
 ### -Full
-If specified, it will get back pricing plan/daily cap and status of the application insights component.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ComponentNameParameterSet, ResourceIdParameterSet
+Parameter Sets: Get, GetByResourceId
 Aliases: IncludeDailyCap, IncludeDailyCapStatus, IncludePricingPlan
 
 Required: False
@@ -125,60 +92,80 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+Parameter Sets: GetByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Application Insights Resource Name.
+The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ComponentNameParameterSet
+Parameter Sets: Get
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupParameterSet
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ComponentNameParameterSet
+Parameter Sets: Get, ListByResourceGroupName
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Application Insights Component Resource Id.
+The resource ID of applicationinsights component.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: GetByResourceId
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ListBySubscription, Get, ListByResourceGroupName
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -187,11 +174,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
+
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan
 
 ## NOTES
 

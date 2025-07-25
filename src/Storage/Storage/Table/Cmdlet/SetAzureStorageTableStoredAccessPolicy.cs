@@ -114,6 +114,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
             }
 
+            // when user is using oauth credential, the current code uses track 2 sdk, which fails with 404.
+            if (this.Channel.IsTokenCredential)
+            {
+                throw new ArgumentException("Access Policy operations are not supported while using OAuth.");
+            }
+
             if (ShouldProcess(Policy, "Set"))
             {
                 SetAzureTableStoredAccessPolicy(Channel, Table, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);

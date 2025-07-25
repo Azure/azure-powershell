@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 08D1D6AC-D064-4E2D-9C22-0B65E7BE4DA7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/remove-azhdinsightpersistedscriptaction
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/remove-azhdinsightpersistedscriptaction
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The removed script will no longer be executed when the cluster is scaled up.
 ## EXAMPLES
 
 ### Example 1: Remove a script action from the list of persisted script actions on a cluster
-```
-PS C:\>Remove-AzHDInsightPersistedScriptAction `
+```powershell
+Remove-AzHDInsightPersistedScriptAction `
             -ClusterName "your-hadoop-001" `
             -Name "Scriptaction"
 ```
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -113,5 +113,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzHDInsightPersistedScriptAction](./Get-AzHDInsightPersistedScriptAction.md)
 
 [Set-AzHDInsightPersistedScriptAction](./Set-AzHDInsightPersistedScriptAction.md)
-
-

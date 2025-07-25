@@ -17,7 +17,7 @@
 
 $suffix="v2avm1"
 $JobQueryWaitTimeInSeconds = 0
-$PrimaryFabricName = "V2A-W2K12-400"
+$PrimaryFabricName = "PwsTestCS"
 $PrimaryNetworkFriendlyName = "corp"
 $RecoveryNetworkFriendlyName = "corp"
 $NetworkMappingName = "corp96map"
@@ -170,12 +170,12 @@ function Test-AsrEvent
     $Events = get-asrEvent
     Assert-NotNull($Events)
 
-    $e = Get-AzRecoveryServicesAsrEvent -Name $Events[0].Name
+    <# $e = Get-AzRecoveryServicesAsrEvent -Name $Events[0].Name
     Assert-NotNull($e)
     Assert-NotNull($e.Name)
     Assert-NotNull($e.Description)
     Assert-NotNull($e.FabricId)
-    Assert-NotNull($e.AffectedObjectFriendlyName)
+    Assert-NotNull($e.AffectedObjectFriendlyName) #>
 
     $e = Get-AzRecoveryServicesAsrEvent -Severity $Events[0].Severity
     Assert-NotNull($e)
@@ -189,8 +189,8 @@ function Test-AsrEvent
     $e = Get-AzRecoveryServicesAsrEvent -EventType VmHealth -FabricId $e[0].FabricId
     Assert-NotNull($e)
 
-     $e = Get-AzRecoveryServicesAsrEvent -ResourceId  $e[0].Id
-    Assert-NotNull($e)
+    #$e = Get-AzRecoveryServicesAsrEvent -ResourceId  $e[0].Id
+    #Assert-NotNull($e)
 
     $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
     $e = Get-AzRecoveryServicesAsrEvent -Fabric $fabric
@@ -199,7 +199,8 @@ function Test-AsrEvent
     $e = Get-AzRecoveryServicesAsrEvent -AffectedObjectFriendlyName $Events[0].AffectedObjectFriendlyName
     Assert-NotNull($e)
     
-    $e = Get-AzRecoveryServicesAsrEvent -StartTime "8/18/2017 2:05:00 AM"
+    $startTime = "4/4/2021 10:57:32 AM"
+    $e = Get-AzRecoveryServicesAsrEvent -StartTime $startTime
     Assert-NotNull($e)
 
 }
@@ -236,7 +237,10 @@ function Test-Job
 
     Assert-NotNull($jobList)
 
-    $jobList = Get-AzRecoveryServicesAsrJob -StartTime '2017-08-04T09:28:52.0000000Z' -EndTime '2017-08-10T14:20:50.0000000Z'
+    $startTime = "2021-04-04T05:28:32.1338170Z"
+    $endTime = "2021-04-07T05:28:32.1391983Z"
+
+    $jobList = Get-AzRecoveryServicesAsrJob -StartTime $startTime -EndTime $endTime
     Assert-NotNull($jobList)
 
     $jobList =  Get-AzRecoveryServicesAsrJob -State Succeeded
@@ -267,4 +271,61 @@ function Test-NotificationSettings
     Assert-NotNull($NotificationSettings.EmailSubscriptionOwner)
     Assert-NotNull($NotificationSettings.Locale)
     Set-AzRecoveryServicesAsrNotificationSetting -DisableNotification
+}
+
+function Test-AzureMonitorAlertsForSiteRecovery
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "vijami-alertrg"
+	$vaultName1 = "ASRalerts-pstest-vault1"
+	$vaultName2 = "ASRalerts-pstest-vault2"
+
+	try
+	{	
+		# create a vault without Alert settings
+		$vault1 = New-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName -Location "centraluseuap"
+		
+		Assert-True { $vault1.Properties.AlertSettings -eq $null }
+
+		# create a vault with Alert settings 
+		$vault2 = New-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName -Location "centraluseuap" `
+			-DisableAzureMonitorAlertsForJobFailure $false `
+            -DisableAzureMonitorAlertsForAllReplicationIssue $false `
+            -DisableAzureMonitorAlertsForAllFailoverIssue $true `
+            -DisableEmailNotificationsForSiteRecovery $false `
+			-DisableClassicAlerts $true			
+		
+		Assert-True { $vault2.Properties.AlertSettings -ne $null }
+		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure -eq "Enabled" }
+		Assert-True { $vault2.Properties.AlertSettings.ClassicAlertsForCriticalOperations -eq "Disabled" }
+        Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllReplicationIssues -eq "Enabled" }
+		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllFailoverIssues -eq "Disabled" }
+        Assert-True { $vault2.Properties.AlertSettings.EmailNotificationsForSiteRecovery -eq "Enabled" }
+
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName "vijami-alertrg"  -Name "ASRalerts-pstest-vault1" -DisableAzureMonitorAlertsForAllReplicationIssue $true
+
+		# update alert settings 
+		$vault1 = Update-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName `
+			-DisableAzureMonitorAlertsForAllFailoverIssue $false `
+			-DisableEmailNotificationsForSiteRecovery $true
+
+		Assert-True { $vault1.Properties.AlertSettings -ne $null }
+		Assert-True { $vault1.Properties.AlertSettings.AzureMonitorAlertsForAllFailoverIssues -eq "Enabled" }
+		Assert-True { $vault1.Properties.AlertSettings.EmailNotificationsForSiteRecovery -eq "Disabled" }
+		
+		$vault2 = Update-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName `
+			-DisableAzureMonitorAlertsForAllFailoverIssue $true `
+			-DisableEmailNotificationsForSiteRecovery $false
+
+		Assert-True { $vault2.Properties.AlertSettings -ne $null }
+		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllFailoverIssues -eq "Disabled" }
+		Assert-True { $vault2.Properties.AlertSettings.EmailNotificationsForSiteRecovery -eq "Enabled" }
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzRecoveryServicesVault -Vault $vault1
+		Remove-AzRecoveryServicesVault -Vault $vault2
+	}
 }

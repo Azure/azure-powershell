@@ -285,30 +285,84 @@ function Test-AzureRmSignalRSetUpstream {
     
         $upstream = Set-AzSignalRUpstream -ResourceGroupName $resourceGroupName -Name $signalrName `
             -Template @{UrlTemplate = 'http://host-connections1.com' }
-        Assert-AreEqualObjectProperties @{UrlTemplate = 'http://host-connections1.com' } $upstream.Templates
+        Assert-AreEqual 'http://host-connections1.com' $upstream.Templates.UrlTemplate
     
         # b. ResourceId parameter set
         $upstream = Set-AzSignalRUpstream -ResourceId $signalr.Id `
             -Template @{UrlTemplate = 'http://host-connections2.com' }
-        Assert-AreEqualObjectProperties @{UrlTemplate = 'http://host-connections2.com' } $upstream.Templates
+        Assert-AreEqual 'http://host-connections2.com' $upstream.Templates.UrlTemplate
     
         # c. InputObject parameter set
-        $signalr | Set-AzSignalRUpstream -Template @{UrlTemplate = 'http://host-connections3.com' }
-        Assert-AreEqualObjectProperties @{UrlTemplate = 'http://host-connections3.com' } $upstream.Templates
+        $upstream = $signalr | Set-AzSignalRUpstream -Template @{UrlTemplate = 'http://host-connections3.com' }
+        Assert-AreEqual 'http://host-connections3.com' $upstream.Templates.UrlTemplate
     
         # Test set multiple upstream Template
         $upstream = Set-AzSignalRUpstream  -ResourceId $signalr.Id `
             -Template @{UrlTemplate = 'http://host-connections4.com'; HubPattern = 'chat'; EventPattern = 'broadcast' }, @{UrlTemplate = 'http://host-connections5.com'; HubPattern = 'chat'; CategoryPattern = 'broadcast' } 
-        Assert-AreEqualObjectProperties @{UrlTemplate = 'http://host-connections4.com'; HubPattern = 'chat'; EventPattern = 'broadcast' }, @{UrlTemplate = 'http://host-connections5.com'; HubPattern = 'chat'; CategoryPattern = 'broadcast' }   $upstream.Templates
-    
-        # 
+        Assert-AreEqual 'http://host-connections4.com' $upstream.Templates[0].UrlTemplate
+        Assert-AreEqual 'chat' $upstream.Templates[0].HubPattern
+        Assert-AreEqual 'broadcast' $upstream.Templates[0].EventPattern
+        Assert-AreEqual 'http://host-connections5.com' $upstream.Templates[1].UrlTemplate
+        Assert-AreEqual 'chat' $upstream.Templates[1].HubPattern
+        Assert-AreEqual 'broadcast' $upstream.Templates[1].CategoryPattern
     }
     finally {
         Remove-AzResourceGroup  -Name $resourceGroupName 
     }
 
 }
-function New-Environment {
+
+<#
+.SYNOPSIS
+Test the Update SignalR cmdlet
+#>
+function Test-AzureRmSignalRUpdate
+{
+    $location = Get-ProviderLocation "Microsoft.SignalRService/SignalR"
+    $nameSuffix = "update-signalr"
+    $resourceGroupName = Get-RandomResourceGroupName $nameSuffix
+    $signalrName =  Get-RandomSignalRName  $nameSuffix
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+        $signalr = New-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+
+        # a. Resource name parameter set
+        $result = Update-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName
+        # verify nothing changed.
+        Assert-AreEqualObjectProperties $signalr.Sku $result.Sku
+        Assert-Null $result.Tag
+        Assert-Null $result.Features
+        Assert-AreEqualArray $signalr.Cors $result.Cors
+
+        $tag  = New-Object System.Collections.Generic.Dictionary"[String,String]"
+        $tag.Add("key1", "value1")
+        $result = Update-AzSignalR -ResourceGroupName $resourceGroupName -Name $signalrName -UnitCount 2 -Tag $tag -ServiceMode "Serverless" -AllowedOrigin "https://bing.com","https://google.com"
+        Assert-AreEqual 2 $result.Sku.Capacity
+        Assert-AreEqual 1 $result.Tags.Count
+        Assert-AreEqual "value1" $result.Tags["key1"]
+        Assert-AreEqual "Serverless" $result.Features[0].value
+        Assert-AreEqualArray "https://bing.com","https://google.com" $result.Cors.AllowedOrigins
+
+        # b. Resource ID parameter Set
+        $result = Update-AzSignalR -ResourceId $signalr.Id -UnitCount 1 -Sku Free_F1
+        Assert-AreEqual 1 $result.Sku.Capacity
+        Assert-AreEqual "Free_F1" $result.Sku.Name
+
+        # c. InputObject parameter set
+        $result = $( $signalr | Update-AzSignalR -UnitCount 2 -Sku "Standard_S1" )
+        Assert-AreEqual 2 $result.Sku.Capacity
+        Assert-AreEqual "Standard_S1" $result.Sku.Name
+    } finally
+    {
+        Remove-AzResourceGroup  -Name $resourceGroupName
+    }
+}
+
+function New-Environment
+{
     param (
         [string] $signalRName,
         [string] $resourceGroupName

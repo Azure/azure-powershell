@@ -13,16 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    internal class TemplateValidationInfo
+    public class TemplateValidationInfo
     {
         public TemplateValidationInfo(DeploymentValidateResult validationResult)
         {
             Errors = new List<ErrorResponse>();
             RequiredProviders = new List<Provider>();
+            Diagnostics = new List<DeploymentDiagnosticsDefinition>();
 
             if (validationResult.Error != null)
             {
@@ -30,14 +32,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             }
 
             if (validationResult.Properties != null &&
-               validationResult.Properties.Providers != null)
+                validationResult.Properties.Providers != null)
             {
                 RequiredProviders.AddRange(validationResult.Properties.Providers);
+            }
+
+            if (validationResult.Properties != null &&
+                validationResult.Properties.Diagnostics != null)
+            {
+                Diagnostics.AddRange(validationResult.Properties.Diagnostics);
             }
         }
 
         public List<ErrorResponse> Errors { get; set; }
 
         public List<Provider> RequiredProviders { get; set; }
+
+        public List<DeploymentDiagnosticsDefinition> Diagnostics { get; set; }
     }
 }

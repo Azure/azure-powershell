@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 Results = GetResultEnumerable(response.Results),
                 Render = response.Render,
                 Statistics = response.Statistics,
+                Error = response.Error,
             };
 
             return psResponse;
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public IEnumerable<PSObject> Results { get; protected set; }
         public IDictionary<string, string> Render { get; protected set; }
         public IDictionary<string, object> Statistics { get; protected set; }
+        public QueryResponseError Error { get; protected set; }
 
         private static IEnumerable<PSObject> GetResultEnumerable(IEnumerable<IDictionary<string, string>> rows)
         {

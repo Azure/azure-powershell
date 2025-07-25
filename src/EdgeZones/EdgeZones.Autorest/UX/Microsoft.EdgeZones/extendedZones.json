@@ -1,0 +1,108 @@
+{
+  "resourceType": "extendedZones",
+  "apiVersion": "2024-04-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.edgezones"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEdgeZonesExtendedZone",
+      "description": "Gets an Azure Extended Zone for a subscription",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeZones/extendedZones/{extendedZoneName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgezones/get-azedgezonesextendedzone"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an Azure Extended Zone for a subscription",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.extendedZoneName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Register-AzEdgeZonesExtendedZone",
+      "description": "Registers a subscription for an Extended Zone",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeZones/extendedZones/{extendedZoneName}/register",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgezones/register-azedgezonesextendedzone"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Registers a subscription for an Extended Zone",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.extendedZoneName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Unregister-AzEdgeZonesExtendedZone",
+      "description": "Unregisters a subscription for an Extended Zone",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeZones/extendedZones/{extendedZoneName}/unregister",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.edgezones/unregister-azedgezonesextendedzone"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Unregisters a subscription for an Extended Zone",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.extendedZoneName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

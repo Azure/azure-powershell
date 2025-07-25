@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public ContainerRegistrationStatus Status { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Constructor. Takes the service client object representing the container 
         /// and converts it in to the PS container model
         /// </summary>

@@ -18,7 +18,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class TagTests : ResourceTestRunner
+    public class TagTests : ResourcesTestRunner
     {
         public TagTests(ITestOutputHelper output) : base(output)
         {
@@ -78,6 +78,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TagDeleteWithResourceIdParamsForResource()
         {
             TestRunner.RunTestScript("Test-TagDeleteWithResourceIdParamsForResource");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TagCreateOrUpdateAsyncWithResourceIdParamsForResource()
+        {
+            TestRunner.RunTestScript("Test-TagCreateOrUpdateAsyncWithResourceIdParamsForResource");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TagUpdateAsyncWithResourceIdParamsForResource()
+        {
+            TestRunner.RunTestScript("Test-TagUpdateAsyncWithResourceIdParamsForResource");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TagDeleteAsyncWithResourceIdParamsForResource()
+        {
+            TestRunner.RunTestScript("Test-TagDeleteAsyncWithResourceIdParamsForResource");
         }
     }
 }

@@ -369,6 +369,10 @@
                 <PropertyName>ServerName</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PartnerServers</Label>
+                <PropertyName>PartnerServers</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>PartnerLocation</Label>
                 <PropertyName>PartnerLocation</PropertyName>
               </ListItem>
@@ -391,6 +395,10 @@
               <ListItem>
                 <Label>ReadWriteFailoverPolicy</Label>
                 <PropertyName>ReadWriteFailoverPolicy</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReadOnlyEndpointTarget</Label>
+                <PropertyName>FailoverGroupReadOnlyEndpointV2</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>FailoverWithDataLossGracePeriodHours</Label>

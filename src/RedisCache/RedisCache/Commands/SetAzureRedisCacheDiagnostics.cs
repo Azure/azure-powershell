@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System;
     using System.Management.Automation;
 
-    [GenericBreakingChange("Set-AzRedisCacheDiagnostics alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheDiagnostic", SupportsShouldProcess = true), OutputType(typeof(void))]
     [Alias("Set-AzRedisCacheDiagnostics")]
     public class SetAzureRedisCacheDiagnostics : RedisCacheCmdletBase

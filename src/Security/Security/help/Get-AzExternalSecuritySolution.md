@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzExternalSecuritySolution
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzExternalSecuritySolution
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Get external security solution
 
 ### SubscriptionScope (Default)
 ```
-Get-AzExternalSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzExternalSecuritySolution [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
@@ -42,7 +43,10 @@ Get external security solution
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzExternalSecuritySolution
+Get-AzExternalSecuritySolution
+```
+
+```output
 ConnectivityState : Discovered
 DeviceType        : Azure Active Directory Identity Protection
 DeviceVendor      : microsoft
@@ -92,7 +96,10 @@ Get all the external security solutions in the subscription
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzExternalSecuritySolution -ResourceGroupName "myservice1" -Location "centralus" -Name "aad_testservicews"
+Get-AzExternalSecuritySolution -ResourceGroupName "myservice1" -Location "centralus" -Name "aad_testservicews"
+```
+
+```output
 ConnectivityState : Discovered
 DeviceType        : Azure Active Directory Identity Protection
 DeviceVendor      : microsoft

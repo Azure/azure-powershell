@@ -19,17 +19,18 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
-    public class StopAzureResourceGroupDeploymentCommandTests
+    public class StopAzureResourceGroupDeploymentCommandTests : RMTestBase
     {
         private StopAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourceManagerSdkClient> resourcesClientMock;
+        private Mock<NewResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -39,13 +40,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         public StopAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
-            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            resourcesClientMock = new Mock<NewResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new StopAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourceManagerSdkClient = resourcesClientMock.Object
+                NewResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 

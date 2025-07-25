@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzJitNetworkAccessPolicy
+online version: https://learn.microsoft.com/powershell/module/az.security/Remove-AzJitNetworkAccessPolicy
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Deletes a JIT network access policy.
 ### ResourceGroupLevelResource (Default)
 ```
 Remove-AzJitNetworkAccessPolicy -ResourceGroupName <String> -Location <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -27,7 +28,8 @@ Remove-AzJitNetworkAccessPolicy -ResourceId <String> [-PassThru] [-DefaultProfil
 ### InputObject
 ```
 Remove-AzJitNetworkAccessPolicy -InputObject <PSSecurityJitNetworkAccessPolicy> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +40,7 @@ After this action a user will not be able to request temporary network connectio
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default"
+Remove-AzJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default"
 ```
 
 Deletes a Just In Time network access policy.
@@ -136,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID.
+The resource id of the jit Network Access Policy resource.
 
 ```yaml
 Type: System.String

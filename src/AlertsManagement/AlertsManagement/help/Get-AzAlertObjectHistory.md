@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/get-azalertobjecthistory
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/get-azalertobjecthistory
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets Alert History information
 
 ### ByAlertId (Default)
 ```
-Get-AzAlertObjectHistory -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlertObjectHistory -AlertId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
@@ -30,7 +31,7 @@ Get-AzAlertObjectHistory -InputObject <PSSmartGroup> [-DefaultProfile <IAzureCon
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAlertObjectHistory -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
+Get-AzAlertObjectHistory -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
 ```
 
 Gets alert history details. 

@@ -1,0 +1,143 @@
+{
+  "Get-AzSecurityConnectorGitHubRepo+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "b066c6a2-4127-409a-8535-12ef197d7d2e" ],
+        "CommandName": [ "Get-AzSecurityConnectorGitHubRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepo_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "3cf6587e-ee6c-4b40-9901-8715a016f4a5" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "dd17ff24-43ba-4a85-af3e-ee570419e0da" ],
+        "x-ms-correlation-request-id": [ "dd17ff24-43ba-4a85-af3e-ee570419e0da" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020845Z:dd17ff24-43ba-4a85-af3e-ee570419e0da" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0397E2F5BE364499B47BF69A8E8A4181 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:45Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6367" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"repoId\":\"728418798\",\"repoName\":\"TestApp0\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp0\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0\",\"name\":\"TestApp0\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730346643\",\"repoName\":\"TestApp1\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp1\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp1\",\"name\":\"TestApp1\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347967\",\"repoName\":\"TestApp10\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp10\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp10\",\"name\":\"TestApp10\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730348015\",\"repoName\":\"TestApp11\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp11\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp11\",\"name\":\"TestApp11\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347309\",\"repoName\":\"TestApp2\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp2\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp2\",\"name\":\"TestApp2\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347403\",\"repoName\":\"TestApp3\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp3\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp3\",\"name\":\"TestApp3\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347478\",\"repoName\":\"TestApp4\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp4\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp4\",\"name\":\"TestApp4\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347536\",\"repoName\":\"TestApp5\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp5\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:49Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp5\",\"name\":\"TestApp5\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347657\",\"repoName\":\"TestApp6\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp6\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:49Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp6\",\"name\":\"TestApp6\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347732\",\"repoName\":\"TestApp7\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp7\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:49Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp7\",\"name\":\"TestApp7\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347823\",\"repoName\":\"TestApp8\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp8\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:49Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp8\",\"name\":\"TestApp8\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"},{\"properties\":{\"repoId\":\"730347901\",\"repoName\":\"TestApp9\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp9\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:49Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp9\",\"name\":\"TestApp9\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityConnectorGitHubRepo+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "b45daeeb-68c1-4b7c-bba2-b357b707aa25" ],
+        "CommandName": [ "Get-AzSecurityConnectorGitHubRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepo_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=1c6c7a0a18efcd0c1f62ff61ff05f8a61bfe22533cfce5122cfd179979045df0;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=1c6c7a0a18efcd0c1f62ff61ff05f8a61bfe22533cfce5122cfd179979045df0;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "411d430d-34b7-46c9-ac52-4c93b652af66" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "0b23c86a-a491-42d4-8e6a-3e214c6b29c0" ],
+        "x-ms-correlation-request-id": [ "0b23c86a-a491-42d4-8e6a-3e214c6b29c0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020846Z:0b23c86a-a491-42d4-8e6a-3e214c6b29c0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 39FD4A5897EF449DA82376FCD4C8BFD4 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:46Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "528" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"repoId\":\"728418798\",\"repoName\":\"TestApp0\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp0\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0\",\"name\":\"TestApp0\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityConnectorGitHubRepo+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "ce2facb8-29c7-4ec0-bce6-165a9084c455" ],
+        "CommandName": [ "Get-AzSecurityConnectorGitHubRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepo_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=14a5c7981ca45a6803ac375748e68dc9b495d4e56b3202b86256249c9784b400;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=14a5c7981ca45a6803ac375748e68dc9b495d4e56b3202b86256249c9784b400;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "cc274ced-0b47-4a90-a76f-883a6d4d2fbb" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "31d39d48-b03d-4418-9d05-4248b9a30552" ],
+        "x-ms-correlation-request-id": [ "31d39d48-b03d-4418-9d05-4248b9a30552" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020846Z:31d39d48-b03d-4418-9d05-4248b9a30552" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B7444B4C2DF54EB985A25E8F0000BCC9 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:46Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "528" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"repoId\":\"728418798\",\"repoName\":\"TestApp0\",\"onboardingState\":\"Onboarded\",\"repoUrl\":\"https://github.com/dfdsdktests/TestApp0\",\"parentOwnerName\":\"dfdsdktests\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:45:48Z\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0\",\"name\":\"TestApp0\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitHubOwners/repos\"}",
+      "isContentBase64": false
+    }
+  }
+}

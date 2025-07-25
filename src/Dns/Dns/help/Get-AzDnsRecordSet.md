@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: 40179CF3-7896-4C45-BC18-4CB653B245B6
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsrecordset
+online version: https://learn.microsoft.com/powershell/module/az.dns/get-azdnsrecordset
 schema: 2.0.0
 ---
 
@@ -34,31 +34,31 @@ You can use the pipeline operator to pass a **DnsZone** object to this cmdlet, o
 ## EXAMPLES
 
 ### Example 1: Get record sets with a specified name and type
-```
-PS C:\>$RecordSet = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
+```powershell
+$RecordSet = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
 ```
 
 This command gets the record set of record type A named www in the specified resource group and zone, and then stores it in the $RecordSet variable.
 Because the *Name* and *RecordType* parameters are specified, only one **RecordSet** object is returned.
 
 ### Example 2: Get record sets of a specified type
-```
-PS C:\>$RecordSets = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
+```powershell
+$RecordSets = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
 ```
 
 This command gets an array of all record sets of record type A in the zone named myzone.com in the resource group named MyResourceGroup, and then stores them in the $RecordSets variable.
 
 ### Example 3: Get all record sets in a zone
-```
-PS C:\>$RecordSets = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+```powershell
+$RecordSets = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
 ```
 
 This command gets an array of all record sets in the zone named myzone.com in the resource group named MyResourceGroup, and then stores them in the $RecordSets variable.
 
 ### Example 4: Get all record sets in a zone, using a DnsZone object
-```
-PS C:\> $Zone = Get-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
-PS C:\> $RecordSets = Get-AzDnsRecordSet -Zone $Zone
+```powershell
+$Zone = Get-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+$RecordSets = Get-AzDnsRecordSet -Zone $Zone
 ```
 
 This example is equivalent to Example 3 above.
@@ -116,6 +116,7 @@ Valid values are:
 - AAAA
 - CNAME
 - MX
+- NAPTR
 - NS
 - PTR
 - SOA
@@ -128,7 +129,7 @@ This cmdlet then returns all record sets in the zone (of all names and types).
 Type: System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Accepted values: A, Aaaa, CAA, Cname, MX, NS, PTR, SOA, SRV, TXT, Tlsa, DS, Naptr
 
 Required: False
 Position: Named
@@ -188,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -211,5 +212,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzDnsRecordSet](./Remove-AzDnsRecordSet.md)
 
 [Set-AzDnsRecordSet](./Set-AzDnsRecordSet.md)
-
-

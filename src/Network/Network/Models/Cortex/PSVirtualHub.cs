@@ -15,7 +15,9 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
+    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
 
     public class PSVirtualHub : PSTopLevelResource
     {
@@ -42,9 +44,15 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSBgpConnection> BgpConnections { get; set; }
 
+        public List<PSRouteMap> RouteMaps { get; set; }
+
         public uint VirtualRouterAsn { get; set; }
 
         public List<string> VirtualRouterIps { get; set; }
+
+        public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
+
+        public SwitchParameter AllowBranchToBranchTraffic { get; set; }
 
         [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
         public string AddressPrefix { get; set; }
@@ -57,5 +65,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "RoutingState", Target = ViewControl.Table)]
         public string RoutingState { get; set; }
+        
+        [Ps1Xml(Label = "Preferred Routing Gateway", Target = ViewControl.Table)]
+        public string PreferredRoutingGateway { get; set; }
+
+        [Ps1Xml(Label = "Hub Routing Preference", Target = ViewControl.Table)]
+        public string HubRoutingPreference { get; set; }
     }
 }

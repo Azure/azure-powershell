@@ -1,82 +1,72 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/add-azadgroupmember
+online version: https://learn.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 schema: 2.0.0
 ---
 
 # Add-AzADGroupMember
 
 ## SYNOPSIS
-Adds a user to an existing AD group.
+Adds member to group.
 
 ## SYNTAX
 
-### MemberObjectIdWithGroupObjectId (Default)
+### MemberObjectIdWithGroupObjectIdParameterSet (Default)
 ```
-Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupObjectId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberObjectIdWithGroupDisplayName
-```
-Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupDisplayName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberObjectIdWithGroupObject
-```
-Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupObject <PSADGroup> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberUPNWithGroupDisplayNameParameterSet
-```
-Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupDisplayName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MemberUPNWithGroupObjectParameterSet
-```
-Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <PSADGroup> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzADGroupMember -TargetGroupObjectId <String> -MemberObjectId <String[]> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberUPNWithGroupObjectIdParameterSet
 ```
-Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObjectId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzADGroupMember -TargetGroupObjectId <String> -MemberUserPrincipalName <String[]>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### MemberObjectIdWithGroupObjectParameterSet
+```
+Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupObject <MicrosoftGraphGroup>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### MemberObjectIdWithGroupDisplayNameParameterSet
+```
+Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupDisplayName <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObjectParameterSet
+```
+Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <MicrosoftGraphGroup>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### MemberUPNWithGroupDisplayNameParameterSet
+```
+Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupDisplayName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Adds a user to an existing AD group.
+Adds member to group.
 
 ## EXAMPLES
 
-### Example 1: Add a user to a group by object id
-
+### Example 1: Add members to group
 ```powershell
-PS C:\> Add-AzADGroupMember -MemberObjectId D9076BBC-D62C-4105-9C78-A7F5BC4A3405 -TargetGroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+$groupid=(Get-AzADGroup -DisplayName $gname).Id
+$members=@()
+$members+=(Get-AzADUser -DisplayName $uname).Id
+$members+=(Get-AzADServicePrincipal -ApplicationId $appid).Id
+Add-AzADGroupMember -TargetGroupObjectId $groupid -MemberObjectId $members
 ```
 
-Adds the user with object id 'D9076BBC-D62C-4105-9C78-A7F5BC4A3405' to the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
-
-### Example 2: Add a user to a group by piping
-
-```powershell
-PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Add-AzADGroupMember -MemberObjectId D9076BBC-D62C-4105-9C78-A7F5BC4A3405
-```
-
-Gets the group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes it to the Add-AzADGroupMember cmdlet to add the user to that group.
-
-### Example 3: Add a user to a group by principal name
-
-```powershell
-PS C:\> Add-AzADGroupMember -MemberUserPrincipalName "myemail@domain.com" -TargetGroupDisplayName "MyGroupDisplayName" 
-PS C:\> Get-AzADGroupMember -GroupDisplayName "MyGroupDisplayName"
-```
-
-Adds an user to a group and list the members of the group.
+Add members to group
 
 ## PARAMETERS
 
@@ -84,7 +74,7 @@ Adds an user to a group and list the members of the group.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -96,11 +86,11 @@ Accept wildcard characters: False
 ```
 
 ### -MemberObjectId
-The object id of the member.
+The object Id of member to add to target group.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberObjectIdWithGroupObjectId, MemberObjectIdWithGroupDisplayName, MemberObjectIdWithGroupObject
+Parameter Sets: MemberObjectIdWithGroupObjectIdParameterSet, MemberObjectIdWithGroupObjectParameterSet, MemberObjectIdWithGroupDisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -111,11 +101,11 @@ Accept wildcard characters: False
 ```
 
 ### -MemberUserPrincipalName
-The UPN of the member(s) to add to the group.
+The user principal name of member to add to target group.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupObjectIdParameterSet
+Parameter Sets: MemberUPNWithGroupObjectIdParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupDisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -126,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Specifying this will return true if the command was successful.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -141,11 +131,11 @@ Accept wildcard characters: False
 ```
 
 ### -TargetGroupDisplayName
-The display name of the group to add the member(s) to.
+The display name of target group.
 
 ```yaml
 Type: System.String
-Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayNameParameterSet
+Parameter Sets: MemberObjectIdWithGroupDisplayNameParameterSet, MemberUPNWithGroupDisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -156,11 +146,11 @@ Accept wildcard characters: False
 ```
 
 ### -TargetGroupObject
-The object representation of the group to add the member(s) to.
+The target group object, could be used as pipeline input.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
-Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
+Parameter Sets: MemberObjectIdWithGroupObjectParameterSet, MemberUPNWithGroupObjectParameterSet
 Aliases:
 
 Required: True
@@ -171,11 +161,11 @@ Accept wildcard characters: False
 ```
 
 ### -TargetGroupObjectId
-The object id of the group to add the member(s) to.
+The object Id of target group.
 
 ```yaml
 Type: System.String
-Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectIdParameterSet
+Parameter Sets: MemberObjectIdWithGroupObjectIdParameterSet, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
 Required: True
@@ -221,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
 
 ## OUTPUTS
 

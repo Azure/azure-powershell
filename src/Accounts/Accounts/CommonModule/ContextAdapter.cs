@@ -12,26 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Collections.Generic;
+using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Common.Utilities;
 using Microsoft.Azure.Commands.Profile.Models;
-using System.Globalization;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Profile.Properties;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common
 {
     using NextDelegate = Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>;
     using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;
     using PipelineChangeDelegate = Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>;
+    using TokenAudienceConverterDelegate = Func<string, string, string, string, Uri, string>;
 
     /// <summary>
     /// Perform authentication and parameter completion based on the value of the context
@@ -70,8 +74,53 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="appendStep">a delegate which allows the module to append a step in the HTTP Pipeline</param>
         public void OnNewRequest(InvocationInfo invocationInfo, string correlationId, string processRecordId, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
         {
+            prependStep(UniqueId.Instance.SendAsync);
             appendStep(new UserAgent(invocationInfo).SendAsync);
-            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ResourceManager));
+            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+        }
+
+        internal void AddRequestUserAgentHandler(
+            InvocationInfo invocationInfo,
+            string correlationId,
+            string processRecordId,
+            PipelineChangeDelegate prependStep,
+            PipelineChangeDelegate appendStep)
+        {
+            appendStep(new UserAgent(invocationInfo).SendAsync);
+        }
+
+        internal void AddPatchRequestUriHandler(
+            InvocationInfo invocationInfo,
+            string correlationId,
+            string processRecordId,
+            PipelineChangeDelegate prependStep,
+            PipelineChangeDelegate appendStep)
+        {
+            appendStep(
+                async (request, cancelToken, cancelAction, signal, next) =>
+                {
+                    var context = GetDefaultContext(_provider, invocationInfo);
+                    PatchRequestUri(context, request);
+                    return await next(request, cancelToken, cancelAction, signal);
+                });
+        }
+
+        internal void AddAuthorizeRequestHandler(
+            InvocationInfo invocationInfo,
+            string endpointResourceIdKey,
+            string endpointSuffixKey,
+            PipelineChangeDelegate prependStep,
+            PipelineChangeDelegate appendStep,
+            TokenAudienceConverterDelegate tokenAudienceConverter,
+            IDictionary<string, object> extensibleParameters = null)
+        {
+            appendStep(
+                async (request, cancelToken, cancelAction, signal, next) =>
+                {
+                    endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
+                    var context = GetDefaultContext(_provider, invocationInfo);
+                    return await AuthenticationHelper(context, endpointResourceIdKey, endpointSuffixKey, request, cancelToken, cancelAction, signal, next);
+                });
         }
 
         /// <summary>
@@ -80,9 +129,9 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="completerName">string - the type of completer requested (Resource, Location)</param>
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="correlationId">The <see cref="string" /> containing the correlation id for the cmdlet (if available)</param>
-        /// <param name="resourceTypes">An <see cref="System.String[]"/> containing resource (or resource types) being completed  </param >
-        /// <param name="parentResourceParameterNames"> An <see cref="System.String[]"/> containing list of parent resource parameter names (if applicable)</param >
-        /// <returns>A <see cref="System.String[]"/> containing the valid options for the completer.</returns>
+        /// <param name="resourceTypes">An <see cref="System.String"/>[] containing resource (or resource types) being completed  </param >
+        /// <param name="parentResourceParameterNames"> An <see cref="System.String"/>[] containing list of parent resource parameter names (if applicable)</param >
+        /// <returns>A <see cref="System.String"/>[] containing the valid options for the completer.</returns>
         public string[] CompleteArgument(string completerName, InvocationInfo invocationInfo, string correlationId, string[] resourceTypes, string[] parentResourceParameterNames)
         {
             var defaultValue = new string[0];
@@ -145,6 +194,39 @@ namespace Microsoft.Azure.Commands.Common
             return string.Empty;
         }
 
+        internal async Task<HttpResponseMessage> AuthenticationHelper(IAzureContext context, string endpointResourceIdKey, string endpointSuffixKey, HttpRequestMessage request, CancellationToken cancelToken, Action cancelAction, SignalDelegate signal, NextDelegate next, TokenAudienceConverterDelegate tokenAudienceConverter = null)
+        {
+            IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
+            using (var newRequest = await request.CloneWithContent(request.RequestUri, request.Method))
+            {
+                var response = await next(request, cancelToken, cancelAction, signal);
+
+                if (response.MatchClaimsChallengePattern(out var claimsChallenge))
+                {
+                    //get token again with claims challenge
+                    if (accessToken is IClaimsChallengeProcessor processor)
+                    {
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(claimsChallenge))
+                            {
+                                await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
+                                using (var previousReponse = response)
+                                {
+                                    response = await next(newRequest, cancelToken, cancelAction, signal);
+                                }
+                            }
+                        }
+                        catch (AuthenticationFailedException e)
+                        {
+                            throw new AzPSAuthenticationFailedException(ClaimsChallengeUtilities.FormatClaimsChallengeErrorMessage(claimsChallenge, await response?.Content?.ReadAsStringAsync()), null, e);
+                        }
+                    }
+                }
+                return response;
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -156,8 +238,7 @@ namespace Microsoft.Azure.Commands.Common
             return async (request, cancelToken, cancelAction, signal, next) =>
             {
                 PatchRequestUri(context, request);
-                await AuthorizeRequest(context, resourceId, request, cancelToken);
-                return await next(request, cancelToken, cancelAction, signal);
+                return await AuthenticationHelper(context, resourceId, resourceId, request, cancelToken, cancelAction, signal, next);
             };
         }
 
@@ -165,23 +246,45 @@ namespace Microsoft.Azure.Commands.Common
         /// Pipeline step for authenticating requests
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="resourceId"></param>
+        /// <param name="endpointResourceIdKey"></param>
         /// <param name="request"></param>
-        /// <param name="outerToken"></param>
+        /// <param name="endpointSuffixKey"></param>
+        /// <param name="extensibleParamters"></param>
+        /// <param name="tokenAudienceConverter"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        internal async Task AuthorizeRequest(IAzureContext context, string resourceId, HttpRequestMessage request, CancellationToken outerToken)
+        internal async Task<IAccessToken> AuthorizeRequest(IAzureContext context, HttpRequestMessage request, CancellationToken cancellationToken, string endpointResourceIdKey,
+                        string endpointSuffixKey, TokenAudienceConverterDelegate tokenAudienceConverter = null, IDictionary<string, object> extensibleParamters = null)
         {
             if (context == null || context.Account == null || context.Environment == null)
             {
                 throw new InvalidOperationException(Resources.InvalidAzureContext);
             }
 
-            await Task.Run(() =>
+            return await Task.Run(() =>
             {
-                resourceId = context?.Environment?.GetAudienceFromRequestUri(request.RequestUri) ?? resourceId;
-                var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, resourceId);
+                if (tokenAudienceConverter != null)
+                {
+                    var info = GetEndpointInfo(context.Environment, endpointResourceIdKey, endpointSuffixKey);
+                    var tokenAudience = tokenAudienceConverter.Invoke(info.CurEnvEndpointResourceId, info.CurEnvEndpointSuffix, info.BaseEnvEndpointResourceId, info.BaseEnvEndpointSuffix, request.RequestUri);
+                    endpointResourceIdKey = tokenAudience ?? endpointResourceIdKey;
+                }
+                var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, endpointResourceIdKey);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
-            }, outerToken);
+                return authToken;
+            }, cancellationToken);
+        }
+
+        private (string CurEnvEndpointResourceId, string CurEnvEndpointSuffix, string BaseEnvEndpointResourceId, string BaseEnvEndpointSuffix) GetEndpointInfo(IAzureEnvironment environment, string endpointResourceIdKey, string endpointSuffixKey)
+        {
+            var baseEnvironment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+
+            string curEnvEndpointResourceId = environment?.GetEndpoint(endpointResourceIdKey);
+            string curEnvEndpointSuffix = environment?.GetEndpoint(endpointSuffixKey);
+            string baseEnvEndpointResourceId = baseEnvironment?.GetEndpoint(endpointResourceIdKey);
+            string baseEnvEndpointSuffix = baseEnvironment?.GetEndpoint(endpointSuffixKey);
+
+            return (curEnvEndpointResourceId, curEnvEndpointSuffix, baseEnvEndpointResourceId, baseEnvEndpointSuffix); ;
         }
 
         internal void PatchRequestUri(IAzureContext context, HttpRequestMessage request)

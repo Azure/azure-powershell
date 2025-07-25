@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "ASIServicePrinicpal": {
+            "defaultValue": "ASIServicePrinicpal",
+            "type": "string"
+        }
+    },
+    "variables": {
+        "roleAssignmentName": "[guid(parameters('ASIServicePrinicpal'), resourceGroup().id)]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2021-04-01-preview",
+            "name": "[variables('roleAssignmentName')]",
+            "properties": {
+                "roleDefinitionId": "[concat('/subscriptions/', subscription().id, '/', resourceGroup().name, '/providers/Microsoft.Authorization/roleDefinitions/f4c81013-99ee-4d62-a7ee-b3f1f648599a')]",
+                "principalId": "[parameters('ASIServicePrinicpal')]"
+            }
+        }
+    ],
+    "outputs": {
+    }
+}

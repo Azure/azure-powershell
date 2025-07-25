@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSNetworkSecurityGroup : PSTopLevelResource
     {
+        public bool? FlushConnection { get; set; }
+
         public List<PSSecurityRule> SecurityRules { get; set; }
 
         public List<PSSecurityRule> DefaultSecurityRules { get; set; }
@@ -31,6 +33,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string FlushConnectionText
+        {
+            get { return JsonConvert.SerializeObject(FlushConnection, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string SecurityRulesText

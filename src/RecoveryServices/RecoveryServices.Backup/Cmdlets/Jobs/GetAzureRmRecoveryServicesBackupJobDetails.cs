@@ -15,17 +15,18 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Gets detailed information about a particular job.
     /// </summary>
-    [GenericBreakingChange("Get-AzRecoveryServicesBackupJobDetails alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJobDetail", DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
-    [Alias("Get-AzRecoveryServicesBackupJobDetails")]
     public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
@@ -47,6 +48,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
+        /// <summary>
+        /// Switch param to filter job based on secondary region (Cross Region Restore).
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter UseSecondaryRegion { get; set; }
+
+        /// <summary>
+        /// Location of the Recovery Services Vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Location of the Recovery Services Vault used to fetch the secondary region jobs.")]
+        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
+        public string VaultLocation { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -63,12 +78,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 WriteDebug("Fetching job with ID: " + JobId);
+                                
+                if (UseSecondaryRegion.IsPresent) {
+                    CrrModel.CrrJobRequest jobRequest = new CrrModel.CrrJobRequest();
+                    jobRequest.JobName = JobId;
+                    jobRequest.ResourceId = VaultId;
+                                                            
+                    if(VaultLocation == null || VaultLocation == "") {
+                        throw new PSArgumentException(Resources.VaultLocationRequired);
+                    }
 
-                var adapterResponse = ServiceClientAdapter.GetJob(
+                    string secondaryRegion = BackupUtils.regionMap[VaultLocation];
+
+                    CrrModel.JobResource jobDetailsCrr = ServiceClientAdapter.GetCRRJobDetails(secondaryRegion, jobRequest);
+                    WriteObject(JobConversions.GetPSJobCrr(jobDetailsCrr));
+                }
+                else
+                {
+                    JobResource jobDetails = ServiceClientAdapter.GetJob(
                     JobId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
-                WriteObject(JobConversions.GetPSJob(adapterResponse));
+
+                    WriteObject(JobConversions.GetPSJob(jobDetails));
+                }
             });
         }
     }

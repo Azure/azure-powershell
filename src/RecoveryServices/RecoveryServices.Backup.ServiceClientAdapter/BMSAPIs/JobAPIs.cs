@@ -16,8 +16,11 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;    
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -27,6 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets a job
         /// </summary>
         /// <param name="jobId">ID of the job</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job response returned by the service</returns>
         public JobResource GetJob(
             string jobId,
@@ -41,6 +46,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Gets CRR job details
+        /// </summary>
+        /// <param name="secondaryRegion">secondaryRegion for the vault </param>
+        /// <param name="jobRequest">JobId, ResourceId for the Job to be fetched </param>
+        /// <returns>Job response returned by the service</returns>
+        public CrrModel.JobResource GetCRRJobDetails(
+            string secondaryRegion,
+            CrrModel.CrrJobRequest jobRequest
+            )
+        {
+            return CrrAdapter.Client.BackupCrrJobDetails.GetWithHttpMessagesAsync(secondaryRegion, jobRequest.ResourceId, jobRequest.JobName).Result.Body;
+        }
+
+        public List<CrrModel.JobResource> GetCrrJobs(string vaultId,
+            string jobId,
+            string status,
+            string operation,
+            DateTime startTime,
+            DateTime endTime,
+            string backupManagementType, 
+            string azureRegion = null)
+        {
+            ODataQuery<CrrModel.JobQueryObject> queryFilter = GetQueryObjectCrr(
+                backupManagementType,
+                startTime,
+                endTime,
+                jobId,
+                status, 
+                operation);
+            
+            CrrModel.CrrJobRequest crrJobRequest = new CrrModel.CrrJobRequest();
+            crrJobRequest.ResourceId = vaultId;
+            Func<RestAzureNS.IPage<CrrModel.JobResource>> listAsync =
+                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, crrJobRequest.ResourceId, crrJobRequest.JobName, queryFilter, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body; 
+
+            Func<string, RestAzureNS.IPage<CrrModel.JobResource>> listNextAsync =
+                nextLink => CrrAdapter.Client.BackupCrrJobs.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedListCrr(listAsync, listNextAsync);
+        }
+
+        /// <summary>
         /// Lists jobs according to the parameters
         /// </summary>
         /// <param name="jobId">ID of the job</param>
@@ -50,6 +99,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="endTime">Time when the job finished</param>
         /// <param name="backupManagementType">Backup management type of the item represented by the job</param>
         /// <param name="skipToken">Skip token pagination param</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job list response from the service</returns>
         public List<JobResource> GetJobs(
             string jobId,
@@ -90,6 +141,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Cancels a job
         /// </summary>
         /// <param name="jobId">ID of the job to cancel</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Cancelled job response from the service</returns>
         public RestAzureNS.AzureOperationResponse CancelJob(
             string jobId,
@@ -108,6 +161,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="jobId">ID of the job</param>
         /// <param name="operationId">ID of the operation associated with the job</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse GetJobOperationStatus(
             string jobId,
@@ -159,6 +214,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             });
 
             ODataQuery<JobQueryObject> queryFilter = new ODataQuery<JobQueryObject>();
+            queryFilter.Filter = queryFilterString;
+
+            return queryFilter;
+        }
+
+        /// <summary>
+        /// Constructs the query object based on the input parameters
+        /// </summary>
+        /// <param name="backupManagementType">Backup management type of the item associated with the job</param>
+        /// <param name="startTime">Time when the job started</param>
+        /// <param name="endTime">Time when the job ended</param>
+        /// <param name="jobId">ID of the job</param>
+        /// <param name="status">Status of the job</param>
+        /// <param name="operation">ID of operation associated with the job</param>
+        /// <returns></returns>
+        public ODataQuery<CrrModel.JobQueryObject> GetQueryObjectCrr(
+            string backupManagementType,
+            DateTime startTime,
+            DateTime endTime,
+            string jobId,
+            string status,
+            string operation)
+        {
+            // build query filters object.
+            // currently we don't support any provider specific filters.
+            // so we are initializing the object directly
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new CrrModel.JobQueryObject()
+            {
+                BackupManagementType = backupManagementType,
+                StartTime = startTime,
+                EndTime = endTime,
+                JobId = jobId,
+                Status = status,
+                Operation = operation
+            });
+
+            ODataQuery<CrrModel.JobQueryObject> queryFilter = new ODataQuery<CrrModel.JobQueryObject>();
             queryFilter.Filter = queryFilterString;
 
             return queryFilter;

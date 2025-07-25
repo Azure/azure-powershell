@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 1097FF29-1C23-4960-930C-5C1227419359
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
 schema: 2.0.0
 ---
 
@@ -16,14 +16,15 @@ Gets Backup containers.
 
 ```
 Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-BackupManagementType] <String>]
- [[-FriendlyName] <String>] [[-ResourceGroupName] <String>] [[-Status] <ContainerRegistrationStatus>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-FriendlyName] <String>] [[-ResourceGroupName] <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container.
-A Backup container encapsulates data sources that are modelled as backup items.
+The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container. A Backup container encapsulates data sources that are modelled as backup items.
+For Container type "Azure VM" , the output lists all the containers whose name exactly matches to the one passed  as the value for Friendly Name parameter. 
+For other container types,  output gives a list of containers with name similar to the value passed for Friendly name parameter.
 Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
@@ -31,8 +32,8 @@ Set the vault context by using the -VaultId parameter.
 ### Example 1: Get a specific container
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName "V2VM" -VaultId $vault.ID
 ```
 
 This command gets the container named V2VM of type AzureVM.
@@ -40,8 +41,8 @@ This command gets the container named V2VM of type AzureVM.
 ### Example 2: Get all containers of a specific type
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS -VaultId $vault.ID
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MAB -VaultId $vault.ID
 ```
 
 This command gets all Windows containers that are protected by Azure Backup agent.
@@ -54,7 +55,7 @@ The **BackupManagementType** parameter is only required for Windows containers.
 The class of resources being protected. The acceptable values for this parameter are:
 
 - AzureVM
-- MARS
+- MAB
 - AzureWorkload
 - AzureStorage
 
@@ -64,7 +65,7 @@ This parameter is used to differentiate Windows machines that are backed up usin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, AzureWorkload, AzureStorage
+Accepted values: AzureVM, AzureStorage, AzureWorkload, MAB
 
 Required: False
 Position: 2
@@ -80,7 +81,6 @@ The acceptable values for this parameter are:
 
 - AzureVM
 - Windows
-- AzureSQL
 - AzureStorage
 - AzureVMAppContainer
 
@@ -88,7 +88,7 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, Windows, AzureSQL, AzureStorage, AzureVMAppContainer
+Accepted values: AzureVM, Windows, AzureStorage, AzureVMAppContainer
 
 Required: True
 Position: 1
@@ -141,26 +141,6 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Status
-
-Specifies the container registration status.
-The acceptable values for this parameter are:
-
-- Registered
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus
-Parameter Sets: (All)
-Aliases:
-Accepted values: Registered
-
-Required: False
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

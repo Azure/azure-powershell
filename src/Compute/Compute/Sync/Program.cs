@@ -15,6 +15,7 @@
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Microsoft.WindowsAzure.Commands.Sync
 {
@@ -74,7 +75,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync
         void MessagePrintBlockRange(IndexRange range);
         void DebugEmptyBlockDetected(IndexRange range);
         void ProgressEmptyBlockDetection(int processedRangeCount, int totalRangeCount);
-
+        void ProgressCopy(double percentageDone);
+        void ProgressHyperV(ushort percentComplete, string message);
         void WriteVerboseWithTimestamp(string message, params object[] args);
     }
 }

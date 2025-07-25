@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\psm1.props" />
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.SignalR" Version="1.1.0" />
+    <ProjectReference Include="..\SignalR.Management.Sdk\SignalR.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,8 +21,6 @@
     </Compile>
   </ItemGroup>
 
-
-
-
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

@@ -18,6 +18,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System;
+    using Microsoft.Azure.Management.ApiManagement.Models;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement"), OutputType(typeof(PsApiManagement))]
     public class NewAzureApiManagement : AzureApiManagementCmdletBase
@@ -61,9 +64,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Consumption, Basic, Standard and Premium . Default value is Developer")]
+            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Basic, Standard, Premium and Consumption. The default value is Developer. ")]
         [ValidateSet("Developer", "Basic", "Standard", "Premium", "Consumption"), PSDefaultValue(Value = "Developer")]
-        public PsApiManagementSku? Sku { get; set; }
+        public string Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -133,6 +136,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             " This also enables the ability to authenticate the certificate in the policy on the gateway.")]
         public SwitchParameter EnableClientCertificate { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of availability zones denoting where the api management service is deployed into.")]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag only meant to be used for Premium SKU ApiManagement Service and Non Internal VNET deployments. " +
+            "This is useful in case we want to take a gateway region out of rotation." +
+            " This can also be used to standup a new region in Passive mode, test it and then make it Live later." +
+            "Default behavior is to make the region live immediately. ")]
+        public bool? DisableGateway { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Minimal Control Plane Apis version  to allow for managing the API Management service.")]
+        public string MinimalControlPlaneApiVersion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether or not public endpoint access is allowed for this service.Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResourceId for integration into stv2 Virtual Network Deployments")]
+        public string PublicIpAddressId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var apiManagementService = Client.CreateApiManagementService(
@@ -143,7 +173,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     AdminEmail,
                     Tag,
                     EnableClientCertificate.IsPresent,
-                    Sku ?? PsApiManagementSku.Developer,
+                    Sku ?? SkuType.Developer,
                     Capacity,
                     VpnType,
                     VirtualNetwork,
@@ -152,7 +182,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     SystemCertificateConfiguration,
                     SslSetting,
                     SystemAssignedIdentity.IsPresent,
-                    UserAssignedIdentity);
+                    UserAssignedIdentity,
+                    Zone,
+                    DisableGateway,
+                    MinimalControlPlaneApiVersion,
+                    PublicNetworkAccess,
+                    PublicIpAddressId);
 
             this.WriteObject(apiManagementService);
         }

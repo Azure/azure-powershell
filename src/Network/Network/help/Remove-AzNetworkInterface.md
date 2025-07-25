@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C83A0465-45EF-4FCC-B706-D5DF819664F0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworkinterface
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworkinterface
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Removes a network interface.
 
 ```
 Remove-AzNetworkInterface -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,16 +25,16 @@ The **Remove-AzNetworkInterface** cmdlet removes an Azure network interface.
 ## EXAMPLES
 
 ### Example 1: Remove a network interface
-```
-PS C:\>Remove-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroup "ResourceGroup1"
+```powershell
+Remove-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1"
 ```
 
 This command removes the network interface NetworkInterface1 in resource group ResourceGroup1.
 Because the *Force* parameter is not used, the user will be prompted to confirm this action.
 
 ### Example 2: Remove a network interface
-```
-PS C:\>Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" | Remove-AzNetworkInterface -Force
+```powershell
+Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" | Remove-AzNetworkInterface -Force
 ```
 
 This command removes all network interfaces in resource group ResourceGroup1.
@@ -164,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -183,5 +184,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzNetworkInterface](./New-AzNetworkInterface.md)
 
 [Set-AzNetworkInterface](./Set-AzNetworkInterface.md)
-
-

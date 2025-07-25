@@ -66,6 +66,30 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMSS()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMWithRingBuffer()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2ForVMWithRingBuffer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMSSWithRingBuffer()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2WithRingBuffer");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
@@ -90,7 +114,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConnectivityCheck");
         }
 
-        [Fact]
+        [Fact(Skip = "API is deprecated, no longer available to customers")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestReachabilityReport()
@@ -106,12 +130,20 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ProvidersList");
         }
 
-        [Fact(Skip = "Need to rewrite test after introduction of ConnectionMonitor V2")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
-        public void TestConnectionMonitor()
+        public void TestConnectionMonitorWithVMSSAsSource()
         {
-            TestRunner.RunTestScript("Test-ConnectionMonitor");
+            TestRunner.RunTestScript("Test-ConnectionMonitorWithVMSSAsSource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestConnectionMonitorConvertToV2()
+        {
+            TestRunner.RunTestScript("Test-ConnectionMonitorConvertToV2");
         }
 
         [Fact(Skip = "Server returns empty array")]
@@ -125,9 +157,73 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
-        public void TestCRUDFlowLog()
+        public void TestCRUDNsgFlowLog()
         {
-            TestRunner.RunTestScript("Test-CRUDFlowLog");
+            TestRunner.RunTestScript("Test-CRUDNsgFlowLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDVnetFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDVnetFlowLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDVnetFlowLogWithManagedIdentity()
+        {
+            TestRunner.RunTestScript("Test-CRUDVnetFlowLogWithManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDVnetFlowLogWithNoneManagedIdentity()
+        {
+            TestRunner.RunTestScript("Test-CRUDVnetFlowLogWithNoneManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestSetVnetFlowLogWithManagedIdentityFromNoMIInput()
+        {
+            TestRunner.RunTestScript("Test-SetVnetFlowLogWithManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDSubnetFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDSubnetFlowLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDNicFlowLog()
+        {
+            TestRunner.RunTestScript("Test-CRUDNicFlowLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithFiltering()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithFiltering");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithEmptyFilteringCondition()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyFilteringCondition");
         }
     }
 }

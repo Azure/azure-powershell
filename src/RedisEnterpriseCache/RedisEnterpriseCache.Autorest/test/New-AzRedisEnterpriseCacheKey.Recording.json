@@ -1,0 +1,82 @@
+{
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-ohp2ur5g/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-30hygucx/databases/default/regenerateKey?api-version=2025-05-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-ohp2ur5g/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-30hygucx/databases/default/regenerateKey?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-rp-server-mvid": [ "4846ea4d-6beb-4c22-adc0-f642ad4fd996" ],
+        "x-ms-request-id": [ "0e3464f8-d8f5-41e6-8b5f-aa1ddec989a1" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f39f71e1-608c-4626-8485-ddf5a519b312/westindia/8d0e2ec3-5d33-429a-9082-6a36e68a24c9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "31f0c0f7-928b-4fef-a38f-80fba416c6b0" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T081316Z:31f0c0f7-928b-4fef-a38f-80fba416c6b0" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7470A981026F45ABB60CC49D25482D9D Ref B: MAA201060515051 Ref C: 2025-04-17T08:13:15Z" ],
+        "Date": [ "Thu, 17 Apr 2025 08:13:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"*****\",\r\n  \"secondaryKey\": \"***\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-ohp2ur5g/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-30hygucx/databases/default/regenerateKey?api-version=2025-05-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-ohp2ur5g/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-30hygucx/databases/default/regenerateKey?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-rp-server-mvid": [ "4846ea4d-6beb-4c22-adc0-f642ad4fd996" ],
+        "x-ms-request-id": [ "0cd5f721-e0ee-4a7c-8bca-361c36d278bb" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f39f71e1-608c-4626-8485-ddf5a519b312/westindia/7e444e60-219d-40a2-bfb5-9fbef0f39ce6" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "7785130a-17c0-4441-978f-0acf35243c04" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250417T081317Z:7785130a-17c0-4441-978f-0acf35243c04" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C1FA9ACD921841B6A77C9F1421EEBDF2 Ref B: MAA201060515051 Ref C: 2025-04-17T08:13:16Z" ],
+        "Date": [ "Thu, 17 Apr 2025 08:13:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"*****\",\r\n  \"secondaryKey\": \"****\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

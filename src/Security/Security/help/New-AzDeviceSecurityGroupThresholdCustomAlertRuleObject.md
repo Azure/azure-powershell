@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject
+online version: https://learn.microsoft.com/powershell/module/az.security/New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create new threshold custom alert rule for device security group (IoT Security)
 
 ```
 New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold <Int32> -MaxThreshold <Int32>
- -Enabled <Boolean> -Type <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Enabled <Boolean> -Type <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +25,10 @@ The New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject cmdlet creates a new
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold 0 -MaxThreshold 10 -Enabled $true -Type "SomeRuleType"
+New-AzDeviceSecurityGroupThresholdCustomAlertRuleObject -MinThreshold 0 -MaxThreshold 10 -Enabled $true -Type "SomeRuleType"
+```
 
+```output
 RuleType: "SomeRuleType"
 DisplayName: "Display name for some rule type"
 Description: "Description for some rule type"

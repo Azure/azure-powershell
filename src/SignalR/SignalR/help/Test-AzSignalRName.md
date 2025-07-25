@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/test-azsignalrname
+online version: https://learn.microsoft.com/powershell/module/az.signalr/test-azsignalrname
 schema: 2.0.0
 ---
 
 # Test-AzSignalRName
 
 ## SYNOPSIS
-Check the availability of a name. Alias: Test-AzSignal.
+Check whether a name is available. Alias: Test-AzSignal.
 
 ## SYNTAX
 
@@ -18,20 +18,25 @@ Test-AzSignalRName [-Name] <String> [-Location] <String> [-DefaultProfile <IAzur
 ```
 
 ## DESCRIPTION
-Check the availability of a name. Alias: Test-AzSignal.
+Check whether a name is available. If a name is available, returns true. Otherwise, return false.  Alias: Test-AzSignal.
 
 ## EXAMPLES
 
-### Check an existed name.
+### Example 1: When the name is already in use, it's not available.
 ```powershell
-PS C:\> Test-AzSignalRName -Name existedsignalr -Location eastus
+Test-AzSignalRName -Name inusesignalr -Location eastus
+```
+
+```output
 False
 ```
 
-### Check an unexisted name.
+### Example 2: When the name is not in use, it's available.
+```powershell
+Test-AzSignalRName -Name availablesignalr -Location eastus
 ```
-powershell
-PS C:\> Test-AzSignalR unexistedsignalr eastus
+
+```output
 True
 ```
 
@@ -87,7 +92,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

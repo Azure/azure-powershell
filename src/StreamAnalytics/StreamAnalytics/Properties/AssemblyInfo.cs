@@ -14,19 +14,15 @@
 
 using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - StreamAnalytics Manager")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - StreamAnalytics")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("9188beb8-68c3-404a-91e2-6f287f162a52")]
-[assembly: AssemblyVersion("1.0.1")]
-[assembly: AssemblyFileVersion("1.0.1")]
-#if !SIGN
-[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Test")]
-#endif
+[assembly: Guid("8123cf34-d2de-4f05-9207-247079385155")]
+[assembly: AssemblyVersion("2.1.0")]
+[assembly: AssemblyFileVersion("2.1.0")]

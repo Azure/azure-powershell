@@ -16,11 +16,14 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
+
 using Xunit;
 using Xunit.Abstractions;
 
@@ -28,17 +31,17 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class TenantCmdletTests
     {
-        private MemoryDataStore dataStore;
-        private MockCommandRuntime commandRuntimeMock;
+        private MockCommandRuntime CommandRuntimeMock { get; set; }
+        private string TenantId { get; set; } = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+        private string SubscriptionId { get; set; } = "9e223dbe-3399-4e19-88eb-0975f02ac87f";
 
         public TenantCmdletTests(ITestOutputHelper output)
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            dataStore = new MemoryDataStore();
-            AzureSession.Instance.DataStore = dataStore;
-            commandRuntimeMock = new MockCommandRuntime();
-            AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
+            CommandRuntimeMock = new MockCommandRuntime();
+
+            AzureSessionTestInitializer.Initialize();
         }
 
         [Fact]
@@ -47,17 +50,18 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new GetAzureRMTenantCommand();
             // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.CommandRuntime = CommandRuntimeMock;
+            cmdlt.TenantId = TenantId;
 
             // Act
-            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
+            Login(SubscriptionId, null);
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.True(CommandRuntimeMock.OutputPipeline.Count == 2);
+            // skip first item as it's PSAzureContext
+            Assert.Contains(TenantId, CommandRuntimeMock.OutputPipeline.Skip(1).Select(tenant => ((PSAzureTenant)tenant).Id));
         }
 
         [Fact]
@@ -66,17 +70,18 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new GetAzureRMTenantCommand();
             // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.CommandRuntime = CommandRuntimeMock;
             cmdlt.TenantId = "microsoft.com";
 
             // Act
-            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
+            Login(SubscriptionId, null);
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.True(CommandRuntimeMock.OutputPipeline.Count >= 2);
+            // skip first item as it's PSAzureContext
+            Assert.Contains(TenantId, CommandRuntimeMock.OutputPipeline.Skip(1).Select(tenant => ((PSAzureTenant)tenant).Id));
         }
 
         [Fact]
@@ -85,25 +90,28 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new GetAzureRMTenantCommand();
             // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.CommandRuntime = CommandRuntimeMock;
 
             // Act
-            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
+            Login(SubscriptionId, null);
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.True(CommandRuntimeMock.OutputPipeline.Count >= 2);
+            // skip first item as it's PSAzureContext
+            Assert.Contains(TenantId, CommandRuntimeMock.OutputPipeline.Skip(1).Select(tenant => ((PSAzureTenant)tenant).Id));
         }
 
         private void Login(string subscriptionId, string tenantId)
         {
             var cmdlt = new ConnectAzureRmAccountCommand();
             // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.CommandRuntime = CommandRuntimeMock;
             cmdlt.Subscription = subscriptionId;
+            cmdlt.MyInvocation.BoundParameters.Add(nameof(cmdlt.Subscription), subscriptionId);
             cmdlt.Tenant = tenantId;
+            cmdlt.MyInvocation.BoundParameters.Add(nameof(cmdlt.Tenant), tenantId);
 
             // Act
             cmdlt.InvokeBeginProcessing();

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementapiversionset
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementapiversionset
 schema: 2.0.0
 ---
 
@@ -29,13 +29,13 @@ The **Get-AzApiManagementApiVersionSet** cmdlet gets the details of the API Vers
 
 ## EXAMPLES
 
-### Example 1
-
-### Example 2: Get all API Version Sets
+### Example 1: Get all API Version Sets
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext
+```
 
+```output
 ApiVersionSetId   : a93316c8-8b88-46cc-8260-380789a5d598
 Description       :
 VersionQueryName  :
@@ -70,11 +70,13 @@ ServiceName       : contoso
 
 This command gets all of the API Version sets for the specified context.
 
-### Example 3: Get a API Version Set by ID
+### Example 2: Get a API Version Set by ID
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext -ApiVersionSetId $ApiVersionSetId
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext -ApiVersionSetId $ApiVersionSetId
+```
 
+```output
 ApiVersionSetId   : 8c441e0e-a0cd-47d8-8d88-f944a83b41bd
 Description       :
 VersionQueryName  :

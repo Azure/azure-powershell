@@ -1,0 +1,123 @@
+{
+  "New-AzMapsAccountKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57/regenerateKey?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57/regenerateKey?api-version=2021-02-01",
+      "Content": "{\r\n  \"keyType\": \"primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-d8be894b497b093af274c772e5520d58-e0adb5f619d1d404-01" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/japanwest/e194392a-9f9a-4c3f-a94f-e160bf8d2553" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "1deb8fc7-dadc-40a5-b8ae-9a0cd1dadf63" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020205Z:1deb8fc7-dadc-40a5-b8ae-9a0cd1dadf63" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 61D8D679F68F4D3A9FC05453AFE929D0 Ref B: TYO201100113023 Ref C: 2025-04-16T02:02:04Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:02:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "332" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"primaryKey\": \"*****\",\n  \"secondaryKey\": \"*****\",\n  \"primaryKeyLastUpdated\": \"2025-04-16T02:02:05.3621428Z\",\n  \"secondaryKeyLastUpdated\": \"2025-04-16T02:01:47.0866587Z\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMapsAccountKey+[NoContext]+RegenerateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "e05aa4ac-c664-415c-a8d7-a9d7d6302ce8" ],
+        "CommandName": [ "Get-AzMapsAccount" ],
+        "FullCommandName": [ "Get-AzMapsAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.7", "Az.Maps/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-37134af8e02b3ea901417f59d42dd688-d48adff2ad1d9400-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "582e3dc9-0a6f-468f-9a34-289a2fa24fb3" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020206Z:582e3dc9-0a6f-468f-9a34-289a2fa24fb3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 53D6E2A6606247C8A0609524817B54DE Ref B: TYO201100113023 Ref C: 2025-04-16T02:02:05Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:02:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"kind\": \"Gen2\",\n  \"type\": \"Microsoft.Maps/accounts\",\n  \"sku\": {\n    \"name\": \"G2\",\n    \"tier\": \"Standard\"\n  },\n  \"properties\": {\n    \"uniqueId\": \"8677ce21-bf04-45c1-b87d-4c9bbb16c6f3\",\n    \"provisioningState\": \"Succeeded\",\n    \"disableLocalAuth\": false\n  },\n  \"systemData\": {\n    \"createdBy\": \"v-jiaji@microsoft.com\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2025-04-16T02:01:46.6860028Z\",\n    \"lastModifiedBy\": \"v-jiaji@microsoft.com\",\n    \"lastModifiedByType\": \"User\",\n    \"lastModifiedAt\": \"2025-04-16T02:02:05.129696Z\"\n  },\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57\",\n  \"name\": \"mapsnu0d57\",\n  \"location\": \"westcentralus\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMapsAccountKey+[NoContext]+RegenerateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57/regenerateKey?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57/regenerateKey?api-version=2021-02-01",
+      "Content": "{\r\n  \"keyType\": \"primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-57a9a83d27d9a3609eb03d1853f524f3-aa1cfc2972d6cba9-01" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/japanwest/3a6fddf2-1174-4ee0-88a0-3b0d9bd691c6" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "00cdd6be-3cac-45e8-9d8a-a43a36dea1f3" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020207Z:00cdd6be-3cac-45e8-9d8a-a43a36dea1f3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 617F51784B384681A1F782601F9B72E1 Ref B: TYO201100113023 Ref C: 2025-04-16T02:02:06Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:02:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "332" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"primaryKey\": \"*****\",\n  \"secondaryKey\": \"*****\",\n  \"primaryKeyLastUpdated\": \"2025-04-16T02:02:06.9322663Z\",\n  \"secondaryKeyLastUpdated\": \"2025-04-16T02:01:47.0866587Z\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

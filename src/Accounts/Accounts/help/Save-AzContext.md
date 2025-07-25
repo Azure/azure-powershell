@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/save-azcontext
+online version: https://learn.microsoft.com/powershell/module/az.accounts/save-azcontext
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Saves the current authentication information for use in other PowerShell session
 ## SYNTAX
 
 ```
-Save-AzContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force]
+Save-AzContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force] [-WithCredential]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,16 +23,16 @@ The Save-AzContext cmdlet saves the current authentication information for use i
 ## EXAMPLES
 
 ### Example 1: Saving the current session's context
-```
-PS C:\> Connect-AzAccount
-PS C:\> Save-AzContext -Path C:\test.json
+```powershell
+Connect-AzAccount
+Save-AzContext -Path C:\test.json
 ```
 
 This example saves the current session's Azure context to the JSON file provided.
 
 ### Example 2: Saving a given context
-```
-PS C:\> Save-AzContext -Profile (Connect-AzAccount) -Path C:\test.json
+```powershell
+Save-AzContext -Profile (Connect-AzAccount) -Path C:\test.json
 ```
 
 This example saves the Azure context that is passed through to the cmdlet to the JSON file provided.
@@ -100,6 +100,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -WithCredential
+Export the credentials to the file
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -132,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

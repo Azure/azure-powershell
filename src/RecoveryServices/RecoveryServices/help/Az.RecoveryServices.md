@@ -1,7 +1,7 @@
 ---
 Module Name: Az.RecoveryServices
 Module Guid: 4aa53b7e-fcfe-4e22-979c-9a4e6380de58
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices
+Download Help Link: https://learn.microsoft.com/powershell/module/az.recoveryservices
 Help Version: 4.1.2.0
 Locale: en-US
 ---
@@ -36,10 +36,13 @@ Edits a Site Recovery plan.
 The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets up automatic protection of current and any future SQL DBs within the given instance with the supplied policy.
 
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
-Enables backup for an item with a specified Backup protection policy.
+Enables or resumes backup for an item with a specified Backup protection policy.
 
 ### [Get-AzRecoveryServicesAsrAlertSetting](Get-AzRecoveryServicesAsrAlertSetting.md)
 Gets the configured Azure Site Recovery notification settings for the vault.
+
+### [Get-AzRecoveryServicesAsrClusterRecoveryPoint](Get-AzRecoveryServicesAsrClusterRecoveryPoint.md)
+Gets the available cluster recovery points for a replication protection cluster.
 
 ### [Get-AzRecoveryServicesAsrEvent](Get-AzRecoveryServicesAsrEvent.md)
 Gets details of Azure Site Recovery events in the vault.
@@ -76,6 +79,9 @@ Gets the available recovery points for a replication protected item.
 
 ### [Get-AzRecoveryServicesAsrReplicationProtectedItem](Get-AzRecoveryServicesAsrReplicationProtectedItem.md)
 Gets the properties of an Azure Site Recovery Replication Protected Items.
+
+### [Get-AzRecoveryServicesAsrReplicationProtectionCluster](Get-AzRecoveryServicesAsrReplicationProtectionCluster.md)
+Gets a replication protection cluster or all the replication protection clusters in a protection container or all the replication protection clusters in the Recovery Services vault
 
 ### [Get-AzRecoveryServicesAsrServicesProvider](Get-AzRecoveryServicesAsrServicesProvider.md)
 Gets the details of the ASR recovery services providers registered to the Recovery Services vault.
@@ -116,6 +122,9 @@ This command will retrieve all protectable items within a certain container or a
 ### [Get-AzRecoveryServicesBackupProtectionPolicy](Get-AzRecoveryServicesBackupProtectionPolicy.md)
 Gets Backup protection policies for a vault.
 
+### [Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup](Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup.md)
+Gets the recovery points which are recommended to be moved together to VaultArchive tier.
+
 ### [Get-AzRecoveryServicesBackupRecoveryLogChain](Get-AzRecoveryServicesBackupRecoveryLogChain.md)
 This command lists the start and end points of the unbroken log chain of the given backup item. Use it to determine whether the point-in-time, to which the user wants the DB to be restored, is valid or not.
 
@@ -137,6 +146,9 @@ Checks whether your ARM resource is backed up or not.
 ### [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](Get-AzRecoveryServicesBackupWorkloadRecoveryConfig.md)
 This command constructs the recovery configuration of a backed up item such as SQL DB. The configuration object stores all details such as the recovery mode, target destinations for the restore and application specific parameters like target physical paths for SQL.
 
+### [Get-AzRecoveryServicesResourceGuardMapping](Get-AzRecoveryServicesResourceGuardMapping.md)
+Gets the resource guard mapping added to the recovery services vault.
+
 ### [Get-AzRecoveryServicesVault](Get-AzRecoveryServicesVault.md)
 Gets a list of Recovery Services vaults.
 
@@ -147,19 +159,31 @@ Returns the properties of a Recovery Services Vault.
 Gets the Azure Site Recovery vault settings file.
 
 ### [Import-AzRecoveryServicesAsrVaultSettingsFile](Import-AzRecoveryServicesAsrVaultSettingsFile.md)
-Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session. 
+Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session.
 
 ### [Initialize-AzRecoveryServicesBackupProtectableItem](Initialize-AzRecoveryServicesBackupProtectableItem.md)
 This command triggers the discovery of any unprotected items of the given workload type in the given container. If the DB application is not auto-protected use this command to discover new DBs whenever they are added and proceed to protect them.
 
+### [Initialize-AzRecoveryServicesDSMove](Initialize-AzRecoveryServicesDSMove.md)
+Initializes DS move for Copy-AzRecoveryServicesVault.
+
+### [Move-AzRecoveryServicesBackupRecoveryPoint](Move-AzRecoveryServicesBackupRecoveryPoint.md)
+Moves the recovery point from source tier to destination tier.
+
 ### [New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig](New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig.md)
 Creates a disk mapping object for Azure virtual machine disks to be replicated.
+
+### [New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig](New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig.md)
+Creates a replication protected item mapping object for Azure virtual machine to be replicated.
 
 ### [New-AzRecoveryServicesAsrFabric](New-AzRecoveryServicesAsrFabric.md)
 Creates an Azure Site Recovery Fabric.
 
 ### [New-AzRecoveryServicesAsrInMageAzureV2DiskInput](New-AzRecoveryServicesAsrInMageAzureV2DiskInput.md)
 Creates a disk mapping object for vMWare virtual machine disks to be replicated.
+
+### [New-AzRecoveryServicesAsrInMageRcmDiskInput](New-AzRecoveryServicesAsrInMageRcmDiskInput.md)
+Creates Azure Site Recovery Disk replication configuration for VMware To Azure replication.
 
 ### [New-AzRecoveryServicesAsrNetworkMapping](New-AzRecoveryServicesAsrNetworkMapping.md)
 Creates an ASR network mapping between two networks.
@@ -182,11 +206,20 @@ Creates an ASR recovery plan.
 ### [New-AzRecoveryServicesAsrReplicationProtectedItem](New-AzRecoveryServicesAsrReplicationProtectedItem.md)
 Enables replication for an ASR protectable item by creating a replication protected item.
 
+### [New-AzRecoveryServicesAsrReplicationProtectionCluster](New-AzRecoveryServicesAsrReplicationProtectionCluster.md)
+Creates an ASR Replication Protection Cluster.
+
 ### [New-AzRecoveryServicesAsrStorageClassificationMapping](New-AzRecoveryServicesAsrStorageClassificationMapping.md)
 Creates an ASR storage classification mapping in the Recovery Services vault.
 
 ### [New-AzRecoveryServicesAsrvCenter](New-AzRecoveryServicesAsrvCenter.md)
 Adds a vCenter server to discover protectable items from.
+
+### [New-AzRecoveryServicesAsrVMNicConfig](New-AzRecoveryServicesAsrVMNicConfig.md)
+Creates an ASR NIC config that contains the failover and test failover related configuration details.
+
+### [New-AzRecoveryServicesAsrVMNicIPConfig](New-AzRecoveryServicesAsrVMNicIPConfig.md)
+Creates an ASR NIC IP config that contains the failover and test failover configuration details for each IP Config (Primary and Secondary) of the NIC.
 
 ### [New-AzRecoveryServicesBackupProtectionPolicy](New-AzRecoveryServicesBackupProtectionPolicy.md)
 Creates a Backup protection policy.
@@ -218,6 +251,12 @@ Deletes the specified ASR recovery plan from Recovery Services vault.
 ### [Remove-AzRecoveryServicesAsrReplicationProtectedItem](Remove-AzRecoveryServicesAsrReplicationProtectedItem.md)
 Stops/Disables replication for an Azure Site Recovery replication protected item.
 
+### [Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk](Remove-AzRecoveryServicesAsrReplicationProtectedItemDisk.md)
+Removes disks to replication protected item.
+
+### [Remove-AzRecoveryServicesAsrReplicationProtectionCluster](Remove-AzRecoveryServicesAsrReplicationProtectionCluster.md)
+Stops/Disables replication for an Azure Site Recovery replication protection cluster.
+
 ### [Remove-AzRecoveryServicesAsrServicesProvider](Remove-AzRecoveryServicesAsrServicesProvider.md)
 Deletes/unregister the specified Azure Site Recovery recovery services provider from the recovery services vault.
 
@@ -230,6 +269,9 @@ Removes the vCenter server from the ASR fabric and stops discovery of virtual ma
 ### [Remove-AzRecoveryServicesBackupProtectionPolicy](Remove-AzRecoveryServicesBackupProtectionPolicy.md)
 Deletes a Backup protection policy from a vault.
 
+### [Remove-AzRecoveryServicesResourceGuardMapping](Remove-AzRecoveryServicesResourceGuardMapping.md)
+Deletes the resource guard mapping added to the recovery services vault.
+
 ### [Remove-AzRecoveryServicesVault](Remove-AzRecoveryServicesVault.md)
 Deletes a Recovery Services vault.
 
@@ -237,7 +279,7 @@ Deletes a Recovery Services vault.
 Restarts an Azure Site Recovery job.
 
 ### [Restore-AzRecoveryServicesBackupItem](Restore-AzRecoveryServicesBackupItem.md)
-Restores the data and configuration for a Backup item to a recovery point.
+Restores the data and configuration for a Backup item to the specified recovery point. The required parameters vary with the backup item type. The same command is used to restore Azure Virtual machines, databases running within Azure Virtual machines and Azure file shares as well.
 
 ### [Resume-AzRecoveryServicesAsrJob](Resume-AzRecoveryServicesAsrJob.md)
 Resumes a suspended Azure Site Recovery job.
@@ -257,14 +299,38 @@ Sets the properties for backup management.
 ### [Set-AzRecoveryServicesBackupProtectionPolicy](Set-AzRecoveryServicesBackupProtectionPolicy.md)
 Modifies a Backup protection policy.
 
+### [Set-AzRecoveryServicesResourceGuardMapping](Set-AzRecoveryServicesResourceGuardMapping.md)
+Sets the resource guard mapping to the recovery services vault.
+
 ### [Set-AzRecoveryServicesVaultContext](Set-AzRecoveryServicesVaultContext.md)
 Sets vault context.
 
 ### [Set-AzRecoveryServicesVaultProperty](Set-AzRecoveryServicesVaultProperty.md)
 Updates properties of a Vault.
 
+### [Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint](Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint.md)
+Changes a recovery point for a failed over replication protection cluster before committing the failover operation
+
 ### [Start-AzRecoveryServicesAsrApplyRecoveryPoint](Start-AzRecoveryServicesAsrApplyRecoveryPoint.md)
 Changes a recovery point for a failed over protected item before committing the failover operation.
+
+### [Start-AzRecoveryServicesAsrCancelFailoverJob](Start-AzRecoveryServicesAsrCancelFailoverJob.md)
+Starts the cancel failover action for a Site Recovery object.
+
+### [Start-AzRecoveryServicesAsrClusterCommitFailoverJob](Start-AzRecoveryServicesAsrClusterCommitFailoverJob.md)
+Starts the commit failover action for a replication protection cluster.
+
+### [Start-AzRecoveryServicesAsrClusterResynchronizeReplicationJob](Start-AzRecoveryServicesAsrClusterResynchronizeReplicationJob.md)
+Starts cluster replication resynchronization.
+
+### [Start-AzRecoveryServicesAsrClusterTestFailoverCleanupJob](Start-AzRecoveryServicesAsrClusterTestFailoverCleanupJob.md)
+Starts the test failover cleanup operation for a cluster.
+
+### [Start-AzRecoveryServicesAsrClusterTestFailoverJob](Start-AzRecoveryServicesAsrClusterTestFailoverJob.md)
+Starts a test failover operation for a cluster.
+
+### [Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob](Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob.md)
+Starts an unplanned failover operation for a cluster.
 
 ### [Start-AzRecoveryServicesAsrCommitFailoverJob](Start-AzRecoveryServicesAsrCommitFailoverJob.md)
 Starts the commit failover action for a Site Recovery object.
@@ -274,6 +340,9 @@ Starts a planned failover operation.
 
 ### [Start-AzRecoveryServicesAsrResynchronizeReplicationJob](Start-AzRecoveryServicesAsrResynchronizeReplicationJob.md)
 Starts replication resynchronization.
+
+### [Start-AzRecoveryServicesAsrSwitchAppliance](Start-AzRecoveryServicesAsrSwitchAppliance.md)
+Starts the switch appliance action for a Site Recovery object.
 
 ### [Start-AzRecoveryServicesAsrSwitchProcessServerJob](Start-AzRecoveryServicesAsrSwitchProcessServerJob.md)
 Switch replication from one Process server to another for load balancing.
@@ -285,7 +354,7 @@ Starts the test failover cleanup operation.
 Starts a test failover operation.
 
 ### [Start-AzRecoveryServicesAsrUnplannedFailoverJob](Start-AzRecoveryServicesAsrUnplannedFailoverJob.md)
-Starts a unplanned failover operation.
+Starts an unplanned failover operation.
 
 ### [Stop-AzRecoveryServicesAsrJob](Stop-AzRecoveryServicesAsrJob.md)
 Stops an Azure Site Recovery job.
@@ -293,14 +362,23 @@ Stops an Azure Site Recovery job.
 ### [Stop-AzRecoveryServicesBackupJob](Stop-AzRecoveryServicesBackupJob.md)
 Cancels a running job.
 
+### [Test-AzRecoveryServicesDSMove](Test-AzRecoveryServicesDSMove.md)
+This cmdlet performs necessary validations for DS Move.
+
+### [Undo-AzRecoveryServicesBackupContainerDeletion](Undo-AzRecoveryServicesBackupContainerDeletion.md)
+Undeletes a previously soft-deleted backup container in a recovery services vault.
+
 ### [Undo-AzRecoveryServicesBackupItemDeletion](Undo-AzRecoveryServicesBackupItemDeletion.md)
-If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever 
+If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever
 
 ### [Unregister-AzRecoveryServicesBackupContainer](Unregister-AzRecoveryServicesBackupContainer.md)
 Unregisters a Windows Server or other container from the vault.
 
 ### [Unregister-AzRecoveryServicesBackupManagementServer](Unregister-AzRecoveryServicesBackupManagementServer.md)
 Unregisters a SCDPM server or Backup server from the vault.
+
+### [Update-AzRecoveryServicesAsrClusterProtectionDirection](Update-AzRecoveryServicesAsrClusterProtectionDirection.md)
+Updates the replication direction for the specified replication protection cluster. Used to re-protect/reverse replicate a failed over replication protection cluster.
 
 ### [Update-AzRecoveryServicesAsrMobilityService](Update-AzRecoveryServicesAsrMobilityService.md)
 Push mobility service agent updates to protected machines.
@@ -325,6 +403,9 @@ Refreshes (Refresh server) the information received from the Azure Site Recovery
 
 ### [Update-AzRecoveryServicesAsrvCenter](Update-AzRecoveryServicesAsrvCenter.md)
 Update discovery details for a registered vCenter.
+
+### [Update-AzRecoveryServicesVault](Update-AzRecoveryServicesVault.md)
+Updates MSIdentity to the recovery services vault.
 
 ### [Wait-AzRecoveryServicesBackupJob](Wait-AzRecoveryServicesBackupJob.md)
 Waits for a Backup job to finish.

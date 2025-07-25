@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Adapter
                     currentParameters.Family = resp.OperationParameters.CurrentParameters.Family;
                     currentParameters.Tier = resp.OperationParameters.CurrentParameters.Tier;
                     currentParameters.VCores = resp.OperationParameters.CurrentParameters.VCores;
-                    currentParameters.StorageSizeInGB = resp.OperationParameters.CurrentParameters.StorageSizeInGB;
+                    currentParameters.StorageSizeInGb = resp.OperationParameters.CurrentParameters.StorageSizeInGb;
                 }
 
                 Management.Sql.Models.UpsertManagedServerOperationParameters requestedParameters = new Management.Sql.Models.UpsertManagedServerOperationParameters();
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceOperation.Adapter
                     requestedParameters.Family = resp.OperationParameters.RequestedParameters.Family;
                     requestedParameters.Tier = resp.OperationParameters.RequestedParameters.Tier;
                     requestedParameters.VCores = resp.OperationParameters.RequestedParameters.VCores;
-                    requestedParameters.StorageSizeInGB = resp.OperationParameters.RequestedParameters.StorageSizeInGB;
+                    requestedParameters.StorageSizeInGb = resp.OperationParameters.RequestedParameters.StorageSizeInGb;
                 }
 
                 managedInstanceOperation.OperationParameters = new Management.Sql.Models.ManagedInstanceOperationParametersPair(currentParameters, requestedParameters);

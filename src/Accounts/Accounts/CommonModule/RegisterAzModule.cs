@@ -17,6 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Management.Automation;
 using System.Net.Http;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -48,11 +49,30 @@ namespace Microsoft.Azure.Commands.Common
                     // this gets called for every event that is signaled
                     EventListener = module.EventListener,
 
+                    // this gets called to get the telemetryId
+                    GetTelemetryId = () => { return MetricHelper.TelemetryId; },
+
+                    // this gets called when a telemetry related operation is made, e.g. create/send a telemetry
+                    Telemetry = module.Telemetry,
+
                     // this gets called at module load time (allows you to change the http pipeline)
                     OnModuleLoad = module.OnModuleLoad,
 
+                    // this gets called to sanitize the output object
+                    SanitizerHandler = module.SanitizerHandler,
+
+                    // this gets called to get the sanitizer info
+                    GetTelemetryInfo = module.GetTelemetryInfo,
+
                     // this gets called before the generated cmdlet makes a call across the wire (allows you to change the HTTP pipeline)
                     OnNewRequest = ContextAdapter.Instance.OnNewRequest,
+
+                    //OnNewRequest = AddRequestUserAgentHandler + AddPatchRequestUriHandler + AddAuthorizeRequestHandler
+                    AddRequestUserAgentHandler = ContextAdapter.Instance.AddRequestUserAgentHandler,
+
+                    AddPatchRequestUriHandler = ContextAdapter.Instance.AddPatchRequestUriHandler,
+
+                    AddAuthorizeRequestHandler = ContextAdapter.Instance.AddAuthorizeRequestHandler,
 
                     // Called for well-known parameters that require argument completers
                     ArgumentCompleter = ContextAdapter.Instance.CompleteArgument,

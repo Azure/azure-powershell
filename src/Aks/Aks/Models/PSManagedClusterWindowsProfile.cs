@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.ContainerService.Models;
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Commands.Aks.Models
 {
     /// <summary>
@@ -28,5 +31,28 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets or sets the administrator password to use for Windows VMs.
         /// </summary>
         public string AdminPassword { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type to use for Windows VMs. See [Azure
+        /// Hybrid User
+        /// Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)
+        /// for more details. Possible values include: 'None', 'Windows_Server'
+        /// </summary>
+        public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable CSI proxy.
+        /// </summary>
+        /// <remarks>
+        /// For more details on CSI proxy, see the [CSI proxy GitHub
+        /// repo](https://github.com/kubernetes-csi/csi-proxy).
+        /// </remarks>
+        public bool? EnableCSIProxy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Windows gMSA Profile in the Managed Cluster.
+        /// </summary>
+        public WindowsGmsaProfile GmsaProfile { get; set; }
+
     }
 }

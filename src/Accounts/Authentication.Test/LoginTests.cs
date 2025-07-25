@@ -17,9 +17,6 @@ using Common.Authentication.Test.Cmdlets;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -49,8 +46,6 @@ namespace Common.Authentication.Test
         {
             AzureSessionInitializer.InitializeAzureSession();
             ProtectedProfileProvider.InitializeResourceManagerProfile();
-            IServicePrincipalKeyStore keyStore = new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
-            AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
 
             ContextAutosaveSettings settings = null;
             AzureSession.Modify((session) => EnableAutosave(session, true, out settings));
@@ -88,7 +83,7 @@ namespace Common.Authentication.Test
         public void LoginWithServicePrincipal()
         {
             // REQUIRED:
-            // _tenantId --> Id of the tenant that the service princinpal is registered to
+            // _tenantId --> Id of the tenant that the service principal is registered to
             // _userName --> Application id of the service principal
             // _password --> Secret of the service principal
             _account = new AzureAccount() { Type = AzureAccount.AccountType.ServicePrincipal };
@@ -122,41 +117,12 @@ namespace Common.Authentication.Test
                 throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid token cache path", tokenPath));
             }
 
-            result = new ContextAutosaveSettings
-            {
-                CacheDirectory = session.TokenCacheDirectory,
-                CacheFile = session.TokenCacheFile,
-                ContextDirectory = session.ARMProfileDirectory,
-                ContextFile = session.ARMProfileFile,
-                Mode = ContextSaveMode.CurrentUser
-            };
+            result = ContextAutosaveSettings.FromAzureSession(session, ContextSaveMode.CurrentUser);
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
-            var diskCache = session.TokenCache as ProtectedFileTokenCache;
             try
             {
-                if (diskCache == null)
-                {
-                    var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
-
-                        diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                        if (memoryCache != null && memoryCache.Count > 0)
-                        {
-                            diskCache.Deserialize(memoryCache.Serialize());
-                        }
-
-                        session.TokenCache = diskCache;
-                    }
-                    catch
-                    {
-                        // leave the token cache alone if there are file system errors
-                    }
-                }
-
                 if (writeAutoSaveFile)
                 {
                     try

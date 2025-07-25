@@ -15,12 +15,13 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue
 {
     using Commands.Common.Storage.ResourceModel;
+    using global::Azure;
+    using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Queue;
-    using Microsoft.Azure.Storage.Queue.Protocol;
     using System;
-    using System.Collections.Generic;
+    using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
 
@@ -72,116 +73,68 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
         }
 
         /// <summary>
-        /// list azure queues by name
-        /// </summary>
-        /// <param name="name">queue name</param>
-        /// <returns>An enumerable collection of CloudQueue objects</returns>
-        internal IEnumerable<CloudQueue> ListQueuesByName(string name)
-        {
-            string prefix = String.Empty;
-            QueueListingDetails queueListingDetails = QueueListingDetails.All;
-            QueueRequestOptions requestOptions = RequestOptions;
-
-            if (String.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
-            {
-                IEnumerable<CloudQueue> queues = Channel.ListQueues(prefix, queueListingDetails, requestOptions, OperationContext);
-
-                WildcardOptions options = WildcardOptions.IgnoreCase | WildcardOptions.Compiled;
-                WildcardPattern wildcard = null;
-
-                if (!string.IsNullOrEmpty(name))
-                {
-                    wildcard = new WildcardPattern(name, options);
-                }
-
-                foreach (CloudQueue queue in queues)
-                {
-                    if (wildcard == null || wildcard.IsMatch(queue.Name))
-                    {
-                        yield return queue;
-                    }
-                }
-            }
-            else
-            {
-                if (!NameUtil.IsValidQueueName(name))
-                {
-                    throw new ArgumentException(String.Format(Resources.InvalidQueueName, name));
-                }
-
-                CloudQueue queue = Channel.GetQueueReference(name);
-
-                if (Channel.DoesQueueExist(queue, requestOptions, OperationContext))
-                {
-                    yield return queue;
-                }
-                else
-                {
-                    throw new ResourceNotFoundException(String.Format(Resources.QueueNotFound, name));
-                }
-            }
-        }
-
-        /// <summary>
-        /// list azure queues by prefix
-        /// </summary>
-        /// <param name="prefix">queue prefix</param>
-        /// <returns>An enumerable collection of CloudQueue objects</returns>
-        internal IEnumerable<CloudQueue> ListQueuesByPrefix(string prefix)
-        {
-            List<CloudQueue> queueList = new List<CloudQueue>();
-            QueueListingDetails queueListingDetails = QueueListingDetails.All;
-            QueueRequestOptions requestOptions = RequestOptions;
-
-            if (!NameUtil.IsValidQueuePrefix(prefix))
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidQueueName, prefix));
-            }
-
-            return Channel.ListQueues(prefix, queueListingDetails, requestOptions, OperationContext);
-        }
-
-        /// <summary>
-        /// write azure queue with message count
-        /// </summary>
-        /// <param name="queueList">An enumerable collection of CloudQueue objects</param>
-        internal void WriteQueueWithCount(IEnumerable<CloudQueue> queueList)
-        {
-            if (null == queueList)
-            {
-                return;
-            }
-
-            QueueRequestOptions requestOptions = RequestOptions;
-
-            foreach (CloudQueue queue in queueList)
-            {
-                //get message count
-                Channel.FetchAttributes(queue, requestOptions, OperationContext);
-                AzureStorageQueue azureQueue = new AzureStorageQueue(queue);
-
-                WriteObjectWithStorageContext(azureQueue);
-            }
-        }
-
-        /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            IEnumerable<CloudQueue> queueList = null;
-
-            if (PrefixParameterSet == ParameterSetName)
+            QueueServiceClient queueServiceClient = Util.GetTrack2QueueServiceClient((AzureStorageContext)this.Context, this.ClientOptions);
+            switch (this.ParameterSetName)
             {
-                queueList = ListQueuesByPrefix(Prefix);
-            }
-            else
-            {
-                queueList = ListQueuesByName(Name);
-            }
+                case NameParameterSet:
+                    if (String.IsNullOrEmpty(this.Name) || WildcardPattern.ContainsWildcardCharacters(this.Name))
+                    {
+                        WildcardOptions options = WildcardOptions.IgnoreCase | WildcardOptions.Compiled;
+                        WildcardPattern wildcard = null;
 
-            WriteQueueWithCount(queueList);
+                        if (!string.IsNullOrEmpty(this.Name))
+                        {
+                            wildcard = new WildcardPattern(this.Name, options);
+                        }
+
+                        Pageable<QueueItem> queueItems = queueServiceClient.GetQueues(cancellationToken: this.CmdletCancellationToken);
+                        foreach (QueueItem queueItem in queueItems)
+                        {
+                            if (wildcard == null || wildcard.IsMatch(queueItem.Name))
+                            {
+                                QueueClient queueClient = queueServiceClient.GetQueueClient(queueItem.Name);
+                                QueueProperties queueProperties = queueClient.GetProperties(cancellationToken: this.CmdletCancellationToken);
+                                WriteObjectWithStorageContext(new AzureStorageQueue(queueClient, queueProperties, (AzureStorageContext)this.Context));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!NameUtil.IsValidQueueName(this.Name))
+                        {
+                            throw new ArgumentException(String.Format(Resources.InvalidQueueName, this.Name));
+                        }
+                        QueueClient queueClient = queueServiceClient.GetQueueClient(this.Name);
+                        if (!queueClient.Exists(CmdletCancellationToken)) {
+                            throw new ResourceNotFoundException(String.Format(Resources.QueueNotFound, this.Name));
+                        }
+                        QueueProperties queueProperties = queueClient.GetProperties(cancellationToken: this.CmdletCancellationToken);
+                        WriteObjectWithStorageContext(new AzureStorageQueue(queueClient, queueProperties, (AzureStorageContext)this.Context));
+                    }
+                    break;
+
+                case PrefixParameterSet:
+                    if (!NameUtil.IsValidQueuePrefix(this.Prefix))
+                    {
+                        throw new ArgumentException(String.Format(Resources.InvalidQueueName, this.Prefix));
+                    }
+                    Pageable<QueueItem> items = queueServiceClient.GetQueues(prefix: this.Prefix, cancellationToken: this.CmdletCancellationToken);
+                    foreach (QueueItem queueItem in items)
+                    {
+                        QueueClient queueClient = queueServiceClient.GetQueueClient(queueItem.Name);
+                        QueueProperties queueProperties = queueClient.GetProperties(cancellationToken: this.CmdletCancellationToken);
+                        WriteObjectWithStorageContext(new AzureStorageQueue(queueClient, queueProperties, (AzureStorageContext)this.Context));
+                    }
+                    break;
+
+                default:
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
+            }
         }
     }
 }

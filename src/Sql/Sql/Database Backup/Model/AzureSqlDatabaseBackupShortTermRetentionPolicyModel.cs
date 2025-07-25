@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// </summary>
         /// <param name="resourceGroup"></param>
         /// <param name="serverName"></param>
+        /// <param name="databaseName"></param>
         /// <param name="policy"></param>
         public AzureSqlDatabaseBackupShortTermRetentionPolicyModel(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.BackupShortTermRetentionPolicy policy)
         {

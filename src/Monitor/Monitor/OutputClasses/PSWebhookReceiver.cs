@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             this.Name = receiver.Name;
             this.ServiceUri = receiver.ServiceUri;
-            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema.HasValue ? receiver.UseCommonAlertSchema.Value : false;
             this.UseAadAuth = receiver.UseAadAuth ?? false;
             this.ObjectId = receiver.ObjectId;
             this.IdentifierUri = receiver.IdentifierUri;

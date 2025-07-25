@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 9, Mandatory = false, HelpMessage = "True if one backup should always be kept in the storage account, regardless of how old it is.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter KeepAtLeastOneBackup { get; set; }
 
+        [Parameter(Position = 10, Mandatory = false, HelpMessage = "To enable backup configuration.", ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter Enabled { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -59,7 +62,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 RetentionPeriodInDays, StartTime);
             BackupRequest request = new BackupRequest()
             {
-                Enabled = true,
+                Enabled = this.Enabled.IsPresent,
                 StorageAccountUrl = this.StorageAccountUrl,
                 BackupSchedule = schedule,
                 Databases = this.Databases,
@@ -76,7 +79,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 StartTime = this.StartTime,
                 KeepAtLeastOneBackup = this.KeepAtLeastOneBackup.IsPresent,
                 Databases = this.Databases,
-                Enabled = true
+                Enabled = this.Enabled.IsPresent
             };
             WriteObject(config);
         }

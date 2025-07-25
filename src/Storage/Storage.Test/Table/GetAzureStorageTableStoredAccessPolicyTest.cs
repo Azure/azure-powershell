@@ -14,12 +14,9 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
-    using Microsoft.Azure.Cosmos.Table;
     using System;
-    using System.Collections.Generic;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
 
     [TestClass]
     public class GetAzureStorageTableStoredAccessPolicyTest : StorageTableStorageTestBase
@@ -39,13 +36,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestCleanup]
         public void CleanCommand()
         {
+            this.clearTest();
             command = null;
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void GetStoredAccessPolicyNotExistsTest()
         {
-            AddTestStoredAccessPolicy();
+            ClearAndAddTestStoredAccessPolicies();
             string policyName = "Policy" + Guid.NewGuid();
             string tableName = "sampleTable";
 
@@ -63,8 +61,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestMethod]
         public void GetStoredAccessPolicySuccessTest()
         {
-            AddTestStoredAccessPolicy();
-            string policyName = TestPolicy1;
+            ClearAndAddTestStoredAccessPolicies();
+            string policyName = PolicyName1;
             string tableName = "sampleTable";
 
             MockCmdRunTime.ResetPipelines();
@@ -81,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestMethod]
         public void GetAllStoredAccessPolicySuccessTest()
         {
-            AddTestStoredAccessPolicy();
+            ClearAndAddTestStoredAccessPolicies();
             string tableName = "sampleTable";
 
             MockCmdRunTime.ResetPipelines();

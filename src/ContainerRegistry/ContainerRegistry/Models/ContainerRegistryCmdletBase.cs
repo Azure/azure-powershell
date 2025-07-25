@@ -69,6 +69,15 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string ShowReplicationByRegistryObjectParameterSet = "ShowReplicationByRegistryObjectParameterSet";
         protected const string ListReplicationByNameResourceGroupParameterSet = "ListReplicationByNameResourceGroupParameterSet";
         protected const string ListReplicationByRegistryObjectParameterSet = "ListReplicationByRegistryObjectParameterSet";
+        protected const string ImportImageByResourceId = "ImportImageByResourceId";
+        protected const string ImportImageByResourceIdWithCredential = "ImportImageByResourceIdWithCredential";
+        protected const string ImportImageByRegistryUri = "ImportImageByRegistryUri";
+        protected const string ImportImageByRegistryUriWithCredential = "ImportImageByRegistryUriWithCredential";
+        protected const string AddNetworkRuleWithInputObject = "AddNetworkRuleWithInputObject";
+        protected const string AddNetworkRuleWithoutInputObject = "AddAddNetworkRuleWithoutInputObject";
+        protected const string ByVirtualNetworkRule = "ByVirtualNetworkRule";
+        protected const string ByIPRule = "ByIPRule";
+
 
         protected const string InvalidRegistryResourceIdErrorMessage = "This is an invalid container registry resource id";
         protected const string InvalidRegistryOrWebhookResourceIdErrorMessage = "This is an invalid container registry resource id or webhook resource id";
@@ -76,57 +85,27 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string InvalidRegistryOrReplicationResourceIdErrorMessage = "This is an invalid container registry resource id or replication resource id";
         protected const string InvalidReplicationResourceIdErrorMessage = "This is an invalid replication resource id";
 
-        protected struct PasswordNameStrings
-        {
-            internal const string Password = "password";
-            internal const string Password2 = "password2";
-        }
-
-        private ContainerRegistryClient _RegistryClient;
-
-        public ContainerRegistryClient RegistryClient
+        private const string _acrTokenCacheKey = "AcrTokenCacheKey";
+        private ContainerRegistryDataPlaneClient _RegistryDataPlaneClient;
+        public ContainerRegistryDataPlaneClient RegistryDataPlaneClient
         {
             get
             {
-                if (_RegistryClient == null)
+                if (_RegistryDataPlaneClient == null)
                 {
-                    _RegistryClient = new ContainerRegistryClient(DefaultContext)
+                    _RegistryDataPlaneClient = new ContainerRegistryDataPlaneClient(DefaultContext, _acrTokenCacheKey)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
                         WarningLogger = WriteWarningWithTimestamp
                     };
                 }
-                return _RegistryClient;
+                return _RegistryDataPlaneClient;
             }
 
             set
             {
-                _RegistryClient = value;
-            }
-        }
-
-        private ResourceManagerClient _ResourceManagerClient;
-
-        public ResourceManagerClient ResourceManagerClient
-        {
-            get
-            {
-                if (_ResourceManagerClient == null)
-                {
-                    _ResourceManagerClient = new ResourceManagerClient(DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
-                }
-                return _ResourceManagerClient;
-            }
-
-            set
-            {
-                _ResourceManagerClient = value;
+                _RegistryDataPlaneClient = value;
             }
         }
 

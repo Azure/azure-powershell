@@ -106,6 +106,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     resourceGroupName: resourceGroupName);
         }
 
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> SuspendBackup()
+        {
+            throw new NotImplementedException();
+        }
+
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
             throw new Exception(Resources.SoftdeleteNotImplementedException);
@@ -188,13 +193,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             //we need to fetch the list of RPs
-            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BmsrpQueryObject()
             {
                 StartDate = startDate,
                 EndDate = endDate
             });
 
-            ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
+            ODataQuery<BmsrpQueryObject> queryFilter = new ODataQuery<BmsrpQueryObject>();
             queryFilter.Filter = queryFilterString;
 
             List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
@@ -501,6 +506,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public void RegisterContainer()
+        {
+            throw new NotImplementedException();
+        }
+        public void UndeleteContainer()
         {
             throw new NotImplementedException();
         }

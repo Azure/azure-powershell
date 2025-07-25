@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public List<string> AddressPrefixes { get; set; }
 
+        public List<PSIpamPoolPrefixAllocation> IpamPoolPrefixAllocations { get; set; }
+
         [JsonIgnore]
         public string AddressPrefixesText
         {

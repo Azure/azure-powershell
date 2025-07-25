@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -82,20 +83,53 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 action();
             }
-            catch (ErrorException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Body == null)
                 {
                     throw new PSInvalidOperationException(ex.Message, ex);
                 }
 
-                throw new PSInvalidOperationException(ex.Body.ErrorProperty.Message, ex);
+                throw new PSInvalidOperationException($"{ex.Message}\r\n{ex.Body.Error.Message}", ex);
             }
+        }
+
+        public IEnumerable<T> ListAll<T>(IPage<T> firstPage, Func<string, IPage<T>> listNext)
+        {
+            var results = new List<T>(firstPage);
+            IPage<T> nextPage;
+            for (var nextLink = firstPage.NextPageLink; !string.IsNullOrEmpty(nextLink); nextLink = nextPage.NextPageLink)
+            {
+                nextPage = listNext(nextLink);
+                results.AddRange(nextPage);
+            }
+
+            return results;
+        }
+
+        public IEnumerable<T> ListAll<T>(Func<string, IPage<T>> listFirst, string para0, Func<string, IPage<T>> listNext)
+        {
+            return ListAll<T>(listFirst(para0), listNext);
+        }
+
+        public IEnumerable<T> ListAll<T>(Func<string, string, IPage<T>> listFirst, string para0, string para1, Func<string, IPage<T>> listNext)
+        {
+            return ListAll<T>(listFirst(para0, para1), listNext);
+        }
+
+        public IEnumerable<T> ListAll<T>(Func<string, string, string, IPage<T>> listFirst, string para0, string para1, string para2, Func<string, IPage<T>> listNext)
+        {
+            return ListAll<T>(listFirst(para0, para1, para2), listNext);
+        }
+
+        public IEnumerable<T> ListAll<T>(Func<string, string, string, string, IPage<T>> listFirst, string para0, string para1, string para2, string para3, Func<string, IPage<T>> listNext)
+        {
+            return ListAll<T>(listFirst(para0, para1, para2, para3), listNext);
         }
 
 
         protected void WriteCognitiveServicesAccount(
-            CognitiveServicesModels.CognitiveServicesAccount cognitiveServicesAccount)
+            CognitiveServicesModels.Account cognitiveServicesAccount)
         {
             if (cognitiveServicesAccount != null)
             {
@@ -104,7 +138,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
 
         protected void WriteCognitiveServicesAccountList(
-            IEnumerable<CognitiveServicesModels.CognitiveServicesAccount> cognitiveServicesAccounts)
+            IEnumerable<CognitiveServicesModels.Account> cognitiveServicesAccounts)
         {
             List<PSCognitiveServicesAccount> output = new List<PSCognitiveServicesAccount>();
             if (cognitiveServicesAccounts != null)

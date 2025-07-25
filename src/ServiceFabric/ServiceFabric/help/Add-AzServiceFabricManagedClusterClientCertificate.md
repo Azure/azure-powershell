@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricmanagedclusterclientcertificate
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagedclusterclientcertificate
 schema: 2.0.0
 ---
 
 # Add-AzServiceFabricManagedClusterClientCertificate
 
 ## SYNOPSIS
-Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
+Add certificate common name or thumbprint to the cluster. This will register the certificate against the cluster for client authentication purposes.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Add-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedClus
 ```
 
 ## DESCRIPTION
-Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
+Add certificate common name or thumbprint to the cluster. This will register the certificate against the cluster for client authentication purposes.
 
 ## EXAMPLES
 

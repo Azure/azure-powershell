@@ -12,42 +12,84 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+using System.Net;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Diagnostics;
 using System.Security;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
     public static class TemplateUtility
     {
-        /// <summary>
-        /// Gets the parameters for a given template file.
-        /// </summary>
-        /// <param name="templateFilePath">The gallery template path (local or remote)</param>
-        /// <param name="templateParameterObject">Existing template parameter object</param>
-        /// <param name="templateParameterFilePath">Path to the template parameter file if present</param>
-        /// <param name="staticParameters">The existing PowerShell cmdlet parameters</param>
-        /// <returns>The template parameters</returns>
-        public static RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(string templateFilePath, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
+
+        public static string ExtractTemplateContent(
+            string templateFile,
+            string templateUri,
+            string templateSpecId,
+            ITemplateSpecsClient templateSpecsClient,
+            Hashtable templateObject
+        )
         {
             string templateContent = null;
+            if (templateObject != null)
+            {
+                templateContent = GetTemplateContentFromHashtable(templateObject);
+            }
+            else if (!string.IsNullOrEmpty(templateFile) || !string.IsNullOrEmpty(templateUri))
+            {
+                var file = !string.IsNullOrEmpty(templateFile) ? templateFile : templateUri;
+                templateContent = GetTemplateContentFromFile(file);
+            }
+            else if (!string.IsNullOrEmpty(templateSpecId))
+            {
+                templateContent = GetTemplateContentFromTemplateSpec(templateSpecId, templateSpecsClient);
+            }
 
+            return templateContent;
+        }
+
+        public static Hashtable ExtractTemplateParameterContent(
+            string templateParameterFile,
+            string templateParameterUri
+        )
+        {
+            Hashtable templateParameterContent = null;
+            if (!string.IsNullOrEmpty(templateParameterFile) || !string.IsNullOrEmpty(templateParameterUri))
+            {
+                var file = !string.IsNullOrEmpty(templateParameterFile) ? templateParameterFile : templateParameterUri;
+                templateParameterContent = GetTemplateParameterContentFromFile(file);
+            }
+
+            return templateParameterContent;
+        }
+
+        private static string GetTemplateContentFromFile(string templateFilePath)
+        {
+            string templateContent = null;
             if (templateFilePath != null)
             {
                 if (Uri.IsWellFormedUriString(templateFilePath, UriKind.Absolute))
                 {
                     templateContent = GeneralUtilities.DownloadFile(templateFilePath);
+                    if (templateContent == null)
+                    {
+                        throw new PSArgumentException("Unable to download template file from provided uri.");
+                    }
                 }
                 else if (FileUtilities.DataStore.FileExists(templateFilePath))
                 {
@@ -55,82 +97,162 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 }
             }
 
-            RuntimeDefinedParameterDictionary dynamicParameters = ParseTemplateAndExtractParameters(templateContent, templateParameterObject, templateParameterFilePath, staticParameters);
-
-            return dynamicParameters;
+            return templateContent;
         }
 
-        public static RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(object template, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
-        {
-            RuntimeDefinedParameterDictionary dynamicParameters = ParseTemplateAndExtractParameters(template.ToString(), templateParameterObject, templateParameterFilePath, staticParameters);
-
-            return dynamicParameters;
-        }
-
-        public static RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(Hashtable templateObject, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
+        private static string GetTemplateContentFromHashtable(Hashtable templateObject)
         {
             string templateContent = null;
             if (templateObject != null)
             {
                 templateContent = JsonConvert.SerializeObject(templateObject);
             }
-
-            RuntimeDefinedParameterDictionary dynamicParameters = ParseTemplateAndExtractParameters(templateContent, templateParameterObject, templateParameterFilePath, staticParameters);
-
-            return dynamicParameters;
+            
+            return templateContent;
         }
 
-        public static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterFileContents(string templateParameterFilePath)
+        private static string GetTemplateContentFromTemplateSpec(string templateSpecId, ITemplateSpecsClient client)
         {
-            Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();
-
-            if (!string.IsNullOrEmpty(templateParameterFilePath) && FileUtilities.DataStore.FileExists(templateParameterFilePath))
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(templateSpecId);
+            if (!resourceIdentifier.ResourceType.Equals("Microsoft.Resources/templateSpecs/versions", StringComparison.OrdinalIgnoreCase))
             {
-                try
+                throw new PSArgumentException("No version found in Resource ID");
+            }
+
+            if (!string.IsNullOrEmpty(resourceIdentifier.Subscription) &&
+                client.SubscriptionId != resourceIdentifier.Subscription)
+            {
+                // The template spec is in a different subscription than our default
+                // context. Force the client to use that subscription:
+                client.SubscriptionId = resourceIdentifier.Subscription;
+            }
+            try
+            {
+                var templateSpecVersion = client.TemplateSpecVersions.Get(
+                    ResourceIdUtility.GetResourceGroupName(templateSpecId),
+                    ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
+                    resourceIdentifier.ResourceName);
+
+                if (!(templateSpecVersion.MainTemplate is JObject))
                 {
-                    parameters = JsonConvert.DeserializeObject<Dictionary<string, TemplateFileParameterV1>>(FileUtilities.DataStore.ReadFileAsText(templateParameterFilePath));
+                    throw new InvalidOperationException("Unexpected type."); // Sanity check
                 }
-                catch (JsonSerializationException)
+                var templateObj = (JObject)templateSpecVersion.MainTemplate;
+                
+                return templateObj.ToString();
+            }
+            catch (TemplateSpecsErrorException e)
+            {
+                // If the templateSpec resourceID is pointing to a non existant resource
+                if (!e.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    parameters = new Dictionary<string, TemplateFileParameterV1>(
-                        JsonConvert.DeserializeObject<TemplateFileParameterV2>(FileUtilities.DataStore.ReadFileAsText(templateParameterFilePath)).Parameters);
+                    // Throw for any other error that is not due to a 404 for the template resource.
+                    throw;
+                }
+
+                return null;
+            }
+        }
+
+        private static Hashtable GetTemplateParameterContentFromFile(string templateParameterFilePath)
+        {
+            Hashtable templateParameterContent = null;
+
+            if (templateParameterFilePath != null)
+            {
+                if (Uri.IsWellFormedUriString(templateParameterFilePath, UriKind.Absolute))
+                {
+                    var fileContent = GeneralUtilities.DownloadFile(templateParameterFilePath);
+                    if (fileContent == null)
+                    {
+                        throw new PSArgumentException("Unable to download template parameter file from provided uri.");
+                    }
+                    templateParameterContent = new Hashtable(ParseTemplateParameterContent(fileContent));
+                }
+                else if (FileUtilities.DataStore.FileExists(templateParameterFilePath))
+                {
+                    templateParameterContent = new Hashtable(ParseTemplateParameterFileContents(templateParameterFilePath));
                 }
             }
 
-            return parameters;
+            return templateParameterContent;
         }
 
-        public static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterContent(string templateParameterContent)
+        public static Dictionary<string, TemplateParameterFileParameter> ParseTemplateParameterFileContents(string templateParameterFilePath)
         {
-            Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();
+            if (!string.IsNullOrEmpty(templateParameterFilePath) && FileUtilities.DataStore.FileExists(templateParameterFilePath))
+            {
+                return ParseTemplateParameterJson(FileUtilities.DataStore.ReadFileAsStream(templateParameterFilePath));
+            }
+
+            return new Dictionary<string, TemplateParameterFileParameter>();
+        }
+
+        public static Dictionary<string, TemplateParameterFileParameter> ParseTemplateParameterJson(Stream stream)
+        {
+            using (var streamReader = new StreamReader(stream))
+            {
+                return ParseTemplateParameterJson(streamReader);
+            }
+        }
+
+        public static Dictionary<string, TemplateParameterFileParameter> ParseTemplateParameterJson(string json)
+        {
+            using (var reader = new StringReader(json))
+            {
+                return TemplateUtility.ParseTemplateParameterJson(reader);
+            }
+        }
+
+        public static Dictionary<string, TemplateParameterFileParameter> ParseTemplateParameterJson(TextReader reader)
+        {
+            // Read once to avoid having to rewind the stream
+            var parametersJson = reader.ReadToEnd();
+
+            try
+            {
+                // NOTE(jcotillo): We must use JsonExtensions to ensure the proper use of serialization settings.
+                // otherwise we could get invalid date time serializations.
+                return parametersJson.FromJson<Dictionary<string, TemplateParameterFileParameter>>();
+            }
+            catch (JsonSerializationException)
+            {
+                var paramsFile = parametersJson.FromJson<TemplateParameterFile>();
+                return new Dictionary<string, TemplateParameterFileParameter>(paramsFile.Parameters);
+            }
+        }
+
+        public static Dictionary<string, TemplateParameterFileParameter> ParseTemplateParameterContent(string templateParameterContent)
+        {
+            var parameters = new Dictionary<string, TemplateParameterFileParameter>();
 
             if (!string.IsNullOrEmpty(templateParameterContent))
             {
                 try
                 {
-                    parameters = JsonConvert.DeserializeObject<Dictionary<string, TemplateFileParameterV1>>(templateParameterContent);
+                    parameters = templateParameterContent.FromJson<Dictionary<string, TemplateParameterFileParameter>>();
                 }
                 catch (JsonSerializationException)
                 {
-                    parameters = new Dictionary<string, TemplateFileParameterV1>(
-                        JsonConvert.DeserializeObject<TemplateFileParameterV2>(templateParameterContent).Parameters);
+                    parameters = new Dictionary<string, TemplateParameterFileParameter>(
+                        templateParameterContent.FromJson<TemplateParameterFile>().Parameters);
                 }
             }
 
             return parameters;
         }
 
-        private static RuntimeDefinedParameterDictionary ParseTemplateAndExtractParameters(string templateContent, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
+        public static RuntimeDefinedParameterDictionary GetDynamicParameters(string templateContent, Hashtable templateParameterObject, string[] staticParameters)
         {
             RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
 
+            // If the template content is not null, parameters should be extracted into dynamic parameters:
             if (!string.IsNullOrEmpty(templateContent))
             {
-                TemplateFile templateFile = null;
-
+                TemplateFile templateFile;
                 try
                 {
-                    templateFile = JsonConvert.DeserializeObject<TemplateFile>(templateContent);
+                    templateFile = templateContent.FromJson<TemplateFile>();
                     if (templateFile.Parameters == null)
                     {
                         return dynamicParameters;
@@ -143,30 +265,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     return dynamicParameters;
                 }
 
-                foreach (KeyValuePair<string, TemplateFileParameterV1> parameter in templateFile.Parameters)
+                foreach (var parameter in templateFile.Parameters)
                 {
-                    RuntimeDefinedParameter dynamicParameter = ConstructDynamicParameter(staticParameters, parameter);
+                    RuntimeDefinedParameter dynamicParameter = ConstructDynamicParameter(staticParameters, parameter, templateFile.Definitions);
                     dynamicParameters.Add(dynamicParameter.Name, dynamicParameter);
                 }
             }
+
             if (templateParameterObject != null)
             {
-                UpdateParametersWithObject(staticParameters, dynamicParameters, templateParameterObject);
+                SetDynamicParametersPassedInTemplateParameterObject(staticParameters, dynamicParameters, templateParameterObject);
             }
-            if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
-            {
-                var parametersFromFile = ParseTemplateParameterFileContents(templateParameterFilePath);
-                UpdateParametersWithObject(staticParameters, dynamicParameters, new Hashtable(parametersFromFile));
-            }
-            if (templateParameterFilePath != null && Uri.IsWellFormedUriString(templateParameterFilePath, UriKind.Absolute))
-            {
-                var parametersFromUri = ParseTemplateParameterContent(GeneralUtilities.DownloadFile(templateParameterFilePath));
-                UpdateParametersWithObject(staticParameters, dynamicParameters, new Hashtable(parametersFromUri));
-            }
+
             return dynamicParameters;
         }
 
-        private static void UpdateParametersWithObject(string[] staticParameters, RuntimeDefinedParameterDictionary dynamicParameters, Hashtable templateParameterObject)
+        /// <summary>
+        /// Sets the dynamic parameters that are defined in the passed in template parameter object, so that the user is not prompted on execution for a value.
+        /// </summary>
+        private static void SetDynamicParametersPassedInTemplateParameterObject(string[] staticParameters, RuntimeDefinedParameterDictionary dynamicParameters, Hashtable templateParameterObject)
         {
             const string duplicatedParameterSuffix = "FromTemplate";
 
@@ -174,16 +291,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 foreach (string paramName in templateParameterObject.Keys)
                 {
+                    // The template parameters that clash with static parameter names will receive a suffix on their respective dynamic parameter:
                     string dynamicParamName = staticParameters.Contains(paramName, StringComparer.OrdinalIgnoreCase)
                         ? paramName + duplicatedParameterSuffix
                         : paramName;
 
                     if (dynamicParameters.TryGetValue(dynamicParamName, out RuntimeDefinedParameter dynamicParameter))
                     {
-                        dynamicParameter.Value = templateParameterObject[paramName] is TemplateFileParameterV1 templateFileParameterV1
-                            ? templateFileParameterV1.Value
-                            : templateParameterObject[paramName];
-
+                        // Param exists in the template parameter object, so set it not mandatory, so the user won't be prompted for it:
                         dynamicParameter.IsSet = true;
                         ((ParameterAttribute)dynamicParameter.Attributes[0]).Mandatory = false;
                     }
@@ -237,31 +352,96 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         }
 
-        internal static RuntimeDefinedParameter ConstructDynamicParameter(string[] staticParameters, KeyValuePair<string, TemplateFileParameterV1> parameter)
+        private static string Rfc6901Decode(string encoded) => Uri.UnescapeDataString(encoded.Replace("~1", "/").Replace("~0", "~"));
+
+        private static string[] GetJsonPointerSegments(string jsonPointer) => jsonPointer.Split('/').Select(Rfc6901Decode).ToArray();
+
+        private static TemplateFileTypeDefinition ResolveTypeFromPath(string currentRef, IEnumerable<string> segments, JObject definitions)
+        {
+            JToken current = definitions;
+            foreach (var segment in segments)
+            {
+                switch (current)
+                {
+                    case JObject currentObj when currentObj.ContainsKey(segment):
+                        current = currentObj.GetProperty(segment);
+                        break;
+                    case JArray currentArray when int.TryParse(segment, out var index) && index >= 0 && index < currentArray.Count:
+                        current = currentArray[index];
+                        break;
+                    default:
+                        throw new InvalidOperationException($"Failed to resolve path {currentRef}.");
+                }
+            }
+
+            if (!current.TryConvertTo<TemplateFileTypeDefinition>(out var definition))
+            {
+                throw new InvalidOperationException($"Failed to find valid definition at path {currentRef}.");
+            }
+
+            return definition;
+        }
+
+        private static TemplateFileTypeDefinition ResolveParameterType(TemplateFileParameter parameter, JObject definitions)
+        {
+            TemplateFileTypeDefinition current = parameter;
+            var visited = new HashSet<string>();
+            while (current.Ref != null)
+            {
+                if (visited.Contains(current.Ref))
+                {
+                    throw new InvalidOperationException($"Cycle detected with processing {current.Ref}.");
+                }
+                visited.Add(current.Ref);
+
+                var segments = GetJsonPointerSegments(current.Ref);
+                if (segments.Length < 2 || segments[0] != "#" || segments[1] != "definitions")
+                {
+                    throw new InvalidOperationException($"Invalid $ref {current.Ref}.");
+                }
+                
+                var resolved = ResolveTypeFromPath(current.Ref, segments.Skip(2), definitions);
+                // it's possible to override some of these properties: the highest-level non-null value wins
+                resolved.Nullable = current.Nullable ?? resolved.Nullable;
+                resolved.MinLength = current.MinLength ?? resolved.MinLength;
+                resolved.MaxLength = current.MaxLength ?? resolved.MaxLength;
+                resolved.AllowedValues = current.AllowedValues ?? resolved.AllowedValues;
+
+                current = resolved;
+            }
+
+            return current;
+        }
+
+        internal static RuntimeDefinedParameter ConstructDynamicParameter(string[] staticParameters, KeyValuePair<string, TemplateFileParameter> parameterKvp, JObject definitions)
         {
             const string duplicatedParameterSuffix = "FromTemplate";
-            string name = parameter.Key;
-            object defaultValue = parameter.Value.DefaultValue;
+            var name = parameterKvp.Key;
+            var paramDefinition = parameterKvp.Value;
+            var paramType = ResolveParameterType(paramDefinition, definitions);
+            var isRequired = paramDefinition.DefaultValue is null && paramType.Nullable != true;
 
             RuntimeDefinedParameter runtimeParameter = new RuntimeDefinedParameter()
             {
                 // For duplicated template parameter names, add a suffix FromTemplate to distinguish them from the cmdlet parameter.
                 Name = staticParameters.Contains(name, StringComparer.OrdinalIgnoreCase) ? name + duplicatedParameterSuffix : name,
-                ParameterType = GetParameterType(parameter.Value.Type),
-                Value = defaultValue
+                ParameterType = GetParameterType(paramType.Type),
+                Value = paramDefinition.DefaultValue,
+                // A dynamic parameter is not auto-set:
+                IsSet = false
             };
             runtimeParameter.Attributes.Add(new ParameterAttribute()
             {
-                Mandatory = defaultValue == null ? true : false,
+                Mandatory = isRequired,
                 ValueFromPipelineByPropertyName = true,
                 // Rely on the HelpMessage property to detect the original name for the dynamic parameter.
                 HelpMessage = name
             });
 
-            if (!string.IsNullOrEmpty(parameter.Value.MinLength) &&
-                !string.IsNullOrEmpty(parameter.Value.MaxLength))
+            if (!string.IsNullOrEmpty(paramType.MinLength) &&
+                !string.IsNullOrEmpty(paramType.MaxLength))
             {
-                runtimeParameter.Attributes.Add(new ValidateLengthAttribute(int.Parse(parameter.Value.MinLength), int.Parse(parameter.Value.MaxLength)));
+                runtimeParameter.Attributes.Add(new ValidateLengthAttribute(int.Parse(paramType.MinLength), int.Parse(paramType.MaxLength)));
             }
 
             return runtimeParameter;

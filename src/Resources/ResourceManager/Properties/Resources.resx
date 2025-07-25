@@ -264,6 +264,12 @@
   <data name="RegisterProviderFeatureMessage" xml:space="preserve">
     <value>Registering provider feature ...</value>
   </data>
+  <data name="NewFeatureRegistrationMessage" xml:space="preserve">
+    <value>Creating feature registration ...</value>
+  </data>
+  <data name="RemoveFeatureRegistrationMessage" xml:space="preserve">
+    <value>Removing feature registration ...</value>
+  </data>
   <data name="RegisterProviderMessage" xml:space="preserve">
     <value>Registering provider ...</value>
   </data>
@@ -469,6 +475,9 @@
   <data name="DeploymentOperationOuterError" xml:space="preserve">
     <value>The deployment '{0}' failed with error(s). Showing {1} out of {2} error(s).</value>
   </data>
+  <data name="DeploymentStackOperationOuterError" xml:space="preserve">
+    <value>The deployment '{0}' failed with error(s). Showing {1} out of {2} error(s).</value>
+  </data>
   <data name="DeploymentOperationErrorMessageNoDetails" xml:space="preserve">
     <value>{0} (Code:{1})</value>
   </data>
@@ -493,5 +502,23 @@ You can help us improve the accuracy of the result by opening an issue here: htt
   </data>
   <data name="InvalidChangeType" xml:space="preserve">
     <value>Unrecognized resource change {0}: {1}. Specify one ore more values in the following list and try again: {2}.</value>
+  </data>
+  <data name="BicepNotFound" xml:space="preserve">
+    <value>Cannot find Bicep. Please add Bicep to your PATH or visit https://aka.ms/bicep-install to install Bicep.</value>
+  </data>
+  <data name="InvalidBicepFilePath" xml:space="preserve">
+    <value>Invalid Bicep file path.</value>
+  </data>
+  <data name="BicepVersionRequirement" xml:space="preserve">
+    <value>Please use bicep {0} or higher.</value>
+  </data>
+  <data name="BuildBicepFileToJsonFailed" xml:space="preserve">
+    <value>Build bicep file '{0}' to json failed.</value>
+  </data>
+  <data name="InvalidBicepparamFilePath" xml:space="preserve">
+    <value>Invalid Bicepparam file path.</value>
+  </data>
+  <data name="BuildBicepparamFileToJsonFailed" xml:space="preserve">
+    <value>Build bicepparam file '{0}' to json failed.</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
   <PropertyGroup>
     <PsModuleName>Network</PsModuleName>
@@ -13,8 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.1.1" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +37,14 @@
   
   <ItemGroup>
     <Folder Include="Bastion\" />
+    <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
+    <Folder Include="RouteServerPeer\" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Network.Management.Sdk\Network.Management.Sdk.csproj" />
+  </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

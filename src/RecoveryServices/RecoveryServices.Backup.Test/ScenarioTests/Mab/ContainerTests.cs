@@ -14,30 +14,38 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ContainerTests : RMTestBase
+    public partial class ContainerTests : RecoveryServicesBackupTestRunner
     {
-        [Fact]
+        private readonly string _MabcommonModule = $"ScenarioTests/Common.ps1";
+        private readonly string _MabtestModule = $"ScenarioTests/{PsBackupProviderTypes.Mab}/ContainerTests.ps1";
+
+        [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.MAB)]
         public void TestMabGetContainers()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.Mab, "Test-MabGetContainers");
+            TestRunner.RunTestScript(
+                $"Import-Module {_MabcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_MabtestModule.AsAbsoluteLocation()}",
+                "Test-MabGetContainers"
+            );
         }
 
 
-        [Fact]
+        [Fact(Skip = "To be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.MAB)]
         public void TestMabUnregisterContainer()
         {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.Mab, "Test-MabUnregisterContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_MabcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_MabtestModule.AsAbsoluteLocation()}",
+                "Test-MabUnregisterContainer");
         }
     }
 }

@@ -1,0 +1,100 @@
+pr: none
+trigger: none
+pool: pool-windows-2019
+
+steps:
+- task: PowerShell@2
+  displayName: Install PowerShell
+  inputs:
+    targetType: 'inline'
+    script: |
+      $url = "https://github.com/PowerShell/PowerShell/releases/download/v7.2.0/PowerShell-7.2.0-win-x64.zip"
+      $output = Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell-7.2.0-win-x64.zip"
+      (New-Object System.Net.WebClient).DownloadFile($url, $output)
+      $pwshPath= Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell/"
+      Expand-Archive -Path $output -DestinationPath $pwshPath
+      $pwshFullPath = Convert-Path $pwshPath
+      Write-Host $pwshFullPath
+
+- task: PowerShell@2
+  displayName: 'Install Dependent Modules'
+  inputs:
+    targetType: inline
+    script: |
+      $pwshPath= Join-Path -Path $(Pipeline.Workspace) -ChildPath "./PowerShell/pwsh.exe"        
+      $command = "`$PSVersionTable `
+        Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
+        Install-Module PowerShellGet -Force -Confirm:`$false -Scope CurrentUser -SkipPublisherCheck `
+        Install-Module PSReadLine -Force -Confirm:`$false -Scope CurrentUser `
+        Install-Module Az.Accounts -Repository PSGallery -Confirm:`$false -Scope CurrentUser -AllowClobber -Force"      
+      Invoke-Command -ScriptBlock { param ($pwshPath, $command) & $pwshPath -Command $command } -ArgumentList $pwshPath, $command 
+
+- task: UseDotNet@2
+  displayName: 'Install DotNet 6.0 SDK'
+  inputs:
+    packageType: 'sdk'
+    version: '6.0.x'
+    includePreviewVersions: true
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;GenerateHelp" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="$(Pipeline.Workspace)\\PowerShell\\pwsh.exe -NonInteractive -NoLogo -NoProfile -Command"'
+
+- task: UseDotNet@2
+  displayName: 'Install DotNet 2.1 Runtime for Signing'
+  inputs:
+    packageType: 'runtime'
+    version: '2.1.x'
+
+- task: EsrpCodeSigning@4
+  displayName: 'Signing'
+  inputs:
+    ConnectedServiceName: $(signServiceConnection)
+    FolderPath: artifacts
+    Pattern: |
+     Tools/**/*.ps1
+     Tools/**/*.psd1
+     Tools/**/*.psm1
+     Tools/**/*.ps1xml
+    UseMinimatch: true
+    signConfigType: inlineSignParams
+    inlineOperation: |
+     [
+       {
+         "KeyCode": "CP-230012",
+         "OperationCode": "SigntoolSign",
+         "Parameters": {
+           "OpusName": "Microsoft",
+           "OpusInfo": "http://www.microsoft.com",
+           "FileDigest": "/fd \"SHA256\"",
+           "PageHash": "/NPH",
+           "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+         },
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       },
+       {
+         "KeyCode": "CP-230012",
+         "OperationCode": "SigntoolVerify",
+         "Parameters": {},
+         "ToolName": "sign",
+         "ToolVersion": "1.0"
+       }
+     ]
+
+- task: DotNetCoreCLI@2
+  displayName: Package
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Package" /p:Configuration=Release /p:PowerShellCoreCommandPrefix="$(Pipeline.Workspace)\\PowerShell\\pwsh.exe -NonInteractive -NoLogo -NoProfile -Command" '
+
+- task: PublishPipelineArtifact@0
+  displayName: 'Save artifacts'
+  inputs:
+    artifactName: artifacts
+    targetPath: artifacts
+  condition: succeededOrFailed()

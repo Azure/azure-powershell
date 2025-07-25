@@ -1,0 +1,769 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="55" errors="0" failures="0" not-run="0" inconclusive="0" ignored="89" skipped="0" invalid="0" date="2025-04-09" time="13:58:50">
+  <environment nunit-version="2.5.8.0" user="v-jiaji" machine-name="AWE-JOYERJIN" clr-version="Unknown" cwd="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest" user-domain="FAREAST" platform="Microsoft Windows 11 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" os-version="10.0.26100" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="17.4137" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Deploy-AzSpringCloudApp.Tests.ps1" executed="True" result="Ignored" success="True" time="1.0016" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Deploy-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Deploy-AzSpringCloudApp" executed="True" result="Ignored" success="True" time="0.7501" asserts="0" description="Deploy-AzSpringCloudApp">
+            <results>
+              <test-case description="CreateExpanded" name="Deploy-AzSpringCloudApp.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Disable-AzSpringCloudTestEndpoint.Tests.ps1" executed="True" result="Success" success="True" time="0.9128" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Disable-AzSpringCloudTestEndpoint.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Disable-AzSpringCloudTestEndpoint" executed="True" result="Success" success="True" time="0.7812" asserts="0" description="Disable-AzSpringCloudTestEndpoint">
+            <results>
+              <test-case description="Disable" name="Disable-AzSpringCloudTestEndpoint.Disable" time="0.578" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DisableViaIdentity" name="Disable-AzSpringCloudTestEndpoint.DisableViaIdentity" time="0.0938" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Enable-AzSpringCloudTestEndpoint.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2058" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Enable-AzSpringCloudTestEndpoint.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Enable-AzSpringCloudTestEndpoint" executed="True" result="Ignored" success="True" time="0.08" asserts="0" description="Enable-AzSpringCloudTestEndpoint">
+            <results>
+              <test-case description="Enable" name="Enable-AzSpringCloudTestEndpoint.Enable" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="EnableViaIdentity" name="Enable-AzSpringCloudTestEndpoint.EnableViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.3682" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloud.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloud" executed="True" result="Success" success="True" time="0.2546" asserts="0" description="Get-AzSpringCloud">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloud.List" time="0.056" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="Get-AzSpringCloud.List1" time="0.0352" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloud.Get" time="0.061" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzSpringCloud.GetViaIdentity" time="0.0483" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.3081" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1893" asserts="0" description="Get-AzSpringCloudApp">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudApp.List" time="0.0607" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloudApp.Get" time="0.0425" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzSpringCloudApp.GetViaIdentity" time="0.0387" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudAppBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.3862" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudAppBinding.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudAppBinding" executed="True" result="Success" success="True" time="0.2703" asserts="0" description="Get-AzSpringCloudAppBinding">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudAppBinding.List" time="0.0745" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CRUD" name="Get-AzSpringCloudAppBinding.CRUD" time="0.1503" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.4457" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudAppCustomDomain" executed="True" result="Success" success="True" time="0.3269" asserts="0" description="Get-AzSpringCloudAppCustomDomain">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudAppCustomDomain.List" time="0.0793" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloudAppCustomDomain.Get" time="0.1987" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.2972" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.182" asserts="0" description="Get-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudAppDeployment.List" time="0.0522" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloudAppDeployment.Get" time="0.0369" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzSpringCloudAppDeployment.GetViaIdentity" time="0.0471" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudAppDeploymentLogFileUrl.Tests.ps1" executed="True" result="Success" success="True" time="0.2108" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudAppDeploymentLogFileUrl.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudAppDeploymentLogFileUrl" executed="True" result="Success" success="True" time="0.1043" asserts="0" description="Get-AzSpringCloudAppDeploymentLogFileUrl">
+            <results>
+              <test-case description="Get" name="Get-AzSpringCloudAppDeploymentLogFileUrl.Get" time="0.0609" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildpackBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.3365" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildpackBinding.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudBuildpackBinding" executed="True" result="Success" success="True" time="0.2278" asserts="0" description="Get-AzSpringCloudBuildpackBinding">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudBuildpackBinding.List" time="0.0665" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CRUD" name="Get-AzSpringCloudBuildpackBinding.CRUD" time="0.1114" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildService.Tests.ps1" executed="True" result="Success" success="True" time="0.2136" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudBuildService" executed="True" result="Success" success="True" time="0.105" asserts="0" description="Get-AzSpringCloudBuildService">
+            <results>
+              <test-case description="Get" name="Get-AzSpringCloudBuildService.Get" time="0.0655" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildServiceAgentPool.Tests.ps1" executed="True" result="Success" success="True" time="0.2484" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildServiceAgentPool.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudBuildServiceAgentPool" executed="True" result="Success" success="True" time="0.1377" asserts="0" description="Get-AzSpringCloudBuildServiceAgentPool">
+            <results>
+              <test-case description="Get" name="Get-AzSpringCloudBuildServiceAgentPool.Get" time="0.0979" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildServiceBuilder.Tests.ps1" executed="True" result="Success" success="True" time="0.4582" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildServiceBuilder.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudBuildServiceBuilder" executed="True" result="Success" success="True" time="0.3469" asserts="0" description="Get-AzSpringCloudBuildServiceBuilder">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudBuildServiceBuilder.List" time="0.0665" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CRUD" name="Get-AzSpringCloudBuildServiceBuilder.CRUD" time="0.2384" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildServiceSupportedBuildpack.Tests.ps1" executed="True" result="Success" success="True" time="0.2629" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildServiceSupportedBuildpack.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudBuildServiceSupportedBuildpack" executed="True" result="Success" success="True" time="0.1533" asserts="0" description="Get-AzSpringCloudBuildServiceSupportedBuildpack">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudBuildServiceSupportedBuildpack.List" time="0.0665" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloudBuildServiceSupportedBuildpack.Get" time="0.0429" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildServiceSupportedStack.Tests.ps1" executed="True" result="Success" success="True" time="0.2746" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudBuildServiceSupportedStack.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudBuildServiceSupportedStack" executed="True" result="Success" success="True" time="0.1536" asserts="0" description="Get-AzSpringCloudBuildServiceSupportedStack">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudBuildServiceSupportedStack.List" time="0.0665" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzSpringCloudBuildServiceSupportedStack.Get" time="0.0426" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudCertificate.Tests.ps1" executed="True" result="Success" success="True" time="0.3567" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudCertificate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudCertificate" executed="True" result="Success" success="True" time="0.2392" asserts="0" description="Get-AzSpringCloudCertificate">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudCertificate.List" time="0.0601" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CRUD" name="Get-AzSpringCloudCertificate.CRUD" time="0.1332" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudConfigServer.Tests.ps1" executed="True" result="Success" success="True" time="0.2937" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudConfigServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudConfigServer" executed="True" result="Success" success="True" time="0.1778" asserts="0" description="Get-AzSpringCloudConfigServer">
+            <results>
+              <test-case description="Get" name="Get-AzSpringCloudConfigServer.Get" time="0.1339" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Success" success="True" time="0.4642" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudConfigurationService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudConfigurationService" executed="True" result="Success" success="True" time="0.3411" asserts="0" description="Get-AzSpringCloudConfigurationService">
+            <results>
+              <test-case description="Get" name="Get-AzSpringCloudConfigurationService.Get" time="0.2132" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudMonitoringSetting.Tests.ps1" executed="True" result="Success" success="True" time="0.2859" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudMonitoringSetting.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudMonitoringSetting" executed="True" result="Success" success="True" time="0.1524" asserts="0" description="Get-AzSpringCloudMonitoringSetting">
+            <results>
+              <test-case description="Get" name="Get-AzSpringCloudMonitoringSetting.Get" time="0.105" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudRegistry.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1757" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudRegistry.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudRegistry" executed="True" result="Ignored" success="True" time="0.0465" asserts="0" description="Get-AzSpringCloudRegistry">
+            <results>
+              <test-case description="Get" name="Get-AzSpringCloudRegistry.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudRuntimeVersion.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1712" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudRuntimeVersion.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudRuntimeVersion" executed="True" result="Ignored" success="True" time="0.04" asserts="0" description="Get-AzSpringCloudRuntimeVersion">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudRuntimeVersion.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudSku.Tests.ps1" executed="True" result="Success" success="True" time="0.2201" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudSku.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudSku" executed="True" result="Success" success="True" time="0.1102" asserts="0" description="Get-AzSpringCloudSku">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudSku.List" time="0.0684" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudTestKey.Tests.ps1" executed="True" result="Success" success="True" time="0.2127" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Get-AzSpringCloudTestKey.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSpringCloudTestKey" executed="True" result="Success" success="True" time="0.1004" asserts="0" description="Get-AzSpringCloudTestKey">
+            <results>
+              <test-case description="List" name="Get-AzSpringCloudTestKey.List" time="0.0627" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.2286" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloud.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloud" executed="True" result="Success" success="True" time="0.1219" asserts="0" description="New-AzSpringCloud">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloud.CreateExpanded" time="0.082" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.2284" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1208" asserts="0" description="New-AzSpringCloudApp">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudApp.CreateExpanded" time="0.0818" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppBinding.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1496" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppBinding.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppBinding" executed="True" result="Ignored" success="True" time="0.0391" asserts="0" description="New-AzSpringCloudAppBinding">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudAppBinding.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1355" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppCustomDomain" executed="True" result="Ignored" success="True" time="0.0291" asserts="0" description="New-AzSpringCloudAppCustomDomain">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudAppCustomDomain.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.2393" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.132" asserts="0" description="New-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudAppDeployment.CreateExpanded" time="0.0902" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeploymentBuildResultObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1515" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeploymentBuildResultObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppDeploymentBuildResultObject" executed="True" result="Ignored" success="True" time="0.0428" asserts="0" description="New-AzSpringCloudAppDeploymentBuildResultObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudAppDeploymentBuildResultObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeploymentJarUploadedObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1322" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeploymentJarUploadedObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppDeploymentJarUploadedObject" executed="True" result="Ignored" success="True" time="0.0262" asserts="0" description="New-AzSpringCloudAppDeploymentJarUploadedObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudAppDeploymentJarUploadedObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1384" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject" executed="True" result="Ignored" success="True" time="0.0302" asserts="0" description="New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeploymentSourceUploadedObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1371" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppDeploymentSourceUploadedObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppDeploymentSourceUploadedObject" executed="True" result="Ignored" success="True" time="0.0281" asserts="0" description="New-AzSpringCloudAppDeploymentSourceUploadedObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudAppDeploymentSourceUploadedObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppLoadedCertificateObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1448" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudAppLoadedCertificateObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudAppLoadedCertificateObject" executed="True" result="Ignored" success="True" time="0.0367" asserts="0" description="New-AzSpringCloudAppLoadedCertificateObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudAppLoadedCertificateObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildpackBinding.Tests.ps1" executed="True" result="Ignored" success="True" time="0.139" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildpackBinding.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudBuildpackBinding" executed="True" result="Ignored" success="True" time="0.0278" asserts="0" description="New-AzSpringCloudBuildpackBinding">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudBuildpackBinding.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildpackObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1388" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildpackObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudBuildpackObject" executed="True" result="Ignored" success="True" time="0.0309" asserts="0" description="New-AzSpringCloudBuildpackObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudBuildpackObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildpacksGroupObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1389" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildpacksGroupObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudBuildpacksGroupObject" executed="True" result="Ignored" success="True" time="0.0287" asserts="0" description="New-AzSpringCloudBuildpacksGroupObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudBuildpacksGroupObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildServiceAgentPool.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1425" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildServiceAgentPool.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudBuildServiceAgentPool" executed="True" result="Ignored" success="True" time="0.0376" asserts="0" description="New-AzSpringCloudBuildServiceAgentPool">
+            <results>
+              <test-case description="UpdateExpanded" name="New-AzSpringCloudBuildServiceAgentPool.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildServiceBuilder.Tests.ps1" executed="True" result="Ignored" success="True" time="0.152" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudBuildServiceBuilder.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudBuildServiceBuilder" executed="True" result="Ignored" success="True" time="0.0391" asserts="0" description="New-AzSpringCloudBuildServiceBuilder">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudBuildServiceBuilder.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudCertificate.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1374" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudCertificate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudCertificate" executed="True" result="Ignored" success="True" time="0.0297" asserts="0" description="New-AzSpringCloudCertificate">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudCertificate.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1309" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudConfigurationService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudConfigurationService" executed="True" result="Ignored" success="True" time="0.0256" asserts="0" description="New-AzSpringCloudConfigurationService">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSpringCloudConfigurationService.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudConfigurationServiceGitRepositoryObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1322" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudConfigurationServiceGitRepositoryObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudConfigurationServiceGitRepositoryObject" executed="True" result="Ignored" success="True" time="0.0273" asserts="0" description="New-AzSpringCloudConfigurationServiceGitRepositoryObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudConfigurationServiceGitRepositoryObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudContentCertificateObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.14" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudContentCertificateObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudContentCertificateObject" executed="True" result="Ignored" success="True" time="0.0301" asserts="0" description="New-AzSpringCloudContentCertificateObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudContentCertificateObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudGitPatternRepositoryObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1363" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudGitPatternRepositoryObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudGitPatternRepositoryObject" executed="True" result="Ignored" success="True" time="0.0296" asserts="0" description="New-AzSpringCloudGitPatternRepositoryObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudGitPatternRepositoryObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudKeyVaultCertificateObject.Tests.ps1" executed="True" result="Ignored" success="True" time="0.139" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudKeyVaultCertificateObject.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudKeyVaultCertificateObject" executed="True" result="Ignored" success="True" time="0.0285" asserts="0" description="New-AzSpringCloudKeyVaultCertificateObject">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzSpringCloudKeyVaultCertificateObject.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudRegistry.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1495" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudRegistry.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudRegistry" executed="True" result="Ignored" success="True" time="0.0427" asserts="0" description="New-AzSpringCloudRegistry">
+            <results>
+              <test-case description="Create" name="New-AzSpringCloudRegistry.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CreateViaIdentity" name="New-AzSpringCloudRegistry.CreateViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CreateViaIdentitySpring" name="New-AzSpringCloudRegistry.CreateViaIdentitySpring" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudTestKey.Tests.ps1" executed="True" result="Success" success="True" time="0.2148" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\New-AzSpringCloudTestKey.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSpringCloudTestKey" executed="True" result="Success" success="True" time="0.1024" asserts="0" description="New-AzSpringCloudTestKey">
+            <results>
+              <test-case description="RegenerateExpanded" name="New-AzSpringCloudTestKey.RegenerateExpanded" time="0.0592" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.3029" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloud.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloud" executed="True" result="Success" success="True" time="0.1945" asserts="0" description="Remove-AzSpringCloud">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloud.Delete" time="0.0707" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloud.DeleteViaIdentity" time="0.0809" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.2725" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1656" asserts="0" description="Remove-AzSpringCloudApp">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudApp.Delete" time="0.0673" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudApp.DeleteViaIdentity" time="0.0536" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudAppBinding.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1508" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudAppBinding.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudAppBinding" executed="True" result="Ignored" success="True" time="0.0432" asserts="0" description="Remove-AzSpringCloudAppBinding">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudAppBinding.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudAppBinding.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1403" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudAppCustomDomain" executed="True" result="Ignored" success="True" time="0.0272" asserts="0" description="Remove-AzSpringCloudAppCustomDomain">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudAppCustomDomain.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudAppCustomDomain.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.2979" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1896" asserts="0" description="Remove-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudAppDeployment.Delete" time="0.0831" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudAppDeployment.DeleteViaIdentity" time="0.054" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudBuildpackBinding.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1423" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudBuildpackBinding.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudBuildpackBinding" executed="True" result="Ignored" success="True" time="0.0307" asserts="0" description="Remove-AzSpringCloudBuildpackBinding">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudBuildpackBinding.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudBuildpackBinding.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudBuildServiceBuilder.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1394" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudBuildServiceBuilder.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudBuildServiceBuilder" executed="True" result="Ignored" success="True" time="0.029" asserts="0" description="Remove-AzSpringCloudBuildServiceBuilder">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudBuildServiceBuilder.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudBuildServiceBuilder.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudCertificate.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1356" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudCertificate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudCertificate" executed="True" result="Ignored" success="True" time="0.0276" asserts="0" description="Remove-AzSpringCloudCertificate">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudCertificate.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudCertificate.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1362" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Remove-AzSpringCloudConfigurationService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSpringCloudConfigurationService" executed="True" result="Ignored" success="True" time="0.0299" asserts="0" description="Remove-AzSpringCloudConfigurationService">
+            <results>
+              <test-case description="Delete" name="Remove-AzSpringCloudConfigurationService.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudConfigurationService.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Restart-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.3792" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Restart-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.269" asserts="0" description="Restart-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="Restart" name="Restart-AzSpringCloudAppDeployment.Restart" time="0.1404" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RestartViaIdentity" name="Restart-AzSpringCloudAppDeployment.RestartViaIdentity" time="0.0778" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Start-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1548" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Start-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzSpringCloudAppDeployment" executed="True" result="Ignored" success="True" time="0.043" asserts="0" description="Start-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="Start" name="Start-AzSpringCloudAppDeployment.Start" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="StartViaIdentity" name="Start-AzSpringCloudAppDeployment.StartViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Start-AzSpringCloudAppDeploymentJfr.Tests.ps1" executed="True" result="Success" success="True" time="0.217" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Start-AzSpringCloudAppDeploymentJfr.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzSpringCloudAppDeploymentJfr" executed="True" result="Success" success="True" time="0.1076" asserts="0" description="Start-AzSpringCloudAppDeploymentJfr">
+            <results>
+              <test-case description="Start" name="Start-AzSpringCloudAppDeploymentJfr.Start" time="0.0651" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Stop-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1533" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Stop-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzSpringCloudAppDeployment" executed="True" result="Ignored" success="True" time="0.0423" asserts="0" description="Stop-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="Stop" name="Stop-AzSpringCloudAppDeployment.Stop" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="StopViaIdentity" name="Stop-AzSpringCloudAppDeployment.StopViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Test-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1498" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Test-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzSpringCloudAppCustomDomain" executed="True" result="Ignored" success="True" time="0.0394" asserts="0" description="Test-AzSpringCloudAppCustomDomain">
+            <results>
+              <test-case description="ValidateExpanded" name="Test-AzSpringCloudAppCustomDomain.ValidateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Validate" name="Test-AzSpringCloudAppCustomDomain.Validate" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Test-AzSpringCloudConfigServer.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1505" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Test-AzSpringCloudConfigServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzSpringCloudConfigServer" executed="True" result="Ignored" success="True" time="0.0429" asserts="0" description="Test-AzSpringCloudConfigServer">
+            <results>
+              <test-case description="ValidateExpanded" name="Test-AzSpringCloudConfigServer.ValidateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ValidateViaIdentityExpanded" name="Test-AzSpringCloudConfigServer.ValidateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Test-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1358" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Test-AzSpringCloudConfigurationService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzSpringCloudConfigurationService" executed="True" result="Ignored" success="True" time="0.0307" asserts="0" description="Test-AzSpringCloudConfigurationService">
+            <results>
+              <test-case description="ValidateExpanded" name="Test-AzSpringCloudConfigurationService.ValidateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ValidateViaIdentityExpanded" name="Test-AzSpringCloudConfigurationService.ValidateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Test-AzSpringCloudNameAvailability.Tests.ps1" executed="True" result="Success" success="True" time="0.2098" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Test-AzSpringCloudNameAvailability.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzSpringCloudNameAvailability" executed="True" result="Success" success="True" time="0.0976" asserts="0" description="Test-AzSpringCloudNameAvailability">
+            <results>
+              <test-case description="CheckExpanded" name="Test-AzSpringCloudNameAvailability.CheckExpanded" time="0.0596" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.2554" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloud.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloud" executed="True" result="Success" success="True" time="0.1465" asserts="0" description="Update-AzSpringCloud">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloud.UpdateExpanded" time="0.0641" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloud.UpdateViaIdentityExpanded" time="0.0434" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.241" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudApp.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1286" asserts="0" description="Update-AzSpringCloudApp">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudApp.UpdateExpanded" time="0.0496" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudApp.UpdateViaIdentityExpanded" time="0.0344" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudAppActiveDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.2079" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudAppActiveDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudAppActiveDeployment" executed="True" result="Success" success="True" time="0.1003" asserts="0" description="Update-AzSpringCloudAppActiveDeployment">
+            <results>
+              <test-case description="SetExpanded" name="Update-AzSpringCloudAppActiveDeployment.SetExpanded" time="0.0611" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudAppBinding.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1594" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudAppBinding.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudAppBinding" executed="True" result="Ignored" success="True" time="0.0472" asserts="0" description="Update-AzSpringCloudAppBinding">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudAppBinding.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudAppBinding.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1454" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudAppCustomDomain" executed="True" result="Ignored" success="True" time="0.0308" asserts="0" description="Update-AzSpringCloudAppCustomDomain">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudAppCustomDomain.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudAppCustomDomain.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.2426" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudAppDeployment.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1303" asserts="0" description="Update-AzSpringCloudAppDeployment">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudAppDeployment.UpdateExpanded" time="0.054" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudAppDeployment.UpdateViaIdentityExpanded" time="0.0336" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudBuildpackBinding.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1549" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudBuildpackBinding.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudBuildpackBinding" executed="True" result="Ignored" success="True" time="0.0455" asserts="0" description="Update-AzSpringCloudBuildpackBinding">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudBuildpackBinding.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpringExpanded" name="Update-AzSpringCloudBuildpackBinding.UpdateViaIdentitySpringExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityBuildServiceExpanded" name="Update-AzSpringCloudBuildpackBinding.UpdateViaIdentityBuildServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityBuilderExpanded" name="Update-AzSpringCloudBuildpackBinding.UpdateViaIdentityBuilderExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudBuildpackBinding.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudBuildService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1611" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudBuildService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudBuildService" executed="True" result="Ignored" success="True" time="0.047" asserts="0" description="Update-AzSpringCloudBuildService">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudBuildService.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpringExpanded" name="Update-AzSpringCloudBuildService.UpdateViaIdentitySpringExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpring" name="Update-AzSpringCloudBuildService.UpdateViaIdentitySpring" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityBuildServiceExpanded" name="Update-AzSpringCloudBuildService.UpdateViaIdentityBuildServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityBuildService" name="Update-AzSpringCloudBuildService.UpdateViaIdentityBuildService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzSpringCloudBuildService.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudBuildService.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentity" name="Update-AzSpringCloudBuildService.UpdateViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudBuildServiceAgentPool.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1517" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudBuildServiceAgentPool.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudBuildServiceAgentPool" executed="True" result="Ignored" success="True" time="0.0455" asserts="0" description="Update-AzSpringCloudBuildServiceAgentPool">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudBuildServiceAgentPool.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityBuildServiceExpanded" name="Update-AzSpringCloudBuildServiceAgentPool.UpdateViaIdentityBuildServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudBuildServiceAgentPool.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpringExpanded" name="Update-AzSpringCloudBuildServiceAgentPool.UpdateViaIdentitySpringExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudBuildServiceBuilder.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1526" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudBuildServiceBuilder.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudBuildServiceBuilder" executed="True" result="Ignored" success="True" time="0.0418" asserts="0" description="Update-AzSpringCloudBuildServiceBuilder">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudBuildServiceBuilder.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpringExpanded" name="Update-AzSpringCloudBuildServiceBuilder.UpdateViaIdentitySpringExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityBuildServiceExpanded" name="Update-AzSpringCloudBuildServiceBuilder.UpdateViaIdentityBuildServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudBuildServiceBuilder.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudCertificate.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1578" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudCertificate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudCertificate" executed="True" result="Ignored" success="True" time="0.0485" asserts="0" description="Update-AzSpringCloudCertificate">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudCertificate.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpringExpanded" name="Update-AzSpringCloudCertificate.UpdateViaIdentitySpringExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpring" name="Update-AzSpringCloudCertificate.UpdateViaIdentitySpring" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzSpringCloudCertificate.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudCertificate.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentity" name="Update-AzSpringCloudCertificate.UpdateViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudConfigServer.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1374" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudConfigServer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudConfigServer" executed="True" result="Ignored" success="True" time="0.0308" asserts="0" description="Update-AzSpringCloudConfigServer">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudConfigServer.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudConfigServer.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1552" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudConfigurationService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudConfigurationService" executed="True" result="Ignored" success="True" time="0.0457" asserts="0" description="Update-AzSpringCloudConfigurationService">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudConfigurationService.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzSpringCloudConfigurationService.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudConfigurationService.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentity" name="Update-AzSpringCloudConfigurationService.UpdateViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpringExpanded" name="Update-AzSpringCloudConfigurationService.UpdateViaIdentitySpringExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentitySpring" name="Update-AzSpringCloudConfigurationService.UpdateViaIdentitySpring" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudMonitoringSetting.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1359" asserts="0" description="D:\Test\azure-powershell\src\SpringCloud\SpringCloud.Autorest\test\Update-AzSpringCloudMonitoringSetting.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzSpringCloudMonitoringSetting" executed="True" result="Ignored" success="True" time="0.0276" asserts="0" description="Update-AzSpringCloudMonitoringSetting">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzSpringCloudMonitoringSetting.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudMonitoringSetting.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

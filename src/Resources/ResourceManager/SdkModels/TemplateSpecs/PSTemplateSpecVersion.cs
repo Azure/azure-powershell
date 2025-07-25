@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -47,15 +47,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets the artifacts within the template spec version
+        /// Gets or sets the linked template artifacts within the template spec version
         /// </summary>
-        public IList<PSTemplateSpecArtifact> Artifacts { get; set; } = 
-            new List<PSTemplateSpecArtifact>();
+        public IList<PSTemplateSpecTemplateArtifact> LinkedTemplates { get; set; } = 
+            new List<PSTemplateSpecTemplateArtifact>();
 
         /// <summary>
         /// Gets or sets the Azure Resource Manager template (JSON).
         /// </summary>
-        public string Template { get; set; }
+        public string MainTemplate { get; set; }
 
         /// <summary>
         /// Gets the date/time the template spec version was created (PUT to Azure).
@@ -66,6 +66,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         /// Gets the last date/time the template spec version was modified (PUT to Azure).
         /// </summary>
         public DateTime? LastModifiedTime { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the UI Form definition (if any) for the template spec version
+        /// </summary>
+        public string UIFormDefinition { get; set; }
 
         /// <summary>
         /// Converts a template spec model from the Azure SDK to the powershell
@@ -88,26 +93,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 LastModifiedTime = templateSpecVersion.SystemData.LastModifiedAt,
                 Name = templateSpecVersion.Name,
                 Description = templateSpecVersion.Description,
-                Tags = templateSpecVersion.Tags,
+                Tags = templateSpecVersion.Tags == null
+                    ? new Dictionary<string, string>()
+                    : new Dictionary<string, string>(templateSpecVersion.Tags),
                 // Note: Cast is redundant, but present for clarity reasons:
-                Template = ((JToken)templateSpecVersion.Template).ToString()
+                MainTemplate = ((JToken)templateSpecVersion.MainTemplate).ToString(),
+                UIFormDefinition = ((JToken)templateSpecVersion.UiFormDefinition)?.ToString()
             };
 
-            if (templateSpecVersion.Artifacts?.Any() == true) {
-                foreach (TemplateSpecArtifact artifact in templateSpecVersion.Artifacts)
+            if (templateSpecVersion.LinkedTemplates?.Any() == true) {
+                foreach (LinkedTemplateArtifact artifact in templateSpecVersion.LinkedTemplates)
                 {
-                    switch (artifact)
-                    {
-                        case TemplateSpecTemplateArtifact templateArtifact:
-                            psTemplateSpecVersion.Artifacts.Add(
-                                PSTemplateSpecTemplateArtifact.FromAzureSDKTemplateSpecTemplateArtifact(templateArtifact)
-                            );
-                            break;
-                        default:
-                            throw new PSNotSupportedException(
-                                $"Template spec artifact type '${artifact.GetType().Name}' not supported by cmdlets."
-                            );
-                    }
+                    psTemplateSpecVersion.LinkedTemplates.Add(
+                        PSTemplateSpecTemplateArtifact.FromAzureSDKTemplateSpecTemplateArtifact(artifact));
                 }
             }
 

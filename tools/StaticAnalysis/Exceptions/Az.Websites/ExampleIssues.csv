@@ -1,0 +1,7 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Websites","Get-AzWebAppBackup","0","0","MissingSynopsis","5040","1","Synopsis is missing.","D:\a\_work\1\s\src\Websites\Websites\help\Get-AzWebAppBackup.md","Add Synopsis. Remove any placeholders."
+"Az.Websites","Get-AzWebAppBackupConfiguration","0","0","MissingSynopsis","5040","1","Synopsis is missing.","D:\a\_work\1\s\src\Websites\Websites\help\Get-AzWebAppBackupConfiguration.md","Add Synopsis. Remove any placeholders."
+"Az.Websites","Get-AzWebAppBackupList","0","0","MissingSynopsis","5040","1","Synopsis is missing.","D:\a\_work\1\s\src\Websites\Websites\help\Get-AzWebAppBackupList.md","Add Synopsis. Remove any placeholders."
+"Az.Websites","Remove-AzWebAppBackup","0","0","MissingSynopsis","5040","1","Synopsis is missing.","D:\a\_work\1\s\src\Websites\Websites\help\Remove-AzWebAppBackup.md","Add Synopsis. Remove any placeholders."
+"Az.Websites","Remove-AzWebAppSlot","0","0","MissingSynopsis","5040","1","Synopsis is missing.","D:\a\_work\1\s\src\Websites\Websites\help\Remove-AzWebAppSlot.md","Add Synopsis. Remove any placeholders."
+"Az.Websites","Reset-AzWebAppSlotPublishingProfile","0","0","MissingSynopsis","5040","1","Synopsis is missing.","D:\a\_work\1\s\src\Websites\Websites\help\Reset-AzWebAppSlotPublishingProfile.md","Add Synopsis. Remove any placeholders."

@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Constructs a database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlElasticPoolAdapter(IAzureContext context)
         {
             Context = context;
@@ -87,8 +86,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Creates an Azure Sql Database ElasticPool.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
         internal AzureSqlElasticPoolModel CreateElasticPool(AzureSqlElasticPoolModel model)
@@ -111,8 +108,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     MinCapacity = model.DatabaseCapacityMin,
                     MaxCapacity = model.DatabaseCapacityMax
                 },
-                LicenseType = model.LicenseType
-            });
+                LicenseType = model.LicenseType,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
+                HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,
+                PreferredEnclaveType = model.PreferredEnclaveType
+            }); ;
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
@@ -120,8 +120,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Updates an Azure Sql Database ElasticPool using Patch.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
         internal AzureSqlElasticPoolModel UpsertElasticPool(AzureSqlElasticPoolModel model)
@@ -144,7 +142,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     MinCapacity = model.DatabaseCapacityMin,
                     MaxCapacity = model.DatabaseCapacityMax
                 },
-                LicenseType = model.LicenseType
+                LicenseType = model.LicenseType,
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
+                HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,
+                PreferredEnclaveType = model.PreferredEnclaveType
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -232,7 +233,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                            requestedDatabaseDtuMin = activity.RequestedDatabaseDtuMin,
                            requestedDtu = activity.RequestedDtu,
                            requestedElasticPoolName = activity.RequestedElasticPoolName,
-                           requestedStorageLimitInGB = activity.RequestedStorageLimitInGB,
+                           requestedStorageLimitInGB = activity.RequestedStorageLimitInGb,
                            serverName = activity.ServerName,
                            startTime = activity.StartTime,
                            state = activity.State,
@@ -338,7 +339,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Converts a ElascitPoolAcitivy model to the powershell model.
+        /// Converts a ElasticPoolActivity model to the powershell model.
         /// </summary>
         /// <param name="model">The model from the service</param>
         /// <returns>The converted model</returns>
@@ -358,7 +359,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 RequestedDatabaseDtuMin = model.RequestedDatabaseDtuMin,
                 RequestedDtu = model.RequestedDtu,
                 RequestedElasticPoolName = model.RequestedElasticPoolName,
-                RequestedStorageLimitInGB = model.RequestedStorageLimitInGB,
+                RequestedStorageLimitInGB = model.RequestedStorageLimitInGb,
                 ServerName = model.ServerName,
                 StartTime = model.StartTime,
                 State = model.State
@@ -383,7 +384,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="pool">The service response</param>
         /// <returns>The converted model</returns>
@@ -412,7 +413,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 DatabaseDtuMin = pool.DatabaseDtuMin,
                 DatabaseDtuMax = pool.DatabaseDtuMax,
                 Family = pool.Sku.Family,
-                LicenseType = pool.LicenseType
+                LicenseType = pool.LicenseType,
+                MaintenanceConfigurationId = pool.MaintenanceConfigurationId,
+                HighAvailabilityReplicaCount = pool.HighAvailabilityReplicaCount,
+                PreferredEnclaveType = pool.PreferredEnclaveType
             };
 
             return model;

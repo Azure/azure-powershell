@@ -1,0 +1,50 @@
+{
+  "Get-AzDevCenterAdminProjectCatalogSyncErrorDetail+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/test1/getSyncErrorDetails?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/test1/getSyncErrorDetails?api-version=2024-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "c6eed235-4fa6-431c-a4b0-dc736f96d8f8" ],
+        "CommandName": [ "Get-AzDevCenterAdminProjectCatalogSyncErrorDetail" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminProjectCatalogSyncErrorDetail_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.19", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "1500634b-6f2d-4cc2-98fa-f02478476331" ],
+        "x-ms-client-request-id": [ "c6eed235-4fa6-431c-a4b0-dc736f96d8f8" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2024-08-01T22:57:12.3275796Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "bd1b9742-4145-4658-a40d-a52b380ddfd9" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240801T225612Z:1500634b-6f2d-4cc2-98fa-f02478476331" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 83E3D65CC623444ABCFAEE82EBE4DBBF Ref B: CO6AA3150218035 Ref C: 2024-08-01T22:56:11Z" ],
+        "Date": [ "Thu, 01 Aug 2024 22:56:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "247" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"operationError\":{\"code\":\"DisabledKeyVaultSecret\",\"message\":\"The secret provided to sync the catalog is disabled. Please enable it, or update the catalog with a new secret identifier for an enabled secret containing your personal access token.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

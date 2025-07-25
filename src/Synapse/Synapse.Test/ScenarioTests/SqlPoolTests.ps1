@@ -4,30 +4,19 @@ Tests Synapse SqlPool Lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-SynapseSqlPool
 {
-    param
-    (
-        $resourceGroupName = (Get-ResourceGroupName),
-        $workspaceName = (Get-SynapseWorkspaceName),
-        $sqlPoolName = (Get-SynapseSqlPoolName),
-        $sqlPoolPerformanceLevel = 'DW200c'
-    )
+	# Setup
+	$testSuffix = getAssetName
+	Create-SqlPoolTestEnvironment $testSuffix
+	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
 
     try
     {
-        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
-        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
-        $workspace = Get-AzSynapseWorkspace -resourceGroupName $resourceGroupName -Name $workspaceName
-        $location = $workspace.Location
-
-        # Test to make sure the SqlPool doesn't exist
-        Assert-False {Test-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
-
-        $sqlPoolCreated = New-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PerformanceLevel $sqlPoolPerformanceLevel
-
-        Assert-AreEqual $sqlPoolName $sqlPoolCreated.Name
-        Assert-AreEqual $location $sqlPoolCreated.Location
-        Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolCreated.Type
-        Assert-True {$sqlPoolCreated.Id -like "*$resourceGroupName*"}
+        $resourceGroupName = $params.rgname
+        $workspaceName = $params.WorkspaceName
+        $location = $params.location
+        $sqlPoolName = $params.sqlPoolName
+        $tags = $params.tags
+        $storageAccountType = $params.storageAccountType
 
         # In loop to check if SQL pool exists
         for ($i = 0; $i -le 60; $i++)
@@ -38,7 +27,14 @@ function Test-SynapseSqlPool
                 Assert-AreEqual $sqlPoolName $sqlPoolGet[0].Name
                 Assert-AreEqual $location $sqlPoolGet[0].Location
                 Assert-AreEqual "Microsoft.Synapse/Workspaces/sqlPools" $sqlPoolGet[0].Type
-                Assert-True {$sqlPoolCreated.Id -like "*$resourceGroupName*"}
+                Assert-True {$sqlPoolGet.Id -like "*$resourceGroupName*"} 
+                
+                Assert-NotNull $sqlPoolGet.Tags "Tags do not exists"
+                Assert-NotNull $sqlPoolGet.Tags["NewSqlPoolTag"] "The tag 'NewSqlPoolTag' does not exist"
+                Assert-AreEqual $sqlPoolGet.Tags["NewSqlPoolTag"] $tags["NewSqlPoolTag"]
+
+                Assert-NotNull $sqlPoolGet.StorageAccountType "StorageAccountType do not exists"
+                Assert-AreEqual $sqlPoolGet.StorageAccountType $storageAccountType
                 break
             }
 
@@ -56,7 +52,7 @@ function Test-SynapseSqlPool
  
 		# Wait for 3 minutes for the update completion
 		# Without this, the test will pass non-deterministically
-		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(180000)
+		Wait-Seconds 180
         $sqlPoolUpdated = Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
 
         Assert-AreEqual $sqlPoolName $sqlPoolUpdated.Name
@@ -85,15 +81,156 @@ function Test-SynapseSqlPool
         }
         Assert-True {$found -eq 1} "SqlPool created earlier is not found when listing all in resource group: $resourceGroupName."
 
+        # Suspend SqlPool
+        $sqlPoolSuspended = Suspend-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual "Paused" $sqlPoolSuspended.Status
+
+        # Resume SqlPool
+        $sqlPoolResumed = Resume-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual "Online" $sqlPoolResumed.Status
+
         # Delete SqlPool
-        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru} "Remove SqlPool failed."
+        Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru -Force} "Remove SqlPool failed."
 
         # Verify that it is gone by trying to get it again
         Assert-Throws {Get-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
     }
     finally
     {
-        # cleanup the SQL pool that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -ErrorAction SilentlyContinue} -IgnoreFailures
+		# Cleanup
+		Remove-SqlPoolTestEnvironment $testSuffix
     }
+}
+
+<#
+.SYNOPSIS
+Tests Synapse SQL Pool Security settings.
+Including SQL Pool Auditing settings, Advanced threat protection settings, Vulnerability assessment settings and Transparent Data Encryption.
+#>
+function Test-SynapseSqlPool-Security
+{
+    param
+    (
+        $storageGen2AccountName = "sqlauditstorage" + (getAssetName)
+    )
+
+	# Setup
+	$testSuffix = getAssetName
+	Create-SqlPoolTestEnvironment $testSuffix
+	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
+
+    try
+    {
+        $resourceGroupName = $params.rgname
+        $workspaceName = $params.WorkspaceName
+        $sqlPoolName = $params.sqlPoolName
+        $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageGen2AccountName -Location $params.location -SkuName Standard_LRS -Kind StorageV2
+        
+        # Set SQL Pool Auditing
+        Set-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -BlobStorageTargetState Enabled -StorageAccountResourceId $account.id -StorageKeyType Primary
+
+        # Get SQL Pool Auditing
+        $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $auditing.BlobStorageTargetState Enabled
+        Assert-AreEqual $auditing.StorageAccountResourceId $account.id
+
+        # Set SQL Pool Advanced threat protection
+        $threatProtectionSet = Update-AzSynapseSqlPoolAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -NotificationRecipientsEmails "mail1@mail.com;mail2@mail.com" `
+        -EmailAdmins $False -ExcludedDetectionType "Sql_Injection","Unsafe_Action" -StorageAccountName $storageGen2AccountName
+
+        Assert-AreEqual $threatProtectionSet.ThreatDetectionState Enabled
+        Assert-AreEqual $threatProtectionSet.StorageAccountName $storageGen2AccountName
+
+        # Set SQL Pool Vulnerability assessment
+        $vulnerabilityAssessmentSet = Update-AzSynapseSqlPoolVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -StorageAccountName $storageGen2AccountName `
+        -RecurringScansInterval Weekly -EmailAdmins $False -NotificationEmail "mail1@mail.com","mail2@mail.com"
+
+        Assert-AreEqual $vulnerabilityAssessmentSet.StorageAccountName $storageGen2AccountName
+        Assert-AreEqual $vulnerabilityAssessmentSet.RecurringScansInterval Weekly
+
+        # Remove SQL Pool Vulnerability assessment
+        Assert-True {Clear-AzSynapseSqlPoolVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru}
+
+        # Verify that SQL Pool Vulnerability assessment was deleted
+        $vulnerabilityAssessmentGet = Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $vulnerabilityAssessmentGet.RecurringScansInterval None
+
+        # Remove SQL Pool Advanced threat protection
+        Assert-True {Clear-AzSynapseSqlPoolAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru}
+
+        # Verify that SQL Pool Advanced threat protection was deleted
+        $threatProtectionGet = Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $threatProtectionGet.ThreatDetectionState Disabled
+
+        # Remove SQL Pool Auditing
+        Assert-True {Remove-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
+
+        # Wait for 3 minutes for the update completion
+        Wait-Seconds 180
+
+        # Verify that SQL Pool Auditing was deleted
+        $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $auditing.BlobStorageTargetState Disabled
+
+        # Set SQL Pool Transparent Data Encryption
+        $tdeSet = Set-AzSynapseSqlPoolTransparentDataEncryption -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -State Enabled
+
+        Assert-AreEqual $tdeSet.State Enabled
+
+        # Get SQL Pool Transparent Data Encryption
+        $tdeGet = Get-AzSynapseSqlPoolTransparentDataEncryption -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
+
+        Assert-AreEqual $tdeGet.State Enabled
+    }
+    finally
+    {
+		# Cleanup
+		Remove-SqlPoolTestEnvironment $testSuffix
+    }
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the tests
+#>
+function Create-SqlPoolTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
+    Create-SqlTestEnvironmentWithParams $params $params.location	
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used at the tests
+#>
+function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "sql-cmdlet-test-rg" +$testSuffix;
+			  workspaceName = "sqlws" +$testSuffix;
+			  sqlPoolName = "sqlpool" + $testSuffix;
+			  storageAccountName = "sqlstorage" + $testSuffix;
+			  fileSystemName = "sqlcmdletfs" + $testSuffix;
+			  loginName = "testlogin";
+			  pwd = Get-TestPassword;
+			  perfLevel = 'DW200c';
+			  location = "eastus";
+			  tags = @{"NewSqlPoolTag" = "TestTagToNewCommand"}
+			  storageAccountType = "LRS" 
+	}
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the tests
+#>
+function Remove-SqlPoolTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
+	Remove-AzResourceGroup -Name $params.rgname -Force
 }

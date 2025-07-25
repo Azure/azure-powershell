@@ -25,9 +25,9 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "skipped due to the DNS is out of NRP ownership")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestDnsAvailability()
         {
             TestRunner.RunTestScript("Test-DnsAvailability");

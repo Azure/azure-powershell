@@ -14,14 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
+    using System;
+    using System.Globalization;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
-    using Microsoft.Azure.Cosmos.Table;
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
 
     [TestClass]
     public class RemoveAzureStorageTableStoredAccessPolicyTest : StorageTableStorageTestBase
@@ -40,13 +37,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestCleanup]
         public void CleanCommand()
         {
-            command = null;
+            this.clearTest();
+            this.command = null;
         }
 
         [TestMethod]
         public void RemoveStoredAccessPolicyNotExistsTest()
         {
-            AddTestStoredAccessPolicy();
+            ClearAndAddTestStoredAccessPolicies();
             string policyName = "Policy" + Guid.NewGuid();
             string tableName = "sampleTable";
 
@@ -58,8 +56,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestMethod]
         public void RemoveStoredAccessPolicySuccessTest()
         {
-            AddTestStoredAccessPolicy();
-            string policyName = TestPolicy1;
+            ClearAndAddTestStoredAccessPolicies();
+            string policyName = PolicyName1;
             string tableName = "sampleTable";
 
             command.RemoveAzureTableStoredAccessPolicy(tableMock, tableName, policyName);

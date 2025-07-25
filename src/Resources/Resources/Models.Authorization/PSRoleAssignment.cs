@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     public class PSRoleAssignment
     {
+        public string RoleAssignmentName { get; set; }
+
         public string RoleAssignmentId { get; set; }
 
         public string Scope { get; set; }

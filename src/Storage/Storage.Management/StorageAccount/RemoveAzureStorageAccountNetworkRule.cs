@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
+    [OutputType(typeof(PSResourceAccessRule), ParameterSetName = new string[] { ResourceAccessRuleStringParameterSet, ResourceAccessRuleObjectParameterSet })]
     public class RemoveAzureStorageAccountNetworkRuleCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private const string NetWorkRuleStringParameterSet = "NetWorkRuleString";
 
         /// <summary>
-        /// IpRule in String paremeter set name
+        /// IpRule in String parameter set name
         /// </summary>
         private const string IpRuleStringParameterSet = "IpRuleString";
 
@@ -49,6 +50,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// IpRule Objects pipeline parameter set
         /// </summary>
         private const string IpRuleObjectParameterSet = "IpRuleObject";
+
+        /// <summary>
+        /// ResourceAccess Objects pipeline parameter set
+        /// </summary>
+        private const string ResourceAccessRuleStringParameterSet = "ResourceAccessRuleString";
+
+        /// <summary>
+        /// ResourceAccess Objects pipeline parameter set
+        /// </summary>
+        private const string ResourceAccessRuleObjectParameterSet = "ResourceAccessRuleObject";
 
         [Parameter(
             Position = 0,
@@ -82,6 +93,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Storage Account NetworkRule ResourceAccessRules.",
+            ValueFromPipeline = true, ParameterSetName = ResourceAccessRuleObjectParameterSet)]
+        public PSResourceAccessRule[] ResourceAccessRule { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Storage Account NetworkRule IPRules IPAddressOrRange in string.",
             ParameterSetName = IpRuleStringParameterSet)]
         public string[] IPAddressOrRange { get; set; }
@@ -92,6 +109,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = NetWorkRuleStringParameterSet)]
         [Alias("SubnetId", "VirtualNetworkId")]
         public string[] VirtualNetworkResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Storage Account ResourceAccessRule TenantId  in string.",
+            ParameterSetName = ResourceAccessRuleStringParameterSet)]
+        public string TenantId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account ResourceAccessRule ResourceId  in string.",
+            ParameterSetName = ResourceAccessRuleStringParameterSet)]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -125,14 +155,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case IpRuleStringParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
+                        if (storageACL.IPRules == null)
+                            storageACL.IPRules = new List<IPRule>();
                         foreach (string s in IPAddressOrRange)
                         {
                             IPRule rule = new IPRule(s);
-                            if (!RemoveIpRule(storageACL.IpRules, rule))
+                            if (!RemoveIpRule(storageACL.IPRules, rule))
                                 throw new ArgumentOutOfRangeException("IPAddressOrRange", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
                         }
+                        break;
+                    case ResourceAccessRuleStringParameterSet:
+                        if (storageACL.ResourceAccessRules == null)
+                        {
+                            storageACL.ResourceAccessRules = new List<ResourceAccessRule>();
+                        }
+                        ResourceAccessRule resourceaccessrule = new ResourceAccessRule(this.TenantId, this.ResourceId);
+                        if (!RemoveResourceAccessRule(storageACL.ResourceAccessRules, resourceaccessrule))
+                                throw new ArgumentOutOfRangeException("TenantId, ResourceId", String.Format("Can't remove ResourceAccessRule since not exist, TenantId: {0}, ResourceId : {1}", resourceaccessrule.TenantId, resourceaccessrule.ResourceId));
+                        
                         break;
                     case NetworkRuleObjectParameterSet:
                         if (storageACL.VirtualNetworkRules == null)
@@ -144,12 +184,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case IpRuleObjectParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
+                        if (storageACL.IPRules == null)
+                            storageACL.IPRules = new List<IPRule>();
                         foreach (PSIpRule rule in IPRule)
                         {
-                            if (!RemoveIpRule(storageACL.IpRules, PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule)))
+                            if (!RemoveIpRule(storageACL.IPRules, PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule)))
                                 throw new ArgumentOutOfRangeException("IPRule", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
+                        }
+                        break;
+                    case ResourceAccessRuleObjectParameterSet:
+                        if (storageACL.ResourceAccessRules == null)
+                        {
+                            storageACL.ResourceAccessRules = new List<ResourceAccessRule>();
+                        }
+                        foreach (PSResourceAccessRule rule in this.ResourceAccessRule)
+                        {
+                            if (!RemoveResourceAccessRule(storageACL.ResourceAccessRules, PSNetworkRuleSet.ParseStorageResourceAccessRule(rule)))
+                                throw new ArgumentOutOfRangeException("ResourceAccessRule", String.Format("Can't remove ResourceAccessRule since not exist, TenantId: {0}, ResourceId : {1}", rule.TenantId, rule.ResourceId));
                         }
                         break;
                 }
@@ -174,8 +225,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     case IpRuleObjectParameterSet:
                         WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).IpRules);
                         break;
+                    case ResourceAccessRuleStringParameterSet:
+                    case ResourceAccessRuleObjectParameterSet:
+                        WriteObject(PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet).ResourceAccessRules);
+                        break;
                 }
-            }     
+            }
         }
 
         /// <summary>
@@ -183,7 +238,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         /// <param name="ruleList">The IpRule List</param>
         /// <param name="ruleToRemove">The IP Rule to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <returns>true if remove success</returns>
         public bool RemoveIpRule(IList<IPRule> ruleList, IPRule ruleToRemove)
         {
             foreach (IPRule rule in ruleList)
@@ -198,11 +253,31 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
 
         /// <summary>
+        /// Remove one ResourceAccessRule from ResourceAccessRule List
+        /// </summary>
+        /// <param name="ruleList">The ResourceAccessRule List</param>
+        /// <param name="ruleToRemove">The ResourceAccessRule to remove</param>
+        /// <returns>true if remove success</returns>
+        public bool RemoveResourceAccessRule(IList<ResourceAccessRule> ruleList, ResourceAccessRule ruleToRemove)
+        {
+            foreach (ResourceAccessRule rule in ruleList)
+            {
+                if (rule.TenantId.Equals(ruleToRemove.TenantId, System.StringComparison.InvariantCultureIgnoreCase)
+                   && rule.ResourceId.Equals(ruleToRemove.ResourceId, System.StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ruleList.Remove(rule);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Remove one NetworkRule from NetworkRule List
         /// </summary>
         /// <param name="ruleList">The NetworkRule List</param>
-        /// <param name="ruleToRemove">The NetworkRulee to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <param name="ruleToRemove">The NetworkRule to remove</param>
+        /// <returns>true if remove success</returns>
         public bool RemoveNetworkRule(IList<VirtualNetworkRule> ruleList, VirtualNetworkRule ruleToRemove)
         {
             foreach (VirtualNetworkRule rule in ruleList)

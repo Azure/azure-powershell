@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor.Test</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
+    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor.Test\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <ProjectReference Include="..\Az.Tools.Predictor\Az.Tools.Predictor.csproj" />
+    <!-- The test project doesn't reference to it directly. Az.Tools.Predictor has a reference to Microsoft.PowerShell.SDK.
+      - But it's excluding content files to reduce the size of the module. The content files are not needed since they're in the runtime (PowerShell)
+      - The content files are needed to set up the runspace to parse the command line. So we need to include them when we run the unit tests.
+      -->
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\CommandsModel.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Data\PredictionsModel.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

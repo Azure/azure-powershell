@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Models;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
     public class PSNetAppFilesVolumeDataProtection
@@ -31,5 +35,27 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Snapshot properties
         /// </remark>        
         public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets VolumeBackupProperties 
+        /// </summary>
+        /// <remark>
+        /// Volume Backup properties
+        /// </remark>                
+        public PSNetAppFilesVolumeBackupProperties Backup { get; set; }
+
+        /// <summary>
+        /// Gets or sets VolumeBackupProperties 
+        /// </summary>
+        /// <remark>
+        /// Volume Backup properties
+        /// </remark>                
+        public PSNetAppFilesVolumeRelocationProperties VolumeRelocation { get; set; }
+
+        /// <summary>
+        /// Gets a list of destination replications
+        /// </summary>
+        public IList<PSNetAppFilesDestinationReplication> DestinationReplications { get; set; }
     }
 }

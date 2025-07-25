@@ -18,6 +18,70 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed security bug in token acquisition for MI server registration
+
+## Version 2.5.0
+* Fixed the bug in server registration
+* Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
+* Added RoleAssignmentExists check
+* Added AssignIdentity to Set-AzStorageSyncServer
+* Added a default behavior of system assigned identity to StorageSyncService provisioning
+
+## Version 2.4.1
+* Removed "Microsoft.Azure.Management.Authorization" Version "2.13.0-preview" package reference
+
+## Version 2.4.0
+* Upgraded nuget package to signed package.
+
+## Version 2.3.1
+* Fixed the bug in server registration
+* Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
+
+## Version 2.3.0
+* Fixed the Register-AzStorageSyncServer with Azure FileSync Agent v17
+* Improved performance for Managed Identity migration cmdlet
+
+## Version 2.2.0
+* Onboarded Service Api version 2022-09-01
+* Enabled ManagedIdentity Feature (Preview)
+  
+## Version 2.1.1
+* Updated dataset limit from 5 Tb to 100 Tib.
+  
+## Version 2.1.0
+* Fixed minor issues.
+* Updated supported character sets in `Invoke-AzStorageSyncCompatibilityCheck`.
+
+## Version 2.0.0
+* Deprecated "RegisteredServer" alias for InputObject parameter for Set-AzStorageSyncServerEndpoint
+
+## Version 1.7.0
+* Migrated Azure AD features in Az.StorageSync to MSGraph APIs. The cmdlets will call MSGraph API according to input parameters: New-AzStorageSyncCloudEndpoint
+* Changed default parameter set of Invoke-AzStorageSyncChangeDetection to use full share detection
+
+## Version 1.6.1
+* Fixed a bug where not all properties of PSSyncSessionStatus and PSSyncActivityStatus objects were being populated properly.
+* This affected the `Get-AzStorageSyncServerEndpoint` cmdlet when trying to access the following properties of the output:
+    - SyncStatus.UploadStatus
+    - SyncStatus.DownloadStatus
+    - SyncStatus.UploadActivity
+    - SyncStatus.DownloadActivity
+
+## Version 1.6.0
+* Added parameter sets to `Invoke-AzStorageSyncChangeDetection`
+    - Can call the cmdlet without -DirectoryPath and -Path parameters to trigger change detection on an entire file share
+* Added support for authoritative upload as part of New-AzStorageSyncServerEndpoint.
+* Added cloud change enumeration status information in Cloud Endpoint object.
+* Updated Server Endpoint object with various health properties
+* Added "ServerName" property in Server Endpoint and Registered Server objects to support showing the current FQDN of a server.
+
+## Version 1.5.0
+* Deprecated `Invoke-AzStorageSyncFileRecall`
+    - Customers should instead use `Invoke-StorageSyncFileRecall`, a cmdlet that is shipped with the Azure File Sync agent.
+* Removed offline data transfer feature in `New-AzStorageSyncServerEndpoint`.
+
+## Version 1.4.0
+* Added Sync tiering policy feature with download policy and local cache mode
 
 ## Version 1.3.0
 * Added a new version StorageSync SDK targeting ApiVersion 2020-03-01

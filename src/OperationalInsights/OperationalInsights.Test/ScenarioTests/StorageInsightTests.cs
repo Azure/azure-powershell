@@ -12,35 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
-    public class StorageInsightTests : OperationalInsightsScenarioTestBase
+    public class StorageInsightTests : OperationalInsightsTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public StorageInsightTests(Xunit.Abstractions.ITestOutputHelper output)
+        public StorageInsightTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageInsightCreateUpdateDelete()
         {
-            RunPowerShellTest(_logger, "Test-StorageInsightCreateUpdateDelete");
+            TestRunner.RunTestScript("Test-StorageInsightCreateUpdateDelete");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageInsightCreateFailsNoWs()
         {
-            RunPowerShellTest(_logger, "Test-StorageInsightCreateFailsNoWs");
+            TestRunner.RunTestScript("Test-StorageInsightCreateFailsNoWs");
         }
     }
 }

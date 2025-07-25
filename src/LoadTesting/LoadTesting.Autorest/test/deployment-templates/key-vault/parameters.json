@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "value": "pwsh-loadtesting-kvwb08"
+    },
+    "location": {
+      "value": "westus2"
+    },
+    "sku": {
+      "value": "Standard"
+    },
+    "mi1ObjectId": {
+      "value": "1391d0ce-dbfa-4169-bfe0-7c9b4c849821"
+    },
+    "mi2ObjectId": {
+      "value": "e5acca67-024c-4e09-a68c-89b67a87b802"
+    },
+    "tenant": {
+      "value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    },
+    "enabledForDeployment": {
+      "value": false
+    },
+    "enabledForTemplateDeployment": {
+      "value": false
+    },
+    "enabledForDiskEncryption": {
+      "value": false
+    },
+    "enableRbacAuthorization": {
+      "value": false
+    },
+    "publicNetworkAccess": {
+      "value": "Enabled"
+    },
+    "enableSoftDelete": {
+      "value": true
+    },
+    "softDeleteRetentionInDays": {
+      "value": 90
+    },
+    "enablePurgeProtection": {
+      "value": true
+    }
+  }
+}

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
 using Microsoft.Rest.Azure;
 using Moq;
 using System;
@@ -52,8 +52,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
         }
 
+        public static void Reset()
+        {
+            _getAsyncQueueVer2016?.Clear();
+            _listAsyncQueueVer2016?.Clear();
+            SubGetQueueVerLatest?.Clear();
+            SubListQueueVerLatest?.Clear();
+            TenantListQueueVerLatest?.Clear();
+
+        }
+
+        public static string GetTenantDomainFromId(string id)
+        {
+            return id.Substring(3)+".com";
+        }
+
         public static string GetSubscriptionNameFromId(string id)
         {
+            if(id == "a11a11aa-aaaa-aaaa-aaaa-aaaa1111aaaa" || id == "aaaa11aa-aaaa-aaaa-aaaa-aaaa1111aaaa")
+            {
+                return "SameNameForGetSubscriptionByName";
+            }
             return "Sub-" + id;
         }
 

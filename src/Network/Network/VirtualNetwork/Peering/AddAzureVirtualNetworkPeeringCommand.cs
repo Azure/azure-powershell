@@ -46,6 +46,26 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to indicate whether this is a Vnet peering or subnet peering")]
+        public bool? PeerCompleteVnets { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of local subnets to be peered")]
+        public string[] LocalSubnetNames { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of remote subnets to be peered")]
+        public string[] RemoteSubnetNames { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to determine whether this is a IPv6 only peering")]
+        public bool? EnableOnlyIPv6Peering { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag to block the VMs in the linked virtual network space to access all the VMs in local Virtual network space")]
         public SwitchParameter BlockVirtualNetworkAccess { get; set; }
 
@@ -85,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetworkPeering AddVirtualNetworkPeering()
         {
-            var vnetPeering= new PSVirtualNetworkPeering();
+            var vnetPeering = new PSVirtualNetworkPeering();
             vnetPeering.Name = this.Name;
             Dictionary<string, List<string>> auxAuthHeader = null;
 
@@ -103,6 +123,10 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            vnetPeering.PeerCompleteVnets = this.PeerCompleteVnets;
+            vnetPeering.LocalSubnetNames = this.LocalSubnetNames;
+            vnetPeering.RemoteSubnetNames = this.RemoteSubnetNames;
+            vnetPeering.EnableOnlyIPv6Peering = this.EnableOnlyIPv6Peering;
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
             vnetPeering.AllowGatewayTransit = this.AllowGatewayTransit;
             vnetPeering.AllowForwardedTraffic = this.AllowForwardedTraffic;
@@ -112,7 +136,7 @@ namespace Microsoft.Azure.Commands.Network
             var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
 
             // Execute the Create VirtualNetwork call
-            this.VirtualNetworkPeeringClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel, auxAuthHeader).GetAwaiter().GetResult();
+            this.VirtualNetworkPeeringClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel, null, auxAuthHeader).GetAwaiter().GetResult();
             var getVirtualNetworkPeering = this.GetVirtualNetworkPeering(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name);
 
             return getVirtualNetworkPeering;

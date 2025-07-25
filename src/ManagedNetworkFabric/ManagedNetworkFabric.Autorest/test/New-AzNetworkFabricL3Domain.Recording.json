@@ -1,0 +1,124 @@
+{
+  "New-AzNetworkFabricL3Domain+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName?api-version=2023-06-15",
+      "Content": "{\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"redistributeConnectedSubnets\": \"True\",\n    \"redistributeStaticRoutes\": \"True\",\n    \"aggregateRouteConfiguration\": {\n      \"ipv4Routes\": [\n        {\n          \"prefix\": \"10.0.0.1/28\"\n        }\n      ],\n      \"ipv6Routes\": [\n        {\n          \"prefix\": \"2fff::/64\"\n        }\n      ]\n    },\n    \"connectedSubnetRoutePolicy\": {\n      \"exportRoutePolicy\": {\n        \"exportIpv4RoutePolicyId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName\",\n        \"exportIpv6RoutePolicyId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName\"\n      }\n    },\n    \"networkFabricId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1030" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7206af8e-0000-0100-0000-65110cc50000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "225b42be-3935-4eba-a779-7b4464fa9b11" ],
+        "x-ms-request-id": [ "01245183-20aa-4664-96b7-b8c1f579dbab" ],
+        "x-ms-correlation-request-id": [ "2803f392-bea9-4606-8246-325b784b0ddd" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/d76f54a5-7a93-4e6b-b8f3-3b6d9a0e87fe*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T042957Z:2803f392-bea9-4606-8246-325b784b0ddd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:29:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1481" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"name\":\"l3DomainName\",\"type\":\"microsoft.managednetworkfabric/l3isolationdomains\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-25T04:29:55.9706249Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-25T04:29:55.9706249Z\"},\"properties\":{\"networkFabricId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName\",\"provisioningState\":\"Accepted\",\"redistributeConnectedSubnets\":\"True\",\"redistributeStaticRoutes\":\"True\",\"aggregateRouteConfiguration\":{\"ipv4Routes\":[{\"prefix\":\"10.0.0.1/28\"}],\"ipv6Routes\":[{\"prefix\":\"2fff::/64\"}]},\"configurationState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"connectedSubnetRoutePolicy\":{\"exportRoutePolicyId\":null,\"exportRoutePolicy\":{\"exportIpv4RoutePolicyId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName\",\"exportIpv6RoutePolicyId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName\"}}}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricL3Domain+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/d76f54a5-7a93-4e6b-b8f3-3b6d9a0e87fe*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/d76f54a5-7a93-4e6b-b8f3-3b6d9a0e87fe*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "aea6301a-b4d5-468b-9a02-9cb5535b76e5" ],
+        "CommandName": [ "New-AzNetworkFabricL3Domain" ],
+        "FullCommandName": [ "New-AzNetworkFabricL3Domain_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c02e76f-0000-0100-0000-65110cc80000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "ed7b4671-a616-4851-bf20-aefbd0c76faf" ],
+        "x-ms-correlation-request-id": [ "6e53a2b4-541f-44ca-8da5-eb7aa5586407" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T043028Z:6e53a2b4-541f-44ca-8da5-eb7aa5586407" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:30:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/d76f54a5-7a93-4e6b-b8f3-3b6d9a0e87fe*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"name\":\"d76f54a5-7a93-4e6b-b8f3-3b6d9a0e87fe*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-25T04:29:57.2044903Z\",\"endTime\":\"2023-09-25T04:30:00.3589703Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricL3Domain+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName?api-version=2023-06-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "aea6301a-b4d5-468b-9a02-9cb5535b76e5" ],
+        "CommandName": [ "New-AzNetworkFabricL3Domain" ],
+        "FullCommandName": [ "New-AzNetworkFabricL3Domain_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"72060790-0000-0100-0000-65110cc80000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3dfbcb4d-a4a2-4ac4-a9ec-28dceec2a982" ],
+        "x-ms-correlation-request-id": [ "193c840b-5d63-415e-a1dc-54be7a756acb" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T043028Z:193c840b-5d63-415e-a1dc-54be7a756acb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:30:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1499" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"name\":\"l3DomainName\",\"type\":\"microsoft.managednetworkfabric/l3isolationdomains\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-25T04:29:55.9706249Z\",\"lastModifiedBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-25T04:30:00.7898853Z\"},\"properties\":{\"networkFabricId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName\",\"provisioningState\":\"Succeeded\",\"redistributeConnectedSubnets\":\"True\",\"redistributeStaticRoutes\":\"True\",\"aggregateRouteConfiguration\":{\"ipv4Routes\":[{\"prefix\":\"10.0.0.1/28\"}],\"ipv6Routes\":[{\"prefix\":\"2fff::/64\"}]},\"configurationState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"connectedSubnetRoutePolicy\":{\"exportRoutePolicyId\":null,\"exportRoutePolicy\":{\"exportIpv4RoutePolicyId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName\",\"exportIpv6RoutePolicyId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName\"}}}}",
+      "isContentBase64": false
+    }
+  }
+}

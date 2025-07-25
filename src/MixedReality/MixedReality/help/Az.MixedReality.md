@@ -1,42 +1,70 @@
 ---
 Module Name: Az.MixedReality
-Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
-Download Help Link: https://aka.ms/mixed-reality-azure-powershell-help
-Help Version: 0.1.1.0
+Module Guid: 4bdb5e8a-54be-4080-8f73-9c4e31acf7c7
+Download Help Link: https://learn.microsoft.com/powershell/module/az.mixedreality
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.MixedReality Module
 ## Description
-Azure PowerShell Module of Mixed Reality Cloud Service
+Microsoft Azure PowerShell: MixedReality cmdlets
 
 ## Az.MixedReality Cmdlets
-### [Get-AzSpatialAnchorsAccount](Get-AzSpatialAnchorsAccount.md)
-Get or list Spatial Anchors Account(s) in certain Subscription and Resource Group.
+### [Get-AzMixedRealityObjectAnchorsAccount](Get-AzMixedRealityObjectAnchorsAccount.md)
+Retrieve an Object Anchors Account.
 
-### [New-AzSpatialAnchorsAccount](New-AzSpatialAnchorsAccount.md)
-Create a new Spatial Anchors Account in certain Subscription, Resource Group and Region.
+### [Get-AzMixedRealityObjectAnchorsAccountKey](Get-AzMixedRealityObjectAnchorsAccountKey.md)
+List Both of the 2 Keys of an object anchors Account
 
-### [Remove-AzSpatialAnchorsAccount](Remove-AzSpatialAnchorsAccount.md)
-Delete specified Spatial Anchors Account from certain Subscription and Resource Group.
+### [Get-AzMixedRealityRemoteRenderingAccount](Get-AzMixedRealityRemoteRenderingAccount.md)
+Retrieve a Remote Rendering Account.
 
-### [Get-AzSpatialAnchorsAccountKey](Get-AzSpatialAnchorsAccountKey.md)
-Get developer keys of Spatial Anchors Account.
+### [Get-AzMixedRealityRemoteRenderingAccountKey](Get-AzMixedRealityRemoteRenderingAccountKey.md)
+List Both of the 2 Keys of a Remote Rendering Account
 
-### [New-AzSpatialAnchorsAccountKey](New-AzSpatialAnchorsAccountKey.md)
-Regenerate specified developer key of Spatial Anchors Account.
+### [Get-AzMixedRealitySpatialAnchorsAccount](Get-AzMixedRealitySpatialAnchorsAccount.md)
+Retrieve a Spatial Anchors Account.
 
-### [Get-AzRemoteRenderingAccount](Get-AzRemoteRenderingAccount.md)
-Get or list Remote Rendering Account(s) in certain Subscription and Resource Group.
+### [Get-AzMixedRealitySpatialAnchorsAccountKey](Get-AzMixedRealitySpatialAnchorsAccountKey.md)
+List Both of the 2 Keys of a Spatial Anchors Account
 
-### [New-AzRemoteRenderingAccount](New-AzRemoteRenderingAccount.md)
-Create a new Remote Rendering Account in certain Subscription, Resource Group and Region.
+### [New-AzMixedRealityObjectAnchorsAccount](New-AzMixedRealityObjectAnchorsAccount.md)
+Creating or Updating an object anchors Account.
 
-### [Remove-AzRemoteRenderingAccount](Remove-AzRemoteRenderingAccount.md)
-Delete specified Remote Rendering Account from certain Subscription and Resource Group.
+### [New-AzMixedRealityObjectAnchorsAccountKey](New-AzMixedRealityObjectAnchorsAccountKey.md)
+Regenerate specified Key of an object anchors Account
 
-### [Get-AzRemoteRenderingAccountKey](Get-AzRemoteRenderingAccountKey.md)
-Get developer keys of Remote Rendering Account.
+### [New-AzMixedRealityRemoteRenderingAccount](New-AzMixedRealityRemoteRenderingAccount.md)
+Creating or Updating a Remote Rendering Account.
 
-### [New-AzRemoteRenderingAccountKey](New-AzRemoteRenderingAccountKey.md)
-Regenerate specified developer key of Remote Rendering Account.
+### [New-AzMixedRealityRemoteRenderingAccountKey](New-AzMixedRealityRemoteRenderingAccountKey.md)
+Regenerate specified Key of a Remote Rendering Account
+
+### [New-AzMixedRealitySpatialAnchorsAccount](New-AzMixedRealitySpatialAnchorsAccount.md)
+Creating or Updating a Spatial Anchors Account.
+
+### [New-AzMixedRealitySpatialAnchorsAccountKey](New-AzMixedRealitySpatialAnchorsAccountKey.md)
+Regenerate specified Key of a Spatial Anchors Account
+
+### [Remove-AzMixedRealityObjectAnchorsAccount](Remove-AzMixedRealityObjectAnchorsAccount.md)
+Delete an Object Anchors Account.
+
+### [Remove-AzMixedRealityRemoteRenderingAccount](Remove-AzMixedRealityRemoteRenderingAccount.md)
+Delete a Remote Rendering Account.
+
+### [Remove-AzMixedRealitySpatialAnchorsAccount](Remove-AzMixedRealitySpatialAnchorsAccount.md)
+Delete a Spatial Anchors Account.
+
+### [Test-AzMixedRealityNameAvailability](Test-AzMixedRealityNameAvailability.md)
+Check Name Availability for local uniqueness
+
+### [Update-AzMixedRealityObjectAnchorsAccount](Update-AzMixedRealityObjectAnchorsAccount.md)
+Creating or Updating an object anchors Account.
+
+### [Update-AzMixedRealityRemoteRenderingAccount](Update-AzMixedRealityRemoteRenderingAccount.md)
+Creating or Updating a Remote Rendering Account.
+
+### [Update-AzMixedRealitySpatialAnchorsAccount](Update-AzMixedRealitySpatialAnchorsAccount.md)
+Creating or Updating a Spatial Anchors Account.
+

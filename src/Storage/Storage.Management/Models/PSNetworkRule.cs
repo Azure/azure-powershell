@@ -57,6 +57,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string State;
     }
 
+    public struct PSResourceAccessRule
+    {
+        public string TenantId;
+        public string ResourceId;
+    }
+
     //Wrapper of NetworkRuleSet  
     public class PSNetworkRuleSet
     {
@@ -71,6 +77,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         [Ps1Xml(Label = "DefaultAction", Target = ViewControl.List, Position = 1)]
         public PSNetWorkRuleDefaultActionEnum DefaultAction { get; set; }
+
+        public PSResourceAccessRule[] ResourceAccessRules { get; set; }
 
 
         //Parse NetworkRule property Action in SDK to wrapped property PSNetworkRuleActionEnum
@@ -206,6 +214,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return returnRule;
         }
 
+        //Parse single NetworkRule PSResourceAccessRule in SDK to wrapped property PSPSResourceAccessRule
+        public static PSResourceAccessRule ParsePSResourceAccessRule(ResourceAccessRule rule)
+        {
+            PSResourceAccessRule returnRule = new PSResourceAccessRule();
+            returnRule.TenantId = rule.TenantId;
+            returnRule.ResourceId = rule.ResourceId;
+            return returnRule;
+        }
+
+        //Parse wrapped property PSPSResourceAccessRule to single NetworkRule PSResourceAccessRule in SDK
+        public static ResourceAccessRule ParseStorageResourceAccessRule(PSResourceAccessRule rule)
+        {
+            ResourceAccessRule returnRule = new ResourceAccessRule();
+            returnRule.TenantId = rule.TenantId;
+            returnRule.ResourceId = rule.ResourceId;
+            return returnRule;
+        }
+
         //Parse single NetworkRule VirtualNetworkRule in SDK to wrapped property PSVirtualNetworkRule
         public static PSVirtualNetworkRule ParsePSNetworkRuleVirtualNetworkRule(VirtualNetworkRule virtualNetworkRule)
         {
@@ -239,9 +265,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             returnRules.DefaultAction = ParsePSNetworkRuleDefaultAction(rules.DefaultAction);
 
             List<PSIpRule> ipRuleList = new List<PSIpRule>();
-            if (rules.IpRules != null)
+            if (rules.IPRules != null)
             {
-                foreach (var ipRule in rules.IpRules)
+                foreach (var ipRule in rules.IPRules)
                 {
                     ipRuleList.Add(ParsePSNetworkRuleIPRule(ipRule));
                 }
@@ -256,6 +282,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                     virtualNetworkList.Add(ParsePSNetworkRuleVirtualNetworkRule(virtualNetworkRule));
                 }
                 returnRules.VirtualNetworkRules = virtualNetworkList.ToArray();
+            }
+
+            List<PSResourceAccessRule> resourceAccessRuleList = new List<PSResourceAccessRule>();
+            if (rules.ResourceAccessRules != null)
+            {
+                foreach (var rule in rules.ResourceAccessRules)
+                {
+                    resourceAccessRuleList.Add(ParsePSResourceAccessRule(rule));
+                }
+                returnRules.ResourceAccessRules = resourceAccessRuleList.ToArray();
             }
 
             return returnRules;
@@ -279,7 +315,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 {
                     ipRuleList.Add(ParseStorageNetworkRuleIPRule(ipRule));
                 }
-                returnRules.IpRules = ipRuleList.ToArray();
+                returnRules.IPRules = ipRuleList.ToArray();
             }
 
             List<VirtualNetworkRule> virtualNetworkList = new List<VirtualNetworkRule>();
@@ -290,6 +326,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                     virtualNetworkList.Add(ParseStorageNetworkRuleVirtualNetworkRule(virtualNetworkRule));
                 }
                 returnRules.VirtualNetworkRules = virtualNetworkList.ToArray();
+            }
+
+            List<ResourceAccessRule> resourceAccessRuleList = new List<ResourceAccessRule>();
+            if (rules.ResourceAccessRules != null)
+            {
+                foreach (var rule in rules.ResourceAccessRules)
+                {
+                    resourceAccessRuleList.Add(ParseStorageResourceAccessRule(rule));
+                }
+                returnRules.ResourceAccessRules = resourceAccessRuleList.ToArray();
             }
 
             return returnRules;

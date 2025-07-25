@@ -21,5 +21,7 @@ namespace RecoveryServices.SiteRecovery.Test
         public const string A2AV1VmEndToEnd = "A2AV1VmEndToEnd";
         public const string A2AV2VmEndToEndWithAVSet = "A2AV2VmEndToEndWithAvaiabiltySet";
         public const string A2AV2RecoveryPlanEndToEnd = "A2AV2RecoveryPlanEndToEnd";
+        public const string InMageRcmResourceGroupName = "vmwaresrcrg";
+        public const string InMageRcmResourceName = "v2aRcm-pwsh-test";
     }
 }

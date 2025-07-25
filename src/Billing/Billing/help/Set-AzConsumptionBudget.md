@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
 Module Name: Az.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/set-azconsumptionbudget
+online version: https://learn.microsoft.com/powershell/module/az.billing/set-azconsumptionbudget
 schema: 2.0.0
 ---
 
@@ -54,7 +54,10 @@ The Set-AzConsumptionBudget cmdlet updates a budget in either a subscription or 
 
 ### Example 1: Update a budget by a new amount with a budget name at subscription level
 ```powershell
-PS C:\> Set-AzConsumptionBudget -Name PSBudget -Amount 75
+Set-AzConsumptionBudget -Name PSBudget -Amount 75
+```
+
+```output
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null
@@ -68,7 +71,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Update a budget with a notification when cost or usage reaches a threshold of 90 percent of amount at subscription level
 ```powershell
-PS C:\> Set-AzConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+Set-AzConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail @('johndoe@contoso.com','janesmith@contoso.com') -ContactRole Owner,Reader,Contributor
+```
+
+```output
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null
@@ -87,7 +93,10 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 3: Update a budget by a new amount with a budget name at resource group level
 ```powershell
-PS C:\> Set-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -Amount 75
+Set-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -Amount 75
+```
+
+```output
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null
@@ -425,5 +434,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Consumption.Models.PSBudget
 
 ## NOTES
+- Currently, PowerShell SDK for Consumption is only available to Enterprise Agreement customers.
+- PowerShell SDK for Consumption is using an older version of Budgets API and few backwards non-compatible items like listing Budgets with filters will not work as expected.
 
 ## RELATED LINKS

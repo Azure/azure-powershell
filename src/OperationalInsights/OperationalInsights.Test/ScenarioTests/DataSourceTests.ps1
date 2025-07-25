@@ -28,7 +28,7 @@ function Test-DataSourceCreateUpdateDelete
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data sources
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Force
 
     # Create a data source
     $dataSource = New-AzOperationalInsightsAzureActivityLogDataSource -Workspace $workspace -Name $dsName -SubscriptionId $subId1
@@ -115,7 +115,7 @@ function Test-CreateAllKindsOfDataSource
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data source
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Force
 
     # AzureActivityLog data source
     $auditLogDataSource = New-AzOperationalInsightsAzureActivityLogDataSource -Workspace $workspace -Name "myAuditLog" -SubscriptionId $subId1
@@ -174,7 +174,7 @@ function Test-ToggleSingletonDataSourceState
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data source
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Force
 
     # enable/disable iislog collection
     Enable-AzOperationalInsightsIISLogCollection -Workspace $workspace

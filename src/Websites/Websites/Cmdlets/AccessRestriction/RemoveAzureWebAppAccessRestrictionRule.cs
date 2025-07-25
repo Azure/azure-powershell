@@ -13,11 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
 using Microsoft.Azure.Commands.WebApps.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.WebApps.Validations;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -28,33 +30,43 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [OutputType(typeof(PSAccessRestrictionConfig))]
     public class RemoveAzureWebAppAccessRestrictionRuleCmdlet : WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
+        // Help messages
+        private const string ResourceGroupNameHelpMessage = "The name of the resource group.";
+        private const string WebAppNameHelpMessage = "The name of the web app.";
+        private const string NameHelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.";
+        private const string ActionHelpMessage = "Allow or Deny rule.";
+        private const string SlotNameHelpMessage = "Deployment Slot name.";
+        private const string TargetScmSiteHelpMessage = "Rule is aimed for Main site or Scm site.";
+
+
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = ResourceGroupNameHelpMessage, ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = WebAppNameHelpMessage, ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Web/sites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string WebAppName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]
+        [Parameter(Mandatory = false, HelpMessage = NameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Allow or Deny rule.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = ActionHelpMessage)]
         [ValidateSet("Allow", "Deny")]
+        [ValidateNotNullOrEmpty]
         public string Action { get; set; } = "Allow";
 
-        [Parameter(Mandatory = false, HelpMessage = "Rule is aimed for Main site or Scm site.")]
+        [Parameter(Mandatory = false, HelpMessage = SlotNameHelpMessage)]
+        public string SlotName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = TargetScmSiteHelpMessage)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter TargetScmSite { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Deployment Slot name.")]
-        public string SlotName { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Ip Address v4 or v6 CIDR range. E.g.: 192.168.0.0/24")]
+        [ValidateIpAddress]
         [ValidateNotNullOrEmpty]
         public string IpAddress { get; set; }
 
@@ -70,6 +82,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Name of Service Tag")]
+        [ValidateServiceTag]
+        [ValidateNotNullOrEmpty]
+        public string ServiceTag { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Return the access restriction config object.")]
         public SwitchParameter PassThru { get; set; }
 
@@ -84,12 +101,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     var accessRestrictionList = TargetScmSite ? siteConfig.ScmIpSecurityRestrictions : siteConfig.IpSecurityRestrictions;
                     IpSecurityRestriction ipSecurityRestriction = null;
                     bool accessRestrictionExists = false;
+                    int ruleTypes = Convert.ToInt32(!string.IsNullOrWhiteSpace(IpAddress)) + Convert.ToInt32(!string.IsNullOrWhiteSpace(ServiceTag)) +
+                        Convert.ToInt32(!string.IsNullOrWhiteSpace(SubnetId) || (!string.IsNullOrWhiteSpace(SubnetName) && !string.IsNullOrWhiteSpace(VirtualNetworkName)));
+
+                    if (ruleTypes > 1)
+                        throw new Exception("Please specify only one of: IpAddress or ServiceTag or Subnet");
 
                     foreach (var accessRestriction in accessRestrictionList)
                     {
                         if (!string.IsNullOrWhiteSpace(Name))
                         {
-                            if (!string.IsNullOrWhiteSpace(accessRestriction.Name) &&  accessRestriction.Name.ToLowerInvariant() == Name.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
+                            if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() == Name.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
                                 ipSecurityRestriction = accessRestriction;
                                 accessRestrictionExists = true;
@@ -100,10 +122,23 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         {
                             if (!string.IsNullOrWhiteSpace(accessRestriction.IpAddress) && accessRestriction.IpAddress.ToLowerInvariant() == IpAddress.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
-                                if (!string.IsNullOrWhiteSpace(Name))                                
-                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() == Name.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())                                    
-                                        continue;                                    
-                                
+                                if (!string.IsNullOrWhiteSpace(Name))
+                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() != Name.ToLowerInvariant())
+                                        continue;
+
+                                ipSecurityRestriction = accessRestriction;
+                                accessRestrictionExists = true;
+                                break;
+                            }
+                        }
+                        else if (!string.IsNullOrWhiteSpace(ServiceTag))
+                        {
+                            if (!string.IsNullOrWhiteSpace(accessRestriction.IpAddress) && accessRestriction.IpAddress.ToLowerInvariant() == ServiceTag.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
+                            {
+                                if (!string.IsNullOrWhiteSpace(Name))
+                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() != Name.ToLowerInvariant())
+                                        continue;
+
                                 ipSecurityRestriction = accessRestriction;
                                 accessRestrictionExists = true;
                                 break;
@@ -112,11 +147,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         else if (!string.IsNullOrWhiteSpace(SubnetId) || (!string.IsNullOrWhiteSpace(SubnetName) && !string.IsNullOrWhiteSpace(VirtualNetworkName)))
                         {
                             var subnet = !string.IsNullOrWhiteSpace(SubnetId) ? SubnetId : SubnetName;
-                            var subnetResourceId = CmdletHelpers.ValidateSubnet(subnet, VirtualNetworkName, ResourceGroupName, DefaultContext.Subscription.Id);
+                            var subnetResourceId = NetworkClient.ValidateSubnet(subnet, VirtualNetworkName, ResourceGroupName, DefaultContext.Subscription.Id);
                             if (!string.IsNullOrWhiteSpace(accessRestriction.VnetSubnetResourceId) && accessRestriction.VnetSubnetResourceId.ToLowerInvariant() == subnetResourceId.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
                                 if (!string.IsNullOrWhiteSpace(Name))
-                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() == Name.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
+                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() != Name.ToLowerInvariant())
                                         continue;
 
                                 ipSecurityRestriction = accessRestriction;
@@ -124,15 +159,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                 break;
                             }
                         }
-
                     }
+                    
                     if (accessRestrictionExists)
                     {
                         accessRestrictionList.Remove(ipSecurityRestriction);
-                    }
 
-                    // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, WebAppName, SlotName, siteConfig);
+                        // Update web app configuration
+                        WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, WebAppName, SlotName, siteConfig);
+                    }                    
 
                     if (PassThru)
                     {

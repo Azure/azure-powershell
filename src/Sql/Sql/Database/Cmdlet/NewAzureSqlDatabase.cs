@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +16,17 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Collections;
 using System.Globalization;
+using System;
+using DatabaseKey = Microsoft.Azure.Management.Sql.Models.DatabaseKey;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -198,15 +202,109 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.")]
-        public int ReadReplicaCount { get; set; }
+        [Alias("ReadReplicaCount")]
+        public int HighAvailabilityReplicaCount { get; set; }
 
         /// <summary>
         /// Gets or sets the database backup storage redundancy.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.")]
-        [ValidateSet("Local", "Zone", "Geo", IgnoreCase = false)]
+            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone, Geo, and GeoZone.")]
+        [ValidateSet("Local", "Zone", "Geo", "GeoZone", IgnoreCase = false)]
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo and Named.")]
+        [ValidateSet("Named", "Geo")]
+        public string SecondaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maintenance configuration id for the database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Maintenance configuration id for the SQL Database.")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ledger option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Creates a ledger database, in which the integrity of all data is protected by the ledger feature. All tables in the ledger database must be ledger tables. Note: the value of this property cannot be changed after the database has been created.")]
+        public SwitchParameter EnableLedger { get; set; }
+
+        /// <summary>
+        /// Gets or sets the preferred enclave type requested on the database.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The preferred enclave type for the Azure Sql database. Possible values are Default and VBS.")]
+        [PSArgumentCompleter(
+            "Default",
+            "VBS")]
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
+        /// Switch parameter to control if database identity is to be assigned.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Database encryption protector
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The encryption protector key for SQL Database.")]
+        public string EncryptionProtector { get; set; }
+
+        /// <summary>
+        /// List of user assigned managed identities
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of user assigned identity for the SQL Database.")]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// List of Azure Key vault keys
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys for the SQL Database.")]
+        public string[] KeyList { get; set; }
+
+        /// <summary>
+        /// Federated client id
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The AKV Key Auto Rotation status")]
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value indicating if free limit will be used on this database
+        /// </summary>
+        [Parameter(Mandatory = false, 
+            HelpMessage = "Use free limit on this database.")]
+        public SwitchParameter UseFreeLimit { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the exhaustion behavior of database if free limit is selected
+        /// </summary>
+        [Parameter(Mandatory = false, 
+        HelpMessage = "Exhaustion behavior of free limit database.")]
+        [PSArgumentCompleter(
+            "AutoPause",
+            "BillOverUsage")]
+        public string FreeLimitExhaustionBehavior { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -228,7 +326,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
                 }
             }
             base.ExecuteCmdlet();
@@ -288,8 +386,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
-                ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
-                BackupStorageRedundancy = BackupStorageRedundancy,
+                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
+                RequestedBackupStorageRedundancy = BackupStorageRedundancy,
+                SecondaryType = SecondaryType,
+                MaintenanceConfigurationId = MaintenanceConfigurationId,
+                EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
+                PreferredEnclaveType = this.PreferredEnclaveType,
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
+                Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
+                EncryptionProtector = this.EncryptionProtector,
+                FederatedClientId = this.FederatedClientId,
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null,
+                UseFreeLimit = this.IsParameterBound(p => p.UseFreeLimit) ? UseFreeLimit.ToBool() : (bool?)null,
+                FreeLimitExhaustionBehavior = this.FreeLimitExhaustionBehavior
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

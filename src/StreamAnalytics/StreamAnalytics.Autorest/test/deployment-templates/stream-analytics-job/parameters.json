@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusters_sac_m_test01_name": {
+            "value": null
+        },
+        "streamingjobs_saj_test01_name": {
+            "value": null
+        }
+    }
+}

@@ -19,7 +19,9 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Linq;
+using Microsoft.Azure.Management.NetApp.Models;
+using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -63,6 +65,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF volume")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ParentObjectParameterSet,
+            HelpMessage = "The name of the ANF pool")]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeName")]
         [ResourceNameCompleter(
@@ -114,8 +120,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             else
             {
-                var anfVolumes = AzureNetAppFilesManagementClient.Volumes.List(ResourceGroupName, AccountName, PoolName).Select(e => e.ToPsNetAppFilesVolume());
-                WriteObject(anfVolumes, true);
+                try
+                {
+                    var volumes = AzureNetAppFilesManagementClient.Volumes.List(ResourceGroupName, AccountName, PoolName);
+                    // To get all volumes Get all volumes by polling on next page link
+                    var volumeResponseList = ListNextLink<Management.NetApp.Models.Volume>.GetAllResourcesByPollingNextLink(volumes, AzureNetAppFilesManagementClient.Volumes.ListNext);
+                    var volumesList = new List<PSNetAppFilesVolume>();
+
+                    foreach (var volume in volumeResponseList)
+                    {
+                        volumesList.Add(volume.ToPsNetAppFilesVolume());
+                    }
+
+                    WriteObject(volumesList, true);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

@@ -1,0 +1,39 @@
+{
+  "Get-AzEdgeOrderConfiguration+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.EdgeOrder/listConfigurations?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.EdgeOrder/listConfigurations?api-version=2021-12-01",
+      "Content": "{\n  \"configurationFilters\": [\n    {\n      \"hierarchyInformation\": {\n        \"productFamilyName\": \"azurestackedge\",\n        \"productLineName\": \"azurestackedge\",\n        \"productName\": \"azurestackedgegpu\",\n        \"configurationName\": \"EdgeP_High\"\n      },\n      \"filterableProperty\": [\n        {\n          \"type\": \"ShipToCountries\",\n          \"supportedValues\": [ \"US\" ]\n        }\n      ]\n    }\n  ]\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "399" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "3ec12159-ee46-4d02-94a2-d5a74a6e6830" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "c0674e36-bc05-44a5-9204-1b58b2b18df8" ],
+        "x-ms-correlation-request-id": [ "c0674e36-bc05-44a5-9204-1b58b2b18df8" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20211123T092251Z:c0674e36-bc05-44a5-9204-1b58b2b18df8" ],
+        "Date": [ "Tue, 23 Nov 2021 09:22:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3385" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"specifications\": [\r\n          {\r\n            \"name\": \"Usable compute\",\r\n            \"value\": \"40 vCPU\"\r\n          },\r\n          {\r\n            \"name\": \"Usable memory\",\r\n            \"value\": \"102 GB\"\r\n          },\r\n          {\r\n            \"name\": \"Usable storage\",\r\n            \"value\": \"4.2 TB\"\r\n          }\r\n        ],\r\n        \"dimensions\": {\r\n          \"length\": 50.0,\r\n          \"height\": 15.0,\r\n          \"width\": 5.0,\r\n          \"lengthHeightUnit\": \"IN\",\r\n          \"weight\": 50.0,\r\n          \"depth\": 2.0,\r\n          \"weightUnit\": \"LBS\"\r\n        },\r\n        \"filterableProperties\": [\r\n          {\r\n            \"type\": \"ShipToCountries\",\r\n            \"supportedValues\": [\r\n              \"US\",\r\n              \"AU\",\r\n              \"CA\",\r\n              \"HK\",\r\n              \"JP\",\r\n              \"MO\",\r\n              \"MY\",\r\n              \"NZ\",\r\n              \"NO\",\r\n              \"PR\",\r\n              \"SG\",\r\n              \"KR\",\r\n              \"CH\",\r\n              \"TW\",\r\n              \"AE\",\r\n              \"GB\",\r\n              \"NL\",\r\n              \"AT\",\r\n              \"IT\",\r\n              \"BE\",\r\n              \"LV\",\r\n              \"BG\",\r\n              \"LT\",\r\n              \"HR\",\r\n              \"LU\",\r\n              \"CY\",\r\n              \"MT\",\r\n              \"CZ\",\r\n              \"DK\",\r\n              \"PL\",\r\n              \"EE\",\r\n              \"PT\",\r\n              \"FI\",\r\n              \"RO\",\r\n              \"FR\",\r\n              \"SK\",\r\n              \"DE\",\r\n              \"SI\",\r\n              \"GR\",\r\n              \"ES\",\r\n              \"HU\",\r\n              \"SE\",\r\n              \"IE\"\r\n            ]\r\n          }\r\n        ],\r\n        \"displayName\": \"Azure Stack Edge Pro - 2 GPU\",\r\n        \"description\": {\r\n          \"descriptionType\": \"Base\",\r\n          \"shortDescription\": \"\",\r\n          \"longDescription\": \"\",\r\n          \"keywords\": [\r\n            \"GPU\"\r\n          ],\r\n          \"attributes\": [],\r\n          \"links\": []\r\n        },\r\n        \"imageInformation\": [],\r\n        \"costInformation\": {\r\n          \"billingMeterDetails\": [\r\n            {\r\n              \"name\": \"RentalFee\",\r\n              \"meterDetails\": {\r\n                \"productId\": \"DZH318Z08RKK\",\r\n                \"skuId\": \"0046\",\r\n                \"termId\": \"hjdtn7tfnxcy\",\r\n                \"billingType\": \"Purchase\",\r\n                \"multiplier\": 1.0,\r\n                \"chargingType\": \"PerOrder\"\r\n              },\r\n              \"meteringType\": \"Recurring\"\r\n            },\r\n            {\r\n              \"name\": \"ShippingFee\",\r\n              \"meterDetails\": {\r\n                \"productId\": \"DZH318Z08RKK\",\r\n                \"skuId\": \"0033\",\r\n                \"billingType\": \"Purchase\",\r\n                \"multiplier\": 1.0,\r\n                \"chargingType\": \"PerOrder\"\r\n              },\r\n              \"meteringType\": \"OneTime\",\r\n              \"frequency\": \"\"\r\n            }\r\n          ],\r\n          \"billingInfoUrl\": \"https://aka.ms/edgeHWcenter-pricinglink-custom\"\r\n        },\r\n        \"availabilityInformation\": {\r\n          \"availabilityStage\": \"Available\",\r\n          \"disabledReason\": \"None\"\r\n        },\r\n        \"hierarchyInformation\": {\r\n          \"productFamilyName\": \"azurestackedge\",\r\n          \"productLineName\": \"azurestackedge\",\r\n          \"productName\": \"azurestackedgegpu\",\r\n          \"configurationName\": \"edgep_high\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

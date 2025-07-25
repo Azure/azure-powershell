@@ -1,16 +1,16 @@
 $rg = "mo-resources-eus"
 $aa = "mo-aaa-eus2"
 $azureVMIdsW = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02"
     )
 
 $azureVMIdsL = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
     )
 
-$nonAzurecomputers = @("server-01", "server-02")
+$nonAzurecomputers = @("server-01")
 
 <#
 WaitForProvisioningState
@@ -26,7 +26,7 @@ function WaitForProvisioningState() {
                                                                  -AutomationAccountName $aa `
                                                                  -Name $Name).ProvisioningState -eq $ExpectedState } $null $retries $waitTimeInSeconds
 
-    Assert-True {$jobCompleted -gt 0} "Timout waiting for provisioning state to reach '$ExpectedState'"
+    Assert-True {$jobCompleted -gt 0} "Timeout waiting for provisioning state to reach '$ExpectedState'"
 }
 
 <#
@@ -211,7 +211,7 @@ Test-GetAllSoftwareUpdateConfigurations
 function Test-GetAllSoftwareUpdateConfigurations {
     $sucs = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
                                                               -AutomationAccountName $aa
-    Assert-AreEqual $sucs.Count 17 "Get all software update configuration didn't retrieve the expected number of items. actual SCU count is $($sucs.Count)"
+    Assert-AreEqual $sucs.Count 9 "Get all software update configuration didn't retrieve the expected number of items. actual SUC count is $($sucs.Count)"
 }
 
 
@@ -222,7 +222,7 @@ function Test-GetSoftwareUpdateConfigurationsForVM {
     $sucs = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
                                                               -AutomationAccountName $aa `
                                                               -AzureVMResourceId $azureVMIdsW[0]
-    Assert-AreEqual $sucs.Count 7 "Get software update configurations for VM didn't return expected number of items. Actual SUC count per VM is $($sucs.Count)"
+    Assert-AreEqual $sucs.Count 2 "Get software update configurations for VM didn't return expected number of items. Actual SUC count per VM is $($sucs.Count)"
 }
 
 
@@ -277,10 +277,10 @@ function Test-GetAllSoftwareUpdateRunsWithFilters {
     $runs = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                     -AutomationAccountName $aa `
                                                     -OperatingSystem Windows `
-                                                    -StartTime ([DateTime]::Parse("2018-05-22T16:40:00")) `
+                                                    -StartTime ([DateTime]::Parse("2021-04-04T20:40:00+05:30")) `
                                                     -Status Succeeded
 
-    Assert-AreEqual $runs.Count 2 "Get software update configurations runs with filters didn't return expected number of items"
+    Assert-AreEqual $runs.Count 0 "Get software update configurations runs with filters didn't return expected number of items"
 }
 
 <#
@@ -290,7 +290,7 @@ function Test-GetAllSoftwareUpdateRunsWithFiltersNoResults {
     $runs = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                     -AutomationAccountName $aa `
                                                     -OperatingSystem Windows `
-                                                    -StartTime ([DateTime]::Parse("2018-05-22T16:40:00.0000000-07:00")) `
+                                                    -StartTime ([DateTime]::Parse("2021-04-04T16:40:00.0000000+05:30")) `
                                                     -Status Failed
 
     Assert-AreEqual $runs.Count 0 "Get software update configurations runs with filters and no results didn't return expected number of items"
@@ -304,7 +304,7 @@ function Test-GetAllSoftwareUpdateMachineRuns {
     $runs = Get-AzAutomationSoftwareUpdateMachineRun  -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa
     
-    Assert-AreEqual $runs.Count 83 "Get software update configurations machine runs didn't return expected number of items $($runs.Count)" 
+    Assert-AreEqual $runs.Count 6 "Get software update configurations machine runs didn't return expected number of items $($runs.Count)" 
 }
 
 <#
@@ -313,11 +313,11 @@ Test-GetAllSoftwareUpdateMachineRunsWithFilters
 function Test-GetAllSoftwareUpdateMachineRunsWithFilters {
     $runs = Get-AzAutomationSoftwareUpdateMachineRun  -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa `
-                                                           -SoftwareUpdateRunId b4ec6c22-92bf-4f8a-b2d9-20d8446e618a `
+                                                           -SoftwareUpdateRunId 7f077575-3905-4608-843e-5651884ffea1 `
                                                            -Status Succeeded `
                                                            -TargetComputer $azureVMIdsW[0]
 
-    Assert-AreEqual $runs.Count 1 "Get software update configurations machine runs with filters didn't return expected number of items"
+    Assert-AreEqual $runs.Count 1 "Get software update configurations machine runs with filters didn't return expected number of items $($runs.Count)"
 }
 
 <#
@@ -430,10 +430,10 @@ Test-CreateWindowsIncludeKbNumbersSoftwareUpdateConfiguration
 #>
 function Test-CreateWindowsIncludeKbNumbersSoftwareUpdateConfiguration() {
 
-    $aa = "Automate-d2b38167-d3ca-4d1f-a020-948eee21b6bc-EJP"
-	$rg = "DefaultResourceGroup-EJP"
+    $aa = "mo-aaa-eus2"
+	$rg = "mo-resources-eus"
     $azureVMIdsW = @(
-	   "/subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/ikwjp12r201-RG/providers/Microsoft.Compute/virtualMachines/ikwjp12r201"
+	   "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01"
 	)
 
     $name = "mo-monthly-01"
@@ -479,10 +479,10 @@ Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration
 #>
 function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
 
-    $aa = "Automate-d2b38167-d3ca-4d1f-a020-948eee21b6bc-EJP"
-	$rg = "DefaultResourceGroup-EJP"
+    $aa = "mo-aaa-eus2"
+	$rg = "mo-resources-eus"
     $azureVMIdsL = @(
-	   "/subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/ikanni-rhel74-omi-001-RG/providers/Microsoft.Compute/virtualMachines/ikanni-rhel74-omi-001"
+	   "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01"
 	)
 
     $name = "mo-monthly-02"
@@ -503,7 +503,7 @@ function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
                                                              -Linux `
                                                              -AzureVMResourceId $azureVMIdsL `
                                                              -Duration $duration `
-                                                             -IncludedPackageNameMask  @("*kernel*", "pyhton*.x64")
+                                                             -IncludedPackageNameMask  @("*kernel*", "python*.x64")
 
     Assert-NotNull $suc "New-AzAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -517,7 +517,7 @@ function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
     Assert-NotNull $suc.UpdateConfiguration.Linux "Windows property of UpdateConfiguration is null"
     Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks.Count 2
     Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks[0] "*kernel*"
-    Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks[1] "pyhton*.x64"
+    Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks[1] "python*.x64"
 
     WaitForProvisioningState $name "Succeeded"
 }
@@ -528,8 +528,8 @@ Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption
 #>
 function Test-CreateLinuxSoftwareUpdateConfigurationWithRebootSetting {
 	$azureVMIdsLinux = @(
-        "/subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/ikanni-rhel76-hw-001-RG/providers/Microsoft.Compute/virtualMachines/ikanni-rhel76-hw-001",
-        "/subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/ikanni-rhel76-JPE-hw-002-RG/providers/Microsoft.Compute/virtualMachines/ikanni-rhel76-JPE-hw-002"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
     )
 
     $name = "linx-suc-reboot"

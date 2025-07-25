@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Authentication failed for auxiliary token: The '1' auxiliary tokens contains duplicates which are from the same tenant.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestCortexCRUD()
@@ -37,7 +37,39 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestRoutingIntentCRUD()
+        {
+            TestRunner.RunTestScript("Test-RoutingIntentCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestStaticRoutesConfig()
+        {
+            TestRunner.RunTestScript("Test-StaticRoutesConfigCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestRouteMapCRUD()
+        {
+            TestRunner.RunTestScript("Test-RouteMapCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVpnSiteIsSecurity()
+        {
+            TestRunner.RunTestScript("Test-VpnSiteIsSecurity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestCortexExpressRouteCRUD()
         {
             TestRunner.RunTestScript("Test-CortexExpressRouteCRUD");
@@ -77,7 +109,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
         public void TestCortexVirtualHubCRUD()
         {
             TestRunner.RunTestScript("Test-CortexVirtualHubCRUD");
@@ -105,6 +137,22 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVpnConnectionPacketCapture()
         {
             TestRunner.RunTestScript("Test-VpnConnectionPacketCapture");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVpnSiteLinkConnectionGetIkeSa()
+        {
+            TestRunner.RunTestScript("Test-VpnSiteLinkConnectionGetIkeSa");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVirtualHubAndVpnGatewayWithCustomAsn()
+        {
+            TestRunner.RunTestScript("Test-VirtualHubAndVpnGatewayWithCustomAsn");
         }
     }
 }

@@ -94,7 +94,7 @@ function Check-All {
         Write-Host "Found $($invalidAuthenticodeList.Count) files with an invalid authenticode signature." -ForegroundColor Red
     }
     else {
-        Write-Host "All files (.dll, .ps1, .psd1) have a valid authenticode signature." -ForegroundColor Green
+        Write-Host "All files (.dll, .ps1, .psm1) have a valid authenticode signature." -ForegroundColor Green
     }
 
     if ($invalidList.Length -gt 0) {

@@ -18,10 +18,13 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using Newtonsoft.Json;
+
 using System;
 using System.IO;
 using System.Management.Automation;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -209,6 +212,30 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string ConditionVersion { get; set; } = null;
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [PSArgumentCompleter("User", "Group", "Service Principal")]
+        [Alias("PrincipalType")]
+        public string ObjectType { get; set; } = null;
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Role Id the principal is assigned to.")]
         [ValidateGuidNotEmpty]
@@ -222,6 +249,9 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, HelpMessage = "Delegation flag.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowDelegation { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
 
         #endregion
 
@@ -242,6 +272,7 @@ namespace Microsoft.Azure.Commands.Resources
                     PSRoleAssignment RoleAssignment = JsonConvert.DeserializeObject<PSRoleAssignment>(File.ReadAllText(fileName));
 
                     this.ObjectId = RoleAssignment.ObjectId;
+                    this.ObjectType = RoleAssignment.ObjectType;
                     this.ResourceType = RoleAssignment.ObjectType;
                     this.Scope = RoleAssignment.Scope;
                     Guid guid = Guid.Empty;
@@ -273,8 +304,8 @@ namespace Microsoft.Azure.Commands.Resources
             }
             // ensure that if ConditionVersion is empty in any way, it becomes null
             ConditionVersion = string.IsNullOrEmpty(ConditionVersion) ? null : string.IsNullOrWhiteSpace(ConditionVersion) ? null : ConditionVersion; 
-            double _conditionVersion = double.Parse(ConditionVersion ?? "2.0");
-            if (_conditionVersion < 2.0)
+            var _conditionVersion = Version.Parse(ConditionVersion ?? "2.0");
+            if (_conditionVersion.Major < 2)
             {
                 WriteExceptionError(new ArgumentException("Argument -ConditionVersion must be greater or equal than 2.0"));
                 return;
@@ -289,14 +320,14 @@ namespace Microsoft.Azure.Commands.Resources
                     UPN = SignInName,
                     SPN = ApplicationId,
                     Id = ObjectId,
+                    ObjectType = ObjectType,
                 },
-                ResourceIdentifier = new ResourceIdentifier()
-                {
+                ResourceIdentifier = new ResourceIdentifier() {
                     ParentResource = ParentResource,
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id,
+                    Subscription = DefaultProfile.DefaultContext.Subscription?.Id?.ToString(),
                 },
                 CanDelegate = AllowDelegation.IsPresent ? true : false,
                 Description = Description,
@@ -304,7 +335,15 @@ namespace Microsoft.Azure.Commands.Resources
                 ConditionVersion = ConditionVersion,
             };
 
-            AuthorizationClient.ValidateScope(parameters.Scope, false);
+            if (parameters.Scope == null && parameters.ResourceIdentifier.Subscription == null)
+            {
+                WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
+            }
+
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(parameters.Scope, true);
+            }
 
             WriteObject(PoliciesClient.CreateRoleAssignment(parameters, RoleAssignmentId));
         }

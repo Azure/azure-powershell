@@ -35,25 +35,29 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|PremiumV3]")]
-        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "PremiumV3", "Isolated", "PremiumContainer")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|Premium0V3|PremiumV3|PremiumMV3|PremiumV4|PremiumMV4]. For ASE: [Isolated|IsolatedV2].")]
+        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Premium0V3", "PremiumV3", "PremiumMV3", "PremiumV4", "PremiumMV4", "Isolated", "IsolatedV2", "PremiumContainer")]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
         [ValidateNotNullOrEmpty]
         public int NumberofWorkers { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]")]
-        [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge|ExtraExtraLarge]")]
+        [ValidateSet("ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "ExtraExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Name of application service environment")]
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Name of App Service Environment")]
         [ValidateNotNullOrEmpty]
         public string AseName { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Name of the application service environment resource group")]
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Name of the App Service Environment resource group")]
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
+
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Resource id of App Service Environment")]
+        [ValidateNotNullOrEmpty]
+        public string AseResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]
         [ValidateNotNullOrEmpty]
@@ -73,10 +77,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
         public override void ExecuteCmdlet()
         {
-            if (HyperV.IsPresent && 
-                (Tier != "PremiumContainer" && Tier != "PremiumV3"))
+            if (HyperV.IsPresent &&
+                (Tier != "PremiumContainer" && Tier != "PremiumV3" && Tier != "IsolatedV2" && Tier != "PremiumMV3"))
             {
-                throw new Exception("HyperV switch is only allowed for PremiumContainer or PremiumV3 tiers");
+                throw new Exception("HyperV switch is only allowed for PremiumContainer ,  PremiumV3 or IsolatedV2 tiers");
             }
             if (!HyperV.IsPresent && Tier == "PremiumContainer")
             {
@@ -117,11 +121,21 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Sku = sku,
                 PerSiteScaling = PerSiteScaling,
                 IsXenon = HyperV.IsPresent,
-                Tags= (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),
+                Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),
                 Reserved = Linux.IsPresent
             };
 
-            AppServicePlan retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
+            AppServicePlan retPlan = null;
+
+            if (!string.IsNullOrEmpty(AseResourceId))
+            {
+                retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseResourceId);
+            }
+            else
+            {
+                retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
+            }
+
             PSAppServicePlan psPlan = new PSAppServicePlan(retPlan);
 
             WriteObject(psPlan, true);

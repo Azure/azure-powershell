@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class RecommendedActionTests : SqlTestsBase
+    public class RecommendedActionTests : SqlTestRunner
     {
         public RecommendedActionTests(ITestOutputHelper output) : base(output)
         {
@@ -31,21 +31,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListServerRecommendedActions()
         {
-            RunPowerShellTest("Test-ListServerRecommendedActions");
+            TestRunner.RunTestScript("Test-ListServerRecommendedActions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetServerRecommendedAction()
         {
-            RunPowerShellTest("Test-GetServerRecommendedAction");
+            TestRunner.RunTestScript("Test-GetServerRecommendedAction");
         }
 
-        [Fact]
+        [Fact(Skip = "This action is not supported on backend. Verified with feature owners.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateServerRecommendedAction()
         {
-            RunPowerShellTest("Test-UpdateServerRecommendedAction");
+            TestRunner.RunTestScript("Test-UpdateServerRecommendedAction");
         }
 
         #endregion
@@ -56,21 +56,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListDatabaseRecommendedActions()
         {
-            RunPowerShellTest("Test-ListDatabaseRecommendedActions");
+            TestRunner.RunTestScript("Test-ListDatabaseRecommendedActions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDatabaseRecommendedAction()
         {
-            RunPowerShellTest("Test-GetDatabaseRecommendedAction");
+            TestRunner.RunTestScript("Test-GetDatabaseRecommendedAction");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateDatabaseRecommendedAction()
         {
-            RunPowerShellTest("Test-UpdateDatabaseRecommendedAction");
+            TestRunner.RunTestScript("Test-UpdateDatabaseRecommendedAction");
         }
 
         #endregion
@@ -81,21 +81,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListElasticPoolRecommendedActions()
         {
-            RunPowerShellTest("Test-ListElasticPoolRecommendedActions");
+            TestRunner.RunTestScript("Test-ListElasticPoolRecommendedActions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetElasticPoolRecommendedAction()
         {
-            RunPowerShellTest("Test-GetElasticPoolRecommendedAction");
+            TestRunner.RunTestScript("Test-GetElasticPoolRecommendedAction");
         }
 
-        [Fact]
+        [Fact(Skip = "This action is not supported on backend. Verified with feature owners.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateElasticPoolRecommendedAction()
         {
-            RunPowerShellTest("Test-UpdateElasticPoolRecommendedAction");
+            TestRunner.RunTestScript("Test-UpdateElasticPoolRecommendedAction");
         }
 
         #endregion

@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -105,6 +106,30 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Body")]
         public string CustomBlockResponseBody { get; set; }
 
+        /// <summary>
+        /// Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string RequestBodyCheck { get; set; }
+
+        /// Defines rules that scrub sensitive fields in the Web Application Firewall
+        [Parameter(Mandatory = false, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
+        [AllowEmptyCollection]
+        public PSFrontDoorWafLogScrubbingSetting LogScrubbingSetting { get; set; }
+
+        /// Defines the JavaScript challenge cookie validity lifetime in minutes. This
+        /// setting is only applicable to Premium_AzureFrontDoor. Value must be an
+        /// integer between 5 and 1440 with the default value being 30.
+        [Parameter(Mandatory = false, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
+        public int? JavascriptChallengeExpirationInMinutes { get; set; }
+
+        /// Defines the Captcha cookie validity lifetime in minutes. This
+        /// setting is only applicable to Premium_AzureFrontDoor. Value must be an
+        /// integer between 5 and 1440
+        [Parameter(Mandatory = false, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440")]
+        public int? CaptchaExpirationInMinutes { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -184,7 +209,54 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 updateParameters.PolicySettings.RedirectUrl = RedirectUrl;
             }
 
-            if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.WebApplicationFirewallPolicyChangeWarning, Name)))
+            if (this.IsParameterBound(c => c.RequestBodyCheck))
+            {
+                updateParameters.PolicySettings.RequestBodyCheck = RequestBodyCheck;
+            }
+
+            if (this.IsParameterBound(c => c.JavascriptChallengeExpirationInMinutes))
+            {
+                if (JavascriptChallengeExpirationInMinutes != null)
+                {
+                    updateParameters.PolicySettings.JavascriptChallengeExpirationInMinutes = JavascriptChallengeExpirationInMinutes;
+                }
+            }
+            
+            if (this.IsParameterBound(c => c.CaptchaExpirationInMinutes))
+            {
+                if (CaptchaExpirationInMinutes != null)
+                {
+                    updateParameters.PolicySettings.CaptchaExpirationInMinutes = CaptchaExpirationInMinutes;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.LogScrubbingSetting))
+            {
+                var scrubbingRule = new List<Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules>();
+
+                if (LogScrubbingSetting == null || LogScrubbingSetting.ScrubbingRule == null)
+                {
+                    updateParameters.PolicySettings.LogScrubbing = null;
+                }
+                else if (LogScrubbingSetting.ScrubbingRule.Count() > 0)
+                {
+                    foreach (var item in LogScrubbingSetting.ScrubbingRule)
+                    {
+                        scrubbingRule.Add(new Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules(
+                            matchVariable: item.MatchVariable,
+                            selectorMatchOperator: item.SelectorMatchOperator,
+                            selector: item.Selector,
+                            state: item.State));
+                    }
+                    updateParameters.PolicySettings.LogScrubbing = new Management.FrontDoor.Models.PolicySettingsLogScrubbing
+                    {
+                        ScrubbingRules = scrubbingRule,
+                        State = LogScrubbingSetting.State,
+                    };
+                }
+            }
+
+                if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.WebApplicationFirewallPolicyChangeWarning, Name)))
             {
                 try
                 {

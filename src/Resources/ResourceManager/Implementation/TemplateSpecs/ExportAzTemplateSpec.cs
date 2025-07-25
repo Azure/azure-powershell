@@ -17,8 +17,8 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
@@ -123,13 +123,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 OutputFolder = ResolveUserPath(OutputFolder);
 
                 string mainTemplateFileName = $"{parentTemplateSpec.Name}.{specificVersion.Name}.json";
+                string uiFormDefinitionFileName = $"{parentTemplateSpec.Name}.{specificVersion.Name}.uiformdefinition.json";
                 string fullRootTemplateFilePath = Path.GetFullPath(
                     Path.Combine(OutputFolder, mainTemplateFileName)
                 );
 
                 if (ShouldProcess(specificVersion.Id, $"Export to '{fullRootTemplateFilePath}'"))
                 {
-                    TemplateSpecPackagingEngine.Unpack(packagedTemplate, OutputFolder, mainTemplateFileName);
+                    TemplateSpecPackagingEngine.Unpack(
+                        packagedTemplate, OutputFolder, mainTemplateFileName, uiFormDefinitionFileName);
                 }
 
                 WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", fullRootTemplateFilePath));

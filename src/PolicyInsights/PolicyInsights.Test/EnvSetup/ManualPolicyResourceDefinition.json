@@ -1,0 +1,9 @@
+{
+    "if": {
+        "field": "type",
+        "equals": "Microsoft.Network/networkSecurityGroups"
+    },
+    "then": {
+        "effect": "manual"
+    }
+}

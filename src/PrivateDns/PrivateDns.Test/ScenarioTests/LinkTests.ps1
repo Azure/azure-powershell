@@ -178,6 +178,7 @@ function Test-CreateLinkWithVirtualNetworkObject
 
 	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
 	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+
 	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetwork $createdVirtualNetwork -EnableRegistration
 
 	Assert-NotNull $createdLink
@@ -226,19 +227,131 @@ function Test-CreateLinkWithRemoteVirtualId
 
 <#
 .SYNOPSIS
+Test privatelink zone link creation with resolution policy
+#>
+function Test-CreateLinkWithNxDomainRedirectPolicy
+{
+	$zoneName = Get-RandomPrivatelinkZoneName
+	$linkName = Get-RandomLinkName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$resolutionPolicy = "NxDomainRedirect"
+
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
+	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+
+	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetwork $createdVirtualNetwork -ResolutionPolicy $resolutionPolicy
+	Assert-NotNull $createdLink
+	Assert-NotNull $createdLink.Etag
+	Assert-NotNull $createdLink.Name
+	Assert-NotNull $createdLink.ZoneName
+	Assert-NotNull $createdLink.ResourceGroupName
+	Assert-AreEqual 1 $createdLink.Tags.Count
+	Assert-AreEqual $false $createdLink.RegistrationEnabled
+	Assert-AreEqual $createdLink.ResolutionPolicy $resolutionPolicy
+	Assert-AreEqual $createdLink.VirtualNetworkId $createdVirtualNetwork.Id
+	Assert-AreEqual $createdLink.ProvisioningState "Succeeded"
+	Assert-Null $createdLink.Type
+
+	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Test privatelink zone link creation without resolution policy
+The resolution policy should be 'Default'
+#>
+function Test-CreateLinkWithNoPolicy
+{
+	$zoneName = Get-RandomPrivatelinkZoneName
+	$linkName = Get-RandomLinkName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$resolutionPolicy = "Default"
+
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
+	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+
+	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetwork $createdVirtualNetwork
+	Assert-NotNull $createdLink
+	Assert-NotNull $createdLink.Etag
+	Assert-NotNull $createdLink.Name
+	Assert-NotNull $createdLink.ZoneName
+	Assert-NotNull $createdLink.ResourceGroupName
+	Assert-AreEqual 1 $createdLink.Tags.Count
+	Assert-AreEqual $false $createdLink.RegistrationEnabled
+	Assert-AreEqual $createdLink.ResolutionPolicy $resolutionPolicy
+	Assert-AreEqual $createdLink.VirtualNetworkId $createdVirtualNetwork.Id
+	Assert-AreEqual $createdLink.ProvisioningState "Succeeded"
+	Assert-Null $createdLink.Type
+
+	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
 Test link update
 #>
 function Test-UpdateLinkRegistrationStatusWithPiping
 {
 	$createdLink = Create-VirtualNetworkLink $false
 	
-	$createdLink.RegistrationEnabled = $true
-	$updatedLink = $createdLink | Set-AzPrivateDnsVirtualNetworkLink	
-	Assert-AreEqual $updatedLink.RegistrationEnabled $true
+	# Retrieve the latest state of the link before updating
+	$latestLink = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $updatedLink.ZoneName -ResourceGroupName $updatedLink.ResourceGroupName -Name $updatedLink.Name
+	$latestLink.RegistrationEnabled = $true
+	$updatedLink = $latestLink | Set-AzPrivateDnsVirtualNetworkLink
 
-	$updatedLink.RegistrationEnabled = $false
-	$reUpdatedLink = $updatedLink | Set-AzPrivateDnsVirtualNetworkLink
-	Assert-AreEqual $updatedLink.RegistrationEnabled $false
+	# Retrieve the latest state of the link before updating again
+	$latestLink = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $updatedLink.ZoneName -ResourceGroupName $updatedLink.ResourceGroupName -Name $updatedLink.Name
+	$latestLink.RegistrationEnabled = $false
+	$reUpdatedLink = $latestLink | Set-AzPrivateDnsVirtualNetworkLink
+
+	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Test link update
+#>
+function Test-UpdateLinkResolutionPolicyWithPiping
+{
+	$zoneName = Get-RandomPrivatelinkZoneName
+	$linkName = Get-RandomLinkName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$resolutionPolicy = "Default"
+
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
+	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetwork $createdVirtualNetwork -ResolutionPolicy $resolutionPolicy
+	
+	# Retrieve the latest state of the link before updating
+	$latestLink = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink.ZoneName -ResourceGroupName $createdLink.ResourceGroupName -Name $createdLink.Name
+	$latestLink.ResolutionPolicy = "NxDomainRedirect"
+	$updatedLink = $latestLink | Set-AzPrivateDnsVirtualNetworkLink
+
+	# Retrieve the latest state of the link before updating again
+	$latestLink = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink.ZoneName -ResourceGroupName $createdLink.ResourceGroupName -Name $createdLink.Name
+	$latestLink.ResolutionPolicy = "Default"
+	$reUpdatedLink = $latestLink | Set-AzPrivateDnsVirtualNetworkLink
+
+	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Test link update
+#>
+function Test-UpdateLinkRegistrationStatusWithPiping
+{
+	$createdLink = Create-VirtualNetworkLink $false
+	
+	# Retrieve the latest state of the link before updating
+	$latestLink = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink.ZoneName -ResourceGroupName $createdLink.ResourceGroupName -Name $createdLink.Name
+	$latestLink.RegistrationEnabled = $true
+	$updatedLink = $latestLink | Set-AzPrivateDnsVirtualNetworkLink
+
+	# Retrieve the latest state of the link before updating again
+	$latestLink = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $createdLink.ZoneName -ResourceGroupName $createdLink.ResourceGroupName -Name $createdLink.Name
+	$latestLink.RegistrationEnabled = $false
+	$reUpdatedLink = $latestLink | Set-AzPrivateDnsVirtualNetworkLink
 
 	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
 }

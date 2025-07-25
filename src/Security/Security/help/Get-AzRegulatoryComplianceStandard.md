@@ -1,20 +1,21 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzRegulatoryComplianceStandard
+online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzRegulatoryComplianceStandard
 schema: 2.0.0
 ---
 
 # Get-AzRegulatoryComplianceStandard
 
 ## SYNOPSIS
-Gets regulatoey compliance standards
+Gets regulatory compliance standards
 
 ## SYNTAX
 
 ### SubscriptionScope (Default)
 ```
-Get-AzRegulatoryComplianceStandard [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRegulatoryComplianceStandard [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
@@ -30,14 +31,16 @@ Get-AzRegulatoryComplianceStandard -ResourceId <String> [-DefaultProfile <IAzure
 ```
 
 ## DESCRIPTION
-Get a spcific regulatory compliance satandard details or list all regulatory compliance standards under specific subscription.
+Get a specific regulatory compliance standard details or list all regulatory compliance standards under a specific subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzRegulatoryComplianceStandard
+Get-AzRegulatoryComplianceStandard
+```
 
+```output
 Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
                       anceStandards/Azure-CIS-1.1.0
 Name                : Azure-CIS-1.1.0
@@ -83,8 +86,10 @@ Get all regulatory compliance standards under a subscription.
 
 ### Example 2
 ```powershell
-PS C:\>Get-AzRegulatoryComplianceStandard -Name "SOC-TSP"
+Get-AzRegulatoryComplianceStandard -Name "SOC-TSP"
+```
 
+```output
 Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
                       anceStandards/SOC-TSP
 Name                : SOC-TSP
@@ -100,8 +105,10 @@ Get details of specific regulatory compliance standard according standard name.
 
 ### Example 3
 ```powershell
-PS C:\>Get-AzRegulatoryComplianceStandard -ResourceId "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/SOC-TSP"
+Get-AzRegulatoryComplianceStandard -ResourceId "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComplianceStandards/SOC-TSP"
+```
 
+```output
 Id                  : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryCompli
                       anceStandards/SOC-TSP
 Name                : SOC-TSP

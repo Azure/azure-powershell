@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectableitem
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectableitem
 schema: 2.0.0
 ---
 
@@ -30,22 +30,36 @@ Get-AzRecoveryServicesAsrProtectableItem -FriendlyName <String> -ProtectionConta
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByObjectWithSiteIdAndFriendlyName
+```
+Get-AzRecoveryServicesAsrProtectableItem -FriendlyName <String> -SiteId <String>
+ -ProtectionContainer <ASRProtectionContainer> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByObjectWithSiteId
+```
+Get-AzRecoveryServicesAsrProtectableItem -SiteId <String> -ProtectionContainer <ASRProtectionContainer>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzRecoveryServicesAsrProtectableItem** cmdlet gets the protectable items in an Azure Site Recovery Protection Container.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $ProtectableItems = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Container
+```powershell
+$ProtectableItems = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Container
 ```
 
 Gets all the protectable items in specified ASR protection container.
 
 ### Example 2
+```powershell
+Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $pc -FriendlyName $piFriendlyName
 ```
-PS C:\> Get-ASRProtectableItem -ProtectionContainer $pc -FriendlyName $piFriendlyName
 
+```output
 Disks                         : {}
 FabricObjectId                :
 FabricSpecificVMDetails       : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificVMDetails
@@ -66,9 +80,11 @@ SupportedReplicationProviders : {InMage, InMageAzureV2}
 Get the protectable items in specified ASR protection container and with given friendly name.
 
 ### Example 3
+```powershell
+Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $pc -Name $piName
 ```
-PS C:\> Get-ASRProtectableItem -ProtectionContainer $pc -Name $piName
 
+```output
 Disks                         : {}
 FabricObjectId                :
 FabricSpecificVMDetails       : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificVMDetails
@@ -111,7 +127,7 @@ Specifies the friendly name of the ASR protectable item.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByObjectWithFriendlyName
+Parameter Sets: ByObjectWithFriendlyName, ByObjectWithSiteIdAndFriendlyName
 Aliases:
 
 Required: True
@@ -151,6 +167,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -SiteId
+Specifies the VMware site Id where the protectable item was discovered (Applicable only for VMware to Azure replication scenario).
+Use site Id from fabric specific details in the ASR fabric to specify one.
+
+```yaml
+Type: System.String
+Parameter Sets: ByObjectWithSiteIdAndFriendlyName, ByObjectWithSiteId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -166,6 +198,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzRecoveryServicesAsrProtectionEntity](./Get-AzRecoveryServicesAsrProtectionEntity.md)
-
-[Set-AzRecoveryServicesAsrProtectionEntity](./Set-AzRecoveryServicesAsrProtectionEntity.md)
+[Azure Recovery Services cmdlets](/powershell/module/az.recoveryservices)

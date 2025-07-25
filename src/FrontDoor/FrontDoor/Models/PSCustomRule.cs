@@ -33,5 +33,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string Name { get; set; }
 
         public string EnabledState { get; set; }
+
+        public PSFrontDoorWafCustomRuleGroupByVariable[] CustomRule { get; set;}
     }
 }

@@ -67,6 +67,10 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
 
         /// <summary>
         /// Gets or sets the status message returned from the server.
+        ///
+        /// Ensure that this retains compatibility with the old Powershell versions since lots of customers use this for
+        /// their automation.
+        /// Compare to <see cref="Azure.Management.Sql.LegacySdk.ImportExportOperations.GetImportExportOperationStatusAsync"/>
         /// </summary>
         public string Status
         {
@@ -84,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         }
 
         /// <summary>
-        /// Gets or sets the 
+        /// Gets or sets the private endpoint status(es)
         /// </summary>
         public PrivateEndpointRequestStatus[] PrivateEndpointRequestStatus
         {

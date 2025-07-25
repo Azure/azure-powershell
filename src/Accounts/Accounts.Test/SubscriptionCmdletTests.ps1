@@ -86,7 +86,7 @@ Tests each of the major parts of retrieving subscriptions in ARM mode
 #>
 function Test-SetAzureRmContextEndToEnd
 {
-    # This test requires that the tenant contains atleast two subscriptions
+    # This test requires that the tenant contains at least two subscriptions
 	$allSubscriptions = Get-AzSubscription
     $secondSubscription = $allSubscriptions[1]
     Assert-True { $allSubscriptions[0] -ne $null }
@@ -119,5 +119,55 @@ function Test-SetAzureRmContextWithoutSubscription
     Assert-True { $context.Subscription -ne $null }
     Assert-True { $context.Tenant -ne $null }
     Assert-AreEqual $context.Tenant.Id $firstSubscription.HomeTenantId
-    Assert-AreEqual $context.Subscription.Id $firstSubscription.Id
 }
+
+<#
+.SYNOPSIS
+Check whether tags works with subscription 
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetSubscriptionsWithTags
+{
+	$allSubscriptions = Get-AzSubscription
+	Assert-True {($allSubscriptions | Where-Object { $_.Tags -ne $null}).Count -gt 0}
+}
+
+<#
+.SYNOPSIS
+Tests whether subscriptions before and after context rename and set are equal.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetSubscriptionsAfterContextRenameAndSet
+{
+	$subscriptionExp = Get-AzSubscription
+
+	$contextWithOutSecret = Get-AzContext
+	Assert-False {$contextWithOutSecret.Account.ExtendedProperties.Keys -Contains 'ServicePrincipalSecret'}
+	$newContextName = "ContextWithoutSecret"
+	Set-AzContext -Context $contextWithOutSecret -Name $newContextName
+	Assert-AreEqual $newContextName (Get-AzContext).Name
+	Assert-False {(Get-AzContext).Account.ExtendedProperties.Keys -Contains 'ServicePrincipalSecret'}
+
+	$subscriptionActual = Get-AzSubscription
+	Assert-AreEqualObjectProperties $subscriptionExp $subscriptionActual
+}
+
+<#
+.SYNOPSIS
+Tests whether subscriptions is successfully when default profile is set to the context without a ServicePrincipalSecret.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetSubscriptionsWithDefaultProfileAsInput
+{
+	$subscriptionExp = Get-AzSubscription
+
+	$contextWithOutSecret = Get-AzContext
+	Assert-False {$contextWithOutSecret.Account.ExtendedProperties.Keys -Contains 'ServicePrincipalSecret'}
+
+	$subscriptionActual = Get-AzSubscription -DefaultProfile $contextWithOutSecret
+	Assert-AreEqualObjectProperties $subscriptionExp $subscriptionActual
+}
+

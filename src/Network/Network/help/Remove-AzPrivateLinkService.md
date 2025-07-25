@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azprivatelinkservice
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azprivatelinkservice
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Removes a private link service
 
 ```
 Remove-AzPrivateLinkService -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ The **Remove-AzPrivateLinkService** cmdlet removes a private link service
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Remove-AzPrivateLinkService -ResourceGroupName TestResourceGroup -Name TestPrivateLinkService
 ```
 

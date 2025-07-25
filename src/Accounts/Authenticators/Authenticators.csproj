@@ -2,7 +2,7 @@
   <Import Project="$(MSBuildThisFileDirectory)\..\..\..\Repo.props" />
   <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props" />
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Authenticators</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.Authenticators</RootNamespace>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -23,18 +23,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
   </ItemGroup>
 
-  <Target Name="CopyFiles" AfterTargets="Build">
-    <ItemGroup>
-      <OutputAssembly Include="$(TargetDir)\$(AssemblyName).dll" />
-    </ItemGroup>
-    <Copy SourceFiles="@(OutputAssembly)" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.Accounts\PreloadAssemblies" />
-  </Target>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

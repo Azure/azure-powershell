@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void BeginProcessing()
         {
-            //cmdlet is failing due to _metrichelper being null, since we skipped beging processing. 
+            //cmdlet is failing due to _metrichelper being null, since we skipped begin processing. 
             base.BeginProcessing(); 
 
             if (!this.CheckIfInteractive())
@@ -56,6 +57,30 @@ namespace Microsoft.Azure.Commands.Profile
         private void WriteQuestion(string question)
         {
             this.Host.UI.WriteLine(ConsoleColor.Cyan, this.Host.UI.RawUI.BackgroundColor, $"{Environment.NewLine}{question}{Environment.NewLine}");
+        }
+
+        //This method was moved from AzurePSCmdlet
+        private bool CheckIfInteractive()
+        {
+            bool interactive = true;
+            if (this.Host?.UI?.RawUI == null ||
+                Environment.GetCommandLineArgs().Any(s =>
+                    s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
+            {
+                interactive = false;
+            }
+            else
+            {
+                try
+                {
+                    var test = this.Host.UI.RawUI.KeyAvailable;
+                }
+                catch
+                {
+                    interactive = false;
+                }
+            }
+            return interactive;
         }
 
         private bool OpenBrowser(string url)

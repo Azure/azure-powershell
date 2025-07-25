@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public CriterionType CriterionType => CriterionType.DynamicThresholdCriterion;
 
         /// <summary>
-        /// Initiliazes a PS object for dynamic metric criteria
+        /// Initializes a PS object for dynamic metric criteria
         /// </summary>
-        /// <param name="metricCriteria">The original dynamic metric criteria object</param>
+        /// <param name="dynamicMetricCriteria">The original dynamic metric criteria object</param>
         public PSDynamicMetricCriteria(DynamicMetricCriteria dynamicMetricCriteria): 
             base(name: dynamicMetricCriteria.Name, 
                 metricName: dynamicMetricCriteria.MetricName, 

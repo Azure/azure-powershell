@@ -21,10 +21,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Management.Automation;
     using System.Threading.Tasks;
     using OpContext = Microsoft.Azure.Storage.OperationContext;
+    using System.Collections.Generic;
+    using System.Security.Cryptography;
+    using Microsoft.Azure.Documents;
 
     public class StorageDataMovementCmdletBase : StorageCloudBlobCmdletBase, IDisposable
     {
         protected const int size4MB = 4 * 1024 * 1024;
+
+        protected const int size8MB = 8 * 1024 * 1024;
+
+        protected const int size256MB = 256 * 1024 * 1024;
+
+        /// <summary>
+        /// block blob type
+        /// </summary>
+        protected const string BlockBlobType = "Block";
+
+        /// <summary>
+        /// page blob type
+        /// </summary>
+        protected const string PageBlobType = "Page";
+
+        /// <summary>
+        /// append blob type
+        /// </summary>
+        protected const string AppendBlobType = "Append";
 
         /// <summary>
         /// Blob Transfer Manager
@@ -52,8 +74,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
-        /// <param name="msg">Confirmation message</param>
-        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
+        /// <param name="source">Indicating the source.</param>
+        /// <param name="destination">Indicating the destination.</param>
+        /// <returns>True if the operation is confirmed, otherwise return false</returns>
         protected bool ConfirmOverwrite(object source, object destination)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
@@ -63,8 +86,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
-        /// <param name="msg">Confirmation message</param>
-        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
+        /// <param name="source">Indicating the source.</param>
+        /// <param name="destination">Indicating the destination.</param>
+        /// <returns>True if the operation is confirmed, otherwise return false</returns>
         protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
@@ -89,20 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected virtual void DoBeginProcessing()
         {
-            CmdletOperationContext.Init();
-            CmdletCancellationToken = _cancellationTokenSource.Token;
-            WriteDebugLog(String.Format(Resources.InitOperationContextLog, GetType().Name, CmdletOperationContext.ClientRequestId));
-
-            if (_enableMultiThread)
-            {
-                SetUpMultiThreadEnvironment();
-            }
-
-            OpContext.GlobalSendingRequest +=
-                (sender, args) =>
-                {
-                    //https://github.com/Azure/azure-storage-net/issues/658
-                };
+            base.BeginProcessing();
 
             OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
 
@@ -155,6 +166,52 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 this.TransferManager = null;
             }
+        }
+
+        /// <summary>
+        /// Get the block size from block blob length
+        /// </summary>
+        public static long GetBlockLength(long contentLength)
+        {
+            if (contentLength <= size8MB)
+            {
+                return contentLength;
+            }
+            long blockLength = contentLength / 50000;
+            if (blockLength % (size8MB) != 0)
+            {
+                blockLength = (blockLength / (size8MB) + 1) * (size8MB);
+            }
+            return blockLength > 0 ? blockLength : contentLength;
+        }
+
+        /// <summary>
+        /// Get the block id array from block blob length, block size and blob name
+        /// </summary>
+        public static string[] GetBlockIDs(long contentLength, long blockLength, string blobname)
+        {
+            long blockCount = 0;
+            if (blockLength != 0)
+            {
+                blockCount = contentLength / blockLength;
+            }
+            if (blockCount * blockLength != contentLength)
+            {
+                blockCount++;
+            }
+            List<string> blockIDs = new List<string>();
+            for (int i = 0; i < (int)blockCount; i++)
+            {
+                string blockID = GenerateBlockId(i * blockLength);
+                blockIDs.Add(blockID);
+            }
+            return blockIDs.ToArray();
+        }
+        public static string GenerateBlockId(long offset)
+        {
+            byte[] id = new byte[48]; // 48 raw bytes => 64 byte string once Base64 encoded
+            BitConverter.GetBytes(offset).CopyTo(id, 0);
+            return Convert.ToBase64String(id);
         }
     }
 }

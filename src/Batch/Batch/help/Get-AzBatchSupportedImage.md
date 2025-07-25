@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchsupportedimage.md
+online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage
 schema: 2.0.0
 ---
 
@@ -26,8 +26,11 @@ Specify the account by using the *BatchContext* parameter.
 ### Example 1: Get all available supported images
 
 ```powershell
-PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
-PS C:\> Get-AzBatchSupportedImage -BatchContext $Context
+$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+Get-AzBatchSupportedImage -BatchContext $Context
+```
+
+```output
 BatchSupportEndOfLife :
 Capabilities          :
 ImageReference        : canonical:ubuntuserver:16.04-lts:latest
@@ -67,7 +70,7 @@ The second command gets all available supported images for that Batch account.
 
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service.
 To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated.
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.

@@ -109,18 +109,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             var resourceGroup =
                 SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.CurrentResourceGroup).Value.ToString();
 
-            _credential = new BasicAuthenticationCloudCredentials
-            {
-                Username = clusterCred.UserName,
-                Password = clusterCred.Password.ConvertToString()
-            };
-
             if (clusterConnection == null || clusterCred == null)
             {
                 throw new NullReferenceException(
                     string.Format(
                         "The cluster or resource group specified is null. Please use the Use-AzHDInsightCluster command to connect to a cluster."));
             }
+
+            _credential = new BasicAuthenticationCloudCredentials
+            {
+                Username = clusterCred.UserName,
+                Password = clusterCred.Password.ConvertToString()
+            };
 
             //get hive job
             var hivejob = hiveJobDefinitionCommand.GetHiveJob();

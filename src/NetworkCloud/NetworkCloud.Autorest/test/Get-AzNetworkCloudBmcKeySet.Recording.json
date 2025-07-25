@@ -1,0 +1,91 @@
+{
+  "Get-AzNetworkCloudBmcKeySet+[NoContext]+ListByParent+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/shared-dev-dev04-cluster1/providers/Microsoft.NetworkCloud/clusters/dev04-b511166984dd/bmcKeySets?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/shared-dev-dev04-cluster1/providers/Microsoft.NetworkCloud/clusters/dev04-b511166984dd/bmcKeySets?api-version=2025-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "948be5ea-0cdc-4668-b5d4-4072b241340c" ],
+        "CommandName": [ "Get-AzNetworkCloudBmcKeySet" ],
+        "FullCommandName": [ "Get-AzNetworkCloudBmcKeySet_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "1ac77763-c771-4022-889c-b5660f7d2cfd" ],
+        "x-ms-correlation-request-id": [ "9cb35f42-c1f6-45d9-bf5c-e95f304fceee" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20250407T163840Z:9cb35f42-c1f6-45d9-bf5c-e95f304fceee" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 12A14BEE7CBF49D88558575A3861313E Ref B: AMS231032609051 Ref C: 2025-04-07T16:38:39Z" ],
+        "Date": [ "Mon, 07 Apr 2025 16:38:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkCloudBmcKeySet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/shared-dev-dev04-cluster1/providers/Microsoft.NetworkCloud/clusters/dev04-b511166984dd/bmcKeySets/rgbmcKeySet?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/shared-dev-dev04-cluster1/providers/Microsoft.NetworkCloud/clusters/dev04-b511166984dd/bmcKeySets/rgbmcKeySet?api-version=2025-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "04b6c59f-46b1-48c7-ba12-267030558428" ],
+        "CommandName": [ "Get-AzNetworkCloudBmcKeySet" ],
+        "FullCommandName": [ "Get-AzNetworkCloudBmcKeySet_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0600f3de-0000-1000-0000-67f3ff7c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "563612ae-26f4-4b3d-9bc7-52a64c950035" ],
+        "x-ms-correlation-request-id": [ "63cd025d-3c6a-4cd3-b61d-fa49077e9536" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20250407T163840Z:63cd025d-3c6a-4cd3-b61d-fa49077e9536" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C8CCCF737035473CAECACE5B52E0C949 Ref B: AMS231032609051 Ref C: 2025-04-07T16:38:40Z" ],
+        "Date": [ "Mon, 07 Apr 2025 16:38:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2031" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/shared-dev-dev04-cluster1/providers/Microsoft.NetworkCloud/clusters/dev04-b511166984dd/bmcKeySets/rgbmcKeySet\",\"name\":\"rgbmcKeySet\",\"type\":\"microsoft.networkcloud/clusters/bmckeysets\",\"location\":\"uksouth\",\"extendedLocation\":{\"name\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.ExtendedLocation/customLocations/dev04-b511166984dd-cstm-loc\",\"type\":\"CustomLocation\"},\"etag\":\"\\\"0600f3de-0000-1000-0000-67f3ff7c0000\\\"\",\"tags\":{\"tag1\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-07T16:37:37.9427413Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-04-07T16:38:20.1506717Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"azureGroupId\":\"598f3796-d0dd-45ec-b0fc-000000000000\",\"expiration\":\"2025-12-31T23:59:59.008Z\",\"privilegeLevel\":\"ReadOnly\",\"userList\":[{\"azureUserName\":\"userABC\",\"description\":\"User ABC desc\",\"sshPublicKey\":{\"keyData\":\"ssh-rsa REDACTED\"},\"userPrincipalName\":\"REDACTED\"}],\"userListStatus\":[{\"azureUserName\":\"userABC\",\"status\":\"Invalid\",\"statusMessage\":\"Invalid due to validation error (failed to find Entra group); inactive on all nodes\"}],\"detailedStatus\":\"AllInvalid\",\"lastValidation\":\"2025-04-07T16:38:17Z\",\"detailedStatusMessage\":\"Updated users on all the nodes\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "Remove-AzMigrateProject+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj1234?api-version=2018-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Migrate/migrateProjects/AzMigratePwshTestProj1234?api-version=2018-09-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "d2a05882-fd2d-482a-a4b3-b19b169c3114" ],
+        "CommandName": [ "Remove-AzMigrateProject" ],
+        "FullCommandName": [ "Remove-AzMigrateProject_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "152b8111-bf51-4d70-8a8a-998a0eccb2ce" ],
+        "x-ms-correlation-request-id": [ "152b8111-bf51-4d70-8a8a-998a0eccb2ce" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220926T120338Z:152b8111-bf51-4d70-8a8a-998a0eccb2ce" ],
+        "Date": [ "Mon, 26 Sep 2022 12:03:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "Get-AzMapsAccountKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57/listKeys?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/maps-rg-qhzp2i/providers/Microsoft.Maps/accounts/mapsnu0d57/listKeys?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "12ee889b-d2e4-4996-a585-a17f221d562e" ],
+        "CommandName": [ "Get-AzMapsAccountKey" ],
+        "FullCommandName": [ "Get-AzMapsAccountKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.7", "Az.Maps/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00-b5929db145e02658a803ae03f8ecd597-13de0b47817da576-01" ],
+        "x-ms-operation-identifier": [ "tenantId=54826b22-38d6-4fb2-bad9-b7b93a3e9c5a,objectId=0f876fc3-c749-4607-ad50-c13ef1569cea/japanwest/2dcc9ef6-d3e0-4374-bb46-4f9aaa22cbda" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "e788caee-2173-464d-bf81-2617683777c0" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250416T020157Z:e788caee-2173-464d-bf81-2617683777c0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8B36C8DDB1894EB980001160919CF718 Ref B: TYO201100113023 Ref C: 2025-04-16T02:01:56Z" ],
+        "Date": [ "Wed, 16 Apr 2025 02:01:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "332" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"primaryKey\": \"*****\",\n  \"secondaryKey\": \"*****\",\n  \"primaryKeyLastUpdated\": \"2025-04-16T02:01:47.0865805Z\",\n  \"secondaryKeyLastUpdated\": \"2025-04-16T02:01:47.0866587Z\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

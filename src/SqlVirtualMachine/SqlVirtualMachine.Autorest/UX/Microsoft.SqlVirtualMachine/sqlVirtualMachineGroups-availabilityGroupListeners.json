@@ -1,0 +1,52 @@
+{
+  "resourceType": "sqlVirtualMachineGroups/availabilityGroupListeners",
+  "apiVersion": "2022-08-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine"
+  },
+  "commands": [
+    {
+      "name": "Remove-AzAvailabilityGroupListener",
+      "description": "Deletes an availability group listener.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/remove-azavailabilitygrouplistener"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SqlVMGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an availability group listener.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.availabilityGroupListenerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SqlVMGroupName",
+              "value": "[Path.sqlVirtualMachineGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

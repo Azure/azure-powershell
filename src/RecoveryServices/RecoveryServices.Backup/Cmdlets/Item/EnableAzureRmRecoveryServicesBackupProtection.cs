@@ -24,6 +24,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using static Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ParamHelpMsgs;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -43,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Policy to be associated with this item as part of the protection operation.
         /// </summary>
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.ProtectionPolicy)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.EnableProtectionPolicy)]
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
@@ -98,6 +100,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ItemBase Item { get; set; }
 
         /// <summary>
+        /// Parameter deprecated. Please use SecureToken instead
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public string Token;
+
+        /// <summary>
+        /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public System.Security.SecureString SecureToken;
+
+        /// <summary>
         /// List of Disk LUNs to include in backup
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMClassicComputeParameterSet,
@@ -148,10 +164,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                 string shouldProcessName = Name;
+                bool isMUAOperation = false;
+
                 if (ParameterSetName.Contains("Modify"))
                 {
                     shouldProcessName = Item.Name;
+                    isMUAOperation = true;
                 }
+                
+                string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
 
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
                 {
@@ -161,10 +182,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string.Compare(((AzureWorkloadProtectableItem)ProtectableItem).ProtectableItemType,
                     ProtectableItemType.SQLInstance.ToString()) == 0))
                     {
+                        WriteDebug("Executing AzureWorkloadParameterSet");
+
                         string backupManagementType = ProtectableItem.BackupManagementType.ToString();
                         string workloadType = ConversionUtils.GetServiceClientWorkloadType(ProtectableItem.WorkloadType.ToString());
                         string containerName = "VMAppContainer;" + ((AzureWorkloadProtectableItem)ProtectableItem).ContainerName;
-                        ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
+                        ODataQuery<BmspoQueryObject> queryParam = new ODataQuery<BmspoQueryObject>(
                         q => q.BackupManagementType
                              == backupManagementType &&
                              q.WorkloadType == workloadType &&
@@ -210,7 +233,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                     IPsBackupProvider psBackupProvider = (Item != null) ?
                                         providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                                         : providerManager.GetProviderInstance(Policy.WorkloadType);
-
                                     var itemResponse = psBackupProvider.EnableProtection();
 
                                     // Track Response and display job details
@@ -226,6 +248,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else
                     {
+                        WriteDebug("Executing parameter set: " + ParameterSetName);
+
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<Enum, object>()
                             {
@@ -242,14 +266,70 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ItemParams.InclusionDisksList, InclusionDisksList },
                                 { ItemParams.ExclusionDisksList, ExclusionDisksList },
                                 { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
-                                { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent }
+                                { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent },
+                                { ResourceGuardParams.Token, plainToken },
+                                { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                             }, ServiceClientAdapter);
+
+                        WriteDebug("Initialized provider manager");
 
                         IPsBackupProvider psBackupProvider = (Item != null) ?
                             providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                             : providerManager.GetProviderInstance(Policy.WorkloadType);
 
+                        WriteDebug("policy workload type: " + Policy.WorkloadType.ToString());
+
+                        if (Policy.WorkloadType == Models.WorkloadType.AzureFiles)
+                        {
+                            // if item & policy are not null and both have ids
+                            AzureFileShareItem afsItem = (Item != null) ? (AzureFileShareItem)Item : null;
+                     
+                         
+                            if (afsItem != null && Policy != null && afsItem.PolicyId != null && Policy.Id != null)
+                            {
+                                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(afsItem.PolicyId);
+                                string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, afsItem.PolicyId);
+
+                                keyValueDict = HelperUtils.ParseUri(Policy.Id);
+                                string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, Policy.Id);
+
+                                ProtectionPolicyResource oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                                    oldPolicyName,
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName);
+                                ProtectionPolicyResource newPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                                    newPolicyName,
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName);
+
+                                ServiceClientModel.AzureFileShareProtectionPolicy oldAFSPolicy =
+                                    (ServiceClientModel.AzureFileShareProtectionPolicy)oldPolicy.Properties;
+                                ServiceClientModel.AzureFileShareProtectionPolicy newAFSPolicy =
+                                    (ServiceClientModel.AzureFileShareProtectionPolicy)newPolicy.Properties;
+
+                                if (oldAFSPolicy != null && newAFSPolicy != null)
+                                {
+                                   
+                                    if (oldAFSPolicy.VaultRetentionPolicy != null && newAFSPolicy.RetentionPolicy != null)
+                                    {
+                                        throw new ArgumentException(string.Format(Resources.AFSPolicyUpdateNotAllowed));
+                                    }
+
+                                    if (oldAFSPolicy.RetentionPolicy != null && newAFSPolicy.VaultRetentionPolicy != null)
+                                    {
+
+                                        if (!ShouldContinue(string.Format(Resources.AFSPolicyUpdateWarning), string.Format(Resources.AFSPolicyUpdate)))
+                                        {
+                                            throw new ArgumentException(string.Format(Resources.AFSPolicyUpdateCanceled));
+                                        }
+                                    }
+                                } 
+                            }
+                        }
+                                   
                         var itemResponse = psBackupProvider.EnableProtection();
+
+                        WriteDebug("Enabled protection successfully, going to handle the backup job");
 
                         // Track Response and display job details
                         HandleCreatedJob(

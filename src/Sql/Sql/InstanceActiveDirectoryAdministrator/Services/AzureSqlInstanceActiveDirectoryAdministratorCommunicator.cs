@@ -30,11 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         private static SqlManagementClient SqlClient { get; set; }
 
         /// <summary>
-        /// The Sql client default type for the active directory admin
-        /// </summary>
-        private static string ActiveDirectoryDefaultType { get { return "activeDirectory"; } } // *** Check this, I think ActiveDirectory
-
-        /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
         private static IAzureSubscription Subscription { get; set; }
@@ -47,8 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// <summary>
         /// Creates a communicator for Azure SQL Instance Active Directory administrator
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceActiveDirectoryAdministratorCommunicator(IAzureContext context)
         {
             Context = context;

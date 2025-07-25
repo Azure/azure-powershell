@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkwatcherconnectionmonitortestgroupobject
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitortestgroupobject
 schema: 2.0.0
 ---
 
@@ -14,10 +14,11 @@ Create a connection monitor test group.
 
 ```
 New-AzNetworkWatcherConnectionMonitorTestGroupObject -Name <String>
- -TestConfiguration <PSNetworkWatcherConnectionMonitorTestConfigurationObject[]>
- -Source <PSNetworkWatcherConnectionMonitorEndpointObject[]>
- -Destination <PSNetworkWatcherConnectionMonitorEndpointObject[]> [-Disable]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -TestConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestConfigurationObject]>
+ -Source <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointObject]>
+ -Destination <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointObject]>
+ [-Disable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,7 @@ The New-AzNetworkWatcherConnectionMonitorTestGroupObject cmdlet creates a connec
 
 ### Example 1: Create a test group with 2 testConfigurations, w source and 2 destination endpoints
 
-```
+```powershell
 $testGroup1 = New-AzNetworkWatcherConnectionMonitorTestGroupObject -Name testGroup1 -TestConfiguration $tcpTestConfiguration, $icmpTestConfiguration -Source $vmEndpoint, $workspaceEndpoint -Destination $bingEndpoint, $googleEndpoint
 ```
 
@@ -52,7 +53,7 @@ Accept wildcard characters: False
 List of destination endpoints.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointObject[]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointObject]
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +98,7 @@ Accept wildcard characters: False
 List of source endpoints.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointObject[]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointObject]
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +113,7 @@ Accept wildcard characters: False
 List of test configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestConfigurationObject[]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorTestConfigurationObject]
 Parameter Sets: (All)
 Aliases:
 

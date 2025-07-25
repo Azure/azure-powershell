@@ -1,0 +1,56 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "string",
+        },
+        "location": {
+            "type": "string",
+        },
+        "enableVa": {
+            "type": "bool",
+			      "defaultValue": true,
+        },
+    },
+    "variables": {
+        "subscriptionId": "[subscription().subscriptionId]",
+        "resourceGroupName": "[resourceGroup().name]",
+        "uniqueStorage":
+            "[uniqueString(variables('subscriptionId'), variables('resourceGroupName'), parameters('location'))]",
+        "storageName": "[tolower(concat('sqlva', variables('uniqueStorage')))]",
+    },
+    "resources": [
+      {
+        "condition": "[parameters('enableVa')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('storageName')]",
+        "apiVersion": "2019-04-01",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard_LRS",
+        },
+        "kind": "StorageV2",
+        "properties": {
+          "supportsHttpsTrafficOnly": true
+        }
+      },
+        {
+            "condition": "[parameters('enableVa')]",
+            "type": "Microsoft.Synapse/workspaces/vulnerabilityAssessments",
+            "name": "[concat(parameters('workspaceName'), '/Default')]",
+            "apiVersion": "2019-06-01-preview",
+            "properties": {
+                "storageContainerPath": "[if(parameters('enableVa'), concat(reference(variables('storageName'), '2018-02-01').primaryEndpoints.blob, 'vulnerability-assessment'), '')]",
+                "storageAccountAccessKey": "[if(parameters('enableVa'), listKeys(variables('storageName'), '2018-02-01').keys[0].value, '')]",
+                "recurringScans": {
+                    "isEnabled": true,
+                    "emailSubscriptionAdmins": true,
+                },
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Storage/storageAccounts/', variables('storageName'))]",
+            ],
+        },
+    ],
+}

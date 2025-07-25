@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex
 schema: 2.0.0
 ---
 
@@ -24,7 +24,10 @@ The **New-AzCosmosDBMongoDBIndex** creates a new CosmosDB MongoDB Index.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBMongoDBIndex -TtlInSeconds {val} -Unique 1 -Key "key1"
+New-AzCosmosDBMongoDBIndex -TtlInSeconds 604800 -Unique 1 -Key "key1"
+```
+
+```output
 Key                                                       Options
 ---                                                       -------
 Microsoft.Azure.Commands.CosmosDB.Models.PSMongoIndexKeys Microsoft.Azure.Commands.CosmosDB.Models.PSMongoIndexOptions
@@ -36,7 +39,7 @@ Microsoft.Azure.Commands.CosmosDB.Models.PSMongoIndexKeys Microsoft.Azure.Comman
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +54,7 @@ Accept wildcard characters: False
 Array of key values as strings.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +69,7 @@ Accept wildcard characters: False
 Number of seconds after which the index expires.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +84,7 @@ Accept wildcard characters: False
 Bool to indicate if the index is unique or not.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

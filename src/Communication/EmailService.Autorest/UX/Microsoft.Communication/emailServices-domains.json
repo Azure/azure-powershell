@@ -1,0 +1,95 @@
+{
+  "resourceType": "emailServices/domains",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.communication"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEmailServiceDomain",
+      "description": "Get the Domains resource and its properties.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.communication/get-azemailservicedomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EmailServiceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Domains resource and its properties.",
+          "parameters": [
+            {
+              "name": "-EmailServiceName",
+              "value": "[Path.emailServiceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEmailServiceDomain",
+      "description": "Operation to delete a Domains resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.communication/remove-azemailservicedomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EmailServiceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Operation to delete a Domains resource.",
+          "parameters": [
+            {
+              "name": "-EmailServiceName",
+              "value": "[Path.emailServiceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

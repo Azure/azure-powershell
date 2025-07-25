@@ -14,9 +14,9 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using global::Azure.Storage.Files.Shares;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using System.Globalization;
     using System.Management.Automation;
 
@@ -37,10 +37,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share where the directory would be removed.")]
+            HelpMessage = "ShareClient object indicated the share where the directory would be removed.")]
         [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
+        public ShareClient ShareClient { get; set; }
 
         [Parameter(
             Position = 0,
@@ -48,10 +47,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the base folder where the directory would be removed.")]
+            HelpMessage = "ShareDirectoryClient object indicated the base folder where the directory would be removed.")]
         [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
+        public ShareDirectoryClient ShareDirectoryClient { get; set; }
 
         [Parameter(
             Position = 1,
@@ -76,40 +74,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            string[] path = NamingUtil.ValidatePath(this.Path);
-            CloudFileDirectory baseDirectory;
+            ShareDirectoryClient baseDirClient;
             switch (this.ParameterSetName)
             {
                 case Constants.DirectoryParameterSetName:
-                    baseDirectory = this.Directory;
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    baseDirClient = this.ShareDirectoryClient;
                     break;
 
                 case Constants.ShareNameParameterSetName:
-                    var share = this.BuildFileShareObjectFromName(this.ShareName);
-                    baseDirectory = share.GetRootDirectoryReference();
+                    // TODO: Share snapshot for oauth
+                    NamingUtil.ValidateShareName(this.ShareName, false);
+                    ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                    baseDirClient = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient();
                     break;
 
                 case Constants.ShareParameterSetName:
-                    baseDirectory = this.Share.GetRootDirectoryReference();
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    baseDirClient = this.ShareClient.GetRootDirectoryClient();
                     break;
 
                 default:
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
+            ShareDirectoryClient directoryToBeRemoved = baseDirClient.GetSubdirectoryClient(this.Path);
 
-            var directoryToBeRemoved = baseDirectory.GetDirectoryReferenceByPath(path);
-            this.RunTask(async taskId =>
+            if (this.ShouldProcess(Util.GetSnapshotQualifiedUri(directoryToBeRemoved.Uri), "Remove directory"))
             {
-                if (this.ShouldProcess(directoryToBeRemoved.GetFullPath(), "Remove directory"))
-                {
-                    await this.Channel.DeleteDirectoryAsync(directoryToBeRemoved, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                }
+                directoryToBeRemoved.Delete(cancellationToken: this.CmdletCancellationToken);
+            }
 
-                if (this.PassThru)
-                {
-                    WriteCloudFileDirectoryeObject(taskId, this.Channel, directoryToBeRemoved);
-                }
-            });
+            if (this.PassThru)
+            {
+                WriteObject(new AzureStorageFileDirectory(directoryToBeRemoved, (AzureStorageContext)this.Context, shareDirectoryProperties: null, ClientOptions));
+            }
         }
     }
 }

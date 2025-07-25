@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using RestAzureNS = Microsoft.Rest.Azure;
@@ -43,11 +44,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
-            while (opStatusResponse.Body.Status ==
-                ServiceClientModel.OperationStatusValues.InProgress)
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            while (opStatusResponse.Body.Status == ServiceClientModel.OperationStatusValues.InProgress)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -71,11 +78,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Body.Status ==
                 ServiceClientModel.OperationStatusValues.InProgress)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -99,10 +113,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             var opStatusResponse = getOpStatus(operationId);
 
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
 
@@ -121,18 +142,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static RestAzureNS.AzureOperationResponse<T> GetOperationStatusDataMove<T>(
             RestAzureNS.AzureOperationResponse response,
             Func<string, RestAzureNS.AzureOperationResponse<T>> getOpStatus)
-            where T: ServiceClientModel.OperationStatus
+            where T : ServiceClientModel.OperationStatus
         {
             var operationId = response.Response.Headers.GetOperationResultId();
-            var opStatusResponse = getOpStatus(operationId);            
-            
+            var opStatusResponse = getOpStatus(operationId);
+
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Body.Status == "InProgress")
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
             opStatusResponse = getOpStatus(operationId);
-            
+
             return opStatusResponse;
         }
 
@@ -146,14 +175,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static RestAzureNS.AzureOperationResponse<T> GetOperationResult<T>(
             RestAzureNS.AzureOperationResponse response,
             Func<string, RestAzureNS.AzureOperationResponse<T>> getOpStatus)
-            where T: ServiceClientModel.ProtectionContainerResource
+            where T : ServiceClientModel.ProtectionContainerResource
         {
             var operationId = response.Response.Headers.GetOperationResultId();
             var opStatusResponse = getOpStatus(operationId);
 
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
             opStatusResponse = getOpStatus(operationId);
@@ -168,9 +205,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <returns>Result of the operation once it completes.</returns>
         public static PrepareDataMoveResponse GetCorrelationId(
             RestAzureNS.AzureOperationResponse response,
-            Func<string, PrepareDataMoveResponse> getCorrelationId)            
+            Func<string, PrepareDataMoveResponse> getCorrelationId)
         {
-            var operationId = response.Response.Headers.GetAzureAsyncOperationId(); 
+            var operationId = response.Response.Headers.GetAzureAsyncOperationId();
             var opStatusResponse = getCorrelationId(operationId);
             return opStatusResponse;
         }
@@ -185,16 +222,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static RestAzureNS.AzureOperationResponse<T> GetOperationResult<T>(
             RestAzureNS.AzureOperationResponse<T> response,
             Func<string, RestAzureNS.AzureOperationResponse<T>> getOpStatus)
-            where T: ServiceClientModel.ProtectionContainerResource
+            where T : ServiceClientModel.ProtectionContainerResource
         {
             var operationId = response.Response.Headers.GetOperationResultId();
 
             var opStatusResponse = getOpStatus(operationId);
 
+            string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             while (opStatusResponse.Response.StatusCode == SystemNet.HttpStatusCode.Accepted)
             {
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-
+                if (String.Compare(testMode, "Record", StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+                    TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+                }
                 opStatusResponse = getOpStatus(operationId);
             }
 

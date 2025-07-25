@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
         public string Subscription { get; set; }
 
+        public string ManagementGroupName { get; set; }
+
         public ResourceIdentifier() { }
 
         public ResourceIdentifier(string idFromServer)

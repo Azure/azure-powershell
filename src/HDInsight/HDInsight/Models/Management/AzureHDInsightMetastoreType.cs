@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// An Oozie metastore.
         /// </summary>
-        OozieMetastore
+        OozieMetastore,
+
+        /// <summary>
+        /// An Ambari database
+        /// </summary>
+        AmbariDatabase
     }
 }

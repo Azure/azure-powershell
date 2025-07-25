@@ -27,6 +27,7 @@ using CNM = Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
                 PeerAsn = (uint)existingBgpConnection.PeerAsn;
-                PeerIp = existingBgpConnection.PeerIp;
+                PeerIp = existingBgpConnection.PeerIP;
             }
 
             ConfirmAction(

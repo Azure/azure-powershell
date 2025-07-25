@@ -42,5 +42,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         {
             return new AzureSqlServerActiveDirectoryAdministratorAdapter(DefaultProfile.DefaultContext);
         }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+        }
     }
 }

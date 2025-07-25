@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 75483BC7-440A-437B-9EDE-D270D87CF3C5
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchjob
+online version: https://learn.microsoft.com/powershell/module/az.batch/set-azbatchjob
 schema: 2.0.0
 ---
 
@@ -26,10 +26,10 @@ Modify the properties of that object, and then use the current cmdlet to commit 
 ## EXAMPLES
 
 ### Example 1: Update a job
-```
-PS C:\>$Job = Get-AzBatchJob -Id "Job17" -BatchContext $Context
-PS C:\> $Job.Priority = 1
-PS C:\> Set-AzBatchJob -Job $Job -BatchContext $Context
+```powershell
+$Job = Get-AzBatchJob -Id "Job17" -BatchContext $Context
+$Job.Priority = 1
+Set-AzBatchJob -Job $Job -BatchContext $Context
 ```
 
 The first command gets a job by using **Get-AzBatchJob**, and then stores it in the $Job variable.
@@ -40,7 +40,7 @@ The final command updates the Batch service to match the local object in $Job.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

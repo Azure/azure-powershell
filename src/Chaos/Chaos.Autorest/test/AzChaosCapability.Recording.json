@@ -1,0 +1,355 @@
+{
+  "AzChaosCapability+[NoContext]+NewAzChaosCapability-CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5b00734d-0000-0100-0000-6639ca650000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Request-Context": [ "appId=" ],
+        "api-supported-versions": [ "2021-07-01-preview, 2021-07-05-preview, 2021-08-11-preview, 2021-09-15-preview, 2022-07-01-preview, 2022-10-01-preview, 2023-04-01-preview, 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2806b15b-9210-4ebd-b5fe-1fa462ed19b5" ],
+        "x-ms-correlation-request-id": [ "2806b15b-9210-4ebd-b5fe-1fa462ed19b5" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240507T062957Z:2806b15b-9210-4ebd-b5fe-1fa462ed19b5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 20C61FBB7A724CB2AF3320445550CCAB Ref B: TYO201100115039 Ref C: 2024-05-07T06:29:56Z" ],
+        "Date": [ "Tue, 07 May 2024 06:29:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "731" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0\",\"name\":\"Shutdown-1.0\",\"systemData\":{\"createdAt\":\"2024-05-07T06:29:57.544+00:00\",\"lastModifiedAt\":\"2024-05-07T06:29:57.544+00:00\",\"createdByType\":\"User\"},\"type\":\"Microsoft.Chaos/targets/capabilities\",\"properties\":{\"publisher\":\"microsoft\",\"targetType\":\"virtualmachine\",\"description\":\"\",\"parametersSchema\":\"https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json\",\"urn\":\"urn:csci:microsoft:virtualMachine:shutdown/1.0\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzChaosCapability+[NoContext]+GetAzChaosCapability-List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "4e06407d-de21-4f0a-bafa-abeed2d8eb8b" ],
+        "CommandName": [ "Get-AzChaosCapability" ],
+        "FullCommandName": [ "Get-AzChaosCapability_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.Chaos/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1799" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Request-Context": [ "appId=" ],
+        "api-supported-versions": [ "2021-07-01-preview, 2021-07-05-preview, 2021-08-11-preview, 2021-09-15-preview, 2022-07-01-preview, 2022-10-01-preview, 2023-04-01-preview, 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "12452d6d-9d67-42f4-815e-da9fd7161f90" ],
+        "x-ms-correlation-request-id": [ "12452d6d-9d67-42f4-815e-da9fd7161f90" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240507T062958Z:12452d6d-9d67-42f4-815e-da9fd7161f90" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F16F8D2CF7AF4720ABB08ABC9AD39954 Ref B: TYO201100115039 Ref C: 2024-05-07T06:29:57Z" ],
+        "Date": [ "Tue, 07 May 2024 06:29:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "757" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0\",\"name\":\"Shutdown-1.0\",\"systemData\":{\"createdAt\":\"2024-05-07T06:29:57.544+00:00\",\"lastModifiedAt\":\"2024-05-07T06:29:57.544+00:00\",\"createdByType\":\"User\"},\"type\":\"Microsoft.Chaos/targets/capabilities\",\"properties\":{\"publisher\":\"microsoft\",\"targetType\":\"virtualmachine\",\"description\":\"\",\"parametersSchema\":\"https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json\",\"urn\":\"urn:csci:microsoft:virtualMachine:shutdown/1.0\"}}],\"nextLink\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzChaosCapability+[NoContext]+GetAzChaosCapability-Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "7462ea0c-1e43-4f17-923d-92c759862299" ],
+        "CommandName": [ "Get-AzChaosCapability" ],
+        "FullCommandName": [ "Get-AzChaosCapability_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.Chaos/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5b00734d-0000-0100-0000-6639ca650000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1799" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Request-Context": [ "appId=" ],
+        "api-supported-versions": [ "2021-07-01-preview, 2021-07-05-preview, 2021-08-11-preview, 2021-09-15-preview, 2022-07-01-preview, 2022-10-01-preview, 2023-04-01-preview, 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d0819d9a-c5ff-4b75-9bdd-84b2a32a92cb" ],
+        "x-ms-correlation-request-id": [ "d0819d9a-c5ff-4b75-9bdd-84b2a32a92cb" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240507T062959Z:d0819d9a-c5ff-4b75-9bdd-84b2a32a92cb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E945669CF37F46FDBC0FDBE485962920 Ref B: TYO201100115039 Ref C: 2024-05-07T06:29:58Z" ],
+        "Date": [ "Tue, 07 May 2024 06:29:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "731" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0\",\"name\":\"Shutdown-1.0\",\"systemData\":{\"createdAt\":\"2024-05-07T06:29:57.544+00:00\",\"lastModifiedAt\":\"2024-05-07T06:29:57.544+00:00\",\"createdByType\":\"User\"},\"type\":\"Microsoft.Chaos/targets/capabilities\",\"properties\":{\"publisher\":\"microsoft\",\"targetType\":\"virtualmachine\",\"description\":\"\",\"parametersSchema\":\"https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json\",\"urn\":\"urn:csci:microsoft:virtualMachine:shutdown/1.0\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzChaosCapability+[NoContext]+GetAzChaosCapabilityType-List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Chaos/locations/eastus/targetTypes/microsoft-virtualmachine/capabilityTypes?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Chaos/locations/eastus/targetTypes/microsoft-virtualmachine/capabilityTypes?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "ea8d0450-6191-42ac-8d49-cf96c701a1a0" ],
+        "CommandName": [ "Get-AzChaosCapabilityType" ],
+        "FullCommandName": [ "Get-AzChaosCapabilityType_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.Chaos/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "4999" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Request-Context": [ "appId=" ],
+        "api-supported-versions": [ "2021-09-15-preview, 2022-07-01-preview, 2022-10-01-preview, 2023-04-01-preview, 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "96a1791f-a97c-4725-93ae-169199ad4d1c" ],
+        "x-ms-correlation-request-id": [ "96a1791f-a97c-4725-93ae-169199ad4d1c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240507T063000Z:96a1791f-a97c-4725-93ae-169199ad4d1c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 428AB2851AB9495B90EBED1A903D8D43 Ref B: TYO201100115039 Ref C: 2024-05-07T06:30:00Z" ],
+        "Date": [ "Tue, 07 May 2024 06:30:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2116" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"Microsoft.Chaos/locations/targetTypes/capabilityTypes\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Chaos/locations/eastus/targetTypes/virtualmachine/capabilityTypes/Redeploy-1.0\",\"name\":\"Redeploy-1.0\",\"location\":\"eastus\",\"properties\":{\"publisher\":\"Microsoft\",\"targetType\":\"VirtualMachine\",\"displayName\":\"\",\"description\":\"\",\"parametersSchema\":\"https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Redeploy-1.0/parametersSchema.json\",\"urn\":\"urn:csci:microsoft:virtualMachine:redeploy/1.0\",\"kind\":\"Fault\",\"runtimeProperties\":{\"kind\":\"Discrete\"},\"azureRbacActions\":[\"Microsoft.Compute/virtualMachines/read\",\"Microsoft.Compute/virtualMachines/redeploy/action\",\"Microsoft.Compute/virtualMachines/instanceView/read\",\"Microsoft.Compute/locations/operations/read\"],\"azureRbacDataActions\":null},\"systemData\":{\"createdAt\":\"2024-04-09T16:30:31.388797+00:00\",\"lastModifiedAt\":\"2024-04-09T16:30:31.388797+00:00\",\"createdByType\":\"Application\"}},{\"type\":\"Microsoft.Chaos/locations/targetTypes/capabilityTypes\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Chaos/locations/eastus/targetTypes/virtualmachine/capabilityTypes/Shutdown-1.0\",\"name\":\"Shutdown-1.0\",\"location\":\"eastus\",\"properties\":{\"publisher\":\"Microsoft\",\"targetType\":\"VirtualMachine\",\"displayName\":\"\",\"description\":\"\",\"parametersSchema\":\"https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json\",\"urn\":\"urn:csci:microsoft:virtualMachine:shutdown/1.0\",\"kind\":\"Fault\",\"runtimeProperties\":{\"kind\":\"Continuous\"},\"azureRbacActions\":[\"Microsoft.Compute/virtualMachines/poweroff/action\",\"Microsoft.Compute/virtualMachines/start/action\",\"Microsoft.Compute/virtualMachines/instanceView/read\",\"Microsoft.Compute/virtualMachines/read\",\"Microsoft.Compute/locations/operations/read\"],\"azureRbacDataActions\":null},\"systemData\":{\"createdAt\":\"2024-04-09T16:30:31.6248775+00:00\",\"lastModifiedAt\":\"2024-04-09T16:30:31.6248775+00:00\",\"createdByType\":\"Application\"}}],\"nextLink\":\"\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzChaosCapability+[NoContext]+GetAzChaosCapabilityType-Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Chaos/locations/eastus/targetTypes/microsoft-virtualmachine/capabilityTypes/Shutdown-1.0?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Chaos/locations/eastus/targetTypes/microsoft-virtualmachine/capabilityTypes/Shutdown-1.0?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "fe8e3aeb-392a-499f-b21d-a3ebd511d763" ],
+        "CommandName": [ "Get-AzChaosCapabilityType" ],
+        "FullCommandName": [ "Get-AzChaosCapabilityType_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.Chaos/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "4999" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Request-Context": [ "appId=" ],
+        "api-supported-versions": [ "2021-09-15-preview, 2022-07-01-preview, 2022-10-01-preview, 2023-04-01-preview, 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a9df7a16-cf10-45ed-9554-1c8b707b1d1f" ],
+        "x-ms-correlation-request-id": [ "a9df7a16-cf10-45ed-9554-1c8b707b1d1f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240507T063001Z:a9df7a16-cf10-45ed-9554-1c8b707b1d1f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D780640A5C174A6486125224A46B1BA7 Ref B: TYO201100115039 Ref C: 2024-05-07T06:30:01Z" ],
+        "Date": [ "Tue, 07 May 2024 06:30:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1071" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.Chaos/locations/targetTypes/capabilityTypes\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Chaos/locations/eastus/targetTypes/virtualmachine/capabilityTypes/Shutdown-1.0\",\"name\":\"Shutdown-1.0\",\"location\":\"eastus\",\"properties\":{\"publisher\":\"Microsoft\",\"targetType\":\"VirtualMachine\",\"displayName\":\"\",\"description\":\"\",\"parametersSchema\":\"https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json\",\"urn\":\"urn:csci:microsoft:virtualMachine:shutdown/1.0\",\"kind\":\"Fault\",\"runtimeProperties\":{\"kind\":\"Continuous\"},\"azureRbacActions\":[\"Microsoft.Compute/virtualMachines/poweroff/action\",\"Microsoft.Compute/virtualMachines/start/action\",\"Microsoft.Compute/virtualMachines/instanceView/read\",\"Microsoft.Compute/virtualMachines/read\",\"Microsoft.Compute/locations/operations/read\"],\"azureRbacDataActions\":null},\"systemData\":{\"createdAt\":\"2024-04-09T16:30:31.6248775+00:00\",\"lastModifiedAt\":\"2024-04-09T16:30:31.6248775+00:00\",\"createdByType\":\"Application\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzChaosCapability+[NoContext]+UpdateAzChaosCapability-UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "3f3db97c-f40f-46a9-9d03-7b60e89836b3" ],
+        "CommandName": [ "Update-AzChaosCapability" ],
+        "FullCommandName": [ "Update-AzChaosCapability_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.Chaos/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5b00734d-0000-0100-0000-6639ca650000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1798" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Request-Context": [ "appId=" ],
+        "api-supported-versions": [ "2021-07-01-preview, 2021-07-05-preview, 2021-08-11-preview, 2021-09-15-preview, 2022-07-01-preview, 2022-10-01-preview, 2023-04-01-preview, 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9bb3ee2a-8dcd-4507-bbc1-79faf7303c59" ],
+        "x-ms-correlation-request-id": [ "9bb3ee2a-8dcd-4507-bbc1-79faf7303c59" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240507T063001Z:9bb3ee2a-8dcd-4507-bbc1-79faf7303c59" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1CE857F37D244C1AA294F807B3505DEF Ref B: TYO201100115039 Ref C: 2024-05-07T06:30:01Z" ],
+        "Date": [ "Tue, 07 May 2024 06:30:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "731" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0\",\"name\":\"Shutdown-1.0\",\"systemData\":{\"createdAt\":\"2024-05-07T06:29:57.544+00:00\",\"lastModifiedAt\":\"2024-05-07T06:29:57.544+00:00\",\"createdByType\":\"User\"},\"type\":\"Microsoft.Chaos/targets/capabilities\",\"properties\":{\"publisher\":\"microsoft\",\"targetType\":\"virtualmachine\",\"description\":\"\",\"parametersSchema\":\"https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json\",\"urn\":\"urn:csci:microsoft:virtualMachine:shutdown/1.0\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzChaosCapability+[NoContext]+UpdateAzChaosCapability-UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5b00ec4d-0000-0100-0000-6639ca6b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Request-Context": [ "appId=" ],
+        "api-supported-versions": [ "2021-07-01-preview, 2021-07-05-preview, 2021-08-11-preview, 2021-09-15-preview, 2022-07-01-preview, 2022-10-01-preview, 2023-04-01-preview, 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "3716b676-0756-468c-a598-f965ea7312a6" ],
+        "x-ms-correlation-request-id": [ "3716b676-0756-468c-a598-f965ea7312a6" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240507T063003Z:3716b676-0756-468c-a598-f965ea7312a6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1B8864852CE04EBAB22C3D65D4BD64FC Ref B: TYO201100115039 Ref C: 2024-05-07T06:30:01Z" ],
+        "Date": [ "Tue, 07 May 2024 06:30:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "731" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0\",\"name\":\"Shutdown-1.0\",\"systemData\":{\"createdAt\":\"2024-05-07T06:29:57.544+00:00\",\"lastModifiedAt\":\"2024-05-07T06:30:03.081+00:00\",\"createdByType\":\"User\"},\"type\":\"Microsoft.Chaos/targets/capabilities\",\"properties\":{\"publisher\":\"microsoft\",\"targetType\":\"virtualmachine\",\"description\":\"\",\"parametersSchema\":\"https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json\",\"urn\":\"urn:csci:microsoft:virtualMachine:shutdown/1.0\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzChaosCapability+[NoContext]+RemoveAzChaosCapability-Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest2/providers/Microsoft.Chaos/targets/microsoft-virtualmachine/capabilities/Shutdown-1.0?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "c2d0ba92-9a39-4a75-88dd-c0e15567c6a1" ],
+        "CommandName": [ "Remove-AzChaosCapability" ],
+        "FullCommandName": [ "Remove-AzChaosCapability_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.Chaos/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Request-Context": [ "appId=" ],
+        "api-supported-versions": [ "2021-07-01-preview, 2021-07-05-preview, 2021-08-11-preview, 2021-09-15-preview, 2022-07-01-preview, 2022-10-01-preview, 2023-04-01-preview, 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-request-id": [ "0bb80b3c-ebe5-4cce-8551-1f3ef7114580" ],
+        "x-ms-correlation-request-id": [ "0bb80b3c-ebe5-4cce-8551-1f3ef7114580" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240507T063004Z:0bb80b3c-ebe5-4cce-8551-1f3ef7114580" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B243B75FB4794C83B2864CA2AAAFD480 Ref B: TYO201100115039 Ref C: 2024-05-07T06:30:03Z" ],
+        "Date": [ "Tue, 07 May 2024 06:30:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

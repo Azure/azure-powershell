@@ -1,0 +1,49 @@
+{
+  "Get-AzOracleDnsPrivateView+[NoContext]+List+$GET+https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "100" ],
+        "x-ms-client-request-id": [ "38baa784-bf83-4634-a244-fdd9aa6f3719" ],
+        "CommandName": [ "Get-AzOracleDnsPrivateView" ],
+        "FullCommandName": [ "Get-AzOracleDnsPrivateView_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Origin", "Accept-Encoding" ],
+        "x-ms-operation-identifier": [ "tenantId=9ef05df2-ad7c-4737-aba9-a5e1b3fa5ae1,objectId=ed0404db-6d52-44c6-a09d-182ac122b912/northcentralus/0071e343-8ef1-47d9-8205-d584234dbbf0" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "/EA7D683584F4A42CD840F4B40669D54A/26DAA3EE7A433EC8F3770E5A9027AC7A" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "6992b062-16c5-4e81-9398-0ce24a33f32d" ],
+        "x-ms-correlation-request-id": [ "b1ae8392-52c4-42c9-8e19-35a13f33adc9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20250625T180718Z:b1ae8392-52c4-42c9-8e19-35a13f33adc9" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 13190B4A835040F89FD7CC8B7B6CFD7A Ref B: DM2AA1091213021 Ref C: 2025-06-25T18:07:16Z" ],
+        "Date": [ "Wed, 25 Jun 2025 18:07:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5611" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyaijt3yr74ydyb7ui5rmqpk4wxsros5iot4elczw5emymq\",\"name\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyaijt3yr74ydyb7ui5rmqpk4wxsros5iot4elczw5emymq\",\"type\":\"Oracle.Database/Locations/dnsPrivateViews\",\"properties\":{\"ocid\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyaijt3yr74ydyb7ui5rmqpk4wxsros5iot4elczw5emymq\",\"displayName\":\"vault.azure.net\",\"isProtected\":false,\"provisioningState\":\"Active\",\"lifecycleState\":\"Active\",\"self\":\"https://dns.us-ashburn-1.oci.oraclecloud.com/20180115/views/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyaijt3yr74ydyb7ui5rmqpk4wxsros5iot4elczw5emymq\",\"timeCreated\":\"2025-06-06T06:01:30.535Z\",\"timeUpdated\":\"2025-06-06T06:01:30.535Z\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyaxqri6rpxnpgnv4gntrhgu5k3l6k4ubbkh6efefxrbcra\",\"name\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyaxqri6rpxnpgnv4gntrhgu5k3l6k4ubbkh6efefxrbcra\",\"type\":\"Oracle.Database/Locations/dnsPrivateViews\",\"properties\":{\"ocid\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyaxqri6rpxnpgnv4gntrhgu5k3l6k4ubbkh6efefxrbcra\",\"displayName\":\"privateview\",\"isProtected\":false,\"provisioningState\":\"Active\",\"lifecycleState\":\"Active\",\"self\":\"https://dns.us-ashburn-1.oci.oraclecloud.com/20180115/views/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyaxqri6rpxnpgnv4gntrhgu5k3l6k4ubbkh6efefxrbcra\",\"timeCreated\":\"2025-06-06T05:58:58.292Z\",\"timeUpdated\":\"2025-06-06T05:58:58.292Z\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews/ocid1.dnsview.oc1.iad.aaaaaaaaegugdm5xpptre27qubxtaex2yattivvovsurcnfuq4gg4v5zaewa\",\"name\":\"ocid1.dnsview.oc1.iad.aaaaaaaaegugdm5xpptre27qubxtaex2yattivvovsurcnfuq4gg4v5zaewa\",\"type\":\"Oracle.Database/Locations/dnsPrivateViews\",\"properties\":{\"ocid\":\"ocid1.dnsview.oc1.iad.aaaaaaaaegugdm5xpptre27qubxtaex2yattivvovsurcnfuq4gg4v5zaewa\",\"displayName\":\"VCN-multicloudnetworklink20250305061300\",\"isProtected\":false,\"provisioningState\":\"Active\",\"lifecycleState\":\"Active\",\"self\":\"https://dns.us-ashburn-1.oci.oraclecloud.com/20180115/views/ocid1.dnsview.oc1.iad.aaaaaaaaegugdm5xpptre27qubxtaex2yattivvovsurcnfuq4gg4v5zaewa\",\"timeCreated\":\"2025-03-05T06:13:33.934Z\",\"timeUpdated\":\"2025-04-14T16:42:27.619Z\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyabvzgkmikquh4bovmnvfiftq4af42sjrgle5xtzyak7wa\",\"name\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyabvzgkmikquh4bovmnvfiftq4af42sjrgle5xtzyak7wa\",\"type\":\"Oracle.Database/Locations/dnsPrivateViews\",\"properties\":{\"ocid\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyabvzgkmikquh4bovmnvfiftq4af42sjrgle5xtzyak7wa\",\"displayName\":\"dnsview20250225235751\",\"isProtected\":false,\"provisioningState\":\"Active\",\"lifecycleState\":\"Active\",\"self\":\"https://dns.us-ashburn-1.oci.oraclecloud.com/20180115/views/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyabvzgkmikquh4bovmnvfiftq4af42sjrgle5xtzyak7wa\",\"timeCreated\":\"2025-02-25T23:57:51.597Z\",\"timeUpdated\":\"2025-02-25T23:57:51.597Z\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyahcaseo4ykrmmyil3wysz6xrk3ypur5g32q5lyhmkrs4a\",\"name\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyahcaseo4ykrmmyil3wysz6xrk3ypur5g32q5lyhmkrs4a\",\"type\":\"Oracle.Database/Locations/dnsPrivateViews\",\"properties\":{\"ocid\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyahcaseo4ykrmmyil3wysz6xrk3ypur5g32q5lyhmkrs4a\",\"displayName\":\"alec.com\",\"isProtected\":false,\"provisioningState\":\"Active\",\"lifecycleState\":\"Active\",\"self\":\"https://dns.us-ashburn-1.oci.oraclecloud.com/20180115/views/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyahcaseo4ykrmmyil3wysz6xrk3ypur5g32q5lyhmkrs4a\",\"timeCreated\":\"2024-09-23T22:23:23.405Z\",\"timeUpdated\":\"2024-09-23T22:23:23.405Z\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews/ocid1.dnsview.oc1.iad.aaaaaaaaddo4kvptrfdq4heoossqpkpd44b462fnwfehyqnas6eripajv3ya\",\"name\":\"ocid1.dnsview.oc1.iad.aaaaaaaaddo4kvptrfdq4heoossqpkpd44b462fnwfehyqnas6eripajv3ya\",\"type\":\"Oracle.Database/Locations/dnsPrivateViews\",\"properties\":{\"ocid\":\"ocid1.dnsview.oc1.iad.aaaaaaaaddo4kvptrfdq4heoossqpkpd44b462fnwfehyqnas6eripajv3ya\",\"displayName\":\"VCN-multicloudnetworklink20240621150702\",\"isProtected\":false,\"provisioningState\":\"Active\",\"lifecycleState\":\"Active\",\"self\":\"https://dns.us-ashburn-1.oci.oraclecloud.com/20180115/views/ocid1.dnsview.oc1.iad.aaaaaaaaddo4kvptrfdq4heoossqpkpd44b462fnwfehyqnas6eripajv3ya\",\"timeCreated\":\"2024-06-21T15:07:31.669Z\",\"timeUpdated\":\"2024-09-16T21:00:03.024Z\"}},{\"id\":\"/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/providers/Oracle.Database/locations/eastus/dnsPrivateViews/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyawfpht37d6ohe7v3auprkpnpeqmfop2sqnfvev2kutzga\",\"name\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyawfpht37d6ohe7v3auprkpnpeqmfop2sqnfvev2kutzga\",\"type\":\"Oracle.Database/Locations/dnsPrivateViews\",\"properties\":{\"ocid\":\"ocid1.dnsview.oc1.iad.amaaaaaa2edokzyawfpht37d6ohe7v3auprkpnpeqmfop2sqnfvev2kutzga\",\"displayName\":\"yumfei0607Test\",\"isProtected\":false,\"provisioningState\":\"Active\",\"lifecycleState\":\"Active\",\"self\":\"https://dns.us-ashburn-1.oci.oraclecloud.com/20180115/views/ocid1.dnsview.oc1.iad.amaaaaaa2edokzyawfpht37d6ohe7v3auprkpnpeqmfop2sqnfvev2kutzga\",\"timeCreated\":\"2024-06-07T20:01:42.280Z\",\"timeUpdated\":\"2024-06-07T20:01:42.280Z\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

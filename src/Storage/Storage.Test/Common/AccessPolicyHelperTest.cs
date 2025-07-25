@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.Azure.Storage.Blob;
 using Microsoft.Azure.Cosmos.Table;
-using Microsoft.Azure.Storage.File;
-using Microsoft.Azure.Storage.Queue;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
@@ -47,23 +44,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             Assert.AreEqual(tableAccessPolicy.Permissions, SharedAccessTablePermissions.None);
             AccessPolicyHelper.SetupAccessPolicyPermission(tableAccessPolicy, "ar");
             Assert.AreEqual(tableAccessPolicy.Permissions, SharedAccessTablePermissions.Add | SharedAccessTablePermissions.Query);
-
-            SharedAccessQueuePolicy queueAccessPolicy = new SharedAccessQueuePolicy();
-            AccessPolicyHelper.SetupAccessPolicyPermission(queueAccessPolicy, null);
-            Assert.AreEqual(queueAccessPolicy.Permissions, SharedAccessQueuePermissions.None);
-            AccessPolicyHelper.SetupAccessPolicyPermission(queueAccessPolicy, "");
-            Assert.AreEqual(queueAccessPolicy.Permissions, SharedAccessQueuePermissions.None);
-            AccessPolicyHelper.SetupAccessPolicyPermission(queueAccessPolicy, "p");
-            Assert.AreEqual(queueAccessPolicy.Permissions, SharedAccessQueuePermissions.ProcessMessages);
-
-            SharedAccessFilePolicy fileAccessPolicy = new SharedAccessFilePolicy();
-            AccessPolicyHelper.SetupAccessPolicyPermission(fileAccessPolicy, null);
-            Assert.AreEqual(fileAccessPolicy.Permissions, SharedAccessFilePermissions.None);
-            AccessPolicyHelper.SetupAccessPolicyPermission(fileAccessPolicy, "");
-            Assert.AreEqual(fileAccessPolicy.Permissions, SharedAccessFilePermissions.None);
-            AccessPolicyHelper.SetupAccessPolicyPermission(fileAccessPolicy, "lwc");
-            Assert.AreEqual(fileAccessPolicy.Permissions, SharedAccessFilePermissions.List | SharedAccessFilePermissions.Write | SharedAccessFilePermissions.Create); 
-
         }
 
         [TestMethod]
@@ -96,18 +76,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             Assert.AreEqual(tableAccessPolicy.SharedAccessStartTime, null);
             Assert.AreEqual(tableAccessPolicy.SharedAccessExpiryTime.Value.UtcDateTime.ToString(), end.Value.ToUniversalTime().ToString());
             Assert.AreEqual(tableAccessPolicy.Permissions, SharedAccessTablePermissions.Delete);
-
-            SharedAccessQueuePolicy queueAccessPolicy = new SharedAccessQueuePolicy();
-            AccessPolicyHelper.SetupAccessPolicy(queueAccessPolicy, start, null, "", noExpiryTime: true);
-            Assert.AreEqual(queueAccessPolicy.SharedAccessStartTime.Value.UtcDateTime.ToString(), start.Value.ToUniversalTime().ToString());
-            Assert.AreEqual(queueAccessPolicy.SharedAccessExpiryTime, null);
-            Assert.AreEqual(queueAccessPolicy.Permissions, SharedAccessQueuePermissions.None);
-
-            SharedAccessFilePolicy fileAccessPolicy = new SharedAccessFilePolicy();
-            AccessPolicyHelper.SetupAccessPolicy(fileAccessPolicy, null, null, "dl", true, true);
-            Assert.AreEqual(fileAccessPolicy.SharedAccessStartTime, null);
-            Assert.AreEqual(fileAccessPolicy.SharedAccessExpiryTime, null);
-            Assert.AreEqual(fileAccessPolicy.Permissions, SharedAccessFilePermissions.List| SharedAccessFilePermissions.Delete);
         }
     }
 }

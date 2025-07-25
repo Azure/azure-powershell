@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMProfile = "The virtual machine profile.";
         public const string VmssVMProfile = "The virtual machine scale set VM profile.";
         public const string VMSize = "The virtual machine size.";
-        public const string VMComputerName = "The virtual machine's omputer name.";
+        public const string VMComputerName = "The virtual machine's computer name.";
         public const string VMCredential = "The virtual machine's credential.";
         public const string VMSourceImageName = "The virtual machine's source image name.";
         public const string VMImageReference = "The virtual machine's image reference.";
@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMPlanProduct = "The offer ID";
         public const string VMPlanPromotionCode = "The promotion code";
         public const string VMPlanPublisher = "The publisher ID";
+
+        public const string TrustedLaunchUpgradeMessage = "Consider upgrading security for your workloads using Azure Trusted Launch VMs. To know more about Trusted Launch, please visit https://aka.ms/TrustedLaunch";
+        public const string PSVMImageMessage = "You can reference https://aka.ms/findImagePS on how to find VM Images using PowerShell.";
     }
 
     public static class ValidateSetValues
@@ -80,6 +83,32 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string Automated = "Automated";
         public const string Daily = "Daily";
         public const string Weekly = "Weekly";
+        public const string TrustedLaunch = "TrustedLaunch";
+        public const string ConfidentialVM = "ConfidentialVM";
+        public const string Standard = "Standard";
+        public const string Replace = "Replace";
+        public const string Restart = "Restart";
+        public const string Reimage = "Reimage";
+    }
+
+    public static class ConstantValues
+    {
+        public const string DefaultVMandVMSSImage = "Win2016Datacenter";
+        public const string StandardSecurityType = "standard";
+        public const string TrustedLaunchSecurityType = "trustedlaunch";
+        public const string ConfidentialVMSecurityType = "confidentialvm";
+        public const string TrustedLaunchDefaultImageAlias = "Win2022AzureEdition";
+        public const string TrustedLaunchDefaultPublisher = "MicrosoftWindowsServer";
+        public const string TrustedLaunchDefaultOffer = "WindowsServer";
+        public const string TrustedLaunchDefaultSku = "2022-datacenter-azure-edition";
+        public const string TrustedLaunchDefaultVersion = "latest";
+        public const string TrustedLaunchDefaultHyperVGen = "v2";
+    }
+
+    public static class HyperVGenerations
+    {
+        public const string V1 = "V1";
+        public const string V2 = "V2";
     }
 
     public static class ProfileNouns

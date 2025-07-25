@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityAssessment
+online version: https://learn.microsoft.com/powershell/module/az.security/Set-AzSecurityAssessment
 schema: 2.0.0
 ---
 
@@ -14,10 +14,11 @@ Create or update a security assessment result on a resource
 
 ### SubscriptionLevelResource (Default)
 ```
-Set-AzSecurityAssessment -Name <String> [-StatusCode <String>] [-StatusCause <String>]
+Set-AzSecurityAssessment -Name <String> -StatusCode <String> [-StatusCause <String>]
  [-StatusDescription <String>]
  [-AdditionalData <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdLevelResource
@@ -25,7 +26,8 @@ Set-AzSecurityAssessment -Name <String> [-StatusCode <String>] [-StatusCause <St
 Set-AzSecurityAssessment -Name <String> -AssessedResourceId <String> -StatusCode <String>
  [-StatusCause <String>] [-StatusDescription <String>]
  [-AdditionalData <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +38,7 @@ can only be used for "CustomerManaged" assessment types and only after the match
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSecurityAssessment -Name 4FB6C0A0-1137-42C7-A1C7-4BD37C91DE8D -StatusCode "Unhealthy"
+Set-AzSecurityAssessment -Name 4FB6C0A0-1137-42C7-A1C7-4BD37C91DE8D -StatusCode "Unhealthy"
 ```
 
 Marks the subscription result as "Unhealthy" for assessment of type "4FB6C0A0-1137-42C7-A1C7-4BD37C91DE8D" - more details about the assessment type will be found under the assessmentMetadata type
@@ -62,7 +64,7 @@ Accept wildcard characters: False
 Full resource ID of the resource that the assessment is calculated on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdLevelResource
 Aliases:
 
@@ -77,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,7 +94,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,10 +106,10 @@ Accept wildcard characters: False
 ```
 
 ### -StatusCause
-Progremmatic code for the cause of the assessment's result.
+Programmatic code for the cause of the assessment's result.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,24 +121,12 @@ Accept wildcard characters: False
 ```
 
 ### -StatusCode
-Progremmatic code for the result of the assessment.
+Programmatic code for the result of the assessment.
 can be "Healthy", "Unhealthy" or "NotApplicable"
 
 ```yaml
-Type: String
-Parameter Sets: SubscriptionLevelResource
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdLevelResource
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -150,7 +140,7 @@ Accept wildcard characters: False
 Human readable description of the cause of the assessment's result.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -165,7 +155,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -181,7 +171,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

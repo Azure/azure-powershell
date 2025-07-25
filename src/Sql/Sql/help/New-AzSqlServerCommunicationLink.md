@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 52664E45-7EAB-41C9-BF78-304F10BFC51A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlservercommunicationlink
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqlservercommunicationlink
 schema: 2.0.0
 ---
 
@@ -28,8 +28,8 @@ Therefore, elastic database transactions can span across a larger number of serv
 ## EXAMPLES
 
 ### Example 1: Create a communication link
-```
-PS C:\>New-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01" -PartnerServer "ContosoServer02"
+```powershell
+New-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01" -PartnerServer "ContosoServer02"
 ```
 
 This command creates a link named Link01 between ContosoServer17 and ContosoServer02.
@@ -177,4 +177,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzSqlServerCommunicationLink](./Remove-AzSqlServerCommunicationLink.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

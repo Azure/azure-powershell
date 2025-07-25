@@ -1,64 +1,50 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
+---
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/test-azrelayname
+online version: https://learn.microsoft.com/powershell/module/az.relay/test-azrelayname
 schema: 2.0.0
 ---
 
 # Test-AzRelayName
 
 ## SYNOPSIS
-Checks the Availability of the given NameSpace Name
+Check the specified namespace name availability.
 
 ## SYNTAX
 
 ```
-Test-AzRelayName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzRelayName [-SubscriptionId <String>] -Namespace <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzRelayName** Cmdlet Check Availability of the NameSpace Name
+Check the specified namespace name availability.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS C:\> Test-AzRelayName -Namespace TestingtheAvailability
-
-NameAvailable Reason Message
-------------- ------ -------
-         True   None
+### Example 1: Check the specified namespace name availability
+```powershell
+Test-AzRelayName -Namespace 'relaynamespace-01'
 ```
 
-### Example 2
-```
-PS C:\> Test-AzRelayName -Namespace Testi
-
-NameAvailable      Reason Message
--------------      ------ -------
-        False InvalidName The specified service namespace is invalid.
+```output
+Message NameAvailable Reason
+------- ------------- ------
+        True          None
 ```
 
-### Example 3
-```
-PS C:\> Test-AzRelayName -Namespace Test123
-
-NameAvailable    Reason Message
--------------    ------ -------
-        False NameInUse The specified service namespace is not available.
-```
-
-Returns the status on availability of the namespace name
+This cmdlet checks the specified namespace name availability.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -68,7 +54,9 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Relay Namespace Name.
+The namespace name to check for availability.
+The namespace name can contain only letters, numbers, and hyphens.
+The namespace must start with a letter, and it must end with a letter or number.
 
 ```yaml
 Type: System.String
@@ -76,22 +64,67 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSCheckNameAvailabilityResultAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.ICheckNameAvailabilityResult
 
 ## NOTES
 

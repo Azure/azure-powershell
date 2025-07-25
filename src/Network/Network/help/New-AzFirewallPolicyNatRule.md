@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallpolicynatrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicynatrule
 schema: 2.0.0
 ---
 
@@ -12,11 +12,36 @@ Create a new Azure Firewall Policy NAT Rule
 
 ## SYNTAX
 
+### SourceAddressAndTranslatedAddress
 ```
 New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- [-SourceIpGroup <String[]>] -DestinationAddress <String[]> -DestinationPort <String[]>
- -Protocols <String[]> -TranslatedAddress <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedAddress <String>
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SourceAddressAndTranslatedFqdn
+```
+New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedFqdn <String>
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SourceIpGroupAndTranslatedAddress
+```
+New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedAddress <String>
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SourceIpGroupAndTranslatedFqdn
+```
+New-AzFirewallPolicyNatRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedFqdn <String>
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,10 +51,17 @@ The **New-AzFirewallPolicyNatRule** cmdlet creates a NAT rule for a Azure Firewa
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyNatRule -Name NatRule1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress 10.20.30.40 -DestinationPort 1000 -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
+New-AzFirewallPolicyNatRule -Name NatRule1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress 10.20.30.40 -DestinationPort 1000 -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
 ```
 
 This example creates a NAT rule with the source address, protocol, destination address, destination port, translated address, and translated port.
+
+### Example 2
+```powershell
+New-AzFirewallPolicyNatRule -Name NatRule1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress 10.20.30.40 -DestinationPort 1000 -TranslatedFqdn "internalhttp.server.net" -TranslatedPort "100"
+```
+
+This example creates a NAT rule with the source address, protocol, destination address, destination port, translated fqdn, and translated port.
 
 ## PARAMETERS
 
@@ -37,7 +69,7 @@ This example creates a NAT rule with the source address, protocol, destination a
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -48,26 +80,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the NAT Rule Collection
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Description
 The description of the rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +99,7 @@ Accept wildcard characters: False
 The destination addresses of the rule. This has to be Public IP of the Firewall.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +114,7 @@ Accept wildcard characters: False
 The destination ports of the rule
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -108,14 +125,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocols
+### -Name
+The name of the NAT Rule Collection
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
 The protocols of the rule
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Any, TCP, UDP, ICMP
 
 Required: True
 Position: Named
@@ -128,11 +159,11 @@ Accept wildcard characters: False
 The source addresses of the rule
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: SourceAddressAndTranslatedAddress, SourceAddressAndTranslatedFqdn
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,11 +174,11 @@ Accept wildcard characters: False
 The source ipgroups of the rule
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: SourceIpGroupAndTranslatedAddress, SourceIpGroupAndTranslatedFqdn
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,8 +189,23 @@ Accept wildcard characters: False
 The translated address for this NAT rule
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SourceAddressAndTranslatedAddress, SourceIpGroupAndTranslatedAddress
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TranslatedFqdn
+The translated FQDN for this NAT rule
+
+```yaml
+Type: System.String
+Parameter Sets: SourceAddressAndTranslatedFqdn, SourceIpGroupAndTranslatedFqdn
 Aliases:
 
 Required: True
@@ -173,42 +219,11 @@ Accept wildcard characters: False
 The translated port for this NAT rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,7 +81,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.LastModifiedTime = templateSpec.SystemData.LastModifiedAt;
             this.Description = templateSpec.Description;
             this.DisplayName = templateSpec.DisplayName;
-            this.Tags = templateSpec.Tags;
+            this.Tags = templateSpec.Tags == null
+                ? new Dictionary<string, string>()
+                : new Dictionary<string, string>(templateSpec.Tags);
 
             this.Versions = versionModels?
                 .Select(v => PSTemplateSpecVersion.FromAzureSDKTemplateSpecVersion(v))

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/new-azstorageblobqueryconfig
+online version: https://learn.microsoft.com/powershell/module/Az.storage/new-azstorageblobqueryconfig
 schema: 2.0.0
 ---
 
@@ -15,12 +15,14 @@ Creates a blob query configuration object, which can be used in Get-AzStorageBlo
 ### Csv (Default)
 ```
 New-AzStorageBlobQueryConfig [-AsCsv] [-RecordSeparator <String>] [-ColumnSeparator <String>]
- [-QuotationCharacter <Char>] [-EscapeCharacter <Char>] [-HasHeader] [-AsJob] [<CommonParameters>]
+ [-QuotationCharacter <Char>] [-EscapeCharacter <Char>] [-HasHeader] [-AsJob]
+ [<CommonParameters>]
 ```
 
 ### Json
 ```
-New-AzStorageBlobQueryConfig [-AsJson] [-RecordSeparator <String>] [-AsJob] [<CommonParameters>]
+New-AzStorageBlobQueryConfig [-AsJson] [-RecordSeparator <String>] [-AsJob]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,16 +32,18 @@ The **New-AzStorageBlobQueryConfig** cmdlet creates a blob query configuration o
 
 ### Example 1: Create blob query configures , and query a blob
 ```powershell
-PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -ColumnSeparator "," -QuotationCharacter """" -EscapeCharacter "\" -RecordSeparator "`n" -HasHeader
+$inputconfig = New-AzStorageBlobQueryConfig -AsCsv -ColumnSeparator "," -QuotationCharacter """" -EscapeCharacter "\" -RecordSeparator "`n" -HasHeader
 
-PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson -RecordSeparator "`n" 
+$outputconfig = New-AzStorageBlobQueryConfig -AsJson -RecordSeparator "`n" 
 
-PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
+$queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
 
-PS C:\> $result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
+$result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
 
-PS C:\> $result
+$result
+```
 
+```output
 BytesScanned FailureCount BlobQueryError
 ------------ ------------ --------------
          449            0
@@ -175,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

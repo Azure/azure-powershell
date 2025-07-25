@@ -1,0 +1,95 @@
+{
+  "resourceType": "l3IsolationDomains/internalNetworks",
+  "apiVersion": "2023-06-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkFabricInternalNetwork",
+      "description": "Gets a InternalNetworks.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricinternalnetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-L3IsolationDomainName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a InternalNetworks.",
+          "parameters": [
+            {
+              "name": "-L3IsolationDomainName",
+              "value": "[Path.l3IsolationDomainName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.internalNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkFabricInternalNetwork",
+      "description": "Implements InternalNetworks DELETE method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabricinternalnetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-L3IsolationDomainName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements InternalNetworks DELETE method.",
+          "parameters": [
+            {
+              "name": "-L3IsolationDomainName",
+              "value": "[Path.l3IsolationDomainName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.internalNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
