@@ -25,7 +25,7 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,12 +37,7 @@ CONFIGURATION <ISapConfiguration>: Defines if the SAP system is being created us
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapvirtualinstance
 #>
 function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
-   [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PreviewMessage("**********************************************************************************************`n
-    * This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *`n
-    * At least one change applies to this cmdlet.                                                     *`n
-    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
-    ***************************************************************************************************")]
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance])]
   [Alias('New-AzVIS')]
   [CmdletBinding(DefaultParameterSetName='CreateWithDiscovery', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
@@ -114,14 +109,14 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # User assigned identities dictionary
     ${UserAssignedIdentity},

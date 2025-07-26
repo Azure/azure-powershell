@@ -44,39 +44,33 @@ root-module-name: $(prefix).Workloads
 title: SapVirtualInstance
 subject-prefix: Workloads
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-#add-api-version-in-model-namespace: true
 inlining-threshold: 100
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
- "@autorest/powershell": "3.x"
-
 directive:
+# #|^CreateViaJsonString$|^CreateViaJsonFilePath$
+# - where:
+#     verb: New
+#     subject: ^SapVirtualInstance$
+#     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateExpanded$
+#   remove: true
+
+# - where:
+#     verb: New
+#     subject: ^SapVirtualInstance$
+#     variant: ^CreateViaJsonString$|^CreateViaJsonFilePath$
+#   set:
+#     operation-name: SapVirtualInstancesCreateViaJsonAlt
+
 - where:
-    verb: New
-    subject: ^SapApplicationServerInstance$
+    variant: ^(Stop|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
   remove: true
 
 - where:
-    verb: Stop
-    subject: ^SapApplicationServerInstance$
-    variant: ^Stop$|^StopViaIdentity$
+    verb: New|Remove
+    subject: ^SapApplicationServerInstance$|^SapCentralServerInstance$|^SapDatabaseInstance$
   remove: true
 
-- where:
-    verb: Update
-    subject: ^SapApplicationServerInstance$
-    variant: ^Update$|^UpdateViaIdentity$
-  remove: true
-
-- where:
-    verb: Remove
-    subject: ^SapApplicationServerInstance$
-  remove: true
-
+#SapApplicationInstance
 - where:
     subject: SapApplicationServerInstance
   set:
@@ -89,28 +83,6 @@ directive:
     parameter-name: Name
 
 # SapCentralInstance
-- where:
-    verb: New
-    subject: ^SapCentralServerInstance$
-  remove: true
-
-- where:
-    verb: Stop
-    subject: ^SapCentralServerInstance$
-    variant: ^Stop$|^StopViaIdentity$
-  remove: true
-
-- where:
-    verb: Update
-    subject: ^SapCentralServerInstance$
-    variant: ^Update$|^UpdateViaIdentity$
-  remove: true
-
-- where:
-    verb: Remove
-    subject: ^SapCentralServerInstance$
-  remove: true
-
 - where:
     subject: SapCentralServerInstance
     parameter-name: CentralInstanceName
@@ -125,57 +97,23 @@ directive:
 
 # SapDatabaseInstance
 - where:
-    verb: New
-    subject: ^SapDatabaseInstance$
-  remove: true
-
-- where:
-    verb: Stop
-    subject: ^SapDatabaseInstance$
-    variant: ^Stop$|^StopViaIdentity$
-  remove: true
-
-- where:
-    verb: Update
-    subject: ^SapDatabaseInstance$
-    variant: ^Update$|^UpdateViaIdentity$
-  remove: true
-
-- where:
-    verb: Remove
-    subject: ^SapDatabaseInstance$
-  remove: true
-
-- where:
     subject: SapDatabaseInstance
     parameter-name: DatabaseInstanceName
   set:
     parameter-name: Name
 
 # SapVirtualInstance
-- where:
-    verb: New
-    subject: ^SapVirtualInstance$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  remove: true
+# - where:
+#     verb: New
+#     subject: ^SapVirtualInstance$
+#     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateExpanded$
+#   remove: true
 
-- where:
-    verb: New
-    subject: ^SapVirtualInstance$
-    variant: ^CreateExpanded$
-  hide: true
-
-- where:
-    verb: Stop
-    subject: ^SapVirtualInstance$
-    variant: ^Stop$|^StopViaIdentity$
-  remove: true
-
-- where:
-    verb: Update
-    subject: ^SapVirtualInstance$
-    variant: ^Update$|^UpdateViaIdentity$
-  remove: true
+# - where:
+#     subject: ^SapVirtualInstance$
+#     variant: ^CreateViaJsonString$
+#   set:
+#     operation-name: SapVirtualInstancesCreateViaJsonAlt
 
 - where:
     subject: ^SapVirtualInstance$
@@ -430,43 +368,22 @@ directive:
 # Result shoule be in SingleServerRecommendationResult and ThreeTierRecommendationResult
 - from: source-file-csharp
   where: $
-  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20240901.ISapSizingRecommendationResult Property');
+  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISapSizingRecommendationResult Property');
 
 # remove System Data in module Monitor, ProviderInstance, SapApplicationServerInstance, SapCentralServerInstance, SapDatabaseInstance, SapLandscapeMonitor, SapVirtualInstance
 - from: SapApplicationServerInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 - from: SapCentralServerInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 - from: SapDatabaseInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 - from: SapLandscapeMonitor.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 - from: SapVirtualInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api50.ISystemData SystemData');
-
-- where:
-    verb: Get|Start|Stop|Update
-    subject: SapApplicationInstance|SapCentralInstance|SapDatabaseInstance|SapVirtualInstance
-  set:
-    preview-announcement:
-      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
-
-- where:
-    verb: Invoke
-    subject: SapDiskConfiguration|SapSizingRecommendation|SapSupportedSku
-  set:
-    preview-announcement:
-      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
-
-- where:
-    verb: New
-    subject: SapVirtualInstance
-  set:
-    preview-announcement:
-      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 ```
