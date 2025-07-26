@@ -7,17 +7,17 @@ New-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName 
 Description                  : This is a test schema.
 DisplayName                  : test-schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/fooschema
 Name                         : fooschema
 ProvisioningState            : Succeeded
 ResourceGroupName            : adr-pwsh-test-rg
 SchemaType                   : MessageSchema
 SystemDataCreatedAt          : 7/25/2025 12:33:31 AM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/25/2025 12:33:31 AM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sampleKey": "sampleValue"
@@ -37,17 +37,17 @@ New-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName 
 Description                  : This is a test schema.
 DisplayName                  : test-schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/fooschema
 Name                         : fooschema
 ProvisioningState            : Succeeded
 ResourceGroupName            : adr-pwsh-test-rg
 SchemaType                   : MessageSchema
 SystemDataCreatedAt          : 7/25/2025 12:33:31 AM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/25/2025 12:33:31 AM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sampleKey": "sampleValue"
@@ -68,17 +68,17 @@ New-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName 
 Description                  : This is a test schema.
 DisplayName                  : test-schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/fooschema
 Name                         : fooschema
 ProvisioningState            : Succeeded
 ResourceGroupName            : adr-pwsh-test-rg
 SchemaType                   : MessageSchema
 SystemDataCreatedAt          : 7/25/2025 12:33:31 AM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/25/2025 12:33:31 AM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sampleKey": "sampleValue"

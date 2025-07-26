@@ -8,7 +8,7 @@ Location Name                                           SystemDataCreatedAt  Sys
                                                                                                                          astModified
                                                                                                                          At
 -------- ----                                           -------------------  ------------------- ----------------------- -----------
-eastus2  test-ns-dasset-update                          7/23/2025 4:57:03 AM rylo@microsoft.com  User                    7/23/2025 …
+eastus2  test-ns-dasset-update                          7/23/2025 4:57:03 AM user@outlook.com  User                    7/23/2025 …
 ```
 
 Lists all Namespace Discovered Assets in a specified Namespace.
@@ -151,11 +151,11 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
 Location                             : eastus2
 ManagementGroup                      : {{
@@ -223,10 +223,10 @@ Stream                               : {{
                                          ]
                                        }}
 SystemDataCreatedAt                  : 7/23/2025 6:20:48 AM
-SystemDataCreatedBy                  : rylo@microsoft.com
+SystemDataCreatedBy                  : user@outlook.com
 SystemDataCreatedByType              : User
 SystemDataLastModifiedAt             : 7/23/2025 6:26:10 AM
-SystemDataLastModifiedBy             : rylo@microsoft.com
+SystemDataLastModifiedBy             : user@outlook.com
 SystemDataLastModifiedByType         : User
 Tag                                  : {
                                          "sensor": "temperature,humidity,pressure"
@@ -370,11 +370,11 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
 Location                             : eastus2
 ManagementGroup                      : {{
@@ -442,10 +442,10 @@ Stream                               : {{
                                          ]
                                        }}
 SystemDataCreatedAt                  : 7/23/2025 6:20:48 AM
-SystemDataCreatedBy                  : rylo@microsoft.com
+SystemDataCreatedBy                  : user@outlook.com
 SystemDataCreatedByType              : User
 SystemDataLastModifiedAt             : 7/23/2025 6:26:10 AM
-SystemDataLastModifiedBy             : rylo@microsoft.com
+SystemDataLastModifiedBy             : user@outlook.com
 SystemDataLastModifiedByType         : User
 Tag                                  : {
                                          "sensor": "temperature,humidity,pressure"
@@ -595,11 +595,11 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
 Location                             : eastus2
 ManagementGroup                      : {{
@@ -667,10 +667,10 @@ Stream                               : {{
                                          ]
                                        }}
 SystemDataCreatedAt                  : 7/23/2025 6:20:48 AM
-SystemDataCreatedBy                  : rylo@microsoft.com
+SystemDataCreatedBy                  : user@outlook.com
 SystemDataCreatedByType              : User
 SystemDataLastModifiedAt             : 7/23/2025 6:26:10 AM
-SystemDataLastModifiedBy             : rylo@microsoft.com
+SystemDataLastModifiedBy             : user@outlook.com
 SystemDataLastModifiedByType         : User
 Tag                                  : {
                                          "sensor": "temperature,humidity,pressure"

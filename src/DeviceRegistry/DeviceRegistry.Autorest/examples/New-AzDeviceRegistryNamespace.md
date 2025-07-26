@@ -17,7 +17,7 @@ New-AzDeviceRegistryNamespace -Name "my-namespace" -ResourceGroupName "my-resour
 ```
 
 ```output
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace
 IdentityPrincipalId          :
 IdentityTenantId             :
@@ -27,13 +27,13 @@ MessagingEndpoint            : {
                                  "myendpoint1": {
                                    "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-r
+                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
                                g/providers/Microsoft.EventGrid/namespaces/contoso-hub-namespace1"
                                  },
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net",
-                                   "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-r
+                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
                                g/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
                                }
@@ -44,7 +44,7 @@ SystemDataCreatedAt          : 7/22/2025 5:15:28 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
 SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 7/23/2025 6:44:04 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                }
@@ -60,7 +60,7 @@ New-AzDeviceRegistryNamespace -Name "my-namespace" -ResourceGroupName "my-resour
 ```
 
 ```output
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace
 IdentityPrincipalId          :
 IdentityTenantId             :
@@ -70,13 +70,13 @@ MessagingEndpoint            : {
                                  "myendpoint1": {
                                    "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-r
+                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
                                g/providers/Microsoft.EventGrid/namespaces/contoso-hub-namespace1"
                                  },
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net",
-                                   "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-r
+                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
                                g/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
                                }
@@ -87,7 +87,7 @@ SystemDataCreatedAt          : 7/22/2025 5:15:28 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
 SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 7/23/2025 6:44:04 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                }
@@ -104,7 +104,7 @@ New-AzDeviceRegistryNamespace -Name "my-namespace" -ResourceGroupName "my-resour
 ```
 
 ```output
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace
 IdentityPrincipalId          :
 IdentityTenantId             :
@@ -114,13 +114,13 @@ MessagingEndpoint            : {
                                  "myendpoint1": {
                                    "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-r
+                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
                                g/providers/Microsoft.EventGrid/namespaces/contoso-hub-namespace1"
                                  },
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net",
-                                   "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-r
+                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
                                g/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
                                }
@@ -131,7 +131,7 @@ SystemDataCreatedAt          : 7/22/2025 5:15:28 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
 SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 7/23/2025 6:44:04 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                }

@@ -55,11 +55,11 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
@@ -78,11 +78,11 @@ OutboundAssigned             : {
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
 SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
@@ -152,11 +152,11 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
@@ -175,11 +175,11 @@ OutboundAssigned             : {
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
 SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
@@ -237,11 +237,11 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
@@ -260,11 +260,11 @@ OutboundAssigned             : {
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
 SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
@@ -341,11 +341,11 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
@@ -364,11 +364,11 @@ OutboundAssigned             : {
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
 SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
@@ -440,11 +440,11 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
@@ -463,11 +463,11 @@ OutboundAssigned             : {
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
 SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05

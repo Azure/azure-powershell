@@ -7,8 +7,8 @@ Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -Names
 Location Name                                          SystemDataCreatedAt   SystemDataCreatedBy                  SystemDataCreatedB
                                                                                                                   yType
 -------- ----                                          -------------------   -------------------                  ------------------
-eastus2  test-ns-asset-create-expanded                 7/22/2025 10:05:30 PM rylo@microsoft.com                   User
-eastus2  test-ns-asset-create-json-file-path           7/22/2025 10:29:04 PM rylo@microsoft.com                   User
+eastus2  test-ns-asset-create-expanded                 7/22/2025 10:05:30 PM user@outlook.com                   User
+eastus2  test-ns-asset-create-json-file-path           7/22/2025 10:29:04 PM user@outlook.com                   User
 ```
 
 Lists all the Device Registry Namespace Assets within a Namespace.
@@ -47,12 +47,12 @@ DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
 Event                                :
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.DeviceRegistry/namespaces/adr-namespace/assets/test-asset-123
 LastTransitionTime                   :
 Location                             : eastus2
@@ -116,12 +116,12 @@ DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
 Event                                :
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.DeviceRegistry/namespaces/adr-namespace/assets/test-asset-123
 LastTransitionTime                   :
 Location                             : eastus2
@@ -191,12 +191,12 @@ DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
 Event                                :
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.DeviceRegistry/namespaces/adr-namespace/assets/test-asset-123
 LastTransitionTime                   :
 Location                             : eastus2

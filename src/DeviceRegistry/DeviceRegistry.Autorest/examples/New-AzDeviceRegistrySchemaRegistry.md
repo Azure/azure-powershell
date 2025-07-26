@@ -6,7 +6,7 @@ New-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group" -Schem
 ```output
 Description                  : Registry for device schemas
 DisplayName                  : My Schema Registry
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
@@ -39,7 +39,7 @@ New-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group" -Schem
 ```output
 Description                  : Registry for device schemas
 DisplayName                  : My Schema Registry
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
@@ -83,7 +83,7 @@ New-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group" -Schem
 ```output
 Description                  : Registry for device schemas
 DisplayName                  : My Schema Registry
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47

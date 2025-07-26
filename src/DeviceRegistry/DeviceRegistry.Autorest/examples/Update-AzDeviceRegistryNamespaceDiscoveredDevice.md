@@ -24,11 +24,11 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-update
 Location                     : eastus2
 Manufacturer                 : Contoso
@@ -43,12 +43,12 @@ OutboundAssigned             : {
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 10:22:51 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 10:41:40 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sensor": "temperature,humidity"
@@ -91,11 +91,11 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-update
 Location                     : eastus2
 Manufacturer                 : Contoso
@@ -110,12 +110,12 @@ OutboundAssigned             : {
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 10:22:51 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 10:41:40 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sensor": "temperature,humidity"
@@ -168,11 +168,11 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-update
 Location                     : eastus2
 Manufacturer                 : Contoso
@@ -187,12 +187,12 @@ OutboundAssigned             : {
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 10:22:51 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 10:41:40 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sensor": "temperature,humidity"
@@ -229,11 +229,11 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-update
 Location                     : eastus2
 Manufacturer                 : Contoso
@@ -248,12 +248,12 @@ OutboundAssigned             : {
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 10:22:51 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 10:41:40 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sensor": "temperature,humidity"

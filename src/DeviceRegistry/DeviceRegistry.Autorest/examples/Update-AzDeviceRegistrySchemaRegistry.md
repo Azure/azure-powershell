@@ -6,7 +6,7 @@ Update-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group" -Sc
 ```output
 Description                  :
 DisplayName                  :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
@@ -15,7 +15,7 @@ Location                     : eastus2
 Name                         : aio-sr-d179cdfcb7
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StorageAccountContainerUrl   : https://aiosrsad179cdfcb7.blob.core.windows.net/schemas
 SystemDataCreatedAt          : 7/22/2025 5:15:05 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
@@ -39,7 +39,7 @@ Update-AzDeviceRegistrySchemaRegistry -InputObject $schemaRegistryObject -Displa
 ```output
 Description                  :
 DisplayName                  :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
@@ -48,7 +48,7 @@ Location                     : eastus2
 Name                         : aio-sr-d179cdfcb7
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StorageAccountContainerUrl   : https://aiosrsad179cdfcb7.blob.core.windows.net/schemas
 SystemDataCreatedAt          : 7/22/2025 5:15:05 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f

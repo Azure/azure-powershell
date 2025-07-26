@@ -8,8 +8,8 @@ Location Name                                            SystemDataCreatedAt   S
                                                                                                                            aLastModi
                                                                                                                            fiedAt
 -------- ----                                            -------------------   ------------------- ----------------------- ---------
-eastus2  foodevice                                       7/24/2025 9:38:24 PM  rylo@microsoft.com  User                    7/24/202…
-eastus2  test-ns-ddevice-create-json-file-path           7/24/2025 9:46:05 PM  rylo@microsoft.com  User                    7/24/202…
+eastus2  foodevice                                       7/24/2025 9:38:24 PM  user@outlook.com  User                    7/24/202…
+eastus2  test-ns-ddevice-create-json-file-path           7/24/2025 9:46:05 PM  user@outlook.com  User                    7/24/202…
 ```
 
 Lists all Namespace Discovered Devices in a specified Namespace.
@@ -46,11 +46,11 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
 Location                     : eastus2
 Manufacturer                 : Contoso
@@ -67,10 +67,10 @@ OutboundAssigned             : {
 ProvisioningState            : Succeeded
 ResourceGroupName            : adr-pwsh-test-rg
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 10:34:19 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sensor": "temperature,humidity"
@@ -108,11 +108,11 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
 Location                     : eastus2
 Manufacturer                 : Contoso
@@ -129,10 +129,10 @@ OutboundAssigned             : {
 ProvisioningState            : Succeeded
 ResourceGroupName            : adr-pwsh-test-rg
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 10:34:19 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sensor": "temperature,humidity"
@@ -176,11 +176,11 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
 Location                     : eastus2
 Manufacturer                 : Contoso
@@ -197,10 +197,10 @@ OutboundAssigned             : {
 ProvisioningState            : Succeeded
 ResourceGroupName            : adr-pwsh-test-rg
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/24/2025 10:34:19 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "sensor": "temperature,humidity"

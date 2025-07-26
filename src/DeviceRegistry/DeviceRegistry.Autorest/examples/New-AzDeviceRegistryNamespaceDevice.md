@@ -63,11 +63,11 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
 Location                     : eastus2
@@ -90,7 +90,7 @@ ResourceGroupName            : adr-pwsh-test-rg
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/23/2025 6:45:36 PM
 SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
@@ -148,11 +148,11 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
 Location                     : eastus2
@@ -175,7 +175,7 @@ ResourceGroupName            : adr-pwsh-test-rg
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/23/2025 6:45:36 PM
 SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
@@ -234,11 +234,11 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
 Location                     : eastus2
@@ -261,7 +261,7 @@ ResourceGroupName            : adr-pwsh-test-rg
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/23/2025 6:45:36 PM
 SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05

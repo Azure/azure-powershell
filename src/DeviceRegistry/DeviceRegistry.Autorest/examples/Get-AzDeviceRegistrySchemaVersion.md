@@ -8,8 +8,8 @@ Name SystemDataCreatedAt  SystemDataCreatedBy SystemDataCreatedByType SystemData
                                                                                                                         stModifiedBy
                                                                                                                         Type
 ---- -------------------  ------------------- ----------------------- ------------------------ ------------------------ ------------
-1    7/25/2025 1:21:15 AM rylo@microsoft.com  User                    7/25/2025 1:21:15 AM     rylo@microsoft.com       User
-2    7/25/2025 1:21:16 AM rylo@microsoft.com  User                    7/25/2025 1:21:16 AM     rylo@microsoft.com       User
+1    7/25/2025 1:21:15 AM user@outlook.com  User                    7/25/2025 1:21:15 AM     user@outlook.com       User
+2    7/25/2025 1:21:16 AM user@outlook.com  User                    7/25/2025 1:21:16 AM     user@outlook.com       User
 ```
 
 Lists all Schema Versions in a specified Schema.
@@ -23,7 +23,7 @@ Get-AzDeviceRegistrySchemaVersion -SchemaRegistryInputObject $schemaRegistry -Sc
 ```output
 Description                  : Schema version 1
 Hash                         : d62557cd31b6297be0142a2800f7df7055d04cf047295d17ddbc864209893938
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/myschema/schemaversions/1
 Name                         : 1
 ProvisioningState            : Succeeded
@@ -31,10 +31,10 @@ ResourceGroupName            : adr-pwsh-test-rg
 SchemaContent                : {"$schema": "http://json-schema.org/draft-07/schema#","type": "object","properties": {"humidity":
                                {"type": "string"},"temperature": {"type":"number"}}}
 SystemDataCreatedAt          : 7/25/2025 1:21:15 AM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/25/2025 1:21:15 AM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Type                         : microsoft.deviceregistry/schemaregistries/schemas/schemaversions
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
@@ -51,7 +51,7 @@ Get-AzDeviceRegistrySchemaVersion -SchemaInputObject $schema -Name "my-schema-ve
 ```output
 Description                  : Schema version 1
 Hash                         : d62557cd31b6297be0142a2800f7df7055d04cf047295d17ddbc864209893938
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/myschema/schemaversions/1
 Name                         : 1
 ProvisioningState            : Succeeded
@@ -59,10 +59,10 @@ ResourceGroupName            : adr-pwsh-test-rg
 SchemaContent                : {"$schema": "http://json-schema.org/draft-07/schema#","type": "object","properties": {"humidity":
                                {"type": "string"},"temperature": {"type":"number"}}}
 SystemDataCreatedAt          : 7/25/2025 1:21:15 AM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/25/2025 1:21:15 AM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Type                         : microsoft.deviceregistry/schemaregistries/schemas/schemaversions
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
@@ -78,7 +78,7 @@ Get-AzDeviceRegistrySchemaVersion -ResourceGroupName "my-resource-group" -Schema
 ```output
 Description                  : Schema version 1
 Hash                         : d62557cd31b6297be0142a2800f7df7055d04cf047295d17ddbc864209893938
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-pwsh-test-rg/providers/microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
                                ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/myschema/schemaversions/1
 Name                         : 1
 ProvisioningState            : Succeeded
@@ -86,10 +86,10 @@ ResourceGroupName            : adr-pwsh-test-rg
 SchemaContent                : {"$schema": "http://json-schema.org/draft-07/schema#","type": "object","properties": {"humidity":
                                {"type": "string"},"temperature": {"type":"number"}}}
 SystemDataCreatedAt          : 7/25/2025 1:21:15 AM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/25/2025 1:21:15 AM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Type                         : microsoft.deviceregistry/schemaregistries/schemas/schemaversions
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819

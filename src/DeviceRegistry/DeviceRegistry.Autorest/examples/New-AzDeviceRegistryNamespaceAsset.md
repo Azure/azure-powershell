@@ -27,12 +27,12 @@ DisplayName                          : fooasset
 DocumentationUri                     :
 Enabled                              : True
 Event                                :
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /microsoft.deviceregistry/namespaces/adr-namespace/assets/fooasset
 LastTransitionTime                   :
 Location                             : eastus2
@@ -96,12 +96,12 @@ DisplayName                          : fooasset
 DocumentationUri                     :
 Enabled                              : True
 Event                                :
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /microsoft.deviceregistry/namespaces/adr-namespace/assets/fooasset
 LastTransitionTime                   :
 Location                             : eastus2
@@ -166,12 +166,12 @@ DisplayName                          : fooasset
 DocumentationUri                     :
 Enabled                              : True
 Event                                :
-ExtendedLocationName                 : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :
-Id                                   : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /microsoft.deviceregistry/namespaces/adr-namespace/assets/fooasset
 LastTransitionTime                   :
 Location                             : eastus2

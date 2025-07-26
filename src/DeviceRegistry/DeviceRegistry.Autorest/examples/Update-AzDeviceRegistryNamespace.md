@@ -11,7 +11,7 @@ Update-AzDeviceRegistryNamespace -ResourceGroupName "my-resource-group" -Name "m
 ```
 
 ```output
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/test-namespace-update
 IdentityPrincipalId          :
 IdentityTenantId             :
@@ -21,18 +21,18 @@ MessagingEndpoint            : {
                                  "myendpoint1": {
                                    "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-r
+                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
                                g/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
                                  }
                                }
 Name                         : test-namespace-update
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/22/2025 6:44:04 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/22/2025 7:03:27 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                }
@@ -55,7 +55,7 @@ Update-AzDeviceRegistryNamespace -InputObject $namespaceIdentity -MessagingEndpo
 ```
 
 ```output
-Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/namespaces/test-namespace-update
 IdentityPrincipalId          :
 IdentityTenantId             :
@@ -65,18 +65,18 @@ MessagingEndpoint            : {
                                  "myendpoint1": {
                                    "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-r
+                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
                                g/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
                                  }
                                }
 Name                         : test-namespace-update
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/22/2025 6:44:04 PM
-SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 7/22/2025 7:03:27 PM
-SystemDataLastModifiedBy     : rylo@microsoft.com
+SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                }
