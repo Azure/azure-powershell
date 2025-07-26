@@ -1,22 +1,484 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Device Registry Namespace Device with expanded parameters
 ```powershell
-{{ Add code here }}
+$endpointsInbound = @{
+    "endpoint1" = @{
+        Address = "opc.tcp://my-device:4840"
+        EndpointType = "OpcUa"
+        AuthenticationMethod = "Certificate"
+    }
+    "endpoint2" = @{
+        Address = "opc.tcp://my-device:4841"
+        EndpointType = "OpcUa"
+        AuthenticationMethod = "UsernamePassword"
+        UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
+        UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
+    }
+}
+Update-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device" -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Attribute                    : {
+                                 "deviceType": "sensor",
+                                 "deviceOwner": "dev",
+                                 "deviceCategory": 4000,
+                                 "invalid": "foo",
+                                 "x-ms-iothub-credential-id": ""
+                               }
+Code                         :
+ConfigLastTransitionTime     :
+ConfigVersion                :
+Detail                       :
+DiscoveredDeviceRef          :
+Enabled                      : True
+EndpointsInbound             : {
+                                 "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "mycertificate"
+                                     },
+                                     "method": "Anonymous"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                 },
+                                 "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "myusername",
+                                       "passwordSecretName": "mypassword"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                 }
+                               }
+Etag                         : "44035f1d-0000-0200-0000-688285890000"
+ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationType         : CustomLocation
+ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+LastTransitionTime           : 7/24/2025 7:12:02 PM
+Location                     : eastus2
+Manufacturer                 : Contoso
+Message                      :
+Model                        : foo123
+Name                         : test-ns-device-update
+OperatingSystem              : Linux
+OperatingSystemVersion       : 2000
+OutboundAssigned             : {
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 }
+                               }
+OutboundUnassigned           : {
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : adr-pwsh-test-rg
+StatusEndpointsInbound       : {
+                               }
+SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
+SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
+SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
+SystemDataLastModifiedByType : Application
+Tag                          : {
+                                 "sensor": "temperature,humidity"
+                               }
+Type                         : microsoft.deviceregistry/namespaces/devices
+Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Version                      : 8
 ```
 
-{{ Add description here }}
+This example updates a Device Registry Namespace Device by modifying its operating system version and inbound endpoints using individual parameters. This approach is useful when you want to update specific properties of an existing device with custom endpoint configurations.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a Device Registry Namespace Device using JSON string
 ```powershell
-{{ Add code here }}
+$updateJson = '{
+  "properties": {
+    "operatingSystemVersion": "10.0.19041",
+    "endpointsInbound": {
+      "endpoint1": {
+        "address": "opc.tcp://my-device:4840",
+        "endpointType": "OpcUa",
+        "authenticationMethod": "Certificate"
+      }
+    }
+  }
+}'
+Update-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device" -JsonString $updateJson
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Attribute                    : {
+                                 "deviceType": "sensor",
+                                 "deviceOwner": "dev",
+                                 "deviceCategory": 4000,
+                                 "invalid": "foo",
+                                 "x-ms-iothub-credential-id": ""
+                               }
+Code                         :
+ConfigLastTransitionTime     :
+ConfigVersion                :
+Detail                       :
+DiscoveredDeviceRef          :
+Enabled                      : True
+EndpointsInbound             : {
+                                 "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "mycertificate"
+                                     },
+                                     "method": "Anonymous"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                 },
+                                 "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "myusername",
+                                       "passwordSecretName": "mypassword"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                 }
+                               }
+Etag                         : "44035f1d-0000-0200-0000-688285890000"
+ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationType         : CustomLocation
+ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+LastTransitionTime           : 7/24/2025 7:12:02 PM
+Location                     : eastus2
+Manufacturer                 : Contoso
+Message                      :
+Model                        : foo123
+Name                         : test-ns-device-update
+OperatingSystem              : Linux
+OperatingSystemVersion       : 2000
+OutboundAssigned             : {
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 }
+                               }
+OutboundUnassigned           : {
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : adr-pwsh-test-rg
+StatusEndpointsInbound       : {
+                               }
+SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
+SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
+SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
+SystemDataLastModifiedByType : Application
+Tag                          : {
+                                 "sensor": "temperature,humidity"
+                               }
+Type                         : microsoft.deviceregistry/namespaces/devices
+Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Version                      : 8
 ```
 
-{{ Add description here }}
+This example updates a Device Registry Namespace Device using a JSON string. This approach is useful when you have complex device configurations or when you want to update multiple properties at once using a structured JSON format.
+
+### Example 3: Update a Device Registry Namespace Device using JSON file path
+```powershell
+Update-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device" -JsonFilePath "C:\path\to\update-device.json"
+```
+
+```output
+Attribute                    : {
+                                 "deviceType": "sensor",
+                                 "deviceOwner": "dev",
+                                 "deviceCategory": 4000,
+                                 "invalid": "foo",
+                                 "x-ms-iothub-credential-id": ""
+                               }
+Code                         :
+ConfigLastTransitionTime     :
+ConfigVersion                :
+Detail                       :
+DiscoveredDeviceRef          :
+Enabled                      : True
+EndpointsInbound             : {
+                                 "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "mycertificate"
+                                     },
+                                     "method": "Anonymous"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                 },
+                                 "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "myusername",
+                                       "passwordSecretName": "mypassword"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                 }
+                               }
+Etag                         : "44035f1d-0000-0200-0000-688285890000"
+ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationType         : CustomLocation
+ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+LastTransitionTime           : 7/24/2025 7:12:02 PM
+Location                     : eastus2
+Manufacturer                 : Contoso
+Message                      :
+Model                        : foo123
+Name                         : test-ns-device-update
+OperatingSystem              : Linux
+OperatingSystemVersion       : 2000
+OutboundAssigned             : {
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 }
+                               }
+OutboundUnassigned           : {
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : adr-pwsh-test-rg
+StatusEndpointsInbound       : {
+                               }
+SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
+SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
+SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
+SystemDataLastModifiedByType : Application
+Tag                          : {
+                                 "sensor": "temperature,humidity"
+                               }
+Type                         : microsoft.deviceregistry/namespaces/devices
+Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Version                      : 8
+```
+
+This example updates a Device Registry Namespace Device using a JSON file. This approach is useful when you have predefined device configurations stored in files or when working with complex device properties that are easier to manage in a separate file.
+
+### Example 4: Update a Device Registry Namespace Device using namespace identity object
+```powershell
+$namespaceIdentity = @{
+    SubscriptionId = "00000000-0000-0000-0000-000000000000"
+    ResourceGroupName = "my-resource-group"
+    NamespaceName = "my-namespace"
+}
+$endpointsInbound = @{
+    "endpoint1" = @{
+        Address = "opc.tcp://my-device:4840"
+        EndpointType = "OpcUa"
+        AuthenticationMethod = "Certificate"
+    }
+    "endpoint2" = @{
+        Address = "opc.tcp://my-device:4841"
+        EndpointType = "OpcUa"
+        AuthenticationMethod = "UsernamePassword"
+        UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
+        UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
+    }
+}
+Update-AzDeviceRegistryNamespaceDevice -NamespaceInputObject $namespaceIdentity -DeviceName "my-device" -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
+```
+
+```output
+Attribute                    : {
+                                 "deviceType": "sensor",
+                                 "deviceOwner": "dev",
+                                 "deviceCategory": 4000,
+                                 "invalid": "foo",
+                                 "x-ms-iothub-credential-id": ""
+                               }
+Code                         :
+ConfigLastTransitionTime     :
+ConfigVersion                :
+Detail                       :
+DiscoveredDeviceRef          :
+Enabled                      : True
+EndpointsInbound             : {
+                                 "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "mycertificate"
+                                     },
+                                     "method": "Anonymous"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                 },
+                                 "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "myusername",
+                                       "passwordSecretName": "mypassword"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                 }
+                               }
+Etag                         : "44035f1d-0000-0200-0000-688285890000"
+ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationType         : CustomLocation
+ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+LastTransitionTime           : 7/24/2025 7:12:02 PM
+Location                     : eastus2
+Manufacturer                 : Contoso
+Message                      :
+Model                        : foo123
+Name                         : test-ns-device-update
+OperatingSystem              : Linux
+OperatingSystemVersion       : 2000
+OutboundAssigned             : {
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 }
+                               }
+OutboundUnassigned           : {
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : adr-pwsh-test-rg
+StatusEndpointsInbound       : {
+                               }
+SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
+SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
+SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
+SystemDataLastModifiedByType : Application
+Tag                          : {
+                                 "sensor": "temperature,humidity"
+                               }
+Type                         : microsoft.deviceregistry/namespaces/devices
+Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Version                      : 8
+```
+
+This example updates a Device Registry Namespace Device using a namespace identity object. This approach is useful when you want to work with namespace identity objects rather than specifying individual resource group and namespace parameters.
+
+### Example 5: Update a Device Registry Namespace Device using device identity object
+```powershell
+$endpointsInbound = @{
+    "endpoint1" = @{
+        Address = "opc.tcp://my-device:4840"
+        EndpointType = "OpcUa"
+        AuthenticationMethod = "Certificate"
+    }
+    "endpoint2" = @{
+        Address = "opc.tcp://my-device:4841"
+        EndpointType = "OpcUa"
+        AuthenticationMethod = "UsernamePassword"
+        UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
+        UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
+    }
+}
+Update-AzDeviceRegistryNamespaceDevice -InputObject $deviceObject -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
+```
+
+```output
+Attribute                    : {
+                                 "deviceType": "sensor",
+                                 "deviceOwner": "dev",
+                                 "deviceCategory": 4000,
+                                 "invalid": "foo",
+                                 "x-ms-iothub-credential-id": ""
+                               }
+Code                         :
+ConfigLastTransitionTime     :
+ConfigVersion                :
+Detail                       :
+DiscoveredDeviceRef          :
+Enabled                      : True
+EndpointsInbound             : {
+                                 "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "mycertificate"
+                                     },
+                                     "method": "Anonymous"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                 },
+                                 "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "myusername",
+                                       "passwordSecretName": "mypassword"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                 }
+                               }
+Etag                         : "44035f1d-0000-0200-0000-688285890000"
+ExtendedLocationName         : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationType         : CustomLocation
+ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Id                           : /subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microso
+                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+LastTransitionTime           : 7/24/2025 7:12:02 PM
+Location                     : eastus2
+Manufacturer                 : Contoso
+Message                      :
+Model                        : foo123
+Name                         : test-ns-device-update
+OperatingSystem              : Linux
+OperatingSystemVersion       : 2000
+OutboundAssigned             : {
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 }
+                               }
+OutboundUnassigned           : {
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : adr-pwsh-test-rg
+StatusEndpointsInbound       : {
+                               }
+SystemDataCreatedAt          : 7/24/2025 6:37:13 PM
+SystemDataCreatedBy          : rylo@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 7/24/2025 7:12:09 PM
+SystemDataLastModifiedBy     : 319f651f-7ddb-4fc6-9857-7aef9250bd05
+SystemDataLastModifiedByType : Application
+Tag                          : {
+                                 "sensor": "temperature,humidity"
+                               }
+Type                         : microsoft.deviceregistry/namespaces/devices
+Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
+Version                      : 8
+```
+
+This example updates a Device Registry Namespace Device using a device identity object obtained from a previous operation. This approach is useful when you already have a device object from another cmdlet like Get-AzDeviceRegistryNamespaceDevice or New-AzDeviceRegistryNamespaceDevice.
 
