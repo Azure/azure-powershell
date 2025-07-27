@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmsecurityrule
 schema: 2.0.0
@@ -18,37 +18,38 @@ New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -
  [-SubscriptionId <String>] [-Access <String>] [-CustomLocationId <String>] [-Description <String>]
  [-DestinationAddressPrefix <String[]>] [-DestinationPortRange <String[]>] [-Direction <String>]
  [-Priority <Int32>] [-Protocol <String>] [-SourceAddressPrefix <String[]>] [-SourcePortRange <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityNetworkSecurityGroup
-```
-New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
- -Resource <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### CreateViaIdentityNetworkSecurityGroupExpanded
-```
-New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
- [-Access <String>] [-CustomLocationId <String>] [-Description <String>]
- [-DestinationAddressPrefix <String[]>] [-DestinationPortRange <String[]>] [-Direction <String>]
- [-Priority <Int32>] [-Protocol <String>] [-SourceAddressPrefix <String[]>] [-SourcePortRange <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityNetworkSecurityGroupExpanded
+```
+New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
+ [-Access <String>] [-CustomLocationId <String>] [-Description <String>] [-DestinationAddressPrefix <String[]>]
+ [-DestinationPortRange <String[]>] [-Direction <String>] [-Priority <Int32>] [-Protocol <String>]
+ [-SourceAddressPrefix <String[]>] [-SourcePortRange <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityNetworkSecurityGroup
+```
+New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
+ -Resource <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +64,7 @@ Create a security rule in the specified resource group.
 
 ```powershell
 New-AzStackHCIVMSecurityRule -Name "testnsgrule" -NetworkSecurityGroupName "testnsg" -ResourceGroupName "test-rg"
- ```
+```
 
 ## PARAMETERS
 
@@ -243,7 +244,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
-Parameter Sets: CreateViaIdentityNetworkSecurityGroup, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: CreateViaIdentityNetworkSecurityGroupExpanded, CreateViaIdentityNetworkSecurityGroup
 Aliases:
 
 Required: True
@@ -258,7 +259,7 @@ Name of the network security group
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -337,7 +338,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -385,7 +386,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -442,4 +443,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

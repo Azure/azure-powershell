@@ -1,71 +1,48 @@
 ---
 external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualharddisk
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmsecurityrule
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVMVirtualHardDisk
+# Get-AzStackHCIVMSecurityRule
 
 ## SYNOPSIS
-Gets a virtual hard disk
+Gets the specified security rule.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzStackHCIVMVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzStackHCIVMSecurityRule -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityNetworkSecurityGroup
+```
+Get-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzStackHCIVMVirtualHardDisk -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzStackHCIVMVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
+Get-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a virtual hard disk
+Gets the specified security rule.
 
 ## EXAMPLES
 
-### Example 1: Get a Virtual Hard Disk
+### Example 1:  Get a Network Security Rule
 ```powershell
-Get-AzStackHCIVMVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
+Get-AzStackHCIVMSecurityRule -Name 'testnsgrule' -ResourceGroupName 'test-rg' -NetworkSecurityGroupName 'testnsg'
 ```
 
-```output
-Name            ResourceGroupName
-----            -----------------
-testVhd       test-rg
-```
-
-This command gets a specific virtual hard disk in the specified resource group.
-
-### Example 2: List all Virtual Hard Disks in a Resource Group
-```powershell
-Get-AzStackHCIVMVirtualHardDisk -ResourceGroupName "test-rg"
-```
-
-```output
-Name            ResourceGroupName
-----            -----------------
-testVhd       test-rg
-```
-
-This command lists all virtual hard disks in the specified resource group.
+This command gets a specific network security rule in the specified resource group.
 
 ## PARAMETERS
 
@@ -86,12 +63,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the virtual hard disk
+Name of the security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: VirtualHardDiskName
+Parameter Sets: GetViaIdentityNetworkSecurityGroup, Get
+Aliases: SecurityRuleName
 
 Required: True
 Position: Named
@@ -100,15 +77,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -NetworkSecurityGroupInputObject
+Identity Parameter
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByResourceId
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+Parameter Sets: GetViaIdentityNetworkSecurityGroup
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroupName
+Name of the network security group
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,25 +113,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The ARM ID of the virtual hard disk.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -152,7 +129,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -167,9 +144,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisk
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISecurityRule
 
 ## NOTES
 

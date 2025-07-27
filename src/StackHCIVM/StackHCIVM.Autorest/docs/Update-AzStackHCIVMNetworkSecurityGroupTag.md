@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStackHCIVMNetworkSecurityGroupTag
 
 ## SYNOPSIS
-Updates a network security group tags.
+Update a network security group tags.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzStackHCIVMNetworkSecurityGroupTag -NetworkSecurityGroupName <String> -R
 ```
 
 ## DESCRIPTION
-Updates a network security group tags.
+Update a network security group tags.
 
 ## EXAMPLES
 
@@ -86,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity

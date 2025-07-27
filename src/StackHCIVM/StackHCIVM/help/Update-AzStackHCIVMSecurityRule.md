@@ -1,69 +1,64 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmsecurityrule
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmsecurityrule
 schema: 2.0.0
 ---
 
-# New-AzStackHCIVMSecurityRule
+# Update-AzStackHCIVMSecurityRule
 
 ## SYNOPSIS
-Create a security rule in the specified resource group.
+Update a security rule in the specified resource group.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Access <String>] [-CustomLocationId <String>] [-Description <String>]
+Update-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Access <String>] [-Description <String>] [-DestinationAddressPrefix <String[]>]
+ [-DestinationPortRange <String[]>] [-Direction <String>] [-ExtendedLocationName <String>]
+ [-ExtendedLocationType <String>] [-Priority <Int32>] [-Protocol <String>] [-SourceAddressPrefix <String[]>]
+ [-SourcePortRange <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityNetworkSecurityGroupExpanded
+```
+Update-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
+ [-Access <String>] [-Description <String>] [-DestinationAddressPrefix <String[]>]
+ [-DestinationPortRange <String[]>] [-Direction <String>] [-ExtendedLocationName <String>]
+ [-ExtendedLocationType <String>] [-Priority <Int32>] [-Protocol <String>] [-SourceAddressPrefix <String[]>]
+ [-SourcePortRange <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityNetworkSecurityGroup
+```
+Update-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
+ -Resource <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzStackHCIVMSecurityRule -InputObject <IStackHcivmIdentity> [-Access <String>] [-Description <String>]
  [-DestinationAddressPrefix <String[]>] [-DestinationPortRange <String[]>] [-Direction <String>]
- [-Priority <Int32>] [-Protocol <String>] [-SourceAddressPrefix <String[]>] [-SourcePortRange <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityNetworkSecurityGroup
-```
-New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
- -Resource <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityNetworkSecurityGroupExpanded
-```
-New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
- [-Access <String>] [-CustomLocationId <String>] [-Description <String>]
- [-DestinationAddressPrefix <String[]>] [-DestinationPortRange <String[]>] [-Direction <String>]
- [-Priority <Int32>] [-Protocol <String>] [-SourceAddressPrefix <String[]>] [-SourcePortRange <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-Priority <Int32>] [-Protocol <String>]
+ [-SourceAddressPrefix <String[]>] [-SourcePortRange <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a security rule in the specified resource group.
+Update a security rule in the specified resource group.
 
 ## EXAMPLES
 
-### Example 1: Create a Network Security Rule
+### Example 1:  Update a Network Security Rule
 ```powershell
-
+Update-AzStackHCIVMSecurityRule -Name 'testnsgrule' -NetworkSecurityGroupName "testnsg" -ResourceGroupName 'test-rg'
 ```
 
-```powershell
-New-AzStackHCIVMSecurityRule -Name "testnsgrule" -NetworkSecurityGroupName "testnsg" -ResourceGroupName "test-rg"
- ```
+This command updates a specific network security group in the specified resource group.
 
 ## PARAMETERS
 
@@ -72,7 +67,7 @@ The network traffic is allowed or denied.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -88,21 +83,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomLocationId
-The name of the extended location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
 Aliases:
 
 Required: False
@@ -134,7 +114,7 @@ Restricted to 140 chars.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -150,7 +130,7 @@ CIDR or destination IP ranges.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,7 +147,7 @@ Asterisk '*' can also be used to match all ports.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -183,7 +163,7 @@ The direction specifies if rule will be evaluated on incoming or outgoing traffi
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -193,33 +173,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -ExtendedLocationName
+The name of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Create operation
+### -ExtendedLocationType
+The type of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -228,7 +223,7 @@ Name of the security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityNetworkSecurityGroup
 Aliases: SecurityRuleName
 
 Required: True
@@ -243,7 +238,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
-Parameter Sets: CreateViaIdentityNetworkSecurityGroup, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityNetworkSecurityGroup
 Aliases:
 
 Required: True
@@ -258,7 +253,7 @@ Name of the network security group
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -291,7 +286,7 @@ The lower the priority number, the higher the priority of the rule.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -306,7 +301,7 @@ Network protocol this rule applies to.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -321,7 +316,7 @@ Security Rule resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISecurityRule
-Parameter Sets: CreateViaIdentityNetworkSecurityGroup
+Parameter Sets: UpdateViaIdentityNetworkSecurityGroup
 Aliases:
 
 Required: True
@@ -337,7 +332,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -352,7 +347,7 @@ The CIDR or source IP ranges.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -369,7 +364,7 @@ Asterisk '*' can also be used to match all ports.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNetworkSecurityGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -385,7 +380,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -442,4 +437,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

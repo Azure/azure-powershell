@@ -1,42 +1,56 @@
 ---
 external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmstoragepath
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmnetworksecuritygrouptag
 schema: 2.0.0
 ---
 
-# New-AzStackHCIVMStoragePath
+# Update-AzStackHCIVMNetworkSecurityGroupTag
 
 ## SYNOPSIS
-The operation to create or update a storage container.
-Please note some properties can be set only during storage container creation.
+Update a network security group tags.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -Path <String> [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzStackHCIVMNetworkSecurityGroupTag -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzStackHCIVMNetworkSecurityGroupTag -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStackHCIVMNetworkSecurityGroupTag -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzStackHCIVMNetworkSecurityGroupTag -InputObject <IStackHcivmIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to create or update a storage container.
-Please note some properties can be set only during storage container creation.
+Update a network security group tags.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage Path
+### Example 1:  Update a Network Security Group
 ```powershell
-New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
+Update-AzStackHCIVMNetworkSecurityGroup -Name 'testnsg' -ResourceGroupName 'test-rg'
 ```
 
-```output
-Name            ResourceGroupName
-----            -----------------
-testStoragePath       test-rg
-```
-
-This command creates a storage path in the specified resource group.
+This command updates a specific network security group in the specified resource group.
 
 ## PARAMETERS
 
@@ -55,23 +69,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomLocationId
-The name of the extended location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,12 +85,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -100,13 +115,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the storage container
+### -JsonString
+Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: StorageContainerName
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroupName
+Name of the network security group
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases:
 
 Required: True
 Position: Named
@@ -130,28 +160,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-Path of the storage container on the disk
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -163,10 +178,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -181,7 +197,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -227,9 +243,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkSecurityGroup
 
 ## NOTES
 

@@ -1,71 +1,46 @@
 ---
 external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworksecuritygroup
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVMLogicalNetwork
+# Get-AzStackHCIVMNetworkSecurityGroup
 
 ## SYNOPSIS
-Gets a logical network
+Gets the specified network security group.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzStackHCIVMLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzStackHCIVMNetworkSecurityGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVMNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzStackHCIVMLogicalNetwork -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVMNetworkSecurityGroup -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceId
-```
-Get-AzStackHCIVMLogicalNetwork [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Gets a logical network
+Gets the specified network security group.
 
 ## EXAMPLES
 
-### Example 1:  Get a Logical Network
+### Example 1:  Get a Network Security Group
 ```powershell
-Get-AzStackHCIVMLogicalNetwork -Name 'testLnet' -ResourceGroupName 'test-rg'
+Get-AzStackHCIVMSecurityRule -Name 'testnsg' -ResourceGroupName 'test-rg'
 ```
 
-```output
-Name            ResourceGroupName
-----            -----------------
-testLnet       test-rg
-```
-
-This command gets a specific logical network in the specified resource group.
-
-### Example 2: List all Logical Networks in a Resource Group
-```powershell
-Get-AzStackHCIVMLogicalNetwork -ResourceGroupName 'test-rg'
-```
-
-```output
-Name            ResourceGroupName
-----            -----------------
-testLnet       test-rg
-```
-
-This command lists all logical networks in the specified resource group.
+This command gets a specific network security group in the specified resource group.
 
 ## PARAMETERS
 
@@ -86,29 +61,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the logical network
+Name of the network security group
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: LogicalNetworkName
+Aliases: NetworkSecurityGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,28 +91,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The ARM ID of the logical network.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -169,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkSecurityGroup
 
 ## NOTES
 

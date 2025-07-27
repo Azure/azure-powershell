@@ -1,42 +1,51 @@
 ---
 external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmstoragepath
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworksecuritygroup
 schema: 2.0.0
 ---
 
-# New-AzStackHCIVMStoragePath
+# New-AzStackHCIVMNetworkSecurityGroup
 
 ## SYNOPSIS
-The operation to create or update a storage container.
-Please note some properties can be set only during storage container creation.
+Create a network security group in the specified resource group.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -Path <String> [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStackHCIVMNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzStackHCIVMNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzStackHCIVMNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to create or update a storage container.
-Please note some properties can be set only during storage container creation.
+Create a network security group in the specified resource group.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage Path
+### Example 1: Create a Network Security Group
 ```powershell
-New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
+
 ```
 
-```output
-Name            ResourceGroupName
-----            -----------------
-testStoragePath       test-rg
+```powershell
+New-AzStackHCIVMNetworkSecurityGroup -Name "testnsg" -ResourceGroupName "test-rg" -Location "eastus"  -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/
 ```
-
-This command creates a storage path in the specified resource group.
 
 ## PARAMETERS
 
@@ -60,7 +69,7 @@ The name of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -71,7 +80,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,12 +95,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -101,12 +141,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the storage container
+Name of the network security group
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: StorageContainerName
+Aliases: NetworkSecurityGroupName
 
 Required: True
 Position: Named
@@ -124,21 +164,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Path
-Path of the storage container on the disk
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,6 +188,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -181,7 +207,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -229,7 +255,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkSecurityGroup
 
 ## NOTES
 

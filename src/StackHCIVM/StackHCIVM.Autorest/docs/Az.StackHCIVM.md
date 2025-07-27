@@ -129,10 +129,10 @@ The operation to update a logical network.
 The operation to update a network interface.
 
 ### [Update-AzStackHCIVMNetworkSecurityGroupTag](Update-AzStackHCIVMNetworkSecurityGroupTag.md)
-Updates a network security group tags.
+Update a network security group tags.
 
 ### [Update-AzStackHCIVMSecurityRule](Update-AzStackHCIVMSecurityRule.md)
-Create a security rule in the specified resource group.
+Update a security rule in the specified resource group.
 
 ### [Update-AzStackHCIVMStoragePath](Update-AzStackHCIVMStoragePath.md)
 The operation to update a storage container.

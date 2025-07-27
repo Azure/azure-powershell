@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the StackHcivm service.
 
 ---
-## Status
-[![Az.StackHCIVM](https://img.shields.io/powershellgallery/v/Az.StackHCIVM.svg?style=flat-square&label=Az.StackHCIVM "Az.StackHCIVM")](https://www.powershellgallery.com/packages/Az.StackHCIVM/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

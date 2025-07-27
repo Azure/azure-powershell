@@ -1,42 +1,41 @@
 ---
 external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmstoragepath
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/Save-AzStackHCIVMVirtualMachine
 schema: 2.0.0
 ---
 
-# New-AzStackHCIVMStoragePath
+# Save-AzStackHCIVMVirtualMachine
 
 ## SYNOPSIS
-The operation to create or update a storage container.
-Please note some properties can be set only during storage container creation.
+The operation to save a virtual machine instance.
 
 ## SYNTAX
 
+### ByResourceId (Default)
 ```
-New-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -Path <String> [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Save-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByName
+```
+Save-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to create or update a storage container.
-Please note some properties can be set only during storage container creation.
+The operation to save a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage Path
+### Example 1: Save Virtual Machine
 ```powershell
-New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
+Save-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 ```
 
-```output
-Name            ResourceGroupName
-----            -----------------
-testStoragePath       test-rg
-```
-
-This command creates a storage path in the specified resource group.
+This command saves the virtual machine in the specified resource group.
 
 ## PARAMETERS
 
@@ -45,21 +44,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomLocationId
-The name of the extended location.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,28 +69,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Name of the storage container
+Name of the virtual machine
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: StorageContainerName
+Parameter Sets: ByName
+Aliases: VirtualMachineName
 
 Required: True
 Position: Named
@@ -130,12 +99,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-Path of the storage container on the disk
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -145,13 +115,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ResourceId
+The ARM Resource ID of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
@@ -166,27 +135,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -229,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 
 ## NOTES
 

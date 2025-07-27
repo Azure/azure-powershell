@@ -1,42 +1,48 @@
 ---
 external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmstoragepath
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmsecurityrule
 schema: 2.0.0
 ---
 
-# New-AzStackHCIVMStoragePath
+# Remove-AzStackHCIVMSecurityRule
 
 ## SYNOPSIS
-The operation to create or update a storage container.
-Please note some properties can be set only during storage container creation.
+Deletes the specified security rule.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-New-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -Path <String> [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityNetworkSecurityGroup
+```
+Remove-AzStackHCIVMSecurityRule -Name <String> -NetworkSecurityGroupInputObject <IStackHcivmIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzStackHCIVMSecurityRule -InputObject <IStackHcivmIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to create or update a storage container.
-Please note some properties can be set only during storage container creation.
+Deletes the specified security rule.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage Path
+### Example 1:  Remove a Network Security Rule
 ```powershell
-New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
+Remove-AzStackHCIVMSecurityRule -Name 'testnsgrule' -ResourceGroupName 'test-rg' -NetworkSecurityGroupName 'testnsg'
 ```
 
-```output
-Name            ResourceGroupName
-----            -----------------
-testStoragePath       test-rg
-```
-
-This command creates a storage path in the specified resource group.
+This command removes a specific network security rule in the specified resource group.
 
 ## PARAMETERS
 
@@ -55,23 +61,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomLocationId
-The name of the extended location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,13 +77,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Delete, DeleteViaIdentityNetworkSecurityGroup
+Aliases: SecurityRuleName
 
 Required: True
 Position: Named
@@ -100,13 +107,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the storage container
+### -NetworkSecurityGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+Parameter Sets: DeleteViaIdentityNetworkSecurityGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroupName
+Name of the network security group
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: StorageContainerName
+Parameter Sets: Delete
+Aliases:
 
 Required: True
 Position: Named
@@ -130,15 +152,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-Path of the storage container on the disk
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +173,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -163,30 +185,16 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -227,9 +235,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer
+### System.Boolean
 
 ## NOTES
 
