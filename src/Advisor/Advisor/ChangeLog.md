@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * `Disable-AzAdvisorRecommendation`
+  * `Enable-AzAdvisorRecommendation`
+  * `Get-AzAdvisorConfiguration`
+  * `Get-AzAdvisorRecommendation`
+  * `Set-AzAdvisorConfiguration`
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
