@@ -34,8 +34,8 @@ New-AzConfidentialLedger `
   -AadBasedSecurityPrincipal `
       @{
           LedgerRoleName="Administrator"; 
-          PrincipalId="00001111-aaaa-2222-bbbb-3333cccc4444"; 
-          TenantId="00001111-aaaa-2222-bbbb-3333cccc4444"
+          PrincipalId="34621747-6fc8-4771-a2eb-72f31c461f2e"; 
+          TenantId="bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
       } `
   -CertBasedSecurityPrincipal `
       @{
@@ -58,8 +58,8 @@ Creates a new Confidential Ledger.
 ```powershell
 $aadSecurityPrincipal = New-AzConfidentialLedgerAADBasedSecurityPrincipalObject `
   -LedgerRoleName "Administrator" `
-  -PrincipalId "00001111-aaaa-2222-bbbb-3333cccc4444" `
-  -TenantId "00001111-aaaa-2222-bbbb-3333cccc4444"
+  -PrincipalId "34621747-6fc8-4771-a2eb-72f31c461f2e" `
+  -TenantId "bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
 
 $certSecurityPrincipal = New-AzConfidentialLedgerCertBasedSecurityPrincipalObject `
   -Cert "-----BEGIN CERTIFICATE-----********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END CERTIFICATE-----" `
