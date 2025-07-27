@@ -54,6 +54,7 @@ https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationpr
 #>
 function New-AzAttestationProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]
+[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider", DeprecatedOutputProperties = ("PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection"), NewOutputProperties = ("PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]"))]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
