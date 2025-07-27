@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azappli
 #>
 function New-AzApplicationInsightsApiKey {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey", "15.0.0", "7.0.0", "2025/11/03", ReplacementCmdletOutputType = "System.String[]", DeprecatedOutputProperties = ("System.Collections.Generic.List`1[System.String]"), NewOutputProperties = ("LinkedReadProperty and LinkedWriteProperty The types of the properties LinkedReadProperty, LinkedWriteProperty will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]"))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentApiKey", DeprecatedOutputProperties = ("LinkedReadProperty and LinkedWriteProperty System.String[]"), NewOutputProperties = ("LinkedReadProperty and LinkedWriteProperty System.Collections.Generic.List`1[System.String]"))]
     [CmdletBinding(DefaultParameterSetName='ComponentNameParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName="ComponentNameParameterSet")]
