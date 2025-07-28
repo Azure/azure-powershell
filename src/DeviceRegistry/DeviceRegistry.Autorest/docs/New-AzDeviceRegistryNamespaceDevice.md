@@ -312,12 +312,6 @@ Version                      : 1
 ```
 
 Creates a new Namespace Device using a JSON string that contains the device properties.
-Type                         : microsoft.deviceregistry/namespaces/devices
-Uuid                         : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Version                      : 1
-```
-
-Creates a new Namespace Device using a JSON string that contains the device properties.
 
 ## PARAMETERS
 

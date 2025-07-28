@@ -480,7 +480,7 @@ Type                                 : microsoft.deviceregistry/namespaces/disco
 Version                              : 1
 ```
 
-Creates a new Namespace Discovered Asset using a JSON file that contains the discovered asset prorperties.
+Creates a new Namespace Discovered Asset using a JSON file that contains the discovered asset properties.
 
 ### Example 3: Create Namespace Discovered Asset via JSON String
 ```powershell

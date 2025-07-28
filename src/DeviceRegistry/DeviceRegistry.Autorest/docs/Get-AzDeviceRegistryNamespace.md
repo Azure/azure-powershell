@@ -110,7 +110,7 @@ Uuid                         : 04aea28f-0906-4c2c-a716-23971af76d82
 
 Gets the details of the Namespace.
 
-### Get Namespace Via Identity
+### Example 4: Get Namespace Via Identity
 ```powershell
 $namespaceIdentity = @{
   SubscriptionId = "my-subscription"
