@@ -43,7 +43,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
