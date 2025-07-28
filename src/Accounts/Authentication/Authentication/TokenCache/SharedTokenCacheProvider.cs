@@ -121,6 +121,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private IPublicClientApplication CreatePublicClientForClearCache()
         {
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
+            // Passing `null` as the authority parameter is intentional here because we are only checking
+            // if WAM (Windows Authentication Manager) is enabled based on configuration settings.
             if (BrokerUtilities.IsWamEnabled(null, configOnly: true))
             {
                 builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
