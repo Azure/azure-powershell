@@ -198,14 +198,39 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
             }
 
             $bodyHashTable.identity = @{}
-            if($PSBoundParameters.ContainsKey('IdentityType')) {
-              $bodyHashTable.identity.type = $IdentityType.ToString()
-              $null = $PSBoundParameters.Remove('IdentityType');
-            }
-            
-            if($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
-              $bodyHashTable.identity.userAssignedIdentities = $UserAssignedIdentity
-              $null = $PSBoundParameters.Remove('UserAssignedIdentity');
+            if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity')){
+              $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
+              $supportsUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity") -and $UserAssignedIdentity.Length -gt 0
+
+              # calculate IdentityType
+              if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
+                  $bodyHashTable.identity.type = "SystemAssigned,UserAssigned"
+              }
+              elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
+                  $bodyHashTable.identity.type = "UserAssigned"
+              }
+              elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
+                  $bodyHashTable.identity.type = "SystemAssigned"
+              }
+              else {
+                  $bodyHashTable.identity.type = "None"
+              }
+
+              # If user input UserAssignedIdentity
+              if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                  $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.UserAssignedIdentity]::New()
+                  $IdentityUserAssignedIdentity = @{}
+                  foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+                      $IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+                  }
+                  $bodyHashTable.identity.userAssignedIdentities = $IdentityUserAssignedIdentity
+                  $null = $PSBoundParameters.Remove('UserAssignedIdentity')
+              }
+
+              # remove EnableSystemAssignedIdentity
+              if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+                  $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+              }
             }
 
             if ($bodyHashTable.identity.Count -eq 0) {
