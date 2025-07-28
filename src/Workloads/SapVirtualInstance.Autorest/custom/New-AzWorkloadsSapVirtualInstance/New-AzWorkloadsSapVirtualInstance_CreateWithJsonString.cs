@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         Required = true,
         ReadOnly = false,
         Description = @"Json string",
-        PossibleTypes = new [] { typeof(string) })]
+        PossibleTypes = new[] { typeof(string) })]
         public string JsonString { get => this._jsonString; set => this._jsonString = value; }
 
         /// <summary>Backing field for <see cref="JsonString" /> property.</summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         public Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
-        public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+        public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation; set { __invocationInfo = value; } }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         ReadOnly = false,
         Description = @"The name of the Virtual Instances for SAP solutions resource",
         SerializedName = @"sapVirtualInstanceName",
-        PossibleTypes = new [] { typeof(string) })]
+        PossibleTypes = new[] { typeof(string) })]
         [global::System.Management.Automation.Alias("SapVirtualInstanceName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         ReadOnly = false,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
-        PossibleTypes = new [] { typeof(string) })]
+        PossibleTypes = new[] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -163,13 +163,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         ReadOnly = false,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
-        PossibleTypes = new [] { typeof(string) })]
+        PossibleTypes = new[] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.DefaultInfo(
         Name = @"",
-        Description =@"",
+        Description = @"",
         Script = @"(Get-AzContext).Subscription.Id")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -210,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
             {
                 Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.AttachDebugger.Break();
             }
-            ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletBeginProcessing).Wait(); if (((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested) { return; }
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
@@ -250,66 +258,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the message is completed.
         /// </returns>
-         async global::System.Threading.Tasks.Task Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener.Signal(string id, global::System.Threading.CancellationToken token, global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.EventData> messageData)
+        async global::System.Threading.Tasks.Task Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener.Signal(string id, global::System.Threading.CancellationToken token, global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.EventData> messageData)
         {
-            using( NoSynchronizationContext )
+            using (NoSynchronizationContext)
             {
                 if (token.IsCancellationRequested)
                 {
-                    return ;
+                    return;
                 }
 
-                switch ( id )
+                switch (id)
                 {
                     case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Verbose:
-                    {
-                        WriteVerbose($"{(messageData().Message ?? global::System.String.Empty)}");
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Warning:
-                    {
-                        WriteWarning($"{(messageData().Message ?? global::System.String.Empty)}");
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Information:
-                    {
-                        // When an operation supports asjob, Information messages must go thru verbose.
-                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Debug:
-                    {
-                        WriteDebug($"{(messageData().Message ?? global::System.String.Empty)}");
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Error:
-                    {
-                        WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
-                        return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.DelayBeforePolling:
-                    {
-                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
-                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
-                            {
-                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
-                                var location = response.GetFirstHeader(@"Location");
-                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
-                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
-                                // do nothing more.
-                                data.Cancel();
-                                return;
-                            }
+                            WriteVerbose($"{(messageData().Message ?? global::System.String.Empty)}");
+                            return;
                         }
-                        break;
-                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Warning:
+                        {
+                            WriteWarning($"{(messageData().Message ?? global::System.String.Empty)}");
+                            return;
+                        }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Information:
+                        {
+                            // When an operation supports asjob, Information messages must go thru verbose.
+                            WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
+                            return;
+                        }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Debug:
+                        {
+                            WriteDebug($"{(messageData().Message ?? global::System.String.Empty)}");
+                            return;
+                        }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.Error:
+                        {
+                            WriteError(new global::System.Management.Automation.ErrorRecord(new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null));
+                            return;
+                        }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.DelayBeforePolling:
+                        {
+                            if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
+                            {
+                                var data = messageData();
+                                if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                                {
+                                    var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
+                                    var location = response.GetFirstHeader(@"Location");
+                                    var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
+                                    WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
+                                    // do nothing more.
+                                    data.Cancel();
+                                    return;
+                                }
+                            }
+                            break;
+                        }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null);
                 if (token.IsCancellationRequested)
                 {
-                    return ;
+                    return;
                 }
                 WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
             }
@@ -326,7 +334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletProcessRecordStart).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletProcessRecordStart).Wait(); if (((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested) { return; }
             __processRecordId = System.Guid.NewGuid().ToString();
             try
             {
@@ -344,9 +352,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                     }
                     else
                     {
-                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token) )
+                        using (var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token))
                         {
-                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token);
+                            asyncCommandRuntime.Wait(ProcessRecordAsync(), ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token);
                         }
                     }
                 }
@@ -354,18 +362,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
             catch (global::System.AggregateException aggregateException)
             {
                 // unroll the inner exceptions to get the root cause
-                foreach( var innerException in aggregateException.Flatten().InnerExceptions )
+                foreach (var innerException in aggregateException.Flatten().InnerExceptions)
                 {
-                    ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletException, $"{innerException.GetType().Name} - {innerException.Message} : {innerException.StackTrace}").Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                    ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletException, $"{innerException.GetType().Name} - {innerException.Message} : {innerException.StackTrace}").Wait(); if (((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested) { return; }
                     // Write exception out to error channel.
-                    WriteError( new global::System.Management.Automation.ErrorRecord(innerException,string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null) );
+                    WriteError(new global::System.Management.Automation.ErrorRecord(innerException, string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null));
                 }
             }
-            catch (global::System.Exception exception) when ((exception as System.Management.Automation.PipelineStoppedException)== null || (exception as System.Management.Automation.PipelineStoppedException).InnerException != null)
+            catch (global::System.Exception exception) when ((exception as System.Management.Automation.PipelineStoppedException) == null || (exception as System.Management.Automation.PipelineStoppedException).InnerException != null)
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletException, $"{exception.GetType().Name} - {exception.Message} : {exception.StackTrace}").Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletException, $"{exception.GetType().Name} - {exception.Message} : {exception.StackTrace}").Wait(); if (((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested) { return; }
                 // Write exception out to error channel.
-                WriteError( new global::System.Management.Automation.ErrorRecord(exception,string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null) );
+                WriteError(new global::System.Management.Automation.ErrorRecord(exception, string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null));
             }
             finally
             {
@@ -377,7 +385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        protected async global::System.Threading.Tasks.Task ProcessRecordAsync()
+         protected async global::System.Threading.Tasks.Task ProcessRecordAsync()
         {
             using( NoSynchronizationContext )
             {
@@ -395,6 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                    this.PreProcessManagedIdentityParameters();
                     await this.Client.SapVirtualInstancesCreateViaJsonString(SubscriptionId, ResourceGroupName, Name, JsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -430,14 +439,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         /// </returns>
         private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IErrorResponse> response)
         {
-            using( NoSynchronizationContext )
+            using (NoSynchronizationContext)
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
                 overrideOnDefault(responseMessage, response, ref _returnNow);
                 // if overrideOnDefault has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {
-                    return ;
+                    return;
                 }
                 // Error Response : default
                 var code = (await response)?.Code;
@@ -446,16 +455,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=JsonString })
+                    WriteError(new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId = SubscriptionId, ResourceGroupName = ResourceGroupName, Name = Name, body = JsonString })
                     {
-                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
+                        ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=JsonString })
+                    WriteError(new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId = SubscriptionId, ResourceGroupName = ResourceGroupName, Name = Name, body = JsonString })
                     {
-                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
+                        ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
                 }
             }
@@ -470,18 +479,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
         /// </returns>
         private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance> response)
         {
-            using( NoSynchronizationContext )
+            using (NoSynchronizationContext)
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
                 overrideOnOk(responseMessage, response, ref _returnNow);
                 // if overrideOnOk has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {
-                    return ;
+                    return;
                 }
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance
                 WriteObject((await response));
+            }
+        }
+        
+        private void PreProcessManagedIdentityParameters()
+        {
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _resourceBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.UserAssignedIdentity());
+                }
+            }
+            // calculate IdentityType
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                if ("SystemAssigned".Equals(_resourceBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
+                }
+                else
+                {
+                    _resourceBody.IdentityType = "UserAssigned";
+                }
             }
         }
     }

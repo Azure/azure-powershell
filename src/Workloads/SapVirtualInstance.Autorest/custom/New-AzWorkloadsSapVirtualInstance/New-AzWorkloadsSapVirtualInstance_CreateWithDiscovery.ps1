@@ -75,9 +75,9 @@ function New-AzWorkloadsSapVirtualInstance {
       ${ManagedRgStorageAccountName},
 
       [Parameter(Mandatory)]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType])]
+      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("NonProd", "Prod")]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType]
+      [System.String]
       # Defines the environment type - Production/Non Production.
       ${Environment},
   
@@ -88,18 +88,17 @@ function New-AzWorkloadsSapVirtualInstance {
       ${Location},
   
       [Parameter(Mandatory)]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType])]
+      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("ECC", "S4HANA", "Other")]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType]
+      [System.String]
       # Defines the SAP Product type.
       ${SapProduct},
   
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType])]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType]
-      # Type of manage identity
-      ${IdentityType},
+      [System.Management.Automation.SwitchParameter]
+      # Determines whether to enable a system-assigned identity for the resource.
+      ${EnableSystemAssignedIdentity},
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
@@ -119,12 +118,13 @@ function New-AzWorkloadsSapVirtualInstance {
       [System.Collections.Hashtable]
       # Resource tags.
       ${Tag},
-  
+
       [Parameter()]
+      [AllowEmptyCollection()]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IUserAssignedIdentities]))]
-      [System.Collections.Hashtable]
-      # User assigned identities dictionary
+      [System.String[]]
+      # The array of user assigned identities associated with the resource.
+      # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
       ${UserAssignedIdentity},
   
       [Parameter()]
@@ -188,9 +188,7 @@ function New-AzWorkloadsSapVirtualInstance {
   )
   process {
       try {
-            $configuration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapConfigurationType]::Discovery
             $discoveryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.DiscoveryConfiguration]::new();
-            $discoveryConfiguration.ConfigurationType = $configuration
             $discoveryConfiguration.CentralServerVMId = $CentralServerVmId
             $null = $PSBoundParameters.Remove('CentralServerVmId')
             if($PSBoundParameters.ContainsKey('ManagedRgStorageAccountName')) {

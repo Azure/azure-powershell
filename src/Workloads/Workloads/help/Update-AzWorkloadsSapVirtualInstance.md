@@ -8,30 +8,30 @@ schema: 2.0.0
 # Update-AzWorkloadsSapVirtualInstance
 
 ## SYNOPSIS
-Updates a Virtual Instance for SAP solutions resource
+Update a Virtual Instance for SAP solutions (VIS) resource
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>]
- [-ManagedResourcesNetworkAccessType <ManagedResourcesNetworkAccessType>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Configuration <ISapConfiguration>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity>
- [-IdentityType <ManagedServiceIdentityType>]
- [-ManagedResourcesNetworkAccessType <ManagedResourcesNetworkAccessType>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Configuration <ISapConfiguration>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a Virtual Instance for SAP solutions resource
+Update a Virtual Instance for SAP solutions (VIS) resource
 
 ## EXAMPLES
 
@@ -80,6 +80,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Configuration
+Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -96,11 +111,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +128,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
@@ -127,6 +141,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ManagedResourceGroupName
+Managed resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ManagedResourcesNetworkAccessType
 Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group.
 The options to choose from are Public and Private.
@@ -136,7 +165,7 @@ This setting is currently applicable only to Storage Account.
 Learn more here https://go.microsoft.com/fwlink/linkid=2247228
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedResourcesNetworkAccessType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Gets or sets the Resource tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -225,12 +254,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -281,7 +309,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance
 
 ## NOTES
 

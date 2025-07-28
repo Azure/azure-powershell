@@ -8,32 +8,45 @@ schema: 2.0.0
 # New-AzWorkloadsSapVirtualInstance
 
 ## SYNOPSIS
-Creates a Virtual Instance for SAP solutions (VIS) resource
+Create a Virtual Instance for SAP solutions (VIS) resource
 
 ## SYNTAX
 
 ### CreateWithDiscovery (Default)
 ```
 New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> -CentralServerVmId <String>
- [-ManagedRgStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -CentralServerVmId <String> -Environment <String> -Location <String> -SapProduct <String>
+ [-ManagedRgStorageAccountName <String>] [-EnableSystemAssignedIdentity] [-ManagedResourceGroupName <String>]
+ [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateWithJsonTemplatePath
 ```
 New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType>
- [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>]
- [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Environment <String> -Location <String> -SapProduct <String> [-EnableSystemAssignedIdentity]
+ [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a Virtual Instance for SAP solutions (VIS) resource
+Create a Virtual Instance for SAP solutions (VIS) resource
 
 ## EXAMPLES
 
@@ -180,7 +193,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -194,12 +208,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Environment
 Defines the environment type - Production/Non Production.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
 Aliases:
 
 Required: True
@@ -209,15 +238,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of manage identity
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -229,7 +273,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
 Aliases:
 
 Required: True
@@ -244,7 +288,7 @@ Managed resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
 Aliases:
 
 Required: False
@@ -259,7 +303,7 @@ Managed resource Network Access Type
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
 Aliases:
 
 Required: False
@@ -338,8 +382,8 @@ Accept wildcard characters: False
 Defines the SAP Product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
 Aliases:
 
 Required: True
@@ -351,6 +395,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -369,7 +414,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
 Aliases:
 
 Required: False
@@ -384,7 +429,7 @@ User assigned identities dictionary
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
 Aliases:
 
 Required: False
@@ -432,7 +477,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance
 
 ## NOTES
 
