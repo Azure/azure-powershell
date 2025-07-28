@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the managed HSM instance.")]
+        // @TODO: add other arguments here from Enum?
         [PSArgumentCompleter("StandardB1", "CustomB32")]
         public string Sku { get; set; }
 
