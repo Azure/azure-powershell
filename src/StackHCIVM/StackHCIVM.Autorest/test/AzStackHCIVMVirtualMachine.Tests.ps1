@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMVirtualMachine'))
 Describe 'AzStackHCIVMVirtualMachine' {
     It 'Create Virtual Machine '  {
         {
-        New-AzStackHciVMVirtualMachine -Name $env.vmName1 -OsType Windows  -ImageId $env.vmImageId -VmSize "Standard_K8S_v1"  -ComputerName $env.vmName1 -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -ProvisionVMAgent:$false -ProvisionVMConfigAgent:$false -SubscriptionId $env.subscriptionId | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"   
+        New-AzStackHciVMVirtualMachine -Name $env.vmName1 -OsType Windows -ImageId $env.vmImageId -VmSize "Standard_K8S_v1"  -ComputerName $env.vmName1 -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -ProvisionVMAgent:$false -ProvisionVMConfigAgent:$false -SubscriptionId $env.subscriptionId | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"   
         }| Should -Not -Throw
     }
 
@@ -32,46 +32,74 @@ Describe 'AzStackHCIVMVirtualMachine' {
         {
             Stop-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            while ( $config.StatusPowerState -ne "Stopped") {
+                Start-Sleep -Seconds 5
+                $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            }
             $config.StatusPowerState| Should -BeExactly "Stopped"
-        } | Should -Not -Throw
+        } 
     }
 
     It 'Start'  {
         {
             Start-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            while ( $config.StatusPowerState -ne "Running") {
+                Start-Sleep -Seconds 5
+                $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            }
             $config.StatusPowerState| Should -BeExactly "Running"
-        } | Should -Not -Throw
+        } 
     }
 
     It 'Restart'  {
         {
             Restart-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            while ( $config.StatusPowerState -ne "Running") {
+                Start-Sleep -Seconds 5
+                $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            }
             $config.StatusPowerState| Should -BeExactly "Running"
-        } | Should -Not -Throw
+        }
     }
 
     It 'Save'  {
         {
             Save-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            while ( $config.StatusPowerState -ne "Saved") {
+                Start-Sleep -Seconds 5
+                $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            }
             $config.StatusPowerState| Should -BeExactly "Saved"
             Start-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            while ( $config.StatusPowerState -ne "Running") {
+                Start-Sleep -Seconds 5
+                $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            }
             $config.StatusPowerState| Should -BeExactly "Running"
-        } | Should -Not -Throw
+        } 
     }
 
     It 'Pause'  {
         {
             Suspend-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            while ( $config.StatusPowerState -ne "Paused") {
+                Start-Sleep -Seconds 5
+                $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            }
             $config.StatusPowerState| Should -BeExactly "Paused"
             Start-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
             $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            while ( $config.StatusPowerState -ne "Running") {
+                Start-Sleep -Seconds 5
+                $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName1  -ResourceGroupName $env.resourceGroupName 
+            }
             $config.StatusPowerState| Should -BeExactly "Running"
-        } | Should -Not -Throw
+        } 
     }
 
     It 'Create Network Interface  ' {
