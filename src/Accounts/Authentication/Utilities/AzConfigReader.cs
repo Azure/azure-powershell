@@ -52,25 +52,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
         {
             return Instance != null ? Instance.GetConfigValue<T>(key) : defaultValue;
         }
-
-        static public bool IsWamEnabled(string authority)
-        {
-            if (!string.IsNullOrEmpty(authority) && Instance != null)
-            {
-                try
-                {
-                    if (!authority.EndsWith("/"))
-                    {
-                        authority = authority + "/";
-                    }
-                    return Instance.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam) && 0 == string.Compare(authority, AzureAuthorityHosts.AzurePublicCloud.OriginalString, System.StringComparison.OrdinalIgnoreCase);
-                }
-                catch
-                {
-
-                }
-            }
-            return false;
-        }
     }
 }

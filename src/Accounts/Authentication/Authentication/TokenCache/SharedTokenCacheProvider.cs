@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 using Azure.Identity;
-
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Broker;
 using Microsoft.Identity.Client.Extensions.Msal;
+using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override void ClearCache()
         {
-            var client = CreatePublicClient();
+            var client = CreatePublicClientForClearCache();
             var accounts = client.GetAccountsAsync().GetAwaiter().GetResult();
             foreach (var account in accounts)
             {
@@ -116,6 +116,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 // see https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/wam#removeasync
                 client.RemoveAsync(account).GetAwaiter().GetResult();
             }
+        }
+
+        private IPublicClientApplication CreatePublicClientForClearCache()
+        {
+            var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
+            if (BrokerUtilities.IsWamEnabled(null, configOnly: true))
+            {
+                builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
+            }
+            var client = builder.Build();
+            RegisterCache(client);
+            return client;
         }
 
         private static MsalCacheHelper GetCacheHelper()

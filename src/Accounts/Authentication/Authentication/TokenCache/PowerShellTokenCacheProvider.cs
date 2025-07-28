@@ -24,10 +24,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Extensions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
-using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
-using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Broker;
 
@@ -177,7 +175,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public virtual IPublicClientApplication CreatePublicClient(string authority, string tenantId)
         {
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
-            if (AzConfigReader.IsWamEnabled(authority))
+            if (BrokerUtilities.IsWamEnabled(authority))
             {
                 builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
             }
@@ -189,6 +187,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             RegisterCache(client);
             return client;
         }
+
         /// <summary>
         /// Creates a public client app.
         /// This method is not meant for authentication purpose. Use APIs from Azure.Identity instead.
@@ -196,7 +195,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
-            if (AzConfigReader.IsWamEnabled(authority))
+            if (BrokerUtilities.IsWamEnabled(authority))
             {
                 builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
             }
