@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement for below commands from array or single object to list.
+  * `Get-AzAutomanageHciReport`
+  * `Get-AzAutomanageHcrpReport`
+  * `Get-AzAutomanageReport`
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.
