@@ -18,16 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Public preview release of API version 2025-07-01-preview for Az.DeviceRegistry.
-* New resources:
-    * Schema Registry
-    * Schema 
-    * Schema Version
-    * Namespaces
-    * Namespace Asset
-    * Namespace Device
-    * Namespace Discovered Asset
-    * Namespace Discovered Device
+* Public preview release of API version 2025-07-01-preview for Az.DeviceRegistry. New resources included:
+    - Schema Registry
+    - Schema 
+    - Schema Version
+    - Namespaces
+    - Namespace Asset
+    - Namespace Device
+    - Namespace Discovered Asset
+    - Namespace Discovered Device
 
 ## Version 0.1.1
 * Fixed module name in module metadata
