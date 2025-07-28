@@ -1,15 +1,14 @@
 ### Example 1: Update a Device Registry Schema with expanded parameters
 ```powershell
-Update-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName "my-schema-registry" -Name "my-schema" -DisplayName "My Updated Schema" -Description "Updated schema description" -Tag @{"environment" = "production"}
+Update-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName "my-schema-registry" -Name "my-schema" -DisplayName "My Updated Schema" -Description "Updated schema description" -Tag @{"updatedKey" = "updatedValue"}
 ```
 
 ```output
 Description                  : Updated schema description
-DisplayName                  : Updated schema display name
+DisplayName                  : My Updated Schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/test-schema-update
-Name                         : test-schema-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.deviceregistry/schemaregistries/my-schema-registry/schemas/my-schema
+Name                         : my-schema
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
 SchemaType                   : MessageSchema
@@ -35,16 +34,15 @@ $registryIdentity = @{
     ResourceGroupName = "my-resource-group"
     SchemaRegistryName = "my-schema-registry"
 }
-Update-AzDeviceRegistrySchema -SchemaRegistryInputObject $registryIdentity -Name "my-schema" -DisplayName "My Updated Schema" -Description "Updated schema description" -Tag @{"environment" = "production"}
+Update-AzDeviceRegistrySchema -SchemaRegistryInputObject $registryIdentity -Name "my-schema" -DisplayName "My Updated Schema" -Description "Updated schema description" -Tag @{"updatedKey" = "updatedValue"}
 ```
 
 ```output
 Description                  : Updated schema description
-DisplayName                  : Updated schema display name
+DisplayName                  : My Updated Schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/test-schema-update
-Name                         : test-schema-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.deviceregistry/schemaregistries/my-schema-registry/schemas/my-schema
+Name                         : my-schema
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
 SchemaType                   : MessageSchema
@@ -65,16 +63,15 @@ Updates a Device Registry Schema using the parent schema registry's identity obj
 
 ### Example 3: Update a Device Registry Schema using schema identity object
 ```powershell
-Update-AzDeviceRegistrySchema -InputObject $schemaObject -DisplayName "My Updated Schema" -Description "Updated schema description" -Tag @{"environment" = "production"}
+Update-AzDeviceRegistrySchema -InputObject $schemaObject -DisplayName "My Updated Schema" -Description "Updated schema description" -Tag @{"updatedKey" = "updatedValue"}
 ```
 
 ```output
 Description                  : Updated schema description
-DisplayName                  : Updated schema display name
+DisplayName                  : My Updated Schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/test-schema-update
-Name                         : test-schema-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.deviceregistry/schemaregistries/my-schema-registry/schemas/my-schema
+Name                         : my-schema
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
 SchemaType                   : MessageSchema

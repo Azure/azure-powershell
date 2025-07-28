@@ -11,8 +11,7 @@ Update-AzDeviceRegistryNamespace -ResourceGroupName "my-resource-group" -Name "m
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/test-namespace-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace
 IdentityPrincipalId          :
 IdentityTenantId             :
 IdentityType                 : None
@@ -21,11 +20,10 @@ MessagingEndpoint            : {
                                  "myendpoint1": {
                                    "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
-                               g/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                                   "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.IotHub/namespaces/my-iothub-namespace"
                                  }
                                }
-Name                         : test-namespace-update
+Name                         : my-namespace
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/22/2025 6:44:04 PM
@@ -55,8 +53,7 @@ Update-AzDeviceRegistryNamespace -InputObject $namespaceIdentity -MessagingEndpo
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/test-namespace-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace
 IdentityPrincipalId          :
 IdentityTenantId             :
 IdentityType                 : None
@@ -65,11 +62,10 @@ MessagingEndpoint            : {
                                  "myendpoint1": {
                                    "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-r
-                               g/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                                   "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.IotHub/namespaces/my-iothub-namespace"
                                  }
                                }
-Name                         : test-namespace-update
+Name                         : my-namespace
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/22/2025 6:44:04 PM

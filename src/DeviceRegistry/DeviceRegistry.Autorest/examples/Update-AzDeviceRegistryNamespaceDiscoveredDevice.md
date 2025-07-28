@@ -1,6 +1,21 @@
 ### Example 1: Update a Device Registry Namespace Discovered Device with expanded parameters
 ```powershell
-Update-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -HardwareRevision "Rev2.0" -SoftwareRevision "v2.1.0"
+$endpointsInbound = @{
+    "endpoint1" = @{
+        Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
+        AuthenticationMethod = "Certificate"
+        X509CredentialsCertificateSecretName = "my-certificate"
+    }
+    "endpoint2" = @{
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
+        AuthenticationMethod = "UsernamePassword"
+        UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
+        UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
+    }
+}
+Update-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 ```
 
 ```output
@@ -14,28 +29,38 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "my-certificate"
+                                     },
+                                     "method": "Certificate"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-                                   "version": "2.0"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
-Name                         : test-ns-ddevice-update
+Name                         : my-discovered-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
@@ -63,8 +88,30 @@ Updates a Device Registry Namespace Discovered Device by modifying its propertie
 ```powershell
 $updateJson = '{
   "properties": {
-    "hardwareRevision": "Rev2.0",
-    "softwareRevision": "v2.1.0"
+    "operatingSystemVersion": "10.0.19041",
+    "endpointsInbound": {
+      "endpoint1": {
+        "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net",
+        "endpointType": "Microsoft.IotHub",
+        "authentication": {
+          "method": "Certificate",
+          "x509Credentials": {
+            "certificateSecretName": "my-certificate"
+          }
+        }
+      },
+      "endpoint2": {
+        "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net",
+        "endpointType": "Microsoft.IotHub",
+        "authentication": {
+          "method": "UsernamePassword",
+          "usernamePasswordCredentials": {
+            "usernameSecretName": "my-username-secret",
+            "passwordSecretName": "my-password-secret"
+          }
+        }
+      }
+    }
   }
 }'
 Update-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -JsonString $updateJson
@@ -81,28 +128,38 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "my-certificate"
+                                     },
+                                     "method": "Certificate"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-                                   "version": "2.0"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
-Name                         : test-ns-ddevice-update
+Name                         : my-discovered-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
@@ -132,7 +189,67 @@ Update-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Attribute                    : {
+                                 "deviceType": "sensor",
+                                 "deviceOwner": "dev",
+                                 "deviceCategory": 4000,
+                                 "invalid": "foo",
+                                 "x-ms-iothub-credential-id": ""
+                               }
+DiscoveryId                  : myDiscoveryId
+EndpointInbound              : {
+                                 "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "my-certificate"
+                                     },
+                                     "method": "Certificate"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
+                                 },
+                                 "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
+                                 }
+                               }
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
+                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationType         : CustomLocation
+ExternalDeviceId             :
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
+Location                     : eastus2
+Manufacturer                 : Contoso
+Model                        : foo123
+Name                         : my-discovered-device
+OperatingSystem              : Linux
+OperatingSystemVersion       : 10.0.19041
+OutboundAssigned             : {
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 }
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : my-resource-group
+SystemDataCreatedAt          : 7/24/2025 10:22:51 PM
+SystemDataCreatedBy          : user@outlook.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 7/24/2025 10:41:40 PM
+SystemDataLastModifiedBy     : user@outlook.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "sensor": "temperature,humidity"
+                               }
+Type                         : microsoft.deviceregistry/namespaces/discovereddevices
+Version                      : 1
 ```
 
 Updates a Device Registry Namespace Discovered Device using a JSON file containing the properties to update.
@@ -144,7 +261,22 @@ $namespaceIdentity = @{
     ResourceGroupName = "my-resource-group"
     NamespaceName = "my-namespace"
 }
-Update-AzDeviceRegistryNamespaceDiscoveredDevice -NamespaceInputObject $namespaceIdentity -DiscoveredDeviceName "my-discovered-device" -HardwareRevision "Rev2.0" -SoftwareRevision "v2.1.0"
+$endpointsInbound = @{
+    "endpoint1" = @{
+        Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
+        AuthenticationMethod = "Certificate"
+        X509CredentialsCertificateSecretName = "my-certificate"
+    }
+    "endpoint2" = @{
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
+        AuthenticationMethod = "UsernamePassword"
+        UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
+        UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
+    }
+}
+Update-AzDeviceRegistryNamespaceDiscoveredDevice -NamespaceInputObject $namespaceIdentity -DiscoveredDeviceName "my-discovered-device" -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 ```
 
 ```output
@@ -158,28 +290,38 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "my-certificate"
+                                     },
+                                     "method": "Certificate"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-                                   "version": "2.0"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
-Name                         : test-ns-ddevice-update
+Name                         : my-discovered-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
@@ -205,7 +347,22 @@ Updates a Device Registry Namespace Discovered Device using the parent namespace
 
 ### Example 5: Update a Device Registry Namespace Discovered Device using discovered device identity object
 ```powershell
-Update-AzDeviceRegistryNamespaceDiscoveredDevice -InputObject $discoveredDeviceObject -HardwareRevision "Rev2.0" -SoftwareRevision "v2.1.0"
+$endpointsInbound = @{
+    "endpoint1" = @{
+        Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
+        AuthenticationMethod = "Certificate"
+        X509CredentialsCertificateSecretName = "my-certificate"
+    }
+    "endpoint2" = @{
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
+        AuthenticationMethod = "UsernamePassword"
+        UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
+        UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
+    }
+}
+Update-AzDeviceRegistryNamespaceDiscoveredDevice -InputObject $discoveredDeviceObject -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 ```
 
 ```output
@@ -219,28 +376,38 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "my-certificate"
+                                     },
+                                     "method": "Certificate"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-                                   "version": "2.0"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
-Name                         : test-ns-ddevice-update
+Name                         : my-discovered-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",

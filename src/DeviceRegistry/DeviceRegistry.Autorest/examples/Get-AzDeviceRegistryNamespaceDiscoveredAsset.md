@@ -151,12 +151,12 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
+Id                                   : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers
+                                       /Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredAssets/my-discovered-asset
 Location                             : eastus2
 ManagementGroup                      : {{
                                          "name": "managementGroup1",
@@ -188,10 +188,10 @@ ManagementGroup                      : {{
 Manufacturer                         : Contoso123
 ManufacturerUri                      : https://www.contoso.com/manufacturerUri
 Model                                : ContosoModel
-Name                                 : test-ns-dasset-get
+Name                                 : my-discovered-asset
 ProductCode                          : SA34VDG
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         : 64-103816-519918-8
 SoftwareRevision                     : 2.0
 Stream                               : {{
@@ -370,12 +370,12 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers
+                                       /Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredAssets/my-discovered-asset
 Location                             : eastus2
 ManagementGroup                      : {{
                                          "name": "managementGroup1",
@@ -407,10 +407,10 @@ ManagementGroup                      : {{
 Manufacturer                         : Contoso123
 ManufacturerUri                      : https://www.contoso.com/manufacturerUri
 Model                                : ContosoModel
-Name                                 : test-ns-dasset-get
+Name                                 : my-discovered-asset
 ProductCode                          : SA34VDG
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         : 64-103816-519918-8
 SoftwareRevision                     : 2.0
 Stream                               : {{
@@ -595,12 +595,12 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
+ExtendedLocationName                 : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
+Id                                   : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers
+                                       /Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredAssets/my-discovered-asset
 Location                             : eastus2
 ManagementGroup                      : {{
                                          "name": "managementGroup1",
@@ -632,10 +632,10 @@ ManagementGroup                      : {{
 Manufacturer                         : Contoso123
 ManufacturerUri                      : https://www.contoso.com/manufacturerUri
 Model                                : ContosoModel
-Name                                 : test-ns-dasset-get
+Name                                 : my-discovered-asset
 ProductCode                          : SA34VDG
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         : 64-103816-519918-8
 SoftwareRevision                     : 2.0
 Stream                               : {{

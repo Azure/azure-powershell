@@ -2,13 +2,14 @@
 ```powershell
 $endpointsInbound = @{
     "endpoint1" = @{
-        Address = "opc.tcp://my-device:4840"
-        EndpointType = "OpcUa"
+        Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
         AuthenticationMethod = "Certificate"
+        X509CredentialsCertificateSecretName = "my-certificate"
     }
     "endpoint2" = @{
-        Address = "opc.tcp://my-device:4841"
-        EndpointType = "OpcUa"
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
         AuthenticationMethod = "UsernamePassword"
         UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
         UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
@@ -35,23 +36,23 @@ EndpointsInbound             : {
                                  "endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "my-certificate"
                                      },
-                                     "method": "Anonymous"
+                                     "method": "Certificate"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
                                    "authentication": {
                                      "usernamePasswordCredentials": {
-                                       "usernameSecretName": "myusername",
-                                       "passwordSecretName": "mypassword"
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
                                      },
                                      "method": "UsernamePassword"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
@@ -59,16 +60,15 @@ ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
 Manufacturer                 : Contoso
 Message                      :
 Model                        : foo123
-Name                         : test-ns-device-update
+Name                         : my-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
@@ -104,9 +104,25 @@ $updateJson = '{
     "operatingSystemVersion": "10.0.19041",
     "endpointsInbound": {
       "endpoint1": {
-        "address": "opc.tcp://my-device:4840",
-        "endpointType": "OpcUa",
-        "authenticationMethod": "Certificate"
+        "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net",
+        "endpointType": "Microsoft.IotHub",
+        "authentication": {
+          "method": "Certificate",
+          "x509Credentials": {
+            "certificateSecretName": "my-certificate"
+          }
+        }
+      },
+      "endpoint2": {
+        "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net",
+        "endpointType": "Microsoft.IotHub",
+        "authentication": {
+          "method": "UsernamePassword",
+          "usernamePasswordCredentials": {
+            "usernameSecretName": "my-username-secret",
+            "passwordSecretName": "my-password-secret"
+          }
+        }
       }
     }
   }
@@ -132,23 +148,23 @@ EndpointsInbound             : {
                                  "endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "my-certificate"
                                      },
-                                     "method": "Anonymous"
+                                     "method": "Certificate"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
                                    "authentication": {
                                      "usernamePasswordCredentials": {
-                                       "usernameSecretName": "myusername",
-                                       "passwordSecretName": "mypassword"
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
                                      },
                                      "method": "UsernamePassword"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
@@ -156,16 +172,15 @@ ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
 Manufacturer                 : Contoso
 Message                      :
 Model                        : foo123
-Name                         : test-ns-device-update
+Name                         : my-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
@@ -217,23 +232,23 @@ EndpointsInbound             : {
                                  "endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "my-certificate"
                                      },
-                                     "method": "Anonymous"
+                                     "method": "Certificate"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
                                    "authentication": {
                                      "usernamePasswordCredentials": {
-                                       "usernameSecretName": "myusername",
-                                       "passwordSecretName": "mypassword"
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
                                      },
                                      "method": "UsernamePassword"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
@@ -241,16 +256,15 @@ ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
 Manufacturer                 : Contoso
 Message                      :
 Model                        : foo123
-Name                         : test-ns-device-update
+Name                         : my-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
@@ -288,13 +302,14 @@ $namespaceIdentity = @{
 }
 $endpointsInbound = @{
     "endpoint1" = @{
-        Address = "opc.tcp://my-device:4840"
-        EndpointType = "OpcUa"
+        Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
         AuthenticationMethod = "Certificate"
+        X509CredentialsCertificateSecretName = "my-certificate"
     }
     "endpoint2" = @{
-        Address = "opc.tcp://my-device:4841"
-        EndpointType = "OpcUa"
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
         AuthenticationMethod = "UsernamePassword"
         UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
         UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
@@ -321,23 +336,23 @@ EndpointsInbound             : {
                                  "endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "my-certificate"
                                      },
-                                     "method": "Anonymous"
+                                     "method": "Certificate"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
                                    "authentication": {
                                      "usernamePasswordCredentials": {
-                                       "usernameSecretName": "myusername",
-                                       "passwordSecretName": "mypassword"
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
                                      },
                                      "method": "UsernamePassword"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
@@ -345,16 +360,15 @@ ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
 Manufacturer                 : Contoso
 Message                      :
 Model                        : foo123
-Name                         : test-ns-device-update
+Name                         : my-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",
@@ -387,13 +401,14 @@ Updates a Device Registry Namespace Device using the namespace's identity object
 ```powershell
 $endpointsInbound = @{
     "endpoint1" = @{
-        Address = "opc.tcp://my-device:4840"
-        EndpointType = "OpcUa"
+        Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
         AuthenticationMethod = "Certificate"
+        X509CredentialsCertificateSecretName = "my-certificate"
     }
     "endpoint2" = @{
-        Address = "opc.tcp://my-device:4841"
-        EndpointType = "OpcUa"
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
         AuthenticationMethod = "UsernamePassword"
         UsernamePasswordCredentialsUsernameSecretName = "my-username-secret"
         UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
@@ -420,23 +435,23 @@ EndpointsInbound             : {
                                  "endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "my-certificate"
                                      },
-                                     "method": "Anonymous"
+                                     "method": "Certificate"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
                                    "authentication": {
                                      "usernamePasswordCredentials": {
-                                       "usernameSecretName": "myusername",
-                                       "passwordSecretName": "mypassword"
+                                       "usernameSecretName": "my-username-secret",
+                                       "passwordSecretName": "my-password-secret"
                                      },
                                      "method": "UsernamePassword"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "44035f1d-0000-0200-0000-688285890000"
@@ -444,16 +459,15 @@ ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/devices/test-ns-device-update
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/24/2025 7:12:02 PM
 Location                     : eastus2
 Manufacturer                 : Contoso
 Message                      :
 Model                        : foo123
-Name                         : test-ns-device-update
+Name                         : my-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 10.0.19041
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "azure-iot-edge",

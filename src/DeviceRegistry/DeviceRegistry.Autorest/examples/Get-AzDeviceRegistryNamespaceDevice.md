@@ -16,9 +16,9 @@ Lists the Namespace Devices in the parent Namespace.
 ### Example 2: Get Namespace Device via Namespace Identity
 ```powershell
 $namespaceIdentity = @{
-  SubscriptionId = "mysubscription"
-  ResourceGroupName = "myresourcegroup"
-  NamespaceName = "mynamespace"
+  SubscriptionId = "my-subscription"
+  ResourceGroupName = "my-resource-group"
+  NamespaceName = "my-namespace"
 }
 Get-AzDeviceRegistryNamespaceDevice -NamespaceInputObject $namespaceIdentity -DeviceName "my-device"
 ```
@@ -61,18 +61,18 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
+Id                           : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/microso
+                               ft.deviceregistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
 Location                     : eastus2
 Manufacturer                 : Contoso
 Message                      :
 Model                        : model123
-Name                         : adr-smart-device
+Name                         : my-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
@@ -84,7 +84,7 @@ OutboundAssigned             : {
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM
@@ -105,7 +105,7 @@ Gets a Namespace Device using the parent Namespace's Identity object.
 
 ### Example 3: Get Namespace Device
 ```pwsh
-Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName "myresourcegroup" -NamespaceName "namespaceName" -DeviceName "deviceName"
+Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device"
 ```
 
 ```output
@@ -146,18 +146,18 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/microso
+                               ft.deviceregistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
 Location                     : eastus2
 Manufacturer                 : Contoso
 Message                      :
 Model                        : model123
-Name                         : adr-smart-device
+Name                         : my-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
@@ -169,7 +169,7 @@ OutboundAssigned             : {
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM
@@ -192,10 +192,10 @@ Gets a Namespace Device from the parent Namespace.
 ### Example 4: Get Namespace Device Via Identity
 ```pwsh
 $identity = @{
-  SubscriptionId = "mysubscription"
-  ResourceGroupName = "myresourcegroup"
-  NamespaceName = "mynamespace"
-  DeviceName = "mydevice"
+  SubscriptionId = "my-subscription"
+  ResourceGroupName = "my-resource-group"
+  NamespaceName = "my-namespace"
+  DeviceName = "my-device"
 }
 Get-AzDeviceRegistryNamespaceDevice -InputObject $identity
 ```
@@ -238,18 +238,18 @@ EndpointsInbound             : {
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
+Id                           : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/microso
+                               ft.deviceregistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
 Location                     : eastus2
 Manufacturer                 : Contoso
 Message                      :
 Model                        : model123
-Name                         : adr-smart-device
+Name                         : my-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
@@ -261,7 +261,7 @@ OutboundAssigned             : {
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM

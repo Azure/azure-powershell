@@ -1,19 +1,19 @@
 ### Example 1: Create a discovered device with expanded parameters
 ```powershell
 $outboundAssigned = @{
-    "endpoint1" = @{
-        address = "opc.tcp://example.com:4840"
-        endpointType = "OpcUa"
+    "myendpoint2" = @{
+        Address = "https://myendpoint2.westeurope-1.edge.azure.net"
+        EndpointType = "azure-iot-edge"
     }
 }
 $endpointInbound = @{
     "endpoint1" = @{
-        Address = "opc.tcp://device.local:4840"
-        EndpointType = "OpcUa"
+        Address = "https://myendpoint1.westeurope-1.iothub.azure.net"
+        EndpointType = "Microsoft.IotHub"
         Version = "1.0"
     }
     "endpoint2" = @{
-        Address = "http://device.local:8080"
+        Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
         EndpointType = "Http"
         Version = "2.0"
     }
@@ -33,14 +33,25 @@ Attribute                    : {
 DiscoveryId                  : discovery-123
 EndpointInbound              : {
                                  "endpoint1": {
-                                   "endpointType": "OpcUa",
-                                   "address": "opc.tcp://device.local:4840",
-                                   "version": "1.0"
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "mycertificate"
+                                     },
+                                     "method": "Certificate"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
-                                   "endpointType": "Http",
-                                   "address": "http://device.local:8080",
-                                   "version": "2.0"
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "myusername",
+                                       "passwordSecretName": "mypassword"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
+                                   "endpointType": "Microsoft.IotHub",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
@@ -54,9 +65,9 @@ Name                         : my-discovered-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
-                                 "endpoint1": {
-                                   "endpointType": "OpcUa",
-                                   "address": "opc.tcp://example.com:4840"
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded
@@ -92,14 +103,25 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "mycertificate"
+                                     },
+                                     "method": "Certificate"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "myusername",
+                                       "passwordSecretName": "mypassword"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-                                   "version": "2.0"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
@@ -114,9 +136,9 @@ Name                         : my-discovered-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
-                                 "endpoint1": {
-                                   "endpointType": "OpcUa",
-                                   "address": "opc.tcp://example.com:4840"
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded
@@ -153,14 +175,25 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
+                                   "authentication": {
+                                     "x509Credentials": {
+                                       "certificateSecretName": "mycertificate"
+                                     },
+                                     "method": "Certificate"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "endpoint2": {
+                                   "authentication": {
+                                     "usernamePasswordCredentials": {
+                                       "usernameSecretName": "myusername",
+                                       "passwordSecretName": "mypassword"
+                                     },
+                                     "method": "UsernamePassword"
+                                   },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
-                                   "version": "2.0"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
@@ -175,9 +208,9 @@ Name                         : my-discovered-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
-                                 "endpoint1": {
-                                   "endpointType": "OpcUa",
-                                   "address": "opc.tcp://example.com:4840"
+                                 "myendpoint2": {
+                                   "endpointType": "azure-iot-edge",
+                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded

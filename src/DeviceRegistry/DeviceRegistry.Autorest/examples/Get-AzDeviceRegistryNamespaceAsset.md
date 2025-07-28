@@ -52,8 +52,7 @@ ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-x
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/assets/test-asset-123
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/assets/my-asset
 LastTransitionTime                   :
 Location                             : eastus2
 ManagementGroup                      :
@@ -61,10 +60,10 @@ Manufacturer                         :
 ManufacturerUri                      :
 Message                              :
 Model                                :
-Name                                 : test-asset-123
+Name                                 : my-asset
 ProductCode                          :
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
@@ -121,8 +120,7 @@ ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-x
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/assets/test-asset-123
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/assets/my-asset
 LastTransitionTime                   :
 Location                             : eastus2
 ManagementGroup                      :
@@ -130,10 +128,10 @@ Manufacturer                         :
 ManufacturerUri                      :
 Message                              :
 Model                                :
-Name                                 : test-asset-123
+Name                                 : my-asset
 ProductCode                          :
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
@@ -196,8 +194,7 @@ ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-x
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/assets/test-asset-123
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/assets/my-asset
 LastTransitionTime                   :
 Location                             : eastus2
 ManagementGroup                      :
@@ -205,10 +202,10 @@ Manufacturer                         :
 ManufacturerUri                      :
 Message                              :
 Model                                :
-Name                                 : test-asset-123
+Name                                 : my-asset
 ProductCode                          :
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :

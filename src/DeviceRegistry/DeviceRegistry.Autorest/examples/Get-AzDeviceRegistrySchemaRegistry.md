@@ -6,7 +6,7 @@ Get-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group"
 ```output
 Description                  :
 DisplayName                  :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
@@ -15,7 +15,7 @@ Location                     : eastus2
 Name                         : aio-sr-d179cdfcb7
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StorageAccountContainerUrl   : https://aiosrsad179cdfcb7.blob.core.windows.net/schemas
 SystemDataCreatedAt          : 7/22/2025 5:15:05 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
@@ -43,16 +43,16 @@ Get-AzDeviceRegistrySchemaRegistry -ResourceGroupInputObject $resourceGroupIdent
 ```output
 Description                  :
 DisplayName                  :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
+Id                           : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/Microso
+                               ft.DeviceRegistry/schemaRegistries/my-schema-registry
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
 IdentityType                 : SystemAssigned
 Location                     : eastus2
-Name                         : aio-sr-d179cdfcb7
+Name                         : my-schema-registry
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StorageAccountContainerUrl   : https://aiosrsad179cdfcb7.blob.core.windows.net/schemas
 SystemDataCreatedAt          : 7/22/2025 5:15:05 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
@@ -76,16 +76,16 @@ Get-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group" -Schem
 ```output
 Description                  :
 DisplayName                  :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
+                               ft.DeviceRegistry/schemaRegistries/my-schema-registry
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
 IdentityType                 : SystemAssigned
 Location                     : eastus2
-Name                         : aio-sr-d179cdfcb7
+Name                         : my-schema-registry
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StorageAccountContainerUrl   : https://aiosrsad179cdfcb7.blob.core.windows.net/schemas
 SystemDataCreatedAt          : 7/22/2025 5:15:05 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
@@ -114,16 +114,16 @@ Get-AzDeviceRegistrySchemaRegistry -InputObject $identity
 ```output
 Description                  :
 DisplayName                  :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
+Id                           : /subscriptions/my-subscription/resourceGroups/my-resource-group/providers/Microso
+                               ft.DeviceRegistry/schemaRegistries/my-schema-registry
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
 IdentityType                 : SystemAssigned
 Location                     : eastus2
-Name                         : aio-sr-d179cdfcb7
+Name                         : my-schema-registry
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StorageAccountContainerUrl   : https://aiosrsad179cdfcb7.blob.core.windows.net/schemas
 SystemDataCreatedAt          : 7/22/2025 5:15:05 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f

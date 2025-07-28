@@ -32,8 +32,7 @@ Get-AzDeviceRegistryNamespace -ResourceGroupName "my-resource-group" -Name "my-n
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace
 IdentityPrincipalId          :
 IdentityTenantId             :
 IdentityType                 : None
@@ -52,9 +51,9 @@ MessagingEndpoint            : {
                                g/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
                                }
-Name                         : adr-namespace
+Name                         : my-namespace
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/22/2025 5:15:28 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
 SystemDataCreatedByType      : Application
@@ -80,8 +79,7 @@ Get-AzDeviceRegistryNamespace -InputObject $namespaceIdentity
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace
 IdentityPrincipalId          :
 IdentityTenantId             :
 IdentityType                 : None
@@ -100,9 +98,9 @@ MessagingEndpoint            : {
                                g/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
                                }
-Name                         : adr-namespace
+Name                         : my-namespace
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/22/2025 5:15:28 AM
 SystemDataCreatedBy          : 739f5293-922a-4616-b106-3662530ef99f
 SystemDataCreatedByType      : Application

@@ -46,12 +46,12 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
+                               ft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/foodevice
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
@@ -65,7 +65,7 @@ OutboundAssigned             : {
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
@@ -108,12 +108,12 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
+                               ft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/foodevice
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
@@ -127,7 +127,7 @@ OutboundAssigned             : {
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
@@ -176,12 +176,12 @@ EndpointInbound              : {
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
+                               ft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/foodevice
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
@@ -195,7 +195,7 @@ OutboundAssigned             : {
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User

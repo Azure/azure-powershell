@@ -4,15 +4,14 @@ Update-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group" -Sc
 ```
 
 ```output
-Description                  :
-DisplayName                  :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
+Description                  : Updated schema registry description
+DisplayName                  : My Updated Schema Registry
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/schemaRegistries/my-schema-registry
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
 IdentityType                 : SystemAssigned
 Location                     : eastus2
-Name                         : aio-sr-d179cdfcb7
+Name                         : my-schema-registry
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
@@ -33,19 +32,23 @@ Updates a Device Registry Schema Registry by modifying its properties using indi
 
 ### Example 2: Update a Device Registry Schema Registry using identity object
 ```powershell
+$schemaRegistryObject = @{
+  SubscriptionId = "xxxxx-xxxxx-xxxx-xxxxxxxx"
+  ResourceGroupName = "my-resource-group"
+  SchemaRegistryName = "my-schema-registry"
+}
 Update-AzDeviceRegistrySchemaRegistry -InputObject $schemaRegistryObject -DisplayName "My Updated Schema Registry" -Description "Updated schema registry description"
 ```
 
 ```output
-Description                  :
-DisplayName                  :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
+Description                  : Updated schema registry description
+DisplayName                  : My Updated Schema Registry
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/schemaRegistries/my-schema-registry
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
 IdentityType                 : SystemAssigned
 Location                     : eastus2
-Name                         : aio-sr-d179cdfcb7
+Name                         : my-schema-registry
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
