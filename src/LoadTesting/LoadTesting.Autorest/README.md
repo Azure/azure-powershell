@@ -36,16 +36,13 @@ input-file:
 title: LoadTesting
 module-version: 0.1.0
 subject-prefix: ""
-
-resourcegroup-append: true
-nested-object-to-string: true
 inlining-threshold: 200
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+    remove: true
+
   # https://stackoverflow.microsoft.com/questions/333196
   - where:
       subject: .*Quota.*
@@ -60,10 +57,6 @@ directive:
       subject: LoadTest
     set:
       subject: Load
-
-  - where:
-      variant: ^Create$|^Update$|.*ViaIdentity$|.*ViaIdentityExpanded$
-    remove: true
 
   # Removing Set command
   - where:
@@ -142,7 +135,7 @@ directive:
   # Hiding redundant SystemData property 
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ISystemData SystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ISystemData SystemData');
+    transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ISystemData SystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ISystemData SystemData');
 
   - from: source-file-csharp
     where: $
@@ -252,11 +245,13 @@ directive:
   - where:
       verb: New
       subject: Load
+      variant: ^CreateExpanded$
     hide: true
 
   - where:
       verb: Update
       subject: Load
+      variant: ^UpdateExpanded$
     hide: true
 
   - where:
