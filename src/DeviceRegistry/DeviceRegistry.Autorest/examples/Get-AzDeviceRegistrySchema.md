@@ -11,7 +11,7 @@ test-schema-create-expanded                 7/25/2025 12:38:28 AM user@outlook.c
 fooschema                                   7/25/2025 12:33:31 AM user@outlook.com  User                    7/25/2025 12:33:31 AM
 ```
 
-Lists all Schemas in a specified Schema Registry.
+Lists all Schemas in a specified parent Schema Registry.
 
 ### Example 2: Get Schema via Schema Registry Identity
 ```powershell
@@ -46,7 +46,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : 0ea44626-2ac8-488a-ac07-64566f99a308
 ```
 
-Gets a Schema using the Schema Registry's Identity object.
+Gets a Schema using the parent Schema Registry's Identity object.
 
 ### Example 3: Get Schema
 ```powershell
@@ -76,7 +76,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : 0ea44626-2ac8-488a-ac07-64566f99a308
 ```
 
-Gets a specific Schema from a Schema Registry.
+Gets a specific Schema from its parent Schema Registry.
 
 ### Example 4: Get Schema via Identity
 ```powershell

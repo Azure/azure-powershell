@@ -12,7 +12,7 @@ eastus2  foodevice                                       7/24/2025 9:38:24 PM  u
 eastus2  test-ns-ddevice-create-json-file-path           7/24/2025 9:46:05 PM  user@outlook.com  User                    7/24/202…
 ```
 
-Lists all Namespace Discovered Devices in a specified Namespace.
+Lists all Namespace Discovered Devices in a specified parent Namespace.
 
 ### Example 2: Get Namespace Discovered Device via Namespace Identity
 ```powershell
@@ -79,7 +79,7 @@ Type                         : microsoft.deviceregistry/namespaces/discovereddev
 Version                      : 1
 ```
 
-Gets a Namespace Discovered Device using the Namespace's Identity object.
+Gets a Namespace Discovered Device using the parent Namespace's Identity object.
 
 ### Example 3: Get Namespace Discovered Device
 ```powershell
@@ -141,7 +141,7 @@ Type                         : microsoft.deviceregistry/namespaces/discovereddev
 Version                      : 1
 ```
 
-Gets a specific Namespace Discovered Device from a Namespace.
+Gets a specific Namespace Discovered Device from its parent Namespace.
 
 ### Example 4: Get Namespace Discovered Device via Identity
 ```powershell

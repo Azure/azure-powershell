@@ -57,7 +57,7 @@ Type                         : microsoft.deviceregistry/namespaces/discovereddev
 Version                      : 1
 ```
 
-This example updates a Device Registry Namespace Discovered Device by modifying its hardware and software revision using individual parameters. This approach is useful when you want to update specific properties of an existing discovered device.
+Updates a Device Registry Namespace Discovered Device by modifying its properties using individual parameters.
 
 ### Example 2: Update a Device Registry Namespace Discovered Device using JSON string
 ```powershell
@@ -124,7 +124,7 @@ Type                         : microsoft.deviceregistry/namespaces/discovereddev
 Version                      : 1
 ```
 
-This example updates a Device Registry Namespace Discovered Device using a JSON string. This approach is useful when you have complex discovered device configurations or when you want to update multiple properties at once using a structured JSON format.
+Updates a Device Registry Namespace Discovered Device using a JSON string containing the properties to update.
 
 ### Example 3: Update a Device Registry Namespace Discovered Device using JSON file path
 ```powershell
@@ -135,7 +135,7 @@ Update-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example updates a Device Registry Namespace Discovered Device using a JSON file. This approach is useful when you have predefined discovered device configurations stored in files or when working with complex discovered device properties that are easier to manage in a separate file.
+Updates a Device Registry Namespace Discovered Device using a JSON file containing the properties to update.
 
 ### Example 4: Update a Device Registry Namespace Discovered Device using namespace identity object
 ```powershell
@@ -201,7 +201,7 @@ Type                         : microsoft.deviceregistry/namespaces/discovereddev
 Version                      : 1
 ```
 
-This example updates a Device Registry Namespace Discovered Device using a namespace identity object. This approach is useful when you want to work with namespace identity objects rather than specifying individual resource group and namespace parameters.
+Updates a Device Registry Namespace Discovered Device using the parent namespace's identity object.
 
 ### Example 5: Update a Device Registry Namespace Discovered Device using discovered device identity object
 ```powershell
@@ -262,5 +262,5 @@ Type                         : microsoft.deviceregistry/namespaces/discovereddev
 Version                      : 1
 ```
 
-This example updates a Device Registry Namespace Discovered Device using a discovered device identity object obtained from a previous operation. This approach is useful when you already have a discovered device object from another cmdlet like Get-AzDeviceRegistryNamespaceDiscoveredDevice or New-AzDeviceRegistryNamespaceDiscoveredDevice.
+Updates a Device Registry Namespace Discovered Device using the discovered device identity object.
 

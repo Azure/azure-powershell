@@ -11,7 +11,7 @@ Location Name                                           SystemDataCreatedAt  Sys
 eastus2  test-ns-dasset-update                          7/23/2025 4:57:03 AM user@outlook.com  User                    7/23/2025 …
 ```
 
-Lists all Namespace Discovered Assets in a specified Namespace.
+Lists all Namespace Discovered Assets in the specified parent Namespace.
 
 ### Example 2: Get Namespace Discovered Asset via Namespace Identity
 ```powershell
@@ -235,7 +235,7 @@ Type                                 : microsoft.deviceregistry/namespaces/disco
 Version                              : 1
 ```
 
-Gets a Namespace Discovered Asset using the Namespace's Identity object.
+Gets a Namespace Discovered Asset using the parent Namespace's Identity object.
 
 ### Example 3: Get Namespace Discovered Asset
 ```powershell
@@ -454,7 +454,7 @@ Type                                 : microsoft.deviceregistry/namespaces/disco
 Version                              : 1
 ```
 
-Gets a specific Namespace Discovered Asset from a Namespace.
+Gets a specific Namespace Discovered Asset from its parent Namespace.
 
 ### Example 4: Get Namespace Discovered Asset via Identity
 ```powershell

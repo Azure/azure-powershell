@@ -137,5 +137,5 @@ Type                         : microsoft.deviceregistry/schemaregistries
 Uuid                         : cef95c04-3309-4ae5-84cd-a3df9dc6a154
 ```
 
-Gets a Schema Registry using the schema registry's Identity object.
+Gets a Schema Registry using the its Identity object.
 

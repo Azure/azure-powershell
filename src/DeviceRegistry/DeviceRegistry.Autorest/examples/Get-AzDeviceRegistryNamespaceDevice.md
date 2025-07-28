@@ -11,7 +11,7 @@ eastus2  adr-smart-device                               7/23/2025 6:45:31 PM  us
 eastus2  test-ns-device-create-json-file-path           7/24/2025 12:37:02 AM user@outlook.com                   User
 ```
 
-Lists the Namespace Devices in a Namespace.
+Lists the Namespace Devices in the parent Namespace.
 
 ### Example 2: Get Namespace Device via Namespace Identity
 ```powershell
@@ -101,7 +101,7 @@ Uuid                         : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Version                      : 1
 ```
 
-Gets a Namespace Device using the Namespace's Identity object.
+Gets a Namespace Device using the parent Namespace's Identity object.
 
 ### Example 3: Get Namespace Device
 ```pwsh
@@ -186,7 +186,7 @@ Uuid                         : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Version                      : 1
 ```
 
-Gets a Namespace Device from a Namespace.
+Gets a Namespace Device from the parent Namespace.
 
 
 ### Example 4: Get Namespace Device Via Identity

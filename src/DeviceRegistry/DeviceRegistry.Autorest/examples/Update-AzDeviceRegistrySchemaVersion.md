@@ -23,7 +23,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
 ```
 
-This example updates a Device Registry Schema Version by modifying its description using individual parameters. This approach is useful when you want to update specific properties of an existing schema version.
+Updates a Device Registry Schema Version by modifying its properties using individual parameters.
 
 ### Example 2: Update a Device Registry Schema Version using schema registry identity object
 ```powershell
@@ -51,7 +51,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
 ```
 
-This example updates a Device Registry Schema Version using a schema registry identity object. This approach is useful when you want to work with registry identity objects rather than specifying individual resource group and registry parameters.
+Updates a Device Registry Schema Version using the parent schema's parent schema registry identity object.
 
 ### Example 3: Update a Device Registry Schema Version using schema identity object
 ```powershell
@@ -79,7 +79,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
 ```
 
-This example updates a Device Registry Schema Version using a schema identity object. This approach is useful when you want to work with schema identity objects rather than specifying individual resource group, registry, and schema parameters.
+Updates a Device Registry Schema Version using the parent schema's identity object.
 
 ### Example 4: Update a Device Registry Schema Version using schema version identity object
 ```powershell
@@ -106,5 +106,5 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
 ```
 
-This example updates a Device Registry Schema Version using a schema version identity object obtained from a previous operation. This approach is useful when you already have a schema version object from another cmdlet like Get-AzDeviceRegistrySchemaVersion or New-AzDeviceRegistrySchemaVersion.
+Updates a Device Registry Schema Version using the schema version's identity object.
 

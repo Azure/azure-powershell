@@ -3,7 +3,7 @@
 Remove-AzDeviceRegistrySchemaVersion -ResourceGroupName "my-resource-group" -SchemaRegistryName "my-schema-registry" -SchemaName "my-schema" -Name "my-schema-version"
 ```
 
-This example removes a schema version by specifying the resource group name, schema registry name, schema name, and schema version name directly.
+Removes a schema version by specifying the resource group name, schema registry name, schema name, and schema version name directly.
 
 ### Example 2: Remove a schema version using schema registry identity object
 ```powershell
@@ -11,7 +11,7 @@ $schemaRegistry = Get-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-reso
 Remove-AzDeviceRegistrySchemaVersion -SchemaRegistryInputObject $schemaRegistry -SchemaName "my-schema" -Name "my-schema-version"
 ```
 
-This example removes a schema version by using a schema registry identity object along with the schema name and schema version name.
+Removes a schema version by using the parent schema registry's (parent of the schema version's parent schema) identity object along with the schema name and schema version name.
 
 ### Example 3: Remove a schema version using schema identity object
 ```powershell
@@ -19,7 +19,7 @@ $schema = Get-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -Sch
 Remove-AzDeviceRegistrySchemaVersion -SchemaInputObject $schema -Name "my-schema-version"
 ```
 
-This example removes a schema version by using a schema identity object along with the schema version name.
+Removes a schema version by using the parent schema identity object along with the schema version name.
 
 ### Example 4: Remove a schema version using schema version identity object
 ```powershell
@@ -27,5 +27,5 @@ $schemaVersion = Get-AzDeviceRegistrySchemaVersion -ResourceGroupName "my-resour
 Remove-AzDeviceRegistrySchemaVersion -InputObject $schemaVersion
 ```
 
-This example removes a schema version by first retrieving the schema version object and then passing it directly to the Remove command using the InputObject parameter.
+Removes a schema version by using the schema version's InputObject parameter.
 

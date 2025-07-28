@@ -23,7 +23,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
 ```
 
-Creates a new schema version with all parameters specified directly. This example shows how to create a schema version with description and schema content for defining device data structure.
+Creates a new schema version under the specified schema resource (nested under the specified schema registry resource) with expanded parameters.
 
 ### Example 2: Create a schema version using a JSON file
 ```powershell
@@ -50,7 +50,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
 ```
 
-Creates a new schema version using configuration from a JSON file. This approach is useful when you have complex schema version configurations stored in files or when automating deployments with predefined configurations.
+Creates a new schema version under the specified schema resource (nested under the specified schema registry resource) using configuration from a JSON file containing the schema version's properties.
 
 ### Example 3: Create a schema version using a JSON string
 ```powershell
@@ -78,5 +78,5 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : c59ca7f5-fcff-4cd5-ac7e-a21c508d6819
 ```
 
-Creates a new schema version using a JSON string loaded from a file. This method provides flexibility to modify the JSON configuration programmatically before creating the schema version.
+Creates a new schema version under the specified schema resource (nested under the specified schema registry resource) using a stringified JSON of an object containing the schema version's properties.
 

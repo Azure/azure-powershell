@@ -1,6 +1,6 @@
 ### Example 1: Create Namespace Asset with Expanded Parameters
 ```powershell
-New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -Location "eastus" -ExtendedLocationName "my-extended-location" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Asset Display Name" -Manufacturer "Contoso" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -HardwareRevision "1.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/"
+New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Asset Display Name" -Manufacturer "Contoso" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -HardwareRevision "1.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/"
 ```
 
 ```output
@@ -20,33 +20,33 @@ DefaultStreamsConfiguration          :
 DefaultStreamsDestination            :
 Description                          :
 Detail                               :
-DeviceRefDeviceName                  : myaepref
-DeviceRefEndpointName                : primaryEndpoint
+DeviceRefDeviceName                  : my-device
+DeviceRefEndpointName                : my-endpoint
 DiscoveredAssetRef                   :
-DisplayName                          : fooasset
-DocumentationUri                     :
+DisplayName                          : My Asset Display Name
+DocumentationUri                     : https://www.example.com/manual/
 Enabled                              : True
 Event                                :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
                                        /Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
-ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
-HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /microsoft.deviceregistry/namespaces/adr-namespace/assets/fooasset
+ExternalAssetId                      : my-external-asset-id
+HardwareRevision                     : 1.0
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers
+                                       /microsoft.deviceregistry/namespaces/my-namespace/assets/my-asset
 LastTransitionTime                   :
-Location                             : eastus2
+Location                             : eastus
 ManagementGroup                      :
-Manufacturer                         :
-ManufacturerUri                      :
+Manufacturer                         : Contoso
+ManufacturerUri                      : https://www.contoso.com/manufacturerUri
 Message                              :
-Model                                :
-Name                                 : fooasset
-ProductCode                          :
+Model                                : ContosoModel
+Name                                 : my-asset
+ProductCode                          : SA34VDG
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
-SerialNumber                         :
-SoftwareRevision                     :
+ResourceGroupName                    : my-resource-group
+SerialNumber                         : 64-103816-519918-8
+SoftwareRevision                     : 2.0
 StatusDataset                        :
 StatusEvent                          :
 StatusManagementGroup                :
@@ -61,11 +61,11 @@ SystemDataLastModifiedByType         : Application
 Tag                                  : {
                                        }
 Type                                 : microsoft.deviceregistry/namespaces/assets
-Uuid                                 : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
+Uuid                                 : my-external-asset-id
 Version                              : 2
 ```
 
-Creates a new Namespace Asset with expanded parameters including device reference, asset metadata, and documentation details.
+Creates a new Namespace Asset with expanded parameters.
 
 ### Example 2: Create Namespace Asset via JSON File Path
 ```powershell
@@ -101,8 +101,8 @@ ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-x
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /microsoft.deviceregistry/namespaces/adr-namespace/assets/fooasset
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers
+                                       /microsoft.deviceregistry/namespaces/my-namespace/assets/my-asset
 LastTransitionTime                   :
 Location                             : eastus2
 ManagementGroup                      :
@@ -110,10 +110,10 @@ Manufacturer                         :
 ManufacturerUri                      :
 Message                              :
 Model                                :
-Name                                 : fooasset
+Name                                 : my-asset
 ProductCode                          :
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
@@ -134,7 +134,7 @@ Uuid                                 : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 Version                              : 2
 ```
 
-Creates a new Namespace Asset using a JSON file that contains the asset configuration including datasets, events, streams, and management groups.
+Creates a new Namespace Asset using a JSON file that contains the asset properties.
 
 ### Example 3: Create Namespace Asset via JSON String
 ```powershell
@@ -171,8 +171,8 @@ ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-x
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /microsoft.deviceregistry/namespaces/adr-namespace/assets/fooasset
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers
+                                       /microsoft.deviceregistry/namespaces/my-namespace/assets/my-asset
 LastTransitionTime                   :
 Location                             : eastus2
 ManagementGroup                      :
@@ -180,10 +180,10 @@ Manufacturer                         :
 ManufacturerUri                      :
 Message                              :
 Model                                :
-Name                                 : fooasset
+Name                                 : my-asset
 ProductCode                          :
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
@@ -204,5 +204,5 @@ Uuid                                 : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 Version                              : 2
 ```
 
-Creates a new Namespace Asset using a JSON string that contains the asset configuration including datasets, events, streams, and management groups.
+Creates a new Namespace Asset using a JSON string that contains the asset properties.
 

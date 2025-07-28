@@ -11,7 +11,7 @@ eastus2  test-ns-asset-create-expanded                 7/22/2025 10:05:30 PM use
 eastus2  test-ns-asset-create-json-file-path           7/22/2025 10:29:04 PM user@outlook.com                   User
 ```
 
-Lists all the Device Registry Namespace Assets within a Namespace.
+Lists all the Device Registry Namespace Assets within the parent Namespace.
 
 ### Example 2: Get Namespace Via Namespace Identity
 ```powershell
@@ -20,7 +20,7 @@ $namespaceIdentity = @{
   ResourceGroupName = "my-resource-group"
   NamespaceName = "my-namespace"
 }
-Get-AzDeviceRegistryNamespaceAsset -NamespaceInputObject $namespaceIdentity -AssetName "asset name"
+Get-AzDeviceRegistryNamespaceAsset -NamespaceInputObject $namespaceIdentity -AssetName "my-asset"
 ```
 
 ```output
@@ -85,7 +85,7 @@ Uuid                                 : 63174c22-6858-4d69-b515-68b641ad537e
 Version                              : 2
 ```
 
-Gets the details of a Namespace Asset using the Namespace's identity object.
+Gets the details of a Namespace Asset using the parent Namespace's identity object.
 
 ### Example 3: Get Namespace Asset
 ```powershell
@@ -154,7 +154,7 @@ Uuid                                 : 63174c22-6858-4d69-b515-68b641ad537e
 Version                              : 2
 ```
 
-Gets the details of a Namespace Asset.
+Gets the details of a Namespace Asset under its parent Namespace.
 
 ### Example 4: Get Namespace Asset Via Identity
 ```powershell

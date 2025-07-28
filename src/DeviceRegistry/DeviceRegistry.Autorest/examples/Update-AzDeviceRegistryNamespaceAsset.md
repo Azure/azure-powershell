@@ -7,7 +7,7 @@ Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -Na
 Id                                            : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/providers/Microsoft.DeviceRegistry/locations/EASTUS2/operationStatuses/01e004d3-5ee4-4e48-b0f3-5d095967ff2f*22287DDA3F72A2BF66887E7D826E011DF68F456D735B7BE37C83763585936277
 ```
 
-This example updates a Device Registry Namespace Asset by modifying its documentation URI and display name using individual parameters. This approach is useful when you want to update specific properties of an existing asset.
+Updates a Device Registry Namespace Asset by modifying its properties using individual parameters.
 
 ### Example 2: Update a Device Registry Namespace Asset using JSON string
 ```powershell
@@ -24,7 +24,7 @@ Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -Na
 Id                                            : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/providers/Microsoft.DeviceRegistry/locations/EASTUS2/operationStatuses/01e004d3-5ee4-4e48-b0f3-5d095967ff2f*22287DDA3F72A2BF66887E7D826E011DF68F456D735B7BE37C83763585936277
 ```
 
-This example updates a Device Registry Namespace Asset using a JSON string. This approach is useful when you have complex asset configurations or when you want to update multiple properties at once using a structured JSON format.
+Updates a Device Registry Namespace Asset using a JSON string containing the properties to update
 
 ### Example 3: Update a Device Registry Namespace Asset using JSON file path
 ```powershell
@@ -35,7 +35,7 @@ Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -Na
 Id                                            : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/providers/Microsoft.DeviceRegistry/locations/EASTUS2/operationStatuses/01e004d3-5ee4-4e48-b0f3-5d095967ff2f*22287DDA3F72A2BF66887E7D826E011DF68F456D735B7BE37C83763585936277
 ```
 
-This example updates a Device Registry Namespace Asset using a JSON file. This approach is useful when you have predefined asset configurations stored in files or when working with complex asset properties that are easier to manage in a separate file.
+Updates a Device Registry Namespace Asset using a JSON file containing the properties to update.
 
 ### Example 4: Update a Device Registry Namespace Asset using namespace identity object
 ```powershell
@@ -51,7 +51,7 @@ Update-AzDeviceRegistryNamespaceAsset -NamespaceInputObject $namespaceIdentity -
 Id                                            : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/providers/Microsoft.DeviceRegistry/locations/EASTUS2/operationStatuses/01e004d3-5ee4-4e48-b0f3-5d095967ff2f*22287DDA3F72A2BF66887E7D826E011DF68F456D735B7BE37C83763585936277
 ```
 
-This example updates a Device Registry Namespace Asset using a namespace identity object. This approach is useful when you want to work with namespace identity objects rather than specifying individual resource group and namespace parameters.
+Updates a Device Registry Namespace Asset using its parent namespace's identity object.
 
 ### Example 5: Update a Device Registry Namespace Asset using asset identity object
 ```powershell
@@ -62,5 +62,5 @@ Update-AzDeviceRegistryNamespaceAsset -InputObject $assetObject -DocumentationUr
 Id                                            : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/providers/Microsoft.DeviceRegistry/locations/EASTUS2/operationStatuses/01e004d3-5ee4-4e48-b0f3-5d095967ff2f*22287DDA3F72A2BF66887E7D826E011DF68F456D735B7BE37C83763585936277
 ```
 
-This example updates a Device Registry Namespace Asset using an asset identity object obtained from a previous operation. This approach is useful when you already have an asset object from another cmdlet like Get-AzDeviceRegistryNamespaceAsset or New-AzDeviceRegistryNamespaceAsset.
+Updates a Device Registry Namespace Asset using the asset's identity object.
 

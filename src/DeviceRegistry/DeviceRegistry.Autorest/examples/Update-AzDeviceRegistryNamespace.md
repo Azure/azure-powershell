@@ -40,7 +40,7 @@ Type                         : microsoft.deviceregistry/namespaces
 Uuid                         : 80cfca37-a523-400a-bb9f-3c11b1ac18a0
 ```
 
-This example updates a Device Registry Namespace by modifying its messaging endpoints. The command updates the namespace with a new messaging endpoint configuration that includes the resource ID, address, and endpoint type for an IoT Hub.
+Updates a Device Registry Namespace by specifying the properties to update.
 
 ### Example 2: Update a Device Registry Namespace using an identity object
 ```powershell
@@ -84,5 +84,5 @@ Type                         : microsoft.deviceregistry/namespaces
 Uuid                         : 80cfca37-a523-400a-bb9f-3c11b1ac18a0
 ```
 
-This example updates a Device Registry Namespace using an identity object obtained from a previous operation. This approach is useful when you already have a namespace object from another cmdlet like Get-AzDeviceRegistryNamespace or New-AzDeviceRegistryNamespace.
+Updates a Device Registry Namespace using its identity object.
 

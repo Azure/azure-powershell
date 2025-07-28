@@ -1,6 +1,6 @@
 ### Example 1: Create Namespace Discovered Asset with Expanded Parameters
 ```powershell
-New-AzDeviceRegistryNamespaceDiscoveredAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredAssetName "my-discovered-asset" -Location "eastus" -ExtendedLocationName "my-extended-location" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Discovered Asset" -Manufacturer "Contoso123" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/"
+New-AzDeviceRegistryNamespaceDiscoveredAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredAssetName "my-discovered-asset" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Discovered Asset" -Manufacturer "Contoso123" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/"
 ```
 
 ```output
@@ -69,8 +69,8 @@ DefaultStreamsDestination            : {{
                                            "ttl": 3600
                                          }
                                        }}
-DeviceRefDeviceName                  : myDeviceName
-DeviceRefEndpointName                : myEndpointName
+DeviceRefDeviceName                  : my-device
+DeviceRefEndpointName                : my-endpoint
 DiscoveryId                          : myDiscoveryId
 DocumentationUri                     : https://www.example.com/manual/
 Event                                : {{
@@ -131,13 +131,11 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
-Location                             : eastus2
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredAssets/my-discovered-asset
+Location                             : eastus
 ManagementGroup                      : {{
                                          "name": "managementGroup1",
                                          "managementGroupConfiguration": "{\"retryCount\":10,\"retryBackoffInterval\":15}",
@@ -168,10 +166,10 @@ ManagementGroup                      : {{
 Manufacturer                         : Contoso123
 ManufacturerUri                      : https://www.contoso.com/manufacturerUri
 Model                                : ContosoModel
-Name                                 : test-ns-dasset-get
+Name                                 : my-discovered-asset
 ProductCode                          : SA34VDG
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         : 64-103816-519918-8
 SoftwareRevision                     : 2.0
 Stream                               : {{
@@ -215,7 +213,7 @@ Type                                 : microsoft.deviceregistry/namespaces/disco
 Version                              : 1
 ```
 
-Creates a new Namespace Discovered Asset with expanded parameters including device reference, asset metadata, and documentation details.
+Creates a new Namespace Discovered Asset with expanded parameters.
 
 ### Example 2: Create Namespace Discovered Asset via JSON File Path
 ```powershell
@@ -288,8 +286,8 @@ DefaultStreamsDestination            : {{
                                            "ttl": 3600
                                          }
                                        }}
-DeviceRefDeviceName                  : myDeviceName
-DeviceRefEndpointName                : myEndpointName
+DeviceRefDeviceName                  : my-device
+DeviceRefEndpointName                : my-endpoint
 DiscoveryId                          : myDiscoveryId
 DocumentationUri                     : https://www.example.com/manual/
 Event                                : {{
@@ -350,13 +348,11 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
-Location                             : eastus2
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredAssets/my-discovered-asset
+Location                             : eastus
 ManagementGroup                      : {{
                                          "name": "managementGroup1",
                                          "managementGroupConfiguration": "{\"retryCount\":10,\"retryBackoffInterval\":15}",
@@ -387,10 +383,10 @@ ManagementGroup                      : {{
 Manufacturer                         : Contoso123
 ManufacturerUri                      : https://www.contoso.com/manufacturerUri
 Model                                : ContosoModel
-Name                                 : test-ns-dasset-get
+Name                                 : my-discovered-asset
 ProductCode                          : SA34VDG
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         : 64-103816-519918-8
 SoftwareRevision                     : 2.0
 Stream                               : {{
@@ -434,7 +430,7 @@ Type                                 : microsoft.deviceregistry/namespaces/disco
 Version                              : 1
 ```
 
-Creates a new Namespace Discovered Asset using a JSON file that contains the discovered asset configuration including datasets, events, streams, and management groups.
+Creates a new Namespace Discovered Asset using a JSON file that contains the discovered asset prorperties.
 
 ### Example 3: Create Namespace Discovered Asset via JSON String
 ```powershell
@@ -508,8 +504,8 @@ DefaultStreamsDestination            : {{
                                            "ttl": 3600
                                          }
                                        }}
-DeviceRefDeviceName                  : myDeviceName
-DeviceRefEndpointName                : myEndpointName
+DeviceRefDeviceName                  : my-device
+DeviceRefEndpointName                : my-endpoint
 DiscoveryId                          : myDiscoveryId
 DocumentationUri                     : https://www.example.com/manual/
 Event                                : {{
@@ -570,13 +566,11 @@ Event                                : {{
                                            }
                                          ]
                                        }}
-ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType                 : CustomLocation
 HardwareRevision                     :
-Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredAssets/test-ns-dasset-get
-Location                             : eastus2
+Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredAssets/my-discovered-asset
+Location                             : eastus
 ManagementGroup                      : {{
                                          "name": "managementGroup1",
                                          "managementGroupConfiguration": "{\"retryCount\":10,\"retryBackoffInterval\":15}",
@@ -607,10 +601,10 @@ ManagementGroup                      : {{
 Manufacturer                         : Contoso123
 ManufacturerUri                      : https://www.contoso.com/manufacturerUri
 Model                                : ContosoModel
-Name                                 : test-ns-dasset-get
+Name                                 : my-discovered-asset
 ProductCode                          : SA34VDG
 ProvisioningState                    : Succeeded
-ResourceGroupName                    : adr-pwsh-test-rg
+ResourceGroupName                    : my-resource-group
 SerialNumber                         : 64-103816-519918-8
 SoftwareRevision                     : 2.0
 Stream                               : {{
@@ -654,5 +648,5 @@ Type                                 : microsoft.deviceregistry/namespaces/disco
 Version                              : 1
 ```
 
-Creates a new Namespace Discovered Asset using a JSON string that contains the discovered asset configuration including datasets, events, streams, and management groups.
+Creates a new Namespace Discovered Asset using a JSON string that contains the discovered asset properties.
 

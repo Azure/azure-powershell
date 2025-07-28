@@ -3,7 +3,7 @@
 Remove-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device"
 ```
 
-This example removes a namespace discovered device by specifying the resource group name, namespace name, and discovered device name directly.
+Removes a namespace discovered device by specifying the resource group name, namespace name, and discovered device name directly.
 
 ### Example 2: Remove a namespace discovered device using namespace identity object
 ```powershell
@@ -15,7 +15,7 @@ $namespaceIdentity = @{
 Remove-AzDeviceRegistryNamespaceDiscoveredDevice -NamespaceInputObject $namespaceIdentity -DiscoveredDeviceName "my-discovered-device"
 ```
 
-This example removes a namespace discovered device by using a namespace identity object that contains the subscription ID, resource group name, and namespace name, along with the discovered device name.
+Removes a namespace discovered device by using the parent namespace's identity object that contains the subscription ID, resource group name, and namespace name.
 
 ### Example 3: Remove a namespace discovered device using discovered device identity object
 ```powershell
@@ -23,5 +23,5 @@ $discoveredDevice = Get-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroup
 Remove-AzDeviceRegistryNamespaceDiscoveredDevice -InputObject $discoveredDevice
 ```
 
-This example removes a namespace discovered device by first retrieving the discovered device object and then passing it directly to the Remove command using the InputObject parameter.
+Removes a namespace discovered device by using the device's InputObject parameter.
 

@@ -19,7 +19,7 @@ $endpointInbound = @{
     }
 }
 
-New-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -Location "East US" -ExtendedLocationName "my-extended-location" -ExtendedLocationType "CustomLocation" -DiscoveryId "discovery-123" -Version "1.0.0" -Manufacturer "Contoso" -Model "Device-X1" -OperatingSystem "Linux" -OperatingSystemVersion "Ubuntu 20.04" -OutboundAssigned $outboundAssigned -EndpointInbound $endpointInbound
+New-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredDeviceName "my-discovered-device" -Location "East US" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -DiscoveryId "discovery-123" -Version "1.0.0" -Manufacturer "Contoso" -Model "Device-X1" -OperatingSystem "Linux" -OperatingSystemVersion "Ubuntu 20.04" -OutboundAssigned $outboundAssigned -EndpointInbound $endpointInbound
 ```
 
 ```output
@@ -30,39 +30,37 @@ Attribute                    : {
                                  "invalid": "foo",
                                  "x-ms-iothub-credential-id": ""
                                }
-DiscoveryId                  : myDiscoveryId
+DiscoveryId                  : discovery-123
 EndpointInbound              : {
                                  "endpoint1": {
-                                   "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "endpointType": "OpcUa",
+                                   "address": "opc.tcp://device.local:4840",
+                                   "version": "1.0"
                                  },
                                  "endpoint2": {
-                                   "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
+                                   "endpointType": "Http",
+                                   "address": "http://device.local:8080",
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
-Location                     : eastus2
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
+Location                     : East US
 Manufacturer                 : Contoso
-Model                        : foo123
-Name                         : foodevice
+Model                        : Device-X1
+Name                         : my-discovered-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
-                                 "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 "endpoint1": {
+                                   "endpointType": "OpcUa",
+                                   "address": "opc.tcp://example.com:4840"
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
@@ -73,10 +71,10 @@ Tag                          : {
                                  "sensor": "temperature,humidity"
                                }
 Type                         : microsoft.deviceregistry/namespaces/discovereddevices
-Version                      : 1
+Version                      : 1.0.0
 ```
 
-Creates a new discovered device in the specified namespace with all parameters specified directly. This example shows how to configure both inbound and outbound endpoints for device communication.
+Creates a new discovered device in the specified namespace with expanded parameters.
 
 ### Example 2: Create a discovered device using a JSON file
 ```powershell
@@ -108,22 +106,21 @@ ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
-Location                     : eastus2
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
+Location                     : East US
 Manufacturer                 : Contoso
-Model                        : foo123
-Name                         : foodevice
+Model                        : Device-X1
+Name                         : my-discovered-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
-                                 "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 "endpoint1": {
+                                   "endpointType": "OpcUa",
+                                   "address": "opc.tcp://example.com:4840"
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
@@ -134,10 +131,10 @@ Tag                          : {
                                  "sensor": "temperature,humidity"
                                }
 Type                         : microsoft.deviceregistry/namespaces/discovereddevices
-Version                      : 1
+Version                      : 1.0.0
 ```
 
-Creates a new discovered device using configuration from a JSON file. This approach is useful when you have complex device configurations stored in files or when automating deployments with predefined configurations.
+Creates a new discovered device using configuration from a JSON file containing the discovered device's properties.
 
 ### Example 3: Create a discovered device using a JSON string
 ```powershell
@@ -170,22 +167,21 @@ ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
                                ft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/foodevice
-Location                     : eastus2
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/my-discovered-device
+Location                     : East US
 Manufacturer                 : Contoso
-Model                        : foo123
-Name                         : foodevice
+Model                        : Device-X1
+Name                         : my-discovered-device
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
-                                 "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                 "endpoint1": {
+                                   "endpointType": "OpcUa",
+                                   "address": "opc.tcp://example.com:4840"
                                  }
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
@@ -196,8 +192,8 @@ Tag                          : {
                                  "sensor": "temperature,humidity"
                                }
 Type                         : microsoft.deviceregistry/namespaces/discovereddevices
-Version                      : 1
+Version                      : 1.0.0
 ```
 
-Creates a new discovered device using a JSON string loaded from a file. This method provides flexibility to modify the JSON configuration programmatically before creating the device.
+Creates a new discovered device using a JSON string loaded from a file containing the discovered device's properties.
 

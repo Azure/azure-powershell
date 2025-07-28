@@ -26,7 +26,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : 775ae13e-3732-4940-a8c9-bb860c9b243e
 ```
 
-This example updates a Device Registry Schema by modifying its display name, description, and tags using individual parameters. This approach is useful when you want to update specific properties of an existing schema.
+Updates a Device Registry Schema by modifying its properties using individual parameters.
 
 ### Example 2: Update a Device Registry Schema using schema registry identity object
 ```powershell
@@ -61,7 +61,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : 775ae13e-3732-4940-a8c9-bb860c9b243e
 ```
 
-This example updates a Device Registry Schema using a schema registry identity object. This approach is useful when you want to work with registry identity objects rather than specifying individual resource group and registry parameters.
+Updates a Device Registry Schema using the parent schema registry's identity object.
 
 ### Example 3: Update a Device Registry Schema using schema identity object
 ```powershell
@@ -91,5 +91,5 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : 775ae13e-3732-4940-a8c9-bb860c9b243e
 ```
 
-This example updates a Device Registry Schema using a schema identity object obtained from a previous operation. This approach is useful when you already have a schema object from another cmdlet like Get-AzDeviceRegistrySchema or New-AzDeviceRegistrySchema.
+Updates a Device Registry Schema using the schema's identity object.
 

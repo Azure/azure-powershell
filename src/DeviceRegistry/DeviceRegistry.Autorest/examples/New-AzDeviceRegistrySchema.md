@@ -1,17 +1,16 @@
 ### Example 1: Create a schema with expanded parameters
 ```powershell
-New-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName "my-registry" -Name "my-schema" -DisplayName "My Device Schema" -Description "Schema for device data" -Format "JsonSchema/draft-07" -Tag @{"Environment" = "Production"}
+New-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName "my-registry" -Name "my-schema" -DisplayName "My Device Schema" -Description "Schema for device data" -Format "JsonSchema/draft-07" -Tag @{"sampleKey" = "sampleValue"}
 ```
 
 ```output
-Description                  : This is a test schema.
-DisplayName                  : test-schema
+Description                  : Schema for device data
+DisplayName                  : My Device Schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/fooschema
-Name                         : fooschema
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.deviceregistry/schemaregistries/my-registry/schemas/my-schema
+Name                         : my-schema
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SchemaType                   : MessageSchema
 SystemDataCreatedAt          : 7/25/2025 12:33:31 AM
 SystemDataCreatedBy          : user@outlook.com
@@ -26,7 +25,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : 0ea44626-2ac8-488a-ac07-64566f99a308
 ```
 
-Creates a new schema in the specified registry with all parameters specified directly. This example shows how to create a schema with display name, description, format, and tags.
+Creates a new schema in the specified schema registry with expanded parameters.
 
 ### Example 2: Create a schema using a JSON file
 ```powershell
@@ -34,14 +33,13 @@ New-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName 
 ```
 
 ```output
-Description                  : This is a test schema.
-DisplayName                  : test-schema
+Description                  : Schema for device data
+DisplayName                  : My Device Schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/fooschema
-Name                         : fooschema
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.deviceregistry/schemaregistries/my-registry/schemas/my-schema
+Name                         : my-schema
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SchemaType                   : MessageSchema
 SystemDataCreatedAt          : 7/25/2025 12:33:31 AM
 SystemDataCreatedBy          : user@outlook.com
@@ -56,7 +54,7 @@ Type                         : microsoft.deviceregistry/schemaregistries/schemas
 Uuid                         : 0ea44626-2ac8-488a-ac07-64566f99a308
 ```
 
-Creates a new schema using configuration from a JSON file. This approach is useful when you have complex schema configurations stored in files or when automating deployments with predefined configurations.
+Creates a new schema under the specified schema registry using configuration from a JSON file containing the schema's properties.
 
 ### Example 3: Create a schema using a JSON string
 ```powershell
@@ -65,14 +63,13 @@ New-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName 
 ```
 
 ```output
-Description                  : This is a test schema.
-DisplayName                  : test-schema
+Description                  : Schema for device data
+DisplayName                  : My Device Schema
 Format                       : JsonSchema/draft-07
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/fooschema
-Name                         : fooschema
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.deviceregistry/schemaregistries/my-registry/schemas/my-schema
+Name                         : my-schema
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 SchemaType                   : MessageSchema
 SystemDataCreatedAt          : 7/25/2025 12:33:31 AM
 SystemDataCreatedBy          : user@outlook.com

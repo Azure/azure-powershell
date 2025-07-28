@@ -95,7 +95,7 @@ Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
 Version                      : 8
 ```
 
-This example updates a Device Registry Namespace Device by modifying its operating system version and inbound endpoints using individual parameters. This approach is useful when you want to update specific properties of an existing device with custom endpoint configurations.
+Updates a Device Registry Namespace Device by modifying its properties using individual parameters.
 
 ### Example 2: Update a Device Registry Namespace Device using JSON string
 ```powershell
@@ -192,7 +192,7 @@ Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
 Version                      : 8
 ```
 
-This example updates a Device Registry Namespace Device using a JSON string. This approach is useful when you have complex device configurations or when you want to update multiple properties at once using a structured JSON format.
+Updates a Device Registry Namespace Device using a JSON string containing the properties to update.
 
 ### Example 3: Update a Device Registry Namespace Device using JSON file path
 ```powershell
@@ -277,7 +277,7 @@ Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
 Version                      : 8
 ```
 
-This example updates a Device Registry Namespace Device using a JSON file. This approach is useful when you have predefined device configurations stored in files or when working with complex device properties that are easier to manage in a separate file.
+Updates a Device Registry Namespace Device using a JSON file containing the properties to update.
 
 ### Example 4: Update a Device Registry Namespace Device using namespace identity object
 ```powershell
@@ -381,7 +381,7 @@ Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
 Version                      : 8
 ```
 
-This example updates a Device Registry Namespace Device using a namespace identity object. This approach is useful when you want to work with namespace identity objects rather than specifying individual resource group and namespace parameters.
+Updates a Device Registry Namespace Device using the namespace's identity object.
 
 ### Example 5: Update a Device Registry Namespace Device using device identity object
 ```powershell
@@ -480,5 +480,5 @@ Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
 Version                      : 8
 ```
 
-This example updates a Device Registry Namespace Device using a device identity object obtained from a previous operation. This approach is useful when you already have a device object from another cmdlet like Get-AzDeviceRegistryNamespaceDevice or New-AzDeviceRegistryNamespaceDevice.
+Updates a Device Registry Namespace Device using the device's identity object.
 

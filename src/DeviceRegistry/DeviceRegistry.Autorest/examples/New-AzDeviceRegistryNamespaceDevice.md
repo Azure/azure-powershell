@@ -22,7 +22,7 @@ $endpointsInbound = @{
     }
 }
 
-New-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device" -Location "eastus" -ExtendedLocationName "my-extended-location" -ExtendedLocationType "CustomLocation" -Manufacturer "Contoso" -Model "model123" -OperatingSystem "Linux" -OperatingSystemVersion "1000" -OutboundAssigned $outboundAssigned -EndpointsInbound $endpointsInbound -Enabled
+New-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -Manufacturer "Contoso" -Model "model123" -OperatingSystem "Linux" -OperatingSystemVersion "1000" -OutboundAssigned $outboundAssigned -EndpointsInbound $endpointsInbound -Enabled
 ```
 
 ```output
@@ -40,53 +40,51 @@ Detail                       :
 DiscoveredDeviceRef          :
 Enabled                      : True
 EndpointsInbound             : {
-                                 "endpoint1": {
+                                 "my-inbound-endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "my-certificate"
                                      },
                                      "method": "Certificate"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
-                                 "endpoint2": {
+                                 "my-inbound-endpoint2": {
                                    "authentication": {
                                      "usernamePasswordCredentials": {
-                                       "usernameSecretName": "myusername",
-                                       "passwordSecretName": "mypassword"
+                                       "usernameSecretName": "my-username",
+                                       "passwordSecretName": "my-password"
                                      },
                                      "method": "UsernamePassword"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/microsoft.deviceregistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
-Location                     : eastus2
+Location                     : eastus
 Manufacturer                 : Contoso
 Message                      :
 Model                        : model123
-Name                         : adr-smart-device
+Name                         : my-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
-                                 "myendpoint2": {
+                                 "my-outbound-endpoint": {
                                    "endpointType": "azure-iot-edge",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://my-outbound-endpoint.westeurope-1.edge.azure.net"
                                  }
                                }
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM
@@ -103,7 +101,7 @@ Uuid                         : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Version                      : 1
 ```
 
-Creates a new Namespace Device with expanded parameters including inbound and outbound endpoints, device metadata, and authentication settings.
+Creates a new Namespace Device with expanded parameters.
 
 ### Example 2: Create Namespace Device via JSON File Path
 ```powershell
@@ -125,53 +123,51 @@ Detail                       :
 DiscoveredDeviceRef          :
 Enabled                      : True
 EndpointsInbound             : {
-                                 "endpoint1": {
+                                 "my-inbound-endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "my-certificate"
                                      },
                                      "method": "Certificate"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
-                                 "endpoint2": {
+                                 "my-inbound-endpoint2": {
                                    "authentication": {
                                      "usernamePasswordCredentials": {
-                                       "usernameSecretName": "myusername",
-                                       "passwordSecretName": "mypassword"
+                                       "usernameSecretName": "my-username",
+                                       "passwordSecretName": "my-password"
                                      },
                                      "method": "UsernamePassword"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/microsoft.deviceregistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
-Location                     : eastus2
+Location                     : eastus
 Manufacturer                 : Contoso
 Message                      :
 Model                        : model123
-Name                         : adr-smart-device
+Name                         : my-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
-                                 "myendpoint2": {
+                                 "my-outbound-endpoint": {
                                    "endpointType": "azure-iot-edge",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://my-outbound-endpoint.westeurope-1.edge.azure.net"
                                  }
                                }
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM
@@ -188,7 +184,7 @@ Uuid                         : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Version                      : 1
 ```
 
-Creates a new Namespace Device using a JSON file that contains the device configuration including endpoints, authentication, and device properties.
+Creates a new Namespace Device using a JSON file that contains the device properties.
 
 ### Example 3: Create Namespace Device via JSON String
 ```powershell
@@ -211,53 +207,51 @@ Detail                       :
 DiscoveredDeviceRef          :
 Enabled                      : True
 EndpointsInbound             : {
-                                 "endpoint1": {
+                                 "my-inbound-endpoint1": {
                                    "authentication": {
                                      "x509Credentials": {
-                                       "certificateSecretName": "mycertificate"
+                                       "certificateSecretName": "my-certificate"
                                      },
                                      "method": "Certificate"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint1.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
-                                 "endpoint2": {
+                                 "my-inbound-endpoint2": {
                                    "authentication": {
                                      "usernamePasswordCredentials": {
-                                       "usernameSecretName": "myusername",
-                                       "passwordSecretName": "mypassword"
+                                       "usernameSecretName": "my-username",
+                                       "passwordSecretName": "my-password"
                                      },
                                      "method": "UsernamePassword"
                                    },
                                    "endpointType": "Microsoft.IotHub",
-                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
+                                   "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/microso
-                               ft.deviceregistry/namespaces/adr-namespace/devices/adr-smart-device
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/microsoft.deviceregistry/namespaces/my-namespace/devices/my-device
 LastTransitionTime           : 7/23/2025 6:45:31 PM
-Location                     : eastus2
+Location                     : eastus
 Manufacturer                 : Contoso
 Message                      :
 Model                        : model123
-Name                         : adr-smart-device
+Name                         : my-device
 OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
-                                 "myendpoint2": {
+                                 "my-outbound-endpoint": {
                                    "endpointType": "azure-iot-edge",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://my-outbound-endpoint.westeurope-1.edge.azure.net"
                                  }
                                }
 OutboundUnassigned           : {
                                }
 ProvisioningState            : Succeeded
-ResourceGroupName            : adr-pwsh-test-rg
+ResourceGroupName            : my-resource-group
 StatusEndpointsInbound       : {
                                }
 SystemDataCreatedAt          : 7/23/2025 6:45:31 PM
@@ -274,5 +268,11 @@ Uuid                         : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Version                      : 1
 ```
 
-Creates a new Namespace Device using a JSON string that contains the device configuration including endpoints, authentication, and device properties.
+Creates a new Namespace Device using a JSON string that contains the device properties.
+Type                         : microsoft.deviceregistry/namespaces/devices
+Uuid                         : 777f5f99-b81d-4db9-be6e-fcf0a325a085
+Version                      : 1
+```
+
+Creates a new Namespace Device using a JSON string that contains the device properties.
 
