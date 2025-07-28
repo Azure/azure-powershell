@@ -403,7 +403,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    this.PreProcessManagedIdentityParameters();
                     await this.Client.SapVirtualInstancesCreateViaJsonString(SubscriptionId, ResourceGroupName, Name, JsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -491,31 +490,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance
                 WriteObject((await response));
-            }
-        }
-        
-        private void PreProcessManagedIdentityParameters()
-        {
-            if (this.UserAssignedIdentity?.Length > 0)
-            {
-                // calculate UserAssignedIdentity
-                _resourceBody.IdentityUserAssignedIdentity.Clear();
-                foreach( var id in this.UserAssignedIdentity )
-                {
-                    _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.UserAssignedIdentity());
-                }
-            }
-            // calculate IdentityType
-            if (this.UserAssignedIdentity?.Length > 0)
-            {
-                if ("SystemAssigned".Equals(_resourceBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
-                }
-                else
-                {
-                    _resourceBody.IdentityType = "UserAssigned";
-                }
             }
         }
     }
