@@ -154,10 +154,11 @@ function Test-ManagedHsmSoftDelete{
             $hsmName = getAssetName
             $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
             $administrator = "37f6731d-0484-43e3-b7e2-1f1bbc562109"
+            $sku = "StandardB1"
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
             # Test: create a SoftDeleteRetentionInDays-specified managed HSM
-            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 7
+            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -Sku $sku -SoftDeleteRetentionInDays 7
             Assert-AreEqual 7 $hsm.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be 7 as specified"
 
             Remove-AzKeyVaultManagedHsm -InputObject $hsm -Force
