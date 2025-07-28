@@ -75,7 +75,7 @@ Create an in-memory object for SapLandscapeMonitorMetricThresholds.
 Create an in-memory object for SapLandscapeMonitorSidMapping.
 
 ### [New-AzWorkloadsSapVirtualInstance](New-AzWorkloadsSapVirtualInstance.md)
-Creates a Virtual Instance for SAP solutions (VIS) resource
+Create a Virtual Instance for SAP solutions (VIS) resource
 
 ### [Remove-AzWorkloadsMonitor](Remove-AzWorkloadsMonitor.md)
 Deletes a SAP monitor with the specified subscription, resource group, and SAP monitor name.
@@ -120,15 +120,15 @@ Patches the Tags field of a SAP monitor for the specified subscription, resource
 Puts the SAP Application Server Instance resource.
 
 ### [Update-AzWorkloadsSapCentralInstance](Update-AzWorkloadsSapCentralInstance.md)
-Updates the SAP Central Services Instance resource.
+Update the SAP Central Services Instance resource.
 &lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ### [Update-AzWorkloadsSapDatabaseInstance](Update-AzWorkloadsSapDatabaseInstance.md)
-Updates the Database resource.
+Update the Database resource.
 
 ### [Update-AzWorkloadsSapLandscapeMonitor](Update-AzWorkloadsSapLandscapeMonitor.md)
 Patches the SAP Landscape Monitor Dashboard for the specified subscription, resource group, and SAP monitor name.
 
 ### [Update-AzWorkloadsSapVirtualInstance](Update-AzWorkloadsSapVirtualInstance.md)
-Updates a Virtual Instance for SAP solutions resource
+Update a Virtual Instance for SAP solutions (VIS) resource
 

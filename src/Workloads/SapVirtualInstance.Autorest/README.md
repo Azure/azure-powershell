@@ -47,20 +47,6 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance
 inlining-threshold: 100
 
 directive:
-# #|^CreateViaJsonString$|^CreateViaJsonFilePath$
-# - where:
-#     verb: New
-#     subject: ^SapVirtualInstance$
-#     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateExpanded$
-#   remove: true
-
-# - where:
-#     verb: New
-#     subject: ^SapVirtualInstance$
-#     variant: ^CreateViaJsonString$|^CreateViaJsonFilePath$
-#   set:
-#     operation-name: SapVirtualInstancesCreateViaJsonAlt
-
 - where:
     variant: ^(Stop|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
   remove: true
@@ -103,17 +89,17 @@ directive:
     parameter-name: Name
 
 # SapVirtualInstance
-# - where:
-#     verb: New
-#     subject: ^SapVirtualInstance$
-#     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateExpanded$
-#   remove: true
+- where:
+    verb: New
+    subject: ^SapVirtualInstance$
+    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+  remove: true
 
-# - where:
-#     subject: ^SapVirtualInstance$
-#     variant: ^CreateViaJsonString$
-#   set:
-#     operation-name: SapVirtualInstancesCreateViaJsonAlt
+- where:
+    verb: New
+    subject: ^SapVirtualInstance$
+    variant: ^CreateExpanded$
+  hide: true
 
 - where:
     subject: ^SapVirtualInstance$
