@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAdlsFileSystem()
         {
             var workingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAdlsFileSystemPermissions()
         {
             TestRunner.RunTestScript($"Test-DataLakeStoreFileSystemPermissions -location '{TestFileSystemPermissionResourceGroupLocation}'");
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAdlsEnumerateAndRestoreDeletedItem()
         {
             TestRunner.RunTestScript($"Test-AdlsEnumerateAndRestoreDeletedItem -location '{ResourceGroupLocation}'");

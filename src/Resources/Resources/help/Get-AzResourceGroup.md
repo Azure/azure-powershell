@@ -15,14 +15,15 @@ Gets resource groups.
 
 ### GetByResourceGroupName (Default)
 ```
-Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>] [-ExpandProperties]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceGroupId
 ```
-Get-AzResourceGroup [[-Location] <String>] [-Id <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResourceGroup [[-Location] <String>] [-Id <String>] [-ExpandProperties] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +72,11 @@ Get-AzResourceGroup -Location westus2 |
 Get-AzResourceGroup -Name WebServer*
 ```
 
+### Example 7: Get a resource group with expanded properties
+```powershell
+Get-AzResourceGroup -Name "ContosoRG" -ExpandProperties
+```
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -78,7 +84,7 @@ Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,9 +99,24 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandProperties
+When specified, output includes CreatedTime and ChangedTime of a resource.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -109,7 +130,7 @@ Specifies the ID of the resource group to get.
 Wildcard characters are not permitted.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
@@ -124,7 +145,7 @@ Accept wildcard characters: False
 Specifies the location of the resource group to get.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +160,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to get. This parameter supports wildcards at the beginning and/or the end of the string.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByResourceGroupName
 Aliases: ResourceGroupName
 
@@ -154,7 +175,7 @@ Accept wildcard characters: True
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +190,7 @@ Accept wildcard characters: False
 The tag hashtable to filter resource groups by.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: GetByResourceGroupName
 Aliases:
 
@@ -177,6 +198,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

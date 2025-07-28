@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Cmdlets
     /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMonitorWorkspace_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PrivateEndpointConnection","ProvisioningState"}, NewOutputProperties=new string[] {"PrivateEndpointConnection","ProvisioningState"}, ChangeDescription="The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Lists all workspaces in the specified resource group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Generated]
