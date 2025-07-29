@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
 schema: 2.0.0
@@ -20,7 +20,7 @@ Remove-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <Str
 
 ### ByInputObjectVMwareCbt
 ```
-Remove-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
+Remove-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
  [-ForceRemove <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -55,6 +55,7 @@ TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
 TargetObjectName                 : prsadhu-TestVM
 Task                             : {DisableProtectionOnPrimary, UpdateDraState}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
+
 ```
 
 Resync by id.
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Specifies the replicating server for which the replication needs to be disabled.
+Specifies the replcating server for which the replication needs to be disabled.
 The server object should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
@@ -155,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replicating server for which the replication needs to be disabled.
+Specifies the replcating server for which the replication needs to be disabled.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml
@@ -182,3 +183,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
