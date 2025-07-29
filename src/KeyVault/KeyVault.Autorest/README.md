@@ -3,6 +3,9 @@
 This directory contains the PowerShell module for the KeyVault service.
 
 ---
+## Status
+[![Az.KeyVault](https://img.shields.io/powershellgallery/v/Az.KeyVault.svg?style=flat-square&label=Az.KeyVault "Az.KeyVault")](https://www.powershellgallery.com/packages/Az.KeyVault/)
+
 ## Info
 - Modifiable: yes
 - Generated: all
