@@ -17,7 +17,7 @@ Create a Virtual Instance for SAP solutions (VIS) resource
 New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -CentralServerVmId <String> -Environment <String> -Location <String> -SapProduct <String>
  [-ManagedRgStorageAccountName <String>] [-EnableSystemAssignedIdentity] [-ManagedResourceGroupName <String>]
- [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-S
 New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Environment <String> -Location <String> -SapProduct <String> [-EnableSystemAssignedIdentity]
  [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-UserAssignedIdentity <String[]>] -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -425,10 +425,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User assigned identities dictionary
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: CreateWithDiscovery, CreateWithJsonTemplatePath
 Aliases:
 
