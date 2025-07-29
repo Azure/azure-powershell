@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+external help file: Az.Batch-help.xml
 Module Name: Az.Batch
-ms.assetid: 89F604DD-EE77-440D-BCC9-3F74D994C447
 online version: https://learn.microsoft.com/powershell/module/az.batch/remove-azbatchaccount
 schema: 2.0.0
 ---
@@ -9,53 +8,74 @@ schema: 2.0.0
 # Remove-AzBatchAccount
 
 ## SYNOPSIS
-Removes a Batch account.
+Deletes the specified Batch account.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-Remove-AzBatchAccount [-AccountName] <String> [[-ResourceGroupName] <String>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzBatchAccount -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzBatchAccount -InputObject <IBatchIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzBatchAccount** cmdlet removes an Azure Batch account.
-This cmdlet prompts you before it removes an account, unless you specify the *Force* parameter.
+Deletes the specified Batch account.
 
 ## EXAMPLES
 
-### Example 1: Remove a Batch account
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzBatchAccount -AccountName "pfuller"
+{{ Add code here }}
 ```
 
-This command removes the Batch account named pfuller.
-This command prompts you for confirmation before it deletes the account.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -AccountName
-Specifies the name of the Batch account that this cmdlet removes.
+The name of the Batch account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: Name
+Parameter Sets: Delete
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -64,8 +84,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -80,17 +146,34 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the resource group of the account that this cmdlet removes.
+The name of the resource group that contains the Batch account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Azure subscription ID.
+This is a GUID-formatted string (e.g.
+00000000-0000-0000-0000-000000000000)
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -104,7 +187,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -120,7 +203,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -130,20 +213,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchIdentity
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzBatchAccount](./Get-AzBatchAccount.md)
-
-[New-AzBatchAccount](./New-AzBatchAccount.md)
-
-[Set-AzBatchAccount](./Set-AzBatchAccount.md)
-
-[Azure Batch Cmdlets](/powershell/module/Az.Batch/)

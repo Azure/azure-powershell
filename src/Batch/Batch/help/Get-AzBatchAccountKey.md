@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+external help file: Az.Batch-help.xml
 Module Name: Az.Batch
-ms.assetid: AFDE5ECD-29AB-4C91-98BF-1B8C9C3BB079
 online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchaccountkey
 schema: 2.0.0
 ---
@@ -9,65 +8,78 @@ schema: 2.0.0
 # Get-AzBatchAccountKey
 
 ## SYNOPSIS
-Gets the keys of a Batch account.
+This operation applies only to Batch accounts with allowedAuthenticationModes containing 'SharedKey'.
+If the Batch account doesn't contain 'SharedKey' in its allowedAuthenticationMode, clients cannot use shared keys to authenticate, and must use another allowedAuthenticationModes instead.
+In this case, getting the keys will fail.
 
 ## SYNTAX
 
+### Get (Default)
 ```
-Get-AzBatchAccountKey [-AccountName] <String> [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBatchAccountKey -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzBatchAccountKey -InputObject <IBatchIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzBatchAccountKey** cmdlet gets the keys of an Azure Batch account in the current subscription.
+This operation applies only to Batch accounts with allowedAuthenticationModes containing 'SharedKey'.
+If the Batch account doesn't contain 'SharedKey' in its allowedAuthenticationMode, clients cannot use shared keys to authenticate, and must use another allowedAuthenticationModes instead.
+In this case, getting the keys will fail.
 
 ## EXAMPLES
 
-### Example 1: Get batch account keys and save it in $Context variable for use later
+### Example 1: {{ Add title here }}
 ```powershell
-$Context = Get-AzBatchAccountKey -AccountName myaccount
+{{ Add code here }}
 ```
 
-This command gets the account details and stores it in a `$Context` object for use later.
-
-### Example 2: Get batch account keys and display them
-<!-- Skip: Output cannot be splitted from code -->
-
-
-```powershell
-$Context = Get-AzBatchAccountKey -AccountName myaccount
-$Context.PrimaryAccountKey
-ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
-$Context.SecondaryAccountKey
-ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command gets the account keys and prints them to the console.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -AccountName
-Specifies the name of the account for which this cmdlet gets keys.
+The name of the Batch account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: Name
+Parameter Sets: Get
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -76,18 +88,81 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the account for which this cmdlet gets keys.
+The name of the resource group that contains the Batch account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Azure subscription ID.
+This is a GUID-formatted string (e.g.
+00000000-0000-0000-0000-000000000000)
+
+```yaml
+Type: System.String[]
+Parameter Sets: Get
 Aliases:
 
 Required: False
 Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,16 +171,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Batch.BatchAccountContext
+### Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchAccountKeys
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzBatchAccountKey](./New-AzBatchAccountKey.md)
-
-[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
