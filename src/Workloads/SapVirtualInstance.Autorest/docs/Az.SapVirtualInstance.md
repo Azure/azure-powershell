@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SapVirtualInstance
-Module Guid: 7a4558d1-d2af-4ce2-9c91-540c8aeddb75
+Module Guid: ef2fac55-c936-4613-9618-a7795408b0e7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance
 Help Version: 1.0.0.0
 Locale: en-US
