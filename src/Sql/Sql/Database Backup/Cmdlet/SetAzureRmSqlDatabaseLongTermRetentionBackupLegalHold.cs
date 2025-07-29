@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Database Long Term Retention Backup object to set legal hold.")]
+            HelpMessage = "The Database Long Term Retention Backup object for which to set legal hold.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Resource ID of the Database Long Term Retention Backup to set legal hold.")]
+            HelpMessage = "The Resource ID of the Database Long Term Retention Backup for which to set legal hold.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

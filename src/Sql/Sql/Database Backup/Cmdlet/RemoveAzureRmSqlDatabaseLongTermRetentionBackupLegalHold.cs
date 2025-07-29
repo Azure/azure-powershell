@@ -24,29 +24,29 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionBackupLegalHold", DefaultParameterSetName = RemoveBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionBackupLegalHold", DefaultParameterSetName = RemoveBackupLegalHoldDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
     public class RemoveAzureRmSqlDatabaseLongTermRetentionBackupLegalHold : AzureSqlDatabaseLongTermRetentionBackupCmdletBase<AzureSqlDatabaseLongTermRetentionBackupModel>
     {
         /// <summary>
-        /// Parameter set name for the default remove.
+        /// Parameter set name for the default remove legal hold.
         /// </summary>
-        private const string RemoveBackupDefaultSet = "RemoveBackupDefault";
+        private const string RemoveBackupLegalHoldDefaultSet = "RemoveBackupLegalHoldDefault";
 
         /// <summary>
-        /// Parameter set name for remove with an input object.
+        /// Parameter set name for remove legal hold with an input object.
         /// </summary>
-        private const string RemoveBackupByInputObjectSet = "RemoveBackupByInputObject";
+        private const string RemoveBackupLegalHoldByInputObjectSet = "RemoveBackupLegalHoldByInputObject";
 
         /// <summary>
-        /// Parameter set name for remove with a resource ID.
+        /// Parameter set name for remove legal hold with a resource ID.
         /// </summary>
-        private const string RemoveBackupByResourceIdSet = "RemoveBackupByResourceId";
+        private const string RemoveBackupLegalHoldByResourceIdSet = "RemoveBackupLegalHoldByResourceId";
 
         /// <summary>
         /// Gets or sets the name of the location the backup is in.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = RemoveBackupDefaultSet,
+            ParameterSetName = RemoveBackupLegalHoldDefaultSet,
             Position = 0,
             HelpMessage = "The location of the backups' source server.")]
         [ValidateNotNullOrEmpty]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// Gets or sets the name of the server.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = RemoveBackupDefaultSet,
+            ParameterSetName = RemoveBackupLegalHoldDefaultSet,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the backup is under.")]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// Gets or sets the name of the database.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = RemoveBackupDefaultSet,
+            ParameterSetName = RemoveBackupLegalHoldDefaultSet,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database the backup is from.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
@@ -76,24 +76,24 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the LTR Backup object to remove.
+        /// Gets or sets the LTR Backup object to remove legal hold.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveBackupByInputObjectSet,
+        [Parameter(ParameterSetName = RemoveBackupLegalHoldByInputObjectSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Database Long Term Retention Backup object to remove.")]
+            HelpMessage = "The Database Long Term Retention Backup object for which to remove legal hold.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource ID of the LTR Backup to remove.
+        /// Gets or sets the resource ID of the LTR Backup to remove legal hold.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveBackupByResourceIdSet,
+        [Parameter(ParameterSetName = RemoveBackupLegalHoldByResourceIdSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Resource ID of the Database Long Term Retention Backup to remove.")]
+            HelpMessage = "The Resource ID of the Database Long Term Retention Backup for which to remove legal hold.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// Gets or sets the backup name.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = RemoveBackupDefaultSet,
+            ParameterSetName = RemoveBackupLegalHoldDefaultSet,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "The name of the backup.")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = RemoveBackupDefaultSet,
+            ParameterSetName = RemoveBackupLegalHoldDefaultSet,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }

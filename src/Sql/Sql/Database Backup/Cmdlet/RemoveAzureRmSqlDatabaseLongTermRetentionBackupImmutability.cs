@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Database Long Term Retention Backup to remove time-based immutability.")]
+            HelpMessage = "The Database Long Term Retention Backup for which to remove time-based immutability.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Resource ID of the Database Long Term Retention Backup to remove time-based immutability")]
+            HelpMessage = "The Resource ID of the Database Long Term Retention Backup for which to remove time-based immutability")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
