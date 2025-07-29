@@ -50,7 +50,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
  [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -73,7 +74,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
  [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -253,7 +255,7 @@ $account.SasPolicy.SasExpirationPeriod
 
 SasExpirationPeriod ExpirationAction
 ------------------- ----------------
-1.12:05:06          Block          
+1.12:05:06          Block
 ```
 
 This command creates a Storage account with KeyExpirationPeriod and SasExpirationPeriod with SasExpirationAction, then show the created account related properties.

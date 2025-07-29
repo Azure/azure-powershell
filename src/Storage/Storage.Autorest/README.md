@@ -33,9 +33,7 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/storage.json
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/file.json
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/storageTaskAssignments.json
+  - D:\code\swagger\specification\storage\resource-manager\Microsoft.Storage\stable\2025-01-01\openapi.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
@@ -111,7 +109,7 @@ directive:
     set:
       property-name: StorageAccountLimitMaxProvisionedIops
   - where:
-      subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
+      subject: .*NetworkSecurityPerimeter.*|.*Blob.*|.*Table.*|.*Queue.*|^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
     remove: true
   - where:
       parameter-name: ParameterEndBy
@@ -153,16 +151,16 @@ directive:
       property-name: ParameterStartOn
     set:
       property-name: StartOn
-  - from: storageTaskAssignments.json
+  - from: openapi.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports"].get
     transform: > 
       $["operationId"] = "StorageTaskAssignmentInstancesReport_List"
   # Renaming the operationId to StorageTaskAssignmentInstancesReport_Get, but the operation actually lists all the reports under a specific storage task assignment. 
-  - from: storageTaskAssignments.json
+  - from: openapi.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports"].get
     transform: > 
       $["operationId"] = "StorageTaskAssignmentInstancesReport_Get"
-  - from: storageTaskAssignments.json
+  - from: openapi.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports"].get
     transform: > 
       $["operationId"] = "StorageTaskAssignmentInstancesReport_Get"
