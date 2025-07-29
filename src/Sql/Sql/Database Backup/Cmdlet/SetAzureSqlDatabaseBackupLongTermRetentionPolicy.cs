@@ -17,7 +17,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
@@ -46,6 +48,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Parameter set name for Yearly Retention.
         /// </summary>
         private const string YearlyRetentionRequiredSet = "YearlyRetentionRequired";
+
+        private const string ImmutabilityRequiredSet = "ImmutabilityRequired";
 
         /// <summary>
         /// Parameter set for clearing the long term retention V2 policy.
@@ -112,6 +116,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [ValidateNotNullOrEmpty]
         public int WeekOfYear { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "When set, future backups will have TimeBasedImmutability enabled.")]
+        [ValidateSet(
+            DatabaseBackupConstants.TimeBasedImmutabilityValues.Enabled,
+            DatabaseBackupConstants.TimeBasedImmutabilityValues.Disabled)]
+        public string TimeBasedImmutability { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The setting for time-based immutability mode for future backups. Only effective if TimeBasedImmutability is enabled. Value can be either Locked or Unlocked. Caution: Immutability of LTR backup cannot be removed if TimeBasedImmutabilityMode is Locked.")]
+        [ValidateSet(
+            DatabaseBackupConstants.TimeBasedImmutabilityModeValues.Unlocked,
+            DatabaseBackupConstants.TimeBasedImmutabilityModeValues.Locked)]
+        public string TimeBasedImmutabilityMode { get; set; }
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -159,6 +179,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 WeekOfYear = 1;
             }
 
+            if (!string.IsNullOrEmpty(TimeBasedImmutabilityMode) && 
+                (string.IsNullOrEmpty(TimeBasedImmutability) || TimeBasedImmutability == DatabaseBackupConstants.TimeBasedImmutabilityValues.Disabled))
+            {
+                throw new ArgumentException("TimeBasedImmutabilityMode can only be specified if TimeBasedImmutability is set to Enabled");
+            }
+
             return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>()
             {
                 new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
@@ -170,7 +196,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     WeeklyRetention = WeeklyRetention,
                     MonthlyRetention = MonthlyRetention,
                     YearlyRetention = YearlyRetention,
-                    WeekOfYear = WeekOfYear
+                    WeekOfYear = WeekOfYear,
+                    TimeBasedImmutability = TimeBasedImmutability,
+                    TimeBasedImmutabilityMode = TimeBasedImmutabilityMode
                 }
             };
         }

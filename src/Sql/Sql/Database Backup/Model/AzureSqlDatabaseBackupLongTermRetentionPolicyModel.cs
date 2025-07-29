@@ -59,5 +59,20 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the location
         /// </summary>
         public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting for whether to enable time-based immutability for
+        /// future backups. When set, future backups will have TimeBasedImmutability
+        /// enabled. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        public string TimeBasedImmutability { get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting for time-based immutability mode for future backup
+        /// (Value can be either Locked or UnLocked. Only effective if
+        /// TimeBasedImmutability is enabled). Caution: Immutability of LTR backup
+        /// cannot be removed if TimeBasedImmutabilityMode is Locked. Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;
+        /// </summary>
+        public string TimeBasedImmutabilityMode { get; set; }
     }
 }
