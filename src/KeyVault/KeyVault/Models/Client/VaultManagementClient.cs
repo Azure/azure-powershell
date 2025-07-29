@@ -130,6 +130,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.CreateMode = CreateMode.Recover;
             }
 
+            // want to check path of call to see Azure path for api. 
             var response = KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: parameters.ResourceGroupName,
                 vaultName: parameters.Name,
