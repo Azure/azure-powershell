@@ -1,49 +1,68 @@
 ---
 external help file:
 Module Name: Az.DeviceRegistry
-online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryassetendpointprofile
+online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistrynamespacediscoveredasset
 schema: 2.0.0
 ---
 
-# Remove-AzDeviceRegistryAssetEndpointProfile
+# Remove-AzDeviceRegistryNamespaceDiscoveredAsset
 
 ## SYNOPSIS
-Delete a AssetEndpointProfile
+Delete a NamespaceDiscoveredAsset
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDeviceRegistryAssetEndpointProfile -InputObject <IDeviceRegistryIdentity>
+Remove-AzDeviceRegistryNamespaceDiscoveredAsset -InputObject <IDeviceRegistryIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityNamespace
+```
+Remove-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String>
+ -NamespaceInputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Delete a AssetEndpointProfile
+Delete a NamespaceDiscoveredAsset
 
 ## EXAMPLES
 
-### Example 1: Delete an asset endpoint profile by name and resource group.
+### Example 1: Remove a namespace discovered asset by name
 ```powershell
-Remove-AzDeviceRegistryAssetEndpointProfile -Name test-assetendpointprofile -ResourceGroupName test-rg
+Remove-AzDeviceRegistryNamespaceDiscoveredAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredAssetName "my-discovered-asset"
 ```
 
-This command deletes asset endpoint profile `test-assetendpointprofile` from resource group `test-rg`
+Removes a namespace discovered asset by specifying the resource group name, namespace name, and discovered asset name directly.
 
-### Example 2: DeleteViaIdentity for asset endpoint profile.
+### Example 2: Remove a namespace discovered asset using namespace identity object
 ```powershell
-$assetEndpointProfile = @{ "ResourceGroupName" = "test-rg"; "AssetEndpointProfileName" = "test-assetendpointprofile"; "SubscriptionId" = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx"; }
-Remove-AzDeviceRegistryAssetEndpointProfile -InputObject $assetEndpointProfile
+$namespaceIdentity = @{
+    SubscriptionId = "12345678-1234-1234-1234-123456789abc"
+    ResourceGroupName = "my-resource-group"
+    NamespaceName = "my-namespace"
+}
+Remove-AzDeviceRegistryNamespaceDiscoveredAsset -NamespaceInputObject $namespaceIdentity -DiscoveredAssetName "my-discovered-asset"
 ```
 
-This command deletes asset endpoint profile `test-assetendpointprofile` via the Identity input object.
+Removes a namespace discovered asset by using the parent namespace's identity object that contains the subscription ID, resource group name, and namespace name.
+
+### Example 3: Remove a namespace discovered asset using discovered asset identity object
+```powershell
+$discoveredAsset = Get-AzDeviceRegistryNamespaceDiscoveredAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DiscoveredAssetName "my-discovered-asset"
+Remove-AzDeviceRegistryNamespaceDiscoveredAsset -InputObject $discoveredAsset
+```
+
+Removes a namespace discovered asset by using the asset's InputObject parameter.
 
 ## PARAMETERS
 
@@ -78,6 +97,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiscoveredAssetName
+The name of the discovered asset.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -93,13 +127,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Asset Endpoint Profile name parameter.
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
+Parameter Sets: DeleteViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The name of the namespace.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: AssetEndpointProfileName
+Aliases:
 
 Required: True
 Position: Named

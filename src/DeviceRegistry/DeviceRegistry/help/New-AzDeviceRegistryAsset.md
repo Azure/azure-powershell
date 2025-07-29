@@ -1,5 +1,5 @@
 ---
-external help file: Az.DeviceRegistry-help.xml
+external help file:
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/new-azdeviceregistryasset
 schema: 2.0.0
@@ -8,40 +8,39 @@ schema: 2.0.0
 # New-AzDeviceRegistryAsset
 
 ## SYNOPSIS
-create a Asset
+Create a Asset
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+New-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> -ExtendedLocationName <String>
+ -ExtendedLocationType <String> -Location <String> [-SubscriptionId <String>]
  [-AssetEndpointProfileRef <String>] [-Attribute <Hashtable>] [-Dataset <IDataset[]>]
  [-DefaultDatasetsConfiguration <String>] [-DefaultEventsConfiguration <String>] [-DefaultTopicPath <String>]
  [-DefaultTopicRetain <String>] [-Description <String>] [-DiscoveredAssetRef <String[]>]
  [-DisplayName <String>] [-DocumentationUri <String>] [-Enabled] [-Event <IEvent[]>]
  [-ExternalAssetId <String>] [-HardwareRevision <String>] [-Manufacturer <String>] [-ManufacturerUri <String>]
  [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>] [-SoftwareRevision <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a Asset
+Create a Asset
 
 ## EXAMPLES
 
@@ -888,3 +887,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

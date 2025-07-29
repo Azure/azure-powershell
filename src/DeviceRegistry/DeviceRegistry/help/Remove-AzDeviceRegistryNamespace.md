@@ -1,49 +1,48 @@
 ---
 external help file:
 Module Name: Az.DeviceRegistry
-online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryassetendpointprofile
+online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistrynamespace
 schema: 2.0.0
 ---
 
-# Remove-AzDeviceRegistryAssetEndpointProfile
+# Remove-AzDeviceRegistryNamespace
 
 ## SYNOPSIS
-Delete a AssetEndpointProfile
+Delete a Namespace
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDeviceRegistryNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDeviceRegistryAssetEndpointProfile -InputObject <IDeviceRegistryIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeviceRegistryNamespace -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a AssetEndpointProfile
+Delete a Namespace
 
 ## EXAMPLES
 
-### Example 1: Delete an asset endpoint profile by name and resource group.
+### Example 1: Remove a namespace by name
 ```powershell
-Remove-AzDeviceRegistryAssetEndpointProfile -Name test-assetendpointprofile -ResourceGroupName test-rg
+Remove-AzDeviceRegistryNamespace -Name "my-namespace" -ResourceGroupName "my-resource-group"
 ```
 
-This command deletes asset endpoint profile `test-assetendpointprofile` from resource group `test-rg`
+Removes a namespace by specifying the namespace name and resource group name.
 
-### Example 2: DeleteViaIdentity for asset endpoint profile.
+### Example 2: Remove a namespace using an input object
 ```powershell
-$assetEndpointProfile = @{ "ResourceGroupName" = "test-rg"; "AssetEndpointProfileName" = "test-assetendpointprofile"; "SubscriptionId" = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx"; }
-Remove-AzDeviceRegistryAssetEndpointProfile -InputObject $assetEndpointProfile
+$namespace = Get-AzDeviceRegistryNamespace -Name "my-namespace" -ResourceGroupName "my-resource-group"
+Remove-AzDeviceRegistryNamespace -InputObject $namespace
 ```
 
-This command deletes asset endpoint profile `test-assetendpointprofile` via the Identity input object.
+Removes a namespace using an InputObject.
 
 ## PARAMETERS
 
@@ -94,12 +93,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Asset Endpoint Profile name parameter.
+The name of the namespace.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: AssetEndpointProfileName
+Aliases: NamespaceName
 
 Required: True
 Position: Named

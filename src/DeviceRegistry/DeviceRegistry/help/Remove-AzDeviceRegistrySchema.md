@@ -1,66 +1,71 @@
 ---
 external help file:
 Module Name: Az.DeviceRegistry
-online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryassetendpointprofile
+online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryschema
 schema: 2.0.0
 ---
 
-# Remove-AzDeviceRegistryAssetEndpointProfile
+# Remove-AzDeviceRegistrySchema
 
 ## SYNOPSIS
-Delete a AssetEndpointProfile
+Delete a Schema
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDeviceRegistrySchema -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDeviceRegistryAssetEndpointProfile -InputObject <IDeviceRegistryIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeviceRegistrySchema -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentitySchemaRegistry
+```
+Remove-AzDeviceRegistrySchema -Name <String> -SchemaRegistryInputObject <IDeviceRegistryIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a AssetEndpointProfile
+Delete a Schema
 
 ## EXAMPLES
 
-### Example 1: Delete an asset endpoint profile by name and resource group.
+### Example 1: Remove a schema by name
 ```powershell
-Remove-AzDeviceRegistryAssetEndpointProfile -Name test-assetendpointprofile -ResourceGroupName test-rg
+Remove-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName "my-schema-registry" -Name "my-schema"
 ```
 
-This command deletes asset endpoint profile `test-assetendpointprofile` from resource group `test-rg`
+Removes a schema by specifying the resource group name, schema registry name, and schema name directly.
+Removing a schema also removes all nested schema version resources.
 
-### Example 2: DeleteViaIdentity for asset endpoint profile.
+### Example 2: Remove a schema using schema registry identity object
 ```powershell
-$assetEndpointProfile = @{ "ResourceGroupName" = "test-rg"; "AssetEndpointProfileName" = "test-assetendpointprofile"; "SubscriptionId" = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx"; }
-Remove-AzDeviceRegistryAssetEndpointProfile -InputObject $assetEndpointProfile
+$registryIdentity = @{
+    SubscriptionId = "12345678-1234-1234-1234-123456789abc"
+    ResourceGroupName = "my-resource-group"
+    SchemaRegistryName = "my-schema-registry"
+}
+Remove-AzDeviceRegistrySchema -SchemaRegistryInputObject $registryIdentity -Name "my-schema"
 ```
 
-This command deletes asset endpoint profile `test-assetendpointprofile` via the Identity input object.
+Removes a schema by using the parent schema registry's identity object that contains the subscription ID, resource group name, and schema registry name.
+Removing a schema also removes all nested schema version resources.
+
+### Example 3: Remove a schema using schema identity object
+```powershell
+$schema = Get-AzDeviceRegistrySchema -ResourceGroupName "my-resource-group" -RegistryName "my-schema-registry" -Name "my-schema"
+Remove-AzDeviceRegistrySchema -InputObject $schema
+```
+
+Removes a schema by using the schema's InputObject parameter.
+Removing a schema also removes all nested schema version resources.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -94,29 +99,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Asset Endpoint Profile name parameter.
+Schema name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: AssetEndpointProfileName
+Parameter Sets: Delete, DeleteViaIdentitySchemaRegistry
+Aliases: SchemaName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,6 +128,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryName
+Schema registry name parameter.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: SchemaRegistryName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -151,6 +156,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaRegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
+Parameter Sets: DeleteViaIdentitySchemaRegistry
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

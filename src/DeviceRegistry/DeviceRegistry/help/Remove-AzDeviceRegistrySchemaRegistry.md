@@ -1,49 +1,50 @@
 ---
 external help file:
 Module Name: Az.DeviceRegistry
-online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryassetendpointprofile
+online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryschemaregistry
 schema: 2.0.0
 ---
 
-# Remove-AzDeviceRegistryAssetEndpointProfile
+# Remove-AzDeviceRegistrySchemaRegistry
 
 ## SYNOPSIS
-Delete a AssetEndpointProfile
+Delete a SchemaRegistry
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDeviceRegistrySchemaRegistry -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDeviceRegistryAssetEndpointProfile -InputObject <IDeviceRegistryIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeviceRegistrySchemaRegistry -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a AssetEndpointProfile
+Delete a SchemaRegistry
 
 ## EXAMPLES
 
-### Example 1: Delete an asset endpoint profile by name and resource group.
+### Example 1: Remove a schema registry by name
 ```powershell
-Remove-AzDeviceRegistryAssetEndpointProfile -Name test-assetendpointprofile -ResourceGroupName test-rg
+Remove-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group" -SchemaRegistryName "my-schema-registry"
 ```
 
-This command deletes asset endpoint profile `test-assetendpointprofile` from resource group `test-rg`
+Removes a schema registry by specifying the resource group name and schema registry name directly.
+Removing a schema registry resource also removes the nested schema and schema version resources below it.
 
-### Example 2: DeleteViaIdentity for asset endpoint profile.
+### Example 2: Remove a schema registry using schema registry identity object
 ```powershell
-$assetEndpointProfile = @{ "ResourceGroupName" = "test-rg"; "AssetEndpointProfileName" = "test-assetendpointprofile"; "SubscriptionId" = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx"; }
-Remove-AzDeviceRegistryAssetEndpointProfile -InputObject $assetEndpointProfile
+$schemaRegistry = Get-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group" -SchemaRegistryName "my-schema-registry"
+Remove-AzDeviceRegistrySchemaRegistry -InputObject $schemaRegistry
 ```
 
-This command deletes asset endpoint profile `test-assetendpointprofile` via the Identity input object.
+Removes a schema registry by using the schema registry's InputObject parameter.
+Removing a schema registry resource also removes the nested schema and schema version resources below it.
 
 ## PARAMETERS
 
@@ -94,12 +95,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Asset Endpoint Profile name parameter.
+Schema registry name parameter.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: AssetEndpointProfileName
+Aliases: SchemaRegistryName
 
 Required: True
 Position: Named

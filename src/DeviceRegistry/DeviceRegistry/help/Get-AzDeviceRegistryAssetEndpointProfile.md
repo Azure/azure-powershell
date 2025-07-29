@@ -1,5 +1,5 @@
 ---
-external help file: Az.DeviceRegistry-help.xml
+external help file:
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistryassetendpointprofile
 schema: 2.0.0
@@ -21,7 +21,12 @@ Get-AzDeviceRegistryAssetEndpointProfile [-SubscriptionId <String[]>] [-DefaultP
 ### Get
 ```
 Get-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDeviceRegistryAssetEndpointProfile -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -29,12 +34,6 @@ Get-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <Stri
 ```
 Get-AzDeviceRegistryAssetEndpointProfile -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeviceRegistryAssetEndpointProfile -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -218,7 +217,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -242,3 +241,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

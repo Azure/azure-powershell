@@ -1,5 +1,5 @@
 ---
-external help file: Az.DeviceRegistry-help.xml
+external help file:
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/update-azdeviceregistryassetendpointprofile
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDeviceRegistryAssetEndpointProfile
 
 ## SYNOPSIS
-update a AssetEndpointProfile
+Update a AssetEndpointProfile
 
 ## SYNTAX
 
@@ -19,22 +19,7 @@ Update-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <S
  [-EndpointProfileType <String>] [-Tag <Hashtable>] [-TargetAddress <String>]
  [-UsernamePasswordCredentialsPasswordSecretName <String>]
  [-UsernamePasswordCredentialsUsernameSecretName <String>] [-X509CredentialsCertificateSecretName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -43,12 +28,25 @@ Update-AzDeviceRegistryAssetEndpointProfile -InputObject <IDeviceRegistryIdentit
  [-AdditionalConfiguration <String>] [-AuthenticationMethod <String>] [-EndpointProfileType <String>]
  [-Tag <Hashtable>] [-TargetAddress <String>] [-UsernamePasswordCredentialsPasswordSecretName <String>]
  [-UsernamePasswordCredentialsUsernameSecretName <String>] [-X509CredentialsCertificateSecretName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a AssetEndpointProfile
+Update a AssetEndpointProfile
 
 ## EXAMPLES
 
@@ -335,7 +333,7 @@ Asset Endpoint Profile name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: AssetEndpointProfileName
 
 Required: True
@@ -366,7 +364,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -382,7 +380,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -515,3 +513,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
