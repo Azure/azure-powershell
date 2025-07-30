@@ -80,16 +80,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the managed HSM instance.")]
-        // @TODO: add other arguments here from Enum?
-        [PSArgumentCompleter("StandardB1", "CustomB32")]
+        [PSArgumentCompleter("StandardB1", "CustomB32", "CustomB6", "CustomC42", "CustomC10")]
         public string Sku { get; set; }
-
-        // @TODO:
-        // Need to generate `SkuFamilyName` param
-        // Sku maps to `SkuName`
-        // `SkuFamilyName` will need to be Mandatory based on Swagger.
-        // SkuName will default to StandardB1 if not provided. (due to custom type enum behaviour). 
-        // Do I just manually create a param here or is it automatically generated? 
 
         [Parameter(Mandatory = true,
             HelpMessage = "Specifies how long the deleted managed hsm pool is retained, and how long until the managed hsm pool in the deleted state can be purged.")]
