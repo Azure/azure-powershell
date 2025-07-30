@@ -29,7 +29,7 @@ $NetworkManagerName = "testNM"
 $IpamPoolName = "testPool"
 $StaticCidrName = "testStaticCidr"
 
-$staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $ResourceGroupName -NetworkManagerName $NetworkManagerName -PoolName $IpamPoolName -Name $StaticCidrName
+$staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $ResourceGroupName -NetworkManagerName $NetworkManagerName -IpamPoolName $IpamPoolName -Name $StaticCidrName
 
 $staticCidr.Properties.Description = "Updated description"
 
