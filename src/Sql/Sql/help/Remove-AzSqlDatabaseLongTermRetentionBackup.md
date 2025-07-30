@@ -299,7 +299,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+Backups which are protected by an unlocked time-based immutability policy or by a legal hold may be deleted after the immutability is removed. 
+
+Backups which are protected by a locked time-based immutability policy cannot be deleted manually.
+
 ## RELATED LINKS
+
+[Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold](./Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
+
+[Remove-AzSqlDatabaseLongTermRetentionBackupImmutability](./Remove-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
 
 [Get-AzSqlDatabaseLongTermRetentionBackup](./Get-AzSqlDatabaseLongTermRetentionBackup.md)
 

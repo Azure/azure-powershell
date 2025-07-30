@@ -49,8 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         private const string YearlyRetentionRequiredSet = "YearlyRetentionRequired";
 
-        private const string ImmutabilityRequiredSet = "ImmutabilityRequired";
-
         /// <summary>
         /// Parameter set for clearing the long term retention V2 policy.
         /// </summary>

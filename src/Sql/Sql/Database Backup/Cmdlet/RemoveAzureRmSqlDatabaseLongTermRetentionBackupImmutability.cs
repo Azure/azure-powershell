@@ -126,6 +126,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Defines whether the cmdlets will output the model object at the end of its execution
         /// </summary>
+        [Parameter(HelpMessage = "Whether to output the model at the end of execution")]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>
@@ -175,6 +176,12 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
             ModelAdapter.RemoveDatabaseLongTermRetentionBackupImmutability(Location, ServerName, DatabaseName, BackupName);
+
+            if (PassThru.IsPresent)
+            {
+                return GetEntity();
+            }
+
             return entity;
         }
 

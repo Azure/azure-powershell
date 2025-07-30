@@ -126,6 +126,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Defines whether the cmdlets will output the model object at the end of its execution
         /// </summary>
+        [Parameter(HelpMessage = "Whether to output the model at the end of execution")]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>
@@ -174,8 +175,14 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> PersistChanges(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
-            var backup = ModelAdapter.LockDatabaseLongTermRetentionBackupImmutability(Location, ServerName, DatabaseName, BackupName);
-            return Enumerable.Repeat(backup, 1);
+            ModelAdapter.LockDatabaseLongTermRetentionBackupImmutability(Location, ServerName, DatabaseName, BackupName);
+
+            if (PassThru.IsPresent)
+            {
+                return GetEntity();
+            }
+
+            return entity;
         }
 
         /// <summary>
