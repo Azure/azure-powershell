@@ -102,6 +102,19 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public SwitchParameter UsePrivateLinkConnection { get; set; }
 
         /// <summary>
+        /// Gets or sets the Database Authentication type of the hub database
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        [ValidateSet("password", "userAssigned", IgnoreCase = true)]
+        public string HubDatabaseAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity ID of the hub database in case of user assigned identity authentication
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string IdentityId { get; set; }
+
+        /// <summary>
         /// The id of database used to store sync related metadata
         /// </summary>
         private string syncDatabaseId = null;
@@ -150,9 +163,47 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 DatabaseName = this.DatabaseName,
                 SyncGroupName = this.Name,
                 ConflictResolutionPolicy = this.ConflictResolutionPolicy != null ? this.ConflictResolutionPolicy.ToString() : null,
-                HubDatabaseUserName = this.DatabaseCredential != null ? this.DatabaseCredential.UserName : null,
-                HubDatabasePassword = this.DatabaseCredential != null ? this.DatabaseCredential.Password : null
             };
+
+            if (!MyInvocation.BoundParameters.ContainsKey(nameof(HubDatabaseAuthenticationType)) ||
+                this.HubDatabaseAuthenticationType.Equals("password", System.StringComparison.OrdinalIgnoreCase))
+            {
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(DatabaseCredential)) ||
+                    this.DatabaseCredential == null ||
+                    string.IsNullOrEmpty(this.DatabaseCredential.UserName))
+                {
+                    throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseCredentialRequired,
+                        "HubDatabaseCredentials");
+                }
+
+                newModel.HubDatabaseUserName = this.DatabaseCredential.UserName;
+                newModel.HubDatabasePassword = this.DatabaseCredential.Password;
+
+                newModel.Identity = new DataSyncParticipantIdentity
+                {
+                    Type = "None"
+                };
+            }
+            else if (this.HubDatabaseAuthenticationType.Equals("userAssigned", System.StringComparison.OrdinalIgnoreCase))
+            {
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(IdentityId)) ||
+                    string.IsNullOrEmpty(this.IdentityId))
+                {
+                    throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.IdentityIdRequired,
+                        "UserAssignedIdentityId");
+                }
+
+                newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.IdentityId);
+            }
+            else
+            {
+                throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidHubDatabaseAuthenticationType,
+                        "HubDatabaseAuthenticationType");
+            }
+
 
             if (MyInvocation.BoundParameters.ContainsKey("IntervalInSeconds"))
             {

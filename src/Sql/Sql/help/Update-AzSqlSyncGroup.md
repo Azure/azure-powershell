@@ -14,8 +14,8 @@ Updates an Azure SQL Database Sync Group.
 
 ```
 Update-AzSqlSyncGroup [-Name] <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
- [-SchemaFile <String>] [-UsePrivateLinkConnection <Boolean>] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-HubDatabaseAuthenticationType <String>] [-IdentityId <String>] [-SchemaFile <String>] [-UsePrivateLinkConnection <Boolean>] 
+ [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -53,6 +53,33 @@ This command updates a sync group for an Azure SQL Database. "schema.json" is a 
 "MasterSyncMemberName":  null
 }
 
+### Example 2: Update a sync group for an Azure SQL DB using a user-assigned managed identity.
+```powershell
+$credential = Get-Credential
+Update-AzSqlSyncGroup -ResourceGroupName "ResourceGroup02" -ServerName "Server02" -DatabaseName "Database02" -Name "SyncGroup02" `
+-HubDatabaseAuthenticationType "userAssigned" -IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -Schema ".\schema.json" | Format-List
+```
+
+```output
+ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup02}/servers/{Server02}/databases/{Database02}/syncGroups/{SyncGroup02}
+ResourceGroupName           : ResourceGroup02
+ServerName                  : Server02
+DatabaseName                : Database02
+SyncGroupName               : SyncGroup02
+SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup02}/servers/{syncDatabaseServer02}/databases/{syncDatabaseName02}
+IntervalInSeconds           : -1
+ConflictResolutionPolicy:   : HubWin
+UserAssignedIdentities      : {
+                                 "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi": {
+                                     "clientId": "{clientId}",
+                                     "principalId": "{principalId}"
+                                 }
+                              }
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
+Schema                      :
+```
+
 ## PARAMETERS
 
 ### -DatabaseCredential
@@ -60,6 +87,37 @@ The SQL authentication credential of the hub database.
 
 ```yaml
 Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubDatabaseAuthenticationType
+The authentication type used to connect to the hub database. Use `"password"` for SQL authentication with `-DatabaseCredential`, or `"userAssigned"` for user-assigned managed identity with `-IdentityId`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: password, userAssigned
+
+Required: False
+Position: Named
+Default value: password
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityId
+The Identity ID of the user-assigned managed identity to use when HubDatabaseAuthenticationType is set to "userAssigned".
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

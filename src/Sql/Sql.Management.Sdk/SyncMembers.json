@@ -1,0 +1,866 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2025-02-01-preview",
+    "title": "SqlManagementClient",
+    "description": "The Azure SQL Database management API provides a RESTful set of web APIs that interact with Azure SQL Database services to manage your databases. The API enables users to create, retrieve, update, and delete databases, servers, and other entities."
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers": {
+      "get": {
+        "tags": [
+          "SyncMembers"
+        ],
+        "description": "Lists sync members in the given sync group.",
+        "operationId": "SyncMembers_ListBySyncGroup",
+        "parameters": [
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ServerNameParameter"
+          },
+          {
+            "name": "databaseName",
+            "in": "path",
+            "description": "The name of the database on which the sync group is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncGroupName",
+            "in": "path",
+            "description": "The name of the sync group.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the list of sync members.",
+            "schema": {
+              "$ref": "#/definitions/SyncMemberListResult"
+            }
+          },
+          "default": {
+            "description": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 InvalidSyncGroupName - The Sync Group name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 InvalidSyncMemberName - The Sync Member name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 MissingSyncMemberName - The Sync Member name is missing\n\n * 400 InvalidSyncGroupInterval - Sync Interval should be greater than or equal to 5 seconds.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidParameterValue - An invalid value was given to a parameter.\n\n * 400 MissingServerName - The Server name is missing\n\n * 400 MissingDatabaseName - The Database name is missing\n\n * 400 MissingSyncGroupName - The Sync Group name is missing\n\n * 400 MissingConflictResolutionPolicy - The Conflict Resolution Policy is missing\n\n * 400 MissingSyncAgentName - The Sync Agent name is missing\n\n * 400 DataSyncMissingIdentityType - The identity type must be specified.\n\n * 400 DataSyncMissingUserAssignedIdentities - The identity type is set to 'UserAssigned', but no user-assigned identities are listed.\n\n * 400 DataSyncMissingAuthenticationInfo - At least one authentication method must be provided.\n\n * 400 DataSyncInvalidIdentityType - An unrecognized or unsupported identity type was specified in the sync configuration.\n\n * 400 DataSyncMultipleIdentities - Only one user-assigned managed identity is supported for a sync configuration.\n\n * 400 MissingSyncMemberDatabaseType - The Sync Member database type is missing\n\n * 400 MissingUserAssignedIdenityUrl - The user assigned identity url is mising in the header\n\n * 400 SyncOperation_GenericFailure - Failed to perform data sync operation.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.\n\n * 400 SyncOperation_DuplicateSyncMemberDrop - The sync member is already being dropped.\n\n * 400 SyncOperation_WrongSyncDatabase - The sync database specified does not match the existing one.\n\n * 400 SyncOperation_DwInSyncGroup - Cannot use datawarehouse edition in data sync.\n\n * 400 SyncOperation_MasterDbInSyncGroup - Cannot use logical master in data sync.\n\n * 400 SyncOperation_UnsupportedDataTypeColumnInSchema - Cannot add column to schema because the data type of the column is unsupported.\n\n * 400 SyncOperation_InvalidCredential - Credential of database is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 SubscriptionNotFound - The requested subscription was not found.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 SyncOperation_HubServerNotFound - Hub logical server does not exist.\n\n * 404 SyncOperation_InvalidHubDatabase - Hub database is invalid.\n\n * 409 SyncOperation_DuplicateSyncMemberName - Cannot create sync member because the sync member with the same name already exists.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.",
+            "schema": {
+              "$ref": "../../../common-types/resource-management/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List sync members under a sync group": {
+            "$ref": "./examples/SyncMemberListBySyncGroup.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}": {
+      "get": {
+        "tags": [
+          "SyncMembers"
+        ],
+        "description": "Gets a sync member.",
+        "operationId": "SyncMembers_Get",
+        "parameters": [
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ServerNameParameter"
+          },
+          {
+            "name": "databaseName",
+            "in": "path",
+            "description": "The name of the database on which the sync group is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncGroupName",
+            "in": "path",
+            "description": "The name of the sync group on which the sync member is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncMemberName",
+            "in": "path",
+            "description": "The name of the sync member.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the specified sync member.",
+            "schema": {
+              "$ref": "#/definitions/SyncMember"
+            }
+          },
+          "default": {
+            "description": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 InvalidSyncGroupName - The Sync Group name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 InvalidSyncMemberName - The Sync Member name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 MissingSyncMemberName - The Sync Member name is missing\n\n * 400 InvalidSyncGroupInterval - Sync Interval should be greater than or equal to 5 seconds.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidParameterValue - An invalid value was given to a parameter.\n\n * 400 MissingServerName - The Server name is missing\n\n * 400 MissingDatabaseName - The Database name is missing\n\n * 400 MissingSyncGroupName - The Sync Group name is missing\n\n * 400 MissingConflictResolutionPolicy - The Conflict Resolution Policy is missing\n\n * 400 MissingSyncAgentName - The Sync Agent name is missing\n\n * 400 DataSyncMissingIdentityType - The identity type must be specified.\n\n * 400 DataSyncMissingUserAssignedIdentities - The identity type is set to 'UserAssigned', but no user-assigned identities are listed.\n\n * 400 DataSyncMissingAuthenticationInfo - At least one authentication method must be provided.\n\n * 400 DataSyncInvalidIdentityType - An unrecognized or unsupported identity type was specified in the sync configuration.\n\n * 400 DataSyncMultipleIdentities - Only one user-assigned managed identity is supported for a sync configuration.\n\n * 400 MissingSyncMemberDatabaseType - The Sync Member database type is missing\n\n * 400 MissingUserAssignedIdenityUrl - The user assigned identity url is mising in the header\n\n * 400 SyncOperation_GenericFailure - Failed to perform data sync operation.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.\n\n * 400 SyncOperation_DuplicateSyncMemberDrop - The sync member is already being dropped.\n\n * 400 SyncOperation_WrongSyncDatabase - The sync database specified does not match the existing one.\n\n * 400 SyncOperation_DwInSyncGroup - Cannot use datawarehouse edition in data sync.\n\n * 400 SyncOperation_MasterDbInSyncGroup - Cannot use logical master in data sync.\n\n * 400 SyncOperation_UnsupportedDataTypeColumnInSchema - Cannot add column to schema because the data type of the column is unsupported.\n\n * 400 SyncOperation_InvalidCredential - Credential of database is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 SubscriptionNotFound - The requested subscription was not found.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 SyncOperation_HubServerNotFound - Hub logical server does not exist.\n\n * 404 SyncOperation_InvalidHubDatabase - Hub database is invalid.\n\n * 409 SyncOperation_DuplicateSyncMemberName - Cannot create sync member because the sync member with the same name already exists.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.",
+            "schema": {
+              "$ref": "../../../common-types/resource-management/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get a sync member": {
+            "$ref": "./examples/SyncMemberGet.json"
+          },
+          "Get a sync member with user assigned identity": {
+            "$ref": "./examples/SyncMemberGetWithIdentity.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "SyncMembers"
+        ],
+        "description": "Creates or updates a sync member.",
+        "operationId": "SyncMembers_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ServerNameParameter"
+          },
+          {
+            "name": "databaseName",
+            "in": "path",
+            "description": "The name of the database on which the sync group is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncGroupName",
+            "in": "path",
+            "description": "The name of the sync group on which the sync member is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncMemberName",
+            "in": "path",
+            "description": "The name of the sync member.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "description": "The requested sync member resource state.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SyncMember"
+            }
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the sync member.",
+            "schema": {
+              "$ref": "#/definitions/SyncMember"
+            }
+          },
+          "default": {
+            "description": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 InvalidSyncGroupName - The Sync Group name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 InvalidSyncMemberName - The Sync Member name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 MissingSyncMemberName - The Sync Member name is missing\n\n * 400 InvalidSyncGroupInterval - Sync Interval should be greater than or equal to 5 seconds.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidParameterValue - An invalid value was given to a parameter.\n\n * 400 MissingServerName - The Server name is missing\n\n * 400 MissingDatabaseName - The Database name is missing\n\n * 400 MissingSyncGroupName - The Sync Group name is missing\n\n * 400 MissingConflictResolutionPolicy - The Conflict Resolution Policy is missing\n\n * 400 MissingSyncAgentName - The Sync Agent name is missing\n\n * 400 DataSyncMissingIdentityType - The identity type must be specified.\n\n * 400 DataSyncMissingUserAssignedIdentities - The identity type is set to 'UserAssigned', but no user-assigned identities are listed.\n\n * 400 DataSyncMissingAuthenticationInfo - At least one authentication method must be provided.\n\n * 400 DataSyncInvalidIdentityType - An unrecognized or unsupported identity type was specified in the sync configuration.\n\n * 400 DataSyncMultipleIdentities - Only one user-assigned managed identity is supported for a sync configuration.\n\n * 400 MissingSyncMemberDatabaseType - The Sync Member database type is missing\n\n * 400 MissingUserAssignedIdenityUrl - The user assigned identity url is mising in the header\n\n * 400 SyncOperation_GenericFailure - Failed to perform data sync operation.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.\n\n * 400 SyncOperation_DuplicateSyncMemberDrop - The sync member is already being dropped.\n\n * 400 SyncOperation_WrongSyncDatabase - The sync database specified does not match the existing one.\n\n * 400 SyncOperation_DwInSyncGroup - Cannot use datawarehouse edition in data sync.\n\n * 400 SyncOperation_MasterDbInSyncGroup - Cannot use logical master in data sync.\n\n * 400 SyncOperation_UnsupportedDataTypeColumnInSchema - Cannot add column to schema because the data type of the column is unsupported.\n\n * 400 SyncOperation_InvalidCredential - Credential of database is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 SyncOperation_HubServerNotFound - Hub logical server does not exist.\n\n * 404 SyncOperation_InvalidHubDatabase - Hub database is invalid.\n\n * 404 OperationIdNotFound - The operation with Id does not exist.\n\n * 409 SyncOperation_DuplicateSyncMemberName - Cannot create sync member because the sync member with the same name already exists.\n\n * 409 CannotCancelOperation - The management operation is in a state that cannot be cancelled.\n\n * 409 OperationCancelled - The operation has been cancelled by user.\n\n * 409 OperationInterrupted - The operation on the resource could not be completed because it was interrupted by another operation on the same resource.\n\n * 429 SubscriptionTooManyCreateUpdateRequests - Requests beyond max requests that can be processed by available resources.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 500 OperationTimedOut - The operation timed out and automatically rolled back. Please retry the operation.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.",
+            "schema": {
+              "$ref": "../../../common-types/resource-management/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "202": {
+            "description": "Creating or updating the sync member is in progress.",
+            "headers": {
+              "Location": {
+                "type": "string"
+              }
+            }
+          },
+          "201": {
+            "description": "Successfully created the sync member.",
+            "schema": {
+              "$ref": "#/definitions/SyncMember"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-examples": {
+          "Create a new sync member": {
+            "$ref": "./examples/SyncMemberCreate.json"
+          },
+          "Create a new sync member with user assigned identity": {
+            "$ref": "./examples/SyncMemberCreateWithIdentity.json"
+          },
+          "Update a sync member": {
+            "$ref": "./examples/SyncMemberUpdate.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SyncMembers"
+        ],
+        "description": "Deletes a sync member.",
+        "operationId": "SyncMembers_Delete",
+        "parameters": [
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ServerNameParameter"
+          },
+          {
+            "name": "databaseName",
+            "in": "path",
+            "description": "The name of the database on which the sync group is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncGroupName",
+            "in": "path",
+            "description": "The name of the sync group on which the sync member is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncMemberName",
+            "in": "path",
+            "description": "The name of the sync member.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the sync member."
+          },
+          "default": {
+            "description": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 InvalidSyncGroupName - The Sync Group name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 InvalidSyncMemberName - The Sync Member name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 MissingSyncMemberName - The Sync Member name is missing\n\n * 400 InvalidSyncGroupInterval - Sync Interval should be greater than or equal to 5 seconds.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidParameterValue - An invalid value was given to a parameter.\n\n * 400 MissingServerName - The Server name is missing\n\n * 400 MissingDatabaseName - The Database name is missing\n\n * 400 MissingSyncGroupName - The Sync Group name is missing\n\n * 400 MissingConflictResolutionPolicy - The Conflict Resolution Policy is missing\n\n * 400 MissingSyncAgentName - The Sync Agent name is missing\n\n * 400 DataSyncMissingIdentityType - The identity type must be specified.\n\n * 400 DataSyncMissingUserAssignedIdentities - The identity type is set to 'UserAssigned', but no user-assigned identities are listed.\n\n * 400 DataSyncMissingAuthenticationInfo - At least one authentication method must be provided.\n\n * 400 DataSyncInvalidIdentityType - An unrecognized or unsupported identity type was specified in the sync configuration.\n\n * 400 DataSyncMultipleIdentities - Only one user-assigned managed identity is supported for a sync configuration.\n\n * 400 MissingSyncMemberDatabaseType - The Sync Member database type is missing\n\n * 400 MissingUserAssignedIdenityUrl - The user assigned identity url is mising in the header\n\n * 400 SyncOperation_GenericFailure - Failed to perform data sync operation.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.\n\n * 400 SyncOperation_DuplicateSyncMemberDrop - The sync member is already being dropped.\n\n * 400 SyncOperation_WrongSyncDatabase - The sync database specified does not match the existing one.\n\n * 400 SyncOperation_DwInSyncGroup - Cannot use datawarehouse edition in data sync.\n\n * 400 SyncOperation_MasterDbInSyncGroup - Cannot use logical master in data sync.\n\n * 400 SyncOperation_UnsupportedDataTypeColumnInSchema - Cannot add column to schema because the data type of the column is unsupported.\n\n * 400 SyncOperation_InvalidCredential - Credential of database is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 SyncOperation_HubServerNotFound - Hub logical server does not exist.\n\n * 404 SyncOperation_InvalidHubDatabase - Hub database is invalid.\n\n * 404 OperationIdNotFound - The operation with Id does not exist.\n\n * 409 SyncOperation_DuplicateSyncMemberName - Cannot create sync member because the sync member with the same name already exists.\n\n * 409 CannotCancelOperation - The management operation is in a state that cannot be cancelled.\n\n * 409 OperationCancelled - The operation has been cancelled by user.\n\n * 409 OperationInterrupted - The operation on the resource could not be completed because it was interrupted by another operation on the same resource.\n\n * 429 SubscriptionTooManyCreateUpdateRequests - Requests beyond max requests that can be processed by available resources.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 500 OperationTimedOut - The operation timed out and automatically rolled back. Please retry the operation.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.",
+            "schema": {
+              "$ref": "../../../common-types/resource-management/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "202": {
+            "description": "Deleting the sync member is in progress.",
+            "headers": {
+              "Location": {
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "The specified sync member does not exist."
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-examples": {
+          "Delete a sync member": {
+            "$ref": "./examples/SyncMemberDelete.json"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "SyncMembers"
+        ],
+        "description": "Updates an existing sync member.",
+        "operationId": "SyncMembers_Update",
+        "parameters": [
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ServerNameParameter"
+          },
+          {
+            "name": "databaseName",
+            "in": "path",
+            "description": "The name of the database on which the sync group is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncGroupName",
+            "in": "path",
+            "description": "The name of the sync group on which the sync member is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncMemberName",
+            "in": "path",
+            "description": "The name of the sync member.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "description": "The requested sync member resource state.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SyncMember"
+            }
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the sync member.",
+            "schema": {
+              "$ref": "#/definitions/SyncMember"
+            }
+          },
+          "default": {
+            "description": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 InvalidSyncGroupName - The Sync Group name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 InvalidSyncMemberName - The Sync Member name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 MissingSyncMemberName - The Sync Member name is missing\n\n * 400 InvalidSyncGroupInterval - Sync Interval should be greater than or equal to 5 seconds.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidParameterValue - An invalid value was given to a parameter.\n\n * 400 MissingServerName - The Server name is missing\n\n * 400 MissingDatabaseName - The Database name is missing\n\n * 400 MissingSyncGroupName - The Sync Group name is missing\n\n * 400 MissingConflictResolutionPolicy - The Conflict Resolution Policy is missing\n\n * 400 MissingSyncAgentName - The Sync Agent name is missing\n\n * 400 DataSyncMissingIdentityType - The identity type must be specified.\n\n * 400 DataSyncMissingUserAssignedIdentities - The identity type is set to 'UserAssigned', but no user-assigned identities are listed.\n\n * 400 DataSyncMissingAuthenticationInfo - At least one authentication method must be provided.\n\n * 400 DataSyncInvalidIdentityType - An unrecognized or unsupported identity type was specified in the sync configuration.\n\n * 400 DataSyncMultipleIdentities - Only one user-assigned managed identity is supported for a sync configuration.\n\n * 400 MissingSyncMemberDatabaseType - The Sync Member database type is missing\n\n * 400 MissingUserAssignedIdenityUrl - The user assigned identity url is mising in the header\n\n * 400 SyncOperation_GenericFailure - Failed to perform data sync operation.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.\n\n * 400 SyncOperation_DuplicateSyncMemberDrop - The sync member is already being dropped.\n\n * 400 SyncOperation_WrongSyncDatabase - The sync database specified does not match the existing one.\n\n * 400 SyncOperation_DwInSyncGroup - Cannot use datawarehouse edition in data sync.\n\n * 400 SyncOperation_MasterDbInSyncGroup - Cannot use logical master in data sync.\n\n * 400 SyncOperation_UnsupportedDataTypeColumnInSchema - Cannot add column to schema because the data type of the column is unsupported.\n\n * 400 SyncOperation_InvalidCredential - Credential of database is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 SyncOperation_HubServerNotFound - Hub logical server does not exist.\n\n * 404 SyncOperation_InvalidHubDatabase - Hub database is invalid.\n\n * 404 OperationIdNotFound - The operation with Id does not exist.\n\n * 409 SyncOperation_DuplicateSyncMemberName - Cannot create sync member because the sync member with the same name already exists.\n\n * 409 CannotCancelOperation - The management operation is in a state that cannot be cancelled.\n\n * 409 OperationCancelled - The operation has been cancelled by user.\n\n * 409 OperationInterrupted - The operation on the resource could not be completed because it was interrupted by another operation on the same resource.\n\n * 429 SubscriptionTooManyCreateUpdateRequests - Requests beyond max requests that can be processed by available resources.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 500 OperationTimedOut - The operation timed out and automatically rolled back. Please retry the operation.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.",
+            "schema": {
+              "$ref": "../../../common-types/resource-management/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "202": {
+            "description": "Updating the sync member is in progress.",
+            "headers": {
+              "Location": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "An internal server error occurred."
+          },
+          "500": {
+            "description": "An internal server error occurred."
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-examples": {
+          "Update an existing sync member": {
+            "$ref": "./examples/SyncMemberPatch.json"
+          },
+          "Update an existing sync member with user assigned identity": {
+            "$ref": "./examples/SyncMemberPatchWithIdentity.json"
+          },
+          "Update an existing sync member with new user assigned identity and removing older user assigned identity": {
+            "$ref": "./examples/SyncMemberPatchAddAndRemoveIdentity.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/refreshSchema": {
+      "post": {
+        "tags": [
+          "SyncMembers"
+        ],
+        "description": "Refreshes a sync member database schema.",
+        "operationId": "SyncMembers_RefreshMemberSchema",
+        "parameters": [
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ServerNameParameter"
+          },
+          {
+            "name": "databaseName",
+            "in": "path",
+            "description": "The name of the database on which the sync group is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncGroupName",
+            "in": "path",
+            "description": "The name of the sync group on which the sync member is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncMemberName",
+            "in": "path",
+            "description": "The name of the sync member.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully refreshed a sync member schema."
+          },
+          "default": {
+            "description": "*** Error Responses: ***\n\n * 400 InvalidServerName - Invalid server name specified.\n\n * 400 InvalidIdentifier - The identifier contains NULL or an invalid unicode character.\n\n * 400 TokenTooLong - The provided token is too long.\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 InvalidSyncGroupName - The Sync Group name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 InvalidSyncMemberName - The Sync Member name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 MissingSyncMemberName - The Sync Member name is missing\n\n * 400 InvalidSyncGroupInterval - Sync Interval should be greater than or equal to 5 seconds.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidParameterValue - An invalid value was given to a parameter.\n\n * 400 MissingServerName - The Server name is missing\n\n * 400 MissingDatabaseName - The Database name is missing\n\n * 400 MissingSyncGroupName - The Sync Group name is missing\n\n * 400 MissingConflictResolutionPolicy - The Conflict Resolution Policy is missing\n\n * 400 MissingSyncAgentName - The Sync Agent name is missing\n\n * 400 DataSyncMissingIdentityType - The identity type must be specified.\n\n * 400 DataSyncMissingUserAssignedIdentities - The identity type is set to 'UserAssigned', but no user-assigned identities are listed.\n\n * 400 DataSyncMissingAuthenticationInfo - At least one authentication method must be provided.\n\n * 400 DataSyncInvalidIdentityType - An unrecognized or unsupported identity type was specified in the sync configuration.\n\n * 400 DataSyncMultipleIdentities - Only one user-assigned managed identity is supported for a sync configuration.\n\n * 400 MissingSyncMemberDatabaseType - The Sync Member database type is missing\n\n * 400 MissingUserAssignedIdenityUrl - The user assigned identity url is mising in the header\n\n * 400 SyncOperation_GenericFailure - Failed to perform data sync operation.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.\n\n * 400 SyncOperation_DuplicateSyncMemberDrop - The sync member is already being dropped.\n\n * 400 SyncOperation_WrongSyncDatabase - The sync database specified does not match the existing one.\n\n * 400 SyncOperation_DwInSyncGroup - Cannot use datawarehouse edition in data sync.\n\n * 400 SyncOperation_MasterDbInSyncGroup - Cannot use logical master in data sync.\n\n * 400 SyncOperation_UnsupportedDataTypeColumnInSchema - Cannot add column to schema because the data type of the column is unsupported.\n\n * 400 SyncOperation_InvalidCredential - Credential of database is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 OperationIdNotFound - The operation with Id does not exist.\n\n * 404 OperationIdNotFound - The operation with Id does not exist.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 SyncOperation_HubServerNotFound - Hub logical server does not exist.\n\n * 404 SyncOperation_InvalidHubDatabase - Hub database is invalid.\n\n * 409 CannotCancelOperation - The management operation is in a state that cannot be cancelled.\n\n * 409 OperationCancelled - The operation has been cancelled by user.\n\n * 409 OperationInterrupted - The operation on the resource could not be completed because it was interrupted by another operation on the same resource.\n\n * 409 SyncOperation_DuplicateSyncMemberName - Cannot create sync member because the sync member with the same name already exists.\n\n * 429 SubscriptionTooManyCreateUpdateRequests - Requests beyond max requests that can be processed by available resources.\n\n * 429 SubscriptionTooManyRequests - Requests beyond max requests that can be processed by available resources.\n\n * 500 OperationTimedOut - The operation timed out and automatically rolled back. Please retry the operation.\n\n * 503 TooManyRequests - Requests beyond max requests that can be processed by available resources.",
+            "schema": {
+              "$ref": "../../../common-types/resource-management/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "202": {
+            "description": "The sync member schema refresh operation is on going.",
+            "headers": {
+              "Location": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-examples": {
+          "Refresh a sync member database schema": {
+            "$ref": "./examples/SyncMemberRefreshSchema.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/schemas": {
+      "get": {
+        "tags": [
+          "SyncMembers"
+        ],
+        "description": "Gets a sync member database schema.",
+        "operationId": "SyncMembers_ListMemberSchemas",
+        "parameters": [
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ServerNameParameter"
+          },
+          {
+            "name": "databaseName",
+            "in": "path",
+            "description": "The name of the database on which the sync group is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncGroupName",
+            "in": "path",
+            "description": "The name of the sync group on which the sync member is hosted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "syncMemberName",
+            "in": "path",
+            "description": "The name of the sync member.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../common/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully get a sync member schema.",
+            "schema": {
+              "$ref": "#/definitions/SyncFullSchemaPropertiesListResult"
+            }
+          },
+          "default": {
+            "description": "*** Error Responses: ***\n\n * 400 InvalidSyncGroupCreateOrUpdateRequest - The create or update sync group request body is empty.\n\n * 400 InvalidSyncMemberCreateOrUpdateRequest - The create or update sync member request body is empty.\n\n * 400 InvalidSyncAgentCreateOrUpdateRequest - The create or update sync agent request body is empty.\n\n * 400 InvalidDatabaseResourceId - Invalid database resource identifier.\n\n * 400 InvalidSyncGroupName - The Sync Group name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 InvalidSyncMemberName - The Sync Member name is invalid. This field can contain letters, numbers, dashes and underscores.\n\n * 400 MissingSyncMemberName - The Sync Member name is missing\n\n * 400 InvalidSyncGroupInterval - Sync Interval should be greater than or equal to 5 seconds.\n\n * 400 MismatchingSubscriptionWithUrl - The provided subscription did not match the subscription in the Url.\n\n * 400 InvalidSyncAgentResourceId - Invalid sync agent resource identifier.\n\n * 400 MismatchingResourceGroupNameWithUrl - The provided resource group name did not match the name in the Url.\n\n * 400 MismatchingServerNameWithUrl - The provided server name did not match the name in the Url.\n\n * 400 InvalidParameterValue - An invalid value was given to a parameter.\n\n * 400 MissingServerName - The Server name is missing\n\n * 400 MissingDatabaseName - The Database name is missing\n\n * 400 MissingSyncGroupName - The Sync Group name is missing\n\n * 400 MissingConflictResolutionPolicy - The Conflict Resolution Policy is missing\n\n * 400 MissingSyncAgentName - The Sync Agent name is missing\n\n * 400 DataSyncMissingIdentityType - The identity type must be specified.\n\n * 400 DataSyncMissingUserAssignedIdentities - The identity type is set to 'UserAssigned', but no user-assigned identities are listed.\n\n * 400 DataSyncMissingAuthenticationInfo - At least one authentication method must be provided.\n\n * 400 DataSyncInvalidIdentityType - An unrecognized or unsupported identity type was specified in the sync configuration.\n\n * 400 DataSyncMultipleIdentities - Only one user-assigned managed identity is supported for a sync configuration.\n\n * 400 MissingSyncMemberDatabaseType - The Sync Member database type is missing\n\n * 400 MissingUserAssignedIdenityUrl - The user assigned identity url is mising in the header\n\n * 400 SyncOperation_GenericFailure - Failed to perform data sync operation.\n\n * 400 InvalidSyncGroup - Sync group is invalid.\n\n * 400 InvalidSyncMember - Sync member is invalid.\n\n * 400 InvalidSyncAgent - Sync agent is invalid.\n\n * 400 CannotCreateSyncMemberDueToQuotaExceeded - Cannot create sync member due to quota exceeded.\n\n * 400 SyncOperation_DuplicateSyncMemberDrop - The sync member is already being dropped.\n\n * 400 SyncOperation_WrongSyncDatabase - The sync database specified does not match the existing one.\n\n * 400 SyncOperation_DwInSyncGroup - Cannot use datawarehouse edition in data sync.\n\n * 400 SyncOperation_MasterDbInSyncGroup - Cannot use logical master in data sync.\n\n * 400 SyncOperation_UnsupportedDataTypeColumnInSchema - Cannot add column to schema because the data type of the column is unsupported.\n\n * 400 SyncOperation_InvalidCredential - Credential of database is invalid.\n\n * 400 InvalidSyncMetadataDatabase - Sync metadata database is invalid.\n\n * 404 ResourceNotFound - The requested resource was not found.\n\n * 404 SubscriptionDoesNotHaveServer - The requested server was not found\n\n * 404 DatabaseDoesNotExist - User has specified a database name that does not exist on this server instance.\n\n * 404 SyncOperation_HubServerNotFound - Hub logical server does not exist.\n\n * 404 SyncOperation_InvalidHubDatabase - Hub database is invalid.\n\n * 409 SyncOperation_DuplicateSyncMemberName - Cannot create sync member because the sync member with the same name already exists.",
+            "schema": {
+              "$ref": "../../../common-types/resource-management/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "Get a sync member schema": {
+            "$ref": "./examples/SyncMemberGetSchema.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DataSyncParticipantIdentity": {
+      "description": "Azure Active Directory identity configuration for a resource.",
+      "required": [
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The Datasync identity type",
+          "enum": [
+            "None",
+            "SystemAssigned",
+            "UserAssigned",
+            "SystemAssignedUserAssigned"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "DataSyncParticipantIdentityType",
+            "modelAsString": true
+          }
+        },
+        "tenantId": {
+          "format": "uuid",
+          "description": "The DataSync participant identity tenant id",
+          "type": "string"
+        },
+        "userAssignedIdentities": {
+          "description": "The resource ids of the user assigned identities to use",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/DataSyncParticipantUserAssignedIdentity"
+          }
+        }
+      }
+    },
+    "DataSyncParticipantUserAssignedIdentity": {
+      "description": "Azure Active Directory identity configuration for a resource.",
+      "type": "object",
+      "properties": {
+        "principalId": {
+          "format": "uuid",
+          "description": "The Azure Active Directory principal id.",
+          "type": "string",
+          "readOnly": true
+        },
+        "clientId": {
+          "format": "uuid",
+          "description": "The Azure Active Directory client id.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "SyncFullSchemaProperties": {
+      "description": "Properties of the database full schema.",
+      "type": "object",
+      "properties": {
+        "tables": {
+          "description": "List of tables in the database full schema.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SyncFullSchemaTable"
+          },
+          "readOnly": true
+        },
+        "lastUpdateTime": {
+          "format": "date-time",
+          "description": "Last update time of the database schema.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "SyncFullSchemaPropertiesListResult": {
+      "description": "A list of sync schema properties.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Array of results.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SyncFullSchemaProperties"
+          },
+          "readOnly": true
+        },
+        "nextLink": {
+          "description": "Link to retrieve next page of results.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "SyncFullSchemaTable": {
+      "description": "Properties of the table in the database full schema.",
+      "type": "object",
+      "properties": {
+        "columns": {
+          "description": "List of columns in the table of database full schema.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SyncFullSchemaTableColumn"
+          },
+          "readOnly": true
+        },
+        "errorId": {
+          "description": "Error id of the table.",
+          "type": "string",
+          "readOnly": true
+        },
+        "hasError": {
+          "description": "If there is error in the table.",
+          "type": "boolean",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Name of the table.",
+          "type": "string",
+          "readOnly": true
+        },
+        "quotedName": {
+          "description": "Quoted name of the table.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "SyncFullSchemaTableColumn": {
+      "description": "Properties of the column in the table of database full schema.",
+      "type": "object",
+      "properties": {
+        "dataSize": {
+          "description": "Data size of the column.",
+          "type": "string",
+          "readOnly": true
+        },
+        "dataType": {
+          "description": "Data type of the column.",
+          "type": "string",
+          "readOnly": true
+        },
+        "errorId": {
+          "description": "Error id of the column.",
+          "type": "string",
+          "readOnly": true
+        },
+        "hasError": {
+          "description": "If there is error in the table.",
+          "type": "boolean",
+          "readOnly": true
+        },
+        "isPrimaryKey": {
+          "description": "If it is the primary key of the table.",
+          "type": "boolean",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Name of the column.",
+          "type": "string",
+          "readOnly": true
+        },
+        "quotedName": {
+          "description": "Quoted name of the column.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "SyncMember": {
+      "description": "An Azure SQL Database sync member.",
+      "required": [
+        "identity"
+      ],
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "../../../common/v1/types.json#/definitions/ProxyResource"
+        }
+      ],
+      "properties": {
+        "identity": {
+          "$ref": "#/definitions/DataSyncParticipantIdentity",
+          "description": "Sync group authentication information."
+        },
+        "properties": {
+          "$ref": "#/definitions/SyncMemberProperties",
+          "description": "Resource properties.",
+          "x-ms-client-flatten": true
+        }
+      }
+    },
+    "SyncMemberListResult": {
+      "description": "A list of Azure SQL Database sync members.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Array of results.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SyncMember"
+          },
+          "readOnly": true
+        },
+        "nextLink": {
+          "description": "Link to retrieve next page of results.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "SyncMemberProperties": {
+      "description": "Properties of a sync member with support to MI.",
+      "type": "object",
+      "properties": {
+        "databaseType": {
+          "description": "Database type of the sync member.",
+          "enum": [
+            "AzureSqlDatabase",
+            "SqlServerDatabase"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SyncMemberDbType",
+            "modelAsString": true
+          }
+        },
+        "syncAgentId": {
+          "description": "ARM resource id of the sync agent in the sync member.",
+          "type": "string"
+        },
+        "sqlServerDatabaseId": {
+          "format": "uuid",
+          "description": "SQL Server database id of the sync member.",
+          "type": "string"
+        },
+        "syncMemberAzureDatabaseResourceId": {
+          "description": "ARM resource id of the sync member logical database, for sync members in Azure.",
+          "type": "string"
+        },
+        "usePrivateLinkConnection": {
+          "description": "Whether to use private link connection.",
+          "type": "boolean"
+        },
+        "privateEndpointName": {
+          "description": "Private endpoint name of the sync member if use private link connection is enabled, for sync members in Azure.",
+          "type": "string",
+          "readOnly": true
+        },
+        "serverName": {
+          "description": "Server name of the member database in the sync member",
+          "type": "string"
+        },
+        "databaseName": {
+          "description": "Database name of the member database in the sync member.",
+          "type": "string"
+        },
+        "userName": {
+          "description": "User name of the member database in the sync member.",
+          "type": "string"
+        },
+        "password": {
+          "description": "Password of the member database in the sync member.",
+          "type": "string",
+          "x-ms-mutability": [
+            "create",
+            "update"
+          ]
+        },
+        "syncDirection": {
+          "description": "Sync direction of the sync member.",
+          "enum": [
+            "Bidirectional",
+            "OneWayMemberToHub",
+            "OneWayHubToMember"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SyncDirection",
+            "modelAsString": true
+          }
+        },
+        "syncState": {
+          "description": "Sync state of the sync member.",
+          "enum": [
+            "SyncInProgress",
+            "SyncSucceeded",
+            "SyncFailed",
+            "DisabledTombstoneCleanup",
+            "DisabledBackupRestore",
+            "SyncSucceededWithWarnings",
+            "SyncCancelling",
+            "SyncCancelled",
+            "UnProvisioned",
+            "Provisioning",
+            "Provisioned",
+            "ProvisionFailed",
+            "DeProvisioning",
+            "DeProvisioned",
+            "DeProvisionFailed",
+            "Reprovisioning",
+            "ReprovisionFailed",
+            "UnReprovisioned"
+          ],
+          "type": "string",
+          "readOnly": true,
+          "x-ms-enum": {
+            "name": "SyncMemberState",
+            "modelAsString": true
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "ServerNameParameter": {
+      "name": "serverName",
+      "in": "path",
+      "description": "The name of the server.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    }
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "flow": "implicit",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  }
+}

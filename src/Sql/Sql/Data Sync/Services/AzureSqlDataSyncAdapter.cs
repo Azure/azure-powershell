@@ -173,6 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 HubDatabasePassword = model.HubDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.HubDatabasePassword),
                 Schema = model.Schema == null ? null : model.Schema.ToSyncGroupSchema(),
                 UsePrivateLinkConnection = model.UsePrivateLinkConnection,
+                Identity = model.Identity
             });
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
@@ -194,6 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 HubDatabasePassword = model.HubDatabasePassword == null ? null: AzureSqlServerAdapter.Decrypt(model.HubDatabasePassword),
                 Schema = model.Schema == null ? null : model.Schema.ToSyncGroupSchema(),
                 UsePrivateLinkConnection = model.UsePrivateLinkConnection,
+                Identity = model.Identity
             });
             
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
