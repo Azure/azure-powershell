@@ -137,11 +137,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
 
-        [Fact(Skip = "This is not recordable test")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2ResourceGroupBased()
         {
-            TestRunner.RunTestScript("Test-LongTermRetentionV2ResourceGroupBased");
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-LongTermRetentionV2ResourceGroupBased");
+            }
         }
 
         [Fact(Skip = "Not recordable")]
