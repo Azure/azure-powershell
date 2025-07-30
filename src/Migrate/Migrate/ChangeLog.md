@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-OsType` as an optional parameter to command `Set-AzMigrateLocalServerReplication` to allow user-specified OS type.
 * Fixed bugs in `New-AzMigrateServerReplication` caused by deprecation of `Get-AzVmSize -location`
 * Removed `-TargetStoragePathId` parameter from command `New-AzMigrateLocalDiskMappingObject` until the feature to associate each disk to their own storage container path is supported.
 * Added `-SourceApplianceName` and `-TargetApplianceName` as required parameters to command `New-AzMigrateLocalServerReplication` to allow users to specify appliance pairs of their choosing.
