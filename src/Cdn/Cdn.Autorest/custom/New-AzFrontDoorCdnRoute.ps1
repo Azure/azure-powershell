@@ -370,8 +370,8 @@ function New-AzFrontDoorCdnRoute {
     )
 
     process {
-        if (${CompressionSettingIsCompressionEnabled}) {
-            if ($null -eq ${CompressionSettingContentTypesToCompress}) {
+        if (${CompressionSettingIsCompressionEnabled}.IsPresent) {
+            if (-not ${CompressionSettingContentTypesToCompress}) {
                 $CompressionSettingContentTypesToCompress = @(
                     'application/eot',
                     'application/font',
