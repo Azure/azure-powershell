@@ -12,6 +12,7 @@ Create or update a gallery Application Version.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
  -ResourceGroupName <String> -Install <String> -Location <String> -Remove <String> [-SubscriptionId <String>]
@@ -22,26 +23,83 @@ New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <S
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityApplicationExpanded
+```
+New-AzGalleryApplicationVersion -ApplicationInputObject <IComputeIdentity> -Name <String> -Install <String>
+ -Location <String> -Remove <String> [-ConfigFileName <String>] [-DefaultConfigFileLink <String>]
+ [-PackageFileLink <String>] [-PackageFileName <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
+ [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
+ [-TargetRegion <ITargetRegion[]>] [-Update <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityGalleryExpanded
+```
+New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryInputObject <IComputeIdentity>
+ -Name <String> -Install <String> -Location <String> -Remove <String> [-ConfigFileName <String>]
+ [-DefaultConfigFileLink <String>] [-PackageFileLink <String>] [-PackageFileName <String>]
+ [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
+ [-Tag <Hashtable>] [-TargetRegion <ITargetRegion[]>] [-Update <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create or update a gallery Application Version.
 
 ## EXAMPLES
 
-### Example 1: Create a gallery application version.
+### Example 1: {{ Add title here }}
 ```powershell
-$ctx = New-AzStorageContext -StorageAccountName $storAccName
-$SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -blob $blobName -Permission r
-$storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
-$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
-$SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
-$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + $SASToken 
-New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package" 
+{{ Add code here }}
 ```
 
-Creating a Gallery Application Version.
-Using SAS Uri for the blob for PackageFileLink.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -ApplicationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: CreateViaIdentityApplicationExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -66,7 +124,7 @@ If not specified, the config file will be named the Gallery Application name app
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -82,7 +140,7 @@ The defaultConfigurationLink of the artifact, must be a readable storage page bl
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -93,7 +151,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -112,7 +171,7 @@ The name of the gallery Application Definition in which the Application Version 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityGalleryExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -122,12 +181,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GalleryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: CreateViaIdentityGalleryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -GalleryName
 The name of the Shared Application Gallery in which the Application Definition resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -144,7 +218,37 @@ This is limited to 4096 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -159,7 +263,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: True
@@ -208,7 +312,7 @@ The mediaLink of the artifact, must be a readable storage page blob.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -226,7 +330,7 @@ If not specified, the package file will be named the same as the Gallery Applica
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -243,7 +347,7 @@ This property is updatable.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -258,7 +362,7 @@ If set to true, Virtual Machines deployed from the latest version of the Image D
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -275,7 +379,7 @@ This is limited to 4096 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: True
@@ -292,7 +396,7 @@ This property is updatable.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -307,7 +411,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -323,7 +427,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -338,7 +442,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -351,11 +455,10 @@ Accept wildcard characters: False
 ### -TargetRegion
 The target regions where the Image Version is going to be replicated to.
 This property is updatable.
-To construct, see NOTES section for TARGETREGION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion[]
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -373,7 +476,7 @@ This is limited to 4096 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationExpanded, CreateViaIdentityGalleryExpanded
 Aliases:
 
 Required: False
@@ -419,9 +522,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion
 
 ## NOTES
 
