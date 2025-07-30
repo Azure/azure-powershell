@@ -204,7 +204,27 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+      subject: CustomDomain|BuildAppSetting|FunctionAppSetting|Setting|BuildFunctionAppSetting|UserRoleInvitationLink
+      variant: ^Create(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+
+  - where:
+      variant: ^CreateViaIdentityExpanded$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: CustomDomain
+    remove: true
+
+  - where:
+      verb: New
+      subject: ^$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+
+  - where:
+      verb: Update
+      subject: null
+      variant: ^Update$|^UpdateViaIdentity$
     remove: true
 
   - where:
@@ -224,7 +244,7 @@ directive:
   - where:
       verb: Register
       subject: UserProvidedFunctionApp
-      variant: ^Register(?!.*?(JsonFilePath|JsonString))
+      variant: ^Register$|^Register1$|^RegisterViaIdentity$|^RegisterViaIdentity1$|^RegisterViaIdentityExpanded$|^RegisterViaIdentityExpanded1$
     remove: true
 
 # Rename parameters

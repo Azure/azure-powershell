@@ -19,6 +19,13 @@ New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String> 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### CreateViaJsonFilePath
 ```
 New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
@@ -26,10 +33,10 @@ New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### CreateViaIdentityExpanded
 ```
-New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+New-AzStaticWebAppFunctionAppSetting -InputObject <IWebsitesIdentity> [-AppSetting <Hashtable>]
+ [-Kind <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -71,7 +78,7 @@ Settings.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -94,6 +101,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -132,7 +154,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -147,7 +169,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -162,7 +184,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -179,7 +201,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -224,6 +246,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 
 ## OUTPUTS
 

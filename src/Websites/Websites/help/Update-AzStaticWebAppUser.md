@@ -40,11 +40,25 @@ Update-AzStaticWebAppUser -AuthProvider <String> -UserId <String> -StaticSiteInp
  [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityStaticSite
+```
+Update-AzStaticWebAppUser -AuthProvider <String> -UserId <String> -StaticSiteInputObject <IWebsitesIdentity>
+ -StaticSiteUserEnvelope <IStaticSiteUserArmResource> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityAuthproviderExpanded
 ```
 Update-AzStaticWebAppUser -UserId <String> -AuthproviderInputObject <IWebsitesIdentity> [-Kind <String>]
  [-Role <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### UpdateViaIdentityAuthprovider
+```
+Update-AzStaticWebAppUser -UserId <String> -AuthproviderInputObject <IWebsitesIdentity>
+ -StaticSiteUserEnvelope <IStaticSiteUserArmResource> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -92,7 +106,7 @@ The auth provider for this user.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStaticSiteExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStaticSiteExpanded, UpdateViaIdentityStaticSite
 Aliases:
 
 Required: True
@@ -107,7 +121,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: UpdateViaIdentityAuthproviderExpanded
+Parameter Sets: UpdateViaIdentityAuthproviderExpanded, UpdateViaIdentityAuthprovider
 Aliases:
 
 Required: True
@@ -243,7 +257,22 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: UpdateViaIdentityStaticSiteExpanded
+Parameter Sets: UpdateViaIdentityStaticSiteExpanded, UpdateViaIdentityStaticSite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -StaticSiteUserEnvelope
+Static Site User ARM resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserArmResource
+Parameter Sets: UpdateViaIdentityStaticSite, UpdateViaIdentityAuthprovider
 Aliases:
 
 Required: True
@@ -275,7 +304,7 @@ The user id of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStaticSiteExpanded, UpdateViaIdentityAuthproviderExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStaticSiteExpanded, UpdateViaIdentityStaticSite, UpdateViaIdentityAuthproviderExpanded, UpdateViaIdentityAuthprovider
 Aliases:
 
 Required: True
@@ -320,6 +349,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteUserArmResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 

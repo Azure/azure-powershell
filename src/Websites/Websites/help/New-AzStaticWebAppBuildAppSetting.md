@@ -40,6 +40,12 @@ New-AzStaticWebAppBuildAppSetting -EnvironmentName <String> -StaticSiteInputObje
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzStaticWebAppBuildAppSetting -InputObject <IWebsitesIdentity> [-AppSetting <Hashtable>] [-Kind <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Description for create the app settings of a static site build.
 
@@ -78,7 +84,7 @@ Settings.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityStaticSiteExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStaticSiteExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -109,13 +115,28 @@ The stage site identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityStaticSiteExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -154,7 +175,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityStaticSiteExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStaticSiteExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
