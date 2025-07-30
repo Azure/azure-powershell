@@ -48,26 +48,9 @@ Test-AzStaticWebAppCustomDomain -DomainName <String> -StaticSiteInputObject <IWe
  [-Confirm] [<CommonParameters>]
 ```
 
-### Validate
-```
-Test-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>]
- -StaticSiteCustomDomainRequestPropertiesEnvelope <IStaticSiteCustomDomainRequestPropertiesArmResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### ValidateViaIdentityExpanded
 ```
 Test-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity> [-Kind <String>] [-ValidationMethod <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity>
- -StaticSiteCustomDomainRequestPropertiesEnvelope <IStaticSiteCustomDomainRequestPropertiesArmResource>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -129,7 +112,7 @@ The custom domain to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, ValidateViaIdentityStaticSiteExpanded, ValidateViaIdentityStaticSite, Validate
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, ValidateViaIdentityStaticSiteExpanded, ValidateViaIdentityStaticSite
 Aliases:
 
 Required: True
@@ -144,7 +127,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: ValidateViaIdentityExpanded, ValidateViaIdentity
+Parameter Sets: ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -204,7 +187,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, Validate
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -249,7 +232,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, Validate
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -264,7 +247,7 @@ Static Site Custom Domain Request Properties ARM resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteCustomDomainRequestPropertiesArmResource
-Parameter Sets: ValidateViaIdentityStaticSite, Validate, ValidateViaIdentity
+Parameter Sets: ValidateViaIdentityStaticSite
 Aliases:
 
 Required: True
@@ -296,7 +279,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, Validate
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath
 Aliases:
 
 Required: False

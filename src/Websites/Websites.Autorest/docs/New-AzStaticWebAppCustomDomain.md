@@ -19,12 +19,6 @@ New-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGrou
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
-```
-New-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity> [-Kind <String>] [-ValidationMethod <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityStaticSiteExpanded
 ```
 New-AzStaticWebAppCustomDomain -DomainName <String> -StaticSiteInputObject <IWebsitesIdentity>
@@ -103,28 +97,13 @@ The custom domain to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityStaticSiteExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -163,7 +142,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityStaticSiteExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStaticSiteExpanded
 Aliases:
 
 Required: False
@@ -255,7 +234,7 @@ Validation method for adding a custom domain
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityStaticSiteExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStaticSiteExpanded
 Aliases:
 
 Required: False

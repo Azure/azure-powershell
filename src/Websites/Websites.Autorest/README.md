@@ -199,8 +199,20 @@ directive:
       verb: Unregister
       subject: BuildUserProvidedFunctionApp
 
+  # Remove variant
+  # Following is two common directive which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+    remove: true
+
+  - where:
+      verb: Test
+      variant: ^Validate$|^ValidateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: CustomDomain
     remove: true
 
   - where:
