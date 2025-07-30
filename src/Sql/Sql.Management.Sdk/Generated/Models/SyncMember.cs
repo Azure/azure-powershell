@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="type">Resource type.
         /// </param>
 
+        /// <param name="identity">Sync group authentication information.
+        /// </param>
+
         /// <param name="syncDirection">Sync direction of the sync member.
         /// Possible values include: &#39;Bidirectional&#39;, &#39;OneWayMemberToHub&#39;,
         /// &#39;OneWayHubToMember&#39;</param>
@@ -77,10 +80,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// &#39;UnProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;ProvisionFailed&#39;,
         /// &#39;DeProvisioning&#39;, &#39;DeProvisioned&#39;, &#39;DeProvisionFailed&#39;, &#39;Reprovisioning&#39;,
         /// &#39;ReprovisionFailed&#39;, &#39;UnReprovisioned&#39;</param>
-        public SyncMember(string id = default(string), string name = default(string), string type = default(string), string syncDirection = default(string), string databaseType = default(string), string syncAgentId = default(string), System.Guid? sqlServerDatabaseId = default(System.Guid?), string syncMemberAzureDatabaseResourceId = default(string), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string), string serverName = default(string), string databaseName = default(string), string userName = default(string), string password = default(string), string syncState = default(string))
+        public SyncMember(DataSyncParticipantIdentity identity, string id = default(string), string name = default(string), string type = default(string), string syncDirection = default(string), string databaseType = default(string), string syncAgentId = default(string), System.Guid? sqlServerDatabaseId = default(System.Guid?), string syncMemberAzureDatabaseResourceId = default(string), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string), string serverName = default(string), string databaseName = default(string), string userName = default(string), string password = default(string), string syncState = default(string))
 
         : base(id, name, type)
         {
+            this.Identity = identity;
             this.SyncDirection = syncDirection;
             this.DatabaseType = databaseType;
             this.SyncAgentId = syncAgentId;
@@ -101,6 +105,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets sync group authentication information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public DataSyncParticipantIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets or sets sync direction of the sync member. Possible values include: &#39;Bidirectional&#39;, &#39;OneWayMemberToHub&#39;, &#39;OneWayHubToMember&#39;
@@ -175,5 +185,32 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.syncState")]
         public string SyncState {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Identity == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Identity");
+            }
+            if (this.Identity != null)
+            {
+                this.Identity.Validate();
+            }
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }

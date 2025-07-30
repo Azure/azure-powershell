@@ -14,10 +14,10 @@ Creates an Azure SQL Database Sync Group.
 
 ```
 New-AzSqlSyncGroup [-Name] <String> -SyncDatabaseName <String> -SyncDatabaseServerName <String>
- -SyncDatabaseResourceGroupName <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
- [-ConflictResolutionPolicy <String>] [-SchemaFile <String>] [-UsePrivateLinkConnection] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -SyncDatabaseResourceGroupName <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>] 
+ [-HubDatabaseAuthenticationType <String>] [-IdentityId <String>] [-ConflictResolutionPolicy <String>] 
+ [-SchemaFile <String>] [-UsePrivateLinkConnection] [-ServerName] <String> [-DatabaseName] <String> 
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,41 @@ This command creates a sync group for an Azure SQL Database. "schema.json" is a 
 "MasterSyncMemberName":  null
 }
 
+
+### Example 2: Create a sync group for an Azure SQL Database using user-assigned managed identity authentication
+
+This command creates a sync group using a **user-assigned managed identity** to authenticate to the hub database. This allows secure, passwordless authentication by referencing the Azure resource ID of the identity.
+
+```powershell
+New-AzSqlSyncGroup -ResourceGroupName "ResourceGroup02" -ServerName "Server02" -DatabaseName "Database02" -Name "SyncGroup02" `
+-ConflictResolutionPolicy "HubWin" -IntervalInSeconds -1 `
+-SyncDatabaseServerName "Server02" -SyncDatabaseName "Database02" `
+-SyncDatabaseResourceGroupName "syncDatabaseResourceGroup02" `
+-HubDatabaseAuthenticationType "userAssigned" `
+-IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -Schema ".\schema.json" | Format-List
+```
+
+```output
+ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup02}/providers/Microsoft.Sql/servers/{Server02}/databases/{Database02}/syncGroups/{SyncGroup02}
+ResourceGroupName           : ResourceGroup02
+ServerName                  : Server02
+DatabaseName                : Database02
+SyncGroupName               : SyncGroup02
+SyncDatabaseId              : /subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup02}/providers/Microsoft.Sql/servers/{Server02}/databases/{Database02}
+IntervalInSeconds           : -1
+ConflictResolutionPolicy    : HubWin
+Identity.Type               : UserAssigned
+UserAssignedIdentities      : {
+                                 "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi": {
+                                     "clientId": "{clientId}",
+                                     "principalId": "{principalId}"
+                                 }
+                              }
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
+Schema                      :
+```
+
 ## PARAMETERS
 
 ### -ConflictResolutionPolicy
@@ -78,6 +113,37 @@ The SQL authentication credential of the hub database.
 
 ```yaml
 Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubDatabaseAuthenticationType
+The authentication type used to connect to the hub database. Use `"password"` for SQL authentication with `-DatabaseCredential`, or `"userAssigned"` for user-assigned managed identity with `-IdentityId`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: password, userAssigned
+
+Required: False
+Position: Named
+Default value: password
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityId
+The Identity ID of the user-assigned managed identity to use when HubDatabaseAuthenticationType is set to "userAssigned".
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
