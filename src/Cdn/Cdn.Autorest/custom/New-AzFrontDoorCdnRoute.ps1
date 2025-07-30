@@ -415,6 +415,7 @@ function New-AzFrontDoorCdnRoute {
                     'text/x-component',
                     'text/x-java-source'
                 )
+                $PSBoundParameters['CompressionSettingContentTypesToCompress'] = $CompressionSettingContentTypesToCompress
             }
         }
         
