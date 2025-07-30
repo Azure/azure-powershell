@@ -4,13 +4,29 @@
     {
         public const string DefaultFamily = "B";
 
-        partial void CustomInit()
+        public static ManagedHsmSku Create(ManagedHsmSkuName name)
         {
-            if (Family == null)
+            return new ManagedHsmSku
             {
-                Family = DefaultFamily;
+                Name = name,
+                Family = InferFamilyFromSkuName(name)
+            };
+        }
+
+        public static string InferFamilyFromSkuName(ManagedHsmSkuName name)
+        {
+            var skuValue = name.ToSerializedValue();
+
+            if (skuValue.Contains("_B"))
+            {
+                return "B";
+            }
+            else if (skuValue.Contains("_C"))
+            {
+                return "C";
             }
 
+            return DefaultFamily;
         }
     }
 }

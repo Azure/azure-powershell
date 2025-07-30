@@ -444,8 +444,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     if (Enum.TryParse(parameters.SkuName, true, out ManagedHsmSkuName skuName))
                     {
-                        // @TODO: need to set managedHsmSku.Family also
-                        managedHsmSku.Name = skuName;
+                        managedHsmSku = ManagedHsmSku.Create(skuName);
                     }
                     else
                     {
