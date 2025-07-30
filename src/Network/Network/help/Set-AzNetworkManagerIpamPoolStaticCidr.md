@@ -45,7 +45,7 @@ $NetworkManagerName = "testNM"
 $IpamPoolName = "testPool"
 $StaticCidrName = "testStaticCidr"
 
-$staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $ResourceGroupName -NetworkManagerName $NetworkManagerName -PoolName $IpamPoolName -Name $StaticCidrName
+$staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $ResourceGroupName -NetworkManagerName $NetworkManagerName -IpamPoolName $IpamPoolName -Name $StaticCidrName
 
 $staticCidr.Properties.AddressPrefixes = @("10.0.0.0/24", "10.0.1.0/24")
 
