@@ -136,16 +136,44 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
+        #region Semi-recordable tests
+        // Tests in this region require manual creation of LTR backups a day ahead of time
+        // They only need to be re-recorded when LTR CmdLets are being changed specifically. 
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2ResourceGroupBased()
         {
+            // This test requires manual setup to create LTR backups
+            // To re-record this test, follow directions in DatabaseBackupTests.ps1, and
+            // then remove the below check before running.
             if (TestMockSupport.RunningMocked)
             {
                 TestRunner.RunTestScript("Test-LongTermRetentionV2ResourceGroupBased");
             }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionLockImmutability()
+        {
+            // This test requires manual setup to create LTR backups
+            // To re-record this test, follow directions in DatabaseBackupTests.ps1, and
+            // then remove the below check before running.
+            TestRunner.RunTestScript("Test-LongTermRetentionLockImmutability");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionRemoveImmutability()
+        {
+            // This test requires manual setup to create LTR backups
+            // To re-record this test, follow directions in DatabaseBackupTests.ps1, and
+            // then remove the below check before running.
+            TestRunner.RunTestScript("Test-LongTermRetentionRemoveImmutability");
+        }
+
+        #endregion
 
         [Fact(Skip = "Not recordable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

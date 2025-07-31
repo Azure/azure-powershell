@@ -147,17 +147,41 @@ function Test-RestoreLongTermRetentionBackup
 		-ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }
 
-function Test-LockImmutability
+function Test-LongTermRetentionLockImmutability
 {
-	$location = "west europe"
-	$serverVersion = "12.0"
-	$rg = Get-AzResourceGroup -ResourceGroupName "brandong-test"
-	$server = Get-AzSqlServer -ServerName "brandong-ltr-test" -ResourceGroupName $rg.ResourceGroupName
-	$restoredDbName = "powershell_db_restored_ltr"
-	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
+	# Prerequisite: create an LTR database with immutable, unlocked policy
+	# Wait 18 hours for first backup
+	# Then update the below with the location and resource group
+	# Note you will need multiple databases to update both remove and lock policy tests
 
-    Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName `
-		-ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+	$locationName = "eastus2euap"
+	$resourceGroup = "Default-ServiceBus-JapanWest"
+
+	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
+	$backupForLockImmutability = $backups | ?{$_.TimeBasedImmutability -eq "Enabled" -and $_.TimeBasedImmutabilityMode -eq "Unlocked"} | Select-Object -First 1
+	Assert-NotNull $backupForLockImmutability
+
+	$backupAfterLock = $backupForLockImmutability | Lock-AzSqlDatabaseLongTermRetentionBackupImmutability -Force -PassThru
+	Assert-AreEqual $backupAfterLock.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $backupAfterLock.TimeBasedImmutabilityMode "Locked"
+}
+
+function Test-LongTermRetentionRemoveImmutability
+{
+	# Prerequisite: create an LTR database with immutable, unlocked policy
+	# Wait 18 hours for first backup
+	# Then update the below with the location and resource group
+	# Note you will need multiple databases to update both remove and lock policy tests
+
+	$locationName = "eastus2euap"
+	$resourceGroup = "Default-ServiceBus-JapanWest"
+
+	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
+	$backupForRemoveImmutability = $backups | ?{$_.TimeBasedImmutability -eq "Enabled" -and $_.TimeBasedImmutabilityMode -eq "Unlocked"} | Select-Object -First 1
+	Assert-NotNull $backupForRemoveImmutability
+
+	$backupAfterRemove = $backupForRemoveImmutability | Remove-AzSqlDatabaseLongTermRetentionBackupImmutability -Force -PassThru
+	Assert-AreEqual $backupAfterRemove.TimeBasedImmutability "Disabled"
 }
 
 function Test-RemoveImmutability
