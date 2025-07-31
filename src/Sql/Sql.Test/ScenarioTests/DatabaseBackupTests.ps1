@@ -112,7 +112,7 @@ function Test-RestoreDeletedDatabaseBackup
 	}
 }
 
-function Test-RestorePointInTimeBackup
+function Test-RestorePointInTimeBackup ([switch]$isRecording)
 {
 	# Setup
 	$location = "eastus2euap"
@@ -130,7 +130,11 @@ function Test-RestorePointInTimeBackup
 		while ($db.EarliestRestoreDate -eq $null)
 		{
 			$db = $db | Get-AzSqlDatabase 
-			Start-Sleep -Seconds 30
+			
+			if ($isRecording)
+			{
+				Start-Sleep -Seconds 30
+			}
 		}
 
 		$pointInTime = $db.EarliestRestoreDate.ToString("s")

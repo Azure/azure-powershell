@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestorePointInTimeBackup()
         {
-            TestRunner.RunTestScript("Test-RestorePointInTimeBackup");
+            // Note: when recording, add -isPlayback switch
+            TestRunner.RunTestScript($"Test-RestorePointInTimeBackup");
         }
 
         [Fact(Skip = "LTR-V1 restore service is retiring in Prod.")]
