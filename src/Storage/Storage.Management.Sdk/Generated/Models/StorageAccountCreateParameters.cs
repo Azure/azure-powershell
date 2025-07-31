@@ -44,6 +44,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// created in the specified extended location
         /// </param>
 
+        /// <param name="zones">Optional. Gets or sets the pinned logical availability zone for the storage
+        /// account.
+        /// </param>
+
+        /// <param name="placement">Optional. Gets or sets the zonal placement details for the storage account.
+        /// </param>
+
         /// <param name="tags">Gets or sets a list of key value pairs that describe the resource. These
         /// tags can be used for viewing and grouping this resource (across resource
         /// groups). A maximum of 15 tags can be provided for a resource. Each tag must
@@ -154,13 +161,19 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// accounts in an Azure DNS Zone and the endpoint URL will have an
         /// alphanumeric DNS Zone identifier.
         /// Possible values include: &#39;Standard&#39;, &#39;AzureDnsZone&#39;</param>
-        public StorageAccountCreateParameters(Sku sku, string kind, string location, ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), string allowedCopyScope = default(string), string publicNetworkAccess = default(string), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string))
+
+        /// <param name="deletedAccountCreationTime">Creation time of the deleted account. This property should only be provided
+        /// while requesting deleted storage account recovery.
+        /// </param>
+        public StorageAccountCreateParameters(Sku sku, string kind, string location, ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), string allowedCopyScope = default(string), string publicNetworkAccess = default(string), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string), System.DateTime? deletedAccountCreationTime = default(System.DateTime?))
 
         {
             this.Sku = sku;
             this.Kind = kind;
             this.Location = location;
             this.ExtendedLocation = extendedLocation;
+            this.Zones = zones;
+            this.Placement = placement;
             this.Tags = tags;
             this.Identity = identity;
             this.SasPolicy = sasPolicy;
@@ -187,6 +200,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.DefaultToOAuthAuthentication = defaultToOAuthAuthentication;
             this.ImmutableStorageWithVersioning = immutableStorageWithVersioning;
             this.DnsEndpointType = dnsEndpointType;
+            this.DeletedAccountCreationTime = deletedAccountCreationTime;
             CustomInit();
         }
 
@@ -225,6 +239,20 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Gets or sets the pinned logical availability zone
+        /// for the storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
+        public System.Collections.Generic.IList<string> Zones {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Gets or sets the zonal placement details for the
+        /// storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "placement")]
+        public Placement Placement {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets a list of key value pairs that describe the
@@ -418,6 +446,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsEndpointType")]
         public string DnsEndpointType {get; set; }
+
+        /// <summary>
+        /// Gets or sets creation time of the deleted account. This property should
+        /// only be provided while requesting deleted storage account recovery.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.deletedAccountCreationTime")]
+        public System.DateTime? DeletedAccountCreationTime {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -442,6 +477,8 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 this.Sku.Validate();
             }
+
+
 
 
 

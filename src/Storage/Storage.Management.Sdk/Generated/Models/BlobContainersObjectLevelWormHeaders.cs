@@ -7,33 +7,30 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
     using System.Linq;
 
-    /// <summary>
-    /// The resource management error additional info.
-    /// </summary>
-    public partial class ErrorAdditionalInfo
+    public partial class BlobContainersObjectLevelWormHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorAdditionalInfo class.
+        /// Initializes a new instance of the BlobContainersObjectLevelWormHeaders class.
         /// </summary>
-        public ErrorAdditionalInfo()
+        public BlobContainersObjectLevelWormHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorAdditionalInfo class.
+        /// Initializes a new instance of the BlobContainersObjectLevelWormHeaders class.
         /// </summary>
 
-        /// <param name="type">The additional info type.
+        /// <param name="location">
         /// </param>
 
-        /// <param name="info">The additional info.
+        /// <param name="retryAfter">
         /// </param>
-        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
+        public BlobContainersObjectLevelWormHeaders(string location = default(string), int? retryAfter = default(int?))
 
         {
-            this.Type = type;
-            this.Info = info;
+            this.Location = location;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -44,15 +41,15 @@ namespace Microsoft.Azure.Management.Storage.Models
 
 
         /// <summary>
-        /// Gets the additional info type.
+        /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        public string Location {get; set; }
 
         /// <summary>
-        /// Gets the additional info.
+        /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "info")]
-        public object Info {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

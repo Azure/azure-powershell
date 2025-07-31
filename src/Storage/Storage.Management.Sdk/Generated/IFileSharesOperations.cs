@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.Storage
         /// Lists all shares.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -56,6 +55,47 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<FileShareItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, string maxpagesize = default(string), string filter = default(string), string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Gets properties of a specified share.
+        /// </summary>
+        /// <remarks>
+        /// Gets properties of a specified share.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='shareName'>
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='expand'>
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
+        /// </param>
+        /// <param name='xMsSnapshot'>
+        /// Optional, used to retrieve properties of a snapshot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FileShare>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, string expand = default(string), string xMsSnapshot = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates a new share under the specified account as described by request
         /// body. The share resource includes metadata and properties for that share.
         /// It does not include a list of the files contained by the share.
@@ -66,8 +106,7 @@ namespace Microsoft.Azure.Management.Storage
         /// It does not include a list of the files contained by the share.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -112,8 +151,7 @@ namespace Microsoft.Azure.Management.Storage
         /// share does not already exist.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -144,56 +182,13 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FileShare>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, FileShare fileShare, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets properties of a specified share.
-        /// </summary>
-        /// <remarks>
-        /// Gets properties of a specified share.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid
-        /// values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
-        /// </param>
-        /// <param name='xMsSnapshot'>
-        /// Optional, used to retrieve properties of a snapshot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FileShare>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, string expand = default(string), string xMsSnapshot = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Deletes specified share under its account.
         /// </summary>
         /// <remarks>
         /// Deletes specified share under its account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -231,46 +226,6 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, string xMsSnapshot = default(string), string include = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Restore a file share within a valid retention days if share soft delete is
-        /// enabled
-        /// </summary>
-        /// <remarks>
-        /// Restore a file share within a valid retention days if share soft delete is
-        /// enabled
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share
-        /// names must be between 3 and 63 characters in length and use numbers,
-        /// lower-case letters and dash (-) only. Every dash (-) character must be
-        /// immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='deletedShareName'>
-        /// Required. Identify the name of the deleted share that will be restored.
-        /// </param>
-        /// <param name='deletedShareVersion'>
-        /// Required. Identify the version of the deleted share that will be restored.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, string deletedShareName, string deletedShareVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// The Lease Share operation establishes and manages a lock on a share for
         /// delete operations. The lock duration can be 15 to 60 seconds, or can be
         /// infinite.
@@ -281,8 +236,7 @@ namespace Microsoft.Azure.Management.Storage
         /// infinite.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -314,6 +268,45 @@ namespace Microsoft.Azure.Management.Storage
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LeaseShareResponse,FileSharesLeaseHeaders>> LeaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, string xMsSnapshot = default(string), LeaseShareRequest parameters = default(LeaseShareRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Restore a file share within a valid retention days if share soft delete is
+        /// enabled
+        /// </summary>
+        /// <remarks>
+        /// Restore a file share within a valid retention days if share soft delete is
+        /// enabled
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='shareName'>
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='deletedShareName'>
+        /// Required. Identify the name of the deleted share that will be restored.
+        /// </param>
+        /// <param name='deletedShareVersion'>
+        /// Required. Identify the version of the deleted share that will be restored.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreWithHttpMessagesAsync(string resourceGroupName, string accountName, string shareName, string deletedShareName, string deletedShareVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all shares.

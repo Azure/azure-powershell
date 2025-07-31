@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the FileShareItem class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
         /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">Resource Etag.
@@ -141,9 +145,9 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="fileSharePaidBursting">File Share Paid Bursting properties.
         /// </param>
-        public FileShareItem(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string enabledProtocols = default(string), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), int? shareQuota = default(int?), int? provisionedIops = default(int?), int? provisionedBandwidthMibps = default(int?), int? includedBurstIops = default(int?), long? maxBurstCreditsForIops = default(long?), System.DateTime? nextAllowedQuotaDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedIopsDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedBandwidthDowngradeTime = default(System.DateTime?), string rootSquash = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), System.Collections.Generic.IList<SignedIdentifier> signedIdentifiers = default(System.Collections.Generic.IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?), FileSharePropertiesFileSharePaidBursting fileSharePaidBursting = default(FileSharePropertiesFileSharePaidBursting))
+        public FileShareItem(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), string enabledProtocols = default(string), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), int? shareQuota = default(int?), int? provisionedIops = default(int?), int? provisionedBandwidthMibps = default(int?), int? includedBurstIops = default(int?), long? maxBurstCreditsForIops = default(long?), System.DateTime? nextAllowedQuotaDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedIopsDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedBandwidthDowngradeTime = default(System.DateTime?), string rootSquash = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), System.Collections.Generic.IList<SignedIdentifier> signedIdentifiers = default(System.Collections.Generic.IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?), FileSharePropertiesFileSharePaidBursting fileSharePaidBursting = default(FileSharePropertiesFileSharePaidBursting))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, systemData, etag)
         {
             this.EnabledProtocols = enabledProtocols;
             this.LeaseStatus = leaseStatus;

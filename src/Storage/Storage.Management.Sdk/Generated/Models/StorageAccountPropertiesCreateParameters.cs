@@ -124,7 +124,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// accounts in an Azure DNS Zone and the endpoint URL will have an
         /// alphanumeric DNS Zone identifier.
         /// Possible values include: &#39;Standard&#39;, &#39;AzureDnsZone&#39;</param>
-        public StorageAccountPropertiesCreateParameters(string allowedCopyScope = default(string), string publicNetworkAccess = default(string), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), RoutingPreference routingPreference = default(RoutingPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string))
+
+        /// <param name="deletedAccountCreationTime">Creation time of the deleted account. This property should only be provided
+        /// while requesting deleted storage account recovery.
+        /// </param>
+        public StorageAccountPropertiesCreateParameters(string allowedCopyScope = default(string), string publicNetworkAccess = default(string), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), RoutingPreference routingPreference = default(RoutingPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string), System.DateTime? deletedAccountCreationTime = default(System.DateTime?))
 
         {
             this.AllowedCopyScope = allowedCopyScope;
@@ -151,6 +155,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.DefaultToOAuthAuthentication = defaultToOAuthAuthentication;
             this.ImmutableStorageWithVersioning = immutableStorageWithVersioning;
             this.DnsEndpointType = dnsEndpointType;
+            this.DeletedAccountCreationTime = deletedAccountCreationTime;
             CustomInit();
         }
 
@@ -336,6 +341,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dnsEndpointType")]
         public string DnsEndpointType {get; set; }
+
+        /// <summary>
+        /// Gets or sets creation time of the deleted account. This property should
+        /// only be provided while requesting deleted storage account recovery.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "deletedAccountCreationTime")]
+        public System.DateTime? DeletedAccountCreationTime {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
