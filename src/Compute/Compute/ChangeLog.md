@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
+* Upgraded SpotPlacementScore cmdlets to api version 2025-06-05
 
 ## Version 10.1.0
 * Support for Metadata Security Protocol (MSP) support for Gallery
