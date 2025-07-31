@@ -21,12 +21,13 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 Create an in-memory object for MsSqlServerProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.MsSqlServerProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.MsSqlServerProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersqlserverinstanceobject
 #>
 function New-AzWorkloadsProviderSqlServerInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.MsSqlServerProviderInstanceProperties')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.MsSqlServerProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -52,13 +53,13 @@ function New-AzWorkloadsProviderSqlServerInstanceObject {
         [string]
         $SslCertificateUri,
         [Parameter(HelpMessage="Gets or sets certificate preference if secure communication is enabled.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
+        [string]
         $SslPreference
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.MsSqlServerProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.MsSqlServerProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Password')) {
             $Object.DbPassword = $Password
@@ -84,7 +85,6 @@ function New-AzWorkloadsProviderSqlServerInstanceObject {
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-        $Object.ProviderType = 'MsSqlServer'
         return $Object
     }
 }
