@@ -154,11 +154,10 @@ function Test-ManagedHsmSoftDelete{
             $hsmName = getAssetName
             $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
             $administrator = "37f6731d-0484-43e3-b7e2-1f1bbc562109"
-            $sku = "StandardB1"
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
             # Test: create a SoftDeleteRetentionInDays-specified managed HSM
-            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -Sku $sku -SoftDeleteRetentionInDays 7
+            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 7
             Assert-AreEqual 7 $hsm.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be 7 as specified"
 
             Remove-AzKeyVaultManagedHsm -InputObject $hsm -Force
@@ -227,5 +226,50 @@ function Test-UndoManagedHsmRemoval{
     }
     finally {
         Remove-AzResourceGroup -Name $rgName -Force
+    }
+}
+
+function Test-CrudManagedHsmWithCFamilySku {
+    try {
+        $rgName = Get-AssetName
+        $location = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
+        $hsmName = Get-AssetName
+        $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
+
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        # Test: Create Managed HSM with a C-family SKU
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName `
+                                         -ResourceGroupName $rgName `
+                                         -Location $location `
+                                         -Administrator $administrator `
+                                         -Sku "CustomC42" `
+                                         -SoftDeleteRetentionInDays 7
+
+        Assert-NotNull $hsm
+        Assert-AreEqual "CustomC42" $hsm.Sku
+
+        # Test: Get the created HSM
+        $fetchedHsm = Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName
+        Assert-NotNull $fetchedHsm
+        Assert-AreEqual $hsmName $fetchedHsm.Name
+
+        # Test: Update (patch) – change tags
+        $updatedTags = @{ purpose = "CRUD-Test" }
+        $hsm = Update-AzKeyVaultManagedHsm -Name $hsmName `
+                                           -ResourceGroupName $rgName `
+                                           -Tag $updatedTags
+
+        Assert-AreEqual "CRUD-Test" $hsm.Tags["purpose"]
+
+        # Test: Delete the Managed HSM
+        Remove-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Force
+
+        # Verify it's deleted
+        $deletedHsm = Get-AzKeyVaultManagedHsm -Name $hsmName -Location $location -InRemovedState
+        Assert-NotNull $deletedHsm
+    }
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force -ErrorAction SilentlyContinue
     }
 }
