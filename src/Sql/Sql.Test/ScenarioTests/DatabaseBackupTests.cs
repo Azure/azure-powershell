@@ -206,14 +206,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestShortTermRetentionPolicy()
         {
-            if (TestMockSupport.RunningMocked)
-            {
-                TestRunner.RunTestScript("Test-ShortTermRetentionPolicy");
-            }
+            TestRunner.RunTestScript("Test-ShortTermRetentionPolicy");
         }
 
         [Fact(Skip = "Location 'East US 2 EUAP' is not accepting creation of new Windows Azure SQL Database servers at this time.'")]
