@@ -63,27 +63,19 @@ Create or update a gallery Application Version.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a gallery application version.
 ```powershell
-{{ Add code here }}
+$ctx = New-AzStorageContext -StorageAccountName $storAccName
+$SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -blob $blobName -Permission r
+$storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
+$SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
+$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + $SASToken 
+New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creating a Gallery Application Version.
+Using SAS Uri for the blob for PackageFileLink.
 
 ## PARAMETERS
 
