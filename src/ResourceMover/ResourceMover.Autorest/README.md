@@ -129,6 +129,7 @@ directive:
        suppress-format: true
   - no-inline:
     - ResourceSettings
+
   - from: ResourceMover.cs
     where: $
     transform: $ = $.replace(/throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException\(_response\);/g,"await onDefault\(_response,_response.Content.ReadAsStringAsync\(\).ContinueWith\( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.CloudError.FromJson\(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse\(body.Result\)\) \)\);");

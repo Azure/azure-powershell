@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
             var errorString = string.Format("ErrorCode: {0}, Message: {1}", response.Code, response.Message);
             errorString+= System.Environment.NewLine;
 
-            if (response?.Detail != null && response?.Detail?.Length != 0)
+            if (response?.Detail != null && response?.Detail?.Count != 0)
             {
                 var errors = response.Detail;
 
