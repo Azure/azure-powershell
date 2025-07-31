@@ -27,6 +27,7 @@
     - Namespace Device
     - Namespace Discovered Asset
     - Namespace Discovered Device
+* Support for Move-AzDeviceRegistryNamespace to migrate Asset and AssetEndpointProfile resources under a specified Namespace as Namespace Assets and Namespace Devices.
 
 ## Version 0.1.1
 * Fixed module name in module metadata

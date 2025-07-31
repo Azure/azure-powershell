@@ -148,7 +148,7 @@ Gets a Namespace Device using the parent Namespace's Identity object.
 
 ### Example 3: Get Namespace Device
 ```powershell
-
+Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device"
 ```
 
 ```output
@@ -233,7 +233,13 @@ Gets a Namespace Device from the parent Namespace.
 
 ### Example 4: Get Namespace Device Via Identity
 ```powershell
-
+$identity = @{
+  SubscriptionId = "my-subscription"
+  ResourceGroupName = "my-resource-group"
+  NamespaceName = "my-namespace"
+  DeviceName = "my-device"
+}
+Get-AzDeviceRegistryNamespaceDevice -InputObject $identity
 ```
 
 ```output
