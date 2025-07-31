@@ -281,4 +281,58 @@ directive:
       parameter-name: SpotPlacementScoresInput
     set:
       alias: SpotPlacementRecommenderInput
+
+  - where:
+      verb: Get
+      subject: GalleryApplicationVersion
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - PublishingProfileTargetExtendedLocation
+          - ReplicationStatusSummary
+          - TargetRegion
+        new-output-properties:
+          - PublishingProfileTargetExtendedLocation
+          - ReplicationStatusSummary
+          - TargetRegion
+        change-description: The types of the properties 'PublishingProfileTargetExtendedLocation', 'ReplicationStatusSummary' and 'TargetRegion' will be changed from single object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      verb: Invoke
+      subject: SpotPlacementScore
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - PlacementScore
+          - DesiredSize
+          - DesiredLocation
+        new-output-properties:
+          - PlacementScore
+          - DesiredSize
+          - DesiredLocation
+        change-description: The types of the properties 'PlacementScore', 'DesiredSize' and 'DesiredLocation' will be changed from single object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      verb: Set
+      subject: VMRunCommand|VmssVMRunCommand
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - InstanceViewStatuses
+          - ProtectedParameter
+          - Parameter
+        new-output-properties:
+          - InstanceViewStatuses
+          - ProtectedParameter
+          - Parameter
+        change-description: The types of the properties 'InstanceViewStatuses', 'ProtectedParameter' and 'Parameter' will be changed from single object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```
