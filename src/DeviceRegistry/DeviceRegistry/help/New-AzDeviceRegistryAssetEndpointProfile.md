@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/new-azdeviceregistryassetendpointprofile
 schema: 2.0.0
@@ -14,27 +14,28 @@ Create a AssetEndpointProfile
 
 ### CreateExpanded (Default)
 ```
-New-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String>
- -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> [-SubscriptionId <String>]
+New-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
  [-AdditionalConfiguration <String>] [-AuthenticationMethod <String>]
  [-DiscoveredAssetEndpointProfileRef <String>] [-EndpointProfileType <String>] [-Tag <Hashtable>]
  [-TargetAddress <String>] [-UsernamePasswordCredentialsPasswordSecretName <String>]
  [-UsernamePasswordCredentialsUsernameSecretName <String>] [-X509CredentialsCertificateSecretName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -532,4 +533,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

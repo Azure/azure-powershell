@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/new-azdeviceregistryschema
 schema: 2.0.0
@@ -16,21 +16,22 @@ Create a Schema
 ```
 New-AzDeviceRegistrySchema -Name <String> -RegistryName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>] [-Format <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzDeviceRegistrySchema -Name <String> -RegistryName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzDeviceRegistrySchema -Name <String> -RegistryName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -339,4 +340,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

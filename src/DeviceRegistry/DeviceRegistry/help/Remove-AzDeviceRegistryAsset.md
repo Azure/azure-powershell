@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryasset
 schema: 2.0.0
@@ -15,13 +15,14 @@ Delete a Asset
 ### Delete (Default)
 ```
 Remove-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDeviceRegistryAsset -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -214,4 +215,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

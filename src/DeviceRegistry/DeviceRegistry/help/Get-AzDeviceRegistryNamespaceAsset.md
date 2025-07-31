@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistrynamespaceasset
 schema: 2.0.0
@@ -15,18 +15,7 @@ Get a NamespaceAsset
 ### List (Default)
 ```
 Get-AzDeviceRegistryNamespaceAsset -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeviceRegistryNamespaceAsset -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -34,6 +23,19 @@ Get-AzDeviceRegistryNamespaceAsset -InputObject <IDeviceRegistryIdentity> [-Defa
 ```
 Get-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceInputObject <IDeviceRegistryIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDeviceRegistryNamespaceAsset -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -278,7 +280,7 @@ The name of the asset.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityNamespace
+Parameter Sets: GetViaIdentityNamespace, Get
 Aliases:
 
 Required: True
@@ -339,7 +341,7 @@ The name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -355,7 +357,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -371,7 +373,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -395,4 +397,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

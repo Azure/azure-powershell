@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/update-azdeviceregistrynamespacedevice
 schema: 2.0.0
@@ -14,19 +14,25 @@ Update a NamespaceDevice
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <Hashtable>] [-Enabled]
- [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>]
- [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Attribute <Hashtable>] [-Enabled] [-EndpointInbound <Hashtable>]
+ [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonString
 ```
-Update-AzDeviceRegistryNamespaceDevice -InputObject <IDeviceRegistryIdentity> [-Attribute <Hashtable>]
- [-Enabled] [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>]
- [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNamespaceExpanded
@@ -34,21 +40,16 @@ Update-AzDeviceRegistryNamespaceDevice -InputObject <IDeviceRegistryIdentity> [-
 Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceInputObject <IDeviceRegistryIdentity>
  [-Attribute <Hashtable>] [-Enabled] [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>]
  [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDeviceRegistryNamespaceDevice -InputObject <IDeviceRegistryIdentity> [-Attribute <Hashtable>]
+ [-Enabled] [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>]
+ [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -576,7 +577,7 @@ A set of key-value pairs that contain custom attributes set by the customer.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -607,7 +608,7 @@ The name of the device.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -623,7 +624,7 @@ A disabled device cannot authenticate with Microsoft Entra ID.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -638,7 +639,7 @@ Set of endpoints to connect to the device.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -713,7 +714,7 @@ The name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -743,7 +744,7 @@ Device operating system version.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -758,7 +759,7 @@ Endpoints the device can connect to.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -773,7 +774,7 @@ Set of most recently removed endpoints.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -789,7 +790,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -805,7 +806,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -820,7 +821,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -875,4 +876,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

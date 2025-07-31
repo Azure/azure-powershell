@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryschemaversion
 schema: 2.0.0
@@ -15,27 +15,28 @@ Delete a SchemaVersion
 ### Delete (Default)
 ```
 Remove-AzDeviceRegistrySchemaVersion -Name <String> -ResourceGroupName <String> -SchemaName <String>
- -SchemaRegistryName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzDeviceRegistrySchemaVersion -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentitySchema
-```
-Remove-AzDeviceRegistrySchemaVersion -Name <String> -SchemaInputObject <IDeviceRegistryIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SchemaRegistryName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentitySchemaRegistry
 ```
 Remove-AzDeviceRegistrySchemaVersion -Name <String> -SchemaName <String>
- -SchemaRegistryInputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SchemaRegistryInputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentitySchema
+```
+Remove-AzDeviceRegistrySchemaVersion -Name <String> -SchemaInputObject <IDeviceRegistryIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzDeviceRegistrySchemaVersion -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +113,7 @@ Schema version name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentitySchema, DeleteViaIdentitySchemaRegistry
+Parameter Sets: Delete, DeleteViaIdentitySchemaRegistry, DeleteViaIdentitySchema
 Aliases: SchemaVersionName
 
 Required: True
@@ -274,4 +275,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/move-azdeviceregistrynamespace
 schema: 2.0.0
@@ -15,40 +15,42 @@ Migrate the resources into Namespace
 ### MigrateExpanded (Default)
 ```
 Move-AzDeviceRegistryNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ResourceId <String[]>] [-Scope <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ResourceId <String[]>] [-Scope <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MigrateViaJsonString
+```
+Move-AzDeviceRegistryNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MigrateViaJsonFilePath
+```
+Move-AzDeviceRegistryNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Migrate
 ```
-Move-AzDeviceRegistryNamespace -Name <String> -ResourceGroupName <String> -Body <INamespaceMigrateRequest>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### MigrateViaIdentity
-```
-Move-AzDeviceRegistryNamespace -InputObject <IDeviceRegistryIdentity> -Body <INamespaceMigrateRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzDeviceRegistryNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Body <INamespaceMigrateRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentityExpanded
 ```
 Move-AzDeviceRegistryNamespace -InputObject <IDeviceRegistryIdentity> [-ResourceId <String[]>]
- [-Scope <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Scope <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### MigrateViaJsonFilePath
+### MigrateViaIdentity
 ```
-Move-AzDeviceRegistryNamespace -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### MigrateViaJsonString
-```
-Move-AzDeviceRegistryNamespace -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Move-AzDeviceRegistryNamespace -InputObject <IDeviceRegistryIdentity> -Body <INamespaceMigrateRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -166,7 +168,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
-Parameter Sets: MigrateViaIdentity, MigrateViaIdentityExpanded
+Parameter Sets: MigrateViaIdentityExpanded, MigrateViaIdentity
 Aliases:
 
 Required: True
@@ -211,7 +213,7 @@ The name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded, MigrateViaJsonFilePath, MigrateViaJsonString
+Parameter Sets: MigrateExpanded, MigrateViaJsonString, MigrateViaJsonFilePath, Migrate
 Aliases: NamespaceName
 
 Required: True
@@ -242,7 +244,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded, MigrateViaJsonFilePath, MigrateViaJsonString
+Parameter Sets: MigrateExpanded, MigrateViaJsonString, MigrateViaJsonFilePath, Migrate
 Aliases:
 
 Required: True
@@ -288,7 +290,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded, MigrateViaJsonFilePath, MigrateViaJsonString
+Parameter Sets: MigrateExpanded, MigrateViaJsonString, MigrateViaJsonFilePath, Migrate
 Aliases:
 
 Required: False
@@ -345,4 +347,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

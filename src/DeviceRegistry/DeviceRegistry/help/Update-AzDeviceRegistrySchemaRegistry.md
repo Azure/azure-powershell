@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/update-azdeviceregistryschemaregistry
 schema: 2.0.0
@@ -15,15 +15,17 @@ Replace a SchemaRegistry
 ### UpdateExpanded (Default)
 ```
 Update-AzDeviceRegistrySchemaRegistry -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Description <String>] [-DisplayName <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-DisplayName <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDeviceRegistrySchemaRegistry -InputObject <IDeviceRegistryIdentity> [-Description <String>]
- [-DisplayName <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,7 +169,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -315,4 +317,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

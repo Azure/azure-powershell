@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistrynamespacediscovereddevice
 schema: 2.0.0
@@ -15,25 +15,28 @@ Get a NamespaceDiscoveredDevice
 ### List (Default)
 ```
 Get-AzDeviceRegistryNamespaceDiscoveredDevice -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityNamespace
+```
+Get-AzDeviceRegistryNamespaceDiscoveredDevice -DiscoveredDeviceName <String>
+ -NamespaceInputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDeviceRegistryNamespaceDiscoveredDevice -DiscoveredDeviceName <String> -NamespaceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDeviceRegistryNamespaceDiscoveredDevice -InputObject <IDeviceRegistryIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityNamespace
-```
-Get-AzDeviceRegistryNamespaceDiscoveredDevice -DiscoveredDeviceName <String>
- -NamespaceInputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +71,6 @@ Get-AzDeviceRegistryNamespaceDiscoveredDevice -NamespaceInputObject $namespaceId
 ```
 
 ```output
-
 Attribute                    : {
                                  "deviceType": "sensor",
                                  "deviceOwner": "dev",
@@ -130,7 +132,6 @@ Get-AzDeviceRegistryNamespaceDiscoveredDevice -ResourceGroupName "my-resource-gr
 ```
 
 ```output
-
 Attribute                    : {
                                  "deviceType": "sensor",
                                  "deviceOwner": "dev",
@@ -198,7 +199,6 @@ Get-AzDeviceRegistryNamespaceDiscoveredDevice -InputObject $identity
 ```
 
 ```output
-
 Attribute                    : {
                                  "deviceType": "sensor",
                                  "deviceOwner": "dev",
@@ -277,7 +277,7 @@ The name of the discovered device.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityNamespace
+Parameter Sets: GetViaIdentityNamespace, Get
 Aliases:
 
 Required: True
@@ -322,7 +322,7 @@ The name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -338,7 +338,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -354,7 +354,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -378,4 +378,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

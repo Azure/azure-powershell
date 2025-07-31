@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/update-azdeviceregistrynamespacediscoveredasset
 schema: 2.0.0
@@ -25,23 +25,22 @@ Update-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String> -N
  [-ManagementGroup <INamespaceDiscoveredManagementGroup[]>] [-Manufacturer <String>]
  [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
  [-SoftwareRevision <String>] [-Stream <INamespaceDiscoveredStream[]>] [-Tag <Hashtable>] [-Version <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonString
 ```
-Update-AzDeviceRegistryNamespaceDiscoveredAsset -InputObject <IDeviceRegistryIdentity>
- [-AssetTypeRef <String[]>] [-Attribute <Hashtable>] [-Dataset <INamespaceDiscoveredDataset[]>]
- [-DefaultDatasetsConfiguration <String>] [-DefaultDatasetsDestination <IDatasetDestination[]>]
- [-DefaultEventsConfiguration <String>] [-DefaultEventsDestination <IEventDestination[]>]
- [-DefaultManagementGroupsConfiguration <String>] [-DefaultStreamsConfiguration <String>]
- [-DefaultStreamsDestination <IStreamDestination[]>] [-DeviceRefDeviceName <String>]
- [-DeviceRefEndpointName <String>] [-DiscoveryId <String>] [-DocumentationUri <String>]
- [-Event <INamespaceDiscoveredEvent[]>] [-HardwareRevision <String>]
- [-ManagementGroup <INamespaceDiscoveredManagementGroup[]>] [-Manufacturer <String>]
- [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
- [-SoftwareRevision <String>] [-Stream <INamespaceDiscoveredStream[]>] [-Tag <Hashtable>] [-Version <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNamespaceExpanded
@@ -57,21 +56,25 @@ Update-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String>
  [-ManagementGroup <INamespaceDiscoveredManagementGroup[]>] [-Manufacturer <String>]
  [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
  [-SoftwareRevision <String>] [-Stream <INamespaceDiscoveredStream[]>] [-Tag <Hashtable>] [-Version <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-Update-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String> -NamespaceName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String> -NamespaceName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDeviceRegistryNamespaceDiscoveredAsset -InputObject <IDeviceRegistryIdentity>
+ [-AssetTypeRef <String[]>] [-Attribute <Hashtable>] [-Dataset <INamespaceDiscoveredDataset[]>]
+ [-DefaultDatasetsConfiguration <String>] [-DefaultDatasetsDestination <IDatasetDestination[]>]
+ [-DefaultEventsConfiguration <String>] [-DefaultEventsDestination <IEventDestination[]>]
+ [-DefaultManagementGroupsConfiguration <String>] [-DefaultStreamsConfiguration <String>]
+ [-DefaultStreamsDestination <IStreamDestination[]>] [-DeviceRefDeviceName <String>]
+ [-DeviceRefEndpointName <String>] [-DiscoveryId <String>] [-DocumentationUri <String>]
+ [-Event <INamespaceDiscoveredEvent[]>] [-HardwareRevision <String>]
+ [-ManagementGroup <INamespaceDiscoveredManagementGroup[]>] [-Manufacturer <String>]
+ [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
+ [-SoftwareRevision <String>] [-Stream <INamespaceDiscoveredStream[]>] [-Tag <Hashtable>] [-Version <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,7 +170,7 @@ URIs or type definition IDs.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -182,7 +185,7 @@ A set of key-value pairs that contain custom attributes.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,7 +201,7 @@ Each dataset spec describes the data points that make up the set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDataset[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -214,7 +217,7 @@ Each dataset can have its own configuration that overrides the default settings 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -229,7 +232,7 @@ Default destinations for a dataset.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDatasetDestination[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -245,7 +248,7 @@ Each event can have its own configuration that overrides the default settings he
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -260,7 +263,7 @@ Default destinations for an event.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventDestination[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -276,7 +279,7 @@ Each management group can have its own configuration that overrides the default 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -308,7 +311,7 @@ Each stream can have its own configuration that overrides the default settings h
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -323,7 +326,7 @@ Default destinations for a stream.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -338,7 +341,7 @@ Name of the device resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -353,7 +356,7 @@ The name of endpoint to use
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -368,7 +371,7 @@ The name of the discovered asset.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -383,7 +386,7 @@ Identifier used to detect changes in the asset.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -398,7 +401,7 @@ Asset documentation reference.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -414,7 +417,7 @@ Each event can have per-event configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -429,7 +432,7 @@ Asset hardware revision number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -490,7 +493,7 @@ Each management group can have a per-group configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredManagementGroup[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -505,7 +508,7 @@ Asset manufacturer.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -520,7 +523,7 @@ Asset manufacturer URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -535,7 +538,7 @@ Asset model.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -565,7 +568,7 @@ The name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -595,7 +598,7 @@ Asset product code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -611,7 +614,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -626,7 +629,7 @@ Asset serial number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -641,7 +644,7 @@ Asset software revision number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -657,7 +660,7 @@ Each stream can have a per-stream configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredStream[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -673,7 +676,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -688,7 +691,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -703,7 +706,7 @@ An integer that is incremented each time the resource is modified.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -758,4 +761,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

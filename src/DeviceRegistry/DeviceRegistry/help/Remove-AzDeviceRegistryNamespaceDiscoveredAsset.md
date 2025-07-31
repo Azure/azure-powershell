@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistrynamespacediscoveredasset
 schema: 2.0.0
@@ -16,20 +16,21 @@ Delete a NamespaceDiscoveredAsset
 ```
 Remove-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String> -NamespaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzDeviceRegistryNamespaceDiscoveredAsset -InputObject <IDeviceRegistryIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityNamespace
 ```
 Remove-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String>
  -NamespaceInputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzDeviceRegistryNamespaceDiscoveredAsset -InputObject <IDeviceRegistryIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -264,4 +265,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistryschema
 schema: 2.0.0
@@ -18,22 +18,23 @@ Get-AzDeviceRegistrySchema -RegistryName <String> -ResourceGroupName <String> [-
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentitySchemaRegistry
+```
+Get-AzDeviceRegistrySchema -Name <String> -SchemaRegistryInputObject <IDeviceRegistryIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzDeviceRegistrySchema -Name <String> -RegistryName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDeviceRegistrySchema -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentitySchemaRegistry
-```
-Get-AzDeviceRegistrySchema -Name <String> -SchemaRegistryInputObject <IDeviceRegistryIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,7 +196,7 @@ Schema name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentitySchemaRegistry
+Parameter Sets: GetViaIdentitySchemaRegistry, Get
 Aliases: SchemaName
 
 Required: True
@@ -210,7 +211,7 @@ Schema registry name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases: SchemaRegistryName
 
 Required: True
@@ -226,7 +227,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -257,7 +258,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -281,4 +282,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

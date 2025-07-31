@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/update-azdeviceregistryschema
 schema: 2.0.0
@@ -16,21 +16,21 @@ Replace a Schema
 ```
 Update-AzDeviceRegistrySchema -Name <String> -RegistryName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzDeviceRegistrySchema -InputObject <IDeviceRegistryIdentity> [-Description <String>]
- [-DisplayName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentitySchemaRegistryExpanded
 ```
 Update-AzDeviceRegistrySchema -Name <String> -SchemaRegistryInputObject <IDeviceRegistryIdentity>
- [-Description <String>] [-DisplayName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-DisplayName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzDeviceRegistrySchema -InputObject <IDeviceRegistryIdentity> [-Description <String>]
+ [-DisplayName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -330,4 +330,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

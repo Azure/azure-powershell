@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/new-azdeviceregistrynamespacedevice
 schema: 2.0.0
@@ -15,25 +15,26 @@ Create a NamespaceDevice
 ### CreateExpanded (Default)
 ```
 New-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-Attribute <Hashtable>] [-DiscoveredDeviceRef <String>]
+ [-SubscriptionId <String>] -Location <String> [-Attribute <Hashtable>] [-DiscoveredDeviceRef <String>]
  [-Enabled] [-EndpointsInbound <Hashtable>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-ExternalDeviceId <String>] [-Manufacturer <String>] [-Model <String>] [-OperatingSystem <String>]
  [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -723,4 +724,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

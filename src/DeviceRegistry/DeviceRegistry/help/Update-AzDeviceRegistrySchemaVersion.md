@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/update-azdeviceregistryschemaversion
 schema: 2.0.0
@@ -16,26 +16,27 @@ Replace a SchemaVersion
 ```
 Update-AzDeviceRegistrySchemaVersion -Name <String> -ResourceGroupName <String> -SchemaName <String>
  -SchemaRegistryName <String> [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzDeviceRegistrySchemaVersion -InputObject <IDeviceRegistryIdentity> [-Description <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentitySchemaExpanded
-```
-Update-AzDeviceRegistrySchemaVersion -Name <String> -SchemaInputObject <IDeviceRegistryIdentity>
- [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentitySchemaRegistryExpanded
 ```
 Update-AzDeviceRegistrySchemaVersion -Name <String> -SchemaName <String>
  -SchemaRegistryInputObject <IDeviceRegistryIdentity> [-Description <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySchemaExpanded
+```
+Update-AzDeviceRegistrySchemaVersion -Name <String> -SchemaInputObject <IDeviceRegistryIdentity>
+ [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzDeviceRegistrySchemaVersion -InputObject <IDeviceRegistryIdentity> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,7 +203,7 @@ Schema version name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentitySchemaExpanded, UpdateViaIdentitySchemaRegistryExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySchemaRegistryExpanded, UpdateViaIdentitySchemaExpanded
 Aliases: SchemaVersionName
 
 Required: True
@@ -349,4 +350,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

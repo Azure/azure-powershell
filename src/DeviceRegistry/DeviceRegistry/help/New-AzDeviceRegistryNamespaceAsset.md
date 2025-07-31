@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/new-azdeviceregistrynamespaceasset
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create a NamespaceAsset
 ### CreateExpanded (Default)
 ```
 New-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String> -ResourceGroupName <String>
- -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> [-SubscriptionId <String>]
+ [-SubscriptionId <String>] -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
  [-AssetTypeRef <String[]>] [-Attribute <Hashtable>] [-Dataset <INamespaceDataset[]>]
  [-DefaultDatasetsConfiguration <String>] [-DefaultDatasetsDestination <IDatasetDestination[]>]
  [-DefaultEventsConfiguration <String>] [-DefaultEventsDestination <IEventDestination[]>]
@@ -26,21 +26,21 @@ New-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String> -
  [-HardwareRevision <String>] [-ManagementGroup <IManagementGroup[]>] [-Manufacturer <String>]
  [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
  [-SoftwareRevision <String>] [-Stream <INamespaceStream[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -929,4 +929,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

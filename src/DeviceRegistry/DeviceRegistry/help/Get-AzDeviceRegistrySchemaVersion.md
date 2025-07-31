@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistryschemaversion
 schema: 2.0.0
@@ -14,19 +14,15 @@ Get a SchemaVersion
 
 ### List (Default)
 ```
-Get-AzDeviceRegistrySchemaVersion -ResourceGroupName <String> -SchemaName <String>
- -SchemaRegistryName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeviceRegistrySchemaVersion -ResourceGroupName <String> -SchemaName <String> -SchemaRegistryName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentitySchemaRegistry
 ```
-Get-AzDeviceRegistrySchemaVersion -Name <String> -ResourceGroupName <String> -SchemaName <String>
- -SchemaRegistryName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeviceRegistrySchemaVersion -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+Get-AzDeviceRegistrySchemaVersion -Name <String> -SchemaName <String>
+ -SchemaRegistryInputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -36,10 +32,17 @@ Get-AzDeviceRegistrySchemaVersion -Name <String> -SchemaInputObject <IDeviceRegi
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentitySchemaRegistry
+### Get
 ```
-Get-AzDeviceRegistrySchemaVersion -Name <String> -SchemaName <String>
- -SchemaRegistryInputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeviceRegistrySchemaVersion -Name <String> -ResourceGroupName <String> -SchemaName <String>
+ -SchemaRegistryName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDeviceRegistrySchemaVersion -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -218,7 +221,7 @@ Schema version name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentitySchema, GetViaIdentitySchemaRegistry
+Parameter Sets: GetViaIdentitySchemaRegistry, GetViaIdentitySchema, Get
 Aliases: SchemaVersionName
 
 Required: True
@@ -234,7 +237,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -264,7 +267,7 @@ Schema name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentitySchemaRegistry, List
+Parameter Sets: List, GetViaIdentitySchemaRegistry, Get
 Aliases:
 
 Required: True
@@ -294,7 +297,7 @@ Schema registry name parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -310,7 +313,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -334,4 +337,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

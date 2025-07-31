@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/new-azdeviceregistryschemaregistry
 schema: 2.0.0
@@ -14,24 +14,24 @@ Create a SchemaRegistry
 
 ### CreateExpanded (Default)
 ```
-New-AzDeviceRegistrySchemaRegistry -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>] [-EnableSystemAssignedIdentity]
+New-AzDeviceRegistrySchemaRegistry -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-Description <String>] [-DisplayName <String>] [-EnableSystemAssignedIdentity]
  [-Namespace <String>] [-StorageAccountContainerUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzDeviceRegistrySchemaRegistry -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeviceRegistrySchemaRegistry -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzDeviceRegistrySchemaRegistry -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeviceRegistrySchemaRegistry -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -420,4 +420,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceRegistry-help.xml
 Module Name: Az.DeviceRegistry
 online version: https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistrynamespacedevice
 schema: 2.0.0
@@ -15,18 +15,7 @@ Get a NamespaceDevice
 ### List (Default)
 ```
 Get-AzDeviceRegistryNamespaceDevice -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeviceRegistryNamespaceDevice -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -36,12 +25,25 @@ Get-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceInputObject <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDeviceRegistryNamespaceDevice -InputObject <IDeviceRegistryIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a NamespaceDevice
 
 ## EXAMPLES
 
-### Example 1: List Namespace Devices in a Namespace 
+### Example 1: List Namespace Devices in a Namespace
 ```powershell
 Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace"
 ```
@@ -148,7 +150,7 @@ Gets a Namespace Device using the parent Namespace's Identity object.
 
 ### Example 3: Get Namespace Device
 ```powershell
-
+Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device"
 ```
 
 ```output
@@ -233,7 +235,13 @@ Gets a Namespace Device from the parent Namespace.
 
 ### Example 4: Get Namespace Device Via Identity
 ```powershell
-
+$identity = @{
+  SubscriptionId = "my-subscription"
+  ResourceGroupName = "my-resource-group"
+  NamespaceName = "my-namespace"
+  DeviceName = "my-device"
+}
+Get-AzDeviceRegistryNamespaceDevice -InputObject $identity
 ```
 
 ```output
@@ -339,7 +347,7 @@ The name of the device.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityNamespace
+Parameter Sets: GetViaIdentityNamespace, Get
 Aliases:
 
 Required: True
@@ -384,7 +392,7 @@ The name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -400,7 +408,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -416,7 +424,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -440,4 +448,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
