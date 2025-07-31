@@ -306,9 +306,6 @@ HelpMessage: ''
 
 ### -MonthlyRetention
 
-The Monthly Retention.
-If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minimum of 7 days and a maximum of 10 years.
 The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml
@@ -336,7 +333,6 @@ HelpMessage: ''
 
 ### -RemovePolicy
 
-If provided, the policy for the database will be removed.
 If provided, the policy for the database will be cleared.
 
 ```yaml
@@ -442,9 +438,6 @@ HelpMessage: ''
 
 ### -WeeklyRetention
 
-The Weekly Retention.
-If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minimum of 7 days and a maximum of 10 years.
 The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml
@@ -499,8 +492,6 @@ HelpMessage: ''
 
 ### -WhatIf
 
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
 Runs the command in a mode that only reports what would happen without performing the actions.
 
 ```yaml
@@ -523,9 +514,6 @@ HelpMessage: ''
 
 ### -YearlyRetention
 
-The Yearly Retention.
-If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minimum of 7 days and a maximum of 10 years.
 The Yearly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml

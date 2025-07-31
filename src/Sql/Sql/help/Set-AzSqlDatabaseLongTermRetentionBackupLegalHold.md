@@ -272,28 +272,6 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
-### -ProgressAction
-
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-DefaultValue: None
-SupportsWildcards: false
-Aliases:
-- proga
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
-```
-
 ### -ResourceGroupName
 
 The name of the resource group.

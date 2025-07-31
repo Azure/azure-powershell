@@ -18,9 +18,6 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
