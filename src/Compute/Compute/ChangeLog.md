@@ -20,6 +20,15 @@
 
 -->
 ## Upcoming Release
+* Added breaking change announcement for the following cmdlets due to migrating autorest from v3 to v4.
+  * `Get-GalleryApplicationVersion`
+  * `New-GalleryApplicationVersion`
+  * `Update-GalleryApplicationVersion`
+  * `Invoke-AzSpotPlacementScore`
+  * `Set-AzVMRunCommand`
+  * `Set-AzVmssVMRunCommand`
+
+## Version 11.0.0
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
 * Upgraded SpotPlacementScore cmdlets to api version 2025-06-05
 
