@@ -57,16 +57,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "Not recordable")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestorePointInTimeBackup()
         {
-            // TODO Rewrite SQL backup tests to be recordable
-            // TODO https://github.com/Azure/azure-powershell/issues/4155
-            if (TestMockSupport.RunningMocked)
-            {
-                TestRunner.RunTestScript("Test-RestorePointInTimeBackup");
-            }
+            TestRunner.RunTestScript("Test-RestorePointInTimeBackup");
         }
 
         [Fact(Skip = "LTR-V1 restore service is retiring in Prod.")]

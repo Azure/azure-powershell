@@ -115,21 +115,38 @@ function Test-RestoreDeletedDatabaseBackup
 function Test-RestorePointInTimeBackup
 {
 	# Setup
-	$location = "west europe"
+	$location = "eastus2euap"
 	$serverVersion = "12.0"
-	$rg = Get-AzResourceGroup -ResourceGroupName payi-test
-	$server = Get-AzSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$db = Get-AzSqlDatabase -ServerName $server.ServerName -DatabaseName payi-testdb -ResourceGroupName $rg.ResourceGroupName
+	$rg = Create-ResourceGroupForTest
+	$databaseName = "powershell_db"
 	$restoredDbName = "powershell_db_restored"
 	$restoredVcoreDbName = "powershell_db_restored_vcore"
 
-	# Restore to same with source db
-	Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredDbName -ResourceGroupName $db.ResourceGroupName `
-	-ServerName $db.ServerName -ResourceId $db.ResourceId
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen5_2
 
-	# Restore to a Vcore db
-	Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $db.ResourceGroupName `
-		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen4'
+		while ($db.EarliestRestoreDate -eq $null)
+		{
+			$db = $db | Get-AzSqlDatabase 
+			Start-Sleep -Seconds 30
+		}
+
+		$pointInTime = $db.EarliestRestoreDate.ToString("s")
+
+		# Restore to same with source db
+		Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pointInTime -TargetDatabaseName $restoredDbName -ResourceGroupName $db.ResourceGroupName `
+		-ServerName $db.ServerName -ResourceId $db.ResourceId
+
+		# Restore to a Vcore db
+		Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pointInTime -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $db.ResourceGroupName `
+			-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen5'
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 # LTR-V1 restore tests need to be removed once the service is retired completely
