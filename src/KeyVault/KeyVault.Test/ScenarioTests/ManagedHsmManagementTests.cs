@@ -65,5 +65,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-UndoManagedHsmRemoval");
         }
+
+        // @TODO: add test call for "C" family test once recording ready. 
     }
 }
