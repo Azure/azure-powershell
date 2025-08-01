@@ -75,9 +75,9 @@ directive:
         "format": "int64",
         "description": "Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert."
       }
-  # - model-cmdlet:
-  #   - model-name: Condition
-  #   - model-name: Dimension
+  - model-cmdlet:
+    - model-name: Condition
+    - model-name: Dimension
   - where:
       verb: Get|Update|New
       subject: ScheduledQueryRule
