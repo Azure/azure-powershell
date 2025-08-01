@@ -1,59 +1,54 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
+online version: https://learn.microsoft.com/powershell/module/az.resourcemover/update-azresourcemovermoveresource
 schema: 2.0.0
 ---
 
-# Remove-AzResourceMoverMoveResource
+# Update-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-Deletes a Move Resource from the move collection.
+Update a Move Resource in the move collection.
 
-**The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+**The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentityMoveCollection
-```
-Remove-AzResourceMoverMoveResource -MoveCollectionInputObject <IResourceMoverIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceMoverMoveResource -MoveCollectionInputObject <IResourceMoverIdentity> -Name <String>
+ [-DependsOnOverride <IMoveResourceDependencyOverride[]>] [-ExistingTargetId <String>]
+ [-ResourceSetting <IResourceSettings>] [-SourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a Move Resource from the move collection.
+Update a Move Resource in the move collection.
 
-**The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+**The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES
 
-### Example 1: Remove one Move Resource from the Move Collection.
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
+{{ Add code here }}
 ```
 
 ```output
-AdditionalInfo : 
-Code           : 
-Detail         : 
-EndTime        : 2/10/2021 1:08:49 PM
-Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/operations/bee69758-c7cb-4160-b3e0-8e4b69ec3731
-Message        : 
-Name           : bee69758-c7cb-4160-b3e0-8e4b69ec3731
-Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
-StartTime      : 2/10/2021 1:08:47 PM
-Status         : Succeeded
-
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Remove one Move Resource from the Move Collection.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -88,33 +83,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DependsOnOverride
+Gets or sets the move resource dependencies overrides.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResourceDependencyOverride[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExistingTargetId
+Gets or sets the existing target ARM Id of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
-Parameter Sets: DeleteViaIdentityMoveCollection
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MoveCollectionName
-The Move Collection Name.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,11 +158,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -ResourceSetting
+Gets or sets the resource settings.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceSettings
 Parameter Sets: (All)
 Aliases:
 
@@ -163,32 +173,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The Resource Group Name.
+### -SourceId
+Gets or sets the Source ARM Id of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The Subscription ID.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -233,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResource
 
 ## NOTES
 

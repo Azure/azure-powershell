@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-Creates or updates a Move Resource in the move collection.
+Create a Move Resource in the move collection.
 
 **The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
@@ -23,7 +23,7 @@ Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 ```
 
 ## DESCRIPTION
-Creates or updates a Move Resource in the move collection.
+Create a Move Resource in the move collection.
 
 **The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
@@ -328,10 +328,9 @@ Accept wildcard characters: False
 
 ### -DependsOnOverride
 Gets or sets the move resource dependencies overrides.
-To construct, see NOTES section for DEPENDSONOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResourceDependencyOverride[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResourceDependencyOverride[]
 Parameter Sets: (All)
 Aliases:
 
@@ -419,10 +418,9 @@ Accept wildcard characters: False
 
 ### -ResourceSetting
 Gets or sets the resource settings.
-To construct, see NOTES section for RESOURCESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IResourceSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceSettings
 Parameter Sets: (All)
 Aliases:
 
@@ -501,7 +499,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResource
 
 ## NOTES
 

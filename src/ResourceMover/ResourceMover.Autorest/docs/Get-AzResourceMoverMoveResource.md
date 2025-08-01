@@ -26,6 +26,12 @@ Get-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityMoveCollection
+```
+Get-AzResourceMoverMoveResource -MoveCollectionInputObject <IResourceMoverIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the Move Resource.
 
@@ -324,12 +330,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MoveCollectionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
+Parameter Sets: GetViaIdentityMoveCollection
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionName
 The Move Collection Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -344,7 +365,7 @@ The Move Resource Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityMoveCollection
 Aliases: MoveResourceName
 
 Required: True
@@ -359,7 +380,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -374,7 +395,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -389,9 +410,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResource
 
 ## NOTES
 

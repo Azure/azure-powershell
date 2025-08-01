@@ -18,9 +18,9 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ```
 Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <MoveResourceInputType>]
- [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ## EXAMPLES
 
-### Example 1: Validate the dependencies before remove of the Move Resources from Move Collection
+### Example 1: Validate the dependecies before remove of the Move Resources from Move Collection
 ```powershell
 Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM') -MoveResourceInputType "MoveResourceId" -ValidateOnly
 ```
@@ -51,7 +51,7 @@ StartTime      : 2/10/2021 12:52:28 PM
 Status         : Succeeded
 ```
 
-Validate the dependencies before remove of the move resources from Move Collection.
+Validate the dependecies before remove of the move resources from Move Collection.
 
 ### Example 2: Remove the Move Resource from Move Collection using "MoveResource Name" as input
 ```powershell
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Defines the move resource input type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -271,7 +271,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus
 
 ## NOTES
 

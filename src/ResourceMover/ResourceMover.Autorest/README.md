@@ -65,74 +65,88 @@ module-version: 1.0.0
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Initiate$|^InitiateViaIdentity$|^InitiateViaIdentityExpanded$|^Commit$|^CommitViaIdentity$|^CommitViaIdentityExpanded$|^Discard$|^DiscardViaIdentity$|^DiscardViaIdentityExpanded$|^Prepare$|^PrepareViaIdentity$|^PrepareViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$|^Bulk$|^BulkViaIdentity$|^BulkViaIdentityExpanded$  
+      variant: ^(Initiate|Commit|Discard|Prepare|Create|Update|Bulk)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  
+  - where:
+      variant: ^InitiateViaIdentityExpanded$|^CommitViaIdentityExpanded$|^DiscardViaIdentityExpanded$|^PrepareViaIdentityExpanded$|^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$|^BulkViaIdentityExpanded$  
+    remove: true
+
   - where:
       subject: OperationsDiscovery
     remove: true
+
   - where:      
       variant: DiscardExpanded
       subject: MoveCollection 
       verb: Remove
     set:
       verb: Invoke      
+
   - where:      
       variant: DiscardExpanded
       subject: MoveCollection 
       verb: Invoke
     set:
       subject: Discard
+
   - where:      
       variant: CreateExpanded 
       subject: MoveResource
       verb: New
     set:
       verb: Add
+
   - where:      
       variant: PrepareExpanded            
     set:
       subject: Prepare
+
   - where:      
       variant: InitiateExpanded            
     set:
       subject: InitiateMove
+
   - where:      
       variant: CommitExpanded            
     set:
       subject: Commit
+
   - where:
       variant: BulkExpanded
     set:
       subject: BulkRemove
+
   - where:
       verb: Add
       subject: MoveResource
     set:
       alias:
         - Update-AzResourceMoverMoveResource
+
   - where:
       verb: Get
       subject: MoveCollectionRequired
     set:
       subject: RequiredForResources
+
   - where:
       model-name: MoveResource
     set:
        suppress-format: true
+
   - where:
       model-name: OperationStatus
     set:
        suppress-format: true  
+
   - where:
       model-name: UnresolvedDependency
     set:
        suppress-format: true
+       
   - no-inline:
     - ResourceSettings
-
-  - from: ResourceMover.cs
-    where: $
-    transform: $ = $.replace(/throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException\(_response\);/g,"await onDefault\(_response,_response.Content.ReadAsStringAsync\(\).ContinueWith\( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.CloudError.FromJson\(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse\(body.Result\)\) \)\);");
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}"].put
