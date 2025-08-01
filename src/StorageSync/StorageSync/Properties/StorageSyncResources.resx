@@ -294,9 +294,6 @@
   <data name="AgentMI_InvalidSecretFileError" xml:space="preserve">
     <value>Secret file is invalid. It is either empty, not in the expected directory, or not of file type .key.</value>
   </data>
-  <data name="AgentMI_MissingSecretFilePathOnServerError" xml:space="preserve">
-    <value>Secret file path does not exist on the server.</value>
-  </data>
   <data name="AgentMI_MissingSystemAssignedIdentityError" xml:space="preserve">
     <value>No system-assigned Managed Identity was found for this resource.</value>
   </data>
@@ -326,5 +323,8 @@
   </data>
   <data name="AgentMI_ArcServerNotEnabled" xml:space="preserve">
     <value>&gt;This hybrid server is not Azure Arc-enabled. Please ensure that the Azure Connected Machine agent is installed and the server is connected to Azure Arc.</value>
+  </data>
+  <data name="AgentMI_ProgramDataNotFoundError" xml:space="preserve">
+    <value>GetEnvironmentVariable failed to find 'ProgramData'</value>
   </data>
 </root>

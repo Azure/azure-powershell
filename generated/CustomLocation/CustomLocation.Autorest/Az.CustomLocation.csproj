@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>CustomLocation</PsModuleName>
     <PsRootModuleName>CustomLocation</PsRootModuleName>
+    <PsModuleFolder>CustomLocation.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.CustomLocation</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

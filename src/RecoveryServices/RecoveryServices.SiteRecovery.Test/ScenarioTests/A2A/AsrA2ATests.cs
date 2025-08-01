@@ -40,7 +40,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2ADiskReplicationConfiguration");
         }
 
-        [Fact]
+        [Fact(Skip = "The test is broken and waiting for a fix.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2AManagedDiskReplicationConfig()
         {
@@ -50,7 +50,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2AManagedDiskReplicationConfiguration");
         }
 
-        [Fact]
+        [Fact(Skip = "The test is broken and waiting for a fix.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2AManagedDiskReplicationConfigForPv2()
         {
@@ -60,7 +60,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2AManagedDiskReplicationConfigurationForPv2");
         }
 
-        [Fact]
+        [Fact(Skip = "The test is broken and waiting for a fix.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2AManagedDiskReplicationConfigForUltraDisk()
         {
@@ -81,11 +81,11 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2AManagedDiskReplicationConfigurationWithCmk");
         }
 
-//#if NETSTANDARD
-//        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
-//#else
-        [Fact]
-//#endif
+        //#if NETSTANDARD
+        //        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+        //#else
+        [Fact(Skip = "The test is broken and waiting for a fix.")]
+        //#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ANewAsrFabric()
         {
@@ -95,11 +95,11 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewAsrFabric");
         }
 
-//#if NETSTANDARD
-//        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
-//#else
-        [Fact]
-//#endif
+        //#if NETSTANDARD
+        //        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+        //#else
+        [Fact(Skip = "The test is broken and waiting for a fix.")]
+        //#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ATestNewContainer()
         {

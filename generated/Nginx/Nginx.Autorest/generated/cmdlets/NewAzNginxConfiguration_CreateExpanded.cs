@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/configurations/{configurationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNginxConfiguration_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"File","ProtectedFile","PackageProtectedFile"}, NewOutputProperties=new string[] {"File","ProtectedFile","PackageProtectedFile"}, ChangeDescription="The types of the properties File, ProtectedFile and PackageProtectedFile will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Description(@"Create or update the NGINX configuration for given NGINX deployment")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Generated]

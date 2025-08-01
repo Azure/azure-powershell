@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Returned appgw and agc in waf policy
 * Updated cmdlet `New-AzFirewallPolicyApplicationRule` to use HTTPS as the default protocol when creating a new FQDN Tag application rule.
 * Added `EnableDnstapLogging` parameter to `New-AzFirewall`
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.Fabric
 
 ## Version 0.1.2
 * Fixed module name in module metadata

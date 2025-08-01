@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserverreplication
 schema: 2.0.0
@@ -14,20 +14,20 @@ Starts replication for the specified server.
 
 ### ByIdDefaultUser (Default)
 ```
-New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <String>
- -TargetResourceGroupId <String> -TargetVMName <String> -TargetVirtualSwitchId <String> -OSDiskID <String>
- [-TargetVMCPUCore <Int32>] [-TargetTestVirtualSwitchId <String>] [-IsDynamicMemoryEnabled <String>]
- [-TargetVMRam <Int64>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -SourceApplianceName <String>
+ -TargetApplianceName <String> -TargetResourceGroupId <String> -TargetStoragePathId <String>
+ -TargetVirtualSwitchId <String> -TargetVMName <String> [-IsDynamicMemoryEnabled <String>]
+ [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>] [-TargetVMCPUCore <Int32>]
+ [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
 ```
-New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <String>
- -TargetResourceGroupId <String> -TargetVMName <String> [-TargetVMCPUCore <Int32>]
- [-IsDynamicMemoryEnabled <String>] [-TargetVMRam <Int64>] [-SubscriptionId <String>]
- -DiskToInclude <AzLocalDiskInput[]> -NicToInclude <AzLocalNicInput[]> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzMigrateLocalServerReplication -DiskToInclude <AzLocalDiskInput[]> -MachineId <String>
+ -NicToInclude <AzLocalNicInput[]> -SourceApplianceName <String> -TargetApplianceName <String>
+ -TargetResourceGroupId <String> -TargetStoragePathId <String> -TargetVMName <String>
+ [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>]
+ [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +66,7 @@ SystemDataLastModifiedBy           :
 SystemDataLastModifiedByType       : 
 TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
 Task                               : {Creating or updating the protected item, Initializing Protection, Enabling Protection, Starting Replication}
-Type                               : Microsoft.DataReplication/replicationVaults/jobs
+Type                               : Microsoft.DataReplication/replicationVaults/jobs	
 ```
 
 This is for the scenario, when there is only one single disk that has to be protected.
@@ -209,6 +209,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SourceApplianceName
+Specifies the source appliance name for the AzLocal scenario.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Azure Subscription ID.
 
@@ -220,6 +235,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetApplianceName
+Specifies the target appliance name for the AzLocal scenario.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -372,3 +402,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

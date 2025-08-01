@@ -24,24 +24,13 @@ namespace Microsoft.Azure.Management.Compute
     public partial interface IGalleryImagesOperations
     {
         /// <summary>
-        /// Create or update a gallery image definition.
+        /// List gallery image definitions in a gallery.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the Image Definition
-        /// is to be created.
-        /// </param>
-        /// <param name='galleryImageName'>
-        /// The name of the gallery image definition to be created or updated.
-        /// The allowed characters are alphabets and numbers with dots, dashes,
-        /// and periods allowed in the middle. The maximum length is 80
-        /// characters.
-        /// </param>
-        /// <param name='galleryImage'>
-        /// Parameters supplied to the create or update gallery image
-        /// operation.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -58,50 +47,15 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GalleryImage>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, GalleryImage galleryImage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update a gallery image definition.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the Image Definition
-        /// is to be updated.
-        /// </param>
-        /// <param name='galleryImageName'>
-        /// The name of the gallery image definition to be updated. The allowed
-        /// characters are alphabets and numbers with dots, dashes, and periods
-        /// allowed in the middle. The maximum length is 80 characters.
-        /// </param>
-        /// <param name='galleryImage'>
-        /// Parameters supplied to the update gallery image operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<GalleryImage>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, GalleryImageUpdate galleryImage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<GalleryImage>>> ListByGalleryWithHttpMessagesAsync(string resourceGroupName, string galleryName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieves information about a gallery image definition.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery from which the Image
-        /// Definitions are to be retrieved.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryImageName'>
         /// The name of the gallery image definition to be retrieved.
@@ -123,72 +77,16 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<GalleryImage>> GetWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete a gallery image.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the Image Definition
-        /// is to be deleted.
-        /// </param>
-        /// <param name='galleryImageName'>
-        /// The name of the gallery image definition to be deleted.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List gallery image definitions in a gallery.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery from which Image Definitions
-        /// are to be listed.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<GalleryImage>>> ListByGalleryWithHttpMessagesAsync(string resourceGroupName, string galleryName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Create or update a gallery image definition.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the Image Definition
-        /// is to be created.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image definition to be created or updated.
-        /// The allowed characters are alphabets and numbers with dots, dashes,
-        /// and periods allowed in the middle. The maximum length is 80
-        /// characters.
+        /// The name of the gallery image definition to be retrieved.
         /// </param>
         /// <param name='galleryImage'>
         /// Parameters supplied to the create or update gallery image
@@ -209,21 +107,18 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GalleryImage>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, GalleryImage galleryImage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<GalleryImage,GalleryImagesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, GalleryImage galleryImage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update a gallery image definition.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the Image Definition
-        /// is to be updated.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image definition to be updated. The allowed
-        /// characters are alphabets and numbers with dots, dashes, and periods
-        /// allowed in the middle. The maximum length is 80 characters.
+        /// The name of the gallery image definition to be retrieved.
         /// </param>
         /// <param name='galleryImage'>
         /// Parameters supplied to the update gallery image operation.
@@ -243,19 +138,106 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GalleryImage>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, GalleryImageUpdate galleryImage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<GalleryImage,GalleryImagesUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, GalleryImageUpdate galleryImage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete a gallery image.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the Image Definition
-        /// is to be deleted.
+        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the gallery image definition to be deleted.
+        /// The name of the gallery image definition to be retrieved.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create or update a gallery image definition.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='galleryName'>
+        /// The name of the Shared Image Gallery.
+        /// </param>
+        /// <param name='galleryImageName'>
+        /// The name of the gallery image definition to be retrieved.
+        /// </param>
+        /// <param name='galleryImage'>
+        /// Parameters supplied to the create or update gallery image
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryImage,GalleryImagesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, GalleryImage galleryImage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Update a gallery image definition.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='galleryName'>
+        /// The name of the Shared Image Gallery.
+        /// </param>
+        /// <param name='galleryImageName'>
+        /// The name of the gallery image definition to be retrieved.
+        /// </param>
+        /// <param name='galleryImage'>
+        /// Parameters supplied to the update gallery image operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryImage,GalleryImagesUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, GalleryImageUpdate galleryImage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete a gallery image.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='galleryName'>
+        /// The name of the Shared Image Gallery.
+        /// </param>
+        /// <param name='galleryImageName'>
+        /// The name of the gallery image definition to be retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
