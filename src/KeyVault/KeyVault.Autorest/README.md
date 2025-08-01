@@ -97,8 +97,4 @@ directive:
       verb: New|Remove
       subject: ^ManagedHsm$
     remove: true
-  - where:
-      verb: Update
-      subject: ManagedHsm
-    hide: true
 ```
