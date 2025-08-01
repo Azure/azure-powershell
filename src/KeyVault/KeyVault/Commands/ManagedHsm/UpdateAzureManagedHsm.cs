@@ -73,6 +73,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category("Body")]
+        [System.Nullable[System.Boolean]]
+        public bool? EnableSystemAssignedIdentity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NormalizeParameterSets();

@@ -50,6 +50,9 @@ subject-prefix: $(service-name)
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
+disable-transform-identity-type-for-operation:
+  - ManagedHsms_Update
+
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
@@ -94,4 +97,8 @@ directive:
       verb: New|Remove
       subject: ^ManagedHsm$
     remove: true
+  - where:
+      verb: Update
+      subject: ManagedHsm
+    hide: true
 ```
