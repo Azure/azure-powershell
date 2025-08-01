@@ -13,14 +13,14 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzStreamAnalyticsOutput' {
   It 'Delete' {
-    New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.output01 -File (Join-Path $PSScriptRoot 'template-json\StroageAccount.json')
+    New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.output01 -File (Join-Path $PSScriptRoot 'template-json' 'StorageAccount.json')
     Remove-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.output01
     $result = Get-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job02
     $result.Name | Should -Not -Contain $env.output01
   }
 
   It 'DeleteViaIdentity' {
-    New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.output02 -File (Join-Path $PSScriptRoot 'template-json\StroageAccount.json')
+    New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.output02 -File (Join-Path $PSScriptRoot 'template-json' 'StorageAccount.json')
     $result = Get-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.output02
     Remove-AzStreamAnalyticsOutput -InputObject $result
     $result = Get-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job02
