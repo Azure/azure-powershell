@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue where `Clear-AzContext` does not clear the token cache when broker is enabled.
 * Added new parameter `-ClaimsChallenge` to `Connect-AzAccount` to support claims challenge authentication for MFA.
 * Refined the error message when a cmdlet fails because of policy violations about Multi-Factor Authentication (MFA) to provide more actionable guidance.
 

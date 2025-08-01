@@ -36,6 +36,7 @@ Get-AzComputeResourceSku -Location "westus" | Where-Object {
     ([int]($_.Capabilities | Where-Object { $_.Name -eq 'vCPUs' }).Value) -le 4
 } | Select-Object -ExpandProperty Name
 ```
+
 ```output
 Standard_A0
 Standard_A1
