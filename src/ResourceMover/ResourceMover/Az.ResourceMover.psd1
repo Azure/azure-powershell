@@ -51,20 +51,19 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'ResourceMover.Autorest/bin/Az.ResourceMover.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'ResourceMover.Autorest\Az.ResourceMover.format.ps1xml', 
-               'ResourceMover.Autorest/Az.ResourceMover.format.ps1xml'
+FormatsToProcess = 'ResourceMover.Autorest/Az.ResourceMover.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('ResourceMover.Autorest/Az.ResourceMover.psm1')
@@ -80,21 +79,16 @@ FunctionsToExport = 'Add-AzResourceMoverMoveResource',
                'Invoke-AzResourceMoverInitiateMove', 
                'Invoke-AzResourceMoverPrepare', 
                'New-AzResourceMoverMoveCollection', 
+               'New-AzResourceMoverMoveResource', 
                'Remove-AzResourceMoverMoveCollection', 
                'Remove-AzResourceMoverMoveResource', 
-               'Resolve-AzResourceMoverMoveCollectionDependency', 
-               'Invoke-AzResourceMoverBulkMoveCollectionRemove', 
-               'Invoke-AzResourceMoverCommitMoveCollection', 
-               'Invoke-AzResourceMoverInitiateMoveCollectionMove', 
-               'Invoke-AzResourceMoverPrepareMoveCollection', 
-               'New-AzResourceMoverMoveResource', 
-               'Update-AzResourceMoverMoveResource'
+               'Resolve-AzResourceMoverMoveCollectionDependency'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Update-AzResourceMoverMoveResource'

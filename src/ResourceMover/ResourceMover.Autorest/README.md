@@ -61,15 +61,20 @@ aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stab
 input-file:
   - $(aks)/resourcemovercollection.json
 module-version: 1.0.0
+disable-getput: true
 
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^(Initiate|Commit|Discard|Prepare|Create|Update|Bulk)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^(Discard|Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-  
+
   - where:
-      variant: ^InitiateViaIdentityExpanded$|^CommitViaIdentityExpanded$|^DiscardViaIdentityExpanded$|^PrepareViaIdentityExpanded$|^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$|^BulkViaIdentityExpanded$  
+      variant: ^DiscardViaIdentityExpanded$|^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$
+    remove: true
+
+  - where:
+      variant: ^(Bulk|Commit|Initiate|Prepare)(?!Expanded$)
     remove: true
 
   - where:

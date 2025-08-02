@@ -42,13 +42,6 @@ Gets a list of unresolved dependencies.
 **However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
 Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
 
-### [Invoke-AzResourceMoverBulkMoveCollectionRemove](Invoke-AzResourceMoverBulkMoveCollectionRemove.md)
-Removes the set of move resources included in the request body from move collection.
-The orchestration is done by service.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
-
-**The 'Invoke-AzResourceMoverBulkRemove ' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
-
 ### [Invoke-AzResourceMoverBulkRemove](Invoke-AzResourceMoverBulkRemove.md)
 Removes the set of move resources included in the request body from move collection.
 The orchestration is done by service.
@@ -57,13 +50,6 @@ To aid the user to prerequisite the operation the client can call operation with
 **The 'Invoke-AzResourceMoverBulkRemove ' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ### [Invoke-AzResourceMoverCommit](Invoke-AzResourceMoverCommit.md)
-Commits the set of resources included in the request body.
-The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
-
-**The 'Invoke-AzResourceMoverCommit' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
-
-### [Invoke-AzResourceMoverCommitMoveCollection](Invoke-AzResourceMoverCommitMoveCollection.md)
 Commits the set of resources included in the request body.
 The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
@@ -82,19 +68,7 @@ Moves the set of resources included in the request body.The move operation is tr
 
 **The 'Invoke-AzResourceMoverInitiateMove' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
-### [Invoke-AzResourceMoverInitiateMoveCollectionMove](Invoke-AzResourceMoverInitiateMoveCollectionMove.md)
-Moves the set of resources included in the request body.The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
-
-**The 'Invoke-AzResourceMoverInitiateMove' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
-
 ### [Invoke-AzResourceMoverPrepare](Invoke-AzResourceMoverPrepare.md)
-Initiates prepare for the set of resources included in the request body.
-The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
-
-**The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.**
-
-### [Invoke-AzResourceMoverPrepareMoveCollection](Invoke-AzResourceMoverPrepareMoveCollection.md)
 Initiates prepare for the set of resources included in the request body.
 The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
@@ -132,9 +106,4 @@ Computes, resolves and validate the dependencies of the moveResources in the mov
 **Please note that for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency' and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**
 
 **However, for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection in a single step.**
-
-### [Update-AzResourceMoverMoveResource](Update-AzResourceMoverMoveResource.md)
-Update a Move Resource in the move collection.
-
-**The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 

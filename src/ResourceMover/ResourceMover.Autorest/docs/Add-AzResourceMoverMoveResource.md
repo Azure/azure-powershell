@@ -30,7 +30,7 @@ Create a Move Resource in the move collection.
 
 ### Example 1: Add a resource to the Move Collection. (RegionToRegion)
 ```powershell
-$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 $targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
 $targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
 
@@ -56,9 +56,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : PreparePending
 Name                              : PSDemoVM
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -73,7 +73,7 @@ Add a resource to 'RegionToRegion' type Move Collection.
 
 ### Example 2: Add a resource to the Move Collection. (RegionToZone)
 ```powershell
-$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 $targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
 $targetResourceSettingsObj.TargetResourceName = "demo-RegionToZone-VM-Target"
 $targetResourceSettingsObj.TargetAvailabilityZone = "1"
@@ -95,8 +95,8 @@ IsResolveRequired                 : False
 JobStatusJobName                  :
 JobStatusJobProgress              :
 MoveStatusErrorsPropertiesCode    : DependencyComputationPending
-MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody,
-                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody}
+MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.MoveResourceErrorBody,
+                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.MoveResourceErrorBody}
 MoveStatusErrorsPropertiesMessage : The dependency computation is not completed for resource - /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-R
                                     egionToZone-RG/providers/Microsoft.Compute/virtualMachines/demo-RegionToZone-VM'.
                                         Possible Causes: Dependency computation is pending for resource.
@@ -106,10 +106,10 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : MovePending
 Name                              : PSDemoVM-RegionToZone
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/
                                     demo-RegionToZone-VM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               : 9/5/2023 11:13:46 AM
 SystemDataCreatedBy               : xxxxxxx
 SystemDataCreatedByType           : User
@@ -146,9 +146,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : CommitPending
 Name                              : psdemorm
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -185,9 +185,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : CommitPending
 Name                              : PSDemoNIC-RegionToZone
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PS-demo-RegionToZone-RG/providers/Microsoft.Network/networkinterfaces/nic_demo-RegionToZone-VM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -229,9 +229,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : PreparePending
 Name                              : PSDemoVM
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -266,8 +266,8 @@ IsResolveRequired                 : False
 JobStatusJobName                  :
 JobStatusJobProgress              :
 MoveStatusErrorsPropertiesCode    : DependencyComputationPending
-MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody,
-                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody}
+MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.MoveResourceErrorBody,
+                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.MoveResourceErrorBody}
 MoveStatusErrorsPropertiesMessage : The dependency computation is not completed for resource - /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/demo-RegionToZone-VM'.
 Possible Causes: Dependency computation is pending for resource.
 Recommended Action: Validate dependencies to compute the dependencies.
@@ -276,10 +276,10 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : MovePending
 Name                              : PSDemoVM-RegionToZone
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/
                                     demo-RegionToZone-VM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               : 9/5/2023 11:13:46 AM
 SystemDataCreatedBy               : xxxxxxx
 SystemDataCreatedByType           : User
