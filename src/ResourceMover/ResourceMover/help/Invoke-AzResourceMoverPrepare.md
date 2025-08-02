@@ -38,7 +38,7 @@ $resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demo
 ```
 
 ```output
-AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo}
+AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.OperationErrorAdditionalInfo}
 Code           : MoveCollectionMissingRequiredDependentResources
 Detail         : {}
 EndTime        : 2/9/2021 9:04:15 AM

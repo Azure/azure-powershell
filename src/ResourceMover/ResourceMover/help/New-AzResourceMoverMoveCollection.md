@@ -56,7 +56,7 @@ RegionToZone** (Moving virtual machines into a zone within the same region)
 
 ### Example 1: Create a new Move collection. (RegionToRegion)
 ```powershell
-New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "centraluseuap" -IdentityType "SystemAssigned"
+New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "centraluseuap" -EnableSystemAssignedIdentity
 ```
 
 ```output
@@ -71,7 +71,7 @@ Please ensure 'MoveRegion' parameter is not required and should be set to null, 
 
 ### Example 2: Create a new Move collection. (RegionToZone)
 ```powershell
-New-AzResourceMoverMoveCollection -Name "PS-demo-RegionToZone"  -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveRegion "eastus" -Location "eastus2euap" -IdentityType "SystemAssigned" -MoveType "RegionToZone"
+New-AzResourceMoverMoveCollection -Name "PS-demo-RegionToZone"  -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveRegion "eastus" -Location "eastus2euap" -EnableSystemAssignedIdentity -MoveType "RegionToZone"
 ```
 
 ```output
