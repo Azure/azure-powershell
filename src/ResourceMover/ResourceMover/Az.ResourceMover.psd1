@@ -79,7 +79,6 @@ FunctionsToExport = 'Add-AzResourceMoverMoveResource',
                'Invoke-AzResourceMoverInitiateMove', 
                'Invoke-AzResourceMoverPrepare', 
                'New-AzResourceMoverMoveCollection', 
-               'New-AzResourceMoverMoveResource', 
                'Remove-AzResourceMoverMoveCollection', 
                'Remove-AzResourceMoverMoveResource', 
                'Resolve-AzResourceMoverMoveCollectionDependency'

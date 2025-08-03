@@ -14,11 +14,34 @@ Create a Move Resource in the move collection.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DependsOnOverride <IMoveResourceDependencyOverride[]>]
  [-ExistingTargetId <String>] [-ResourceSetting <IResourceSettings>] [-SourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityMoveCollectionExpanded
+```
+Add-AzResourceMoverMoveResource -MoveCollectionInputObject <IResourceMoverIdentity> -Name <String>
+ [-DependsOnOverride <IMoveResourceDependencyOverride[]>] [-ExistingTargetId <String>]
+ [-ResourceSetting <IResourceSettings>] [-SourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -330,7 +353,7 @@ Gets or sets the move resource dependencies overrides.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResourceDependencyOverride[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMoveCollectionExpanded
 Aliases:
 
 Required: False
@@ -345,7 +368,7 @@ Gets or sets the existing target ARM Id of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMoveCollectionExpanded
 Aliases:
 
 Required: False
@@ -355,12 +378,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoveCollectionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
+Parameter Sets: CreateViaIdentityMoveCollectionExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionName
 The Move Collection Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -405,7 +473,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -420,7 +488,7 @@ Gets or sets the resource settings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceSettings
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMoveCollectionExpanded
 Aliases:
 
 Required: False
@@ -435,7 +503,7 @@ Gets or sets the Source ARM Id of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMoveCollectionExpanded
 Aliases:
 
 Required: False
@@ -450,7 +518,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -495,6 +563,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
 
 ## OUTPUTS
 

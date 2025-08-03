@@ -85,11 +85,6 @@ RegionToRegion** (Moving resources across regions)
 **2.
 RegionToZone** (Moving virtual machines into a zone within the same region)
 
-### [New-AzResourceMoverMoveResource](New-AzResourceMoverMoveResource.md)
-Create a Move Resource in the move collection.
-
-**The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
-
 ### [Remove-AzResourceMoverMoveCollection](Remove-AzResourceMoverMoveCollection.md)
 Deletes a move collection.
 

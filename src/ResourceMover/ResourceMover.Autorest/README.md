@@ -96,7 +96,6 @@ directive:
       subject: Discard
 
   - where:      
-      variant: CreateExpanded 
       subject: MoveResource
       verb: New
     set:
