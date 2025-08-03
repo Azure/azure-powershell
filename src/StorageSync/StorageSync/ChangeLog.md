@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.1
 * Fixed security bug in token acquisition for MI server registration
 
 ## Version 2.5.0

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.5
 * Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
 
 ## Version 6.0.4

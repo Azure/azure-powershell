@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.18.2
 * Fixed issue where the restore command failed to detect the source account, even when it existed.
 
 ## Version 1.18.1
