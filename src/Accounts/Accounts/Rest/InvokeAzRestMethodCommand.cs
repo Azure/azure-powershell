@@ -26,10 +26,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
-using System.Net.Http;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Profile.Rest
 {
@@ -109,6 +107,20 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [ArgumentCompleter(typeof(FinalResultFromCompleter))]
         public string FinalResultFrom { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies to fetch all data for GET requests which will provide the collection of pageable items in the response.")]
+        public SwitchParameter FollowNextLink { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the name of the property that provides the paginated next link. The default is nextLink")]
+        public string NextLinkName { get; set; } = PSHttpResponseExtensions.DefaultNextLinkName;
+
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the name of the property that provides the collection of pageable items. The default is value")]
+        public string PageableItemName { get; set; } = PSHttpResponseExtensions.DefaultPageableItemName;
+
+
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number of (next link) pages to follow")]
+        public int MaxPageSize { get; set; } = int.MaxValue;
+
 
         // Define the ArgumentCompleter for PollFrom
         public class PollFromCompleter : IArgumentCompleter
@@ -166,7 +178,19 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
             AzureOperationResponse<string> response = ExecuteRestRequest(serviceClient);
 
-            if(WaitForCompletion.IsPresent)
+            if (ShouldFollowNextLink(response))
+            {
+                var aggregatedResponse = response.FollowNextLinkAsync(serviceClient,
+                    this.ApiVersion,
+                    this.PageableItemName,
+                    this.NextLinkName,
+                    this.MaxPageSize)
+                    .GetAwaiter().GetResult();
+
+                WriteObject(aggregatedResponse);
+                return;
+            }            
+            else if (WaitForCompletion.IsPresent)
             {
                 if (IsRequestLRO(response))
                 {
@@ -367,6 +391,13 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                     response.Response.StatusCode == System.Net.HttpStatusCode.Accepted;
         }
 
+        private bool ShouldFollowNextLink(AzureOperationResponse<string> response)
+        {
+            return (FollowNextLink.IsPresent &&
+                response.Response.IsSuccessStatusCode &&
+                Method.ToUpper() == "GET");
+        }
+
         public string GetProvisioningState(AzureOperationResponse<string> response)
         {
             var content = response.Body;
@@ -424,7 +455,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
             return response;
         }
-
 
         private IAzureRestClient InitializeServiceClient()
         {
@@ -584,6 +614,11 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 {
                     throw new PSArgumentException("Invalid resource type/name");
                 }
+            }
+
+            if (FollowNextLink.IsPresent && Method.ToUpper() != "GET")
+            {
+                WriteWarning("The FollowNextLink switch is set, but the Method is not GET. Pagination will not be applied.");
             }
         }
 

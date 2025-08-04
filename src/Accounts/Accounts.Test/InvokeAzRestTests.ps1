@@ -52,3 +52,54 @@ function Test-InvokeAzRest
     Assert-AreEqual 202 $response.StatusCode
     Assert-AreEqual $delete $response.Method
 }
+
+<#
+.SYNOPSIS
+Tests Pagination for Invoke-AzRest
+.DESCRIPTION
+SmokeTest for Pagination
+#>
+function Test-InvokeAzRest-Pagination
+{
+    $get = "GET"
+    $subscriptionId = "111111aa-a11a-1111-1aaa-1a11aa1aaa1a"
+    $providerName = "Microsoft.Compute"
+    $resourceType = "virtualMachines"
+    $apiVersion = "2023-03-01"
+
+    # Make the REST call using ResourceType
+    $response = Invoke-AzRest `
+        -SubscriptionId $subscriptionId `
+        -ResourceProviderName $providerName `
+        -ResourceType $resourceType `
+        -ApiVersion $apiVersion `
+        -Method $get `
+        -FollowNextLink `
+   
+    Assert-NotNull $response
+    Assert-NotNull $response.Content
+    Assert-AreEqual 1 $response.Count
+
+    $paginatedContent = $response.Content | ConvertFrom-Json
+    Assert-AreEqual 10 $paginatedContent.value.Count
+
+    #error scenarios
+    $invalidMethods = @("PUT", "POST", "DELETE")
+    foreach ($method in $invalidMethods) {
+        $warnings = @()
+        $WarningPreference = 'Continue'
+        Invoke-AzRest `
+            -SubscriptionId $subscriptionId `
+            -ResourceProviderName $providerName `
+            -ResourceType $resourceType `
+            -ApiVersion $apiVersion `
+            -Method $method `
+            -FollowNextLink `
+            -WarningVariable warnings `
+            
+        $expectedWarning = "The FollowNextLink switch is set, but the Method is not GET. Pagination will not be applied."
+        if (-not ($warnings -like "*$expectedWarning*")) {
+            throw "Expected warning not found: $expectedWarning Returned: $warnings instead"
+        }
+    }
+}
