@@ -97,3 +97,67 @@
 		Assert-AreEqual $config.SecurityProfile.Domain $domain
 		Assert-NotNull $config.SecurityProfile.LdapsUrls
     }
+
+<#
+    SYNOPSIS
+    Tests create cluster by pipelining config
+#>
+function Test-CreateClusterByConfigurationPipelining{
+	try
+	{
+		# prepare parameter for creating parameter
+		$params = Prepare-ClusterCreateParameter
+		#test New-AzHDInsightClusterConfig
+		$config = New-AzHDInsightClusterConfig
+
+		#test Set-AzHDInsightDefaultStorage
+		$config = Set-AzHDInsightDefaultStorage -Config $config `
+			-StorageAccountResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Storage/storageAccounts/storagepstest" `
+			-StorageAccountKey "Sanitized"
+
+		#test Add-AzHDInsightStorage
+		$config = Add-AzHDInsightStorage -Config $config `
+			-StorageAccountName "storagepstest.blob.core.windows.net" `
+			-StorageAccountKey "Sanitized"
+		
+		#test Add-AzHDInsightComponentVersion
+		$config = Add-AzHDInsightComponentVersion -Config $config -ComponentName "Hadoop" -ComponentVersion "3.3"
+		
+		#test Add-AzHDInsightConfigValue
+		$config = Add-AzHDInsightConfigValue -Config $config -Core @{coreconfig = 'corevalue'}
+		
+		#test Add-AzHDInsightScriptAction
+		$config = Add-AzHDInsightScriptAction -Config $config -NodeType HeadNode -Uri "https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh" -Name "InstallHue" -Parameters "-version latest -port 20000"
+
+		#test Add-AzHDInsightMetastore
+		$sqlUser="username"
+		$sqlPassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+		$sqlCredential = New-Object System.Management.Automation.PSCredential($sqlUser, $sqlPassword)
+		$config = Add-AzHDInsightMetastore -Config $config `
+			-MetastoreType HiveMetastore -SqlAzureServerName "pstestsqldbserver.database.windows.net" `
+			-DatabaseName "pstestdb01" -Credential $sqlCredential
+
+		$clusterParams = @{
+			ClusterType                     = $params.clusterType
+			ClusterSizeInNodes              = $params.clusterSizeInNodes
+			ResourceGroupName               = $params.resourceGroupName
+			ClusterName                     = $params.clusterName
+			HttpCredential                  = $params.httpCredential
+			SshCredential                   = $params.sshCredential
+			Location                        = $params.location
+			MinSupportedTlsVersion          = $params.minSupportedTlsVersion
+			VirtualNetworkId                = $params.virtualNetworkId
+			SubnetName                      = $params.subnet
+			Version                         = $params.version
+			Config                          = $config
+         }
+		$cluster = New-AzHDInsightCluster @clusterParams
+		Assert-NotNull $cluster
+	}
+
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+	}
+}

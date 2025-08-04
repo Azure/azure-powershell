@@ -128,11 +128,8 @@ function Prepare-ClusterCreateParameter{
 
     $storageAccountName=Generate-StorageAccountName($storageAccountName)
 
-	$storageAccount= New-AzStorageAccount -ResourceGroupName $resourceGroupName -Location $location -Name $storageAccountName -TypeString Standard_RAGRS
-
-	$storageAccountResourceId=$storageAccount.Id
-    $storageAccountKey=Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
-    $storageAccountKey=$storageAccountKey[0].Value
+    $storageAccountResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group-ps-test/providers/Microsoft.Storage/storageAccounts/storagepstest"
+    $storageAccountKey = "Sanitized"
 
     $httpUser="admin"
     $textPassword= "Password"

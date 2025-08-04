@@ -14,6 +14,67 @@
 
 <#
 .SYNOPSIS
+Tests HDInsight job submission, monitoring, and output commands.
+#>
+
+function Test-HDInsightJobManagementCommands{
+	try{
+		$clusterName = "ps-test-cluster" 
+		$resourceGroupName = "group-ps-test"
+		$httpUser="admin"
+		$httpPassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+		$httpCredential = New-Object System.Management.Automation.PSCredential($httpUser, $httpPassword)
+		# test Use-AzHDInsightCluster
+		Use-AzHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential
+
+		# test Invoke-AzHDInsightHiveJob
+		# $hiveQuery = Invoke-AzHDInsightHiveJob -Query "show tables"
+		# Assert-NotNull $hiveQuery
+
+		# test Get-AzHDInsightProperty
+		$property = Get-AzHDInsightProperty  -Location "East Asia"
+		Assert-NotNull $property
+
+		# test New-AzHDInsightHiveJobDefinition
+		$hiveJob = New-AzHDInsightHiveJobDefinition -Query "select count(*) from default.hivesampletable" -JobName "QuerySampleTable"
+
+		# test Start-AzHDInsightJob
+		$jobHive = Start-AzHDInsightJob -ClusterName $clusterName -ResourceGroupName $resourceGroupName -JobDefinition $hiveJob -HttpCredential $httpCredential
+
+		# test Wait-AzHDInsightJob
+		$waitJobHive = Wait-AzHDInsightJob -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId  $jobHive.JobId
+		Assert-NotNull $waitJobHive
+
+		# test Get-AzHDInsightJob
+		$jobStatus = Get-AzHDInsightJob -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId $jobHive.JobId
+		Assert-AreEqual $jobStatus.State "SUCCEEDED"
+
+		# test Get-AzHDInsightJobOutput
+		# $outputHive = Get-AzHDInsightJobOutput  -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId  $jobHive.JobId
+		# Assert-NotNull $outputHive
+
+		# test New-AzHDInsightMapReduceJobDefinition
+		$mapReduceJob = New-AzHDInsightMapReduceJobDefinition -JarFile "/example/jars/hadoop-mapreduce-examples.jar" -ClassName "pi" -Arguments "10","10" -JobName "PiEstimation"
+		
+		$jobMapReduce = Start-AzHDInsightJob -ClusterName $clusterName -ResourceGroupName $resourceGroupName -JobDefinition $mapReduceJob -HttpCredential $httpCredential
+
+		# test Stop-AzHDInsightJob
+		Stop-AzHDInsightJob -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId  $jobMapReduce.JobId
+
+		# $outputMapReduce = Get-AzHDInsightJobOutput  -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId  $jobMapReduce.JobId
+		# Assert-NotNull $outputMapReduce
+
+
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+	}
+}
+
+<#
+.SYNOPSIS
 Test Create Azure HDInsight Cluster With WASB Storage And MSI
 #>
 
@@ -244,7 +305,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "East US"
+		$params= Prepare-ClusterCreateParameter
 
 		# create autoscale cofiguration
 		$autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration -MinWorkerNodeCount 4 -MaxWorkerNodeCount 5
@@ -254,7 +315,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version 4.0 `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version 5.1 `
 		-AutoscaleConfiguration $autoscaleConfiguration -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-NotNull $cluster
@@ -264,7 +325,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 	finally
 	{
 		# Delete cluster and resource group
-		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name  -ResourceGroupName $params.resourceGroupName
 		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }

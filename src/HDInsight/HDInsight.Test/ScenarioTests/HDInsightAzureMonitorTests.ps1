@@ -21,34 +21,24 @@ function Test-AzureMonitorRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East US"
-		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location $location
-
-		# create cluster that will be used throughout test
-		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
+		# get cluster that will be used throughout test
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName  "group-ps-test" -ClusterName  "ps-test-cluster"
 		Assert-NotNull $cluster
 
-		$workspaceName = Generate-Name("workspace-ps-test")
+		# get a Log Analytics Workspace
+		$workspaceName = "ps-la"
 		$resourceGroupName = $cluster.ResourceGroup
+		$workspace = Get-AzOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName 
 
-		#create a new Log Analytics Workspace
-		$sku = "pernode"
-		$workspace = New-AzOperationalInsightsWorkspace -Location $location -Name $workspaceName -ResourceGroupName $resourceGroupName -Sku $sku
-
-		#get workspace's primaryKey
+		# get workspace's primaryKey
 		$keys = Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $resourceGroupName -Name $workspace.Name
 		Assert-NotNull $keys
 
-		#test Get-AzHDInsightAzureMonitor
+		# test Get-AzHDInsightAzureMonitor
 		$result = Get-AzHDInsightAzureMonitor -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-Null $result.WorkspaceId
 		
-		#test Enable-AzHDInsightAzureMonitor
+		# test Enable-AzHDInsightAzureMonitor
 		$workspaceId = $workspace.CustomerId
 		$primaryKey = $keys.PrimarySharedKey
 
@@ -60,7 +50,7 @@ function Test-AzureMonitorRelatedCommands{
 		Assert-True {$result.ClusterMonitoringEnabled}
 		Assert-AreEqual $result.WorkspaceId $workspaceId
 		
-		#test Disable-AzHDInsightAzureMonitor
+		# test Disable-AzHDInsightAzureMonitor
 		Disable-AzHDInsightAzureMonitor -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		$result = Get-AzHDInsightAzureMonitor -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-False {$result.ClusterMonitoringEnabled}
