@@ -26,7 +26,7 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-commit: 6f498e0646e1bb978b8b6f8b4e701938dd79df2b
+commit: 4517f89a8ebd2f6a94e107e5ee60fff9886f3612
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -35,7 +35,7 @@ input-file:
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-07-01/runCommand.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/DiagnosticRP/preview/2024-06-01-preview/diagnostic.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/RecommenderRP/stable/2025-06-05/RecommenderRP.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 module-version: 0.3.0
 # Normally, title is the service name

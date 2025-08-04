@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure
 schema: 2.0.0
@@ -13,10 +13,9 @@ Initializes the infrastructure for the migrate project.
 ## SYNTAX
 
 ```
-Initialize-AzMigrateLocalReplicationInfrastructure -ResourceGroupName <String> -ProjectName <String>
+Initialize-AzMigrateLocalReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
  -SourceApplianceName <String> -TargetApplianceName <String> [-CacheStorageAccountId <String>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -215,3 +214,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
