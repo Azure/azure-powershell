@@ -33,7 +33,7 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - D:\code\swagger\specification\storage\resource-manager\Microsoft.Storage\stable\2025-01-01\openapi.json
+  - https://github.com/blueww/azure-rest-api-specs/blob/ec65b60fa0dc4ff769722bdb46e4c494d035cf56/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/openapi.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
