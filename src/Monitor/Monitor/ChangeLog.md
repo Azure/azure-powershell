@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.0.3
 * Added breaking change announcement for below cmdlets from single object or fixed array to list.
   - `Get-AzActivityLogAlert`
   - `New-AzActivityLogAlert`

@@ -721,7 +721,7 @@ public static int hashForArtifact(String artifact)
             }
 
             if (-not $HasTargetAVZone -and $disk.DiskType -eq "PremiumV2_LRS") {
-                throw "Premium SSD V2 disk can only be attached to zonal VMs."
+                throw "The Availability zone has not been provided for the Premium SSD V2 disk."
             }
 
             $res = $uniqueDiskUuids.Add($disk.DiskId)
