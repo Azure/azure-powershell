@@ -46,7 +46,7 @@ Create a NamespaceDevice
 $outboundAssigned = @{
     "my-outbound-endpoint" = @{
         address = "https://my-outbound-endpoint.westeurope-1.edge.azure.net"
-        endpointType = "azure-iot-edge"
+        EndpointType = "Microsoft.Devices/IoTHubs"
     }
 }
 $endpointsInbound = @{
@@ -120,7 +120,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "my-outbound-endpoint": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://my-outbound-endpoint.westeurope-1.edge.azure.net"
                                  }
                                }
@@ -203,7 +203,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "my-outbound-endpoint": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://my-outbound-endpoint.westeurope-1.edge.azure.net"
                                  }
                                }
@@ -287,7 +287,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "my-outbound-endpoint": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://my-outbound-endpoint.westeurope-1.edge.azure.net"
                                  }
                                }

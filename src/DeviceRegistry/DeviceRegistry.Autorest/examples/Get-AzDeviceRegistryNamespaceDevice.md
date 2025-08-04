@@ -77,7 +77,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }
@@ -162,7 +162,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }
@@ -254,7 +254,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }

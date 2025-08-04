@@ -30,7 +30,7 @@ MessagingEndpoint            : {
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.EventGrid/namespaces/contoso-hub-namespace1"
                                  },
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net",
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
@@ -71,7 +71,7 @@ MessagingEndpoint            : {
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.EventGrid/namespaces/contoso-hub-namespace1"
                                  },
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net",
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
@@ -113,7 +113,7 @@ MessagingEndpoint            : {
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.EventGrid/namespaces/contoso-hub-namespace1"
                                  },
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net",
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }

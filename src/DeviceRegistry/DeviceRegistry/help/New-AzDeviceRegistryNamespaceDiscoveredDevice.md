@@ -47,7 +47,7 @@ Create a NamespaceDiscoveredDevice
 $outboundAssigned = @{
     "myendpoint2" = @{
         Address = "https://myendpoint2.westeurope-1.edge.azure.net"
-        EndpointType = "azure-iot-edge"
+        EndpointType = "Microsoft.Devices/IoTHubs"
     }
 }
 $endpointInbound = @{
@@ -58,7 +58,7 @@ $endpointInbound = @{
     }
     "endpoint2" = @{
         Address = "https://myendpoint2.westeurope-1.iothub.azure.net"
-        EndpointType = "Http"
+        EndpointType = "Microsoft.IotHub"
         Version = "2.0"
     }
 }
@@ -110,7 +110,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }
@@ -181,7 +181,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }
@@ -253,7 +253,7 @@ OperatingSystem              : Linux
 OperatingSystemVersion       : Ubuntu 20.04
 OutboundAssigned             : {
                                  "myendpoint2": {
-                                   "endpointType": "azure-iot-edge",
+                                   "endpointType": "Microsoft.Devices/IoTHubs",
                                    "address": "https://myendpoint2.westeurope-1.edge.azure.net"
                                  }
                                }
