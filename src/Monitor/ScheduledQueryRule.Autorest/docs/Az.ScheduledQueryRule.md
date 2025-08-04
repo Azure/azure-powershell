@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ScheduledQueryRule
-Module Guid: 806a79ac-f0d4-4c15-92e5-3b6fc73a71cd
+Module Guid: aeb0fd87-a465-4506-bb68-e52216f0af1d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.scheduledqueryrule
 Help Version: 1.0.0.0
 Locale: en-US

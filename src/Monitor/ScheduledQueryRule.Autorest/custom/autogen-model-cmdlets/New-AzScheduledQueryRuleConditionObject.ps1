@@ -30,7 +30,7 @@ function New-AzScheduledQueryRuleConditionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Condition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.ParameterBreakingChange("Dimension", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
+
         [Parameter(HelpMessage="List of Dimensions conditions.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IDimension[]]
         $Dimension,
