@@ -9,11 +9,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
     {
         [Theory]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [InlineData(ManagedHsmSkuName.StandardB1, "C")]
-        [InlineData(ManagedHsmSkuName.CustomB32, "C")]
-        [InlineData(ManagedHsmSkuName.CustomB6, "C")]
-        [InlineData(ManagedHsmSkuName.CustomC42, "B")]
-        [InlineData(ManagedHsmSkuName.CustomC10, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB1, "B")]
+        [InlineData(ManagedHsmSkuName.CustomB32, "B")]
+        [InlineData(ManagedHsmSkuName.CustomB6, "B")]
+        [InlineData(ManagedHsmSkuName.CustomC42, "C")]
+        [InlineData(ManagedHsmSkuName.CustomC10, "C")]
         public void CanInferFamilyFromSkuName(ManagedHsmSkuName skuSerializedValue, string expectedFamily)
         {
             // Act
@@ -25,8 +25,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
         [Theory]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [InlineData(ManagedHsmSkuName.CustomB6, "C")]
-        [InlineData(ManagedHsmSkuName.CustomC42, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB1, "B")]
+        [InlineData(ManagedHsmSkuName.CustomB32, "B")]
+        [InlineData(ManagedHsmSkuName.CustomB6, "B")]
+        [InlineData(ManagedHsmSkuName.CustomC42, "C")]
+        [InlineData(ManagedHsmSkuName.CustomC10, "C")]
         public void CanCreateSkuWithCorrectFamily(ManagedHsmSkuName skuSerializedValue, string expectedFamily)
         {
 
