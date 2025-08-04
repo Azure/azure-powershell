@@ -235,5 +235,82 @@ directive:
       - FunctionConfiguration
       - InputProperties
       - OutputDataSource
-
+# Breaking Change
+  - where:
+      verb: Get
+      subject: DefaultFunctionDefinition
+    set:
+        breaking-change:
+          deprecated-output-properties:
+            - Input
+          new-output-properties:
+            - Input
+          change-description: The type of property Input will be changed from fixed array to 'List'.
+          deprecated-by-version: 3.0.0
+          deprecated-by-azversion: 15.0.0
+          change-effective-date: 2025/11/03
+  - where:
+      verb: Get
+      subject: Input
+    set:
+        breaking-change:
+          deprecated-output-properties:
+            - Condition
+          new-output-properties:
+            - Condition
+          change-description: The type of property Condition will be changed from fixed array to 'List'.
+          deprecated-by-version: 3.0.0
+          deprecated-by-azversion: 15.0.0
+          change-effective-date: 2025/11/03
+  - where:
+      verb: Get
+      subject: Job
+    set:
+        breaking-change:
+          deprecated-output-properties:
+            - Input
+            - Output
+          new-output-properties:
+            - Input
+            - Output
+          change-description: The types of the properties Input and Output will be changed from fixed array to 'List'.
+          deprecated-by-version: 3.0.0
+          deprecated-by-azversion: 15.0.0
+          change-effective-date: 2025/11/03
+  - where:
+      verb: Get|New|Update
+      subject: Output
+    set:
+        breaking-change:
+          deprecated-output-properties:
+            - DiagnosticCondition
+          new-output-properties:
+            - DiagnosticCondition
+          change-description: The type of property DiagnosticCondition will be changed from fixed array to 'List'.
+          deprecated-by-version: 3.0.0
+          deprecated-by-azversion: 15.0.0
+          change-effective-date: 2025/11/03
+  - where:
+      verb: Get
+      subject: Quota
+    set:
+        breaking-change:
+          deprecated-output-properties:
+            - ISubscriptionQuota
+          new-output-properties:
+            - ISubscriptionQuotasListResult
+          change-description: The type of property Quota will be changed from fixed array to 'List'.
+          deprecated-by-version: 3.0.0
+          deprecated-by-azversion: 15.0.0
+          change-effective-date: 2025/11/
+  - where:
+      verb: Update
+      subject: Cluster
+      parameter-name: Location
+    set:
+        breaking-change:
+          change-description: The parameter Location will be removed.
+          deprecated-by-version: 3.0.0
+          deprecated-by-azversion: 15.0.0
+          change-effective-date: 2025/11/03
 ```
