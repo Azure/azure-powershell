@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { responseSchema, toolParameterSchema, toolSchema } from "./types.js";
-import { toolServices } from "./services/toolServices.js";
+import toolsService from "./services/toolsService.js";
 
 import { readFileSync } from "fs";
 import path from "path";
@@ -37,6 +37,36 @@ export class CodegenServer {
         this.initPrompts();
     }
 
+    public createMessage() {
+        return this._mcp.server.createMessage({
+            messages: [
+                {
+                    role: "user",
+                    content: {
+                        type: "text",
+                        text: `This is a test sampling request`,
+                    },
+                },
+            ],
+            maxTokens: 500
+        });
+    }
+
+    public elicitInput() {{
+        return this._mcp.server.elicitInput({
+            messages: [
+                {
+                    role: "user",
+                    content: {
+                        type: "text",
+                        text: `Please provide the input for the code generation.`,
+                    },
+                },
+            ],
+            maxTokens: 500
+        });
+    }
+
     public static getInstance(): CodegenServer {
         if (!CodegenServer._instance) {
             CodegenServer._instance = new CodegenServer();
@@ -50,10 +80,11 @@ export class CodegenServer {
 
 
     initTools() {
+        toolsService.setServer(this._mcp.server);
         const toolSchemas = specs.tools as toolSchema[];
         for (const schema of toolSchemas) {
-            const parameter = this.createToolParameterfromSchema(schema.parameters);
-            const callBack = toolServices<{ [k: string]: z.ZodTypeAny }>(schema.callbackName, this._responses.get(schema.name));
+            const parameter = toolsService.createToolParameterfromSchema(schema.parameters);
+            const callBack = toolsService.getTools<{ [k: string]: z.ZodTypeAny }>(schema.callbackName, this._responses.get(schema.name));
             this._mcp.tool(
                 schema.name,
                 schema.description,
@@ -87,32 +118,5 @@ export class CodegenServer {
         (responses as responseSchema[])?.forEach((response: responseSchema) => {
             this._responses.set(response.name, response.text);
         });
-    }
-
-    createToolParameterfromSchema(schemas: toolParameterSchema[]){
-        const parameter: {[k: string]: z.ZodTypeAny} = {}; 
-        for (const schema of schemas) {
-            switch (schema.type) {
-                case "string":
-                    parameter[schema.name] = z.string().describe(schema.description);
-                    break;
-                case "number":
-                    parameter[schema.name] = z.number().describe(schema.description);
-                    break;
-                case "boolean": 
-                parameter[schema.name] = z.boolean().describe(schema.description);
-                    break;
-                case "array":
-                    parameter[schema.name] = z.array(z.string()).describe(schema.description);
-                    break;
-                // object parameter not supported yet    
-                // case "object":
-                //     parameter[schema.name] = z.object({}).describe(input.description); // Placeholder for object type
-                //     break;
-                default:
-                    throw new Error(`Unsupported parameter type: ${schema.type}`);
-            }
-        }
-        return parameter;
     }
 }
