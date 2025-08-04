@@ -67,6 +67,18 @@ param(
     # Specifies the name of the VM to be created.
     ${TargetVMName},
 
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the source appliance name for the AzLocal scenario.
+    ${SourceApplianceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the target appliance name for the AzLocal scenario.
+    ${TargetApplianceName},
+
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
