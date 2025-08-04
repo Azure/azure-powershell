@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '14.3.0'
+ModuleVersion = '14.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -219,12 +219,12 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.2.0'; },
             @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '3.2.0'; }, 
             @{ModuleName = 'Az.SelfHelp'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '4.1.1'; }, 
-            @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '3.6.0'; }, 
+            @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '3.6.1'; }, 
             @{ModuleName = 'Az.ServiceLinker'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.SignalR'; RequiredVersion = '2.1.0'; }, 
             @{ModuleName = 'Az.Sphere'; RequiredVersion = '0.1.3'; }, 
             @{ModuleName = 'Az.SpringCloud'; RequiredVersion = '0.4.0'; }, 
-            @{ModuleName = 'Az.Sql'; RequiredVersion = '6.0.5'; }, 
+            @{ModuleName = 'Az.Sql'; RequiredVersion = '6.1.0'; }, 
             @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '2.4.0'; }, 
             @{ModuleName = 'Az.Ssh'; RequiredVersion = '0.2.3'; }, 
             @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.6.1'; }, 

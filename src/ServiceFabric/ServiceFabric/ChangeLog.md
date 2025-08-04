@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.1
 * Fixed `Set-AzServiceFabricManagedClusterApplication` to correctly overwrite existing application upgrade policy when `-RecreateApplication` parameter is specified and no other upgrade policy parameters are bound.
 
 ## Version 3.6.0

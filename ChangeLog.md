@@ -1,3 +1,140 @@
+## 14.4.0 - August 2025
+#### Az.Accounts 5.2.0
+* Fixed an issue where 'Clear-AzContext' does not clear the token cache when broker is enabled.
+* Added new parameter '-ClaimsChallenge' to 'Connect-AzAccount' to support claims challenge authentication for MFA.
+* Refined the error message when a cmdlet fails because of policy violations about Multi-Factor Authentication (MFA) to provide more actionable guidance.
+
+#### Az.ArizeAI 1.0.0
+* General availability for module Az.ArizeAI
+* Upgraded the API version to 2024-10-01
+
+#### Az.Compute 10.2.0
+* Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
+* Upgraded SpotPlacementScore cmdlets to api version 2025-06-05
+
+#### Az.CosmosDB 1.18.2
+* Fixed issue where the restore command failed to detect the source account, even when it existed.
+
+#### Az.DataLakeStore 1.5.0
+* Added a new cmdlet GetAzureDataLakeStoreDeletedItemWithtoken to support pagination in  GetAzureDataLakeStoreDeletedItem
+
+#### Az.DevCenter 2.0.2
+* Added preannouncement breaking change messages.
+
+#### Az.EventHub 5.4.0
+* Added new cmdlets for Eventhubnetworksecurityperimeterconfiguration - 'Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation', 'Get-AzEventHubNetworkSecurityPerimeterConfiguration'
+
+#### Az.Fabric 1.0.0
+* General availability for module Az.Fabric
+
+#### Az.LambdaTest 1.0.0
+* General availability for module Az.LambdaTest
+* Upgraded the API version to 2024-02-01
+
+#### Az.ManagedServices 3.1.2
+* Update the outputs of breaking change announcements.
+
+#### Az.Migrate 2.9.0
+* Added '-OsType' as an optional parameter to command 'Set-AzMigrateLocalServerReplication' to allow user-specified OS type.
+* Fixed bugs in 'New-AzMigrateServerReplication' caused by deprecation of 'Get-AzVmSize -location'
+* Removed '-TargetStoragePathId' parameter from command 'New-AzMigrateLocalDiskMappingObject' until the feature to associate each disk to their own storage container path is supported.
+* Added '-SourceApplianceName' and '-TargetApplianceName' as required parameters to command 'New-AzMigrateLocalServerReplication' to allow users to specify appliance pairs of their choosing.
+* Enhanced resource validations in 'Initialize-AzMigrateLocalReplicationInfrastructure' and 'New-AzMigrateLocalServerReplication'.
+
+#### Az.Monitor 6.0.3
+* Added breaking change announcement for below cmdlets from single object or fixed array to list.
+  - 'Get-AzActivityLogAlert'
+  - 'New-AzActivityLogAlert'
+  - 'Update-AzActivityLogAlert'
+  - 'New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject'
+  - 'New-AzActivityLogAlertAlertRuleLeafConditionObject'
+  - 'Get-AzAutoscalePredictiveMetric'
+  - 'Get-AzAutoscaleSetting'
+  - 'New-AzAutoscaleNotificationObject'
+  - 'New-AzAutoscaleProfileObject'
+  - 'New-AzAutoscaleScaleRuleMetricDimensionObject'
+  - 'New-AzAutoscaleScaleRuleObject'
+  - 'New-AzAutoscaleSetting'
+  - 'Update-AzAutoscaleSetting'
+  - 'Get-AzMonitorWorkspace'
+  - 'New-AzMonitorWorkspace'
+  - 'Update-AzMonitorWorkspace'
+  - 'New-AzDiagnosticSetting'
+  - 'New-AzSubscriptionDiagnosticSetting'
+  - 'Get-AzDiagnosticSetting'
+  - 'Get-AzDiagnosticSettingCategory'
+  - 'Get-AzSubscriptionDiagnosticSetting'
+  - 'Get-AzScheduledQueryRule'
+  - 'New-AzScheduledQueryRule'
+  - 'New-AzScheduledQueryRuleConditionObject'
+  - 'New-AzScheduledQueryRuleDimensionObject'
+  - 'Update-AzScheduledQueryRule'
+
+#### Az.MySql 1.5.0
+- Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-MySQLConnection
+- Introduced a Timeout value when running Test-AzMySqlFlexibleServerConnect with long running query
+
+#### Az.Network 7.19.0
+* Returned appgw and agc in waf policy
+* Updated cmdlet 'New-AzFirewallPolicyApplicationRule' to use HTTPS as the default protocol when creating a new FQDN Tag application rule.
+* Added 'EnableDnstapLogging' parameter to 'New-AzFirewall'
+
+#### Az.NetworkCloud 1.2.0
+* Upgraded API version to 2025-02-01
+
+#### Az.Nginx 1.2.1
+* Added breaking change announcement for below cmdlets from fixed array to list.
+  - 'Get-AzNginxConfiguration'
+  - 'New-AzNginxConfiguration'
+  - 'Get-AzNginxDeployment'
+  - 'New-AzNginxDeployment'
+  - 'Update-AzNginxDeployment'
+  - 'Invoke-AzNginxAnalysisConfiguration'
+  - 'New-AzNginxNetworkProfileObject'
+* Added breaking change announcement for 'New-AzNginxDeployment' and 'Update-AzNginxDeployment' cmdlets.
+    - Removed '-IdentityType' parameter to support new Managed Identity settings.
+    - Removed '-IdentityUserAssignedIdentity'.
+* The parameters of the 'New-AzNginxDeployment' and 'Update-AzNginxDeployment' cmdlets will be changed by new Managed Identity settings.
+    - Added '-UserAssignedIdentity' parameter. The type of 'UserAssignedIdentity' is simplified to a list of strings that is used to specify the user's assigned identity.
+    - Added 'EnableSystemAssignedIdentity' to enable/disable system-assigned identities.
+
+#### Az.Oracle 1.2.0
+* Upgraded to the stable version 2025-03-01
+
+#### Az.PostgreSql 1.4.0
+- Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-PostGreConnection
+- Introduced a Timeout value when running Test-AzPostgreSqlFlexibleServerConnect with long running query
+
+#### Az.RecoveryServices 7.8.0
+* Added new optional parameter CVMOsDiskEncryptionSetId in Restore-AzRecoveryServicesBackupItem.
+
+#### Az.Relay 2.1.2
+* Update the outputs of breaking change announcements.
+
+#### Az.Resources 8.1.0
+* Added functionality for cmdlet 'GetAzureResourceGroup'[#27865]
+* Added breaking change announcement for below cmdlets from array to list.
+  - 'Get-AzRoleManagementPolicy'
+  - 'Update-AzRoleManagementPolicy'
+* Added support for exporting resource group templates as Bicep files
+    - Added 'OutputFormat' parameter to 'Export-AzResourceGroup' cmdlet
+    - Supported values: 'Json' (default), 'Bicep'
+
+#### Az.ServiceFabric 3.6.1
+* Fixed 'Set-AzServiceFabricManagedClusterApplication' to correctly overwrite existing application upgrade policy when '-RecreateApplication' parameter is specified and no other upgrade policy parameters are bound.
+
+#### Az.Sql 6.1.0
+* Fixed 'New-AzSqlDatabaseExport' and 'New-AzSqlDatabaseImport' to use SQL Authentication with ManagedIdentity without any mandatory password
+
+#### Az.StackHCI 2.6.1
+* Used fully qualified computer name and added warning for user to upgrade to solution.
+
+#### Az.StorageSync 2.5.1
+* Fixed security bug in token acquisition for MI server registration
+
+#### Az.Synapse 3.2.2
+* Fixed an error when remove artifact throw 'ArgumentNullException'
+
 ## 14.3.0 - August 2025
 #### Az.Accounts 5.2.0
 * Fixed an issue where 'Clear-AzContext' does not clear the token cache when broker is enabled.

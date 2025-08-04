@@ -1,3 +1,10 @@
+## 14.4.0 - August 2025
+#### Az.Sql 6.1.0 
+* Modified cmdlet `New-AzSqlDatabaseExport`
+   - Parameter `-AdministratorLoginPassword` ValidateNotNullOrEmpty changed from `True` to `False`
+* Modified cmdlet `New-AzSqlDatabaseImport`
+   - Parameter `-AdministratorLoginPassword` ValidateNotNullOrEmpty changed from `True` to `False`
+
 ## 14.3.0 - August 2025
 #### Az.Accounts 5.2.0 
 * Modified cmdlet `Connect-AzAccount`
@@ -649,6 +656,7 @@
 #### Az.Storage 9.0.0 
 * Modified cmdlet `Start-AzStorageAccountMigration`
    - Added parameter `-Force`
+
 
 
 
