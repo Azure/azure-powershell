@@ -1,0 +1,41 @@
+﻿
+using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
+{
+    public class ManagedHsmSkuCustomTests: KeyVaultUnitTestBase
+    {
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(ManagedHsmSkuName.StandardB1, "C")]
+        [InlineData(ManagedHsmSkuName.CustomB32, "C")]
+        [InlineData(ManagedHsmSkuName.CustomB6, "C")]
+        [InlineData(ManagedHsmSkuName.CustomC42, "B")]
+        [InlineData(ManagedHsmSkuName.CustomC10, "B")]
+        public void CanInferFamilyFromSkuName(ManagedHsmSkuName skuSerializedValue, string expectedFamily)
+        {
+            // Act
+            var result = ManagedHsmSku.InferFamilyFromSkuName(skuSerializedValue);
+
+            // Assert
+            Assert.Equal(expectedFamily, result);
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(ManagedHsmSkuName.CustomB6, "C")]
+        [InlineData(ManagedHsmSkuName.CustomC42, "B")]
+        public void CanCreateSkuWithCorrectFamily(ManagedHsmSkuName skuSerializedValue, string expectedFamily)
+        {
+
+            // Act
+            var sku = ManagedHsmSku.Create(skuSerializedValue);
+
+            // Assert
+            Assert.Equal(expectedFamily, sku.Family);
+            Assert.Equal(skuSerializedValue, sku.Name);
+        }
+    }
+}
