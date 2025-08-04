@@ -19,7 +19,7 @@
         "assigned": {
           "myendpoint2": {
             "address": "https://myendpoint2.westeurope-1.edge.azure.net",
-            "endpointType": "azure-iot-edge"
+            "endpointType": "Microsoft.Devices/IoTHubs"
           }
         }
       },
