@@ -66,7 +66,7 @@ function setupEnv() {
     $vmName = 'testvm250716'
     $null = $env.Add("vmName", $vmName)
     $vmId = (Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName).Id
-    if($null = $vmId)
+    if($null -eq $vmId)
     {
         Write-Host "Failed to get the required virtual machine."
     }
