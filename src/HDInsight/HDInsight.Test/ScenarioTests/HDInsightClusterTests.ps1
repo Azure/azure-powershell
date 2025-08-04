@@ -27,10 +27,6 @@ function Test-HDInsightJobManagementCommands{
 		# test Use-AzHDInsightCluster
 		Use-AzHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential
 
-		# test Invoke-AzHDInsightHiveJob
-		# $hiveQuery = Invoke-AzHDInsightHiveJob -Query "show tables"
-		# Assert-NotNull $hiveQuery
-
 		# test Get-AzHDInsightProperty
 		$property = Get-AzHDInsightProperty  -Location "East Asia"
 		Assert-NotNull $property
@@ -49,10 +45,6 @@ function Test-HDInsightJobManagementCommands{
 		$jobStatus = Get-AzHDInsightJob -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId $jobHive.JobId
 		Assert-AreEqual $jobStatus.State "SUCCEEDED"
 
-		# test Get-AzHDInsightJobOutput
-		# $outputHive = Get-AzHDInsightJobOutput  -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId  $jobHive.JobId
-		# Assert-NotNull $outputHive
-
 		# test New-AzHDInsightMapReduceJobDefinition
 		$mapReduceJob = New-AzHDInsightMapReduceJobDefinition -JarFile "/example/jars/hadoop-mapreduce-examples.jar" -ClassName "pi" -Arguments "10","10" -JobName "PiEstimation"
 		
@@ -60,10 +52,6 @@ function Test-HDInsightJobManagementCommands{
 
 		# test Stop-AzHDInsightJob
 		Stop-AzHDInsightJob -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId  $jobMapReduce.JobId
-
-		# $outputMapReduce = Get-AzHDInsightJobOutput  -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId  $jobMapReduce.JobId
-		# Assert-NotNull $outputMapReduce
-
 
 	}
 	finally
