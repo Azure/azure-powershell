@@ -47,10 +47,6 @@ Lock-AzSqlDatabaseLongTermRetentionBackupImmutability -Location northeurope -Ser
 ```
 
 ```output
-Locking the time-based immutability for the Long Term Retention backup 'ddce125a-339f-4f34-9b74-93b439813ddd;133982942130000000;Hot' on database 'testdb2' on server 'brandong-ltr-ps-test' in location 'eastus2euap'.
-Are you sure you want to lock the time-based immutability for the Long Term Retention backup 'ddce125a-339f-4f34-9b74-93b439813ddd;133982942130000000;Hot' on database 'testdb2' on server 'brandong-ltr-ps-test' in location 'eastus2euap'? Once locked, the backup cannot be dropped until expiration.
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
 BackupExpirationTime      : 8/5/2025 8:23:33 PM
 BackupName                : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime                : 7/29/2025 8:23:33 PM

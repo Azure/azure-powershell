@@ -36,24 +36,17 @@ Remove-AzSqlDatabaseLongTermRetentionBackupImmutability [-ResourceId] <String> [
 ```
 
 ## DESCRIPTION
-
 The cmdlet **Remove-AzSqlDatabaseLongTermRetentionBackupImmutability** permanently removes an unlocked time-based immutability policy for the backup. 
 Once removed, the backup will be able to be deleted manually. It is not possible to re-add time-based immutability once it is removed (however, a legal hold can always be applied). 
 
 ## EXAMPLES
 
 ### Example 1: Remove the time-based immutability policy for a single backup.
-
 ```powershell
 Remove-AzSqlDatabaseLongTermRetentionBackupImmutability -Location northeurope -ServerName server01 -DatabaseName testdb2 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -PassThru
 ```
 
 ```output
-Removing the time-based immutability for the Long Term Retention backup '601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000' on database 'testdb2' on server 'server01' in location 'northeurope'.
-Are you sure you want to remove the time-based immutability for the Long Term Retention backup '601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000' on database 'testdb2' on server 'server01' in location 'northeurope'? Once removed, it will be
-possible to delete the backup.
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
 BackupExpirationTime      : 8/5/2025 8:23:33 PM
 BackupName                : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime                : 7/29/2025 8:23:33 PM

@@ -36,26 +36,16 @@ Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold [-ResourceId] <String> [-Fo
 ```
 
 ## DESCRIPTION
-
 The **Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold** removes a legal hold on the given LTR backup. Once removed, the backup can be manually deleted. If the backup is expired, it will be dropped immediately after removal.
 
 ## EXAMPLES
 
 ### Example 1: Remove legal hold for a single backup
-
 ```powershell
 Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location northeurope -ServerName server01 -DatabaseName testdb -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -PassThru:$true
 ```
 
 ```output
-Removing the legal hold immutability for the Long Term Retention backup
-'601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000' on database 'testdb' on server 'server01' in
-location 'northeurope'.
-Are you sure you want to remove a legal hold for the Long Term Retention backup
-'601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000' on database 'testdb' on server 'server01' in
-location 'northeurope'? Once removed, it will be possible to delete the backup.
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
 BackupExpirationTime      : 8/5/2025 8:08:27 PM
 BackupName                : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime                : 7/29/2025 8:08:27 PM

@@ -47,14 +47,12 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] [-Mon
 
 
 ## DESCRIPTION
-
 The **Set-AzSqlDatabaseBackupLongTermRetentionPolicy** cmdlet sets the long term retention policy registered to this database.
 The policy is an Azure Backup resource used to define backup storage policy.
 
 ## EXAMPLES
 
 ### Example 1: Set the weekly retention for the current version of long term retention policy
-
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -WeeklyRetention P2W
 ```
@@ -75,7 +73,6 @@ TimeBasedImmutabilityMode              : Unlocked
 This sets the long term retention policy of database01 to save every weekly full backup for 2 weeks
 
 ### Example 2: Set the monthly retention for the current version of long term retention policy
-
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -MonthlyRetention P5Y
 ```
@@ -96,7 +93,6 @@ TimeBasedImmutabilityMode              : Unlocked
 This sets the long term retention policy of database01 to save the first full backup of each month for 5 years
 
 ### Example 3: Set the yearly retention for the current version of long term retention policy
-
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -YearlyRetention P10Y -WeekOfYear 26
 ```
@@ -117,7 +113,6 @@ TimeBasedImmutabilityMode              : Unlocked
 This sets the long term retention policy of database01 to save the full backup taken on the 26th week of the year for 10 years
 
 ### Example 4: Set the yearly retention for the current version of long term retention policy with an unlocked time-based immutability enabled
-
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -YearlyRetention P10Y -WeekOfYear 26 -TimeBasedImmutability Enabled
 ```
@@ -140,7 +135,6 @@ Additionally, the backups will be created with an unlocked time-based immutabili
 These backups can later have their immutability locked or removed.
 
 ### Example 5: Set the yearly retention for the current version of long term retention policy with a locked time-based immutability enabled
-
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -YearlyRetention P10Y -WeekOfYear 26 -TimeBasedImmutability Enabled -TimeBasedImmutabilityMode Locked
 ```
@@ -163,7 +157,6 @@ Additionally, the backups will be created with a locked time-based immutability 
 These backups can not be deleted manually and will only be dropped on expiration.
 
 ### Example 6: Set each retention for the current version of long term retention policy
-
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -WeeklyRetention 14 -MonthlyRetention P24W -YearlyRetention P10Y -WeekOfYear 26
 ```
@@ -184,7 +177,6 @@ TimeBasedImmutabilityMode              : Unlocked
 This sets the long term retention policy of database01 to save each full backup for 14 days, the first full backup of each month for 24 weeks, and the full backup taken on the 26th week of the year for 10 years
 
 ### Example 7: Remove the long term retention policy
-
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RemovePolicy
 ```
@@ -206,7 +198,6 @@ Removes the policy for database01 so it no longer saves any long term retention 
 This will not affect backups that have already been taken.
 
 ### Example 8: Remove the long term retention policy
-
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -WeeklyRetention P0D
 ```
@@ -226,6 +217,7 @@ TimeBasedImmutabilityMode              : Unlocked
 
 This is another way of removing the policy for database01 so it no longer saves any long term retention backups.
 This will not affect backups that have already been taken
+
 ## PARAMETERS
 
 ### -DatabaseName

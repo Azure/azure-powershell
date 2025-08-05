@@ -35,13 +35,11 @@ Set-AzSqlDatabaseLongTermRetentionBackupLegalHold [-ResourceId] <String> [-Force
 ```
 
 ## DESCRIPTION
-
 The **Set-AzSqlDatabaseLongTermRetentionBackupLegalHold** sets a legal hold on the given LTR backup. The backup cannot be deleted and will not expire until the legal hold is removed.
 
 ## EXAMPLES
 
 ### Example 1: Set legal hold on a single backup
-
 ```powershell
 PS C:\> Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location northeurope -ServerName server01 -DatabaseName testdb -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -PassThru
 ```
@@ -64,7 +62,6 @@ LegalHoldImmutability     : Enabled
 ```
 
 This sets legal hold on the backup 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
-
 
 ## PARAMETERS
 
