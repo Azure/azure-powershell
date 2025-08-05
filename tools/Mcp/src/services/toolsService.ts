@@ -1,16 +1,24 @@
-import { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
+import { CallToolResult, ElicitRequest, ElicitResult } from '@modelcontextprotocol/sdk/types.js';
 import { z, ZodRawShape, ZodType, ZodTypeAny } from "zod";
 import * as utils from "./utils.js";
 import path from 'path';
-import { get } from 'http';
+import { get, RequestOptions } from 'http';
 import { toolParameterSchema } from '../types.js';
+import { CodegenServer } from '../CodegenServer.js';
 
-class ToolsService {
-    constructor() {}
-    private _server: any;
-
-    setServer(server: any) {
+export class ToolsService {
+    private static _instance: ToolsService;
+    private constructor() {}
+    private _server: CodegenServer|null = null;
+    static getInstance(): ToolsService {
+        if (!ToolsService._instance) {
+            ToolsService._instance = new ToolsService();
+        }
+        return ToolsService._instance;
+    }
+    setServer(server: CodegenServer): ToolsService {
         this._server = server;
+        return this;
     }
 
     getTools = <Args extends ZodRawShape>(name: string, responseTemplate: string|undefined) => {
@@ -99,28 +107,8 @@ class ToolsService {
     below are implementation of tools
 */
     generateByAutorest = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
-        // const response = await this._server.createMessage({
-        //     messages: [
-        //         {
-        //             role: "user",
-        //             content: {
-        //                 type: "text",
-        //                 text: `This is a test sampling request, let me know if you receive this message`,
-        //             },
-        //         },
-        //     ],
-        //     maxTokens: 500
-        // });
-        // console.log("Response from server:", response);
-    // Notify user that sampling is starting
-    this._server.notification({
-        params: {
-            level: "info",
-            message: "Starting AI sampling request for code generation..."
-        }
-    });
         const workingDirectory = z.string().parse(Object.values(args)[0]);
-        // utils.generateAndBuild(workingDirectory);
+        utils.generateAndBuild(workingDirectory);
         return [workingDirectory];
     };
 
@@ -147,6 +135,29 @@ class ToolsService {
         const workingDirectory = z.string().parse(Object.values(args)[0]);
         const examplePath = path.join(workingDirectory, "examples");
         const exampleSpecsPath = await utils.getExamplesFromSpecs(workingDirectory);
+        const exampleSpecs = await utils.getExampleJsonContent(exampleSpecsPath);
+        for (const {name, content} of exampleSpecs) {
+            const example = await utils.flattenJsonObject(content['parameters']);
+            try {
+                const response = await this._server!.elicitInput({
+                    "message": `Please review example data for ${name}: ${example.map(({key: k, value:v}) => `  \n${k}: ${v}`)}`,
+                    "requestedSchema": {
+                        "type": "object",
+                        "properties": {
+                            "skipAll": {
+                                "type": "boolean",
+                                "description": "If true, skip the review of all examples and proceed to the next step."
+                            }
+                        },
+                    }
+                });
+                if (response.content && response.content['skipAll'] === true) {
+                    break;
+                }
+            } catch (error) {
+                console.error(`Error eliciting input for example ${name}:`, error);
+            }
+        }
         return [exampleSpecsPath, examplePath];
     }
 
@@ -157,7 +168,3 @@ class ToolsService {
         return [exampleSpecsPath, testPath];
     }
 }
-
-// Create and export a singleton instance
-export const toolsService = new ToolsService();
-export default toolsService;

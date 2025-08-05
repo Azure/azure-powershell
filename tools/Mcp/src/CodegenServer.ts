@@ -2,11 +2,12 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { responseSchema, toolParameterSchema, toolSchema } from "./types.js";
-import toolsService from "./services/toolsService.js";
-
+import { ToolsService } from "./services/toolsService.js";
 import { readFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { RequestOptions } from "https";
+import { ElicitRequest, ElicitResult } from "@modelcontextprotocol/sdk/types.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const srcPath = path.resolve(__dirname, "..", "src");
@@ -37,6 +38,7 @@ export class CodegenServer {
         this.initPrompts();
     }
 
+    // dummy method for sending sampling request
     public createMessage() {
         return this._mcp.server.createMessage({
             messages: [
@@ -52,19 +54,13 @@ export class CodegenServer {
         });
     }
 
-    public elicitInput() {{
-        return this._mcp.server.elicitInput({
-            messages: [
-                {
-                    role: "user",
-                    content: {
-                        type: "text",
-                        text: `Please provide the input for the code generation.`,
-                    },
-                },
-            ],
-            maxTokens: 500
-        });
+    // server elicitation request
+    public elicitInput(
+        params: ElicitRequest["params"],
+        options?: RequestOptions
+    ): Promise<ElicitResult> {
+        //TODO: add log
+        return this._mcp.server.elicitInput(params, options);
     }
 
     public static getInstance(): CodegenServer {
@@ -80,7 +76,7 @@ export class CodegenServer {
 
 
     initTools() {
-        toolsService.setServer(this._mcp.server);
+        const toolsService = ToolsService.getInstance().setServer(this);
         const toolSchemas = specs.tools as toolSchema[];
         for (const schema of toolSchemas) {
             const parameter = toolsService.createToolParameterfromSchema(schema.parameters);
