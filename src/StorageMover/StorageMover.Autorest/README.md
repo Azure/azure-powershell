@@ -40,12 +40,6 @@ module-version: 1.2.0
 # Normally, title is the service name
 title: StorageMover
 subject-prefix: $(service-name)
-nested-object-to-string: true
-identity-correction-for-post: true 
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 
@@ -62,6 +56,9 @@ directive:
           "default": 0
         }
   - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
       verb: Set
     remove: true
   - where:
@@ -70,7 +67,6 @@ directive:
       suppress-format: true
   - no-inline:
       - EndpointBaseProperties
-  - no-inline:
       - EndpointBaseUpdateProperties
   # Rename Start-AzDataMoverJobDefinitionJob -> Start-AzDataMoverJobDefinition
   - where:
@@ -101,18 +97,6 @@ directive:
       verb: Remove
       subject: Agent
     hide: true
-  # Remove parameter sets Create and CreateViaIdentity
-  - where: 
-      verb: New 
-      subject: Endpoint 
-      variant: ^Create$|^CreateViaIdentity$
-    remove: true
-  # Remove parameter set Update and UpdateViaIdentity
-  - where:
-      verb: Update
-      subject: Endpoint 
-      variant: ^Update$|^UpdateViaIdentity$
-    remove: true
   # Hide New-AzStorageMoverEndpoint
   - where:
       verb: New
@@ -150,18 +134,14 @@ directive:
       property-name: Message 
     set:
       property-name: ErrorMessage
-  - where:
-      verb: New
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
   # Delete the original ShouldProcess as a ShouldProcess and ShouldContinue are added in the custom cmdlets 
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('ShouldProcess($\"Call remote \'StorageMoversDelete\' operation\")', 'true');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('ShouldProcess($\"Call remote \'AgentsDelete\' operation\")', 'true');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ISystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ISystemData');
+  # - from: source-file-csharp
+  #   where: $
+  #   transform: $ = $.replace('ShouldProcess($\"Call remote \'StorageMoversDelete\' operation\")', 'true');
+  # - from: source-file-csharp
+  #   where: $
+  #   transform: $ = $.replace('ShouldProcess($\"Call remote \'AgentsDelete\' operation\")', 'true');
+  # Customize add validate
+  # - model-cmdlet:
+  #     - model-name: UploadLimitWeeklyRecurrence
 ```
