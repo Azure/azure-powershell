@@ -16,11 +16,26 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ## SYNTAX
 
+### CommitExpanded (Default)
 ```
 Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### CommitViaJsonFilePath
+```
+Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CommitViaJsonString
+```
+Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,6 +184,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Commit operation
+
+```yaml
+Type: System.String
+Parameter Sets: CommitViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Commit operation
+
+```yaml
+Type: System.String
+Parameter Sets: CommitViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionName
 The Move Collection Name.
 
@@ -189,7 +234,7 @@ Gets or sets the list of resource Id's, by default it accepts move resource id's
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CommitExpanded
 Aliases:
 
 Required: False
@@ -204,7 +249,7 @@ Defines the move resource input type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CommitExpanded
 Aliases:
 
 Required: False
@@ -264,7 +309,7 @@ Gets or sets a value indicating whether the operation needs to only run pre-requ
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CommitExpanded
 Aliases:
 
 Required: False

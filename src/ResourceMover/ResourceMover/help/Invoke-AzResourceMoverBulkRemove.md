@@ -16,11 +16,26 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ## SYNTAX
 
+### BulkExpanded (Default)
 ```
 Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### BulkViaJsonFilePath
+```
+Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BulkViaJsonString
+```
+Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,6 +143,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Bulk operation
+
+```yaml
+Type: System.String
+Parameter Sets: BulkViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Bulk operation
+
+```yaml
+Type: System.String
+Parameter Sets: BulkViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionName
 .
 
@@ -148,7 +193,7 @@ Gets or sets the list of resource Id's, by default it accepts move resource id's
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: BulkExpanded
 Aliases:
 
 Required: False
@@ -163,7 +208,7 @@ Defines the move resource input type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BulkExpanded
 Aliases:
 
 Required: False
@@ -223,7 +268,7 @@ Gets or sets a value indicating whether the operation needs to only run pre-requ
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: BulkExpanded
 Aliases:
 
 Required: False

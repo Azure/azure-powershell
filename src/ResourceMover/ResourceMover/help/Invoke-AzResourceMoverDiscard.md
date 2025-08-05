@@ -16,10 +16,25 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ## SYNTAX
 
+### DiscardExpanded (Default)
 ```
 Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DiscardViaJsonFilePath
+```
+Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DiscardViaJsonString
+```
+Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,12 +142,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Discard operation
+
+```yaml
+Type: System.String
+Parameter Sets: DiscardViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Discard operation
+
+```yaml
+Type: System.String
+Parameter Sets: DiscardViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MoveResource
 Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: DiscardExpanded
 Aliases:
 
 Required: False
@@ -147,7 +192,7 @@ Defines the move resource input type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DiscardExpanded
 Aliases:
 
 Required: False
@@ -222,7 +267,7 @@ Gets or sets a value indicating whether the operation needs to only run pre-requ
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: DiscardExpanded
 Aliases:
 
 Required: False

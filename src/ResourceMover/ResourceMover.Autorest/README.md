@@ -66,15 +66,23 @@ disable-getput: true
 directive:
   # Remove the unexpanded parameter set
   - where:
-      variant: ^(Discard|Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^(Create|Update|Discard)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 
   - where:
-      variant: ^DiscardViaIdentityExpanded$|^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$
+      variant: ^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^DiscardViaIdentityExpanded$
     remove: true
 
   - where:
-      variant: ^(Bulk|Commit|Initiate|Prepare)(?!Expanded$)
+      variant: ^(Bulk|Commit|Initiate|Prepare)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+
+  - where:
+      variant: ^BulkViaIdentityExpanded$|^CommitViaIdentityExpanded$|^InitiateViaIdentityExpanded$|^PrepareViaIdentityExpanded$
+    remove: true
+
+  - where:
+      variant: ^ResolveViaIdentity$|^GetViaIdentity$|^DeleteViaIdentity$
     remove: true
 
   - where:
@@ -82,14 +90,14 @@ directive:
     remove: true
 
   - where:      
-      variant: DiscardExpanded
+      variant: ^Discard
       subject: MoveCollection 
       verb: Remove
     set:
       verb: Invoke      
 
   - where:      
-      variant: DiscardExpanded
+      variant: ^Discard
       subject: MoveCollection 
       verb: Invoke
     set:
@@ -102,22 +110,22 @@ directive:
       verb: Add
 
   - where:      
-      variant: PrepareExpanded            
+      variant: ^Prepare         
     set:
       subject: Prepare
 
   - where:      
-      variant: InitiateExpanded            
+      variant: ^Initiate          
     set:
       subject: InitiateMove
 
   - where:      
-      variant: CommitExpanded            
+      variant: ^Commit        
     set:
       subject: Commit
 
   - where:
-      variant: BulkExpanded
+      variant: ^Bulk
     set:
       subject: BulkRemove
 
