@@ -21,7 +21,7 @@ function Test-ManagedHsmCRUD {
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $hsmName = getAssetName
     $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West Europe"
-    $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0" # (Get-AzADUser -StartsWith Beisi).Id
+    $administrator = (Get-AzADUser -SignedIn).Id
     New-AzResourceGroup -Name $rgName -Location $rgLocation
 
     try {
@@ -108,14 +108,13 @@ function Test-CreateAndUpdateManagedHsmWithPublicNetworkAccess{
     $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "India"
     $hsmLocation2 = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
     $hsmLocation3 = Get-Location "Microsoft.KeyVault" "managedHSMs" "West Europe"
-    # bez's object id
-    $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
+    $administrator = (Get-AzADUser -SignedIn).Id
     New-AzResourceGroup -Name $rgName -Location $rgLocation
     try {
         # Test creating a default managed HSM
         $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 90
         Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "1. The default of PublicNetworkAccess is Enabled"
-        
+
         # Update other property, PublicNetworkAccess should not change
         $hsm = Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Tag @{key = "value"}
         Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "1. PublicNetworkAccess should not change"
@@ -135,7 +134,7 @@ function Test-CreateAndUpdateManagedHsmWithPublicNetworkAccess{
         # Test updating PublicNetworkAccess as Disabled
         $hsm3 = Update-AzKeyVaultManagedHsm -Name $hsmName3 -ResourceGroupName $rgName -PublicNetworkAccess Disabled
         Assert-AreEqual "Disabled" $hsm3.PublicNetworkAccess "3. Set PublicNetworkAccess as Disabled"
-    }finally{        
+    }finally{
         Remove-AzResourceGroup -Name $rgName -Force
         Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
         Remove-AzKeyVaultManagedHsm -Name $hsmName2 -Location $hsmLocation2 -InRemovedState -Force
