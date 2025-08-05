@@ -1,26 +1,26 @@
-export type toolParameterSchema = {
+export interface toolParameterSchema {
     name: string;
     description: string;
     type: string;
 }
 
-export type toolSchema = {
+export interface toolSchema {
     name: string;
     description: string;
     parameters: toolParameterSchema[];
     callbackName: string;
 }
 
-export type responseSchema = {
+export interface responseSchema {
     name: string;
     type: string;
     text: string;
 }
 
-export type yamlContent = {
+export interface yamlContent {
     [key: string]: any;
 }
 
-export type directiveDefinition = {
+export interface directiveDefinition {
     [key: string]: any
 }

@@ -161,32 +161,85 @@ export async function getExamplesFromSpecs(workingDirectory: string): Promise<st
     return exampleSpecsPath;
 }
 
+export function getExampleJsonContent(exampleSpecsPath: string): Array<{name: string, content: any}> {
+    const jsonList: Array<{name: string, content: any}> = [];
+    
+    if (!fs.existsSync(exampleSpecsPath)) {
+        console.error(`Example specs directory not found at ${exampleSpecsPath}`);
+    }
+    
+    try {
+        const files = fs.readdirSync(exampleSpecsPath);
+        const jsonFiles = files.filter(file => file.endsWith('.json'));
+        
+        for (const jsonFile of jsonFiles) {
+            const filePath = path.join(exampleSpecsPath, jsonFile);
+            try {
+                const fileContent = fs.readFileSync(filePath, 'utf8');
+                const jsonContent = JSON.parse(fileContent);
+                jsonList.push({name: jsonFile.split('.json')[0], content: jsonContent});
+                console.log(`Loaded example JSON: ${jsonFile}`);
+            } catch (error) {
+                console.error(`Error reading JSON file ${jsonFile}:`, error);
+            }
+        }
+    } catch (error) {
+        console.error(`Error reading examples directory ${exampleSpecsPath}:`, error);
+    }
+    
+    return jsonList;
+}
 
+export function flattenJsonObject(obj: any): Array<{ key: string; value: any }> {
+    const result: Array<{ key: string; value: any }> = [];
+    const stack: Array<{ obj: any; prefix: string }> = [{ obj, prefix: '' }];
+    
+    while (stack.length > 0) {
+        const { obj: currentObj, prefix } = stack.pop()!;
+        
+        for (const key in currentObj) {
+            if (currentObj.hasOwnProperty(key)) {
+                const newKey = prefix ? `${prefix}.${key}` : key;
+                
+                if (currentObj[key] !== null && typeof currentObj[key] === 'object' && !Array.isArray(currentObj[key])) {
+                    // Push nested object to stack for processing
+                    stack.push({ obj: currentObj[key], prefix: newKey });
+                } else {
+                    // Add the key-value pair to result
+                    result.push({ key: newKey, value: currentObj[key] });
+                }
+            }
+        }
+    }
+    return result;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export function unflattenJsonObject(keyValuePairs: Array<{ key: string; value: any }>): any {
+    const result: any = {};
+    
+    for (const { key, value } of keyValuePairs) {
+        const keys = key.split('.');
+        let current = result;
+        
+        // Navigate to the correct position, creating nested objects as needed
+        for (let i = 0; i < keys.length - 1; i++) {
+            const currentKey = keys[i];
+            
+            // If the property doesn't exist or is not an object, create a new object
+            if (!current[currentKey] || typeof current[currentKey] !== 'object' || Array.isArray(current[currentKey])) {
+                current[currentKey] = {};
+            }
+            
+            current = current[currentKey];
+        }
+        
+        // Set the final value
+        const finalKey = keys[keys.length - 1];
+        current[finalKey] = value;
+    }
+    
+    return result;
+}
 
 
 
