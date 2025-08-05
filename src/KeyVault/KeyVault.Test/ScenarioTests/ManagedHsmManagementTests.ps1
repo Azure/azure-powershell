@@ -152,7 +152,7 @@ function Test-ManagedHsmSoftDelete{
             $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
             $hsmName = getAssetName
             $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
-            $administrator = "37f6731d-0484-43e3-b7e2-1f1bbc562109"
+            $administrator = (Get-AzADUser -SignedIn).Id
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
             # Test: create a SoftDeleteRetentionInDays-specified managed HSM
