@@ -47,14 +47,6 @@ PS C:\> Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location northeurope 
 ```
 
 ```output
-Setting legal hold immutability for the Long Term Retention backup
-'601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000' on database 'testdb' on server 'server01' in
-location 'northeurope'.
-Are you sure you want to set a legal hold for the Long Term Retention backup
-'601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000' on database 'testdb' on server 'server01' in
-location 'northeurope'? The backup will not be deleted, even once expired, until the legal hold is removed.
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
 BackupExpirationTime      : 8/5/2025 8:08:27 PM
 BackupName                : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime                : 7/29/2025 8:08:27 PM
