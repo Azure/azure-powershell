@@ -19,15 +19,15 @@
 -->
 ## Upcoming Release
 * Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
-
-## Version 6.0.5
-* Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
-* Updates for Immutable Long-Term Retention Backups
+* Updated with support for Immutable Long-Term Retention Backups
     - Updated `Set-AzSqlDatabaseBackupLongTermRetentionPolicy` cmdlet to expose `TimeBasedImmutability` and `TimeBasedImmutabilityMode` parameters.
     - Updated `AzureSqlDatabaseBackupLongTermRetentionPolicyModel` to add `TimeBasedImmutability` and `TimeBasedImmutabilityMode` properties.
     - Updated `AzureSqlDatabaseLongTermRetentionBackupModel` to add `TimeBasedImmutability`, `TimeBasedImmutabilityMode`, and `LegalHoldImmutability` properties.
     - Added new cmdlets `Lock-AzSqlDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlDatabaseLongTermRetentionBackupImmutability` for managing time-based immutability on LTR backups.
-    - Added new cmdlets `Set-AzSqlDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold` for managing legal hold immutability on LTR backups.
+    - Added new cmdlets `Set-Az SqlDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold` for managing legal hold immutability on LTR backups.
+
+## Version 6.0.5
+* Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
 
 ## Version 6.0.4
 * Added server level action groups in enum of action groups to be able to be configured via auditing.
