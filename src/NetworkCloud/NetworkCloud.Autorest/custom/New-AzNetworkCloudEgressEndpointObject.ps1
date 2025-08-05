@@ -34,6 +34,7 @@ function New-AzNetworkCloudEgressEndpointObject {
         [string]
         $Category,
         [Parameter(Mandatory, HelpMessage="The list of endpoint dependencies.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("Endpoint", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IEndpointDependency[]]
         $Endpoint
     )

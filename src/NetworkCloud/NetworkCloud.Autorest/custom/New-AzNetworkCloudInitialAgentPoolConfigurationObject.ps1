@@ -29,11 +29,11 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.InitialAgentPoolConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
         [Parameter(HelpMessage="The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.")]
         [string]
         $AdministratorConfigurationAdminUsername,
         [Parameter(HelpMessage="The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("AdministratorConfigurationSshPublicKey", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]]
         $AdministratorConfigurationSshPublicKey,
         [Parameter(HelpMessage="The number of hugepages to allocate.")]
@@ -44,21 +44,26 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HugepagesSize]
         $AgentOptionHugepagesSize,
         [Parameter(HelpMessage="The list of Layer 2 Networks and related configuration for attachment.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("AttachedNetworkConfigurationL2Network", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2NetworkAttachmentConfiguration[]]
         $AttachedNetworkConfigurationL2Network,
         [Parameter(HelpMessage="The list of Layer 3 Networks and related configuration for attachment.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("AttachedNetworkConfigurationL3Network", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkAttachmentConfiguration[]]
         $AttachedNetworkConfigurationL3Network,
         [Parameter(HelpMessage="The list of Trunked Networks and related configuration for attachment.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("AttachedNetworkConfigurationTrunkedNetwork", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ITrunkedNetworkAttachmentConfiguration[]]
         $AttachedNetworkConfigurationTrunkedNetwork,
         [Parameter(HelpMessage="The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("AvailabilityZone", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [string[]]
         $AvailabilityZone,
         [Parameter(Mandatory, HelpMessage="The number of virtual machines that use this configuration.")]
         [long]
         $Count,
         [Parameter(HelpMessage="The labels applied to the nodes in this agent pool.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("Label", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesLabel[]]
         $Label,
         [Parameter(Mandatory, HelpMessage="The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.")]
@@ -69,6 +74,7 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [string]
         $Name,
         [Parameter(HelpMessage="The taints applied to the nodes in this agent pool.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("Taint", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesLabel[]]
         $Taint,
         [Parameter(HelpMessage="The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.")]
