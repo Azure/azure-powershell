@@ -36,11 +36,6 @@ Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold [-ResourceId] <String> [-Fo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
-
-## EXAMPLES
-
-## DESCRIPTION
 
 The **Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold** removes a legal hold on the given LTR backup. Once removed, the backup can be manually deleted. If the backup is expired, it will be dropped immediately after removal.
 
