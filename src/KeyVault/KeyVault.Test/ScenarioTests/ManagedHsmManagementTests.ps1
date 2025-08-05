@@ -205,8 +205,7 @@ function Test-UndoManagedHsmRemoval{
             $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
             $hsmName = getAssetName
             $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
-            # bez's object id
-            $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
+            $administrator = (Get-AzADUser -SignedIn).Id
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
             # Test: create a managed HSM
