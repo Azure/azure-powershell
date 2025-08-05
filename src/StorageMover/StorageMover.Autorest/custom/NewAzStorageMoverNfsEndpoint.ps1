@@ -23,11 +23,11 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "x.x.x.x" -Export "/" -NfsVersion NFSv3 -Description "Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovernfsendpoint
 #>
 function New-AzStorageMoverNfsEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -67,8 +67,8 @@ function New-AzStorageMoverNfsEndpoint {
 
         [Parameter(ParameterSetName = 'CreateExpanded')]
         [Parameter(HelpMessage="The NFS protocol version.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.NfsVersion])]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.NfsVersion]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4")]
+        [System.String]
         ${NfsVersion},
     
         [Parameter(ParameterSetName = 'CreateExpanded')]
@@ -137,7 +137,7 @@ function New-AzStorageMoverNfsEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.NfsMountEndpointProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.NfsMountEndpointProperties]::New()
         if ($PSBoundParameters.ContainsKey('Host')) {
             $Properties.Host = $Host
             $null = $PSBoundParameters.Remove("Host")

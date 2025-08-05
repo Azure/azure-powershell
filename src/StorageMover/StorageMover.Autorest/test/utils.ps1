@@ -58,6 +58,9 @@ function setupEnv() {
     $env.InitialSMDescription = "initial test SM description"
     $env.InitialStoMoverTag = @{"tag1" = "value1"; "tag2" = "value2"}
 
+    #Create Resource Group Name: teststoragemover Location: eastus2 Tag: @{"DateCreated" = "$(Get-Date -Format 'yyyy-MM-dd')"}
+    #Create Storage Mover with name: testmoverpreview1, agent name: testagent12, resource group: teststoragemover, location: eastus2
+    
     $stomover1 = New-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $env.InitialStoMoverName -Location $env.Location -Description $env.InitialSMDescription -Tag $env.InitialStoMoverTag
 
     # Initialize a Storage account and a Blob container
