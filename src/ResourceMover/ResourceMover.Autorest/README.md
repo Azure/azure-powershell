@@ -61,7 +61,6 @@ aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stab
 input-file:
   - $(aks)/resourcemovercollection.json
 module-version: 1.0.0
-disable-getput: true
 
 directive:
   # Remove the unexpanded parameter set
@@ -70,7 +69,7 @@ directive:
     remove: true
 
   - where:
-      variant: ^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^DiscardViaIdentityExpanded$
+      variant: ^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentityMoveCollectionExpanded$|^DiscardViaIdentityExpanded$
     remove: true
 
   - where:
