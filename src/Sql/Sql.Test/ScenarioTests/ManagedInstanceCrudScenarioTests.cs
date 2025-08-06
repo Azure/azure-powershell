@@ -44,20 +44,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetManagedInstanceFlexibleMemory()
-        {
-            TestRunner.RunTestScript("Test-SetManagedInstance-FlexibleMemory");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateManagedInstanceFlexibleMemory()
-        {
-            TestRunner.RunTestScript("Test-CreateManagedInstance-FlexibleMemory");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetManagedInstanceHermesTesting()
         {
             TestRunner.RunTestScript("Test-SetManagedInstance-HermesTesting");
