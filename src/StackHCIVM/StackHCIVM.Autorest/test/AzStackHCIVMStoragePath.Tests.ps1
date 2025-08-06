@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMStoragePath'))
 
 Describe 'AzStackHCIVMStoragePath' {
     It 'Create Storage Path '  {
-        New-AzStackHCIVMStoragePath  -Name $env.storagePathName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -Path "C:\\ClusterStorage\\Volume1\\testPath1106" | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHCIVMStoragePath  -Name $env.storagePathName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -Path $env.storageContainerPath | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
     It 'List'  {

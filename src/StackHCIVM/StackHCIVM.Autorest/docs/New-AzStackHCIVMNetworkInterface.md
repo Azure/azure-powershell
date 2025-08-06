@@ -321,7 +321,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterface
 
 ## NOTES
 
