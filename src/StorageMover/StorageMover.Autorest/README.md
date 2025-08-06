@@ -207,7 +207,7 @@ directive:
         change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/
+        change-effective-date: 2025/11/03
   - where:
       verb: Update
       subject: Agent
@@ -227,7 +227,7 @@ directive:
         change-description: The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/
+        change-effective-date: 2025/11/03
   - where:
       verb: Update
       subject: Project
