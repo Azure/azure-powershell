@@ -382,12 +382,12 @@ function Get-ManagedAppTypeV2Name
 
 function Get-ManagedAppPackageV1
 {
-    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-09T21:48:25Z&se=2025-07-10T06:03:25Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-09T21:48:25Z&ske=2025-07-10T06:03:25Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****"
+    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-30T23:09:08Z&se=2025-07-31T07:24:08Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-30T23:09:08Z&ske=2025-07-31T07:24:08Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=VeoIgK8km2TOBWCPtCKGufRd0%2BJSEul3gj7qJWLXYdo%3D"
 }
 
 function Get-ManagedAppPackageV2
 {
-    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.2.0.0.sfpkg?sp=r&st=2025-07-09T21:48:50Z&se=2025-07-10T06:03:50Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-09T21:48:50Z&ske=2025-07-10T06:03:50Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****"
+    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.2.0.0.sfpkg?sp=r&st=2025-07-30T23:18:07Z&se=2025-07-31T07:33:07Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-30T23:18:07Z&ske=2025-07-31T07:33:07Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=JXPeYQ929wkWv8r3Qn7bYTLw3ifUnX1tFQPOio5SMOg%3D"
 }
 
 function Get-ManagedStatelessServiceTypeName
