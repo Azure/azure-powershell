@@ -33,8 +33,8 @@ $credentialsObject = [pscredential]::new('ONEBRANCH_TOKEN', $AccessTokenSecureSt
                 string repository = "PSGallery";
                 findModuleScript = releaseType == ReleaseType.STS ? $"Find-PSResource -Name {moduleName} -Repository {repository} -Version *" : $"Find-PSResource -Name Az -Repository {repository} -Version *";
             }
-            string filterRequiredReleaseTypeScript = releaseType == ReleaseType.STS ? "" : "| Where-Object {$_.Version.Major % 2 -eq 0}";
-            string sortModuleScript = "| Sort-Object {$_.Version} -Descending";
+            string filterRequiredReleaseTypeScript = releaseType == ReleaseType.STS ? "" : "| Where-Object {([System.Version]($_.Version)).Major % 2 -eq 0}";
+            string sortModuleScript = "| Sort-Object {[System.Version]($_.Version)} -Descending";
             string getLastModuleVersionScript = releaseType == ReleaseType.STS ? 
                 $"({findModuleScript}{filterRequiredReleaseTypeScript}{sortModuleScript})[0].Version" :
                 $"(({findModuleScript}{filterRequiredReleaseTypeScript}{sortModuleScript})[0].Dependencies | Where-Object {{$_.Name -eq '{moduleName}'}})[1]";
