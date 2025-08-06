@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </param>
 
         /// <param name="publicNetworkAccess">If not specified, the default value is &#39;enabled&#39;.
-        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="networkProfile">The network profile only takes effect when publicNetworkAccess is enabled.
         /// </param>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         public System.Collections.Generic.IList<AuthenticationMode?> AllowedAuthenticationModes {get; set; }
 
         /// <summary>
-        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
+        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicNetworkAccess")]
         public PublicNetworkAccessType? PublicNetworkAccess {get; set; }

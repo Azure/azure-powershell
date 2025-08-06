@@ -80,15 +80,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="osDisk">Contains configuration for ephemeral OSDisk settings.
         /// </param>
-
-        /// <param name="securityProfile">Specifies the security profile settings for the virtual machine or virtual
-        /// machine scale set.
-        /// </param>
-
-        /// <param name="serviceArtifactReference">The service artifact reference id in the form of
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
-        /// </param>
-        public VirtualMachineConfiguration(ImageReference imageReference, string nodeAgentSkuId, WindowsConfiguration windowsConfiguration = default(WindowsConfiguration), System.Collections.Generic.IList<DataDisk> dataDisks = default(System.Collections.Generic.IList<DataDisk>), string licenseType = default(string), ContainerConfiguration containerConfiguration = default(ContainerConfiguration), DiskEncryptionConfiguration diskEncryptionConfiguration = default(DiskEncryptionConfiguration), NodePlacementConfiguration nodePlacementConfiguration = default(NodePlacementConfiguration), System.Collections.Generic.IList<VMExtension> extensions = default(System.Collections.Generic.IList<VMExtension>), OSDisk osDisk = default(OSDisk), SecurityProfile securityProfile = default(SecurityProfile), ServiceArtifactReference serviceArtifactReference = default(ServiceArtifactReference))
+        public VirtualMachineConfiguration(ImageReference imageReference, string nodeAgentSkuId, WindowsConfiguration windowsConfiguration = default(WindowsConfiguration), System.Collections.Generic.IList<DataDisk> dataDisks = default(System.Collections.Generic.IList<DataDisk>), string licenseType = default(string), ContainerConfiguration containerConfiguration = default(ContainerConfiguration), DiskEncryptionConfiguration diskEncryptionConfiguration = default(DiskEncryptionConfiguration), NodePlacementConfiguration nodePlacementConfiguration = default(NodePlacementConfiguration), System.Collections.Generic.IList<VMExtension> extensions = default(System.Collections.Generic.IList<VMExtension>), OSDisk osDisk = default(OSDisk))
 
         {
             this.ImageReference = imageReference;
@@ -101,8 +93,6 @@ namespace Microsoft.Azure.Management.Batch.Models
             this.NodePlacementConfiguration = nodePlacementConfiguration;
             this.Extensions = extensions;
             this.OSDisk = osDisk;
-            this.SecurityProfile = securityProfile;
-            this.ServiceArtifactReference = serviceArtifactReference;
             CustomInit();
         }
 
@@ -193,20 +183,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osDisk")]
         public OSDisk OSDisk {get; set; }
-
-        /// <summary>
-        /// Gets or sets specifies the security profile settings for the virtual
-        /// machine or virtual machine scale set.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "securityProfile")]
-        public SecurityProfile SecurityProfile {get; set; }
-
-        /// <summary>
-        /// Gets or sets the service artifact reference id in the form of
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceArtifactReference")]
-        public ServiceArtifactReference ServiceArtifactReference {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -254,11 +230,6 @@ namespace Microsoft.Azure.Management.Batch.Models
                 }
             }
 
-
-            if (this.ServiceArtifactReference != null)
-            {
-                this.ServiceArtifactReference.Validate();
-            }
         }
     }
 }

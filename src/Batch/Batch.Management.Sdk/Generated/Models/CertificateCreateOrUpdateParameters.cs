@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about a certificate.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class CertificateCreateOrUpdateParameters : AzureProxyResource
+    public partial class CertificateCreateOrUpdateParameters : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the CertificateCreateOrUpdateParameters class.
@@ -37,9 +37,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
         /// </param>
 
-        /// <param name="tags">The tags of the resource.
-        /// </param>
-
         /// <param name="thumbprintAlgorithm">This must match the first portion of the certificate name. Currently
         /// required to be &#39;SHA1&#39;.
         /// </param>
@@ -56,9 +53,9 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="password">This must not be specified if the certificate format is Cer.
         /// </param>
-        public CertificateCreateOrUpdateParameters(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string thumbprintAlgorithm = default(string), string thumbprint = default(string), CertificateFormat format = default(CertificateFormat), string data = default(string), string password = default(string))
+        public CertificateCreateOrUpdateParameters(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string thumbprintAlgorithm = default(string), string thumbprint = default(string), CertificateFormat format = default(CertificateFormat), string data = default(string), string password = default(string))
 
-        : base(id, name, type, etag, tags)
+        : base(id, name, type, etag)
         {
             this.ThumbprintAlgorithm = thumbprintAlgorithm;
             this.Thumbprint = thumbprint;

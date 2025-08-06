@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about an application in a Batch account.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Application : AzureProxyResource
+    public partial class Application : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Application class.
@@ -37,9 +37,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
         /// </param>
 
-        /// <param name="tags">The tags of the resource.
-        /// </param>
-
         /// <param name="displayName">The display name for the application.
         /// </param>
 
@@ -51,9 +48,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// specify a version. This property can only be set to the name of an existing
         /// package.
         /// </param>
-        public Application(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string displayName = default(string), bool? allowUpdates = default(bool?), string defaultVersion = default(string))
+        public Application(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string displayName = default(string), bool? allowUpdates = default(bool?), string defaultVersion = default(string))
 
-        : base(id, name, type, etag, tags)
+        : base(id, name, type, etag)
         {
             this.DisplayName = displayName;
             this.AllowUpdates = allowUpdates;

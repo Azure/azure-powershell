@@ -92,10 +92,9 @@ namespace Microsoft.Azure.Management.Batch
         /// The state (ETag) version of the private endpoint connection to update. This
         /// value can be omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
-        /// <param name='parameters'>
-        /// PrivateEndpointConnection properties that should be updated. Properties
-        /// that are supplied will be updated, any property not supplied will be
-        /// unchanged.
+        /// <param name='privateLinkServiceConnectionState'>
+        /// The private link service connection state of the private endpoint
+        /// connection
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.Management.Batch
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection parameters, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified private endpoint connection.
@@ -158,10 +157,9 @@ namespace Microsoft.Azure.Management.Batch
         /// The state (ETag) version of the private endpoint connection to update. This
         /// value can be omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
-        /// <param name='parameters'>
-        /// PrivateEndpointConnection properties that should be updated. Properties
-        /// that are supplied will be updated, any property not supplied will be
-        /// unchanged.
+        /// <param name='privateLinkServiceConnectionState'>
+        /// The private link service connection state of the private endpoint
+        /// connection
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -175,7 +173,7 @@ namespace Microsoft.Azure.Management.Batch
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection parameters, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified private endpoint connection.

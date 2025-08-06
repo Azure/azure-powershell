@@ -70,6 +70,37 @@ namespace Microsoft.Azure.Management.Batch
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SupportedSku>>> ListSupportedVirtualMachineSkusWithHttpMessagesAsync(string locationName, int? maxresults = default(int?), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Gets the list of Batch supported Cloud Service VM sizes available at the
+        /// given location.
+        /// </summary>
+        /// <remarks>
+        /// Gets the list of Batch supported Cloud Service VM sizes available at the
+        /// given location.
+        /// </remarks>
+        /// <param name='locationName'>
+        /// The region for which to retrieve Batch service supported SKUs.
+        /// </param>
+        /// <param name='maxresults'>
+        /// The maximum number of items to return in the response.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter expression. Valid properties for filtering are &#34;familyName&#34;.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SupportedSku>>> ListSupportedCloudServiceSkusWithHttpMessagesAsync(string locationName, int? maxresults = default(int?), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Checks whether the Batch account name is available in the specified region.
         /// </summary>
         /// <remarks>
@@ -119,6 +150,31 @@ namespace Microsoft.Azure.Management.Batch
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SupportedSku>>> ListSupportedVirtualMachineSkusNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the list of Batch supported Cloud Service VM sizes available at the
+        /// given location.
+        /// </summary>
+        /// <remarks>
+        /// Gets the list of Batch supported Cloud Service VM sizes available at the
+        /// given location.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SupportedSku>>> ListSupportedCloudServiceSkusNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

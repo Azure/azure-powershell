@@ -349,9 +349,6 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='versionName'>
         /// The version of the application.
         /// </param>
-        /// <param name='tags'>
-        /// The tags of the resource.
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -373,7 +370,7 @@ namespace Microsoft.Azure.Management.Batch
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, string versionName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string applicationName, string versionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -452,10 +449,6 @@ namespace Microsoft.Azure.Management.Batch
             }
 
             ApplicationPackage parameters = new ApplicationPackage();
-            if(tags != null)
-            {
-                parameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

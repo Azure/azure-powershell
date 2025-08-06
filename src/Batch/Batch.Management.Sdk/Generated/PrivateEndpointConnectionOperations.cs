@@ -543,10 +543,9 @@ namespace Microsoft.Azure.Management.Batch
         /// The state (ETag) version of the private endpoint connection to update. This
         /// value can be omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
-        /// <param name='parameters'>
-        /// PrivateEndpointConnection properties that should be updated. Properties
-        /// that are supplied will be updated, any property not supplied will be
-        /// unchanged.
+        /// <param name='privateLinkServiceConnectionState'>
+        /// The private link service connection state of the private endpoint
+        /// connection
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -554,10 +553,10 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection parameters, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, parameters, ifMatch, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, privateLinkServiceConnectionState, ifMatch, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -604,10 +603,9 @@ namespace Microsoft.Azure.Management.Batch
         /// The state (ETag) version of the private endpoint connection to update. This
         /// value can be omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
-        /// <param name='parameters'>
-        /// PrivateEndpointConnection properties that should be updated. Properties
-        /// that are supplied will be updated, any property not supplied will be
-        /// unchanged.
+        /// <param name='privateLinkServiceConnectionState'>
+        /// The private link service connection state of the private endpoint
+        /// connection
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -630,16 +628,12 @@ namespace Microsoft.Azure.Management.Batch
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection parameters, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection,PrivateEndpointConnectionUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
-            if (parameters == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
-            }
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -694,6 +688,11 @@ namespace Microsoft.Azure.Management.Batch
             }
 
 
+            PrivateEndpointConnection parameters = new PrivateEndpointConnection();
+            if(privateLinkServiceConnectionState != null)
+            {
+                parameters.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
+            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

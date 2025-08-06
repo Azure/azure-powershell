@@ -114,10 +114,5 @@ namespace Microsoft.Azure.Management.Batch
         /// </summary>
         IPoolOperations Pool { get; }
 
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterOperations
-        /// </summary>
-        INetworkSecurityPerimeterOperations NetworkSecurityPerimeter { get; }
-
     }
 }
