@@ -160,10 +160,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="keyId">A CMK URI of the key to use for encryption.
         /// </param>
 
-        /// <param name="administrators">The Azure Active Directory administrator of the instance. This can only be
-        /// used at instance create time. If used for instance update, it will be
-        /// ignored or it will result in an error. For updates individual APIs will
-        /// need to be used.
+        /// <param name="administrators">The Azure Active Directory administrator can be utilized during instance
+        /// creation and for instance updates, except for the azureADOnlyAuthentication
+        /// property. To update the azureADOnlyAuthentication property, individual API
+        /// must be used.
         /// </param>
 
         /// <param name="servicePrincipal">The managed instance&#39;s service principal.
@@ -187,8 +187,11 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="databaseFormat">Specifies the internal format of instance databases specific to the SQL
         /// engine version.
-        /// Possible values include: &#39;AlwaysUpToDate&#39;, &#39;SQLServer2022&#39;</param>
-        public ManagedInstanceProperties(string provisioningState = default(string), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), bool? isGeneralPurposeV2 = default(bool?), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), string hybridSecondaryUsage = default(string), string hybridSecondaryUsageDetected = default(string), int? vCores = default(int?), int? storageSizeInGb = default(int?), int? storageIOps = default(int?), int? storageThroughputMBps = default(int?), int? memorySizeInGb = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), System.Collections.Generic.IList<ManagedInstancePecProperty> privateEndpointConnections = default(System.Collections.Generic.IList<ManagedInstancePecProperty>), string minimalTlsVersion = default(string), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? zoneRedundant = default(bool?), string primaryUserAssignedIdentityId = default(string), string keyId = default(string), ManagedInstanceExternalAdministrator administrators = default(ManagedInstanceExternalAdministrator), ServicePrincipal servicePrincipal = default(ServicePrincipal), string virtualClusterId = default(string), string externalGovernanceStatus = default(string), string pricingModel = default(string), System.DateTime? createTime = default(System.DateTime?), string authenticationMetadata = default(string), string databaseFormat = default(string))
+        /// Possible values include: &#39;AlwaysUpToDate&#39;, &#39;SQLServer2022&#39;, &#39;SQLServer2025&#39;</param>
+
+        /// <param name="requestedLogicalAvailabilityZone">Specifies the logical availability zone Managed Instance is pinned to.
+        /// Possible values include: &#39;NoPreference&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;</param>
+        public ManagedInstanceProperties(string provisioningState = default(string), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), bool? isGeneralPurposeV2 = default(bool?), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), string hybridSecondaryUsage = default(string), string hybridSecondaryUsageDetected = default(string), int? vCores = default(int?), int? storageSizeInGb = default(int?), int? storageIOps = default(int?), int? storageThroughputMBps = default(int?), int? memorySizeInGb = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), System.Collections.Generic.IList<ManagedInstancePecProperty> privateEndpointConnections = default(System.Collections.Generic.IList<ManagedInstancePecProperty>), string minimalTlsVersion = default(string), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? zoneRedundant = default(bool?), string primaryUserAssignedIdentityId = default(string), string keyId = default(string), ManagedInstanceExternalAdministrator administrators = default(ManagedInstanceExternalAdministrator), ServicePrincipal servicePrincipal = default(ServicePrincipal), string virtualClusterId = default(string), string externalGovernanceStatus = default(string), string pricingModel = default(string), System.DateTime? createTime = default(System.DateTime?), string authenticationMetadata = default(string), string databaseFormat = default(string), string requestedLogicalAvailabilityZone = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -232,6 +235,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.CreateTime = createTime;
             this.AuthenticationMetadata = authenticationMetadata;
             this.DatabaseFormat = databaseFormat;
+            this.RequestedLogicalAvailabilityZone = requestedLogicalAvailabilityZone;
             CustomInit();
         }
 
@@ -484,10 +488,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string KeyId {get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Active Directory administrator of the instance. This
-        /// can only be used at instance create time. If used for instance update, it
-        /// will be ignored or it will result in an error. For updates individual APIs
-        /// will need to be used.
+        /// Gets or sets the Azure Active Directory administrator can be utilized
+        /// during instance creation and for instance updates, except for the
+        /// azureADOnlyAuthentication property. To update the azureADOnlyAuthentication
+        /// property, individual API must be used.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "administrators")]
         public ManagedInstanceExternalAdministrator Administrators {get; set; }
@@ -531,9 +535,16 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets specifies the internal format of instance databases specific
-        /// to the SQL engine version. Possible values include: &#39;AlwaysUpToDate&#39;, &#39;SQLServer2022&#39;
+        /// to the SQL engine version. Possible values include: &#39;AlwaysUpToDate&#39;, &#39;SQLServer2022&#39;, &#39;SQLServer2025&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databaseFormat")]
         public string DatabaseFormat {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the logical availability zone Managed Instance is
+        /// pinned to. Possible values include: &#39;NoPreference&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requestedLogicalAvailabilityZone")]
+        public string RequestedLogicalAvailabilityZone {get; set; }
     }
 }

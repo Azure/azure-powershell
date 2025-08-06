@@ -282,52 +282,28 @@ function Test-CreateManagedInstance-FlexibleMemory
 	$storageIOps = 2000
 	$memorySizeInGB = 64
 
-	try
-	{
-		$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
-			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
-			-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
-			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -MemorySizeInGb $memorySizeInGB -AsJob
-		
-		$job | Wait-Job
-		$managedInstance = $job.Output
-		$job | Out-File -FilePath outputMIFile.txt
+	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+		-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -AsJob
+	$job | Wait-Job
+	$managedInstance = $job.Output
 
-		do {
-			Start-Sleep -Seconds 10
-			$status = $job.State
-			Write-Host "Job status: $status"
-		} while ($status -eq 'Running')
 
-		# When done, collect the result
-		$job | Out-File -FilePath outputMIFile.txt -Append
-		try {
-			$job.ChildJobs[0].JobStateInfo | Out-File -FilePath outputMIFile.txt -Append
-			$job.ChildJobs[0].Error | Out-File -FilePath outputMIFile.txt -Append
-			$job.ChildJobs[0].Error | ForEach-Object {
-				$_.Exception.Message | Out-File -FilePath outputMIFile.txt -Append
-				$_.Exception.InnerException?.Message | Out-File -FilePath outputMIFile.txt -Append
-			}
-			$managedInstance = Receive-Job -Job $job -ErrorAction Stop
-			$managedInstance | Out-File -FilePath outputMIFile.txt -Append
-		} catch {
-			"❌ Job failed:" | Out-File -FilePath outputMIFile.txt -Append
-			$_.Exception.Message | Out-File -FilePath outputMIFile.txt -Append
-			$_.Exception.InnerException?.Message | Out-File -FilePath outputMIFile.txt -Append
-		}
+	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+		-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -MemorySizeInGb $memorySizeInGB -AsJob
+	$job | Wait-Job
+	$managedInstance = $job.Output
 
-		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
-		Assert-AreEqual $managedInstance.Sku.Name $skuName
-		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
-		Assert-AreEqual $managedInstance.VCores $vCore
-		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
-		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
-		Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
-	}
-	finally
-	{
-		# Remove-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName -Force
-	}
+	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+	Assert-AreEqual $managedInstance.Sku.Name $skuName
+	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+	Assert-AreEqual $managedInstance.VCores $vCore
+	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+	Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
 
 	# Tests with SKU name specified and without MemorySizeInGB specified
 	$managedInstanceName = "createmanagedinstance-fleximem-no-mem"

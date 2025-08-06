@@ -26,7 +26,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: a21edd5a33e0db83bde8d1dfe706a0cf3db6409e
+commit: 51eb4a8df996ebb94c835bf93e08a7001e5d5459
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json
@@ -115,7 +115,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ElasticPools.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/FailoverGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedDatabaseMoveOperations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/26902ca899ff83e86c54f6aa71deea0ff917c056/specification/sql/resource-manager/Microsoft.Sql/preview/2024-08-01-preview/ManagedInstances.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2024-11-01-preview/ManagedInstances.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/StartStopManagedInstanceSchedules.json
 
 output-folder: Generated

@@ -394,6 +394,47 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Reevaluates the inaccessibility state of all managed databases.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        public static ManagedInstancesReevaluateInaccessibleDatabaseStateHeaders ReevaluateInaccessibleDatabaseState(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
+        {
+                return ((IManagedInstancesOperations)operations).ReevaluateInaccessibleDatabaseStateAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reevaluates the inaccessibility state of all managed databases.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstancesReevaluateInaccessibleDatabaseStateHeaders> ReevaluateInaccessibleDatabaseStateAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ReevaluateInaccessibleDatabaseStateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Refresh external governance enablement status.
         /// </summary>
         /// <param name='operations'>
@@ -604,6 +645,47 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Validates customer managed key.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        public static ManagedInstancesValidateAzureKeyVaultEncryptionKeyHeaders ValidateAzureKeyVaultEncryptionKey(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, ManagedInstanceValidateAzureKeyVaultEncryptionKeyRequest parameters)
+        {
+                return ((IManagedInstancesOperations)operations).ValidateAzureKeyVaultEncryptionKeyAsync(resourceGroupName, managedInstanceName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Validates customer managed key.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstancesValidateAzureKeyVaultEncryptionKeyHeaders> ValidateAzureKeyVaultEncryptionKeyAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, ManagedInstanceValidateAzureKeyVaultEncryptionKeyRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ValidateAzureKeyVaultEncryptionKeyWithHttpMessagesAsync(resourceGroupName, managedInstanceName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Creates or updates a managed instance.
         /// </summary>
         /// <param name='operations'>
@@ -774,6 +856,47 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Reevaluates the inaccessibility state of all managed databases.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        public static ManagedInstancesReevaluateInaccessibleDatabaseStateHeaders BeginReevaluateInaccessibleDatabaseState(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
+        {
+                return ((IManagedInstancesOperations)operations).BeginReevaluateInaccessibleDatabaseStateAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reevaluates the inaccessibility state of all managed databases.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstancesReevaluateInaccessibleDatabaseStateHeaders> BeginReevaluateInaccessibleDatabaseStateAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginReevaluateInaccessibleDatabaseStateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Refresh external governance enablement status.
         /// </summary>
         /// <param name='operations'>
@@ -894,6 +1017,47 @@ namespace Microsoft.Azure.Management.Sql
             using (var _result = await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Validates customer managed key.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        public static ManagedInstancesValidateAzureKeyVaultEncryptionKeyHeaders BeginValidateAzureKeyVaultEncryptionKey(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, ManagedInstanceValidateAzureKeyVaultEncryptionKeyRequest parameters)
+        {
+                return ((IManagedInstancesOperations)operations).BeginValidateAzureKeyVaultEncryptionKeyAsync(resourceGroupName, managedInstanceName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Validates customer managed key.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstancesValidateAzureKeyVaultEncryptionKeyHeaders> BeginValidateAzureKeyVaultEncryptionKeyAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, ManagedInstanceValidateAzureKeyVaultEncryptionKeyRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginValidateAzureKeyVaultEncryptionKeyWithHttpMessagesAsync(resourceGroupName, managedInstanceName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
