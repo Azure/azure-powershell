@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 schema: 2.0.0
@@ -14,15 +14,15 @@ Starts the test migration for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Start-AzMigrateTestMigration -TestNetworkID <String> -TargetObjectID <String> [-OsUpgradeVersion <String>]
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Start-AzMigrateTestMigration -TargetObjectID <String> -TestNetworkID <String>
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-OsUpgradeVersion <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Start-AzMigrateTestMigration -TestNetworkID <String> [-OsUpgradeVersion <String>]
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-SubscriptionId <String>] -InputObject <IMigrationItem>
+Start-AzMigrateTestMigration -InputObject <IMigrationItem> -TestNetworkID <String>
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-OsUpgradeVersion <String>] [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -57,6 +57,7 @@ TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
 TargetObjectName                 : prsadhu-TestVM
 Task                             : {DisableProtectionOnPrimary, UpdateDraState}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
+
 ```
 
 By machine id.
@@ -88,6 +89,7 @@ TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
 TargetObjectName                 : prsadhu-TestVM
 Task                             : {DisableProtectionOnPrimary, UpdateDraState}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
+
 ```
 
 By input object.
@@ -216,3 +218,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
