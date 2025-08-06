@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-placeholder to sql mi flexible memory feature
+* Added `MemorySizeInGB` parameter to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of instances with flexible memory
+* Added `MemorySizeInGB` field to the model of the managed instance so that it displays information about flexible memory instances that are returned by `Get-AzSqlInstance`.
 
 ## Version 6.0.4
 * Added server level action groups in enum of action groups to be able to be configured via auditing.
