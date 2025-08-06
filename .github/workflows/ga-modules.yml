@@ -33,6 +33,8 @@ jobs:
         
         gh repo clone $repFullName -- --filter=blob:none --no-checkout
         Set-Location $ghRepo
+        git config --global user.email "yanxu1@microsoft.com"
+        git config --global user.name "Yan Xu"
 
         git sparse-checkout init --cone
         $checkoutFiles = @($MinimalVersionFile, $AzManifestPath)
@@ -130,8 +132,7 @@ jobs:
               
         $checkoutFiles | ForEach-Object {git add $_}
         $title = "GA $(($Modules | ForEach-Object {"Az.$_"}) -join ' and ')"
-        git config --global user.email "yanxu1@microsoft.com"
-        git config --global user.name "Yan Xu"
+        
         git commit -m $title
         git push -u origin $newBranch -f
 
