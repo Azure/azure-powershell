@@ -124,9 +124,9 @@ namespace Microsoft.Azure.Management.Batch
         /// The state (ETag) version of the private endpoint connection to update. This
         /// value can be omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
-        public static PrivateEndpointConnection Update(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string ifMatch = default(string))
+        public static PrivateEndpointConnection Update(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection parameters, string ifMatch = default(string))
         {
-                return ((IPrivateEndpointConnectionOperations)operations).UpdateAsync(resourceGroupName, accountName, privateEndpointConnectionName, privateLinkServiceConnectionState, ifMatch).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionOperations)operations).UpdateAsync(resourceGroupName, accountName, privateEndpointConnectionName, parameters, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -152,9 +152,9 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> UpdateAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> UpdateAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection parameters, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, privateLinkServiceConnectionState, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, parameters, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -226,9 +226,9 @@ namespace Microsoft.Azure.Management.Batch
         /// The state (ETag) version of the private endpoint connection to update. This
         /// value can be omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
-        public static PrivateEndpointConnection BeginUpdate(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string ifMatch = default(string))
+        public static PrivateEndpointConnection BeginUpdate(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection parameters, string ifMatch = default(string))
         {
-                return ((IPrivateEndpointConnectionOperations)operations).BeginUpdateAsync(resourceGroupName, accountName, privateEndpointConnectionName, privateLinkServiceConnectionState, ifMatch).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionOperations)operations).BeginUpdateAsync(resourceGroupName, accountName, privateEndpointConnectionName, parameters, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -254,9 +254,9 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> BeginUpdateAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> BeginUpdateAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnection parameters, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, privateLinkServiceConnectionState, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, parameters, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
