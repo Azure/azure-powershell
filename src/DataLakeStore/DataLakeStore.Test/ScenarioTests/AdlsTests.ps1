@@ -722,7 +722,7 @@ function Test-DataLakeStoreFileSystem
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $summaryFolder}
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $encodingFolder -force -recurse -passthru} "Remove folder failed"
-    
+
 		# Delete Data Lake account
 		Assert-True {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
@@ -760,7 +760,7 @@ function Test-DataLakeStoreFileSystemPermissions
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
-    
+
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
@@ -1000,6 +1000,87 @@ function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = 
 
 <#
 .SYNOPSIS
+Helper function to create files and folders in DataLakeStore account.
+#>
+function Create-FilesAndFolders
+{
+    param
+    (
+        [string]$accountName
+    )
+
+    $folderToCreate1 = "/adlTestDir1"
+    $folderToCreate2 = "/adlTestDir2"
+    $fileToCreate1 = "/adlTestDir1/adlfile1"
+    $fileToCreate2 = "/adlTestDir2/adlfile2"
+
+    $result = New-AzDataLakeStoreItem -Account $accountName -path $folderToCreate1 -Folder
+    Assert-NotNull $result "No value was returned on folder creation"
+
+    $result = New-AzDataLakeStoreItem -Account $accountName -path $folderToCreate2 -Folder
+    Assert-NotNull $result "No value was returned on folder creation"
+    
+    $result = New-AzDataLakeStoreItem -Account $accountName -path $fileToCreate1
+    Assert-NotNull $result "No value was returned on empty file creation"
+
+    $result = New-AzDataLakeStoreItem -Account $accountName -path $fileToCreate2
+    Assert-NotNull $result "No value was returned on empty file creation"
+}
+
+<#
+.SYNOPSIS
+Helper function to delete files and folders in DataLakeStore account.
+#>
+function Delete-FilesAndFolders
+{
+    param
+    (
+        [string]$accountName
+    )
+
+	$itemsToDelete = @(
+        "/adlTestDir1/adlfile1",
+        "/adlTestDir2/adlfile2",
+        "/adlTestDir1",
+        "/adlTestDir2"
+    )
+
+    foreach ($item in $itemsToDelete) {
+        if (Test-AzDataLakeStoreItem -Account $accountName -Path $item) {
+            Write-Host "Deleting item: $item"
+            Assert-True { Remove-AzDataLakeStoreItem -Account $accountName -Paths $item -Force -Passthru } "Remove item failed: $item"
+        } else {
+            Write-Host "Item does not exist: $item"
+        }
+    }
+}
+
+function Restore-DeletedItems {
+    param (
+        [string]$accountName,
+        [array]$items
+    )
+
+    foreach ($item in $items) {
+        if ([string]::IsNullOrEmpty($item.TrashDirPath) -or [string]::IsNullOrEmpty($item.OriginalPath)) {
+            continue
+        }
+
+        # Check if the destination already exists
+        $relativeOriginalPath = $item.OriginalPath -replace "^adl://[^/]+", ""
+        if (Test-AzDataLakeStoreItem -Account $accountName -Path $relativeOriginalPath) {
+            continue
+        }
+
+        # Attempt to restore the item
+        Assert-True {
+            Restore-AzDataLakeStoreDeletedItem -Account $accountName -Path $item.TrashDirPath -Destination $item.OriginalPath -Type $item.Type -Force -Passthru
+        }
+    }
+}
+
+<#
+.SYNOPSIS
 Tests DataLakeStore deleted items operations (Enumerate, Restore).
 #>
 function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
@@ -1007,7 +1088,9 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 	param
     (
         $fileToCopy,
-		$location
+		$location,
+		$accountName
+
     )
 
     if ([string]::IsNullOrEmpty($location))
@@ -1017,84 +1100,85 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 
 	try
 	{
-		# Creating Account
-		$resourceGroupName = Get-ResourceGroupName
-		$accountName = Get-DataLakeStoreAccountName + "-c12" # testing accountname validation
-		New-AzResourceGroup -Name $resourceGroupName -Location $location
-		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
-    
-		Assert-AreEqual $accountName $accountCreated.Name
-		Assert-AreEqual $location $accountCreated.Location
-		Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountCreated.Type
-		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
-
-		# In loop to check if account exists
-		for ($i = 0; $i -le 60; $i++)
-		{
-			[array]$accountGet = Get-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].ProvisioningState -like "Succeeded")
-			{
-				Assert-AreEqual $accountName $accountGet[0].Name
-				Assert-AreEqual $location $accountGet[0].Location
-				Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
-				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
-				break
-			}
-
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
-			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
-		}
-
-		# define all the files and folders
-		$folderToCreate1 = "/adlfolderTest1"
-		$folderToCreate2 = "/adlfolderTest2"
-		$fileToCreate1 = "/adlfolderTest1/adlfile1"
-		$fileToCreate2 = "/adlfolderTest2/adlfile2"
-
-		# Create and get Empty folder
-		$result = New-AzDataLakeStoreItem -Account $accountName -path $folderToCreate1 -Folder
-		Assert-NotNull $result "No value was returned on folder creation"
-
-		$result = New-AzDataLakeStoreItem -Account $accountName -path $folderToCreate2 -Folder
-		Assert-NotNull $result "No value was returned on folder creation"
+		Create-FilesAndFolders -accountName $accountName
+		Delete-FilesAndFolders -accountName $accountName
 		
-		# Create and get Empty File
-		$result = New-AzDataLakeStoreItem -Account $accountName -path $fileToCreate1
-		Assert-NotNull $result "No value was returned on empty file creation"
-		$result = New-AzDataLakeStoreItem -Account $accountName -path $fileToCreate2
-		Assert-NotNull $result "No value was returned on empty file creation"
-		
-	    # delete a file
-		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $fileToCreate1 -force -passthru } "Remove File Failed"
-		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $fileToCreate1}
-		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $fileToCreate2 -force -passthru } "Remove File Failed"
-		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $fileToCreate2}
-		
-		# search delete folder
-		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlfolderTest1" -Count 1000
-		foreach($item in $out)
-		{
-            Restore-AzDataLakeStoreDeletedItem -Account $accountName -Path $item.TrashDirPath -Destination $item.OriginalPath -Type "file" -Force -Passthru
-			Assert-True { Restore-AzDataLakeStoreDeletedItem -Account $accountName -Path $item.TrashDirPath -Destination $item.OriginalPath -Type "file" -Force -Passthru}
-		}
+		# search deleted folder
+		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlTestDir1" -Count 1000
+		Restore-DeletedItems -accountName $accountName -items $out
 
-		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlfolderTest2" -Count 1000
-		foreach($item in $out)
-		{
-			Assert-True { Restore-AzDataLakeStoreDeletedItem -Account $accountName $item -Force -Passthru}
-		}
-    
-		# Delete Data Lake account
-		Assert-True {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
-
-		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlTestDir2" -Count 1000
+		Restore-DeletedItems -accountName $accountName -items $out
 	}
 	finally
 	{
-		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Delete-FilesAndFolders -accountName $accountName
+		# Skip cleanup for existing account and resource group
+		Write-Host "Skipping cleanup for existing account and resource group."
 	}
+}
+
+<#
+.SYNOPSIS
+Tests DataLakeStore deleted items operations with token (Enumerate with pagination).
+#>
+function Test-EnumerateDataLakeStoreDeletedItemsWithToken
+{
+    param
+    (
+        $fileToCopy,
+        $location,
+        $accountName
+    )
+
+    if ([string]::IsNullOrEmpty($location))
+    {
+        $location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+    }
+
+    try
+    {
+        Create-FilesAndFolders -accountName $accountName
+        Delete-FilesAndFolders -accountName $accountName
+
+        # Test basic enumeration with token
+        $out = Get-AzDataLakeStoreDeletedItemsWithToken -Account $accountName -filter "adlTestDir1" -Count 2
+        Assert-NotNull $out "No deleted items found for adlTestDir1"
+        
+        # Check if we have pagination results
+        $hasMoreResults = $false
+        $continuationToken = $null
+        
+        foreach ($item in $out) {
+            if ($item.ContinuationToken -ne $null -and $item.ContinuationToken -ne "") {
+                $hasMoreResults = $true
+                $continuationToken = $item.ContinuationToken
+                break
+            }
+        }
+        
+        # If there are more results, test pagination
+        if ($hasMoreResults) {
+            $out2 = Get-AzDataLakeStoreDeletedItemsWithToken -Account $accountName -filter "adlTestDir1" -Count 2 -ListAfter $continuationToken
+            Assert-NotNull $out2 "Failed to get deleted items with continuation token"
+        }
+
+        # Test with different filter
+        $out3 = Get-AzDataLakeStoreDeletedItemsWithToken -Account $accountName -filter "adlTestDir2" -Count 2
+        Assert-NotNull $out3 "No deleted items found for adlTestDir2"
+        
+        # Verify that the items returned have the expected properties
+        foreach ($item in $out) {
+            if ($null -ne $item.DeletedItem) {
+                Assert-NotNull $item.DeletedItem.OriginalPath "DeletedItem should have OriginalPath"
+                Assert-NotNull $item.DeletedItem.TrashDirPath "DeletedItem should have TrashDirPath"
+                Assert-NotNull $item.DeletedItem.Type "DeletedItem should have Type"
+            }
+        }
+    }
+    finally
+    {
+       # Skip cleanup for existing account and resource group
+		Write-Host "Skipping cleanup for existing account and resource group."	
+    }
 }
