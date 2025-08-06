@@ -158,6 +158,110 @@ directive:
        
   - no-inline:
     - ResourceSettings
+  
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard"].post.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "#/parameters/subscriptionId"
+        },
+        {
+          "$ref": "#/parameters/resourceGroupName"
+        },
+        {
+          "$ref": "#/parameters/moveCollectionName"
+        },
+        {
+          "$ref": "#/parameters/api-version"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/DiscardRequest"
+          }
+        }
+      ]
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/commit"].post.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "#/parameters/subscriptionId"
+        },
+        {
+          "$ref": "#/parameters/resourceGroupName"
+        },
+        {
+          "$ref": "#/parameters/moveCollectionName"
+        },
+        {
+          "$ref": "#/parameters/api-version"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CommitRequest"
+          }
+        }
+      ]
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove"].post.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "#/parameters/subscriptionId"
+        },
+        {
+          "$ref": "#/parameters/resourceGroupName"
+        },
+        {
+          "$ref": "#/parameters/moveCollectionName"
+        },
+        {
+          "$ref": "#/parameters/api-version"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/ResourceMoveRequest"
+          }
+        }
+      ]
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare"].post.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "#/parameters/subscriptionId"
+        },
+        {
+          "$ref": "#/parameters/resourceGroupName"
+        },
+        {
+          "$ref": "#/parameters/moveCollectionName"
+        },
+        {
+          "$ref": "#/parameters/api-version"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/PrepareRequest"
+          }
+        }
+      ]
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}"].put

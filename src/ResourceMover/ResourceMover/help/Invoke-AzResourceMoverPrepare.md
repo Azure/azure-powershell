@@ -19,7 +19,7 @@ To aid the user to prerequisite the operation the client can call operation with
 ### PrepareExpanded (Default)
 ```
 Invoke-AzResourceMoverPrepare -MoveCollectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly]
+ [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <String>] [-ValidateOnly]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -211,7 +211,7 @@ Type: System.String[]
 Parameter Sets: PrepareExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

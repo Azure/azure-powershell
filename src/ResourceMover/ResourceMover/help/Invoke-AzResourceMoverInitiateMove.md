@@ -17,7 +17,7 @@ Moves the set of resources included in the request body.The move operation is tr
 ### InitiateExpanded (Default)
 ```
 Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly]
+ [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <String>] [-ValidateOnly]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -232,7 +232,7 @@ Type: System.String[]
 Parameter Sets: InitiateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

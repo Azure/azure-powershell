@@ -19,7 +19,7 @@ To aid the user to prerequisite the operation the client can call operation with
 ### DiscardExpanded (Default)
 ```
 Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly] [-DefaultProfile <PSObject>]
+ -MoveResource <String[]> [-MoveResourceInputType <String>] [-ValidateOnly] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -180,7 +180,7 @@ Type: System.String[]
 Parameter Sets: DiscardExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
