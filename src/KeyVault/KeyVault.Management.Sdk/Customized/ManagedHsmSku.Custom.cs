@@ -7,16 +7,20 @@
 
         public static ManagedHsmSku Create(ManagedHsmSkuName? name)
         {
-            // @TODO: update test condition for default.
             return new ManagedHsmSku
             {
-                Name = name?? DefaultSkuName,
+                Name = name ?? DefaultSkuName,
                 Family = InferFamilyFromSkuName(name)
             };
         }
 
         public static string InferFamilyFromSkuName(ManagedHsmSkuName? name)
         {
+            if (!name.HasValue)
+            {
+                return DefaultFamily;
+            }
+
             var skuValue = name.ToSerializedValue();
 
             if (skuValue.Contains("_B"))

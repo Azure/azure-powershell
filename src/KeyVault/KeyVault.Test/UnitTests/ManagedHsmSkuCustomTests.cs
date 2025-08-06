@@ -40,5 +40,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             Assert.Equal(expectedFamily, sku.Family);
             Assert.Equal(skuSerializedValue, sku.Name);
         }
+
+        [Fact]
+        public void Create_WithNullName_ReturnsDefaultSku()
+        {
+            // Act
+            var sku = ManagedHsmSku.Create(null);
+
+            // Assert
+            Assert.Equal(ManagedHsmSku.DefaultSkuName, sku.Name);
+            Assert.Equal(ManagedHsmSku.DefaultFamily, sku.Family);
+        }
     }
 }
