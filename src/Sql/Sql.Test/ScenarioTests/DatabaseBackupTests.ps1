@@ -435,21 +435,21 @@ function Test-LongTermRetentionV2ResourceGroupBased
 	$backupForLegalHold = Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -Force -PassThru
 	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Enabled"
 
-	$backupForLegalHold = Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -Force -PassThru
+	$backupForLegalHold = Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -ForceDropExpired -Force -PassThru
 	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Disabled"
 
 	# Test legal hold with ResourceId
 	$backupForLegalHold = Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -ResourceId $backupForLegalHold.ResourceId -Force -PassThru
 	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Enabled"
 
-	$backupForLegalHold = Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -ResourceId $backupForLegalHold.ResourceId -Force -PassThru
+	$backupForLegalHold = Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -ResourceId $backupForLegalHold.ResourceId -Force -ForceDropExpired -PassThru
 	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Disabled"
 
 	# Test Legal Hold with input object piping
 	$backupForLegalHold = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup | Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -Force -PassThru
 	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Enabled"
 
-	$backupForLegalHold = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -Force -PassThru
+	$backupForLegalHold = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $backupForLegalHold.DatabaseName -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold -Force -ForceDropExpired -PassThru
 	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Disabled"
 
 	Get-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseWithRemovableBackup | Get-AzSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
