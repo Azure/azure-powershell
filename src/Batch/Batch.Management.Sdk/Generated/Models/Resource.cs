@@ -8,13 +8,8 @@ namespace Microsoft.Azure.Management.Batch.Models
     using System.Linq;
 
     /// <summary>
-    /// Common fields that are returned in the response for all Azure Resource
-    /// Manager resources
+    /// A definition of an Azure resource.
     /// </summary>
-    /// <remarks>
-    /// Common fields that are returned in the response for all Azure Resource
-    /// Manager resources
-    /// </remarks>
     public partial class Resource : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
@@ -29,27 +24,28 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the Resource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. E.g.
-        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// <param name="id">The ID of the resource.
         /// </param>
 
-        /// <param name="name">The name of the resource
+        /// <param name="name">The name of the resource.
         /// </param>
 
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// <param name="type">The type of the resource.
         /// </param>
 
-        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
-        /// information.
+        /// <param name="location">The location of the resource.
         /// </param>
-        public Resource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
+
+        /// <param name="tags">The tags of the resource.
+        /// </param>
+        public Resource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
         {
             this.Id = id;
             this.Name = name;
             this.Type = type;
-            this.SystemData = systemData;
+            this.Location = location;
+            this.Tags = tags;
             CustomInit();
         }
 
@@ -60,30 +56,33 @@ namespace Microsoft.Azure.Management.Batch.Models
 
 
         /// <summary>
-        /// Gets fully qualified resource ID for the resource. E.g.
-        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// Gets the ID of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; private set; }
 
         /// <summary>
-        /// Gets the name of the resource
+        /// Gets the name of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; private set; }
 
         /// <summary>
-        /// Gets the type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// Gets the type of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets azure Resource Manager metadata containing createdBy and modifiedBy
-        /// information.
+        /// Gets the location of the resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; private set; }
+
+        /// <summary>
+        /// Gets the tags of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; private set; }
     }
 }

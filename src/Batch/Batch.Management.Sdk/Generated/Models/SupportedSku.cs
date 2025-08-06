@@ -32,16 +32,12 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="capabilities">A collection of capabilities which this SKU supports.
         /// </param>
-
-        /// <param name="batchSupportEndOfLife">The time when Azure Batch service will retire this SKU.
-        /// </param>
-        public SupportedSku(string name = default(string), string familyName = default(string), System.Collections.Generic.IList<SkuCapability> capabilities = default(System.Collections.Generic.IList<SkuCapability>), System.DateTime? batchSupportEndOfLife = default(System.DateTime?))
+        public SupportedSku(string name = default(string), string familyName = default(string), System.Collections.Generic.IList<SkuCapability> capabilities = default(System.Collections.Generic.IList<SkuCapability>))
 
         {
             this.Name = name;
             this.FamilyName = familyName;
             this.Capabilities = capabilities;
-            this.BatchSupportEndOfLife = batchSupportEndOfLife;
             CustomInit();
         }
 
@@ -68,11 +64,5 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "capabilities")]
         public System.Collections.Generic.IList<SkuCapability> Capabilities {get; private set; }
-
-        /// <summary>
-        /// Gets the time when Azure Batch service will retire this SKU.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "batchSupportEndOfLife")]
-        public System.DateTime? BatchSupportEndOfLife {get; private set; }
     }
 }

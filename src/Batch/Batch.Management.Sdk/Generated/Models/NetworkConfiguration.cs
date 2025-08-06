@@ -38,19 +38,24 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// NSG, then the Batch service will set the state of the compute nodes to
         /// unusable. If the specified VNet has any associated Network Security Groups
         /// (NSG), then a few reserved system ports must be enabled for inbound
-        /// communication，including ports 29876 and 29877. Also enable outbound
-        /// connections to Azure Storage on port 443. For more details see:
-        /// https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+        /// communication. For pools created with a virtual machine configuration,
+        /// enable ports 29876 and 29877, as well as port 22 for Linux and port 3389
+        /// for Windows. For pools created with a cloud service configuration, enable
+        /// ports 10100, 20100, and 30100. Also enable outbound connections to Azure
+        /// Storage on port 443. For cloudServiceConfiguration pools, only &#39;classic&#39;
+        /// VNETs are supported. For more details see:
+        /// https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
         /// </param>
 
         /// <param name="dynamicVnetAssignmentScope">The scope of dynamic vnet assignment.
         /// Possible values include: &#39;none&#39;, &#39;job&#39;</param>
 
-        /// <param name="endpointConfiguration">The endpoint configuration for a pool.
+        /// <param name="endpointConfiguration">Pool endpoint configuration is only supported on pools with the
+        /// virtualMachineConfiguration property.
         /// </param>
 
-        /// <param name="publicIPAddressConfiguration">The public IP Address configuration of the networking configuration of a
-        /// Pool.
+        /// <param name="publicIPAddressConfiguration">This property is only supported on Pools with the
+        /// virtualMachineConfiguration property.
         /// </param>
 
         /// <param name="enableAcceleratedNetworking">Accelerated networking enables single root I/O virtualization (SR-IOV) to a
@@ -90,10 +95,13 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// specified subnet is denied by an NSG, then the Batch service will set the
         /// state of the compute nodes to unusable. If the specified VNet has any
         /// associated Network Security Groups (NSG), then a few reserved system ports
-        /// must be enabled for inbound communication，including ports 29876 and 29877.
-        /// Also enable outbound connections to Azure Storage on port 443. For more
-        /// details see:
-        /// https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+        /// must be enabled for inbound communication. For pools created with a virtual
+        /// machine configuration, enable ports 29876 and 29877, as well as port 22 for
+        /// Linux and port 3389 for Windows. For pools created with a cloud service
+        /// configuration, enable ports 10100, 20100, and 30100. Also enable outbound
+        /// connections to Azure Storage on port 443. For cloudServiceConfiguration
+        /// pools, only &#39;classic&#39; VNETs are supported. For more details see:
+        /// https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnetId")]
         public string SubnetId {get; set; }
@@ -105,14 +113,15 @@ namespace Microsoft.Azure.Management.Batch.Models
         public DynamicVNetAssignmentScope? DynamicVnetAssignmentScope {get; set; }
 
         /// <summary>
-        /// Gets or sets the endpoint configuration for a pool.
+        /// Gets or sets pool endpoint configuration is only supported on pools with
+        /// the virtualMachineConfiguration property.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endpointConfiguration")]
         public PoolEndpointConfiguration EndpointConfiguration {get; set; }
 
         /// <summary>
-        /// Gets or sets the public IP Address configuration of the networking
-        /// configuration of a Pool.
+        /// Gets or sets this property is only supported on Pools with the
+        /// virtualMachineConfiguration property.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddressConfiguration")]
         public PublicIPAddressConfiguration PublicIPAddressConfiguration {get; set; }

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about a private link resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : AzureProxyResource
+    public partial class PrivateEndpointConnection : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
@@ -37,9 +37,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
         /// </param>
 
-        /// <param name="tags">The tags of the resource.
-        /// </param>
-
         /// <param name="privateEndpoint">The private endpoint of the private endpoint connection.
         /// </param>
 
@@ -53,9 +50,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="privateLinkServiceConnectionState">The private link service connection state of the private endpoint
         /// connection
         /// </param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateEndpointConnectionProvisioningState provisioningState = default(PrivateEndpointConnectionProvisioningState), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateEndpointConnectionProvisioningState provisioningState = default(PrivateEndpointConnectionProvisioningState), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
-        : base(id, name, type, etag, tags)
+        : base(id, name, type, etag)
         {
             this.PrivateEndpoint = privateEndpoint;
             this.ProvisioningState = provisioningState;
