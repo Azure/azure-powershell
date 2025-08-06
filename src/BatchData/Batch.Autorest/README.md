@@ -38,10 +38,12 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Batch
 subject-prefix: ""
+identity-correction-for-post: true 
+endpoint-resource-id-key-name: BatchEndpointResourceId
 
-disable-transform-identity-type-for-operation:
-   - GetAzNodeFile_Get
-   - GetAzNodeFile_GetViaIdentity
+#disable-transform-identity-type-for-operation:
+#   - GetAzNodeFile_Get
+#   - GetAzNodeFile_GetViaIdentity
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -60,6 +62,12 @@ directive:
     remove: true
   - where:
       variant: ^GetViaIdentity$|^GetViaIdentityExpanded$
+    remove: true
+  - where:
+      subject: NodeFile*
+    remove: true
+  - where:
+      subject: TaskFile*
     remove: true
   # Follow directive is v3 specific. If you are using v3, uncomment following directive and comments out two directives above
   #- where:

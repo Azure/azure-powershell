@@ -13,6 +13,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Batch
     using ArgumentCompleterDelegate = global::System.Func<string, global::System.Management.Automation.InvocationInfo, string, string[], string[], string[]>;
     using GetTelemetryIdDelegate = global::System.Func<string>;
     using TelemetryDelegate = global::System.Action<string, global::System.Management.Automation.InvocationInfo, string, global::System.Management.Automation.PSCmdlet>;
+    using TokenAudienceConverterDelegate = global::System.Func<string, string, string, string, global::System.Uri, string>;
+    using AuthorizeRequestDelegate = global::System.Action<global::System.Management.Automation.InvocationInfo, string, string, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Func<string, string, string, string, global::System.Uri, string>, global::System.Collections.Generic.IDictionary<string,object>>;
+    using System.Collections.Generic;
     using NewRequestPipelineDelegate = global::System.Action<global::System.Management.Automation.InvocationInfo, string, string, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
     using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
@@ -25,6 +28,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Batch
     {
         /// <summary>The currently selected profile.</summary>
         public string Profile = global::System.String.Empty;
+
+        private string _endpointResourceIdKeyName = @"BatchEndpointResourceId";
+
+        private string _endpointSuffixKeyName = @"";
 
         public global::System.Net.Http.HttpClientHandler _handler = new global::System.Net.Http.HttpClientHandler();
 
@@ -42,9 +49,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Batch
 
         private static readonly global::System.Object _singletonLock = new global::System.Object();
 
+        private TokenAudienceConverterDelegate _tokenAudienceConverter = null;
+
         public bool _useProxy = false;
 
         public global::System.Net.WebProxy _webProxy = new global::System.Net.WebProxy();
+
+        /// <summary>The delegate to call before each new request to add authorization.</summary>
+        public AuthorizeRequestDelegate AddAuthorizeRequestHandler { get; set; }
+
+        /// <summary>The delegate to call before each new request to patch request uri.</summary>
+        public NewRequestPipelineDelegate AddPatchRequestUriHandler { get; set; }
+
+        /// <summary>The delegate to call before each new request to add request user agent.</summary>
+        public NewRequestPipelineDelegate AddRequestUserAgentHandler { get; set; }
 
         /// <summary>Gets completion data for azure specific fields</summary>
         public ArgumentCompleterDelegate ArgumentCompleter { get; set; }
@@ -72,9 +90,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Batch
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
-
-        /// <summary>The delegate to call before each new request (supporting a commmon module).</summary>
-        public NewRequestPipelineDelegate OnNewRequest { get; set; }
 
         /// <summary>The name of the currently selected Azure profile</summary>
         public global::System.String ProfileName { get; set; }
@@ -114,7 +129,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Batch
             pipeline = (pipeline ?? (_useProxy ? _pipelineWithProxy : _pipeline)).Clone();
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
-            OnNewRequest?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
+            AddRequestUserAgentHandler?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
+            AddPatchRequestUriHandler?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
+            AddAuthorizeRequestHandler?.Invoke( invocationInfo, _endpointResourceIdKeyName,_endpointSuffixKeyName, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); }, _tokenAudienceConverter, extensibleParameters );
             return pipeline;
         }
 
