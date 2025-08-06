@@ -39,7 +39,6 @@ module-version: 2.0.0
 subject-prefix: $(service-name)
 
 directive:
-
   # Remove unnecessary cmdlet.
   - where:
       verb: Set

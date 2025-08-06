@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Initializes a new instance of the NodeTypeAvailableSku class.
         /// </summary>
 
-        /// <param name="resourceType">The type of resource the sku applies to.  &lt;br /&gt;&lt;br /&gt;Value:
+        /// <param name="resourceType">The type of resource the sku applies to. Value:
         /// Microsoft.ServiceFabric/managedClusters/nodeTypes.
         /// </param>
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
         /// <summary>
-        /// Gets the type of resource the sku applies to.  &lt;br /&gt;&lt;br /&gt;Value:
+        /// Gets the type of resource the sku applies to. Value:
         /// Microsoft.ServiceFabric/managedClusters/nodeTypes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceType")]

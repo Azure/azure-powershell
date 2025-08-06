@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="SqlInformationProtectionPolicyDeserializationError" xml:space="preserve">
-    <value>Failed to deserialize SQL inforamtion protection policy.</value>
+    <value>Failed to deserialize SQL information protection policy.</value>
   </data>
   <data name="SqlInformationProtectionPolicyDuplicatedDisplayNamesError" xml:space="preserve">
     <value>Display names should be unique. Please eliminate duplication of these names: {0}.</value>

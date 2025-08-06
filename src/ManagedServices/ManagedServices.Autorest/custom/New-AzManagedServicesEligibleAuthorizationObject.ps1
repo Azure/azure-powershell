@@ -30,7 +30,7 @@ https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedSe
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleAuthorization')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
-    
+            [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.ParameterBreakingChangeAttribute("JustInTimeAccessPolicyManagedByTenantApprover", "15.0.0", "9.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
             [Parameter(HelpMessage="The list of managedByTenant approvers for the eligible authorization.")]
             [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IEligibleApprover[]]
             $JustInTimeAccessPolicyManagedByTenantApprover,

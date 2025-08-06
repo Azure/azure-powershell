@@ -14,8 +14,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class SecurityType
     {
         /// <summary>
-        /// Trusted Launch is a security type that secures generation 2 virtual machines.
+        /// Trusted Launch is a security type that secures generation 2 virtual
+        /// machines.
         /// </summary>
         public const string TrustedLaunch = "TrustedLaunch";
+        /// <summary>
+        /// Standard is the default security type for all machines.
+        /// </summary>
+        public const string Standard = "Standard";
+        /// <summary>
+        /// ConfidentialVM provides hardware-based encryption, trusted execution
+        /// environment (TEE) and isolation of the VM memory &amp; CPU from host.
+        /// </summary>
+        public const string ConfidentialVM = "ConfidentialVM";
     }
 }

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
     /// Utility class about PowerShell naming (cmdlet name, module name).
     /// </summary>
     /// <remarks>
-    /// All the mothods are within Azure PowerShell context, for example, module name should start with "Az.".
+    /// All the methods are within Azure PowerShell context, for example, module name should start with "Az.".
     /// </remarks>
     public static class PSNamingUtilities
     {

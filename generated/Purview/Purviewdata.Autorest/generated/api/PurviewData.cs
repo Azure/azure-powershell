@@ -14,9 +14,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
     public partial class Purviewdata
     {
 
-        /// <summary>Creates or Updates a classification rule</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <summary>update a classification rule</summary>
         /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -24,10 +24,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdate(string endpoint, string classificationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdate(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -50,15 +51,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.ClassificationRulesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates or Updates a classification rule</summary>
+        /// <summary>update a classification rule</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
@@ -68,10 +69,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -104,15 +106,262 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.ClassificationRulesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ClassificationRulesCreateOrUpdate" /> method.</summary>
+        /// <summary>update a classification rule</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/classificationrules/(?<classificationRuleName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/classificationrules/{classificationRuleName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var classificationRuleName = _match.Groups["classificationRuleName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + classificationRuleName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a classification rule</summary>
+        /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the ClassificationRulesCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdateViaJsonString(string classificationRuleName, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + global::System.Uri.EscapeDataString(classificationRuleName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClassificationRulesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a classification rule</summary>
+        /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the ClassificationRulesCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesCreateOrUpdateViaJsonStringWithResult(string classificationRuleName, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + global::System.Uri.EscapeDataString(classificationRuleName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a classification rule</summary>
+        /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesCreateOrUpdateWithResult(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + global::System.Uri.EscapeDataString(classificationRuleName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClassificationRulesCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClassificationRulesCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -123,7 +372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -134,6 +383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -141,19 +391,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -172,27 +422,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ClassificationRulesCreateOrUpdate" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdate_Validate(string endpoint, string classificationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesCreateOrUpdate_Validate(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(classificationRuleName),classificationRuleName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a classification rule</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -202,7 +452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesDelete(string endpoint, string classificationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesDelete(string classificationRuleName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -225,7 +475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ClassificationRulesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -241,7 +491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -274,11 +524,160 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ClassificationRulesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ClassificationRulesDelete" /> method.</summary>
+        /// <summary>Deletes a classification rule</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesDeleteViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/classificationrules/(?<classificationRuleName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/classificationrules/{classificationRuleName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var classificationRuleName = _match.Groups["classificationRuleName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + classificationRuleName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes a classification rule</summary>
+        /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesDeleteWithResult(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + global::System.Uri.EscapeDataString(classificationRuleName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClassificationRulesDeleteWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesDeleteWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.UndeclaredResponseException(_response);
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClassificationRulesDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -289,7 +688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -300,6 +699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -307,7 +707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -319,7 +719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -338,24 +738,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ClassificationRulesDelete" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesDelete_Validate(string endpoint, string classificationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesDelete_Validate(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(classificationRuleName),classificationRuleName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
         /// <summary>Get a classification rule</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -364,7 +764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesGet(string endpoint, string classificationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesGet(string classificationRuleName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -387,7 +787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ClassificationRulesGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -402,7 +802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -435,11 +835,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ClassificationRulesGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ClassificationRulesGet" /> method.</summary>
+        /// <summary>Get a classification rule</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesGetViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/classificationrules/(?<classificationRuleName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/classificationrules/{classificationRuleName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var classificationRuleName = _match.Groups["classificationRuleName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + classificationRuleName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a classification rule</summary>
+        /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesGetWithResult(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + global::System.Uri.EscapeDataString(classificationRuleName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClassificationRulesGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule> ClassificationRulesGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClassificationRulesGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -449,7 +991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -460,6 +1002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -467,13 +1010,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -492,18 +1035,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ClassificationRulesGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesGet_Validate(string endpoint, string classificationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesGet_Validate(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(classificationRuleName),classificationRuleName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
@@ -517,7 +1060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -539,7 +1082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ClassificationRulesListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -554,7 +1097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -585,11 +1128,151 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ClassificationRulesListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ClassificationRulesListAll" /> method.</summary>
+        /// <summary>List classification rules in Account</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList> ClassificationRulesListAllViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/classificationrules$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/classificationrules'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List classification rules in Account</summary>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList> ClassificationRulesListAllWithResult(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClassificationRulesListAllWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList> ClassificationRulesListAllWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRuleList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClassificationRulesListAll" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -599,7 +1282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -610,6 +1293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -617,13 +1301,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ClassificationRuleList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRuleList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -656,8 +1340,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         }
 
         /// <summary>Lists the rule versions of a classification rule</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -666,7 +1350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesListVersionsByClassificationRuleName(string endpoint, string classificationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesListVersionsByClassificationRuleName(string classificationRuleName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -690,7 +1374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesListVersionsByClassificationRuleName_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ClassificationRulesListVersionsByClassificationRuleName_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -705,7 +1389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesListVersionsByClassificationRuleNameViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesListVersionsByClassificationRuleNameViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -739,12 +1423,158 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesListVersionsByClassificationRuleName_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ClassificationRulesListVersionsByClassificationRuleName_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists the rule versions of a classification rule</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList> ClassificationRulesListVersionsByClassificationRuleNameViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/classificationrules/(?<classificationRuleName>[^/]+)/versions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/classificationrules/{classificationRuleName}/versions'");
+                }
+
+                // replace URI parameters with values from identity
+                var classificationRuleName = _match.Groups["classificationRuleName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + classificationRuleName
+                        + "/versions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesListVersionsByClassificationRuleNameWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists the rule versions of a classification rule</summary>
+        /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList> ClassificationRulesListVersionsByClassificationRuleNameWithResult(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + global::System.Uri.EscapeDataString(classificationRuleName)
+                        + "/versions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesListVersionsByClassificationRuleNameWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ClassificationRulesListVersionsByClassificationRuleName" /> method.
+        /// Actual wire call for <see cref= "ClassificationRulesListVersionsByClassificationRuleNameWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList> ClassificationRulesListVersionsByClassificationRuleNameWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRuleList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClassificationRulesListVersionsByClassificationRuleName" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -755,7 +1585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesListVersionsByClassificationRuleName_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesListVersionsByClassificationRuleName_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRuleList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -766,6 +1596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -773,13 +1604,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ClassificationRuleList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ClassificationRuleList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -798,26 +1629,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ClassificationRulesListVersionsByClassificationRuleName" /> method. Call this like the
         /// actual call, but you will get validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesListVersionsByClassificationRuleName_Validate(string endpoint, string classificationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesListVersionsByClassificationRuleName_Validate(string classificationRuleName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(classificationRuleName),classificationRuleName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
         /// <summary>Sets Classification Action on a specific classification rule version.</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
         /// <param name="classificationRuleVersion"></param>
         /// <param name="action"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -826,7 +1657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesTagClassificationVersion(string endpoint, string classificationRuleName, int classificationRuleVersion, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationAction action, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesTagClassificationVersion(string classificationRuleName, int classificationRuleVersion, string action, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -854,14 +1685,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesTagClassificationVersion_Call(request,onAccepted,onDefault,eventListener,sender);
+                await this.ClassificationRulesTagClassificationVersion_Call (request, onAccepted,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Sets Classification Action on a specific classification rule version.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="action"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -870,7 +1701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClassificationRulesTagClassificationVersionViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationAction action, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClassificationRulesTagClassificationVersionViaIdentity(global::System.String viaIdentity, string action, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -881,7 +1712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                 var _match = new global::System.Text.RegularExpressions.Regex("^/classificationrules/(?<classificationRuleName>[^/]+)/versions/(?<classificationRuleVersion>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/classificationrules/{classificationRuleName}/versions/{classificationRuleVersion}/:tag'");
+                    throw new global::System.Exception("Invalid identity for URI '/classificationrules/{classificationRuleName}/versions/{classificationRuleVersion}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -909,12 +1740,170 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ClassificationRulesTagClassificationVersion_Call(request,onAccepted,onDefault,eventListener,sender);
+                await this.ClassificationRulesTagClassificationVersion_Call (request, onAccepted,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Sets Classification Action on a specific classification rule version.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="action"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ClassificationRulesTagClassificationVersionViaIdentityWithResult(global::System.String viaIdentity, string action, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/classificationrules/(?<classificationRuleName>[^/]+)/versions/(?<classificationRuleVersion>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/classificationrules/{classificationRuleName}/versions/{classificationRuleVersion}'");
+                }
+
+                // replace URI parameters with values from identity
+                var classificationRuleName = _match.Groups["classificationRuleName"].Value;
+                var classificationRuleVersion = _match.Groups["classificationRuleVersion"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + classificationRuleName
+                        + "/versions/"
+                        + classificationRuleVersion
+                        + "/:tag"
+                        + "?"
+                        + "action=" + global::System.Uri.EscapeDataString(action)
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesTagClassificationVersionWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Sets Classification Action on a specific classification rule version.</summary>
+        /// <param name="classificationRuleName"></param>
+        /// <param name="classificationRuleVersion"></param>
+        /// <param name="action"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ClassificationRulesTagClassificationVersionWithResult(string classificationRuleName, int classificationRuleVersion, string action, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/classificationrules/"
+                        + global::System.Uri.EscapeDataString(classificationRuleName)
+                        + "/versions/"
+                        + (classificationRuleVersion.ToString())
+                        + "/:tag"
+                        + "?"
+                        + "action=" + global::System.Uri.EscapeDataString(action)
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClassificationRulesTagClassificationVersionWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="ClassificationRulesTagClassificationVersion" /> method.
+        /// Actual wire call for <see cref= "ClassificationRulesTagClassificationVersionWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ClassificationRulesTagClassificationVersionWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Accepted:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClassificationRulesTagClassificationVersion" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
@@ -925,7 +1914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesTagClassificationVersion_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesTagClassificationVersion_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -936,6 +1925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -943,13 +1933,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onAccepted(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -968,28 +1958,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ClassificationRulesTagClassificationVersion" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="classificationRuleName"></param>
         /// <param name="classificationRuleVersion"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="action"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClassificationRulesTagClassificationVersion_Validate(string endpoint, string classificationRuleName, int classificationRuleVersion, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationAction action, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClassificationRulesTagClassificationVersion_Validate(string classificationRuleName, int classificationRuleVersion, string endpoint, string action, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(classificationRuleName),classificationRuleName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(action),action);
-                await eventListener.AssertEnum(nameof(action),action,@"Keep", @"Delete");
             }
         }
 
-        /// <summary>Creates or Updates a data source</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <summary>update a data source</summary>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -997,10 +1986,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdate(string endpoint, string dataSourceName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdate(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1023,15 +2013,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DataSourcesCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.DataSourcesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates or Updates a data source</summary>
+        /// <summary>update a data source</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
@@ -1041,10 +2031,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1077,15 +2068,262 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DataSourcesCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.DataSourcesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DataSourcesCreateOrUpdate" /> method.</summary>
+        /// <summary>update a data source</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a data source</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the DataSourcesCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdateViaJsonString(string dataSourceName, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DataSourcesCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a data source</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the DataSourcesCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesCreateOrUpdateViaJsonStringWithResult(string dataSourceName, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a data source</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesCreateOrUpdateWithResult(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "DataSourcesCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DataSourcesCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -1096,7 +2334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1107,6 +2345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1114,19 +2353,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1145,27 +2384,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="DataSourcesCreateOrUpdate" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdate_Validate(string endpoint, string dataSourceName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DataSourcesCreateOrUpdate_Validate(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a data source</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1175,7 +2414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataSourcesDelete(string endpoint, string dataSourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataSourcesDelete(string dataSourceName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1198,7 +2437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DataSourcesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.DataSourcesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -1214,7 +2453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataSourcesDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataSourcesDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1247,11 +2486,158 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DataSourcesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.DataSourcesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DataSourcesDelete" /> method.</summary>
+        /// <summary>Deletes a data source</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesDeleteViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes a data source</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesDeleteWithResult(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DataSourcesDeleteWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesDeleteWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.UndeclaredResponseException(_response);
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DataSourcesDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1262,7 +2648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataSourcesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataSourcesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1273,6 +2659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1280,7 +2667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -1292,7 +2679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1311,24 +2698,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="DataSourcesDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataSourcesDelete_Validate(string endpoint, string dataSourceName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DataSourcesDelete_Validate(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
         /// <summary>Get a data source</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1337,7 +2724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataSourcesGet(string endpoint, string dataSourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataSourcesGet(string dataSourceName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1360,7 +2747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DataSourcesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DataSourcesGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1375,7 +2762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataSourcesGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataSourcesGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1408,11 +2795,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DataSourcesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DataSourcesGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DataSourcesGet" /> method.</summary>
+        /// <summary>Get a data source</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesGetViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a data source</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesGetWithResult(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DataSourcesGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource> DataSourcesGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DataSourcesGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1422,7 +2951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataSourcesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataSourcesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1433,6 +2962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1440,13 +2970,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1465,18 +2995,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="DataSourcesGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataSourcesGet_Validate(string endpoint, string dataSourceName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DataSourcesGet_Validate(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
@@ -1490,7 +3020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataSourcesListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataSourcesListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1512,7 +3042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DataSourcesListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DataSourcesListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1527,7 +3057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataSourcesListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataSourcesListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1558,11 +3088,149 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DataSourcesListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DataSourcesListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DataSourcesListAll" /> method.</summary>
+        /// <summary>List data sources in Data catalog</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList> DataSourcesListAllViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List data sources in Data catalog</summary>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList> DataSourcesListAllWithResult(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.DataSourcesListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DataSourcesListAllWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList> DataSourcesListAllWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSourceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "DataSourcesListAll" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1572,7 +3240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataSourcesListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataSourcesListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1583,6 +3251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1590,13 +3259,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.DataSourceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.DataSourceList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1628,10 +3297,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
             }
         }
 
-        /// <summary>Creates or updates a filter</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <summary>update a filter</summary>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -1639,10 +3308,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FiltersCreateOrUpdate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FiltersCreateOrUpdate(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1668,15 +3338,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FiltersCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.FiltersCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates or updates a filter</summary>
+        /// <summary>update a filter</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
@@ -1686,10 +3356,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FiltersCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FiltersCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1726,15 +3397,276 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FiltersCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.FiltersCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="FiltersCreateOrUpdate" /> method.</summary>
+        /// <summary>update a filter</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter> FiltersCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/filters/custom$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/filters/custom'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "/filters/custom"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FiltersCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a filter</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the FiltersCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FiltersCreateOrUpdateViaJsonString(string dataSourceName, string scanName, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/filters/custom"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FiltersCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a filter</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the FiltersCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter> FiltersCreateOrUpdateViaJsonStringWithResult(string dataSourceName, string scanName, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/filters/custom"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FiltersCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a filter</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter> FiltersCreateOrUpdateWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/filters/custom"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FiltersCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FiltersCreateOrUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter> FiltersCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FiltersCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -1745,7 +3677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FiltersCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FiltersCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1756,6 +3688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1763,19 +3696,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1794,20 +3727,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="FiltersCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FiltersCreateOrUpdate_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FiltersCreateOrUpdate_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -1815,9 +3748,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         }
 
         /// <summary>Get a filter</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1826,7 +3759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FiltersGet(string endpoint, string dataSourceName, string scanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FiltersGet(string dataSourceName, string scanName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1852,7 +3785,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FiltersGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FiltersGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1867,7 +3800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FiltersGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FiltersGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -1904,11 +3837,161 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FiltersGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FiltersGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="FiltersGet" /> method.</summary>
+        /// <summary>Get a filter</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter> FiltersGetViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/filters/custom$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/filters/custom'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "/filters/custom"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FiltersGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a filter</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter> FiltersGetWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/filters/custom"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FiltersGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FiltersGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter> FiltersGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FiltersGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1918,7 +4001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FiltersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FiltersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1929,6 +4012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1936,13 +4020,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1961,36 +4045,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="FiltersGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FiltersGet_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FiltersGet_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
             }
         }
 
-        /// <summary>Creates an instance of a key vault connection</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <summary>update an instance of a key vault connection</summary>
         /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task KeyVaultConnectionsCreate(string endpoint, string keyVaultName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsCreate(string keyVaultName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2013,15 +4098,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.KeyVaultConnectionsCreate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.KeyVaultConnectionsCreate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates an instance of a key vault connection</summary>
+        /// <summary>update an instance of a key vault connection</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
@@ -2030,10 +4115,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task KeyVaultConnectionsCreateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsCreateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2066,15 +4152,255 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.KeyVaultConnectionsCreate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.KeyVaultConnectionsCreate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="KeyVaultConnectionsCreate" /> method.</summary>
+        /// <summary>update an instance of a key vault connection</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsCreateViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/azureKeyVaults/(?<keyVaultName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/azureKeyVaults/{keyVaultName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var keyVaultName = _match.Groups["keyVaultName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults/"
+                        + keyVaultName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsCreateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a key vault connection</summary>
+        /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the KeyVaultConnectionsCreate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsCreateViaJsonString(string keyVaultName, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults/"
+                        + global::System.Uri.EscapeDataString(keyVaultName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.KeyVaultConnectionsCreate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a key vault connection</summary>
+        /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the KeyVaultConnectionsCreate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsCreateViaJsonStringWithResult(string keyVaultName, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults/"
+                        + global::System.Uri.EscapeDataString(keyVaultName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsCreateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a key vault connection</summary>
+        /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsCreateWithResult(string keyVaultName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults/"
+                        + global::System.Uri.EscapeDataString(keyVaultName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsCreateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "KeyVaultConnectionsCreateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsCreateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "KeyVaultConnectionsCreate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2084,7 +4410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2095,6 +4421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2102,13 +4429,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2127,27 +4454,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="KeyVaultConnectionsCreate" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsCreate_Validate(string endpoint, string keyVaultName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsCreate_Validate(string keyVaultName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(keyVaultName),keyVaultName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes the key vault connection associated with the account</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2157,7 +4484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task KeyVaultConnectionsDelete(string endpoint, string keyVaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsDelete(string keyVaultName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2180,7 +4507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.KeyVaultConnectionsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.KeyVaultConnectionsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -2196,7 +4523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task KeyVaultConnectionsDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2229,11 +4556,160 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.KeyVaultConnectionsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.KeyVaultConnectionsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="KeyVaultConnectionsDelete" /> method.</summary>
+        /// <summary>Deletes the key vault connection associated with the account</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsDeleteViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/azureKeyVaults/(?<keyVaultName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/azureKeyVaults/{keyVaultName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var keyVaultName = _match.Groups["keyVaultName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults/"
+                        + keyVaultName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes the key vault connection associated with the account</summary>
+        /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsDeleteWithResult(string keyVaultName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults/"
+                        + global::System.Uri.EscapeDataString(keyVaultName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "KeyVaultConnectionsDeleteWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsDeleteWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.UndeclaredResponseException(_response);
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "KeyVaultConnectionsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2244,7 +4720,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2255,6 +4731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2262,7 +4739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -2274,7 +4751,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2293,24 +4770,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="KeyVaultConnectionsDelete" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsDelete_Validate(string endpoint, string keyVaultName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsDelete_Validate(string keyVaultName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(keyVaultName),keyVaultName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
         /// <summary>Gets key vault information</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2319,7 +4796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task KeyVaultConnectionsGet(string endpoint, string keyVaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsGet(string keyVaultName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2342,7 +4819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.KeyVaultConnectionsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.KeyVaultConnectionsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2357,7 +4834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task KeyVaultConnectionsGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2390,11 +4867,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.KeyVaultConnectionsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.KeyVaultConnectionsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="KeyVaultConnectionsGet" /> method.</summary>
+        /// <summary>Gets key vault information</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/azureKeyVaults/(?<keyVaultName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/azureKeyVaults/{keyVaultName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var keyVaultName = _match.Groups["keyVaultName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults/"
+                        + keyVaultName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets key vault information</summary>
+        /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsGetWithResult(string keyVaultName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults/"
+                        + global::System.Uri.EscapeDataString(keyVaultName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "KeyVaultConnectionsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault> KeyVaultConnectionsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "KeyVaultConnectionsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2404,7 +5023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2415,6 +5034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2422,13 +5042,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2447,18 +5067,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="KeyVaultConnectionsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="keyVaultName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsGet_Validate(string endpoint, string keyVaultName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsGet_Validate(string keyVaultName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(keyVaultName),keyVaultName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
@@ -2472,7 +5092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task KeyVaultConnectionsListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVaultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2494,7 +5114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.KeyVaultConnectionsListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.KeyVaultConnectionsListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2509,7 +5129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task KeyVaultConnectionsListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVaultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task KeyVaultConnectionsListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2540,11 +5160,151 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.KeyVaultConnectionsListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.KeyVaultConnectionsListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="KeyVaultConnectionsListAll" /> method.</summary>
+        /// <summary>List key vault connections in account</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList> KeyVaultConnectionsListAllViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/azureKeyVaults$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/azureKeyVaults'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List key vault connections in account</summary>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList> KeyVaultConnectionsListAllWithResult(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/azureKeyVaults"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.KeyVaultConnectionsListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "KeyVaultConnectionsListAllWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList> KeyVaultConnectionsListAllWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVaultList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "KeyVaultConnectionsListAll" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2554,7 +5314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVaultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task KeyVaultConnectionsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVaultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2565,6 +5325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2572,13 +5333,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVaultList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVaultList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2611,10 +5372,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         }
 
         /// <summary>Cancels a scan</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
         /// <param name="runId"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2623,7 +5384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanResultCancelScan(string endpoint, string dataSourceName, string scanName, string runId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanResultCancelScan(string dataSourceName, string scanName, string runId, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2651,7 +5412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanResultCancelScan_Call(request,onAccepted,onDefault,eventListener,sender);
+                await this.ScanResultCancelScan_Call (request, onAccepted,onDefault,eventListener,sender);
             }
         }
 
@@ -2666,7 +5427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanResultCancelScanViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanResultCancelScanViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2677,7 +5438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                 var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/runs/(?<runId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/runs/{runId}/:cancel'");
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/runs/{runId}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2706,11 +5467,167 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanResultCancelScan_Call(request,onAccepted,onDefault,eventListener,sender);
+                await this.ScanResultCancelScan_Call (request, onAccepted,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScanResultCancelScan" /> method.</summary>
+        /// <summary>Cancels a scan</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ScanResultCancelScanViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/runs/(?<runId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/runs/{runId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                var runId = _match.Groups["runId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "/runs/"
+                        + runId
+                        + "/:cancel"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanResultCancelScanWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Cancels a scan</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="runId"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ScanResultCancelScanWithResult(string dataSourceName, string scanName, string runId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/runs/"
+                        + global::System.Uri.EscapeDataString(runId)
+                        + "/:cancel"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanResultCancelScanWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanResultCancelScanWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ScanResultCancelScanWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Accepted:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanResultCancelScan" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2720,7 +5637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanResultCancelScan_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScanResultCancelScan_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2731,6 +5648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2738,13 +5656,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onAccepted(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2763,29 +5681,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScanResultCancelScan" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="runId"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanResultCancelScan_Validate(string endpoint, string dataSourceName, string scanName, string runId, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScanResultCancelScan_Validate(string dataSourceName, string scanName, string endpoint, string runId, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(runId),runId);
             }
         }
 
         /// <summary>Lists the scan history of a scan</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2794,7 +5712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanResultListScanHistory(string endpoint, string dataSourceName, string scanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanHistoryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanResultListScanHistory(string dataSourceName, string scanName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2820,7 +5738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanResultListScanHistory_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScanResultListScanHistory_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2835,7 +5753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanResultListScanHistoryViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanHistoryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanResultListScanHistoryViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2872,11 +5790,163 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanResultListScanHistory_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScanResultListScanHistory_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScanResultListScanHistory" /> method.</summary>
+        /// <summary>Lists the scan history of a scan</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList> ScanResultListScanHistoryViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/runs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/runs'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "/runs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanResultListScanHistoryWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists the scan history of a scan</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList> ScanResultListScanHistoryWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/runs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanResultListScanHistoryWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ScanResultListScanHistoryWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList> ScanResultListScanHistoryWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanHistoryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanResultListScanHistory" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2886,7 +5956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanResultListScanHistory_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanHistoryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScanResultListScanHistory_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanHistoryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2897,6 +5967,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2904,13 +5975,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ScanHistoryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanHistoryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2929,29 +6000,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScanResultListScanHistory" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanResultListScanHistory_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScanResultListScanHistory_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
             }
         }
 
         /// <summary>Runs the scan</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
         /// <param name="runId"></param>
         /// <param name="scanLevel"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2960,7 +6031,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanResultRunScan(string endpoint, string dataSourceName, string scanName, string runId, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType? scanLevel, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanResultRunScan(string dataSourceName, string scanName, string runId, string scanLevel, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -2989,14 +6060,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanResultRunScan_Call(request,onAccepted,onDefault,eventListener,sender);
+                await this.ScanResultRunScan_Call (request, onAccepted,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Runs the scan</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanLevel"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3005,7 +6076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanResultRunScanViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType? scanLevel, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanResultRunScanViaIdentity(global::System.String viaIdentity, string scanLevel, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3046,11 +6117,171 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanResultRunScan_Call(request,onAccepted,onDefault,eventListener,sender);
+                await this.ScanResultRunScan_Call (request, onAccepted,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScanResultRunScan" /> method.</summary>
+        /// <summary>Runs the scan</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="scanLevel"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ScanResultRunScanViaIdentityWithResult(global::System.String viaIdentity, string scanLevel, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/runs/(?<runId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/runs/{runId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                var runId = _match.Groups["runId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "/runs/"
+                        + runId
+                        + "?"
+                        + (string.IsNullOrEmpty(scanLevel) ? global::System.String.Empty : "scanLevel=" + global::System.Uri.EscapeDataString(scanLevel))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanResultRunScanWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Runs the scan</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="runId"></param>
+        /// <param name="scanLevel"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ScanResultRunScanWithResult(string dataSourceName, string scanName, string runId, string scanLevel, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/runs/"
+                        + global::System.Uri.EscapeDataString(runId)
+                        + "?"
+                        + (string.IsNullOrEmpty(scanLevel) ? global::System.String.Empty : "scanLevel=" + global::System.Uri.EscapeDataString(scanLevel))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanResultRunScanWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanResultRunScanWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse> ScanResultRunScanWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.Accepted:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanResultRunScan" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3060,7 +6291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanResultRunScan_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScanResultRunScan_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3071,6 +6302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3078,13 +6310,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onAccepted(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.OperationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3103,31 +6335,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScanResultRunScan" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="runId"></param>
         /// <param name="scanLevel"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanResultRunScan_Validate(string endpoint, string dataSourceName, string scanName, string runId, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType? scanLevel, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScanResultRunScan_Validate(string dataSourceName, string scanName, string endpoint, string runId, string scanLevel, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(runId),runId);
                 await eventListener.AssertNotNull(nameof(scanLevel),scanLevel);
-                await eventListener.AssertEnum(nameof(scanLevel),scanLevel,@"Full", @"Incremental");
             }
         }
 
-        /// <summary>Creates or Updates a scan ruleset</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <summary>update a scan ruleset</summary>
         /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -3135,10 +6366,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdate(string endpoint, string scanRulesetName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdate(string scanRulesetName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3161,15 +6393,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanRulesetsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.ScanRulesetsCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates or Updates a scan ruleset</summary>
+        /// <summary>update a scan ruleset</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
@@ -3179,10 +6411,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3215,15 +6448,262 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanRulesetsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.ScanRulesetsCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScanRulesetsCreateOrUpdate" /> method.</summary>
+        /// <summary>update a scan ruleset</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/scanrulesets/(?<scanRulesetName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/scanrulesets/{scanRulesetName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var scanRulesetName = _match.Groups["scanRulesetName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets/"
+                        + scanRulesetName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a scan ruleset</summary>
+        /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the ScanRulesetsCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdateViaJsonString(string scanRulesetName, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets/"
+                        + global::System.Uri.EscapeDataString(scanRulesetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ScanRulesetsCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a scan ruleset</summary>
+        /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the ScanRulesetsCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsCreateOrUpdateViaJsonStringWithResult(string scanRulesetName, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets/"
+                        + global::System.Uri.EscapeDataString(scanRulesetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a scan ruleset</summary>
+        /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsCreateOrUpdateWithResult(string scanRulesetName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets/"
+                        + global::System.Uri.EscapeDataString(scanRulesetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ScanRulesetsCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanRulesetsCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -3234,7 +6714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3245,6 +6725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3252,19 +6733,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3283,27 +6764,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScanRulesetsCreateOrUpdate" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdate_Validate(string endpoint, string scanRulesetName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScanRulesetsCreateOrUpdate_Validate(string scanRulesetName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanRulesetName),scanRulesetName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a scan ruleset</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3313,7 +6794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanRulesetsDelete(string endpoint, string scanRulesetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanRulesetsDelete(string scanRulesetName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3336,7 +6817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanRulesetsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ScanRulesetsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -3352,7 +6833,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanRulesetsDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanRulesetsDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3385,11 +6866,158 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanRulesetsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ScanRulesetsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScanRulesetsDelete" /> method.</summary>
+        /// <summary>Deletes a scan ruleset</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsDeleteViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/scanrulesets/(?<scanRulesetName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/scanrulesets/{scanRulesetName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var scanRulesetName = _match.Groups["scanRulesetName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets/"
+                        + scanRulesetName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes a scan ruleset</summary>
+        /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsDeleteWithResult(string scanRulesetName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets/"
+                        + global::System.Uri.EscapeDataString(scanRulesetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanRulesetsDeleteWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsDeleteWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.UndeclaredResponseException(_response);
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanRulesetsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -3400,7 +7028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanRulesetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScanRulesetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3411,6 +7039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3418,7 +7047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -3430,7 +7059,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3449,24 +7078,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScanRulesetsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanRulesetsDelete_Validate(string endpoint, string scanRulesetName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScanRulesetsDelete_Validate(string scanRulesetName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanRulesetName),scanRulesetName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
         /// <summary>Get a scan ruleset</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3475,7 +7104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanRulesetsGet(string endpoint, string scanRulesetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanRulesetsGet(string scanRulesetName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3498,7 +7127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanRulesetsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScanRulesetsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3513,7 +7142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanRulesetsGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanRulesetsGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3546,11 +7175,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanRulesetsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScanRulesetsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScanRulesetsGet" /> method.</summary>
+        /// <summary>Get a scan ruleset</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsGetViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/scanrulesets/(?<scanRulesetName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/scanrulesets/{scanRulesetName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var scanRulesetName = _match.Groups["scanRulesetName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets/"
+                        + scanRulesetName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a scan ruleset</summary>
+        /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsGetWithResult(string scanRulesetName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets/"
+                        + global::System.Uri.EscapeDataString(scanRulesetName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanRulesetsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset> ScanRulesetsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanRulesetsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3560,7 +7331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanRulesetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScanRulesetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3571,6 +7342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3578,13 +7350,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3603,18 +7375,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScanRulesetsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanRulesetName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanRulesetsGet_Validate(string endpoint, string scanRulesetName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScanRulesetsGet_Validate(string scanRulesetName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanRulesetName),scanRulesetName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
@@ -3628,7 +7400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanRulesetsListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanRulesetsListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3650,7 +7422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanRulesetsListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScanRulesetsListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3665,7 +7437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScanRulesetsListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScanRulesetsListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3696,11 +7468,149 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScanRulesetsListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScanRulesetsListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScanRulesetsListAll" /> method.</summary>
+        /// <summary>List scan rulesets in Data catalog</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList> ScanRulesetsListAllViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/scanrulesets$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/scanrulesets'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List scan rulesets in Data catalog</summary>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList> ScanRulesetsListAllWithResult(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/scanrulesets"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScanRulesetsListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanRulesetsListAllWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList> ScanRulesetsListAllWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScanRulesetsListAll" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3710,7 +7620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScanRulesetsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScanRulesetsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3721,6 +7631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3728,13 +7639,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3766,10 +7677,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
             }
         }
 
-        /// <summary>Creates an instance of a scan</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <summary>update an instance of a scan</summary>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -3777,10 +7688,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScansCreateOrUpdate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScansCreateOrUpdate(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3805,15 +7717,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScansCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.ScansCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates an instance of a scan</summary>
+        /// <summary>update an instance of a scan</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
@@ -3823,10 +7735,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScansCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScansCreateOrUpdateViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3862,15 +7775,272 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScansCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.ScansCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScansCreateOrUpdate" /> method.</summary>
+        /// <summary>update an instance of a scan</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a scan</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the ScansCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ScansCreateOrUpdateViaJsonString(string dataSourceName, string scanName, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ScansCreateOrUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a scan</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the ScansCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansCreateOrUpdateViaJsonStringWithResult(string dataSourceName, string scanName, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a scan</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansCreateOrUpdateWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScansCreateOrUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScansCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -3881,7 +8051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScansCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScansCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3892,6 +8062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3899,19 +8070,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3930,20 +8101,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScansCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScansCreateOrUpdate_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScansCreateOrUpdate_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -3951,9 +8122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         }
 
         /// <summary>Deletes the scan associated with the data source</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3963,7 +8134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScansDelete(string endpoint, string dataSourceName, string scanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScansDelete(string dataSourceName, string scanName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -3988,7 +8159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScansDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ScansDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -4004,7 +8175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScansDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScansDeleteViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4040,11 +8211,164 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScansDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ScansDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScansDelete" /> method.</summary>
+        /// <summary>Deletes the scan associated with the data source</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansDeleteViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes the scan associated with the data source</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansDeleteWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansDeleteWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScansDeleteWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansDeleteWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.UndeclaredResponseException(_response);
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScansDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -4055,7 +8379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScansDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScansDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4066,6 +8390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -4073,7 +8398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -4085,7 +8410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4104,27 +8429,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScansDelete" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScansDelete_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScansDelete_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
             }
         }
 
         /// <summary>Gets a scan information</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4133,7 +8458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScansGet(string endpoint, string dataSourceName, string scanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScansGet(string dataSourceName, string scanName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4158,7 +8483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScansGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScansGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4173,7 +8498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScansGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScansGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4209,11 +8534,159 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScansGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScansGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScansGet" /> method.</summary>
+        /// <summary>Gets a scan information</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansGetViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a scan information</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansGetWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScansGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan> ScansGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScansGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4223,7 +8696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScansGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScansGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4234,6 +8707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -4241,13 +8715,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Scan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4266,26 +8740,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScansGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScansGet_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScansGet_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
             }
         }
 
         /// <summary>List scans in data source</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4294,7 +8768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScansListByDataSource(string endpoint, string dataSourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScansListByDataSource(string dataSourceName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4318,7 +8792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScansListByDataSource_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScansListByDataSource_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4333,7 +8807,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScansListByDataSourceViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScansListByDataSourceViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4367,11 +8841,155 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ScansListByDataSource_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ScansListByDataSource_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="ScansListByDataSource" /> method.</summary>
+        /// <summary>List scans in data source</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList> ScansListByDataSourceViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansListByDataSourceWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List scans in data source</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList> ScansListByDataSourceWithResult(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ScansListByDataSourceWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScansListByDataSourceWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList> ScansListByDataSourceWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ScansListByDataSource" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4381,7 +8999,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScansListByDataSource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScansListByDataSource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IScanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4392,6 +9010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -4399,13 +9018,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ScanList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ScanList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4424,24 +9043,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="ScansListByDataSource" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScansListByDataSource_Validate(string endpoint, string dataSourceName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScansListByDataSource_Validate(string dataSourceName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
         /// <summary>Get a system scan ruleset for a data source</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4450,7 +9069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsGet(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType dataSourceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsGet(string dataSourceType, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4473,14 +9092,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Get a scan ruleset by version</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
-        /// <param name="dataSourceType"></param>
         /// <param name="version"></param>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4489,7 +9108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetByVersion(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, int version, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetByVersion(int version, string dataSourceType, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4514,14 +9133,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsGetByVersion_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsGetByVersion_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Get a scan ruleset by version</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4530,7 +9149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetByVersionViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetByVersionViaIdentity(global::System.String viaIdentity, string dataSourceType, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4565,11 +9184,161 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsGetByVersion_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsGetByVersion_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="SystemScanRulesetsGetByVersion" /> method.</summary>
+        /// <summary>Get a scan ruleset by version</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetByVersionViaIdentityWithResult(global::System.String viaIdentity, string dataSourceType, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/systemScanRulesets/versions/(?<version>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/systemScanRulesets/versions/{version}'");
+                }
+
+                // replace URI parameters with values from identity
+                var version = _match.Groups["version"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets/versions/"
+                        + version
+                        + "?"
+                        + (string.IsNullOrEmpty(dataSourceType) ? global::System.String.Empty : "dataSourceType=" + global::System.Uri.EscapeDataString(dataSourceType))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsGetByVersionWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a scan ruleset by version</summary>
+        /// <param name="version"></param>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetByVersionWithResult(int version, string dataSourceType, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets/versions/"
+                        + (version.ToString())
+                        + "?"
+                        + (string.IsNullOrEmpty(dataSourceType) ? global::System.String.Empty : "dataSourceType=" + global::System.Uri.EscapeDataString(dataSourceType))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsGetByVersionWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "SystemScanRulesetsGetByVersionWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetByVersionWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SystemScanRulesetsGetByVersion" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4579,7 +9348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGetByVersion_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGetByVersion_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4590,6 +9359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -4597,13 +9367,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4622,26 +9392,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="SystemScanRulesetsGetByVersion" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
-        /// <param name="dataSourceType"></param>
         /// <param name="version"></param>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGetByVersion_Validate(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, int version, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGetByVersion_Validate(int version, string dataSourceType, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceType),dataSourceType);
-                await eventListener.AssertEnum(nameof(dataSourceType),dataSourceType,@"None", @"AzureSubscription", @"AzureResourceGroup", @"AzureSynapseWorkspace", @"AzureSynapse", @"AdlsGen1", @"AdlsGen2", @"AmazonAccount", @"AmazonS3", @"AmazonSql", @"AzureCosmosDb", @"AzureDataExplorer", @"AzureFileService", @"AzureSqlDatabase", @"AmazonPostgreSql", @"AzurePostgreSql", @"SqlServerDatabase", @"AzureSqlDatabaseManagedInstance", @"AzureSqlDataWarehouse", @"AzureMySql", @"AzureStorage", @"Teradata", @"Oracle", @"SapS4Hana", @"SapEcc", @"PowerBI");
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
             }
         }
 
         /// <summary>Get the latest version of a system scan ruleset</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4650,7 +9419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetLatest(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetLatest(string dataSourceType, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4674,14 +9443,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsGetLatest_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsGetLatest_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Get the latest version of a system scan ruleset</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4690,7 +9459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetLatestViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetLatestViaIdentity(global::System.String viaIdentity, string dataSourceType, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4723,11 +9492,157 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsGetLatest_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsGetLatest_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="SystemScanRulesetsGetLatest" /> method.</summary>
+        /// <summary>Get the latest version of a system scan ruleset</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetLatestViaIdentityWithResult(global::System.String viaIdentity, string dataSourceType, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/systemScanRulesets/versions/latest$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/systemScanRulesets/versions/latest'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets/versions/latest"
+                        + "?"
+                        + (string.IsNullOrEmpty(dataSourceType) ? global::System.String.Empty : "dataSourceType=" + global::System.Uri.EscapeDataString(dataSourceType))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsGetLatestWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get the latest version of a system scan ruleset</summary>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetLatestWithResult(string dataSourceType, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets/versions/latest"
+                        + "?"
+                        + (string.IsNullOrEmpty(dataSourceType) ? global::System.String.Empty : "dataSourceType=" + global::System.Uri.EscapeDataString(dataSourceType))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsGetLatestWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "SystemScanRulesetsGetLatestWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetLatestWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SystemScanRulesetsGetLatest" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4737,7 +9652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGetLatest_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGetLatest_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4748,6 +9663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -4755,13 +9671,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4786,13 +9702,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGetLatest_Validate(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGetLatest_Validate(string endpoint, string dataSourceType, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceType),dataSourceType);
-                await eventListener.AssertEnum(nameof(dataSourceType),dataSourceType,@"None", @"AzureSubscription", @"AzureResourceGroup", @"AzureSynapseWorkspace", @"AzureSynapse", @"AdlsGen1", @"AdlsGen2", @"AmazonAccount", @"AmazonS3", @"AmazonSql", @"AzureCosmosDb", @"AzureDataExplorer", @"AzureFileService", @"AzureSqlDatabase", @"AmazonPostgreSql", @"AzurePostgreSql", @"SqlServerDatabase", @"AzureSqlDatabaseManagedInstance", @"AzureSqlDataWarehouse", @"AzureMySql", @"AzureStorage", @"Teradata", @"Oracle", @"SapS4Hana", @"SapEcc", @"PowerBI");
             }
         }
 
@@ -4807,7 +9722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsGetViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4840,11 +9755,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="SystemScanRulesetsGet" /> method.</summary>
+        /// <summary>Get a system scan ruleset for a data source</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/systemScanRulesets/datasources/(?<dataSourceType>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/systemScanRulesets/datasources/{dataSourceType}'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceType = _match.Groups["dataSourceType"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets/datasources/"
+                        + dataSourceType
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a system scan ruleset for a data source</summary>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetWithResult(string dataSourceType, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceType)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SystemScanRulesetsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset> SystemScanRulesetsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SystemScanRulesetsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4854,7 +9911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4865,6 +9922,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -4872,13 +9930,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4903,13 +9961,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGet_Validate(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType dataSourceType, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsGet_Validate(string endpoint, string dataSourceType, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceType),dataSourceType);
-                await eventListener.AssertEnum(nameof(dataSourceType),dataSourceType,@"None", @"AzureSubscription", @"AzureResourceGroup", @"AzureSynapseWorkspace", @"AzureSynapse", @"AdlsGen1", @"AdlsGen2", @"AmazonAccount", @"AmazonS3", @"AmazonSql", @"AzureCosmosDb", @"AzureDataExplorer", @"AzureFileService", @"AzureSqlDatabase", @"AmazonPostgreSql", @"AzurePostgreSql", @"SqlServerDatabase", @"AzureSqlDatabaseManagedInstance", @"AzureSqlDataWarehouse", @"AzureMySql", @"AzureStorage", @"Teradata", @"Oracle", @"SapS4Hana", @"SapEcc", @"PowerBI");
             }
         }
 
@@ -4923,7 +9980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsListAll(string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4945,7 +10002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -4960,7 +10017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsListAllViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -4991,11 +10048,151 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsListAll_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsListAll_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="SystemScanRulesetsListAll" /> method.</summary>
+        /// <summary>List all system scan rulesets for an account</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList> SystemScanRulesetsListAllViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/systemScanRulesets$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/systemScanRulesets'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List all system scan rulesets for an account</summary>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList> SystemScanRulesetsListAllWithResult(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsListAllWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "SystemScanRulesetsListAllWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList> SystemScanRulesetsListAllWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SystemScanRulesetsListAll" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5005,7 +10202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsListAll_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5016,6 +10213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -5023,13 +10221,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SystemScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5062,8 +10260,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         }
 
         /// <summary>List system scan ruleset versions in Data catalog</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -5072,7 +10270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsListVersionsByDataSource(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsListVersionsByDataSource(string dataSourceType, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -5096,14 +10294,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsListVersionsByDataSource_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsListVersionsByDataSource_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>List system scan ruleset versions in Data catalog</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -5112,7 +10310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SystemScanRulesetsListVersionsByDataSourceViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SystemScanRulesetsListVersionsByDataSourceViaIdentity(global::System.String viaIdentity, string dataSourceType, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -5145,12 +10343,158 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SystemScanRulesetsListVersionsByDataSource_Call(request,onOk,onDefault,eventListener,sender);
+                await this.SystemScanRulesetsListVersionsByDataSource_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List system scan ruleset versions in Data catalog</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList> SystemScanRulesetsListVersionsByDataSourceViaIdentityWithResult(global::System.String viaIdentity, string dataSourceType, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/systemScanRulesets/versions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/systemScanRulesets/versions'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets/versions"
+                        + "?"
+                        + (string.IsNullOrEmpty(dataSourceType) ? global::System.String.Empty : "dataSourceType=" + global::System.Uri.EscapeDataString(dataSourceType))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsListVersionsByDataSourceWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List system scan ruleset versions in Data catalog</summary>
+        /// <param name="dataSourceType"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList> SystemScanRulesetsListVersionsByDataSourceWithResult(string dataSourceType, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/systemScanRulesets/versions"
+                        + "?"
+                        + (string.IsNullOrEmpty(dataSourceType) ? global::System.String.Empty : "dataSourceType=" + global::System.Uri.EscapeDataString(dataSourceType))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SystemScanRulesetsListVersionsByDataSourceWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="SystemScanRulesetsListVersionsByDataSource" /> method.
+        /// Actual wire call for <see cref= "SystemScanRulesetsListVersionsByDataSourceWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList> SystemScanRulesetsListVersionsByDataSourceWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "SystemScanRulesetsListVersionsByDataSource" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5161,7 +10505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsListVersionsByDataSource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsListVersionsByDataSource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRulesetList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5172,6 +10516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -5179,13 +10524,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SystemScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SystemScanRulesetList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5210,20 +10555,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SystemScanRulesetsListVersionsByDataSource_Validate(string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType? dataSourceType, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SystemScanRulesetsListVersionsByDataSource_Validate(string endpoint, string dataSourceType, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceType),dataSourceType);
-                await eventListener.AssertEnum(nameof(dataSourceType),dataSourceType,@"None", @"AzureSubscription", @"AzureResourceGroup", @"AzureSynapseWorkspace", @"AzureSynapse", @"AdlsGen1", @"AdlsGen2", @"AmazonAccount", @"AmazonS3", @"AmazonSql", @"AzureCosmosDb", @"AzureDataExplorer", @"AzureFileService", @"AzureSqlDatabase", @"AmazonPostgreSql", @"AzurePostgreSql", @"SqlServerDatabase", @"AzureSqlDatabaseManagedInstance", @"AzureSqlDataWarehouse", @"AzureMySql", @"AzureStorage", @"Teradata", @"Oracle", @"SapS4Hana", @"SapEcc", @"PowerBI");
             }
         }
 
-        /// <summary>Creates an instance of a trigger</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <summary>update an instance of a trigger</summary>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -5231,10 +10575,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TriggersCreateTrigger(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TriggersCreateTrigger(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -5260,15 +10605,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TriggersCreateTrigger_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.TriggersCreateTrigger_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Creates an instance of a trigger</summary>
+        /// <summary>update an instance of a trigger</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="body"></param>
@@ -5278,10 +10623,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TriggersCreateTriggerViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TriggersCreateTriggerViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -5318,15 +10664,276 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TriggersCreateTrigger_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+                await this.TriggersCreateTrigger_Call (request, onOk,onCreated,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="TriggersCreateTrigger" /> method.</summary>
+        /// <summary>update an instance of a trigger</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersCreateTriggerViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/triggers/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/triggers/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "/triggers/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TriggersCreateTriggerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a trigger</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the TriggersCreateTrigger operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TriggersCreateTriggerViaJsonString(string dataSourceName, string scanName, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/triggers/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TriggersCreateTrigger_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a trigger</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="jsonString">Json string supplied to the TriggersCreateTrigger operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersCreateTriggerViaJsonStringWithResult(string dataSourceName, string scanName, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/triggers/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TriggersCreateTriggerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an instance of a trigger</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="body"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersCreateTriggerWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/triggers/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TriggersCreateTriggerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "TriggersCreateTriggerWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersCreateTriggerWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "TriggersCreateTrigger" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
@@ -5337,7 +10944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TriggersCreateTrigger_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TriggersCreateTrigger_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5348,6 +10955,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -5355,19 +10963,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5386,20 +10994,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="TriggersCreateTrigger" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TriggersCreateTrigger_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task TriggersCreateTrigger_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger body, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -5407,9 +11015,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         }
 
         /// <summary>Deletes the trigger associated with the scan</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5419,7 +11027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TriggersDeleteTrigger(string endpoint, string dataSourceName, string scanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TriggersDeleteTrigger(string dataSourceName, string scanName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -5445,7 +11053,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TriggersDeleteTrigger_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.TriggersDeleteTrigger_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -5461,7 +11069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TriggersDeleteTriggerViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TriggersDeleteTriggerViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -5498,11 +11106,166 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TriggersDeleteTrigger_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.TriggersDeleteTrigger_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="TriggersDeleteTrigger" /> method.</summary>
+        /// <summary>Deletes the trigger associated with the scan</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersDeleteTriggerViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/triggers/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/triggers/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "/triggers/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TriggersDeleteTriggerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes the trigger associated with the scan</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersDeleteTriggerWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/triggers/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TriggersDeleteTriggerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "TriggersDeleteTriggerWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersDeleteTriggerWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.UndeclaredResponseException(_response);
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "TriggersDeleteTrigger" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -5513,7 +11276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TriggersDeleteTrigger_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TriggersDeleteTrigger_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5524,6 +11287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -5531,7 +11295,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -5543,7 +11307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5562,27 +11326,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="TriggersDeleteTrigger" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TriggersDeleteTrigger_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task TriggersDeleteTrigger_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
             }
         }
 
         /// <summary>Gets trigger information</summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
         /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -5591,7 +11355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TriggersGetTrigger(string endpoint, string dataSourceName, string scanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TriggersGetTrigger(string dataSourceName, string scanName, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -5617,7 +11381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TriggersGetTrigger_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TriggersGetTrigger_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -5632,7 +11396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TriggersGetTriggerViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TriggersGetTriggerViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2021-10-01-preview";
             // Constant Parameters
@@ -5669,11 +11433,161 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TriggersGetTrigger_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TriggersGetTrigger_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="TriggersGetTrigger" /> method.</summary>
+        /// <summary>Gets trigger information</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersGetTriggerViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/datasources/(?<dataSourceName>[^/]+)/scans/(?<scanName>[^/]+)/triggers/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/datasources/{dataSourceName}/scans/{scanName}/triggers/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var dataSourceName = _match.Groups["dataSourceName"].Value;
+                var scanName = _match.Groups["scanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + dataSourceName
+                        + "/scans/"
+                        + scanName
+                        + "/triggers/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TriggersGetTriggerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets trigger information</summary>
+        /// <param name="dataSourceName"></param>
+        /// <param name="scanName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersGetTriggerWithResult(string dataSourceName, string scanName, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2021-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/datasources/"
+                        + global::System.Uri.EscapeDataString(dataSourceName)
+                        + "/scans/"
+                        + global::System.Uri.EscapeDataString(scanName)
+                        + "/triggers/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}/scan{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TriggersGetTriggerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "TriggersGetTriggerWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger> TriggersGetTriggerWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "TriggersGetTrigger" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5683,7 +11597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TriggersGetTrigger_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TriggersGetTrigger_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IErrorResponseModel>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5694,6 +11608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -5701,13 +11616,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ErrorResponseModel.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5726,19 +11641,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata
         /// Validation method for <see cref="TriggersGetTrigger" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="dataSourceName"></param>
+        /// <param name="endpoint">The scanning endpoint of your purview account. Example: https://{accountName}.purview.azure.com</param>
         /// <param name="scanName"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TriggersGetTrigger_Validate(string endpoint, string dataSourceName, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task TriggersGetTrigger_Validate(string dataSourceName, string endpoint, string scanName, Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(dataSourceName),dataSourceName);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
                 await eventListener.AssertNotNull(nameof(scanName),scanName);
             }
         }

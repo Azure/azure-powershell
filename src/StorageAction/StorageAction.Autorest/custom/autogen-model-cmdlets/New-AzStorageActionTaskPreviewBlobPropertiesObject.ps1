@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewBlobPr
 https://learn.microsoft.com/powershell/module/Az.StorageAction/new-azstorageactiontaskpreviewblobpropertiesobject
 #>
 function New-AzStorageActionTaskPreviewBlobPropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskPreviewBlobProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Fixed issue where the restore command failed to detect the source account, even when it existed.
+
+## Version 1.18.1
+* Fixed incorrect help documents for MongoDB cmdlets.
 
 ## Version 1.18.0
 * Added support for creating containers with Vector Embedding Policy.

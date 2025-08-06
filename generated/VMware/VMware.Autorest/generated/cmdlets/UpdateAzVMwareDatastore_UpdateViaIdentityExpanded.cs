@@ -199,6 +199,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Volume size to be used to create a Virtual Volumes (vVols) datastore</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Volume size to be used to create a Virtual Volumes (vVols) datastore")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Volume size to be used to create a Virtual Volumes (vVols) datastore",
+        SerializedName = @"sizeGb",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PureStorageVolumeSizeGb { get => _datastoreBody.PureStorageVolumeSizeGb ?? default(int); set => _datastoreBody.PureStorageVolumeSizeGb = value; }
+
+        /// <summary>Azure resource ID of the Pure Storage Pool</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the Pure Storage Pool")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource ID of the Pure Storage Pool",
+        SerializedName = @"storagePoolId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PureStorageVolumeStoragePoolId { get => _datastoreBody.PureStorageVolumeStoragePoolId ?? null; set => _datastoreBody.PureStorageVolumeStoragePoolId = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -557,9 +579,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             {
                 this.ElasticSanVolumeTargetId = (string)(this.MyInvocation?.BoundParameters["ElasticSanVolumeTargetId"]);
             }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PureStorageVolumeSizeGb")))
+            {
+                this.PureStorageVolumeSizeGb = (int)(this.MyInvocation?.BoundParameters["PureStorageVolumeSizeGb"]);
+            }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiskPoolVolumeMountOption")))
             {
                 this.DiskPoolVolumeMountOption = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeMountOption"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PureStorageVolumeStoragePoolId")))
+            {
+                this.PureStorageVolumeStoragePoolId = (string)(this.MyInvocation?.BoundParameters["PureStorageVolumeStoragePoolId"]);
             }
         }
 

@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="source">Indicating the source.</param>
         /// <param name="destination">Indicating the destination.</param>
-        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
+        /// <returns>True if the operation is confirmed, otherwise return false</returns>
         protected bool ConfirmOverwrite(object source, object destination)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="source">Indicating the source.</param>
         /// <param name="destination">Indicating the destination.</param>
-        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
+        /// <returns>True if the operation is confirmed, otherwise return false</returns>
         protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
@@ -186,7 +186,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         /// <summary>
-        /// Get the block id arrary from block blob length, block size and blob name
+        /// Get the block id array from block blob length, block size and blob name
         /// </summary>
         public static string[] GetBlockIDs(long contentLength, long blockLength, string blobname)
         {

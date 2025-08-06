@@ -990,7 +990,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanantly removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on instance &apos;{2}&apos; in location &apos;{3}&apos;?.
+        ///   Looks up a localized string similar to Permanently removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on instance &apos;{2}&apos; in location &apos;{3}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
             get {
@@ -1773,7 +1773,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Submiting request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Submitting request for stopping the operation &apos;{0}&apos; on Azure Sql Managed Instance &apos;{1}&apos;..
         /// </summary>
         internal static string StopAzureSqlInstanceOperationWarning {
             get {

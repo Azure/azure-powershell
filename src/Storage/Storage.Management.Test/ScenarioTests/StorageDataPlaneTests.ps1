@@ -644,7 +644,7 @@ function Test-BlobFileCopy
 
 <#
     .SYNOPSIS
-    Tests Azure storage service loggin property, service metrics property and CORSRule commands.
+    Tests Azure storage service logging property, service metrics property and CORSRule commands.
 #>
 function Test-Common
 {
@@ -666,7 +666,7 @@ function Test-Common
 
         $storageContext2 = (Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName).Context
 
-        # wait at most 120*5s=600s for the set sevice property updated on server.
+        # wait at most 120*5s=600s for the set service property updated on server.
         $retryTimes = 120
         
         # B/F/Q Service properties, in same code path

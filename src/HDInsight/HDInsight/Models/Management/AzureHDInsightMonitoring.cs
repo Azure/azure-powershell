@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         }
 
         /// <summary>
-        /// Bool indicates whether the cluster has enabled montioring or not.
+        /// Bool indicates whether the cluster has enabled monitoring or not.
         /// </summary>
         public bool ClusterMonitoringEnabled { get; set; }
 

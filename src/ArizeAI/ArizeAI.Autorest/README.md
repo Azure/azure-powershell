@@ -28,7 +28,7 @@ For information on how to develop for `Az.ArizeAI`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: f5afb0e481e450c6f3c3ab0e21c26c7bf1167022
+commit: 79436d1724498ebd679471e4fd9356ae8f8d689e
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

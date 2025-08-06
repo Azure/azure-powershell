@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Cmdlets
     /// [OpenAPI] List=>GET:"/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDiagnosticSettingCategory_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"CategoryGroup"}, NewOutputProperties=new string[] {"CategoryGroup"}, ChangeDescription="The type of the property CategoryGroup will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Description(@"Lists the diagnostic settings categories for the specified resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Generated]

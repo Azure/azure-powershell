@@ -240,7 +240,7 @@ begin {
 
         # Custom Code Begin
 
-        # Check if Hybrid Comnpute machine resource exists or create a new one
+        # Check if Hybrid Compute machine resource exists or create a new one
 
         $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
         if ($null -eq $machineObj) {

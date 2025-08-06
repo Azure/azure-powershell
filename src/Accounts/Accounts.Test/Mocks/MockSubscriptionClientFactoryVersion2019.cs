@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         }
                         if (subscriptionGetList == null || !subscriptionGetList.Any())
                         {
-                            throw new CloudException("Subscripiton is not in the tenant.");
+                            throw new CloudException("Subscription is not in the tenant.");
                         }
                         var result = new AzureOperationResponse<Subscription>()
                         {
