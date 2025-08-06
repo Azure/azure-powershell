@@ -45,11 +45,35 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ManagedHsmPurgeProtection");
         }
 
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestCreateAndUpdateManagedHsmWithPublicNetworkAccess()
+        //{
+        //    TestRunner.RunTestScript("Test-CreateAndUpdateManagedHsmWithPublicNetworkAccess");
+        //}
+
+        // @TODO: make sure sessionrecord happens:
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAndUpdateManagedHsmWithPublicNetworkAccess()
+        public void TestCreateManagedHsmWithDefaultPublicNetworkAccess()
         {
-            TestRunner.RunTestScript("Test-CreateAndUpdateManagedHsmWithPublicNetworkAccess");
+            TestRunner.RunTestScript("Test-CreateManagedHsmDefaultPublicNetworkAccess");
+        }
+
+        // @TODO: make sure sessionrecord happens:
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedHsmWithDisabledPublicNetworkAccess()
+        {
+            TestRunner.RunTestScript("Test-CreateManagedHsmWithDisabledPublicNetworkAccess");
+        }
+
+        // @TODO: make sure sessionrecord happens:
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedHsmWithEnabledPublicNetworkAccess()
+        {
+            TestRunner.RunTestScript("Test-CreateManagedHsmWithEnabledPublicNetworkAccess");
         }
 
         [Fact]

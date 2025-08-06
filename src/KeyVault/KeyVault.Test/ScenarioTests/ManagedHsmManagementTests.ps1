@@ -21,6 +21,7 @@ function Test-ManagedHsmCRUD {
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $hsmName = getAssetName
     $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West Europe"
+    # @TODO: hardcode id
     $administrator = (Get-AzADUser -SignedIn).Id
     New-AzResourceGroup -Name $rgName -Location $rgLocation
 
@@ -97,48 +98,82 @@ function Test-ManagedHsmWithManagedServiceIdentity{
 
 <#
 .SYNOPSIS
-Tests creating and updating managed HSM with PublicNetworkAccess.
+Tests creating and updating managed HSM with PublicNetworkAccess. Updating tag should not change PublicNetworkAccess
 #>
-function Test-CreateAndUpdateManagedHsmWithPublicNetworkAccess{
+function Test-CreateManagedHsmDefaultPublicNetworkAccess {
     $rgName = getAssetName
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $hsmName = getAssetName
-    $hsmName2 = getAssetName
-    $hsmName3 = getAssetName
-    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "India"
-    $hsmLocation2 = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
-    $hsmLocation3 = Get-Location "Microsoft.KeyVault" "managedHSMs" "West Europe"
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
+    # @TODO: hardcode id
     $administrator = (Get-AzADUser -SignedIn).Id
     New-AzResourceGroup -Name $rgName -Location $rgLocation
     try {
-        # Test creating a default managed HSM
+        # Create default managed HSM (PublicNetworkAccess should be Enabled by default)
         $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 90
-        Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "1. The default of PublicNetworkAccess is Enabled"
-
-        # Update other property, PublicNetworkAccess should not change
-        $hsm = Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Tag @{key = "value"}
-        Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "1. PublicNetworkAccess should not change"
-
-        # Test create a managed HSM with disabled PublicNetworkAccess
-        $hsm2 = New-AzKeyVaultManagedHsm -Name $hsmName2 -ResourceGroupName $rgName -Location $hsmLocation2 -Administrator $administrator -PublicNetworkAccess Disabled -SoftDeleteRetentionInDays 90
-        Assert-AreEqual "Disabled" $hsm2.PublicNetworkAccess "2. create managed HSM with disabled PublicNetworkAccess"
+        Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "Default PublicNetworkAccess should be Enabled"
         
-        # Test updating PublicNetworkAccess as Enabled
-        $hsm2 = Update-AzKeyVaultManagedHsm -Name $hsmName2 -ResourceGroupName $rgName -PublicNetworkAccess Enabled
-        Assert-AreEqual "Enabled" $hsm2.PublicNetworkAccess "2. Set PublicNetworkAccess as Enabled"
-
-        # Test create a managed HSM with enabled PublicNetworkAccess
-        $hsm3 = New-AzKeyVaultManagedHsm -Name $hsmName3 -ResourceGroupName $rgName -Location $hsmLocation3 -Administrator $administrator -PublicNetworkAccess Enabled -SoftDeleteRetentionInDays 90
-        Assert-AreEqual "Enabled" $hsm3.PublicNetworkAccess "3. create managed HSM with enabled PublicNetworkAccess"
-
-        # Test updating PublicNetworkAccess as Disabled
-        $hsm3 = Update-AzKeyVaultManagedHsm -Name $hsmName3 -ResourceGroupName $rgName -PublicNetworkAccess Disabled
-        Assert-AreEqual "Disabled" $hsm3.PublicNetworkAccess "3. Set PublicNetworkAccess as Disabled"
-    }finally{
+        # Update tag, PublicNetworkAccess should not change
+        $hsm = Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Tag @{ key = "value" }
+        Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "PublicNetworkAccess should remain Enabled after update"
+    }
+    finally {
         Remove-AzResourceGroup -Name $rgName -Force
         Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
-        Remove-AzKeyVaultManagedHsm -Name $hsmName2 -Location $hsmLocation2 -InRemovedState -Force
-        Remove-AzKeyVaultManagedHsm -Name $hsmName3 -Location $hsmLocation3 -InRemovedState -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating and updating managed HSM with PublicNetworkAccess. Creating with disabled, then changing to enabled
+#>
+function Test-CreateManagedHsmWithDisabledPublicNetworkAccess {
+    $rgName = getAssetName
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $hsmName = getAssetName
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
+    # @TODO: hardcode id
+    $administrator = (Get-AzADUser -SignedIn).Id
+    New-AzResourceGroup -Name $rgName -Location $rgLocation
+    try {
+        # Create managed HSM with PublicNetworkAccess Disabled
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -PublicNetworkAccess Disabled -SoftDeleteRetentionInDays 90
+        Assert-AreEqual "Disabled" $hsm.PublicNetworkAccess "Create with PublicNetworkAccess Disabled"
+        
+        # Update PublicNetworkAccess to Enabled
+        $hsm = Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -PublicNetworkAccess Enabled
+        Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "Update PublicNetworkAccess to Enabled"
+    }
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+        Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating and updating managed HSM with PublicNetworkAccess. Creating with enabled, then changing to disabled
+#>
+function Test-CreateManagedHsmWithEnabledPublicNetworkAccess {
+    $rgName = getAssetName
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $hsmName = getAssetName
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West Europe"
+    # @TODO: hardcode id
+    $administrator = (Get-AzADUser -SignedIn).Id
+    New-AzResourceGroup -Name $rgName -Location $rgLocation
+    try {
+        # Create managed HSM with PublicNetworkAccess Enabled explicitly
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -PublicNetworkAccess Enabled -SoftDeleteRetentionInDays 90
+        Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "Create with PublicNetworkAccess Enabled"
+        
+        # Update PublicNetworkAccess to Disabled
+        $hsm = Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -PublicNetworkAccess Disabled
+        Assert-AreEqual "Disabled" $hsm.PublicNetworkAccess "Update PublicNetworkAccess to Disabled"
+    }
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+        Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
     }
 }
 
@@ -152,6 +187,7 @@ function Test-ManagedHsmSoftDelete{
             $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
             $hsmName = getAssetName
             $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
+            # @TODO: hardcode id
             $administrator = (Get-AzADUser -SignedIn).Id
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
@@ -183,6 +219,7 @@ function Test-ManagedHsmPurgeProtection{
             $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
             $hsmName = getAssetName
             $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
+            # @TODO: hardcode id
             $administrator = (Get-AzADUser -SignedIn).Id
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
@@ -205,6 +242,7 @@ function Test-UndoManagedHsmRemoval{
             $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
             $hsmName = getAssetName
             $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
+            # @TODO: hardcode id
             $administrator = (Get-AzADUser -SignedIn).Id
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
