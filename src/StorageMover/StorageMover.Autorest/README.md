@@ -135,12 +135,12 @@ directive:
     set:
       property-name: ErrorMessage
   # Delete the original ShouldProcess as a ShouldProcess and ShouldContinue are added in the custom cmdlets 
-  # - from: source-file-csharp
-  #   where: $
-  #   transform: $ = $.replace('ShouldProcess($\"Call remote \'StorageMoversDelete\' operation\")', 'true');
-  # - from: source-file-csharp
-  #   where: $
-  #   transform: $ = $.replace('ShouldProcess($\"Call remote \'AgentsDelete\' operation\")', 'true');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('ShouldProcess($\"Call remote \'StorageMoversDelete\' operation\")', 'true');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('ShouldProcess($\"Call remote \'AgentsDelete\' operation\")', 'true');
   # Customize add validate
   # - model-cmdlet:
   #     - model-name: UploadLimitWeeklyRecurrence
