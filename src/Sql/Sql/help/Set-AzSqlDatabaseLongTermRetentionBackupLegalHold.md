@@ -41,7 +41,7 @@ The **Set-AzSqlDatabaseLongTermRetentionBackupLegalHold** sets a legal hold on t
 
 ### Example 1: Set legal hold on a single backup
 ```powershell
-PS C:\> Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location northeurope -ServerName server01 -DatabaseName testdb -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -PassThru
+Set-AzSqlDatabaseLongTermRetentionBackupLegalHold -Location northeurope -ServerName server01 -DatabaseName testdb -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000" -PassThru
 ```
 
 ```output
