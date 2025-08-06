@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </param>
 
         /// <param name="publicNetworkAccess">If not specified, the default value is &#39;enabled&#39;.
-        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public BatchAccountUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), BatchAccountIdentity identity = default(BatchAccountIdentity), NetworkProfile networkProfile = default(NetworkProfile), AutoStorageBaseProperties autoStorage = default(AutoStorageBaseProperties), EncryptionProperties encryption = default(EncryptionProperties), System.Collections.Generic.IList<AuthenticationMode?> allowedAuthenticationModes = default(System.Collections.Generic.IList<AuthenticationMode?>), PublicNetworkAccessType? publicNetworkAccess = default(PublicNetworkAccessType?))
 
         {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         public System.Collections.Generic.IList<AuthenticationMode?> AllowedAuthenticationModes {get; set; }
 
         /// <summary>
-        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
+        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public PublicNetworkAccessType? PublicNetworkAccess {get; set; }

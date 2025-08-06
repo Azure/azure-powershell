@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         [System.Runtime.Serialization.EnumMember(Value = "SharedKey")]
         SharedKey,
         /// <summary>
-        /// The authentication mode using Microsoft Entra ID.
+        /// The authentication mode using Azure Active Directory.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "AAD")]
         AAD,

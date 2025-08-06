@@ -2111,7 +2111,7 @@ namespace Microsoft.Azure.Management.Batch
         /// network allows outbound access to these endpoints. Failure to allow access
         /// to these endpoints may cause Batch to mark the affected nodes as unusable.
         /// For more information about creating a pool inside of a virtual network, see
-        /// https://learn.microsoft.com/azure/batch/batch-virtual-network.
+        /// https://docs.microsoft.com/en-us/azure/batch/batch-virtual-network.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the Batch account.
@@ -3375,7 +3375,7 @@ namespace Microsoft.Azure.Management.Batch
         /// network allows outbound access to these endpoints. Failure to allow access
         /// to these endpoints may cause Batch to mark the affected nodes as unusable.
         /// For more information about creating a pool inside of a virtual network, see
-        /// https://learn.microsoft.com/azure/batch/batch-virtual-network.
+        /// https://docs.microsoft.com/en-us/azure/batch/batch-virtual-network.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -48,13 +48,24 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="allocationStateTransitionTime">The time at which the pool entered its current allocation state.
         /// </param>
 
-        /// <param name="vmSize">For information about available VM sizes, see Sizes for Virtual Machines in
-        /// Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview).
+        /// <param name="vmSize">For information about available sizes of virtual machines for Cloud
+        /// Services pools (pools created with cloudServiceConfiguration), see Sizes
+        /// for Cloud Services
+        /// (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+        /// Batch supports all Cloud Services VM sizes except ExtraSmall. For
+        /// information about available VM sizes for pools using images from the
+        /// Virtual Machines Marketplace (pools created with
+        /// virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
+        /// (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+        /// or Sizes for Virtual Machines (Windows)
+        /// (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
         /// Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
         /// storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
         /// </param>
 
-        /// <param name="deploymentConfiguration">Deployment configuration properties.
+        /// <param name="deploymentConfiguration">Using CloudServiceConfiguration specifies that the nodes should be creating
+        /// using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses
+        /// Azure Virtual Machines (IaaS).
         /// </param>
 
         /// <param name="currentDedicatedNodes">The number of dedicated compute nodes currently in the pool.
@@ -139,17 +150,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="currentNodeCommunicationMode">Determines how a pool communicates with the Batch service.
         /// Possible values include: &#39;Default&#39;, &#39;Classic&#39;, &#39;Simplified&#39;</param>
-
-        /// <param name="upgradePolicy">Describes an upgrade policy - automatic, manual, or rolling.
-        /// </param>
-
-        /// <param name="resourceTags">The user-defined tags to be associated with the Azure Batch Pool. When
-        /// specified, these tags are propagated to the backing Azure resources
-        /// associated with the pool. This property can only be specified when the
-        /// Batch account was created with the poolAllocationMode property set to
-        /// &#39;UserSubscription&#39;.
-        /// </param>
-        public PoolProperties(string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), AllocationState? allocationState = default(AllocationState?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), ScaleSettings scaleSettings = default(ScaleSettings), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), StartTask startTask = default(StartTask), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), System.Collections.Generic.IList<string> applicationLicenses = default(System.Collections.Generic.IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?), UpgradePolicy upgradePolicy = default(UpgradePolicy), System.Collections.Generic.IDictionary<string, string> resourceTags = default(System.Collections.Generic.IDictionary<string, string>))
+        public PoolProperties(string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), AllocationState? allocationState = default(AllocationState?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), ScaleSettings scaleSettings = default(ScaleSettings), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), StartTask startTask = default(StartTask), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), System.Collections.Generic.IList<string> applicationLicenses = default(System.Collections.Generic.IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?))
 
         {
             this.DisplayName = displayName;
@@ -179,8 +180,6 @@ namespace Microsoft.Azure.Management.Batch.Models
             this.MountConfiguration = mountConfiguration;
             this.TargetNodeCommunicationMode = targetNodeCommunicationMode;
             this.CurrentNodeCommunicationMode = currentNodeCommunicationMode;
-            this.UpgradePolicy = upgradePolicy;
-            this.ResourceTags = resourceTags;
             CustomInit();
         }
 
@@ -236,17 +235,27 @@ namespace Microsoft.Azure.Management.Batch.Models
         public System.DateTime? AllocationStateTransitionTime {get; private set; }
 
         /// <summary>
-        /// Gets or sets for information about available VM sizes, see Sizes for
-        /// Virtual Machines in Azure
-        /// (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch
-        /// supports all Azure VM sizes except STANDARD_A0 and those with premium
+        /// Gets or sets for information about available sizes of virtual machines for
+        /// Cloud Services pools (pools created with cloudServiceConfiguration), see
+        /// Sizes for Cloud Services
+        /// (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+        /// Batch supports all Cloud Services VM sizes except ExtraSmall. For
+        /// information about available VM sizes for pools using images from the
+        /// Virtual Machines Marketplace (pools created with
+        /// virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
+        /// (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+        /// or Sizes for Virtual Machines (Windows)
+        /// (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+        /// Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
         /// storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmSize")]
         public string VMSize {get; set; }
 
         /// <summary>
-        /// Gets or sets deployment configuration properties.
+        /// Gets or sets using CloudServiceConfiguration specifies that the nodes
+        /// should be creating using Azure Cloud Services (PaaS), while
+        /// VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "deploymentConfiguration")]
         public DeploymentConfiguration DeploymentConfiguration {get; set; }
@@ -388,22 +397,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "currentNodeCommunicationMode")]
         public NodeCommunicationMode? CurrentNodeCommunicationMode {get; private set; }
-
-        /// <summary>
-        /// Gets or sets describes an upgrade policy - automatic, manual, or rolling.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "upgradePolicy")]
-        public UpgradePolicy UpgradePolicy {get; set; }
-
-        /// <summary>
-        /// Gets or sets the user-defined tags to be associated with the Azure Batch
-        /// Pool. When specified, these tags are propagated to the backing Azure
-        /// resources associated with the pool. This property can only be specified
-        /// when the Batch account was created with the poolAllocationMode property set
-        /// to &#39;UserSubscription&#39;.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceTags")]
-        public System.Collections.Generic.IDictionary<string, string> ResourceTags {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -494,11 +487,6 @@ namespace Microsoft.Azure.Management.Batch.Models
                 }
             }
 
-
-            if (this.UpgradePolicy != null)
-            {
-                this.UpgradePolicy.Validate();
-            }
 
         }
     }

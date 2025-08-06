@@ -30,27 +30,10 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="ephemeralOSDiskSettings">Specifies the ephemeral Disk Settings for the operating system disk used by
         /// the virtual machine.
         /// </param>
-
-        /// <param name="caching">The type of caching to enable for the disk.
-        /// Possible values include: &#39;None&#39;, &#39;ReadOnly&#39;, &#39;ReadWrite&#39;</param>
-
-        /// <param name="managedDisk">
-        /// </param>
-
-        /// <param name="diskSizeGb">The initial disk size in GB when creating new OS disk.
-        /// </param>
-
-        /// <param name="writeAcceleratorEnabled">Specifies whether writeAccelerator should be enabled or disabled on the
-        /// disk.
-        /// </param>
-        public OSDisk(DiffDiskSettings ephemeralOSDiskSettings = default(DiffDiskSettings), CachingType? caching = default(CachingType?), ManagedDisk managedDisk = default(ManagedDisk), int? diskSizeGb = default(int?), bool? writeAcceleratorEnabled = default(bool?))
+        public OSDisk(DiffDiskSettings ephemeralOSDiskSettings = default(DiffDiskSettings))
 
         {
             this.EphemeralOSDiskSettings = ephemeralOSDiskSettings;
-            this.Caching = caching;
-            this.ManagedDisk = managedDisk;
-            this.DiskSizeGb = diskSizeGb;
-            this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
             CustomInit();
         }
 
@@ -66,30 +49,5 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ephemeralOSDiskSettings")]
         public DiffDiskSettings EphemeralOSDiskSettings {get; set; }
-
-        /// <summary>
-        /// Gets or sets the type of caching to enable for the disk. Possible values include: &#39;None&#39;, &#39;ReadOnly&#39;, &#39;ReadWrite&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "caching")]
-        public CachingType? Caching {get; set; }
-
-        /// <summary>
-        /// Gets or sets
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "managedDisk")]
-        public ManagedDisk ManagedDisk {get; set; }
-
-        /// <summary>
-        /// Gets or sets the initial disk size in GB when creating new OS disk.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; set; }
-
-        /// <summary>
-        /// Gets or sets specifies whether writeAccelerator should be enabled or
-        /// disabled on the disk.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "writeAcceleratorEnabled")]
-        public bool? WriteAcceleratorEnabled {get; set; }
     }
 }

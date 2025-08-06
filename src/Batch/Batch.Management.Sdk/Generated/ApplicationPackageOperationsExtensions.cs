@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='versionName'>
         /// The version of the application.
         /// </param>
-        public static ApplicationPackage Create(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public static ApplicationPackage Create(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName)
         {
-                return ((IApplicationPackageOperations)operations).CreateAsync(resourceGroupName, accountName, applicationName, versionName, tags).GetAwaiter().GetResult();
+                return ((IApplicationPackageOperations)operations).CreateAsync(resourceGroupName, accountName, applicationName, versionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationPackage> CreateAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationPackage> CreateAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, tags, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
