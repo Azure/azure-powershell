@@ -71,4 +71,12 @@ directive:
   - where:
       verb: Set
     remove: true
+  
+  # rename client to client certificate for New-AzServiceFabricManagedCluster
+  - where:
+      verb: New
+      subject: ManagedCluster
+      parameter-name: Client
+    set:
+      parameter-name: ClientCertificate
 ```
