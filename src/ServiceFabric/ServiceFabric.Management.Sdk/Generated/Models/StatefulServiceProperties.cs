@@ -58,8 +58,13 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="servicePackageActivationMode">The activation Mode of the service package
         /// Possible values include: &#39;SharedProcess&#39;, &#39;ExclusiveProcess&#39;</param>
 
-        /// <param name="serviceDnsName">Dns name used for the service. If this is specified, then the service can
-        /// be accessed via its DNS name instead of service name.
+        /// <param name="serviceDnsName">Dns name used for the service. If this is specified, then the DNS name can
+        /// be used to return the IP addresses of service endpoints for application
+        /// layer protocols (e.g., HTTP).
+        /// When updating serviceDnsName, old name may be temporarily resolvable.
+        /// However, rely on new name.
+        /// When removing serviceDnsName, removed name may temporarily be resolvable.
+        /// Do not rely on the name being unresolvable.
         /// </param>
 
         /// <param name="hasPersistedState">A flag indicating whether this is a persistent service which stores states

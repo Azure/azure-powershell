@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated SF to latest api preview version `2023-11-01-preview`
 * Fixed `Set-AzServiceFabricManagedClusterApplication` to correctly overwrite existing application upgrade policy when `-RecreateApplication` parameter is specified and no other upgrade policy parameters are bound.
 
 ## Version 3.6.0
