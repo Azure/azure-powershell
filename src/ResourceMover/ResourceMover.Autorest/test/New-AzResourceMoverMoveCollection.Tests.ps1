@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzResourceMoverMoveCollection' {
     It 'CreateExpanded' {	    
-          $moveCollection = New-AzResourceMoverMoveCollection -Name $env.moveCollectionName  -ResourceGroupName $env.moveCollectionMetadataRG -SubscriptionId $env.SubscriptionId -SourceRegion "eastus" -TargetRegion "centralus" -Location "eastus2euap" -IdentityType "SystemAssigned"
+          $moveCollection = New-AzResourceMoverMoveCollection -Name $env.moveCollectionName  -ResourceGroupName $env.moveCollectionMetadataRG -SubscriptionId $env.SubscriptionId -SourceRegion "eastus" -TargetRegion "centralus" -Location "eastus2euap" -EnableSystemAssignedIdentity
           $moveCollection.Name | Should -Be $env.moveCollectionName
         }
 }
