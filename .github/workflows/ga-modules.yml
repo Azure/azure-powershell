@@ -30,17 +30,25 @@ jobs:
 
         $MinimalVersionFile = "tools/VersionController/MinimalVersion.csv"
         $AzManifestPath = "tools/Az/Az.psd1"
-        
+
+        Write-Host "--------------- step 1"
         gh repo clone $repFullName -- --filter=blob:none --no-checkout
+        Write-Host "--------------- step 2"
         Set-Location $ghRepo
         git config --global user.email "yanxu1@microsoft.com"
+        Write-Host "--------------- step 3"
         git config --global user.name "Yan Xu"
+        Write-Host "--------------- step 4"
 
         git sparse-checkout init --cone
+        Write-Host "--------------- step 5"
         $checkoutFiles = @($MinimalVersionFile, $AzManifestPath)
         $Modules | Foreach-Object { $checkoutFiles += "src/$_/$_/ChangeLog.md" }
+        Write-Host "--------------- step 6"
         git sparse-checkout set @checkoutFiles
+        Write-Host "--------------- step 7"
         git checkout -b "$newBranch" origin/main
+        Write-Host "--------------- step 8"
               
         foreach ($Module in $Modules) {
           Write-Host "Update files for GA $Module"
@@ -103,9 +111,11 @@ jobs:
 
             Set-Content -Path $AzManifestPath -Value $newAzManifest
             Write-Host "  ✅ $AzManifestPath is updated for Az.$Module."
+            Write-Host "--------------- step 9-1"
           }
           else {
             Write-Host "  ℹ️ Az.$Module is already in $AzManifestPath"
+            Write-Host "--------------- step 9-2"
           }
 
           $changelogLines = Get-Content $ChangeLogPath
@@ -124,16 +134,22 @@ jobs:
 
             Set-Content -Path $ChangeLogPath -Value $newChangelogLines
             Write-Host "  ✅ $ChangeLogPath is updated"
+            Write-Host "--------------- step 9-3"
           }
           else {
             Write-Host "  ℹ️ $ChangeLogPath is already updated."
+            Write-Host "--------------- step 9-4"
           }
         }
               
         $checkoutFiles | ForEach-Object {git add $_}
         $title = "GA $(($Modules | ForEach-Object {"Az.$_"}) -join ' and ')"
         
+        Write-Host "--------------- step 10"
         git commit -m $title
+        Write-Host "--------------- step 11"
         git push -u origin $newBranch -f
+        Write-Host "--------------- step 12"
 
         gh pr create --repo $repFullName --base $baseBranch --head $newBranch --title $title --body $title
+        Write-Host "--------------- step 13"
