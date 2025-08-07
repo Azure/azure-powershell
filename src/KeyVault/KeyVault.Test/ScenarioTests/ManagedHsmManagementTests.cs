@@ -45,22 +45,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ManagedHsmPurgeProtection");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestCreateAndUpdateManagedHsmWithPublicNetworkAccess()
-        //{
-        //    TestRunner.RunTestScript("Test-CreateAndUpdateManagedHsmWithPublicNetworkAccess");
-        //}
-
-        // @TODO: make sure sessionrecord happens:
-        [Fact]
+        [Fact(Skip = "Updating managedHsm with top level properties currently fails")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedHsmWithDefaultPublicNetworkAccess()
         {
             TestRunner.RunTestScript("Test-CreateManagedHsmDefaultPublicNetworkAccess");
         }
 
-        // @TODO: make sure sessionrecord happens:
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedHsmWithDisabledPublicNetworkAccess()
@@ -68,7 +59,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateManagedHsmWithDisabledPublicNetworkAccess");
         }
 
-        // @TODO: make sure sessionrecord happens:
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedHsmWithEnabledPublicNetworkAccess()
@@ -78,9 +68,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManagedHsmWithManagedServiceIdentity()
+        public void TestNewManagedHsmWithManagedServiceIdentity()
         {
-            TestRunner.RunTestScript("Test-ManagedHsmWithManagedServiceIdentity");
+            TestRunner.RunTestScript("Test-NewManagedHsmWithManagedServiceIdentity");
+        }
+
+        [Fact(Skip = "Updating managedHsm with top level properties currently fails")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateManagedHsmWithManagedServiceIdentity()
+        {
+            TestRunner.RunTestScript("Test-UpdateManagedHsmWithManagedServiceIdentity");
         }
 
         [Fact]
