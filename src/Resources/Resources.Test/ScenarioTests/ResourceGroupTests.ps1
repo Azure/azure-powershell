@@ -531,3 +531,41 @@ function Test-ResourceGroupWithPositionalParams
         Assert-True { $Error[0].Contains("Provided resource group does not exist.") }
     }
 }
+
+<#
+.SYNOPSIS
+Tests Get-AzResourceGroup returns CreatedTime and ChangedTime properties.
+#>
+function Test-GetResourceGroupWithCreatedTimeAndChangedTime
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+
+    try
+    {
+        # Act
+        $createdResourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Wait for the resources to be ready
+        Start-Sleep -Seconds 10
+        
+        $resourceGroup = Get-AzResourceGroup -Name $rgname -ExpandProperties
+
+        # Assert
+        Assert-NotNull $resourceGroup
+        Assert-AreEqual $rgname $resourceGroup.ResourceGroupName
+        Assert-NotNull $resourceGroup.CreatedTime "CreatedTime should not be null"
+        Assert-NotNull $resourceGroup.ChangedTime "ChangedTime should not be null"
+        Write-Host "CreatedTime: $($resourceGroup.CreatedTime)"
+        Write-Host "ChangedTime: $($resourceGroup.ChangedTime)"
+        Assert-True { $resourceGroup.CreatedTime -is [DateTime] } "CreatedTime should be a DateTime object"
+        Assert-True { $resourceGroup.ChangedTime -is [DateTime] } "ChangedTime should be a DateTime object"
+        Assert-True { $resourceGroup.ChangedTime -ge $resourceGroup.CreatedTime } "ChangedTime should be greater than or equal to CreatedTime"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

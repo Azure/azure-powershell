@@ -61,17 +61,19 @@ $cvgReportCsv = Join-Path -Path $cvgResultsDir -ChildPath "Report.csv"
 ({} | Select-Object "Module", "TotalCommands", "TestedCommands", "CommandCoverage", "TotalParameterSets", "TestedParameterSets", "ParameterSetCoverage", "TotalParameters", "TestedParameters", "ParameterCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgReportCsv -Encoding utf8 -Force
 
 $allModules = Get-ChildItem -Path $debugDir -Filter "Az.*" -Directory -Name
+$testedModules = $allModules
 
 if ($CalcBaseline.IsPresent) {
-    $testedModules = $allModules
     $cvgBaselineCsv = Join-Path -Path $cvgResultsDir -ChildPath "Baseline.csv"
     ({} | Select-Object "Module", "CommandCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgBaselineCsv -Encoding utf8 -Force
 }
 else {
     $ciPlanFilePath = Join-Path -Path $artifactsDir -ChildPath "PipelineResult" | Join-Path -ChildPath "CIPlan.json"
-    $ciPlan = Get-Content -Path $ciPlanFilePath -Raw | ConvertFrom-Json
-    if ($ciPlan.test.Length -gt 0) {
-        $testedModules = $allModules | Where-Object { $_.Substring(3) -in $ciPlan.test }
+    if (Test-Path -Path $ciPlanFilePath -PathType Leaf) {
+        $ciPlan = Get-Content -Path $ciPlanFilePath -Raw | ConvertFrom-Json
+        if ($ciPlan.test.Length -gt 0) {
+            $testedModules = $allModules | Where-Object { $_.Substring(3) -in $ciPlan.test }
+        }
     }
 }
 
@@ -195,8 +197,8 @@ foreach ($moduleName in $testedModules) {
 
     if ($CalcBaseline.IsPresent) {
         $cvgBaseline = [PSCustomObject]@{
-            Module               = $simpleModuleName
-            CommandCoverage      = $cvgCommand
+            Module          = $simpleModuleName
+            CommandCoverage = $cvgCommand
         }
         $cvgBaseline | Export-Csv -Path $cvgBaselineCsv -Encoding utf8 -NoTypeInformation -Append -Force
     }
