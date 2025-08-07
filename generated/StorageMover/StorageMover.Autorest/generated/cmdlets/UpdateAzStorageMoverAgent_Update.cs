@@ -13,6 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStorageMoverAgent_Update", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ParameterSetBreakingChange(new string[] {"Update"}, "15.0.0", "2.0.0", "2025/11/03", ChangeDescription="The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"UploadLimitScheduleWeeklyRecurrence"}, NewOutputProperties=new string[] {"UploadLimitScheduleWeeklyRecurrence"}, ChangeDescription="The type of the property UploadLimitScheduleWeeklyRecurrence will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Creates or updates an Agent resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
