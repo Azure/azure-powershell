@@ -35,6 +35,8 @@ jobs:
         gh repo clone $repFullName -- --filter=blob:none --no-checkout
         Write-Host "--------------- step 2"
         Set-Location $ghRepo
+        git remote set-url origin "https://${env:GH_TOKEN}@github.com/Azure/azure-powershell.git"
+        Write-Host "--------------- step 2-1"
         git config --global user.email "yanxu1@microsoft.com"
         Write-Host "--------------- step 3"
         git config --global user.name "Yan Xu"
