@@ -669,8 +669,8 @@ Test Management cluster
 function Test-ManagementCluster{
 	try
 	{
-		$resourceGroup="yukundemo15923"
-		$clusterName="ps730testJob"
+		$resourceGroup="group-ps-test"
+		$clusterName="ps-test-cluster"
 		$httpUser="admin"
 		$httpPassword = ConvertTo-SecureString "Password1234!" -AsPlainText -Force
 		$clusterCreds = New-Object System.Management.Automation.PSCredential($httpUser, $httpPassword)
