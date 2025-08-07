@@ -27,6 +27,13 @@ namespace Commands.HDInsight.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHDInsightJobManagementCommands()
+        {
+            TestRunner.RunTestScript("Test-HDInsightJobManagementCommands");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterRelatedCommands()
         {
             TestRunner.RunTestScript("Test-ClusterRelatedCommands");
@@ -60,7 +67,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithEncryptionAtHost");
         }
 
-        [Fact(Skip = "Sikp this")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithLoadBasedAutoscale()
         {
@@ -135,6 +142,13 @@ namespace Commands.HDInsight.Test.ScenarioTests
         public void TestUpdateClusterUserAssigned()
         {
             TestRunner.RunTestScript("Test-UpdateClusterUserAssigned");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagementCluster()
+        {
+            TestRunner.RunTestScript("Test-ManagementCluster");
         }
     }
 }
