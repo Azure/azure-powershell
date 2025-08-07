@@ -7,9 +7,6 @@
             description: 'Modules to be GAed (split with ",")'
             required: true
             type: string
-    # permissions:
-    #   id-token: write
-    #   contents: read
       
     jobs:
       GA_Modules:
@@ -36,10 +33,12 @@
             $AzManifestPath = "tools/Az/Az.psd1"
 
             Write-Host "--------------- step 1"
-            gh repo clone $repFullName -- --filter=blob:none --no-checkout
+            #gh repo clone $repFullName -- --filter=blob:none --no-checkout
+			gh repo clone "https://x-access-token:${env:GH_TOKEN}@github.com/${repFullName}" -- --filter=blob:none --no-checkout
+
             Write-Host "--------------- step 2"
             Set-Location $ghRepo
-            & git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${repFullName}.git
+            #& git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${repFullName}.git
             Write-Host "--------------- step 2-1"
             git remote -v
             Write-Host "--------------- step 4"
