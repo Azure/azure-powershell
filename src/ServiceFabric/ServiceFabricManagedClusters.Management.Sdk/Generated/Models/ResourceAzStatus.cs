@@ -32,12 +32,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="isZoneResilient">VM Size name.
         /// </param>
-        public ResourceAzStatus(string resourceName = default(string), string resourceType = default(string), bool? isZoneResilient = default(bool?))
+
+        /// <param name="details">Zone resiliency status details for the resource.
+        /// </param>
+        public ResourceAzStatus(string resourceName = default(string), string resourceType = default(string), bool? isZoneResilient = default(bool?), string details = default(string))
 
         {
             this.ResourceName = resourceName;
             this.ResourceType = resourceType;
             this.IsZoneResilient = isZoneResilient;
+            this.Details = details;
             CustomInit();
         }
 
@@ -64,5 +68,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isZoneResilient")]
         public bool? IsZoneResilient {get; private set; }
+
+        /// <summary>
+        /// Gets zone resiliency status details for the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "details")]
+        public string Details {get; private set; }
     }
 }

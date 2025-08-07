@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
 schema: 2.0.0
@@ -20,7 +20,7 @@ Restart-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <St
 
 ### ByInputObjectVMwareCbt
 ```
-Restart-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
+Restart-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replicating server for which the resync needs to be initiated.
+Specifies the replcating server for which the resync needs to be initiated.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml
@@ -166,3 +166,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

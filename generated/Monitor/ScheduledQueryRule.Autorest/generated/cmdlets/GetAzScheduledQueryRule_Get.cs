@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzScheduledQueryRule_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"ActionGroup","CriterionAllOf","Scope","TargetResourceType"}, NewOutputProperties=new string[] {"ActionGroup","CriterionAllOf","Scope","TargetResourceType"}, ChangeDescription="The types of the properties ActionGroup, CriterionAllOf, Scope and TargetResourceType will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Description(@"Retrieve an scheduled query rule definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Generated]

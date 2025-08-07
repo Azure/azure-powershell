@@ -16,12 +16,12 @@ Captures a resource group as a template and saves it to a file.
 ```
 Export-AzResourceGroup -ResourceGroupName <String> [-Path <String>] [-IncludeParameterDefaultValue]
  [-IncludeComments] [-SkipResourceNameParameterization] [-SkipAllParameterization] [-Resource <String[]>]
- [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-OutputFormat <String>] [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Export-AzResourceGroup** cmdlet captures the specified resource group as a template and saves it to a JSON file.This can be useful in scenarios where you have already created some resources in your resource group, and then want to leverage the benefits of using template backed deployments.
+The **Export-AzResourceGroup** cmdlet captures the specified resource group as a template and saves it to a JSON or Bicep file.This can be useful in scenarios where you have already created some resources in your resource group, and then want to leverage the benefits of using template backed deployments.
 This cmdlet gives you an easy start by generating the template for your existing resources in the resource group.
 There might be some cases where this cmdlet fails to generate some parts of the template.
 Warning messages will inform you of the resources that failed.
@@ -52,6 +52,20 @@ Export-AzResourceGroup -ResourceGroupName "TestGroup" -SkipAllParameterization -
 ```
 
 This command captures two resources from the "TestGroup" resource group as a template, and saves it to a JSON file in the current directory. The generated template will not contain any generated parameters.
+
+### Example 4: Export a resource group as a Bicep file
+```powershell
+Export-AzResourceGroup -ResourceGroupName "TestGroup" -OutputFormat Bicep
+```
+
+This command captures the resource group named TestGroup as a template, and saves it to a Bicep file in the current directory.
+
+### Example 5: Export a resource group as a Bicep file with custom path
+```powershell
+Export-AzResourceGroup -ResourceGroupName "TestGroup" -OutputFormat Bicep -Path "C:\Templates\MyResourceGroup.bicep"
+```
+
+This command captures the resource group named TestGroup as a template, and saves it to a Bicep file at the specified path.
 
 ## PARAMETERS
 
@@ -143,6 +157,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OutputFormat
+Specifies the format of the exported template. Supported values are "Json" and "Bicep".
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: Json
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

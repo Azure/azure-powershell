@@ -82,7 +82,7 @@ directive:
         },
         "description": "A specific date-time for the profile."
       }
-
+# Add breaking change for them, will add back.
   - model-cmdlet:
     - model-name: AutoscaleProfile
     - model-name: ScaleRule

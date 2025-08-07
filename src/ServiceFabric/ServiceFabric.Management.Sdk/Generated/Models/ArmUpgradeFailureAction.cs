@@ -14,11 +14,14 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
     public static class ArmUpgradeFailureAction
     {
         /// <summary>
-        /// Indicates that a rollback of the upgrade will be performed by Service Fabric if the upgrade fails.
+        /// Indicates that a rollback of the upgrade will be performed by Service
+        /// Fabric if the upgrade fails.
         /// </summary>
         public const string Rollback = "Rollback";
         /// <summary>
-        /// Indicates that a manual repair will need to be performed by the administrator if the upgrade fails. Service Fabric will not proceed to the next upgrade domain automatically.
+        /// Indicates that a manual repair will need to be performed by the
+        /// administrator if the upgrade fails. Service Fabric will not proceed to the
+        /// next upgrade domain automatically.
         /// </summary>
         public const string Manual = "Manual";
     }
