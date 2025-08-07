@@ -991,5 +991,9 @@
   {
     "alias": "StorageDiscovery",
     "module": "StorageDiscovery"
+  },
+  {
+    "module": "FileShare",
+    "alias": "FileShare"
   }
 ]
