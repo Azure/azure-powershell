@@ -1,4 +1,4 @@
-    name: GA Modules
+    name: GA ${{ inputs.Modules }}
 
     on:
       workflow_dispatch:
