@@ -7,6 +7,10 @@ on:
         description: 'Modules to be GAed (split with ",")'
         required: true
         type: string
+      Force:
+        description: 'Force to go?'
+        required: false
+        type: boolean
 
 run-name: "GA ${{ inputs.Modules }}"      
 
@@ -21,10 +25,14 @@ jobs:
         GH_Repo: ${{ github.repository }}
       run: |
         $ErrorActionPreference = 'Stop'
-            
         $repoFullName = $env:GH_Repo
         $ghRepo = ($env:GH_Repo -split '/')[1]
         $ghToken = $env:GH_TOKEN
+        $force = "${{ inputs.Force }}".ToLower() -eq 'true'
+
+        if (-not $Modules -or $Modules.Count -eq 0) {
+          throw "❌ No 'Modules' provided. Please set the 'Modules' input."
+        }
             
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
@@ -47,7 +55,7 @@ jobs:
         git checkout -b "$newBranch" origin/main
                   
         foreach ($Module in $Modules) {
-          Write-Host "Update files for GA $Module"
+          Write-Host "Update files for $Module"
           $ChangeLogPath = "src/$Module/$Module/ChangeLog.md"
                     
           $newLine = "`"Az.$Module`",`"1.0.0`""
@@ -58,7 +66,12 @@ jobs:
             Write-Host "  ✅ $MinimalVersionFile is updated for Az.$Module"
           }
           else {
-            Write-Host "  ℹ️ Az.$Module is already in $MinimalVersionFile"
+            if($force){
+              Write-Host "  ℹ️ Az.$Module is already in $MinimalVersionFile"
+            }
+            else {
+              throw "Az.$Module is already in $MinimalVersionFile"
+            }
           }
 
           $LastVersionLine = Get-Content $ChangeLogPath | Where-Object { $_ -match '^## Version\s+(\d+\.\d+\.\d+)' } | Select-Object -First 1
@@ -109,7 +122,12 @@ jobs:
             Write-Host "  ✅ $AzManifestPath is updated for Az.$Module."
           }
           else {
-            Write-Host "  ℹ️ Az.$Module is already in $AzManifestPath"
+            if($force){
+              Write-Host "  ℹ️ Az.$Module is already in $AzManifestPath"
+            }
+            else {
+              throw "Az.$Module is already in $AzManifestPath"
+            }
           }
 
           $changelogLines = Get-Content $ChangeLogPath
@@ -130,19 +148,27 @@ jobs:
             Write-Host "  ✅ $ChangeLogPath is updated"
           }
           else {
-            Write-Host "  ℹ️ $ChangeLogPath is already updated."
+            if($force){
+              Write-Host "  ℹ️ $ChangeLogPath is already updated."
+            }
+            else {
+              throw "$ChangeLogPath is already updated."
+            }
           }
         }
                   
         $checkoutFiles | ForEach-Object {git add $_}
         $title = "GA $(($Modules | ForEach-Object {"Az.$_"}) -join ' and ')"
+        $body = "This PR is going to GA $(($Modules | ForEach-Object {"Az.$_"}) -join ' and '). "
             
         git commit -m $title
         git push -u origin $newBranch -f
 
-        gh pr create --repo $repoFullName --base $baseBranch --head $newBranch --title $title --body $title
-    - name: Write Summary
-      run: |
-        echo "## GA Modules Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**Modules GAed:** ${{ inputs.Modules }}" >> $GITHUB_STEP_SUMMARY
+        $pr = gh pr create --repo $repoFullName --base $baseBranch --head $newBranch --title $title --body $body
+        Write-Host "✅ PR is created: $pr"
+
+        $summaryFile = $env:GITHUB_STEP_SUMMARY 
+        Add-Content -Path $summaryFile -Value "Going to GA Modules:"
+        $Modules | Foreach-Object { Add-Content -Path $summaryFile -Value "- **Az.${_}**" }
+        Add-Content -Path $summaryFile -Value "PR is created:"
+        Add-Content -Path $summaryFile -Value "- $pr"
