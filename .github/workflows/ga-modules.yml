@@ -1,141 +1,146 @@
-    name: GA ${{ inputs.Modules }}
+name: GA Modules
 
-    on:
-      workflow_dispatch:
-        inputs:
-          Modules:
-            description: 'Modules to be GAed (split with ",")'
-            required: true
-            type: string
+on:
+  workflow_dispatch:
+    inputs:
+      Modules:
+        description: 'Modules to be GAed (split with ",")'
+        required: true
+        type: string
       
-    jobs:
-      GA_Modules:
-        runs-on: ubuntu-latest
-        steps:
-        - name: GA ${{ inputs.Modules }}
-          shell: pwsh
-          env:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            GH_Repo: ${{ github.repository }}
-          run: |
-            $ErrorActionPreference = 'Stop'
+jobs:
+  GA_Modules:
+    runs-on: ubuntu-latest
+    steps:
+    - name: GA ${{ inputs.Modules }}
+      shell: pwsh
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_Repo: ${{ github.repository }}
+      run: |
+        $ErrorActionPreference = 'Stop'
             
-            $repoFullName = $env:GH_Repo
-            $ghRepo = ($env:GH_Repo -split '/')[1]
-            $ghToken = $env:GH_TOKEN
+        $repoFullName = $env:GH_Repo
+        $ghRepo = ($env:GH_Repo -split '/')[1]
+        $ghToken = $env:GH_TOKEN
             
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
             
-            $Modules = "${{ inputs.Modules }}" -split ',' | ForEach-Object {$_.Trim()}
+        $Modules = "${{ inputs.Modules }}" -split ',' | ForEach-Object {$_.Trim()}
             
-            $baseBranch = "main"
-            $newBranch = 'ga/' + ($Modules -join '_')
+        $baseBranch = "main"
+        $newBranch = 'ga/' + ($Modules -join '_')
 
-            $MinimalVersionFile = "tools/VersionController/MinimalVersion.csv"
-            $AzManifestPath = "tools/Az/Az.psd1"
+        $MinimalVersionFile = "tools/VersionController/MinimalVersion.csv"
+        $AzManifestPath = "tools/Az/Az.psd1"
 
-            gh repo clone "https://x-access-token:${ghToken}@github.com/${repoFullName}" -- --filter=blob:none --no-checkout
-            Set-Location $ghRepo
-            & git remote set-url origin "https://x-access-token:${ghToken}@github.com/${repoFullName}.git"
-            git sparse-checkout init --cone
-            $checkoutFiles = @($MinimalVersionFile, $AzManifestPath)
-            $Modules | Foreach-Object { $checkoutFiles += "src/$_/$_/ChangeLog.md" }
-            git sparse-checkout set @checkoutFiles
-            git checkout -b "$newBranch" origin/main
+        gh repo clone "https://x-access-token:${ghToken}@github.com/${repoFullName}" -- --filter=blob:none --no-checkout
+        Set-Location $ghRepo
+        & git remote set-url origin "https://x-access-token:${ghToken}@github.com/${repoFullName}.git"
+        git sparse-checkout init --cone
+        $checkoutFiles = @($MinimalVersionFile, $AzManifestPath)
+        $Modules | Foreach-Object { $checkoutFiles += "src/$_/$_/ChangeLog.md" }
+        git sparse-checkout set @checkoutFiles
+        git checkout -b "$newBranch" origin/main
                   
-            foreach ($Module in $Modules) {
-              Write-Host "Update files for GA $Module"
-              $ChangeLogPath = "src/$Module/$Module/ChangeLog.md"
+        foreach ($Module in $Modules) {
+          Write-Host "Update files for GA $Module"
+          $ChangeLogPath = "src/$Module/$Module/ChangeLog.md"
                     
-              $newLine = "`"Az.$Module`",`"1.0.0`""
-              $content = Get-Content $MinimalVersionFile
-              $alreadyExists = $content | Where-Object { $_ -eq $newLine }
-              if (-not $alreadyExists) {
-                Add-Content -Path $MinimalVersionFile -Value $newLine
-                Write-Host "  ✅ $MinimalVersionFile is updated for Az.$Module"
-              }
-              else {
-                Write-Host "  ℹ️ Az.$Module is already in $MinimalVersionFile"
-              }
+          $newLine = "`"Az.$Module`",`"1.0.0`""
+          $content = Get-Content $MinimalVersionFile
+          $alreadyExists = $content | Where-Object { $_ -eq $newLine }
+          if (-not $alreadyExists) {
+            Add-Content -Path $MinimalVersionFile -Value $newLine
+            Write-Host "  ✅ $MinimalVersionFile is updated for Az.$Module"
+          }
+          else {
+            Write-Host "  ℹ️ Az.$Module is already in $MinimalVersionFile"
+          }
 
-              $LastVersionLine = Get-Content $ChangeLogPath | Where-Object { $_ -match '^## Version\s+(\d+\.\d+\.\d+)' } | Select-Object -First 1
-              if (-not $LastVersionLine) {
-                throw "Last version is not found in $ChangeLogPath ."
-              }
-              $LastVersion = [regex]::Match($LastVersionLine, '\d+\.\d+\.\d+').Value
+          $LastVersionLine = Get-Content $ChangeLogPath | Where-Object { $_ -match '^## Version\s+(\d+\.\d+\.\d+)' } | Select-Object -First 1
+          if (-not $LastVersionLine) {
+            throw "Last version is not found in $ChangeLogPath ."
+          }
+          $LastVersion = [regex]::Match($LastVersionLine, '\d+\.\d+\.\d+').Value
 
-              $AzManifest = Get-Content $AzManifestPath
-              $startIndex = ($AzManifest | Select-String -Pattern '^\s*RequiredModules\s*=\s*@\(').LineNumber
-              if (-not $startIndex) {
-                throw "RequiredModules section not found in $AzManifestPath ."
+          $AzManifest = Get-Content $AzManifestPath
+          $startIndex = ($AzManifest | Select-String -Pattern '^\s*RequiredModules\s*=\s*@\(').LineNumber
+          if (-not $startIndex) {
+            throw "RequiredModules section not found in $AzManifestPath ."
+          }
+          $newLine = "@{ModuleName = 'Az." + $Module + "'; RequiredVersion = '" + $LastVersion + "'; },"
+          $alreadyExists = $AzManifest | Where-Object { $_.Contains($newLine) }
+          if (-not $alreadyExists) {
+            $startIndex--
+            $LineModuleName = ""
+            $InsertIndex = $startIndex + 1
+            for ($i = $startIndex + 1; $i -lt $AzManifest.Count; $i++) {
+              $line = $AzManifest[$i]
+              if ($line -eq '') {
+                continue
               }
-              $newLine = "@{ModuleName = 'Az." + $Module + "'; RequiredVersion = '" + $LastVersion + "'; },"
-              $alreadyExists = $AzManifest | Where-Object { $_.Contains($newLine) }
-              if (-not $alreadyExists) {
-                $startIndex--
-                $LineModuleName = ""
-                $InsertIndex = $startIndex + 1
-                for ($i = $startIndex + 1; $i -lt $AzManifest.Count; $i++) {
-                  $line = $AzManifest[$i]
-                  if ($line -eq '') {
-                    continue
-                  }
-                  if (($line -match "^\s*@{ModuleName\s*=")) {
-                    if ($line -match "ModuleName\s*=\s*'Az\.([^']+)'") {
-                      $LastModuleName = $LineModuleName
-                      $LineModuleName = $Matches[1]
-                      $SpaceCount = $line.IndexOf('@{ModuleName')
-                      if (($LastModuleName -lt $Module) -and ($Module -lt $LineModuleName)) {
-                        $InsertIndex = $i
-                        break
-                      }
-                    }
-                  }
-                  else {
+              if (($line -match "^\s*@{ModuleName\s*=")) {
+                if ($line -match "ModuleName\s*=\s*'Az\.([^']+)'") {
+                  $LastModuleName = $LineModuleName
+                  $LineModuleName = $Matches[1]
+                  $SpaceCount = $line.IndexOf('@{ModuleName')
+                  if (($LastModuleName -lt $Module) -and ($Module -lt $LineModuleName)) {
+                    $InsertIndex = $i
                     break
                   }
                 }
-
-                $newLine = ''.PadLeft($SpaceCount) + $newLine
-                $newAzManifest = @()
-                $newAzManifest += $AzManifest[0..($InsertIndex - 1)]
-                $newAzManifest += $newLine
-                $newAzManifest += $AzManifest[$InsertIndex..($AzManifest.Count - 1)]
-
-                Set-Content -Path $AzManifestPath -Value $newAzManifest
-                Write-Host "  ✅ $AzManifestPath is updated for Az.$Module."
               }
               else {
-                Write-Host "  ℹ️ Az.$Module is already in $AzManifestPath"
-              }
-
-              $changelogLines = Get-Content $ChangeLogPath
-              $upcomingReleaseLine = $changelogLines | Where-Object { $_ -like "##*Upcoming Release*" }
-              $upcomingReleaseLineIndex = $changelogLines.IndexOf($upcomingReleaseLine)
-              if ($upcomingReleaseLineIndex -lt 0) {
-                throw "'## Upcoming Release' section not found in $ChangeLogPath"
-              }
-              $newLine = "* General availability for module Az.$Module"
-              $alreadyExists = $changelogLines | Where-Object { $_ -eq $newLine }
-              if (-not $alreadyExists) {
-                $newChangelogLines = @()
-                $newChangelogLines += $changelogLines[0..$upcomingReleaseLineIndex]
-                $newChangelogLines += $newLine
-                $newChangelogLines += $changelogLines[($upcomingReleaseLineIndex + 1)..($changelogLines.Count - 1)]
-
-                Set-Content -Path $ChangeLogPath -Value $newChangelogLines
-                Write-Host "  ✅ $ChangeLogPath is updated"
-              }
-              else {
-                Write-Host "  ℹ️ $ChangeLogPath is already updated."
+                break
               }
             }
-                  
-            $checkoutFiles | ForEach-Object {git add $_}
-            $title = "GA $(($Modules | ForEach-Object {"Az.$_"}) -join ' and ')"
-            
-            git commit -m $title
-            git push -u origin $newBranch -f
 
-            gh pr create --repo $repoFullName --base $baseBranch --head $newBranch --title $title --body $title
+            $newLine = ''.PadLeft($SpaceCount) + $newLine
+            $newAzManifest = @()
+            $newAzManifest += $AzManifest[0..($InsertIndex - 1)]
+            $newAzManifest += $newLine
+            $newAzManifest += $AzManifest[$InsertIndex..($AzManifest.Count - 1)]
+            
+            Set-Content -Path $AzManifestPath -Value $newAzManifest
+            Write-Host "  ✅ $AzManifestPath is updated for Az.$Module."
+          }
+          else {
+            Write-Host "  ℹ️ Az.$Module is already in $AzManifestPath"
+          }
+
+          $changelogLines = Get-Content $ChangeLogPath
+          $upcomingReleaseLine = $changelogLines | Where-Object { $_ -like "##*Upcoming Release*" }
+          $upcomingReleaseLineIndex = $changelogLines.IndexOf($upcomingReleaseLine)
+          if ($upcomingReleaseLineIndex -lt 0) {
+            throw "'## Upcoming Release' section not found in $ChangeLogPath"
+          }
+          $newLine = "* General availability for module Az.$Module"
+          $alreadyExists = $changelogLines | Where-Object { $_ -eq $newLine }
+          if (-not $alreadyExists) {
+            $newChangelogLines = @()
+            $newChangelogLines += $changelogLines[0..$upcomingReleaseLineIndex]
+            $newChangelogLines += $newLine
+            $newChangelogLines += $changelogLines[($upcomingReleaseLineIndex + 1)..($changelogLines.Count - 1)]
+
+            Set-Content -Path $ChangeLogPath -Value $newChangelogLines
+            Write-Host "  ✅ $ChangeLogPath is updated"
+          }
+          else {
+            Write-Host "  ℹ️ $ChangeLogPath is already updated."
+          }
+        }
+                  
+        $checkoutFiles | ForEach-Object {git add $_}
+        $title = "GA $(($Modules | ForEach-Object {"Az.$_"}) -join ' and ')"
+            
+        git commit -m $title
+        git push -u origin $newBranch -f
+
+        gh pr create --repo $repoFullName --base $baseBranch --head $newBranch --title $title --body $title
+    - name: Write Summary
+      run: |
+        echo "## GA Modules Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Modules GAed:** ${{ inputs.Modules }}" >> $GITHUB_STEP_SUMMARY
