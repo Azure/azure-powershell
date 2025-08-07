@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+external help file: Az.Batch-help.xml
 Module Name: Az.Batch
-ms.assetid: 818D5D85-B6D5-458C-A26E-E4DE8E111A10
 online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchaccount
 schema: 2.0.0
 ---
@@ -9,94 +8,86 @@ schema: 2.0.0
 # Get-AzBatchAccount
 
 ## SYNOPSIS
-Gets a Batch account in the current subscription.
+Gets information about the specified Batch account.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzBatchAccount [[-AccountName] <String>] [[-ResourceGroupName] <String>] [[-Tag] <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBatchAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzBatchAccount -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzBatchAccount -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzBatchAccount -InputObject <IBatchIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzBatchAccount** cmdlet gets an Azure Batch account in the current subscription. You
-can use the *AccountName* parameter to get a single account, or you can use the *ResourceGroupName*
-parameter to get accounts under that resource group.
+Gets information about the specified Batch account.
 
 ## EXAMPLES
 
-### Example 1: Get a batch account by name
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzBatchAccount -AccountName "pfuller"
+{{ Add code here }}
 ```
 
 ```output
-AccountName                  : pfuller
-Location                     : westus
-ResourceGroupName            : CmdletExampleRG
-DedicatedCoreQuota           : 20
-LowPriorityCoreQuota         : 20
-PoolQuota                    : 20
-ActiveJobAndJobScheduleQuota : 20
-Tags                         :
-TaskTenantUrl                : https://pfuller.westus.batch.azure.com
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command gets the batch account named pfuller.
+{{ Add description here }}
 
-### Example 2: Get the batch accounts associated with a resource group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzBatchAccount -ResourceGroupName "CmdletExampleRG"
+{{ Add code here }}
 ```
 
 ```output
-AccountName                  : cmdletexample
-Location                     : westus
-ResourceGroupName            : CmdletExampleRG
-DedicatedCoreQuota           : 20
-LowPriorityCoreQuota         : 20
-PoolQuota                    : 20
-ActiveJobAndJobScheduleQuota : 20
-Tags                         :
-TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
-AccountName                  : cmdletexample2
-Location                     : westus
-ResourceGroupName            : CmdletExampleRG
-DedicatedCoreQuota           : 20
-LowPriorityCoreQuota         : 20
-PoolQuota                    : 20
-ActiveJobAndJobScheduleQuota : 20
-Tags                         :
-TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command gets the batch accounts associated with the CmdletExampleRG resource group.
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -AccountName
-Specifies the name of an account.
-If you specify an account name, this cmdlet only returns that account.
+The name of the Batch account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: Name
+Parameter Sets: Get
+Aliases:
 
-Required: False
-Position: 0
+Required: True
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -105,36 +96,50 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of a resource group.
-If you specify a resource group, this cmdlet gets the accounts under the specified resource group.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
-Required: False
-Position: 1
+Required: True
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Tag
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
-This cmdlet gets accounts that contain the tags that this parameter specifies.
+### -ResourceGroupName
+The name of the resource group that contains the Batch account.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Azure subscription ID.
+This is a GUID-formatted string (e.g.
+00000000-0000-0000-0000-000000000000)
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,22 +148,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Collections.Hashtable
+### Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Batch.BatchAccountContext
+### Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchAccount
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzBatchAccount](./New-AzBatchAccount.md)
-
-[Remove-AzBatchAccount](./Remove-AzBatchAccount.md)
-
-[Set-AzBatchAccount](./Set-AzBatchAccount.md)
-
-[Azure Batch Cmdlets](/powershell/module/Az.Batch/)

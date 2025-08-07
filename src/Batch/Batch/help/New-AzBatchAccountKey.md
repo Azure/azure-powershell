@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
+external help file: Az.Batch-help.xml
 Module Name: Az.Batch
-ms.assetid: 486748AC-3932-4E0C-BBCC-2BC194E69DCC
 online version: https://learn.microsoft.com/powershell/module/az.batch/new-azbatchaccountkey
 schema: 2.0.0
 ---
@@ -9,64 +8,106 @@ schema: 2.0.0
 # New-AzBatchAccountKey
 
 ## SYNOPSIS
-Regenerates a key of a Batch account.
+This operation applies only to Batch accounts with allowedAuthenticationModes containing 'SharedKey'.
+If the Batch account doesn't contain 'SharedKey' in its allowedAuthenticationMode, clients cannot use shared keys to authenticate, and must use another allowedAuthenticationModes instead.
+In this case, regenerating the keys will fail.
 
 ## SYNTAX
 
+### RegenerateExpanded (Default)
 ```
-New-AzBatchAccountKey [-AccountName] <String> [-ResourceGroupName <String>] -KeyType <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzBatchAccountKey -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -KeyName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonString
+```
+New-AzBatchAccountKey -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzBatchAccountKey -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Regenerate
+```
+New-AzBatchAccountKey -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Parameter <IBatchAccountRegenerateKeyParameters> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaIdentityExpanded
+```
+New-AzBatchAccountKey -InputObject <IBatchIdentity> -KeyName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaIdentity
+```
+New-AzBatchAccountKey -InputObject <IBatchIdentity> -Parameter <IBatchAccountRegenerateKeyParameters>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzBatchAccountKey** cmdlet regenerates the primary or secondary key of an Azure Batch account.
-The cmdlet returns a **BatchAccountContext** object that has its current **PrimaryAccountKey** and **SecondaryAccountKey** properties.
+This operation applies only to Batch accounts with allowedAuthenticationModes containing 'SharedKey'.
+If the Batch account doesn't contain 'SharedKey' in its allowedAuthenticationMode, clients cannot use shared keys to authenticate, and must use another allowedAuthenticationModes instead.
+In this case, regenerating the keys will fail.
 
 ## EXAMPLES
 
-### Example 1: Regenerate the primary account key on a Batch account
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
+{{ Add code here }}
 ```
 
 ```output
-AccountName                  : pfuller
-Location                     : westus
-ResourceGroupName            : CmdletExampleRG
-DedicatedCoreQuota           : 20
-LowPriorityCoreQuota         : 20
-PoolQuota                    : 20
-ActiveJobAndJobScheduleQuota : 20
-Tags                         :
-TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command regenerates the primary account key on the Batch account named pfuller.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -AccountName
-Specifies the name of the Batch account for which this cmdlet regenerates a key.
+The name of the Batch account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: Name
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath, Regenerate
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -75,17 +116,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyType
-Specifies the type of key that this cmdlet regenerates.
-Valid values are:
-- Primary
-- Secondary
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchIdentity
+Parameter Sets: RegenerateViaIdentityExpanded, RegenerateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateViaJsonFilePath
 Aliases:
-Accepted values: Primary, Secondary
 
 Required: True
 Position: Named
@@ -94,18 +146,111 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the resource group of the account for which this cmdlet regenerates a key.
+### -JsonString
+Json string supplied to the Regenerate operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyName
+The type of account key to regenerate.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+Parameters supplied to the RegenerateKey operation.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchAccountRegenerateKeyParameters
+Parameter Sets: Regenerate, RegenerateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group that contains the Batch account.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath, Regenerate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The Azure subscription ID.
+This is a GUID-formatted string (e.g.
+00000000-0000-0000-0000-000000000000)
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath, Regenerate
 Aliases:
 
 Required: False
 Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -114,16 +259,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchAccountRegenerateKeyParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Batch.BatchAccountContext
+### Microsoft.Azure.PowerShell.Cmdlets.Batch.Models.IBatchAccountKeys
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
-
-[Azure Batch Cmdlets](/powershell/module/Az.Batch/)
