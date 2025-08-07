@@ -34,7 +34,7 @@
 
             Write-Host "--------------- step 1"
             #gh repo clone $repFullName -- --filter=blob:none --no-checkout
-			gh repo clone "https://x-access-token:${env:GH_TOKEN}@github.com/${repFullName}" -- --filter=blob:none --no-checkout
+            gh repo clone "https://x-access-token:${env:GH_TOKEN}@github.com/${repFullName}" -- --filter=blob:none --no-checkout
 
             Write-Host "--------------- step 2"
             Set-Location $ghRepo
