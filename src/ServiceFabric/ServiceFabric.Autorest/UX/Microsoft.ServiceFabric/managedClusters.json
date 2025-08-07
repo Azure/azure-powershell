@@ -1,0 +1,199 @@
+{
+  "resourceType": "managedClusters",
+  "apiVersion": "2025-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.servicefabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzServiceFabricManagedAzResiliencyStatus",
+      "description": "Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/getazresiliencystatus",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedazresiliencystatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzServiceFabricManagedCluster",
+      "description": "Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedcluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzServiceFabricManagedMaintenanceWindowStatus",
+      "description": "Action to get Maintenance Window Status of the Service Fabric Managed Clusters.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/getMaintenanceWindowStatus",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedmaintenancewindowstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Action to get Maintenance Window Status of the Service Fabric Managed Clusters.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzServiceFabricManagedApplyMaintenanceWindow",
+      "description": "Action to Apply Maintenance window on the Service Fabric Managed Clusters, right now.\nAny pending post will be applied.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applyMaintenanceWindow",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/invoke-azservicefabricmanagedapplymaintenancewindow"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Action to Apply Maintenance window on the Service Fabric Managed Clusters, right now. Any pending post will be applied.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzServiceFabricManagedCluster",
+      "description": "Delete a Service Fabric managed cluster resource with the specified name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagedcluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Service Fabric managed cluster resource with the specified name.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

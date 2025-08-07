@@ -1,0 +1,95 @@
+{
+  "resourceType": "managedClusters/nodeTypes",
+  "apiVersion": "2025-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.servicefabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzServiceFabricManagedNodeType",
+      "description": "Get a Service Fabric node type of a given managed cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagednodetype"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Service Fabric node type of a given managed cluster.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.nodeTypeName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzServiceFabricManagedNodeType",
+      "description": "Delete a Service Fabric node type of a given managed cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagednodetype"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Service Fabric node type of a given managed cluster.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.nodeTypeName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

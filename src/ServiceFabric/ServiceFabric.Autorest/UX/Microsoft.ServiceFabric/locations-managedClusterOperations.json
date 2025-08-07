@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/managedClusterOperations",
+  "apiVersion": "2025-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.servicefabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzServiceFabricOperationStatus",
+      "description": "Get long running operation status.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedClusterOperations/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricoperationstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "-OperationId <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get long running operation status.",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

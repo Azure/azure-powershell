@@ -1,0 +1,95 @@
+{
+  "resourceType": "managedClusters/applicationTypes",
+  "apiVersion": "2025-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.servicefabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzServiceFabricManagedClusterApplicationType",
+      "description": "Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterapplicationtype"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.applicationTypeName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzServiceFabricManagedClusterApplicationType",
+      "description": "Delete a Service Fabric managed application type name resource with the specified name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagedclusterapplicationtype"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Service Fabric managed application type name resource with the specified name.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.applicationTypeName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

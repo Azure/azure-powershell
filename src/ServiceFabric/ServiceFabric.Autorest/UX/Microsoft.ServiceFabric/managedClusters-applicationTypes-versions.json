@@ -1,0 +1,105 @@
+{
+  "resourceType": "managedClusters/applicationTypes/versions",
+  "apiVersion": "2025-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.servicefabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzServiceFabricManagedClusterApplicationTypeVersion",
+      "description": "Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterapplicationtypeversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationTypeName <String>",
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.",
+          "parameters": [
+            {
+              "name": "-ApplicationTypeName",
+              "value": "[Path.applicationTypeName]"
+            },
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzServiceFabricManagedClusterApplicationTypeVersion",
+      "description": "Delete a Service Fabric managed application type version resource with the specified name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applicationTypes/{applicationTypeName}/versions/{version}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagedclusterapplicationtypeversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationTypeName <String>",
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Service Fabric managed application type version resource with the specified name.",
+          "parameters": [
+            {
+              "name": "-ApplicationTypeName",
+              "value": "[Path.applicationTypeName]"
+            },
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

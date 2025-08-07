@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/managedUnsupportedVMSizes",
+  "apiVersion": "2025-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.servicefabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzServiceFabricManagedUnsupportedVMSize",
+      "description": "Get unsupported vm size for Service Fabric Managed Clusters.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceFabric/locations/{location}/managedUnsupportedVMSizes/{vmSize}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedunsupportedvmsize"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VMSize <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get unsupported vm size for Service Fabric Managed Clusters.",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VMSize",
+              "value": "[Path.vmSize]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

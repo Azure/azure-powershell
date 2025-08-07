@@ -1,0 +1,181 @@
+{
+  "resourceType": "managedClusters/applications",
+  "apiVersion": "2025-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.servicefabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzServiceFabricManagedClusterApplication",
+      "description": "Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterapplication"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.applicationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Read-AzServiceFabricManagedClusterApplicationUpgrade",
+      "description": "Get the status of the latest application upgrade.\nIt will query the cluster to find the status of the latest application upgrade.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/fetchUpgradeStatus",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/read-azservicefabricmanagedclusterapplicationupgrade"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationName <String>",
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the status of the latest application upgrade. It will query the cluster to find the status of the latest application upgrade.",
+          "parameters": [
+            {
+              "name": "-ApplicationName",
+              "value": "[Path.applicationName]"
+            },
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzServiceFabricManagedClusterApplication",
+      "description": "Delete a Service Fabric managed application resource with the specified name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagedclusterapplication"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Service Fabric managed application resource with the specified name.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.applicationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzServiceFabricManagedClusterApplicationRollback",
+      "description": "Send a request to start a rollback of the current application upgrade.\nThis will start rolling back the application to the previous version.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/startRollback",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicefabric/start-azservicefabricmanagedclusterapplicationrollback"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationName <String>",
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Send a request to start a rollback of the current application upgrade. This will start rolling back the application to the previous version.",
+          "parameters": [
+            {
+              "name": "-ApplicationName",
+              "value": "[Path.applicationName]"
+            },
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

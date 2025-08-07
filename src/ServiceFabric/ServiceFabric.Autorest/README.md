@@ -79,4 +79,40 @@ directive:
       parameter-name: Client
     set:
       parameter-name: ClientCertificate
+
+  # rename cmdlet with Cluster subject to ManagedCluster
+  - where:
+      subject: (^Cluster$)
+    set:
+      subject: ManagedCluster
+
+  # rename cmdlet with NodeType subject to ManagedNodeType
+  - where:
+      subject: (NodeType$)|(^NodeType)
+    set:
+      subject: ManagedNodeType
+
+  # rename cmdlet with ApplicationType subject to ManagedApplicationType
+  - where:
+      subject: (^ApplicationType$)
+    set:
+      subject: ManagedClusterApplicationType
+
+  # rename cmdlet with ApplicationTypeVersion subject to ManagedApplicationTypeVersion
+  - where:
+      subject: (^ApplicationTypeVersion$)
+    set:
+      subject: ManagedClusterApplicationTypeVersion
+
+  # rename cmdlet with Application subject to ManagedApplication
+  - where:
+      subject: (Application$)|(^Application)
+    set:
+      subject: ManagedClusterApplication
+
+  # rename cmdlet with Service subject to ManagedService
+  - where:
+      subject: (^Service$)
+    set:
+      subject: ManagedClusterService
 ```
