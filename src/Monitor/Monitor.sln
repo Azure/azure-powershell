@@ -50,6 +50,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autoscale.Autorest", "Autoscale.Autorest", "{0832AC06-44A1-FEDA-3879-082134F4AAB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "..\..\generated\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{7AD2DC17-D116-4480-A74F-EB823CB6F7B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metricdata.Autorest", "Metricdata.Autorest", "{97973F8C-3EE1-368A-3B71-C62280C2DC8C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metricdata", "..\..\generated\Monitor\Metricdata.Autorest\Az.Metricdata.csproj", "{ABBBEF38-2D27-4BBA-B980-BEEBDC2843F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ActivityLogAlert.Autorest", "ActivityLogAlert.Autorest", "{F5B68159-9278-7C75-41B6-315547561DBE}"
