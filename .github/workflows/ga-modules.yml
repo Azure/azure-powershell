@@ -12,10 +12,10 @@
     #   contents: read
       
     jobs:
-      test1:
+      GA_Modules:
         runs-on: ubuntu-latest
         steps:
-        - name: print inputs and env
+        - name: GA ${{ inputs.Modules }}
           shell: pwsh
           env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,6 +37,8 @@
             Set-Location $ghRepo
             & git remote set-url origin "https://${env:GH_TOKEN}@github.com/${repFullName}.git"
             Write-Host "--------------- step 2-1"
+            git remote -v
+            Write-Host "--------------- step 2-2"
             git config --global user.email "yanxu1@microsoft.com"
             Write-Host "--------------- step 3"
             git config --global user.name "Yan Xu"
