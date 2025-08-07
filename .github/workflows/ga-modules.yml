@@ -170,7 +170,8 @@ jobs:
         Write-Host "✅ PR is created: $pr"
 
         $summaryFile = $env:GITHUB_STEP_SUMMARY 
-        Add-Content -Path $summaryFile -Value "Going to GA Modules:"
+        Add-Content -Path $summaryFile -Value "## Going to GA Modules:"
         $Modules | Foreach-Object { Add-Content -Path $summaryFile -Value "- **Az.${_}**" }
-        Add-Content -Path $summaryFile -Value "PR is created:"
+        Add-Content -Path $summaryFile -Value "    "
+        Add-Content -Path $summaryFile -Value "## PR is created:"
         Add-Content -Path $summaryFile -Value "- $pr"
