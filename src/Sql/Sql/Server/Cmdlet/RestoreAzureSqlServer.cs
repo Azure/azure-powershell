@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzSqlServer cmdlet
+    /// Defines the Restore-AzSqlServer cmdlet
     /// </summary>
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
     public class RestoreAzureSqlServer : AzureSqlServerCmdletBase
@@ -38,13 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
-
-        /// <summary>
-        /// Soft-delete retention days for the server
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the create mode for the server, valid values for this parameter are \"Normal\" and \"Restore\".")]
-        public string CreateMode { get; set; } = "Restore";
 
         /// <summary>
         /// The location in which to create the server
@@ -69,31 +62,59 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         }
 
         /// <summary>
-        /// Check to see if the server already exists in this resource group.
+        /// Check to see if the server already exists as a live server or if there's a deleted server to restore.
         /// </summary>
-        /// <returns>Null if the server doesn't exist.  Otherwise throws exception</returns>
+        /// <returns>Null if ready to restore. Otherwise throws exception</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> GetEntity()
         {
+            // First check if a live server already exists
             try
             {
                 ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName);
+                
+                // If we get here, a live server exists - cannot restore
+                throw new PSArgumentException(
+                    string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNameExists, this.ServerName),
+                    "ServerName");
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    // Unexpected exception encountered
+                    throw;
+                }
+                // Continue - no live server exists, which is what we want
+            }
+
+            // Now check if there's a deleted server to restore
+            try
+            {
+                var deletedServer = ModelAdapter.GetDeletedServer(this.ResourceGroupName, this.ServerName);
+                if (deletedServer == null)
+                {
+                    throw new PSArgumentException(
+                        string.Format("No deleted server named '{0}' found in resource group '{1}' that can be restored.", 
+                        this.ServerName, this.ResourceGroupName),
+                        "ServerName");
+                }
+                
+                // Deleted server exists and can be restored
+                return null;
             }
             catch (CloudException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want.  We looked and there is no server with this name.
-                    return null;
+                    throw new PSArgumentException(
+                        string.Format("No deleted server named '{0}' found in resource group '{1}' that can be restored.", 
+                        this.ServerName, this.ResourceGroupName),
+                        "ServerName");
                 }
-
+                
                 // Unexpected exception encountered
                 throw;
             }
-
-            // The server already exists
-            throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNameExists, this.ServerName),
-                "ServerName");
         }
 
         /// <summary>
@@ -114,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Location = this.Location,
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
-                CreateMode = this.CreateMode
+                CreateMode = "Restore"
             });
             return newEntity;
         }

@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Gets the deleted Azure Sql Database Server
         /// </summary>
-        public Management.Sql.Models.Server GetDeleted(string resourceGroupName, string serverName, string subscriptionId = null)
+        public Management.Sql.Models.DeletedServers GetDeleted(string resourceGroupName, string serverName, string subscriptionId = null)
         {
             return GetCurrentSqlClient(subscriptionId).DeletedServers.Get(resourceGroupName, serverName);
         }
