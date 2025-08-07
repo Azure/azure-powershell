@@ -241,7 +241,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $params.clusterName
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
 		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
