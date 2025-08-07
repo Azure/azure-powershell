@@ -1,77 +1,77 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/restart-azservicefabricmanagednodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagednodetypenode
 schema: 2.0.0
 ---
 
-# Restart-AzServiceFabricManagedNodeType
+# Remove-AzServiceFabricManagedNodeTypeNode
 
 ## SYNOPSIS
-Restarts one or more nodes on the node type.
-It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+Deletes one or more nodes on the node type.
+It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
 
 ## SYNTAX
 
-### RestartExpanded (Default)
+### DeleteExpanded (Default)
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
- [-SubscriptionId <String>] [-Force] [-Node <String[]>] [-UpdateType <String>] [-DefaultProfile <PSObject>]
+Remove-AzServiceFabricManagedNodeTypeNode -ClusterName <String> -NodeTypeName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Force] [-Node <String[]>] [-UpdateType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaJsonString
+```
+Remove-AzServiceFabricManagedNodeTypeNode -ClusterName <String> -NodeTypeName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaJsonString
+### DeleteViaJsonFilePath
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestartViaJsonFilePath
-```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceFabricManagedNodeTypeNode -ClusterName <String> -NodeTypeName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Restart
+### Delete
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
- [-SubscriptionId <String>] -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestartViaIdentityManagedClusterExpanded
-```
-Restart-AzServiceFabricManagedNodeType [-Name] <String> -ManagedClusterInputObject <IServiceFabricIdentity>
- [-Force] [-Node <String[]>] [-UpdateType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceFabricManagedNodeTypeNode -ClusterName <String> -NodeTypeName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Parameter <INodeTypeActionParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaIdentityManagedCluster
+### DeleteViaIdentityManagedClusterExpanded
 ```
-Restart-AzServiceFabricManagedNodeType [-Name] <String> -ManagedClusterInputObject <IServiceFabricIdentity>
- -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzServiceFabricManagedNodeTypeNode -NodeTypeName <String>
+ -ManagedClusterInputObject <IServiceFabricIdentity> [-Force] [-Node <String[]>] [-UpdateType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaIdentityExpanded
+### DeleteViaIdentityManagedCluster
 ```
-Restart-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity> [-Force] [-Node <String[]>]
+Remove-AzServiceFabricManagedNodeTypeNode -NodeTypeName <String>
+ -ManagedClusterInputObject <IServiceFabricIdentity> -Parameter <INodeTypeActionParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityExpanded
+```
+Remove-AzServiceFabricManagedNodeTypeNode -InputObject <IServiceFabricIdentity> [-Force] [-Node <String[]>]
  [-UpdateType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### RestartViaIdentity
+### DeleteViaIdentity
 ```
-Restart-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity>
+Remove-AzServiceFabricManagedNodeTypeNode -InputObject <IServiceFabricIdentity>
  -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restarts one or more nodes on the node type.
-It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+Deletes one or more nodes on the node type.
+It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
 
 ## EXAMPLES
 
@@ -119,11 +119,11 @@ The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -150,7 +150,7 @@ Force the action to go through.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: DeleteExpanded, DeleteViaIdentityManagedClusterExpanded, DeleteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -165,7 +165,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: RestartViaIdentityExpanded, RestartViaIdentity
+Parameter Sets: DeleteViaIdentityExpanded, DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -176,11 +176,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Restart operation
+Path of Json file supplied to the Delete operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartViaJsonFilePath
+Parameter Sets: DeleteViaJsonFilePath
 Aliases:
 
 Required: True
@@ -191,11 +191,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Restart operation
+Json string supplied to the Delete operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartViaJsonString
+Parameter Sets: DeleteViaJsonString
 Aliases:
 
 Required: True
@@ -210,7 +210,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: RestartViaIdentityManagedClusterExpanded, RestartViaIdentityManagedCluster
+Parameter Sets: DeleteViaIdentityManagedClusterExpanded, DeleteViaIdentityManagedCluster
 Aliases:
 
 Required: True
@@ -220,30 +220,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the node type.
-
-```yaml
-Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityManagedCluster
-Aliases: NodeTypeName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Node
 List of node names from the node type.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: DeleteExpanded, DeleteViaIdentityManagedClusterExpanded, DeleteViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeTypeName
+The name of the node type.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete, DeleteViaIdentityManagedClusterExpanded, DeleteViaIdentityManagedCluster
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -271,7 +271,7 @@ If nodes are not specified on the parameters, the operation will be performed in
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.INodeTypeActionParameters
-Parameter Sets: Restart, RestartViaIdentityManagedCluster, RestartViaIdentity
+Parameter Sets: Delete, DeleteViaIdentityManagedCluster, DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -302,11 +302,11 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -317,7 +317,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: False
@@ -332,7 +332,7 @@ Specifies the way the operation will be performed.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: DeleteExpanded, DeleteViaIdentityManagedClusterExpanded, DeleteViaIdentityExpanded
 Aliases:
 
 Required: False

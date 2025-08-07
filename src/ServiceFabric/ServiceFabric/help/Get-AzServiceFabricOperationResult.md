@@ -1,43 +1,37 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterapplicationtype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricoperationresult
 schema: 2.0.0
 ---
 
-# Get-AzServiceFabricManagedClusterApplicationType
+# Get-AzServiceFabricOperationResult
 
 ## SYNOPSIS
-Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
+Get long running operation result.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzServiceFabricManagedClusterApplicationType [-ClusterName] <String> [-ResourceGroupName] <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzServiceFabricManagedClusterApplicationType [-ClusterName] <String> [-Name] <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceFabricOperationResult -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
-### GetViaIdentityManagedCluster
+### GetViaIdentityLocation
 ```
-Get-AzServiceFabricManagedClusterApplicationType [-Name] <String>
- -ManagedClusterInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceFabricOperationResult -OperationId <String> -LocationInputObject <IServiceFabricIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzServiceFabricManagedClusterApplicationType -InputObject <IServiceFabricIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceFabricOperationResult -InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
+Get long running operation result.
 
 ## EXAMPLES
 
@@ -64,21 +58,6 @@ Get a Service Fabric application type name resource created or in the process of
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ClusterName
-The name of the cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: List, Get
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -111,12 +90,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedClusterInputObject
+### -Location
+The name of Azure region.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocationInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: GetViaIdentityManagedCluster
+Parameter Sets: GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -126,32 +120,31 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the application type name resource.
+### -OperationId
+operation identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityManagedCluster
-Aliases: ApplicationTypeName
+Parameter Sets: Get, GetViaIdentityLocation
+Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: List, Get
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -162,7 +155,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -181,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IApplicationTypeResource
+### System.Boolean
 
 ## NOTES
 

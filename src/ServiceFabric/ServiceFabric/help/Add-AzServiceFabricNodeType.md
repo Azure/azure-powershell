@@ -17,8 +17,7 @@ Add-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -Capa
  -VmUserName <String> -VmPassword <SecureString> [-VmSku <String>] [-Tier <String>]
  [-DurabilityLevel <DurabilityLevel>] [-IsPrimaryNodeType <Boolean>] [-VMImagePublisher <String>]
  [-VMImageOffer <String>] [-VMImageSku <String>] [-VMImageVersion <String>] [-Location <String>]
- -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,47 +1,59 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagedclusterapplicationtype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricmanagedclusterservice
 schema: 2.0.0
 ---
 
-# New-AzServiceFabricManagedClusterApplicationType
+# Update-AzServiceFabricManagedClusterService
 
 ## SYNOPSIS
-Create a Service Fabric managed application type name resource with the specified name.
+Update the tags of a service resource of a given managed cluster.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzServiceFabricManagedClusterApplicationType [-Name] <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String>] [-Location <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzServiceFabricManagedClusterApplicationType [-Name] <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+Update-AzServiceFabricManagedClusterService -ApplicationName <String> -ClusterName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaJsonString
 ```
-New-AzServiceFabricManagedClusterApplicationType [-Name] <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+Update-AzServiceFabricManagedClusterService -ApplicationName <String> -ClusterName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityManagedClusterExpanded
+### UpdateViaJsonFilePath
 ```
-New-AzServiceFabricManagedClusterApplicationType [-Name] <String>
- -ManagedClusterInputObject <IServiceFabricIdentity> [-Location <String>] [-Tag <Hashtable>]
+Update-AzServiceFabricManagedClusterService -ApplicationName <String> -ClusterName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityManagedClusterExpanded
+```
+Update-AzServiceFabricManagedClusterService -ApplicationName <String> -Name <String>
+ -ManagedClusterInputObject <IServiceFabricIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityApplicationExpanded
+```
+Update-AzServiceFabricManagedClusterService -Name <String> -ApplicationInputObject <IServiceFabricIdentity>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzServiceFabricManagedClusterService -InputObject <IServiceFabricIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a Service Fabric managed application type name resource with the specified name.
+Update the tags of a service resource of a given managed cluster.
 
 ## EXAMPLES
 
@@ -69,16 +81,46 @@ Create a Service Fabric managed application type name resource with the specifie
 
 ## PARAMETERS
 
+### -ApplicationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: UpdateViaIdentityApplicationExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ApplicationName
+The name of the application resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -100,12 +142,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
-Path of Json file supplied to the Create operation
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -116,29 +173,14 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Create operation
+Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,7 +192,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: CreateViaIdentityManagedClusterExpanded
+Parameter Sets: UpdateViaIdentityManagedClusterExpanded
 Aliases:
 
 Required: True
@@ -161,15 +203,15 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the application type name resource.
+The name of the service resource in the format of {applicationName}~{serviceName}.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: ApplicationTypeName
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityApplicationExpanded
+Aliases: ServiceName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -181,11 +223,11 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -196,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -207,11 +249,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Service update parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityApplicationExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -261,7 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IApplicationTypeResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceResource
 
 ## NOTES
 

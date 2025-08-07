@@ -1,77 +1,112 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/restart-azservicefabricmanagednodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricmanagednodetype
 schema: 2.0.0
 ---
 
-# Restart-AzServiceFabricManagedNodeType
+# Update-AzServiceFabricManagedNodeType
 
 ## SYNOPSIS
-Restarts one or more nodes on the node type.
-It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+Reimages one or more nodes on the node type.
+It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
 
 ## SYNTAX
 
-### RestartExpanded (Default)
+### ReimageExpanded (Default)
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Update-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Force] [-Node <String[]>] [-UpdateType <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaJsonString
+### UpdateViaJsonString
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Update-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Update-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReimageViaJsonString
+```
+Update-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaJsonFilePath
+### ReimageViaJsonFilePath
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Update-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Restart
+### Reimage
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Update-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaIdentityManagedClusterExpanded
+### UpdateViaIdentityManagedClusterExpanded
 ```
-Restart-AzServiceFabricManagedNodeType [-Name] <String> -ManagedClusterInputObject <IServiceFabricIdentity>
+Update-AzServiceFabricManagedNodeType -Name <String> -ManagedClusterInputObject <IServiceFabricIdentity>
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReimageViaIdentityManagedClusterExpanded
+```
+Update-AzServiceFabricManagedNodeType -Name <String> -ManagedClusterInputObject <IServiceFabricIdentity>
  [-Force] [-Node <String[]>] [-UpdateType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaIdentityManagedCluster
+### ReimageViaIdentityManagedCluster
 ```
-Restart-AzServiceFabricManagedNodeType [-Name] <String> -ManagedClusterInputObject <IServiceFabricIdentity>
+Update-AzServiceFabricManagedNodeType -Name <String> -ManagedClusterInputObject <IServiceFabricIdentity>
  -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaIdentityExpanded
+### UpdateViaIdentityExpanded
 ```
-Restart-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity> [-Force] [-Node <String[]>]
+Update-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity> [-SkuCapacity <Int32>]
+ [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReimageViaIdentityExpanded
+```
+Update-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity> [-Force] [-Node <String[]>]
  [-UpdateType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### RestartViaIdentity
+### ReimageViaIdentity
 ```
-Restart-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity>
+Update-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity>
  -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restarts one or more nodes on the node type.
-It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+Reimages one or more nodes on the node type.
+It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
 
 ## EXAMPLES
 
@@ -119,11 +154,11 @@ The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: ReimageExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, ReimageViaJsonString, ReimageViaJsonFilePath, Reimage
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -150,7 +185,7 @@ Force the action to go through.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: ReimageExpanded, ReimageViaIdentityManagedClusterExpanded, ReimageViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -165,7 +200,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: RestartViaIdentityExpanded, RestartViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded, ReimageViaIdentityExpanded, ReimageViaIdentity
 Aliases:
 
 Required: True
@@ -176,11 +211,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Restart operation
+Path of Json file supplied to the Reimage operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath, ReimageViaJsonFilePath
 Aliases:
 
 Required: True
@@ -191,11 +226,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Restart operation
+Json string supplied to the Reimage operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartViaJsonString
+Parameter Sets: UpdateViaJsonString, ReimageViaJsonString
 Aliases:
 
 Required: True
@@ -210,7 +245,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: RestartViaIdentityManagedClusterExpanded, RestartViaIdentityManagedCluster
+Parameter Sets: UpdateViaIdentityManagedClusterExpanded, ReimageViaIdentityManagedClusterExpanded, ReimageViaIdentityManagedCluster
 Aliases:
 
 Required: True
@@ -225,11 +260,11 @@ The name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityManagedCluster
+Parameter Sets: ReimageExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, ReimageViaJsonString, ReimageViaJsonFilePath, Reimage, UpdateViaIdentityManagedClusterExpanded, ReimageViaIdentityManagedClusterExpanded, ReimageViaIdentityManagedCluster
 Aliases: NodeTypeName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -240,7 +275,7 @@ List of node names from the node type.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: ReimageExpanded, ReimageViaIdentityManagedClusterExpanded, ReimageViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -271,7 +306,7 @@ If nodes are not specified on the parameters, the operation will be performed in
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.INodeTypeActionParameters
-Parameter Sets: Restart, RestartViaIdentityManagedCluster, RestartViaIdentity
+Parameter Sets: Reimage, ReimageViaIdentityManagedCluster, ReimageViaIdentity
 Aliases:
 
 Required: True
@@ -286,7 +321,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ReimageExpanded, ReimageViaJsonString, ReimageViaJsonFilePath, Reimage, ReimageViaIdentityManagedClusterExpanded, ReimageViaIdentityManagedCluster, ReimageViaIdentityExpanded, ReimageViaIdentity
 Aliases:
 
 Required: False
@@ -302,11 +337,61 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: ReimageExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, ReimageViaJsonString, ReimageViaJsonFilePath, Reimage
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+The number of nodes in the node type.
+If present in request it will override properties.vmInstanceCount.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The sku name.
+Name is internally generated and is used in auto-scale scenarios.
+Property does not allow to be changed to other values than generated.
+To avoid deployment errors please omit the property.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+Specifies the tier of the node type.
+Possible Values: **Standard**
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -317,7 +402,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: ReimageExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, ReimageViaJsonString, ReimageViaJsonFilePath, Reimage
 Aliases:
 
 Required: False
@@ -327,12 +412,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Node type update parameters
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UpdateType
 Specifies the way the operation will be performed.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: ReimageExpanded, ReimageViaIdentityManagedClusterExpanded, ReimageViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -383,6 +483,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
 
 ## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.INodeType
 
 ### System.Boolean
 

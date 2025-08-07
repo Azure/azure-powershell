@@ -1,43 +1,33 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterapplicationtype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/invoke-azservicefabricmanagedapplymaintenancewindow
 schema: 2.0.0
 ---
 
-# Get-AzServiceFabricManagedClusterApplicationType
+# Invoke-AzServiceFabricManagedApplyMaintenanceWindow
 
 ## SYNOPSIS
-Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
+Action to Apply Maintenance window on the Service Fabric Managed Clusters, right now.
+Any pending post will be applied.
 
 ## SYNTAX
 
-### List (Default)
+### Post (Default)
 ```
-Get-AzServiceFabricManagedClusterApplicationType [-ClusterName] <String> [-ResourceGroupName] <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzServiceFabricManagedClusterApplicationType [-ClusterName] <String> [-Name] <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Invoke-AzServiceFabricManagedApplyMaintenanceWindow -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentityManagedCluster
+### PostViaIdentity
 ```
-Get-AzServiceFabricManagedClusterApplicationType [-Name] <String>
- -ManagedClusterInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzServiceFabricManagedClusterApplicationType -InputObject <IServiceFabricIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Invoke-AzServiceFabricManagedApplyMaintenanceWindow -InputObject <IServiceFabricIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
+Action to Apply Maintenance window on the Service Fabric Managed Clusters, right now.
+Any pending post will be applied.
 
 ## EXAMPLES
 
@@ -70,11 +60,11 @@ The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Post
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -101,7 +91,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: PostViaIdentity
 Aliases:
 
 Required: True
@@ -111,31 +101,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedClusterInputObject
-Identity Parameter
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: GetViaIdentityManagedCluster
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the application type name resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityManagedCluster
-Aliases: ApplicationTypeName
-
-Required: True
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -147,11 +122,11 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Post
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -161,13 +136,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: List, Get
+Type: System.String
+Parameter Sets: Post
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -181,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IApplicationTypeResource
+### System.Boolean
 
 ## NOTES
 

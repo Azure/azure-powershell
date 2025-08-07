@@ -1,43 +1,43 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedcluster
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedunsupportedvmsize
 schema: 2.0.0
 ---
 
-# Get-AzServiceFabricManagedCluster
+# Get-AzServiceFabricManagedUnsupportedVMSize
 
 ## SYNOPSIS
-Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+Get unsupported vm size for Service Fabric Managed Clusters.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzServiceFabricManagedCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzServiceFabricManagedUnsupportedVMSize -Location <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceFabricManagedCluster -ClusterName <String> [-ResourceGroupName] <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceFabricManagedUnsupportedVMSize -Location <String> [-SubscriptionId <String[]>] -VMSize <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### GetViaIdentityLocation
 ```
-Get-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-SubscriptionId <String[]>]
+Get-AzServiceFabricManagedUnsupportedVMSize -VMSize <String> -LocationInputObject <IServiceFabricIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzServiceFabricManagedCluster -InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>]
+Get-AzServiceFabricManagedUnsupportedVMSize -InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+Get unsupported vm size for Service Fabric Managed Clusters.
 
 ## EXAMPLES
 
@@ -64,21 +64,6 @@ Get a Service Fabric managed cluster resource created or in the process of being
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ClusterName
-The name of the cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -111,19 +96,34 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Location
+The location for the cluster code versions.
+This is different from cluster location.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: GetViaIdentityLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -132,12 +132,27 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMSize
+VM Size name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -151,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IManagedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IManagedVMSize
 
 ## NOTES
 

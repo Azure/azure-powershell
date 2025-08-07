@@ -1,77 +1,77 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/restart-azservicefabricmanagednodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/start-azservicefabricmanagednodetype
 schema: 2.0.0
 ---
 
-# Restart-AzServiceFabricManagedNodeType
+# Start-AzServiceFabricManagedNodeType
 
 ## SYNOPSIS
-Restarts one or more nodes on the node type.
-It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+Starts one or more nodes on the node type.
+It will trigger an allocation of the fabric node if needed and activate them.
 
 ## SYNTAX
 
-### RestartExpanded (Default)
+### StartExpanded (Default)
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Start-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Force] [-Node <String[]>] [-UpdateType <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaJsonString
+### StartViaJsonString
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Start-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaJsonFilePath
+### StartViaJsonFilePath
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Start-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Restart
+### Start
 ```
-Restart-AzServiceFabricManagedNodeType [-ClusterName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Start-AzServiceFabricManagedNodeType -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaIdentityManagedClusterExpanded
+### StartViaIdentityManagedClusterExpanded
 ```
-Restart-AzServiceFabricManagedNodeType [-Name] <String> -ManagedClusterInputObject <IServiceFabricIdentity>
+Start-AzServiceFabricManagedNodeType -Name <String> -ManagedClusterInputObject <IServiceFabricIdentity>
  [-Force] [-Node <String[]>] [-UpdateType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaIdentityManagedCluster
+### StartViaIdentityManagedCluster
 ```
-Restart-AzServiceFabricManagedNodeType [-Name] <String> -ManagedClusterInputObject <IServiceFabricIdentity>
+Start-AzServiceFabricManagedNodeType -Name <String> -ManagedClusterInputObject <IServiceFabricIdentity>
  -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### RestartViaIdentityExpanded
+### StartViaIdentityExpanded
 ```
-Restart-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity> [-Force] [-Node <String[]>]
+Start-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity> [-Force] [-Node <String[]>]
  [-UpdateType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### RestartViaIdentity
+### StartViaIdentity
 ```
-Restart-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity>
+Start-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity>
  -Parameter <INodeTypeActionParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restarts one or more nodes on the node type.
-It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+Starts one or more nodes on the node type.
+It will trigger an allocation of the fabric node if needed and activate them.
 
 ## EXAMPLES
 
@@ -119,11 +119,11 @@ The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -150,7 +150,7 @@ Force the action to go through.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: StartExpanded, StartViaIdentityManagedClusterExpanded, StartViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -165,7 +165,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: RestartViaIdentityExpanded, RestartViaIdentity
+Parameter Sets: StartViaIdentityExpanded, StartViaIdentity
 Aliases:
 
 Required: True
@@ -176,11 +176,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Restart operation
+Path of Json file supplied to the Start operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartViaJsonFilePath
+Parameter Sets: StartViaJsonFilePath
 Aliases:
 
 Required: True
@@ -191,11 +191,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Restart operation
+Json string supplied to the Start operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartViaJsonString
+Parameter Sets: StartViaJsonString
 Aliases:
 
 Required: True
@@ -210,7 +210,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: RestartViaIdentityManagedClusterExpanded, RestartViaIdentityManagedCluster
+Parameter Sets: StartViaIdentityManagedClusterExpanded, StartViaIdentityManagedCluster
 Aliases:
 
 Required: True
@@ -225,11 +225,11 @@ The name of the node type.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityManagedCluster
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start, StartViaIdentityManagedClusterExpanded, StartViaIdentityManagedCluster
 Aliases: NodeTypeName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -240,7 +240,7 @@ List of node names from the node type.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: StartExpanded, StartViaIdentityManagedClusterExpanded, StartViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -271,7 +271,7 @@ If nodes are not specified on the parameters, the operation will be performed in
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.INodeTypeActionParameters
-Parameter Sets: Restart, RestartViaIdentityManagedCluster, RestartViaIdentity
+Parameter Sets: Start, StartViaIdentityManagedCluster, StartViaIdentity
 Aliases:
 
 Required: True
@@ -302,11 +302,11 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -317,7 +317,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaJsonString, RestartViaJsonFilePath, Restart
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases:
 
 Required: False
@@ -332,7 +332,7 @@ Specifies the way the operation will be performed.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartExpanded, RestartViaIdentityManagedClusterExpanded, RestartViaIdentityExpanded
+Parameter Sets: StartExpanded, StartViaIdentityManagedClusterExpanded, StartViaIdentityExpanded
 Aliases:
 
 Required: False

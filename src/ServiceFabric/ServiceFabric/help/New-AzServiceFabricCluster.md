@@ -273,7 +273,7 @@ Azure key vault resource group name, if not given it will be defaulted to resour
 ```yaml
 Type: System.String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases: KeyVaultResourceGroupName
+Aliases: KeyVaultResouceGroupName
 
 Required: False
 Position: Named

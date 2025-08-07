@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
 Module Name: Az.ServiceFabric
 online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterapplicationtypeversion
 schema: 2.0.0
@@ -8,86 +8,123 @@ schema: 2.0.0
 # Get-AzServiceFabricManagedClusterApplicationTypeVersion
 
 ## SYNOPSIS
-Get Service Fabric managed application type version details. Only supports ARM deployed application type versions.
+Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
 
 ## SYNTAX
 
-### ByResourceGroupAndCluster (Default)
+### List (Default)
 ```
-Get-AzServiceFabricManagedClusterApplicationTypeVersion [-ResourceGroupName] <String> [-ClusterName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByVersion
-```
-Get-AzServiceFabricManagedClusterApplicationTypeVersion [-ResourceGroupName] <String> [-ClusterName] <String>
- [-Name] <String> [-Version] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzServiceFabricManagedClusterApplicationTypeVersion -ApplicationTypeName <String> [-ClusterName] <String>
+ [-ResourceGroupName] <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceId
+### GetViaIdentityManagedCluster
 ```
-Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzServiceFabricManagedClusterApplicationTypeVersion -ApplicationTypeName <String> [-Version] <String>
+ -ManagedClusterInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzServiceFabricManagedClusterApplicationTypeVersion -ApplicationTypeName <String> [-ClusterName] <String>
+ [-ResourceGroupName] <String> [-SubscriptionId <String[]>] [-Version] <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityApplicationType
+```
+Get-AzServiceFabricManagedClusterApplicationTypeVersion [-Version] <String>
+ -ApplicationTypeInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzServiceFabricManagedClusterApplicationTypeVersion -InputObject <IServiceFabricIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use this cmdlet to get the managed application type version details in the specified resource group and cluster.
+Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-$resourceGroupName = "testRG"
-$clusterName = "testCluster"
-$appTypeName = "testAppType"
-$appTypeVersion = "v1"
-Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $appTypeVersion
+{{ Add code here }}
 ```
 
-This example gets the managed application type "testAppType" with version "v1", if it doesn't find the resource it will throw an exception.
-
-### Example 2
-```powershell
-$resourceGroupName = "testRG"
-$clusterName = "testCluster"
-$appTypeName = "testAppType"
-Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example gets a list of the managed application type versions defined under the specified cluster and type.
+{{ Add description here }}
 
-### Example 3
+### Example 2: {{ Add title here }}
 ```powershell
-$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType/versions/v1"
-Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId $resourceId
+{{ Add code here }}
 ```
 
-This example will get the managed application type version details with the ARM Resource ID specified, if it doesn't find the resource it will throw an exception.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -ClusterName
-Specify the name of the cluster.
+### -ApplicationTypeInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: GetViaIdentityApplicationType
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ApplicationTypeName
+The name of the application type name resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndCluster, ByVersion
+Parameter Sets: List, GetViaIdentityManagedCluster, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -96,63 +133,79 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specify the name of the managed application type.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceGroupAndCluster, ByVersion
-Aliases: ApplicationTypeName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specify the name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceGroupAndCluster, ByVersion
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Arm ResourceId of the managed application type version.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: GetViaIdentityManagedCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Version
-Specify the version of the managed application type.
+The application type version.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVersion
-Aliases: ApplicationTypeVersion
+Parameter Sets: GetViaIdentityManagedCluster, Get, GetViaIdentityApplicationType
+Aliases:
 
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -161,11 +214,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplicationTypeVersion
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IApplicationTypeVersionResource
 
 ## NOTES
 

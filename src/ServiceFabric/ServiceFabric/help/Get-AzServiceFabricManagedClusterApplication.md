@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
 Module Name: Az.ServiceFabric
 online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterapplication
 schema: 2.0.0
@@ -8,84 +8,86 @@ schema: 2.0.0
 # Get-AzServiceFabricManagedClusterApplication
 
 ## SYNOPSIS
-Get Service Fabric managed application details. Only supports ARM deployed applications.
+Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
 
 ## SYNTAX
 
-### ByResourceGroupAndCluster (Default)
+### List (Default)
 ```
-Get-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByName
-```
-Get-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzServiceFabricManagedClusterApplication [-ClusterName] <String> [-ResourceGroupName] <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceId
+### Get
 ```
-Get-AzServiceFabricManagedClusterApplication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzServiceFabricManagedClusterApplication [-ClusterName] <String> [-Name] <String>
+ [-ResourceGroupName] <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityManagedCluster
+```
+Get-AzServiceFabricManagedClusterApplication [-Name] <String>
+ -ManagedClusterInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzServiceFabricManagedClusterApplication -InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet gets the managed application details in the specified resource group and cluster.
+Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-$resourceGroupName = "testRG"
-$clusterName = "testCluster"
-$appName = "testApp"
-Get-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName
+{{ Add code here }}
 ```
 
-This example gets the managed application resource details for the managed application "testApp".
-
-### Example 2
-```powershell
-$resourceGroupName = "testRG"
-$clusterName = "testCluster"
-Get-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example gets a list of the managed applications under the cluster "testCluster".
+{{ Add description here }}
 
-### Example 3
+### Example 2: {{ Add title here }}
 ```powershell
-$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp"
-Get-AzServiceFabricManagedClusterApplication -ResourceId $resourceId
+{{ Add code here }}
 ```
 
-This example will get the managed application details with the ARM Resource ID specified, if it doesn't find the resource it will throw an exception.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -ClusterName
-Specify the name of the cluster.
+The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupAndCluster, ByName
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -94,48 +96,79 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specify the name of the managed application.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: ApplicationName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specify the name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceGroupAndCluster, ByName
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Arm ResourceId of the managed application.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: GetViaIdentityManagedCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the application resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityManagedCluster
+Aliases: ApplicationName
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -144,11 +177,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplication
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IApplicationResource
 
 ## NOTES
 

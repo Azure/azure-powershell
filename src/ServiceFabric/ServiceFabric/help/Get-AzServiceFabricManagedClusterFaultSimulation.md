@@ -1,47 +1,65 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagedclusterapplicationtype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterfaultsimulation
 schema: 2.0.0
 ---
 
-# New-AzServiceFabricManagedClusterApplicationType
+# Get-AzServiceFabricManagedClusterFaultSimulation
 
 ## SYNOPSIS
-Create a Service Fabric managed application type name resource with the specified name.
+Gets a fault simulation by the simulationId.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### List (Default)
 ```
-New-AzServiceFabricManagedClusterApplicationType [-Name] <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String>] [-Location <String>] [-Tag <Hashtable>]
+Get-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaJsonString
+```
+Get-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### GetViaJsonFilePath
+```
+Get-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### GetExpanded
+```
+Get-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -SimulationId <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -Parameter <IFaultSimulationIdContent> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzServiceFabricManagedClusterFaultSimulation -InputObject <IServiceFabricIdentity> -SimulationId <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### GetViaIdentity
 ```
-New-AzServiceFabricManagedClusterApplicationType [-Name] <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzServiceFabricManagedClusterApplicationType [-Name] <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityManagedClusterExpanded
-```
-New-AzServiceFabricManagedClusterApplicationType [-Name] <String>
- -ManagedClusterInputObject <IServiceFabricIdentity> [-Location <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzServiceFabricManagedClusterFaultSimulation -InputObject <IServiceFabricIdentity>
+ -Parameter <IFaultSimulationIdContent> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a Service Fabric managed application type name resource with the specified name.
+Gets a fault simulation by the simulationId.
 
 ## EXAMPLES
 
@@ -74,11 +92,11 @@ The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: List, GetViaJsonString, GetViaJsonFilePath, GetExpanded, Get
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -100,12 +118,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
-Path of Json file supplied to the Create operation
+Path of Json file supplied to the Get operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: GetViaJsonFilePath
 Aliases:
 
 Required: True
@@ -116,11 +149,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Create operation
+Json string supplied to the Get operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: GetViaJsonString
 Aliases:
 
 Required: True
@@ -130,27 +163,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -Parameter
+Parameters for Fault Simulation id.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedClusterInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: CreateViaIdentityManagedClusterExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IFaultSimulationIdContent
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: True
@@ -160,32 +178,32 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the application type name resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ApplicationTypeName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: List, GetViaJsonString, GetViaJsonFilePath, GetExpanded, Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SimulationId
+unique identifier for the fault simulation.
+
+```yaml
+Type: System.String
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -195,28 +213,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Type: System.String[]
+Parameter Sets: List, GetViaJsonString, GetViaJsonFilePath, GetExpanded, Get
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -257,11 +260,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IFaultSimulationIdContent
+
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IApplicationTypeResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IFaultSimulation
 
 ## NOTES
 

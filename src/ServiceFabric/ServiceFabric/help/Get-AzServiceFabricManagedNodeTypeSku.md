@@ -1,43 +1,24 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedcluster
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagednodetypesku
 schema: 2.0.0
 ---
 
-# Get-AzServiceFabricManagedCluster
+# Get-AzServiceFabricManagedNodeTypeSku
 
 ## SYNOPSIS
-Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+Get a Service Fabric node type supported SKUs.
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzServiceFabricManagedCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzServiceFabricManagedCluster -ClusterName <String> [-ResourceGroupName] <String>
+Get-AzServiceFabricManagedNodeTypeSku -ClusterName <String> -NodeTypeName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
-```
-Get-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzServiceFabricManagedCluster -InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+Get a Service Fabric node type supported SKUs.
 
 ## EXAMPLES
 
@@ -70,7 +51,7 @@ The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -96,18 +77,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -NodeTypeName
+The name of the node type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: GetViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -117,11 +98,11 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -132,7 +113,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,11 +128,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IManagedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.INodeTypeAvailableSku
 
 ## NOTES
 

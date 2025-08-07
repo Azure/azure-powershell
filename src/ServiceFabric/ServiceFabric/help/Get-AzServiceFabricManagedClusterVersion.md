@@ -1,43 +1,67 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagednodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/get-azservicefabricmanagedclusterversion
 schema: 2.0.0
 ---
 
-# Get-AzServiceFabricManagedNodeType
+# Get-AzServiceFabricManagedClusterVersion
 
 ## SYNOPSIS
-Get a Service Fabric node type of a given managed cluster.
+Gets information about an available Service Fabric cluster code version by environment.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzServiceFabricManagedNodeType [-ClusterName] <String> [-ResourceGroupName] <String>
+Get-AzServiceFabricManagedClusterVersion -Location <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityLocation1
+```
+Get-AzServiceFabricManagedClusterVersion -ClusterVersion <String>
+ -Location1InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzServiceFabricManagedClusterVersion -ClusterVersion <String> -LocationInputObject <IServiceFabricIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzServiceFabricManagedClusterVersion -ClusterVersion <String> -Location <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceFabricManagedNodeType [-ClusterName] <String> -Name <String> [-ResourceGroupName] <String>
+Get-AzServiceFabricManagedClusterVersion -ClusterVersion <String> -Location <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityManagedCluster
+### List1
 ```
-Get-AzServiceFabricManagedNodeType -Name <String> -ManagedClusterInputObject <IServiceFabricIdentity>
+Get-AzServiceFabricManagedClusterVersion -Location <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzServiceFabricManagedClusterVersion -InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzServiceFabricManagedNodeType -InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>]
+Get-AzServiceFabricManagedClusterVersion -InputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a Service Fabric node type of a given managed cluster.
+Gets information about an available Service Fabric cluster code version by environment.
 
 ## EXAMPLES
 
@@ -65,16 +89,16 @@ Get a Service Fabric node type of a given managed cluster.
 
 ## PARAMETERS
 
-### -ClusterName
-The name of the cluster resource.
+### -ClusterVersion
+The cluster code version.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: GetViaIdentityLocation1, GetViaIdentityLocation, Get1, Get
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -101,7 +125,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
 Aliases:
 
 Required: True
@@ -111,12 +135,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedClusterInputObject
+### -Location
+The location for the cluster code versions.
+This is different from cluster location.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get1, Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location1InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: GetViaIdentityManagedCluster
+Parameter Sets: GetViaIdentityLocation1
 Aliases:
 
 Required: True
@@ -126,34 +166,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the node type.
+### -LocationInputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityManagedCluster
-Aliases: NodeTypeName
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: GetViaIdentityLocation
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: List, Get
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -162,7 +186,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: List, Get1, Get, List1
 Aliases:
 
 Required: False
@@ -181,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.INodeType
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IManagedClusterCodeVersionResult
 
 ## NOTES
 

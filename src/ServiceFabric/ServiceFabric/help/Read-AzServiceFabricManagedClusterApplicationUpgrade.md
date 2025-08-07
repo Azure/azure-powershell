@@ -1,46 +1,41 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagedclusterapplicationtypeversion
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/read-azservicefabricmanagedclusterapplicationupgrade
 schema: 2.0.0
 ---
 
-# Remove-AzServiceFabricManagedClusterApplicationTypeVersion
+# Read-AzServiceFabricManagedClusterApplicationUpgrade
 
 ## SYNOPSIS
-Delete a Service Fabric managed application type version resource with the specified name.
+Get the status of the latest application upgrade.
+It will query the cluster to find the status of the latest application upgrade.
 
 ## SYNTAX
 
-### Delete (Default)
+### Read (Default)
 ```
-Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ApplicationTypeName <String>
- [-ClusterName] <String> [-ResourceGroupName] <String> [-SubscriptionId <String>] -Version <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Read-AzServiceFabricManagedClusterApplicationUpgrade -ApplicationName <String> -ClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityManagedCluster
+### ReadViaIdentityManagedCluster
 ```
-Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ApplicationTypeName <String> -Version <String>
+Read-AzServiceFabricManagedClusterApplicationUpgrade -ApplicationName <String>
  -ManagedClusterInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityApplicationType
+### ReadViaIdentity
 ```
-Remove-AzServiceFabricManagedClusterApplicationTypeVersion -Version <String>
- -ApplicationTypeInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzServiceFabricManagedClusterApplicationTypeVersion -InputObject <IServiceFabricIdentity>
+Read-AzServiceFabricManagedClusterApplicationUpgrade -InputObject <IServiceFabricIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Service Fabric managed application type version resource with the specified name.
+Get the status of the latest application upgrade.
+It will query the cluster to find the status of the latest application upgrade.
 
 ## EXAMPLES
 
@@ -68,27 +63,12 @@ Delete a Service Fabric managed application type version resource with the speci
 
 ## PARAMETERS
 
-### -ApplicationTypeInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: DeleteViaIdentityApplicationType
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ApplicationTypeName
-The name of the application type name resource.
+### -ApplicationName
+The name of the application resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityManagedCluster
+Parameter Sets: Read, ReadViaIdentityManagedCluster
 Aliases:
 
 Required: True
@@ -118,11 +98,11 @@ The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Read
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -149,7 +129,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: ReadViaIdentity
 Aliases:
 
 Required: True
@@ -164,7 +144,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: DeleteViaIdentityManagedCluster
+Parameter Sets: ReadViaIdentityManagedCluster
 Aliases:
 
 Required: True
@@ -210,11 +190,11 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Read
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -225,27 +205,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Read
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-The application type version.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityManagedCluster, DeleteViaIdentityApplicationType
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

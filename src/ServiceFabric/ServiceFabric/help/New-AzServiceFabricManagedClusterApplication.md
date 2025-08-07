@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
 Module Name: Az.ServiceFabric
 online version: https://learn.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagedclusterapplication
 schema: 2.0.0
@@ -8,108 +8,147 @@ schema: 2.0.0
 # New-AzServiceFabricManagedClusterApplication
 
 ## SYNOPSIS
-Create new service fabric managed application under the specified resource group and cluster.
+Create a Service Fabric managed application resource with the specified name.
 
 ## SYNTAX
 
-### SkipAppTypeVersion (Default)
+### CreateExpanded (Default)
 ```
-New-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> -Name <String>
- [-ApplicationParameter <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzServiceFabricManagedClusterApplication -Name <String> [-ClusterName] <String>
+ [-ResourceGroupName] <String> [-SubscriptionId <String>] [-ApplicationHealthPolicyConsiderWarningAsError]
+ [-ApplicationHealthPolicyMaxPercentUnhealthyDeployedApplication <Int32>]
+ [-ApplicationHealthPolicyServiceTypeHealthPolicyMap <Hashtable>]
+ [-DefaultServiceTypeHealthPolicyMaxPercentUnhealthyPartitionsPerService <Int32>]
+ [-DefaultServiceTypeHealthPolicyMaxPercentUnhealthyReplicasPerPartition <Int32>]
+ [-DefaultServiceTypeHealthPolicyMaxPercentUnhealthyService <Int32>] [-EnableSystemAssignedIdentity]
+ [-Location <String>] [-ManagedIdentity <IApplicationUserAssignedIdentity[]>] [-Parameter <Hashtable>]
+ [-RollingUpgradeMonitoringPolicyFailureAction <String>]
+ [-RollingUpgradeMonitoringPolicyHealthCheckRetryTimeout <String>]
+ [-RollingUpgradeMonitoringPolicyHealthCheckStableDuration <String>]
+ [-RollingUpgradeMonitoringPolicyHealthCheckWaitDuration <String>]
+ [-RollingUpgradeMonitoringPolicyUpgradeDomainTimeout <String>]
+ [-RollingUpgradeMonitoringPolicyUpgradeTimeout <String>] [-Tag <Hashtable>] [-UpgradePolicyForceRestart]
+ [-UpgradePolicyInstanceCloseDelayDuration <Int64>] [-UpgradePolicyRecreateApplication]
+ [-UpgradePolicyUpgradeMode <String>] [-UpgradePolicyUpgradeReplicaSetCheckTimeout <Int64>]
+ [-UserAssignedIdentity <String[]>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateAppTypeVersion
+### CreateViaJsonString
 ```
-New-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> -Name <String>
- [-ApplicationParameter <Hashtable>] -PackageUrl <String> [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzServiceFabricManagedClusterApplication -Name <String> [-ClusterName] <String>
+ [-ResourceGroupName] <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzServiceFabricManagedClusterApplication -Name <String> [-ClusterName] <String>
+ [-ResourceGroupName] <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityManagedClusterExpanded
+```
+New-AzServiceFabricManagedClusterApplication -Name <String> -ManagedClusterInputObject <IServiceFabricIdentity>
+ [-ApplicationHealthPolicyConsiderWarningAsError]
+ [-ApplicationHealthPolicyMaxPercentUnhealthyDeployedApplication <Int32>]
+ [-ApplicationHealthPolicyServiceTypeHealthPolicyMap <Hashtable>]
+ [-DefaultServiceTypeHealthPolicyMaxPercentUnhealthyPartitionsPerService <Int32>]
+ [-DefaultServiceTypeHealthPolicyMaxPercentUnhealthyReplicasPerPartition <Int32>]
+ [-DefaultServiceTypeHealthPolicyMaxPercentUnhealthyService <Int32>] [-EnableSystemAssignedIdentity]
+ [-Location <String>] [-ManagedIdentity <IApplicationUserAssignedIdentity[]>] [-Parameter <Hashtable>]
+ [-RollingUpgradeMonitoringPolicyFailureAction <String>]
+ [-RollingUpgradeMonitoringPolicyHealthCheckRetryTimeout <String>]
+ [-RollingUpgradeMonitoringPolicyHealthCheckStableDuration <String>]
+ [-RollingUpgradeMonitoringPolicyHealthCheckWaitDuration <String>]
+ [-RollingUpgradeMonitoringPolicyUpgradeDomainTimeout <String>]
+ [-RollingUpgradeMonitoringPolicyUpgradeTimeout <String>] [-Tag <Hashtable>] [-UpgradePolicyForceRestart]
+ [-UpgradePolicyInstanceCloseDelayDuration <Int64>] [-UpgradePolicyRecreateApplication]
+ [-UpgradePolicyUpgradeMode <String>] [-UpgradePolicyUpgradeReplicaSetCheckTimeout <Int64>]
+ [-UserAssignedIdentity <String[]>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet creates a new service fabric managed application under the specified resource group and cluster. The parameter -PackageUrl can be used to create the type version, If the type version already exits but its in 'Failed' state the cmdlet will ask if the user wants to recreate the type version. If it continues in 'Failed' state, the command will stop the process and throw an exception.
+Create a Service Fabric managed application resource with the specified name.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-$resourceGroupName = "testRG"
-$clusterName = "testCluster"
-$appName = "testApp"
-$appTypeName = "testAppType"
-$appTypeVersion = "v1"
-$appParameters =  @{key0="value0";key1=$null;key2="value2"}
-New-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationTypeName $appTypeName -ApplicationTypeVersion $appTypeVersion -Name $appName -ApplicationParameter $appParameters
+{{ Add code here }}
 ```
 
-This example creates the managed application "testApp" under resource group "testRG" and cluster "testCluster". The managed application type "TestAppType" version "v1" should already exist in the cluster, and the application parameters should be defined in the application manifest otherwise the cmdlet will fail.
-
-### Example 2: Specify -PackageUrl to create the application type version before creating the application.
-```powershell
-$resourceGroupName = "testRG"
-$clusterName = "testCluster"
-$appName = "testApp"
-$appTypeName = "testAppType"
-$appTypeVersion = "v1"
-$appParameters =  @{key0="value0";key1=$null;key2="value2"}
-$packageUrlV1 = "https://sftestapp.blob.core.windows.net/sftestapp/testApp_1.0.sfpkg"
-New-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationTypeName $appTypeName -ApplicationTypeVersion $appTypeVersion -Name $appName -PackageUrl $packageUrlV1 -ApplicationParameter $appParameters
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This example creates the managed application type "testAppType"  version "v1" using the package url provided. After this, it will continue the normal process to create the application. If the managed application type version already exits and the provisioning state its in 'Failed' it will prompt to decide if the user wants to recreate the type version.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -ApplicationParameter
-Specify the application parameters as key/value pairs.
-These parameters must exist in the application manifest.
+### -ApplicationHealthPolicyConsiderWarningAsError
+Indicates whether warnings are treated with the same severity as errors.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApplicationTypeName
-Specify the name of the managed application type
+### -ApplicationHealthPolicyMaxPercentUnhealthyDeployedApplication
+The maximum allowed percentage of unhealthy deployed applications.
+Allowed values are Byte values from zero to 100.The percentage represents the maximum tolerated percentage of deployed applications that can be unhealthy before the application is considered in error.This is calculated by dividing the number of unhealthy deployed applications over the number of nodes where the application is currently deployed on in the cluster.The computation rounds up to tolerate one failure on small numbers of nodes.
+Default percentage is zero.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
 Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApplicationTypeVersion
-Specify the managed application type version
+### -ApplicationHealthPolicyServiceTypeHealthPolicyMap
+The map with service type health policy per service type name.
+The map is empty by default.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
 Aliases:
 
-Required: True
-Position: 3
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run cmdlet in the background and return a Job to track progress.
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -124,27 +163,28 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Specify the name of the cluster.
+The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -153,12 +193,132 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Continue without prompts
+### -DefaultServiceTypeHealthPolicyMaxPercentUnhealthyPartitionsPerService
+The maximum allowed percentage of unhealthy partitions per service.The percentage represents the maximum tolerated percentage of partitions that can be unhealthy before the service is considered in error.If the percentage is respected but there is at least one unhealthy partition, the health is evaluated as Warning.The percentage is calculated by dividing the number of unhealthy partitions over the total number of partitions in the service.The computation rounds up to tolerate one failure on small numbers of partitions.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultServiceTypeHealthPolicyMaxPercentUnhealthyReplicasPerPartition
+The maximum allowed percentage of unhealthy replicas per partition.The percentage represents the maximum tolerated percentage of replicas that can be unhealthy before the partition is considered in error.If the percentage is respected but there is at least one unhealthy replica, the health is evaluated as Warning.The percentage is calculated by dividing the number of unhealthy replicas over the total number of replicas in the partition.The computation rounds up to tolerate one failure on small numbers of replicas.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultServiceTypeHealthPolicyMaxPercentUnhealthyService
+The maximum allowed percentage of unhealthy services.The percentage represents the maximum tolerated percentage of services that can be unhealthy before the application is considered in error.If the percentage is respected but there is at least one unhealthy service, the health is evaluated as Warning.This is calculated by dividing the number of unhealthy services of the specific service type over the total number of services of the specific service type.The computation rounds up to tolerate one failure on small numbers of services.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
+Parameter Sets: CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedIdentity
+List of user assigned identities for the application, each mapped to a friendly name.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IApplicationUserAssignedIdentity[]
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
 Aliases:
 
 Required: False
@@ -169,7 +329,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the managed application
+The name of the application resource.
 
 ```yaml
 Type: System.String
@@ -183,48 +343,293 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PackageUrl
-Specify the url of the application package sfpkg file
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateAppTypeVersion
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specify the name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Specify the tags as key/value pairs.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+List of application parameters with overridden values from their default values specified in the application manifest.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RollingUpgradeMonitoringPolicyFailureAction
+The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations.
+Invalid indicates the failure action is invalid.
+Rollback specifies that the upgrade will start rolling back automatically.
+Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RollingUpgradeMonitoringPolicyHealthCheckRetryTimeout
+The amount of time to retry health evaluation when the application or cluster is unhealthy before FailureAction is executed.
+It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RollingUpgradeMonitoringPolicyHealthCheckStableDuration
+The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain.
+It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RollingUpgradeMonitoringPolicyHealthCheckWaitDuration
+The amount of time to wait after completing an upgrade domain before applying health policies.
+It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RollingUpgradeMonitoringPolicyUpgradeDomainTimeout
+The amount of time each upgrade domain has to complete before FailureAction is executed.
+Cannot be larger than 12 hours.
+It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RollingUpgradeMonitoringPolicyUpgradeTimeout
+The amount of time the overall upgrade has to complete before FailureAction is executed.
+Cannot be larger than 12 hours.
+It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradePolicyForceRestart
+If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradePolicyInstanceCloseDelayDuration
+Duration in seconds, to wait before a stateless instance is closed, to allow the active requests to drain gracefully.
+This would be effective when the instance is closing during the application/cluster upgrade, only for those instances which have a non-zero delay duration configured in the service description.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradePolicyRecreateApplication
+Determines whether the application should be recreated on update.
+If value=true, the rest of the upgrade policy parameters are not allowed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradePolicyUpgradeMode
+The mode used to monitor health during a rolling upgrade.
+The values are Monitored, and UnmonitoredAuto.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradePolicyUpgradeReplicaSetCheckTimeout
+The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues.
+When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues.
+The timeout is reset at the start of each upgrade domain.
+Valid values are between 0 and 42949672925 inclusive.
+(unsigned 32-bit integer).
+Unit is in seconds.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+The version of the application type as defined in the application manifest.This name must be the full Arm Resource ID for the referenced application type version.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -264,13 +669,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Collections.Hashtable
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedApplication
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IApplicationResource
 
 ## NOTES
 

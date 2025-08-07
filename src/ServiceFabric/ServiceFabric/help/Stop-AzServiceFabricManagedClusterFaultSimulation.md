@@ -1,46 +1,60 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-help.xml
+external help file: Az.ServiceFabric-help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricmanagedclusterapplicationtypeversion
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/stop-azservicefabricmanagedclusterfaultsimulation
 schema: 2.0.0
 ---
 
-# Remove-AzServiceFabricManagedClusterApplicationTypeVersion
+# Stop-AzServiceFabricManagedClusterFaultSimulation
 
 ## SYNOPSIS
-Delete a Service Fabric managed application type version resource with the specified name.
+Stops a fault simulation on the cluster.
 
 ## SYNTAX
 
-### Delete (Default)
+### StopExpanded (Default)
 ```
-Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ApplicationTypeName <String>
- [-ClusterName] <String> [-ResourceGroupName] <String> [-SubscriptionId <String>] -Version <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityManagedCluster
-```
-Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ApplicationTypeName <String> -Version <String>
- -ManagedClusterInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -SimulationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityApplicationType
+### StopViaJsonString
 ```
-Remove-AzServiceFabricManagedClusterApplicationTypeVersion -Version <String>
- -ApplicationTypeInputObject <IServiceFabricIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### StopViaJsonFilePath
 ```
-Remove-AzServiceFabricManagedClusterApplicationTypeVersion -InputObject <IServiceFabricIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### Stop
+```
+Stop-AzServiceFabricManagedClusterFaultSimulation -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Parameter <IFaultSimulationIdContent> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaIdentityExpanded
+```
+Stop-AzServiceFabricManagedClusterFaultSimulation -InputObject <IServiceFabricIdentity> -SimulationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaIdentity
+```
+Stop-AzServiceFabricManagedClusterFaultSimulation -InputObject <IServiceFabricIdentity>
+ -Parameter <IFaultSimulationIdContent> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Service Fabric managed application type version resource with the specified name.
+Stops a fault simulation on the cluster.
 
 ## EXAMPLES
 
@@ -68,36 +82,6 @@ Delete a Service Fabric managed application type version resource with the speci
 
 ## PARAMETERS
 
-### -ApplicationTypeInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: DeleteViaIdentityApplicationType
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ApplicationTypeName
-The name of the application type name resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityManagedCluster
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -118,11 +102,11 @@ The name of the cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: StopExpanded, StopViaJsonString, StopViaJsonFilePath, Stop
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -149,7 +133,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: StopViaIdentityExpanded, StopViaIdentity
 Aliases:
 
 Required: True
@@ -159,18 +143,33 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedClusterInputObject
-Identity Parameter
+### -JsonFilePath
+Path of Json file supplied to the Stop operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
-Parameter Sets: DeleteViaIdentityManagedCluster
+Type: System.String
+Parameter Sets: StopViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Stop operation
+
+```yaml
+Type: System.String
+Parameter Sets: StopViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -189,18 +188,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Parameter
+Parameters for Fault Simulation id.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IFaultSimulationIdContent
+Parameter Sets: Stop, StopViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -210,11 +209,26 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: StopExpanded, StopViaJsonString, StopViaJsonFilePath, Stop
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SimulationId
+unique identifier for the fault simulation.
+
+```yaml
+Type: System.String
+Parameter Sets: StopExpanded, StopViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -225,27 +239,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: StopExpanded, StopViaJsonString, StopViaJsonFilePath, Stop
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-The application type version.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityManagedCluster, DeleteViaIdentityApplicationType
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -286,11 +285,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IFaultSimulationIdContent
+
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IServiceFabricIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Models.IFaultSimulation
 
 ## NOTES
 
