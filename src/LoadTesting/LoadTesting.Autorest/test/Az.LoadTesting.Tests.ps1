@@ -18,7 +18,7 @@ Describe 'New-AzLoad' {
     It 'Create with MI' {
         $name = $env.loadTestResource1
         $tags = @{"tag1"="value1"}
-        $userAssigned = @{$env.identityid1=@{};$env.identityid2=@{}}
+        $userAssigned = @($env.identityid1, $env.identityid2)
         $identityType = "SystemAssigned, UserAssigned"
 
         $res = New-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType $identityType -IdentityUserAssigned $userAssigned -Tag $tags
@@ -29,9 +29,9 @@ Describe 'New-AzLoad' {
         $res.DataPlaneUri | Should -Not -BeNullOrEmpty
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag['tag1'] | Should -Be 'value1'
-        $res.IdentityType | Should -Be $identityType
+        $res.ManagedServiceIdentityType | Should -Be $identityType
         $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 2
+        $res.IdentityUserAssignedIdentity.Count | Should -Be 2
         $res.EncryptionIdentityType | Should -BeNullOrEmpty
         $res.EncryptionIdentityResourceId | Should -BeNullOrEmpty
         $res.EncryptionKey | Should -BeNullOrEmpty
@@ -51,7 +51,7 @@ Describe 'New-AzLoad' {
         $res.DataPlaneUri | Should -Not -BeNullOrEmpty
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag.Keys | Should -HaveCount 0
-        $res.IdentityType | Should -Be $identityType
+        $res.ManagedServiceIdentityType | Should -Be $identityType
         $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
         $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
         $res.EncryptionIdentityType | Should -Be $identityType
@@ -73,9 +73,9 @@ Describe 'Get-AzLoad' {
         $res.DataPlaneUri | Should -Not -BeNullOrEmpty
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag['tag1'] | Should -Be 'value1'
-        $res.IdentityType | Should -Be $identityType
+        $res.ManagedServiceIdentityType | Should -Be $identityType
         $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 2
+        $res.IdentityUserAssignedIdentity.Count | Should -Be 2
         $res.EncryptionIdentityType | Should -BeNullOrEmpty
         $res.EncryptionIdentityResourceId | Should -BeNullOrEmpty
         $res.EncryptionKey | Should -BeNullOrEmpty
@@ -95,9 +95,9 @@ Describe 'Get-AzLoad' {
         $res.DataPlaneUri | Should -Not -BeNullOrEmpty
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag.Keys | Should -HaveCount 0
-        $res.IdentityType | Should -Be $identityType
+        $res.ManagedServiceIdentityType | Should -Be $identityType
         $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
+        $res.IdentityUserAssignedIdentity.Count | Should -Be 1
         $res.EncryptionIdentityType | Should -Be $identityType
         $res.EncryptionIdentityResourceId | Should -Be $cmkIdentity
         $res.EncryptionKey | Should -Be $cmkKey
@@ -118,9 +118,9 @@ Describe 'Update-AzLoad (Recorded)' {
         $res.DataPlaneUri | Should -Not -BeNullOrEmpty
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag['tag1'] | Should -Be 'value1'
-        $res.IdentityType | Should -Be $identityType
+        $res.ManagedServiceIdentityType | Should -Be $identityType
         $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
+        $res.IdentityUserAssignedIdentity.Count | Should -Be 1
         $res.EncryptionIdentityType | Should -BeNullOrEmpty
         $res.EncryptionIdentityResourceId | Should -BeNullOrEmpty
         $res.EncryptionKey | Should -BeNullOrEmpty
@@ -141,9 +141,9 @@ Describe 'Update-AzLoad (Recorded)' {
         $res.DataPlaneUri | Should -Not -BeNullOrEmpty
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag.Keys | Should -HaveCount 0
-        $res.IdentityType | Should -Be $identityType
+        $res.ManagedServiceIdentityType | Should -Be $identityType
         $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
+        $res.IdentityUserAssignedIdentity.Count | Should -Be 1
         $res.EncryptionIdentityType | Should -Be $encryptionIdentityType
         $res.EncryptionIdentityResourceId | Should -Be $cmkIdentity
         $res.EncryptionKey | Should -Be $cmkKey
@@ -170,9 +170,9 @@ Describe 'Update-AzLoad (LiveOnly)' -Tag 'LiveOnly' {
         $res.DataPlaneUri | Should -Not -BeNullOrEmpty
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag.Keys | Should -HaveCount 0
-        $res.IdentityType | Should -Be $identityType
+        $res.ManagedServiceIdentityType | Should -Be $identityType
         $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
+        $res.IdentityUserAssignedIdentity.Count | Should -Be 1
         $res.EncryptionIdentityType | Should -Be $cmkIdentity
         $res.EncryptionIdentityResourceId | Should -BeNullOrEmpty
         $res.EncryptionKey | Should -Be $cmkKey

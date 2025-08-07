@@ -8,19 +8,32 @@ schema: 2.0.0
 # New-AzLoad
 
 ## SYNOPSIS
-Create a new Azure Load Testing resource.
+Create LoadTest resource.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzLoad -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-EncryptionIdentity <String>] [-EncryptionKey <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-EncryptionIdentity <String>] [-EncryptionKey <String>] [-ManagedServiceIdentityType <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzLoad -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzLoad -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new Azure Load Testing resource in the resource group.
+Create LoadTest resource.
 
 ## EXAMPLES
 
@@ -99,7 +112,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -119,7 +133,7 @@ Ex: '/subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resour
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -135,7 +149,7 @@ Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -145,33 +159,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed identity.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssigned
-The list of user assigned identities associated with the resource.
-The user identity will be ARM resource ids.
-The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The values of the keys are empty objects ({}) in requests.
+### -JsonString
+Json string supplied to the Create operation
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,7 +194,7 @@ Location where the Azure Load Testing resource needs to be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -193,8 +204,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedServiceIdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases: IdentityType
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-Name of the new Azure Load Testing resource.
+Load Test name.
 
 ```yaml
 Type: System.String
@@ -224,7 +250,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -239,7 +266,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -259,8 +286,26 @@ For example: @{key0="value0";key1=$null;key2="value2"}.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The list of user assigned identities associated with the resource.
+The user identity will be ARM resource ids.
+The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The values of the keys are empty objects ({}) in requests.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases: IdentityUserAssigned
 
 Required: False
 Position: Named
@@ -307,7 +352,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource
+### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource
 
 ## NOTES
 

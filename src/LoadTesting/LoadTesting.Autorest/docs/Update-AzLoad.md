@@ -8,19 +8,28 @@ schema: 2.0.0
 # Update-AzLoad
 
 ## SYNOPSIS
-Update an Azure Load Testing resource.
+Update LoadTest resource.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Update-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EncryptionIdentity <String>] [-EncryptionKey <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-EncryptionIdentity <String>] [-EncryptionKey <String>] [-ManagedServiceIdentityType <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzLoad -InputObject <ILoadTestingIdentity> [-EncryptionIdentityResourceId <String>]
+ [-EncryptionIdentityType <String>] [-EncryptionKey <String>] [-ManagedServiceIdentityType <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an Azure Load Testing resource in a given resource group.
+Update LoadTest resource.
 
 ## EXAMPLES
 
@@ -84,7 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -105,7 +115,38 @@ Ex: 'SystemAssigned' uses system-assigned managed identity, whereas '/subscripti
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionIdentityResourceId
+user assigned identity to use for accessing key encryption key Url.
+Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionIdentityType
+Managed identity type to use for accessing encryption key Url
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -116,8 +157,8 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionKey
-Encryption key URL, versioned.
-Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78.
+key encryption key Url, versioned.
+Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
 
 ```yaml
 Type: System.String
@@ -131,31 +172,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed identity.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestingIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssigned
-The list of user assigned identities associated with the resource.
-The user identity will be ARM resource ids.
-The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The values of the keys can be empty objects ({}) to assign an identity and $null to remove an existing identity.
+### -ManagedServiceIdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: IdentityType
 
 Required: False
 Position: Named
@@ -169,7 +207,7 @@ Name of the Azure Load Testing resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: LoadTestName
 
 Required: True
@@ -199,7 +237,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -214,7 +252,7 @@ The ID of the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -225,13 +263,28 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table set as tags on the server.
-For example: @{key0="value0";key1=$null;key2="value2"}.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases: IdentityUserAssigned
 
 Required: False
 Position: Named
@@ -276,9 +329,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestingIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource
+### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource
 
 ## NOTES
 
