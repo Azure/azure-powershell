@@ -53,9 +53,14 @@ function Test-HDInsightJobManagementCommands{
 		# test Stop-AzHDInsightJob
 		Stop-AzHDInsightJob -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential -JobId  $jobMapReduce.JobId
 		
-		New-AzHDInsightPigJobDefinition -Query "SHOW TABLES"
-		New-AzHDInsightSqoopJobDefinition
-		New-AzHDInsightStreamingMapReduceJobDefinition -InputPath '/tmp'
+		$pigJob = New-AzHDInsightPigJobDefinition -Query "SHOW TABLES"
+		Assert-NotNull $pigJob
+
+		$sqoopJob = New-AzHDInsightSqoopJobDefinition
+		Assert-NotNull $sqoopJob
+		
+		$streamingJob = New-AzHDInsightStreamingMapReduceJobDefinition -InputPath '/tmp'
+		Assert-NotNull $streamingJob
 	}
 	finally
 	{
@@ -568,7 +573,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
 		-VirtualNetworkId $vnetId -SubnetName $subnetName `
-		-ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfiguration $privateLinkConfiguration  -Version 5.1
+		-ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfiguration $privateLinkConfiguration
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound
 		Assert-AreEqual $cluster.NetworkProperties.PrivateLink Enabled
