@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 5.0.1
+* Fixed content types comtent bug with null content
+
 ## Version 5.0.0
 * Upgraded Api version to 2025-04-15
 * Added support for cipher

@@ -345,6 +345,12 @@ directive:
   - where:
       subject: KeyGroupUpdate
     hide: true
+    
+  # Hide New-AzFrontDoorCdnRoute to customize
+  - where:
+      subject: Route 
+      verb: New
+    hide: true
 
   # Rename
   - where:
