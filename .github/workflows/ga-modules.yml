@@ -30,15 +30,17 @@ jobs:
         $ghToken = $env:GH_TOKEN
         $force = "${{ inputs.Force }}".ToLower() -eq 'true'
 
-        if (-not $Modules -or $Modules.Count -eq 0) {
-          throw "❌ No 'Modules' provided. Please set the 'Modules' input."
-        }
-            
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
             
+        if ("${{ inputs.Modules }}".Trim() -eq '') {
+          throw "❌ 'Modules' is empty. Please set the 'Modules' input."
+        }
         $Modules = "${{ inputs.Modules }}" -split ',' | ForEach-Object {$_.Trim()}
-            
+        if ($Modules.Count -eq 0) {
+          throw "❌ No 'Modules' provided. Please set the 'Modules' input."
+        }
+        
         $baseBranch = "main"
         $newBranch = 'ga/' + ($Modules -join '_')
 
