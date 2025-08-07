@@ -7,7 +7,9 @@ on:
         description: 'Modules to be GAed (split with ",")'
         required: true
         type: string
-      
+
+run-name: "GA ${{ inputs.Modules }}"      
+
 jobs:
   GA_Modules:
     runs-on: ubuntu-latest
