@@ -50,6 +50,43 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - where:
+      Verb: Get
+      subject: PredictiveMetric
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Data
+        new-output-properties:
+          - Data
+        change-description: The type of the property 'Data' of type 'IPredictiveResponse' will be changed from single object to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Get|Update|New
+      subject: AutoscaleSetting
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Notification
+          - Profile
+        new-output-properties:
+          - Notification
+          - Profile
+        change-description: The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      parameter-name: Profile|Rule|ScheduleHour|ScheduleMinute|ScheduleDay|Webhook|EmailCustomEmail
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
@@ -99,11 +136,11 @@ directive:
         },
         "description": "A specific date-time for the profile."
       }
-
+# Add breaking change for them, will add back.
   - model-cmdlet:
-    - AutoscaleProfile
-    - ScaleRule
-    - AutoscaleNotification
+    # - AutoscaleProfile
+    # - ScaleRule
+    # - AutoscaleNotification
     - WebhookNotification
-    - ScaleRuleMetricDimension
+    # - ScaleRuleMetricDimension
 ```

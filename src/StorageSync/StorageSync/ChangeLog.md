@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.5.1
+* Fixed security bug in token acquisition for MI server registration
+
 ## Version 2.5.0
 * Fixed the bug in server registration
 * Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet

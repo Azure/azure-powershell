@@ -3,6 +3,7 @@
     <PsModuleName>GraphServices</PsModuleName>
     <PsRootModuleName>GraphServices</PsRootModuleName>
     <PsModuleFolder>GraphServices.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.GraphServices</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
