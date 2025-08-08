@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Sftp</PsModuleName>
+  </PropertyGroup>
+
+  <!-- Import Azure PowerShell build properties if available -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" Condition="Exists('$(MSBuildThisFileDirectory)..\..\Az.props')" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Sftp.Helpers</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Sftp.Helpers</RootNamespace>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+    <NoWarn>$(NoWarn);CS0108;CS1573;CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.19.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="61.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
+    <PackageReference Update="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19" />
+    <PackageReference Update="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Storage\" />
+    <Folder Include="Storage\Models\" />
+    <Folder Include="Compute\" />
+    <Folder Include="Compute\Models\" />
+    <Folder Include="Network\" />
+    <Folder Include="Network\Models\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" Condition="Exists('$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props')" />
+
+</Project>
