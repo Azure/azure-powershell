@@ -24,27 +24,19 @@ This prevents new connections and flows from being created within the pipeline a
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Disable a pipeline
 ```powershell
-{{ Add code here }}
+Disable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Disables the pipeline named "Pipeline01" in the "ResourceGroup01" resource group.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Disable a pipeline with justification
 ```powershell
-{{ Add code here }}
+Disable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -Justification "Emergency shutdown for security review"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Disables the pipeline with a business justification.
 
 ## PARAMETERS
 

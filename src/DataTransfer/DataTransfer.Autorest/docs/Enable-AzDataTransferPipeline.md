@@ -24,27 +24,19 @@ This allows new connections and flows to be created within the pipeline.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable a pipeline
 ```powershell
-{{ Add code here }}
+Enable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Enables the pipeline named "Pipeline01" in the "ResourceGroup01" resource group.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Enable a pipeline with justification
 ```powershell
-{{ Add code here }}
+Enable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -Justification "Re-enabling after maintenance"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Enables the pipeline with a business justification.
 
 ## PARAMETERS
 

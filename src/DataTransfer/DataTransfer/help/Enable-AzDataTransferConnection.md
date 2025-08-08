@@ -25,27 +25,23 @@ This allows the connections to resume data transfer operations and allows new fl
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable a single connection
 ```powershell
-{{ Add code here }}
+Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection01"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Enables a single connection.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Enable multiple connections
 ```powershell
-{{ Add code here }}
+$connectionIds = @(
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection01",
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection02"
+)
+Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId $connectionIds
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Enables multiple connections.
 
 ## PARAMETERS
 

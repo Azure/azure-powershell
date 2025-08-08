@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Disable a single flow type
 ```powershell
-{{ Add code here }}
+Disable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType "FlowType01"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Disables the "FlowType01" flow type.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Disable multiple flow types
 ```powershell
-{{ Add code here }}
+Disable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType @("FlowType01", "FlowType02")
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Disables both "FlowType01" and "FlowType02" flow types.
 
