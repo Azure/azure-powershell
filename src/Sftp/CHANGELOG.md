@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 1.0.0
 * Initial release of Az.Sftp module
 * Added `New-AzSftpCertificate` cmdlet for generating SSH certificates using Azure AD credentials
     - Automatic SSH key pair generation
@@ -40,3 +38,5 @@
 * Comprehensive help documentation following Azure PowerShell standards
 * Extensive test suite covering all scenarios
 * Security features including secure key handling and short-lived certificates
+
+## Version 1.0.0
