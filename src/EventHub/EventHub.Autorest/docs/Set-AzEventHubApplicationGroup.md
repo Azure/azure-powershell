@@ -67,7 +67,7 @@ ResourceGroupName            : myResourceGroup
 ```
 
 `-Policy` takes an array of Policy objects.
-It represents the entire set of throttling policies defined on the appplication group and not just the one.
+It represents the entire set of throttling policies defined on the application group and not just the one.
 If you want to add or remove throttling policies, the right way to do it is to get the application group and query the Policy data member of the object returned as shown above.
 
 ### Example 2: Update application group using InputObject parameter set

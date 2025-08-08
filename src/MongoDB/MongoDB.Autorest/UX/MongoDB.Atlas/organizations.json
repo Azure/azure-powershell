@@ -1,6 +1,6 @@
 {
   "resourceType": "organizations",
-  "apiVersion": "2024-11-18-preview",
+  "apiVersion": "2025-06-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.mongodb"
   },

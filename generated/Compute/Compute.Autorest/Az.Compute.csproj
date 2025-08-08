@@ -3,6 +3,7 @@
     <PsModuleName>Compute</PsModuleName>
     <PsRootModuleName>Compute</PsRootModuleName>
     <PsModuleFolder>Compute.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Compute</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

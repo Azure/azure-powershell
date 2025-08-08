@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="defaultMoveCost">Specifies the move cost for the service.
-        /// Possible values include: 'Zero', 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Zero&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="provisioningState">The current deployment or provisioning state, which only appears in the
         /// response
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="servicePackageActivationMode">The activation Mode of the service package
-        /// Possible values include: 'SharedProcess', 'ExclusiveProcess'</param>
+        /// Possible values include: &#39;SharedProcess&#39;, &#39;ExclusiveProcess&#39;</param>
 
         /// <param name="serviceDnsName">Dns name used for the service. If this is specified, then the service can
         /// be accessed via its DNS name instead of service name.
