@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.Alb
 
 ## Version 0.1.4
 * Upgraded nuget package to signed package.
