@@ -36,27 +36,18 @@ Update an association between a ARC machine and Automanage configuration profile
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an association between a ARC machine and Automanage configuration profile
 ```powershell
-{{ Add code here }}
+Update-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -MachineName aglinuxmachines -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    ResourceGroupName ManagedBy Status  TargetId
+----    ----------------- --------- ------  --------
+default automangerg                 Unknown /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.HybridCompute/machines/aglinuxmachines
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update an association between a ARC machine and Automanage configuration profile
 
 ## PARAMETERS
 
