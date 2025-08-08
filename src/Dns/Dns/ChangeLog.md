@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * `Get-AzDnsDnssecConfig`
+  * `New-AzDnsDnssecConfig`
 
 ## Version 1.3.1
 * Upgraded nuget package to signed package.
