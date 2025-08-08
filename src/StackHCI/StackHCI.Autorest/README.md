@@ -66,12 +66,6 @@ subject-prefix: $(service-name)
 
 inlining-threshold: 50
 
-resourcegroup-append: true 
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Rename function
   - where:
@@ -80,8 +74,14 @@ directive:
     set:
       subject: ConsentAndInstallDefaultExtension
   # Remove the unexpanded parameter set
+  # Generate Create variant for "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/createArcIdentity"
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      subject: ArcSetting$|Cluster|DeploymentSetting|EdgeDevice|Extension|SecuritySetting|Update$|UpdateRun|UpdateSummary
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      subject: ExtendClusterSoftwareAssuranceBenefit
+      variant: ^(Extend)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       verb: Set
@@ -115,8 +115,8 @@ directive:
   # Remove Update-AzStackHciArcSetting
   - where:
       verb: Update
-      subject: ArcSetting
-    remove: true 
+      subject: ArcSetting|DeploymentSetting|EdgeDevice|SecuritySetting|Update$|UpdateRun|UpdateSummary
+    remove: true
   # Hide aadClientId from Update-AzStackHCICluster
   - where:
       verb: Update
@@ -208,4 +208,22 @@ directive:
           - ResourceGroupName
         labels:
           ResourceGroupName: Resource Group
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Get the get run for a specified update"/g, '"Get the Update run for a specified update"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Get all get summaries under the HCI cluster"/g, '"Get all Update summaries under the HCI cluster"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Delete specified delete Run"/g, '"Delete specified Update Run"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Delete delete Summaries"/g, '"Delete Update Summaries"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Put put runs for a specified update"/g, '"Put Update runs for a specified update"');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Put put summaries under the HCI cluster"/g, '"Put Update summaries under the HCI cluster"');
 ```

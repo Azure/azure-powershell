@@ -8,20 +8,35 @@ schema: 2.0.0
 # Set-AzStackHciDeploymentSetting
 
 ## SYNOPSIS
-Create a DeploymentSetting
+Update a DeploymentSetting
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Set-AzStackHciDeploymentSetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
  [-SubscriptionId <String>] [-ArcNodeResourceId <String[]>]
  [-DeploymentConfigurationScaleUnit <IScaleUnits[]>] [-DeploymentConfigurationVersion <String>]
- [-DeploymentMode <DeploymentMode>] [-OperationType <OperationType>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DeploymentMode <String>] [-OperationType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Set-AzStackHciDeploymentSetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Set-AzStackHciDeploymentSetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a DeploymentSetting
+Update a DeploymentSetting
 
 ## EXAMPLES
 
@@ -39,7 +54,7 @@ Azure resource ids of Arc machines to be part of cluster.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -97,11 +112,10 @@ Accept wildcard characters: False
 
 ### -DeploymentConfigurationScaleUnit
 Scale units will contains list of deployment data
-To construct, see NOTES section for DEPLOYMENTCONFIGURATIONSCALEUNIT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IScaleUnits[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IScaleUnits[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -116,7 +130,7 @@ deployment template version
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -130,11 +144,41 @@ Accept wildcard characters: False
 The deployment mode for cluster deployment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DeploymentMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -160,8 +204,8 @@ Accept wildcard characters: False
 The intended operation for a cluster.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.OperationType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -256,7 +300,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentSetting
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IDeploymentSetting
 
 ## NOTES
 
