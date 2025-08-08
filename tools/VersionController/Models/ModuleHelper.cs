@@ -20,8 +20,8 @@ namespace VersionController.Netcore.Models
             if (!string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_URL")))
             {
                 string repository = System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_NAME");
-                findModuleScript = "$AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force;$credentialsObject = [pscredential]::new('ONEBRANCH_TOKEN', $AccessTokenSecureString);";
-                findModuleScript += releaseType == ReleaseType.STS 
+                authScript = "$AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force;$credentialsObject = [pscredential]::new('ONEBRANCH_TOKEN', $AccessTokenSecureString);";
+                findModuleScript = releaseType == ReleaseType.STS 
                     ? $"Find-PSResource -Name {moduleName} -Repository {repository} -Version * -Credential $credentialsObject" 
                     : $"Find-PSResource -Name Az -Repository {repository} -Version * -Credential $credentialsObject";
             }
@@ -33,7 +33,7 @@ namespace VersionController.Netcore.Models
             string filterRequiredReleaseTypeScript = releaseType == ReleaseType.STS ? "" : "| Where-Object {([System.Version]($_.Version)).Major % 2 -eq 0}";
             string sortModuleScript = "| Sort-Object {[System.Version]$_.Version} -Descending";
             string getLastModuleVersionScript = releaseType == ReleaseType.STS ? 
-                $"({findModuleScript}{filterRequiredReleaseTypeScript}{sortModuleScript})[0].Version" :
+                $"{authScript}({findModuleScript}{filterRequiredReleaseTypeScript}{sortModuleScript})[0].Version" :
                 $"(({findModuleScript}{filterRequiredReleaseTypeScript}{sortModuleScript})[0].Dependencies | Where-Object {{$_.Name -eq '{moduleName}'}})[1]";
             using (PowerShell powershell = PowerShell.Create())
             {
