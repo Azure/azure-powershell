@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed DSC configuration archive required module paths in `Publish-AzVMDscConfiguration` cmdlet to include module version.
 
 ## Version 10.2.0
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
