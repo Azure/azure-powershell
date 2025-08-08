@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StackHCI
-Module Guid: 18e6b2a3-7e2d-4f6e-a8d2-09edaf462fd8
+Module Guid: ecca9195-88b3-4c8f-a865-4fa09629fc69
 Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhci
 Help Version: 1.0.0.0
 Locale: en-US
@@ -80,6 +80,9 @@ Apply Update
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
 
+### [New-AzStackHciArcSettingIdentity](New-AzStackHciArcSettingIdentity.md)
+Create Aad identity for arc settings.
+
 ### [New-AzStackHciCluster](New-AzStackHciCluster.md)
 Create an HCI cluster.
 
@@ -135,13 +138,13 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
 
 ### [Set-AzStackHciDeploymentSetting](Set-AzStackHciDeploymentSetting.md)
-Create a DeploymentSetting
+Update a DeploymentSetting
 
 ### [Set-AzStackHciEdgeDevice](Set-AzStackHciEdgeDevice.md)
-Create a EdgeDevice
+Update a EdgeDevice
 
 ### [Set-AzStackHciSecuritySetting](Set-AzStackHciSecuritySetting.md)
-Create a security setting
+Update a security setting
 
 ### [Set-AzStackHciUpdate](Set-AzStackHciUpdate.md)
 Put specified Update

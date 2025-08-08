@@ -19,6 +19,20 @@ Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -EdgeDeviceId <St
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ValidateViaJsonString
+```
+Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ValidateViaJsonFilePath
+```
+Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### Validate
 ```
 Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -ValidateRequest <IValidateRequest>
@@ -125,7 +139,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
@@ -139,12 +152,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of Device
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, Validate
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, Validate
 Aliases: EdgeDeviceName
 
 Required: True
@@ -174,7 +217,7 @@ The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, Validate
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, Validate
 Aliases:
 
 Required: True
@@ -186,10 +229,9 @@ Accept wildcard characters: False
 
 ### -ValidateRequest
 The validate request for Edge Device.
-To construct, see NOTES section for VALIDATEREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IValidateRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IValidateRequest
 Parameter Sets: Validate, ValidateViaIdentity
 Aliases:
 
@@ -236,13 +278,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IValidateRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IValidateRequest
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IValidateResponse
 
 ## NOTES
 
