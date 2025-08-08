@@ -20,6 +20,11 @@
 
 
 ## Upcoming Release
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * `Get-AzAttestationDefaultProvider`
+  * `Get-AzAttestationProvider`
+  * `New-AzAttestationProvider`
+  * `Update-AzAttestationProvider`
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
