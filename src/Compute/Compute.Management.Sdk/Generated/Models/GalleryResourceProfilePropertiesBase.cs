@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryResourceProfilePropertiesBase class.
         /// </summary>
-        /// <param name="provisioningState">Possible values include:
-        /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
-        /// 'Migrating'</param>
+        /// <param name="provisioningState">The provisioning state, which only
+        /// appears in the response. Possible values include: 'Creating',
+        /// 'Updating', 'Failed', 'Succeeded', 'Deleting', 'Migrating'</param>
         public GalleryResourceProfilePropertiesBase(string provisioningState = default(string))
         {
             ProvisioningState = provisioningState;
@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets possible values include: 'Creating', 'Updating', 'Failed',
+        /// Gets the provisioning state, which only appears in the response.
+        /// Possible values include: 'Creating', 'Updating', 'Failed',
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]

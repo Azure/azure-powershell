@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzSpotPlacementScore_Post", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Invoke-AzSpotPlacementRecommender")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Description(@"Generates placement scores for Spot VM skus.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate", ApiVersion = "2024-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate", ApiVersion = "2025-06-05")]
     public partial class InvokeAzSpotPlacementScore_Post : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener
     {
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
         /// <summary>Backing field for <see cref="SpotPlacementScoresInput" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput _spotPlacementScoresInput;
+        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput _spotPlacementScoresInput;
 
         /// <summary>SpotPlacementScores API Input.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "SpotPlacementScores API Input.", ValueFromPipeline = true)]
@@ -121,9 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         ReadOnly = false,
         Description = @"SpotPlacementScores API Input.",
         SerializedName = @"spotPlacementScoresInput",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput) })]
         [global::System.Management.Automation.Alias("SpotPlacementRecommenderInput")]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput SpotPlacementScoresInput { get => this._spotPlacementScoresInput; set => this._spotPlacementScoresInput = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput SpotPlacementScoresInput { get => this._spotPlacementScoresInput; set => this._spotPlacementScoresInput = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -151,24 +151,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -376,12 +376,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api50.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api50.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api60.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, Location=Location, body=SpotPlacementScoresInput })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -416,12 +416,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse
                 WriteObject((await response));
             }
         }
