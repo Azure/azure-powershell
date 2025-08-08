@@ -46,7 +46,7 @@ Get a single workbook revision defined by its revisionId.
 
 ### Example 1: List all workbook revisions
 ```powershell
-Get-AzApplicationInsightsWorkbookRevision -ResourceGroupName appinsights-hkrs2v-test -Name f7d7151e-7907-4f46-8a5e-6bf4a4cfedec | fl
+Get-AzApplicationInsightsWorkbookRevision -ResourceGroupName appinsights-hkrs2v-test -Name f7d7151e-7907-4f46-8a5e-6bf4a4cfedec | Format-List
 ```
 
 ```output
