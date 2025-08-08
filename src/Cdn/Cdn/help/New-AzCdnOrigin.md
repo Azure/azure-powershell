@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCdnOrigin
 
 ## SYNOPSIS
-create a new origin within the specified endpoint.
+Create a new origin within the specified endpoint.
 
 ## SYNTAX
 
@@ -69,7 +69,7 @@ New-AzCdnOrigin -Name <String> -EndpointInputObject <ICdnIdentity> -Origin <IOri
 ```
 
 ## DESCRIPTION
-create a new origin within the specified endpoint.
+Create a new origin within the specified endpoint.
 
 ## EXAMPLES
 
