@@ -120,7 +120,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// This function will return the application id of the server if it is available.
         /// </summary>
         /// <returns>Application Id or null</returns>
-        public abstract Guid? GetApplicationIdOrNull();
+        public abstract Task<ServerApplicationIdentity> GetServerApplicationIdentityOrNull();
 
         /// <summary>
         /// Dispose method for cleaning Interop client object.
@@ -146,6 +146,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// 3. Calls RegisterOnline callback to make ARM call (from caller context)
         /// 4. Persists registered server resource from cloud to local FileSyncSvc service
         /// </summary>
+        /// <param name="storageSyncServiceTenantId">Storage Sync Service TenantId</param>
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
         /// <param name="storageSyncServiceName">Storage Sync Service Name</param>
@@ -160,6 +161,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="assignIdentity">Assign Identity</param>
         /// <returns>Registered Server Resource</returns>
         public RegisteredServer Register(
+            string storageSyncServiceTenantId,
             Uri managementEndpointUri,
             Guid subscriptionId,
             string storageSyncServiceName,
@@ -174,7 +176,18 @@ namespace Commands.StorageSync.Interop.Clients
             bool assignIdentity)
         {
             // Discover the server type , Get the application id, 
-            Guid? applicationId = assignIdentity ? GetApplicationIdOrNull() : null;
+            ServerApplicationIdentity serverApplicationIdentity = assignIdentity ? GetServerApplicationIdentityOrNull().GetAwaiter().GetResult() : null;
+            Guid? applicationId = serverApplicationIdentity?.ApplicationId;
+
+            if (serverApplicationIdentity != null && serverApplicationIdentity?.TenantId != Guid.Empty)
+            {
+                // Check that tenants match
+                if (!string.Equals(storageSyncServiceTenantId, serverApplicationIdentity.TenantId.ToString(), StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ServerRegistrationException(
+                        $"Cross-tenant registration is not allowed. The server belongs to tenant '{serverApplicationIdentity.TenantId}' but the Storage Sync Service is in tenant '{storageSyncServiceTenantId}'.");
+                }
+            }
 
             // Set the registry key for ServerAuthType
             RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
