@@ -37,16 +37,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// class.
         /// </summary>
         /// <param name="id">Resource Id</param>
-        /// <param name="name">The name of the extension.</param>
-        /// <param name="type">Resource type</param>
         /// <param name="forceUpdateTag">If a value is provided and is
         /// different from the previous value, the extension handler will be
         /// forced to update even if the extension configuration has not
         /// changed.</param>
         /// <param name="publisher">The name of the extension handler
         /// publisher.</param>
-        /// <param name="type1">Specifies the type of the extension; an example
-        /// is "CustomScriptExtension".</param>
+        /// <param
+        /// name="virtualMachineScaleSetExtensionPropertiesType">Specifies the
+        /// type of the extension; an example is
+        /// "CustomScriptExtension".</param>
         /// <param name="typeHandlerVersion">Specifies the version of the
         /// script handler.</param>
         /// <param name="autoUpgradeMinorVersion">Indicates whether the
@@ -73,14 +73,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="protectedSettingsFromKeyVault">The extensions
         /// protected settings that are passed by reference, and consumed from
         /// key vault</param>
-        public VirtualMachineScaleSetExtension(string id = default(string), string name = default(string), string type = default(string), string forceUpdateTag = default(string), string publisher = default(string), string type1 = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), IList<string> provisionAfterExtensions = default(IList<string>), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference))
+        /// <param name="type">Resource type</param>
+        /// <param name="name">Resource name</param>
+        public VirtualMachineScaleSetExtension(string id = default(string), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineScaleSetExtensionPropertiesType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), bool? enableAutomaticUpgrade = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), IList<string> provisionAfterExtensions = default(IList<string>), bool? suppressFailures = default(bool?), KeyVaultSecretReference protectedSettingsFromKeyVault = default(KeyVaultSecretReference), string type = default(string), string name = default(string))
             : base(id)
         {
-            Name = name;
-            Type = type;
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
-            Type1 = type1;
+            VirtualMachineScaleSetExtensionPropertiesType = virtualMachineScaleSetExtensionPropertiesType;
             TypeHandlerVersion = typeHandlerVersion;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             EnableAutomaticUpgrade = enableAutomaticUpgrade;
@@ -90,6 +90,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             ProvisionAfterExtensions = provisionAfterExtensions;
             SuppressFailures = suppressFailures;
             ProtectedSettingsFromKeyVault = protectedSettingsFromKeyVault;
+            Type = type;
+            Name = name;
             CustomInit();
         }
 
@@ -97,18 +99,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets the name of the extension.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
 
         /// <summary>
         /// Gets or sets if a value is provided and is different from the
@@ -129,7 +119,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// "CustomScriptExtension".
         /// </summary>
         [JsonProperty(PropertyName = "properties.type")]
-        public string Type1 { get; set; }
+        public string VirtualMachineScaleSetExtensionPropertiesType { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the version of the script handler.
@@ -195,6 +185,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.protectedSettingsFromKeyVault")]
         public KeyVaultSecretReference ProtectedSettingsFromKeyVault { get; set; }
+
+        /// <summary>
+        /// Gets resource type
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets or sets resource name
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Validate the object.

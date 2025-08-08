@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location upon which run commands is queried.
+            /// The name of Azure region.
             /// </param>
             public static IPage<RunCommandDocumentBase> List(this IVirtualMachineRunCommandsOperations operations, string location)
             {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location upon which run commands is queried.
+            /// The name of Azure region.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location upon which run commands is queried.
+            /// The name of Azure region.
             /// </param>
             /// <param name='commandId'>
             /// The command id.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location upon which run commands is queried.
+            /// The name of Azure region.
             /// </param>
             /// <param name='commandId'>
             /// The command id.
@@ -96,20 +96,117 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// The operation to get all run commands of a Virtual Machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the VirtualMachine
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            public static IPage<VirtualMachineRunCommand> ListByVirtualMachine(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string expand = default(string))
+            {
+                return operations.ListByVirtualMachineAsync(resourceGroupName, vmName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to get all run commands of a Virtual Machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the VirtualMachine
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<VirtualMachineRunCommand>> ListByVirtualMachineAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByVirtualMachineWithHttpMessagesAsync(resourceGroupName, vmName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation to get the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the VirtualMachine
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the VirtualMachineRunCommand
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            public static VirtualMachineRunCommand GetByVirtualMachine(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, string expand = default(string))
+            {
+                return operations.GetByVirtualMachineAsync(resourceGroupName, vmName, runCommandName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation to get the run command.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the VirtualMachine
+            /// </param>
+            /// <param name='runCommandName'>
+            /// The name of the VirtualMachineRunCommand
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommand> GetByVirtualMachineAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetByVirtualMachineWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// The operation to create or update the run command.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be created or
-            /// updated.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='runCommand'>
             /// Parameters supplied to the Create Virtual Machine RunCommand operation.
@@ -126,14 +223,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be created or
-            /// updated.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='runCommand'>
             /// Parameters supplied to the Create Virtual Machine RunCommand operation.
@@ -156,13 +252,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be updated.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='runCommand'>
             /// Parameters supplied to the Update Virtual Machine RunCommand operation.
@@ -179,13 +275,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be updated.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='runCommand'>
             /// Parameters supplied to the Update Virtual Machine RunCommand operation.
@@ -208,13 +304,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be deleted.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             public static void Delete(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName)
             {
@@ -228,13 +324,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be deleted.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -245,118 +341,19 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// The operation to get the run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine containing the run command.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            public static VirtualMachineRunCommand GetByVirtualMachine(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, string expand = default(string))
-            {
-                return operations.GetByVirtualMachineAsync(resourceGroupName, vmName, runCommandName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to get the run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine containing the run command.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineRunCommand> GetByVirtualMachineAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetByVirtualMachineWithHttpMessagesAsync(resourceGroupName, vmName, runCommandName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to get all run commands of a Virtual Machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine containing the run command.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            public static IPage<VirtualMachineRunCommand> ListByVirtualMachine(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string expand = default(string))
-            {
-                return operations.ListByVirtualMachineAsync(resourceGroupName, vmName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to get all run commands of a Virtual Machine.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmName'>
-            /// The name of the virtual machine containing the run command.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VirtualMachineRunCommand>> ListByVirtualMachineAsync(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByVirtualMachineWithHttpMessagesAsync(resourceGroupName, vmName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// The operation to create or update the run command.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be created or
-            /// updated.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='runCommand'>
             /// Parameters supplied to the Create Virtual Machine RunCommand operation.
@@ -373,14 +370,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be created or
-            /// updated.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='runCommand'>
             /// Parameters supplied to the Create Virtual Machine RunCommand operation.
@@ -403,13 +399,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be updated.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='runCommand'>
             /// Parameters supplied to the Update Virtual Machine RunCommand operation.
@@ -426,13 +422,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be updated.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='runCommand'>
             /// Parameters supplied to the Update Virtual Machine RunCommand operation.
@@ -455,13 +451,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be deleted.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             public static void BeginDelete(this IVirtualMachineRunCommandsOperations operations, string resourceGroupName, string vmName, string runCommandName)
             {
@@ -475,13 +471,13 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmName'>
-            /// The name of the virtual machine where the run command should be deleted.
+            /// The name of the VirtualMachine
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// The name of the VirtualMachineRunCommand
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
