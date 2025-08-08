@@ -15,8 +15,10 @@
 # Replace with Object id of operator of tests
 $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
 
+$subscriptionId = "0e745469-49f8-48c9-873b-24ca87143db1"
+
 # Replace with a userAssignedIdentity of operator of tests
-$userAssignedIdentity = "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/dl-hsm-kv/providers/Microsoft.ManagedIdentity/userAssignedIdentities/daniel-id01"
+# $userAssignedIdentity = "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/dl-hsm-kv/providers/Microsoft.ManagedIdentity/userAssignedIdentities/daniel-id01"
 
 <#
 .SYNOPSIS
@@ -73,22 +75,27 @@ function Test-ManagedHsmCRUD {
 Tests creating new managed HSM with UserAssignedIdentity.
 #>
 function Test-NewManagedHsmWithManagedServiceIdentity{
+    Write-Verbose "Admin username: $administrator"
     $rgName = getAssetName
-    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "East Asia"
     $hsmName = getAssetName
-    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "India"
-
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
+    
+    $identityName = getAssetName
+    $userAssignedIdentity = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName"
+    
     New-AzResourceGroup -Name $rgName -Location $rgLocation
+    New-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $identityName -Location $hsmLocation
 
     try {
         $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 7 -UserAssignedIdentity $userAssignedIdentity
         
         Assert-NotNull $hsm
-        Assert-True ($hsm.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)) "Failed to create managed HSM with userAssignedIdentity"
+        Assert-True { $hsm.Identity.UserAssignedIdentities.Keys -contains $userAssignedIdentity } "Failed to create managed HSM with userAssignedIdentity"
 
     }finally{        
-        Remove-AzResourceGroup -Name $rgName -Force
-        Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
+      Remove-AzResourceGroup -Name $rgName -Force
+      Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
     }
 }
 
