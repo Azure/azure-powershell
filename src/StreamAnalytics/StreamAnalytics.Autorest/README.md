@@ -302,7 +302,7 @@ directive:
           change-description: The type of property Quota will be changed from fixed array to 'List'.
           deprecated-by-version: 3.0.0
           deprecated-by-azversion: 15.0.0
-          change-effective-date: 2025/11/
+          change-effective-date: 2025/11/03
   - where:
       verb: Update
       subject: Cluster
