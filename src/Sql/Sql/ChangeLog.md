@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.6
 * Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
 * Updated with support for Immutable Long-Term Retention Backups
     - Updated `Set-AzSqlDatabaseBackupLongTermRetentionPolicy` cmdlet to expose `TimeBasedImmutability` and `TimeBasedImmutabilityMode` parameters.
