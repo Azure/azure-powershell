@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.AksArc
 
 ## Version 0.1.4
 * Fixed module name in module metadata
