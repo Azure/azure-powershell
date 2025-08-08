@@ -179,7 +179,7 @@ namespace Commands.StorageSync.Interop.Clients
             ServerApplicationIdentity serverApplicationIdentity = assignIdentity ? GetServerApplicationIdentityOrNull().GetAwaiter().GetResult() : null;
             Guid? applicationId = serverApplicationIdentity?.ApplicationId;
 
-            if (serverApplicationIdentity != null && serverApplicationIdentity?.TenantId != Guid.Empty)
+            if (serverApplicationIdentity != null && serverApplicationIdentity.TenantId != Guid.Empty)
             {
                 // Check that tenants match
                 if (!string.Equals(storageSyncServiceTenantId, serverApplicationIdentity.TenantId.ToString(), StringComparison.OrdinalIgnoreCase))
