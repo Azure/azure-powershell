@@ -94,18 +94,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
                 return;
             }
             // actually deserialize
-            if (content.Contains("AuthenticationIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) content.GetValueForProperty("AuthenticationIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModelTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ResourceAccessIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) content.GetValueForProperty("ResourceAccessIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModelTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("CustomProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomProperty = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties) content.GetValueForProperty("CustomProperty",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomProperty, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomPropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("CorrelationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CorrelationId = (string) content.GetValueForProperty("CorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CorrelationId, global::System.Convert.ToString);
@@ -117,6 +105,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             if (content.Contains("MachineName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) content.GetValueForProperty("AuthenticationIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModelTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceAccessIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) content.GetValueForProperty("ResourceAccessIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModelTypeConverter.ConvertFrom);
             }
             if (content.Contains("IsResponsive"))
             {
@@ -138,49 +134,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HealthErrorModelTypeConverter.ConvertFrom));
             }
-            if (content.Contains("AuthenticationIdentityTenantId"))
+            if (content.Contains("CustomProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityTenantId = (string) content.GetValueForProperty("AuthenticationIdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationIdentityApplicationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityApplicationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationIdentityObjectId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityObjectId = (string) content.GetValueForProperty("AuthenticationIdentityObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityObjectId, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationIdentityAudience"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityAudience = (string) content.GetValueForProperty("AuthenticationIdentityAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityAudience, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationIdentityAadAuthority"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityAadAuthority, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityApplicationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityApplicationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityObjectId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityObjectId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityAudience"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityAudience = (string) content.GetValueForProperty("ResourceAccessIdentityAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityAudience, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityAadAuthority"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityAadAuthority, global::System.Convert.ToString);
-            }
-            if (content.Contains("CustomPropertyInstanceType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomPropertyInstanceType = (string) content.GetValueForProperty("CustomPropertyInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomPropertyInstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomProperty = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties) content.GetValueForProperty("CustomProperty",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomProperty, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomPropertiesTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -199,18 +155,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
                 return;
             }
             // actually deserialize
-            if (content.Contains("AuthenticationIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) content.GetValueForProperty("AuthenticationIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModelTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ResourceAccessIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) content.GetValueForProperty("ResourceAccessIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModelTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("CustomProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomProperty = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties) content.GetValueForProperty("CustomProperty",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomProperty, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomPropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("CorrelationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CorrelationId = (string) content.GetValueForProperty("CorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CorrelationId, global::System.Convert.ToString);
@@ -222,6 +166,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             if (content.Contains("MachineName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) content.GetValueForProperty("AuthenticationIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModelTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceAccessIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) content.GetValueForProperty("ResourceAccessIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModelTypeConverter.ConvertFrom);
             }
             if (content.Contains("IsResponsive"))
             {
@@ -243,49 +195,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HealthErrorModelTypeConverter.ConvertFrom));
             }
-            if (content.Contains("AuthenticationIdentityTenantId"))
+            if (content.Contains("CustomProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityTenantId = (string) content.GetValueForProperty("AuthenticationIdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationIdentityApplicationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityApplicationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationIdentityObjectId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityObjectId = (string) content.GetValueForProperty("AuthenticationIdentityObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityObjectId, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationIdentityAudience"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityAudience = (string) content.GetValueForProperty("AuthenticationIdentityAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityAudience, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthenticationIdentityAadAuthority"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).AuthenticationIdentityAadAuthority, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityApplicationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityApplicationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityObjectId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityObjectId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityAudience"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityAudience = (string) content.GetValueForProperty("ResourceAccessIdentityAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityAudience, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceAccessIdentityAadAuthority"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).ResourceAccessIdentityAadAuthority, global::System.Convert.ToString);
-            }
-            if (content.Contains("CustomPropertyInstanceType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomPropertyInstanceType = (string) content.GetValueForProperty("CustomPropertyInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomPropertyInstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomProperty = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties) content.GetValueForProperty("CustomProperty",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal)this).CustomProperty, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomPropertiesTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

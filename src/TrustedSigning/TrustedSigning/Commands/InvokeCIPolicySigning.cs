@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.TrustedSigning
             HelpMessage = "The endpoint url used to submit request to Azure TrustedSigning.")]
         public string EndpointUrl { get; set; }
 
-
         /// <summary>
         /// Metadata File Path
         /// </summary>
@@ -143,7 +142,9 @@ namespace Microsoft.Azure.Commands.TrustedSigning
 
         private void ValidateFileType(string fullInPath)
         {
-            if (string.Equals(System.IO.Path.GetExtension(fullInPath), ".bin", StringComparison.OrdinalIgnoreCase))
+            string fileExtension = System.IO.Path.GetExtension(fullInPath);
+            if (string.Equals(fileExtension, ".bin", StringComparison.OrdinalIgnoreCase) ||
+                     string.Equals(fileExtension, ".cip", StringComparison.OrdinalIgnoreCase))
             {
                 WriteMessage(Environment.NewLine);
                 WriteMessage("CI Policy file submitted");
@@ -166,7 +167,7 @@ namespace Microsoft.Azure.Commands.TrustedSigning
                 if (doc?.Root.Name == SiPolicyRootElementName)
                 {
                     WriteWarning("Input file is an XML-based policy file.");
-                    WriteWarning("Please run 'ConvertFrom-CiPolicy' to create a .bin file before running this command.");
+                    WriteWarning("Please run 'ConvertFrom-CiPolicy' to create a .bin or .cip file before running this command.");
                 }
 
                 try

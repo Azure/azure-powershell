@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publicGalleryName'>
             /// The public name of the community gallery.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
+            /// The name of Azure region.
             /// </param>
             /// <param name='publicGalleryName'>
             /// The public name of the community gallery.

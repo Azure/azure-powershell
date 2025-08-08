@@ -28,7 +28,7 @@ For information on how to develop for `Az.DeviceRegistry`, see [how-to.md](how-t
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 1e620cfbf7df188acef4d6b4a8752aa3aa82fa02
+commit: 2ae7cdd6509fb91ed9d7742186e278b67b86398e
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
