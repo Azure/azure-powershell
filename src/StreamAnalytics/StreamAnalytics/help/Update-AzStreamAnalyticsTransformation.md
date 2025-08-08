@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStreamAnalyticsTransformation
 
 ## SYNOPSIS
-Updates an existing transformation under an existing streaming job.
+Update an existing transformation under an existing streaming job.
 This can be used to partially update (ie.
 update one or two properties) a transformation without affecting the rest the job or transformation definition.
 
@@ -21,6 +21,27 @@ Update-AzStreamAnalyticsTransformation -JobName <String> -Name <String> -Resourc
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzStreamAnalyticsTransformation -JobName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStreamAnalyticsTransformation -JobName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityStreamingjobExpanded
+```
+Update-AzStreamAnalyticsTransformation -Name <String> -StreamingjobInputObject <IStreamAnalyticsIdentity>
+ [-IfMatch <String>] [-Query <String>] [-StreamingUnit <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStreamAnalyticsTransformation -InputObject <IStreamAnalyticsIdentity> [-IfMatch <String>]
@@ -29,7 +50,7 @@ Update-AzStreamAnalyticsTransformation -InputObject <IStreamAnalyticsIdentity> [
 ```
 
 ## DESCRIPTION
-Updates an existing transformation under an existing streaming job.
+Update an existing transformation under an existing streaming job.
 This can be used to partially update (ie.
 update one or two properties) a transformation without affecting the rest the job or transformation definition.
 
@@ -98,7 +119,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
@@ -117,7 +137,37 @@ The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -132,7 +182,7 @@ The name of the transformation.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStreamingjobExpanded
 Aliases: TransformationName
 
 Required: True
@@ -149,7 +199,7 @@ Required on PUT (CreateOrReplace) requests.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStreamingjobExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -165,7 +215,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -175,12 +225,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StreamingjobInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
+Parameter Sets: UpdateViaIdentityStreamingjobExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -StreamingUnit
 Specifies the number of streaming units that the streaming job uses.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStreamingjobExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -195,7 +260,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -245,7 +310,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITransformation
 
 ## NOTES
 
