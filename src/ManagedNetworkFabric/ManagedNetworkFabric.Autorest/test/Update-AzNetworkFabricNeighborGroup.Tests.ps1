@@ -17,16 +17,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkFabricNeighbo
 Describe 'Update-AzNetworkFabricNeighborGroup' {
     It 'Update' {
         {
-            $destination = @{
-                Ipv4Address = @(
-                    "10.11.10.11"
-                )
-                Ipv6Address = @(
-                    "2FF::/101"
-                )
-            }
+            $destinationIpv4Address = "10.11.10.11"
+            $destinationIpv6Address  = "2FF::/101"
 
-            Update-AzNetworkFabricNeighborGroup -SubscriptionId $global:config.common.subscriptionId -Name $global:config.neighborGroup.name -ResourceGroupName $global:config.common.resourceGroupName -Destination $destination
+            Update-AzNetworkFabricNeighborGroup -SubscriptionId $global:config.common.subscriptionId `
+                -Name $global:config.neighborGroup.name `
+                -ResourceGroupName $global:config.common.resourceGroupName `
+                -DestinationIpv4Address $destinationIpv4Address `
+                -DestinationIpv6Address $destinationIpv6Address
 
         } | Should -Not -Throw
     }
