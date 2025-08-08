@@ -32,7 +32,6 @@ For listing available VM sizes by subscription or location, use instead [Get-AzC
 
 ## EXAMPLES
 
-
 ### Example 1: Get sizes for an availability set
 ```powershell
 Get-AzVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"

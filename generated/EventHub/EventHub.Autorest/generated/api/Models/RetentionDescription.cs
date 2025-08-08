@@ -21,15 +21,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public string CleanupPolicy { get => this._cleanupPolicy; set => this._cleanupPolicy = value; }
 
-        /// <summary>Backing field for <see cref="MinCompactionLagInMin" /> property.</summary>
-        private long? _minCompactionLagInMin;
+        /// <summary>Backing field for <see cref="MinCompactionLagTimeInMinute" /> property.</summary>
+        private long? _minCompactionLagTimeInMinute;
 
         /// <summary>
         /// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is
         /// Compact or DeleteOrCompact.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
-        public long? MinCompactionLagInMin { get => this._minCompactionLagInMin; set => this._minCompactionLagInMin = value; }
+        public long? MinCompactionLagTimeInMinute { get => this._minCompactionLagTimeInMinute; set => this._minCompactionLagTimeInMinute = value; }
 
         /// <summary>Backing field for <see cref="RetentionTimeInHour" /> property.</summary>
         private long? _retentionTimeInHour;
@@ -87,9 +87,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Create = true,
         Update = true,
         Description = @"The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.",
-        SerializedName = @"minCompactionLagInMins",
+        SerializedName = @"minCompactionLagTimeInMinutes",
         PossibleTypes = new [] { typeof(long) })]
-        long? MinCompactionLagInMin { get; set; }
+        long? MinCompactionLagTimeInMinute { get; set; }
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a
         /// special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is
         /// Compact or DeleteOrCompact.
         /// </summary>
-        long? MinCompactionLagInMin { get; set; }
+        long? MinCompactionLagTimeInMinute { get; set; }
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a
         /// special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace

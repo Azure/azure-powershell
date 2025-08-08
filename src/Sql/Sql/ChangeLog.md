@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
+
+## Version 6.0.5
+* Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
 
 ## Version 6.0.4
 * Added server level action groups in enum of action groups to be able to be configured via auditing.

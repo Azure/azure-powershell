@@ -3,6 +3,7 @@
     <PsModuleName>SapVirtualInstance</PsModuleName>
     <PsRootModuleName>Workloads</PsRootModuleName>
     <PsModuleFolder>SapVirtualInstance.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

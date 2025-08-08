@@ -1,0 +1,52 @@
+{
+  "resourceType": "namespaces/networkSecurityPerimeterConfigurations",
+  "apiVersion": "2025-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventhub"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation",
+      "description": "Return a NetworkSecurityPerimeterConfigurations resourceAssociationName",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworksecurityperimeterconfigurationsforassociation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NamespaceName <String>",
+              "-ResourceAssociationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Return a NetworkSecurityPerimeterConfigurations resourceAssociationName",
+          "parameters": [
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceAssociationName",
+              "value": "[Path.resourceAssociationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
