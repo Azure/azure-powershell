@@ -25,30 +25,27 @@ This allows the connections to resume data transfer operations and allows new fl
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: {{ Add title here }}
 ```powershell
-Enable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/my-connection"
+{{ Add code here }}
 ```
 
-Enables a single connection.
-
-### EXAMPLE 2
-```powershell
-$connectionIds = @(
-    "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/connection1",
-    "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/connection2"
-)
-Enable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId $connectionIds
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Enables multiple connections.
+{{ Add description here }}
 
-### EXAMPLE 3
+### Example 2: {{ Add title here }}
 ```powershell
-Enable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId $connectionId -Justification "Re-enabling after maintenance window"
+{{ Add code here }}
 ```
 
-Enables a connection with a business justification.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

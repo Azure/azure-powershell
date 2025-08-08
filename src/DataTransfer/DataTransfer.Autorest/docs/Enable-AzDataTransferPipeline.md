@@ -24,19 +24,27 @@ This allows new connections and flows to be created within the pipeline.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Enable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg"
+{{ Add code here }}
 ```
 
-Enables the pipeline named "corp" in the "rpaas-rg" resource group.
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-Enable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg" -Justification "Re-enabling after maintenance"
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Enables the pipeline with a business justification.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

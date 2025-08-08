@@ -13,7 +13,7 @@
     The name of the resource group containing the pipeline.
 
 .PARAMETER FlowType
-    One or more flow type names to enable (e.g., "Mission", "Complex").
+    One or more flow type names to enable (e.g., "FlowType01", "FlowType02").
 
 .PARAMETER SubscriptionId
     The ID of the target subscription. If not specified, uses the current context subscription.
@@ -31,17 +31,17 @@
     Run the command asynchronously.
 
 .EXAMPLE
-    Enable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission"
+    Enable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType "FlowType01"
     
-    Enables the "Mission" flow type.
+    Enables the "FlowType01" flow type.
 
 .EXAMPLE
-    Enable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType @("Mission", "Complex")
+    Enable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType @("FlowType01", "FlowType02")
     
-    Enables both "Mission" and "Complex" flow types.
+    Enables both "FlowType01" and "FlowType02" flow types.
 
 .EXAMPLE
-    Enable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission" -Justification "Re-enabling after security review"
+    Enable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType "FlowType01" -Justification "Re-enabling after security review"
     
     Enables a flow type with a business justification.
 

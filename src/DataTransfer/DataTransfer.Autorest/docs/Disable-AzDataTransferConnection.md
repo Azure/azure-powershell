@@ -24,37 +24,27 @@ This prevents data transfer operations on the connections and disables all flows
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Disable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/my-connection"
+{{ Add code here }}
 ```
 
-Disables a single connection.
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-$connectionIds = @(
-    "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/connection1",
-    "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/connection2"
-)
-Disable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId $connectionIds
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Disables multiple connections.
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 3 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-Disable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId $connectionId -Justification "Security incident response"
+{{ Add code here }}
 ```
 
-Disables a connection with a business justification.
-
-### -------------------------- EXAMPLE 4 --------------------------
-```powershell
-Disable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId $connectionId -WhatIf
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Shows what would happen if the connection was disabled without actually disabling it.
+{{ Add description here }}
 
 ## PARAMETERS
 

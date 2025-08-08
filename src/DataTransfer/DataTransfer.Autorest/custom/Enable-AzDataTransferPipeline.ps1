@@ -28,12 +28,12 @@
     Run the command asynchronously.
 
 .EXAMPLE
-    Enable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg"
+    Enable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01"
     
-    Enables the pipeline named "corp" in the "rpaas-rg" resource group.
+    Enables the pipeline named "Pipeline01" in the "ResourceGroup01" resource group.
 
 .EXAMPLE
-    Enable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg" -Justification "Re-enabling after maintenance"
+    Enable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -Justification "Re-enabling after maintenance"
     
     Enables the pipeline with a business justification.
 

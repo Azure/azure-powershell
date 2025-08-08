@@ -28,17 +28,17 @@
     Run the command asynchronously.
 
 .EXAMPLE
-    Disable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg"
+    Disable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01"
     
-    Disables the pipeline named "corp" in the "rpaas-rg" resource group.
+    Disables the pipeline named "Pipeline01" in the "ResourceGroup01" resource group.
 
 .EXAMPLE
-    Disable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg" -Justification "Emergency shutdown for security review"
+    Disable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -Justification "Emergency shutdown for security review"
     
     Disables the pipeline with a business justification.
 
 .EXAMPLE
-    Disable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg" -WhatIf
+    Disable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -WhatIf
     
     Shows what would happen if the pipeline was disabled without actually disabling it.
 

@@ -13,7 +13,7 @@
     The name of the resource group containing the pipeline.
 
 .PARAMETER FlowType
-    One or more flow type names to disable (e.g., "Mission", "Complex").
+    One or more flow type names to disable (e.g., "FlowType01", "FlowType02").
 
 .PARAMETER SubscriptionId
     The ID of the target subscription. If not specified, uses the current context subscription.
@@ -31,22 +31,22 @@
     Run the command asynchronously.
 
 .EXAMPLE
-    Disable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission"
+    Disable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType "FlowType01"
     
-    Disables the "Mission" flow type.
+    Disables the "FlowType01" flow type.
 
 .EXAMPLE
-    Disable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType @("Mission", "Complex")
+    Disable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType @("FlowType01", "FlowType02")
     
-    Disables both "Mission" and "Complex" flow types.
+    Disables both "FlowType01" and "FlowType02" flow types.
 
 .EXAMPLE
-    Disable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission" -Justification "Security incident response"
+    Disable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType "FlowType01" -Justification "Security incident response"
     
     Disables a flow type with a business justification.
 
 .EXAMPLE
-    Disable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission" -WhatIf
+    Disable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType "FlowType01" -WhatIf
     
     Shows what would happen if the flow type was disabled without actually disabling it.
 

@@ -24,33 +24,27 @@ This prevents new flows of the specified types from being created and disables e
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Disable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission"
+{{ Add code here }}
 ```
 
-Disables the "Mission" flow type.
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-Disable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType @("Mission", "Complex")
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Disables both "Mission" and "Complex" flow types.
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 3 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-Disable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission" -Justification "Security incident response"
+{{ Add code here }}
 ```
 
-Disables a flow type with a business justification.
-
-### -------------------------- EXAMPLE 4 --------------------------
-```powershell
-Disable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission" -WhatIf
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Shows what would happen if the flow type was disabled without actually disabling it.
+{{ Add description here }}
 
 ## PARAMETERS
 

@@ -24,26 +24,27 @@ This allows new flows of the specified types to be created and existing flows of
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Enable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission"
+{{ Add code here }}
 ```
 
-Enables the "Mission" flow type.
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-Enable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType @("Mission", "Complex")
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Enables both "Mission" and "Complex" flow types.
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 3 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-Enable-AzDataTransferFlowType -PipelineName "corp" -ResourceGroupName "rpaas-rg" -FlowType "Mission" -Justification "Re-enabling after security review"
+{{ Add code here }}
 ```
 
-Enables a flow type with a business justification.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

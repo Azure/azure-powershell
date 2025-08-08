@@ -31,21 +31,21 @@
     Run the command asynchronously.
 
 .EXAMPLE
-    Enable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/my-connection"
+    Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection01"
     
     Enables a single connection.
 
 .EXAMPLE
     $connectionIds = @(
-        "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/connection1",
-        "/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/connection2"
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection01",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection02"
     )
-    Enable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId $connectionIds
+    Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId $connectionIds
     
     Enables multiple connections.
 
 .EXAMPLE
-    Enable-AzDataTransferConnection -PipelineName "corp" -ResourceGroupName "rpaas-rg" -ConnectionId $connectionId -Justification "Re-enabling after maintenance window"
+    Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId $connectionId -Justification "Re-enabling after maintenance window"
     
     Enables a connection with a business justification.
 

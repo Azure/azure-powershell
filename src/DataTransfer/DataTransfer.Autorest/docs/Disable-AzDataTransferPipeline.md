@@ -24,26 +24,27 @@ This prevents new connections and flows from being created within the pipeline a
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Disable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg"
+{{ Add code here }}
 ```
 
-Disables the pipeline named "corp" in the "rpaas-rg" resource group.
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-Disable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg" -Justification "Emergency shutdown for security review"
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Disables the pipeline with a business justification.
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 3 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-Disable-AzDataTransferPipeline -PipelineName "corp" -ResourceGroupName "rpaas-rg" -WhatIf
+{{ Add code here }}
 ```
 
-Shows what would happen if the pipeline was disabled without actually disabling it.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
