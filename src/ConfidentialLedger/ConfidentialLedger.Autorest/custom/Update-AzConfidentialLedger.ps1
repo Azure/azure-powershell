@@ -73,10 +73,12 @@ INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.confidentialledger/update-azconfidentialledger
 #>
 function Update-AzConfidentialLedger {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('LedgerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Path')]
     [System.String]
@@ -84,12 +86,16 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -102,51 +108,66 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedgerIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal[]]
     # Array of all AAD based Security Principals.
-    # To construct, see NOTES section for AADBASEDSECURITYPRINCIPAL properties and create a hash table.
     ${AadBasedSecurityPrincipal},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal[]]
     # Array of all cert based Security Principals.
-    # To construct, see NOTES section for CERTBASEDSECURITYPRINCIPAL properties and create a hash table.
     ${CertBasedSecurityPrincipal},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.PSArgumentCompleterAttribute("Unknown", "Public", "Private")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType]
+    [System.String]
     # Type of Confidential Ledger
     ${LedgerType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
     [System.String]
     # The Azure location where the Confidential Ledger is running.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ITags]))]
     [System.Collections.Hashtable]
     # Additional tags for Confidential Ledger
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
