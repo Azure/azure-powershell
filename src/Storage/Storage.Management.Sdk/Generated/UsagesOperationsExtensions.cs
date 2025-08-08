@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location of the Azure Storage resource.
+        /// The name of the Azure region.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Usage> ListByLocation(this IUsagesOperations operations, string location)
+        public static Microsoft.Rest.Azure.IPage<Usage> ListByLocation(this IUsagesOperations operations, string location)
         {
                 return ((IUsagesOperations)operations).ListByLocationAsync(location).GetAwaiter().GetResult();
         }
@@ -35,14 +35,49 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location of the Azure Storage resource.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Usage>> ListByLocationAsync(this IUsagesOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Usage>> ListByLocationAsync(this IUsagesOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByLocationWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the current usage count and the limit for the resources of the
+        /// location under the subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Usage> ListByLocationNext(this IUsagesOperations operations, string nextPageLink)
+        {
+                return ((IUsagesOperations)operations).ListByLocationNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the current usage count and the limit for the resources of the
+        /// location under the subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Usage>> ListByLocationNextAsync(this IUsagesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByLocationNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

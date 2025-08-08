@@ -13,18 +13,18 @@ namespace Microsoft.Azure.Management.Storage
     public static partial class OperationsExtensions
     {
         /// <summary>
-        /// Lists all of the available Storage Rest API operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Operation> List(this IOperations operations)
+        public static Microsoft.Rest.Azure.IPage<Operation> List(this IOperations operations)
         {
                 return ((IOperations)operations).ListAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists all of the available Storage Rest API operations.
+        /// List the operations for the provider
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -32,9 +32,42 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Operation>> ListAsync(this IOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Operation>> ListAsync(this IOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// List the operations for the provider
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Operation> ListNext(this IOperations operations, string nextPageLink)
+        {
+                return ((IOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List the operations for the provider
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Operation>> ListNextAsync(this IOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
