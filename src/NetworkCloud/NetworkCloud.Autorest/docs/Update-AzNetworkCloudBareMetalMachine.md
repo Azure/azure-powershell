@@ -129,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineDetail
-The details provided by the customer during the creation of rack manifeststhat allows for custom data to be associated with this machine.
+The details provided by the customer during the creation of rack manifests that allows for custom data to be associated with this machine.
 
 ```yaml
 Type: System.String
