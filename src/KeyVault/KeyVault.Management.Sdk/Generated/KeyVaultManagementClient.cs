@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Management.KeyVault
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
         /// </summary>
         public string SubscriptionId { get; set;}
@@ -326,6 +331,7 @@ namespace Microsoft.Azure.Management.KeyVault
             this.MhsmPrivateLinkResources = new MhsmPrivateLinkResourcesOperations(this);
             this.MhsmRegions = new MhsmRegionsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
+            this.ApiVersion = "2024-11-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

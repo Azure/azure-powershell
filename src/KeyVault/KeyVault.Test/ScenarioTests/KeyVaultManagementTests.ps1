@@ -113,8 +113,8 @@ function Test-CreateNewVault {
         # Soft delete and purge protection defaults to true
         Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
         Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
-        # RbacAuthorization defaults to false
-        Assert-False { $actual.EnableRbacAuthorization } "By default EnableRbacAuthorization should be false"
+        # RbacAuthorization defaults to true (see changelog Version 6.0.0)
+        Assert-True { $actual.EnableRbacAuthorization } "By default EnableRbacAuthorization should be true"
         # Default retention days
         Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 
