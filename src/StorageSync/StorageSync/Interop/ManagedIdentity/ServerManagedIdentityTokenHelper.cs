@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             // try to deserialize the json string to aadtoken object
             var aadToken = TryGetAadTokenFromAccessTokenString(token);
 
-            if( !Guid.TryParse(aadToken.TenantId, out Guid tenantId))
+            if(!Guid.TryParse(aadToken.TenantId, out Guid tenantId))
             {
                 throw new ArgumentException("Token TenantId is invalid");
             }
