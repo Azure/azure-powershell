@@ -29,6 +29,7 @@ using System.Linq;
 using System.Management;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Commands.StorageSync.Interop.Clients
 {
@@ -406,13 +407,13 @@ namespace Commands.StorageSync.Interop.Clients
         /// This function will get the application id of the server if identity is available.
         /// </summary>
         /// <returns>Application id or null.</returns>
-        public override Guid? GetApplicationIdOrNull()
+        public async override Task<ServerApplicationIdentity> GetServerApplicationIdentityOrNull()
         {
             LocalServerType localServerType = this.ServerManagedIdentityProvider.GetServerType(this.EcsManagementInteropClient);
 
-            if(localServerType != LocalServerType.HybridServer)
+            if (localServerType != LocalServerType.HybridServer)
             {
-                return this.ServerManagedIdentityProvider.GetServerApplicationId(localServerType, throwIfNotFound: true, validateSystemAssignedManagedIdentity: true);
+                return await this.ServerManagedIdentityProvider.GetServerApplicationIdentityAsync(localServerType, throwIfNotFound: true, validateSystemAssignedManagedIdentity: true);
             }
             return null;
         }
