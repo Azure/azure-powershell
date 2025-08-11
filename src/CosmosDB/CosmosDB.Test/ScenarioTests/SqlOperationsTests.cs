@@ -74,9 +74,23 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSqlThroughputBucketsCmdlets()
+        public void TestSqlThroughputBucketsManualCmdlets()
         {
-            TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets");
+            TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets-ManualContainer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlThroughputBucketsAutoscaleCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets-AutoscaleContainer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlThroughputBucketsMigrationCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlThroughputBucketsCmdlets-Migration");
         }
 
         [Fact]
