@@ -71,4 +71,20 @@ directive:
   - model-cmdlet: # Generate objects for common models.
     - AADBasedSecurityPrincipal
     - CertBasedSecurityPrincipal
+
+  - where:
+      verb: Get|New
+      subject: Ledger
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - AadBasedSecurityPrincipal
+          - CertBasedSecurityPrincipal
+        new-output-properties:
+          - AadBasedSecurityPrincipal
+          - CertBasedSecurityPrincipal
+        change-description: The type of property 'AadBasedSecurityPrincipal', 'CertBasedSecurityPrincipal' will be changed from single object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```
