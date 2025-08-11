@@ -23,7 +23,7 @@ Create or update container groups with specified configurations.
 https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 #>
 function New-AzContainerGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -37,242 +37,277 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainer[]]
     # The containers within the container group.
-    # To construct, see NOTES section for CONTAINER properties and create a hash table.
     ${Container},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("Windows", "Linux")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.ParameterBreakingChangeAttribute("OSType", "14.0.0", "5.0.0", "2025/05/21")]
+    [System.String]
     # The operating system type required by the containers in the container group.
     ${OSType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # The base64 encoded confidential compute enforcement policy
+    ${ConfidentialComputePropertyCcePolicy},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
     ${ContainerGroupProfileId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.Int32]
     # The container group profile reference revision.
     ${ContainerGroupProfileRevision},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String[]]
     # The DNS servers for the container group.
     ${DnsConfigNameServer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The DNS options for the container group.
     ${DnsConfigOption},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The DNS search domains for hostname lookup in the container group.
     ${DnsConfigSearchDomain},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # The keyvault managed identity.
+    ${EncryptionPropertyIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The encryption key name.
     ${EncryptionPropertyKeyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The encryption key version.
     ${EncryptionPropertyKeyVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The keyvault base url.
     ${EncryptionPropertyVaultBaseUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IDeploymentExtensionSpec[]]
+    # extensions used by virtual kubelet
+    ${Extension},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("Unsecure", "TenantReuse", "SubscriptionReuse", "ResourceGroupReuse", "Noreuse")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # The value representing the security enum.
+    # The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover.
+    # The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant.
+    # The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription.
+    # The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group.
+    # The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant.
+    ${IPAddressAutoGeneratedDomainNameLabelScope},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The Dns name label for the IP.
     ${IPAddressDnsNameLabel},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The IP exposed to the public internet.
     ${IPAddressIP},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IPort[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IPort[]]
     # The list of ports exposed on the container group.
-    # To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
     ${IPAddressPort},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupIPAddressType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("Public", "Private")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupIPAddressType]
+    [System.String]
     # Specifies if the IP is exposed to the public internet or private VNET.
     ${IPAddressType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ResourceIdentityType]
-    # The type of identity used for the container group.
-    # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
-    # The type 'None' will remove any identities from the container group.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the container group.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IImageRegistryCredential[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IImageRegistryCredential[]]
     # The image registry credentials by which the container group is created from.
-    # To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
     ${ImageRegistryCredential},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IInitContainerDefinition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IInitContainerDefinition[]]
     # The init containers for a container group.
-    # To construct, see NOTES section for INITCONTAINER properties and create a hash table.
     ${InitContainer},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The resource location.
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.LogAnalyticsLogType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("ContainerInsights", "ContainerInstanceLogs")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.LogAnalyticsLogType]
+    [System.String]
     # The log type to be used.
     ${LogAnalyticLogType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ILogAnalyticsMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.ILogAnalyticsMetadata]))]
     [System.Collections.Hashtable]
     # Metadata for log analytics.
     ${LogAnalyticMetadata},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The workspace id for log analytics
     ${LogAnalyticWorkspaceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The workspace key for log analytics
     ${LogAnalyticWorkspaceKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The workspace resource id for log analytics
     ${LogAnalyticWorkspaceResourceId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupRestartPolicy])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("Always", "OnFailure", "Never")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupRestartPolicy]
+    [System.String]
     # Restart policy for all containers within the container group.
     # - `Always` Always restart- `OnFailure` Restart on failure- `Never` Never restart
     ${RestartPolicy},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupSku])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("Standard", "Dedicated", "Confidential")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupSku]
+    [System.String]
     # The SKU for a container group.
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
     ${StandbyPoolProfileFailContainerGroupCreateOnReuseFailure},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
     ${StandbyPoolProfileId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupSubnetId[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroupSubnetId[]]
     # The subnet resource IDs for a container group.
-    # To construct, see NOTES section for SUBNETID properties and create a hash table.
     ${SubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # The resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolume[]]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolume[]]
     # The list of volumes that can be mounted by containers in this container group.
-    # To construct, see NOTES section for VOLUME properties and create a hash table.
     ${Volume},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String[]]
     # The zones for the container group.
     ${Zone},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -281,10 +316,11 @@ param(
     # Run the command as a job
     ${AsJob},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("Regular", "Spot")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
-    # The priority of the Container Group.
+    # The priority of the container group.
     ${Priority},
 
     [Parameter(DontShow)]

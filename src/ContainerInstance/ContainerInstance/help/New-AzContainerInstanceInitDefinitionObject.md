@@ -1,25 +1,28 @@
 ---
 external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
-online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
+online version: https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainerinstanceinitdefinitionobject
 schema: 2.0.0
 ---
 
 # New-AzContainerInstanceInitDefinitionObject
 
 ## SYNOPSIS
-Create a in-memory object for InitContainerDefinition
+Create an in-memory object for InitContainerDefinition.
 
 ## SYNTAX
 
 ```
-New-AzContainerInstanceInitDefinitionObject -Name <String> [-Command <String[]>]
- [-EnvironmentVariable <IEnvironmentVariable[]>] [-Image <String>] [-VolumeMount <IVolumeMount[]>]
+New-AzContainerInstanceInitDefinitionObject -Name <String> [-CapabilityAdd <String[]>]
+ [-CapabilityDrop <String[]>] [-Command <String[]>] [-EnvironmentVariable <IEnvironmentVariable[]>]
+ [-Image <String>] [-SecurityContextAllowPrivilegeEscalation <Boolean>] [-SecurityContextPrivileged <Boolean>]
+ [-SecurityContextRunAsGroup <Int32>] [-SecurityContextRunAsUser <Int32>]
+ [-SecurityContextSeccompProfile <String>] [-VolumeMount <IVolumeMount[]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for InitContainerDefinition
+Create an in-memory object for InitContainerDefinition.
 
 ## EXAMPLES
 
@@ -38,6 +41,36 @@ This command sets up the init container definition with command `/bin/sh -c mysc
 
 ## PARAMETERS
 
+### -CapabilityAdd
+The capabilities to add to the container.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapabilityDrop
+The capabilities to drop from the container.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Command
 The command to execute within the init container in exec form.
 
@@ -55,10 +88,9 @@ Accept wildcard characters: False
 
 ### -EnvironmentVariable
 The environment variables to set in the init container.
-To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IEnvironmentVariable[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IEnvironmentVariable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -99,12 +131,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VolumeMount
-The volume mounts available to the init container.
-To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
+### -SecurityContextAllowPrivilegeEscalation
+A boolean value indicating whether the init process can elevate its privileges.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeMount[]
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityContextPrivileged
+The flag to determine if the container permissions is elevated to Privileged.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityContextRunAsGroup
+Sets the User GID for the container.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityContextRunAsUser
+Sets the User UID for the container.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityContextSeccompProfile
+a base64 encoded string containing the contents of the JSON in the seccomp profile.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VolumeMount
+The volume mounts available to the init container.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolumeMount[]
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.InitContainerDefinition
 
 ## NOTES
 

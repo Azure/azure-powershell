@@ -1,22 +1,23 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceNoDefaultObject
+online version: https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainerinstancenodefaultobject
 schema: 2.0.0
 ---
 
 # New-AzContainerInstanceNoDefaultObject
 
 ## SYNOPSIS
-Create a in-memory object for Container with no default values
+Create an in-memory object for Container.
 
 ## SYNTAX
 
 ```
-New-AzContainerInstanceNoDefaultObject -Name <String> [-Command <String[]>]
- [-ConfigMapKeyValuePair <IConfigMapKeyValuePairs>] [-EnvironmentVariable <IEnvironmentVariable[]>]
- [-Image <String>] [-LimitCpu <Double>] [-LimitMemoryInGb <Double>] [-LimitsGpuCount <Int32>]
- [-LimitsGpuSku <String>] [-LivenessProbeExecCommand <String[]>] [-LivenessProbeFailureThreshold <Int32>]
+New-AzContainerInstanceNoDefaultObject -Name <String> [-CapabilityAdd <String[]>] [-CapabilityDrop <String[]>]
+ [-Command <String[]>] [-ConfigMapKeyValuePair <IConfigMapKeyValuePairs>]
+ [-EnvironmentVariable <IEnvironmentVariable[]>] [-Image <String>] [-LimitCpu <Double>]
+ [-LimitMemoryInGb <Double>] [-LimitsGpuCount <Int32>] [-LimitsGpuSku <String>]
+ [-LivenessProbeExecCommand <String[]>] [-LivenessProbeFailureThreshold <Int32>]
  [-LivenessProbeHttpGetHttpHeader <IHttpHeader[]>] [-LivenessProbeHttpGetPath <String>]
  [-LivenessProbeHttpGetPort <Int32>] [-LivenessProbeHttpGetScheme <String>]
  [-LivenessProbeInitialDelaySecond <Int32>] [-LivenessProbePeriodSecond <Int32>]
@@ -27,11 +28,13 @@ New-AzContainerInstanceNoDefaultObject -Name <String> [-Command <String[]>]
  [-ReadinessProbeInitialDelaySecond <Int32>] [-ReadinessProbePeriodSecond <Int32>]
  [-ReadinessProbeSuccessThreshold <Int32>] [-ReadinessProbeTimeoutSecond <Int32>] [-RequestCpu <Double>]
  [-RequestMemoryInGb <Double>] [-RequestsGpuCount <Int32>] [-RequestsGpuSku <String>]
- [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
+ [-SecurityContextAllowPrivilegeEscalation <Boolean>] [-SecurityContextPrivileged <Boolean>]
+ [-SecurityContextRunAsGroup <Int32>] [-SecurityContextRunAsUser <Int32>]
+ [-SecurityContextSeccompProfile <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for Container with no default values
+Create an in-memory object for Container.
 
 ## EXAMPLES
 
@@ -77,6 +80,36 @@ Create a container group with a container instance
 
 ## PARAMETERS
 
+### -CapabilityAdd
+The capabilities to add to the container.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapabilityDrop
+The capabilities to drop from the container.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Command
 The commands to execute within the container instance in exec form.
 
@@ -93,11 +126,10 @@ Accept wildcard characters: False
 ```
 
 ### -ConfigMapKeyValuePair
-The key value pairs dictionary in the config map to set in the container instance.
-To construct, see NOTES section for CONFIGMAPKEYVALUEPAIR properties and create a hash table.
+The key value pairs dictionary in the config map.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IConfigMapKeyValuePairs
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IConfigMapKeyValuePairs
 Parameter Sets: (All)
 Aliases:
 
@@ -110,10 +142,9 @@ Accept wildcard characters: False
 
 ### -EnvironmentVariable
 The environment variables to set in the container instance.
-To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IEnvironmentVariable[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IEnvironmentVariable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -230,11 +261,10 @@ Accept wildcard characters: False
 ```
 
 ### -LivenessProbeHttpGetHttpHeader
-The HTTP headers for liveness probe.
-To construct, see NOTES section for LIVENESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
+The HTTP headers.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IHttpHeader[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IHttpHeader[]
 Parameter Sets: (All)
 Aliases:
 
@@ -367,10 +397,9 @@ Accept wildcard characters: False
 
 ### -Port
 The exposed ports on the container instance.
-To construct, see NOTES section for PORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -412,11 +441,10 @@ Accept wildcard characters: False
 ```
 
 ### -ReadinessProbeHttpGetHttpHeader
-The HTTP headers for readiness probe.
-To construct, see NOTES section for READINESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
+The HTTP headers.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IHttpHeader[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IHttpHeader[]
 Parameter Sets: (All)
 Aliases:
 
@@ -592,12 +620,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VolumeMount
-The volume mounts available to the container instance.
-To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
+### -SecurityContextAllowPrivilegeEscalation
+A boolean value indicating whether the init process can elevate its privileges.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeMount[]
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityContextPrivileged
+The flag to determine if the container permissions is elevated to Privileged.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityContextRunAsGroup
+Sets the User GID for the container.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityContextRunAsUser
+Sets the User UID for the container.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityContextSeccompProfile
+a base64 encoded string containing the contents of the JSON in the seccomp profile.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VolumeMount
+The volume mounts available to the container instance.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolumeMount[]
 Parameter Sets: (All)
 Aliases:
 
@@ -615,7 +717,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container
 
 ## NOTES
 
