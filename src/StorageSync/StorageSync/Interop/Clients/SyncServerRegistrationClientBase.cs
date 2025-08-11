@@ -184,8 +184,7 @@ namespace Commands.StorageSync.Interop.Clients
                 // Check that tenants match
                 if (!string.Equals(storageSyncServiceTenantId, serverApplicationIdentity.TenantId.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new ServerRegistrationException(
-                        $"Cross-tenant registration is not allowed. The server belongs to tenant '{serverApplicationIdentity.TenantId}' but the Storage Sync Service is in tenant '{storageSyncServiceTenantId}'.");
+                    throw new ServerRegistrationException(ServerRegistrationErrorCode.ServerAndSyncServiceTenantMismatched);
                 }
             }
 

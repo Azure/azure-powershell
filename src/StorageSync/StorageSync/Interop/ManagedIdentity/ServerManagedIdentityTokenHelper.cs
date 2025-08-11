@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         private const string UserAssignedManagedIdentityResourceType = "Microsoft.ManagedIdentity/userAssignedIdentities";
 
         /// <summary>
-        /// Gets the oid claim from the token payload
+        /// Gets the Oid claim from the token payload
         /// </summary>
         /// <param name="token">The access token </param>
-        /// <returns> The oid as a Guid if successfully parsed, otherwise throws an exception </returns>
+        /// <returns> The Oid as a Guid if successfully parsed, otherwise throws an exception </returns>
         public static Guid GetTokenOid(string token)
         {
             // try to deserialize the json string to aadtoken object
