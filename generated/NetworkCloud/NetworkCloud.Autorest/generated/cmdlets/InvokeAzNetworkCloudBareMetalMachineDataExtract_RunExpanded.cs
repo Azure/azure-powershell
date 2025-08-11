@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] RunDataExtracts=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtracts"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzNetworkCloudBareMetalMachineDataExtract_RunExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("bool", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Argument"}, NewOutputProperties=new string[] {"Argument"}, ChangeDescription="The type of property will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Run one or more data extractions on the provided bare metal machine. The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Added breaking change announcement for `Get-AzStorageMoverAgent` and `Update-AzStorageMoverAgent` cmdlets from fixed array to list.
+* Added unexpanded parameter sets deprecated breaking change announcement for below cmdlets.
+  * parameter sets Create for cmdlet `New-AzStorageMover`, `New-AzStorageMoverProject`, `New-AzStorageMoverJobDefinition`
+  * parameter sets Update and UpdateViaIdentity for Cmdlet `Update-AzStorageMover`, `Update-AzStorageMoverAgent`, `Update-AzStorageMoverJobDefinition`,  `Update-AzStorageMoverProject`
 
 ## Version 1.5.0
 * Upgraded nuget package to signed package.
