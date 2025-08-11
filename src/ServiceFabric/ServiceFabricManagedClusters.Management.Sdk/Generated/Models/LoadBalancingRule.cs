@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="protocol">The reference to the transport protocol used by the load balancing rule.
-        /// Possible values include: 'tcp', 'udp'</param>
+        /// Possible values include: &#39;tcp&#39;, &#39;udp&#39;</param>
 
         /// <param name="probePort">The prob port used by the load balancing rule. Acceptable values are
         /// between 1 and 65535.
         /// </param>
 
         /// <param name="probeProtocol">the reference to the load balancer probe used by the load balancing rule.
-        /// Possible values include: 'tcp', 'http', 'https'</param>
+        /// Possible values include: &#39;tcp&#39;, &#39;http&#39;, &#39;https&#39;</param>
 
         /// <param name="probeRequestPath">The probe request path. Only supported for HTTP/HTTPS probes.
         /// </param>

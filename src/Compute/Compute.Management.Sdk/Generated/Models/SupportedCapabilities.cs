@@ -37,11 +37,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// OS disk is created supports accelerated networking.</param>
         /// <param name="architecture">CPU architecture supported by an OS
         /// disk. Possible values include: 'x64', 'Arm64'</param>
-        public SupportedCapabilities(string diskControllerTypes = default(string), bool? acceleratedNetwork = default(bool?), string architecture = default(string))
+        /// <param name="supportedSecurityOption">Refers to the security
+        /// capability of the disk supported to create a Trusted launch or
+        /// Confidential VM. Possible values include: 'TrustedLaunchSupported',
+        /// 'TrustedLaunchAndConfidentialVMSupported'</param>
+        public SupportedCapabilities(string diskControllerTypes = default(string), bool? acceleratedNetwork = default(bool?), string architecture = default(string), string supportedSecurityOption = default(string))
         {
             DiskControllerTypes = diskControllerTypes;
             AcceleratedNetwork = acceleratedNetwork;
             Architecture = architecture;
+            SupportedSecurityOption = supportedSecurityOption;
             CustomInit();
         }
 
@@ -70,6 +75,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "architecture")]
         public string Architecture { get; set; }
+
+        /// <summary>
+        /// Gets or sets refers to the security capability of the disk
+        /// supported to create a Trusted launch or Confidential VM. Possible
+        /// values include: 'TrustedLaunchSupported',
+        /// 'TrustedLaunchAndConfidentialVMSupported'
+        /// </summary>
+        [JsonProperty(PropertyName = "supportedSecurityOption")]
+        public string SupportedSecurityOption { get; set; }
 
     }
 }

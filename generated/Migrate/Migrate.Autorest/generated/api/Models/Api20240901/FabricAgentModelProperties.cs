@@ -18,37 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 
         /// <summary>Identity model.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel AuthenticationIdentity { get => (this._authenticationIdentity = this._authenticationIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel()); set => this._authenticationIdentity = value; }
-
-        /// <summary>
-        /// Gets or sets the authority of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).AadAuthority = value ; }
-
-        /// <summary>
-        /// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).ApplicationId = value ; }
-
-        /// <summary>
-        /// Gets or sets the audience of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).Audience = value ; }
-
-        /// <summary>
-        /// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).ObjectId = value ; }
-
-        /// <summary>
-        /// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string AuthenticationIdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)AuthenticationIdentity).TenantId = value ; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel AuthenticationIdentity { get => (this._authenticationIdentity = this._authenticationIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel()); set => this._authenticationIdentity = value; }
 
         /// <summary>Backing field for <see cref="CorrelationId" /> property.</summary>
         private string _correlationId;
@@ -62,11 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 
         /// <summary>Fabric agent model custom properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties CustomProperty { get => (this._customProperty = this._customProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomProperties()); set => this._customProperty = value; }
-
-        /// <summary>Discriminator property for FabricAgentModelCustomProperties.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string CustomPropertyInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomPropertiesInternal)CustomProperty).InstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomPropertiesInternal)CustomProperty).InstanceType = value ; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties CustomProperty { get => (this._customProperty = this._customProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomProperties()); set => this._customProperty = value; }
 
         /// <summary>Backing field for <see cref="HealthError" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel[] _healthError;
@@ -103,14 +69,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string MachineName { get => this._machineName; set => this._machineName = value; }
 
-        /// <summary>Internal Acessors for AuthenticationIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal.AuthenticationIdentity { get => (this._authenticationIdentity = this._authenticationIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel()); set { {_authenticationIdentity = value;} } }
-
         /// <summary>Internal Acessors for CorrelationId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal.CorrelationId { get => this._correlationId; set { {_correlationId = value;} } }
-
-        /// <summary>Internal Acessors for CustomProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal.CustomProperty { get => (this._customProperty = this._customProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricAgentModelCustomProperties()); set { {_customProperty = value;} } }
 
         /// <summary>Internal Acessors for HealthError</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel[] Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal.HealthError { get => this._healthError; set { {_healthError = value;} } }
@@ -123,9 +83,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
-
-        /// <summary>Internal Acessors for ResourceAccessIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal.ResourceAccessIdentity { get => (this._resourceAccessIdentity = this._resourceAccessIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel()); set { {_resourceAccessIdentity = value;} } }
 
         /// <summary>Internal Acessors for VersionNumber</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelPropertiesInternal.VersionNumber { get => this._versionNumber; set { {_versionNumber = value;} } }
@@ -142,37 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 
         /// <summary>Identity model.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel ResourceAccessIdentity { get => (this._resourceAccessIdentity = this._resourceAccessIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel()); set => this._resourceAccessIdentity = value; }
-
-        /// <summary>
-        /// Gets or sets the authority of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityAadAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).AadAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).AadAuthority = value ; }
-
-        /// <summary>
-        /// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).ApplicationId = value ; }
-
-        /// <summary>
-        /// Gets or sets the audience of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityAudience { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).Audience; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).Audience = value ; }
-
-        /// <summary>
-        /// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).ObjectId = value ; }
-
-        /// <summary>
-        /// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
-        public string ResourceAccessIdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModelInternal)ResourceAccessIdentity).TenantId = value ; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel ResourceAccessIdentity { get => (this._resourceAccessIdentity = this._resourceAccessIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IdentityModel()); set => this._resourceAccessIdentity = value; }
 
         /// <summary>Backing field for <see cref="VersionNumber" /> property.</summary>
         private string _versionNumber;
@@ -191,56 +118,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
     public partial interface IFabricAgentModelProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Gets or sets the authority of the SPN with which fabric agent communicates to service.
-        /// </summary>
+        /// <summary>Identity model.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Gets or sets the authority of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"aadAuthority",
-        PossibleTypes = new [] { typeof(string) })]
-        string AuthenticationIdentityAadAuthority { get; set; }
-        /// <summary>
-        /// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"applicationId",
-        PossibleTypes = new [] { typeof(string) })]
-        string AuthenticationIdentityApplicationId { get; set; }
-        /// <summary>
-        /// Gets or sets the audience of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Gets or sets the audience of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"audience",
-        PossibleTypes = new [] { typeof(string) })]
-        string AuthenticationIdentityAudience { get; set; }
-        /// <summary>
-        /// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Gets or sets the object Id of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"objectId",
-        PossibleTypes = new [] { typeof(string) })]
-        string AuthenticationIdentityObjectId { get; set; }
-        /// <summary>
-        /// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        string AuthenticationIdentityTenantId { get; set; }
+        Description = @"Identity model.",
+        SerializedName = @"authenticationIdentity",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel AuthenticationIdentity { get; set; }
         /// <summary>Gets or sets the fabric agent correlation Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -249,14 +134,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         SerializedName = @"correlationId",
         PossibleTypes = new [] { typeof(string) })]
         string CorrelationId { get;  }
-        /// <summary>Discriminator property for FabricAgentModelCustomProperties.</summary>
+        /// <summary>Fabric agent model custom properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Discriminator property for FabricAgentModelCustomProperties.",
-        SerializedName = @"instanceType",
-        PossibleTypes = new [] { typeof(string) })]
-        string CustomPropertyInstanceType { get; set; }
+        Description = @"Fabric agent model custom properties.",
+        SerializedName = @"customProperties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties CustomProperty { get; set; }
         /// <summary>Gets or sets the list of health errors.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -305,56 +190,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState) })]
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState? ProvisioningState { get;  }
-        /// <summary>
-        /// Gets or sets the authority of the SPN with which fabric agent communicates to service.
-        /// </summary>
+        /// <summary>Identity model.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Gets or sets the authority of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"aadAuthority",
-        PossibleTypes = new [] { typeof(string) })]
-        string ResourceAccessIdentityAadAuthority { get; set; }
-        /// <summary>
-        /// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"applicationId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ResourceAccessIdentityApplicationId { get; set; }
-        /// <summary>
-        /// Gets or sets the audience of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Gets or sets the audience of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"audience",
-        PossibleTypes = new [] { typeof(string) })]
-        string ResourceAccessIdentityAudience { get; set; }
-        /// <summary>
-        /// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Gets or sets the object Id of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"objectId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ResourceAccessIdentityObjectId { get; set; }
-        /// <summary>
-        /// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ResourceAccessIdentityTenantId { get; set; }
+        Description = @"Identity model.",
+        SerializedName = @"resourceAccessIdentity",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel ResourceAccessIdentity { get; set; }
         /// <summary>Gets or sets the fabric agent version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -371,32 +214,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
     {
         /// <summary>Identity model.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel AuthenticationIdentity { get; set; }
-        /// <summary>
-        /// Gets or sets the authority of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string AuthenticationIdentityAadAuthority { get; set; }
-        /// <summary>
-        /// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string AuthenticationIdentityApplicationId { get; set; }
-        /// <summary>
-        /// Gets or sets the audience of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string AuthenticationIdentityAudience { get; set; }
-        /// <summary>
-        /// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string AuthenticationIdentityObjectId { get; set; }
-        /// <summary>
-        /// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string AuthenticationIdentityTenantId { get; set; }
         /// <summary>Gets or sets the fabric agent correlation Id.</summary>
         string CorrelationId { get; set; }
         /// <summary>Fabric agent model custom properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModelCustomProperties CustomProperty { get; set; }
-        /// <summary>Discriminator property for FabricAgentModelCustomProperties.</summary>
-        string CustomPropertyInstanceType { get; set; }
         /// <summary>Gets or sets the list of health errors.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IHealthErrorModel[] HealthError { get; set; }
         /// <summary>Gets or sets a value indicating whether the fabric agent is responsive.</summary>
@@ -411,26 +232,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState? ProvisioningState { get; set; }
         /// <summary>Identity model.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IIdentityModel ResourceAccessIdentity { get; set; }
-        /// <summary>
-        /// Gets or sets the authority of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string ResourceAccessIdentityAadAuthority { get; set; }
-        /// <summary>
-        /// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string ResourceAccessIdentityApplicationId { get; set; }
-        /// <summary>
-        /// Gets or sets the audience of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string ResourceAccessIdentityAudience { get; set; }
-        /// <summary>
-        /// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string ResourceAccessIdentityObjectId { get; set; }
-        /// <summary>
-        /// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
-        /// </summary>
-        string ResourceAccessIdentityTenantId { get; set; }
         /// <summary>Gets or sets the fabric agent version.</summary>
         string VersionNumber { get; set; }
 

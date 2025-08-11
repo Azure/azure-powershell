@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocaljob
 schema: 2.0.0
@@ -14,31 +14,31 @@ Retrieves the status of an Azure Migrate job.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateLocalJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+Get-AzMigrateLocalJob -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByName
-```
-Get-AzMigrateLocalJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetById
 ```
-Get-AzMigrateLocalJob [-SubscriptionId <String>] -ID <String> [-DefaultProfile <PSObject>]
+Get-AzMigrateLocalJob -ID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
-Get-AzMigrateLocalJob [-SubscriptionId <String>] -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
+Get-AzMigrateLocalJob -InputObject <IMigrateIdentity> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetByName
+```
+Get-AzMigrateLocalJob -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
-Get-AzMigrateLocalJob [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
+Get-AzMigrateLocalJob -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -384,7 +384,7 @@ The name of the migrate project.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName, GetByName
+Parameter Sets: GetByName, ListByName
 Aliases:
 
 Required: True
@@ -414,7 +414,7 @@ The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByName, GetByName
+Parameter Sets: GetByName, ListByName
 Aliases:
 
 Required: True
@@ -453,3 +453,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

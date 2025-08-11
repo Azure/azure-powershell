@@ -6,8 +6,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 {
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Linq;
 
     /// <summary>
     /// Extension methods for ApplicationTypesOperations
@@ -15,13 +13,55 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public static partial class ApplicationTypesOperationsExtensions
     {
         /// <summary>
-        /// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric managed cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ApplicationTypeResource> List(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName)
+        {
+                return ((IApplicationTypesOperations)operations).ListAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric managed cluster resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationTypeResource>> ListAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get a Service Fabric application type name resource created or in the
+        /// process of being created in the Service Fabric managed cluster resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -35,13 +75,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
+        /// Get a Service Fabric application type name resource created or in the
+        /// process of being created in the Service Fabric managed cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -60,13 +101,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Create or update a Service Fabric managed application type name resource with the specified name.
+        /// Create or update a Service Fabric managed application type name resource
+        /// with the specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -74,19 +116,20 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
-        public static ApplicationTypeResource CreateOrUpdate(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string))
+        public static ApplicationTypeResource CreateOrUpdate(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string))
         {
-            return ((IApplicationTypesOperations)operations).CreateOrUpdateAsync(resourceGroupName, clusterName, applicationTypeName, id, name, type, location, tags, systemData, provisioningState).GetAwaiter().GetResult();
+                return ((IApplicationTypesOperations)operations).CreateOrUpdateAsync(resourceGroupName, clusterName, applicationTypeName, tags, location).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update a Service Fabric managed application type name resource with the specified name.
+        /// Create or update a Service Fabric managed application type name resource
+        /// with the specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -97,30 +140,22 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationTypeResource> CreateOrUpdateAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationTypeResource> CreateOrUpdateAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            ApplicationTypeResource applicationType = new ApplicationTypeResource(
-                location: location,
-                tags: tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string),
-                id: id,
-                name: name,
-                type: type,
-                systemData: systemData,
-                provisioningState: provisioningState);
-
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, applicationType, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, tags, location, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Updates the tags of an application type resource of a given managed cluster.
+        /// Updates the tags of an application type resource of a given managed
+        /// cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -134,13 +169,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Updates the tags of an application type resource of a given managed cluster.
+        /// Updates the tags of an application type resource of a given managed
+        /// cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -159,13 +195,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Delete a Service Fabric managed application type name resource with the specified name.
+        /// Delete a Service Fabric managed application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -173,19 +210,20 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
-        public static void Delete(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName)
+        public static ApplicationTypesDeleteHeaders Delete(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName)
         {
-                ((IApplicationTypesOperations)operations).DeleteAsync(resourceGroupName, clusterName, applicationTypeName).GetAwaiter().GetResult();
+                return ((IApplicationTypesOperations)operations).DeleteAsync(resourceGroupName, clusterName, applicationTypeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Delete a Service Fabric managed application type name resource with the specified name.
+        /// Delete a Service Fabric managed application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -196,57 +234,22 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationTypesDeleteHeaders> DeleteAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric managed cluster resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ApplicationTypeResource> List(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName)
-        {
-                return ((IApplicationTypesOperations)operations).ListAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric managed cluster resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='clusterName'>
-        /// The name of the cluster resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationTypeResource>> ListAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
-        /// Delete a Service Fabric managed application type name resource with the specified name.
+        /// Delete a Service Fabric managed application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -254,19 +257,20 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
-        public static void BeginDelete(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName)
+        public static ApplicationTypesDeleteHeaders BeginDelete(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName)
         {
-                ((IApplicationTypesOperations)operations).BeginDeleteAsync(resourceGroupName, clusterName, applicationTypeName).GetAwaiter().GetResult();
+                return ((IApplicationTypesOperations)operations).BeginDeleteAsync(resourceGroupName, clusterName, applicationTypeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Delete a Service Fabric managed application type name resource with the specified name.
+        /// Delete a Service Fabric managed application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -277,12 +281,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationTypesDeleteHeaders> BeginDeleteAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric managed cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric managed cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -296,7 +304,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric managed cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric managed cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

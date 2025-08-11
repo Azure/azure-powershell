@@ -272,9 +272,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                             null);
                     }
 
-                    var headerValue = authenticateHeaderValues.FirstOrDefault();
+                    var wwwHeader = authenticateHeaderValues.FirstOrDefault();
 
-                    if (string.IsNullOrEmpty(headerValue) || !headerValue.Contains('='))
+                    if (string.IsNullOrEmpty(wwwHeader) || !wwwHeader.Contains('='))
                     {
                         throw new ServerManagedIdentityTokenException(
                             ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
@@ -283,23 +283,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     }
 
                     // Value in the header is: "Basic realm=<secret file path>"
-                    var secretFilePath = headerValue.Split('=')[1];
+                    var secretFilePath = wwwHeader.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
 
-                    var expectedSecretFileLocation = Environment.GetEnvironmentVariable("ProgramData") + HybridSecretFileDirectory;
-
-                    // Validate the secret file path received is from the expected predefined directory and is of expected .key file extension.
-                    // This ensures we are not redirected by some malicious process listening on localhost:40342 into a bad secret file.
-                    if (string.IsNullOrEmpty(secretFilePath) ||
-                        !secretFilePath.Contains(expectedSecretFileLocation) ||
-                        !secretFilePath.Contains(".key"))
-                    {
-                        throw new ServerManagedIdentityTokenException(
-                            ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
-                            StorageSyncResources.AgentMI_InvalidSecretFileError,
-                            null);
-                    }
-
-                    if (File.Exists(secretFilePath))
+                    if (IsSecretFilePathValid(secretFilePath))
                     {
                         challengeToken = File.ReadAllText(secretFilePath);
                     }
@@ -307,7 +293,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     {
                         throw new ServerManagedIdentityTokenException(
                             ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
-                            StorageSyncResources.AgentMI_MissingSecretFilePathOnServerError,
+                            StorageSyncResources.AgentMI_InvalidSecretFileError,
                             null);
                     }
                 }
@@ -347,6 +333,59 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             }
 
             return challengeToken;
+        }
+
+        /// <summary>
+        /// Validate the secret file path received is from the expected predefined directory and is of expected .key file extension.
+        /// This ensures we are not redirected by some malicious process listening on localhost:40342 into a bad secret file.
+        /// </summary>
+        /// <param name="secretFilePath"></param>
+        /// <returns></returns>
+        private static bool IsSecretFilePathValid(string secretFilePath)
+        {
+            // Check if the secret file path is null or empty
+            if (string.IsNullOrEmpty(secretFilePath))
+            {
+                return false;
+            }
+
+            // Normalize the path to prevent path traversal attacks
+            string normalizedTokenLocation = Path.GetFullPath(secretFilePath);
+
+            string allowedFolder;
+
+            // Expected form: %ProgramData%\AzureConnectedMachineAgent\Tokens\<guid>.key
+            var programData = Environment.GetEnvironmentVariable("ProgramData");
+            
+            if (string.IsNullOrEmpty(programData))
+            {
+                // If ProgramData is not found, try to manually construct it using SystemDrive
+                var systemDrive = Environment.GetEnvironmentVariable("SystemDrive");
+
+                if (string.IsNullOrEmpty(systemDrive))
+                {
+                    throw new ServerManagedIdentityTokenException(
+                        ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
+                        StorageSyncResources.AgentMI_ProgramDataNotFoundError,
+                        null);
+                }
+                else
+                {
+                    programData = Path.Combine(systemDrive, "ProgramData");
+                }
+            }
+
+            allowedFolder = Path.GetFullPath(Path.Combine(programData, "AzureConnectedMachineAgent", "Tokens"));
+
+            // Ensure the secret file is within the allowed tokens folder, exists, and ends with .key
+            if (!normalizedTokenLocation.StartsWith(allowedFolder + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase) ||
+                !File.Exists(normalizedTokenLocation) ||
+                !Path.GetFileName(normalizedTokenLocation).EndsWith(".key", StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>

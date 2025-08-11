@@ -2913,7 +2913,7 @@ end {
 .Synopsis
 Retrieves the status of an Azure Migrate job.
 .Description
-The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateJob cmdlet retrieves the status of an Azure Migrate job.
 .Example
 Get-AzMigrateJob -JobID "/Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/997e2a92-5afe-49c7-a81a-89660aec9b7b" 
 .Example
@@ -3181,7 +3181,7 @@ end {
 .Synopsis
 Retrieves the status of an Azure Migrate job.
 .Description
-The Get-AzMigrateLocalJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateLocalJob cmdlet retrieves the status of an Azure Migrate job.
 .Example
 Get-AzMigrateLocalJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
 .Example
@@ -4612,7 +4612,7 @@ param(
     ${IsOSDisk},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS"})]
+    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS"})]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the type of disks to be used for the Azure VM.
@@ -4621,7 +4621,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the disk encyption set to be used.
+    # Specifies the disk encryption set to be used.
     ${DiskEncryptionSetID}
 )
 
@@ -4751,6 +4751,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the disk format.
+    # 'VHD' or 'VHDX' for Hyper-V Generation 1; 'VHDX' for Hyper-V Generation 2.
     ${Format},
 
     [Parameter()]
@@ -4758,13 +4759,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.Int64]
     # Specifies the disk physical sector size in bytes.
-    ${PhysicalSectorSize},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the storage path ARM ID where the disk will be stored.
-    ${TargetStoragePathId}
+    ${PhysicalSectorSize}
 )
 
 begin {
@@ -5019,6 +5014,18 @@ param(
     [System.String]
     # Specifies the name of the VM to be created.
     ${TargetVMName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the source appliance name for the AzLocal scenario.
+    ${SourceApplianceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the target appliance name for the AzLocal scenario.
+    ${TargetApplianceName},
 
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -5702,7 +5709,7 @@ param(
     [Parameter(ParameterSetName='ByInputObjectDefaultUser')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the disk encyption set to be used.
+    # Specifies the disk encryption set to be used.
     ${DiskEncryptionSetID},
 
     [Parameter()]
@@ -6935,7 +6942,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-DYNAMICMEMORYCONFIG <ProtectedItemDynamicMemoryConfig>: Specifies the dynamic memory configration of RAM.
+DYNAMICMEMORYCONFIG <ProtectedItemDynamicMemoryConfig>: Specifies the dynamic memory configuration of RAM.
   MaximumMemoryInMegaByte <Int64>: Gets or sets maximum memory in MB.
   MinimumMemoryInMegaByte <Int64>: Gets or sets minimum memory in MB.
   TargetMemoryBufferPercentage <Int32>: Gets or sets target memory buffer in %.
@@ -6969,7 +6976,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]
-    # Specifies the dynamic memory configration of RAM.
+    # Specifies the dynamic memory configuration of RAM.
     # To construct, see NOTES section for DYNAMICMEMORYCONFIG properties and create a hash table.
     ${DynamicMemoryConfig},
 
@@ -6984,6 +6991,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
     # Specifies the nics on the source server to be included for replication.
     ${NicToInclude},
+
+    [Parameter()]
+    [ArgumentCompleter({ "WindowsGuest" , "LinuxGuest" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the OS type of the VM, either WindowsGuest or LinuxGuest.
+    ${OsType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
