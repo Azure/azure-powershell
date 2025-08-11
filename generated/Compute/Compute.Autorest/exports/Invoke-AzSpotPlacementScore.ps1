@@ -61,11 +61,11 @@ $response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInp
 $response.PlacementScore
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -84,7 +84,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -102,7 +101,7 @@ https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacements
 #>
 function Invoke-AzSpotPlacementScore {
 [Alias('Invoke-AzSpotPlacementRecommender')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory)]
@@ -133,7 +132,7 @@ param(
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Alias('SpotPlacementRecommenderInput')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput]
     # SpotPlacementScores API Input.
     # To construct, see NOTES section for SPOTPLACEMENTSCORESINPUT properties and create a hash table.
     ${SpotPlacementScoresInput},
@@ -164,7 +163,7 @@ param(
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.IResourceSize[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.IResourceSize[]]
     # The desired resource SKUs.
     # To construct, see NOTES section for DESIREDSIZE properties and create a hash table.
     ${DesiredSize},
