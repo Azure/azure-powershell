@@ -23,6 +23,7 @@ https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfigurat
 #>
 function Set-AzAdvisorConfiguration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData", DeprecatedOutputProperties = ("Digest Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig"), NewOutputProperties = ("Digest System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig]"))]
     [CmdletBinding(DefaultParameterSetName='CreateByLCT', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='CreateByRG', Mandatory)]
