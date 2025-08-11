@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 StorageSizeInGb = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
-                MemorySizeInGb = model.MemorySizeInGb,
+                MemorySizeInGb = model.MemorySizeInGB,
                 Identity = model.Identity,
                 Collation = model.Collation,
                 PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.SubnetId = resp.SubnetId;
             managedInstance.LicenseType = resp.LicenseType;
             managedInstance.VCores = resp.VCores;
-            managedInstance.MemorySizeInGb = resp.MemorySizeInGb;
+            managedInstance.MemorySizeInGB = resp.MemorySizeInGb;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGb;
             managedInstance.StorageIOps = resp.StorageIOps;
             managedInstance.Collation = resp.Collation;
