@@ -13,7 +13,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
 
-public static class FileUtils
+internal static class FileUtils
 {
     public static void MakeDirsForFile(string filePath)
     {
