@@ -55,6 +55,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.2.0'; }, 
                @{ModuleName = 'Az.Advisor'; RequiredVersion = '2.1.0'; }, 
                @{ModuleName = 'Az.Aks'; RequiredVersion = '7.0.0'; }, 
+               @{ModuleName = 'Az.AksArc'; RequiredVersion = '0.1.4'; },
+               @{ModuleName = 'Az.Alb'; RequiredVersion = '0.1.4'; },
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '4.1.0'; }, 
                @{ModuleName = 'Az.App'; RequiredVersion = '2.0.1'; }, 
