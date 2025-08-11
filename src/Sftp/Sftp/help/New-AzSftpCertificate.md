@@ -281,6 +281,13 @@ Write-Host "Process ID: $($process.Id)"
 
 This example demonstrates the full workflow of generating a certificate and immediately using it for SFTP connection, showing the integration between the two cmdlets.
 
+### Example 9: Generate certificate with custom SSH client location
+```powershell
+New-AzSftpCertificate -CertificatePath "C:\certs\custom-cert.pub" -SshClientFolder "C:\Program Files\OpenSSH"
+```
+
+This command generates a certificate using SSH executables from a specific location. This is useful when you have multiple SSH implementations installed or when ssh-keygen is not in the default PATH.
+
 ## RELATED LINKS
 
 [Connect-AzSftp](./Connect-AzSftp.md)

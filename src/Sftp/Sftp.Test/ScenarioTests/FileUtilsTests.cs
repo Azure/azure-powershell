@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(AzPSArgumentException))]
+        [ExpectedException(typeof(AzPSIOException))]
         public void TestCheckOrCreatePublicPrivateFilesNoPublicKeySpecified()
         {
             // Arrange

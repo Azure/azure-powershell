@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Sftp.Common
 
         // Default ports
         public const int DefaultSshPort = 22;
+        public const int DefaultSftpPort = 22;
 
         // SSH/SFTP client configuration
 

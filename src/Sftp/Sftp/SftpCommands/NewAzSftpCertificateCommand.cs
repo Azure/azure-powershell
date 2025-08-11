@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sftp.SftpCommands
     /// <summary>
     /// Generate SSH certificate for SFTP authentication using Azure AD
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzSftpCertificate", DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet(VerbsCommon.New, "AzSftpCertificate", DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSCertificateInfo))]
     public class NewAzSftpCertificateCommand : SftpBaseCmdlet
     {
@@ -69,6 +69,17 @@ namespace Microsoft.Azure.Commands.Sftp.SftpCommands
         protected override void ProcessRecord()
         {
             WriteDebug("Starting SFTP certificate generation");
+
+            string target = !string.IsNullOrEmpty(LocalUser) 
+                ? $"SSH certificate for local user '{LocalUser}'" 
+                : "SSH certificate for Azure AD authentication";
+
+            if (!ShouldProcess(target, 
+                              $"Do you want to create {target}?",
+                              "New-AzSftpCertificate"))
+            {
+                return;
+            }
 
             // Expand user paths
             CertificatePath = ExpandUserPath(CertificatePath);

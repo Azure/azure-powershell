@@ -15,27 +15,27 @@ Connect to Azure Storage Account via SFTP protocol.
 ### Default (Default)
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] [-PrivateKeyFile <String>] [-PublicKeyFile <String>]
- [-SftpArgs <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### CertificateAuth
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -CertificateFile <String> -PrivateKeyFile <String>
- [-SftpArgs <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### PublicKeyAuth
 ```
-Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -PublicKeyFile <String> [-SftpArgs <String[]>]
+Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -PublicKeyFile <String> [-SftpArg <String[]>]
  [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LocalUserAuth
 ```
 Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -LocalUser <String> [-PrivateKeyFile <String>]
- [-SftpArgs <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -185,7 +185,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SftpArgs
+### -SftpArg
 Specifies additional arguments to pass to the underlying sftp command. Common options include:
 - `-v` for verbose output
 - `-b <batchfile>` for batch commands
@@ -255,7 +255,7 @@ Returns the SFTP client process object for the active connection. This allows yo
 - Requires SFTP to be enabled on the target Azure Storage account
 - Storage account must have hierarchical namespace (HNS) enabled
 - When using automatic Azure AD authentication, temporary certificate files are created in the system temp directory and cleaned up automatically
-- The cmdlet launches an interactive SFTP session unless batch commands are provided via -SftpArgs
+- The cmdlet launches an interactive SFTP session unless batch commands are provided via -SftpArg
 - Azure AD-generated certificates are typically valid for 1 hour for security purposes
 - For local user authentication, the user account must be properly configured on the storage account
 - Interactive authentication (username/password) is available when using -LocalUser without -PrivateKeyFile
@@ -311,7 +311,7 @@ This command connects to a local user account using interactive authentication. 
 
 ### Example 6: Connect with custom port and verbose output
 ```powershell
-Connect-AzSftp -StorageAccount "mystorageaccount" -Port 2022 -SftpArgs "-v"
+Connect-AzSftp -StorageAccount "mystorageaccount" -Port 2022 -SftpArg "-v"
 ```
 
 This command connects to the storage account using a non-default SFTP port (2022) and enables verbose output to help with troubleshooting connection issues.
@@ -327,7 +327,7 @@ quit
 "@ | Out-File -FilePath "C:\temp\batch.sftp" -Encoding ASCII
 
 # Execute batch commands
-Connect-AzSftp -StorageAccount "mystorageaccount" -SftpArgs "-b", "C:\temp\batch.sftp"
+Connect-AzSftp -StorageAccount "mystorageaccount" -SftpArg "-b", "C:\temp\batch.sftp"
 ```
 
 This command connects to the storage account and executes a series of SFTP commands from a batch file, including changing directory, uploading a file, listing contents, and quitting.
@@ -341,10 +341,18 @@ This command connects to the storage account using SSH executables from a custom
 
 ### Example 9: Connect with advanced SSH options
 ```powershell
-Connect-AzSftp -StorageAccount "mystorageaccount" -SftpArgs "-o", "ConnectTimeout=30", "-o", "StrictHostKeyChecking=no", "-v"
+Connect-AzSftp -StorageAccount "mystorageaccount" -SftpArg "-o", "ConnectTimeout=30", "-o", "StrictHostKeyChecking=no", "-v"
 ```
 
 This command connects with a custom connection timeout of 30 seconds, disables strict host key checking for this session, and enables verbose output for debugging.
+
+### Example 10: Connect with certificate from existing SSH keys
+```powershell
+# Use existing SSH keys to generate a certificate automatically
+Connect-AzSftp -StorageAccount "mystorageaccount" -PrivateKeyFile "C:\keys\id_rsa" -PublicKeyFile "C:\keys\id_rsa.pub"
+```
+
+This command connects to the storage account using existing SSH keys. The cmdlet will automatically generate a certificate from the provided keys using Azure AD authentication.
 
 ### Example 11: Troubleshoot authentication issues
 ```powershell
@@ -357,7 +365,7 @@ Write-Host "Certificate generated: $($cert.CertificatePath)"
 Write-Host "Principal: $($cert.Principal)"
 
 # Connect using the generated certificate
-Connect-AzSftp -StorageAccount "mystorageaccount" -CertificateFile $cert.CertificatePath -PrivateKeyFile $cert.PrivateKeyPath -SftpArgs "-v"
+Connect-AzSftp -StorageAccount "mystorageaccount" -CertificateFile $cert.CertificatePath -PrivateKeyFile $cert.PrivateKeyPath -SftpArg "-v"
 ```
 
 This example shows how to troubleshoot authentication issues by explicitly generating a certificate first and using verbose SFTP output to diagnose connection problems.

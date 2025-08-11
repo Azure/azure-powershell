@@ -205,9 +205,16 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             Assert.IsTrue(portIndex >= 0 && portIndex + 1 < args.Count);
             Assert.AreEqual("2222", args[portIndex + 1]);
             
-            // Should contain certificate file flags
-            CollectionAssert.Contains(args, $"-o CertificateFile=\"{certFile}\"");
-            CollectionAssert.Contains(args, "-o IdentitiesOnly=yes");
+            // Should contain certificate file option
+            CollectionAssert.Contains(args, "-o");
+            CollectionAssert.Contains(args, $"CertificateFile={certFile}");
+            
+            // Should contain private key identity file argument
+            CollectionAssert.Contains(args, "-i");
+            CollectionAssert.Contains(args, privateKeyFile);
+            
+            // Should contain IdentitiesOnly for security
+            CollectionAssert.Contains(args, "IdentitiesOnly=yes");
         }
 
         [TestMethod]

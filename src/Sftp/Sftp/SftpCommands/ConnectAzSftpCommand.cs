@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sftp.SftpCommands
     /// <summary>
     /// Connect to Azure Storage Account via SFTP with automatic certificate generation if needed
     /// </summary>
-    [Cmdlet(VerbsCommunications.Connect, "AzSftp", DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet(VerbsCommunications.Connect, "AzSftp", DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(System.Diagnostics.Process))]
     public class ConnectAzSftpCommand : SftpBaseCmdlet
     {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sftp.SftpCommands
         [Parameter(Mandatory = false, ParameterSetName = CertificateAuthParameterSet, HelpMessage = "Additional arguments to pass to the SFTP client. Example: \"-v\" for verbose output, \"-b batchfile.txt\" for batch commands.")]
         [Parameter(Mandatory = false, ParameterSetName = PublicKeyAuthParameterSet, HelpMessage = "Additional arguments to pass to the SFTP client. Example: \"-v\" for verbose output, \"-b batchfile.txt\" for batch commands.")]
         [Parameter(Mandatory = false, ParameterSetName = LocalUserAuthParameterSet, HelpMessage = "Additional arguments to pass to the SFTP client. Example: \"-v\" for verbose output, \"-b batchfile.txt\" for batch commands.")]
-        public string[] SftpArgs { get; set; }
+        public string[] SftpArg { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "Path to folder containing SSH client executables (ssh, sftp, ssh-keygen). Default: Uses executables from PATH or system default locations.")]
         [Parameter(Mandatory = false, ParameterSetName = CertificateAuthParameterSet, HelpMessage = "Path to folder containing SSH client executables (ssh, sftp, ssh-keygen). Default: Uses executables from PATH or system default locations.")]
@@ -87,6 +87,13 @@ namespace Microsoft.Azure.Commands.Sftp.SftpCommands
         protected override void ProcessRecord()
         {
             WriteDebug($"Starting SFTP connection to storage account: {StorageAccount}");
+
+            if (!ShouldProcess($"Connect to SFTP storage account '{StorageAccount}'", 
+                              $"Do you want to connect to SFTP storage account '{StorageAccount}'?",
+                              "Connect-AzSftp"))
+            {
+                return;
+            }
 
             CertificateFile = ExpandUserPath(CertificateFile);
             PrivateKeyFile = ExpandUserPath(PrivateKeyFile);
@@ -304,7 +311,7 @@ namespace Microsoft.Azure.Commands.Sftp.SftpCommands
                     port: Port ?? 22,
                     certFile: CertificateFile,
                     privateKeyFile: PrivateKeyFile,
-                    sftpArgs: SftpArgs,
+                    sftpArgs: SftpArg,
                     sshClientFolder: SshClientFolder,
                     sshProxyFolder: null,
                     credentialsFolder: credentialsFolder,

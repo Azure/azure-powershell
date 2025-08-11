@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sftp.SftpCommands;
+using Microsoft.Azure.Commands.Sftp.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
@@ -80,8 +81,8 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             Assert.IsNotNull(command.GetType().GetProperty("PublicKeyFile"));
             
             // Azure CLI: --sftp-args
-            // PowerShell: -SftpArgs
-            Assert.IsNotNull(command.GetType().GetProperty("SftpArgs"));
+            // PowerShell: -SftpArg
+            Assert.IsNotNull(command.GetType().GetProperty("SftpArg"));
             
             // Azure CLI: --ssh-client-folder
             // PowerShell: -SshClientFolder
@@ -138,10 +139,10 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             
             var outputTypeAttr = outputTypeAttrs[0] as OutputTypeAttribute;
             Assert.IsNotNull(outputTypeAttr);
-            // Should output void (nothing) like Azure CLI
-            Assert.IsTrue(Array.Exists(outputTypeAttr.Type, t => t.Type == typeof(void)));
+            // Should output PSCertificateInfo containing certificate information
+            Assert.IsTrue(Array.Exists(outputTypeAttr.Type, t => t.Type == typeof(PSCertificateInfo)));
             
-            // Azure CLI 'az sftp connect' starts an interactive session, no object output
+            // Connect-AzSftp returns a Process object for the SFTP session
             var connectCommand = new ConnectAzSftpCommand();
             outputTypeAttrs = connectCommand.GetType().GetCustomAttributes(typeof(OutputTypeAttribute), false);
             Assert.IsNotNull(outputTypeAttrs);
@@ -149,8 +150,8 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             
             outputTypeAttr = outputTypeAttrs[0] as OutputTypeAttribute;
             Assert.IsNotNull(outputTypeAttr);
-            // Should output void (nothing) like Azure CLI
-            Assert.IsTrue(Array.Exists(outputTypeAttr.Type, t => t.Type == typeof(void)));
+            // Should output Process object for the SFTP session
+            Assert.IsTrue(Array.Exists(outputTypeAttr.Type, t => t.Type == typeof(System.Diagnostics.Process)));
         }
 
         [TestMethod]
@@ -209,8 +210,8 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             Assert.IsNull(connectCommand.PrivateKeyFile);
             Assert.IsNull(connectCommand.PublicKeyFile);
             
-            // SftpArgs should default to null (Azure CLI defaults to empty)
-            Assert.IsNull(connectCommand.SftpArgs);
+            // SftpArg should default to null (Azure CLI defaults to empty)
+            Assert.IsNull(connectCommand.SftpArg);
             
             // SshClientFolder should default to null (Azure CLI auto-detects)
             Assert.IsNull(connectCommand.SshClientFolder);

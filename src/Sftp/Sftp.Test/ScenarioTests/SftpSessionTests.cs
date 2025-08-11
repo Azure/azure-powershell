@@ -50,10 +50,12 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             // Act
             var args = session.BuildArgs();
 
-            // Assert: args should include certificate flag and IdentitiesOnly, not include -i public key
-            CollectionAssert.Contains(args, $"-o CertificateFile=\"{certPath}\"");
-            CollectionAssert.Contains(args, "-o IdentitiesOnly=yes");
-            Assert.IsFalse(args.Contains("-i"));
+            // Assert: With certificate file, should include certificate options and IdentitiesOnly
+            Assert.IsTrue(args.Count > 0, "BuildArgs should return certificate options when certificate file is provided");
+            CollectionAssert.Contains(args, "-o");
+            CollectionAssert.Contains(args, $"CertificateFile={certPath}");
+            CollectionAssert.Contains(args, "IdentitiesOnly=yes");
+            Assert.IsFalse(args.Contains("-i"), "Should not contain -i flag when only certificate is provided");
         }
 
         [TestMethod]
@@ -81,11 +83,12 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             // Act
             var args = session.BuildArgs();
 
-            // Assert: first identity flag is private key, then certificate flags, then port
-            Assert.AreEqual(args[0], "-i");
-            Assert.AreEqual(args[1], privPath);
-            CollectionAssert.Contains(args, $"-o CertificateFile=\"{certPath}\"");
-            CollectionAssert.Contains(args, "-o IdentitiesOnly=yes");
+            // Assert: BuildArgs should contain certificate options, private key identity, and port arguments
+            Assert.IsTrue(args.Contains("-o"));
+            CollectionAssert.Contains(args, $"CertificateFile={certPath}");
+            CollectionAssert.Contains(args, "IdentitiesOnly=yes");
+            CollectionAssert.Contains(args, "-i");
+            CollectionAssert.Contains(args, privPath);
             Assert.IsTrue(args.Contains("-P"));
             int pIndex = args.IndexOf("-P");
             Assert.AreEqual("2200", args[pIndex + 1]);

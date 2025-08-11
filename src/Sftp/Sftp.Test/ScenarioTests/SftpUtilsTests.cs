@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             // Should contain basic SSH options
             Assert.IsTrue(Array.Exists(command, arg => arg.Contains("PasswordAuthentication=no")));
             Assert.IsTrue(Array.Exists(command, arg => arg.Contains("StrictHostKeyChecking=no")));
-            Assert.IsTrue(Array.Exists(command, arg => arg.Contains("UserKnownHostsFile=/dev/null")));
+            Assert.IsTrue(Array.Exists(command, arg => arg.Contains("UserKnownHostsFile=") && (arg.Contains("/dev/null") || arg.Contains("NUL"))));
             
             // Should contain destination
             Assert.IsTrue(Array.Exists(command, arg => arg.Contains("teststorage.testuser@teststorage.blob.core.windows.net")));

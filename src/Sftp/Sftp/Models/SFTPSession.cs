@@ -177,29 +177,36 @@ namespace Microsoft.Azure.Commands.Sftp.Models
         {
             var args = new List<string>();
 
-            // Certificate authentication with OpenSSH auto-discovery
-            if (!string.IsNullOrEmpty(CertFile) && !string.IsNullOrEmpty(PrivateKeyFile))
+            // Certificate authentication with explicit certificate file option
+            if (!string.IsNullOrEmpty(CertFile))
+            {
+                if (File.Exists(CertFile))
+                {
+                    args.AddRange(new[] { "-o", $"CertificateFile={CertFile}" });
+                }
+            }
+
+            // Private key authentication
+            if (!string.IsNullOrEmpty(PrivateKeyFile))
             {
                 if (File.Exists(PrivateKeyFile))
                 {
                     args.AddRange(new[] { "-i", PrivateKeyFile });
                 }
             }
-            // Traditional SSH key authentication
-            else if (!string.IsNullOrEmpty(PrivateKeyFile))
-            {
-                if (File.Exists(PrivateKeyFile))
-                {
-                    args.AddRange(new[] { "-i", PrivateKeyFile });
-                }
-            }
-            // Public key fallback
+            // Public key fallback (when no private key is available)
             else if (!string.IsNullOrEmpty(PublicKeyFile))
             {
                 if (File.Exists(PublicKeyFile))
                 {
                     args.AddRange(new[] { "-i", PublicKeyFile });
                 }
+            }
+
+            // When using certificate authentication, add IdentitiesOnly for security
+            if (!string.IsNullOrEmpty(CertFile) && File.Exists(CertFile))
+            {
+                args.AddRange(new[] { "-o", "IdentitiesOnly=yes" });
             }
 
             // Port option
