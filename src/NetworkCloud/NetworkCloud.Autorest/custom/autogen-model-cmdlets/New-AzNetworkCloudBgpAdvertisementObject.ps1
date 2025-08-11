@@ -30,19 +30,17 @@ function New-AzNetworkCloudBgpAdvertisementObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BgpAdvertisement')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
+
         [Parameter(HelpMessage="The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         [string]
         $AdvertiseToFabric,
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("Community", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.")]
         [string[]]
         $Community,
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("IPAddressPool", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(Mandatory, HelpMessage="The names of the IP address pools associated with this announcement.")]
         [string[]]
         $IPAddressPool,
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("Peer", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.")]
         [string[]]
         $Peer

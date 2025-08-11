@@ -81,7 +81,7 @@ Update a new cluster or update the properties of the cluster if it exists.
 ```powershell
 $storageapplianceconfigurationdata = @()
 $baremetalmachineconfigurationdata = @()
-$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster."})
+$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster."})
 $tagHash = @{
     tag = "tag"
     tagUpdate = "tagUpdate"
@@ -464,7 +464,6 @@ Accept wildcard characters: False
 
 ### -ComputeRackDefinition
 The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
-To construct, see NOTES section for COMPUTERACKDEFINITION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition[]

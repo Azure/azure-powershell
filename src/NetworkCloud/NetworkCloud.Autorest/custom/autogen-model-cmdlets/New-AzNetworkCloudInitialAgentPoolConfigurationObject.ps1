@@ -30,6 +30,7 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.InitialAgentPoolConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
+
         [Parameter(HelpMessage="The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.")]
         [string]
         $AdministratorConfigurationAdminUsername,
@@ -53,7 +54,6 @@ function New-AzNetworkCloudInitialAgentPoolConfigurationObject {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration[]]
         $AttachedNetworkConfigurationTrunkedNetwork,
         [Parameter(HelpMessage="The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("AvailabilityZone", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [string[]]
         $AvailabilityZone,
         [Parameter(Mandatory, HelpMessage="The number of virtual machines that use this configuration.")]

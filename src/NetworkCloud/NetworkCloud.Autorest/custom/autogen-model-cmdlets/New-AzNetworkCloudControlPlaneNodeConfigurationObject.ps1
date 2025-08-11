@@ -39,7 +39,6 @@ function New-AzNetworkCloudControlPlaneNodeConfigurationObject {
         $AdministratorConfigurationSshPublicKey,
         [Parameter(HelpMessage="The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.")]
         [string[]]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("AvailabilityZone", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         $AvailabilityZone,
         [Parameter(Mandatory, HelpMessage="The number of virtual machines that use this configuration.")]
         [long]

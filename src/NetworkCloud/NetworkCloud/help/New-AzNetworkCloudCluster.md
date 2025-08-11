@@ -66,7 +66,7 @@ Create a new cluster or create the properties of the cluster if it exists.
 ```powershell
 $storageapplianceconfigurationdata = @()
 $baremetalmachineconfigurationdata = @()
-$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster."})
+$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster."})
 $tagHash = @{
     tag = "tag"
 }
@@ -87,7 +87,7 @@ This command creates a new cluster.
 ```powershell
 $storageapplianceconfigurationdata = @()
 $baremetalmachineconfigurationdata = @()
-$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster."})
+$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster."})
 $tagHash = @{
     tag = "tag"
 }
@@ -488,7 +488,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeRackDefinition
-The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
+The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition[]

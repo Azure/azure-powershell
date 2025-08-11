@@ -57,7 +57,7 @@ directive:
     where: $.definitions.BareMetalMachinePatchProperties.properties.machineDetails
     transform: $['description'] = 'The details provided by the customer during the creation of rack manifests that allows for custom data to be associated with this machine.'
   - from: swagger-document
-    where: $.definitions.ClusterPatchProperties.properties.computeRackDefinitions
+    where: $.definitions.ClusterProperties.properties.computeRackDefinitions
     transform: $['description'] = 'The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.'
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set

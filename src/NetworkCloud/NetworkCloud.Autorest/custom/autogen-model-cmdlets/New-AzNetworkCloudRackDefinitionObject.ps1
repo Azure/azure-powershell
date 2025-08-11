@@ -34,7 +34,6 @@ function New-AzNetworkCloudRackDefinitionObject {
         [Parameter(HelpMessage="The zone name used for this rack when created. Availability zones are used for workload placement.")]
         [string]
         $AvailabilityZone,
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("BareMetalMachineConfigurationData", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="The unordered list of bare metal machine configuration.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData[]]
         $BareMetalMachineConfigurationData,
@@ -50,7 +49,6 @@ function New-AzNetworkCloudRackDefinitionObject {
         [Parameter(Mandatory, HelpMessage="The resource ID of the sku for the rack being added.")]
         [string]
         $RackSkuId,
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("StorageApplianceConfigurationData", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="The list of storage appliance configuration data for this rack.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData[]]
         $StorageApplianceConfigurationData
