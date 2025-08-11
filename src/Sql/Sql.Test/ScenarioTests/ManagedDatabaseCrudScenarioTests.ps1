@@ -547,21 +547,25 @@ function Test-CrossSubscriptionRestoreDeletedManagedDatabase
 	try
 	{
 		# Creating managed instance on different subscription would take more then 6 hours, so using existing one for sake of testing.
-		$sourceSub = "62e48210-5e43-423e-889b-c277f3e08c39"
-		$sourceRg = "gen4-testing-RG"
-		$soruceManagedInstance = "filiptanic-gen4-on-gen7-different-subnet"
+		$sourceSub = (Get-AzContext).Subscription.Id
+		$sourceRg = Create-ResourceGroupForTest
+		$soruceManagedInstance = Create-ManagedInstanceForTest -resourceGroup $sourceRg -isV3 $true
 		$sourceManagedDatabaseName = "cross-sub-pipe-restored"
+
+		New-AzSqlInstanceDatabase -ResourceGroupName $sourceRG.ResourceGroupName `
+			-InstanceName $soruceManagedInstance.ManagedInstanceName `
+			-Name $sourceManagedDatabaseName
 
 		#> $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "gen4-testing-RG" -InstanceName "filiptanic-gen4-on-gen7-different-subnet" -DatabaseName "cross-sub-pipe-restored"
 		#> $deletedDatabase.DeletionDate
 		# execute script above to get deletion date
-		$deletionDate = "01/23/2023 14:46:01";
-
+		$deletionDate = "01/23/2023 14:46:01"
+		$deletion = [DateTime]$deletionDate
 		$pointInTime = ([DateTime]$deletionDate).AddMinutes(-10)
 		
-		$targetSub = (Get-AzContext).Subscription.Id
+		$targetSub = "62e48210-5e43-423e-889b-c277f3e08c39"
 		$targetRg = Create-ResourceGroupForTest
-		$targetManagedInstance = Create-ManagedInstanceForTest $targetRg
+		$targetManagedInstance = Create-ManagedInstanceForTest -resourceGroup $targetRg -isV3 $true
 		$targetManagedDatabaseName = Get-ManagedDatabaseName
 
 		# Wait for mi to stabilize
@@ -570,11 +574,11 @@ function Test-CrossSubscriptionRestoreDeletedManagedDatabase
 		# restore managed database from another instance in different subscription using all parameters
 		$restoredDb = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 			-SubscriptionId $sourceSub `
-			-ResourceGroupName $sourceRg `
-			-InstanceName $soruceManagedInstance `
+			-ResourceGroupName $sourceRG.ResourceGroupName `
+			-InstanceName $soruceManagedInstance.ManagedInstanceName `
 			-Name $sourceManagedDatabaseName `
 			-PointInTime $pointInTime `
-			-DeletionDate $deletionDate `
+			-DeletionDate $deletion `
 			-TargetInstanceDatabaseName $targetManagedDatabaseName `
 			-TargetInstanceName $targetManagedInstance.ManagedInstanceName `
 			-TargetResourceGroupName $targetRg.ResourceGroupName `
@@ -586,6 +590,7 @@ function Test-CrossSubscriptionRestoreDeletedManagedDatabase
 	}
 	finally
 	{
+		Remove-ResourceGroupForTest sourceRg
 		Remove-ResourceGroupForTest $targetRg
 	}
 }

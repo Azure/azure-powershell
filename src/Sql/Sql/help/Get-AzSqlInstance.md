@@ -68,6 +68,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 ZoneRedundant            : false
@@ -86,6 +87,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -114,6 +116,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeINGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -142,6 +145,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeINGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -161,6 +165,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeINGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -325,6 +330,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeINGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -353,6 +359,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeINGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
@@ -372,6 +379,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeINGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -415,6 +423,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeINGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw

@@ -179,15 +179,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int VCore { get; set; }
 
         /// <summary>
-        /// Gets or sets the Storage IOps for instance
+        /// Gets or sets the memory size in GB for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines how much Storage IOps to associate with instance.",
+            HelpMessage = "Determines how much memory in GB to associate with instance.",
             ParameterSetName = NewBySkuNameParameterSet)]
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines how much Storage IOps to associate with instance.",
+            HelpMessage = "Determines how much memory in GB to associate with instance.",
             ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
-        public int MemorySizeInGb { get; set; }
+        public int MemorySizeInGB { get; set; }
 
         /// <summary>
         /// Gets or sets the instance SKU name
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             {
                 ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

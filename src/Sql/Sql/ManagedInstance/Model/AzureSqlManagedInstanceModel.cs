@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         public int? VCores { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of VCores.
+        /// Gets or sets the memory size in GB.
         /// </summary>
-        public int? MemorySizeInGb { get; set; }
+        public int? MemorySizeInGB { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum storage size in GB.
