@@ -32,7 +32,34 @@ namespace Microsoft.Azure.Commands.Sftp.Common
         private static extern bool GenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId);
 
         private const uint CTRL_BREAK_EVENT = 1;
+        private static class NativeMethods
+        {
+#if WINDOWS
+            [DllImport("kernel32.dll")]
+            internal static extern bool GenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId);
+#endif
+        }
 
+        private const uint CTRL_BREAK_EVENT = 1;
+
+        /// <summary>
+        /// Safely generates a console control event if running on Windows.
+        /// </summary>
+        /// <param name="dwCtrlEvent"></param>
+        /// <param name="dwProcessGroupId"></param>
+        /// <returns>True if the event was generated, false otherwise.</returns>
+        public static bool TryGenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+#if WINDOWS
+                return NativeMethods.GenerateConsoleCtrlEvent(dwCtrlEvent, dwProcessGroupId);
+#else
+                return false;
+#endif
+            }
+            return false;
+        }
         // Simple logger for internal debugging
         private static readonly object _logLock = new object();
 
