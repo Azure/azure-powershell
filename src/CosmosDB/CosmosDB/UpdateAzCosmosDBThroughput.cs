@@ -55,7 +55,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 PopulateFromInputObject();
             }
 
-            ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters = ThroughputHelper.CreateThroughputSettingsObject(Throughput, AutoscaleMaxThroughput, ThroughputBucketsObject);
+            // Determine effective throughput buckets:
+            // - If user omitted the parameter (null), fetch and preserve existing buckets via hook
+            // - If user passed empty array, clear buckets by sending an empty list
+            // - If user passed values, replace with those values
+            PSThroughputBucket[] effectiveThroughputBuckets = ThroughputBucketsObject ?? GetExistingThroughputBuckets();
+
+            ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters = ThroughputHelper.CreateThroughputSettingsObject(Throughput, AutoscaleMaxThroughput, effectiveThroughputBuckets);
 
             CallSDKMethod(throughputSettingsUpdateParameters);
         }
@@ -63,6 +69,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public virtual void PopulateFromParentObject() { }
         public virtual void PopulateFromInputObject() { }
         public virtual void CallSDKMethod(ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters) { }
+        protected virtual PSThroughputBucket[] GetExistingThroughputBuckets() { return null; }
 
     }
 }
