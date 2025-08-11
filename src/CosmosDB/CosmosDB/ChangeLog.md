@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Add support for preserving existing throughput buckets during SQL container throughput updates.
 
 ## Version 2.0.7
 * Added support for throughput buckets.
