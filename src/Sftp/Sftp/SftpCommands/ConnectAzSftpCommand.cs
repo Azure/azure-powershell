@@ -347,7 +347,16 @@ namespace Microsoft.Azure.Commands.Sftp.SftpCommands
                 {
                     WriteDebug($"Waiting for SFTP process (PID: {process.Id}) to exit before cleanup...");
                     process.WaitForExit();
-                    WriteDebug($"SFTP process exited (PID: {process.Id}), cleaning up credentials...");
+                    // Wait up to 5 minutes (300,000 ms) for the process to exit
+                    bool exited = process.WaitForExit(300000);
+                    if (!exited)
+                    {
+                        WriteWarning($"SFTP process (PID: {process.Id}) did not exit within 5 minutes. Cleanup will proceed, but the process may still be running.");
+                    }
+                    else
+                    {
+                        WriteDebug($"SFTP process exited (PID: {process.Id}), cleaning up credentials...");
+                    }
                     CleanupCredentials(deleteKeys, deleteCert, credentialsFolder, CertificateFile, PrivateKeyFile, PublicKeyFile);
                 }
                 WriteObject(process);
