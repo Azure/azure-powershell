@@ -11,9 +11,8 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Security.Cryptography;
-using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
 
-internal static class FileUtils
+public static class FileUtils
 {
     public static void MakeDirsForFile(string filePath)
     {
@@ -259,7 +258,7 @@ internal static class FileUtils
             // Parse public key
             string publicKeyText = File.ReadAllText(publicKeyFile);
 
-            var parser = new RSAParser();
+            var parser = new Microsoft.Azure.Commands.Sftp.Common.RSAParser();
             parser.Parse(publicKeyText);
 
             var rsaParameters = new RSAParameters

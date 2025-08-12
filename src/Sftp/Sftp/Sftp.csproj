@@ -12,7 +12,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Sftp.Helpers\Sftp.Helpers.csproj" />
-		<ProjectReference Include="..\..\Ssh\Ssh\Ssh.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
