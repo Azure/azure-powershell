@@ -28,10 +28,6 @@ namespace Microsoft.Azure.Commands.Sftp.Common
 {
     public static class SftpUtils
     {
-        [DllImport("kernel32.dll")]
-        private static extern bool GenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId);
-
-        private const uint CTRL_BREAK_EVENT = 1;
         private static class NativeMethods
         {
 #if WINDOWS
@@ -141,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sftp.Common
             {
                 try
                 {
-                    GenerateConsoleCtrlEvent(CTRL_BREAK_EVENT, (uint)sftpProcess.Id);
+                    TryGenerateConsoleCtrlEvent(CTRL_BREAK_EVENT, (uint)sftpProcess.Id);
                 }
                 catch
                 {
