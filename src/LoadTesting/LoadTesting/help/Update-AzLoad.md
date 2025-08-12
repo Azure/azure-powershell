@@ -12,19 +12,10 @@ Update LoadTest resource.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-EncryptionKey <String>]
- [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>] [-EncryptionIdentity <String>] [-IdentityType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzLoad -InputObject <ILoadTestingIdentity> [-EnableSystemAssignedIdentity <Boolean>]
- [-EncryptionIdentityResourceId <String>] [-EncryptionIdentityType <String>] [-EncryptionKey <String>]
- [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-EncryptionIdentity <String>] [-EncryptionKey <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,7 +40,7 @@ This command updates the Azure Load Testing resource named sampleres in resource
 
 ### Example 2: Update an Azure Load Testing resource to use System-Assigned identity for CMK encryption
 ```powershell
-Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -IdentityType "SystemAssigned" -EncryptionIdentity "SystemAssigned" -EncryptionKey "https://sample-akv.vault.azure.net/keys/cmk/2d1ccd5c50234ea2a0858fe148b69cde"
+Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -EnableSystemAssignedIdentity -EncryptionIdentity "SystemAssigned" -EncryptionKey "https://sample-akv.vault.azure.net/keys/cmk/2d1ccd5c50234ea2a0858fe148b69cde"
 ```
 
 ```output
@@ -64,7 +55,7 @@ This command updates the Azure Load Testing resource named sampleres in resource
 ```powershell
 $userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}; "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2" = $null}
 
-Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -IdentityType "SystemAssigned,UserAssigned" -IdentityUserAssigned $userAssigned
+Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -EnableSystemAssignedIdentity -UserAssignedIdentity $userAssigned
 ```
 
 ```output
@@ -113,7 +104,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -130,38 +121,7 @@ Ex: 'SystemAssigned' uses system-assigned managed identity, whereas '/subscripti
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EncryptionIdentityResourceId
-user assigned identity to use for accessing key encryption key Url.
-Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EncryptionIdentityType
-Managed identity type to use for accessing encryption key Url
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -187,59 +147,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed identity.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssigned
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestingIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-Name of the Azure Load Testing resource.
+Load Test name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: LoadTestName
 
 Required: True
@@ -265,11 +178,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -280,11 +194,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -299,6 +213,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -344,8 +274,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestingIdentity
 
 ## OUTPUTS
 

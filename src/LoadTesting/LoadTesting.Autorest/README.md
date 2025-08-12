@@ -40,7 +40,11 @@ inlining-threshold: 200
 
 directive:
   - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+
+  - where:
+      variant: ^CreateViaIdentityExpanded$|^UpdateViaIdentityExpanded$|^GetViaIdentity$|^DeleteViaIdentity$
     remove: true
 
   # https://stackoverflow.microsoft.com/questions/333196
@@ -73,7 +77,7 @@ directive:
   - where:
       parameter-name: IdentityUserAssignedIdentity
     set:
-      parameter-name: IdentityUserAssigned
+      parameter-name: UserAssignedIdentity
 
   # Renaming encryption key parameter
   - where:
@@ -252,15 +256,5 @@ directive:
       verb: Update
       subject: Load
       variant: ^UpdateExpanded$
-    hide: true
-
-  - where:
-      verb: Get
-      subject: Load
-    hide: true
-
-  - where:
-      verb: Remove
-      subject: Load
     hide: true
 ```

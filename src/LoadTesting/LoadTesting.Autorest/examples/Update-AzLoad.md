@@ -14,7 +14,7 @@ This command updates the Azure Load Testing resource named sampleres in resource
 
 ### Example 2: Update an Azure Load Testing resource to use System-Assigned identity for CMK encryption
 ```powershell
-Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -IdentityType "SystemAssigned" -EncryptionIdentity "SystemAssigned" -EncryptionKey "https://sample-akv.vault.azure.net/keys/cmk/2d1ccd5c50234ea2a0858fe148b69cde"
+Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -EnableSystemAssignedIdentity -EncryptionIdentity "SystemAssigned" -EncryptionKey "https://sample-akv.vault.azure.net/keys/cmk/2d1ccd5c50234ea2a0858fe148b69cde"
 ```
 
 ```output
@@ -29,7 +29,7 @@ This command updates the Azure Load Testing resource named sampleres in resource
 ```powershell
 $userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}; "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2" = $null}
 
-Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -IdentityType "SystemAssigned,UserAssigned" -IdentityUserAssigned $userAssigned
+Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -EnableSystemAssignedIdentity -UserAssignedIdentity $userAssigned
 ```
 
 ```output
