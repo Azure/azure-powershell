@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an import pipeline for a container registry with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzContainerRegistryImportPipeline -Name Exam -RegistryName RegistryExample -ResourceGroupName MyResourceGroup -EnableSystemAssignedIdentity -SourceType AzureStorageBlobContainer -SourceUri https://sa.blob.core.windows.net/public/ -SourceKeyVaultUri https://examplekeyvault.vault.azure.net/secrets/test/18d55a35beba4b20bdd044a2a9d14c30
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name   SystemDataCreatedAt   SystemDataCreatedBy       SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+----   -------------------   -------------------       ----------------------- ------------------------ ------------------------
+Exam   30/01/2023 9:09:31 am user@microsoft.com        User                    30/01/2023 9:09:31 am    user@microsoft.com
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Update an import pipeline for a container registry with the specified parameters.
