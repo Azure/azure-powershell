@@ -473,7 +473,7 @@ extension, it imports the key as a software-protected key.
 Type: System.String
 Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
 Aliases:
-Accepted values: HSM, Software
+Accepted values: HSM, Software, HSM, Software
 
 Required: True
 Position: Named
@@ -486,7 +486,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
 Aliases:
-Accepted values: HSM, Software
+Accepted values: HSM, Software, HSM, Software
 
 Required: False
 Position: Named

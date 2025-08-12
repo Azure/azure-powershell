@@ -15,22 +15,22 @@ Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specifi
 ### ByVaultName (Default)
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-ByteArrayValue <Byte[]>] [-Name] <String> [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
+ -ByteArrayValue <Byte[]> [-Name] <String> [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmName
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-ByteArrayValue <Byte[]>] [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ -ByteArrayValue <Byte[]> [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-ByteArrayValue <Byte[]>] [-InputObject] <PSKeyVaultKeyIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ByteArrayValue <Byte[]> [-InputObject] <PSKeyVaultKeyIdentityItem> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,7 +154,7 @@ Type: System.Byte[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
