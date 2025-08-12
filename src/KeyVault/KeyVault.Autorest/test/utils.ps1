@@ -47,7 +47,6 @@ function setupEnv() {
     ### 1. Create a managed hsm on local first ###
     ### These tests require an activated HSM ###
     $env.hsmName = "daniel-hsm"
-    $env.hsmUnactivatedName = "daniel-unactivated-hsm"
     $env.rgName = "daniel-rg"
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
