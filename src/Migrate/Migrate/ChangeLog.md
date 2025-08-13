@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bugs in `New-AzMigrateLocalDiskMappingObject` to validate for non-512 physical sector size of VHD.
+* Fixed bugs in `New-AzMigrateLocalServerReplication` to validate for VHD as OS disk of Hyper-V Generation 2 VMs. 
 
 ## Version 2.9.0
 * Added `-OsType` as an optional parameter to command `Set-AzMigrateLocalServerReplication` to allow user-specified OS type.
