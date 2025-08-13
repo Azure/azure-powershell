@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 * Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
+* Added new DataSync cmdlets to support Entra ID authentication for hub and member databases on Azure. Following are the cmdlets:
+  - `New-AzSqlSyncGroupV2`
+  - `Update-AzSqlSyncGroupV2`
+  - `New-AzSqlSyncMemberV2`
+  - `Update-AzSqlSyncMemberV2`
+
 
 ## Version 6.0.5
 * Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk

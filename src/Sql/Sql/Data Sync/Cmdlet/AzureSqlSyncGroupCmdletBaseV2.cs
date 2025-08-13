@@ -1,0 +1,103 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.DataSync.Model;
+using Microsoft.Azure.Commands.Sql.DataSync.Services;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
+{
+    /// <summary>
+    /// The base class for all sync group cmdlets
+    /// </summary>
+    public abstract class AzureSqlSyncGroupCmdletBaseV2 : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlSyncGroupModelV2>, AzureSqlDataSyncAdapterV2>
+    {
+        /// <summary>
+        /// Creation and initialization of the ModelAdapter object
+        /// </summary>
+        /// <returns>An initialized and ready to use ModelAdapter object</returns>
+        protected override AzureSqlDataSyncAdapterV2 InitModelAdapter()
+        {
+            return new AzureSqlDataSyncAdapterV2(DefaultProfile.DefaultContext);
+        }
+
+        /// <summary>
+        /// Construct schema for schema file
+        /// </summary>
+        /// <param name="filePath">The path of the schema file</param>
+        /// <returns>A schema object of member database</returns>
+        protected static AzureSqlSyncGroupSchemaModelV2 ConstructSchemaFromFileV2(string filePath)
+        {
+            try
+            {
+                JObject jSchema = JObject.Parse(File.ReadAllText(filePath));
+                return ConstructSchemaFromJObjectV2(jSchema);
+            }
+            catch (Newtonsoft.Json.JsonReaderException)
+            {
+                throw new PSArgumentException("The schema file is empty or invalid!", "SchemaFile");
+            }
+        }
+
+        /// <summary>
+        /// Construct schema for schema object
+        /// </summary>
+        /// <param name="jSchema">JObject containing description of the schema</param>
+        /// <returns>A schema object of member database</returns>
+        public static AzureSqlSyncGroupSchemaModelV2 ConstructSchemaFromJObjectV2(JObject jSchema)
+        {
+            AzureSqlSyncGroupSchemaModelV2 schema = new AzureSqlSyncGroupSchemaModelV2();
+            JToken masterSyncMemberName = jSchema.GetValue("masterSyncMemberName", StringComparison.InvariantCultureIgnoreCase);
+            schema.MasterSyncMemberName = masterSyncMemberName == null ? null : masterSyncMemberName.ToString();
+            List<AzureSqlSyncGroupSchemaTableModelV2> tables = new List<AzureSqlSyncGroupSchemaTableModelV2>();
+            JArray jTables = (JArray)jSchema.GetValue("tables", StringComparison.InvariantCultureIgnoreCase);
+            if (jTables != null)
+            {
+                foreach (var jTableToken in jTables.Children())
+                {
+                    if (jTableToken.Type == JTokenType.Object)
+                    {
+                        JObject jTable = (JObject)jTableToken;
+                        AzureSqlSyncGroupSchemaTableModelV2 table = new AzureSqlSyncGroupSchemaTableModelV2();
+                        JToken tableQuotedNameToken = jTable.GetValue("quotedName", StringComparison.InvariantCultureIgnoreCase);
+                        table.QuotedName = tableQuotedNameToken == null ? null : tableQuotedNameToken.ToString();
+                        List<AzureSqlSyncGroupSchemaColumnModelV2> columns = new List<AzureSqlSyncGroupSchemaColumnModelV2>();
+                        JArray jColumns = (JArray)jTable.GetValue("columns", StringComparison.InvariantCultureIgnoreCase);
+                        if (jColumns != null)
+                        {
+                            foreach (var jColumnToken in jColumns.Children())
+                            {
+                                if (jColumnToken.Type == JTokenType.Object)
+                                {
+                                    AzureSqlSyncGroupSchemaColumnModelV2 column = new AzureSqlSyncGroupSchemaColumnModelV2();
+                                    JToken columnQuotedNameToken = ((JObject)jColumnToken).GetValue("quotedName", StringComparison.InvariantCultureIgnoreCase);
+                                    column.QuotedName = columnQuotedNameToken == null ? null : columnQuotedNameToken.ToString();
+                                    columns.Add(column);
+                                }
+                            }
+                        }
+                        table.Columns = columns;
+                        tables.Add(table);
+                    }
+                }
+            }
+            schema.Tables = tables;
+            return schema;
+        }
+    }
+}

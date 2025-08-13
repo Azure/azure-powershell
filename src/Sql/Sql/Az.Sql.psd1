@@ -318,7 +318,8 @@ CmdletsToExport = 'Add-AzSqlDatabaseToFailoverGroup', 'Add-AzSqlElasticJobStep',
                'Update-AzSqlServerAdvancedThreatProtectionSetting', 
                'Update-AzSqlServerVulnerabilityAssessmentSetting', 
                'Update-AzSqlSyncGroup', 'Update-AzSqlSyncMember', 
-               'Update-AzSqlSyncSchema'
+               'Update-AzSqlSyncSchema', 'New-AzSqlSyncGroupV2', 
+               'Update-AzSqlSyncGroupV2', 'New-AzSqlSyncMemberV2', 'Update-AzSqlSyncMemberV2'
 
 # Variables to export from this module
 # VariablesToExport = @()
