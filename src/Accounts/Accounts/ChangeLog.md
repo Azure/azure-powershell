@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Server-Side Pagination Support for `Invoke-AzRestMethod` command via `-Paginate` parameter.
 
 ## Version 5.2.0
 * Fixed an issue where `Clear-AzContext` does not clear the token cache when broker is enabled.
