@@ -1,0 +1,85 @@
+{
+  "resourceType": "endpoints/serviceConfigurations",
+  "apiVersion": "2024-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHybridConnectivityServiceConfiguration",
+      "description": "Gets the details about the service to the resource.",
+      "path": "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/get-azhybridconnectivityserviceconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the details about the service to the resource.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.serviceConfigurationName]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzHybridConnectivityServiceConfiguration",
+      "description": "Deletes the service details to the target resource.",
+      "path": "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/remove-azhybridconnectivityserviceconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the service details to the target resource.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.serviceConfigurationName]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
