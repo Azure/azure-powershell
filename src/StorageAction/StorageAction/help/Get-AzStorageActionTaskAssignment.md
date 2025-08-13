@@ -124,7 +124,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskAssignmentsListResult
 
 ## NOTES
 

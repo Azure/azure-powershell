@@ -44,7 +44,7 @@ function New-AzStorageActionTaskOperationObject {
         [string]
         $OnSuccess,
         [Parameter(HelpMessage="Key-value parameters for the operation.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.ITags]
         $Parameter
     )
 
