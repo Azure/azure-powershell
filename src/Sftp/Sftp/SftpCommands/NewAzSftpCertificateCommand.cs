@@ -17,10 +17,10 @@ using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.Sftp.Common;
-using Microsoft.Azure.Commands.Sftp.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models;
 
-namespace Microsoft.Azure.Commands.Sftp.SftpCommands
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 {
     /// <summary>
     /// Generate SSH certificate for SFTP authentication using Azure AD

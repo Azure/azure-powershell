@@ -18,7 +18,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Exceptions;
 
-namespace Microsoft.Azure.Commands.Sftp.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
 {
     /// <summary>
     /// Holds SFTP session information and connection details.

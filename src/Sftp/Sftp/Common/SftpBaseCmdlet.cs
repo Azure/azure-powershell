@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using System.Threading;
 
-namespace Microsoft.Azure.Commands.Sftp.Common
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 {
     /// <summary>
     /// Base class for all SFTP cmdlets

@@ -21,10 +21,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.Sftp.Models;
-using Microsoft.Azure.Commands.Sftp.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 
-namespace Microsoft.Azure.Commands.Sftp.Common
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 {
     public static class SftpUtils
     {

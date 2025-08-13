@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Sftp.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
 {
     /// <summary>
     /// Encapsulates session configuration options.

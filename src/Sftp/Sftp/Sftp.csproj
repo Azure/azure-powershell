@@ -6,10 +6,6 @@
 
 	<Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
-	<PropertyGroup>
-		<RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="..\Sftp.Helpers\Sftp.Helpers.csproj" />
 	</ItemGroup>

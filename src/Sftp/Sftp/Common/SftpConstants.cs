@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sftp.Common
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 {
     /// <summary>
     /// Constants for SFTP operations

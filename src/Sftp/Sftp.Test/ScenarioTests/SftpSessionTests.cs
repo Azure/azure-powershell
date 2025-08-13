@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Commands.Sftp.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models;
 using System.IO;
 
-namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
 {
     [TestClass]
     public class SftpSessionTests

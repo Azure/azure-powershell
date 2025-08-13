@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.Sftp.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -12,7 +12,9 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Security.Cryptography;
 
-public static class FileUtils
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
+{
+    public static class FileUtils
 {
     public static void MakeDirsForFile(string filePath)
     {
@@ -258,7 +260,7 @@ public static class FileUtils
             // Parse public key
             string publicKeyText = File.ReadAllText(publicKeyFile);
 
-            var parser = new Microsoft.Azure.Commands.Sftp.Common.RSAParser();
+            var parser = new RSAParser();
             parser.Parse(publicKeyText);
 
             var rsaParameters = new RSAParameters
@@ -506,4 +508,5 @@ public static class FileUtils
                 $"Failed to set file permissions on '{filePath}': {ex.Message}", ex);
         }
     }
+}
 }

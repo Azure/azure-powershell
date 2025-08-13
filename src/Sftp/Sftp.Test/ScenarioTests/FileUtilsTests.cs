@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.Sftp.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
 {
     /// <summary>
     /// Test suite for SFTP file utilities.

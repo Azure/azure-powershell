@@ -19,10 +19,10 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.Sftp.Common;
-using Microsoft.Azure.Commands.Sftp.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models;
 
-namespace Microsoft.Azure.Commands.Sftp.SftpCommands
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 {
     /// <summary>
     /// Connect to Azure Storage Account via SFTP with automatic certificate generation if needed

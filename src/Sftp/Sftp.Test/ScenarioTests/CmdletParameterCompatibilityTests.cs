@@ -2,11 +2,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sftp.SftpCommands;
-using Microsoft.Azure.Commands.Sftp.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
 {
     /// <summary>
     /// Test suite to ensure PowerShell cmdlet parameters and behavior

@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-using Microsoft.Azure.Commands.Sftp.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
 {
     /// <summary>
     /// Test suite for RSA Parser functionality.

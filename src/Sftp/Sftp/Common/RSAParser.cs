@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Sftp.Common
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 {
     /// <summary>
     /// Parser for SSH RSA public keys

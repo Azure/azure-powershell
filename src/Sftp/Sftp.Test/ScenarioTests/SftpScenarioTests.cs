@@ -1,13 +1,13 @@
 using System;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sftp.SftpCommands;
-using Microsoft.Azure.Commands.Sftp.Common;
-using Microsoft.Azure.Commands.Sftp.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
 {
     /// <summary>
     /// Test suite for SFTP scenario and integration tests.

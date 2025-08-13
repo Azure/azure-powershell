@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.Sftp.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
 {
     /// <summary>
     /// PowerShell object representing SSH certificate information
