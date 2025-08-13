@@ -15,22 +15,22 @@ Update the NGINX deployment
 ### UpdateExpanded (Default)
 ```
 Update-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AutoScaleSettingProfile <IScaleProfile[]>] [-AutoUpgradeProfileUpgradeChannel <String>]
- [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-Location <String>] [-ScalingPropertyCapacity <Int32>] [-SkuName <String>]
+ [-AutoScaleSettingProfile <IScaleProfile[]>] [-EnableDiagnosticsSupport]
+ [-EnableSystemAssignedIdentity <Boolean>] [-Location <String>] [-ManagedResourceGroup <String>]
+ [-NetworkProfile <INginxNetworkProfile>] [-ScalingPropertyCapacity <Int32>] [-SkuName <String>]
  [-StorageAccountContainerName <String>] [-StorageAccountName <String>] [-Tag <Hashtable>]
- [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNginxDeployment -InputObject <INginxIdentity> [-AutoScaleSettingProfile <IScaleProfile[]>]
- [-AutoUpgradeProfileUpgradeChannel <String>] [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>] [-ScalingPropertyCapacity <Int32>]
+ [-EnableDiagnosticsSupport] [-EnableSystemAssignedIdentity <Boolean>] [-Location <String>]
+ [-ManagedResourceGroup <String>] [-NetworkProfile <INginxNetworkProfile>] [-ScalingPropertyCapacity <Int32>]
  [-SkuName <String>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>] [-Tag <Hashtable>]
- [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,25 +83,9 @@ Accept wildcard characters: False
 
 ### -AutoScaleSettingProfile
 .
-To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AutoUpgradeProfileUpgradeChannel
-Channel used for autoupgrade.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IScaleProfile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -143,26 +127,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.IdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-Dictionary of \<UserIdentityProperties\>
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +144,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
@@ -204,6 +172,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedResourceGroup
+The managed resource group to deploy VNet injection related network resources.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of targeted NGINX deployment
 
@@ -213,6 +196,21 @@ Parameter Sets: UpdateExpanded
 Aliases: DeploymentName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfile
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxNetworkProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -340,6 +338,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UserProfilePreferredEmail
 The preferred support contact email address of the user used for sending alerts and notification.
 Can be an empty string or a valid email address.
@@ -396,7 +410,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxDeployment
 
 ## NOTES
 
