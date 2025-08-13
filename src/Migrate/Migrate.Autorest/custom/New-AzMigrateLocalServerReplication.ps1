@@ -170,7 +170,7 @@ function New-AzMigrateLocalServerReplication {
     
     process {
         Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
+        Import-Module $PSScriptRoot\Helper\AZLocalCommonHelper.ps1
 
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
@@ -200,6 +200,8 @@ function New-AzMigrateLocalServerReplication {
         
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $instanceType = $AzLocalInstanceTypes.HyperVToAzLocal
+
+            # Get Hyper-V machine
             $machine = InvokeAzMigrateGetCommandWithRetries `
                 -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVMachine' `
                 -Parameters @{
@@ -209,6 +211,7 @@ function New-AzMigrateLocalServerReplication {
                 } `
                 -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
 
+            # Get Hyper-V site
             $siteObject = InvokeAzMigrateGetCommandWithRetries `
                 -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVSite' `
                 -Parameters @{
@@ -216,9 +219,60 @@ function New-AzMigrateLocalServerReplication {
                     'SiteName' = $SiteName;
                 } `
                 -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
+
+            # Get RunAsAccount
+            if (![string]::IsNullOrEmpty($machine.HostId))
+            {
+                # machine is on a single Hyper-V host
+                $hostIdArray = $machine.HostId.Split("/")
+                if ($hostIdArray.Length -lt 11) {
+                    throw "Invalid Hyper-V Host ARM ID '$($machine.HostId)'"
+                }
+
+                $hostResourceGroupName = $hostIdArray[4]
+                $hostSiteName = $hostIdArray[8]
+                $hostName = $hostIdArray[10]
+
+                $hyperVHost = InvokeAzMigrateGetCommandWithRetries `
+                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVHost' `
+                    -Parameters @{
+                        'ResourceGroupName' = $hostResourceGroupName;
+                        'SiteName' = $hostSiteName;
+                        'HostName' = $hostName;
+                    } `
+                    -ErrorMessage "Hyper-V host '$hostName' not found in resource group '$hostResourceGroupName' and site '$hostSiteName'."
+                
+                $runAsAccountId = $hyperVHost.RunAsAccountId
+            }
+            elseif(![string]::IsNullOrEmpty($machine.ClusterId))
+            {
+                # machine is on a Hyper-V cluster
+                $clusterIdArray = $machine.ClusterId.Split("/")
+                if ($clusterIdArray.Length -lt 11) {
+                    throw "Invalid Hyper-V Cluster ARM ID '$($machine.ClusterId)'"
+                }
+
+                $clusterResourceGroupName = $clusterIdArray[4]
+                $clusterSiteName = $clusterIdArray[8]
+                $clusterName = $clusterIdArray[10]
+
+                $hyperVCluster = InvokeAzMigrateGetCommandWithRetries `
+                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVCluster' `
+                    -Parameters @{
+                        'ResourceGroupName' = $clusterResourceGroupName;
+                        'SiteName' = $clusterSiteName;
+                        'ClusterName' = $clusterName;
+                    } `
+                    -ErrorMessage "Hyper-V cluster '$clusterName' not found in resource group '$clusterResourceGroupName' and site '$clusterSiteName'."
+
+                $runAsAccountId = $hyperVCluster.RunAsAccountId
+            }
         }
-        else {
+        elseif ($SiteType -eq $SiteTypes.VMwareSites)
+        {
             $instanceType = $AzLocalInstanceTypes.VMwareToAzLocal
+
+            # Get VMware machine
             $machine = InvokeAzMigrateGetCommandWithRetries `
                 -CommandName 'Az.Migrate.Internal\Get-AzMigrateMachine' `
                 -Parameters @{
@@ -228,6 +282,7 @@ function New-AzMigrateLocalServerReplication {
                 } `
                 -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
 
+            # Get VMware site
             $siteObject = InvokeAzMigrateGetCommandWithRetries `
                 -CommandName 'Az.Migrate\Get-AzMigrateSite' `
                 -Parameters @{
@@ -235,6 +290,39 @@ function New-AzMigrateLocalServerReplication {
                     'SiteName' = $SiteName;
                 } `
                 -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
+
+            # Get RunAsAccount
+            if (![string]::IsNullOrEmpty($machine.VCenterId))
+            {
+                # machine is on a single vCenter
+                $vCenterIdArray = $machine.VCenterId.Split("/")
+                if ($vCenterIdArray.Length -lt 11) {
+                    throw "Invalid VMware vCenter ARM ID '$($machine.VCenterId)'"
+                }
+
+                $vCenterResourceGroupName = $vCenterIdArray[4]
+                $vCenterSiteName = $vCenterIdArray[8]
+                $vCenterName = $vCenterIdArray[10]
+
+                $vmwareVCenter = InvokeAzMigrateGetCommandWithRetries `
+                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateVCenter' `
+                    -Parameters @{
+                        'ResourceGroupName' = $vCenterResourceGroupName;
+                        'SiteName' = $vCenterSiteName;
+                        'Name' = $vCenterName;
+                    } `
+                    -ErrorMessage "VMware vCenter '$vCenterName' not found in resource group '$vCenterResourceGroupName' and site '$vCenterSiteName'."
+
+                $runAsAccountId = $vmwareVCenter.RunAsAccountId
+            }
+        }
+        else
+        {
+            throw "Unsupported site type '$SiteType'. Only Hyper-V and VMware sites are supported."
+        }
+
+        if ([string]::IsNullOrEmpty($runAsAccountId)) {
+            throw "Unable to determine RunAsAccount for site '$SiteName' from machine '$MachineName'. Please verify your appliance setup."
         }
 
         # Validate the VM
@@ -266,6 +354,9 @@ function New-AzMigrateLocalServerReplication {
                 "Name" = $replicationVaultName
             } `
             -ErrorMessage "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'. Please verify your Azure Migrate project setup."
+        if ($replicationVault.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "The Replication Vault '$replicationVaultName' is not in a valid state. The provisioning state is '$($replicationVault.Property.ProvisioningState)'. Please verify your Azure Migrate project setup."
+        }
 
         # Access Discovery Service
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
@@ -420,38 +511,17 @@ function New-AzMigrateLocalServerReplication {
             throw "The replication extension '$replicationExtensionName' is not in a valid state. The provisioning state is '$($replicationExtension.Property.ProvisioningState)'. Re-run the Initialize-AzMigrateLocalReplicationInfrastructure command."
         }
         
-        # Get Target cluster
+        # Get ARC Resource Bridge info
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
         $targetClusterIdArray = $targetClusterId.Split("/")
         $targetSubscription = $targetClusterIdArray[2]
-        $hciClusterArgQuery = GetHCIClusterARGQuery -HCIClusterID $targetClusterId
-        $targetCluster = Az.ResourceGraph\Search-AzGraph -Query $hciClusterArgQuery -Subscription $targetSubscription
-        if ($null -eq $targetCluster) {
-            throw "Validate target cluster with id '$targetClusterId' exists. Check ARC resource bridge is running on this cluster."
+        $arbArgQuery = GetARGQueryForArcResourceBridge -HCIClusterID $targetClusterId
+        $arbArgResult = Az.ResourceGraph\Search-AzGraph -Query $arbArgQuery -Subscription $targetSubscription
+        if ($null -eq $arbArgResult) {
+            throw "$($ArcResourceBridgeValidationMessages.NoClusters). Validate target cluster with id '$targetClusterId' exists."
         }
-            
-        # Get source appliance RunAsAccount
-        if ($SiteType -eq $SiteTypes.HyperVSites) {
-            $runAsAccounts = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVRunAsAccount' `
-                -Parameters @{
-                    ResourceGroupName = $ResourceGroupName;
-                    SiteName = $SiteName;
-                } `
-                -ErrorMessage "No run as account found for site '$SiteName'."
-
-            $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.HyperVFabric }
-        }
-        elseif ($SiteType -eq $SiteTypes.VMwareSites) {
-            $runAsAccounts = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate\Get-AzMigrateRunAsAccount' `
-                -Parameters @{
-                    ResourceGroupName = $ResourceGroupName;
-                    SiteName = $SiteName;
-                } `
-                -ErrorMessage "No run as account found for site '$SiteName'."
-
-            $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.VMwareFabric }
+        elseif ($arbArgResult.statusOfTheBridge -ne "Running") {
+            throw "$($ArcResourceBridgeValidationMessages.NotRunning). Make sure the Arc Resource Bridge is online before retrying."
         }
 
         # Validate TargetVMName
@@ -480,12 +550,12 @@ function New-AzMigrateLocalServerReplication {
         }
 
         $customProperties.InstanceType = $instanceType
-        $customProperties.CustomLocationRegion = $targetCluster.CustomLocationRegion
+        $customProperties.CustomLocationRegion = $arbArgResult.CustomLocationRegion
         $customProperties.FabricDiscoveryMachineId = $machine.Id
-        $customProperties.RunAsAccountId = $runAsAccount.Id
+        $customProperties.RunAsAccountId = $runAsAccountId
         $customProperties.SourceFabricAgentName = $sourceDra.Name
         $customProperties.StorageContainerId = $TargetStoragePathId
-        $customProperties.TargetArcClusterCustomLocationId = $targetCluster.CustomLocation
+        $customProperties.TargetArcClusterCustomLocationId = $arbArgResult.CustomLocation
         $customProperties.TargetFabricAgentName = $targetDra.Name
         $customProperties.TargetHciClusterId = $targetClusterId
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
