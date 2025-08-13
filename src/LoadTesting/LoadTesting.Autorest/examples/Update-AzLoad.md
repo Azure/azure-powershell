@@ -27,7 +27,7 @@ This command updates the Azure Load Testing resource named sampleres in resource
 
 ### Example 3: Update an Azure Load Testing resource to remove an existing User-Assigned managed identity
 ```powershell
-$userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}; "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2" = $null}
+$userAssigned = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1"
 
 Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -EnableSystemAssignedIdentity -UserAssignedIdentity $userAssigned
 ```

@@ -52,7 +52,7 @@ This command creates a new Azure Load Testing resource named sampleres in resour
 
 ### Example 2: Create an Azure Load Testing resource with Managed Identity
 ```powershell
-$userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}; "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2" = @{}}
+$userAssigned = @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2")
 
 New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus -EnableSystemAssignedIdentity -UserAssignedIdentity $userAssigned
 ```
@@ -67,7 +67,7 @@ This command creates a new Azure Load Testing resource named sampleres in resour
 
 ### Example 3: Create an Azure Load Testing resource with Customer Managed key encryption
 ```powershell
-$userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}}
+$userAssigned = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1"
 
 New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus -EnableSystemAssignedIdentity -UserAssignedIdentity $userAssigned -EncryptionIdentity "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" -EncryptionKey "https://sample-akv.vault.azure.net/keys/cmk/2d1ccd5c50234ea2a0858fe148b69cde"
 ```
