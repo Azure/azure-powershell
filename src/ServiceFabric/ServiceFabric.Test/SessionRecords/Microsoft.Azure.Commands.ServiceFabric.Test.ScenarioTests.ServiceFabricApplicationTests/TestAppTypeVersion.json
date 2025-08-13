@@ -531,7 +531,7 @@
           "433"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-22T22:02:23Z&se=2025-07-23T06:17:23Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-22T22:02:23Z&ske=2025-07-23T06:17:23Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=khpcOVwZqeDTgfrZ5yveEIfeWs9umZEnllV0KlF99Ck%3D\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-22T22:02:23Z&se=2025-07-23T06:17:23Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-22T22:02:23Z&ske=2025-07-23T06:17:23Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
