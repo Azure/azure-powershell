@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Determines how much memory in GB to associate with instance.",
             ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
-        public int MemorySizeInGB { get; set; }
+        public int? MemorySizeInGB { get; set; }
 
         /// <summary>
         /// Gets or sets the instance SKU name
@@ -607,6 +607,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 StorageSizeInGB = SqlSkuUtils.ValueIfNonZero(this.StorageSizeInGB),
                 SubnetId = this.SubnetId,
                 VCores = this.VCore,
+                MemorySizeInGB = this.MemorySizeInGB,
                 Sku = Sku,
                 Collation = this.Collation,
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,

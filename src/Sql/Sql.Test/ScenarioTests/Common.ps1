@@ -1041,8 +1041,8 @@ function Get-DefaultManagedInstanceParametersMemorySizeInGBTesting()
 {
 	return @{
 		rg = "uroskrstic";
-		location = "westeurope";
-		subnet = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/uroskrstic/providers/Microsoft.Network/virtualNetworks/vnet-uroskrstic-flexi-test-azpowershell/subnets/ManagedInstance";
+		location = "northeurope";
+		subnet = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/Gen8MMNeu/providers/Microsoft.Network/virtualNetworks/vnet-clperf-gen8mm-baseline-neu-gp8/subnets/ManagedInstance";
 		subscriptionId = "62e48210-5e43-423e-889b-c277f3e08c39";
 	}
 }

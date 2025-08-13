@@ -201,51 +201,55 @@ function Test-CreateManagedInstance-HermesTesting
 #>
 function Test-CreateManagedInstance-FlexibleMemoryTesting
 {
-	$defaultParams = Get-DefaultManagedInstanceParametersV3
-	$credentials = Get-ServerCredential
-	$vCore = 8
-	$storageSizeInGB = 32
+	try
+	{
+		$defaultParams = Get-DefaultManagedInstanceParametersMemorySizeInGBTesting
+		$credentials = Get-ServerCredential
+		$vCore = 8
+		$storageSizeInGB = 32
 
-	# Test with memory size in GB specified
-	$managedInstanceName = "az-powershell-flexmem-testing-create"
-	$skuName = "GP_Gen8IM"
-	$isGeneralPurposeV2 = $true
-	$storageIOps = 2000
-	$memorySizeInGB = 64
+		# Test with memory size in GB specified
+		$managedInstanceName1 = "az-powershell-flexmem-testing-new"
+		$skuName = "GP_G8IM"
+		$isGeneralPurposeV2 = $true
+		$storageIOps = 2000
+		$memorySizeInGB = 64
 
-	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
-		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
-		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
-		-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -MemorySizeInGB $memorySizeInGB -AsJob
-	$job | Wait-Job
-	$managedInstance = $job.Output
+		$managedInstance = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName1 `
+			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+			-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -MemorySizeInGB $memorySizeInGB
 
-	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
-	Assert-AreEqual $managedInstance.Sku.Name $skuName
-	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
-	Assert-AreEqual $managedInstance.VCores $vCore
-	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
-	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
-	Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
+		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName1
+		Assert-AreEqual $managedInstance.Sku.Name $skuName
+		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+		Assert-AreEqual $managedInstance.VCores $vCore
+		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
 
-	# Test with memory size in GB not specified
-	$managedInstanceName = "az-powershell-no-flexmem-testing-create"
-	$skuName = "GP_Gen8IM"
+		# Test with memory size in GB not specified
+		$managedInstanceName2 = "az-powershell-no-flexmem-testing-new"
+		$memorySizeInGB = $null
 
-	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
-		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
-		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
-		-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps -AsJob
-	$job | Wait-Job
-	$managedInstance = $job.Output
+		$managedInstance = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName2 `
+			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+			-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps
 
-	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
-	Assert-AreEqual $managedInstance.Sku.Name $skuName
-	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
-	Assert-AreEqual $managedInstance.VCores $vCore
-	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
-	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
-	Assert-AreEqual $managedInstance.MemorySizeInGB  $memorySizeInGB
+		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName2
+		Assert-AreEqual $managedInstance.Sku.Name $skuName
+		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+		Assert-AreEqual $managedInstance.VCores $vCore
+		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
+	}
+	finally
+	{
+		Remove-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName1 -Force
+		Remove-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName2 -Force
+	}
 }
 
 <#
@@ -325,44 +329,52 @@ function Test-SetManagedInstance-HermesTesting
 #>
 function Test-SetManagedInstance-FlexibleMemoryTesting
 {
-	$defaultParams = Get-DefaultManagedInstanceParametersV3
-	$credentials = Get-ServerCredential
-	$managedInstanceName = "az-powershell-flexmem-testing-set"
-	$vCore = 8
+	try
+	{
+		$defaultParams = Get-DefaultManagedInstanceParametersV3
+		$credentials = Get-ServerCredential
+		$managedInstanceName = "az-powershell-flexmem-testing-set"
+		$vCore = 8
 
-	# Create Next Gen GP without memory specified
-	$skuName = "GP_Gen8IM"
-	$isGeneralPurposeV2 = $true
-	$storageSizeInGB = 32
-	$storageIOps = 2000
+		# Create Next Gen GP without memory specified
+		$skuName = "GP_G8IM"
+		$isGeneralPurposeV2 = $true
+		$storageSizeInGB = 32
+		$storageIOps = 2000
 
-	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
-		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
-		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
-		-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps -AsJob
-	$job | Wait-Job
-	$managedInstance = $job.Output
+		$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+			-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps -AsJob
+		$job | Wait-Job
+		$managedInstance = $job.Output
 
-	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
-	Assert-AreEqual $managedInstance.Sku.Name $skuName
-	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
-	Assert-AreEqual $managedInstance.VCores $vCore
-	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
-	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+		Assert-AreEqual $managedInstance.Sku.Name $skuName
+		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+		Assert-AreEqual $managedInstance.VCores $vCore
+		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.MemorySizeInGB $null
 
-	# Update memory value
-	$memorySizeInGB = 64
+		# Update memory value
+		$memorySizeInGB = 64
 
-	$managedInstance = Set-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
-		-MemorySizeInGB $memorySizeInGB -Force
+		$managedInstance = Set-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+			-MemorySizeInGB $memorySizeInGB -Force
 
-	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
-	Assert-AreEqual $managedInstance.Sku.Name $skuName
-	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
-	Assert-AreEqual $managedInstance.VCores $vCore
-	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
-	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
-	Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
+		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+		Assert-AreEqual $managedInstance.Sku.Name $skuName
+		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+		Assert-AreEqual $managedInstance.VCores $vCore
+		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
+	}
+	finally
+	{
+		Remove-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName -Force
+	}
 }
 
 <#
@@ -729,7 +741,6 @@ function Test-CreateManagedInstanceWithMultiAzEnabled
 	catch
 	{
 		$ErrorMsg = $_.Exception.Message
-		$ErrorMsg | Out-File -FilePath outputMIFile.txt
 		Assert-AreEqual True $ErrorMsg.Contains("ZoneRedundant feature is not supported for the selected service tier.")
 	}
 	finally
