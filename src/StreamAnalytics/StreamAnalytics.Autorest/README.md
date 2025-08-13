@@ -248,7 +248,7 @@ directive:
           change-description: The type of property Input will be changed from fixed array to 'List'.
           deprecated-by-version: 3.0.0
           deprecated-by-azversion: 15.0.0
-          change-effective-date: 2025/11/03
+          change-effective-date: 2025/11
   - where:
       verb: Get
       subject: Input
@@ -261,7 +261,7 @@ directive:
           change-description: The type of property Condition will be changed from fixed array to 'List'.
           deprecated-by-version: 3.0.0
           deprecated-by-azversion: 15.0.0
-          change-effective-date: 2025/11/03
+          change-effective-date: 2025/11
   - where:
       verb: Get
       subject: Job
@@ -276,7 +276,7 @@ directive:
           change-description: The types of the properties Input and Output will be changed from fixed array to 'List'.
           deprecated-by-version: 3.0.0
           deprecated-by-azversion: 15.0.0
-          change-effective-date: 2025/11/03
+          change-effective-date: 2025/11
   - where:
       verb: Get|New|Update
       subject: Output
@@ -289,7 +289,7 @@ directive:
           change-description: The type of property DiagnosticCondition will be changed from fixed array to 'List'.
           deprecated-by-version: 3.0.0
           deprecated-by-azversion: 15.0.0
-          change-effective-date: 2025/11/03
+          change-effective-date: 2025/11
   - where:
       verb: Get
       subject: Quota
@@ -302,7 +302,7 @@ directive:
           change-description: The type of property Quota will be changed from fixed array to 'List'.
           deprecated-by-version: 3.0.0
           deprecated-by-azversion: 15.0.0
-          change-effective-date: 2025/11/03
+          change-effective-date: 2025/11
   - where:
       verb: Update
       subject: Cluster
@@ -312,5 +312,5 @@ directive:
           change-description: The parameter Location will be removed.
           deprecated-by-version: 3.0.0
           deprecated-by-azversion: 15.0.0
-          change-effective-date: 2025/11/03
+          change-effective-date: 2025/11
 ```
