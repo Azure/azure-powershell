@@ -14,8 +14,8 @@ Implements the Neighbor Group PUT method.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricNeighborGroup -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Annotation <String>] [-Destination <INeighborGroupDestination>]
+New-AzNetworkFabricNeighborGroup -Name <String> -ResourceGroupName <String>
+ -Destination <INeighborGroupDestination> -Location <String> [-SubscriptionId <String>] [-Annotation <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -116,7 +116,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGr
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
