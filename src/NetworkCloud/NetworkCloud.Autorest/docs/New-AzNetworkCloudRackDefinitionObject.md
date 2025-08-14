@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudRackDefinitionObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudrackdefinitionobject
 schema: 2.0.0
 ---
 
@@ -86,10 +86,9 @@ Accept wildcard characters: False
 
 ### -BareMetalMachineConfigurationData
 The unordered list of bare metal machine configuration.
-To construct, see NOTES section for BAREMETALMACHINECONFIGURATIONDATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -163,10 +162,9 @@ Accept wildcard characters: False
 
 ### -StorageApplianceConfigurationData
 The list of storage appliance configuration data for this rack.
-To construct, see NOTES section for STORAGEAPPLIANCECONFIGURATIONDATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IStorageApplianceConfigurationData[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData[]
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +182,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.RackDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RackDefinition
 
 ## NOTES
 

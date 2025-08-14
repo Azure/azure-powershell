@@ -21,12 +21,13 @@ Create an in-memory object for NetworkAttachment.
 Create an in-memory object for NetworkAttachment.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.NetworkAttachment
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.NetworkAttachment
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudNetworkAttachmentObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudnetworkattachmentobject
 #>
 function New-AzNetworkCloudNetworkAttachmentObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.NetworkAttachment')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.NetworkAttachment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,14 +37,14 @@ function New-AzNetworkCloudNetworkAttachmentObject {
         $AttachedNetworkId,
         [Parameter(HelpMessage="The indicator of whether this is the default gateway.
         Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway])]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
+        [string]
         $DefaultGateway,
         [Parameter(Mandatory, HelpMessage="The IP allocation mechanism for the virtual machine.
         Dynamic and Static are only valid for l3Network which may also specify Disabled.
         Otherwise, Disabled is the only permitted value.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod])]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
+        [string]
         $IPAllocationMethod,
         [Parameter(HelpMessage="The IPv4 address of the virtual machine.
 
@@ -74,7 +75,7 @@ function New-AzNetworkCloudNetworkAttachmentObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.NetworkAttachment]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.NetworkAttachment]::New()
 
         if ($PSBoundParameters.ContainsKey('AttachedNetworkId')) {
             $Object.AttachedNetworkId = $AttachedNetworkId

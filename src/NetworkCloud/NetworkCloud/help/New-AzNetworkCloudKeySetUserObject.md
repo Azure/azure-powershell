@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudKeySetUserObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudkeysetuserobject
 schema: 2.0.0
 ---
 
@@ -104,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.KeySetUser
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.KeySetUser
 
 ## NOTES
 
