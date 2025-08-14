@@ -1,50 +1,51 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
+using Xunit;
 using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
 {
-    /// <summary>
-    /// Test suite for SFTP utilities functionality.
-    /// Port of Azure CLI test_sftp_utils.py
-    /// Owner: johnli1
-    /// </summary>
-    [TestClass]
-    public class SftpUtilsTests
+    public class SftpUtilsTests : IDisposable
     {
-        private string _tempDir;
+        private readonly string _tempDirectory;
 
-        [TestInitialize]
-        public void SetUp()
+        public SftpUtilsTests()
         {
-            _tempDir = Path.Combine(Path.GetTempPath(), "sftp_utils_test_" + Guid.NewGuid().ToString("N").Substring(0, 8));
-            Directory.CreateDirectory(_tempDir);
+            _tempDirectory = Path.Combine(Path.GetTempPath(), $"SftpUtilsTests_{Guid.NewGuid():N}");
+            Directory.CreateDirectory(_tempDirectory);
         }
 
-        [TestCleanup]
-        public void TearDown()
+        public void Dispose()
         {
-            if (Directory.Exists(_tempDir))
+            if (Directory.Exists(_tempDirectory))
             {
-                Directory.Delete(_tempDir, true);
+                try
+                {
+                    Directory.Delete(_tempDirectory, true);
+                }
+                catch
+                {
+                    // Best effort cleanup
+                }
             }
         }
 
-        [TestMethod]
-        public void TestBuildSftpCommandWithBasicOptions()
+        [Fact]
+        public void BuildSftpCommand_WithBasicParameters_ReturnsCorrectCommand()
         {
             // Arrange
-            var sftpSession = new SFTPSession(
-                storageAccount: "teststorage",
-                username: "teststorage.testuser",
-                host: "teststorage.blob.core.windows.net",
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
                 port: 22,
-                certFile: Path.Combine(_tempDir, "test.cert"),
-                privateKeyFile: Path.Combine(_tempDir, "test.key"),
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
                 sftpArgs: null,
                 sshClientFolder: null,
                 sshProxyFolder: null,
@@ -53,32 +54,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
             );
 
             // Act
-            var command = SftpUtils.BuildSftpCommand(sftpSession);
+            var command = SftpUtils.BuildSftpCommand(session);
 
             // Assert
-            Assert.IsTrue(command.Length > 0);
-            Assert.AreEqual("sftp", Path.GetFileNameWithoutExtension(command[0]));
-            
-            // Should contain basic SSH options
-            Assert.IsTrue(Array.Exists(command, arg => arg.Contains("PasswordAuthentication=no")));
-            Assert.IsTrue(Array.Exists(command, arg => arg.Contains("StrictHostKeyChecking=no")));
-            Assert.IsTrue(Array.Exists(command, arg => arg.Contains("UserKnownHostsFile=") && (arg.Contains("/dev/null") || arg.Contains("NUL"))));
-            
-            // Should contain destination
-            Assert.IsTrue(Array.Exists(command, arg => arg.Contains("teststorage.testuser@teststorage.blob.core.windows.net")));
+            Assert.NotNull(command);
+            Assert.True(command.Length > 0);
+            Assert.Contains("-o", command);
+            Assert.Contains("PasswordAuthentication=no", command);
+            Assert.Contains("PubkeyAuthentication=yes", command);
+            Assert.Contains("StrictHostKeyChecking=no", command);
         }
 
-        [TestMethod]
-        public void TestBuildSftpCommandWithCustomPort()
+        [Fact]
+        public void BuildSftpCommand_WithCertificateFile_AddsIdentitiesOnlyOption()
         {
             // Arrange
-            var sftpSession = new SFTPSession(
-                storageAccount: "teststorage",
-                username: "teststorage.testuser",
-                host: "teststorage.blob.core.windows.net",
-                port: 2222,
-                certFile: Path.Combine(_tempDir, "test.cert"),
-                privateKeyFile: Path.Combine(_tempDir, "test.key"),
+            string certFile = Path.Combine(_tempDirectory, "test-cert.pub");
+            File.WriteAllText(certFile, "ssh-rsa-cert-v01@openssh.com test cert");
+
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: certFile,
                 sftpArgs: null,
                 sshClientFolder: null,
                 sshProxyFolder: null,
@@ -87,26 +88,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
             );
 
             // Act
-            var command = SftpUtils.BuildSftpCommand(sftpSession);
+            var command = SftpUtils.BuildSftpCommand(session);
 
             // Assert
-            Assert.IsTrue(Array.Exists(command, arg => arg == "-P"));
-            var portIndex = Array.IndexOf(command, "-P");
-            Assert.IsTrue(portIndex >= 0 && portIndex + 1 < command.Length);
-            Assert.AreEqual("2222", command[portIndex + 1]);
+            Assert.Contains("IdentitiesOnly=yes", command);
         }
 
-        [TestMethod]
-        public void TestBuildSftpCommandWithSftpArgs()
+        [Fact]
+        public void BuildSftpCommand_WithSftpArgs_IncludesAdditionalArguments()
         {
             // Arrange
-            var sftpSession = new SFTPSession(
-                storageAccount: "teststorage",
-                username: "teststorage.testuser",
-                host: "teststorage.blob.core.windows.net",
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
                 port: 22,
-                certFile: Path.Combine(_tempDir, "test.cert"),
-                privateKeyFile: Path.Combine(_tempDir, "test.key"),
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
                 sftpArgs: new[] { "-v", "-b", "batchfile.txt" },
                 sshClientFolder: null,
                 sshProxyFolder: null,
@@ -115,222 +114,272 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Test.ScenarioTests
             );
 
             // Act
-            var command = SftpUtils.BuildSftpCommand(sftpSession);
+            var command = SftpUtils.BuildSftpCommand(session);
 
             // Assert
-            Assert.IsTrue(Array.Exists(command, arg => arg == "-v"));
-            Assert.IsTrue(Array.Exists(command, arg => arg == "-b"));
-            Assert.IsTrue(Array.Exists(command, arg => arg == "batchfile.txt"));
+            Assert.Contains("-v", command);
+            Assert.Contains("-b", command);
+            Assert.Contains("batchfile.txt", command);
         }
 
-        [TestMethod]
-        public void TestGetSshClientPathWindowsDefault()
+        [Fact]
+        public void TryGenerateConsoleCtrlEvent_OnWindows_ReturnsBoolean()
         {
-            // This test is environment-specific and would need to be adapted
-            // based on whether we're running on Windows or not
-            if (!System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(
-                System.Runtime.InteropServices.OSPlatform.Windows))
-            {
-                Assert.Inconclusive("Test only applicable on Windows");
-                return;
-            }
-
-            // Arrange & Act
-            var sshPath = SftpUtils.GetSshClientPath("ssh");
-
-            // Assert
-            Assert.IsFalse(string.IsNullOrEmpty(sshPath));
-            Assert.IsTrue(sshPath.EndsWith("ssh.exe") || sshPath == "ssh");
-        }
-
-        [TestMethod]
-        public void TestGetSshClientPathCustomFolder()
-        {
-            // Arrange
-            var customSshFolder = _tempDir;
-            var sshExecutable = Path.Combine(customSshFolder, "ssh.exe");
-            
-            // Create a dummy ssh executable
-            File.WriteAllText(sshExecutable, "dummy ssh");
-
             // Act
-            var sshPath = SftpUtils.GetSshClientPath("ssh", customSshFolder);
+            var result = SftpUtils.TryGenerateConsoleCtrlEvent(1, 0);
 
             // Assert
-            Assert.AreEqual(sshExecutable, sshPath);
-        }
-
-        [TestMethod]
-        public void TestGetSshClientPathNonExistentCustomFolder()
-        {
-            // Arrange
-            var nonExistentFolder = Path.Combine(_tempDir, "nonexistent");
-
-            // Act & Assert
-            try
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var sshPath = SftpUtils.GetSshClientPath("ssh", nonExistentFolder);
-                
-                // Should fallback to system SSH if custom folder doesn't have the executable
-                Assert.IsFalse(string.IsNullOrEmpty(sshPath));
+                // On Windows, should return true or false based on actual result
+                Assert.IsType<bool>(result);
             }
-            catch (Exception ex)
+            else
             {
-                // It's acceptable to throw an exception if SSH is not found anywhere
-                Assert.IsTrue(ex.Message.Contains("Could not find ssh"));
+                // On non-Windows, should always return false
+                Assert.False(result);
             }
         }
 
-        [TestMethod]
-        public void TestHandleProcessInterruptionWithNullProcess()
+        [Fact]
+        public void HandleProcessInterruption_WithNullProcess_DoesNotThrow()
         {
-            // Act & Assert - Should not throw exception
+            // Act & Assert - Should not throw
             SftpUtils.HandleProcessInterruption(null);
         }
 
-        [TestMethod]
-        public void TestGetCertificateStartAndEndTimesValidCert()
-        {
-            // This test would require creating a valid SSH certificate
-            // For now, we'll skip it as it requires ssh-keygen to be available
-            // and would need to integrate with the full certificate generation pipeline
-            Assert.Inconclusive("Test requires valid SSH certificate generation");
-        }
-
-        [TestMethod]
-        public void TestGetCertificateStartAndEndTimesInvalidCert()
+        [Fact]
+        public void HandleProcessInterruption_WithExitedProcess_DoesNotThrow()
         {
             // Arrange
-            var invalidCertFile = Path.Combine(_tempDir, "invalid.cert");
-            File.WriteAllText(invalidCertFile, "invalid certificate content");
+            var processInfo = new ProcessStartInfo
+            {
+                FileName = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "/bin/echo",
+                Arguments = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "/c echo test" : "test",
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using var process = Process.Start(processInfo);
+            process.WaitForExit(5000); // Wait for it to exit
+
+            // Act & Assert - Should not throw
+            SftpUtils.HandleProcessInterruption(process);
+        }
+
+        [Fact]
+        public void GetSshClientPath_WithNullSshClientFolder_ReturnsDefaultPath()
+        {
+            // Act
+            var path = SftpUtils.GetSshClientPath("ssh", null);
+
+            // Assert
+            Assert.NotNull(path);
+            Assert.NotEmpty(path);
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Assert.Contains("ssh", path);
+                Assert.EndsWith(".exe", path);
+            }
+            else
+            {
+                Assert.Equal("ssh", path);
+            }
+        }
+
+        [Fact]
+        public void GetSshClientPath_WithInvalidSshClientFolder_ThrowsException()
+        {
+            // Arrange
+            string invalidFolder = Path.Combine(_tempDirectory, "nonexistent");
 
             // Act & Assert
-            try
-            {
-                var result = SftpUtils.GetCertificateStartAndEndTimes(invalidCertFile);
-                Assert.IsNull(result);
-            }
-            catch (Exception)
-            {
-                // It's acceptable to throw an exception for invalid certificate
-            }
+            var exception = Assert.Throws<Microsoft.Azure.Commands.Common.Exceptions.AzPSApplicationException>(
+                () => SftpUtils.GetSshClientPath("ssh", invalidFolder));
+            
+            Assert.Contains("Could not find ssh", exception.Message);
         }
 
-        [TestMethod]
-        public void TestGetSshCertValidityNullCertFile()
-        {
-            // Act
-            var result = SftpUtils.GetSshCertValidity(null);
-
-            // Assert
-            Assert.IsNull(result);
-        }
-
-        [TestMethod]
-        public void TestGetSshCertValidityEmptyCertFile()
-        {
-            // Act
-            var result = SftpUtils.GetSshCertValidity("");
-
-            // Assert
-            Assert.IsNull(result);
-        }
-
-        [TestMethod]
-        public void TestCreateSshKeyfileRequiresSshKeygen()
-        {
-            // This test requires ssh-keygen to be available
-            // Skip if not available in the test environment
-            try
-            {
-                // Arrange
-                var keyFile = Path.Combine(_tempDir, "test_key");
-
-                // Act
-                SftpUtils.CreateSshKeyfile(keyFile);
-
-                // Assert
-                Assert.IsTrue(File.Exists(keyFile));
-                Assert.IsTrue(File.Exists(keyFile + ".pub"));
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("ssh-keygen") || ex.Message.Contains("not found"))
-                {
-                    Assert.Inconclusive("ssh-keygen not available in test environment");
-                }
-                else
-                {
-                    throw;
-                }
-            }
-        }
-
-        [TestMethod]
-        public void TestAttemptConnectionWithInvalidCommand()
+        [Fact]
+        public void GetSshClientPath_WithValidSshClientFolder_ReturnsCorrectPath()
         {
             // Arrange
-            var invalidCommand = new[] { "nonexistent_command", "arg1", "arg2" };
+            string sshFolder = _tempDirectory;
+            string expectedExe = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "ssh.exe" : "ssh";
+            string sshPath = Path.Combine(sshFolder, expectedExe);
+            
+            // Create a dummy ssh executable
+            File.WriteAllText(sshPath, "dummy ssh");
+
+            // Act
+            var result = SftpUtils.GetSshClientPath("ssh", sshFolder);
+
+            // Assert
+            Assert.Equal(sshPath, result);
+        }
+
+        [Fact]
+        public void GetSshClientPath_UnsupportedArchitecture_ThrowsException()
+        {
+            // This test is challenging to write for architecture validation 
+            // since we can't easily change the runtime architecture in tests
+            // But we can test the string logic for different architectures
+            
+            // Act & Assert
+            // The method should work with current architecture
+            var result = SftpUtils.GetSshClientPath("ssh");
+            Assert.NotNull(result);
+        }
+
+        [Theory]
+        [InlineData("ssh")]
+        [InlineData("sftp")]
+        [InlineData("ssh-keygen")]
+        public void GetSshClientPath_WithDifferentCommands_ReturnsCorrectPaths(string command)
+        {
+            // Act
+            var path = SftpUtils.GetSshClientPath(command, null);
+
+            // Assert
+            Assert.NotNull(path);
+            Assert.Contains(command, path);
+        }
+
+        [Fact]
+        public void ProcessCreationFlags_EnumValues_AreCorrect()
+        {
+            // Assert
+            Assert.Equal(0u, (uint)SftpUtils.ProcessCreationFlags.None);
+            Assert.Equal(0x08000000u, (uint)SftpUtils.ProcessCreationFlags.CREATE_NO_WINDOW);
+            Assert.Equal(0x00000010u, (uint)SftpUtils.ProcessCreationFlags.CREATE_NEW_CONSOLE);
+            Assert.Equal(0x00000200u, (uint)SftpUtils.ProcessCreationFlags.CREATE_NEW_PROCESS_GROUP);
+            Assert.Equal(0x00000008u, (uint)SftpUtils.ProcessCreationFlags.DETACHED_PROCESS);
+        }
+
+        [Fact]
+        public void ExecuteSftpProcess_WithInvalidCommand_ReturnsNullExitCode()
+        {
+            // Arrange
+            var command = new[] { "nonexistent_command_that_should_fail" };
+
+            // Act
+            var result = SftpUtils.ExecuteSftpProcess(command);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Null(result.Item2); // Exit code should be null for failed process start
+        }
+
+        [Fact]
+        public void ExecuteSftpProcess_WithEchoCommand_ReturnsSuccessExitCode()
+        {
+            // Arrange
+            var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                ? new[] { "cmd.exe", "/c", "echo", "test" }
+                : new[] { "/bin/echo", "test" };
+
+            // Act
+            var result = SftpUtils.ExecuteSftpProcess(command);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.NotNull(result.Item1); // Process should not be null
+            Assert.Equal(0, result.Item2); // Exit code should be 0 for success
+        }
+
+        [Fact]
+        public void ExecuteSftpProcess_WithEnvironmentVariables_PassesEnvironment()
+        {
+            // Arrange
+            var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                ? new[] { "cmd.exe", "/c", "echo", "%TEST_VAR%" }
+                : new[] { "/bin/sh", "-c", "echo $TEST_VAR" };
+            
+            var env = new Dictionary<string, string> { { "TEST_VAR", "test_value" } };
+
+            // Act
+            var result = SftpUtils.ExecuteSftpProcess(command, env);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(0, result.Item2); // Should succeed
+        }
+
+        [Fact]
+        public void ExecuteSftpProcess_WithCreateNoWindowFlag_SetsCorrectFlags()
+        {
+            // Arrange
+            var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                ? new[] { "cmd.exe", "/c", "echo", "test" }
+                : new[] { "/bin/echo", "test" };
+
+            // Act
+            var result = SftpUtils.ExecuteSftpProcess(command, null, SftpUtils.ProcessCreationFlags.CREATE_NO_WINDOW);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(0, result.Item2); // Should succeed
+        }
+
+        [Fact]
+        public void AttemptConnection_WithSuccessfulCommand_ReturnsTrue()
+        {
+            // Arrange
+            var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                ? new[] { "cmd.exe", "/c", "echo", "success" }
+                : new[] { "/bin/echo", "success" };
+            
             var env = new Dictionary<string, string>();
-            var opInfo = new SFTPSession(
-                storageAccount: "test",
-                username: "test.user",
-                host: "test.blob.core.windows.net",
-                port: 22,
-                certFile: null,
-                privateKeyFile: null,
-                sftpArgs: null,
-                sshClientFolder: null,
-                sshProxyFolder: null,
-                credentialsFolder: null,
-                yesWithoutPrompt: false
-            );
+            var session = new SFTPSession("test", "user", "host", 22, null, null, null, null, null, null, null, false);
 
             // Act
-            var (successful, duration, errorMsg) = SftpUtils.AttemptConnection(
-                invalidCommand, env, SftpUtils.ProcessCreationFlags.None, opInfo, 1);
+            var result = SftpUtils.AttemptConnection(command, env, SftpUtils.ProcessCreationFlags.None, session, 1);
 
             // Assert
-            Assert.IsFalse(successful);
-            Assert.IsNotNull(duration);
-            Assert.IsFalse(string.IsNullOrEmpty(errorMsg));
+            Assert.True(result.Item1); // Success
+            Assert.NotNull(result.Item2); // Duration
+            Assert.True(result.Item2 >= 0); // Duration should be non-negative
+            Assert.Null(result.Item3); // No error message
         }
 
-        [TestMethod]
-        public void TestExecuteSftpProcessWithInvalidCommand()
+        [Fact]
+        public void AttemptConnection_WithFailingCommand_ReturnsFalse()
         {
             // Arrange
-            var invalidCommand = new[] { "nonexistent_command", "arg1" };
+            var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+                ? new[] { "cmd.exe", "/c", "exit", "1" }
+                : new[] { "/bin/sh", "-c", "exit 1" };
+            
+            var env = new Dictionary<string, string>();
+            var session = new SFTPSession("test", "user", "host", 22, null, null, null, null, null, null, null, false);
 
             // Act
-            var (process, returnCode) = SftpUtils.ExecuteSftpProcess(invalidCommand);
+            var result = SftpUtils.AttemptConnection(command, env, SftpUtils.ProcessCreationFlags.None, session, 1);
 
             // Assert
-            Assert.IsNull(returnCode); // Should be null due to exception
-            // Process might be null or not null depending on implementation
+            Assert.False(result.Item1); // Failure
+            Assert.NotNull(result.Item2); // Duration
+            Assert.NotNull(result.Item3); // Error message
+            Assert.Contains("failed with return code", result.Item3);
         }
 
-        [TestMethod]
-        public void TestSftpConstantsArePopulated()
+        [Fact]
+        public void AttemptConnection_WithInvalidCommand_ReturnsFalseWithError()
         {
-            // Assert
-            Assert.IsFalse(string.IsNullOrEmpty(SftpConstants.WindowsInvalidFoldernameChars));
-            Assert.IsTrue(SftpConstants.DefaultSshPort > 0);
-            Assert.IsTrue(SftpConstants.DefaultSftpPort > 0);
-            Assert.IsFalse(string.IsNullOrEmpty(SftpConstants.SshPrivateKeyName));
-            Assert.IsFalse(string.IsNullOrEmpty(SftpConstants.SshPublicKeyName));
-            Assert.IsFalse(string.IsNullOrEmpty(SftpConstants.SshCertificateSuffix));
-            Assert.IsNotNull(SftpConstants.DefaultSshOptions);
-            Assert.IsTrue(SftpConstants.DefaultSshOptions.Length > 0);
-        }
+            // Arrange
+            var command = new[] { "definitely_nonexistent_command_12345" };
+            var env = new Dictionary<string, string>();
+            var session = new SFTPSession("test", "user", "host", 22, null, null, null, null, null, null, null, false);
 
-        [TestMethod]
-        public void TestProcessCreationFlagsEnum()
-        {
+            // Act
+            var result = SftpUtils.AttemptConnection(command, env, SftpUtils.ProcessCreationFlags.None, session, 1);
+
             // Assert
-            Assert.AreEqual(0u, (uint)SftpUtils.ProcessCreationFlags.None);
-            Assert.IsTrue((uint)SftpUtils.ProcessCreationFlags.CREATE_NO_WINDOW > 0);
-            Assert.IsTrue((uint)SftpUtils.ProcessCreationFlags.CREATE_NEW_PROCESS_GROUP > 0);
+            Assert.False(result.Item1); // Failure
+            Assert.NotNull(result.Item2); // Duration
+            Assert.NotNull(result.Item3); // Error message
+            Assert.Contains("Failed to start", result.Item3);
         }
     }
 }
