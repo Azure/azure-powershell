@@ -21,6 +21,7 @@
 
 ## Version 7.8.0
 * Added new optional parameter CVMOsDiskEncryptionSetId in Restore-AzRecoveryServicesBackupItem.
+* Fixed bug in Restore-AzRecoveryServicesBackupItem cmdlet for Azure File Share restore.
 
 ## Version 7.7.2
 * Added fix for resume protection with AzureFileshare.
