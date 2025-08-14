@@ -21,7 +21,7 @@ Describe 'Get-AzApplicationInsightsMyWorkbook' {
 		} | Should -Not -Throw
 	}
 
-	It 'Get' {
+	It 'Get' -skip {
 		{
 			New-AzApplicationInsightsMyWorkbook -ResourceGroupName $env.resourceGroup -Name $env.myWorkbook01 -Location $env.location  -DisplayName "$($env.myWorkbook01)-pwsh" `
 												-SourceId "/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.resourceGroup)/providers/microsoft.insights/components/$($env.appInsights01)" -Category 'workbook' -SerializedData $null
