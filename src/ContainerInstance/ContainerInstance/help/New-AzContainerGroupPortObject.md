@@ -13,7 +13,7 @@ Create an in-memory object for Port.
 ## SYNTAX
 
 ```
-New-AzContainerGroupPortObject -Port1 <Int32> [-Protocol <String>]
+New-AzContainerGroupPortObject -Port <Int32> [-Protocol <String>]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ This command specifies port 8000 exposed on a container group with TCP protocol.
 
 ## PARAMETERS
 
-### -Port1
+### -Port
 The port number.
 
 ```yaml

@@ -13,11 +13,9 @@ Create an in-memory object for InitContainerDefinition.
 ## SYNTAX
 
 ```
-New-AzContainerInstanceInitDefinitionObject -Name <String> [-CapabilityAdd <String[]>]
- [-CapabilityDrop <String[]>] [-Command <String[]>] [-EnvironmentVariable <IEnvironmentVariable[]>]
- [-Image <String>] [-SecurityContextAllowPrivilegeEscalation <Boolean>] [-SecurityContextPrivileged <Boolean>]
- [-SecurityContextRunAsGroup <Int32>] [-SecurityContextRunAsUser <Int32>]
- [-SecurityContextSeccompProfile <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
+New-AzContainerInstanceInitDefinitionObject -Name <String> [-Command <String[]>]
+ [-EnvironmentVariable <IEnvironmentVariable[]>] [-Image <String>] [-VolumeMount <IVolumeMount[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,36 +37,6 @@ initDefinition
 This command sets up the init container definition with command `/bin/sh -c myscript.sh`
 
 ## PARAMETERS
-
-### -CapabilityAdd
-The capabilities to add to the container.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CapabilityDrop
-The capabilities to drop from the container.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Command
 The command to execute within the init container in exec form.
@@ -124,81 +92,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextAllowPrivilegeEscalation
-A boolean value indicating whether the init process can elevate its privileges.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextPrivileged
-The flag to determine if the container permissions is elevated to Privileged.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextRunAsGroup
-Sets the User GID for the container.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextRunAsUser
-Sets the User UID for the container.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextSeccompProfile
-a base64 encoded string containing the contents of the JSON in the seccomp profile.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

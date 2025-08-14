@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzContainerGroupPortObject' {
     It '__AllParameterSets' {
         {
-            New-AzContainerGroupPortObject -Port1 8001 -Protocol TCP
+            New-AzContainerGroupPortObject -Port 8001 -Protocol TCP
         } | Should -Not -Throw
     }
 }

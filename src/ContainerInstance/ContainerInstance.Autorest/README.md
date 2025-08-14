@@ -163,20 +163,20 @@ directive:
   - model-cmdlet:
       # - model-name: ImageRegistryCredential
       #   cmdlet-name: New-AzContainerGroupImageRegistryCredentialObject
-      - model-name: Port
-        cmdlet-name: New-AzContainerGroupPortObject
+      # - model-name: Port
+      #   cmdlet-name: New-AzContainerGroupPortObject
       # - model-name: Volume
       #   cmdlet-name: New-AzContainerGroupVolumeObject
       # - model-name: EnvironmentVariable
       #   cmdlet-name: New-AzContainerInstanceEnvironmentVariableObject
       - model-name: HttpHeader
         cmdlet-name: New-AzContainerInstanceHttpHeaderObject
-      - model-name: InitContainerDefinition
-        cmdlet-name: New-AzContainerInstanceInitDefinitionObject
-      - model-name: Container
-        cmdlet-name: New-AzContainerInstanceNoDefaultObject
-      - model-name: Container
-        cmdlet-name: New-AzContainerInstanceObject
+      # - model-name: InitContainerDefinition
+      #   cmdlet-name: New-AzContainerInstanceInitDefinitionObject
+      # - model-name: Container
+      #   cmdlet-name: New-AzContainerInstanceNoDefaultObject
+      # - model-name: Container
+      #   cmdlet-name: New-AzContainerInstanceObject
       - model-name: ContainerPort
         cmdlet-name: New-AzContainerInstancePortObject
       - model-name: VolumeMount

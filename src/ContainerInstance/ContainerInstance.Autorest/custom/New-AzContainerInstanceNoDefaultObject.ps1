@@ -31,12 +31,6 @@ function New-AzContainerInstanceNoDefaultObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="The capabilities to add to the container.")]
-        [string[]]
-        $CapabilityAdd,
-        [Parameter(HelpMessage="The capabilities to drop from the container.")]
-        [string[]]
-        $CapabilityDrop,
         [Parameter(HelpMessage="The commands to execute within the container instance in exec form.")]
         [string[]]
         $Command,
@@ -143,21 +137,6 @@ function New-AzContainerInstanceNoDefaultObject {
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("K80", "P100", "V100")]
         [string]
         $RequestsGpuSku,
-        [Parameter(HelpMessage="A boolean value indicating whether the init process can elevate its privileges.")]
-        [bool]
-        $SecurityContextAllowPrivilegeEscalation,
-        [Parameter(HelpMessage="The flag to determine if the container permissions is elevated to Privileged.")]
-        [bool]
-        $SecurityContextPrivileged,
-        [Parameter(HelpMessage="Sets the User GID for the container.")]
-        [int]
-        $SecurityContextRunAsGroup,
-        [Parameter(HelpMessage="Sets the User UID for the container.")]
-        [int]
-        $SecurityContextRunAsUser,
-        [Parameter(HelpMessage="a base64 encoded string containing the contents of the JSON in the seccomp profile.")]
-        [string]
-        $SecurityContextSeccompProfile,
         [Parameter(HelpMessage="The volume mounts available to the container instance.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolumeMount[]]
         $VolumeMount
@@ -166,12 +145,6 @@ function New-AzContainerInstanceNoDefaultObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container]::New()
 
-        if ($PSBoundParameters.ContainsKey('CapabilityAdd')) {
-            $Object.CapabilityAdd = $CapabilityAdd
-        }
-        if ($PSBoundParameters.ContainsKey('CapabilityDrop')) {
-            $Object.CapabilityDrop = $CapabilityDrop
-        }
         if ($PSBoundParameters.ContainsKey('Command')) {
             $Object.Command = $Command
         }
@@ -273,21 +246,6 @@ function New-AzContainerInstanceNoDefaultObject {
         }
         if ($PSBoundParameters.ContainsKey('RequestsGpuSku')) {
             $Object.RequestsGpuSku = $RequestsGpuSku
-        }
-        if ($PSBoundParameters.ContainsKey('SecurityContextAllowPrivilegeEscalation')) {
-            $Object.SecurityContextAllowPrivilegeEscalation = $SecurityContextAllowPrivilegeEscalation
-        }
-        if ($PSBoundParameters.ContainsKey('SecurityContextPrivileged')) {
-            $Object.SecurityContextPrivileged = $SecurityContextPrivileged
-        }
-        if ($PSBoundParameters.ContainsKey('SecurityContextRunAsGroup')) {
-            $Object.SecurityContextRunAsGroup = $SecurityContextRunAsGroup
-        }
-        if ($PSBoundParameters.ContainsKey('SecurityContextRunAsUser')) {
-            $Object.SecurityContextRunAsUser = $SecurityContextRunAsUser
-        }
-        if ($PSBoundParameters.ContainsKey('SecurityContextSeccompProfile')) {
-            $Object.SecurityContextSeccompProfile = $SecurityContextSeccompProfile
         }
         if ($PSBoundParameters.ContainsKey('VolumeMount')) {
             $Object.VolumeMount = $VolumeMount

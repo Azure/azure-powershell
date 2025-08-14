@@ -13,11 +13,10 @@ Create an in-memory object for Container.
 ## SYNTAX
 
 ```
-New-AzContainerInstanceNoDefaultObject -Name <String> [-CapabilityAdd <String[]>] [-CapabilityDrop <String[]>]
- [-Command <String[]>] [-ConfigMapKeyValuePair <IConfigMapKeyValuePairs>]
- [-EnvironmentVariable <IEnvironmentVariable[]>] [-Image <String>] [-LimitCpu <Double>]
- [-LimitMemoryInGb <Double>] [-LimitsGpuCount <Int32>] [-LimitsGpuSku <String>]
- [-LivenessProbeExecCommand <String[]>] [-LivenessProbeFailureThreshold <Int32>]
+New-AzContainerInstanceNoDefaultObject -Name <String> [-Command <String[]>]
+ [-ConfigMapKeyValuePair <IConfigMapKeyValuePairs>] [-EnvironmentVariable <IEnvironmentVariable[]>]
+ [-Image <String>] [-LimitCpu <Double>] [-LimitMemoryInGb <Double>] [-LimitsGpuCount <Int32>]
+ [-LimitsGpuSku <String>] [-LivenessProbeExecCommand <String[]>] [-LivenessProbeFailureThreshold <Int32>]
  [-LivenessProbeHttpGetHttpHeader <IHttpHeader[]>] [-LivenessProbeHttpGetPath <String>]
  [-LivenessProbeHttpGetPort <Int32>] [-LivenessProbeHttpGetScheme <String>]
  [-LivenessProbeInitialDelaySecond <Int32>] [-LivenessProbePeriodSecond <Int32>]
@@ -28,10 +27,7 @@ New-AzContainerInstanceNoDefaultObject -Name <String> [-CapabilityAdd <String[]>
  [-ReadinessProbeInitialDelaySecond <Int32>] [-ReadinessProbePeriodSecond <Int32>]
  [-ReadinessProbeSuccessThreshold <Int32>] [-ReadinessProbeTimeoutSecond <Int32>] [-RequestCpu <Double>]
  [-RequestMemoryInGb <Double>] [-RequestsGpuCount <Int32>] [-RequestsGpuSku <String>]
- [-SecurityContextAllowPrivilegeEscalation <Boolean>] [-SecurityContextPrivileged <Boolean>]
- [-SecurityContextRunAsGroup <Int32>] [-SecurityContextRunAsUser <Int32>]
- [-SecurityContextSeccompProfile <String>] [-VolumeMount <IVolumeMount[]>]
- [<CommonParameters>]
+ [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,36 +76,6 @@ eastus   test-cg      test-rg
 Create a container group with a container instance
 
 ## PARAMETERS
-
-### -CapabilityAdd
-The capabilities to add to the container.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CapabilityDrop
-The capabilities to drop from the container.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Command
 The commands to execute within the container instance in exec form.
@@ -608,81 +574,6 @@ Accept wildcard characters: False
 
 ### -RequestsGpuSku
 The SKU of the GPU resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextAllowPrivilegeEscalation
-A boolean value indicating whether the init process can elevate its privileges.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextPrivileged
-The flag to determine if the container permissions is elevated to Privileged.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextRunAsGroup
-Sets the User GID for the container.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextRunAsUser
-Sets the User UID for the container.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityContextSeccompProfile
-a base64 encoded string containing the contents of the JSON in the seccomp profile.
 
 ```yaml
 Type: System.String

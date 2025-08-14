@@ -33,7 +33,7 @@ function New-AzContainerGroupPortObject {
 
         [Parameter(Mandatory, HelpMessage="The port number.")]
         [int]
-        $Port1,
+        $Port,
         [Parameter(HelpMessage="The protocol associated with the port.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("TCP", "UDP")]
         [string]
@@ -43,8 +43,8 @@ function New-AzContainerGroupPortObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Port]::New()
 
-        if ($PSBoundParameters.ContainsKey('Port1')) {
-            $Object.Port1 = $Port1
+        if ($PSBoundParameters.ContainsKey('Port')) {
+            $Object.Port1 = $Port
         }
         if ($PSBoundParameters.ContainsKey('Protocol')) {
             $Object.Protocol = $Protocol
