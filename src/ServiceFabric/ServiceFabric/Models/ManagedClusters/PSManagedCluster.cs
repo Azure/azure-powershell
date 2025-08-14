@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
             fabricSettings: cluster.FabricSettings,
             fqdn: cluster.Fqdn,
             httpGatewayConnectionPort: cluster.HttpGatewayConnectionPort,
-            httpGatewayTokenAuthConnectionPort: cluster.httpGatewayTokenAuthConnectionPort,
+            httpGatewayTokenAuthConnectionPort: cluster.HttpGatewayTokenAuthConnectionPort,
             id: cluster.Id,
             ipTags: cluster.IPTags,
             ipv4Address: cluster.Ipv4Address,
