@@ -21,12 +21,12 @@ Create an in-memory object for Volume.
 Create an in-memory object for Volume.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Volume
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Volume
 .Link
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 #>
 function New-AzContainerGroupVolumeObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Volume')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Volume')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzContainerGroupVolumeObject {
         [string]
         $AzureFileStorageAccountName,
         [Parameter(HelpMessage="The empty directory volume.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeEmptyDir]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolumeEmptyDir]
         $EmptyDir,
         [Parameter(HelpMessage="Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.")]
         [string]
@@ -58,12 +58,12 @@ function New-AzContainerGroupVolumeObject {
         [string]
         $Name,
         [Parameter(HelpMessage="The secret volume.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ISecretVolume]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.ISecretVolume]
         $Secret
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Volume]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Volume]::New()
 
         if ($PSBoundParameters.ContainsKey('AzureFileReadOnly')) {
             $Object.AzureFileReadOnly = $AzureFileReadOnly

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ContainerInstance
-Module Guid: 78f5cd97-9a2c-4258-bf37-7a8820083684
+Module Guid: fdbbc1c5-c7d6-4575-bfaa-7104130100a4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.containerinstance
 Help Version: 1.0.0.0
 Locale: en-US
@@ -52,34 +52,34 @@ Create or update container groups with specified configurations.
 Create a in-memory object for ImageRegistryCredential
 
 ### [New-AzContainerGroupPortObject](New-AzContainerGroupPortObject.md)
-Create a in-memory object for Port
+Create an in-memory object for Port.
 
 ### [New-AzContainerGroupVolumeObject](New-AzContainerGroupVolumeObject.md)
 Create an in-memory object for Volume.
 
 ### [New-AzContainerInstanceContainerGroupProfile](New-AzContainerInstanceContainerGroupProfile.md)
-Create or update container group profiles with specified configurations.
+Create container group profiles with specified configurations.
 
 ### [New-AzContainerInstanceEnvironmentVariableObject](New-AzContainerInstanceEnvironmentVariableObject.md)
 Create a in-memory object for EnvironmentVariable
 
 ### [New-AzContainerInstanceHttpHeaderObject](New-AzContainerInstanceHttpHeaderObject.md)
-Create a in-memory object for HttpHeader
+Create an in-memory object for HttpHeader.
 
 ### [New-AzContainerInstanceInitDefinitionObject](New-AzContainerInstanceInitDefinitionObject.md)
-Create a in-memory object for InitContainerDefinition
+Create an in-memory object for InitContainerDefinition.
 
 ### [New-AzContainerInstanceNoDefaultObject](New-AzContainerInstanceNoDefaultObject.md)
-Create a in-memory object for Container with no default values
+Create an in-memory object for Container.
 
 ### [New-AzContainerInstanceObject](New-AzContainerInstanceObject.md)
-Create a in-memory object for Container
+Create an in-memory object for Container.
 
 ### [New-AzContainerInstancePortObject](New-AzContainerInstancePortObject.md)
-Create a in-memory object for ContainerPort
+Create an in-memory object for ContainerPort.
 
 ### [New-AzContainerInstanceVolumeMountObject](New-AzContainerInstanceVolumeMountObject.md)
-Create a in-memory object for VolumeMount
+Create an in-memory object for VolumeMount.
 
 ### [Remove-AzContainerGroup](Remove-AzContainerGroup.md)
 Delete the specified container group in the specified subscription and resource group.
@@ -95,7 +95,7 @@ The operation does not delete other resources provided by the user.
 
 ### [Restart-AzContainerGroup](Restart-AzContainerGroup.md)
 Restarts all containers in a container group in place.
-If container image has updates, new image will be downloaded.
+If container image has restart  new image will be downloaded.
 
 ### [Start-AzContainerGroup](Start-AzContainerGroup.md)
 Starts all containers in a container group.
@@ -106,7 +106,7 @@ Stops all containers in a container group.
 Compute resources will be deallocated and billing will stop.
 
 ### [Update-AzContainerGroup](Update-AzContainerGroup.md)
-Updates container group tags with specified values.
+Update container group tags with specified values.
 
 ### [Update-AzContainerInstanceContainerGroupProfile](Update-AzContainerInstanceContainerGroupProfile.md)
 Patches container group profile with specified properties.
