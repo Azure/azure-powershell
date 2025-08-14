@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added breaking change announcement for below commands from array or single object to list.
+  * `New-AzContainerGroup`
 
 ## Version 4.1.1
 * Upgraded nuget package to signed package.
