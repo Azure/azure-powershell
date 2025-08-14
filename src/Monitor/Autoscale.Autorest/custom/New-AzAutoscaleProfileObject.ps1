@@ -21,12 +21,13 @@ Create an in-memory object for AutoscaleProfile.
 Create an in-memory object for AutoscaleProfile.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleProfile
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleProfileObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscaleprofileobject
 #>
 function New-AzAutoscaleProfileObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleProfile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -52,12 +53,12 @@ function New-AzAutoscaleProfileObject {
         [string]
         $Name,
         [Parameter(HelpMessage="the recurrence frequency. How often the schedule profile should take effect. This value must be Week, meaning each week will have the same set of profiles. For example, to set a daily schedule, set **schedule** to every day of the week. The frequency property specifies that the schedule is repeated weekly.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.RecurrenceFrequency])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.RecurrenceFrequency]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("None", "Second", "Minute", "Hour", "Day", "Week", "Month", "Year")]
+        [string]
         $RecurrenceFrequency,
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("Rule", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(Mandatory, HelpMessage="the collection of rules that provide the triggers and parameters for the scaling action. A maximum of 10 rules can be specified.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IScaleRule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IScaleRule[]]
         $Rule,
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("ScheduleDay", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="the collection of days that the profile takes effect on. Possible values are Sunday through Saturday.")]
@@ -77,7 +78,7 @@ function New-AzAutoscaleProfileObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleProfile]::New()
 
         if ($PSBoundParameters.ContainsKey('CapacityDefault')) {
             $Object.CapacityDefault = $CapacityDefault
