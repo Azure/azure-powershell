@@ -26,13 +26,13 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Rest.Azure;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.Volume
+namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 {
     [Cmdlet(
         "Split",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesCloneFromParent",
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolume))]
-    [Alias("Split-AnfCloneFromParent ")]
+    [Alias("Split-AnfCloneFromParent")]
     public class SplitCloneFromParent : AzureNetAppFilesCmdletBase
     {
         [Parameter(

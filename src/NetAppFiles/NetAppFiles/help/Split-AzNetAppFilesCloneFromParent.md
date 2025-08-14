@@ -44,10 +44,10 @@ Split operation to convert clone volume to an independent volume.
 
 ### Example 1
 ```powershell
-Split-AzNetAppFilesCloneFromParent -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfCloneVolume"
+Split-AzNetAppFilesCloneFromParent -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfCloneVolume"
 ```
 
-{{ Add example description here }}
+This example splits a clone volume, volume created from a snapshot of another volume, from it's parent volume.
 
 ## PARAMETERS
 
