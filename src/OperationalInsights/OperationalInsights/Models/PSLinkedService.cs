@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public LinkedService getLinkedService()
         {
-            return new LinkedService(this.Id, this.Name, this.Type, this.ResourceId, this.WriteAccessResourceId, this.ProvisioningState, this.Tags);
+            return new LinkedService(this.Id, this.Name, this.Type, this.Tags, this.ResourceId, this.WriteAccessResourceId, this.ProvisioningState);
         }
     }
 }
