@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.Storage
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -65,10 +65,6 @@ namespace Microsoft.Azure.Management.Storage
         /// </summary>
         public virtual IOperations Operations { get; private set; }
         /// <summary>
-        /// Gets the ISkusOperations
-        /// </summary>
-        public virtual ISkusOperations Skus { get; private set; }
-        /// <summary>
         /// Gets the IStorageAccountsOperations
         /// </summary>
         public virtual IStorageAccountsOperations StorageAccounts { get; private set; }
@@ -81,33 +77,9 @@ namespace Microsoft.Azure.Management.Storage
         /// </summary>
         public virtual IUsagesOperations Usages { get; private set; }
         /// <summary>
-        /// Gets the IManagementPoliciesOperations
+        /// Gets the ISkusOperations
         /// </summary>
-        public virtual IManagementPoliciesOperations ManagementPolicies { get; private set; }
-        /// <summary>
-        /// Gets the IBlobInventoryPoliciesOperations
-        /// </summary>
-        public virtual IBlobInventoryPoliciesOperations BlobInventoryPolicies { get; private set; }
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
-        /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
-        /// <summary>
-        /// Gets the IObjectReplicationPoliciesOperations
-        /// </summary>
-        public virtual IObjectReplicationPoliciesOperations ObjectReplicationPolicies { get; private set; }
-        /// <summary>
-        /// Gets the ILocalUsersOperations
-        /// </summary>
-        public virtual ILocalUsersOperations LocalUsers { get; private set; }
-        /// <summary>
-        /// Gets the IEncryptionScopesOperations
-        /// </summary>
-        public virtual IEncryptionScopesOperations EncryptionScopes { get; private set; }
+        public virtual ISkusOperations Skus { get; private set; }
         /// <summary>
         /// Gets the IBlobServicesOperations
         /// </summary>
@@ -117,6 +89,10 @@ namespace Microsoft.Azure.Management.Storage
         /// </summary>
         public virtual IBlobContainersOperations BlobContainers { get; private set; }
         /// <summary>
+        /// Gets the IEncryptionScopesOperations
+        /// </summary>
+        public virtual IEncryptionScopesOperations EncryptionScopes { get; private set; }
+        /// <summary>
         /// Gets the IFileServicesOperations
         /// </summary>
         public virtual IFileServicesOperations FileServices { get; private set; }
@@ -124,6 +100,62 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the IFileSharesOperations
         /// </summary>
         public virtual IFileSharesOperations FileShares { get; private set; }
+        /// <summary>
+        /// Gets the IBlobInventoryPoliciesOperations
+        /// </summary>
+        public virtual IBlobInventoryPoliciesOperations BlobInventoryPolicies { get; private set; }
+        /// <summary>
+        /// Gets the ILocalUsersOperations
+        /// </summary>
+        public virtual ILocalUsersOperations LocalUsers { get; private set; }
+        /// <summary>
+        /// Gets the IManagementPoliciesOperations
+        /// </summary>
+        public virtual IManagementPoliciesOperations ManagementPolicies { get; private set; }
+        /// <summary>
+        /// Gets the INetworkSecurityPerimeterConfigurationsOperations
+        /// </summary>
+        public virtual INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IObjectReplicationPoliciesOperations
+        /// </summary>
+        public virtual IObjectReplicationPoliciesOperations ObjectReplicationPolicies { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+        /// <summary>
+        /// Gets the IQueueServicesOperations
+        /// </summary>
+        public virtual IQueueServicesOperations QueueServices { get; private set; }
+        /// <summary>
+        /// Gets the IQueueOperations
+        /// </summary>
+        public virtual IQueueOperations Queue { get; private set; }
+        /// <summary>
+        /// Gets the IStorageTaskAssignmentsInstancesReportOperations
+        /// </summary>
+        public virtual IStorageTaskAssignmentsInstancesReportOperations StorageTaskAssignmentsInstancesReport { get; private set; }
+        /// <summary>
+        /// Gets the IStorageTaskAssignmentsOperations
+        /// </summary>
+        public virtual IStorageTaskAssignmentsOperations StorageTaskAssignments { get; private set; }
+        /// <summary>
+        /// Gets the IStorageTaskAssignmentInstancesReportOperations
+        /// </summary>
+        public virtual IStorageTaskAssignmentInstancesReportOperations StorageTaskAssignmentInstancesReport { get; private set; }
+        /// <summary>
+        /// Gets the ITableServicesOperations
+        /// </summary>
+        public virtual ITableServicesOperations TableServices { get; private set; }
+        /// <summary>
+        /// Gets the ITableOperations
+        /// </summary>
+        public virtual ITableOperations Table { get; private set; }
         /// <summary>
         /// Initializes a new instance of the StorageManagementClient class.
         /// </summary>
@@ -328,6 +360,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -360,23 +395,31 @@ namespace Microsoft.Azure.Management.Storage
         private void Initialize()
         {
             this.Operations = new Operations(this);
-            this.Skus = new SkusOperations(this);
             this.StorageAccounts = new StorageAccountsOperations(this);
             this.DeletedAccounts = new DeletedAccountsOperations(this);
             this.Usages = new UsagesOperations(this);
-            this.ManagementPolicies = new ManagementPoliciesOperations(this);
-            this.BlobInventoryPolicies = new BlobInventoryPoliciesOperations(this);
-            this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
-            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
-            this.ObjectReplicationPolicies = new ObjectReplicationPoliciesOperations(this);
-            this.LocalUsers = new LocalUsersOperations(this);
-            this.EncryptionScopes = new EncryptionScopesOperations(this);
+            this.Skus = new SkusOperations(this);
             this.BlobServices = new BlobServicesOperations(this);
             this.BlobContainers = new BlobContainersOperations(this);
+            this.EncryptionScopes = new EncryptionScopesOperations(this);
             this.FileServices = new FileServicesOperations(this);
             this.FileShares = new FileSharesOperations(this);
+            this.BlobInventoryPolicies = new BlobInventoryPoliciesOperations(this);
+            this.LocalUsers = new LocalUsersOperations(this);
+            this.ManagementPolicies = new ManagementPoliciesOperations(this);
+            this.NetworkSecurityPerimeterConfigurations = new NetworkSecurityPerimeterConfigurationsOperations(this);
+            this.ObjectReplicationPolicies = new ObjectReplicationPoliciesOperations(this);
+            this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            this.QueueServices = new QueueServicesOperations(this);
+            this.Queue = new QueueOperations(this);
+            this.StorageTaskAssignmentsInstancesReport = new StorageTaskAssignmentsInstancesReportOperations(this);
+            this.StorageTaskAssignments = new StorageTaskAssignmentsOperations(this);
+            this.StorageTaskAssignmentInstancesReport = new StorageTaskAssignmentInstancesReportOperations(this);
+            this.TableServices = new TableServicesOperations(this);
+            this.Table = new TableOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-01-01";
+            this.ApiVersion = "2025-01-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

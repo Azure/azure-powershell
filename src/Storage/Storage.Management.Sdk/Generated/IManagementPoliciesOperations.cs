@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the managementpolicy associated with the specified storage account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -49,8 +48,7 @@ namespace Microsoft.Azure.Management.Storage
         /// Sets the managementpolicy to the specified storage account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </param>
         /// <param name='policy'>
         /// The Storage Account ManagementPolicy, in JSON format. See more details in:
-        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -82,8 +80,7 @@ namespace Microsoft.Azure.Management.Storage
         /// Deletes the managementpolicy associated with the specified storage account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
