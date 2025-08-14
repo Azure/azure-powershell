@@ -398,7 +398,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork
 
 ## NOTES
 

@@ -20,13 +20,13 @@ The operation to update a logical network.
 The operation to update a logical network.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmlogicalnetwork
 #>
 function Update-AzStackHCIVMLogicalNetwork_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
