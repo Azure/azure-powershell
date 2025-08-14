@@ -12,11 +12,12 @@ Runs the input conditions against input object metadata properties and designate
 
 ## SYNTAX
 
-### Preview (Default)
+### PreviewExpanded (Default)
 ```
-Invoke-AzStorageActionTaskPreviewAction -Location <String> [-SubscriptionId <String>]
- -Body <IStorageTaskPreviewAction> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzStorageActionTaskPreviewAction -Location <String> [-SubscriptionId <String>] [-ActionElseBlockExist]
+ -Blob <IStorageTaskPreviewBlobProperties[]> [-ContainerMetadata <IStorageTaskPreviewKeyValueProperties[]>]
+ [-ContainerName <String>] [-IfCondition <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PreviewViaJsonString
@@ -31,26 +32,12 @@ Invoke-AzStorageActionTaskPreviewAction -Location <String> [-SubscriptionId <Str
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PreviewExpanded
-```
-Invoke-AzStorageActionTaskPreviewAction -Location <String> [-SubscriptionId <String>] [-ActionElseBlockExist]
- -Blob <IStorageTaskPreviewBlobProperties[]> [-ContainerMetadata <IStorageTaskPreviewKeyValueProperties[]>]
- [-ContainerName <String>] [-IfCondition <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### PreviewViaIdentityExpanded
 ```
 Invoke-AzStorageActionTaskPreviewAction -InputObject <IStorageActionIdentity> [-ActionElseBlockExist]
  -Blob <IStorageTaskPreviewBlobProperties[]> [-ContainerMetadata <IStorageTaskPreviewKeyValueProperties[]>]
  [-ContainerName <String>] [-IfCondition <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PreviewViaIdentity
-```
-Invoke-AzStorageActionTaskPreviewAction -InputObject <IStorageActionIdentity> -Body <IStorageTaskPreviewAction>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -255,21 +242,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Storage Task Preview Action.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewAction
-Parameter Sets: Preview, PreviewViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ContainerMetadata
 metadata key value pairs to be tested for a match against the provided condition.
 
@@ -336,7 +308,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity
-Parameter Sets: PreviewViaIdentityExpanded, PreviewViaIdentity
+Parameter Sets: PreviewViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -381,7 +353,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Preview, PreviewViaJsonString, PreviewViaJsonFilePath, PreviewExpanded
+Parameter Sets: PreviewExpanded, PreviewViaJsonString, PreviewViaJsonFilePath
 Aliases:
 
 Required: True
@@ -397,7 +369,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Preview, PreviewViaJsonString, PreviewViaJsonFilePath, PreviewExpanded
+Parameter Sets: PreviewExpanded, PreviewViaJsonString, PreviewViaJsonFilePath
 Aliases:
 
 Required: False
@@ -444,8 +416,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewAction
 
 ## OUTPUTS
 

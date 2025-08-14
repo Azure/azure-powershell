@@ -12,24 +12,12 @@ Runs the input conditions against input object metadata properties and designate
 
 ## SYNTAX
 
-### Preview (Default)
-```
-Invoke-AzStorageActionTaskPreviewAction -Location <String> -Body <IStorageTaskPreviewAction>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PreviewExpanded
+### PreviewExpanded (Default)
 ```
 Invoke-AzStorageActionTaskPreviewAction -Location <String> -ActionElseBlockExist
  -Blob <IStorageTaskPreviewBlobProperties[]> [-SubscriptionId <String>]
  [-ContainerMetadata <IStorageTaskPreviewKeyValueProperties[]>] [-ContainerName <String>]
  [-IfCondition <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PreviewViaIdentity
-```
-Invoke-AzStorageActionTaskPreviewAction -InputObject <IStorageActionIdentity>
- -Body <IStorageTaskPreviewAction> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PreviewViaIdentityExpanded
@@ -254,21 +242,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Storage Task Preview Action.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewAction
-Parameter Sets: Preview, PreviewViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ContainerMetadata
 metadata key value pairs to be tested for a match against the provided condition.
 
@@ -335,7 +308,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity
-Parameter Sets: PreviewViaIdentity, PreviewViaIdentityExpanded
+Parameter Sets: PreviewViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -380,7 +353,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Preview, PreviewExpanded, PreviewViaJsonFilePath, PreviewViaJsonString
+Parameter Sets: PreviewExpanded, PreviewViaJsonFilePath, PreviewViaJsonString
 Aliases:
 
 Required: True
@@ -396,7 +369,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Preview, PreviewExpanded, PreviewViaJsonFilePath, PreviewViaJsonString
+Parameter Sets: PreviewExpanded, PreviewViaJsonFilePath, PreviewViaJsonString
 Aliases:
 
 Required: False
@@ -443,8 +416,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewAction
 
 ## OUTPUTS
 
