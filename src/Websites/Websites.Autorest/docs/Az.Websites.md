@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Websites
-Module Guid: e2ccd5b0-af3a-415f-82ed-b9a388aeed61
+Module Guid: fc780f32-3a4b-4f14-a0ef-39438a2d33f8
 Download Help Link: https://learn.microsoft.com/powershell/module/az.websites
 Help Version: 1.0.0.0
 Locale: en-US
@@ -75,25 +75,25 @@ Get or list triggered web job's history for an app.
 List webjobs for an app.
 
 ### [New-AzStaticWebApp](New-AzStaticWebApp.md)
-Description for Creates a new static site in an existing resource group, or updates an existing static site.
+Description for create a new static site in an existing resource group, or create an existing static site.
 
 ### [New-AzStaticWebAppBuildAppSetting](New-AzStaticWebAppBuildAppSetting.md)
-Description for Creates or updates the app settings of a static site build.
+Description for create the app settings of a static site build.
 
 ### [New-AzStaticWebAppBuildFunctionAppSetting](New-AzStaticWebAppBuildFunctionAppSetting.md)
-Description for Creates or updates the function app settings of a static site build.
+Description for create the function app settings of a static site build.
 
 ### [New-AzStaticWebAppCustomDomain](New-AzStaticWebAppCustomDomain.md)
-Description for Creates a new static site custom domain in an existing resource group and static site.
+Description for create a new static site custom domain in an existing resource group and static site.
 
 ### [New-AzStaticWebAppFunctionAppSetting](New-AzStaticWebAppFunctionAppSetting.md)
-Description for Creates or updates the function app settings of a static site.
+Description for create the function app settings of a static site.
 
 ### [New-AzStaticWebAppSetting](New-AzStaticWebAppSetting.md)
-Description for Creates or updates the app settings of a static site.
+Description for create the app settings of a static site.
 
 ### [New-AzStaticWebAppUserRoleInvitationLink](New-AzStaticWebAppUserRoleInvitationLink.md)
-Description for Creates an invitation link for a user with the role
+Description for create an invitation link for a user with the role
 
 ### [Register-AzStaticWebAppUserProvidedFunctionApp](Register-AzStaticWebAppUserProvidedFunctionApp.md)
 Description for Register a user provided function app with a static site build
@@ -156,8 +156,8 @@ Description for Detach the user provided function app from the static site build
 Description for Detach the user provided function app from the static site
 
 ### [Update-AzStaticWebApp](Update-AzStaticWebApp.md)
-Description for Creates a new static site in an existing resource group, or updates an existing static site.
+Description for update a new static site in an existing resource group, or update an existing static site.
 
 ### [Update-AzStaticWebAppUser](Update-AzStaticWebAppUser.md)
-Description for Updates a user entry with the listed roles
+Description for update a user entry with the listed roles
 
