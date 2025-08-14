@@ -1,0 +1,252 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.DataSync.Model;
+using Microsoft.Azure.Management.Sql.DataSyncV2.Models;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
+{
+    /// <summary>
+    /// Cmdlet to create a new sync group
+    /// </summary>
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncGroupV2", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModelV2))]
+    public class NewAzureSqlSyncGroupV2 : AzureSqlSyncGroupCmdletBaseV2
+    {
+        /// <summary>
+        /// Gets or sets the sync group name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "The sync group name.")]
+        [Alias("SyncGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the database used to store sync related metadata
+        /// </summary>
+        [Parameter(Mandatory = true,
+           HelpMessage = "The database used to store sync related metadata.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "SyncDatabaseResourceGroupName", "SyncDatabaseServerName")]
+        [ValidateNotNullOrEmpty]
+        public string SyncDatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the server on which sync metadata database is hosted
+        /// </summary>
+        [Parameter(Mandatory = true,
+           HelpMessage = "The server on which the sync metadata database is hosted.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "SyncDatabaseResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string SyncDatabaseServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group the sync metadata database belongs to
+        /// </summary>
+        [Parameter(Mandatory = true,
+           HelpMessage = "The resource group the sync metadata database belongs to.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string SyncDatabaseResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the frequency (in seconds) of doing data synchronization.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The frequency (in seconds) of doing data synchronization. Default is -1, which means the auto synchronization is not enabled.")]
+        public int IntervalInSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the hub database credential of the sync group
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The SQL authentication credential of the hub database.")]
+        [ValidateNotNull]
+        public PSCredential DatabaseCredential { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy of resolving conflicts between hub and member database in the sync group
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "The policy of resolving conflicts between hub and member database in the sync group.")]
+        [ValidateSet("HubWin", "MemberWin", IgnoreCase = true)]
+        public string ConflictResolutionPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the path of the schema file
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The path of the schema file.")]
+        [ValidateNotNullOrEmpty]
+        public string SchemaFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets if private link should be used
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Use a private link connection when connecting to the hub of this sync group.")]
+        public SwitchParameter UsePrivateLinkConnection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Database Authentication type of the hub database
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The Database Authentication type of the hub database.")]
+        [ValidateSet("password", "userAssigned", IgnoreCase = true)]
+        public string HubDatabaseAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity ID of the hub database in case of user assigned identity authentication
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The identity ID of the hub database in case of UAMI Authentication.")]
+        public string IdentityId { get; set; }
+
+        /// <summary>
+        /// The id of database used to store sync related metadata
+        /// </summary>
+        private string syncDatabaseId = null;
+
+        /// <summary>
+        /// Get the entities from the service
+        /// </summary>
+        /// <returns>The list of entities</returns>
+        protected override IEnumerable<AzureSqlSyncGroupModelV2> GetEntity()
+        {
+            // We try to get the sync group. Since this is a create, we don't want the sync group to exist
+            try
+            {
+                ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.Name);
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    // This is what we want. We looked and there is no sync group with this name.
+                    return null;
+                }
+
+                // Unexpected exception encountered
+                throw;
+            }
+
+            // The sync group already exists
+            throw new PSArgumentException(
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SyncGroupNameExists, this.Name, this.DatabaseName),
+                "SyncGroupName");
+        }
+
+        /// <summary>
+        /// Create the model from user input
+        /// </summary>
+        /// <param name="model">Model retrieved from service</param>
+        /// <returns>The model that was passed in</returns>
+        protected override IEnumerable<AzureSqlSyncGroupModelV2> ApplyUserInputToModel(IEnumerable<AzureSqlSyncGroupModelV2> model)
+        {
+            List<Model.AzureSqlSyncGroupModelV2> newEntity = new List<AzureSqlSyncGroupModelV2>();
+            AzureSqlSyncGroupModelV2 newModel = new AzureSqlSyncGroupModelV2()
+            {
+                ResourceGroupName = this.ResourceGroupName,
+                ServerName = this.ServerName,
+                DatabaseName = this.DatabaseName,
+                SyncGroupName = this.Name,
+                ConflictResolutionPolicy = this.ConflictResolutionPolicy != null ? this.ConflictResolutionPolicy.ToString() : null,
+            };
+
+            if (!MyInvocation.BoundParameters.ContainsKey(nameof(HubDatabaseAuthenticationType)) ||
+                this.HubDatabaseAuthenticationType.Equals("password", System.StringComparison.OrdinalIgnoreCase))
+            {
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(DatabaseCredential)) ||
+                    this.DatabaseCredential == null ||
+                    string.IsNullOrEmpty(this.DatabaseCredential.UserName))
+                {
+                    throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseCredentialRequired,
+                        "HubDatabaseCredentials");
+                }
+
+                newModel.HubDatabaseUserName = this.DatabaseCredential.UserName;
+                newModel.HubDatabasePassword = this.DatabaseCredential.Password;
+
+                newModel.Identity = new DataSyncParticipantIdentity
+                {
+                    Type = "None"
+                };
+            }
+            else if (this.HubDatabaseAuthenticationType.Equals("userAssigned", System.StringComparison.OrdinalIgnoreCase))
+            {
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(IdentityId)) ||
+                    string.IsNullOrEmpty(this.IdentityId))
+                {
+                    throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.IdentityIdRequired,
+                        "UserAssignedIdentityId");
+                }
+
+                newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.IdentityId);
+            }
+            else
+            {
+                throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidDatabaseAuthenticationType,
+                        "HubDatabaseAuthenticationType");
+            }
+
+
+            if (MyInvocation.BoundParameters.ContainsKey("IntervalInSeconds"))
+            {
+                newModel.IntervalInSeconds = this.IntervalInSeconds;
+            }
+
+            newModel.UsePrivateLinkConnection = UsePrivateLinkConnection.IsPresent;
+
+            if (MyInvocation.BoundParameters.ContainsKey("SyncDatabaseResourceGroupName")
+                && MyInvocation.BoundParameters.ContainsKey("SyncDatabaseServerName")
+                && MyInvocation.BoundParameters.ContainsKey("SyncDatabaseName"))
+            {
+                this.syncDatabaseId = string.Format("resourceGroups/{0}/providers/Microsoft.Sql/servers/{1}/databases/{2}",
+                    this.SyncDatabaseResourceGroupName, this.SyncDatabaseServerName, this.SyncDatabaseName);
+            }
+
+            // if schema file is specified
+            if (MyInvocation.BoundParameters.ContainsKey("SchemaFile"))
+            {
+                try
+                {
+                    newModel.Schema = ConstructSchemaFromFileV2(this.SchemaFile);
+                }
+                catch (CloudException ex)
+                {
+                    // There are problems with schema file
+                    throw new PSArgumentException(ex.Response.ToString(), "SchemaFile");
+                }
+            }
+            newEntity.Add(newModel);
+            return newEntity;
+        }
+
+        /// <summary>
+        /// Create the new sync group
+        /// </summary>
+        /// <param name="entity">The output of apply user input to model</param>
+        /// <returns>The input entity</returns>
+        protected override IEnumerable<AzureSqlSyncGroupModelV2> PersistChanges(IEnumerable<AzureSqlSyncGroupModelV2> entity)
+        {
+            return new List<AzureSqlSyncGroupModelV2>() {
+                ModelAdapter.CreateSyncGroup(entity.First(), this.syncDatabaseId)
+            };
+        }
+    }
+}
