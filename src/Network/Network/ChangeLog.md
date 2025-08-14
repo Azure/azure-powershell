@@ -27,6 +27,8 @@
         - `Get-AzApplicationGatewayFirewallPolicy`
         - `Set-AzApplicationGatewayFirewallPolicy`
         - `New-AzApplicationGatewayFirewallPolicy`
+* Onboarded FileShares to Private Link Common Cmdlets
+* Updated Api version for StorageSync to Private Link Common Cmdlets
 
 
 ## Version 7.19.0
