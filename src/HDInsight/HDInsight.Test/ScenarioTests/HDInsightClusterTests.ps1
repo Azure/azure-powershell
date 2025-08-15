@@ -22,7 +22,7 @@ function Test-HDInsightJobManagementCommands{
 		$clusterName = "ps-test-cluster" 
 		$resourceGroupName = "group-ps-test"
 		$httpUser="admin"
-		$httpPassword = ConvertTo-SecureString "Password1234!" -AsPlainText -Force
+		$httpPassword = ConvertTo-SecureString "Sanitized" -AsPlainText -Force
 		$httpCredential = New-Object System.Management.Automation.PSCredential($httpUser, $httpPassword)
 		# test Use-AzHDInsightCluster
 		Use-AzHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredential
@@ -677,7 +677,7 @@ function Test-ManagementCluster{
 		$resourceGroup="group-ps-test"
 		$clusterName="ps-test-cluster"
 		$httpUser="admin"
-		$httpPassword = ConvertTo-SecureString "Password1234!" -AsPlainText -Force
+		$httpPassword = ConvertTo-SecureString "Sanitized" -AsPlainText -Force
 		$clusterCreds = New-Object System.Management.Automation.PSCredential($httpUser, $httpPassword)
 		Set-AzHDInsightGatewayCredential -ClusterName $clusterName -ResourceGroupName $resourceGroup -HttpCredential $clusterCreds
  	}

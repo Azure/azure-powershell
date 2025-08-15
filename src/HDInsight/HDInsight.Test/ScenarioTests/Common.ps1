@@ -130,7 +130,7 @@ function Prepare-ClusterCreateParameter{
     $storageAccountKey = "Sanitized"
 
     $httpUser="admin"
-    $textPassword= "YourPw!00953"
+    $textPassword= "Sanitized"
     $httpPassword=ConvertTo-SecureString $textPassword -AsPlainText -Force
     $sshUser="sshuser"
     $sshPassword=$httpPassword

@@ -134,7 +134,7 @@ function Test-CreateClusterByConfigurationPipelining{
 
 		#test Add-AzHDInsightMetastore
 		$sqlUser="username"
-		$sqlPassword = ConvertTo-SecureString "Password1234!" -AsPlainText -Force
+		$sqlPassword = ConvertTo-SecureString "Sanitized" -AsPlainText -Force
 		$sqlCredential = New-Object System.Management.Automation.PSCredential($sqlUser, $sqlPassword)
 		$config = Add-AzHDInsightMetastore -Config $config `
 			-MetastoreType HiveMetastore -SqlAzureServerName "pstestsqldbserver.database.windows.net" `

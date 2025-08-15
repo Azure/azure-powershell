@@ -24,7 +24,7 @@
           "138"
         ]
       },
-      "RequestBody": "{\r\n  \"restAuthCredential.isEnabled\": true,\r\n  \"restAuthCredential.username\": \"admin\",\r\n  \"restAuthCredential.password\": \"Password1234!\"\r\n}",
+      "RequestBody": "{\r\n  \"restAuthCredential.isEnabled\": true,\r\n  \"restAuthCredential.username\": \"admin\",\r\n  \"restAuthCredential.password\": \"Sanitized\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -300,7 +300,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"restAuthCredential.isEnabled\": \"true\",\r\n  \"restAuthCredential.username\": \"admin\",\r\n  \"restAuthCredential.password\": \"Password1234!\"\r\n}",
+      "ResponseBody": "{\r\n  \"restAuthCredential.isEnabled\": \"true\",\r\n  \"restAuthCredential.username\": \"admin\",\r\n  \"restAuthCredential.password\": \"Sanitized\"\r\n}",
       "StatusCode": 200
     }
   ],
