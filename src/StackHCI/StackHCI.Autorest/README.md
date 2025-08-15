@@ -413,6 +413,14 @@ directive:
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11
   - where:
+      subject: EdgeDevice
+      variant: Validate|ValidateViaIdentity
+    set:
+      breaking-change:
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11
+  - where:
       parameter-name: IdentityType
     set:
       breaking-change:
