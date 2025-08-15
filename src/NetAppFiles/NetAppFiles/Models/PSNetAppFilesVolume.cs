@@ -532,5 +532,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Id of the snapshot or backup that the volume is restored from.
         /// </remarks>
         public string OriginatingResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets while auto splitting the short term clone volume, if the
+        /// parent pool does not have enough space to accommodate the volume after
+        /// split, it will be automatically resized, which will lead to increased
+        /// billing. To accept capacity pool size auto grow and create a short term
+        /// clone volume, set the property as accepted. Possible values include: &#39;Accepted&#39;, &#39;Declined&#39;
+        /// </summary>        
+        public string AcceptGrowCapacityPoolForShortTermCloneSplit { get; set; }
+
     }
 }
