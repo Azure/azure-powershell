@@ -331,7 +331,7 @@ function Test-SetManagedInstance-FlexibleMemoryTesting
 {
 	try
 	{
-		$defaultParams = Get-DefaultManagedInstanceParametersV3
+		$defaultParams = Get-DefaultManagedInstanceParametersMemorySizeInGBTesting
 		$credentials = Get-ServerCredential
 		$managedInstanceName = "az-powershell-flexmem-testing-set"
 		$vCore = 8
@@ -345,7 +345,7 @@ function Test-SetManagedInstance-FlexibleMemoryTesting
 		$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
 			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
 			-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
-			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps -AsJob
+			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -AsJob
 		$job | Wait-Job
 		$managedInstance = $job.Output
 
@@ -361,7 +361,7 @@ function Test-SetManagedInstance-FlexibleMemoryTesting
 		$memorySizeInGB = 64
 
 		$managedInstance = Set-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
-			-MemorySizeInGB $memorySizeInGB -Force
+			-Vcore $vCore -MemorySizeInGB $memorySizeInGB -IsGeneralPurposeV2 $isGeneralPurposeV2 -Force
 
 		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
 		Assert-AreEqual $managedInstance.Sku.Name $skuName

@@ -448,9 +448,9 @@ AuthenticationMetadata           : Windows
 
 This command updates an existing managed instance to use Windows metadata for authentication of synced users.
 
-### Example 12: Change existing instance by setting new value to MemorySizeInGB
+### Example 12: Change existing instance by setting new value to MemorySizeInGB and keeping current or setting new value for VCores
 ```powershell
-Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -MemorySizeInGB 64
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -MemorySizeInGB 64 -VCores 8
 ```
 
 ```output
