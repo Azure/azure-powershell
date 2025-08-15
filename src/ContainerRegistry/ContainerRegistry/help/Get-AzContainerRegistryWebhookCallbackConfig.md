@@ -19,6 +19,13 @@ Get-AzContainerRegistryWebhookCallbackConfig -RegistryName <String> -ResourceGro
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GetViaIdentityRegistry
+```
+Get-AzContainerRegistryWebhookCallbackConfig -WebhookName <String>
+ -RegistryInputObject <IContainerRegistryIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzContainerRegistryWebhookCallbackConfig -InputObject <IContainerRegistryIdentity>
@@ -63,11 +70,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: GetViaIdentityRegistry
 Aliases:
 
 Required: True
@@ -129,7 +150,7 @@ The name of the webhook.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityRegistry
 Aliases:
 
 Required: True
@@ -179,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ICallbackConfig
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ICallbackConfig
 
 ## NOTES
 
