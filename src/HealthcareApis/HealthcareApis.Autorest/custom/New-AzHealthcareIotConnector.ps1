@@ -34,6 +34,7 @@ https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcare
 #>
 function New-AzHealthcareIotConnector {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector])]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.GenericBreakingChangeAttribute("IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.", "15.0.0", "9.0.0", "2025/11/03")]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
