@@ -265,13 +265,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput
 
 ## NOTES
 

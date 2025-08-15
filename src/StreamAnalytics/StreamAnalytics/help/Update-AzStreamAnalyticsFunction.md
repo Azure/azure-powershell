@@ -227,7 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction
 
 ## NOTES
 
