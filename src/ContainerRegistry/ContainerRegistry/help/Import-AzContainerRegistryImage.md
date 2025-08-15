@@ -42,7 +42,7 @@ Copies an image to this container registry from the specified container registry
 
 ### Example 1: Import image from a public/azure registry to an azure container registry.
 ```powershell
-Import-AzContainerRegistryImage -SourceImage library/busybox:latest -ResourceGroupName $resourceGroupName -RegistryName $RegistryName -SourceRegistryUri docker.io -TargetTag busybox:latest
+Import-AzContainerRegistryImage -SourceImage library/busybox:latest -ResourceGroupName YourResourceGroupName -RegistryName YourRegistryName -SourceRegistryUri docker.io -TargetTag busybox:latest
 ```
 
 Import busybox to ACR.
