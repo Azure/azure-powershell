@@ -58,7 +58,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^(Create|Update|Check)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^(Create|Update|Check)(?!.*?(Expanded))
     remove: true
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CheckViaIdentityExpanded$

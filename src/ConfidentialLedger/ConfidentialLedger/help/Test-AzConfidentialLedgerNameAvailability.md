@@ -12,21 +12,8 @@ To check whether a resource name is available.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
 Test-AzConfidentialLedgerNameAvailability [-SubscriptionId <String>] [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaJsonFilePath
-```
-Test-AzConfidentialLedgerNameAvailability [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaJsonString
-```
-Test-AzConfidentialLedgerNameAvailability [-SubscriptionId <String>] -JsonString <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,42 +74,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Check operation
-
-```yaml
-Type: System.String
-Parameter Sets: CheckViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Check operation
-
-```yaml
-Type: System.String
-Parameter Sets: CheckViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -154,7 +111,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
