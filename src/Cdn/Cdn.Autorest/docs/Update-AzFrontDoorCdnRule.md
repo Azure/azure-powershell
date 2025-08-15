@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnRule
 
 ## SYNOPSIS
-update an existing delivery rule within a rule set.
+Update an existing delivery rule within a rule set.
 
 ## SYNTAX
 
@@ -70,7 +70,7 @@ Update-AzFrontDoorCdnRule -Name <String> -ProfileName <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-update an existing delivery rule within a rule set.
+Update an existing delivery rule within a rule set.
 
 ## EXAMPLES
 
