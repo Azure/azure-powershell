@@ -29,6 +29,7 @@ https://learn.microsoft.com/powershell/module/az.containerregistry/test-azcontai
 #>
 function Test-AzContainerRegistryWebhook {
 [OutputType([System.String])]
+[Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.OutputBreakingChangeAttribute("System.String", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "System.String", DeprecatedOutputProperties = ("Action"), NewOutputProperties = ("Action. This parameter will be changed from single object to 'List'."))]
 [CmdletBinding(DefaultParameterSetName='Ping', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Ping',Mandatory)]

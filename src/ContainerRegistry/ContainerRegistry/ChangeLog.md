@@ -18,6 +18,31 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement for below commands from array or single object to list.
+  * `Get-AzContainerRegistry`
+  * `New-AzContainerRegistry`
+  * `Update-AzContainerRegistry`
+  * `Get-AzContainerRegistryCredential`
+  * `New-AzContainerRegistryCredential`
+  * `Update-AzContainerRegistryCredential`
+  * `Get-AzContainerRegistryExportPipeline`
+  * `New-AzContainerRegistryExportPipeline`
+  * `Get-AzContainerRegistryImportPipeline`
+  * `New-AzContainerRegistryImportPipeline`
+  * `Get-AzContainerRegistryReplication`
+  * `New-AzContainerRegistryReplication`
+  * `Get-AzContainerRegistryScopeMap`
+  * `New-AzContainerRegistryScopeMap`
+  * `Update-AzContainerRegistryScopeMap`
+  * `Get-AzContainerRegistryToken`
+  * `New-AzContainerRegistryToken`
+  * `Update-AzContainerRegistryToken`
+  * `Get-AzContainerRegistryWebhook`
+  * `New-AzContainerRegistryWebhook`
+  * `Test-AzContainerRegistryWebhook`
+  * `Update-AzContainerRegistryWebhook`
+  * `Get-AzContainerRegistryWebhookEvent`
+  * `Import-AzContainerRegistryImage`
 
 ## Version 4.3.0
 * Upgraded nuget package to signed package.
