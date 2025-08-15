@@ -30,8 +30,8 @@
   * Cmdlet `Invoke-AzStackHciConsentAndInstallDefaultExtension`
   * Cmdlet `Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit`
 * The parameters of the 'New/Update-AzStackHciCluster' commands will be changed.
- * 'IdentityType' will be removed. 'EnableSystemAssignedIdentity' will be used to enable/disable system-assigned identities.
- * The type of 'UserAssignedIdentity' will be simplified to an array of strings that is used to specify the user's assigned identity.
+  * 'IdentityType' will be removed. 'EnableSystemAssignedIdentity' will be used to enable/disable system-assigned identities.
+  * The type of 'UserAssignedIdentity' will be simplified to an array of strings that is used to specify the user's assigned identity.
 * The parameter set `Extend` and `ExtendViaIdentity` for cmdlet `Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit` will be removed.
 * The parameter set `Validate` and ValidateViaIdentity for cmdlet `Test-AzStackHciEdgeDevice` will be removed.
 
