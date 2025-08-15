@@ -16,14 +16,14 @@ Creates a new Azure NetApp Files (ANF) pool.
 ```
 New-AzNetAppFilesPool -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String>
  -PoolSize <Int64> -ServiceLevel <String> [-QosType <String>] [-CoolAccess] [-EncryptionType <String>]
- [-CustomThroughputMibps <Double>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-CustomThroughput <Double>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 New-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-QosType <String>] [-CoolAccess]
- [-EncryptionType <String>] [-CustomThroughputMibps <Double>] [-Tag <Hashtable>]
+ [-EncryptionType <String>] [-CustomThroughput <Double>] [-Tag <Hashtable>]
  -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -102,7 +102,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomThroughputMibps
+### -CustomThroughput
 Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level
 
 ```yaml

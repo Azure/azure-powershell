@@ -15,7 +15,7 @@ Updates an Azure NetApp Files (ANF) pool according to the optional modifiers pro
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -AccountName <String> -Name <String>
- [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-CustomThroughputMibps <Double>] [-Tag <Hashtable>]
+ [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess] [-CustomThroughput <Double>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -Accou
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
- [-CustomThroughputMibps <Double>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
+ [-CustomThroughput <Double>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-QosType <String>] 
 ### ByResourceIdParameterSet
 ```
 Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
- [-CustomThroughputMibps <Double>] [-Tag <Hashtable>] -ResourceId <String>
+ [-CustomThroughput <Double>] [-Tag <Hashtable>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -39,7 +39,7 @@ Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
 ### ByObjectParameterSet
 ```
 Update-AzNetAppFilesPool [-PoolSize <Int64>] [-QosType <String>] [-CoolAccess]
- [-CustomThroughputMibps <Double>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesPool>
+ [-CustomThroughput <Double>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesPool>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -116,7 +116,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomThroughputMibps
+### -CustomThroughput
 Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level
 
 ```yaml

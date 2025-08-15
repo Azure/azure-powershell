@@ -16,14 +16,14 @@ Updates an Azure NetApp Files (ANF) Capacity Pool with the new data set.
 ```
 Set-AzNetAppFilesPool -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String>
  -PoolSize <Int64> -ServiceLevel <String> [-QosType <String>] [-CoolAccess] [-Tag <Hashtable>]
- [-CustomThroughputMibps <Double>] [-DefaultProfile <IAzureContextContainer>]
+ [-CustomThroughput <Double>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Set-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-QosType <String>] [-CoolAccess]
- [-Tag <Hashtable>] [-CustomThroughputMibps <Double>] -AccountObject <PSNetAppFilesAccount>
+ [-Tag <Hashtable>] [-CustomThroughput <Double>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Set-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-
 ### ByResourceIdParameterSet
 ```
 Set-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-QosType <String>] [-CoolAccess]
- [-Tag <Hashtable>] [-CustomThroughputMibps <Double>] -ResourceId <String>
+ [-Tag <Hashtable>] [-CustomThroughput <Double>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -95,7 +95,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomThroughputMibps
+### -CustomThroughput
 Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level
 
 ```yaml

@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         [Parameter(
             Mandatory = false,
             HelpMessage = "Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level")]
-        public double? CustomThroughputMibps { get; set; }
+        public double? CustomThroughput { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 QosType = QosType,
                 CoolAccess = CoolAccess,
                 EncryptionType = EncryptionType,
-                CustomThroughputMibps = CustomThroughputMibps,
+                CustomThroughputMibps = CustomThroughput,
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

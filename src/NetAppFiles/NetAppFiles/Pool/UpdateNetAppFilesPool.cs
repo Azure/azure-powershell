@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         [Parameter(
             Mandatory = false,
             HelpMessage = "Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level")]
-        public double? CustomThroughputMibps { get; set; }
+        public double? CustomThroughput { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Location = Location,
                 Tags = tagPairs,
                 QosType = QosType,
-                CustomThroughputMibps = CustomThroughputMibps
+                CustomThroughputMibps = CustomThroughput
             };
             if (CoolAccess.IsPresent)
             {
