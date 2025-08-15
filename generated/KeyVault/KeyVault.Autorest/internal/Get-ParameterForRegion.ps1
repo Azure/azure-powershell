@@ -34,7 +34,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <IManagedHsm>: Resource information with extended details.
+  [IdentityType <String>]: Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+  [IdentityUserAssignedIdentity <IUserAssignedIdentities>]: The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+    [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
   [Location <String>]: The supported Azure location where the managed HSM Pool should be created.
+  [SkuFamily <String>]: SKU Family of the managed HSM Pool
   [SkuName <String>]: SKU of the managed HSM Pool
   [Tag <IManagedHsmResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.

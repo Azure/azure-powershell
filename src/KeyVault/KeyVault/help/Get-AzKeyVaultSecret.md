@@ -187,7 +187,6 @@ Tags         :
 
 This command gets a specific version of the secret named secret1 in the key vault named Contoso.
 
-
 ### Example 5: Get the current version of a specific secret using Uri
 ```powershell
 Get-AzKeyVaultSecret -Id 'https://contoso.vault.azure.net/secrets/secret1/'
@@ -388,7 +387,7 @@ This example Gets a secret named `secureSecret` in Azure Key Vault named `test-k
 When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByVaultName, BySecretName, ByInputObjectVaultName, ByInputObjectSecretName, BySecretUri, ByParentResourceIdVaultName, ByParentResourceIdSecretName
 Aliases:
 
@@ -403,7 +402,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -419,27 +418,12 @@ The URI of the KeyVault Secret.
 Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretUri
 Aliases: SecretId
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InRemovedState
-Specifies whether to show the previously deleted secrets in the output
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: ByVaultName, ByInputObjectVaultName, BySecretUri, ByParentResourceIdVaultName
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -452,7 +436,7 @@ If you specify this parameter you must also specify the *Name* and *VaultName* p
 If you do not specify the *IncludeVersions* parameter, this cmdlet gets the current version of the secret with the specified *Name*.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: BySecretVersions, ByInputObjectSecretVersions, ByParentResourceIdSecretVersions
 Aliases:
 
@@ -467,7 +451,7 @@ Accept wildcard characters: False
 KeyVault Object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObjectVaultName, ByInputObjectSecretName, ByInputObjectSecretVersions
 Aliases:
 
@@ -478,11 +462,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Specifies whether to show the previously deleted secrets in the output
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByVaultName, ByInputObjectVaultName, BySecretUri, ByParentResourceIdVaultName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the secret to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName, ByInputObjectVaultName, ByParentResourceIdVaultName
 Aliases: SecretName
 
@@ -494,7 +493,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretName, BySecretVersions, ByInputObjectSecretName, ByInputObjectSecretVersions, ByParentResourceIdSecretName, ByParentResourceIdSecretVersions
 Aliases: SecretName
 
@@ -509,7 +508,7 @@ Accept wildcard characters: True
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParentResourceIdVaultName, ByParentResourceIdSecretName, ByParentResourceIdSecretVersions
 Aliases: ResourceId
 
@@ -525,7 +524,7 @@ Specifies the name of the key vault to which the secret belongs.
 This cmdlet constructs the fully qualified domain name (FQDN) of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName, BySecretName, BySecretVersions
 Aliases:
 
@@ -541,7 +540,7 @@ Specifies the secret version.
 This cmdlet constructs the FQDN of a secret based on the key vault name, your currently selected environment, the secret name, and the secret version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretName, ByInputObjectSecretName, ByParentResourceIdSecretName
 Aliases: SecretVersion
 
