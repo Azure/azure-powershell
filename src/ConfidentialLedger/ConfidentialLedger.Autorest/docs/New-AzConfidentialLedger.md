@@ -8,19 +8,19 @@ schema: 2.0.0
 # New-AzConfidentialLedger
 
 ## SYNOPSIS
-Creates a  Confidential Ledger with the specified ledger parameters.
+Create a  Confidential Ledger with the specified ledger parameters.
 
 ## SYNTAX
 
 ```
 New-AzConfidentialLedger -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
- [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Location <String>]
+ [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <String>] [-Location <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a  Confidential Ledger with the specified ledger parameters.
+Create a  Confidential Ledger with the specified ledger parameters.
 
 ## EXAMPLES
 
@@ -86,10 +86,9 @@ Creates a new Confidential Ledger using objects for `AadBasedSecurityPrincipal` 
 
 ### -AadBasedSecurityPrincipal
 Array of all AAD based Security Principals.
-To construct, see NOTES section for AADBASEDSECURITYPRINCIPAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,10 +116,9 @@ Accept wildcard characters: False
 
 ### -CertBasedSecurityPrincipal
 Array of all cert based Security Principals.
-To construct, see NOTES section for CERTBASEDSECURITYPRINCIPAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +149,7 @@ Accept wildcard characters: False
 Type of Confidential Ledger
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +290,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger
+### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger
 
 ## NOTES
 
