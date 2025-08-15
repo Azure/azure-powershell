@@ -84,10 +84,14 @@ directive:
       variant: ^(Extend)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
+      subject: EdgeDevice
+      variant: ^(Validate)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
       verb: Set
       subject: Workspace
     remove: true
-  # Remove Update-AzStackHciExtension 
+  # Remove Update-AzStackHciExtension
   - where:
       verb: Update
       subject: Extension
@@ -112,7 +116,7 @@ directive:
       verb: New
       subject: ArcSettingPassword
     remove: true
-  # Remove Update-AzStackHciArcSetting
+  # Remove Update (Get-Put) commands and use set cmdlets.
   - where:
       verb: Update
       subject: ArcSetting|DeploymentSetting|EdgeDevice|SecuritySetting|Update$|UpdateRun|UpdateSummary

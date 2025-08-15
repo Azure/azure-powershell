@@ -19,18 +19,6 @@ Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -EdgeDeviceId <St
  [<CommonParameters>]
 ```
 
-### Validate
-```
-Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -ValidateRequest <IValidateRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzStackHciEdgeDevice -InputObject <IStackHciIdentity> -ValidateRequest <IValidateRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaIdentityExpanded
 ```
 Test-AzStackHciEdgeDevice -InputObject <IStackHciIdentity> -EdgeDeviceId <String[]> [-AdditionalInfo <String>]
@@ -137,7 +125,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
+Parameter Sets: ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -182,7 +170,7 @@ Name of Device
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases: EdgeDeviceName
 
 Required: True
@@ -212,28 +200,13 @@ The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ValidateRequest
-The validate request for Edge Device.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IValidateRequest
-Parameter Sets: Validate, ValidateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -274,8 +247,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IValidateRequest
 
 ## OUTPUTS
 
