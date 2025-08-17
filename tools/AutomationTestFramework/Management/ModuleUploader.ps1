@@ -11,6 +11,9 @@
     # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Import the storage upload helper module
+Import-Module "$PSScriptRoot\..\..\StorageUploadHelper.psm1" -Force
+
 function Upload-ModuleToStorage (
     [hashtable] $storage,
     [string] $modulePath,
@@ -20,7 +23,7 @@ function Upload-ModuleToStorage (
     $zipName = "$moduleName.zip"
     $now = Get-Date
     $context = (Get-AzStorageAccount -ResourceGroupName $storage.ResourceGroupName -AccountName $storage.AccountName).Context
-    $null = Set-AzStorageBlobContent -Container $storage.ContainerName -File "$modulePath\$zipName" -Blob $zipName -Context $context -Verbose:$false -Force -ErrorAction Stop
+    $null = Set-AzStorageBlobContentWithCorrectType -Container $storage.ContainerName -File "$modulePath\$zipName" -Blob $zipName -Context $context -Verbose:$false -Force -ErrorAction Stop
     New-AzStorageBlobSASToken -Container $storage.ContainerName -Blob $zipName -Context $context -Permission rwd -StartTime $now.AddHours(-1) -ExpiryTime $now.AddHours(1) -FullUri -ErrorAction Stop
     Write-Verbose "$zipName uploaded to Storage."
 }
