@@ -1,6 +1,20 @@
 # Azure PowerShell Repository
 
-Azure PowerShell is a collection of 200+ PowerShell modules for managing Azure resources. The repository contains both SDK-based modules and AutoRest-generated modules, all built using .NET and MSBuild.
+Azure PowerShell is a collection of 200+ PowerShell modules for managing Azure resources. The repository contains modules with two types of projects: SDK-based projects and AutoRest-generated projects, all built using .NET and MSBuild.
+
+## Architecture Overview
+
+Azure PowerShell consists of **two main development approaches for projects**:
+
+1. **SDK-based projects** - Hand-written C# cmdlets with custom business logic
+2. **AutoRest-based projects** - Auto-generated from OpenAPI specs via AutoRest PowerShell (mostly newer Azure services)
+
+Always check project type before making changes - SDK vs AutoRest projects have different development patterns.
+
+### Modules vs Projects
+- **Module**: A complete PowerShell module (e.g., `Az.Compute`) that can consist of multiple projects
+- **Project**: Individual C# project within a module, developed with one approach (SDK-based OR AutoRest)
+- **Hybrid Module**: Contains both SDK-based and AutoRest projects (e.g., `Az.Resources` with both approaches)
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
@@ -61,7 +75,7 @@ Get-Command -Module Az.YourModule
 # Get-AzVM -ResourceGroupName "test-rg" 
 # New-AzVM -Name "test-vm" -ResourceGroupName "test-rg" -Location "East US"
 
-# For AutoRest modules, test generated cmdlets
+# For AutoRest projects, test generated cmdlets
 # Get-AzQuota -SubscriptionId "your-subscription-id"
 
 # Verify help is working
@@ -98,7 +112,7 @@ If build appears to hang or shows no progress:
 ### Module-Specific Issues
 - Help generation requires platyPS module to be installed and functioning
 - Static analysis requires PSScriptAnalyzer module  
-- Some modules depend on specific Azure SDK versions from Azure DevOps feeds
+- Some projects depend on specific Azure SDK versions from Azure DevOps feeds
 - Missing ChangeLog.md updates will cause PR validation to fail
 
 ### Build Artifacts Issues
@@ -116,26 +130,28 @@ If `Import-Module` fails after build:
 ## Repository Structure and Navigation
 
 ### Key Directories
-- `/src/` - SDK-based PowerShell modules (200+ modules)
-- `/generated/` - AutoRest-generated modules  
+- `/src/` - All modules, containing both SDK-based projects and AutoRest-based projects
+- `/generated/` - Pure generated code for AutoRest-based projects  
 - `/tools/` - Build scripts, static analysis, testing utilities
 - `/documentation/` - Developer guides, design guidelines, testing docs
 - `/artifacts/` - Build outputs (created during build process)
 
-### Module Types
-Two types of modules with different development approaches:
+### Project Types
+Two types of projects with different development approaches:
 
-**SDK-based modules** (in `/src/`):
+**SDK-based projects** (in `/src/`):
 - Hand-written C# cmdlets using Azure .NET SDKs
 - Example: `/src/Accounts/`, `/src/Compute/`
 - Build using main repository build system
 - Follow patterns in `/documentation/development-docs/azure-powershell-developer-guide.md`
 
-**AutoRest-generated modules** (in `/generated/` and some `/src/`):
+**AutoRest-generated projects** (in `/generated/` and some `/src/`):
 - Generated from REST API specifications
 - Example: `/generated/Cdn/Cdn.Autorest/`
 - Have individual build scripts: `build-module.ps1`, `test-module.ps1`, `pack-module.ps1`
 - Follow patterns in individual module `how-to.md` files
+
+**Hybrid modules**: Some modules contain both SDK-based and AutoRest-based projects, requiring understanding of both approaches.
 
 ### Important Files
 - `build.proj` - Main MSBuild file for entire repository
@@ -163,7 +179,7 @@ Two types of modules with different development approaches:
 ### Individual Module Development
 For individual module work when you don't need to build the entire repository:
 
-**SDK-based modules** (in `/src/`):
+**SDK-based projects** (in `/src/`):
 ```bash
 # Build just your module (much faster than full repository build)
 dotnet msbuild build.proj /p:Scope=YourModule
@@ -172,12 +188,12 @@ dotnet msbuild build.proj /p:Scope=YourModule
 dotnet msbuild build.proj /p:TargetModule=YourModule
 ```
 
-**AutoRest modules** (in `/src/` and `/generated/`):
+**AutoRest projects** (in `/src/` and `/generated/`):
 ```bash
-# Most AutoRest modules are built as part of the main build system
+# Most AutoRest projects are built as part of the main build system
 dotnet msbuild build.proj /p:Scope=YourModule
 
-# Some generated modules have individual test scripts
+# Some generated projects have individual test scripts
 cd generated/YourModule/YourModule.Autorest
 ./test-module.ps1 -Playback    # Run tests in playback mode
 ./test-module.ps1 -Record      # Record new tests (requires Azure connection)
@@ -246,7 +262,7 @@ dotnet msbuild build.proj /t:Test                     # Run tests (15+ min)
 pwsh -c "Import-Module ./artifacts/Debug/Az.ModuleName/Az.ModuleName.psd1"
 pwsh -c "Get-Command -Module Az.ModuleName"
 
-# Individual module builds (for AutoRest modules)
+# Individual module builds (for AutoRest projects)
 cd generated/ModuleName/ModuleName.Autorest
 ./build-module.ps1                 # If available
 ./test-module.ps1                  # If available
