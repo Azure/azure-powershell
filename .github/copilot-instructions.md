@@ -73,7 +73,7 @@ Get-Command -Module Az.YourModule
 
 # Test a basic cmdlet workflow (example for Compute module)
 # Get-AzVM -ResourceGroupName "test-rg" 
-# New-AzVM -Name "test-vm" -ResourceGroupName "test-rg" -Location "East US"
+# New-AzVM -Name "test-vm" -ResourceGroupName "test-rg" -Location "East US" -Image "Win2019Datacenter" -Credential (Get-Credential)
 
 # For AutoRest projects, test generated cmdlets
 # Get-AzQuota -SubscriptionId "your-subscription-id"
@@ -82,7 +82,7 @@ Get-Command -Module Az.YourModule
 Get-Help Your-AzCmdlet -Examples
 
 # Test parameter validation and error handling
-Your-AzCmdlet -InvalidParameter "test"
+Get-AzVM -InvalidParameterName "test"
 ```
 
 **Required pre-commit validation workflow:**
