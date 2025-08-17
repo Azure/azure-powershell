@@ -39,26 +39,53 @@ Test execution patterns:
 
 Test framework uses .NET 6 target framework and Azure Test Framework for recording/playback of HTTP requests.
 
-### Validation Steps
-Always run these validation steps before committing changes:
-- Build succeeds: `dotnet msbuild build.proj /p:Scope=YourModule` 
-- Static analysis passes: `dotnet msbuild build.proj /t:StaticAnalysis`
-- Help generation succeeds: `dotnet msbuild build.proj /t:GenerateHelp`
-- Tests pass: Navigate to test directory and run tests for your module
-- **SCENARIO VALIDATION**: Import your module and test actual PowerShell cmdlets work correctly:
-  ```powershell
-  Import-Module ./artifacts/Debug/Az.YourModule/Az.YourModule.psd1
-  Get-Command -Module Az.YourModule
-  # Test actual cmdlet functionality
-  ```
+### Manual Validation Scenarios
+**CRITICAL**: Always perform manual validation after making changes. Simply building is not sufficient.
+
+**Core validation steps:**
+1. Build succeeds: `dotnet msbuild build.proj /p:Scope=YourModule` 
+2. Static analysis passes: `dotnet msbuild build.proj /t:StaticAnalysis`  
+3. Help generation succeeds: `dotnet msbuild build.proj /t:GenerateHelp`
+4. Tests pass: Navigate to test directory and run tests for your module
+
+**Manual testing scenarios:**
+After building, always test real functionality:
+```powershell
+# Import the built module
+Import-Module ./artifacts/Debug/Az.YourModule/Az.YourModule.psd1
+
+# Verify cmdlets are available  
+Get-Command -Module Az.YourModule
+
+# Test a basic cmdlet workflow (example for Compute module)
+# Get-AzVM -ResourceGroupName "test-rg" 
+# New-AzVM -Name "test-vm" -ResourceGroupName "test-rg" -Location "East US"
+
+# For AutoRest modules, test generated cmdlets
+# Get-AzQuota -SubscriptionId "your-subscription-id"
+
+# Verify help is working
+Get-Help Your-AzCmdlet -Examples
+
+# Test parameter validation and error handling
+Your-AzCmdlet -InvalidParameter "test"
+```
+
+**Required pre-commit validation workflow:**
+1. Clean and build your module: `dotnet msbuild build.proj /t:Clean; dotnet msbuild build.proj /p:Scope=YourModule`
+2. Run static analysis: `dotnet msbuild build.proj /t:StaticAnalysis` 
+3. Import and manually test your cmdlets using realistic scenarios
+4. Run your module's specific tests: `cd src/YourModule/YourModule.Test; dotnet test`
+5. Update ChangeLog.md files with your changes
 
 ## Common Build Issues and Workarounds
 
 ### Network Connectivity Issues
 **CRITICAL**: If you see "Failed to download package" or "Name or service not known" errors:
 - This indicates firewall/proxy issues blocking access to Azure DevOps package feeds
-- Workaround 1: Configure corporate proxy/firewall to allow `*.vsblob.vsassets.io` and `pkgs.dev.azure.com`
-- Workaround 2: Use VPN or different network environment
+- Affected URLs: `*.vsblob.vsassets.io`, `pkgs.dev.azure.com`
+- Workaround 1: Configure corporate proxy/firewall to allow these domains
+- Workaround 2: Use VPN or different network environment  
 - **DO NOT** attempt to modify NuGet.Config - this will break the build
 
 ### Incomplete Builds
@@ -66,11 +93,25 @@ If build appears to hang or shows no progress:
 - **DO NOT CANCEL** - builds can take 45+ minutes with periods of no visible progress
 - Monitor system resources - builds are CPU and network intensive
 - Check network connectivity if stuck on package restore
+- Builds may pause during package downloads or complex compilation steps
 
 ### Module-Specific Issues
 - Help generation requires platyPS module to be installed and functioning
-- Static analysis requires PSScriptAnalyzer module
+- Static analysis requires PSScriptAnalyzer module  
 - Some modules depend on specific Azure SDK versions from Azure DevOps feeds
+- Missing ChangeLog.md updates will cause PR validation to fail
+
+### Build Artifacts Issues
+If you see errors like "Cannot find path '/artifacts/Debug'":
+- This means the build didn't complete successfully
+- Run a clean build: `dotnet msbuild build.proj /t:Clean; dotnet msbuild build.proj`
+- Check for network connectivity issues during package restore
+
+### PowerShell Module Import Issues
+If `Import-Module` fails after build:
+- Ensure the build completed successfully and artifacts exist in `/artifacts/Debug/`
+- Try restarting PowerShell session to clear any cached modules
+- Use `-Force` parameter: `Import-Module ./artifacts/Debug/Az.YourModule/Az.YourModule.psd1 -Force`
 
 ## Repository Structure and Navigation
 
@@ -119,12 +160,39 @@ Two types of modules with different development approaches:
 6. Add tests following patterns in `ModuleName.Test` directory
 7. Update `ChangeLog.md` with your changes
 
-### Working with AutoRest Modules
-1. Navigate to module directory (usually in `/generated/`)
-2. Modify files in `/custom/` directory for customizations
-3. Build using individual module scripts if they exist
-4. Test using `test-module.ps1` if available
-5. Refer to module-specific `how-to.md` for detailed instructions
+### Individual Module Development
+For individual module work when you don't need to build the entire repository:
+
+**SDK-based modules** (in `/src/`):
+```bash
+# Build just your module (much faster than full repository build)
+dotnet msbuild build.proj /p:Scope=YourModule
+
+# Build with dependencies (recommended)
+dotnet msbuild build.proj /p:TargetModule=YourModule
+```
+
+**AutoRest modules** (in `/src/` and `/generated/`):
+```bash
+# Most AutoRest modules are built as part of the main build system
+dotnet msbuild build.proj /p:Scope=YourModule
+
+# Some generated modules have individual test scripts
+cd generated/YourModule/YourModule.Autorest
+./test-module.ps1 -Playback    # Run tests in playback mode
+./test-module.ps1 -Record      # Record new tests (requires Azure connection)
+```
+
+**Module testing patterns:**
+```bash
+# Run tests for specific module 
+cd src/YourModule/YourModule.Test
+dotnet test
+
+# For Pester-based tests
+cd src/YourModule/YourModule.Test  
+pwsh -c "Invoke-Pester"
+```
 
 ### Running Specific Module Tests
 1. Navigate to module test directory: `cd src/YourModule/YourModule.Test`
