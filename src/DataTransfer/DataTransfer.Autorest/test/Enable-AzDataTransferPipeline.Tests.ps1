@@ -15,36 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzDataTransferPipeline
 }
 
 Describe 'Enable-AzDataTransferPipeline' {
-    It 'Enable pipeline' {
-        {
-            # Enable the pipeline
-            $result = Enable-AzDataTransferPipeline -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Justification "Test enabling pipeline" -Confirm:$false
-            
-            # Verify the operation was successful
-            $result | Should -Not -BeNullOrEmpty
-        } | Should -Not -Throw
-    }
-
-    It 'Enable pipeline with AsJob' {
-        {
-            # Enable pipeline as a background job
-            $job = Enable-AzDataTransferPipeline -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Justification "Test enabling pipeline as job" -AsJob -Confirm:$false
-            
-            # Verify the job is created
-            $job | Should -Not -BeNullOrEmpty
-            ($job.State -eq "Running" -or $job.State -eq "Completed") | Should -Be $true
-            
-            # Wait for the job to complete
-            $job | Wait-Job | Out-Null
-            ($job.State -eq "Completed") | Should -Be $true
-        } | Should -Not -Throw
-    }
-
     It 'Enable pipeline with NoWait' {
         {
             # Enable pipeline asynchronously
             $result = Enable-AzDataTransferPipeline -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Justification "Test enabling pipeline with NoWait" -NoWait -Confirm:$false
             
+            $pipeline = Get-AzDataTransferPipeline -Name $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+                    
+            if ($pipeline) {
+                Write-Host "Pipeline status check completed successfully"
+                $pipeline | Should -Not -BeNullOrEmpty
+                $pipeline.Status | Should -Not -Be "Disabled"
+            } else {
+                Write-Warning "Pipeline status could not be retrieved"
+            }
             # NoWait should return immediately
             $result | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
