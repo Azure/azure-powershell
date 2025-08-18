@@ -20,7 +20,7 @@
 
 
 ## Upcoming Release
-* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+* Added BreakingChange announcements for commands below:
   * `Get-AzAttestationDefaultProvider`
   * `Get-AzAttestationProvider`
   * `New-AzAttestationProvider`
