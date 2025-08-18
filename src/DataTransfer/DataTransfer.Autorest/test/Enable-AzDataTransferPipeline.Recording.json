@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "4129bc4e-5157-42a6-9a01-1acd2201a547" ],
+        "x-ms-client-request-id": [ "479dc531-680f-4b75-a170-55596335303e" ],
         "CommandName": [ "Get-AzDataTransferPipeline" ],
         "FullCommandName": [ "Get-AzDataTransferPipeline_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,17 +23,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"1e0086d2-0000-0100-0000-68a304c20000\"" ],
-        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "b4cc02d9-6688-488e-a884-662d2d9398d1" ],
-        "x-ms-correlation-request-id": [ "771d573b-e6cd-41a4-9671-27da3bb72131" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1100" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250818T105225Z:771d573b-e6cd-41a4-9671-27da3bb72131" ],
+        "x-ms-request-id": [ "64194195-a86e-48b2-b92b-63238c987eee" ],
+        "x-ms-correlation-request-id": [ "db91cf8c-1914-45a1-bd10-104ca5e6144f" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250818T110343Z:db91cf8c-1914-45a1-bd10-104ca5e6144f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: ED0F5BF1E79949369DD4B4C4877C956A Ref B: PNQ231110908062 Ref C: 2025-08-18T10:52:11Z" ],
-        "Date": [ "Mon, 18 Aug 2025 10:52:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 31EBC92D85DD4733869331CDA16D44AB Ref B: PNQ231110907031 Ref C: 2025-08-18T11:03:41Z" ],
+        "Date": [ "Mon, 18 Aug 2025 11:03:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "153161" ],
