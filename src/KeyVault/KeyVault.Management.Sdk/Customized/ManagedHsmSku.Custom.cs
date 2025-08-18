@@ -1,5 +1,12 @@
 ﻿namespace Microsoft.Azure.Management.KeyVault.Models
 {
+    /// <summary>
+    /// This partial class extends the generated ManagedHsmSku class in the KeyVault SDK
+    /// to provide default SKU values and helper methods for inferring the Family
+    /// from the SKU name.
+    /// Example: if Name is "Custom_C42", then Family will be "C".
+    /// Name and family are required by the Swagger contract
+    /// </summary>
     public partial class ManagedHsmSku
     {
         public const string DefaultFamily = "B";
