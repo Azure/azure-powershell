@@ -22,6 +22,7 @@ Create a in-memory object for EnvironmentVariable
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
 #>
 function New-AzContainerInstanceEnvironmentVariableObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.EnvironmentVariable')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

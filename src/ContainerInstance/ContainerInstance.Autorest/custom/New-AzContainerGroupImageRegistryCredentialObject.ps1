@@ -22,6 +22,7 @@ Create a in-memory object for ImageRegistryCredential
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
 #>
 function New-AzContainerGroupImageRegistryCredentialObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.ImageRegistryCredential')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
