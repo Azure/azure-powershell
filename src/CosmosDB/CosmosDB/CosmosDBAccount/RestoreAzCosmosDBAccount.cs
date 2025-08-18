@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 return;
             }
 
-            bool isSourceRestorableAccountDeleted = false;
             List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
 
             RestorableDatabaseAccountGetResult sourceAccountToRestore = null;
@@ -109,14 +108,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             if (restorableAccount.DeletionTime >= utcRestoreDateTime)
                             {
                                 sourceAccountToRestore = restorableAccount;
-                                isSourceRestorableAccountDeleted = true;
                                 break;
                             }
                         }
                         else
                         {
                             sourceAccountToRestore = restorableAccount;
-                            isSourceRestorableAccountDeleted = false;
                             break;
                         }
                     }
@@ -127,101 +124,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime}");
                 return;
-            }
-
-            // Validate if source account is empty if the source account is a live account.
-            if (!isSourceRestorableAccountDeleted)
-            {
-                string sourceLocation = Location;
-                if (!string.IsNullOrEmpty(SourceBackupLocation))
-                {
-                    sourceLocation = SourceBackupLocation;
-                }
-
-                bool restorableResourcesNotFound = false;
-                if (sourceAccountToRestore.ApiType.Equals("Sql", StringComparison.OrdinalIgnoreCase))
-                {
-                    try
-                    {
-                        IEnumerable<RestorableSqlResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
-                            sourceAccountToRestore.Location,
-                            sourceAccountToRestore.Name,
-                            sourceLocation,
-                            utcRestoreDateTime.ToString("u")).GetAwaiter().GetResult().Body;
-
-                        restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
-                    }
-                    catch (Exception)
-                    {
-                        WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
-                        return;
-                    }
-                }
-                else if (sourceAccountToRestore.ApiType.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
-                {
-                    try
-                    {
-                        IEnumerable<RestorableMongodbResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(
-                        sourceAccountToRestore.Location,
-                        sourceAccountToRestore.Name,
-                        sourceLocation,
-                        utcRestoreDateTime.ToString("u")).GetAwaiter().GetResult().Body;
-
-                        restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
-                    }
-                    catch (Exception)
-                    {
-                        WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
-                        return;
-                    }
-                }
-                else if (sourceAccountToRestore.ApiType.Equals("Gremlin, Sql", StringComparison.OrdinalIgnoreCase))
-                {
-                    try
-                    {
-                        IEnumerable<RestorableGremlinResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableGremlinResources.ListWithHttpMessagesAsync(
-                        sourceAccountToRestore.Location,
-                        sourceAccountToRestore.Name,
-                        sourceLocation,
-                        utcRestoreDateTime.ToString("u")).GetAwaiter().GetResult().Body;
-
-                        restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
-                    }
-                    catch (Exception)
-                    {
-                        WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
-                        return;
-                    }
-                }
-                else if (sourceAccountToRestore.ApiType.Equals("Table, Sql", StringComparison.OrdinalIgnoreCase))
-                {
-                    try
-                    {
-                        IEnumerable<RestorableTableResourcesGetResult> restorableResources = CosmosDBManagementClient.RestorableTableResources.ListWithHttpMessagesAsync(
-                        sourceAccountToRestore.Location,
-                        sourceAccountToRestore.Name,
-                        sourceLocation,
-                        utcRestoreDateTime.ToString("u")).GetAwaiter().GetResult().Body;
-
-                        restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
-                    }
-                    catch (Exception)
-                    {
-                        WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {sourceLocation}");
-                        return;
-                    }
-                }
-                else
-                {
-                    WriteWarning($"Provided API Type {sourceAccountToRestore.ApiType} is not supported");
-                    return;
-                }
-
-                if (restorableResourcesNotFound)
-                {
-                    WriteWarning($"Database account {SourceDatabaseAccountName} contains no restorable resources in location {sourceLocation} at given restore timestamp {utcRestoreDateTime} in location {sourceLocation}");
-                    return;
-                }
             }
 
             // Trigger restore
