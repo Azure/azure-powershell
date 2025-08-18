@@ -5,7 +5,7 @@ pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-releas
 pac4,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MySql.1.5.0.zip;sourceType=sa]Az.MySql,1.5.0
 pac5,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NeonPostgres.0.2.0.zip;sourceType=sa]Az.NeonPostgres,0.2.0
 pac6,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetAppFiles.0.24.1.zip;sourceType=sa]Az.NetAppFiles,0.24.1
-pac7,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Network.7.19.0.zip;sourceType=sa]Az.Network,7.19.0
+pac7,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Network.7.19.1.zip;sourceType=sa]Az.Network,7.19.1
 pac8,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkAnalytics.0.1.2.zip;sourceType=sa]Az.NetworkAnalytics,0.1.2
 pac9,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkCloud.1.2.0.zip;sourceType=sa]Az.NetworkCloud,1.2.0
 pac10,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkFunction.0.2.0.zip;sourceType=sa]Az.NetworkFunction,0.2.0

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-patch an existing security policy within a profile.
+Patch an existing security policy within a profile.
 .Description
-patch an existing security policy within a profile.
+Patch an existing security policy within a profile.
 .Example
 $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 $endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
