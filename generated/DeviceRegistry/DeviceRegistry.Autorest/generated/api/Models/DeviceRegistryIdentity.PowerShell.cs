@@ -129,34 +129,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).OperationId, global::System.Convert.ToString);
             }
-            if (content.Contains("NamespaceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SchemaRegistryName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaRegistryName = (string) content.GetValueForProperty("SchemaRegistryName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaRegistryName, global::System.Convert.ToString);
-            }
-            if (content.Contains("DeviceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DeviceName = (string) content.GetValueForProperty("DeviceName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DeviceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("DiscoveredAssetName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DiscoveredAssetName = (string) content.GetValueForProperty("DiscoveredAssetName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DiscoveredAssetName, global::System.Convert.ToString);
-            }
-            if (content.Contains("DiscoveredDeviceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DiscoveredDeviceName = (string) content.GetValueForProperty("DiscoveredDeviceName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DiscoveredDeviceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SchemaName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaName = (string) content.GetValueForProperty("SchemaName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SchemaVersionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaVersionName = (string) content.GetValueForProperty("SchemaVersionName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaVersionName, global::System.Convert.ToString);
-            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -205,34 +177,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("OperationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).OperationId, global::System.Convert.ToString);
-            }
-            if (content.Contains("NamespaceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SchemaRegistryName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaRegistryName = (string) content.GetValueForProperty("SchemaRegistryName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaRegistryName, global::System.Convert.ToString);
-            }
-            if (content.Contains("DeviceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DeviceName = (string) content.GetValueForProperty("DeviceName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DeviceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("DiscoveredAssetName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DiscoveredAssetName = (string) content.GetValueForProperty("DiscoveredAssetName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DiscoveredAssetName, global::System.Convert.ToString);
-            }
-            if (content.Contains("DiscoveredDeviceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DiscoveredDeviceName = (string) content.GetValueForProperty("DiscoveredDeviceName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).DiscoveredDeviceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SchemaName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaName = (string) content.GetValueForProperty("SchemaName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SchemaVersionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaVersionName = (string) content.GetValueForProperty("SchemaVersionName",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentityInternal)this).SchemaVersionName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

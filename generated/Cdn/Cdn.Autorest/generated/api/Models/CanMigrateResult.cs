@@ -36,10 +36,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public string Id { get => this._id; }
 
         /// <summary>Internal Acessors for CanMigrate</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResultInternal.CanMigrate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigratePropertiesInternal)Property).CanMigrate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigratePropertiesInternal)Property).CanMigrate = value ?? default(bool); }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResultInternal.CanMigrate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigratePropertiesInternal)Property).CanMigrate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigratePropertiesInternal)Property).CanMigrate = value; }
 
         /// <summary>Internal Acessors for DefaultSku</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResultInternal.DefaultSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigratePropertiesInternal)Property).DefaultSku; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigratePropertiesInternal)Property).DefaultSku = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResultInternal.DefaultSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigratePropertiesInternal)Property).DefaultSku; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigratePropertiesInternal)Property).DefaultSku = value; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResultInternal.Id { get => this._id; set { {_id = value;} } }

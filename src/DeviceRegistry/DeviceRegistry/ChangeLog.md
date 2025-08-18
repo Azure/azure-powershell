@@ -18,16 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Public preview release of API version 2025-07-01-preview for Az.DeviceRegistry. New resources included:
-    - Schema Registry
-    - Schema 
-    - Schema Version
-    - Namespaces
-    - Namespace Asset
-    - Namespace Device
-    - Namespace Discovered Asset
-    - Namespace Discovered Device
-* Support for Move-AzDeviceRegistryNamespace to migrate Asset and AssetEndpointProfile resources under a specified Namespace as Namespace Assets and Namespace Devices.
 
 ## Version 0.1.1
 * Fixed module name in module metadata

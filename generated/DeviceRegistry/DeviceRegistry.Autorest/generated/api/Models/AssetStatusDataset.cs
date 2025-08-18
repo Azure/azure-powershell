@@ -36,13 +36,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReference Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDatasetInternal.MessageSchemaReference { get => (this._messageSchemaReference = this._messageSchemaReference ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.MessageSchemaReference()); set { {_messageSchemaReference = value;} } }
 
         /// <summary>Internal Acessors for MessageSchemaReferenceSchemaName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDatasetInternal.MessageSchemaReferenceSchemaName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaName = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDatasetInternal.MessageSchemaReferenceSchemaName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaName = value; }
 
         /// <summary>Internal Acessors for MessageSchemaReferenceSchemaRegistryNamespace</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDatasetInternal.MessageSchemaReferenceSchemaRegistryNamespace { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaRegistryNamespace; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaRegistryNamespace = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDatasetInternal.MessageSchemaReferenceSchemaRegistryNamespace { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaRegistryNamespace; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaRegistryNamespace = value; }
 
         /// <summary>Internal Acessors for MessageSchemaReferenceSchemaVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDatasetInternal.MessageSchemaReferenceSchemaVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaVersion = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDatasetInternal.MessageSchemaReferenceSchemaVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IMessageSchemaReferenceInternal)MessageSchemaReference).SchemaVersion = value; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDatasetInternal.Name { get => this._name; set { {_name = value;} } }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// and status dataset information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = true,
         Read = true,
         Create = false,

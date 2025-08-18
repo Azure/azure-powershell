@@ -33,10 +33,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for PropertiesMigratedProfileResourceId</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal.PropertiesMigratedProfileResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal)Property).MigratedProfileResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal)Property).MigratedProfileResourceId = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal.PropertiesMigratedProfileResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal)Property).MigratedProfileResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal)Property).MigratedProfileResourceId = value; }
 
         /// <summary>Internal Acessors for PropertiesMigratedProfileResourceIdId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal.PropertiesMigratedProfileResourceIdId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal)Property).MigratedProfileResourceIdId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal)Property).MigratedProfileResourceIdId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal.PropertiesMigratedProfileResourceIdId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal)Property).MigratedProfileResourceIdId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal)Property).MigratedProfileResourceIdId = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrateResultProperties()); set { {_property = value;} } }

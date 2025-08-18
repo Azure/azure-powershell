@@ -10104,7 +10104,7 @@ param(
     [Parameter(Position=5)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the AccountId.
+    # Specifies the AccoundId.
     # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 

@@ -6911,9 +6911,9 @@ end {
 
 <#
 .Synopsis
-Create a new custom domain within an endpoint.
+create a new custom domain within an endpoint.
 .Description
-Create a new custom domain within an endpoint.
+create a new custom domain within an endpoint.
 .Example
 New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 -HostName 'testcm.dev.cdn.azure.cn'
 
@@ -7217,9 +7217,9 @@ end {
 
 <#
 .Synopsis
-Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Description
-Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
 $origin = @{
     Name = "origin1"
@@ -7757,9 +7757,9 @@ end {
 
 <#
 .Synopsis
-Create a new origin group within the specified endpoint.
+create a new origin group within the specified endpoint.
 .Description
-Create a new origin group within the specified endpoint.
+create a new origin group within the specified endpoint.
 .Example
 $healthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 $origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
@@ -8122,9 +8122,9 @@ end {
 
 <#
 .Synopsis
-Create a new origin within the specified endpoint.
+create a new origin within the specified endpoint.
 .Description
-Create a new origin within the specified endpoint.
+create a new origin within the specified endpoint.
 .Example
 New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
 
@@ -8530,9 +8530,9 @@ end {
 
 <#
 .Synopsis
-Create a new domain within the specified profile.
+create a new domain within the specified profile.
 .Description
-Create a new domain within the specified profile.
+create a new domain within the specified profile.
 .Example
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
@@ -8857,9 +8857,9 @@ end {
 
 <#
 .Synopsis
-Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Description
-Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
 New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Location Global -EnabledState Enabled
 
@@ -9156,9 +9156,9 @@ end {
 
 <#
 .Synopsis
-Create a new origin group within the specified profile.
+create a new origin group within the specified profile.
 .Description
-Create a new origin group within the specified profile.
+create a new origin group within the specified profile.
 .Example
 $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
@@ -9473,9 +9473,9 @@ end {
 
 <#
 .Synopsis
-Create a new origin within the specified origin group.
+create a new origin within the specified origin group.
 .Description
-Create a new origin within the specified origin group.
+create a new origin within the specified origin group.
 .Example
  New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -OriginHostHeader en.wikipedia.org -HostName en.wikipedia.org -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 
@@ -9908,9 +9908,467 @@ end {
 
 <#
 .Synopsis
-Create a new rule set within the specified profile.
+create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Description
-Create a new rule set within the specified profile.
+create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+.Example
+$originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
+$ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+$customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
+
+$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
+$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
+
+New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure)
+     
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AFDENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
+CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
+  [Id <String>]: Resource ID.
+
+PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
+ROUTE <IRoute>: Friendly Routes name mapping to the any Routes or secret related information.
+  [CacheConfigurationQueryParameter <String>]: query parameters to include or exclude (comma separated).
+  [CacheConfigurationQueryStringCachingBehavior <String>]: Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
+  [CompressionSettingContentTypesToCompress <List<String>>]: List of content types on which compression applies. The value should be a valid MIME type.
+  [CompressionSettingIsCompressionEnabled <Boolean?>]: Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+  [CustomDomain <List<IActivatedResourceReference>>]: Domains referenced by this endpoint.
+    [Id <String>]: Resource ID.
+  [EnabledState <String>]: Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
+  [ForwardingProtocol <String>]: Protocol this rule will use when forwarding traffic to backends.
+  [HttpsRedirect <String>]: Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
+  [LinkToDefaultDomain <String>]: whether this route will be linked to the default endpoint domain.
+  [Location <String>]: 
+  [OriginGroupId <String>]: Resource ID.
+  [OriginPath <String>]: A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
+  [PatternsToMatch <List<String>>]: The route patterns of the rule.
+  [RuleSet <List<IResourceReference>>]: rule sets referenced by this endpoint.
+    [Id <String>]: Resource ID.
+  [SupportedProtocol <List<String>>]: List of supported protocols for this route.
+
+RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
+  [Id <String>]: Resource ID.
+.Link
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
+#>
+function New-AzFrontDoorCdnRoute {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('RouteName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [System.String]
+    # Name of the routing rule.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [System.String]
+    # Name of the endpoint under the profile which is unique globally.
+    ${EndpointName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [System.String]
+    # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [System.String]
+    # Name of the Resource group within the Azure subscription.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Azure Subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${AfdEndpointInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # query parameters to include or exclude (comma separated).
+    ${CacheConfigurationQueryParameter},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("IgnoreQueryString", "UseQueryString", "IgnoreSpecifiedQueryStrings", "IncludeSpecifiedQueryStrings")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Defines how Frontdoor caches requests that include query strings.
+    # You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
+    ${CacheConfigurationQueryStringCachingBehavior},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String[]]
+    # List of content types on which compression applies.
+    # The value should be a valid MIME type.
+    ${CompressionSettingContentTypesToCompress},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether content compression is enabled on AzureFrontDoor.
+    # Default value is false.
+    # If compression is enabled, content will be served as compressed if user requests for a compressed version.
+    # Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
+    ${CompressionSettingIsCompressionEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference[]]
+    # Domains referenced by this endpoint.
+    ${CustomDomain},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Whether to enable use of this rule.
+    # Permitted values are 'Enabled' or 'Disabled'
+    ${EnabledState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Protocol this rule will use when forwarding traffic to backends.
+    ${ForwardingProtocol},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Whether to automatically redirect HTTP traffic to HTTPS traffic.
+    # Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
+    ${HttpsRedirect},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # whether this route will be linked to the default endpoint domain.
+    ${LinkToDefaultDomain},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Resource ID.
+    ${OriginGroupId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g.
+    # contoso.cloudapp.net/originpath.
+    ${OriginPath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String[]]
+    # The route patterns of the rule.
+    ${PatternsToMatch},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]]
+    # rule sets referenced by this endpoint.
+    ${RuleSet},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Http", "Https")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String[]]
+    # List of supported protocols for this route.
+    ${SupportedProtocol},
+
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute]
+    # Friendly Routes name mapping to the any Routes or secret related information.
+    ${Route},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateExpanded';
+            CreateViaIdentityAfdEndpoint = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaIdentityAfdEndpoint';
+            CreateViaIdentityAfdEndpointExpanded = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaIdentityAfdEndpointExpanded';
+            CreateViaIdentityProfile = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaIdentityProfile';
+            CreateViaIdentityProfileExpanded = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaIdentityProfileExpanded';
+            CreateViaJsonFilePath = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+create a new rule set within the specified profile.
+.Description
+create a new rule set within the specified profile.
 .Example
 New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
@@ -10125,9 +10583,9 @@ end {
 
 <#
 .Synopsis
-Create a new delivery rule within the specified rule set.
+create a new delivery rule within the specified rule set.
 .Description
-Create a new delivery rule within the specified rule set.
+create a new delivery rule within the specified rule set.
 .Example
 $conditions = @(
     New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
@@ -10488,9 +10946,9 @@ end {
 
 <#
 .Synopsis
-Create a new Secret within the specified profile.
+create a new Secret within the specified profile.
 .Description
-Create a new Secret within the specified profile.
+create a new Secret within the specified profile.
 .Example
 $secretSourceId = "xxxxxxxx"      
 $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
@@ -10764,9 +11222,9 @@ end {
 
 <#
 .Synopsis
-Create a new security policy within the specified profile.
+create a new security policy within the specified profile.
 .Description
-Create a new security policy within the specified profile.
+create a new security policy within the specified profile.
 .Example
 $wafPolicyId = "/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01"
 $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
@@ -16748,13 +17206,13 @@ end {
 
 <#
 .Synopsis
-Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update custom domains, use the update Custom Domain operation.
 .Description
-Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
@@ -17261,9 +17719,9 @@ end {
 
 <#
 .Synopsis
-Update an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 .Description
-Update an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 .Example
 $updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 Update-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $updateHealthProbeParameters
@@ -17659,9 +18117,9 @@ end {
 
 <#
 .Synopsis
-Update an existing origin within an endpoint.
+update an existing origin within an endpoint.
 .Description
-Update an existing origin within an endpoint.
+update an existing origin within an endpoint.
 .Example
 Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
 .Example
@@ -18108,9 +18566,9 @@ end {
 
 <#
 .Synopsis
-Refresh the domain validation token.
+refresh the domain validation token.
 .Description
-Refresh the domain validation token.
+refresh the domain validation token.
 .Example
 Update-AzFrontDoorCdnCustomDomainValidationToken -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 .Example
@@ -18367,9 +18825,9 @@ end {
 
 <#
 .Synopsis
-Update an existing domain within a profile.
+update an existing domain within a profile.
 .Description
-Update an existing domain within a profile.
+update an existing domain within a profile.
 .Example
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
@@ -18707,13 +19165,13 @@ end {
 
 <#
 .Synopsis
-Update an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update domains, use the update Custom Domain operation.
 .Description
-Update an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
@@ -19025,9 +19483,9 @@ end {
 
 <#
 .Synopsis
-Update an existing origin group within a profile.
+update an existing origin group within a profile.
 .Description
-Update an existing origin group within a profile.
+update an existing origin group within a profile.
 .Example
 $updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 3
 Update-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $updateLoadBalancingSetting
@@ -19373,9 +19831,9 @@ end {
 
 <#
 .Synopsis
-Update an existing origin within an origin group.
+update an existing origin within an origin group.
 .Description
-Update an existing origin within an origin group.
+update an existing origin within an origin group.
 .Example
 Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -Weight 999
 .Example
@@ -19852,9 +20310,9 @@ end {
 
 <#
 .Synopsis
-Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Description
-Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
 Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
 .Example
@@ -20347,9 +20805,9 @@ end {
 
 <#
 .Synopsis
-Update an existing delivery rule within a rule set.
+update an existing delivery rule within a rule set.
 .Description
-Update an existing delivery rule within a rule set.
+update an existing delivery rule within a rule set.
 .Example
 Update-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Order 99
 .Example
@@ -20730,9 +21188,9 @@ end {
 
 <#
 .Synopsis
-Update a new Secret within the specified profile.
+update a new Secret within the specified profile.
 .Description
-Update a new Secret within the specified profile.
+update a new Secret within the specified profile.
 .Example
 $secretSourceId = "xxxxxxxx"
 $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  
@@ -21011,9 +21469,9 @@ end {
 
 <#
 .Synopsis
-Patch an existing security policy within a profile.
+patch an existing security policy within a profile.
 .Description
-Patch an existing security policy within a profile.
+patch an existing security policy within a profile.
 .Example
 $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 $endpoint2 = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end002
@@ -28334,464 +28792,6 @@ begin {
 
         $mapping = @{
             __AllParameterSets = 'Az.Cdn.custom\New-AzFrontDoorCdnResourceReferenceObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
-.Description
-Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
-.Example
-$originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
-$ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
-$customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
-
-$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
-$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
-
-New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure)
-     
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-AFDENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
-
-CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
-  [Id <String>]: Resource ID.
-
-PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
-
-ROUTE <IRoute>: Friendly Routes name mapping to the any Routes or secret related information.
-  [CacheConfigurationQueryParameter <String>]: query parameters to include or exclude (comma separated).
-  [CacheConfigurationQueryStringCachingBehavior <String>]: Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
-  [CompressionSettingContentTypesToCompress <List<String>>]: List of content types on which compression applies. The value should be a valid MIME type.
-  [CompressionSettingIsCompressionEnabled <Boolean?>]: Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
-  [CustomDomain <List<IActivatedResourceReference>>]: Domains referenced by this endpoint.
-    [Id <String>]: Resource ID.
-  [EnabledState <String>]: Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-  [ForwardingProtocol <String>]: Protocol this rule will use when forwarding traffic to backends.
-  [HttpsRedirect <String>]: Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
-  [LinkToDefaultDomain <String>]: whether this route will be linked to the default endpoint domain.
-  [Location <String>]: 
-  [OriginGroupId <String>]: Resource ID.
-  [OriginPath <String>]: A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
-  [PatternsToMatch <List<String>>]: The route patterns of the rule.
-  [RuleSet <List<IResourceReference>>]: rule sets referenced by this endpoint.
-    [Id <String>]: Resource ID.
-  [SupportedProtocol <List<String>>]: List of supported protocols for this route.
-
-RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
-  [Id <String>]: Resource ID.
-.Link
-https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
-#>
-function New-AzFrontDoorCdnRoute {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('RouteName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the routing rule.
-    ${Name},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the endpoint under the profile which is unique globally.
-    ${EndpointName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-    ${ProfileName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the Resource group within the Azure subscription.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaJsonString')]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${ProfileInputObject},
-
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpoint', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${AfdEndpointInputObject},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # query parameters to include or exclude (comma separated).
-    ${CacheConfigurationQueryParameter},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("IgnoreQueryString", "UseQueryString", "IgnoreSpecifiedQueryStrings", "IncludeSpecifiedQueryStrings")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Defines how Frontdoor caches requests that include query strings.
-    # You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
-    ${CacheConfigurationQueryStringCachingBehavior},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String[]]
-    # List of content types on which compression applies.
-    # The value should be a valid MIME type.
-    ${CompressionSettingContentTypesToCompress},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Indicates whether content compression is enabled on AzureFrontDoor.
-    # Default value is false.
-    # If compression is enabled, content will be served as compressed if user requests for a compressed version.
-    # Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
-    ${CompressionSettingIsCompressionEnabled},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference[]]
-    # Domains referenced by this endpoint.
-    ${CustomDomain},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Whether to enable use of this rule.
-    # Permitted values are 'Enabled' or 'Disabled'
-    ${EnabledState},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Protocol this rule will use when forwarding traffic to backends.
-    ${ForwardingProtocol},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Whether to automatically redirect HTTP traffic to HTTPS traffic.
-    # Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
-    ${HttpsRedirect},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # whether this route will be linked to the default endpoint domain.
-    ${LinkToDefaultDomain},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Resource ID.
-    ${OriginGroupId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g.
-    # contoso.cloudapp.net/originpath.
-    ${OriginPath},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String[]]
-    # The route patterns of the rule.
-    ${PatternsToMatch},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]]
-    # rule sets referenced by this endpoint.
-    ${RuleSet},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Http", "Https")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String[]]
-    # List of supported protocols for this route.
-    ${SupportedProtocol},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpoint', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute]
-    # Friendly Routes name mapping to the any Routes or secret related information.
-    ${Route},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaJsonString = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaJsonFilePath = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaIdentityProfileExpanded = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaIdentityProfile = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaIdentityAfdEndpointExpanded = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaIdentityAfdEndpoint = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-        }
-        if (('CreateExpanded', 'CreateViaJsonString', 'CreateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

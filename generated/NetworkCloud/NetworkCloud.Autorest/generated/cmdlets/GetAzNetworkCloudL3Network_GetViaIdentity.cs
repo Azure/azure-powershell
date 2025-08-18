@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNetworkCloudL3Network_GetViaIdentity")]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3Network", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AssociatedResourceId","HybridAksClustersAssociatedId","VirtualMachinesAssociatedId"}, NewOutputProperties=new string[] {"AssociatedResourceId","HybridAksClustersAssociatedId","VirtualMachinesAssociatedId"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3Network))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Get properties of the provided layer 3 (L3) network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

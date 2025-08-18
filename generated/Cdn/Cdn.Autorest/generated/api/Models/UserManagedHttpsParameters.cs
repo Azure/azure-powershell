@@ -76,10 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserManagedHttpsParametersInternal.CertificateSourceParameter { get => (this._certificateSourceParameter = this._certificateSourceParameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyVaultCertificateSourceParameters()); set { {_certificateSourceParameter = value;} } }
 
         /// <summary>Internal Acessors for CertificateSourceParameterDeleteRule</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserManagedHttpsParametersInternal.CertificateSourceParameterDeleteRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParametersInternal)CertificateSourceParameter).DeleteRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParametersInternal)CertificateSourceParameter).DeleteRule = value ; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserManagedHttpsParametersInternal.CertificateSourceParameterDeleteRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParametersInternal)CertificateSourceParameter).DeleteRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParametersInternal)CertificateSourceParameter).DeleteRule = value; }
 
         /// <summary>Internal Acessors for CertificateSourceParameterUpdateRule</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserManagedHttpsParametersInternal.CertificateSourceParameterUpdateRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParametersInternal)CertificateSourceParameter).UpdateRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParametersInternal)CertificateSourceParameter).UpdateRule = value ; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserManagedHttpsParametersInternal.CertificateSourceParameterUpdateRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParametersInternal)CertificateSourceParameter).UpdateRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultCertificateSourceParametersInternal)CertificateSourceParameter).UpdateRule = value; }
 
         /// <summary>TLS protocol version that will be used for Https</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]

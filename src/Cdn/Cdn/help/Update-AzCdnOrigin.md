@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCdnOrigin
 
 ## SYNOPSIS
-Update an existing origin within an endpoint.
+update an existing origin within an endpoint.
 
 ## SYNTAX
 
@@ -78,7 +78,7 @@ Update-AzCdnOrigin -InputObject <ICdnIdentity> [-Enabled] [-HostName <String>] [
 ```
 
 ## DESCRIPTION
-Update an existing origin within an endpoint.
+update an existing origin within an endpoint.
 
 ## EXAMPLES
 

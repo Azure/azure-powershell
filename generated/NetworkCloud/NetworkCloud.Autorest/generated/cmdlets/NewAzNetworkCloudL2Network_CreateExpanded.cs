@@ -15,7 +15,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkCloudL2Network_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2Network", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AssociatedResourceId","HybridAksClustersAssociatedId","VirtualMachinesAssociatedId"}, NewOutputProperties=new string[] {"AssociatedResourceId","HybridAksClustersAssociatedId","VirtualMachinesAssociatedId"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2Network))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Create a new layer 2 (L2) network or update the properties of the existing network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

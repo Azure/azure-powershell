@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultSigningKeyParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKeyInternal.KeySourceParameter { get => (this._keySourceParameter = this._keySourceParameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyVaultSigningKeyParameters()); set { {_keySourceParameter = value;} } }
 
         /// <summary>Internal Acessors for KeySourceParameterTypeName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKeyInternal.KeySourceParameterTypeName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultSigningKeyParametersInternal)KeySourceParameter).TypeName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultSigningKeyParametersInternal)KeySourceParameter).TypeName = value ; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningKeyInternal.KeySourceParameterTypeName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultSigningKeyParametersInternal)KeySourceParameter).TypeName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyVaultSigningKeyParametersInternal)KeySourceParameter).TypeName = value; }
 
         /// <summary>Creates an new <see cref="UrlSigningKey" /> instance.</summary>
         public UrlSigningKey()

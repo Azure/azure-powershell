@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusterManagers"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNetworkCloudClusterManager_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterManager", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AvailabilityZone","ClusterVersion"}, NewOutputProperties=new string[] {"AvailabilityZone","ClusterVersion"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterManager))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Get a list of cluster managers in the provided subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

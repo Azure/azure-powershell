@@ -145,10 +145,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Hyperscale database within an elastic pool.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
-        /// <param name="highAvailabilityReplicaCount">The number of secondary replicas associated with the Business Critical,
-        /// Premium, or Hyperscale edition database that are used to provide high
-        /// availability. Not applicable to a Hyperscale database within an elastic
-        /// pool.
+        /// <param name="highAvailabilityReplicaCount">The number of secondary replicas associated with the database that are used
+        /// to provide high availability. Not applicable to a Hyperscale database
+        /// within an elastic pool.
         /// </param>
 
         /// <param name="secondaryType">The secondary type of the database if it is a secondary.  Valid values are
@@ -516,10 +515,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string ReadScale {get; set; }
 
         /// <summary>
-        /// Gets or sets the number of secondary replicas associated with the Business
-        /// Critical, Premium, or Hyperscale edition database that are used to provide
-        /// high availability. Not applicable to a Hyperscale database within an
-        /// elastic pool.
+        /// Gets or sets the number of secondary replicas associated with the database
+        /// that are used to provide high availability. Not applicable to a Hyperscale
+        /// database within an elastic pool.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "highAvailabilityReplicaCount")]
         public int? HighAvailabilityReplicaCount {get; set; }

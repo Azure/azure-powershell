@@ -101,7 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzApiManagementSubscription](./Get-AzApiManagementSubscription.md)
+[New-AzApiManagementSubscription](./Get-AzApiManagementSubscription.md)
 
 [New-AzApiManagementSubscription](./New-AzApiManagementSubscription.md)
 

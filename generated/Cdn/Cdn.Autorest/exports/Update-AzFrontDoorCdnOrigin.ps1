@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update an existing origin within an origin group.
+update an existing origin within an origin group.
 .Description
-Update an existing origin within an origin group.
+update an existing origin within an origin group.
 .Example
 Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -Weight 999
 .Example

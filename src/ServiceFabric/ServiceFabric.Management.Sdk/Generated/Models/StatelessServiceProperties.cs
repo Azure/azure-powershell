@@ -58,13 +58,8 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="servicePackageActivationMode">The activation Mode of the service package
         /// Possible values include: &#39;SharedProcess&#39;, &#39;ExclusiveProcess&#39;</param>
 
-        /// <param name="serviceDnsName">Dns name used for the service. If this is specified, then the DNS name can
-        /// be used to return the IP addresses of service endpoints for application
-        /// layer protocols (e.g., HTTP).
-        /// When updating serviceDnsName, old name may be temporarily resolvable.
-        /// However, rely on new name.
-        /// When removing serviceDnsName, removed name may temporarily be resolvable.
-        /// Do not rely on the name being unresolvable.
+        /// <param name="serviceDnsName">Dns name used for the service. If this is specified, then the service can
+        /// be accessed via its DNS name instead of service name.
         /// </param>
 
         /// <param name="instanceCount">The instance count.
@@ -77,33 +72,12 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// (https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-stateless-service-planned-downtime-preview).
         /// It is represented in ISO 8601 format (hh:mm:ss.s).
         /// </param>
-
-        /// <param name="minInstanceCount">MinInstanceCount is the minimum number of instances that must be up to meet
-        /// the EnsureAvailability safety check during operations like upgrade or
-        /// deactivate node. The actual number that is used is max( MinInstanceCount,
-        /// ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if
-        /// InstanceCount is set to -1, during MinInstanceCount computation -1 is first
-        /// converted into the number of nodes on which the instances are allowed to be
-        /// placed according to the placement constraints on the service.
-        /// </param>
-
-        /// <param name="minInstancePercentage">MinInstancePercentage is the minimum percentage of InstanceCount that must
-        /// be up to meet the EnsureAvailability safety check during operations like
-        /// upgrade or deactivate node. The actual number that is used is max(
-        /// MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ).
-        /// Note, if InstanceCount is set to -1, during MinInstancePercentage
-        /// computation, -1 is first converted into the number of nodes on which the
-        /// instances are allowed to be placed according to the placement constraints
-        /// on the service.
-        /// </param>
-        public StatelessServiceProperties(string placementConstraints = default(string), System.Collections.Generic.IList<ServiceCorrelationDescription> correlationScheme = default(System.Collections.Generic.IList<ServiceCorrelationDescription>), System.Collections.Generic.IList<ServiceLoadMetricDescription> serviceLoadMetrics = default(System.Collections.Generic.IList<ServiceLoadMetricDescription>), System.Collections.Generic.IList<ServicePlacementPolicyDescription> servicePlacementPolicies = default(System.Collections.Generic.IList<ServicePlacementPolicyDescription>), string defaultMoveCost = default(string), string provisioningState = default(string), string serviceTypeName = default(string), PartitionSchemeDescription partitionDescription = default(PartitionSchemeDescription), string servicePackageActivationMode = default(string), string serviceDnsName = default(string), int? instanceCount = default(int?), string instanceCloseDelayDuration = default(string), int? minInstanceCount = default(int?), byte[] minInstancePercentage = default(byte[]))
+        public StatelessServiceProperties(string placementConstraints = default(string), System.Collections.Generic.IList<ServiceCorrelationDescription> correlationScheme = default(System.Collections.Generic.IList<ServiceCorrelationDescription>), System.Collections.Generic.IList<ServiceLoadMetricDescription> serviceLoadMetrics = default(System.Collections.Generic.IList<ServiceLoadMetricDescription>), System.Collections.Generic.IList<ServicePlacementPolicyDescription> servicePlacementPolicies = default(System.Collections.Generic.IList<ServicePlacementPolicyDescription>), string defaultMoveCost = default(string), string provisioningState = default(string), string serviceTypeName = default(string), PartitionSchemeDescription partitionDescription = default(PartitionSchemeDescription), string servicePackageActivationMode = default(string), string serviceDnsName = default(string), int? instanceCount = default(int?), string instanceCloseDelayDuration = default(string))
 
         : base(placementConstraints, correlationScheme, serviceLoadMetrics, servicePlacementPolicies, defaultMoveCost, provisioningState, serviceTypeName, partitionDescription, servicePackageActivationMode, serviceDnsName)
         {
             this.InstanceCount = instanceCount;
             this.InstanceCloseDelayDuration = instanceCloseDelayDuration;
-            this.MinInstanceCount = minInstanceCount;
-            this.MinInstancePercentage = minInstancePercentage;
             CustomInit();
         }
 
@@ -129,31 +103,6 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "instanceCloseDelayDuration")]
         public string InstanceCloseDelayDuration {get; set; }
-
-        /// <summary>
-        /// Gets or sets minInstanceCount is the minimum number of instances that must
-        /// be up to meet the EnsureAvailability safety check during operations like
-        /// upgrade or deactivate node. The actual number that is used is max(
-        /// MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ).
-        /// Note, if InstanceCount is set to -1, during MinInstanceCount computation -1
-        /// is first converted into the number of nodes on which the instances are
-        /// allowed to be placed according to the placement constraints on the service.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "minInstanceCount")]
-        public int? MinInstanceCount {get; set; }
-
-        /// <summary>
-        /// Gets or sets minInstancePercentage is the minimum percentage of
-        /// InstanceCount that must be up to meet the EnsureAvailability safety check
-        /// during operations like upgrade or deactivate node. The actual number that
-        /// is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 *
-        /// InstanceCount) ). Note, if InstanceCount is set to -1, during
-        /// MinInstancePercentage computation, -1 is first converted into the number of
-        /// nodes on which the instances are allowed to be placed according to the
-        /// placement constraints on the service.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "minInstancePercentage")]
-        public byte[] MinInstancePercentage {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -169,7 +118,6 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "InstanceCount", -1);
                 }
             }
-
 
         }
     }

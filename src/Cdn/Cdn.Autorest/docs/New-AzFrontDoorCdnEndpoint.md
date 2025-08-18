@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnEndpoint
 
 ## SYNOPSIS
-Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileName <String> -Resourc
 ```
 
 ## DESCRIPTION
-Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
 ## EXAMPLES
 

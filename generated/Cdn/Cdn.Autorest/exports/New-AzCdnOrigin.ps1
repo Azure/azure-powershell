@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new origin within the specified endpoint.
+create a new origin within the specified endpoint.
 .Description
-Create a new origin within the specified endpoint.
+create a new origin within the specified endpoint.
 .Example
 New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
 

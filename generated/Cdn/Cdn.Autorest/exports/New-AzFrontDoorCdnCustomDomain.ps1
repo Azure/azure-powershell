@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new domain within the specified profile.
+create a new domain within the specified profile.
 .Description
-Create a new domain within the specified profile.
+create a new domain within the specified profile.
 .Example
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id

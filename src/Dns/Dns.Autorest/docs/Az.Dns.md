@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Dns
-Module Guid: 71950809-d79e-44f1-ae3c-25ee2d8a9ec4
+Module Guid: 6bb9f5b6-6948-424c-b7b3-faba33be0aef
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dns
 Help Version: 1.0.0.0
 Locale: en-US

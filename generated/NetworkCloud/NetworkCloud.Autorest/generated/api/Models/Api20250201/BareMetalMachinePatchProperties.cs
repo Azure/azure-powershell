@@ -19,8 +19,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
         private string _machineDetail;
 
         /// <summary>
-        /// The details provided by the customer during the creation of rack manifests that allows for custom data to be associated
-        /// with this machine.
+        /// The details provided by the customer during the creation of rack manifests
+        /// that allows for custom data to be associated with this machine.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string MachineDetail { get => this._machineDetail; set => this._machineDetail = value; }
@@ -36,13 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The details provided by the customer during the creation of rack manifests that allows for custom data to be associated
-        /// with this machine.
+        /// The details provided by the customer during the creation of rack manifests
+        /// that allows for custom data to be associated with this machine.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The details provided by the customer during the creation of rack manifests that allows for custom data to be associated with this machine.",
+        Description = @"The details provided by the customer during the creation of rack manifests
+        that allows for custom data to be associated with this machine.",
         SerializedName = @"machineDetails",
         PossibleTypes = new [] { typeof(string) })]
         string MachineDetail { get; set; }
@@ -53,8 +54,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
 
     {
         /// <summary>
-        /// The details provided by the customer during the creation of rack manifests that allows for custom data to be associated
-        /// with this machine.
+        /// The details provided by the customer during the creation of rack manifests
+        /// that allows for custom data to be associated with this machine.
         /// </summary>
         string MachineDetail { get; set; }
 

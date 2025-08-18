@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added BreakingChange announcements for commands below:
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
   * `Get-AzHealthcareApisService`
   * `New-AzHealthcareApisService`
   * `Update-AzHealthcareApisService`

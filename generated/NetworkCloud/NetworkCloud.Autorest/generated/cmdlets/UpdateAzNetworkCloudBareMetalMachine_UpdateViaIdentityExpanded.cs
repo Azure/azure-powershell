@@ -16,7 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudBareMetalMachine_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachine", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AssociatedResourceId","HardwareInventoryInterface","HardwareInventoryNic","HybridAksClustersAssociatedId","MachineRole","SecretRotationStatus","VirtualMachinesAssociatedId"}, NewOutputProperties=new string[] {"AssociatedResourceId","HardwareInventoryInterface","HardwareInventoryNic","HybridAksClustersAssociatedId","MachineRole","SecretRotationStatus","VirtualMachinesAssociatedId"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch properties of the provided bare metal machine, or update tags associated with the bare metal machine. Properties and tag updates can be done independently.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
@@ -124,15 +123,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// The details provided by the customer during the creation of rack manifests that allows for custom data to be associated
+        /// The details provided by the customer during the creation of rack manifeststhat allows for custom data to be associated
         /// with this machine.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The details provided by the customer during the creation of rack manifests that allows for custom data to be associated with this machine.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The details provided by the customer during the creation of rack manifeststhat allows for custom data to be associated with this machine.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The details provided by the customer during the creation of rack manifests that allows for custom data to be associated with this machine.",
+        Description = @"The details provided by the customer during the creation of rack manifeststhat allows for custom data to be associated with this machine.",
         SerializedName = @"machineDetails",
         PossibleTypes = new [] { typeof(string) })]
         public string MachineDetail { get => _bareMetalMachineUpdateParametersBody.MachineDetail ?? null; set => _bareMetalMachineUpdateParametersBody.MachineDetail = value; }

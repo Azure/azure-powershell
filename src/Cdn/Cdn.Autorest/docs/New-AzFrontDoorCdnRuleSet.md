@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnRuleSet
 
 ## SYNOPSIS
-Create a new rule set within the specified profile.
+create a new rule set within the specified profile.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ New-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> [-De
 ```
 
 ## DESCRIPTION
-Create a new rule set within the specified profile.
+create a new rule set within the specified profile.
 
 ## EXAMPLES
 

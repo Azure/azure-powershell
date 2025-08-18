@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="privateEndpointConnections">List of private endpoint connections on a server
         /// </param>
 
-        /// <param name="minimalTlsVersion">Minimal TLS version. Allowed values: &#39;None&#39;, 1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;
-        /// Possible values include: &#39;None&#39;, &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;</param>
+        /// <param name="minimalTlsVersion">Minimal TLS version. Allowed values: &#39;None&#39;, &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;
+        /// </param>
 
         /// <param name="publicNetworkAccess">Whether or not public endpoint access is allowed for this server.  Value is
         /// optional but if passed in, must be &#39;Enabled&#39; or &#39;Disabled&#39; or
@@ -184,8 +184,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         public System.Collections.Generic.IList<ServerPrivateEndpointConnection> PrivateEndpointConnections {get; private set; }
 
         /// <summary>
-        /// Gets or sets minimal TLS version. Allowed values: &#39;None&#39;, 1.0&#39;, &#39;1.1&#39;,
-        /// &#39;1.2&#39;, &#39;1.3&#39; Possible values include: &#39;None&#39;, &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;
+        /// Gets or sets minimal TLS version. Allowed values: &#39;None&#39;, &#39;1.0&#39;, &#39;1.1&#39;,
+        /// &#39;1.2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minimalTlsVersion")]
         public string MinimalTlsVersion {get; set; }

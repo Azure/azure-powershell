@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal.MigratedProfileResourceId { get => (this._migratedProfileResourceId = this._migratedProfileResourceId ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_migratedProfileResourceId = value;} } }
 
         /// <summary>Internal Acessors for MigratedProfileResourceIdId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal.MigratedProfileResourceIdId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)MigratedProfileResourceId).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)MigratedProfileResourceId).Id = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultPropertiesInternal.MigratedProfileResourceIdId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)MigratedProfileResourceId).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)MigratedProfileResourceId).Id = value; }
 
         /// <summary>Backing field for <see cref="MigratedProfileResourceId" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference _migratedProfileResourceId;

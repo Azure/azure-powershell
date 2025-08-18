@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnRule
 
 ## SYNOPSIS
-Update an existing delivery rule within a rule set.
+update an existing delivery rule within a rule set.
 
 ## SYNTAX
 
@@ -73,7 +73,7 @@ Update-AzFrontDoorCdnRule -InputObject <ICdnIdentity> [-Action <IDeliveryRuleAct
 ```
 
 ## DESCRIPTION
-Update an existing delivery rule within a rule set.
+update an existing delivery rule within a rule set.
 
 ## EXAMPLES
 

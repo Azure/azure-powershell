@@ -38,17 +38,10 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [AssetEndpointProfileName <String>]: Asset Endpoint Profile name parameter.
   [AssetName <String>]: Asset name parameter.
   [BillingContainerName <String>]: Name of the billing container.
-  [DeviceName <String>]: The name of the device.
-  [DiscoveredAssetName <String>]: The name of the discovered asset.
-  [DiscoveredDeviceName <String>]: The name of the discovered device.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SchemaName <String>]: Schema name parameter.
-  [SchemaRegistryName <String>]: Schema registry name parameter.
-  [SchemaVersionName <String>]: Schema version name parameter.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistryassetendpointprofile
@@ -159,15 +152,6 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $context = Get-AzContext
-        if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
-        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -191,6 +175,8 @@ begin {
             DeleteViaIdentity = 'Az.DeviceRegistry.private\Remove-AzDeviceRegistryAssetEndpointProfile_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -204,9 +190,6 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

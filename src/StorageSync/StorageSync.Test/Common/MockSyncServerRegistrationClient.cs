@@ -18,7 +18,6 @@ using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.InternalObjects;
-using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Newtonsoft.Json;
 using System;
@@ -373,18 +372,17 @@ namespace Commands.StorageSync.Interop.Clients
             return false;
         }
 
-        public override ServerApplicationIdentity GetServerApplicationIdentityOrNull()
+        public override Guid? GetApplicationIdOrNull()
         {
-            var testTenantGuid = new Guid("0483643a-cb2f-462a-bc27-1a270e5bdc0a");
-            if (TestName == "TestNewRegisteredServerWithIdentityError")
+            if(TestName == "TestNewRegisteredServerWithIdentityError")
             {
                 return null;
             }
             if(TestName == "TestPatchRegisteredServer")
             {
-                return new ServerApplicationIdentity(new Guid("3b990c8b-9607-4c2a-8b04-1d41985facca"), testTenantGuid);
+                return new Guid("3b990c8b-9607-4c2a-8b04-1d41985facca");
             }
-            return new ServerApplicationIdentity(Guid.NewGuid(), testTenantGuid);
+            return Guid.NewGuid();
         }
     }
 }

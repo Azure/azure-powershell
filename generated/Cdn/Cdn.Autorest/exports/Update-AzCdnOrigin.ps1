@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update an existing origin within an endpoint.
+update an existing origin within an endpoint.
 .Description
-Update an existing origin within an endpoint.
+update an existing origin within an endpoint.
 .Example
 Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
 .Example

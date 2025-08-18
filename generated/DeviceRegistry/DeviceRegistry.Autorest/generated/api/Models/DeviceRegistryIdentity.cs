@@ -33,27 +33,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public string BillingContainerName { get => this._billingContainerName; set => this._billingContainerName = value; }
 
-        /// <summary>Backing field for <see cref="DeviceName" /> property.</summary>
-        private string _deviceName;
-
-        /// <summary>The name of the device.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string DeviceName { get => this._deviceName; set => this._deviceName = value; }
-
-        /// <summary>Backing field for <see cref="DiscoveredAssetName" /> property.</summary>
-        private string _discoveredAssetName;
-
-        /// <summary>The name of the discovered asset.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string DiscoveredAssetName { get => this._discoveredAssetName; set => this._discoveredAssetName = value; }
-
-        /// <summary>Backing field for <see cref="DiscoveredDeviceName" /> property.</summary>
-        private string _discoveredDeviceName;
-
-        /// <summary>The name of the discovered device.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string DiscoveredDeviceName { get => this._discoveredDeviceName; set => this._discoveredDeviceName = value; }
-
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -68,13 +47,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
-        /// <summary>Backing field for <see cref="NamespaceName" /> property.</summary>
-        private string _namespaceName;
-
-        /// <summary>The name of the namespace.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string NamespaceName { get => this._namespaceName; set => this._namespaceName = value; }
-
         /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
         private string _operationId;
 
@@ -88,27 +60,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>Backing field for <see cref="SchemaName" /> property.</summary>
-        private string _schemaName;
-
-        /// <summary>Schema name parameter.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string SchemaName { get => this._schemaName; set => this._schemaName = value; }
-
-        /// <summary>Backing field for <see cref="SchemaRegistryName" /> property.</summary>
-        private string _schemaRegistryName;
-
-        /// <summary>Schema registry name parameter.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string SchemaRegistryName { get => this._schemaRegistryName; set => this._schemaRegistryName = value; }
-
-        /// <summary>Backing field for <see cref="SchemaVersionName" /> property.</summary>
-        private string _schemaVersionName;
-
-        /// <summary>Schema version name parameter.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public string SchemaVersionName { get => this._schemaVersionName; set => this._schemaVersionName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -159,39 +110,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"billingContainerName",
         PossibleTypes = new [] { typeof(string) })]
         string BillingContainerName { get; set; }
-        /// <summary>The name of the device.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the device.",
-        SerializedName = @"deviceName",
-        PossibleTypes = new [] { typeof(string) })]
-        string DeviceName { get; set; }
-        /// <summary>The name of the discovered asset.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the discovered asset.",
-        SerializedName = @"discoveredAssetName",
-        PossibleTypes = new [] { typeof(string) })]
-        string DiscoveredAssetName { get; set; }
-        /// <summary>The name of the discovered device.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the discovered device.",
-        SerializedName = @"discoveredDeviceName",
-        PossibleTypes = new [] { typeof(string) })]
-        string DiscoveredDeviceName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -214,17 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
-        /// <summary>The name of the namespace.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the namespace.",
-        SerializedName = @"namespaceName",
-        PossibleTypes = new [] { typeof(string) })]
-        string NamespaceName { get; set; }
         /// <summary>The ID of an ongoing async operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -247,39 +154,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>Schema name parameter.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Schema name parameter.",
-        SerializedName = @"schemaName",
-        PossibleTypes = new [] { typeof(string) })]
-        string SchemaName { get; set; }
-        /// <summary>Schema registry name parameter.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Schema registry name parameter.",
-        SerializedName = @"schemaRegistryName",
-        PossibleTypes = new [] { typeof(string) })]
-        string SchemaRegistryName { get; set; }
-        /// <summary>Schema version name parameter.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Schema version name parameter.",
-        SerializedName = @"schemaVersionName",
-        PossibleTypes = new [] { typeof(string) })]
-        string SchemaVersionName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -302,28 +176,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string AssetName { get; set; }
         /// <summary>Name of the billing container.</summary>
         string BillingContainerName { get; set; }
-        /// <summary>The name of the device.</summary>
-        string DeviceName { get; set; }
-        /// <summary>The name of the discovered asset.</summary>
-        string DiscoveredAssetName { get; set; }
-        /// <summary>The name of the discovered device.</summary>
-        string DiscoveredDeviceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
-        /// <summary>The name of the namespace.</summary>
-        string NamespaceName { get; set; }
         /// <summary>The ID of an ongoing async operation.</summary>
         string OperationId { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>Schema name parameter.</summary>
-        string SchemaName { get; set; }
-        /// <summary>Schema registry name parameter.</summary>
-        string SchemaRegistryName { get; set; }
-        /// <summary>Schema version name parameter.</summary>
-        string SchemaVersionName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new rule set within the specified profile.
+create a new rule set within the specified profile.
 .Description
-Create a new rule set within the specified profile.
+create a new rule set within the specified profile.
 .Example
 New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 

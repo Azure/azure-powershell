@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnSecurityPolicy
 
 ## SYNOPSIS
-Patch an existing security policy within a profile.
+patch an existing security policy within a profile.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -Resour
 ```
 
 ## DESCRIPTION
-Patch an existing security policy within a profile.
+patch an existing security policy within a profile.
 
 ## EXAMPLES
 

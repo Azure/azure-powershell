@@ -349,15 +349,35 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentPolicy = new ApplicationUpgradePolicy();
             }
 
-            if (this.IsParameterBound(c => c.RecreateApplication) || (ParameterSetName == ByInputObject && currentPolicy.RecreateApplication.Equals(true)))
+            if (this.IsParameterBound(c => c.ForceRestart))
+            {
+                currentPolicy.ForceRestart = this.ForceRestart.ToBool();
+            }
+
+            if (this.IsParameterBound(c => c.RecreateApplication))
             {
                 currentPolicy.RecreateApplication = this.RecreateApplication.ToBool();
+            }
+
+            if (this.IsParameterBound(c => c.UpgradeReplicaSetCheckTimeoutSec))
+            {
+                currentPolicy.UpgradeReplicaSetCheckTimeout = this.UpgradeReplicaSetCheckTimeoutSec;
+            }
+            
+            if (this.IsParameterBound(c => c.InstanceCloseDelayDurationSec))
+            {
+                currentPolicy.InstanceCloseDelayDuration = this.InstanceCloseDelayDurationSec;
+            }
+
+            if (this.IsParameterBound(c => c.UpgradeMode))
+            {
+                currentPolicy.UpgradeMode = this.UpgradeMode.ToString();
             }
 
             if (this.RecreateApplication.ToBool())
             {
                 if (
-                    this.IsParameterBound(c => c.UpgradeReplicaSetCheckTimeoutSec) || this.IsParameterBound(c => c.InstanceCloseDelayDurationSec) ||
+                    this.IsParameterBound(c => c.UpgradeReplicaSetCheckTimeoutSec) || this.IsParameterBound(c => c.InstanceCloseDelayDurationSec) || 
                     this.IsParameterBound(c => c.UpgradeMode) ||this.IsParameterBound(c => c.ForceRestart) ||
                     // RollingUpgradeMonitoringPolicy
                     this.IsParameterBound(c => c.UpgradeDomainTimeoutSec) || this.IsParameterBound(c => c.UpgradeTimeoutSec) ||
@@ -373,38 +393,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     throw new InvalidOperationException("If RecreateApplication=True, no other parameters are accepted.");
                 }
-                else
-                {
-                    currentPolicy.ApplicationHealthPolicy = null;
-                    currentPolicy.ForceRestart = null;
-                    currentPolicy.RollingUpgradeMonitoringPolicy = null;
-                    currentPolicy.InstanceCloseDelayDuration = null;
-                    currentPolicy.UpgradeMode = null;
-                    currentPolicy.UpgradeReplicaSetCheckTimeout = null;
-                }
             }
             else
             {
-                if (this.IsParameterBound(c => c.ForceRestart))
-                {
-                    currentPolicy.ForceRestart = this.ForceRestart.ToBool();
-                }
-
-                if (this.IsParameterBound(c => c.UpgradeReplicaSetCheckTimeoutSec))
-                {
-                    currentPolicy.UpgradeReplicaSetCheckTimeout = this.UpgradeReplicaSetCheckTimeoutSec;
-                }
-
-                if (this.IsParameterBound(c => c.InstanceCloseDelayDurationSec))
-                {
-                    currentPolicy.InstanceCloseDelayDuration = this.InstanceCloseDelayDurationSec;
-                }
-
-                if (this.IsParameterBound(c => c.UpgradeMode))
-                {
-                    currentPolicy.UpgradeMode = this.UpgradeMode.ToString();
-                }
-
                 // RollingUpgradeMonitoringPolicy
                 if (currentPolicy.RollingUpgradeMonitoringPolicy == null)
                 {

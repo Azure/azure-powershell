@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new origin group within the specified profile.
+create a new origin group within the specified profile.
 .Description
-Create a new origin group within the specified profile.
+create a new origin group within the specified profile.
 .Example
 $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4

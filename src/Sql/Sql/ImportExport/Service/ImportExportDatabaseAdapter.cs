@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
             ExportDatabaseDefinition parameters = new ExportDatabaseDefinition()
             {
                 AdministratorLogin = exportRequest.AdministratorLogin,
-                AdministratorLoginPassword = null,
+                AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(exportRequest.AdministratorLoginPassword),
                 StorageKey = exportRequest.StorageKey,
                 StorageKeyType = exportRequest.StorageKeyType.ToString(),
                 StorageUri = exportRequest.StorageUri.ToString(),
@@ -79,11 +79,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
             if (exportRequest.AuthenticationType != AuthenticationType.None)
             {
                 parameters.AuthenticationType = exportRequest.AuthenticationType.ToString().ToLowerInvariant();
-            }
-
-            if (exportRequest.AuthenticationType != AuthenticationType.ManagedIdentity)
-            {
-                parameters.AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(exportRequest.AdministratorLoginPassword);
             }
 
             Uri azureAsyncOperation = null;
@@ -109,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
             Management.Sql.Models.ImportNewDatabaseDefinition parameters = new Management.Sql.Models.ImportNewDatabaseDefinition()
             {
                 AdministratorLogin = importRequest.AdministratorLogin,
-                AdministratorLoginPassword = null,
+                AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(importRequest.AdministratorLoginPassword),
                 StorageKey = importRequest.StorageKey,
                 StorageKeyType = importRequest.StorageKeyType.ToString(),
                 StorageUri = importRequest.StorageUri.ToString(),
@@ -127,11 +122,6 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
             if (importRequest.AuthenticationType != AuthenticationType.None)
             {
                 parameters.AuthenticationType = importRequest.AuthenticationType.ToString().ToLowerInvariant();
-            }
-
-            if (importRequest.AuthenticationType != AuthenticationType.ManagedIdentity)
-            {
-                parameters.AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(importRequest.AdministratorLoginPassword);
             }
 
             Uri azureAsyncOperation = null;

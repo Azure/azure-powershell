@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new origin within the specified origin group.
+create a new origin within the specified origin group.
 .Description
-Create a new origin within the specified origin group.
+create a new origin within the specified origin group.
 .Example
  New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -OriginHostHeader en.wikipedia.org -HostName en.wikipedia.org -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 

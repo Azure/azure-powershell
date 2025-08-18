@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         public string ManufacturerUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdatePropertiesInternal)Property).ManufacturerUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdatePropertiesInternal)Property).ManufacturerUri = value ?? null; }
 
         /// <summary>Internal Acessors for DefaultTopic</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ITopicUpdate Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdateInternal.DefaultTopic { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdatePropertiesInternal)Property).DefaultTopic; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdatePropertiesInternal)Property).DefaultTopic = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ITopicUpdate Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdateInternal.DefaultTopic { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdatePropertiesInternal)Property).DefaultTopic; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdatePropertiesInternal)Property).DefaultTopic = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.AssetUpdateProperties()); set { {_property = value;} } }

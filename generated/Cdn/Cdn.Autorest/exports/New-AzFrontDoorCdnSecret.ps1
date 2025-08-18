@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new Secret within the specified profile.
+create a new Secret within the specified profile.
 .Description
-Create a new Secret within the specified profile.
+create a new Secret within the specified profile.
 .Example
 $secretSourceId = "xxxxxxxx"      
 $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId  

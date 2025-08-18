@@ -1540,8 +1540,6 @@ function Test-NetworkManagerIpamPoolStaticCidrCRUD
     $rglocation = "centraluseuap"
     $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
     $addressPrefixes  = @("10.0.0.0/8")
-    $poolAddressPrefixes = @("10.0.0.0/8", "192.168.0.0/16")
-    $addAddressPrefix = @("192.168.0.0/24")
 
     try{
         #Create the resource group
@@ -1558,7 +1556,7 @@ function Test-NetworkManagerIpamPoolStaticCidrCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
 
         # Create ipam pool
-        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $poolAddressPrefixes
+        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes
 
         # Create static cidr
         New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -AddressPrefix $addressPrefixes
@@ -1568,11 +1566,6 @@ function Test-NetworkManagerIpamPoolStaticCidrCRUD
         Assert-NotNull $staticCidr;
         Assert-AreEqual $staticCidrName $staticCidr.Name;
         Assert-AreEqual $staticCidr.Properties.AddressPrefixes[0] $addressPrefixes[0];
-
-        # Update static cidr
-        $staticCidr.Properties.AddressPrefixes.Add($addAddressPrefix);
-        $updatedStaticCidr = Set-AzNetworkManagerIpamPoolStaticCidr -InputObject $staticCidr
-        Assert-AreEqual $updatedStaticCidr.Properties.AddressPrefixes[1] $addAddressPrefix[0];
 
         # Remove static cidr
         $job = Remove-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName -PassThru -Force -AsJob;

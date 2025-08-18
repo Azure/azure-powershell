@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public string EnabledState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)Property).EnabledState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)Property).EnabledState = value ?? null; }
 
         /// <summary>Internal Acessors for ProfileName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParametersInternal.ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)Property).ProfileName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)Property).ProfileName = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParametersInternal.ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)Property).ProfileName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)Property).ProfileName = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdEndpointPropertiesUpdateParameters()); set { {_property = value;} } }

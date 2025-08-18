@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDeviceRegistryAsset
 
 ## SYNOPSIS
-Create a Asset
+create a Asset
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-Create a Asset
+create a Asset
 
 ## EXAMPLES
 

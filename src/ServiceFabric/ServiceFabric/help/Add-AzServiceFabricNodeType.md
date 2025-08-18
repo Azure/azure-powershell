@@ -17,7 +17,7 @@ Add-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -Capa
  -VmUserName <String> -VmPassword <SecureString> [-VmSku <String>] [-Tier <String>]
  [-DurabilityLevel <DurabilityLevel>] [-IsPrimaryNodeType <Boolean>] [-VMImagePublisher <String>]
  [-VMImageOffer <String>] [-VMImageSku <String>] [-VMImageVersion <String>] [-Location <String>]
- -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -156,6 +156,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

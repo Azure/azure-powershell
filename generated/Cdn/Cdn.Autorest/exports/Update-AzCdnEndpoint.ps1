@@ -16,13 +16,13 @@
 
 <#
 .Synopsis
-Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.
 To update custom domains, use the update Custom Domain operation.
 .Description
-Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
 To update origins, use the update Origin operation.
 To update origin groups, use the update Origin group operation.

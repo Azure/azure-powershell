@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ManagedDatabaseMove");
         }
 
-        [Fact(Skip = "Requires manual set up.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCrossSubscriptionManagedDatabaseMove()
         {
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ManagedDatabaseCopy");
         }
-
-        [Fact(Skip = "Requires manual set up.")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCrossSubscriptionManagedDatabaseCopy()
         {

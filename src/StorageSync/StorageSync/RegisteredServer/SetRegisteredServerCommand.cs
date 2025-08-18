@@ -181,8 +181,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 };
 
                 LocalServerType serverTypeFromRegistry = StorageSyncClientWrapper.StorageSyncResourceManager.GetServerTypeFromRegistry();
-                ServerApplicationIdentity serverApplicationIdentity = serverManagedIdentityProvider.GetServerApplicationIdentityAsync(serverTypeFromRegistry, throwIfNotFound: false).GetAwaiter().GetResult();
-                Guid applicationId = serverApplicationIdentity?.ApplicationId ?? Guid.Empty;
+                Guid applicationId = serverManagedIdentityProvider.GetServerApplicationId(serverTypeFromRegistry, throwIfNotFound: false);
 
                 if (applicationId == Guid.Empty)
                 {

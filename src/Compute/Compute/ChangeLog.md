@@ -20,8 +20,6 @@
 
 -->
 ## Upcoming Release
-
-## Version 10.2.0
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
 * Upgraded SpotPlacementScore cmdlets to api version 2025-06-05
 

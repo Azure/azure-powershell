@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnOriginGroup
 
 ## SYNOPSIS
-Create a new origin group within the specified profile.
+create a new origin group within the specified profile.
 
 ## SYNTAX
 
@@ -52,7 +52,7 @@ New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <ICd
 ```
 
 ## DESCRIPTION
-Create a new origin group within the specified profile.
+create a new origin group within the specified profile.
 
 ## EXAMPLES
 

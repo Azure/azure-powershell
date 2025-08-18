@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update an existing domain within a profile.
+update an existing domain within a profile.
 .Description
-Update an existing domain within a profile.
+update an existing domain within a profile.
 .Example
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id

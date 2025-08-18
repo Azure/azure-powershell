@@ -55,7 +55,7 @@ westus2  test-asset3  12/19/2024 8:52:54 PM user@outlook.com    User            
 
 This command lists all the assets in subscription `xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx`
 
-### Example 2: list all assets from a specified resource group
+### Example 1: list all assets from a specified resource group
 ```powershell
 Get-AzDeviceRegistryAsset -ResourceGroupName test-rg
 ```

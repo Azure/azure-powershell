@@ -27,7 +27,7 @@ $command = @{
     arguments = "commandArguments"
 }
 
-Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourcceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity

@@ -73,16 +73,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplay Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.OperationDisplay()); set { {_display = value;} } }
 
         /// <summary>Internal Acessors for DisplayDescription</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Description = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Description = value; }
 
         /// <summary>Internal Acessors for DisplayOperation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Operation = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Operation; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Operation = value; }
 
         /// <summary>Internal Acessors for DisplayProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Provider = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Provider = value; }
 
         /// <summary>Internal Acessors for DisplayResource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Resource = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationDisplayInternal)Display).Resource = value; }
 
         /// <summary>Internal Acessors for IsDataAction</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationInternal.IsDataAction { get => this._isDataAction; set { {_isDataAction = value;} } }

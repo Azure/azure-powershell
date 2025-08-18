@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDeviceRegistryAssetEndpointProfile
 
 ## SYNOPSIS
-Update a AssetEndpointProfile
+update a AssetEndpointProfile
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ Update-AzDeviceRegistryAssetEndpointProfile -InputObject <IDeviceRegistryIdentit
 ```
 
 ## DESCRIPTION
-Update a AssetEndpointProfile
+update a AssetEndpointProfile
 
 ## EXAMPLES
 

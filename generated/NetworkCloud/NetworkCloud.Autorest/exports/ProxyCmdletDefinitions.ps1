@@ -5194,7 +5194,7 @@ $command = @{
     arguments = "commandArguments"
 }
 
-Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourcceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -10864,14 +10864,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The IPV4 prefix (CIDR) assigned to this L3 network.
-    # Required when the IP allocation type is IPV4 or DualStack.
+    # Required when the IP allocation typeis IPV4 or DualStack.
     ${Ipv4ConnectedPrefix},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The IPV6 prefix (CIDR) assigned to this L3 network.
-    # Required when the IP allocation type is IPV6 or DualStack.
+    # Required when the IP allocation typeis IPV6 or DualStack.
     ${Ipv6ConnectedPrefix},
 
     [Parameter()]
@@ -18534,7 +18534,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The details provided by the customer during the creation of rack manifests that allows for custom data to be associated with this machine.
+    # The details provided by the customer during the creation of rack manifeststhat allows for custom data to be associated with this machine.
     ${MachineDetail},
 
     [Parameter()]
@@ -19301,7 +19301,7 @@ AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION <IStorageAppliance
   SerialNumber <String>: The serial number of the appliance.
   [StorageApplianceName <String>]: The user-provided name for the storage appliance that will be created from this specification.
 
-COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
+COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
   NetworkRackId <String>: The resource ID of the network rack that matches this rack definition.
   RackSerialNumber <String>: The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
   RackSkuId <String>: The resource ID of the sku for the rack being added.
@@ -19538,7 +19538,7 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[]]
-    # The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
+    # The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
     # To construct, see NOTES section for COMPUTERACKDEFINITION properties and create a hash table.
     ${ComputeRackDefinition},
 
@@ -23187,7 +23187,7 @@ Create an in-memory object for BgpServiceLoadBalancerConfiguration.
 
 $ipAddressPools=New-AzNetworkCloudIpAddressPoolObject -Address @("198.51.102.0/24") -Name "pool1" -AutoAssign True -OnlyUseHostIP True 
 
-$serviceLoadBalancerBgpPeer=New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password REDACTED -PeerPort 1234
+$serviceLoadBalancerBgpPeer=New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password passsword -PeerPort 1234
 
 $bgpAdvertisement=New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool  @("pool1","pool2") -AdvertiseToFabric "True" -Community  @("communityString") -Peer @("peer1") 
 
@@ -24655,7 +24655,7 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 .Description
 Create an in-memory object for ServiceLoadBalancerBgpPeer.
 .Example
-New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password REDACTED -PeerPort 1234
+New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password passsword -PeerPort 1234
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ServiceLoadBalancerBgpPeer

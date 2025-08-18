@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
@@ -186,7 +185,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             {
                 ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName);
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

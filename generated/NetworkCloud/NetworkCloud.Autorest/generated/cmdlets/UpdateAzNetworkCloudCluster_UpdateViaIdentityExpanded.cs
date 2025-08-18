@@ -16,7 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudCluster_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AggregatorOrSingleRackDefinitionBareMetalMachineConfigurationData","AggregatorOrSingleRackDefinitionStorageApplianceConfigurationData","AvailableUpgradeVersion","ComputeRackDefinition","WorkloadResourceId"}, NewOutputProperties=new string[] {"AggregatorOrSingleRackDefinitionBareMetalMachineConfigurationData","AggregatorOrSingleRackDefinitionStorageApplianceConfigurationData","AvailableUpgradeVersion","ComputeRackDefinition","WorkloadResourceId"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch the properties of the provided cluster, or update the tags associated with the cluster. Properties and tag updates can be done independently.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
@@ -309,15 +308,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         public long ComputeDeploymentThresholdValue { get => _clusterUpdateParametersBody.ComputeDeploymentThresholdValue ?? default(long); set => _clusterUpdateParametersBody.ComputeDeploymentThresholdValue = value; }
 
         /// <summary>
-        /// The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
+        /// The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.",
+        Description = @"The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.",
         SerializedName = @"computeRackDefinitions",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition) })]
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[] ComputeRackDefinition { get => _clusterUpdateParametersBody.ComputeRackDefinition ?? null /* arrayOf */; set => _clusterUpdateParametersBody.ComputeRackDefinition = value; }

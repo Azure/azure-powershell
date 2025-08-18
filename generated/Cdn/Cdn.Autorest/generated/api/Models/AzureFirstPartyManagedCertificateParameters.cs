@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAzureFirstPartyManagedCertificateParametersInternal.SecretSource { get => (this._secretSource = this._secretSource ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_secretSource = value;} } }
 
         /// <summary>Internal Acessors for SecretSourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAzureFirstPartyManagedCertificateParametersInternal.SecretSourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)SecretSource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)SecretSource).Id = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAzureFirstPartyManagedCertificateParametersInternal.SecretSourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)SecretSource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)SecretSource).Id = value; }
 
         /// <summary>Internal Acessors for Subject</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAzureFirstPartyManagedCertificateParametersInternal.Subject { get => this._subject; set { {_subject = value;} } }

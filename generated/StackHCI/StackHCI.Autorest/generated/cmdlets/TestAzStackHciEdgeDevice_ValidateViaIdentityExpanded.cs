@@ -13,8 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Validate=>POST:"/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/validate"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzStackHciEdgeDevice_ValidateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.ParameterSetBreakingChange(new string[] {"ValidateViaIdentityExpanded"}, "15.0.0", "3.0.0", "2025/11")]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.OutputBreakingChange("string", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"EdgeDeviceId"}, NewOutputProperties=new string[] {"EdgeDeviceId"}, ChangeDescription="The type of the property EdgeDeviceId will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(string))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"A long-running resource action.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]

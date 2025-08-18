@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new origin group within the specified endpoint.
+create a new origin group within the specified endpoint.
 .Description
-Create a new origin group within the specified endpoint.
+create a new origin group within the specified endpoint.
 .Example
 $healthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 $origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1

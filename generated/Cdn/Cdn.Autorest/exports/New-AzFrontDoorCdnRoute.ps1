@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Description
-Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
 $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 $ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
@@ -110,65 +110,65 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the endpoint under the profile which is unique globally.
     ${EndpointName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${ProfileInputObject},
-
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
     ${AfdEndpointInputObject},
 
+    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # query parameters to include or exclude (comma separated).
     ${CacheConfigurationQueryParameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("IgnoreQueryString", "UseQueryString", "IgnoreSpecifiedQueryStrings", "IncludeSpecifiedQueryStrings")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
@@ -177,8 +177,8 @@ param(
     ${CacheConfigurationQueryStringCachingBehavior},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String[]]
@@ -187,8 +187,8 @@ param(
     ${CompressionSettingContentTypesToCompress},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether content compression is enabled on AzureFrontDoor.
@@ -198,8 +198,8 @@ param(
     ${CompressionSettingIsCompressionEnabled},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference[]]
@@ -207,8 +207,8 @@ param(
     ${CustomDomain},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
@@ -217,8 +217,8 @@ param(
     ${EnabledState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
@@ -226,8 +226,8 @@ param(
     ${ForwardingProtocol},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
@@ -236,8 +236,8 @@ param(
     ${HttpsRedirect},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
@@ -245,16 +245,16 @@ param(
     ${LinkToDefaultDomain},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Resource ID.
     ${OriginGroupId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g.
@@ -262,8 +262,8 @@ param(
     ${OriginPath},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String[]]
@@ -271,8 +271,8 @@ param(
     ${PatternsToMatch},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]]
@@ -280,8 +280,8 @@ param(
     ${RuleSet},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Http", "Https")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -289,11 +289,12 @@ param(
     # List of supported protocols for this route.
     ${SupportedProtocol},
 
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute]
+    # Friendly Routes name mapping to the any Routes or secret related information.
+    ${Route},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -301,12 +302,11 @@ param(
     # Path of Json file supplied to the Create operation
     ${JsonFilePath},
 
-    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute]
-    # Friendly Routes name mapping to the any Routes or secret related information.
-    ${Route},
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -404,15 +404,15 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaJsonString = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaJsonFilePath = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaIdentityProfileExpanded = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaIdentityProfile = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaIdentityAfdEndpointExpanded = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
-            CreateViaIdentityAfdEndpoint = 'Az.Cdn.custom\New-AzFrontDoorCdnRoute';
+            CreateExpanded = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateExpanded';
+            CreateViaIdentityAfdEndpoint = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaIdentityAfdEndpoint';
+            CreateViaIdentityAfdEndpointExpanded = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaIdentityAfdEndpointExpanded';
+            CreateViaIdentityProfile = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaIdentityProfile';
+            CreateViaIdentityProfileExpanded = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaIdentityProfileExpanded';
+            CreateViaJsonFilePath = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Cdn.private\New-AzFrontDoorCdnRoute_CreateViaJsonString';
         }
-        if (('CreateExpanded', 'CreateViaJsonString', 'CreateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

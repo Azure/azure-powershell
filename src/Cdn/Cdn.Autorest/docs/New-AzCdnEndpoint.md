@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCdnEndpoint
 
 ## SYNOPSIS
-Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ New-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
 ## EXAMPLES
 

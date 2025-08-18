@@ -200,13 +200,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="notifications">Indicates a list of notification channels for cluster events.
         /// </param>
-
-        /// <param name="enableHttpGatewayExclusiveAuthMode">If true, token-based authentication is not allowed on the
-        /// HttpGatewayEndpoint. This is required to support TLS versions 1.3 and
-        /// above. If token-based authentication is used,
-        /// HttpGatewayTokenAuthEndpointPort must be defined.
-        /// </param>
-        public Cluster(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), string clusterState = default(string), string provisioningState = default(string), string reliabilityLevel = default(string), string upgradeMode = default(string), System.Collections.Generic.IList<string> addOnFeatures = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ClusterVersionDetails> availableClusterVersions = default(System.Collections.Generic.IList<ClusterVersionDetails>), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), CertificateDescription certificate = default(CertificateDescription), ServerCertificateCommonNames certificateCommonNames = default(ServerCertificateCommonNames), System.Collections.Generic.IList<ClientCertificateCommonName> clientCertificateCommonNames = default(System.Collections.Generic.IList<ClientCertificateCommonName>), System.Collections.Generic.IList<ClientCertificateThumbprint> clientCertificateThumbprints = default(System.Collections.Generic.IList<ClientCertificateThumbprint>), string clusterCodeVersion = default(string), string clusterEndpoint = default(string), string clusterId = default(string), DiagnosticsStorageAccountConfig diagnosticsStorageAccountConfig = default(DiagnosticsStorageAccountConfig), bool? eventStoreServiceEnabled = default(bool?), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), string managementEndpoint = default(string), System.Collections.Generic.IList<NodeTypeDescription> nodeTypes = default(System.Collections.Generic.IList<NodeTypeDescription>), CertificateDescription reverseProxyCertificate = default(CertificateDescription), ServerCertificateCommonNames reverseProxyCertificateCommonNames = default(ServerCertificateCommonNames), ClusterUpgradePolicy upgradeDescription = default(ClusterUpgradePolicy), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), string vmImage = default(string), string sfZonalUpgradeMode = default(string), string vmssZonalUpgradeMode = default(string), bool? infrastructureServiceManager = default(bool?), string upgradeWave = default(string), System.DateTime? upgradePauseStartTimestampUtc = default(System.DateTime?), System.DateTime? upgradePauseEndTimestampUtc = default(System.DateTime?), bool? waveUpgradePaused = default(bool?), System.Collections.Generic.IList<Notification> notifications = default(System.Collections.Generic.IList<Notification>), bool? enableHttpGatewayExclusiveAuthMode = default(bool?))
+        public Cluster(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), string clusterState = default(string), string provisioningState = default(string), string reliabilityLevel = default(string), string upgradeMode = default(string), System.Collections.Generic.IList<string> addOnFeatures = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ClusterVersionDetails> availableClusterVersions = default(System.Collections.Generic.IList<ClusterVersionDetails>), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), CertificateDescription certificate = default(CertificateDescription), ServerCertificateCommonNames certificateCommonNames = default(ServerCertificateCommonNames), System.Collections.Generic.IList<ClientCertificateCommonName> clientCertificateCommonNames = default(System.Collections.Generic.IList<ClientCertificateCommonName>), System.Collections.Generic.IList<ClientCertificateThumbprint> clientCertificateThumbprints = default(System.Collections.Generic.IList<ClientCertificateThumbprint>), string clusterCodeVersion = default(string), string clusterEndpoint = default(string), string clusterId = default(string), DiagnosticsStorageAccountConfig diagnosticsStorageAccountConfig = default(DiagnosticsStorageAccountConfig), bool? eventStoreServiceEnabled = default(bool?), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), string managementEndpoint = default(string), System.Collections.Generic.IList<NodeTypeDescription> nodeTypes = default(System.Collections.Generic.IList<NodeTypeDescription>), CertificateDescription reverseProxyCertificate = default(CertificateDescription), ServerCertificateCommonNames reverseProxyCertificateCommonNames = default(ServerCertificateCommonNames), ClusterUpgradePolicy upgradeDescription = default(ClusterUpgradePolicy), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), string vmImage = default(string), string sfZonalUpgradeMode = default(string), string vmssZonalUpgradeMode = default(string), bool? infrastructureServiceManager = default(bool?), string upgradeWave = default(string), System.DateTime? upgradePauseStartTimestampUtc = default(System.DateTime?), System.DateTime? upgradePauseEndTimestampUtc = default(System.DateTime?), bool? waveUpgradePaused = default(bool?), System.Collections.Generic.IList<Notification> notifications = default(System.Collections.Generic.IList<Notification>))
 
         : base(location, id, name, type, tags, etag, systemData)
         {
@@ -242,7 +236,6 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
             this.UpgradePauseEndTimestampUtc = upgradePauseEndTimestampUtc;
             this.WaveUpgradePaused = waveUpgradePaused;
             this.Notifications = notifications;
-            this.EnableHttpGatewayExclusiveAuthMode = enableHttpGatewayExclusiveAuthMode;
             CustomInit();
         }
 
@@ -505,15 +498,6 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.notifications")]
         public System.Collections.Generic.IList<Notification> Notifications {get; set; }
-
-        /// <summary>
-        /// Gets or sets if true, token-based authentication is not allowed on the
-        /// HttpGatewayEndpoint. This is required to support TLS versions 1.3 and
-        /// above. If token-based authentication is used,
-        /// HttpGatewayTokenAuthEndpointPort must be defined.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableHttpGatewayExclusiveAuthMode")]
-        public bool? EnableHttpGatewayExclusiveAuthMode {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

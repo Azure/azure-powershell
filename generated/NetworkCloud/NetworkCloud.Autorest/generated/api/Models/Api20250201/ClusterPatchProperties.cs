@@ -167,7 +167,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[] _computeRackDefinition;
 
         /// <summary>
-        /// The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
+        /// The list of rack definitions for the compute racks in a multi-rack
+        /// cluster, or an empty list in a single-rack cluster.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[] ComputeRackDefinition { get => this._computeRackDefinition; set => this._computeRackDefinition = value; }
@@ -499,12 +500,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
         PossibleTypes = new [] { typeof(long) })]
         long? ComputeDeploymentThresholdValue { get; set; }
         /// <summary>
-        /// The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
+        /// The list of rack definitions for the compute racks in a multi-rack
+        /// cluster, or an empty list in a single-rack cluster.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.",
+        Description = @"The list of rack definitions for the compute racks in a multi-rack
+        cluster, or an empty list in a single-rack cluster.",
         SerializedName = @"computeRackDefinitions",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition) })]
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[] ComputeRackDefinition { get; set; }
@@ -709,7 +712,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
         /// <summary>The numeric threshold value.</summary>
         long? ComputeDeploymentThresholdValue { get; set; }
         /// <summary>
-        /// The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
+        /// The list of rack definitions for the compute racks in a multi-rack
+        /// cluster, or an empty list in a single-rack cluster.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[] ComputeRackDefinition { get; set; }
         /// <summary>The settings for cluster runtime protection.</summary>

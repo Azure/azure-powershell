@@ -497,7 +497,6 @@ Function Print-FunctionParameters{
 }
 
 function Confirm-UserAcknowledgmentToUpgradeOS {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'High')]
     param(
         [Parameter(Mandatory=$true)]
@@ -522,7 +521,6 @@ function Confirm-UserAcknowledgmentToUpgradeOS {
 }
 
 function Confirm-UserAcknowledgmentUpgradeToSolution {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)]
@@ -4143,7 +4141,7 @@ function New-ClusterWithRetries {
     GraphAccessToken is deprecated.
 
     .PARAMETER AccountId
-    Specifies the AccountId. Specifying this along with ArmAccessToken will avoid Azure interactive logon.
+    Specifies the AccoundId. Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
     Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment

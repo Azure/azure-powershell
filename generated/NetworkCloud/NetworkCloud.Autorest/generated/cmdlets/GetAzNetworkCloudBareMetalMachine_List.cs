@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/bareMetalMachines"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNetworkCloudBareMetalMachine_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachine", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AssociatedResourceId","HardwareInventoryInterface","HardwareInventoryNic","HybridAksClustersAssociatedId","MachineRole","SecretRotationStatus","VirtualMachinesAssociatedId"}, NewOutputProperties=new string[] {"AssociatedResourceId","HardwareInventoryInterface","HardwareInventoryNic","HybridAksClustersAssociatedId","MachineRole","SecretRotationStatus","VirtualMachinesAssociatedId"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Get a list of bare metal machines in the provided subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

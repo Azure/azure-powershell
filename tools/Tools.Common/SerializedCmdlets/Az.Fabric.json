@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Fabric",
-  "ModuleVersion": "1.0.0",
+  "ModuleVersion": "0.1.2",
   "Cmdlets": [
     {
       "VerbName": "Get",

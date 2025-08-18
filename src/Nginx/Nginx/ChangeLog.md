@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.2.1
 * Added breaking change announcement for below cmdlets from fixed array to list.
   - `Get-AzNginxConfiguration`
   - `New-AzNginxConfiguration`

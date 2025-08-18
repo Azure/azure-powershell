@@ -15,6 +15,5 @@ namespace Microsoft.Azure.Management.Sql.Models
     {
         public const string SharedAccessKey = "SharedAccessKey";
         public const string StorageAccessKey = "StorageAccessKey";
-        public const string ManagedIdentity = "ManagedIdentity";
     }
 }

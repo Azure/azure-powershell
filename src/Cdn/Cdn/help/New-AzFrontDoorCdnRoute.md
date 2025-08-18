@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnRoute
 
 ## SYNOPSIS
-Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
 ## SYNTAX
 
@@ -25,11 +25,18 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <Stri
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityProfile
+### CreateViaJsonString
 ```
-New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
- -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfileExpanded
@@ -44,25 +51,11 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObjec
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### CreateViaIdentityProfile
 ```
-New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityAfdEndpoint
-```
-New-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity> -Route <IRoute>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityAfdEndpointExpanded
@@ -77,8 +70,15 @@ New-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity>
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityAfdEndpoint
+```
+New-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity> -Route <IRoute>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
 ## EXAMPLES
 
@@ -88,10 +88,10 @@ $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm
 $ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 $customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 
-$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
-$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
+$ruleSetResource = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
+$customdomainResource = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
 
-New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure)
+New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResource) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResource)
 ```
 
 ```output
@@ -109,7 +109,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: CreateViaIdentityAfdEndpoint, CreateViaIdentityAfdEndpointExpanded
+Parameter Sets: CreateViaIdentityAfdEndpointExpanded, CreateViaIdentityAfdEndpoint
 Aliases:
 
 Required: True
@@ -251,7 +251,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityProfile, CreateViaIdentityProfileExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
 Aliases:
 
 Required: True
@@ -418,7 +418,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: CreateViaIdentityProfile, CreateViaIdentityProfileExpanded
+Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
 Aliases:
 
 Required: True
@@ -433,7 +433,7 @@ Name of the Azure Front Door Standard or Azure Front Door Premium which is uniqu
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -448,7 +448,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -493,7 +493,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnOrigin
 
 ## SYNOPSIS
-Update an existing origin within an origin group.
+update an existing origin within an origin group.
 
 ## SYNTAX
 
@@ -84,7 +84,7 @@ Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -Prof
 ```
 
 ## DESCRIPTION
-Update an existing origin within an origin group.
+update an existing origin within an origin group.
 
 ## EXAMPLES
 

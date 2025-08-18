@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnCustomDomainValidationToken
 
 ## SYNOPSIS
-Refresh the domain validation token.
+refresh the domain validation token.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzFrontDoorCdnCustomDomainValidationToken -InputObject <ICdnIdentity> [-D
 ```
 
 ## DESCRIPTION
-Refresh the domain validation token.
+refresh the domain validation token.
 
 ## EXAMPLES
 

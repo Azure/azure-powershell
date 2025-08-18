@@ -2336,9 +2336,6 @@ Updates a network manager group.
 ### [Set-AzNetworkManagerIpamPool](Set-AzNetworkManagerIpamPool.md)
 Updates an IPAM pool.
 
-### [Set-AzNetworkManagerIpamPoolStaticCidr](Set-AzNetworkManagerIpamPoolStaticCidr.md)
-Updates an IPAM pool's static cidr.
-
 ### [Set-AzNetworkManagerManagementGroupConnection](Set-AzNetworkManagerManagementGroupConnection.md)
 Update a network manger management group connection
 

@@ -58,13 +58,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityInternal)Identity).TenantId = value; }
 
         /// <summary>Internal Acessors for LogScrubbing</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileLogScrubbing Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersInternal.LogScrubbing { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfilePropertiesUpdateParametersInternal)Property).LogScrubbing; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfilePropertiesUpdateParametersInternal)Property).LogScrubbing = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileLogScrubbing Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersInternal.LogScrubbing { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfilePropertiesUpdateParametersInternal)Property).LogScrubbing; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfilePropertiesUpdateParametersInternal)Property).LogScrubbing = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfilePropertiesUpdateParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilePropertiesUpdateParameters()); set { {_property = value;} } }

@@ -15,7 +15,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkCloudL3Network_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3Network", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AssociatedResourceId","HybridAksClustersAssociatedId","VirtualMachinesAssociatedId"}, NewOutputProperties=new string[] {"AssociatedResourceId","HybridAksClustersAssociatedId","VirtualMachinesAssociatedId"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3Network))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Create a new layer 3 (L3) network or update the properties of the existing network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
@@ -193,27 +192,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack.
+        /// The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation typeis IPV4 or DualStack.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation typeis IPV4 or DualStack.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack.",
+        Description = @"The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation typeis IPV4 or DualStack.",
         SerializedName = @"ipv4ConnectedPrefix",
         PossibleTypes = new [] { typeof(string) })]
         public string Ipv4ConnectedPrefix { get => _l3NetworkParametersBody.Ipv4ConnectedPrefix ?? null; set => _l3NetworkParametersBody.Ipv4ConnectedPrefix = value; }
 
         /// <summary>
-        /// The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack.
+        /// The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation typeis IPV6 or DualStack.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation typeis IPV6 or DualStack.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack.",
+        Description = @"The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation typeis IPV6 or DualStack.",
         SerializedName = @"ipv6ConnectedPrefix",
         PossibleTypes = new [] { typeof(string) })]
         public string Ipv6ConnectedPrefix { get => _l3NetworkParametersBody.Ipv6ConnectedPrefix ?? null; set => _l3NetworkParametersBody.Ipv6ConnectedPrefix = value; }

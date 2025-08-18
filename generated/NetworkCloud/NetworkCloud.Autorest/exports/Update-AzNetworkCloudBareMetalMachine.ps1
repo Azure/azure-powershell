@@ -110,7 +110,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The details provided by the customer during the creation of rack manifests that allows for custom data to be associated with this machine.
+    # The details provided by the customer during the creation of rack manifeststhat allows for custom data to be associated with this machine.
     ${MachineDetail},
 
     [Parameter()]

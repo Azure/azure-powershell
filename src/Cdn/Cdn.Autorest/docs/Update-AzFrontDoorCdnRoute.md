@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnRoute
 
 ## SYNOPSIS
-Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
 ## SYNTAX
 
@@ -86,7 +86,7 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
 ```
 
 ## DESCRIPTION
-Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
 ## EXAMPLES
 

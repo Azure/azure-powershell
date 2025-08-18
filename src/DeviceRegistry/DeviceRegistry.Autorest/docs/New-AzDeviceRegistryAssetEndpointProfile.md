@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDeviceRegistryAssetEndpointProfile
 
 ## SYNOPSIS
-Create a AssetEndpointProfile
+create a AssetEndpointProfile
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ New-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-Create a AssetEndpointProfile
+create a AssetEndpointProfile
 
 ## EXAMPLES
 

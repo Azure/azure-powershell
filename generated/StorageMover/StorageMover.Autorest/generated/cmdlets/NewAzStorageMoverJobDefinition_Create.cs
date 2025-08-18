@@ -15,7 +15,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStorageMoverJobDefinition_Create", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ParameterSetBreakingChange(new string[] {"Create"}, "15.0.0", "2.0.0", "2025/11/03", ChangeDescription="The parameter set Create will be removed. Suggest to use CreateExpanded and CreateViaJsonString instead.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]

@@ -37,13 +37,6 @@ New-AzDnsRecordConfig -Exchange <String> -Preference <UInt16> [-DefaultProfile <
  [<CommonParameters>]
 ```
 
-### Naptr
-```
-New-AzDnsRecordConfig -Preference <UInt16> -Order <UInt16> -Flags <String> -Services <String> -Regexp <String>
- -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### Ptr
 ```
 New-AzDnsRecordConfig -Ptrdname <String> [-DefaultProfile <IAzureContextContainer>]
@@ -84,6 +77,13 @@ New-AzDnsRecordConfig -KeyTag <Int32> -Algorithm <Int32> -DigestType <Int32> -Di
 ```
 New-AzDnsRecordConfig -Usage <Int32> -Selector <Int32> -MatchingType <Int32>
  -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### Naptr
+```
+New-AzDnsRecordConfig -Flags <UInt16> -Order <UInt16> -Preference <UInt16> -Services <String>
+ -Regexp <String> -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -396,7 +396,7 @@ Accept wildcard characters: False
 Specifies the flags for a NAPTR record.
 
 ```yaml
-Type: System.String
+Type: System.UInt16
 Parameter Sets: Naptr
 Aliases:
 
@@ -517,7 +517,7 @@ Specifies the preference for an MX/NAPTR record.
 
 ```yaml
 Type: System.UInt16
-Parameter Sets: Mx, Naptr
+Parameter Sets: Mx, NAPTR
 Aliases:
 
 Required: True
@@ -587,12 +587,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Selector
-The selector field of the TLSA record to add.
+### -Services
+Specifies the services for a NAPTR record.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: Tlsa
+Type: System.String
+Parameter Sets: Naptr
 Aliases:
 
 Required: True
@@ -602,12 +602,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Services
-Specifies the services for a NAPTR record.
+### -Selector
+The selector field of the TLSA record to add.
 
 ```yaml
-Type: System.String
-Parameter Sets: Naptr
+Type: System.Int32
+Parameter Sets: Tlsa
 Aliases:
 
 Required: True

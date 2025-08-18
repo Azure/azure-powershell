@@ -15,7 +15,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkCloudClusterManager_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterManager", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AvailabilityZone"}, NewOutputProperties=new string[] {"AvailabilityZone"}, ChangeDescription="The type of property will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterManager))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Create a new cluster manager or update properties of the cluster manager if it exists.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

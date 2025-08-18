@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNetworkCloudCluster_List1")]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AggregatorOrSingleRackDefinitionBareMetalMachineConfigurationData","AggregatorOrSingleRackDefinitionStorageApplianceConfigurationData","AvailableUpgradeVersion","ComputeRackDefinition","WorkloadResourceId"}, NewOutputProperties=new string[] {"AggregatorOrSingleRackDefinitionBareMetalMachineConfigurationData","AggregatorOrSingleRackDefinitionStorageApplianceConfigurationData","AvailableUpgradeVersion","ComputeRackDefinition","WorkloadResourceId"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ICluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Get a list of clusters in the provided resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

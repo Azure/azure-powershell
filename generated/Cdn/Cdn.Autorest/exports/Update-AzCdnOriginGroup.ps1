@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 .Description
-Update an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 .Example
 $updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 Update-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $updateHealthProbeParameters

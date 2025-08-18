@@ -93,6 +93,7 @@
 | Guest Configuration            | `Az.GuestConfiguration`         | [![GuestConfiguration]][GuestConfigurationGallery]                 | [Changelog][GuestConfigurationChangeLog]         |
 | SAP HANA on Azure              | `Az.HanaOnAzure`                | [![HanaOnAzure]][HanaOnAzureGallery]                               | [Changelog][HanaOnAzureChangeLog]                |
 | HDInsight                      | `Az.HDInsight`                  | [![HDInsight]][HDInsightGallery]                                   | [Changelog][HDInsightChangeLog]                  |
+| HdInsightOnAks                 | `Az.HdInsightOnAks`             | [![HdInsightOnAks]][HdInsightOnAksGallery]                         | [Changelog][HdInsightOnAksChangeLog]             |
 | HealthBot                      | `Az.HealthBot`                  | [![HealthBot]][HealthBotGallery]                                   | [Changelog][HealthBotChangeLog]                  |
 | HealthDataAIServices           | `Az.HealthDataAIServices`       | [![HealthDataAIServices]][HealthDataAIServicesGallery]             | [Changelog][HealthDataAIServicesChangeLog]       |
 | API for FHIR                   | `Az.HealthcareApis`             | [![HealthcareApis]][HealthcareApisGallery]                         | [Changelog][HealthcareApisChangeLog]             |
@@ -278,6 +279,7 @@
 [GuestConfiguration]:         https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration
 [HanaOnAzure]:                https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
+[HdInsightOnAks]:             https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks
 [HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HealthDataAIServices]:       https://img.shields.io/powershellgallery/v/Az.HealthDataAIServices.svg?style=flat-square&label=Az.HealthDataAIServices
@@ -459,6 +461,7 @@
 [GuestConfigurationGallery]:         https://www.powershellgallery.com/packages/Az.GuestConfiguration/
 [HanaOnAzureGallery]:                https://www.powershellgallery.com/packages/Az.HanaOnAzure/
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
+[HdInsightOnAksGallery]:             https://www.powershellgallery.com/packages/Az.HdInsightOnAks/
 [HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HealthDataAIServicesGallery]:       https://www.powershellgallery.com/packages/Az.HealthDataAIServices/
@@ -638,6 +641,7 @@
 [GuestConfigurationChangeLog]:         ../src/GuestConfiguration/GuestConfiguration/ChangeLog.md
 [HanaOnAzureChangeLog]:                ../src/HanaOnAzure/HanaOnAzure/ChangeLog.md
 [HDInsightChangeLog]:                  ../src/HDInsight/HDInsight/ChangeLog.md
+[HdInsightOnAksChangeLog]:             ../src/HdInsightOnAks/HdInsightOnAks/ChangeLog.md
 [HealthBotChangeLog]:                  ../src/HealthBot/HealthBot/ChangeLog.md
 [HealthcareApisChangeLog]:             ../src/HealthcareApis/HealthcareApis/ChangeLog.md
 [HealthDataAIServicesChangeLog]:       ../src/HealthDataAIServices/HealthDataAIServices/ChangeLog.md

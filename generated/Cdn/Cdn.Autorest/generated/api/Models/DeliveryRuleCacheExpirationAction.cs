@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICacheExpirationActionParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCacheExpirationActionInternal.Parameter { get => (this._parameter = this._parameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CacheExpirationActionParameters()); set { {_parameter = value;} } }
 
         /// <summary>Internal Acessors for ParameterCacheType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCacheExpirationActionInternal.ParameterCacheType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICacheExpirationActionParametersInternal)Parameter).CacheType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICacheExpirationActionParametersInternal)Parameter).CacheType = value ; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCacheExpirationActionInternal.ParameterCacheType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICacheExpirationActionParametersInternal)Parameter).CacheType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICacheExpirationActionParametersInternal)Parameter).CacheType = value; }
 
         /// <summary>The name of the action for the delivery rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Constant]

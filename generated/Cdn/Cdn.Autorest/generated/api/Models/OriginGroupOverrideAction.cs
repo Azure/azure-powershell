@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideActionParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideActionInternal.Parameter { get => (this._parameter = this._parameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideActionParameters()); set { {_parameter = value;} } }
 
         /// <summary>Internal Acessors for ParameterOriginGroup</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideActionInternal.ParameterOriginGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideActionParametersInternal)Parameter).OriginGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideActionParametersInternal)Parameter).OriginGroup = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideActionInternal.ParameterOriginGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideActionParametersInternal)Parameter).OriginGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupOverrideActionParametersInternal)Parameter).OriginGroup = value; }
 
         /// <summary>The name of the action for the delivery rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Constant]

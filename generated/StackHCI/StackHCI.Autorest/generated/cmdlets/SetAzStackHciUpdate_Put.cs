@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Put=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzStackHciUpdate_Put", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"ComponentVersion","HealthCheckResult","Prerequisite"}, NewOutputProperties=new string[] {"ComponentVersion","HealthCheckResult","Prerequisite"}, ChangeDescription="The types of the properties ComponentVersion, HealthCheckResult and Prerequisite will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Put specified Update")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]

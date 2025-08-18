@@ -15,7 +15,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStorageMoverProject_UpdateViaIdentity", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ParameterSetBreakingChange(new string[] {"UpdateViaIdentity"}, "15.0.0", "2.0.0", "2025/11/03", ChangeDescription="The parameter set Update and UpdateViaIdentity will be removed. Suggest to use UpdateExpanded, UpdateViaIdentityExpanded and UpdateViaJsonString instead.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Updates properties for a Project resource. Properties not specified in the request body will be unchanged.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]

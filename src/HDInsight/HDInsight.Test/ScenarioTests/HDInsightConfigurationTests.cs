@@ -31,12 +31,5 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ConfigurationPipelining");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateClusterByConfigurationPipelining()
-        {
-            TestRunner.RunTestScript("Test-CreateClusterByConfigurationPipelining");
-        }
     }
 }

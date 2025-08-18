@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Description
-Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 .Example
 $origin = @{
     Name = "origin1"

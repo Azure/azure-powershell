@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCdnOriginGroup
 
 ## SYNOPSIS
-Update an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 
 ## SYNTAX
 
@@ -77,7 +77,7 @@ Update-AzCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSetting <IHealt
 ```
 
 ## DESCRIPTION
-Update an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 
 ## EXAMPLES
 

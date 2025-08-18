@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Description
-Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 .Example
 Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
 .Example

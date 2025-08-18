@@ -61,8 +61,8 @@ namespace Commands.StorageSync.Interop.Clients
         /// <summary>
         /// This function will return the application id of the server if it is available.
         /// </summary>
-        /// <returns>ServerApplicationIdentity or null</returns>
-        public abstract ServerApplicationIdentity GetServerApplicationIdentityOrNull();
+        /// <returns>Application Id or null</returns>
+        public abstract Guid? GetApplicationIdOrNull();
 
         /// <summary>
         /// Validate sync server registration.
@@ -146,7 +146,6 @@ namespace Commands.StorageSync.Interop.Clients
         /// 4. Get ClusterInfo
         /// 5. Populate RegistrationServerResource
         /// </summary>
-        /// <param name="storageSyncServiceTenantId">Storage Sync Service Tenant Id</param>
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
         /// <param name="storageSyncServiceName">Storage Sync Service Name</param>
@@ -163,7 +162,6 @@ namespace Commands.StorageSync.Interop.Clients
         /// </exception>
         /// <exception cref="ServerRegistrationException"></exception>
         public RegisteredServer Register(
-            string storageSyncServiceTenantId,
             Uri managementEndpointUri,
             Guid subscriptionId,
             string storageSyncServiceName,
@@ -178,19 +176,7 @@ namespace Commands.StorageSync.Interop.Clients
             bool assignIdentity)
         {
             // Get ApplicationId
-            ServerApplicationIdentity serverApplicationIdentity = assignIdentity ? GetServerApplicationIdentityOrNull() : null;
-            // Discover the server type , Get the application id, 
-            Guid? applicationId = serverApplicationIdentity?.ApplicationId;
-
-            if (serverApplicationIdentity != null && serverApplicationIdentity.TenantId != Guid.Empty)
-            {
-                // Check that tenants match
-                if (!string.Equals(storageSyncServiceTenantId, serverApplicationIdentity.TenantId.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    throw new ServerRegistrationException(
-                        $"Cross-tenant registration is not allowed. The server belongs to tenant '{serverApplicationIdentity.TenantId}' but the Storage Sync Service is in tenant '{storageSyncServiceTenantId}'.");
-                }
-            }
+            Guid? applicationId = assignIdentity ? GetApplicationIdOrNull() : null;
 
 #pragma warning disable CA1416 // Validate platform compatibility
             //RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,

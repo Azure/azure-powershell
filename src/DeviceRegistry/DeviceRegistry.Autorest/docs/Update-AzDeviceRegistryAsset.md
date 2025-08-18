@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDeviceRegistryAsset
 
 ## SYNOPSIS
-Update a Asset
+update a Asset
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Update-AzDeviceRegistryAsset -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-Update a Asset
+update a Asset
 
 ## EXAMPLES
 

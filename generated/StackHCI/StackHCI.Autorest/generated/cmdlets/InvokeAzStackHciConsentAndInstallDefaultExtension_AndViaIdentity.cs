@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] ConsentAndInstallDefaultExtensions=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/consentAndInstallDefaultExtensions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzStackHciConsentAndInstallDefaultExtension_AndViaIdentity", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"DefaultExtension","PerNodeDetail"}, NewOutputProperties=new string[] {"DefaultExtension","PerNodeDetail"}, ChangeDescription="The types of the properties DefaultExtension and PerNodeDetail will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Add consent time for default extensions and initiate extensions installation")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]

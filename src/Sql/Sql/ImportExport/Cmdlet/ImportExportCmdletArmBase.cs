@@ -80,7 +80,8 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <summary>
         /// Gets or sets the password of the SQL administrator
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The Azure SQL Server administrator password")]
+        [Parameter(Mandatory = true, HelpMessage = "The Azure SQL Server administrator password")]
+        [ValidateNotNullOrEmpty]
         public SecureString AdministratorLoginPassword
         {
             get; set;

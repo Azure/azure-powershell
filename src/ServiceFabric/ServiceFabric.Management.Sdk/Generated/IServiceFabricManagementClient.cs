@@ -84,11 +84,6 @@ namespace Microsoft.Azure.Management.ServiceFabric
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IUnsupportedVMSizesOperations
-        /// </summary>
-        IUnsupportedVMSizesOperations UnsupportedVMSizes { get; }
-
-        /// <summary>
         /// Gets the IApplicationTypesOperations
         /// </summary>
         IApplicationTypesOperations ApplicationTypes { get; }

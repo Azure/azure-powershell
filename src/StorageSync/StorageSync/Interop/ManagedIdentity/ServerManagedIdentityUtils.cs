@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
             // Expected form: %ProgramData%\AzureConnectedMachineAgent\Tokens\<guid>.key
             var programData = Environment.GetEnvironmentVariable("ProgramData");
-
+            
             if (string.IsNullOrEmpty(programData))
             {
                 // If ProgramData is not found, try to manually construct it using SystemDrive

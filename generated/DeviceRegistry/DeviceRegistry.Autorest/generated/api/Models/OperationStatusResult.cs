@@ -51,25 +51,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).AdditionalInfo = value; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Code = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Code = value; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Detail = value ?? null /* arrayOf */; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Detail = value; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ErrorDetail()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Message = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Message = value; }
 
         /// <summary>Internal Acessors for ResourceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.ResourceId { get => this._resourceId; set { {_resourceId = value;} } }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Target = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResultInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorDetailInternal)Error).Target = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

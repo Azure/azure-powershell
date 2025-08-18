@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.4.0
 - Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-PostGreConnection
 - Introduced a Timeout value when running Test-AzPostgreSqlFlexibleServerConnect with long running query
 

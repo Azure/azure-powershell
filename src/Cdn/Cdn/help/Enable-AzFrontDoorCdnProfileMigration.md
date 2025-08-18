@@ -28,7 +28,6 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 ```
 
-Commit the classic AFD Migration.
 Commit the migrated Azure Front Door(Standard/Premium) profile.
 
 ### Example 2: Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscription
@@ -36,7 +35,6 @@ Commit the migrated Azure Front Door(Standard/Premium) profile.
 Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 ```
 
-Commit the classic AFD Migration.
 Commit the migrated Azure Front Door(Standard/Premium) profile, when the subscription of the profile is different from the local subscription
 
 ## PARAMETERS
