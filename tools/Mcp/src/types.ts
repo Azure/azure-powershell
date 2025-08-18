@@ -1,8 +1,14 @@
 export interface toolParameterSchema {
     name: string;
     description: string;
-    type: string; // string | number | boolean | array (of string)
-    optional?: boolean; // if true, parameter is optional
+    type: string;
+}
+
+export interface promptParameterSchema {
+    name: string;
+    description: string;
+    type: string;
+    optional?: boolean;
 }
 
 export interface toolSchema {
@@ -15,8 +21,8 @@ export interface toolSchema {
 export interface promptSchema {
     name: string;
     description: string;
-    parameters: toolParameterSchema[]; // reuse parameter schema
-    callbackName: string; // maps to PromptService internal function
+    parameters: promptParameterSchema[];
+    callbackName: string; 
 }
 
 export interface responseSchema {

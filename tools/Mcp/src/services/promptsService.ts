@@ -1,5 +1,5 @@
 import { z, ZodRawShape } from "zod";
-import { promptSchema, toolParameterSchema } from "../types.js";
+import { promptSchema, promptParameterSchema } from "../types.js";
 import { CodegenServer } from "../CodegenServer.js";
 
 
@@ -64,7 +64,7 @@ export class PromptsService {
         return response;
     }
 
-    createPromptParametersFromSchema(schemas: toolParameterSchema[]) {
+    createPromptParametersFromSchema(schemas: promptParameterSchema[]) {
         const parameter: { [k: string]: any } = {};
         for (const schema of schemas) {
             const base = schema.optional ? z.any().optional() : z.any();
