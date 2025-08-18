@@ -50,6 +50,8 @@ subject-prefix: $(service-name)
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
+# because autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity
+# we hide the original cmdlet and custom it under /custom folder
 disable-transform-identity-type-for-operation:
   - ManagedHsms_Update
 
