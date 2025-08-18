@@ -32,10 +32,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="accessSAS">A SAS uri for accessing a disk.</param>
         /// <param name="securityDataAccessSAS">A SAS uri for accessing a VM
         /// guest state.</param>
-        public AccessUri(string accessSAS = default(string), string securityDataAccessSAS = default(string))
+        /// <param name="securityMetadataAccessSAS">A SAS uri for accessing a
+        /// VM metadata.</param>
+        public AccessUri(string accessSAS = default(string), string securityDataAccessSAS = default(string), string securityMetadataAccessSAS = default(string))
         {
             AccessSAS = accessSAS;
             SecurityDataAccessSAS = securityDataAccessSAS;
+            SecurityMetadataAccessSAS = securityMetadataAccessSAS;
             CustomInit();
         }
 
@@ -55,6 +58,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "securityDataAccessSAS")]
         public string SecurityDataAccessSAS { get; private set; }
+
+        /// <summary>
+        /// Gets a SAS uri for accessing a VM metadata.
+        /// </summary>
+        [JsonProperty(PropertyName = "securityMetadataAccessSAS")]
+        public string SecurityMetadataAccessSAS { get; private set; }
 
     }
 }
