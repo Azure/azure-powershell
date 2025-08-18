@@ -133,5 +133,5 @@ Update the Database resource.
 Patches the SAP Landscape Monitor Dashboard for the specified subscription, resource group, and SAP monitor name.
 
 ### [Update-AzWorkloadsSapVirtualInstance](Update-AzWorkloadsSapVirtualInstance.md)
-Update a Virtual Instance for SAP solutions (VIS) resource
+Update a Virtual Instance for SAP solutions resource
 

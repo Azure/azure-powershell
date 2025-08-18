@@ -73,5 +73,5 @@ Update the SAP Central Services Instance resource.
 Update the Database resource.
 
 ### [Update-AzWorkloadsSapVirtualInstance](Update-AzWorkloadsSapVirtualInstance.md)
-Update a Virtual Instance for SAP solutions (VIS) resource
+Update a Virtual Instance for SAP solutions resource
 
