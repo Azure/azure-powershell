@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnOrigin
 
 ## SYNOPSIS
-create a new origin within the specified origin group.
+Create a new origin within the specified origin group.
 
 ## SYNTAX
 
@@ -75,7 +75,7 @@ New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnIdent
 ```
 
 ## DESCRIPTION
-create a new origin within the specified origin group.
+Create a new origin within the specified origin group.
 
 ## EXAMPLES
 

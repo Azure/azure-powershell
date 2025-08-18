@@ -58,11 +58,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="additionalCapabilities">Enables or disables a
         /// capability on the dedicated host group. Minimum api-version:
         /// 2022-03-01.</param>
-        /// <param name="zones">Availability Zone to use for this host group.
-        /// Only single zone is supported. The zone can be assigned only during
-        /// creation. If not provided, the group supports all zones in the
-        /// region. If provided, enforces each host in the group to be in the
-        /// same zone.</param>
+        /// <param name="zones">The availability zones.</param>
         public DedicatedHostGroup(string location, int platformFaultDomainCount, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> hosts = default(IList<SubResourceReadOnly>), DedicatedHostGroupInstanceView instanceView = default(DedicatedHostGroupInstanceView), bool? supportAutomaticPlacement = default(bool?), DedicatedHostGroupPropertiesAdditionalCapabilities additionalCapabilities = default(DedicatedHostGroupPropertiesAdditionalCapabilities), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
@@ -120,11 +116,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public DedicatedHostGroupPropertiesAdditionalCapabilities AdditionalCapabilities { get; set; }
 
         /// <summary>
-        /// Gets or sets availability Zone to use for this host group. Only
-        /// single zone is supported. The zone can be assigned only during
-        /// creation. If not provided, the group supports all zones in the
-        /// region. If provided, enforces each host in the group to be in the
-        /// same zone.
+        /// Gets or sets the availability zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }

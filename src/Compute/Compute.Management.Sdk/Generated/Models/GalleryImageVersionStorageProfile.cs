@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryImageVersionStorageProfile
         /// class.
         /// </summary>
+        /// <param name="source">The source of the gallery artifact
+        /// version.</param>
+        /// <param name="osDiskImage">This is the OS disk image.</param>
         /// <param name="dataDiskImages">A list of data disk images.</param>
         public GalleryImageVersionStorageProfile(GalleryArtifactVersionFullSource source = default(GalleryArtifactVersionFullSource), GalleryOSDiskImage osDiskImage = default(GalleryOSDiskImage), IList<GalleryDataDiskImage> dataDiskImages = default(IList<GalleryDataDiskImage>))
         {
@@ -48,11 +51,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the source of the gallery artifact version.
         /// </summary>
         [JsonProperty(PropertyName = "source")]
         public GalleryArtifactVersionFullSource Source { get; set; }
 
         /// <summary>
+        /// Gets or sets this is the OS disk image.
         /// </summary>
         [JsonProperty(PropertyName = "osDiskImage")]
         public GalleryOSDiskImage OsDiskImage { get; set; }
