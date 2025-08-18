@@ -39,7 +39,7 @@ Retrieves the subscription's current quota information in a particular region.
 Gets details about the specified transformation.
 
 ### [New-AzStreamAnalyticsCluster](New-AzStreamAnalyticsCluster.md)
-Creates a Stream Analytics Cluster or replaces an already existing cluster.
+Create a Stream Analytics Cluster or replaces an already existing cluster.
 
 ### [New-AzStreamAnalyticsFunction](New-AzStreamAnalyticsFunction.md)
 Creates a function or replaces an already existing function under an existing streaming job.
@@ -54,7 +54,7 @@ Creates a streaming job or replaces an already existing streaming job.
 Creates an output or replaces an already existing output under an existing streaming job.
 
 ### [New-AzStreamAnalyticsTransformation](New-AzStreamAnalyticsTransformation.md)
-Creates a transformation or replaces an already existing transformation under an existing streaming job.
+Create a transformation or replaces an already existing transformation under an existing streaming job.
 
 ### [Remove-AzStreamAnalyticsCluster](Remove-AzStreamAnalyticsCluster.md)
 Deletes the specified cluster.
@@ -90,7 +90,7 @@ Tests whether an input's datasource is reachable and usable by the Azure Stream 
 Tests whether an output's datasource is reachable and usable by the Azure Stream Analytics service.
 
 ### [Update-AzStreamAnalyticsCluster](Update-AzStreamAnalyticsCluster.md)
-Updates an existing cluster.
+Update an existing cluster.
 This can be used to partially update (ie.
 update one or two properties) a cluster without affecting the rest of the cluster definition.
 
@@ -113,7 +113,7 @@ This can be used to partially update (ie.
 update one or two properties) an output without affecting the rest the job or output definition.
 
 ### [Update-AzStreamAnalyticsTransformation](Update-AzStreamAnalyticsTransformation.md)
-Updates an existing transformation under an existing streaming job.
+Update an existing transformation under an existing streaming job.
 This can be used to partially update (ie.
 update one or two properties) a transformation without affecting the rest the job or transformation definition.
 
