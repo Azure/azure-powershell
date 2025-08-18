@@ -31,14 +31,14 @@
     Run the command asynchronously.
 
 .EXAMPLE
-    Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection01"
+    Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/Connection01"
     
     Enables a single connection.
 
 .EXAMPLE
     $connectionIds = @(
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection01",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection02"
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/Connection01",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/Connection02"
     )
     Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId $connectionIds
     
@@ -48,9 +48,6 @@
     Enable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId $connectionId -Justification "Re-enabling after maintenance window"
     
     Enables a connection with a business justification.
-
-.NOTES
-    This is a wrapper around Invoke-AzDataTransferExecutePipelineAction with ActionType "AllowUpdates" and TargetType "Connection".
 #>
 function Enable-AzDataTransferConnection {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]

@@ -44,9 +44,6 @@
     Enable-AzDataTransferFlowType -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -FlowType "FlowType01" -Justification "Re-enabling after security review"
     
     Enables a flow type with a business justification.
-
-.NOTES
-    This is a wrapper around Invoke-AzDataTransferExecutePipelineAction with ActionType "AllowUpdates" and TargetType "FlowType".
 #>
 function Enable-AzDataTransferFlowType {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]

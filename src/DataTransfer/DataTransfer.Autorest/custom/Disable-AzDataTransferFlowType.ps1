@@ -51,7 +51,6 @@
     Shows what would happen if the flow type was disabled without actually disabling it.
 
 .NOTES
-    This is a wrapper around Invoke-AzDataTransferExecutePipelineAction with ActionType "ForceDisable" and TargetType "FlowType".
     This action will disable all flows of the specified types across all connections in the pipeline.
 #>
 function Disable-AzDataTransferFlowType {

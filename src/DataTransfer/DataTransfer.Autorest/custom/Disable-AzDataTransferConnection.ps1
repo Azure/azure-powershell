@@ -31,14 +31,14 @@
     Run the command asynchronously.
 
 .EXAMPLE
-    Disable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection01"
+    Disable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/Connection01"
     
     Disables a single connection.
 
 .EXAMPLE
     $connectionIds = @(
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection01",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Private.AzureDataTransfer/connections/Connection02"
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/Connection01",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.AzureDataTransfer/connections/Connection02"
     )
     Disable-AzDataTransferConnection -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -ConnectionId $connectionIds
     
@@ -55,7 +55,6 @@
     Shows what would happen if the connection was disabled without actually disabling it.
 
 .NOTES
-    This is a wrapper around Invoke-AzDataTransferExecutePipelineAction with ActionType "ForceDisable" and TargetType "Connection".
     This action will also disable all flows within the specified connections.
 #>
 function Disable-AzDataTransferConnection {

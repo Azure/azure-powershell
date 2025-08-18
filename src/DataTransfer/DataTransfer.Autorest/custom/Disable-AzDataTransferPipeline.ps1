@@ -41,9 +41,6 @@
     Disable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -WhatIf
     
     Shows what would happen if the pipeline was disabled without actually disabling it.
-
-.NOTES
-    This is a wrapper around Invoke-AzDataTransferExecutePipelineAction with ActionType "ForceDisable" and TargetType "Pipeline".
 #>
 function Disable-AzDataTransferPipeline {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='High')]

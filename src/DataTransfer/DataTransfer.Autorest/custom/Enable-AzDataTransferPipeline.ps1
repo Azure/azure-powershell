@@ -36,9 +36,6 @@
     Enable-AzDataTransferPipeline -PipelineName "Pipeline01" -ResourceGroupName "ResourceGroup01" -Justification "Re-enabling after maintenance"
     
     Enables the pipeline with a business justification.
-
-.NOTES
-    This is a wrapper around Invoke-AzDataTransferExecutePipelineAction with ActionType "AllowUpdates" and TargetType "Pipeline".
 #>
 function Enable-AzDataTransferPipeline {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
