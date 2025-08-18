@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/volumes"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNetworkCloudVolume_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVolume", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AttachedTo"}, NewOutputProperties=new string[] {"AttachedTo"}, ChangeDescription="The type of property will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVolume))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Get a list of volumes in the provided subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnOrigin
 
 ## SYNOPSIS
-update an existing origin within an origin group.
+Update an existing origin within an origin group.
 
 ## SYNTAX
 
@@ -86,7 +86,7 @@ Update-AzFrontDoorCdnOrigin -InputObject <ICdnIdentity> [-AzureOriginId <String>
 ```
 
 ## DESCRIPTION
-update an existing origin within an origin group.
+Update an existing origin within an origin group.
 
 ## EXAMPLES
 
