@@ -48,20 +48,30 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="encryption">Encryption property can be used to encrypt
         /// data at rest with customer managed keys or platform managed
         /// keys.</param>
-        /// <param name="networkAccessPolicy">Possible values include:
-        /// 'AllowAll', 'AllowPrivate', 'DenyAll'</param>
+        /// <param name="networkAccessPolicy">Policy for accessing the disk via
+        /// network. Possible values include: 'AllowAll', 'AllowPrivate',
+        /// 'DenyAll'</param>
         /// <param name="diskAccessId">ARM id of the DiskAccess resource for
         /// using private endpoints on disks.</param>
         /// <param name="supportsHibernation">Indicates the OS on a snapshot
         /// supports hibernation.</param>
-        /// <param name="publicNetworkAccess">Possible values include:
-        /// 'Enabled', 'Disabled'</param>
-        /// <param name="dataAccessAuthMode">Possible values include:
-        /// 'AzureActiveDirectory', 'None'</param>
+        /// <param name="publicNetworkAccess">Policy for controlling export on
+        /// the disk. Possible values include: 'Enabled', 'Disabled'</param>
+        /// <param name="dataAccessAuthMode">Additional authentication
+        /// requirements when exporting or uploading to a disk or snapshot.
+        /// Possible values include: 'AzureActiveDirectory', 'None'</param>
         /// <param name="supportedCapabilities">List of supported capabilities
         /// for the image from which the OS disk was created.</param>
+        /// <param name="snapshotAccessState">The state of snapshot which
+        /// determines the access availability of the snapshot. Possible values
+        /// include: 'Unknown', 'Pending', 'Available', 'InstantAccess',
+        /// 'AvailableWithInstantAccess'</param>
         /// <param name="tags">Resource tags</param>
-        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
+        /// <param name="sku">The snapshots sku name. Can be Standard_LRS,
+        /// Premium_LRS, or Standard_ZRS. This is an optional parameter for
+        /// incremental snapshot and the default behavior is the SKU will be
+        /// set to the same sku as the previous snapshot</param>
+        public SnapshotUpdate(OperatingSystemTypes? osType = default(OperatingSystemTypes?), int? diskSizeGB = default(int?), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), bool? supportsHibernation = default(bool?), string publicNetworkAccess = default(string), string dataAccessAuthMode = default(string), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), string snapshotAccessState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), SnapshotSku sku = default(SnapshotSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -73,6 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             PublicNetworkAccess = publicNetworkAccess;
             DataAccessAuthMode = dataAccessAuthMode;
             SupportedCapabilities = supportedCapabilities;
+            SnapshotAccessState = snapshotAccessState;
             Tags = tags;
             Sku = sku;
             CustomInit();
@@ -116,8 +127,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         public Encryption Encryption { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AllowAll', 'AllowPrivate',
-        /// 'DenyAll'
+        /// Gets or sets policy for accessing the disk via network. Possible
+        /// values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkAccessPolicy")]
         public string NetworkAccessPolicy { get; set; }
@@ -136,14 +147,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? SupportsHibernation { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Enabled', 'Disabled'
+        /// Gets or sets policy for controlling export on the disk. Possible
+        /// values include: 'Enabled', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'AzureActiveDirectory',
-        /// 'None'
+        /// Gets or sets additional authentication requirements when exporting
+        /// or uploading to a disk or snapshot. Possible values include:
+        /// 'AzureActiveDirectory', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "properties.dataAccessAuthMode")]
         public string DataAccessAuthMode { get; set; }
@@ -156,12 +169,24 @@ namespace Microsoft.Azure.Management.Compute.Models
         public SupportedCapabilities SupportedCapabilities { get; set; }
 
         /// <summary>
+        /// Gets the state of snapshot which determines the access availability
+        /// of the snapshot. Possible values include: 'Unknown', 'Pending',
+        /// 'Available', 'InstantAccess', 'AvailableWithInstantAccess'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.snapshotAccessState")]
+        public string SnapshotAccessState { get; private set; }
+
+        /// <summary>
         /// Gets or sets resource tags
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets the snapshots sku name. Can be Standard_LRS,
+        /// Premium_LRS, or Standard_ZRS. This is an optional parameter for
+        /// incremental snapshot and the default behavior is the SKU will be
+        /// set to the same sku as the previous snapshot
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public SnapshotSku Sku { get; set; }

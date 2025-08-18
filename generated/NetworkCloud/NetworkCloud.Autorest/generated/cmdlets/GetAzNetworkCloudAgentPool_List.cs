@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     /// [OpenAPI] ListByKubernetesCluster=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNetworkCloudAgentPool_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"AdministratorConfigurationSshPublicKey","AttachedNetworkConfigurationL2Network","AttachedNetworkConfigurationL3Network","AttachedNetworkConfigurationTrunkedNetwork","AvailabilityZone","Label","Taint"}, NewOutputProperties=new string[] {"AdministratorConfigurationSshPublicKey","AttachedNetworkConfigurationL2Network","AttachedNetworkConfigurationL3Network","AttachedNetworkConfigurationTrunkedNetwork","AvailabilityZone","Label","Taint"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IAgentPool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Get a list of agent pools for the provided Kubernetes cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]

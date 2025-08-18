@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.Compute
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -25,38 +24,10 @@ namespace Microsoft.Azure.Management.Compute
     public partial interface IVirtualMachineExtensionImagesOperations
     {
         /// <summary>
-        /// Gets a virtual machine extension image.
-        /// </summary>
-        /// <param name='location'>
-        /// The name of a supported Azure region.
-        /// </param>
-        /// <param name='publisherName'>
-        /// </param>
-        /// <param name='type'>
-        /// </param>
-        /// <param name='version'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineExtensionImage>> GetWithHttpMessagesAsync(string location, string publisherName, string type, string version, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Gets a list of virtual machine extension image types.
         /// </summary>
         /// <param name='location'>
-        /// The name of a supported Azure region.
+        /// The name of Azure region.
         /// </param>
         /// <param name='publisherName'>
         /// </param>
@@ -80,14 +51,18 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets a list of virtual machine extension image versions.
         /// </summary>
         /// <param name='location'>
-        /// The name of a supported Azure region.
+        /// The name of Azure region.
         /// </param>
         /// <param name='publisherName'>
         /// </param>
         /// <param name='type'>
         /// </param>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
+        /// </param>
+        /// <param name='top'>
+        /// </param>
+        /// <param name='orderby'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -104,6 +79,34 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IList<VirtualMachineExtensionImage>>> ListVersionsWithHttpMessagesAsync(string location, string publisherName, string type, ODataQuery<VirtualMachineExtensionImage> odataQuery = default(ODataQuery<VirtualMachineExtensionImage>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IList<VirtualMachineExtensionImage>>> ListVersionsWithHttpMessagesAsync(string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a virtual machine extension image.
+        /// </summary>
+        /// <param name='location'>
+        /// The name of Azure region.
+        /// </param>
+        /// <param name='publisherName'>
+        /// </param>
+        /// <param name='type'>
+        /// </param>
+        /// <param name='version'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineExtensionImage>> GetWithHttpMessagesAsync(string location, string publisherName, string type, string version, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
