@@ -102,15 +102,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
         public string InterfaceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkPropertiesInternal)Property).InterfaceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkPropertiesInternal)Property).InterfaceName = value ?? null; }
 
         /// <summary>
-        /// The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
-        /// is IPV4 or DualStack.
+        /// The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string Ipv4ConnectedPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkPropertiesInternal)Property).Ipv4ConnectedPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkPropertiesInternal)Property).Ipv4ConnectedPrefix = value ?? null; }
 
         /// <summary>
-        /// The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
-        /// is IPV6 or DualStack.
+        /// The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string Ipv6ConnectedPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkPropertiesInternal)Property).Ipv6ConnectedPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkPropertiesInternal)Property).Ipv6ConnectedPrefix = value ?? null; }
@@ -371,26 +369,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
         PossibleTypes = new [] { typeof(string) })]
         string InterfaceName { get; set; }
         /// <summary>
-        /// The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
-        /// is IPV4 or DualStack.
+        /// The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
-        is IPV4 or DualStack.",
+        Description = @"The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack.",
         SerializedName = @"ipv4ConnectedPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string Ipv4ConnectedPrefix { get; set; }
         /// <summary>
-        /// The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
-        /// is IPV6 or DualStack.
+        /// The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
-        is IPV6 or DualStack.",
+        Description = @"The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack.",
         SerializedName = @"ipv6ConnectedPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string Ipv6ConnectedPrefix { get; set; }
@@ -478,13 +472,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201
         /// </summary>
         string InterfaceName { get; set; }
         /// <summary>
-        /// The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
-        /// is IPV4 or DualStack.
+        /// The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV4 or DualStack.
         /// </summary>
         string Ipv4ConnectedPrefix { get; set; }
         /// <summary>
-        /// The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
-        /// is IPV6 or DualStack.
+        /// The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type is IPV6 or DualStack.
         /// </summary>
         string Ipv6ConnectedPrefix { get; set; }
         /// <summary>The resource ID of the Network Fabric l3IsolationDomain.</summary>

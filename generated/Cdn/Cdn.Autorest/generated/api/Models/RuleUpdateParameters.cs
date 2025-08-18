@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdateParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RuleUpdatePropertiesParameters()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RuleSetName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdateParametersInternal.RuleSetName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)Property).RuleSetName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)Property).RuleSetName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdateParametersInternal.RuleSetName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)Property).RuleSetName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)Property).RuleSetName = value ?? null; }
 
         /// <summary>
         /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will
