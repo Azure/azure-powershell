@@ -14,23 +14,25 @@ Sets the gateway HTTP credentials of an Azure HDInsight cluster.
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzHDInsightGatewayCredential [-Name] <String> [-HttpCredential] <PSCredential>
- [-ResourceGroupName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzHDInsightGatewayCredential [-Name] <String> [[-HttpCredential] <PSCredential>]
+ [-ResourceGroupName <String>] [-EntraUserIdentity <String[]>] [-EntraUserFullInfo <Hashtable[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] -InputObject <AzureHDInsightCluster>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzHDInsightGatewayCredential [[-HttpCredential] <PSCredential>] [-EntraUserIdentity <String[]>]
+ [-EntraUserFullInfo <Hashtable[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -InputObject <AzureHDInsightCluster> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzHDInsightGatewayCredential [-HttpCredential] <PSCredential> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] -ResourceId <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzHDInsightGatewayCredential [[-HttpCredential] <PSCredential>] [-EntraUserIdentity <String[]>]
+ [-EntraUserFullInfo <Hashtable[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] -ResourceId <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +40,7 @@ The **Set-AzHDInsightGatewayCredential** cmdlet sets gateway credential of an Az
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Set Gateway Credential for an HDInsight Cluster by Name Parameter Set
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
@@ -49,18 +51,14 @@ Set-AzHDInsightGatewayCredential `
             -HttpCredential $clusterCreds
 ```
 
-This command sets gateway credential of the cluster named your-hadoop-001 by name parameter set.
-
-### Example 2
+### Example 2: Set Gateway Credential for an HDInsight Cluster by ResourceId Parameter Set
 ```powershell
 Set-AzHDInsightGatewayCredential `
             -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/your-hadoop-001" `
             -HttpCredential $clusterCreds
 ```
 
-This command sets gateway credential of the cluster named your-hadoop-001 by ResourceId parameter set.
-
-### Example 3
+### Example 3: Set Gateway Credential for an HDInsight Cluster by InputObject Parameter Set
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
@@ -70,7 +68,29 @@ Get-AzHDInsightCluster -ClusterName $clusterName | Set-AzHDInsightGatewayCredent
             -HttpCredential $clusterCreds
 ```
 
-This command sets gateway credential of the cluster named your-hadoop-001 by InputObject parameter set.
+### Example 4: Set Gateway Entra Users for an HDInsight Cluster by EntraUser Full Info
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$entraUserFullInfo = @(@{ObjectId = "ObjectId1"; Upn = "Upn1"; DisplayName = "DisplayName1"},@{ObjectId = "ObjectId2"; Upn = "Upn2"; DisplayName = "DisplayName2"})
+
+Set-AzHDInsightGatewayCredential `
+            -ClusterName $clusterName `
+            -EntraUserFullInfo $entraUserFullInfo
+```
+
+To use the -EntraUserFullInfo parameter, you must provide each user's ObjectId, Upn, and DisplayName. This information can be obtained either through the [Azure Portal](https://portal.azure.com) by viewing the user's profile under Microsoft Entra ID > Users, or programmatically using the Get-AzADUser cmdlet from the Az.Resources module in PowerShell. For example: Get-AzADUser -UserPrincipalName "user@contoso.com" returns fields such as Id (ObjectId), UserPrincipalName (Upn), and DisplayName. For more details, refer to the official documentation: [Get-AzADUser](https://learn.microsoft.com/en-us/powershell/module/az.resources/get-azaduser?view=azps-14.0.0).
+
+### Example 5: Set Gateway Entra Users for an HDInsight Cluster by ObjectId or Upn
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$entraUserIdentity = @("user1@contoso.com","user2@contoso.com","objectid3","objectid4")
+
+Set-AzHDInsightGatewayCredential `
+            -ClusterName $clusterName `
+            -EntraUserIdentity $entraUserIdentity
+```
 
 ## PARAMETERS
 
@@ -104,6 +124,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EntraUserFullInfo
+Gets or sets a list of Entra users as an array of hashtables. Each hashtable should contain keys such as ObjectId, Upn, and DisplayName.
+
+```yaml
+Type: System.Collections.Hashtable[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EntraUserIdentity
+Gets or sets the Entra user data. Accepts one or more ObjectId/Upn values.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HttpCredential
 Gets or sets the login for the cluster's user.
 
@@ -112,7 +162,7 @@ Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
