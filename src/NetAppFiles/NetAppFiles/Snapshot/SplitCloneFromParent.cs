@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
     [Cmdlet(
         "Split",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesCloneFromParent",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolume))]
     [Alias("Split-AnfCloneFromParent")]
     public class SplitCloneFromParent : AzureNetAppFilesCmdletBase
@@ -105,6 +106,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolume InputObject { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ResourceIdParameterSet)
@@ -147,18 +153,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
             }
             if (Name != null)
             {
-                try
+                if (Force.IsPresent || ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.SplitCloneFromParentMessage, Name)))
                 {
-                    var anfVolume = AzureNetAppFilesManagementClient.Volumes.SplitCloneFromParent(ResourceGroupName, AccountName, PoolName, Name);
-                    WriteObject(anfVolume.ToPsNetAppFilesVolume());
-                }
-                catch (ErrorResponseException erx)
-                {                    
-                    throw new CloudException(erx.Message + " : " + erx.Body.Error.Code + " : " + erx.Body.Error.Message, erx);
-                }
-                catch (Exception ex)
-                {                 
-                    WriteExceptionError(ex);
+                    try
+                    {
+                        var anfVolume = AzureNetAppFilesManagementClient.Volumes.SplitCloneFromParent(ResourceGroupName, AccountName, PoolName, Name);
+                        WriteObject(anfVolume.ToPsNetAppFilesVolume());
+                    }
+                    catch (ErrorResponseException erx)
+                    {
+                        throw new CloudException(erx.Message + " : " + erx.Body.Error.Code + " : " + erx.Body.Error.Message, erx);
+                    }
+                    catch (Exception ex)
+                    {
+                        WriteExceptionError(ex);
+                    }
                 }
             }
         }

@@ -15,26 +15,28 @@ Split clone from parent volume
 ### ByFieldsParameterSet (Default)
 ```
 Split-AzNetAppFilesCloneFromParent -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ -Name <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Split-AzNetAppFilesCloneFromParent -Name <String> -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Split-AzNetAppFilesCloneFromParent -Name <String> -PoolObject <PSNetAppFilesPool> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Split-AzNetAppFilesCloneFromParent -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Split-AzNetAppFilesCloneFromParent -ResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Split-AzNetAppFilesCloneFromParent -InputObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Split-AzNetAppFilesCloneFromParent -InputObject <PSNetAppFilesVolume> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +57,7 @@ This example splits a clone volume, volume created from a snapshot of another vo
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -70,9 +72,24 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -85,7 +102,7 @@ Accept wildcard characters: False
 The Clone volume object to get to Split
 
 ```yaml
-Type: PSNetAppFilesVolume
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -100,7 +117,7 @@ Accept wildcard characters: False
 The name of the ANF volume
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
@@ -115,7 +132,7 @@ Accept wildcard characters: False
 The name of the ANF pool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -130,7 +147,7 @@ Accept wildcard characters: False
 The pool object containing the Clone Volume to Split
 
 ```yaml
-Type: PSNetAppFilesPool
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -145,7 +162,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -160,7 +177,7 @@ Accept wildcard characters: False
 The resource group of the ANF volume
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -175,7 +192,7 @@ Accept wildcard characters: False
 The resource id of the ANF volume
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -183,6 +200,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
