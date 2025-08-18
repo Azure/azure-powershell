@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.SignalRService/webPubSub", "2021-10-01", true, false);
             RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false, false);
-            RegisterConfiguration("Microsoft.StorageSync/storageSyncServices", "2020-03-01", true, false);
+            RegisterConfiguration("Microsoft.StorageSync/storageSyncServices", "2022-09-01", true, true);
             RegisterConfiguration("Microsoft.Synapse/privateLinkHubs", "2021-05-01", true, true);
             RegisterConfiguration("Microsoft.Synapse/workspaces", "2019-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.Web/sites", "2019-08-01", true, false);
@@ -87,6 +87,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.App/managedEnvironments", "2024-02-02-preview", true, true);
             RegisterConfiguration("Microsoft.VideoIndexer/accounts", "2024-06-01-preview", true, true, true);
             RegisterConfiguration("Microsoft.FluidRelay/fluidRelayServers", "2025-03-10-preview", true, true, true);
+            RegisterConfiguration("Microsoft.FileShares/fileShares", "2025-06-01-preview", true, true);
         }
         /// <summary>
         /// Register private endpoint connection and private link resource configuration
