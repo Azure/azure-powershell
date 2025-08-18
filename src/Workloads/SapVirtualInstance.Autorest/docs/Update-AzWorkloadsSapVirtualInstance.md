@@ -8,15 +8,14 @@ schema: 2.0.0
 # Update-AzWorkloadsSapVirtualInstance
 
 ## SYNOPSIS
-Update a Virtual Instance for SAP solutions (VIS) resource
+Update a Virtual Instance for SAP solutions resource
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Configuration <ISapConfiguration>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -24,14 +23,27 @@ Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity>
- [-Configuration <ISapConfiguration>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Update a Virtual Instance for SAP solutions (VIS) resource
+Update a Virtual Instance for SAP solutions resource
 
 ## EXAMPLES
 
@@ -80,21 +92,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Configuration
-Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapConfiguration
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -116,7 +113,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -141,15 +138,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedResourceGroupName
-Managed resource group name
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,7 +178,7 @@ Learn more here https://go.microsoft.com/fwlink/?linkid=2247228
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -181,7 +193,7 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: SapVirtualInstanceName
 
 Required: True
@@ -212,7 +224,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -228,7 +240,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -239,11 +251,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -259,7 +271,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

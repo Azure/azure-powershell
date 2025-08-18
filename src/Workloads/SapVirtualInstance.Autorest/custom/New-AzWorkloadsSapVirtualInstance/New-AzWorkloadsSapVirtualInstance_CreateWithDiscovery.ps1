@@ -188,6 +188,41 @@ function New-AzWorkloadsSapVirtualInstance {
   )
   process {
       try {
+            if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+              $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
+              $supportsUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity") -and $UserAssignedIdentity.Length -gt 0
+
+              # calculate IdentityType
+              if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
+                  $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
+              }
+              elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
+                  $PSBoundParameters.Add("IdentityType", "UserAssigned")
+              }
+              elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
+                  $PSBoundParameters.Add("IdentityType", "SystemAssigned")
+              }
+              else {
+                  $PSBoundParameters.Add("IdentityType", "None")
+              }
+
+              # If user input UserAssignedIdentity
+              if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                  $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.UserAssignedIdentity]::New()
+                  $PSBoundParameters.IdentityUserAssignedIdentity = @{}
+                  foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+                      $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+                  }
+        
+                  $null = $PSBoundParameters.Remove('UserAssignedIdentity')
+              }
+        
+              # remove EnableSystemAssignedIdentity
+              if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+                  $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+              }
+            }
+
             $discoveryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.DiscoveryConfiguration]::new();
             $discoveryConfiguration.CentralServerVMId = $CentralServerVmId
             $null = $PSBoundParameters.Remove('CentralServerVmId')
@@ -196,6 +231,7 @@ function New-AzWorkloadsSapVirtualInstance {
                 $null = $PSBoundParameters.Remove('ManagedRgStorageAccountName')
             }
             $null = $PSBoundParameters.Add('Configuration', $discoveryConfiguration)
+            
             Az.SapVirtualInstance.private\New-AzWorkloadsSapVirtualInstance_CreateExpanded @PSBoundParameters
         } catch {
   

@@ -46,6 +46,9 @@ subject-prefix: Workloads
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance
 inlining-threshold: 100
 
+flatten-userassignedidentity: false
+disable-transform-identity-type: true
+
 directive:
 - where:
     variant: ^(Stop|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
@@ -92,7 +95,7 @@ directive:
 - where:
     verb: New
     subject: ^SapVirtualInstance$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
   remove: true
 
 - where:
@@ -103,15 +106,14 @@ directive:
 
 - where:
     subject: ^SapVirtualInstance$
-    parameter-name: IdentityUserAssignedIdentity
-  set:
-    parameter-name: UserAssignedIdentity
-
-- where:
-    subject: ^SapVirtualInstance$
     parameter-name: ManagedResourceGroupConfigurationName
   set:
     parameter-name: ManagedResourceGroupName
+
+- where:
+    verb: Update
+    subject: ^SapVirtualInstance$
+  hide: true
 
 # SapAvailabilityZoneDetail
 - where:
