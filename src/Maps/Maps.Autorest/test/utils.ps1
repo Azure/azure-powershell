@@ -68,4 +68,3 @@ function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.resourceGroup
 }
-
