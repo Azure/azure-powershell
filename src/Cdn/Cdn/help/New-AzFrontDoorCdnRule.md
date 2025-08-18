@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnRule
 
 ## SYNOPSIS
-create a new delivery rule within the specified rule set.
+Create a new delivery rule within the specified rule set.
 
 ## SYNTAX
 
@@ -65,7 +65,7 @@ New-AzFrontDoorCdnRule -Name <String> -RuleSetInputObject <ICdnIdentity> -Rule <
 ```
 
 ## DESCRIPTION
-create a new delivery rule within the specified rule set.
+Create a new delivery rule within the specified rule set.
 
 ## EXAMPLES
 

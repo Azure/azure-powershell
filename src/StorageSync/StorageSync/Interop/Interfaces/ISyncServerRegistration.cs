@@ -32,6 +32,7 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// 2. Sets up ServerRegistrationData
         /// 3. Calls RegisterOnline callback to make ARM call (from caller context)
         /// 4. Persists registered server resource from cloud to local FileSyncSvc service
+        /// <param name="storageSyncServiceTenantId">Storage Sync Service TenantId</param>
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
         /// <param name="storageSyncServiceName">Storage Sync Service Name</param>
@@ -47,6 +48,7 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// <returns>Registered Server Resource</returns>
         /// </summary>
         RegisteredServer Register(
+            string storageSyncServiceTenantId,
             Uri managementEndpointUri,
             Guid subscriptionId,
             string storageSyncServiceName,

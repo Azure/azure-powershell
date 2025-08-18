@@ -121,7 +121,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
 
     process {
         Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
-        Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
+        Import-Module $PSScriptRoot\Helper\AZLocalCommonHelper.ps1
 
         CheckResourcesModuleDependency
         CheckStorageModuleDependency

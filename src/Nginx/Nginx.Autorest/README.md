@@ -237,7 +237,72 @@ directive:
     - NginxConfigurationFile
     - NginxPrivateIPAddress
     - NginxPublicIPAddress
-    - NginxNetworkProfile
+    # - NginxNetworkProfile
   - no-inline:
     - NginxNetworkProfile
+  - where:
+      verb: Get|Update|New
+      subject: Configuration
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - File
+          - ProtectedFile
+          - PackageProtectedFile
+        new-output-properties:
+          - File
+          - ProtectedFile
+          - PackageProtectedFile
+        change-description: The types of the properties File, ProtectedFile and PackageProtectedFile will be changed from fixed array to 'List'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Get|Update|New
+      subject: Deployment
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - PrivateIPAddress
+          - PublicIPAddress
+          - AutoScaleSettingProfile
+        new-output-properties:
+          - PrivateIPAddress
+          - PublicIPAddress
+          - AutoScaleSettingProfile
+        change-description: The types of the properties PrivateIPAddress, ProtectedFile and AutoScaleSettingProfile will be changed from fixed array to 'List'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Invoke
+      subject: AnalysisConfiguration
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - DataError
+        new-output-properties:
+          - DataError
+        change-description: The type of the property DataError will be changed from fixed array to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Invoke
+      subject: AnalysisConfiguration
+      variant: ^Analysis$|^AnalysisViaIdentity$
+    set:
+      breaking-change:
+        change-description: The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      parameter-name: IdentityType|IdentityUserAssignedIdentity
+    set:
+      breaking-change:
+        change-description: The cmdlet 'New-AzNginxDeployment' no longer supports the parameter 'IdentityType' and IdentityUserAssignedIdentity.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```
