@@ -520,7 +520,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 OriginatingResourceId = volume.OriginatingResourceId,
                 CoolAccessRetrievalPolicy = volume.CoolAccessRetrievalPolicy,
                 CoolAccessTieringPolicy = volume.CoolAccessTieringPolicy,
-                AcceptGrowCapacityPoolForShortTermCloneSplit = volume.AcceptGrowCapacityPoolForShortTermCloneSplit
+                AcceptGrowCapacityPoolForShortTermCloneSplit = volume.AcceptGrowCapacityPoolForShortTermCloneSplit,
+                InheritedSize = volume.InheritedSizeInBytes
             };
         }
 

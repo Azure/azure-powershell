@@ -542,5 +542,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>        
         public string AcceptGrowCapacityPoolForShortTermCloneSplit { get; set; }
 
+        /// <summary>
+        /// Gets space shared by short term clone volume with parent volume in bytes.
+        /// </summary>        
+        public long? InheritedSize { get; set; }
+
     }
 }
