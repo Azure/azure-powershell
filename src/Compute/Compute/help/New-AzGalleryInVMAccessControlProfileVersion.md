@@ -16,7 +16,8 @@ Creates a new version of a gallery inVMAccessControlProfile.
 New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName <String> -GalleryName <String>
  -GalleryInVMAccessControlProfileName <String>
  -GalleryInVmAccessControlProfileVersion <PSGalleryInVMAccessControlProfileVersion>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +30,7 @@ This cmdlet takes in PSGalleryInVMAccessControlProfileVersion object created fro
 
 ### Example 1
 ```powershell
-New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile" -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion  
+New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName "myResourceGroup" -GalleryName "myGallery" -GalleryInVMAccessControlProfileName "myProfile" -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion
 ```
 
 Creates a version of a gallery inVMAccessControlProfile.
@@ -58,7 +59,7 @@ Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -GalleryInVmAccessCont
 Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion -Role "Provisioning" -Identity @("WinPA") 
 
 # Create the gallery inVMAccessControlProfile version resource in Azure
-New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryInVMAccessControlProfileName $inVMAccessProfileName -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion  
+New-AzGalleryInVMAccessControlProfileVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryInVMAccessControlProfileName $inVMAccessProfileName -GalleryInVmAccessControlProfileVersion $inVMAccessControlProfileVersion
 ```
 
 Creates a complete InVM Access Control Profile setup by first creating a gallery and InVM Access Control Profile, then building a local profile version configuration with rules, and finally deploying it to Azure.
@@ -69,7 +70,7 @@ Creates a complete InVM Access Control Profile setup by first creating a gallery
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +85,7 @@ Accept wildcard characters: False
 The name of the Gallery In VM Access Control Profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +100,7 @@ Accept wildcard characters: False
 PSGalleryInVmAccessControlProfileVersion object created from New-AzGalleryInVMAccessControlProfileVersionConfig.
 
 ```yaml
-Type: PSGalleryInVMAccessControlProfileVersion
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryInVMAccessControlProfileVersion
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +115,7 @@ Accept wildcard characters: False
 The name of the gallery.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,13 +126,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
-Type: ActionPreference
+Type: System.String
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -140,18 +156,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: wi
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

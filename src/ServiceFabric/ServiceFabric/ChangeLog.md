@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated SF to latest api preview version `2023-11-01-preview`
+* Fixed `Set-AzServiceFabricManagedClusterApplication` to correctly overwrite existing application upgrade policy when `-RecreateApplication` parameter is specified and no other upgrade policy parameters are bound.
+
+## Version 3.6.0
 * Added parameter `Location` to allow users to specify a different node type location than the resource group location in cmdlet `Add-AzServiceFabricNodeType`.
 * Added parameter `VmSize` to allow for in-place sku swap for cmdlet `Set-AzServiceFabricManagedNodeType`.
 * Updated SFMC to latest api preview version `2025-03-01-preview`
