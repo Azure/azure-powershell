@@ -77,7 +77,6 @@ FunctionsToExport = 'Approve-AzDataTransferConnection', 'Deny-AzDataTransferConn
                'Get-AzDataTransferConnection', 'Get-AzDataTransferFlow', 
                'Get-AzDataTransferPendingConnection', 
                'Get-AzDataTransferPendingFlow', 'Get-AzDataTransferPipeline', 
-               'Invoke-AzDataTransferExecutePipelineAction', 
                'Invoke-AzDataTransferLinkPendingConnection', 
                'Invoke-AzDataTransferLinkPendingFlow', 
                'New-AzDataTransferConnection', 'New-AzDataTransferFlow', 

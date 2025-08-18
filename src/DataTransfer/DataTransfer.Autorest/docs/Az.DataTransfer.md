@@ -56,9 +56,6 @@ Lists all remote flows that have not yet been linked to local flows
 ### [Get-AzDataTransferPipeline](Get-AzDataTransferPipeline.md)
 Gets pipeline resource.
 
-### [Invoke-AzDataTransferExecutePipelineAction](Invoke-AzDataTransferExecutePipelineAction.md)
-Executes a privileged action for a pipeline.
-
 ### [Invoke-AzDataTransferLinkPendingConnection](Invoke-AzDataTransferLinkPendingConnection.md)
 Links the connection to its pending connection.
 

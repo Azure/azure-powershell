@@ -244,4 +244,10 @@ directive:
       subject: ^ListPendingFlow
     set:
       subject: PendingFlow
+
+  ## Hide execute action cmdlet. This is exposed by custom commands
+  - where:
+      verb: Invoke
+      subject: ^ExecutePipelineAction
+    hide: true
 ```
