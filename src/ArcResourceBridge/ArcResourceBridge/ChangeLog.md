@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added BreakingChange announcements for commands below:
+  * `Get-AzArcResourceBridgeApplianceCredential`
+  * `Get-AzArcResourceBridgeCredential`
+  * `Get-AzArcResourceBridgeTelemetryConfig`
+  * `Get-AzArcResourceBridgeUpgradeGraph`
+  * `New-AzArcResourceBridge`
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.
