@@ -173,6 +173,7 @@ param(
                 $null = $PSBoundParameters.Add("EncryptionIdentityResourceId", $PSBoundParameters['EncryptionIdentity'])
                 $null = $PSBoundParameters.Add("EncryptionIdentityType", 'UserAssigned')
                 $null = $PSBoundParameters.Remove('EncryptionIdentity')
+                $encryptionIdentityResourceId = $PSBoundParameters['EncryptionIdentityResourceId']
 
                 # Update the User Assigned Identities
                 if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {

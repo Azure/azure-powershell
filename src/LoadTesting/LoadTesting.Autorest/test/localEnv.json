@@ -1,4 +1,17 @@
 {
-  "Tenant": null,
-  "SubscriptionId": null
+  "resourceGroup": "pwsh-test-rgxr5p",
+  "identityid1": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/pwsh-test-rgxr5p/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pwshtestid1",
+  "location": "westus2",
+  "cmkkey2name": "testkey2",
+  "cmkkeyid2": "https://pwsh-loadtesting-kvxr5p.vault.azure.net:443/keys/testkey2/72dbed65293f401bb80b0243cdf643c9",
+  "identityName1": "pwshtestid1",
+  "pwshKeyVault": "pwsh-loadtesting-kvxr5p",
+  "loadTestResource1": "pwsh-loadtestingxr5p",
+  "Tenant": "213e87ed-8e08-4eb4-a63c-c073058f7b00",
+  "identityName2": "pwshtestid2",
+  "cmkkeyid1": "https://pwsh-loadtesting-kvxr5p.vault.azure.net:443/keys/testkey1/8d8de0c9d7f84e218d1bac29b9dc9329",
+  "SubscriptionId": "0e745469-49f8-48c9-873b-24ca87143db1",
+  "loadTestResource2": "pwsh-loadtestingztk9",
+  "cmkkey1name": "testkey1",
+  "identityid2": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/pwsh-test-rgxr5p/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pwshtestid2"
 }

@@ -18,7 +18,7 @@ Describe 'New-AzLoad' {
     It 'Create with MI' {
         $name = $env.loadTestResource1
         $tags = @{"tag1"="value1"}
-        $userAssigned = @{$env.identityid1=@{};$env.identityid2=@{}}
+        $userAssigned = @($env.identityid1, $env.identityid2)
         $identityType = "SystemAssigned, UserAssigned"
 
         $res = New-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity -UserAssignedIdentity $userAssigned -Tag $tags
@@ -107,10 +107,10 @@ Describe 'Get-AzLoad' {
 Describe 'Update-AzLoad (Recorded)' {
     It 'Remove a Managed Identity' {
         $name = $env.loadTestResource1
-        $userAssigned = @{$env.identityid1=@{};$env.identityid2=$null}
+        $userAssigned = @($env.identityid1)
         $identityType = "UserAssigned"
 
-        $res = Update-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -UserAssignedIdentity $userAssigned
+        $res = Update-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -EnableSystemAssignedIdentity $false -UserAssignedIdentity $userAssigned
         $res.Name | Should -Be $name
         $res.ResourceGroupName | Should -Be $env.resourceGroup
         $res.Location | Should -Be $env.location

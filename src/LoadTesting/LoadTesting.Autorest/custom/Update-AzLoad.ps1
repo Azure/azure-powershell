@@ -165,12 +165,15 @@ param(
                 if($PSBoundParameters['EncryptionIdentity'].ToLower() -eq 'systemassigned') {
                     $null = $PSBoundParameters.Add("EncryptionIdentityType", 'SystemAssigned')
 
+                    # For SystemAssigned encryption identity, we should NOT include EncryptionIdentityResourceId
+                    # Remove it if it exists in the parameters
                     if($PSBoundParameters.ContainsKey('EncryptionIdentityResourceId')) {
-                        $PSBoundParameters['EncryptionIdentityResourceId'] = $null
+                        $null = $PSBoundParameters.Remove('EncryptionIdentityResourceId')
                     }
-                    else {
-                        $PSBoundParameters.Add('EncryptionIdentityResourceId', $null)
-                    }
+                    
+                    # CRITICAL: Explicitly set to empty string to prevent AutoRest from inferring from UserAssignedIdentity
+                    # This ensures the AfterToJson method will completely remove the resourceId field
+                    $null = $PSBoundParameters.Add('EncryptionIdentityResourceId', '')
                     
                     # Update the identity type only if the input does not contain the encryption identity type
                     # Update EnableSystemAssignedIdentity to enable system assigned identity
