@@ -88,9 +88,3 @@ Describe 'Enable-AzDataTransferFlowType' {
         } | Should -Not -Throw
     }
 }
-
-Describe 'Enable-AzDataTransferFlowType' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}

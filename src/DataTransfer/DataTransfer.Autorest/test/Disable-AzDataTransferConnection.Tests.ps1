@@ -113,9 +113,3 @@ Describe 'Disable-AzDataTransferConnection' {
         Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToDisableNoWaitName -Confirm:$false -ErrorAction SilentlyContinue
     }
 }
-
-Describe 'Disable-AzDataTransferConnection' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}

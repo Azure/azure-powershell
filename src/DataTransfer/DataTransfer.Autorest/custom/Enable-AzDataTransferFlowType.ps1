@@ -47,7 +47,7 @@
 #>
 function Enable-AzDataTransferFlowType {
     [OutputType([ADT.Models.IPipeline])]
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory=$true, HelpMessage="The name of the pipeline containing the flow types")]
         [ValidateNotNullOrEmpty()]

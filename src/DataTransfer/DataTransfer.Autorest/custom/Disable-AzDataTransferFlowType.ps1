@@ -55,7 +55,7 @@
 #>
 function Disable-AzDataTransferFlowType {
     [OutputType([ADT.Models.IPipeline])]
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='High')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='High')]
     param(
         [Parameter(Mandatory=$true, HelpMessage="The name of the pipeline containing the flow types")]
         [ValidateNotNullOrEmpty()]

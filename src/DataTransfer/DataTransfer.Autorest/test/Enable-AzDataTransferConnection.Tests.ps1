@@ -110,9 +110,3 @@ Describe 'Enable-AzDataTransferConnection' {
         Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToEnableNoWaitName -Confirm:$false -ErrorAction SilentlyContinue
     }
 }
-
-Describe 'Enable-AzDataTransferConnection' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}

@@ -51,7 +51,7 @@
 #>
 function Enable-AzDataTransferConnection {
     [OutputType([ADT.Models.IPipeline])]
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory=$true, HelpMessage="The name of the pipeline containing the connections")]
         [ValidateNotNullOrEmpty()]

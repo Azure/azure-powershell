@@ -13,9 +13,9 @@ Disables Azure Data Transfer connections.
 ## SYNTAX
 
 ```
-Disable-AzDataTransferConnection [-PipelineName] <String> [-ResourceGroupName] <String>
- [-ConnectionId] <String[]> [[-SubscriptionId] <String>] [[-Justification] <String>]
- [[-DefaultProfile] <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Disable-AzDataTransferConnection -ConnectionId <String[]> -PipelineName <String> -ResourceGroupName <String>
+ [-AsJob] [-DefaultProfile <PSObject>] [-Justification <String>] [-NoWait] [-SubscriptionId <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +68,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,7 +83,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -98,7 +98,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -128,7 +128,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -143,7 +143,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,7 +158,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

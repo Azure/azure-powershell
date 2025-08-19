@@ -13,8 +13,8 @@ Disables Azure Data Transfer flow types.
 ## SYNTAX
 
 ```
-Disable-AzDataTransferFlowType [-PipelineName] <String> [-ResourceGroupName] <String> [-FlowType] <String[]>
- [[-SubscriptionId] <String>] [[-Justification] <String>] [[-DefaultProfile] <PSObject>] [-AsJob] [-NoWait]
+Disable-AzDataTransferFlowType -FlowType <String[]> -PipelineName <String> -ResourceGroupName <String>
+ [-AsJob] [-DefaultProfile <PSObject>] [-Justification <String>] [-NoWait] [-SubscriptionId <String>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -79,7 +79,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -94,7 +94,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -124,7 +124,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -139,7 +139,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -154,7 +154,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

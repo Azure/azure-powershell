@@ -75,9 +75,3 @@ Describe 'Disable-AzDataTransferPipeline' {
         } | Should -Not -Throw
     }
 }
-
-Describe 'Disable-AzDataTransferPipeline' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}

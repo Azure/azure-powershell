@@ -43,9 +43,3 @@ Describe 'Enable-AzDataTransferPipeline' {
         } | Should -Not -Throw
     }
 }
-
-Describe 'Enable-AzDataTransferPipeline' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}
