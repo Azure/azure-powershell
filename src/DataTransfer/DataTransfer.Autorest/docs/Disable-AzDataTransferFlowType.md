@@ -198,6 +198,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### ADT.Models.IPipeline
+
 ## NOTES
 
 ## RELATED LINKS

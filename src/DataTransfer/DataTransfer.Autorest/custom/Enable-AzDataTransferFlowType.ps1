@@ -46,6 +46,7 @@
     Enables a flow type with a business justification.
 #>
 function Enable-AzDataTransferFlowType {
+    [OutputType([ADT.Models.IPipeline])]
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory=$true, HelpMessage="The name of the pipeline containing the flow types")]
@@ -107,8 +108,9 @@ function Enable-AzDataTransferFlowType {
                 if ($AsJob) { $invokeParams.AsJob = $AsJob }
                 if ($NoWait) { $invokeParams.NoWait = $NoWait }
                 
-                # Call the underlying command
-                Invoke-AzDataTransferExecutePipelineAction @invokeParams
+                # Call the underlying command and return the result
+                $result = Invoke-AzDataTransferExecutePipelineAction @invokeParams
+                return $result
             }
             catch {
                 $PSCmdlet.ThrowTerminatingError($_)

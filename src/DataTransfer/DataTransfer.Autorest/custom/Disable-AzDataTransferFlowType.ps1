@@ -54,6 +54,7 @@
     This action will disable all flows of the specified types across all connections in the pipeline.
 #>
 function Disable-AzDataTransferFlowType {
+    [OutputType([ADT.Models.IPipeline])]
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='High')]
     param(
         [Parameter(Mandatory=$true, HelpMessage="The name of the pipeline containing the flow types")]
@@ -116,8 +117,9 @@ function Disable-AzDataTransferFlowType {
                 if ($AsJob) { $invokeParams.AsJob = $AsJob }
                 if ($NoWait) { $invokeParams.NoWait = $NoWait }
                 
-                # Call the underlying command
-                Invoke-AzDataTransferExecutePipelineAction @invokeParams
+                # Call the underlying command and return the result
+                $result = Invoke-AzDataTransferExecutePipelineAction @invokeParams
+                return $result
             }
             catch {
                 $PSCmdlet.ThrowTerminatingError($_)

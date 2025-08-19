@@ -50,6 +50,7 @@
     Enables a connection with a business justification.
 #>
 function Enable-AzDataTransferConnection {
+    [OutputType([ADT.Models.IPipeline])]
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory=$true, HelpMessage="The name of the pipeline containing the connections")]
@@ -104,8 +105,9 @@ function Enable-AzDataTransferConnection {
                 if ($AsJob) { $invokeParams.AsJob = $AsJob }
                 if ($NoWait) { $invokeParams.NoWait = $NoWait }
                 
-                # Call the underlying command
-                Invoke-AzDataTransferExecutePipelineAction @invokeParams
+                # Call the underlying command and return the result
+                $result = Invoke-AzDataTransferExecutePipelineAction @invokeParams
+                return $result
             }
             catch {
                 $PSCmdlet.ThrowTerminatingError($_)

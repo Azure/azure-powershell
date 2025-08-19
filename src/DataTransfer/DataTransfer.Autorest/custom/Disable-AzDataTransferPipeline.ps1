@@ -43,6 +43,7 @@
     Shows what would happen if the pipeline was disabled without actually disabling it.
 #>
 function Disable-AzDataTransferPipeline {
+    [OutputType([ADT.Models.IPipeline])]
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='High')]
     param(
         [Parameter(Mandatory=$true, HelpMessage="The name of the pipeline to disable")]
@@ -93,8 +94,9 @@ function Disable-AzDataTransferPipeline {
                 if ($AsJob) { $invokeParams.AsJob = $AsJob }
                 if ($NoWait) { $invokeParams.NoWait = $NoWait }
                 
-                # Call the underlying command
-                Invoke-AzDataTransferExecutePipelineAction @invokeParams
+                # Call the underlying command and return the result
+                $result = Invoke-AzDataTransferExecutePipelineAction @invokeParams
+                return $result
             }
             catch {
                 $PSCmdlet.ThrowTerminatingError($_)
