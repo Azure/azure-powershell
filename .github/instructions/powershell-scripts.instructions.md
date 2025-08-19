@@ -1,6 +1,10 @@
+---
+applyTo: "**/*.ps1"
+---
+
 # PowerShell Scripts (*.ps1)
 
-When working with PowerShell script files in the Azure PowerShell repository, follow these compatibility and portability guidelines:
+When writing PowerShell script files in the Azure PowerShell repository, follow these compatibility and portability guidelines:
 
 ## PowerShell Version Compatibility
 

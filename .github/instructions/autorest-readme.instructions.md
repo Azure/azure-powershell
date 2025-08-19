@@ -1,3 +1,7 @@
+---
+applyTo: "**/*.Autorest/README.md"
+---
+
 # AutoRest README.md Files
 
 When working with README.md files in AutoRest projects (*.Autorest directories), follow these specific guidelines for API specification references and directive documentation:

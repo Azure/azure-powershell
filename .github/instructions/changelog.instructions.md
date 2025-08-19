@@ -1,3 +1,7 @@
+---
+applyTo: "**/ChangeLog.md"
+---
+
 # ChangeLog.md Files
 
 When working with ChangeLog.md files in the Azure PowerShell repository, follow these specific guidelines:
