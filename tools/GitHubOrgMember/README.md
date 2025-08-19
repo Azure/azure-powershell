@@ -1,7 +1,6 @@
 # GitHub Azure Organization Membership Checker
 
-PowerShell script to check if a GitHub user is a member of the Azure GitHub organization using the GitHub CLI. Re```powershell
-$result = .\Check-AzureOrgMembership.ps1 "vidai-msft" -Organization "microsoft" -Quietrns structured PowerShell objects for easy processing and integration.
+PowerShell script to check if a GitHub user is a member of the Azure GitHub organization using the GitHub CLI. Returns structured PowerShell objects for easy processing and integration.
 
 ## Prerequisites
 
