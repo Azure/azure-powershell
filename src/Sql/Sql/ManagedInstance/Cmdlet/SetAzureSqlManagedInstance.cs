@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the memory size in GB for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines how much memory in GB to associate with instance.")]
+            HelpMessage = "Determines how much memory in GB to associate with instance")]
         public int? MemorySizeInGB { get; set; }
 
         /// <summary>
