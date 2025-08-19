@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll")]
+            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DenyAll")]
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
 
