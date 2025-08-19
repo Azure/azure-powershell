@@ -1,0 +1,85 @@
+name: Auto Trigger ADO Pipeline for Azure Members
+run-name: Auto trigger ADO pipeline for PR by Azure member
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  check-and-trigger:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          tools/GitHubOrgMember
+
+    - name: Set up GitHub CLI
+      shell: pwsh
+      run: |
+        # Install GitHub CLI if not present
+        if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+          Write-Host "Installing GitHub CLI..."
+          # GitHub CLI is typically pre-installed on GitHub runners
+          gh --version
+        }
+
+    - name: Authenticate with GitHub CLI using token
+      shell: pwsh
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        Write-Host "Authenticating GitHub CLI..."
+        echo $env:GH_TOKEN | gh auth login --with-token
+        gh auth status
+
+    - name: Get PR author and check Azure org membership
+      shell: pwsh
+      env:
+        PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+      run: |
+        Write-Host "Checking if PR author '$env:PR_AUTHOR' is an Azure organization member..."
+
+        # Use the existing script to check membership
+        $membershipResult = & "./tools/GitHubOrgMember/Check-AzureOrgMembership.ps1" -Username $env:PR_AUTHOR -Quiet
+
+        Write-Host "Membership check result:"
+        Write-Host "Username: $($membershipResult.Username)"
+        Write-Host "Organization: $($membershipResult.Organization)"
+        Write-Host "IsMember: $($membershipResult.IsMember)"
+        Write-Host "Status: $($membershipResult.Status)"
+
+        if ($membershipResult.ErrorMessage) {
+          Write-Host "Error: $($membershipResult.ErrorMessage)"
+        }
+
+        # Set output for next step
+        echo "IS_AZURE_MEMBER=$($membershipResult.IsMember)" >> $env:GITHUB_ENV
+        echo "MEMBERSHIP_STATUS=$($membershipResult.Status)" >> $env:GITHUB_ENV
+
+    - name: Trigger ADO pipeline for Azure member
+      if: env.IS_AZURE_MEMBER == 'True'
+      shell: pwsh
+      env:
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        try {
+          Write-Host "PR author is an Azure member. Proceeding to trigger ADO pipeline..."
+          
+          # Comment "/azp run" on the PR to trigger ADO pipeline
+          Write-Host "Commenting '/azp run' on PR #$env:PR_NUMBER to trigger ADO pipeline..."
+          gh pr comment $env:PR_NUMBER --body "/azp run"
+          
+          Write-Host "✅ Successfully triggered ADO pipeline for PR #$env:PR_NUMBER"
+        }
+        catch {
+          Write-Error "❌ Failed to trigger ADO pipeline: $($_.Exception.Message)"
+          exit 1
+        }
