@@ -225,6 +225,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
             catch (Exception)
             {
+                // If we failed to start the process (e.g., file not found), return null exit code
+                // to indicate the start failure without throwing, matching test expectations.
                 HandleProcessInterruption(sftpProcess);
                 return new Tuple<Process, int?>(sftpProcess, null);
             }
@@ -242,7 +244,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 
                 var connectionDuration = (DateTime.UtcNow - connectionStartTime).TotalSeconds;
 
-                // KeyboardInterrupt occurred
+                // If the process failed to start, ExecuteSftpProcess returns null process and null returnCode.
+                // Treat that as a start failure (not a user interruption).
+                if (sftpProcess == null && returnCode == null)
+                {
+                    var startError = "Failed to start SFTP connection: Unable to launch SSH/SFTP client.";
+                    LogWarning(startError);
+                    return new Tuple<bool, double?, string>(false, connectionDuration, startError);
+                }
+
+                // KeyboardInterrupt occurred (process started but returned null exit code)
                 if (returnCode == null)
                 {
                     return new Tuple<bool, double?, string>(false, connectionDuration, "Connection interrupted by user (KeyboardInterrupt)");
@@ -622,8 +633,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                     return clientSshPath;
                 }
 
-                LogWarning($"Could not find {sshCommand} in provided --ssh-client-folder {sshClientFolder}. " +
-                           "Attempting to get pre-installed OpenSSH bits.");
+                // If caller provided a specific ssh client folder, consider this an error rather than silently
+                // falling back to system path. Tests expect an exception when the provided folder is invalid.
+                throw new AzPSApplicationException($"Could not find {sshCommand} in provided --ssh-client-folder {sshClientFolder}.");
             }
 
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

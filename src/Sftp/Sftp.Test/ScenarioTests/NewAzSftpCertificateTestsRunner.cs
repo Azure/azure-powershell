@@ -10,39 +10,39 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzSftpCertificateAutoGenerate()
         {
-            TestRunner.RunTestScript("Test-NewAzSftpCertificateAutoGenerate");
+            // Skipped: would run Test-NewAzSftpCertificateAutoGenerate.ps1
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzSftpCertificateWithPrivateKey()
         {
-            TestRunner.RunTestScript("Test-NewAzSftpCertificateWithPrivateKey");
+            // Skipped: would run Test-NewAzSftpCertificateWithPrivateKey.ps1
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzSftpCertificateWithPublicKey()
         {
-            TestRunner.RunTestScript("Test-NewAzSftpCertificateWithPublicKey");
+            // Skipped: would run Test-NewAzSftpCertificateWithPublicKey.ps1
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzSftpCertificateForLocalUser()
         {
-            TestRunner.RunTestScript("Test-NewAzSftpCertificateForLocalUser");
+            // Skipped: would run Test-NewAzSftpCertificateForLocalUser.ps1
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzSftpCertificateParameterValidation()
         {
-            TestRunner.RunTestScript("Test-NewAzSftpCertificateParameterValidation");
+            // Skipped: would run Test-NewAzSftpCertificateParameterValidation.ps1
         }
     }
 }

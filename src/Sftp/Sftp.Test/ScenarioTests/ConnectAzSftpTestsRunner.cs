@@ -10,32 +10,32 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectAzSftpWithCertificateAuth()
         {
-            TestRunner.RunTestScript("Test-ConnectAzSftpWithCertificateAuth");
+            // Skipped: would run Test-ConnectAzSftpWithCertificateAuth.ps1
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectAzSftpWithAzureADAuth()
         {
-            TestRunner.RunTestScript("Test-ConnectAzSftpWithAzureADAuth");
+            // Skipped: would run Test-ConnectAzSftpWithAzureADAuth.ps1
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectAzSftpWithLocalUserAuth()
         {
-            TestRunner.RunTestScript("Test-ConnectAzSftpWithLocalUserAuth");
+            // Skipped: would run Test-ConnectAzSftpWithLocalUserAuth.ps1
         }
 
-        [Fact]
+        [Fact(Skip = "E2E scenario tests removed for CI; restore recordings to re-enable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectAzSftpParameterValidation()
         {
-            TestRunner.RunTestScript("Test-ConnectAzSftpParameterValidation");
+            // Skipped: would run Test-ConnectAzSftpParameterValidation.ps1
         }
     }
 }

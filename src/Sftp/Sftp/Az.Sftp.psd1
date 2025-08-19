@@ -41,7 +41,7 @@ PowerShellVersion = '5.1'
 # Minimum version of the PowerShell host required by this module
 # PowerShellHostVersion = ''
 
-# Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
+# Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition     only.
 DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
@@ -54,7 +54,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Cmdlets.Sftp.dll', '.\Microsoft.Azure.PowerShell.Cmdlets.Sftp.Helpers.dll'
+# Only list helper or external assemblies here; the main cmdlets DLL is listed as a nested module below
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.Cmdlets.Sftp.Helpers.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -66,7 +67,7 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Cmdlets.Sftp.dll', '.\Microso
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Sftp.dll')
+NestedModules = @('./Microsoft.Azure.PowerShell.Cmdlets.Sftp.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
