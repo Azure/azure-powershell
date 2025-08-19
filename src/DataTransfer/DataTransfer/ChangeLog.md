@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.DataTransfer
 
 ## Version 1.0.0
 * GA release for Az.DataTransfer
