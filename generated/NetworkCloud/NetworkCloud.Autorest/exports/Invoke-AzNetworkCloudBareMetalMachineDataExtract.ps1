@@ -27,7 +27,7 @@ $command = @{
     arguments = "commandArguments"
 }
 
-Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourcceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
+Invoke-AzNetworkCloudBareMetalMachineDataExtract -BareMetalMachineName bmmName -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -Command $command -LimitTimeSecond limitTimeInSeconds -Debug
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -103,7 +103,7 @@ param(
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineCommandSpecification[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineCommandSpecification[]]
     # The list of curated data extraction commands to be executed directly against the target machine.
     # To construct, see NOTES section for COMMAND properties and create a hash table.
     ${Command},

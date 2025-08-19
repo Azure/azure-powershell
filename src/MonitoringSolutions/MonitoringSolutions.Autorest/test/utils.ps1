@@ -55,7 +55,7 @@ function setupEnv() {
     Write-Host -ForegroundColor Green 'Deploying operational insights workspace'
     $workspacesName01 = 'monitoringworkspace-' + (RandomString -allChars $false -len 6)
     $workspacesName02 = 'monitoringworkspace-' + (RandomString -allChars $false -len 6)
-    <# Deploy failed, azure portal responsed error message: "statusMessage": "{\"error\":{\"code\":\"InvalidRequestContent\",\"message\":\"The request content was invalid and could not be deserialized: 'Error converting value \\\"insights-jxvq9o\\\" to type 'Microsoft.WindowsAzure.ResourceStack.Frontdoor.Data.Definitions.DeploymentParameterDefinition'. Path 'properties.parameters.workspaces_name', line 5, position 42.'.\"}}",
+    <# Deploy failed, azure portal responded error message: "statusMessage": "{\"error\":{\"code\":\"InvalidRequestContent\",\"message\":\"The request content was invalid and could not be deserialized: 'Error converting value \\\"insights-jxvq9o\\\" to type 'Microsoft.WindowsAzure.ResourceStack.Frontdoor.Data.Definitions.DeploymentParameterDefinition'. Path 'properties.parameters.workspaces_name', line 5, position 42.'.\"}}",
     $workspacesParam = Get-Content .\test\deployment-templates\operational-insightsworkspace\parameters.json | ConvertFrom-Json
     $workspacesParam.parameters.workspaces_yemingmonitor_name = 'lucasmonitor'
     set-content -Path .\test\deployment-templates\operational-insightsworkspace\parameters.json -Value (ConvertTo-Json $workspacesParam)

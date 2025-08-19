@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.6.1
+* Used fully qualified computer name and added warning for user to upgrade to solution.
+
 ## Version 2.6.0
 * Added EOL Message for 22H2
 

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Update sharing profile of a gallery.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
         /// The name of the Shared Image Gallery.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Update sharing profile of a gallery.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='galleryName'>
         /// The name of the Shared Image Gallery.
@@ -118,6 +118,17 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (galleryName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "galleryName");
@@ -138,9 +149,9 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("galleryName", galleryName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("sharingUpdate", sharingUpdate);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginUpdate", tracingParameters);
@@ -264,24 +275,6 @@ namespace Microsoft.Azure.Management.Compute
             }
             // Deserialize Response
             if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SharingUpdate>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 202)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try

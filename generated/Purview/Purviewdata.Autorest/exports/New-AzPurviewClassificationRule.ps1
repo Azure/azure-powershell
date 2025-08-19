@@ -16,32 +16,32 @@
 
 <#
 .Synopsis
-Creates or Updates a classification rule
+Create a classification rule
 .Description
-Creates or Updates a classification rule
+Create a classification rule
 .Example
 $reg1 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col1$'
 $reg2 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col2$'
 $regexarr = @($reg1, $reg2)
-$obj = New-AzPurviewCustomClassificationRuleObject -Kind 'Custom' -ClassificationName ClassificationRule4 -RuleStatus 'Enabled' -Description 'This is a rule2' -ColumnPattern $regexarr
+$obj = New-AzPurviewCustomClassificationRuleObject -ClassificationName ClassificationRule4 -RuleStatus 'Enabled' -Description 'This is a rule2' -ColumnPattern $regexarr
 New-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName ClassificationRule5 -Body $obj
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IClassificationRule>: .
-  Kind <ClassificationRuleType>: 
+  Kind <String>: 
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewclassificationrule
 #>
 function New-AzPurviewClassificationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -58,12 +58,23 @@ param(
     # .
     ${Name},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -121,6 +132,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -141,6 +161,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewClassificationRule_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewClassificationRule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewClassificationRule_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -149,6 +171,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

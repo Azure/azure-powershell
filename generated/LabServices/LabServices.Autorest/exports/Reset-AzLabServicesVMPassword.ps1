@@ -23,9 +23,11 @@ Resets a lab virtual machine password.
 Reset-AzLabServicesVMPassword -ResourceGroupName "Group Name" -LabName "Lab Name" -VirtualMachineName 0 -Password "New Password"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Outputs
 System.Boolean
 .Notes
@@ -33,69 +35,129 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-VM <VirtualMachine>: 
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 #>
 function Reset-AzLabServicesVMPassword {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Reset', Mandatory)]
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the lab that uniquely identifies it within containing lab account.
     # Used in resource URIs.
     ${LabName},
 
-    [Parameter(ParameterSetName='Reset', Mandatory)]
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Reset', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The ID of the virtual machine that uniquely identifies it within the containing lab.
-    # Used in resource URIs.
-    ${VirtualMachineName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='ResetExpanded')]
+    [Parameter(ParameterSetName='ResetViaJsonFilePath')]
+    [Parameter(ParameterSetName='ResetViaJsonString')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='VM')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The ID of the virtual machine that uniquely identifies it within the containing lab.
+    # Used in resource URIs.
+    ${VirtualMachineName},
+
+    [Parameter(ParameterSetName='ResetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ResetViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Parameter(ParameterSetName='VM', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.Security.SecureString]
     # The password
     ${Password},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='VM')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The user whose password is being reset
     ${Username},
 
+    [Parameter(ParameterSetName='ResetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Reset operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ResetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Reset operation
+    ${JsonString},
+
     [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service virtual machine.
     ${ResourceId},
 
     [Parameter(ParameterSetName='VM', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
-    # To construct, see NOTES section for VM properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
+    # The object of lab service virtual machine.
     ${VM},
 
     [Parameter()]
@@ -103,26 +165,15 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
@@ -143,6 +194,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
@@ -171,6 +234,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -190,13 +262,15 @@ begin {
         }
 
         $mapping = @{
-            Reset = 'Az.LabServices.custom\Reset-AzLabServicesVMPassword_Reset';
+            ResetExpanded = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetExpanded';
+            ResetViaIdentityExpanded = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetViaIdentityExpanded';
+            ResetViaIdentityLabExpanded = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetViaIdentityLabExpanded';
+            ResetViaJsonFilePath = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetViaJsonFilePath';
+            ResetViaJsonString = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetViaJsonString';
             ResourceId = 'Az.LabServices.custom\Reset-AzLabServicesVMPassword_ResourceId';
             VM = 'Az.LabServices.custom\Reset-AzLabServicesVMPassword_VM';
         }
-        if (('Reset', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ResetExpanded', 'ResetViaJsonFilePath', 'ResetViaJsonString', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -210,6 +284,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

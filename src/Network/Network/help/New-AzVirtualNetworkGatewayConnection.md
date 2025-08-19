@@ -79,7 +79,7 @@ New-AzVirtualNetworkGatewayConnection -ResourceGroupName "PS_testing" -name "Con
 ```
 
 The two command gets a local network gateway and virtual network gateway.
-The thrid command creates a AzGatewayCustomBgpIpConfigurationObject.
+The third command creates a AzGatewayCustomBgpIpConfigurationObject.
 The third command creates this new virtual Network gateway connection with GatewayCustomBgpIpAddress.
 
 ## PARAMETERS

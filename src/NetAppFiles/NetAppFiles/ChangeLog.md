@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.24.1
+* Updated to api-version 2025-03-01
+
 ## Version 0.24.0
 * Added `NfsV4IdDomain` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
 * Added added support CRR data recovery options for VolumeGroups with `DataReplicationSourceId`, DataReplicationSchedule to `New-AzNetAppFilesVolumeGroup`

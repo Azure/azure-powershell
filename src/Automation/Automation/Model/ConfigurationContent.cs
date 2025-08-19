@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the automaiton account name.
+        /// Gets or sets the automation account name.
         /// </summary>
         public string AutomationAccountName { get; set; }
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the slot (publised or draft) of runbook.
+        /// Gets or sets the slot (published or draft) of runbook.
         /// </summary>
         public string Slot { get; set; }
 

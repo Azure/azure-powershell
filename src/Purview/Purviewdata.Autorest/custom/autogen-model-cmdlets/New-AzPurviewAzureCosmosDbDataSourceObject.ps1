@@ -21,12 +21,13 @@ Create an in-memory object for AzureCosmosDbDataSource.
 Create an in-memory object for AzureCosmosDbDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureCosmosDbDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurecosmosdbdatasourceobject
 #>
 function New-AzPurviewAzureCosmosDbDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,15 +51,11 @@ function New-AzPurviewAzureCosmosDbDataSourceObject {
         $ResourceName,
         [Parameter()]
         [string]
-        $SubscriptionId,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $SubscriptionId
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureCosmosDbDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('AccountUri')) {
             $Object.AccountUri = $AccountUri
@@ -80,9 +77,6 @@ function New-AzPurviewAzureCosmosDbDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $Object.SubscriptionId = $SubscriptionId
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

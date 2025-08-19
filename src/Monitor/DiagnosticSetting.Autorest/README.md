@@ -53,6 +53,56 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - where:
+      verb: Get|New
+      subject: DiagnosticSetting
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Log
+          - Metric
+        new-output-properties:
+          - Log
+          - Metric
+        change-description: The types of the properties Log and Metric will be changed from single object or fixed array to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Get
+      subject: DiagnosticSettingsCategory
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - CategoryGroup
+        new-output-properties:
+          - CategoryGroup
+        change-description: The type of the property CategoryGroup will be changed from fixed array to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      verb: Get|New
+      subject: SubscriptionDiagnosticSetting
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Log
+        new-output-properties:
+          - Log
+        change-description: The type of the property Log will be changed from single object or fixed array to 'List'.
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+  - where:
+      parameter-name: Log
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
+        deprecated-by-version: 7.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well

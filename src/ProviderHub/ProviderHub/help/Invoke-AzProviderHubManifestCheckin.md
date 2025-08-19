@@ -12,10 +12,24 @@ Checkin the manifest.
 
 ## SYNTAX
 
+### ManifestExpanded (Default)
 ```
 Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> [-SubscriptionId <String>]
  -BaselineArmManifestLocation <String> -Environment <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ManifestViaJsonFilePath
+```
+Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ManifestViaJsonString
+```
+Invoke-AzProviderHubManifestCheckin -ProviderNamespace <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +70,7 @@ The baseline ARM manifest location supplied to the checkin manifest operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ManifestExpanded
 Aliases:
 
 Required: True
@@ -87,7 +101,37 @@ The environment supplied to the checkin manifest operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ManifestExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Manifest operation
+
+```yaml
+Type: System.String
+Parameter Sets: ManifestViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Manifest operation
+
+```yaml
+Type: System.String
+Parameter Sets: ManifestViaJsonString
 Aliases:
 
 Required: True
@@ -165,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ICheckinManifestInfo
 
 ## NOTES
 

@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 9.1.0
+* Supported set SasExpirationAction as Log or Block, together with SasExpirationPeriod
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Storage task assignment
+    - `New-AzStorageTaskAssignment`
+    - `Update-AzStorageTaskAssignment`
+    - `Get-AzStorageTaskAssignment`
+    - `Remove-AzStorageTaskAssignment`
+    - `Get-AzStorageTaskAssignmentinstancesReport`
+
 ## Version 9.0.0
 * Removed MD5 from blob and file upload in some scenarios
     - `Set-AzStorageFileContent`

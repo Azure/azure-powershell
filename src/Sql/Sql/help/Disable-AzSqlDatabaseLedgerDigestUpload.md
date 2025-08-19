@@ -31,7 +31,7 @@ Disable-AzSqlDatabaseLedgerDigestUpload [-ResourceId] <String> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-The Disable-AzSqlDatabaseLedgerDigestUpload cmdlet disables uploading ledger digests to Azure Blob storage or Azure Confidental Ledger. To use the cmdlet, identify the database.
+The Disable-AzSqlDatabaseLedgerDigestUpload cmdlet disables uploading ledger digests to Azure Blob storage or Azure Confidential Ledger. To use the cmdlet, identify the database.
 
 ## EXAMPLES
 

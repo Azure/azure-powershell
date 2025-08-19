@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-update an existing domain within a profile.
+Update an existing domain within a profile.
 
 ## SYNTAX
 
@@ -58,7 +58,7 @@ Update-AzFrontDoorCdnCustomDomain -InputObject <ICdnIdentity> [-AzureDnsZoneId <
 ```
 
 ## DESCRIPTION
-update an existing domain within a profile.
+Update an existing domain within a profile.
 
 ## EXAMPLES
 

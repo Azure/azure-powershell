@@ -74,6 +74,22 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMWithRingBuffer()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2ForVMWithRingBuffer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMSSWithRingBuffer()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2WithRingBuffer");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()

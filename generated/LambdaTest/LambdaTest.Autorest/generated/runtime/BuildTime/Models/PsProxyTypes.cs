@@ -392,6 +392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.PowerShell
             var helpInfo = variantGroup.HelpInfo;
             Description = variantGroup.Variants.SelectMany(v => v.Attributes).OfType<DescriptionAttribute>().FirstOrDefault()?.Description.NullIfEmpty()
                           ?? helpInfo.Description.EmptyIfNull();
+            Description = PsHelpInfo.CapitalizeFirstLetter(Description);
             // If there is no Synopsis, PowerShell may put in the Syntax string as the Synopsis. This seems unintended, so we remove the Synopsis in this situation.
             var synopsis = helpInfo.Synopsis.EmptyIfNull().Trim().StartsWith(variantGroup.CmdletName) ? String.Empty : helpInfo.Synopsis;
             Synopsis = synopsis.NullIfEmpty() ?? Description;

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Migrate-help.xml
+external help file:
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 schema: 2.0.0
@@ -13,8 +13,8 @@ Creates a new disk mapping
 ## SYNTAX
 
 ```
-New-AzMigrateDiskMapping -DiskID <String> -IsOSDisk <String> -DiskType <String> [-DiskEncryptionSetID <String>]
- [<CommonParameters>]
+New-AzMigrateDiskMapping -DiskID <String> -DiskType <String> -IsOSDisk <String>
+ [-DiskEncryptionSetID <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,8 @@ DiskEncryptionSetId DiskId DiskType     IsOSDisk LogStorageAccountId LogStorageA
                     a      Standard_LRS true
 ```
 
+
+
 ### Example 2: Make Premium V2 disks
 ```powershell
 New-AzMigrateDiskMapping -DiskID b -DiskType PremiumV2_LRS -IsOSDisk 'false'
@@ -49,7 +51,7 @@ Get disks object to provide input for New-AzMigrateServerReplication
 ## PARAMETERS
 
 ### -DiskEncryptionSetID
-Specifies the disk encyption set to be used.
+Specifies the disk encryption set to be used.
 
 ```yaml
 Type: System.String
@@ -120,3 +122,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

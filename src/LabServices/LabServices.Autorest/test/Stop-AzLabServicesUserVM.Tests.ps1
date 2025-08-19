@@ -19,8 +19,8 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Stop-AzLabServicesUserVM' {
     It 'Stop' -skip {
-        Start-AzLabServicesUserVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Email $ENV:UserEmail
-        Stop-AzLabServicesUserVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Email $ENV:UserEmail
-        Get-AzLabServicesUserVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Email $ENV:UserEmail | Select -ExpandProperty State |  Should -BeExactly "Stopped"        
+        Start-AzLabServicesUserVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Email $env.UserEmail
+        Stop-AzLabServicesUserVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Email $env.UserEmail
+        Get-AzLabServicesUserVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Email $env.UserEmail | Select -ExpandProperty State |  Should -BeExactly "Stopped"        
     }
 }

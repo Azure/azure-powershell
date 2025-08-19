@@ -1,84 +1,11 @@
 # Upcoming breaking changes in Azure PowerShell
 
-## Az.Blueprint
+The breaking changes listed in this article are planned for the next major release of the Az
+PowerShell module unless otherwise noted. Per our
+[Support lifecycle](azureps-support-lifecycle.md), breaking changes in Azure PowerShell occur twice
+a year with major versions of the Az PowerShell module.
 
-### `Export-AzBlueprintWithArtifact`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Get-AzBlueprint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Get-AzBlueprintArtifact`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Get-AzBlueprintAssignment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Import-AzBlueprintWithArtifact`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `New-AzBlueprint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `New-AzBlueprintArtifact`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `New-AzBlueprintAssignment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Publish-AzBlueprint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Remove-AzBlueprintAssignment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Set-AzBlueprint`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Set-AzBlueprintArtifact`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
-
-### `Set-AzBlueprintAssignment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
-  - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
+Preview modules are not included in this list. Read more about [module version types](azureps-support-lifecycle.md#module-version-types).
 
 ## Az.Compute
 
@@ -100,9 +27,7 @@
 
 - Parameter breaking-change will happen to all parameter sets
   - `-OSType`
-    - The parameter : 'OSType' is changing.
-    - This change will take effect on '5/21/2025'- The change is expected to take effect from Az version : '14.0.0'
-    - The change is expected to take effect from version : '5.0.0'
+    
 
 ### `New-AzContainerInstanceContainerGroupProfile`
 
@@ -113,522 +38,1091 @@
     - This change will take effect on '5/21/2025'- The change is expected to take effect from Az version : '14.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
-## Az.Maps
+## Az.DevCenter
 
-### `Get-AzMapsCreator`
+### `Connect-AzDevCenterAdminCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.9.0'
+  The cmdlet 'Connect-AzDevCenterAdminCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMapsCreator`
+### `Connect-AzDevCenterAdminProjectCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
-  - The change is expected to take effect from version : '0.9.0'
+  The cmdlet 'Connect-AzDevCenterAdminProjectCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMapsCreator`
+### `Get-AzDevCenterAdminAttachedNetwork`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.9.0'
+  The cmdlet 'Get-AzDevCenterAdminAttachedNetwork' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-## Az.MixedReality
+### `Get-AzDevCenterAdminCatalog`
 
-### `Get-AzMixedRealityObjectAnchorsAccount`
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet 'Get-AzDevCenterAdminCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
+### `Get-AzDevCenterAdminCatalogSyncErrorDetail`
+
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminCatalogSyncErrorDetail' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMixedRealityObjectAnchorsAccountKey`
+### `Get-AzDevCenterAdminCustomizationTask`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminCustomizationTask' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMixedRealityRemoteRenderingAccount`
+### `Get-AzDevCenterAdminCustomizationTaskErrorDetail`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminCustomizationTaskErrorDetail' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMixedRealityRemoteRenderingAccountKey`
+### `Get-AzDevCenterAdminDevBoxDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminDevBoxDefinition' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMixedRealitySpatialAnchorsAccount`
+### `Get-AzDevCenterAdminDevCenter`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminDevCenter' is replacing this cmdlet.
+  - Change description : PlanId will be removed from the DevCenter output. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMixedRealitySpatialAnchorsAccountKey`
+### `Get-AzDevCenterAdminEnvironmentDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminEnvironmentDefinition' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMixedRealityObjectAnchorsAccount`
+### `Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMixedRealityObjectAnchorsAccountKey`
+### `Get-AzDevCenterAdminEnvironmentType`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminEnvironmentType' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMixedRealityRemoteRenderingAccount`
+### `Get-AzDevCenterAdminGallery`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminGallery' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMixedRealityRemoteRenderingAccountKey`
+### `Get-AzDevCenterAdminImage`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminImage' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMixedRealitySpatialAnchorsAccount`
+### `Get-AzDevCenterAdminImageVersion`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminImageVersion' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+  The cmdlet parameter set is being deprecated. There will be no replacement for it.
+  - Change description : The default parameter set will change from list dev center image versions to list project image versions. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMixedRealitySpatialAnchorsAccountKey`
+### `Get-AzDevCenterAdminNetworkConnection`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminNetworkConnection' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMixedRealityObjectAnchorsAccount`
+### `Get-AzDevCenterAdminNetworkConnectionHealthDetail`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminNetworkConnectionHealthDetail' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMixedRealityRemoteRenderingAccount`
+### `Get-AzDevCenterAdminOperationStatus`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminOperationStatus' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMixedRealitySpatialAnchorsAccount`
+### `Get-AzDevCenterAdminPlan`
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  - Change description : The Plan and PlanMember resources will be removed. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Test-AzMixedRealityNameAvailability`
+### `Get-AzDevCenterAdminPlanMember`
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  - Change description : The Plan and PlanMember resources will be removed. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMixedRealityObjectAnchorsAccount`
+### `Get-AzDevCenterAdminPool`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminPool' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMixedRealityRemoteRenderingAccount`
+### `Get-AzDevCenterAdminProject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminProject' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMixedRealitySpatialAnchorsAccount`
+### `Get-AzDevCenterAdminProjectAllowedEnvironmentType`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.3.0'
+  The cmdlet 'Get-AzDevCenterAdminProjectAllowedEnvironmentType' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-## Az.MobileNetwork
+### `Get-AzDevCenterAdminProjectCatalog`
 
-### `Deploy-AzMobileNetworkReinstallPacketCoreControlPlane`
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet 'Get-AzDevCenterAdminProjectCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+### `Get-AzDevCenterAdminProjectCatalogSyncErrorDetail`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Get-AzDevCenterAdminProjectCatalogSyncErrorDetail' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Deploy-AzMobileNetworkRollbackPacketCoreControlPlane`
+### `Get-AzDevCenterAdminProjectEnvironmentDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Get-AzDevCenterAdminProjectEnvironmentDefinition' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetwork`
+### `Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkAttachedDataNetwork`
+### `Get-AzDevCenterAdminProjectEnvironmentType`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Get-AzDevCenterAdminProjectEnvironmentType' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkDataNetwork`
+### `Get-AzDevCenterAdminProjectInheritedSetting`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Get-AzDevCenterAdminProjectInheritedSetting' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkPacketCoreControlPlane`
+### `Get-AzDevCenterAdminSchedule`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkPacketCoreControlPlaneVersion`
+### `Invoke-AzDevCenterAdminExecuteCheckNameAvailability`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Invoke-AzDevCenterAdminExecuteCheckNameAvailability' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkPacketCoreDataPlane`
+### `Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkService`
+### `New-AzDevCenterAdminAttachedNetwork`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkSim`
+### `New-AzDevCenterAdminCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkSimGroup`
+### `New-AzDevCenterAdminDevBoxDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkSimPolicy`
+### `New-AzDevCenterAdminDevCenter`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'New-AzDevCenterAdminDevCenter' is replacing this cmdlet.
+  - Change description : PlanId will be removed from the DevCenter output. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-PlanId`
+    - The parameter : 'PlanId' is changing.
+    - Change description : PlanId parameter will be removed. 
+    - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkSite`
+### `New-AzDevCenterAdminEnvironmentType`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'New-AzDevCenterAdminEnvironmentType' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Get-AzMobileNetworkSlice`
+### `New-AzDevCenterAdminGallery`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetwork`
+### `New-AzDevCenterAdminNetworkConnection`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkAttachedDataNetwork`
+### `New-AzDevCenterAdminPlan`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The Plan resource will be deprecated
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkDataNetwork`
+### `New-AzDevCenterAdminPlanMember`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The PlanMember resource will be deprecated
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkPacketCoreControlPlane`
+### `New-AzDevCenterAdminPool`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkPacketCoreDataPlane`
+### `New-AzDevCenterAdminProject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkService`
+### `New-AzDevCenterAdminProjectCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkSim`
+### `New-AzDevCenterAdminProjectEnvironmentType`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkSimGroup`
+### `New-AzDevCenterAdminSchedule`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+### `New-AzDevCenterUserDevBox`
 
-### `New-AzMobileNetworkSimPolicy`
+- Parameter breaking-change will happen to all parameter sets
+  - `-LocalAdministrator`
+    
 
+### `Remove-AzDevCenterAdminAttachedNetwork`
+
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminAttachedNetwork' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkSite`
+### `Remove-AzDevCenterAdminCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `New-AzMobileNetworkSlice`
+### `Remove-AzDevCenterAdminDevBoxDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminDevBoxDefinition' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetwork`
+### `Remove-AzDevCenterAdminDevCenter`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminDevCenter' is replacing this cmdlet.
+  - Change description : PlanId will be removed from the DevCenter output. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkAttachedDataNetwork`
+### `Remove-AzDevCenterAdminEnvironmentType`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminEnvironmentType' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkBulkSimDelete`
+### `Remove-AzDevCenterAdminGallery`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminGallery' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkDataNetwork`
+### `Remove-AzDevCenterAdminNetworkConnection`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminNetworkConnection' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkPacketCoreControlPlane`
+### `Remove-AzDevCenterAdminPlan`
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - Change description : The Plan and PlanMember resources will be removed. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkPacketCoreDataPlane`
+### `Remove-AzDevCenterAdminPlanMember`
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - Change description : The Plan and PlanMember resources will be removed. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkService`
+### `Remove-AzDevCenterAdminPool`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminPool' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkSim`
+### `Remove-AzDevCenterAdminProject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminProject' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkSimGroup`
+### `Remove-AzDevCenterAdminProjectCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminProjectCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkSimPolicy`
+### `Remove-AzDevCenterAdminProjectEnvironmentType`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Remove-AzDevCenterAdminProjectEnvironmentType' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkSite`
+### `Remove-AzDevCenterAdminSchedule`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Remove-AzMobileNetworkSlice`
+### `Remove-AzDevCenterUserDevBox`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - The output type is changing from the existing type :'OperationStatus' to the new type :'OperationStatus'
+  - The following properties in the output type are being deprecated : 'Property'
+  - The following properties are being added to the output type : 'Property'
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage`
+### `Remove-AzDevCenterUserEnvironment`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - The output type is changing from the existing type :'OperationStatus' to the new type :'OperationStatus'
+  - The following properties in the output type are being deprecated : 'Property'
+  - The following properties are being added to the output type : 'Property'
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetwork`
+### `Repair-AzDevCenterUserDevBox`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - The output type is changing from the existing type :'OperationStatus' to the new type :'OperationStatus'
+  - The following properties in the output type are being deprecated : 'Property'
+  - The following properties are being added to the output type : 'Property'
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkAttachedDataNetwork`
+### `Restart-AzDevCenterUserDevBox`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - The output type is changing from the existing type :'OperationStatus' to the new type :'OperationStatus'
+  - The following properties in the output type are being deprecated : 'Property'
+  - The following properties are being added to the output type : 'Property'
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkBulkSimUpload`
+### `Start-AzDevCenterAdminNetworkConnectionHealthCheck`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Start-AzDevCenterAdminNetworkConnectionHealthCheck' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkBulkSimUploadEncrypted`
+### `Start-AzDevCenterAdminPoolHealthCheck`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Start-AzDevCenterAdminPoolHealthCheck' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkDataNetwork`
+### `Start-AzDevCenterUserDevBox`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - The output type is changing from the existing type :'OperationStatus' to the new type :'OperationStatus'
+  - The following properties in the output type are being deprecated : 'Property'
+  - The following properties are being added to the output type : 'Property'
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkPacketCoreControlPlane`
+### `Stop-AzDevCenterUserDevBox`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - The output type is changing from the existing type :'OperationStatus' to the new type :'OperationStatus'
+  - The following properties in the output type are being deprecated : 'Property'
+  - The following properties are being added to the output type : 'Property'
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkPacketCoreDataPlane`
+### `Sync-AzDevCenterAdminCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Sync-AzDevCenterAdminCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkService`
+### `Sync-AzDevCenterAdminProjectCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Sync-AzDevCenterAdminProjectCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkSim`
+### `Update-AzDevCenterAdminCatalog`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Update-AzDevCenterAdminCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkSimGroup`
+### `Update-AzDevCenterAdminDevBoxDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Update-AzDevCenterAdminDevBoxDefinition' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkSimPolicy`
+### `Update-AzDevCenterAdminDevCenter`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  The cmdlet 'Update-AzDevCenterAdminDevCenter' is replacing this cmdlet.
+  - Change description : PlanId will be removed from the DevCenter output. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-PlanId`
+    - The parameter : 'PlanId' is changing.
+    - Change description : PlanId parameter will be removed. 
+    - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '3.0.0'
+
+### `Update-AzDevCenterAdminEnvironmentType`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet 'Update-AzDevCenterAdminEnvironmentType' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkSite`
+### `Update-AzDevCenterAdminNetworkConnection`
 
 - Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet 'Update-AzDevCenterAdminNetworkConnection' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+### `Update-AzDevCenterAdminPlan`
+
+- Cmdlet breaking-change will happen to all parameter sets
   The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - Change description : The Plan and PlanMember resources will be removed. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
 
-### `Update-AzMobileNetworkSlice`
+### `Update-AzDevCenterAdminPlanMember`
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '9/30/2025'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect from version : '0.5.0'
+  - Change description : The Plan and PlanMember resources will be removed. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+### `Update-AzDevCenterAdminPool`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet 'Update-AzDevCenterAdminPool' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+### `Update-AzDevCenterAdminProject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet 'Update-AzDevCenterAdminProject' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+### `Update-AzDevCenterAdminProjectCatalog`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet 'Update-AzDevCenterAdminProjectCatalog' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+### `Update-AzDevCenterAdminProjectEnvironmentType`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  The cmdlet 'Update-AzDevCenterAdminProjectEnvironmentType' is replacing this cmdlet.
+  - Change description : PlanName and MemberName will be removed from the InputObject parameter. 
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+### `Update-AzDevCenterAdminSchedule`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  MemberName and PlanName will be removed from InputObject
+  - This change will take effect on '11/18/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '3.0.0'
+
+## Az.ManagedServices
+
+### `Get-AzManagedServicesAssignment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment' is changing
+  - The following properties in the output type are being deprecated : 'Authorization[]' 'EligibleAuthorization[]'
+  - The following properties are being added to the output type : 'List[Authorization]' 'List[EligibleAuthorization]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+### `Get-AzManagedServicesDefinition`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition' is changing
+  - The following properties in the output type are being deprecated : 'Authorization[]' 'EligibleAuthorization[]'
+  - The following properties are being added to the output type : 'List[Authorization]' 'List[EligibleAuthorization]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+### `New-AzManagedServicesAssignment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment' is changing
+  - The following properties in the output type are being deprecated : 'Authorization[]' 'EligibleAuthorization[]'
+  - The following properties are being added to the output type : 'List[Authorization]' 'List[EligibleAuthorization]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+### `New-AzManagedServicesAuthorizationObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-DelegatedRoleDefinitionId`
+    
+
+### `New-AzManagedServicesDefinition`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition' is changing
+  - The following properties in the output type are being deprecated : 'Authorization' 'EligibleAuthorization' 'DelegatedRoleDefinitionId[]' 'JustInTimeAccessPolicyManagedByTenantApprover[]'
+  - The following properties are being added to the output type : 'List[Authorization]' 'List[EligibleAuthorization]' 'List[DelegatedRoleDefinitionId]' 'List[JustInTimeAccessPolicyManagedByTenantApprover]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Authorization`
+    - The parameter : 'Authorization' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '9.0.0'
+  - `-EligibleAuthorization`
+    - The parameter : 'EligibleAuthorization' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '9.0.0'
+
+### `New-AzManagedServicesEligibleAuthorizationObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-JustInTimeAccessPolicyManagedByTenantApprover`
+    
+
+## Az.Monitor
+
+### `Get-AzActivityLogAlert`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource' is changing
+  - The following properties in the output type are being deprecated : 'ActionGroup' 'ConditionAllOf' 'Scope'
+  - The following properties are being added to the output type : 'ActionGroup' 'ConditionAllOf' 'Scope'
+  - Change description : The types of the properties ActionGroup, ConditionAllOf and Scope will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `Get-AzAutoscalePredictiveMetric`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IPredictiveResponse' is changing
+  - The following properties in the output type are being deprecated : 'Data'
+  - The following properties are being added to the output type : 'Data'
+  - Change description : The type of the property 'Data' of type 'IPredictiveResponse' will be changed from single object to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `Get-AzAutoscaleSetting`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource' is changing
+  - The following properties in the output type are being deprecated : 'Notification' 'Profile'
+  - The following properties are being added to the output type : 'Notification' 'Profile'
+  - Change description : The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `Get-AzDiagnosticSetting`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource' is changing
+  - The following properties in the output type are being deprecated : 'Log' 'Metric'
+  - The following properties are being added to the output type : 'Log' 'Metric'
+  - Change description : The types of the properties Log and Metric will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `Get-AzDiagnosticSettingCategory`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource' is changing
+  - The following properties in the output type are being deprecated : 'CategoryGroup'
+  - The following properties are being added to the output type : 'CategoryGroup'
+  - Change description : The type of the property CategoryGroup will be changed from fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `Get-AzMonitorWorkspace`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `Get-AzScheduledQueryRule`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource' is changing
+  - The following properties in the output type are being deprecated : 'ActionGroup' 'CriterionAllOf' 'Scope' 'TargetResourceType'
+  - The following properties are being added to the output type : 'ActionGroup' 'CriterionAllOf' 'Scope' 'TargetResourceType'
+  - Change description : The types of the properties ActionGroup, CriterionAllOf, Scope and TargetResourceType will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `Get-AzSubscriptionDiagnosticSetting`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource' is changing
+  - The following properties in the output type are being deprecated : 'Log'
+  - The following properties are being added to the output type : 'Log'
+  - Change description : The type of the property Log will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition' is changing
+  - The following properties in the output type are being deprecated : '"ContainsAny","AnyOf[]"'
+  - The following properties are being added to the output type : '"List[ContainsAny]","List[AnyOf]"'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-AnyOf`
+    
+  - `-ContainsAny`
+    
+
+### `New-AzActivityLogAlertAlertRuleLeafConditionObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition' is changing
+  - The following properties in the output type are being deprecated : 'ContainsAny'
+  - The following properties are being added to the output type : 'List[ContainsAny]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ContainsAny`
+    
+
+### `New-AzAutoscaleNotificationObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EmailCustomEmail`
+    
+  - `-Webhook`
+    
+
+### `New-AzAutoscaleProfileObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Rule`
+    
+  - `-ScheduleDay`
+    
+  - `-ScheduleHour`
+    
+  - `-ScheduleMinute`
+    
+
+### `New-AzAutoscaleScaleRuleMetricDimensionObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Value`
+    
+
+### `New-AzAutoscaleScaleRuleObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-MetricTriggerDimension`
+    
+
+### `New-AzAutoscaleSetting`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource' is changing
+  - The following properties in the output type are being deprecated : 'Notification' 'Profile'
+  - The following properties are being added to the output type : 'Notification' 'Profile'
+  - Change description : The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+- Parameter breaking-change will happen to parameter set `NewAzAutoscaleSetting_CreateExpanded`
+  - `-Profile`
+    - The parameter : 'Profile' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '7.0.0'
+
+### `New-AzDiagnosticSetting`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource' is changing
+  - The following properties in the output type are being deprecated : 'Log' 'Metric'
+  - The following properties are being added to the output type : 'Log' 'Metric'
+  - Change description : The types of the properties Log and Metric will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Log`
+    - The parameter : 'Log' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '7.0.0'
+
+### `New-AzMonitorWorkspace`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `New-AzScheduledQueryRule`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource' is changing
+  - The following properties in the output type are being deprecated : 'ActionGroup' 'CriterionAllOf' 'Scope' 'TargetResourceType'
+  - The following properties are being added to the output type : 'ActionGroup' 'CriterionAllOf' 'Scope' 'TargetResourceType'
+  - Change description : The types of the properties ActionGroup, CriterionAllOf, Scope and TargetResourceType will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `New-AzScheduledQueryRuleConditionObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Dimension`
+    
+
+### `New-AzScheduledQueryRuleDimensionObject`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Value`
+    
+
+### `New-AzSubscriptionDiagnosticSetting`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource' is changing
+  - The following properties in the output type are being deprecated : 'Log'
+  - The following properties are being added to the output type : 'Log'
+  - Change description : The type of the property Log will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Log`
+    - The parameter : 'Log' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '7.0.0'
+
+### `Update-AzMonitorWorkspace`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `Update-AzScheduledQueryRule`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource' is changing
+  - The following properties in the output type are being deprecated : 'ActionGroup' 'CriterionAllOf' 'Scope' 'TargetResourceType'
+  - The following properties are being added to the output type : 'ActionGroup' 'CriterionAllOf' 'Scope' 'TargetResourceType'
+  - Change description : The types of the properties ActionGroup, CriterionAllOf, Scope and TargetResourceType will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+## Az.Nginx
+
+### `Get-AzNginxConfiguration`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration' is changing
+  - The following properties in the output type are being deprecated : 'File' 'ProtectedFile' 'PackageProtectedFile'
+  - The following properties are being added to the output type : 'File' 'ProtectedFile' 'PackageProtectedFile'
+  - Change description : The types of the properties File, ProtectedFile and PackageProtectedFile will be changed from fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '2.0.0'
+
+### `Get-AzNginxDeployment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment' is changing
+  - The following properties in the output type are being deprecated : 'PrivateIPAddress' 'PublicIPAddress' 'AutoScaleSettingProfile'
+  - The following properties are being added to the output type : 'PrivateIPAddress' 'PublicIPAddress' 'AutoScaleSettingProfile'
+  - Change description : The types of the properties PrivateIPAddress, ProtectedFile and AutoScaleSettingProfile will be changed from fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '2.0.0'
+
+### `Invoke-AzNginxAnalysisConfiguration`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult' is changing
+  - The following properties in the output type are being deprecated : 'DataError'
+  - The following properties are being added to the output type : 'DataError'
+  - Change description : The type of the property DataError will be changed from fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+- Cmdlet breaking-change will happen to parameter set `InvokeAzNginxAnalysisConfiguration_Analysis`
+  The cmdlet parameter set is being deprecated. There will be no replacement for it.
+  - Change description : The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+- Cmdlet breaking-change will happen to parameter set `InvokeAzNginxAnalysisConfiguration_AnalysisViaIdentity`
+  The cmdlet parameter set is being deprecated. There will be no replacement for it.
+  - Change description : The parameter set 'Analysis' and 'AnalysisViaIdentity' will be removed. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '7.0.0'
+
+### `New-AzNginxConfiguration`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration' is changing
+  - The following properties in the output type are being deprecated : 'File' 'ProtectedFile' 'PackageProtectedFile'
+  - The following properties are being added to the output type : 'File' 'ProtectedFile' 'PackageProtectedFile'
+  - Change description : The types of the properties File, ProtectedFile and PackageProtectedFile will be changed from fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '2.0.0'
+
+### `New-AzNginxDeployment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment' is changing
+  - The following properties in the output type are being deprecated : 'PrivateIPAddress' 'PublicIPAddress' 'AutoScaleSettingProfile'
+  - The following properties are being added to the output type : 'PrivateIPAddress' 'PublicIPAddress' 'AutoScaleSettingProfile'
+  - Change description : The types of the properties PrivateIPAddress, ProtectedFile and AutoScaleSettingProfile will be changed from fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '2.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-IdentityType`
+    - The parameter : 'IdentityType' is changing.
+    - Change description : The cmdlet 'New-AzNginxDeployment' no longer supports the parameter 'IdentityType' and IdentityUserAssignedIdentity. 
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+  - `-IdentityUserAssignedIdentity`
+    - The parameter : 'IdentityUserAssignedIdentity' is changing.
+    - Change description : The cmdlet 'New-AzNginxDeployment' no longer supports the parameter 'IdentityType' and IdentityUserAssignedIdentity. 
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+
+### `New-AzNginxNetworkProfileObject`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile' is changing
+  - Change description : The types of the properties PrivateIPAddress and PublicIPAddress of Property FrontendIPConfiguration will be changed from fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '2.0.0'
+
+### `Update-AzNginxDeployment`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment' is changing
+  - The following properties in the output type are being deprecated : 'PrivateIPAddress' 'PublicIPAddress' 'AutoScaleSettingProfile'
+  - The following properties are being added to the output type : 'PrivateIPAddress' 'PublicIPAddress' 'AutoScaleSettingProfile'
+  - Change description : The types of the properties PrivateIPAddress, ProtectedFile and AutoScaleSettingProfile will be changed from fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '2.0.0'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-IdentityType`
+    - The parameter : 'IdentityType' is changing.
+    - Change description : The cmdlet 'New-AzNginxDeployment' no longer supports the parameter 'IdentityType' and IdentityUserAssignedIdentity. 
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+  - `-IdentityUserAssignedIdentity`
+    - The parameter : 'IdentityUserAssignedIdentity' is changing.
+    - Change description : The cmdlet 'New-AzNginxDeployment' no longer supports the parameter 'IdentityType' and IdentityUserAssignedIdentity. 
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '2.0.0'
 
 ## Az.RecoveryServices
 
@@ -638,613 +1132,49 @@
   - May 2025 onwards, this command will return a schedule policy object for Enhanced policy by default for AzureVM workload
   - This change is expected to take effect from Az.RecoveryServices version: 8.0.0 and Az version: 14.0.0
 
-## Az.SpringCloud
+## Az.Relay
 
-### `Deploy-AzSpringCloudApp`
+### `Get-AzRelayNamespace`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayNamespace' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection'
+  - The following properties are being added to the output type : 'List[PrivateEndpointConnection]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
 
-### `Disable-AzSpringCloudTestEndpoint`
+### `Get-AzRelayNamespaceNetworkRuleSet`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet' is changing
+  - The following properties in the output type are being deprecated : 'IPRule'
+  - The following properties are being added to the output type : 'List[IPRule]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
 
-### `Enable-AzSpringCloudTestEndpoint`
+## Az.Resources
 
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloud`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudApp`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudAppBinding`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudAppCustomDomain`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudAppDeployment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudAppDeploymentLogFileUrl`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudBuildpackBinding`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudBuildService`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudBuildServiceAgentPool`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudBuildServiceBuilder`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudBuildServiceSupportedBuildpack`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudBuildServiceSupportedStack`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudCertificate`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudConfigServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudConfigurationService`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudMonitoringSetting`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudRegistry`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudRuntimeVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudSku`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Get-AzSpringCloudTestKey`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloud`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudApp`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudAppBinding`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudAppCustomDomain`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudAppDeployment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudAppDeploymentBuildResultObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudAppDeploymentJarUploadedObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudAppDeploymentSourceUploadedObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudAppLoadedCertificateObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudBuildpackBinding`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudBuildpackObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudBuildpacksGroupObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudBuildServiceAgentPool`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudBuildServiceBuilder`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudCertificate`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudConfigurationService`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudConfigurationServiceGitRepositoryObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudContentCertificateObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudGitPatternRepositoryObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudKeyVaultCertificateObject`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudRegistry`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `New-AzSpringCloudTestKey`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloud`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloudApp`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloudAppBinding`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloudAppCustomDomain`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloudAppDeployment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloudBuildpackBinding`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloudBuildServiceBuilder`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloudCertificate`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Remove-AzSpringCloudConfigurationService`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Restart-AzSpringCloudAppDeployment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Start-AzSpringCloudAppDeployment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Start-AzSpringCloudAppDeploymentJfr`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Stop-AzSpringCloudAppDeployment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Test-AzSpringCloudAppCustomDomain`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Test-AzSpringCloudConfigServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Test-AzSpringCloudConfigurationService`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Test-AzSpringCloudNameAvailability`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloud`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudApp`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudAppActiveDeployment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudAppBinding`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudAppCustomDomain`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudAppDeployment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudBuildpackBinding`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudBuildServiceAgentPool`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudBuildServiceBuilder`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudCertificate`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudConfigServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
-
-### `Update-AzSpringCloudConfigurationService`
+### `Get-AzRoleManagementPolicy`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy' is changing
+  - The following properties in the output type are being deprecated : 'EffectiveRule[]' 'Rule[]'
+  - The following properties are being added to the output type : 'List[EffectiveRule]' 'List[Rule]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
 
-### `Update-AzSpringCloudMonitoringSetting`
+### `Update-AzRoleManagementPolicy`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement. 
-  - This change will take effect on '3/31/2028'- The change is expected to take effect from Az version : '19.3.0'
-  - The change is expected to take effect from version : '0.3.2'
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy' is changing
+  - The following properties in the output type are being deprecated : 'EffectiveRule[]' 'Rule[]'
+  - The following properties are being added to the output type : 'List[EffectiveRule]' 'List[Rule]'
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect from version : '9.0.0'
 
+- Parameter breaking-change will happen to all parameter sets
+  - `-Rule`
+    - The parameter : 'Rule' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect from version : '9.0.0'

@@ -5459,6 +5459,9 @@
         "x-ms-ratelimit-remaining-subscription-global-writes": [
           "11999"
         ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
         "x-ms-correlation-request-id": [
           "c9ddb975-59d3-4523-b211-d030d4ced08d"
         ],
@@ -5697,7 +5700,7 @@
           "Mon, 11 Aug 2025 17:29:15 GMT"
         ],
         "Content-Length": [
-          "108"
+          "107"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5769,7 +5772,7 @@
           "Mon, 11 Aug 2025 17:29:30 GMT"
         ],
         "Content-Length": [
-          "108"
+          "107"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5819,6 +5822,9 @@
         "x-ms-ratelimit-remaining-subscription-global-reads": [
           "16499"
         ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
         "x-ms-correlation-request-id": [
           "55bec387-f03a-4915-9826-6f8ab730d966"
         ],
@@ -5841,7 +5847,7 @@
           "Mon, 11 Aug 2025 17:29:45 GMT"
         ],
         "Content-Length": [
-          "108"
+          "107"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5891,6 +5897,9 @@
         "x-ms-ratelimit-remaining-subscription-global-reads": [
           "16499"
         ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
         "x-ms-correlation-request-id": [
           "6591ec86-03dc-4416-913b-5e47a98e534c"
         ],
@@ -5913,7 +5922,7 @@
           "Mon, 11 Aug 2025 17:30:01 GMT"
         ],
         "Content-Length": [
-          "108"
+          "107"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5959,6 +5968,9 @@
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [
           "16499"
@@ -17523,7 +17535,7 @@
           "Mon, 11 Aug 2025 18:07:45 GMT"
         ],
         "Content-Length": [
-          "107"
+          "400"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -17802,7 +17814,7 @@
           "0"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"name\": \"22869e8a-e8c7-469e-b9b6-f42c30695d19\",\r\n  \"status\": \"Failed\",\r\n  \"startTime\": \"2025-07-29T16:26:55.59Z\",\r\n  \"error\": {\r\n    \"code\": \"SubnetOverlapBetweenInstances\",\r\n    \"message\": \"Database 'move' operation failed because there is no connectivity between source and target Azure SQL Managed Instance. This is because the target instance subnet has an overlapping address range with the subnet of the source instance.\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {

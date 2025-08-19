@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         {
             /*
              * Priority of Polling Uri:
-             * 1. `PollFrom` (User Ovrride)
+             * 1. `PollFrom` (User Override)
              * 2. "Azure-AsyncOperation"
              * 3. "Location"
              * 4. originalUri (Resource Uri)

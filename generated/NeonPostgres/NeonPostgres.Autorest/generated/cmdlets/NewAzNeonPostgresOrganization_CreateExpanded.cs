@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Description(@"create a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}", ApiVersion = "2024-08-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Neon.Postgres/organizations/{organizationName}", ApiVersion = "2025-03-01")]
     public partial class NewAzNeonPostgresOrganization_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.IContext
@@ -319,6 +319,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>Neon Project Properties</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Neon Project Properties")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Neon Project Properties",
+        SerializedName = @"projectProperties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties ProjectProperty { get => _resourceBody.ProjectProperty ?? null /* object */; set => _resourceBody.ProjectProperty = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

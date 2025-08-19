@@ -19,6 +19,6 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Update-AzLabServicesQuota' {
     It 'Add Quota' {
-        Update-AzLabServicesQuota -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -LabQuota (New-TimeSpan -Hours 3) | Select -ExpandProperty VirtualMachineProfileUsageQuota | Should -Be "03:00:00"
+        Update-AzLabServicesQuota -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -LabQuota (New-TimeSpan -Hours 3) | Select -ExpandProperty VirtualMachineProfileUsageQuota | Should -Be "03:00:00"
     }
 }
