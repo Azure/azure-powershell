@@ -1,54 +1,60 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/start-aznetappfilesauthorizeexternalreplication
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/split-aznetappfilesclonefromparent
 schema: 2.0.0
 ---
 
-# Start-AzNetAppFilesAuthorizeExternalReplication
+# Split-AzNetAppFilesCloneFromParent
 
 ## SYNOPSIS
-Start migration process
+Split clone from parent volume
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Start-AzNetAppFilesAuthorizeExternalReplication -ResourceGroupName <String> -AccountName <String>
- -PoolName <String> -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Split-AzNetAppFilesCloneFromParent -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+ -Name <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Split-AzNetAppFilesCloneFromParent -Name <String> -PoolObject <PSNetAppFilesPool> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Start-AzNetAppFilesAuthorizeExternalReplication -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Split-AzNetAppFilesCloneFromParent -ResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Start-AzNetAppFilesAuthorizeExternalReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Split-AzNetAppFilesCloneFromParent -InputObject <PSNetAppFilesVolume> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts SVM peering and returns a command to be run on the external ONTAP to accept it.  Once the SVM have been peered a SnapMirror will be created
+Split operation to convert clone volume to an independent volume.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Start-AzNetAppFilesAuthorizeExternalReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyDestinationAnfVolume"
+Split-AzNetAppFilesCloneFromParent -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfCloneVolume"
 ```
 
-Starts SVM peering on ANF volume "MyDestinationAnfVolume"
+This example splits a clone volume, volume created from a snapshot of another volume, from it's parent volume.
 
 ## PARAMETERS
 
 ### -AccountName
-The name of the ANF account of the replication migration volume
+The name of the ANF account
 
 ```yaml
 Type: System.String
@@ -77,8 +83,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Do not ask for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
-The ANF source volume object to migrate the replication destination
+The Clone volume object to get to Split
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
@@ -93,11 +114,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF replication migration volume
+The name of the ANF volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
 Required: True
@@ -107,23 +128,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return whether replication authorization of the specified volume operation was performed
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PoolName
-The name of the ANF pool of the replication migration volume
+The name of the ANF pool
 
 ```yaml
 Type: System.String
@@ -137,8 +143,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PoolObject
+The pool object containing the Clone Volume to Split
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The resource group of the ANF replication migration volume
+The resource group of the ANF volume
 
 ```yaml
 Type: System.String
@@ -153,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF replication migration volume
+The resource id of the ANF volume
 
 ```yaml
 Type: System.String
@@ -183,8 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -205,11 +240,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ## NOTES
 
