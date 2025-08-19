@@ -20,6 +20,11 @@
 
 
 ## Upcoming Release
+* Added BreakingChange announcements for commands below:
+  * `Get-AzAttestationDefaultProvider`
+  * `Get-AzAttestationProvider`
+  * `New-AzAttestationProvider`
+  * `Update-AzAttestationProvider`
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
