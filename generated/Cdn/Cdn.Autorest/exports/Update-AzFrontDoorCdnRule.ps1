@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an existing delivery rule within a rule set.
+Update an existing delivery rule within a rule set.
 .Description
-update an existing delivery rule within a rule set.
+Update an existing delivery rule within a rule set.
 .Example
 Update-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Order 99
 .Example

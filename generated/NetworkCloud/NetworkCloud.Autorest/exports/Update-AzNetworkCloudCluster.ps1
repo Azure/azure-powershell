@@ -74,7 +74,7 @@ AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION <IStorageAppliance
   SerialNumber <String>: The serial number of the appliance.
   [StorageApplianceName <String>]: The user-provided name for the storage appliance that will be created from this specification.
 
-COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
+COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
   NetworkRackId <String>: The resource ID of the network rack that matches this rack definition.
   RackSerialNumber <String>: The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
   RackSkuId <String>: The resource ID of the sku for the rack being added.
@@ -311,7 +311,7 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IRackDefinition[]]
-    # The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
+    # The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
     # To construct, see NOTES section for COMPUTERACKDEFINITION properties and create a hash table.
     ${ComputeRackDefinition},
 

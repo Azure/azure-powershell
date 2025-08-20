@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnOriginGroup
 
 ## SYNOPSIS
-update an existing origin group within a profile.
+Update an existing origin group within a profile.
 
 ## SYNTAX
 
@@ -60,7 +60,7 @@ Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSettin
 ```
 
 ## DESCRIPTION
-update an existing origin group within a profile.
+Update an existing origin group within a profile.
 
 ## EXAMPLES
 

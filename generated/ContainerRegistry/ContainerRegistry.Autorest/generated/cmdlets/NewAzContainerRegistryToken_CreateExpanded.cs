@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens/{tokenName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerRegistryToken_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IToken", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"CredentialsCertificate","CredentialsPassword"}, NewOutputProperties=new string[] {"CredentialsCertificate","CredentialsPassword"}, ChangeDescription="The types of the properties 'CredentialsCertificate' and 'CredentialsPassword' will be changed from single object to 'List'.")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PreviewMessage("This is a preview version of ContainerRegistry. Let us know if you run into any issues.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IToken))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"Creates a token for a container registry with the specified parameters.")]
