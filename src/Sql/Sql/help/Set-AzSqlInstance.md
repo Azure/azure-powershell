@@ -450,7 +450,7 @@ This command updates an existing managed instance to use Windows metadata for au
 
 ### Example 12: Change existing instance by setting new value to MemorySizeInGB and keeping current or setting new value for VCores and keeping NextGen GP edition (v2)
 ```powershell
-Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -MemorySizeInGB 64 -VCores 8 -IsGeneralPurposeV2 $true
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -MemorySizeInGB 64 -VCore 8 -IsGeneralPurposeV2 $true
 ```
 
 ```output
