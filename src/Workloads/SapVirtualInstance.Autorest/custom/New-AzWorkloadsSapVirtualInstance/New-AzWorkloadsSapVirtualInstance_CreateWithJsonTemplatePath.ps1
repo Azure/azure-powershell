@@ -218,10 +218,9 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
 
               # If user input UserAssignedIdentity
               if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
-                  $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.UserAssignedIdentity]::New()
                   $IdentityUserAssignedIdentity = @{}
                   foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
-                      $IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+                      $IdentityUserAssignedIdentity.Add($item, @{})
                   }
                   $bodyHashTable.identity.userAssignedIdentities = $IdentityUserAssignedIdentity
                   $null = $PSBoundParameters.Remove('UserAssignedIdentity')
@@ -273,8 +272,7 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
 
             $JsonString = $bodyHashTable | ConvertTo-Json -Depth 100
             $null = $PSBoundParameters.Add("JsonString", $JsonString)
-            
-            
+
             Az.SapVirtualInstance.private\New-AzWorkloadsSapVirtualInstance_CreateWithJsonString @PSBoundParameters
         } catch {
           [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
