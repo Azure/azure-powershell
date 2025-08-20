@@ -54,9 +54,9 @@ Connect-AzSftp -StorageAccount "mystorageaccount"
 
 When a -LocalUser is not supplied, the cmdlet will attempt to login using Microsoft Entra ID. This is the recommended approach as it requires no manual certificate management.
 
-### Example 2: Connect to Local User on Azure Storage Account using SSH certificates for authentication
+### Example 2: Connect to Local User on Azure Storage Account using SSH private key for authentication
 ```powershell
-Connect-AzSftp -StorageAccount "mystorageaccount" -LocalUser "sftpuser" -PrivateKeyFile "./id_rsa" -CertificateFile "./cert"
+Connect-AzSftp -StorageAccount "mystorageaccount" -LocalUser "sftpuser" -PrivateKeyFile "./id_rsa"
 ```
 
 ### Example 3: Connect to Local User on Azure Storage Account using SSH private key for authentication
@@ -82,7 +82,7 @@ cd uploads
 put C:\local\file.txt
 ls -la
 quit
-"@ | Out-File -FilePath "C:\temp\batch.sftp" -Encoding ASCII
+"@ | Out-File -FilePath "C:\temp\batch.sftp" -Encoding ([System.Text.Encoding]::ASCII)
 
 # Execute batch commands
 Connect-AzSftp -StorageAccount "mystorageaccount" -SftpArg "-b", "C:\temp\batch.sftp"
