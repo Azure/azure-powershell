@@ -159,6 +159,7 @@ directive:
       verb: New
       subject: WafPolicy
     hide: true
+  # Hide for customization
   - where:
       verb: Update
       subject: WafPolicy
@@ -170,6 +171,7 @@ directive:
     hide: true
   - where:
       verb: Set
+      subject: FrontDoor
     hide: true
 
   - where:
@@ -204,10 +206,6 @@ directive:
   - where:
       verb: Enable
       subject: CustomDomainHttps
-    hide: true
-  - where:
-      verb: Set
-      subject: RulesEngine
     hide: true
 
   # AzFrontDoor
@@ -251,7 +249,11 @@ directive:
       verb: Remove
       subject: Content
 
-  # Update Rules Engine alias
+  # Update Rules Engine rename, and hide set
+  - where:
+      verb: Set
+      subject: RulesEngine
+    hide: true
   - where:
       verb: Update
       subject: RulesEngine
