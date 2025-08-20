@@ -304,7 +304,9 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
                 
                 // Create a dummy RSA public key
                 var dummyPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7vI6eltAVfW5Bt9QvABcdELk8g6+OoWGJmuQquhiYq8mvVEOwPe1LmPbQpVVgTtFt7J3JvDtlPiF2u4mHy8O6p2NJHfgQ5iCQ6M8UyJtJAGl1gQ+VYr+8LPXEhyPJmg8iA+HQvKYZ8Ku1Q8sI8YpQl8bF6X8j7qk9oA+QH+1qJ7nJzG2pVq8B9K2YFJYhZOq6jI8zF+KUVH7JvD9b5f4F9k8iW3ZQl1QH6JzB1N+FhR8uD7X1J9nV8eE2I4bQ0A== test@example.com";
-                var dummyPrivateKey = "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEAu7yOpZbQFX1uQbfULwAXHRC5PIOvjqFhiZrkKroYmKvJr1RD\n-----END RSA PRIVATE KEY-----";
+                // Use a non-secret placeholder for private key data to avoid credential scanner false positives.
+                // The tests only need a file to exist; actual private key material is not required.
+                var dummyPrivateKey = "DUMMY_PRIVATE_KEY_FOR_TESTING_ONLY";
                 
                 File.WriteAllText(publicKeyFile, dummyPublicKey);
                 File.WriteAllText(privateKeyFile, dummyPrivateKey);
