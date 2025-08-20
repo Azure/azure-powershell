@@ -3,6 +3,7 @@
     <PsModuleName>ManagedServices</PsModuleName>
     <PsRootModuleName>ManagedServices</PsRootModuleName>
     <PsModuleFolder>ManagedServices.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ManagedServices</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

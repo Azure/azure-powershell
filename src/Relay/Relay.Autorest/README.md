@@ -49,7 +49,10 @@ directive:
       subject: NameSpace
     set:
       breaking-change:
-        change-description: "The type of property 'PrivateEndpointConnection' will be changed to 'List'."
+        deprecated-output-properties:
+          - PrivateEndpointConnection
+        new-output-properties:
+          - List[PrivateEndpointConnection]
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03
@@ -58,7 +61,10 @@ directive:
       subject: NamespaceNetworkRuleSet
     set:
       breaking-change:
-        change-description: "The type of property 'IPRule' will be changed to 'List'."
+        deprecated-output-properties:
+          - IPRule
+        new-output-properties:
+          - List[IPRule]
         deprecated-by-version: 9.0.0
         deprecated-by-azversion: 15.0.0
         change-effective-date: 2025/11/03

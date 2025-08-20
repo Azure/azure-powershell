@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added BreakingChange announcements for commands below:
+  * `Disable-AzAdvisorRecommendation`
+  * `Enable-AzAdvisorRecommendation`
+  * `Get-AzAdvisorConfiguration`
+  * `Get-AzAdvisorRecommendation`
+  * `Set-AzAdvisorConfiguration`
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.

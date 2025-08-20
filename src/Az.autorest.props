@@ -13,7 +13,6 @@
     <LangVersion>7.1</LangVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Az.$(PsModuleName).private</AssemblyName>
-    <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

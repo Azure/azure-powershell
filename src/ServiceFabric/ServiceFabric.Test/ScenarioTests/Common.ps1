@@ -67,51 +67,52 @@ function Get-NewCertName
 
 function Get-SecretUrl
 {
-    # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://gumakv1.vault.azure.net/secrets/gumacert/bc05af76fa894a38a0f9f47804bacc42"
+    # Thumbprint for this cert should be specified in TestServiceFabric.cs as well in ServiceFabricCmdletBase.TestThumbprint
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/6648a0d27b9044b0b437d0ccaca0204f"
 }
 
 function Get-InitialThumbprint
 {
-    return "ED1647D7E58F9F69E473B4700A0CCED50F7F65B0"
+    return "27F73AA239055A16C9EA809B985CC3170E4A7EAB"
 }
 
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "3027AB10104C94545CB23406FF31ADEFE896A9BB"
+    return "AFE6D1166D030CFDBAAEE74CA5A5F5256BE3FF49"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://gumakv1.vault.azure.net/secrets/pstestcert2/9f35b712392c4a9cacd50b76582ee017"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/af9f8cce090449bc9646cf40257ab19a"
 }
 
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3"
+    return "D9BAB3CC41F5EA798DD086402C1A4EDADEB42B2A"
 }
 
 function Get-CACertCommonName
 {
-	return "pstestcert"
+    # Change the common name in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestCommonNameCACert
+	return "azurermsfcntest.southcentralus.cloudapp.azure.com"
 }
 
 function Get-CACertIssuerThumbprint
 {
-	return "23EACB87421FB794AA9B68A31DB194BCDFEB34CF"
+	return "74FD7DE96B234507CF9534B05E0296B527C84AF7"
 }
 
 function Get-CACertSecretUrl
 {
-	return "https://gumakv1.vault.azure.net/secrets/pstestcert2/9f35b712392c4a9cacd50b76582ee017"
+	return "https://azurermsfkvtest.vault.azure.net/secrets/testCertCA/c3b9a1cd858448d1a2c50ee185a8b71c"
 }
 
 function Get-CertWUSecretUrl
 {
-	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/4159eda1fcea468e9bf40a361021f18d"
+	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/c02155fc3d734cce90b71b7ebe6d6bc3"
 }
 
 function Get-DurabilityLevel
@@ -350,12 +351,12 @@ function Get-AppTypeV2Name
 
 function Get-AppPackageV1
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
+    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-22T22:02:23Z&se=2025-07-23T06:17:23Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-22T22:02:23Z&ske=2025-07-23T06:17:23Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****"
 }
 
 function Get-AppPackageV2
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
+    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.2.0.0.sfpkg?sp=r&st=2025-07-22T22:02:44Z&se=2025-07-23T06:17:44Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-22T22:02:44Z&ske=2025-07-23T06:17:44Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****"
 }
 
 function Get-ServiceTypeName
@@ -382,12 +383,12 @@ function Get-ManagedAppTypeV2Name
 
 function Get-ManagedAppPackageV1
 {
-    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.sfpkg?sp=r&st=2023-09-21T03:04:25Z&se=2023-11-01T11:04:25Z&spr=https&sv=2022-11-02&sr=b&sig=BTFecBFf5%2Bzm5eLH0XjqBt1r%2FknbbaAniftETWddh8A%3D"
+    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.sfpkg?sp=r&st=2025-07-09T21:48:25Z&se=2025-07-10T06:03:25Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-09T21:48:25Z&ske=2025-07-10T06:03:25Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****"
 }
 
 function Get-ManagedAppPackageV2
 {
-    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.2.0.0.sfpkg?sp=r&st=2023-09-21T21:45:34Z&se=2023-11-01T05:45:34Z&spr=https&sv=2022-11-02&sr=b&sig=K0NUrFC47kR3OTwVG5rANy88I0eVP9hQ%2F7MXUSDAtsA%3D"
+    return "https://sftestappstorage.blob.core.windows.net/managed-application-deployment/Voting.2.0.0.sfpkg?sp=r&st=2025-07-09T21:48:50Z&se=2025-07-10T06:03:50Z&skoid=d078218f-29d9-4be8-9eb5-7325194a81e9&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2025-07-09T21:48:50Z&ske=2025-07-10T06:03:50Z&sks=b&skv=2024-11-04&spr=https&sv=2024-11-04&sr=b&sig=*****"
 }
 
 function Get-ManagedStatelessServiceTypeName

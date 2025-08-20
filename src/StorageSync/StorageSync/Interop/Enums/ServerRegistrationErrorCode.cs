@@ -134,7 +134,12 @@ namespace Commands.StorageSync.Interop.Enums
         /// <summary>
         /// Monitoring Service Endpoint Invalid or Not Set
         /// </summary>
-        MonitoringServiceEndpointInvalidOrNotSet
+        MonitoringServiceEndpointInvalidOrNotSet,
+
+        /// <summary>
+        /// Server and Sync Service Tenant Mismatched.
+        /// </summary>
+        ServerAndSyncServiceTenantMismatched
 
     }
 }

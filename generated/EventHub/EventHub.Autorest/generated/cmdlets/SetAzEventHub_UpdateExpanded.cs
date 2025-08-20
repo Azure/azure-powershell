@@ -389,9 +389,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Required = false,
         ReadOnly = false,
         Description = @"The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.",
-        SerializedName = @"minCompactionLagInMins",
+        SerializedName = @"minCompactionLagTimeInMinutes",
         PossibleTypes = new [] { typeof(long) })]
-        public long RetentionDescriptionMinCompactionLagInMin { get => _parametersBody.MinCompactionLagInMin ?? default(long); set => _parametersBody.MinCompactionLagInMin = value; }
+        public long RetentionDescriptionMinCompactionLagTimeInMinute { get => _parametersBody.MinCompactionLagInMin ?? default(long); set => _parametersBody.MinCompactionLagInMin = value; }
 
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a
