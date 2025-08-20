@@ -150,6 +150,10 @@ directive:
     set:
       verb: Get
       subject: WafManagedRuleSetDefinition
+  - where:
+      verb: Set 
+      subject: WafPolicy
+    hide: true
   # Hide Waf
   - where:
       verb: New
@@ -253,6 +257,7 @@ directive:
       subject: RulesEngine
     set:
       verb: Set
+      subject: RulesEngine
 
   # Breaking change avoid rename
   # New-AzFrontDoorHeaderActionObject

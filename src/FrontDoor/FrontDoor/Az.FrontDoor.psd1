@@ -53,24 +53,24 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.2.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.PowerShell.FrontDoor.Management.Sdk.dll', 
-               'FrontDoor.Autorest/bin/Az.FrontDoor.private.dll'
+RequiredAssemblies = 'FrontDoor.Autorest/bin/Az.FrontDoor.private.dll', 
+               'Microsoft.Azure.PowerShell.FrontDoor.Management.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'FrontDoor.Autorest/Az.FrontDoor.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll', 
-               'FrontDoor.Autorest/Az.FrontDoor.psm1')
+NestedModules = @('FrontDoor.Autorest/Az.FrontDoor.psm1', 
+               'Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Disable-AzFrontDoorCustomDomainHttps', 
@@ -104,8 +104,7 @@ FunctionsToExport = 'Disable-AzFrontDoorCustomDomainHttps',
                'New-AzFrontDoorWafRuleGroupOverrideObject', 'Remove-AzFrontDoor', 
                'Remove-AzFrontDoorContent', 'Remove-AzFrontDoorRulesEngine', 
                'Remove-AzFrontDoorWafPolicy', 'Set-AzFrontDoor', 
-               'Update-AzFrontDoorRulesEngine', 'Update-AzFrontDoorWafPolicy', 
-               'Set-AzFrontDoorRulesEngine'
+               'Set-AzFrontDoorRulesEngine', 'Update-AzFrontDoorWafPolicy'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Disable-AzFrontDoorCustomDomainHttps', 
@@ -123,10 +122,10 @@ CmdletsToExport = 'Disable-AzFrontDoorCustomDomainHttps',
                'New-AzFrontDoorRulesEngineActionObject', 
                'New-AzFrontDoorRulesEngineMatchConditionObject', 
                'New-AzFrontDoorRulesEngineRuleObject', 
+               'New-AzFrontDoorWafCustomRuleGroupByVariableObject', 
+               'New-AzFrontDoorWafCustomRuleObject', 
                'New-AzFrontDoorWafLogScrubbingRuleObject', 
                'New-AzFrontDoorWafLogScrubbingSettingObject', 
-               'New-AzFrontDoorWafCustomRuleObject', 
-               'New-AzFrontDoorWafCustomRuleGroupByVariableObject', 
                'New-AzFrontDoorWafManagedRuleExclusionObject', 
                'New-AzFrontDoorWafManagedRuleObject', 
                'New-AzFrontDoorWafManagedRuleOverrideObject', 
@@ -138,10 +137,10 @@ CmdletsToExport = 'Disable-AzFrontDoorCustomDomainHttps',
                'Set-AzFrontDoorRulesEngine', 'Update-AzFrontDoorWafPolicy'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Set-AzFrontDoorRulesEngine'
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

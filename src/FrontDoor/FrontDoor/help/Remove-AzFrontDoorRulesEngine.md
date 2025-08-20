@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorrulesengine
 schema: 2.0.0
