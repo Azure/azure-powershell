@@ -153,6 +153,26 @@ function Test-CreateClusterByConfigurationPipelining{
          }
 		$cluster = New-AzHDInsightCluster @clusterParams
 		Assert-NotNull $cluster
+
+		$objectId=New-Guid
+		$certificateFilePath="testhost:/testpath/"
+		$certificatePassword="Sanitized"
+		$aadTenantId=New-Guid
+		$config = Add-AzHDInsightClusterIdentity -Config $config -ObjectId $objectId -CertificateFilePath $certificateFilePath `
+		-CertificatePassword $certificatePassword -AadTenantId $aadTenantId
+		Assert-AreEqual $config.CertificateFilePath $certificateFilePath
+
+		$domain = "sampledomain.onmicrosoft.com"
+		$domainUser = "sample.user@sampledomain.onmicrosoft.com"
+		$domainPassword = ConvertTo-SecureString "domainPassword" -AsPlainText -Force
+		$domainUserCredential = New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
+		$organizationalUnitDN = "ou=testunitdn"
+		$ldapsUrls = ("ldaps://sampledomain.onmicrosoft.com:636","ldaps://sampledomain.onmicrosoft.com:389")
+		$clusterUsersGroupDNs = ("groupdn1","groupdn2")
+		$config = Add-AzHDInsightSecurityProfile -Config $config -DomainResourceId $domain -DomainUserCredential $domainUserCredential `
+		-OrganizationalUnitDN $organizationalUnitDN -LdapsUrls $ldapsUrls -ClusterUsersGroupDNs $clusterUsersGroupDNs 
+		Assert-AreEqual $config.SecurityProfile.DomainResourceId $domain
+		Assert-NotNull $config.SecurityProfile.LdapsUrls
 	}
 	finally
 	{
