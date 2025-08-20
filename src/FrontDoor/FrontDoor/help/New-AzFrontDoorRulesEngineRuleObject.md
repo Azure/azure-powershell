@@ -1,76 +1,49 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesengineruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorrulesengineruleobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorRulesEngineRuleObject
 
 ## SYNOPSIS
-Create a PSRulesEngineRule object for Rules Engine creation.
+Create an in-memory object for RulesEngineRule.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorRulesEngineRuleObject -Name <String> -Priority <Int32> -Action <PSRulesEngineAction>
- [-MatchProcessingBehavior <PSMatchProcessingBehavior>] [-MatchCondition <PSRulesEngineMatchCondition[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorRulesEngineRuleObject -Action <IRulesEngineAction> -Name <String> -Priority <Int32>
+ [-MatchCondition <IRulesEngineMatchCondition[]>] [-MatchProcessingBehavior <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a PSRulesEngineRule object for Rules Engine creation.
-
-Use cmdlet "New-AzFrontDoorRulesEngineActionObject" to create PSRulesEngineAction object to pass into the "-Action" parameter.
-Use cmdlet "New-AzFrontDoorRulesEngineMatchConditionObject" to create PSRulesEngineMatchCondition object to pass into the "-MatchCondition" parameter.
+Create an in-memory object for RulesEngineRule.
 
 ## EXAMPLES
 
-### Example 1
-<!-- Skip: Output cannot be splitted from code -->
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority 0 -Action $rulesEngineAction -MatchProcessingBehavior Stop -MatchCondition $rulesEngineMatchCondition
-
-Name                    : rules1
-Priority                : 0
-MatchProcessingBehavior : Stop
-MatchCondition          : {Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchCondition}
-Action                  : Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction
-
-
-$rulesEngineRule1.Action
-
-RequestHeaderActions           ResponseHeaderActions RouteConfigurationOverride
---------------------           --------------------- --------------------------
-{headeraction1, headeraction2} {}                    Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
-
-$rulesEngineRule1.MatchCondition[0]
-
-RulesEngineMatchVariable : RequestHeader
-RulesEngineMatchValue    : {allowoverride}
-Selector                 : Rules-Engine-Route-Forward
-RulesEngineOperator      : Equal
-NegateCondition          : False
-Transforms               : {Lowercase, Uppercase}
-```
-
-Create new PSRulesEngineRule object and demonstrate how to see the subfields.
-
-### Example 2
-```powershell
-New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority -1
+{{ Add code here }}
 ```
 
 ```output
-New-AzFrontDoorRulesEngineRuleObject : Cannot validate argument on parameter 'Priority'. The -1 argument is less than the minimum allowed range of 0. Supply an argument that is greater than or equal to 0 and then try the command again.
-At line:1 char:81
-+ ... ule1 = New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority -1
-+                                                                        ~~
-+ CategoryInfo          : InvalidData: (:) [New-AzFrontDoorRulesEngineRuleObject], ParameterBindingValidationException
-+ FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.Azure.Commands.FrontDoor.Cmdlets.NewFrontDoorRulesEngineRuleObject
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Expect output when passing in invalid priority value.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -78,7 +51,7 @@ Expect output when passing in invalid priority value.
 Actions to perform on the request and response if all of the match conditions are met.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineAction
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction
 Parameter Sets: (All)
 Aliases:
 
@@ -89,26 +62,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MatchCondition
-A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
+A list of match conditions that must meet in order for the actions of this rule to run.
+Having no match conditions means the actions will always run.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineMatchCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineMatchCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -121,14 +80,12 @@ Accept wildcard characters: False
 
 ### -MatchProcessingBehavior
 If this rule is a match should the rules engine continue running the remaining rules or stop.
-Possible values are Continue and Stop.
 If not present, defaults to Continue.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSMatchProcessingBehavior
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Continue, Stop
 
 Required: False
 Position: Named
@@ -154,7 +111,7 @@ Accept wildcard characters: False
 
 ### -Priority
 A priority assigned to this rule.
-Cannot be negative.
+.
 
 ```yaml
 Type: System.Int32
@@ -173,11 +130,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineRule
 
 ## NOTES
 

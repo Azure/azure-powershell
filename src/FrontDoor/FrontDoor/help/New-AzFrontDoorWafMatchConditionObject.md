@@ -1,78 +1,61 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmatchconditionobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafMatchConditionObject
 
 ## SYNOPSIS
-Create MatchCondition Object for WAF policy creation
+Create an in-memory object for MatchCondition.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafMatchConditionObject -MatchVariable <String> -OperatorProperty <String>
- [-MatchValue <String[]>] [-Selector <String>] [-NegateCondition <Boolean>] [-Transform <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorWafMatchConditionObject -MatchValue <String[]> -MatchVariable <String>
+ -OperatorProperty <String> [-NegateCondition <Boolean>] [-Selector <String>] [-Transform <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create MatchCondition Object for WAF policy creation
+Create an in-memory object for MatchCondition.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
+{{ Add code here }}
 ```
 
 ```output
-MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
-------------- ---------------- ---------- --------   --------------- ---------
-RequestHeader Contains         {Windows}  User-Agent           False
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-### Example 2
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "WINDOWS" -Transform Uppercase
+{{ Add code here }}
 ```
 
 ```output
-MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
-------------- ---------------- ---------- --------   --------------- ---------
-RequestHeader Contains         {WINDOWS}  User-Agent           False {Uppercase}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create a MatchCondition object
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MatchValue
-Match value.
+List of possible match values.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -80,8 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -MatchVariable
-Match Variable.
-Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody', 'SocketAddr'
+Request variable to compare with.
 
 ```yaml
 Type: System.String
@@ -96,8 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -NegateCondition
-Describes if this is negate condition or not
-Default value is false
+Describes if the result of this condition should be negated.
 
 ```yaml
 Type: System.Boolean
@@ -112,8 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperatorProperty
-Describes operator to be matched.
-Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith', 'RegEx'
+Comparison type to use for matching with the variable value.
 
 ```yaml
 Type: System.String
@@ -128,7 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -Selector
-Name of selector in RequestHeader or RequestBody to be matched
+Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables.
+Default is null.
 
 ```yaml
 Type: System.String
@@ -143,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Transform
-Transforms to apply. Possible values include: 'Lowercase', 'Uppercase', 'Trim', 'UrlDecode', 'UrlEncode', 'RemoveNulls'.
+List of transforms.
 
 ```yaml
 Type: System.String[]
@@ -162,14 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.MatchCondition
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoorWafCustomRuleObject](./New-AzFrontDoorWafCustomRuleObject.md)

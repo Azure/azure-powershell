@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoor
 schema: 2.0.0
@@ -8,70 +8,75 @@ schema: 2.0.0
 # Remove-AzFrontDoor
 
 ## SYNOPSIS
-Remove Front Door load balancer
+Deletes an existing Front Door with the specified parameters.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### Delete (Default)
 ```
-Remove-AzFrontDoor -ResourceGroupName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Remove-AzFrontDoor -InputObject <PSFrontDoor> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### DeleteViaIdentity
 ```
-Remove-AzFrontDoor -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzFrontDoor -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzFrontDoor** cmdlet removes a Front Door load balancer under the current subscription
+Deletes an existing Front Door with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: Remove "frontdoor1" in resource group "rg1" under the current subscription.
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzFrontDoor -Name "frontdoor1" -ResourceGroupName "rg1"
+{{ Add code here }}
 ```
 
-Remove "frontdoor1" in resource group "rg1" under the current subscription.
-
-### Example 2: Remove all FrontDoors in resource group "rg1" under the current subscription.
-```powershell
-Get-AzFrontDoor -ResourceGroupName "rg1" | Remove-AzFrontDoor
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Remove all FrontDoors in resource group "rg1" under the current subscription.
+{{ Add description here }}
 
-### Example 3: Remove all FrontDoors under the current subscription.
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzFrontDoor | Remove-AzFrontDoor
+{{ Add code here }}
 ```
 
-Remove all FrontDoors under the current subscription.
-
-### Example 4: Remove all FrontDoors with name "frontdoor1" under the current subscription.
-```powershell
-Remove-AzFrontDoor -Name "frontdoor1" | Remove-AzFrontDoor
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Remove all FrontDoors with name "frontdoor1" under the current subscription.
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -81,11 +86,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Front Door object to delete.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-Parameter Sets: ByObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -96,12 +101,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Front Door to delete.
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
+Parameter Sets: Delete
+Aliases: FrontDoorName
 
 Required: True
 Position: Named
@@ -110,8 +115,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
-Return object (if specified).
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -126,11 +146,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group to which the Front Door belongs.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -140,18 +160,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Id of the Front Door to delete
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: Delete
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -191,9 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
 
 ## OUTPUTS
 
@@ -202,6 +221,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoor](./New-AzFrontDoor.md)
-[Get-AzFrontDoor](./Get-AzFrontDoor.md)

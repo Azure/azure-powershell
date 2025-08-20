@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoor
 schema: 2.0.0
@@ -8,209 +8,84 @@ schema: 2.0.0
 # Set-AzFrontDoor
 
 ## SYNOPSIS
-Update a Front Door load balancer
+Update a new Front Door with a Front Door name under the specified subscription and resource group.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRoutingRule[]>]
- [-BackendPool <PSBackendPool[]>] [-FrontendEndpoint <PSFrontendEndpoint[]>]
- [-LoadBalancingSetting <PSLoadBalancingSetting[]>] [-HealthProbeSetting <PSHealthProbeSetting[]>]
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ByFieldsWithCertificateNameCheckParameterSet
-```
-Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRoutingRule[]>]
- [-BackendPool <PSBackendPool[]>] [-FrontendEndpoint <PSFrontendEndpoint[]>]
- [-LoadBalancingSetting <PSLoadBalancingSetting[]>] [-HealthProbeSetting <PSHealthProbeSetting[]>]
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DisableCertificateNameCheck]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-BackendPool <IBackendPool[]>] [-BackendPoolsSetting <IBackendPoolsSettings>] [-DisableCertificateNameCheck]
+ [-EnabledState <String>] [-FriendlyName <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
+ [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
+ [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByFieldsWithBackendPoolsSettingParameterSet
+### UpdateViaJsonFilePath
 ```
-Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRoutingRule[]>]
- [-BackendPool <PSBackendPool[]>] [-FrontendEndpoint <PSFrontendEndpoint[]>]
- [-LoadBalancingSetting <PSLoadBalancingSetting[]>] [-HealthProbeSetting <PSHealthProbeSetting[]>]
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] -BackendPoolsSetting <PSBackendPoolsSetting>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DisableCertificateNameCheck] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### UpdateViaJsonString
 ```
-Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
- [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
- [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByObjectWithCertificateNameCheckParameterSet
-```
-Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
- [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
- [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-DisableCertificateNameCheck] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByObjectWithBackendPoolsSettingParameterSet
-```
-Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
- [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
- [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- -BackendPoolsSetting <PSBackendPoolsSetting> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
- [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
- [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceIdWithCertificateNameCheckParameterSet
-```
-Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
- [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
- [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-DisableCertificateNameCheck] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByResourceIdWithBackendPoolsSettingParameterSet
-```
-Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
- [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
- [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- -BackendPoolsSetting <PSBackendPoolsSetting> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DisableCertificateNameCheck] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzFrontDoor** cmdlet updates a Front Door load balancer. If input parameters are not provided, old parameters from the existing Front Door will be used.
+Update a new Front Door with a Front Door name under the specified subscription and resource group.
 
 ## EXAMPLES
 
-### Example 1: update an existing Front Door with FrontDoorName and ResourceGroupName.
+### Example 1: {{ Add title here }}
 ```powershell
-Set-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "resourceGroup1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
+{{ Add code here }}
 ```
 
 ```output
-FriendlyName                : frontdoor1
-RoutingRules                : {routingrule1}
-BackendPools                : {backendpool1}
-BackendPoolsSetting         : {backendPoolsSetting1}
-EnforceCertificateNameCheck : {backendPoolsSetting1.EnforceCertificateNameCheck}
-HealthProbeSettings         : {healthProbeSetting1}
-LoadBalancingSettings       : {loadbalancingsetting1}
-FrontendEndpoints           : {frontendendpoint1}
-EnabledState                : Enabled
-ResourceState               : Enabled
-ProvisioningState           : Succeeded
-Cname                       :
-Tags                        : {tag1, tag2}
-Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
-Name                        : frontdoor1
-Type                        : Microsoft.Network/frontdoors
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-update an existing FrontDoor.
+{{ Add description here }}
 
-### Example 2: update an existing Front Door with PSFrontDoor object.
+### Example 2: {{ Add title here }}
 ```powershell
-Set-AzFrontDoor -InputObject $frontDoor1 -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
+{{ Add code here }}
 ```
 
 ```output
-FriendlyName                : frontdoor1
-RoutingRules                : {routingrule1}
-BackendPools                : {backendpool1}
-BackendPoolsSetting         : {backendPoolsSetting1}
-EnforceCertificateNameCheck : {backendPoolsSetting1.EnforceCertificateNameCheck}
-HealthProbeSettings         : {healthProbeSetting1}
-LoadBalancingSettings       : {loadbalancingsetting1}
-FrontendEndpoints           : {frontendendpoint1}
-EnabledState                : Enabled
-ResourceState               : Enabled
-ProvisioningState           : Succeeded
-Cname                       :
-Tags                        : {tag1, tag2}
-Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
-Name                        : frontdoor1
-Type                        : Microsoft.Network/frontdoor1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-update an existing FrontDoor.
-
-### Example 3: update an existing Front Door with ResourceId
-```powershell
-Set-AzFrontDoor -ResourceId $resourceId -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
-```
-
-```output
-FriendlyName                : frontdoor1
-RoutingRules                : {routingrule1}
-BackendPools                : {backendpool1}
-BackendPoolsSetting         : {backendPoolsSetting1}
-EnforceCertificateNameCheck : {backendPoolsSetting1.EnforceCertificateNameCheck}
-HealthProbeSettings         : {healthProbeSetting1}
-LoadBalancingSettings       : {loadbalancingsetting1}
-FrontendEndpoints           : {frontendendpoint1}
-EnabledState                : Enabled
-ResourceState               : Enabled
-ProvisioningState           : Succeeded
-Cname                       :
-Tags                        : {tag1, tag2}
-Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
-Name                        : frontdoor1
-Type                        : Microsoft.Network/frontdoor1
-```
-
-update an existing FrontDoor.
-
-### Example 4: update BackendPoolSetting property EnforceCertificateNameCheck of an existing Front Door with -DisableCertificateNameCheck switch parameter
-Front Door to be updated can be identified using FrontDoorName and ResourceGroupName, PSFrontDoor object, or ResourceId. (See above 3 examples for example)
-The below example uses PSFrontDoor object.
-
-```powershell
-Set-AzFrontDoor -InputObject $frontDoor1 -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -DisableCertificateNameCheck
-```
-
-```output
-FriendlyName                : frontdoor1
-RoutingRules                : {routingrule1}
-BackendPools                : {backendpool1}
-BackendPoolsSetting         : {PSBackendPoolsSetting object with EnforceCertificateNameCheck is set to Disabled}
-EnforceCertificateNameCheck : Disabled
-HealthProbeSettings         : {healthProbeSetting1}
-LoadBalancingSettings       : {loadbalancingsetting1}
-FrontendEndpoints           : {frontendendpoint1}
-EnabledState                : Enabled
-ResourceState               : Enabled
-ProvisioningState           : Succeeded
-Cname                       :
-Tags                        : {tag1, tag2}
-Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
-Name                        : frontdoor1
-Type                        : Microsoft.Network/frontdoor1
-```
-
-update an existing FrontDoor.
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -BackendPool
-Backendpools available to routing rule.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackendPool
+Backend pools available to routing rules.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -221,14 +96,14 @@ Accept wildcard characters: False
 ```
 
 ### -BackendPoolsSetting
-Settings for all backendPools.
+Settings for all backendPools
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
-Parameter Sets: ByFieldsWithBackendPoolsSettingParameterSet, ByObjectWithBackendPoolsSettingParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPoolsSettings
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -236,12 +111,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -251,14 +127,13 @@ Accept wildcard characters: False
 ```
 
 ### -DisableCertificateNameCheck
-Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByFieldsWithCertificateNameCheckParameterSet, ByObjectWithCertificateNameCheckParameterSet, ByResourceIdWithCertificateNameCheckParameterSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -267,12 +142,27 @@ Accept wildcard characters: False
 
 ### -EnabledState
 Operational status of the Front Door load balancer.
+Permitted values are 'Enabled' or 'Disabled'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
-Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FriendlyName
+A friendly name for the frontDoor
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -282,11 +172,11 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendEndpoint
-Frontend endpoints available to routing rule.
+Frontend endpoints available to routing rules.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -300,8 +190,8 @@ Accept wildcard characters: False
 Health probe settings associated with this Front Door instance.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -311,18 +201,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The Front Door object to update.
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-Parameter Sets: ByObjectParameterSet, ByObjectWithCertificateNameCheckParameterSet, ByObjectWithBackendPoolsSettingParameterSet
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -330,8 +235,8 @@ Accept wildcard characters: False
 Load balancing settings associated with this Front Door instance.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -342,12 +247,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Front Door to update.
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByFieldsWithCertificateNameCheckParameterSet, ByFieldsWithBackendPoolsSettingParameterSet
-Aliases:
+Parameter Sets: (All)
+Aliases: FrontDoorName
 
 Required: True
 Position: Named
@@ -356,41 +261,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group to which the Front Door belongs.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByFieldsWithCertificateNameCheckParameterSet, ByFieldsWithBackendPoolsSettingParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource Id of the Front Door to update
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, ByResourceIdWithBackendPoolsSettingParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RoutingRule
-Routing rules associated with this FrontDoor
-
-```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -401,12 +276,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Name of the Resource group within the Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutingRule
+Routing rules associated with this Front Door.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
-The tags associate with the FrontDoor.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -452,20 +373,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-### System.String
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor
+
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoor](./New-AzFrontDoor.md)
-[Get-AzFrontDoor](./Get-AzFrontDoor.md)
-[Remove-AzFrontDoor](./Remove-AzFrontDoor.md)
-[New-AzFrontDoorRoutingRuleObject](./New-AzFrontDoorRoutingRuleObject.md)
-[New-AzFrontDoorHealthProbeSettingObject](./New-AzFrontDoorHealthProbeSettingObject.md)
-[New-AzFrontDoorLoadBalancingSettingObject](./New-AzFrontDoorLoadBalancingSettingObject.md)
-[New-AzFrontDoorFrontendEndpointObject](./New-AzFrontDoorFrontendEndpointObject.md)
-[New-AzFrontDoorBackendPoolObject](./New-AzFrontDoorBackendPoolObject.md)

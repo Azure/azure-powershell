@@ -1,0 +1,95 @@
+{
+  "resourceType": "frontDoors/frontendEndpoints",
+  "apiVersion": "2021-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.frontdoor"
+  },
+  "commands": [
+    {
+      "name": "Disable-AzFrontDoorCustomDomainHttps",
+      "description": "Disables a frontendEndpoint for HTTPS traffic",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/disable-azfrontdoorcustomdomainhttps"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FrontDoorName <String>",
+              "-FrontendEndpointName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Disables a frontendEndpoint for HTTPS traffic",
+          "parameters": [
+            {
+              "name": "-FrontDoorName",
+              "value": "[Path.frontDoorName]"
+            },
+            {
+              "name": "-FrontendEndpointName",
+              "value": "[Path.frontendEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzFrontDoorFrontendEndpoint",
+      "description": "Gets a Frontend endpoint with the specified name within the specified Front Door.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorfrontendendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FrontDoorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Frontend endpoint with the specified name within the specified Front Door.",
+          "parameters": [
+            {
+              "name": "-FrontDoorName",
+              "value": "[Path.frontDoorName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.frontendEndpointName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,53 +1,53 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafcustomrulegroupbyvariableobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafcustomrulegroupbyvariableobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafCustomRuleGroupByVariableObject
 
 ## SYNOPSIS
-Create CustomRuleGroupByVariable object for custom rule object
+Create an in-memory object for GroupByVariable.
 
 ## SYNTAX
 
 ```
 New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create CustomRuleGroupByVariable object for custom rule object
-
-Use cmdlet "New-AzFrontDoorWafCustomRuleGroupByVariableObject" to pass -CustomRule parameter
+Create an in-memory object for GroupByVariable.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName SocketAddr
+{{ Add code here }}
 ```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VariableName
-Describes the supported variable for group by
+Describes the supported variable for group by.
 
 ```yaml
 Type: System.String
@@ -66,11 +66,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafCustomRuleGroupByVariable
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.GroupByVariable
 
 ## NOTES
 

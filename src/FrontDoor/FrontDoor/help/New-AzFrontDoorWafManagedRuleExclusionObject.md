@@ -1,57 +1,53 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleexclusionobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmanagedruleexclusionobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafManagedRuleExclusionObject
 
 ## SYNOPSIS
-Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
+Create an in-memory object for ManagedRuleExclusion.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleExclusionObject -Variable <String> -Operator <String> [-Selector <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleExclusionObject -Operator <String> -Selector <String> -Variable <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
+Create an in-memory object for ManagedRuleExclusion.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ParameterName"
+{{ Add code here }}
 ```
 
 ```output
-MatchVariable       SelectorMatchOperator Selector
--------------       --------------------- --------
-QueryStringArgNames Equals                ParameterName
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Operator
-Operator to use when matching the selector, EqualsAny means no selector (all match variables of the specified type)
+Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
 
 ```yaml
 Type: System.String
@@ -66,14 +62,14 @@ Accept wildcard characters: False
 ```
 
 ### -Selector
-Selector pattern to match using the operator (if the operator is not EqualsAny)
+Selector value for which elements in the collection this exclusion applies to.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -81,8 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Variable
-Match variable. Possible values are RequestHeaderNames, RequestCookieNames, QueryStringArgNames, RequestBodyPostArgNames.
-For example, QueryStringArgNames is an exclusion of GET parameters matching the selector with the given operator.
+The variable type to be excluded.
 
 ```yaml
 Type: System.String
@@ -101,16 +96,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleExclusion
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoorWafManagedRuleOverrideObject](./New-AzFrontDoorWafManagedRuleOverrideObject.md)
-[New-AzFrontDoorWafRuleGroupOverrideObject](./New-AzFrontDoorWafRuleGroupOverrideObject.md)
-[New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
