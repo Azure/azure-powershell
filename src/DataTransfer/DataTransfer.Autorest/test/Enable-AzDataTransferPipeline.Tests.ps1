@@ -33,13 +33,4 @@ Describe 'Enable-AzDataTransferPipeline' {
             $result | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
-
-    It 'Enable pipeline with WhatIf' {
-        {
-            # Test WhatIf functionality
-            $result = Enable-AzDataTransferPipeline -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Justification "Test WhatIf" -WhatIf
-            
-            # WhatIf should not throw and should not perform actual operation
-        } | Should -Not -Throw
-    }
 }

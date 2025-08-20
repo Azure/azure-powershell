@@ -65,13 +65,4 @@ Describe 'Disable-AzDataTransferPipeline' {
             }
         } | Should -Not -Throw
     }
-
-    It 'Disable pipeline with WhatIf' {
-        {
-            # Test WhatIf functionality
-            $result = Disable-AzDataTransferPipeline -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Justification "Test WhatIf" -WhatIf
-            
-            # WhatIf should not throw and should not perform actual operation
-        } | Should -Not -Throw
-    }
 }

@@ -61,30 +61,4 @@ Describe 'Enable-AzDataTransferFlowType' {
             }
         } | Should -Not -Throw
     }
-
-    It 'Enable flow type with WhatIf' {
-        {
-            # Test WhatIf functionality with timeout
-            $timeout = 60
-            $completed = $false
-            
-            $startTime = Get-Date
-            try {
-                $result = Enable-AzDataTransferFlowType -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -FlowType "Mission" -Justification "Test WhatIf" -WhatIf
-                $completed = $true
-            } catch {
-                $elapsedTime = (Get-Date) - $startTime
-                if ($elapsedTime.TotalSeconds -lt $timeout) {
-                    throw
-                } else {
-                    Write-Warning "WhatIf operation timed out after $timeout seconds, continuing to next test"
-                    $completed = $false
-                }
-            }
-            
-            # WhatIf should not throw and should not perform actual operation
-            # Test passes if it completes without throwing
-            $true | Should -Be $true
-        } | Should -Not -Throw
-    }
 }

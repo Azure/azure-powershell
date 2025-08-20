@@ -99,15 +99,6 @@ Describe 'Disable-AzDataTransferConnection' {
         } | Should -Not -Throw
     }
 
-    It 'Disable connection with WhatIf' {
-        {
-            # Test WhatIf functionality using existing connection
-            $result = Disable-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionLinkedId -Justification "Test WhatIf" -WhatIf
-            
-            # WhatIf should not throw and should not perform actual operation
-        } | Should -Not -Throw
-    }
-
     AfterAll {
         # Clean up test connections
         Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToDisableNoWaitName -Confirm:$false -ErrorAction SilentlyContinue

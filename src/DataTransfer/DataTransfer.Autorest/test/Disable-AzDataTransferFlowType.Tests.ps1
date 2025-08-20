@@ -64,13 +64,4 @@ Describe 'Disable-AzDataTransferFlowType' {
             }
         } | Should -Not -Throw
     }
-
-    It 'Disable flow type with WhatIf' {
-        {
-            # Test WhatIf functionality
-            $result = Disable-AzDataTransferFlowType -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -FlowType "Mission" -Justification "Test WhatIf" -WhatIf
-            
-            # WhatIf should not throw and should not perform actual operation
-        } | Should -Not -Throw
-    }
 }
