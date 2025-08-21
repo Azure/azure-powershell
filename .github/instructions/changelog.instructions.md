@@ -28,14 +28,15 @@ When working with ChangeLog.md files in the Azure PowerShell repository, follow 
 
 ### Character Restrictions
 - **Avoid special characters** that could cause issues in PowerShell module manifests (.psd1 files)
-- Problematic characters to avoid: `@`, `$`, backticks (`` ` ``), unescaped quotes
+- Problematic characters to avoid: `@`, `$`, unescaped quotes
 - Use simple punctuation: periods, commas, hyphens, parentheses
-- When referencing PowerShell code, use simple quotes: 'Get-AzVM' instead of `Get-AzVM`
+- Backticks are acceptable as they are automatically converted to single quotes in release notes
+- When referencing PowerShell code, you can use either backticks (`Get-AzVM`) or simple quotes ('Get-AzVM')
 
 ## Entry Format
 Follow this structure for changelog entries:
 ```
-## Version X.Y.Z
+## Upcoming Release
 * Description of change that impacts users
     - Additional context or technical details
     - Reference to issue: [#12345]
@@ -45,7 +46,7 @@ Follow this structure for changelog entries:
 
 ### Good Examples
 ```markdown
-## Version 1.2.0
+## Upcoming Release
 * Added support for Private Link in 'New-AzStorageAccount'
     - Users can now create storage accounts with private endpoints
     - Fixed issue [#23456]
@@ -56,7 +57,7 @@ Follow this structure for changelog entries:
 
 ### Avoid
 ```markdown
-## Version 1.2.0  
+## Upcoming Release  
 * Fixed `Get-AzVM` cmdlet @parameter issue with $null values
 * Added PL support (unclear acronym)
 * Various bug fixes (not specific enough)
@@ -65,4 +66,3 @@ Follow this structure for changelog entries:
 ## Version Ordering
 - Always add new entries under "## Upcoming Release" at the top
 - Maintain reverse chronological order (newest first)
-- Follow semantic versioning format: Major.Minor.Patch

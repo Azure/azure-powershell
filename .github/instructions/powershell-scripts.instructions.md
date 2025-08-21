@@ -43,9 +43,14 @@ if (Test-Path $filePath) {
     $content = Get-Content -Path $filePath -Raw
 }
 
-# Avoid - Windows-specific approaches
+# Acceptable - Platform-specific logic with graceful fallback
 if ($env:OS -eq "Windows_NT") { 
-    # Windows-only logic
+    # Windows-specific logic when required by business needs
+    $result = Get-WindowsFeature
+} else {
+    # Graceful fallback for other platforms
+    Write-Warning "This feature is only available on Windows"
+    $result = $null
 }
 ```
 
