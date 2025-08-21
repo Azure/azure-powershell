@@ -14,11 +14,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
     {
 
         /// <summary>Backing field for <see cref="Family" /> property.</summary>
-        private string _family;
+        private string _family= @"B";
 
         /// <summary>SKU Family of the managed HSM Pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
-        public string Family { get => this._family; set => this._family = value; }
+        public string Family { get => this._family; }
+
+        /// <summary>Internal Acessors for Family</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSkuInternal.Family { get => this._family; set { {_family = value;} } }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -40,15 +43,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>SKU Family of the managed HSM Pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = true,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
         Create = true,
         Update = true,
         Description = @"SKU Family of the managed HSM Pool",
         SerializedName = @"family",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("B", "C")]
-        string Family { get; set; }
+        string Family { get;  }
         /// <summary>SKU of the managed HSM Pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = true,
@@ -59,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         Description = @"SKU of the managed HSM Pool",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Standard_B1", "Custom_B32", "Custom_B6", "Custom_C42", "Custom_C10")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Standard_B1", "Custom_B32", "Custom_B6")]
         string Name { get; set; }
 
     }
@@ -68,10 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 
     {
         /// <summary>SKU Family of the managed HSM Pool</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("B", "C")]
         string Family { get; set; }
         /// <summary>SKU of the managed HSM Pool</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Standard_B1", "Custom_B32", "Custom_B6", "Custom_C42", "Custom_C10")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Standard_B1", "Custom_B32", "Custom_B6")]
         string Name { get; set; }
 
     }
