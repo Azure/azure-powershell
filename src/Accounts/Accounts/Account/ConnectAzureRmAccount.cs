@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Identity;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
@@ -41,7 +39,6 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
@@ -237,6 +234,10 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string FederatedToken { get; set; }
 
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Specifies the claims challenge with base64 encoding.")]
+        [ValidateNotNullOrEmpty]
+        public string ClaimsChallenge { get; set; }
+
         protected override IAzureContext DefaultContext
         {
             get
@@ -353,7 +354,6 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     subscriptionName = Subscription;
                 }
-
             }
             else if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
             {
@@ -370,6 +370,15 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         subscriptionName = subscriptionFromConfig;
                     }
+                }
+            }
+
+            string claimsChallenge = null;
+            if (this.IsParameterBound(c => c.ClaimsChallenge))
+            {
+                if (!ClaimsChallengeUtilities.TryParseClaimsChallenge(ClaimsChallenge, out claimsChallenge))
+                {
+                    throw new PSArgumentException(Resources.InvalidClaimsChallenge, nameof(ClaimsChallenge));
                 }
             }
 
@@ -548,6 +557,7 @@ namespace Microsoft.Azure.Commands.Profile
                         SkipValidation,
                         new OpenIDConfiguration(Tenant, baseUri: _environment.ActiveDirectoryAuthority, httpClientFactory: httpClientFactory),
                         WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
+                        claimsChallenge,
                         name,
                         shouldPopulateContextList,
                         MaxContextPopulation,

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Operation to create or update a lab schedule.
+Operation to create a lab schedule.
 .Description
-Operation to create or update a lab schedule.
+Operation to create a lab schedule.
 .Example
 New-AzLabServicesSchedule `
             -ResourceGroupName "Group Name" `
@@ -33,29 +33,30 @@ New-AzLabServicesSchedule `
             -TimeZoneId 'America/Los_Angeles'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
   [Description <String>]: The description of the lab.
   [ImageReferenceId <String>]: Image resource ID
   [ImageReferenceOffer <String>]: The image offer if applicable.
@@ -65,7 +66,7 @@ LAB <Lab>:
   [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
   [NetworkProfilePublicIPId <String>]: The external public IP resource id
   [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
   [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
@@ -73,29 +74,36 @@ LAB <Lab>:
   [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
   [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
   [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
   [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
   [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
   [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
   [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
   [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
   [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesschedule
 #>
 function New-AzLabServicesSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -107,6 +115,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the lab that uniquely identifies it within containing lab account.
@@ -114,46 +124,65 @@ param(
     ${LabName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter(ParameterSetName='Lab')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
     [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
     ${Lab},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Notes for this schedule.
     ${Note},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.DateTime]
     # When the recurrence will expire.
     # This date is inclusive.
     ${RecurrencePatternExpirationDate},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Daily", "Weekly")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency]
+    [System.String]
     # The frequency of the recurrence.
     ${RecurrencePatternFrequency},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.Int32]
     # The interval to invoke the schedule on.
@@ -161,34 +190,54 @@ param(
     # When no interval is supplied, an interval of 1 is used.
     ${RecurrencePatternInterval},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay])]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]]
+    [System.String[]]
     # The week days the schedule runs.
     # Used for when the Frequency is set to Weekly.
     ${RecurrencePatternWeekDay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.DateTime]
     # When lab user virtual machines will be started.
     # Timestamp offsets will be ignored and timeZoneId is used instead.
     ${StartAt},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.DateTime]
     # When lab user virtual machines will be stopped.
     # Timestamp offsets will be ignored and timeZoneId is used instead.
     ${StopAt},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The IANA timezone id for the schedule.
     ${TimeZoneId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -246,6 +295,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -266,11 +324,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateExpanded';
+            CreateViaIdentityLabExpanded = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateViaIdentityLabExpanded';
+            CreateViaJsonFilePath = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateViaJsonString';
             Lab = 'Az.LabServices.custom\New-AzLabServicesSchedule_Lab';
         }
-        if (('CreateExpanded', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -284,6 +343,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

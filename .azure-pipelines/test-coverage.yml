@@ -7,14 +7,10 @@ parameters:
   displayName: Test Framework
   type: string
   default: net8.0
-- name: testPoolName
-  displayName: Test Pool Name
-  type: string
-  default: pool-windows-2019
-- name: testPoolVMImage
-  displayName: Test Pool VM Image
-  type: string
-  default: ' '
+- name: updateBaseline
+  displayName: Update Test Coverage Baseline?
+  type: boolean
+  default: false
 
 variables:
   EnableTestCoverage: true
@@ -51,9 +47,7 @@ jobs:
 - job: TestCoverage
   dependsOn: Build
   timeoutInMinutes: 600
-  pool:
-    name: ${{ parameters.testPoolName }}
-    vmImage: ${{ parameters.testPoolVMImage }}
+  pool: pool-windows-2019
 
   steps:
   - task: UseDotNet@2
@@ -85,7 +79,7 @@ jobs:
 
   - task: PowerShell@2
     displayName: Test Autorest-Based Cmdlets
-    condition: succeeded()
+    condition: succeededOrFailed()
     inputs:
       pwsh: true
       targetType: inline
@@ -103,18 +97,20 @@ jobs:
 
   - task: PowerShell@2
     displayName: Analyze Test Coverage
-    condition: succeeded()
+    condition: succeededOrFailed()
     inputs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Coverage/AnalyzeTestCoverage.ps1
-      arguments: -CalcBaseline
+      arguments: '-CalcBaseline:$${{ parameters.updateBaseline }}'
 
   - template: util/get-github-pat-steps.yml
+    parameters:
+      execCondition: and(succeeded(), ${{ parameters.updateBaseline }})
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline
-    condition: succeeded()
+    condition: and(succeeded(), ${{ parameters.updateBaseline }})
     inputs:
       pwsh: true
       targetType: inline

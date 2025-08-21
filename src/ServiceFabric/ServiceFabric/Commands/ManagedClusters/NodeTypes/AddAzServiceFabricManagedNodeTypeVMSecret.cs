@@ -100,12 +100,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             NodeType currentNodeType = this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
 
-            if (currentNodeType.VmSecrets == null)
+            if (currentNodeType.VMSecrets == null)
             {
-                currentNodeType.VmSecrets = new List<VaultSecretGroup>();
+                currentNodeType.VMSecrets = new List<VaultSecretGroup>();
             }
 
-            var vault = currentNodeType.VmSecrets.FirstOrDefault(v => string.Equals(v.SourceVault.Id, this.SourceVaultId, StringComparison.OrdinalIgnoreCase));
+            var vault = currentNodeType.VMSecrets.FirstOrDefault(v => string.Equals(v.SourceVault.Id, this.SourceVaultId, StringComparison.OrdinalIgnoreCase));
             bool newVaultSecretGroup = false;
             if (vault == null)
             {
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (newVaultSecretGroup)
             {
-                currentNodeType.VmSecrets.Add(vault);
+                currentNodeType.VMSecrets.Add(vault);
             }
 
             return currentNodeType;

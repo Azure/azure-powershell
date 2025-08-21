@@ -3,6 +3,7 @@
     <PsModuleName>DigitalTwins</PsModuleName>
     <PsRootModuleName>DigitalTwins</PsRootModuleName>
     <PsModuleFolder>DigitalTwins.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
