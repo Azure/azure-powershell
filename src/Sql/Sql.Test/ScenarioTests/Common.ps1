@@ -66,6 +66,7 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 			  databaseName = "sql-dm-cmdlet-db" + $testSuffix;
 			  userName = "testuser";
 			  loginName = "testlogin";
+			  <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 			  pwd = "testp@ssMakingIt1007Longer";
 			  table1="table1";
 			  column1 = "column1";
