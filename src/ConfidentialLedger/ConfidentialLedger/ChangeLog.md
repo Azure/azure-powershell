@@ -18,10 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added BreakingChange announcements for commands below:
-  * `Get-AzConfidentialLedger`
-  * `New-AzConfidentialLedger`
-  * `Update-AzConfidentialLedger`
+* Preannounced breaking changes. Please refer to https://learn.microsoft.com/powershell/azure/upcoming-breaking-changes
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.

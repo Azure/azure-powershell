@@ -20,11 +20,7 @@
 
 
 ## Upcoming Release
-* Added BreakingChange announcements for commands below:
-  * `Get-AzAttestationDefaultProvider`
-  * `Get-AzAttestationProvider`
-  * `New-AzAttestationProvider`
-  * `Update-AzAttestationProvider`
+* Preannounced breaking changes. Please refer to https://learn.microsoft.com/powershell/azure/upcoming-breaking-changes
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.

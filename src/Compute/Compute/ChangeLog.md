@@ -20,13 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added BreakingChange announcements for commands below:
-  * `Get-GalleryApplicationVersion`
-  * `New-GalleryApplicationVersion`
-  * `Update-GalleryApplicationVersion`
-  * `Invoke-AzSpotPlacementScore`
-  * `Set-AzVMRunCommand`
-  * `Set-AzVmssVMRunCommand`
+* Preannounced breaking changes. Please refer to https://learn.microsoft.com/powershell/azure/upcoming-breaking-changes
 
 ## Version 10.2.0
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.

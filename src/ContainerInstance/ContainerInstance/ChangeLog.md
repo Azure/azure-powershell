@@ -19,11 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added breaking change announcement for below commands from array or single object to list.
-  * `New-AzContainerGroup`
-  * `New-AzContainerInstanceInitDefinitionObject`
-  * `New-AzContainerInstanceNoDefaultObject`
-  * `New-AzContainerInstanceObject`
+* Preannounced breaking changes. Please refer to https://learn.microsoft.com/powershell/azure/upcoming-breaking-changes
 
 ## Version 4.1.1
 * Upgraded nuget package to signed package.
