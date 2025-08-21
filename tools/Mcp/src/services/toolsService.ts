@@ -138,8 +138,25 @@ export class ToolsService {
         const exampleSpecs = await utils.getExampleJsonContent(exampleSpecsPath);
         for (const {name, content} of exampleSpecs) {
             const example = await utils.flattenJsonObject(content['parameters']);
-            // Interactive elicitInput flow is disabled pending SDK support.
-            // Once available, re-enable to allow user review of each example.
+            try {
+                const response = await this._server!.elicitInput({
+                    "message": `Please review example data for ${name}: ${example.map(({key: k, value:v}) => `  \n${k}: ${v}`)}`,
+                    "requestedSchema": {
+                        "type": "object",
+                        "properties": {
+                            "skipAll": {
+                                "type": "boolean",
+                                "description": "If true, skip the review of all examples and proceed to the next step."
+                            }
+                        },
+                    }
+                });
+                if (response.content && response.content['skipAll'] === true) {
+                    break;
+                }
+            } catch (error) {
+                console.error(`Error eliciting input for example ${name}:`, error);
+            }
         }
         return [exampleSpecsPath, examplePath];
     }

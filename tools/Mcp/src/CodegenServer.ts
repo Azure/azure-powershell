@@ -56,13 +56,12 @@ export class CodegenServer {
     }
 
     // server elicitation request
-    // Placeholder for future elicitInput when SDK exposes it
-    // public elicitInput(
-    //     params: ElicitRequest["params"],
-    //     options?: RequestOptions
-    // ): Promise<ElicitResult> {
-    //     return this._mcp.server.elicitInput(params, options);
-    // }
+    public elicitInput(
+        params: ElicitRequest["params"],
+        options?: RequestOptions
+    ): Promise<ElicitResult> {
+        return this._mcp.server.elicitInput(params, options);
+    }
 
     public static getInstance(): CodegenServer {
         if (!CodegenServer._instance) {
