@@ -22,7 +22,7 @@ Get the API Key for this key id.
 .Example
 Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"
 .Example
-Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 7c4c61dc-b392-4aa4-992f-ee92b84e5dee
+Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 00001111-aaaa-2222-bbbb-3333cccc4444
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -2759,7 +2759,7 @@ Delete an API Key of an Application Insights component.
 .Description
 Delete an API Key of an Application Insights component.
 .Example
-Remove-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId dd173f38-4fd1-4c75-8af5-99c29aa0f867
+Remove-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 00001111-aaaa-2222-bbbb-3333cccc4444
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -6495,6 +6495,9 @@ New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standar
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsights-portal01" = "Resource"} `
 -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'standard-pwsh01' `
 -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled:$false -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
+.Example
+$headerField = New-AzApplicationInsightsWebTestHeaderFieldObject -Name "HeaderName1" -Value "HeaderValue1"
+New-AzApplicationInsightsWebTest -ResourceGroupName exampleRG -Name expwshelltestheader2 -Location 'westus2' -Tag @{"hidden-link:<RESOURCE URL>" = "Resource"} -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'expwshelltestheader2' -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation -RequestHeader $headerField
 .Example
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"

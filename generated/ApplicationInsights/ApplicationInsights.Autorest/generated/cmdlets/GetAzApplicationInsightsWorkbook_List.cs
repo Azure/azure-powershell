@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/microsoft.insights/workbooks"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzApplicationInsightsWorkbook_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PropertiesTag"}, NewOutputProperties=new string[] {"PropertiesTag"}, ChangeDescription="The type of property 'PropertiesTag' of type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"Get all Workbooks defined within a specified subscription and category.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Generated]

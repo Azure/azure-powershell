@@ -2233,6 +2233,9 @@ New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standar
 -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'standard-pwsh01' `
 -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled:$false -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
 .Example
+$headerField = New-AzApplicationInsightsWebTestHeaderFieldObject -Name "HeaderName1" -Value "HeaderValue1"
+New-AzApplicationInsightsWebTest -ResourceGroupName exampleRG -Name expwshelltestheader2 -Location 'westus2' -Tag @{"hidden-link:<RESOURCE URL>" = "Resource"} -RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'expwshelltestheader2' -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation -RequestHeader $headerField
+.Example
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"

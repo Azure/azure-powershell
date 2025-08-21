@@ -22,7 +22,7 @@ Get the API Key for this key id.
 .Example
 Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"
 .Example
-Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 7c4c61dc-b392-4aa4-992f-ee92b84e5dee
+Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 00001111-aaaa-2222-bbbb-3333cccc4444
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity

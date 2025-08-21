@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/workbooktemplates/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzApplicationInsightsWorkbookTemplate_UpdateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Gallery"}, NewOutputProperties=new string[] {"Gallery"}, ChangeDescription="The type of property 'Gallery' of type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery]'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"Updates a workbook template that has already been added.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Generated]
