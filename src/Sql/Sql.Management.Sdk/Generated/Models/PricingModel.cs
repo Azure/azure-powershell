@@ -7,11 +7,11 @@ namespace Microsoft.Azure.Management.Sql.Models
 {
 
     /// <summary>
-    /// Defines values for FreemiumType.
+    /// Defines values for PricingModel.
     /// </summary>
 
 
-    public static class FreemiumType
+    public static class PricingModel
     {
         public const string Regular = "Regular";
         public const string Freemium = "Freemium";
