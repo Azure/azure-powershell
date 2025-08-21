@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAttestationProvider_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PrivateEndpointConnection","Value"}, NewOutputProperties=new string[] {"PrivateEndpointConnection","Value"}, ChangeDescription="The types of the properties 'PrivateEndpointConnection' and 'Value' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Attestation.Description(@"Updates the Attestation Provider.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Attestation.Generated]

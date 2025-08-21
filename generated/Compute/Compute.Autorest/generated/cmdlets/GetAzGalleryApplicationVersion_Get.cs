@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzGalleryApplicationVersion_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PublishingProfileTargetExtendedLocation","ReplicationStatusSummary","TargetRegion"}, NewOutputProperties=new string[] {"PublishingProfileTargetExtendedLocation","ReplicationStatusSummary","TargetRegion"}, ChangeDescription="The types of the properties 'PublishingProfileTargetExtendedLocation', 'ReplicationStatusSummary' and 'TargetRegion' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Description(@"Retrieves information about a gallery Application Version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Generated]

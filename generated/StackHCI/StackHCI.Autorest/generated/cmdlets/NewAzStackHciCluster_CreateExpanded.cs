@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStackHciCluster_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"ReportedPropertyNode","LogCollectionPropertyLogCollectionSessionDetail","RemoteSupportPropertyRemoteSupportSessionDetail","RemoteSupportPropertyRemoteSupportNodeSetting","ReportedPropertySupportedCapability"}, NewOutputProperties=new string[] {"ReportedPropertyNode","LogCollectionPropertyLogCollectionSessionDetail","RemoteSupportPropertyRemoteSupportSessionDetail","RemoteSupportPropertyRemoteSupportNodeSetting","ReportedPropertySupportedCapability"}, ChangeDescription="The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Create an HCI cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]
@@ -157,6 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.ParameterBreakingChange("IdentityType", "15.0.0", "3.0.0", "2025/11", ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system-assigned identities.", OldParamaterType="string", NewParameterType="boolean")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType))]
         public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType IdentityType { get => _clusterBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType)""); set => _clusterBody.IdentityType = value; }
 

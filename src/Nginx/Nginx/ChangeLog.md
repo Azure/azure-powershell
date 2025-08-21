@@ -19,6 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+* Added breaking change announcement for below cmdlets from fixed array to list.
+  - `Get-AzNginxConfiguration`
+  - `New-AzNginxConfiguration`
+  - `Get-AzNginxDeployment`
+  - `New-AzNginxDeployment`
+  - `Update-AzNginxDeployment`
+  - `Invoke-AzNginxAnalysisConfiguration`
+  - `New-AzNginxNetworkProfileObject`
+* Added breaking change announcement for `New-AzNginxDeployment` and `Update-AzNginxDeployment` cmdlets.
+    - Removed `-IdentityType` parameter to support new Managed Identity settings.
+    - Removed `-IdentityUserAssignedIdentity`.
+* The parameters of the `New-AzNginxDeployment` and `Update-AzNginxDeployment` cmdlets will be changed by new Managed Identity settings.
+    - Added `-UserAssignedIdentity` parameter. The type of `UserAssignedIdentity` is simplified to a list of strings that is used to specify the user's assigned identity.
+    - Added `EnableSystemAssignedIdentity` to enable/disable system-assigned identities.
+
 ## Version 1.2.0
 * Upgraded nuget package to signed package.
 

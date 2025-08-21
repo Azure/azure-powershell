@@ -29,6 +29,7 @@ https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontain
 #>
 function Get-AzContainerRegistryWebhookEvent {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent])]
+[Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEvent", DeprecatedOutputProperties = ("ContentTimestamp, TargetSize, TargetLength, TargetTag, TargetRepository, TargetName, TargetMediaType, TargetDigest, SourceInstanceId, SourceAddr, ActorName, RequestUseragent, RequestMethod, RequestId, RequestHost, RequestAddr, ContentId, ContentAction, TargetUrl, TargetVersion, Action"), NewOutputProperties = ("ContentTimestamp, TargetSize, TargetLength, TargetTag, TargetRepository, TargetName, TargetMediaType, TargetDigest, SourceInstanceId, SourceAddr, ActorName, RequestUseragent, RequestMethod, RequestId, RequestHost, RequestAddr, ContentId, ContentAction, TargetUrl, TargetVersion, Action. This parameter will be changed from single object to 'List'."))]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='List', Mandatory)]
