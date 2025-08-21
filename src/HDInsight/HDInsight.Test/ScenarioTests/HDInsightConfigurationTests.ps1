@@ -125,13 +125,16 @@ function Test-CreateClusterByConfigurationPipelining{
 		
 		#test Add-AzHDInsightConfigValue
 		$config = Add-AzHDInsightConfigValue -Config $config -Core @{coreconfig = 'corevalue'}
-		
+		$ipConfiguration = New-AzHDInsightIPConfiguration
+		$privateLinkConfiguration = New-AzHDInsightPrivateLinkConfiguration
+		Assert-NotNull $ipConfiguration
+		Assert-NotNull $privateLinkConfiguration
 		#test Add-AzHDInsightScriptAction
 		$config = Add-AzHDInsightScriptAction -Config $config -NodeType HeadNode -Uri "https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh" -Name "InstallHue" -Parameters "-version latest -port 20000"
 
 		#test Add-AzHDInsightMetastore
 		$sqlUser="username"
-		$sqlPassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+		$sqlPassword = ConvertTo-SecureString "Sanitized" -AsPlainText -Force
 		$sqlCredential = New-Object System.Management.Automation.PSCredential($sqlUser, $sqlPassword)
 		$config = Add-AzHDInsightMetastore -Config $config `
 			-MetastoreType HiveMetastore -SqlAzureServerName "pstestsqldbserver.database.windows.net" `

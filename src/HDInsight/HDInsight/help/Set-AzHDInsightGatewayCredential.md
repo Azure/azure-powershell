@@ -79,7 +79,7 @@ Set-AzHDInsightGatewayCredential `
             -EntraUserFullInfo $entraUserFullInfo
 ```
 
-To use the -EntraUserFullInfo parameter, you must provide each user's ObjectId, Upn, and DisplayName. This information can be obtained either through the [Azure Portal](https://portal.azure.com) by viewing the user's profile under Microsoft Entra ID > Users, or programmatically using the Get-AzADUser cmdlet from the Az.Resources module in PowerShell. For example: Get-AzADUser -UserPrincipalName "user@contoso.com" returns fields such as Id (ObjectId), UserPrincipalName (Upn), and DisplayName. For more details, refer to the official documentation: [Get-AzADUser](https://learn.microsoft.com/en-us/powershell/module/az.resources/get-azaduser?view=azps-14.0.0).
+To use the -EntraUserFullInfo parameter, you must provide each user's ObjectId, Upn, and DisplayName. This information can be obtained either through the [Azure Portal](https://portal.azure.com) by viewing the user's profile under Microsoft Entra ID > Users, or programmatically using the Get-AzADUser cmdlet from the Az.Resources module in PowerShell. For example: `Get-AzADUser -UserPrincipalName "user@contoso.com"` returns fields such as Id (ObjectId), UserPrincipalName (Upn), and DisplayName. For more details, refer to the official documentation: [Get-AzADUser](https://learn.microsoft.com/en-us/powershell/module/az.resources/get-azaduser).
 
 ### Example 5: Set Gateway Entra Users for an HDInsight Cluster by ObjectId or Upn
 ```powershell
