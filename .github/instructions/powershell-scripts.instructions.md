@@ -71,7 +71,8 @@ try {
 ```powershell
 # Good - Check for variables that exist on all platforms
 $homeDir = $env:HOME ?? $env:USERPROFILE
-$tempDir = $env:TMPDIR ?? $env:TEMP ?? "/tmp"
+$homeDir = if ($env:HOME) { $env:HOME } else { $env:USERPROFILE }
+$tempDir = if ($env:TMPDIR) { $env:TMPDIR } elseif ($env:TEMP) { $env:TEMP } else { "/tmp" }
 
 # Avoid - Platform-specific environment variables without fallbacks
 $userName = $env:USERNAME  # Windows only
