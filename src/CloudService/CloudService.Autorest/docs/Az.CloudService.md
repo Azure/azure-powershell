@@ -14,11 +14,6 @@ Microsoft Azure PowerShell: CloudService cmdlets
 ### [Get-AzCloudService](Get-AzCloudService.md)
 Display information about a cloud service.
 
-### [Get-AzCloudServiceCloudServicesUpdateDomain](Get-AzCloudServiceCloudServicesUpdateDomain.md)
-Gets the specified get domain of a cloud service.
-Use nextLink property in the response to get the next page of get domains.
-Do this till nextLink is null to fetch all the get domains.
-
 ### [Get-AzCloudServiceInstanceView](Get-AzCloudServiceInstanceView.md)
 Gets the status of a cloud service.
 
@@ -51,16 +46,8 @@ If you do not want to initialize storage resources, you can use Reimage Role Ins
 Rebuild Role Instances reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
 If you do not want to initialize storage resources, you can use Reimage Role Instances.
 
-### [Invoke-AzCloudServiceRebuildCloudServiceRoleInstance](Invoke-AzCloudServiceRebuildCloudServiceRoleInstance.md)
-The Rebuild Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
-If you do not want to initialize storage resources, you can use Reimage Role Instance.
-
 ### [Invoke-AzCloudServiceReimage](Invoke-AzCloudServiceReimage.md)
 Reimage asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
-
-### [Invoke-AzCloudServiceRoleInstanceRebuild](Invoke-AzCloudServiceRoleInstanceRebuild.md)
-The Rebuild Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
-If you do not want to initialize storage resources, you can use Reimage Role Instance.
 
 ### [Invoke-AzCloudServiceRoleInstanceReimage](Invoke-AzCloudServiceRoleInstanceReimage.md)
 The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
@@ -118,10 +105,4 @@ Swaps VIPs between two cloud service (extended support) load balancers.
 ### [Update-AzCloudService](Update-AzCloudService.md)
 Create a cloud service.
 Please note some properties can be set only during cloud service creation.
-
-### [Update-AzCloudServiceCloudServicesUpdateDomain](Update-AzCloudServiceCloudServicesUpdateDomain.md)
-Walk the role instances in the specified walk domain.
-
-### [Update-AzCloudServiceRoleInstance](Update-AzCloudServiceRoleInstance.md)
-The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
 

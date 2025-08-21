@@ -65,8 +65,8 @@ directive:
     set:
       subject: CloudServiceOSVersion
   - where:
-      variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$|^Rebuild$|^RebuildViaIdentity$
-      subject: ^CloudService$|^RebuildCloudService$
+      variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$|^Rebuild$|^RebuildViaIdentity$|^RebuildViaJsonFilePathViaJsonFilePath$|^RebuildViaJsonStringViaJsonString$|^RebuildViaIdentityRoleInstance$
+      subject: ^CloudService$|^RebuildCloudService$|^RebuildCloudServiceRoleInstance$
     remove: true
 
   - where:
@@ -94,8 +94,8 @@ directive:
       subject: RoleInstanceRebuild
 
   - where:
-      subject: ^CloudServiceUpdateDomain$
-      verb: Get
+      subject: ^CloudServicesUpdateDomain$
+      verb: Get|Update
     remove: true
   - where:
       subject: ^WalkCloudServicesUpdateDomain$
@@ -113,7 +113,7 @@ directive:
     remove: true
   - where:
       subject: ^CloudServiceRoleInstance$
-      verb: Remove
+      verb: Remove|Update
     remove: true
   - where:
       variant: ^Delete$|^DeleteViaIdentity$
