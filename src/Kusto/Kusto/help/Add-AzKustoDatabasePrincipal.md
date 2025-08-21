@@ -19,6 +19,27 @@ Add-AzKustoDatabasePrincipal -ClusterName <String> -DatabaseName <String> -Resou
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AddViaJsonString
+```
+Add-AzKustoDatabasePrincipal -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaJsonFilePath
+```
+Add-AzKustoDatabasePrincipal -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentityClusterExpanded
+```
+Add-AzKustoDatabasePrincipal -DatabaseName <String> -ClusterInputObject <IKustoIdentity>
+ [-Value <IDatabasePrincipal[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### AddViaIdentityExpanded
 ```
 Add-AzKustoDatabasePrincipal -InputObject <IKustoIdentity> [-Value <IDatabasePrincipal[]>]
@@ -46,12 +67,27 @@ The above command adds Database principals permissions
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: AddViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
 Aliases:
 
 Required: True
@@ -66,7 +102,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, AddViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -94,7 +130,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -108,13 +143,43 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Add operation
+
+```yaml
+Type: System.String
+Parameter Sets: AddViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Add operation
+
+```yaml
+Type: System.String
+Parameter Sets: AddViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
 Aliases:
 
 Required: True
@@ -129,7 +194,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
 Aliases:
 
 Required: False
@@ -141,11 +206,10 @@ Accept wildcard characters: False
 
 ### -Value
 The list of Kusto database principals.
-To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabasePrincipal[]
+Parameter Sets: AddExpanded, AddViaIdentityClusterExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -195,7 +259,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipal
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabasePrincipalListResult
 
 ## NOTES
 

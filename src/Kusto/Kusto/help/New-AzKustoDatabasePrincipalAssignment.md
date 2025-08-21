@@ -8,20 +8,52 @@ schema: 2.0.0
 # New-AzKustoDatabasePrincipalAssignment
 
 ## SYNOPSIS
-Creates a Kusto cluster database principalAssignment.
+Create a Kusto cluster database principalAssignment.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzKustoDatabasePrincipalAssignment -ClusterName <String> -DatabaseName <String>
- -PrincipalAssignmentName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-PrincipalId <String>] [-PrincipalType <PrincipalType>] [-Role <DatabasePrincipalRole>] [-TenantId <String>]
+New-AzKustoDatabasePrincipalAssignment -PrincipalAssignmentName <String> -ClusterName <String>
+ -DatabaseName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-PrincipalId <String>]
+ [-PrincipalType <String>] [-Role <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzKustoDatabasePrincipalAssignment -PrincipalAssignmentName <String> -ClusterName <String>
+ -DatabaseName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzKustoDatabasePrincipalAssignment -PrincipalAssignmentName <String> -ClusterName <String>
+ -DatabaseName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityClusterExpanded
+```
+New-AzKustoDatabasePrincipalAssignment -PrincipalAssignmentName <String> -DatabaseName <String>
+ -ClusterInputObject <IKustoIdentity> [-PrincipalId <String>] [-PrincipalType <String>] [-Role <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityDatabaseExpanded
+```
+New-AzKustoDatabasePrincipalAssignment -PrincipalAssignmentName <String> -DatabaseInputObject <IKustoIdentity>
+ [-PrincipalId <String>] [-PrincipalType <String>] [-Role <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a Kusto cluster database principalAssignment.
+Create a Kusto cluster database principalAssignment.
 
 ## EXAMPLES
 
@@ -55,12 +87,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -70,12 +117,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: CreateViaIdentityDatabaseExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DatabaseName
 The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityClusterExpanded
 Aliases:
 
 Required: True
@@ -95,6 +157,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,7 +229,7 @@ It can be a user email, application ID, or security group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
@@ -151,8 +243,8 @@ Accept wildcard characters: False
 Principal type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
@@ -168,7 +260,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -182,8 +274,8 @@ Accept wildcard characters: False
 Database principal role.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabasePrincipalRole
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
@@ -198,7 +290,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -213,7 +305,7 @@ The tenant id of the principal
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
@@ -259,9 +351,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabasePrincipalAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabasePrincipalAssignment
 
 ## NOTES
 
