@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Linq;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -65,5 +66,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
         }
 
+        protected override PSThroughputBucket[] GetExistingThroughputBuckets()
+        {
+            // Read current throughput to preserve existing buckets when user omits the parameter
+            ThroughputSettingsGetResults current = CosmosDBManagementClient.SqlResources
+                .GetSqlContainerThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name)
+                .GetAwaiter().GetResult().Body;
+
+            System.Collections.Generic.IList<ThroughputBucketResource> buckets = current?.Resource?.ThroughputBuckets;
+            if (buckets == null)
+            {
+                return null;
+            }
+            return buckets.Select(b => new PSThroughputBucket(b)).ToArray();
+        }
     }
 }
