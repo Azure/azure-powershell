@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.2
 * The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
   * `Get-AzDnsDnssecConfig`
   * `New-AzDnsDnssecConfig`

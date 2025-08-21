@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.1.2
 * Added breaking change announcement for below commands from array or single object to list.
   * `New-AzContainerGroup`
   * `New-AzContainerInstanceInitDefinitionObject`

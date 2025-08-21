@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.3.0
 * Added Server-Side Pagination Support for `Invoke-AzRestMethod` command via `-Paginate` parameter.
 
 ## Version 5.2.0

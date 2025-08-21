@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 10.2.1
 * Added BreakingChange announcements for commands below:
   * `Get-GalleryApplicationVersion`
   * `New-GalleryApplicationVersion`

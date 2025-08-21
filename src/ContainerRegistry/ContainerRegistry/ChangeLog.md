@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.1
 * Added BreakingChange announcements for commands below:
   * `Get-AzContainerRegistry`
   * `New-AzContainerRegistry`
