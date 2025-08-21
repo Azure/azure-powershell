@@ -16,13 +16,13 @@ If you do not want to initialize storage resources, you can use Reimage Role Ins
 ### RebuildExpanded (Default)
 ```
 Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -RoleInstance <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-RoleInstance <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RebuildViaIdentityExpanded
 ```
-Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> -RoleInstance <String[]>
+Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> [-RoleInstance <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -98,7 +98,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
@@ -166,7 +165,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
