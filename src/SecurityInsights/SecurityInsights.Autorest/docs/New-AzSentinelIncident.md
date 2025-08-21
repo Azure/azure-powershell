@@ -8,31 +8,36 @@ schema: 2.0.0
 # New-AzSentinelIncident
 
 ## SYNOPSIS
-Creates or updates the incident.
+Create the incident.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
- [-SubscriptionId <String>] [-Classification <IncidentClassification>] [-ClassificationComment <String>]
- [-ClassificationReason <IncidentClassificationReason>] [-Description <String>]
- [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
- [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
- [-OwnerUserPrincipalName <String>] [-ProviderIncidentId <String>] [-ProviderName <String>]
- [-Severity <IncidentSeverity>] [-Status <IncidentStatus>] [-Title <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Classification <String>] [-ClassificationComment <String>]
+ [-ClassificationReason <String>] [-Description <String>] [-FirstActivityTimeUtc <DateTime>]
+ [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>] [-OwnerAssignedTo <String>]
+ [-OwnerEmail <String>] [-OwnerObjectId <String>] [-OwnerUserPrincipalName <String>]
+ [-ProviderIncidentId <String>] [-ProviderName <String>] [-Severity <String>] [-Status <String>]
+ [-Title <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonFilePath
 ```
-New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -Incident <IIncident>
+New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -JsonFilePath <String>
  [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -JsonString <String> [-Id <String>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates the incident.
+Create the incident.
 
 ## EXAMPLES
 
@@ -60,7 +65,7 @@ This command creates an Incident.
 The reason the incident was closed
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -90,7 +95,7 @@ Accept wildcard characters: False
 The classification reason the incident was closed with
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -162,28 +167,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Incident
-Represents an incident in Azure Security Insights.
-To construct, see NOTES section for INCIDENT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
-Parameter Sets: Create
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Label
 List of labels relevant to this incident
-To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentLabel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentLabel[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -319,7 +337,7 @@ Accept wildcard characters: False
 The severity of the incident
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -334,7 +352,7 @@ Accept wildcard characters: False
 The status of the incident
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -426,11 +444,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident
 
 ## NOTES
 

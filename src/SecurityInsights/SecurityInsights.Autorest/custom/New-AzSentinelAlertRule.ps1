@@ -23,7 +23,7 @@ Creates the alert rule.
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertrule
 #>
 function New-AzSentinelAlertRule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule])]
     [CmdletBinding(DefaultParameterSetName = 'FusionMLTI', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter()]
@@ -55,9 +55,9 @@ function New-AzSentinelAlertRule {
         ${RuleId},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertRuleKind])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Scheduled", "MicrosoftSecurityIncidentCreation", "Fusion", "MLBehaviorAnalytics", "ThreatIntelligence", "NRT")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertRuleKind]
+        [System.String]
         # Kind of the the data connection
         ${Kind},
 
@@ -100,14 +100,14 @@ function New-AzSentinelAlertRule {
 
 
         [Parameter(ParameterSetName = 'MicrosoftSecurityIncidentCreation', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Microsoft Cloud App Security", "Azure Security Center", "Azure Advanced Threat Protection", "Azure Active Directory Identity Protection", "Azure Security Center for IoT", "Office 365 Advanced Threat Protection", "Microsoft Defender Advanced Threat Protection")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName]
+        [System.String]
         ${ProductFilter},
 
         [Parameter(ParameterSetName = 'MicrosoftSecurityIncidentCreation')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity[]]
+        [System.String[]]
         #High, Medium, Low, Informational
         ${SeveritiesFilter},
 
@@ -138,15 +138,15 @@ function New-AzSentinelAlertRule {
 
         [Parameter(ParameterSetName = 'NRT', Mandatory)]
         [Parameter(ParameterSetName = 'Scheduled', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity]
+        [System.String]
         ${Severity},
 
         [Parameter(ParameterSetName = 'NRT')]
         [Parameter(ParameterSetName = 'Scheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        #[Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("InitialAccess", "Execution", "Persistence", "PrivilegeEscalation", "DefenseEvasion", "CredentialAccess", "Discovery", "LateralMovement", "Collection", "Exfiltration", "CommandAndControl", "Impact", "PreAttack")]
         [System.String[]]
         #InitialAccess, Execution, Persistence, PrivilegeEscalation, DefenseEvasion, CredentialAccess, Discovery, LateralMovement, Collection, Exfiltration, CommandAndControl, Impact, PreAttack
         ${Tactic},
@@ -187,22 +187,22 @@ function New-AzSentinelAlertRule {
 
         [Parameter(ParameterSetName = 'NRT')]
         [Parameter(ParameterSetName = 'Scheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("DisplayName", "Severity")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]]
+        [System.String[]]
         ${GroupByAlertDetail},
 
         [Parameter(ParameterSetName = 'NRT')]
         [Parameter(ParameterSetName = 'Scheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [string[]]
+        [System.String[]]
         ${GroupByCustomDetail},
 
         [Parameter(ParameterSetName = 'NRT')]
         [Parameter(ParameterSetName = 'Scheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Account", "Host", "IP", "Malware", "File", "Process", "CloudApplication", "DNS", "AzureResource", "FileHash", "RegistryKey", "RegistryValue", "SecurityGroup", "URL", "Mailbox", "MailCluster", "MailMessage", "SubmissionMail")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]]
+        [System.String[]]
         ${GroupByEntity},
 
 
@@ -210,7 +210,7 @@ function New-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'Scheduled')]
         #'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping[]]
         ${EntityMapping},
 
         [Parameter(ParameterSetName = 'NRT')]
@@ -249,9 +249,9 @@ function New-AzSentinelAlertRule {
         ${QueryPeriod},
 
         [Parameter(ParameterSetName = 'Scheduled', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "Equal", "NotEqual")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator]
+        [System.String]
         ${TriggerOperator},
 
         [Parameter(ParameterSetName = 'Scheduled', Mandatory)]
@@ -260,9 +260,9 @@ function New-AzSentinelAlertRule {
         ${TriggerThreshold},
 
         [Parameter(ParameterSetName = 'Scheduled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SingleAlert", "AlertPerResult")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind]
+        [System.String]
         ${EventGroupingSettingAggregationKind},
 
         [Parameter()]
@@ -329,7 +329,7 @@ function New-AzSentinelAlertRule {
         try {
             #Fusion
             if ($PSBoundParameters['Kind'] -eq 'Fusion'){
-                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.FusionAlertRule]::new()
+                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.FusionAlertRule]::new()
 
                 $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplate']
                 $null = $PSBoundParameters.Remove('AlertRuleTemplate')
@@ -344,7 +344,7 @@ function New-AzSentinelAlertRule {
             }
             #MSIC
             if($PSBoundParameters['Kind'] -eq 'MicrosoftSecurityIncidentCreation'){
-                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MicrosoftSecurityIncidentCreationAlertRule]::new()
+                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MicrosoftSecurityIncidentCreationAlertRule]::new()
 
                 If($PSBoundParameters['AlertRuleTemplateName']){
                     $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
@@ -384,7 +384,7 @@ function New-AzSentinelAlertRule {
             }
             #ML
             if ($PSBoundParameters['Kind'] -eq 'MLBehaviorAnalytics'){
-                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MlBehaviorAnalyticsAlertRule]::new()
+                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MlBehaviorAnalyticsAlertRule]::new()
 
                 $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplate']
                 $null = $PSBoundParameters.Remove('AlertRuleTemplate')
@@ -400,7 +400,7 @@ function New-AzSentinelAlertRule {
 
             #NRT
             if($PSBoundParameters['Kind'] -eq 'NRT'){
-                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.NrtAlertRule]::new()
+                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.NrtAlertRule]::new()
 
                 If($PSBoundParameters['AlertRuleTemplateName']){
                     $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
@@ -518,7 +518,7 @@ function New-AzSentinelAlertRule {
             }
             #Scheduled
             if ($PSBoundParameters['Kind'] -eq 'Scheduled'){
-                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ScheduledAlertRule]::new()
+                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ScheduledAlertRule]::new()
 
                 If($PSBoundParameters['AlertRuleTemplateName']){
                     $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
@@ -652,7 +652,7 @@ function New-AzSentinelAlertRule {
             }
             #TI
             if ($PSBoundParameters['Kind'] -eq 'ThreatIntelligence'){
-                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ThreatIntelligenceAlertRule]::new()
+                $AlertRule = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ThreatIntelligenceAlertRule]::new()
 
                 $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplate']
                 $null = $PSBoundParameters.Remove('AlertRuleTemplate')
@@ -667,8 +667,9 @@ function New-AzSentinelAlertRule {
             }
 
             $null = $PSBoundParameters.Remove('FusionMLTI')
-
-            $AlertRule.Kind = $PSBoundParameters['Kind']
+            
+            #Autorest powershell V4 does not need the Kind property. The object has the Kind value for each.
+            # $AlertRule.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')
 
             $null = $PSBoundParameters.Add('AlertRule', $AlertRule)

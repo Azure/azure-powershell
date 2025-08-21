@@ -110,7 +110,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -195,7 +194,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISettings
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISettingList
+
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISettings
 
 ## NOTES
 
