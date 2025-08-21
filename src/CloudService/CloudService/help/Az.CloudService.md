@@ -42,12 +42,12 @@ Retrieves information about the run-time state of a role instance in a cloud ser
 Rebuild Role Instances reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
 If you do not want to initialize storage resources, you can use Reimage Role Instances.
 
-### [Invoke-AzCloudServiceRebuildCloudService](Invoke-AzCloudServiceRebuildCloudService.md)
-Rebuild Role Instances reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
-If you do not want to initialize storage resources, you can use Reimage Role Instances.
-
 ### [Invoke-AzCloudServiceReimage](Invoke-AzCloudServiceReimage.md)
 Reimage asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
+
+### [Invoke-AzCloudServiceRoleInstanceRebuild](Invoke-AzCloudServiceRoleInstanceRebuild.md)
+The Rebuild Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
+If you do not want to initialize storage resources, you can use Reimage Role Instance.
 
 ### [Invoke-AzCloudServiceRoleInstanceReimage](Invoke-AzCloudServiceRoleInstanceReimage.md)
 The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.

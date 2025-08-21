@@ -20,6 +20,20 @@ Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RebuildViaJsonString
+```
+Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RebuildViaJsonFilePath
+```
+Invoke-AzCloudServiceRebuild -CloudServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### RebuildViaIdentityExpanded
 ```
 Invoke-AzCloudServiceRebuild -InputObject <ICloudServiceIdentity> [-RoleInstance <String[]>]
@@ -70,7 +84,7 @@ Name of the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded
+Parameter Sets: RebuildExpanded, RebuildViaJsonString, RebuildViaJsonFilePath
 Aliases:
 
 Required: True
@@ -111,6 +125,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Rebuild operation
+
+```yaml
+Type: System.String
+Parameter Sets: RebuildViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Rebuild operation
+
+```yaml
+Type: System.String
+Parameter Sets: RebuildViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -146,7 +190,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded
+Parameter Sets: RebuildExpanded, RebuildViaJsonString, RebuildViaJsonFilePath
 Aliases:
 
 Required: True
@@ -162,7 +206,7 @@ Value of '*' will signify all role instances of the cloud service.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: RebuildExpanded, RebuildViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -178,7 +222,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: RebuildExpanded
+Parameter Sets: RebuildExpanded, RebuildViaJsonString, RebuildViaJsonFilePath
 Aliases:
 
 Required: False

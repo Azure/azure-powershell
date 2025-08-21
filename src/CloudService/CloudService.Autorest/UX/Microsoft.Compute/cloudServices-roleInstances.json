@@ -49,6 +49,49 @@
       ]
     },
     {
+      "name": "Invoke-AzCloudServiceRoleInstanceRebuild",
+      "description": "The Rebuild Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.\nIf you do not want to initialize storage resources, you can use Reimage Role Instance.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/rebuild",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudserviceroleinstancerebuild"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudServiceName <String>",
+              "-ResourceGroupName <String>",
+              "-RoleInstanceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "The Rebuild Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them. If you do not want to initialize storage resources, you can use Reimage Role Instance.",
+          "parameters": [
+            {
+              "name": "-CloudServiceName",
+              "value": "[Path.cloudServiceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RoleInstanceName",
+              "value": "[Path.roleInstanceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Invoke-AzCloudServiceRoleInstanceReimage",
       "description": "The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage",

@@ -1,59 +1,43 @@
 ---
-external help file: Az.CloudService-help.xml
+external help file:
 Module Name: Az.CloudService
-online version: https://learn.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudservicerebuildcloudservice
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudserviceroleinstancerebuild
 schema: 2.0.0
 ---
 
-# Invoke-AzCloudServiceRebuildCloudService
+# Invoke-AzCloudServiceRoleInstanceRebuild
 
 ## SYNOPSIS
-Rebuild Role Instances reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
-If you do not want to initialize storage resources, you can use Reimage Role Instances.
+The Rebuild Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
+If you do not want to initialize storage resources, you can use Reimage Role Instance.
 
 ## SYNTAX
 
-### RebuildViaJsonFilePath (Default)
+### Rebuild (Default)
 ```
-Invoke-AzCloudServiceRebuildCloudService -CloudServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzCloudServiceRoleInstanceRebuild -CloudServiceName <String> -ResourceGroupName <String>
+ -RoleInstanceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RebuildViaJsonString
+### RebuildViaIdentity
 ```
-Invoke-AzCloudServiceRebuildCloudService -CloudServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzCloudServiceRoleInstanceRebuild -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Rebuild Role Instances reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
-If you do not want to initialize storage resources, you can use Reimage Role Instances.
+The Rebuild Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles and initializes the storage resources that are used by them.
+If you do not want to initialize storage resources, you can use Reimage Role Instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Rebuild role instance of a cloud service
 ```powershell
-{{ Add code here }}
+Invoke-AzCloudServiceRoleInstanceRebuild -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command reimages role instance named ContosoFrontEnd_IN_0 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
 
 ## PARAMETERS
 
@@ -77,7 +61,7 @@ Name of the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Rebuild
 Aliases:
 
 Required: True
@@ -103,33 +87,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Rebuild operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: RebuildViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+Parameter Sets: RebuildViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Rebuild operation
-
-```yaml
-Type: System.String
-Parameter Sets: RebuildViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -168,7 +137,22 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Rebuild
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoleInstanceName
+Name of the role instance.
+
+```yaml
+Type: System.String
+Parameter Sets: Rebuild
 Aliases:
 
 Required: True
@@ -184,7 +168,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Rebuild
 Aliases:
 
 Required: False
@@ -230,6 +214,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
@@ -237,3 +223,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
