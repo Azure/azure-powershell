@@ -143,14 +143,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
                         }
                     }
-                    else if(disk.CreationData?.CreateOption == "ImportSecure"
-                    && disk.SecurityProfile?.SecurityType == null)
-                    {
-                        disk.SecurityProfile = new DiskSecurityProfile
-                        {
-                            //SecurityType = "ConfidentialVM_DiskEncryptedWithPlatformKey"
-                        };
-                    }
                     // Reset Standard value to null.
                     else if (disk.SecurityProfile?.SecurityType != null
                         && disk.SecurityProfile?.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
