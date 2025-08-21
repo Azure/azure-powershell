@@ -8,7 +8,7 @@ import { readFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { RequestOptions } from "https";
-import { /*ElicitRequest, ElicitResult*/ } from "@modelcontextprotocol/sdk/types.js"; // Elicit types not available in current sdk version
+import { ElicitRequest, ElicitResult } from "@modelcontextprotocol/sdk/types.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const srcPath = path.resolve(__dirname, "..", "src");
