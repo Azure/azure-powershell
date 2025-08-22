@@ -20,11 +20,7 @@
 
 
 ## Upcoming Release
-* Added BreakingChange announcements for commands below:
-  * `Get-AzAttestationDefaultProvider`
-  * `Get-AzAttestationProvider`
-  * `New-AzAttestationProvider`
-  * `Update-AzAttestationProvider`
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.

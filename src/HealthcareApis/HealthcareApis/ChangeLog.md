@@ -18,22 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added BreakingChange announcements for commands below:
-  * `Get-AzHealthcareApisService`
-  * `New-AzHealthcareApisService`
-  * `Update-AzHealthcareApisService`
-  * `Get-AzHealthcareApisWorkspace`
-  * `New-AzHealthcareApisWorkspace`
-  * `Update-AzHealthcareApisWorkspace`
-  * `Get-AzHealthcareDicomService`
-  * `New-AzHealthcareDicomService`
-  * `Update-AzHealthcareDicomService`
-  * `Get-AzHealthcareFhirService`
-  * `New-AzHealthcareFhirService`
-  * `Update-AzHealthcareFhirService`
-  * `New-AzHealthcareIotConnector`
-  * `Test-AzHealthcareServiceNameAvailability`
-  * `Update-AzHealthcareIotConnector`
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 2.1.0
 * Upgraded nuget package to signed package.
