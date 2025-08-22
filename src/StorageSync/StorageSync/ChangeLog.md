@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Fixed security bug in checking tenant id for MI server registration
 ## Version 2.5.1
 * Fixed security bug in token acquisition for MI server registration
 

@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzArcResourceBridge_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"IdentityType"}, NewOutputProperties=new string[] {"EnableSystemAssignedIdentity"}, ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Description(@"Creates or updates an Appliance in the specified Subscription and Resource Group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Generated]

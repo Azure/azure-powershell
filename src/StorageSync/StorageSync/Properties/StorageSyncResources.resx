@@ -327,4 +327,7 @@
   <data name="AgentMI_ProgramDataNotFoundError" xml:space="preserve">
     <value>GetEnvironmentVariable failed to find 'ProgramData'</value>
   </data>
+  <data name="MissingAzureContextTenantId" xml:space="preserve">
+    <value>The given azure context does not have tenant id.</value>
+  </data>
 </root>
