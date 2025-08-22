@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
     /// [OpenAPI] ImportImage=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importImage"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Import, @"AzContainerRegistryImage_Import", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.ParameterSetBreakingChange(new string[] {"Import"}, "15.0.0", "9.0.0", "2025/11/03")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"Copies an image to this container registry from the specified container registry.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Generated]

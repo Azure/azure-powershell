@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCdnOriginGroup
 
 ## SYNOPSIS
-create a new origin group within the specified endpoint.
+Create a new origin group within the specified endpoint.
 
 ## SYNTAX
 
@@ -67,7 +67,7 @@ New-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <String>
 ```
 
 ## DESCRIPTION
-create a new origin group within the specified endpoint.
+Create a new origin group within the specified endpoint.
 
 ## EXAMPLES
 
