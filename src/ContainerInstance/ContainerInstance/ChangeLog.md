@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Preannounced breaking changes. Please refer to https://learn.microsoft.com/powershell/azure/upcoming-breaking-changes
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 4.1.1
 * Upgraded nuget package to signed package.
