@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -37,8 +36,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -61,8 +59,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='environment'>
         /// The operating system of the cluster. The default means all.
@@ -83,8 +80,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='environment'>
         /// The operating system of the cluster. The default means all.
@@ -110,8 +106,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         public static ClusterCodeVersionsListResult List(this IClusterVersionsOperations operations, string location)
         {
@@ -126,8 +121,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -147,8 +141,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='environment'>
         /// The operating system of the cluster. The default means all.
@@ -166,8 +159,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='environment'>
         /// The operating system of the cluster. The default means all.

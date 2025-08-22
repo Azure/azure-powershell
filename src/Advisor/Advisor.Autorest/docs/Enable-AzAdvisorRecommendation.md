@@ -48,7 +48,7 @@ Name                                 Category Resource Group   Impact ImpactedFi
 
 Enable recommendation by resource Id
 
-### Example 2: Enable recommendation byrecommendation name
+### Example 2: Enable recommendation by recommendation name
 ```powershell
 Enable-AzAdvisorRecommendation -RecommendationName 42963553-61de-5334-2d2e-47f3a0099d41
 ```
@@ -59,7 +59,7 @@ Name                                 Category Resource Group   Impact ImpactedFi
 42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   Microsoft.Compute/virtualMachines
 ```
 
-Enable recommendation byrecommendation name
+Enable recommendation by recommendation name
 
 ## PARAMETERS
 

@@ -203,7 +203,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     throw new PSArgumentException(StorageSyncResources.MissingAfsAgentInstallerPathErrorMessage);
                 }
 
+                if (string.IsNullOrEmpty(this.AzureContext?.Tenant?.Id))
+                {
+                    throw new PSArgumentException(StorageSyncResources.MissingAzureContextTenantId);
+                }
+
                 return syncServerRegistrationClient.Register(
+                    this.AzureContext.Tenant.Id,
                     ProductionArmServiceHost.ToUri(),
                     subscriptionId,
                     storageSyncServiceName,

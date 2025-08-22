@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Cmdlets
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzAdvisorConfiguration_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Digest"}, NewOutputProperties=new string[] {"Digest"}, ChangeDescription="The type of property 'Digest' of type 'Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IDigestConfig]'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.Description(@"Retrieve Azure Advisor configurations and also retrieve configurations of contained resource groups.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.Generated]

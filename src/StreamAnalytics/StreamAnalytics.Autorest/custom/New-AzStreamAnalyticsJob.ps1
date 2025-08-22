@@ -143,6 +143,7 @@ https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamana
 function New-AzStreamAnalyticsJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob", "15.0.0", "3.0.0", "2025/11/03", ChangeDescription = "The types of the properties Function, Input and Output will be changed from fixed array to 'List'.")]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
