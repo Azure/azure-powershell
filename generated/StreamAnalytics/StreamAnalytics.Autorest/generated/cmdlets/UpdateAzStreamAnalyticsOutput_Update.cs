@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStreamAnalyticsOutput_Update", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"DiagnosticCondition"}, NewOutputProperties=new string[] {"DiagnosticCondition"}, ChangeDescription="The type of property DiagnosticCondition will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Description(@"Updates an existing output under an existing streaming job. This can be used to partially update (ie. update one or two properties) an output without affecting the rest the job or output definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Generated]
