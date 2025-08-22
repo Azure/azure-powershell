@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
     /// [OpenAPI] ListByStreamingJob=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStreamAnalyticsInput_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput", "15.0.0", "3.0.0", "2025/11", DeprecatedOutputProperties=new string[] {"Condition"}, NewOutputProperties=new string[] {"Condition"}, ChangeDescription="The type of property Condition will be changed from fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Description(@"Lists all of the inputs under the specified streaming job.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Generated]

@@ -25,7 +25,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Sikp this")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureMonitorRelatedCommands()
         {

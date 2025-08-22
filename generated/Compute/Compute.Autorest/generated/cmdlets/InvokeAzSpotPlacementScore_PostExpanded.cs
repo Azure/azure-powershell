@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzSpotPlacementScore_PostExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Invoke-AzSpotPlacementRecommender")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"PlacementScore","DesiredSize","DesiredLocation"}, NewOutputProperties=new string[] {"PlacementScore","DesiredSize","DesiredLocation"}, ChangeDescription="The types of the properties 'PlacementScore', 'DesiredSize' and 'DesiredLocation' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Description(@"Generates placement scores for Spot VM skus.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Generated]

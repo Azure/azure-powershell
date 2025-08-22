@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/webtests/{webTestName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzApplicationInsightsWebTest_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"RequestHeader","PropertiesLocations"}, NewOutputProperties=new string[] {"RequestHeader","PropertiesLocations"}, ChangeDescription="The type of property 'RequestHeader' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField]'. And the property 'PropertiesLocations' of type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest' will be removed.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"Get a specific Application Insights web test definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Generated]

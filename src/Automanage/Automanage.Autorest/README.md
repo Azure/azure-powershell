@@ -200,4 +200,22 @@ directive:
           - Name
           - AuthorizationSet
           - ServicePrincipalId
+
+  - where:
+      verb: Get
+      subject: HciReport|HcrpReport|Report
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - AdditionalInfo
+          - Detail
+          - Resource
+        new-output-properties:
+          - AdditionalInfo
+          - Detail
+          - Resource
+        change-description: The types of the properties 'AdditionalInfo', 'Detail' and 'Resource' will be changed from single object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```

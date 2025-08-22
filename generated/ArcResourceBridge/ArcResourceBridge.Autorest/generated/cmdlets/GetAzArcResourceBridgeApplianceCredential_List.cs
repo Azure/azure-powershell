@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Cmdlets
     /// [OpenAPI] ListClusterUserCredential=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}/listClusterUserCredential"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzArcResourceBridgeApplianceCredential_List", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Kubeconfig","SupportedVersion"}, NewOutputProperties=new string[] {"Kubeconfig","SupportedVersion"}, ChangeDescription="The types of the properties 'Kubeconfig' and 'SupportedVersion' will be changed from single object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IApplianceListCredentialResults))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Description(@"Returns the cluster user credentials for the dedicated appliance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Generated]
