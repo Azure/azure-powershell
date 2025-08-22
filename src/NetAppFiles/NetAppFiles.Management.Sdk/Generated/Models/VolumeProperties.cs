@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="serviceLevel">The service level of the file system
-        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;,
+        /// &#39;Flexible&#39;</param>
 
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
         /// quota used for alerting only. For regular volumes, valid values are in the
@@ -94,6 +95,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="dataProtection">DataProtection type volumes include an object containing details of the
         /// replication
         /// </param>
+
+        /// <param name="acceptGrowCapacityPoolForShortTermCloneSplit">While auto splitting the short term clone volume, if the parent pool does
+        /// not have enough space to accommodate the volume after split, it will be
+        /// automatically resized, which will lead to increased billing. To accept
+        /// capacity pool size auto grow and create a short term clone volume, set the
+        /// property as accepted.
+        /// Possible values include: &#39;Accepted&#39;, &#39;Declined&#39;</param>
 
         /// <param name="isRestoring">Restoring
         /// </param>
@@ -249,7 +257,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="originatingResourceId">Id of the snapshot or backup that the volume is restored from.
         /// </param>
-        public VolumeProperties(string creationToken, long usageThreshold, string subnetId, string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkFeatures = default(string), string effectiveNetworkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), System.Collections.Generic.IList<MountTargetProperties> mountTargets = default(System.Collections.Generic.IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), System.Collections.Generic.IList<string> dataStoreResourceId = default(System.Collections.Generic.IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), System.Collections.Generic.IList<PlacementKeyValuePairs> placementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string enableSubvolumes = default(string), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string))
+
+        /// <param name="inheritedSizeInBytes">Space shared by short term clone volume with parent volume in bytes.
+        /// </param>
+        public VolumeProperties(string creationToken, long usageThreshold, string subnetId, string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkFeatures = default(string), string effectiveNetworkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), System.Collections.Generic.IList<MountTargetProperties> mountTargets = default(System.Collections.Generic.IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), string acceptGrowCapacityPoolForShortTermCloneSplit = default(string), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), System.Collections.Generic.IList<string> dataStoreResourceId = default(System.Collections.Generic.IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), System.Collections.Generic.IList<PlacementKeyValuePairs> placementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string enableSubvolumes = default(string), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string), long? inheritedSizeInBytes = default(long?))
 
         {
             this.FileSystemId = fileSystemId;
@@ -271,6 +282,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.MountTargets = mountTargets;
             this.VolumeType = volumeType;
             this.DataProtection = dataProtection;
+            this.AcceptGrowCapacityPoolForShortTermCloneSplit = acceptGrowCapacityPoolForShortTermCloneSplit;
             this.IsRestoring = isRestoring;
             this.SnapshotDirectoryVisible = snapshotDirectoryVisible;
             this.KerberosEnabled = kerberosEnabled;
@@ -308,6 +320,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.ProvisionedAvailabilityZone = provisionedAvailabilityZone;
             this.IsLargeVolume = isLargeVolume;
             this.OriginatingResourceId = originatingResourceId;
+            this.InheritedSizeInBytes = inheritedSizeInBytes;
             CustomInit();
         }
 
@@ -331,7 +344,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string CreationToken {get; set; }
 
         /// <summary>
-        /// Gets or sets the service level of the file system Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;
+        /// Gets or sets the service level of the file system Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;, &#39;Flexible&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "serviceLevel")]
         public string ServiceLevel {get; set; }
@@ -443,6 +456,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dataProtection")]
         public VolumePropertiesDataProtection DataProtection {get; set; }
+
+        /// <summary>
+        /// Gets or sets while auto splitting the short term clone volume, if the
+        /// parent pool does not have enough space to accommodate the volume after
+        /// split, it will be automatically resized, which will lead to increased
+        /// billing. To accept capacity pool size auto grow and create a short term
+        /// clone volume, set the property as accepted. Possible values include: &#39;Accepted&#39;, &#39;Declined&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "acceptGrowCapacityPoolForShortTermCloneSplit")]
+        public string AcceptGrowCapacityPoolForShortTermCloneSplit {get; set; }
 
         /// <summary>
         /// Gets restoring
@@ -714,6 +737,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "originatingResourceId")]
         public string OriginatingResourceId {get; private set; }
+
+        /// <summary>
+        /// Gets space shared by short term clone volume with parent volume in bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "inheritedSizeInBytes")]
+        public long? InheritedSizeInBytes {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -809,6 +838,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 this.DataProtection.Validate();
             }
+
 
 
 

@@ -493,4 +493,38 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
+
+  - where:
+      subjectPrefix: Cdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: ProfileSku
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
 ```
