@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzHealthcareIotConnector_UpdateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"IdentityType","IdentityUserAssignedIdentity"}, NewOutputProperties=new string[] {"EnableSystemAssignedIdentity","UserAssignedIdentity"}, ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Description(@"Patch an IoT Connector.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Generated]
