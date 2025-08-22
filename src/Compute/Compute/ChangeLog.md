@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 10.2.0
 * Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
