@@ -5,6 +5,12 @@ import path from 'path';
 import { get, RequestOptions } from 'http';
 import { toolParameterSchema } from '../types.js';
 import { CodegenServer } from '../CodegenServer.js';
+import {
+    listSpecModules,
+    listProvidersForService,
+    listApiVersions,
+    resolveAutorestInputs
+} from './utils.js';
 
 export class ToolsService {
     private static _instance: ToolsService;
@@ -41,6 +47,18 @@ export class ToolsService {
                 break;
             case "createTestsFromSpecs":
                 func = this.createTestsFromSpecs<Args>;
+                break;
+            case "listSpecModules":
+                func = this.toolListSpecModules<Args>;
+                break;
+            case "listProvidersForService":
+                func = this.toolListProvidersForService<Args>;
+                break;
+            case "listApiVersions":
+                func = this.toolListApiVersions<Args>;
+                break;
+            case "resolveAutorestInputs":
+                func = this.toolResolveAutorestInputs<Args>;
                 break;
             default:
                 throw new Error(`Tool ${name} not found`);
@@ -166,5 +184,33 @@ export class ToolsService {
         const testPath = path.join(workingDirectory, "test");
         const exampleSpecsPath = await utils.getExamplesFromSpecs(workingDirectory);
         return [exampleSpecsPath, testPath];
+    }
+
+    toolListSpecModules = async <Args extends ZodRawShape>(_args: Args): Promise<string[]> => {
+        const modules = await listSpecModules();
+        return [JSON.stringify(modules)];
+    }
+
+    toolListProvidersForService = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
+        const service = z.string().parse(Object.values(args)[0]);
+        const providers = await listProvidersForService(service);
+        return [service, JSON.stringify(providers)];
+    }
+
+    toolListApiVersions = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
+        const service = z.string().parse(Object.values(args)[0]);
+        const provider = z.string().parse(Object.values(args)[1]);
+        const res = await listApiVersions(service, provider);
+        return [service, provider, JSON.stringify(res.stable), JSON.stringify(res.preview)];
+    }
+
+    toolResolveAutorestInputs = async <Args extends ZodRawShape>(args: Args): Promise<string[]> => {
+        const service = z.string().parse(Object.values(args)[0]);
+        const provider = z.string().parse(Object.values(args)[1]);
+        const stability = z.enum(['stable','preview']).parse(Object.values(args)[2]);
+        const version = z.string().parse(Object.values(args)[3]);
+        const swaggerPath = Object.values(args)[4] ? z.string().parse(Object.values(args)[4]) : undefined;
+        const resolved = await resolveAutorestInputs({ service, provider, stability, version, swaggerPath });
+        return [resolved.serviceName, resolved.commitId, resolved.serviceSpecs, resolved.swaggerFileSpecs];
     }
 }

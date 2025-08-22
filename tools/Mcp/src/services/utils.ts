@@ -4,6 +4,10 @@ import { yamlContent } from '../types.js';
 import { execSync } from 'child_process';
 import path from 'path';
 
+const GITHUB_API_BASE = 'https://api.github.com';
+const REST_API_SPECS_OWNER = 'Azure';
+const REST_API_SPECS_REPO = 'azure-rest-api-specs';
+
 const _pwshCD = (path: string): string => { return `pwsh -Command "$path = resolve-path ${path} | Set-Location"` }
 const _autorestReset = "autorest --reset"
 const _autorest = "autorest"
@@ -76,6 +80,125 @@ export async function getSwaggerContentFromUrl(swaggerUrl: string): Promise<any>
         console.error('Error fetching swagger content:', error);
         throw error;
     }
+}
+
+/**
+ * GitHub helper: get latest commit SHA for azure-rest-api-specs main branch
+ */
+export async function getSpecsHeadCommitSha(branch: string = 'main'): Promise<string> {
+    const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/branches/${branch}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`Failed to fetch branch '${branch}' info: ${res.status}`);
+    }
+    const data = await res.json();
+    return data?.commit?.sha as string;
+}
+
+/**
+ * List top-level service directories under specification/
+ */
+export async function listSpecModules(): Promise<string[]> {
+    const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/specification`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`Failed to list specification directory: ${res.status}`);
+    }
+    const list = await res.json();
+    return (Array.isArray(list) ? list : [])
+        .filter((e: any) => e.type === 'dir')
+        .map((e: any) => e.name)
+        .sort((a: string, b: string) => a.localeCompare(b));
+}
+
+/**
+ * Given a service (spec folder), list provider namespaces under resource-manager.
+ */
+export async function listProvidersForService(service: string): Promise<string[]> {
+    const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/specification/${service}/resource-manager`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        // Sometimes service has alternate structure or doesn't exist
+        throw new Error(`Failed to list providers for service '${service}': ${res.status}`);
+    }
+    const list = await res.json();
+    return (Array.isArray(list) ? list : [])
+        .filter((e: any) => e.type === 'dir')
+        .map((e: any) => e.name)
+        .sort((a: string, b: string) => a.localeCompare(b));
+}
+
+/**
+ * For service + provider, list API version directories under stable/ and preview/.
+ * Returns map: { stable: string[], preview: string[] }
+ */
+export async function listApiVersions(service: string, provider: string): Promise<{ stable: string[]; preview: string[] }> {
+    const base = `specification/${service}/resource-manager/${provider}`;
+    const folders = ['stable', 'preview'] as const;
+    const result: { stable: string[]; preview: string[] } = { stable: [], preview: [] };
+    for (const f of folders) {
+        const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/${base}/${f}`;
+        const res = await fetch(url);
+        if (!res.ok) {
+            // ignore missing
+            continue;
+        }
+        const list = await res.json();
+        const versions = (Array.isArray(list) ? list : [])
+            .filter((e: any) => e.type === 'dir')
+            .map((e: any) => e.name)
+            .sort((a: string, b: string) => a.localeCompare(b, undefined, { numeric: true }));
+        result[f] = versions;
+    }
+    return result;
+}
+
+/**
+ * For a given service/provider/version, find likely swagger files (.json) under that version path.
+ * Returns array of repo-relative file paths (starting with specification/...).
+ */
+export async function listSwaggerFiles(service: string, provider: string, stability: 'stable'|'preview', version: string): Promise<string[]> {
+    const dir = `specification/${service}/resource-manager/${provider}/${stability}/${version}`;
+    const url = `${GITHUB_API_BASE}/repos/${REST_API_SPECS_OWNER}/${REST_API_SPECS_REPO}/contents/${dir}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`Failed to list files for ${dir}: ${res.status}`);
+    }
+    const list = await res.json();
+    const files: any[] = Array.isArray(list) ? list : [];
+    // Find JSON files; prefer names ending with provider or service
+    const jsons = files.filter(f => f.type === 'file' && f.name.endsWith('.json'));
+    const preferred = jsons.filter(f => new RegExp(`${provider.split('.').pop()}|${service}`, 'i').test(f.name));
+    const ordered = (preferred.length ? preferred : jsons).map(f => f.path);
+    return ordered;
+}
+
+/**
+ * Resolve the four Autorest inputs given service, provider, and version path.
+ */
+export async function resolveAutorestInputs(params: {
+    service: string;
+    provider: string;
+    stability: 'stable'|'preview';
+    version: string;
+    swaggerPath?: string; // optional repo-relative path override
+}): Promise<{ serviceName: string; commitId: string; serviceSpecs: string; swaggerFileSpecs: string }> {
+    const commitId = await getSpecsHeadCommitSha('main');
+    const serviceSpecs = `${params.service}/resource-manager`;
+    let swaggerFileSpecs = params.swaggerPath ?? '';
+    if (!swaggerFileSpecs) {
+        const candidates = await listSwaggerFiles(params.service, params.provider, params.stability, params.version);
+        if (candidates.length === 0) {
+            throw new Error(`No swagger files found for ${params.service}/${params.provider}/${params.stability}/${params.version}`);
+        }
+        swaggerFileSpecs = candidates[0];
+    }
+    return {
+        serviceName: params.provider.replace(/^Microsoft\./, ''),
+        commitId,
+        serviceSpecs,
+        swaggerFileSpecs
+    };
 }
 
 export async function findAllPolyMorphism(workingDirectory: string): Promise<Map<string, Set<string>>> {

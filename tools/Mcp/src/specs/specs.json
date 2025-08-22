@@ -72,6 +72,41 @@
             ],
             "callbackName": "createTestsFromSpecs"
         }
+        ,
+        {
+            "name": "list-spec-modules",
+            "description": "List all top-level modules (service folders) under azure-rest-api-specs/specification.",
+            "parameters": [],
+            "callbackName": "listSpecModules"
+        },
+        {
+            "name": "list-providers",
+            "description": "List provider namespaces for a given service under resource-manager.",
+            "parameters": [
+                { "name": "service", "description": "Service folder name under specification (e.g., hybridconnectivity)", "type": "string" }
+            ],
+            "callbackName": "listProvidersForService"
+        },
+        {
+            "name": "list-api-versions",
+            "description": "List available API versions for a given service and provider (stable/preview).",
+            "parameters": [
+                { "name": "service", "description": "Service folder name under specification", "type": "string" },
+                { "name": "provider", "description": "Provider namespace folder under the service (e.g., Microsoft.HybridConnectivity)", "type": "string" }
+            ],
+            "callbackName": "listApiVersions"
+        },
+        {
+            "name": "resolve-autorest-inputs",
+            "description": "Resolve the four Autorest inputs (serviceName, commitId, serviceSpecs, swaggerFileSpecs) from service/provider/version.",
+            "parameters": [
+                { "name": "service", "description": "Service folder name under specification", "type": "string" },
+                { "name": "provider", "description": "Provider namespace under the service", "type": "string" },
+                { "name": "stability", "description": "'stable' or 'preview'", "type": "string" },
+                { "name": "version", "description": "API version (e.g., 2024-12-01)", "type": "string" }
+            ],
+            "callbackName": "resolveAutorestInputs"
+        }
     ],
     "prompts": [
         {

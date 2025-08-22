@@ -12,16 +12,15 @@
 
 # Instructions
 
-## Stage 1: Capturing Placeholder Values
-- Ask the user for the following placeholder values: serviceName, commitId, serviceSpecs, swaggerFileSpecs.
-  - Examples:
-    - serviceName: HybridConnectivity
-    - commitId: <commit hash of the swagger>
-    - serviceSpecs: hybridconnectivity/resource-manager
-    - swaggerFileSpecs: hybridconnectivity/resource-manager/Microsoft.HybridConnectivity/stable/2024-12-01/hybridconnectivity.json
-- Do not replace or modify this prompt file.
-- Store the values for use in later steps like generating the README and executing Autorest.
-- Once values are stored, mark Stage 1 as complete.
+## Stage 1: Fuzzy selection and autorest inputs (reduced user input)
+- Ask the user for only the approximate Azure service/module name (e.g., "hybrid connectivity").
+- Call the MCP tool "list-spec-modules" to fetch all service folders from azure-rest-api-specs/specification.
+- Fuzzily match the user's input to the closest service name. Show top 3 matches and ask the user to confirm the service folder to use.
+- Call the MCP tool "list-providers" with the chosen service to retrieve provider namespaces. If multiple providers are returned, ask the user to pick one; if only one, select it automatically.
+- Ask the user what they want to call the PowerShell module title/service-name (e.g., HybridConnectivity). This is the display/module name, not the spec folder name.
+- Call the MCP tool "list-api-versions" with service and provider to get available versions, separated by Stable and Preview. Ask the user to choose stability (stable/preview) and a specific API version.
+- Call the MCP tool "resolve-autorest-inputs" with service, provider, stability, and version to compute the 4 inputs: serviceName, commitId, serviceSpecs, swaggerFileSpecs.
+- Store the resolved values for later steps (README generation and Autorest). Mark Stage 1 complete.
 
 ## Stage 2: Generating partner powershell module
 - FOLLOW ALL THE STEPS. DO NOT SKIP ANY STEPS.
@@ -74,7 +73,7 @@ try-require:
   - $(repo)/specification/<serviceSpecs>/readme.powershell.md 
 
 input-file:
-  - $(repo)/<specification/<swaggerFileSpecs>
+  - $(repo)/specification/<swaggerFileSpecs>
 
 module-version: 0.1.0 
 
