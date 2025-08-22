@@ -74,7 +74,7 @@ try-require:
   - $(repo)/specification/<serviceSpecs>/readme.powershell.md 
 
 input-file:
-  - $(repo)/specification/<swaggerFileSpecs>
+  - $(repo)/<specification/<swaggerFileSpecs>
 
 module-version: 0.1.0 
 

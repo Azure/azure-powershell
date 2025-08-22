@@ -1,8 +1,9 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { responseSchema, toolParameterSchema, toolSchema } from "./types.js";
+import { responseSchema, toolParameterSchema, toolSchema, promptSchema } from "./types.js";
 import { ToolsService } from "./services/toolsService.js";
+import { PromptsService } from "./services/promptsService.js";
 import { readFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -59,7 +60,6 @@ export class CodegenServer {
         params: ElicitRequest["params"],
         options?: RequestOptions
     ): Promise<ElicitResult> {
-        //TODO: add log
         return this._mcp.server.elicitInput(params, options);
     }
 
@@ -91,28 +91,33 @@ export class CodegenServer {
     }
 
     initPrompts() {
-        this._mcp.prompt(
-            "create-greeting", 
-            "Generate a customized greeting message", 
-            { name: z.string().describe("Name of the person to greet"), style: z.string().describe("The style of greeting, such a formal, excited, or casual. If not specified casual will be used")}, 
-            ({ name, style = "casual" }: { name: string, style?: string }) => {
-            return {
-                messages: [
-                    {
-                        role: "user",
-                        content: {
-                            type: "text",
-                            text: `Please generate a greeting in ${style} style to ${name}.`,
-                        },
-                    },
-                ],
-            };
-        });
+        const promptsService = PromptsService.getInstance().setServer(this);
+        const promptsSchemas = (specs.prompts || []) as promptSchema[];
+        for (const schema of promptsSchemas) {
+            const parameter = promptsService.createPromptParametersFromSchema(schema.parameters);
+            const callback = promptsService.getPrompts(schema.callbackName, this._responses.get(schema.name));
+            this._mcp.prompt(
+                schema.name,
+                schema.description,
+                parameter,
+                (args: any) => callback(args)
+            );
+        }
     }
 
     initResponses() {
         (responses as responseSchema[])?.forEach((response: responseSchema) => {
-            this._responses.set(response.name, response.text);
+            let text = response.text;
+            if (text.startsWith("@file:")) {
+                const relPath = text.replace("@file:", "");
+                const absPath = path.join(srcPath, "specs", relPath);
+                try {
+                    text = readFileSync(absPath, "utf-8");
+                } catch (e) {
+                    console.error(`Failed to load prompt file ${absPath}:`, e);
+                }
+            }
+            this._responses.set(response.name, text);
         });
     }
 }

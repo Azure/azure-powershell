@@ -1,4 +1,4 @@
-import { CallToolResult, ElicitRequest, ElicitResult } from '@modelcontextprotocol/sdk/types.js';
+import { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { z, ZodRawShape, ZodType, ZodTypeAny } from "zod";
 import * as utils from "./utils.js";
 import path from 'path';

@@ -28,5 +28,15 @@
         "name": "create-test",
         "type": "tool",
         "text": "Read examples from specs are under {0}. Implement empty test stubs under {1}. Test stubs are named as '.Test.ps1'. Define variables in function 'setupEnv' in 'utils.ps1' under {1}, and use these variables for test cases. Value of these variables are from {0}. Leave test cases as empty if you don't find any matches. You are expert in Azure-PowerShell and Autorest.PowerShell, You know how to map data from {0} to {1}. "
+    },
+    {
+        "name": "create-greeting",
+        "type": "prompt",
+        "text": "Please generate a greeting in {1} style to {0}."
+    },
+    {
+        "name": "partner-module-workflow",
+        "type": "prompt",
+        "text": "@file:prompts/partner-module-workflow.md"
     }
 ]
