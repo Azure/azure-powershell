@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="serviceLevel">The service level of the file system
-        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;,
+        /// &#39;Flexible&#39;</param>
 
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
         /// quota used for alerting only. For regular volumes, valid values are in the
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
-        /// Gets or sets the service level of the file system Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;
+        /// Gets or sets the service level of the file system Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;, &#39;Flexible&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceLevel")]
         public string ServiceLevel {get; set; }
