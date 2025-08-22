@@ -167,12 +167,12 @@ function Update-GeneratedSubModule {
     $formatName = Get-ChildItem $SourceDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.format\.ps1xml" } | Foreach-Object {$_.Name}
     $csprojName = Get-ChildItem $SourceDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.csproj" } | Foreach-Object {$_.Name}
     $fileToUpdate = @('generated', 'resources', $psd1Name, $psm1Name, $formatName, 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
-    # Copy from src/ to generated/
+    # Move from src/ to generated/
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
         $moveTo = Join-Path $GeneratedDirectory $_
-        Write-Host "Copying $moveFrom to $moveTo ..." -ForegroundColor Cyan
-        Copy-Item -Path $moveFrom -Destination $moveTo -Recurse -Force
+        Write-Host "Moving $moveFrom to $moveTo ..." -ForegroundColor Cyan
+        Move-Item -Path $moveFrom -Destination $moveTo -Force
     }
     $cSubModuleNameTrimmed = $subModuleNameTrimmed
     if ($csprojName -match "^Az\.(?<cSubModuleName>\w+)\.csproj$") {

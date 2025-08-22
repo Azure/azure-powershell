@@ -71,4 +71,17 @@ directive:
     set:
       suppress-format: true
 
+  - where:
+      verb: Get|New
+      subject: DnssecConfig
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - SigningKey
+        new-output-properties:
+          - SigningKey
+        change-description: The types of the properties 'SigningKey' will be changed from single object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```
