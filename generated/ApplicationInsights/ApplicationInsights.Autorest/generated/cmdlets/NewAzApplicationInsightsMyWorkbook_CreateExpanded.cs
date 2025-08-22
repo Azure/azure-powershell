@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/myWorkbooks/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzApplicationInsightsMyWorkbook_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"IdentityType","IdentityUserAssignedIdentity"}, NewOutputProperties=new string[] {"EnableSystemAssignedIdentity","UserAssignedIdentity"}, ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"Create a new private workbook.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Generated]
