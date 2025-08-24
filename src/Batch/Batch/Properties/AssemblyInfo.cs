@@ -14,19 +14,15 @@
 
 using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Batch Service Manager")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - Batch")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("ed102280-3577-49bf-93dd-11b6e3a44a57")]
-[assembly: AssemblyVersion("3.7.0")]
-[assembly: AssemblyFileVersion("3.7.0")]
-#if !SIGN
-[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Batch.Test")]
-#endif
+[assembly: Guid("e96ef127-4ada-402a-8728-990443e6682c")]
+[assembly: AssemblyVersion("0.1.0")]
+[assembly: AssemblyFileVersion("0.1.0")]
