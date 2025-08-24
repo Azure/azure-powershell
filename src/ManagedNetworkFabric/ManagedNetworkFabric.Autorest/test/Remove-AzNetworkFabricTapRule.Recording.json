@@ -1,8 +1,8 @@
 {
-  "Remove-AzNetworkFabricTapRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName?api-version=2023-06-15+1": {
+  "Remove-AzNetworkFabricTapRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName?api-version=2024-06-15-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTapRules/NetworkTapRuleName?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"bd007beb-0000-0100-0000-65111e520000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2023-06-15" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2024-06-15-preview" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "6eb0fa76-edb5-431b-8ec2-47c202b2f1e2" ],
         "x-ms-request-id": [ "dd56e759-d37f-49d2-92d8-b9b0db7bde93" ],
         "x-ms-correlation-request-id": [ "ead5e868-933f-48c2-8f6e-4dd01427fbfc" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2023-06-15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2024-06-15-preview" ],
         "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T054450Z:ead5e868-933f-48c2-8f6e-4dd01427fbfc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricTapRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2023-06-15+2": {
+  "Remove-AzNetworkFabricTapRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2024-06-15-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -85,10 +85,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkFabricTapRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2023-06-15+3": {
+  "Remove-AzNetworkFabricTapRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2024-06-15-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2023-06-15",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/68ad7aee-0c39-4770-8d0f-013685c93918*806080C0C101005A495929D38FE8F9401FAB957AA1897685A830FD3EDF87A94A?api-version=2024-06-15-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
