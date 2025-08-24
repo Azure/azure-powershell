@@ -48,7 +48,7 @@
         public OSVersionValidation(IConfiguration configuration) : base(configuration, "OS version check", ValidationType.OsVersion)
         {
             _osversions = new Dictionary<string, string>();
-            _osversions["10.0"] = "Windows Server 2016";
+            _osversions["10.0"] = "Windows Server 2016, Windows Server 2019, Windows Server 2022";
             _osversions["6.3"] = "Windows Server 2012 R2";
 
             _editions = new Dictionary<uint, string>();
@@ -83,6 +83,7 @@
             _editions[40] = "Standard Edition without Hyper-V, Server Core";
             _editions[41] = "Enterprise Edition without Hyper-V, Server Core";
             _editions[42] = "Hyper-V Server";
+            _editions[407] = "Datacenter Azure Edition";
 
             _validOsVersions = configuration.ValidOsVersions().ToList();
             _validOsSkus = configuration.ValidOsSKU().ToList();
