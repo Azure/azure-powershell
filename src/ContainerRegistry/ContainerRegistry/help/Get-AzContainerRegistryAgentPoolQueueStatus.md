@@ -19,6 +19,13 @@ Get-AzContainerRegistryAgentPoolQueueStatus -AgentPoolName <String> -RegistryNam
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GetViaIdentityRegistry
+```
+Get-AzContainerRegistryAgentPoolQueueStatus -AgentPoolName <String>
+ -RegistryInputObject <IContainerRegistryIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzContainerRegistryAgentPoolQueueStatus -InputObject <IContainerRegistryIdentity>
@@ -48,7 +55,7 @@ The name of the agent pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityRegistry
 Aliases:
 
 Required: True
@@ -76,11 +83,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: GetViaIdentityRegistry
 Aliases:
 
 Required: True
@@ -176,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Int32
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IAgentPoolQueueStatus
 
 ## NOTES
 
