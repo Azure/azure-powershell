@@ -663,9 +663,9 @@ function New-AzMigrateLocalServerReplication {
             # Validate DiskToInclude
             [PSCustomObject[]]$uniqueDisks = @()
             foreach ($disk in $DiskToInclude) {
-                # VHD is not supported in Gen2 VMs
-                if ($customProperties.HyperVGeneration -eq "2" -and $disk.DiskFileFormat -eq "VHD") {
-                    throw "VHD disks are not supported in Hyper-V Generation 2 VMs. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 'VHDX' as Format."
+                # VHD is not supported as OS disk in Gen2 VMs
+                if ($customProperties.HyperVGeneration -eq "2" -and $disk.DiskFileFormat -eq "VHD" -and $disk.IsOSDisk) {
+                    throw "VHD disks cannot be used as the OS disk of Hyper-V Generation 2 VMs. Please replace disk with id '$($disk.DiskId)' in -DiskToInclude by re-running New-AzMigrateLocalDiskMappingObject with 'VHDX' as Format."
                 }
 
                 # PhysicalSectorSize must be 512 for VHD format
