@@ -241,7 +241,71 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 targetFolder = "/";
             }
 
-            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(recoveryPoint.ContainerName.Split(';')[2]);
+            GenericResource storageAccountResource = null;
+            string sourceResourceId = null;
+            string storageAccountLocation = vaultLocation; // Default to vault location
+
+            try
+            {
+                storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(recoveryPoint.ContainerName.Split(';')[2]);
+                if (storageAccountResource != null)
+                {
+                    sourceResourceId = storageAccountResource.Id;
+                    storageAccountLocation = storageAccountResource.Location;
+                    Logger.Instance.WriteDebug("Successfully retrieved storage account resource");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.WriteDebug($"Failed to get storage account resource: {ex.Message}. Will attempt to retrieve from protected item.");
+                storageAccountResource = null;
+            }
+
+            // If storage account retrieval failed, fall back to getting it from protected item
+            if (storageAccountResource == null || string.IsNullOrEmpty(sourceResourceId))
+            {
+                try
+                {
+                    Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(recoveryPoint.Id);
+                    string containerUri = HelperUtils.GetContainerUri(keyValueDict, recoveryPoint.Id);
+                    string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, recoveryPoint.Id);
+
+                    var protectedItemResponse = ServiceClientAdapter.GetProtectedItem(
+                        containerUri,
+                        protectedItemUri,
+                        null,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
+
+                    if (protectedItemResponse?.Body?.Properties is AzureFileshareProtectedItem afsProtectedItem)
+                    {
+                        sourceResourceId = afsProtectedItem.SourceResourceId;
+                        Logger.Instance.WriteDebug("Retrieved source resource ID from protected item");
+
+                        // Create a minimal resource object with the source resource ID
+                        if (!string.IsNullOrEmpty(sourceResourceId))
+                        {
+                            storageAccountResource = new GenericResource
+                            {
+                                Id = sourceResourceId,
+                                Location = storageAccountLocation
+                            };
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Instance.WriteDebug($"Failed to get protected item: {ex.Message}");
+                }
+            }
+
+            // Validate that we have a source resource ID
+            if (storageAccountResource == null || string.IsNullOrEmpty(storageAccountResource.Id))
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileShareNotFound,
+                    recoveryPoint.ContainerName));
+            }
+
             GenericResource targetStorageAccountResource = null;
             string targetStorageAccountLocation = null;
             if (targetStorageAccountName != null)
