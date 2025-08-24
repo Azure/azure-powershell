@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Network
                 var firewallPolicyDraft = new PSAzureFirewallPolicyDraft()
                 {
                     Name = this.AzureFirewallPolicyName,
-                    ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                    ThreatIntelMode = this.ThreatIntelMode,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     BasePolicy = this.BasePolicy != null ? new SubResource(this.BasePolicy) : null,
                     DnsSettings = this.DnsSetting,
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Network
                 var firewallPolicyDraft = new PSAzureFirewallPolicyDraft()
                 {
                     Name = this.AzureFirewallPolicyName,
-                    ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                    ThreatIntelMode = this.ThreatIntelMode,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     BasePolicy = BasePolicy != null ? new SubResource(BasePolicy) : null,
                     DnsSettings = this.DnsSetting,
