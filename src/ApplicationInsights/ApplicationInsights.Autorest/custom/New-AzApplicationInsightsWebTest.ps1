@@ -45,8 +45,7 @@ REQUESTHEADER <IHeaderField[]>: List of headers and their values to add to the W
 https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
 #>
 function New-AzApplicationInsightsWebTest {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTest", DeprecatedOutputProperties = ("RequestHeader System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField]"), NewOutputProperties = ("RequestHeader System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTest])]
     [CmdletBinding(DefaultParameterSetName='CreateStandard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -88,6 +87,7 @@ function New-AzApplicationInsightsWebTest {
         # When set, this value makes the ContentMatch validation case insensitive.
         ${ContentIgnoreCase},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.String]
         # Content to look for in the return of the WebTest.
@@ -101,32 +101,36 @@ function New-AzApplicationInsightsWebTest {
         # If false, validation will fail if there is a match
         ${ContentPassIfTextFound},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.String]
         # User defined description for this WebTest.
         ${Description},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Is the test actively being monitored.
         ${Enabled},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Int32]
         # Interval in seconds between test runs for this WebTest.
         # Default value is 300.
         ${Frequency},
     
+        [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTestGeolocation[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTestGeolocation[]]
         # A list of where to physically run the tests from to give global coverage for accessibility of your application.
-        # To construct, see NOTES section for GEOLOCATION properties and create a hash table.
         ${GeoLocation},
     
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum])]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("ping", "multistep", "standard")]
+        [System.String]
         # The kind of web test this is, valid choices are ping, multistep, and standard.
         ${Kind},
     
@@ -145,9 +149,8 @@ function New-AzApplicationInsightsWebTest {
         [Parameter(ParameterSetName = "CreateStandard")]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IHeaderField[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField[]]
         # List of headers and their values to add to the WebTest call.
-        # To construct, see NOTES section for REQUESTHEADER properties and create a hash table.
         ${RequestHeader},
 
         [Parameter(ParameterSetName = "CreateStandard")]
@@ -156,56 +159,63 @@ function New-AzApplicationInsightsWebTest {
         # Http verb to use for this web test.
         ${RequestHttpVerb},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Parse Dependent request for this WebTest.
         ${RequestParseDependent},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.String]
         # Url location to test.
         ${RequestUrl},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Allow for retries should this WebTest fail.
         ${RetryEnabled},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Int32]
         # Validate that the WebTest returns the http status code provided.
         ${RuleExpectedHttpStatusCode},
     
-        [Parameter(ParameterSetName = "CreateStandard")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # When set, validation will ignore the status code.
         ${RuleIgnoreHttpsStatusCode},
     
-        [Parameter(ParameterSetName = "CreateStandard")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Int32]
         # A number of days to check still remain before the the existing SSL cert expires.
         # Value must be positive and the SSLCheck must be set to true.
         ${RuleSslCertRemainingLifetimeCheck},
     
-        [Parameter(ParameterSetName = "CreateStandard")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Checks to see if the SSL cert is still valid.
         ${RuleSslCheck},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebtestsResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebtestsResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.String]
         # User defined name if this WebTest.
         ${TestName},
     
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.Int32]
         # Seconds until this WebTest will timeout and fail.
@@ -217,7 +227,8 @@ function New-AzApplicationInsightsWebTest {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]
