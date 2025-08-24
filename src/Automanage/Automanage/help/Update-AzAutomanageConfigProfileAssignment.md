@@ -1,62 +1,78 @@
 ---
-external help file:
+external help file: Az.Automanage-help.xml
 Module Name: Az.Automanage
-online version: https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofileassignment
+online version: https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofileassignment
 schema: 2.0.0
 ---
 
-# Remove-AzAutomanageConfigProfileAssignment
+# Update-AzAutomanageConfigProfileAssignment
 
 ## SYNOPSIS
-Delete a configuration profile assignment
+Update an association between a VM and Automanage configuration profile
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> -VMName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzAutomanageConfigProfileAssignment -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String>]
+ -VMName <String> [-ConfigurationProfile <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityConfigurationProfileAssignment
+### UpdateViaIdentityConfigurationProfileAssignmentExpanded
 ```
-Remove-AzAutomanageConfigProfileAssignment -ConfigurationProfileAssignmentInputObject <IAutomanageIdentity>
- -VMName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAutomanageConfigProfileAssignment -VMName <String>
+ -ConfigurationProfileAssignmentInputObject <IAutomanageIdentity> [-ConfigurationProfile <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzAutomanageConfigProfileAssignment -InputObject <IAutomanageIdentity> [-ConfigurationProfile <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a configuration profile assignment
+Update an association between a VM and Automanage configuration profile
 
 ## EXAMPLES
 
-### Example 1: Delete a configuration profile assignment by name
+### Example 1: Update an association between a VM and Automanage configuration profile
 ```powershell
-Remove-AzAutomanageConfigProfileAssignment -ResourceGroupName automangerg -VMName aglinuxvm
+Update-AzAutomanageConfigProfileAssignment -ResourceGroupName automangerg -VMName aglinuxvm -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 ```
 
-This command deletes a configuration profile assignment by name.
-
-### Example 2: Delete a configuration profile assignment by pipeline
-```powershell
-Get-AzAutomanageConfigProfileAssignment -ResourceGroupName automangerg -VMName aglinuxvm | Remove-AzAutomanageConfigProfileAssignment
+```output
+Name    ResourceGroupName ManagedBy Status  TargetId
+----    ----------------- --------- ------  --------
+default automangerg                 Unknown /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm
 ```
 
-This command deletes a configuration profile assignment by pipeline.
+Update an association between a VM and Automanage configuration profile
 
 ## PARAMETERS
+
+### -ConfigurationProfile
+The Automanage configurationProfile ARM Resource URI.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ConfigurationProfileAssignmentInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
-Parameter Sets: DeleteViaIdentityConfigurationProfileAssignment
+Parameter Sets: UpdateViaIdentityConfigurationProfileAssignmentExpanded
 Aliases:
 
 Required: True
@@ -87,7 +103,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -97,28 +113,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -133,7 +134,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -148,7 +149,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityConfigurationProfileAssignment
+Parameter Sets: UpdateExpanded, UpdateViaIdentityConfigurationProfileAssignmentExpanded
 Aliases:
 
 Required: True
@@ -198,9 +199,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 
 ## NOTES
 
 ## RELATED LINKS
-
