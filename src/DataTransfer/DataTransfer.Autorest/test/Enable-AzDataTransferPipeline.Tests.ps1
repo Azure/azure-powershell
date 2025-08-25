@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzDataTransferPipeline
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Enable-AzDataTransferPipeline' {
+Describe 'Enable-AzDataTransferPipeline' -Tag 'LiveOnly' {
     It 'Enable pipeline with NoWait' {
         {
             # Enable pipeline asynchronously
