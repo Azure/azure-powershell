@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string[] NodeName { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRestart { get; set; }
+            HelpMessage = "Using this flag will force the nodes to redeploy even if service fabric is unable to disable the nodes.")]
+        public SwitchParameter ForceRedeploy { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Move node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Redeploy node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRestart.IsPresent);
+                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRedeploy.IsPresent);
                     var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginRedeployWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,

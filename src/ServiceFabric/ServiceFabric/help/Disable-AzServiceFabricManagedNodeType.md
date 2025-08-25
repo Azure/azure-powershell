@@ -1,25 +1,25 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/restart-azservicefabricmanagednodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/disable-azservicefabricmanagednodetype
 schema: 2.0.0
 ---
 
 # Disable-AzServiceFabricManagedNodeType
 
 ## SYNOPSIS
-Restart specific nodes from the node type.
+Deallocate specific nodes from the node type.
 
 ## SYNTAX
 
 ```
 Disable-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- -NodeName <String[]> [-ForceRestart] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -NodeName <String[]> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restart specific nodes from the node type. It will disabled the service fabric nodes before restarting the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not restart all the nodes at the same time. Use -ForceRestart force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
+Deallocate specific nodes from the node type. It will deallocate the underlying VMs of the fabric nodes.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ $NodeTypeName = "nt1"
 Disable-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
-Restart node 0 and 3 on the node type.
+Deallocate node 0 and 3 on the node type.
 
 ## PARAMETERS
 
@@ -72,21 +72,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ForceRestart
-Using this flag will force the node to restart even if service fabric is unable to disable the nodes.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

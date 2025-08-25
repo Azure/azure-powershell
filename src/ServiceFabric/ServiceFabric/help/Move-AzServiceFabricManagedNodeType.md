@@ -1,25 +1,25 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/restart-azservicefabricmanagednodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/move-azservicefabricmanagednodetype
 schema: 2.0.0
 ---
 
 # Move-AzServiceFabricManagedNodeType
 
 ## SYNOPSIS
-Restart specific nodes from the node type.
+Redeploy specific nodes from the node type.
 
 ## SYNTAX
 
 ```
 Move-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- -NodeName <String[]> [-ForceRestart] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -NodeName <String[]> [-ForceRedeploy] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restart specific nodes from the node type. It will disabled the service fabric nodes before restarting the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not restart all the nodes at the same time. Use -ForceRestart force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
+Redeploy specific nodes from the node type. It will disabled the service fabric nodes before dedeploying the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not redeploy all the nodes at the same time. Use -ForceRedeploy force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ $NodeTypeName = "nt1"
 Move-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -ClusterName $clusterName  -Name $NodeTypeName -NodeName nt1_0, nt1_3
 ```
 
-Restart node 0 and 3 on the node type.
+Redeploy node 0 and 3 on the node type.
 
 ## PARAMETERS
 
@@ -80,8 +80,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceRestart
-Using this flag will force the node to restart even if service fabric is unable to disable the nodes.
+### -ForceRedeploy
+Using this flag will force the node to redeploy even if service fabric is unable to disable the nodes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

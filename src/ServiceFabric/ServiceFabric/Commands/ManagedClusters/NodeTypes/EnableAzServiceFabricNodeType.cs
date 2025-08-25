@@ -50,10 +50,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public string[] NodeName { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Using this flag will force the node to restart even if service fabric is unable to disable the nodes.")]
-        public SwitchParameter ForceRestart { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -64,11 +60,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Enable node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Start node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
             {
                 try
                 {
-                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRestart.IsPresent);
+                    var actionParams = new NodeTypeActionParameters(nodes: this.NodeName);
                     var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginStartWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.ClusterName,
