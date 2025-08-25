@@ -12,10 +12,18 @@ Execute Insights for an entity.
 
 ## SYNTAX
 
+### GetExpanded (Default)
 ```
 Get-AzSentinelEntityInsight -EntityId <String> -ResourceGroupName <String> -WorkspaceName <String>
  -EndTime <DateTime> -StartTime <DateTime> [-SubscriptionId <String[]>] [-AddDefaultExtendedTimeRange]
  [-InsightQueryId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzSentinelEntityInsight -InputObject <ISecurityInsightsIdentity> -EndTime <DateTime> -StartTime <DateTime>
+ [-AddDefaultExtendedTimeRange] [-InsightQueryId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,13 +120,28 @@ entity ID
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: GetViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -144,7 +167,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: True
@@ -174,7 +197,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: False
@@ -189,7 +212,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: True
@@ -235,9 +258,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityGetInsightsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityGetInsightsResponse
 
 ## NOTES
 

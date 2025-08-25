@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.SecurityInsights
-online version: https://learn.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
+online version: https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertrule
 schema: 2.0.0
 ---
 
 # Update-AzSentinelAlertRule
 
 ## SYNOPSIS
-Updates the alert rule.
+Update the alert rule.
 
 ## SYNTAX
 
@@ -18,13 +18,20 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
  [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
  [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
  [-CreateIncident] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
- [-EntityMapping <EntityMapping[]>] [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>]
- [-GroupByAlertDetail <AlertDetail[]>] [-GroupByCustomDetail <String[]>]
- [-GroupByEntity <EntityMappingType[]>] [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>]
- [-MatchingMethod <String>] [-Query <String>] [-QueryFrequency <TimeSpan>] [-QueryPeriod <TimeSpan>]
- [-ReOpenClosedIncident] [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled]
- [-Tactic <AttackTactic>] [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EntityMapping <EntityMapping[]>] [-EventGroupingSettingAggregationKind <String>]
+ [-GroupByAlertDetail <String[]>] [-GroupByCustomDetail <String[]>] [-GroupByEntity <String[]>]
+ [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>]
+ [-QueryFrequency <TimeSpan>] [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <String>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String[]>] [-TriggerOperator <String>]
+ [-TriggerThreshold <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
+ -AlertRule <IAlertRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateFusionMLTI
@@ -39,8 +46,8 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
  -MicrosoftSecurityIncidentCreation [-SubscriptionId <String>] [-AlertRuleTemplateName <String>]
  [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String[]>] [-DisplayNamesFilter <String[]>]
- [-Enabled] [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Enabled] [-ProductFilter <String>] [-SeveritiesFilter <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateNRT
@@ -49,11 +56,17 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
  [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
  [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
  [-CreateIncident] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
- [-EntityMapping <EntityMapping[]>] [-GroupByAlertDetail <AlertDetail[]>] [-GroupByCustomDetail <String[]>]
- [-GroupByEntity <EntityMappingType[]>] [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>]
- [-MatchingMethod <String>] [-Query <String>] [-ReOpenClosedIncident] [-Severity <AlertSeverity>]
- [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>] [-DefaultProfile <PSObject>]
+ [-EntityMapping <EntityMapping[]>] [-GroupByAlertDetail <String[]>] [-GroupByCustomDetail <String[]>]
+ [-GroupByEntity <String[]>] [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>]
+ [-MatchingMethod <String>] [-Query <String>] [-ReOpenClosedIncident] [-Severity <String>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -AlertRule <IAlertRule>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityFusionMLTI
@@ -67,9 +80,8 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -FusionMLorT
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -MicrosoftSecurityIncidentCreation
  [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String[]>]
- [-DisplayNamesFilter <String[]>] [-Enabled] [-ProductFilter <MicrosoftSecurityProductName>]
- [-SeveritiesFilter <AlertSeverity[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DisplayNamesFilter <String[]>] [-Enabled] [-ProductFilter <String>] [-SeveritiesFilter <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNRT
@@ -77,10 +89,10 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -MicrosoftSe
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -NRT [-AlertDescriptionFormat <String>]
  [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>]
  [-AlertTacticsColumnName <String>] [-CreateIncident] [-Description <String>] [-Disabled]
- [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping[]>] [-GroupByAlertDetail <AlertDetail[]>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType[]>] [-GroupingConfigurationEnabled]
+ [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping[]>] [-GroupByAlertDetail <String[]>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <String[]>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-ReOpenClosedIncident]
- [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>]
+ [-Severity <String>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -90,17 +102,16 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -Scheduled
  [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>]
  [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-CreateIncident]
  [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping[]>]
- [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupByAlertDetail <AlertDetail[]>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType[]>] [-GroupingConfigurationEnabled]
+ [-EventGroupingSettingAggregationKind <String>] [-GroupByAlertDetail <String[]>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <String[]>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-QueryFrequency <TimeSpan>]
- [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <AlertSeverity>]
- [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>]
- [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <String>] [-SuppressionDuration <TimeSpan>]
+ [-SuppressionEnabled] [-Tactic <String[]>] [-TriggerOperator <String>] [-TriggerThreshold <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the alert rule.
+Update the alert rule.
 
 ## EXAMPLES
 
@@ -143,12 +154,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AlertRule
+Alert rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAlertRule
+Parameter Sets: Update, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AlertRuleTemplateName
 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled, UpdateViaIdentityFusionMLTI, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
 Required: False
@@ -193,7 +219,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled, UpdateViaIdentityFusionMLTI, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
 Required: False
@@ -219,7 +245,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -253,7 +280,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled, UpdateViaIdentityFusionMLTI, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
 Required: False
@@ -313,7 +340,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled, UpdateViaIdentityFusionMLTI, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
 Required: False
@@ -325,10 +352,9 @@ Accept wildcard characters: False
 
 ### -EntityMapping
 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
-To construct, see NOTES section for ENTITYMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping[]
 Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -343,7 +369,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind
+Type: System.String
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -373,7 +399,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]
+Type: System.String[]
 Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -403,7 +429,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]
+Type: System.String[]
 Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -431,11 +457,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: UpdateViaIdentityFusionMLTI, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityFusionMLTI, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
 Required: True
@@ -495,7 +520,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled, UpdateViaIdentityFusionMLTI, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
 Required: False
@@ -524,7 +549,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName
+Type: System.String
 Parameter Sets: UpdateMicrosoftSecurityIncidentCreation, UpdateViaIdentityMicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -596,11 +621,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
+Parameter Sets: Update, UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
 Aliases:
 
 Required: True
@@ -611,12 +637,11 @@ Accept wildcard characters: False
 ```
 
 ### -RuleId
-[Alias('RuleId')]
- The name of Operational Insights Resource Provider.
+Alert rule ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
+Parameter Sets: Update, UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
 Aliases:
 
 Required: True
@@ -645,7 +670,7 @@ Accept wildcard characters: False
 High, Medium, Low, Informational
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity[]
+Type: System.String[]
 Parameter Sets: UpdateMicrosoftSecurityIncidentCreation, UpdateViaIdentityMicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -660,7 +685,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity
+Type: System.String
 Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -672,12 +697,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
+Parameter Sets: Update, UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
 Aliases:
 
 Required: False
@@ -721,7 +745,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic
+Type: System.String[]
 Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -736,7 +760,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator
+Type: System.String
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -767,7 +791,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
+Parameter Sets: Update, UpdateFusionMLTI, UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled
 Aliases:
 
 Required: True
@@ -813,11 +837,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAlertRule
+
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule
+
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAlertRule
 
 ## NOTES
 

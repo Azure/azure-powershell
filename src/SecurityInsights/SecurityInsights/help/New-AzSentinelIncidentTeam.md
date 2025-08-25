@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelIncidentTeam
 
 ## SYNOPSIS
-Creates a Microsoft team to investigate the incident by sharing information and insights between participants.
+Create a Microsoft team to investigate the incident by sharing information and insights between participants.
 
 ## SYNTAX
 
@@ -20,15 +20,22 @@ New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -Wor
  [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonFilePath
 ```
 New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] -TeamProperty <ITeamProperties> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a Microsoft team to investigate the incident by sharing information and insights between participants.
+Create a Microsoft team to investigate the incident by sharing information and insights between participants.
 
 ## EXAMPLES
 
@@ -42,7 +49,7 @@ $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -Workspa
 Description         :
 Name                : Incident : NewIncident3
 PrimaryChannelUrl   : https://teams.microsoft.com/l/team/19:vYoGjeGlZmTEDmu0gTbrk9T_eDS4pKIkEU7UuM1IyZk1%40thread.tacv2/conversations?groupId=3c637cc5-caf1-46c7-93ac-069c6
-                      4b05395&tenantId=00001111-aaaa-2222-bbbb-3333cccc4444
+                      4b05395&tenantId=8f21ced5-2eff-4f8d-aff1-4dbb4cee8e3d
 TeamCreationTimeUtc : 2/4/2022 3:02:03 PM
 TeamId              : 3c637cc5-caf1-46c7-93ac-069c64b05395
 ```
@@ -88,6 +95,36 @@ Incident ID
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -173,22 +210,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TeamProperty
-Describes team properties
-To construct, see NOTES section for TEAMPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamProperties
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -WorkspaceName
 The name of the workspace.
 
@@ -240,11 +261,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamProperties
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamInformation
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ITeamInformation
 
 ## NOTES
 
