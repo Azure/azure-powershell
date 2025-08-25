@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataTransfer
-Module Guid: 88c154ed-ced9-4381-b277-441566a6c538
+Module Guid: 2958a59e-8f59-4066-a681-ad0f8ea534b1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.datatransfer
 Help Version: 1.0.0.0
 Locale: en-US
@@ -17,11 +17,29 @@ Approves the specified connection request in a pipeline.
 ### [Deny-AzDataTransferConnection](Deny-AzDataTransferConnection.md)
 Rejects the specified connection request in a pipeline.
 
+### [Disable-AzDataTransferConnection](Disable-AzDataTransferConnection.md)
+Disables Azure Data Transfer connections.
+
 ### [Disable-AzDataTransferFlow](Disable-AzDataTransferFlow.md)
 Disables the specified flow
 
+### [Disable-AzDataTransferFlowType](Disable-AzDataTransferFlowType.md)
+Disables Azure Data Transfer flow types.
+
+### [Disable-AzDataTransferPipeline](Disable-AzDataTransferPipeline.md)
+Disables an Azure Data Transfer pipeline.
+
+### [Enable-AzDataTransferConnection](Enable-AzDataTransferConnection.md)
+Enables Azure Data Transfer connections.
+
 ### [Enable-AzDataTransferFlow](Enable-AzDataTransferFlow.md)
 Enables the specified flow.
+
+### [Enable-AzDataTransferFlowType](Enable-AzDataTransferFlowType.md)
+Enables Azure Data Transfer flow types.
+
+### [Enable-AzDataTransferPipeline](Enable-AzDataTransferPipeline.md)
+Enables an Azure Data Transfer pipeline.
 
 ### [Get-AzDataTransferConnection](Get-AzDataTransferConnection.md)
 Gets connection resource.
