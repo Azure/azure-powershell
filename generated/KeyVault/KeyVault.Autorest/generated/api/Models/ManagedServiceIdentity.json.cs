@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>Managed HSM resource</summary>
-    public partial class ManagedHsmResource
+    /// <summary>Managed service identity (system assigned and/or user assigned identities)</summary>
+    public partial class ManagedServiceIdentity
     {
 
         /// <summary>
@@ -54,22 +54,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResource.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResource.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResource FromJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity FromJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject json ? new ManagedHsmResource(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject json ? new ManagedServiceIdentity(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject into a new instance of <see cref="ManagedHsmResource" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject into a new instance of <see cref="ManagedServiceIdentity" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ManagedHsmResource(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject json)
+        internal ManagedServiceIdentity(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -77,25 +77,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmSku.FromJson(__jsonSku) : _sku;}
-            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_principalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("principalId"), out var __jsonPrincipalId) ? (string)__jsonPrincipalId : (string)_principalId;}
+            {_tenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("tenantId"), out var __jsonTenantId) ? (string)__jsonTenantId : (string)_tenantId;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResourceTags.FromJson(__jsonTags) : _tag;}
+            {_userAssignedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("userAssignedIdentities"), out var __jsonUserAssignedIdentities) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.UserAssignedIdentities.FromJson(__jsonUserAssignedIdentities) : _userAssignedIdentity;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ManagedHsmResource" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="ManagedServiceIdentity" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ManagedHsmResource" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="ManagedServiceIdentity" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode)
         {
@@ -107,29 +103,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return container;
             }
-            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
-            }
-            AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
+                AddIf( null != (((object)this._principalId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._principalId.ToString()) : null, "principalId" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
+                AddIf( null != (((object)this._tenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._tenantId.ToString()) : null, "tenantId" ,container.Add );
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
-            }
-            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
+            AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
+            AddIf( null != this._userAssignedIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._userAssignedIdentity.ToJson(null,serializationMode) : null, "userAssignedIdentities" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
