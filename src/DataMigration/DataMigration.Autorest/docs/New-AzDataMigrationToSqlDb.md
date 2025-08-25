@@ -10,7 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Create a new database migration to a given SQL Db.
 This command can migrate data from the selected source database tables to the target database tables.
-If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target database.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <Strin
 ## DESCRIPTION
 Create a new database migration to a given SQL Db.
 This command can migrate data from the selected source database tables to the target database tables.
-If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target database.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 
 ## EXAMPLES
 
@@ -49,7 +49,7 @@ mydb1       SqlDb   Succeeded         InProgress
 
 Start a Database Migration from the on-premise Source Sql Server to target Sql Db
 
-### Example 2: Start a Database Migration with some selected tables from the on-premise Source Sql Server to target Sql Db
+### Example 2: Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
 ```powershell
 $sourcePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
 $targetPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
@@ -62,7 +62,7 @@ Name       Kind  ProvisioningState MigrationStatus
 mydb1       SqlDb   Succeeded         InProgress
 ```
 
-Start a Database Migration with some selected tables from the on-premise Source Sql Server to target Sql Db
+Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
 
 ## PARAMETERS
 
@@ -496,7 +496,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDatabaseMigrationSqlDb
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlDb
 
 ## NOTES
 
