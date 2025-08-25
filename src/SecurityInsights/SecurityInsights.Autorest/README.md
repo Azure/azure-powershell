@@ -59,7 +59,7 @@ input-file:
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueryTemplates.json
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Incidents.json
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Metadata.json
-  # - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OfficeConsents.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OfficeConsents.json
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OnboardingStates.json
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Settings.json
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/SourceControls.json
@@ -81,9 +81,9 @@ directive:
   #     subject: Operation
   #   hide: true
    # Hide OfficeConsent API
-  # - where:
-  #     subject: OfficeConsent
-  #   hide: true
+  - where:
+      subject: OfficeConsent
+    hide: true
   # Fix Action to be AlertRuleAction
   - where: 
       subject: Action
