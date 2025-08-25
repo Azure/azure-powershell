@@ -33,6 +33,12 @@
         - `Get-AzApplicationGatewayFirewallPolicy`
         - `Set-AzApplicationGatewayFirewallPolicy`
         - `New-AzApplicationGatewayFirewallPolicy`
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverSingleTestDetail` to retrieve details of a single failover test on a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverAllTestsDetail` to list all failover tests for a virtual network gateway.
+* Added cmdlet `Start-AzSiteFailoverTest` to initiate a site failover test on a virtual network gateway.
+* Added cmdlet `Stop-AzSiteFailoverTest` to stop an ongoing site failover test.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverResiliencyInformation` to retrieve resiliency information for a virtual network gateway.
+* Added cmdlet `Get-AzVirtualNetworkGatewayFailoverRoutesInformation` to get route information for a virtual network gateway.
 
 
 ## Version 7.17.0

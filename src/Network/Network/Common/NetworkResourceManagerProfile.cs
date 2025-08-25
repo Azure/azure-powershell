@@ -920,6 +920,54 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.LoadBalancerHealthPerRulePerBackendAddress, CNM.PSLoadBalancerHealthPerRulePerBackendAddress>();
 
+                // ExpressRouteFailoverSingleTestDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverSingleTestDetails, MNM.ExpressRouteFailoverSingleTestDetails>();
+
+                // ExpressRouteFailoverSingleTestDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverSingleTestDetails, CNM.PSExpressRouteFailoverSingleTestDetails>();
+
+                // ExpressRouteFailoverRedundantRoute
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverRedundantRoute, MNM.ExpressRouteFailoverRedundantRoute>();
+
+                // ExpressRouteFailoverRedundantRoute
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverRedundantRoute, CNM.PSExpressRouteFailoverRedundantRoute>();
+
+                // FailoverConnectionDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSFailoverConnectionDetails, MNM.FailoverConnectionDetails>();
+
+                // FailoverConnectionDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.FailoverConnectionDetails, CNM.PSFailoverConnectionDetails>();
+
+                // ExpressRouteFailoverTestDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverTestDetails, MNM.ExpressRouteFailoverTestDetails>();
+
+                // ExpressRouteFailoverTestDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverTestDetails, CNM.PSExpressRouteFailoverTestDetails>();
+
+                // ExpressRouteFailoverCircuitResourceDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverCircuitResourceDetails, MNM.ExpressRouteFailoverCircuitResourceDetails>();
+
+                // ExpressRouteFailoverCircuitResourceDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverCircuitResourceDetails, CNM.PSExpressRouteFailoverCircuitResourceDetails>();
+
+                // ExpressRouteFailoverConnectionResourceDetails
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteFailoverConnectionResourceDetails, MNM.ExpressRouteFailoverConnectionResourceDetails>();
+
+                // ExpressRouteFailoverConnectionResourceDetails
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteFailoverConnectionResourceDetails, CNM.PSExpressRouteFailoverConnectionResourceDetails>();
+
                 // NatRulePortMapping
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNatRulePortMapping, MNM.NatRulePortMapping>();
