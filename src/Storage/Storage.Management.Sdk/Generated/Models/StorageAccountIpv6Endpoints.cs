@@ -9,20 +9,20 @@ namespace Microsoft.Azure.Management.Storage.Models
 
     /// <summary>
     /// The URIs that are used to perform a retrieval of a public blob, queue,
-    /// table, web or dfs object.
+    /// table, web or dfs object via an IPv6 endpoint.
     /// </summary>
-    public partial class Endpoints
+    public partial class StorageAccountIpv6Endpoints
     {
         /// <summary>
-        /// Initializes a new instance of the Endpoints class.
+        /// Initializes a new instance of the StorageAccountIpv6Endpoints class.
         /// </summary>
-        public Endpoints()
+        public StorageAccountIpv6Endpoints()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Endpoints class.
+        /// Initializes a new instance of the StorageAccountIpv6Endpoints class.
         /// </summary>
 
         /// <param name="blob">Gets the blob endpoint.
@@ -48,10 +48,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="internetEndpoints">Gets the internet routing storage endpoints
         /// </param>
-
-        /// <param name="ipv6Endpoints">Gets the IPv6 storage endpoints.
-        /// </param>
-        public Endpoints(string blob = default(string), string queue = default(string), string table = default(string), string file = default(string), string web = default(string), string dfs = default(string), StorageAccountMicrosoftEndpoints microsoftEndpoints = default(StorageAccountMicrosoftEndpoints), StorageAccountInternetEndpoints internetEndpoints = default(StorageAccountInternetEndpoints), StorageAccountIpv6Endpoints ipv6Endpoints = default(StorageAccountIpv6Endpoints))
+        public StorageAccountIpv6Endpoints(string blob = default(string), string queue = default(string), string table = default(string), string file = default(string), string web = default(string), string dfs = default(string), StorageAccountMicrosoftEndpoints microsoftEndpoints = default(StorageAccountMicrosoftEndpoints), StorageAccountInternetEndpoints internetEndpoints = default(StorageAccountInternetEndpoints))
 
         {
             this.Blob = blob;
@@ -62,7 +59,6 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.Dfs = dfs;
             this.MicrosoftEndpoints = microsoftEndpoints;
             this.InternetEndpoints = internetEndpoints;
-            this.Ipv6Endpoints = ipv6Endpoints;
             CustomInit();
         }
 
@@ -119,11 +115,5 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "internetEndpoints")]
         public StorageAccountInternetEndpoints InternetEndpoints {get; set; }
-
-        /// <summary>
-        /// Gets or sets gets the IPv6 storage endpoints.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "ipv6Endpoints")]
-        public StorageAccountIpv6Endpoints Ipv6Endpoints {get; set; }
     }
 }

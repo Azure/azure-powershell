@@ -101,6 +101,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// is enabled.
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
+        /// <param name="dualStackEndpointPreference">Maintains information about the Internet protocol opted by the user.
+        /// </param>
+
         /// <param name="allowBlobPublicAccess">Allow or disallow public access to all blobs or containers in the storage
         /// account. The default interpretation is false for this property.
         /// </param>
@@ -146,7 +149,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// accounts in an Azure DNS Zone and the endpoint URL will have an
         /// alphanumeric DNS Zone identifier.
         /// Possible values include: &#39;Standard&#39;, &#39;AzureDnsZone&#39;</param>
-        public StorageAccountUpdateParameters(Sku sku = default(Sku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), string kind = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), string largeFileSharesState = default(string), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), string dnsEndpointType = default(string))
+        public StorageAccountUpdateParameters(Sku sku = default(Sku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), string kind = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), string largeFileSharesState = default(string), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), string dnsEndpointType = default(string))
 
         {
             this.Sku = sku;
@@ -168,6 +171,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.EnableExtendedGroups = enableExtendedGroups;
             this.NetworkRuleSet = networkRuleSet;
             this.LargeFileSharesState = largeFileSharesState;
+            this.DualStackEndpointPreference = dualStackEndpointPreference;
             this.AllowBlobPublicAccess = allowBlobPublicAccess;
             this.MinimumTlsVersion = minimumTlsVersion;
             this.AllowSharedKeyAccess = allowSharedKeyAccess;
@@ -321,6 +325,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         public string LargeFileSharesState {get; set; }
 
         /// <summary>
+        /// Gets or sets maintains information about the Internet protocol opted by the
+        /// user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dualStackEndpointPreference")]
+        public DualStackEndpointPreference DualStackEndpointPreference {get; set; }
+
+        /// <summary>
         /// Gets or sets allow or disallow public access to all blobs or containers in
         /// the storage account. The default interpretation is false for this property.
         /// </summary>
@@ -437,6 +448,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 this.NetworkRuleSet.Validate();
             }
+
 
 
 

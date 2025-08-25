@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     using System.Linq;
 
     /// <summary>
-    /// The properties of a storage account’s ongoing or enqueued migration.
+    /// The properties of a storage account&#39;s ongoing or enqueued migration.
     /// </summary>
     public partial class StorageAccountMigrationProperties
     {

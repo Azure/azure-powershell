@@ -27,7 +27,7 @@ payload-flattening-threshold: 2
 ``` yaml
 commit: ae38b76a7e681922a05b0b1e4d44cc725eb94802
 input-file:
-  - https://github.com/blueww/azure-rest-api-specs/blob/ec65b60fa0dc4ff769722bdb46e4c494d035cf56/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/openapi.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/ebab090bea24de986af8988fb18202e5465015e2/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/openapi.json
 
 output-folder: Generated
 
