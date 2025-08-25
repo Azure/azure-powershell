@@ -8,20 +8,43 @@ schema: 2.0.0
 # New-AzNetworkCloudConsole
 
 ## SYNOPSIS
-Create a new virtual machine console or update the properties of the existing virtual machine console.
+Create a new virtual machine console or create the properties of the existing virtual machine console.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Enabled <ConsoleEnabled> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+ -Enabled <String> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
  -SshPublicKeyData <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-Expiration <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityVirtualMachineExpanded
+```
+New-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity> -Enabled <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Expiration <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create a new virtual machine console or update the properties of the existing virtual machine console.
+Create a new virtual machine console or create the properties of the existing virtual machine console.
 
 ## EXAMPLES
 
@@ -77,8 +100,8 @@ Accept wildcard characters: False
 The indicator of whether the console access is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ConsoleEnabled
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: True
@@ -93,7 +116,7 @@ The date and time after which the key will be disallowed access.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -108,7 +131,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: True
@@ -123,7 +146,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: True
@@ -166,12 +189,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: True
@@ -217,7 +270,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -232,7 +285,7 @@ The SSH public key data.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: True
@@ -248,7 +301,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -263,7 +316,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -273,12 +326,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityVirtualMachineExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineName
 The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -324,9 +392,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsole
 
 ## NOTES
 
