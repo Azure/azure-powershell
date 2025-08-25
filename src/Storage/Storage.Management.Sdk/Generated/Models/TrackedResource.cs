@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the TrackedResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -40,14 +40,18 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
         /// <param name="tags">Resource tags.
         /// </param>
 
         /// <param name="location">The geo-location where the resource lives
         /// </param>
-        public TrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public TrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Tags = tags;
             this.Location = location;

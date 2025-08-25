@@ -282,7 +282,7 @@ $account.SasPolicy.SasExpirationPeriod
 
 SasExpirationPeriod ExpirationAction
 ------------------- ----------------
-1.12:05:06          Log 
+1.12:05:06          Log
 ```
 
 This command updates a Storage account with KeyExpirationPeriod and SasExpirationPeriod with SasExpirationAction, then show the updated account related properties.
