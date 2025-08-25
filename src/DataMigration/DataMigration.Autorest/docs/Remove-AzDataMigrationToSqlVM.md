@@ -1,64 +1,64 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserviceauthkey
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqlvm
 schema: 2.0.0
 ---
 
-# New-AzDataMigrationSqlServiceAuthKey
+# Remove-AzDataMigrationToSqlVM
 
 ## SYNOPSIS
-Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
+Delete Database Migration resource.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName <String> -SqlMigrationServiceName <String>
- [-SubscriptionId <String>] [-AuthKey1 <String>] [-AuthKey2 <String>] [-KeyName <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String>
+ -TargetDbName <String> [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzDataMigrationToSqlVM -InputObject <IDataMigrationIdentity> [-Force] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
+Delete Database Migration resource.
 
 ## EXAMPLES
 
-### Example 1: Regenerate AuthKeys for a given Sql Migration Service
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -KeyName AuthKey2
+{{ Add code here }}
 ```
 
 ```output
-AuthKey1 AuthKey2                    KeyName
--------- --------                    -------
-         IR*********************yz6=
+{{ Add output here }}
 ```
 
-This command regenerate the AuthKeys for a given Sql Migration Service.
-Here we have regenerated AuthKey2.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AuthKey1
-The first authentication key.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthKey2
-The second authentication key.
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -85,11 +85,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyName
-The name of authentication key to generate.
+### -Force
+Optional force delete boolean.
+If this is provided as true, migration will be deleted even if active.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +153,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -131,12 +163,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlMigrationServiceName
-Name of the SQL Migration Service.
+### -SqlVirtualMachineName
+.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -151,12 +183,27 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetDbName
+The name of the target database.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -197,9 +244,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IRegenAuthKeys
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlVM
 
 ## NOTES
 
