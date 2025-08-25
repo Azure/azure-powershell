@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed DSC configuration archive required module paths in `Publish-AzVMDscConfiguration` cmdlet to include module version.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
 * Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.
