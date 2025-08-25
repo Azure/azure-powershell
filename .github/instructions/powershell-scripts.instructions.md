@@ -70,7 +70,7 @@ try {
 ### Environment Variables
 ```powershell
 # Good - Check for variables that exist on all platforms
-$homeDir = $env:HOME ?? $env:USERPROFILE
+$homeDir = if ($env:HOME) { $env:HOME } else { $env:USERPROFILE }
 $homeDir = if ($env:HOME) { $env:HOME } else { $env:USERPROFILE }
 $tempDir = if ($env:TMPDIR) { $env:TMPDIR } elseif ($env:TEMP) { $env:TEMP } else { "/tmp" }
 
