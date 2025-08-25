@@ -597,6 +597,10 @@ Gets the NSP logging configuration.
 ### [Get-AzNetworkSecurityPerimeterProfile](Get-AzNetworkSecurityPerimeterProfile.md)
 Gets the specified NSP profile.
 
+### [Get-AzNetworkSecurityPerimeterServiceTag](Get-AzNetworkSecurityPerimeterServiceTag.md)
+Gets the list of service tags supported by NSP.
+These service tags can be used to list access rules in NSP.
+
 ### [Get-AzNetworkSecurityRuleConfig](Get-AzNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 

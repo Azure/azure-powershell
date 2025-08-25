@@ -33,6 +33,8 @@
         - `Get-AzApplicationGatewayFirewallPolicy`
         - `Set-AzApplicationGatewayFirewallPolicy`
         - `New-AzApplicationGatewayFirewallPolicy`
+* Added new cmdlet for List NetworkSecurityPerimeter ServiceTags
+    - `Get-AzNetworkSecurityPerimeterServiceTag`    
 
 
 ## Version 7.17.0
