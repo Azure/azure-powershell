@@ -1,3 +1,163 @@
+## 14.4.0 - September 2025
+#### Az.Accounts 5.3.0
+* Updated 'AuthenticationAssemblyLoadContext' project to deprecate .NET 6.0 and build on .NET 8.0.
+* Added Server-Side Pagination Support for 'Invoke-AzRestMethod' command via '-Paginate' parameter.
+
+#### Az.Advisor 2.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.ApplicationInsights 2.3.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.ArcResourceBridge 1.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.Attestation 2.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.Automanage 1.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.Cdn 5.0.1
+* Fixed content types comtent bug with null content
+* Added breaking change message for 2025-06-01
+
+#### Az.Compute 10.3.0
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Updated New-AzDiskConfig to include 'SecurityMetadataUri' and 'SecurityDataUri' parameters.
+* Updated Grant-AzDisk to return 'SecurityMetadataAccessSAS' property.
+
+#### Az.ConfidentialLedger 1.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.ContainerInstance 4.1.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.ContainerRegistry 4.3.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.DataTransfer 1.0.0
+* General availability for module Az.DataTransfer
+
+#### Az.DeviceRegistry 0.2.0
+* Public preview release of API version 2025-07-01-preview for Az.DeviceRegistry. New resources included:
+    - Schema Registry
+    - Schema 
+    - Schema Version
+    - Namespaces
+    - Namespace Asset
+    - Namespace Device
+    - Namespace Discovered Asset
+    - Namespace Discovered Device
+* Support for Move-AzDeviceRegistryNamespace to migrate Asset and AssetEndpointProfile resources under a specified Namespace as Namespace Assets and Namespace Devices.
+
+#### Az.Dns 1.3.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.HealthcareApis 2.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.KeyVault 6.3.2
+* Upgraded API version to 2024-11-01 [#27067]
+
+#### Az.NetAppFiles 0.25.0
+* Updated to api-version 2025-06-01
+* Added 'Flexible' to 'ServiceLevel' for 'New-AzNetAppFilesPool'
+* Added 'CustomThroughput' to 'New-AzNetAppFilesPool' and 'Update-AzNetAppFilesPool'
+* Added 'AcceptGrowCapacityPoolForShortTermCloneSplit' to 'New-AzNetAppFilesVolume'
+* Added 'Split-AZNetAppFilesCloneFromParent' cmdlet to split a clone from its parent volume
+
+#### Az.Network 7.19.1
+* Added a read-only property 'ComputedDisabledRules' to 'ApplicationGatewayFirewallPolicyManagedRuleSet'. This property shows which rules are effectively disabled, based on both user-defined WAF policy overrides and the default state of the rules in the managed ruleset.
+    * Primary affected Cmdlet (returns the modified object directly):
+        - 'New-AzApplicationGatewayFirewallPolicyManagedRuleSet'
+    * Secondary affected Cmdlets (object is nested within their returned result):
+        - 'New-AzApplicationGatewayFirewallPolicyManagedRules'
+        - 'Get-AzApplicationGatewayFirewallPolicy'
+        - 'Set-AzApplicationGatewayFirewallPolicy'
+        - 'New-AzApplicationGatewayFirewallPolicy'
+
+#### Az.NetworkCloud 1.2.1
+* Added breaking change announcement for below cmdlets from fixed array to list.
+  * Cmdlet 'Get/New/Update-AzNetworkCloudAgentPool'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudBareMetalMachine'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudBareMetalMachineKeySet'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudBmcKeySet'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudCluster'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudClusterManager'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudKubernetesCluster'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudKubernetesClusterFeature'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudL2Network'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudL3Network'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudMetricsConfiguration'
+  * Cmdlet 'Get-AzNetworkCloudRackSku'
+  * Cmdlet 'Get/Update-AzNetworkCloudServicesNetwork'
+  * Cmdlet 'Get/Update-AzNetworkCloudStorageAppliance'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudTrunkedNetwork'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudVirtualMachine'
+  * Cmdlet 'Get/New/Update-AzNetworkCloudVolume'
+  * Cmdlet 'New-AzNetworkCloudBgpAdvertisementObject'
+  * Cmdlet 'New-AzNetworkCloudBgpServiceLoadBalancerConfigurationObject'
+  * Cmdlet 'New-AzNetworkCloudControlPlaneNodeConfigurationObject'
+  * Cmdlet 'New-AzNetworkCloudEgressEndpointObject'
+  * Cmdlet 'New-AzNetworkCloudInitialAgentPoolConfigurationObject'
+  * Cmdlet 'New-AzNetworkCloudIpAddressPoolObject'
+  * Cmdlet 'New-AzNetworkCloudRackDefinitionObject'
+  * Cmdlet 'Invoke-AzNetworkCloudBareMetalMachineDataExtract'
+* Added breaking change announcement for removing parameters '-IdentityType' and '-IdentityUserAssignedIdentity' is renamed to '-UserAssignedIdentity'.
+  * Cmdlet 'New-AzNetworkCloudCluster'
+  * Cmdlet 'New-AzNetworkCloudClusterManager'
+  * Cmdlet 'Update-AzNetworkCloudCluster'
+  * Cmdlet 'Update-AzNetworkCloudClusterManager'
+
+#### Az.ServiceFabric 3.7.0
+* Updated SF to latest api preview version '2023-11-01-preview'
+* Fixed 'Set-AzServiceFabricManagedClusterApplication' to correctly overwrite existing application upgrade policy when '-RecreateApplication' parameter is specified and no other upgrade policy parameters are bound.
+* Added parameter 'AutoGeneratedDomainNameLabelScope' to allow customers to initiate migration to public CA cluster certificates in cmdlet 'New-AzServiceFabricManagedCluster' and 'Set-AzServiceFabricManagedCluster'.
+
+#### Az.Sql 6.1.0
+* Fixed 'New-AzSqlDatabaseExport' and 'New-AzSqlDatabaseImport' to use SQL Authentication with ManagedIdentity without any mandatory password
+* Added 'MemorySizeInGB' parameter to 'New-AzSqlInstance', 'Set-AzSqlInstance' to enable the creation of instances with flexible memory
+* Added 'MemorySizeInGB' field to the model of the managed instance so that it displays information about flexible memory instances that are returned by 'Get-AzSqlInstance'.
+
+#### Az.StackHCI 2.6.2
+* Added breaking change announcement for below cmdlets from fixed array to list.
+  * Cmdlet 'Get/New-AzStackHciArcSetting'
+  * Cmdlet 'Get/New/Update-AzStackHciCluster'
+  * Cmdlet 'Get/New-AzStackHciDeploymentSetting'
+  * Cmdlet 'Get/New-AzStackHciExtension'
+  * Cmdlet 'Get/Set-AzStackHciUpdate'
+  * Cmdlet 'Get/Set-AzStackHciUpdateRun'
+  * Cmdlet 'Get/Set-AzStackHciUpdateSummary'
+  * Cmdlet 'Test-AzStackHciEdgeDevice'
+  * Cmdlet 'Invoke-AzStackHciConsentAndInstallDefaultExtension'
+  * Cmdlet 'Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit'
+* The parameters of the 'New/Update-AzStackHciCluster' commands will be changed.
+  * 'IdentityType' will be removed. 'EnableSystemAssignedIdentity' will be used to enable/disable system-assigned identities.
+  * The type of 'UserAssignedIdentity' will be simplified to an array of strings that is used to specify the user's assigned identity.
+* The parameter set 'Extend' and 'ExtendViaIdentity' for cmdlet 'Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit' will be removed.
+* The parameter set 'Validate' and ValidateViaIdentity for cmdlet 'Test-AzStackHciEdgeDevice' will be removed.
+
+#### Az.StorageMover 1.5.1
+* Added breaking change announcement for 'Get-AzStorageMoverAgent' and 'Update-AzStorageMoverAgent' cmdlets from fixed array to list.
+* Added unexpanded parameter sets deprecated breaking change announcement for below cmdlets.
+  * parameter sets Create for cmdlet 'New-AzStorageMover', 'New-AzStorageMoverProject', 'New-AzStorageMoverJobDefinition'
+  * parameter sets Update and UpdateViaIdentity for Cmdlet 'Update-AzStorageMover', 'Update-AzStorageMoverAgent', 'Update-AzStorageMoverJobDefinition',  'Update-AzStorageMoverProject'
+
+#### Az.StorageSync 2.5.2
+* Fixed security bug in checking tenant id for MI server registration
+
+#### Az.StreamAnalytics 2.1.1
+* Added breaking change announcement for below cmdlets from fixed array to list.
+  * Cmdlet 'Get-AzStreamAnalyticsDefaultFunctionDefinition'
+  * Cmdlet 'Get-AzStreamAnalyticsInput'
+  * Cmdlet 'Get-AzStreamAnalyticsJob'
+  * Cmdlet 'Get-AzStreamAnalyticsOutput'
+  * Cmdlet 'New-AzStreamAnalyticsOutput'
+  * Cmdlet 'Update-AzStreamAnalyticsOutput'
+  * Cmdlet 'Get-AzStreamAnalyticsQuota'
+* Added 'the parameter Location will be removed' breaking change announcement for Cmdlet 'Update-AzStreamAnalyticsCluster'.
+
 ## 14.3.0 - August 2025
 #### Az.Accounts 5.2.0
 * Fixed an issue where 'Clear-AzContext' does not clear the token cache when broker is enabled.

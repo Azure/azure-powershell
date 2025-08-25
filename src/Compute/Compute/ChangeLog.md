@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 10.3.0
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
 * Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.1
 * Added breaking change announcement for below cmdlets from fixed array to list.
   * Cmdlet `Get-AzStreamAnalyticsDefaultFunctionDefinition`
   * Cmdlet `Get-AzStreamAnalyticsInput`
