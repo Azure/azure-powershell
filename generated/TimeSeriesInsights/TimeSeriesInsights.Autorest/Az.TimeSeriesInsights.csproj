@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>TimeSeriesInsights</PsModuleName>
     <PsRootModuleName>TimeSeriesInsights</PsRootModuleName>
+    <PsModuleFolder>TimeSeriesInsights.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

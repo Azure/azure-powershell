@@ -21,6 +21,13 @@
 -->
 ## Upcoming Release
 * Fixed DSC configuration archive required module paths in `Publish-AzVMDscConfiguration` cmdlet to include module version.
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
+* Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.
+
+## Version 10.2.0
+* Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
+* Upgraded SpotPlacementScore cmdlets to api version 2025-06-05
 
 ## Version 10.1.0
 * Support for Metadata Security Protocol (MSP) support for Gallery

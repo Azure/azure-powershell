@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed content types comtent bug with null content
+* Added breaking change message for 2025-06-01
 
 ## Version 5.0.0
 * Upgraded Api version to 2025-04-15

@@ -29,7 +29,7 @@ For information on how to develop for `Az.MongoDB`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 18f9e9bfeeccb0f9a44c9902e8478fbe97d2c3c6
+commit: 589f71f4a7fe1c6ca70b0988cadd93687df8f73c
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -40,8 +40,7 @@ require:
 try-require: 
   - $(repo)/specification/liftrmongodb/resource-manager/readme.powershell.md
 
-# For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 1.0.0
 # Normally, title is the service name
 title: MongoDB
 service-name: MongoDB

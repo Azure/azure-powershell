@@ -3,6 +3,7 @@
     <PsModuleName>Authorization</PsModuleName>
     <PsRootModuleName>Resources</PsRootModuleName>
     <PsModuleFolder>Authorization.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

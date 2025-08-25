@@ -3,6 +3,7 @@
     <PsModuleName>VMware</PsModuleName>
     <PsRootModuleName>VMware</PsRootModuleName>
     <PsModuleFolder>VMware.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.VMware</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
