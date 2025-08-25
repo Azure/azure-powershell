@@ -1,6 +1,6 @@
 ---
 Module Name: Az.KeyVault
-Module Guid: f682d34a-6f17-4cd7-967e-aa2e28f8b021
+Module Guid: 41a2dd49-ba6a-4447-80d5-e4b4e498bdc4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.keyvault
 Help Version: 1.0.0.0
 Locale: en-US
