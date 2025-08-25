@@ -35,21 +35,23 @@ Set-DevContext -RepoRoot 'C:\repos\azure-powershell'
 `Get-DevModule` and `Get-DevProject` are the main cmdlets to get the inventory of the repo.
 
 ```powershell
+# Get first 10 modules
 PS /> Get-DevModule | Select-Object -First 10
 
-Name                 Type          Path
-----                 ----          ----
-Maps                 AutoRestBased /Users/azps/workspace/azure-powershell/src/Maps
-Kusto                AutoRestBased /Users/azps/workspace/azure-powershell/src/Kusto
-StorageMover         AutoRestBased /Users/azps/workspace/azure-powershell/src/StorageMover
-ResourceGraph        Hybrid        /Users/azps/workspace/azure-powershell/src/ResourceGraph
-Terraform            AutoRestBased /Users/azps/workspace/azure-powershell/src/Terraform
-PostgreSql           AutoRestBased /Users/azps/workspace/azure-powershell/src/PostgreSql
-SpringCloud          AutoRestBased /Users/azps/workspace/azure-powershell/src/SpringCloud
-ManagedNetworkFabric AutoRestBased /Users/azps/workspace/azure-powershell/src/ManagedNetworkFabric
-ServiceBus           Hybrid        /Users/azps/workspace/azure-powershell/src/ServiceBus
-Mdp                  AutoRestBased /Users/azps/workspace/azure-powershell/src/Mdp
+Name             Type          Path
+----             ----          ----
+Accounts         SdkBased      C:\azure-powershell\src\Accounts
+ADDomainServices AutoRestBased C:\azure-powershell\src\ADDomainServices
+Advisor          AutoRestBased C:\azure-powershell\src\Advisor
+Aks              Hybrid        C:\azure-powershell\src\Aks
+AksArc           AutoRestBased C:\azure-powershell\src\AksArc
+Alb              AutoRestBased C:\azure-powershell\src\Alb
+AlertsManagement Hybrid        C:\azure-powershell\src\AlertsManagement
+AnalysisServices SdkBased      C:\azure-powershell\src\AnalysisServices
+ApiManagement    SdkBased      C:\azure-powershell\src\ApiManagement
+App              AutoRestBased C:\azure-powershell\src\App
 
+# Group all projects by type
 PS /> Get-DevProject | Group-Object -Property Type | Select-Object -Property Name,Count | Sort-Object -Property Count -Descending
 
 Name          Count
@@ -61,6 +63,14 @@ Test             70
 Track1Sdk        48
 Other             8
 LegacyHelper      4
+
+# Get statistics of autorest v3/v4
+PS /> Get-DevProject -Type AutoRestBased | Group-Object -Property SubType
+
+Count Name                      Group
+----- ----                      -----
+   50 v3                        {Advisor.Autorest, ApplicationInsights.Autorest, ArcResourceBridge.Autorest, Attestation.Autorest…}
+  127 v4                        {ADDomainServices.Autorest, Aks.Autorest, AksArc.Autorest, Alb.Autorest…}
 ```
 
 ### Update Assemblies in `src/lib`

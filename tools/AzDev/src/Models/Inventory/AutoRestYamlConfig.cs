@@ -42,6 +42,13 @@ namespace AzDev.Models.Inventory
         private IEnumerable<string> _tryRequire = Enumerable.Empty<string>();
 
         [YamlMember(Alias = "directive")]
-        public IEnumerable<object> Directive { get; internal set; } = Enumerable.Empty<object>();
+        public object Directive { get; internal set; } = Array.Empty<object>();
+
+        // Recognize use-extension block for AutoRest.PowerShell version detection
+        // Example:
+        // use-extension:
+        //   "@autorest/powershell": "3.x"
+        [YamlMember(Alias = "use-extension")]
+        public IDictionary<string, string> UseExtension { get; internal set; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }
