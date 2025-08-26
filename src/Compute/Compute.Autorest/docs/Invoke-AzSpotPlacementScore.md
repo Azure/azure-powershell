@@ -264,7 +264,7 @@ The desired resource SKUs.
 To construct, see NOTES section for DESIREDSIZE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.IResourceSize[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.IResourceSize[]
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
@@ -311,7 +311,7 @@ SpotPlacementScores API Input.
 To construct, see NOTES section for SPOTPLACEMENTSCORESINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput
 Parameter Sets: Post, PostViaIdentity
 Aliases: SpotPlacementRecommenderInput
 
@@ -374,13 +374,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20250605.ISpotPlacementScoresResponse
 
 ## NOTES
 

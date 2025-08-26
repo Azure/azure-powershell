@@ -15,6 +15,7 @@ Update a gallery Application Version.
 
 function Update-AzGalleryApplicationVersion {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion", DeprecatedOutputProperties = ("PublishingProfileTargetExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryTargetExtendedLocation", "ReplicationStatusSummary Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRegionalReplicationStatus", "TargetRegion Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion"), NewOutputProperties = ("PublishingProfileTargetExtendedLocation System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryTargetExtendedLocation]", "ReplicationStatusSummary System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRegionalReplicationStatus]", "TargetRegion System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion]"))]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

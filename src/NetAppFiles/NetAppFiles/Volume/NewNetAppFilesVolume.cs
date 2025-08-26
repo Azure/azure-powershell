@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "The type of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("DataProtection")]
+        [PSArgumentCompleter("DataProtection", "ShortTermClone")]
         public string VolumeType { get; set; }
 
         [Parameter(
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS", "Flexible")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -336,6 +336,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as accepted")]
+        [PSArgumentCompleter("Accepted", "Declined")]
+        public string AcceptGrowCapacityPoolForShortTermCloneSplit { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -429,7 +435,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                     SmbNonBrowsable = SmbNonBrowsable,
                     CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy,
-                    CoolAccessTieringPolicy = CoolAccessTieringPolicy
+                    CoolAccessTieringPolicy = CoolAccessTieringPolicy,
+                    AcceptGrowCapacityPoolForShortTermCloneSplit = AcceptGrowCapacityPoolForShortTermCloneSplit
                 };
                 if (IsLargeVolume.IsPresent)
                 {

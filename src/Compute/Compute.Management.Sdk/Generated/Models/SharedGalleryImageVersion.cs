@@ -50,6 +50,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// this Image Version.</param>
         /// <param name="storageProfile">Describes the storage profile of the
         /// image version.</param>
+        /// <param name="artifactTags">The artifact tags of a shared gallery
+        /// resource.</param>
         public SharedGalleryImageVersion(string name = default(string), string location = default(string), string uniqueId = default(string), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), bool? excludeFromLatest = default(bool?), SharedGalleryImageVersionStorageProfile storageProfile = default(SharedGalleryImageVersionStorageProfile), IDictionary<string, string> artifactTags = default(IDictionary<string, string>))
             : base(name, location, uniqueId)
         {
@@ -97,6 +99,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public SharedGalleryImageVersionStorageProfile StorageProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets the artifact tags of a shared gallery resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.artifactTags")]
         public IDictionary<string, string> ArtifactTags { get; set; }
