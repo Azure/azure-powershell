@@ -6041,9 +6041,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <PropertyName>LastComputedTime</PropertyName>
-              <PropertyName>NextEligibleComputeTime</PropertyName>
-              <PropertyName>RouteSetVersion</PropertyName>
+              <TableColumnItem><PropertyName>LastComputedTime</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>NextEligibleComputeTime</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>RouteSetVersion</PropertyName></TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -6063,9 +6063,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <PropertyName>OverallScore</PropertyName>
-              <PropertyName>ScoreChange</PropertyName>
-              <PropertyName>LastComputedTime</PropertyName>
+              <TableColumnItem><PropertyName>OverallScore</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>ScoreChange</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>LastComputedTime</PropertyName></TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -6087,11 +6087,11 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <PropertyName>PeeringLocation</PropertyName>
-              <PropertyName>Status</PropertyName>
-              <PropertyName>StartTime</PropertyName>
-              <PropertyName>EndTime</PropertyName>
-              <PropertyName>TestType</PropertyName>
+              <TableColumnItem><PropertyName>PeeringLocation</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Status</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>StartTime</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>EndTime</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>TestType</PropertyName></TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -6113,11 +6113,11 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <PropertyName>PeeringLocation</PropertyName>
-              <PropertyName>Status</PropertyName>
-              <PropertyName>StartTimeUtc</PropertyName>
-              <PropertyName>EndTimeUtc</PropertyName>
-              <PropertyName>WasSimulationSuccessful</PropertyName>
+              <TableColumnItem><PropertyName>PeeringLocation</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Status</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>StartTimeUtc</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>EndTimeUtc</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>WasSimulationSuccessful</PropertyName></TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>

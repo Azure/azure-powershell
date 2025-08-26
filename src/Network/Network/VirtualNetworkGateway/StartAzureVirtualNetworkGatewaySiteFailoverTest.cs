@@ -52,20 +52,17 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         {
             base.Execute();
 
-            var request = new StartSiteFailoverRequest
+            foreach (var peeringLocation in PeeringLocations)
             {
-                PeeringLocations = PeeringLocations,
-                Type = Type
-            };
+                var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
+                    .StartExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(
+                        ResourceGroupName,
+                        VirtualNetworkGatewayName,
+                        peeringLocation
+                    ).GetAwaiter().GetResult();
 
-            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways.StartSiteFailoverTest(
-                ResourceGroupName,
-                VirtualNetworkGatewayName,
-                request
-            );
-
-            var psResult = NetworkResourceManagerProfile.Mapper.Map<List<PSExpressRouteFailoverTestDetails>>(response);
-            WriteObject(psResult, enumerateCollection: true);
+                WriteObject(response.Body);
+            }
         }
     }
 }
