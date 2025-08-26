@@ -8,67 +8,68 @@ schema: 2.0.0
 # Update-AzSentinelDataConnector
 
 ## SYNOPSIS
-Update the data connector.
+Updates the data connector.
 
 ## SYNTAX
 
 ### UpdateAADAATP (Default)
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AzureADorAATP]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>]
+ [-AzureADorAATP] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateAmazonWebServicesCloudTrail
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-AWSRoleArn <String>] [-Log <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-AWSCloudTrail] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-AWSRoleArn <String>] [-Log <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-AWSCloudTrail] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateAmazonWebServicesS3
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-AWSRoleArn <String>] [-Log <String>] [-SQSURL <String[]>]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-AWSRoleArn <String>] [-Log <String>] [-SQSURL <String[]>]
  [-DetinationTable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-AWSS3]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateAzureSecurityCenter
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-Alerts <String>] [-ASCSubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-AzureSecurityCenter] [-WhatIf] [-Confirm]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-Alerts <String>] [-ASCSubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-AzureSecurityCenter] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateDynamics365
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-CommonDataServiceActivity <String>]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-CommonDataServiceActivity <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Dynamics365] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftCloudAppSecurity
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-Alerts <String>] [-DiscoveryLog <String>]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DiscoveryLog <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-CloudAppSecurity]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftDefenderAdvancedThreatProtection
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-DefenderATP] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftThreatIntelligence
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-BingSafetyPhishinURL <String>]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-BingSafetyPhishinURL <String>]
  [-BingSafetyPhishingUrlLookbackPeriod <String>] [-MicrosoftEmergingThreatFeed <String>]
  [-MicrosoftEmergingThreatFeedLookbackPeriod <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-MicrosoftTI] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -76,55 +77,48 @@ Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-Subscr
 
 ### UpdateMicrosoftThreatProtection
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-Incident <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-Incident <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-MicrosoftThreatProtection] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateOffice365
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-Exchange <String>] [-SharePoint <String>] [-Teams <String>]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-Exchange <String>] [-SharePoint <String>] [-Teams <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Office365] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateOfficeATP
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-OfficeATP] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateOfficeIRM
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-OfficeIRM] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateThreatIntelligence
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] [-Indicator <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] [-Indicator <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-ThreatIntelligence] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateThreatIntelligenceTaxii
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-TenantId <String>] -APIRootURL <String> [-WorkspaceId <String>]
+Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
+ [-SubscriptionId <String>] [-TenantId <String>] -APIRootURL <String> [-WorkspaceId <String>]
  [-FriendlyName <String>] [-CollectionId <String>] [-UserName <String>] [-Password <String>]
  [-TaxiiLookbackPeriod <String>] [-PollingFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-ThreatIntelligenceTaxii] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> -DataConnector <IDataConnector> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAmazonWebServicesCloudTrail
@@ -230,12 +224,6 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Tenant
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -DataConnector <IDataConnector>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateGenericUI
 ```
 Update-AzSentinelDataConnector [-UiConfigTitle <String>] [-UiConfigPublisher <String>]
@@ -263,7 +251,7 @@ Update-AzSentinelDataConnector [-UiConfigTitle <String>] [-UiConfigPublisher <St
 ```
 
 ## DESCRIPTION
-Update the data connector.
+Updates the data connector.
 
 ## EXAMPLES
 
@@ -324,7 +312,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAADAATP, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii, UpdateGenericUI, UpdateViaIdentityGenericUI
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -507,24 +495,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataConnector
-Data connector
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IDataConnector
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -623,12 +595,13 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Connector ID
+[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
+ The Id of the Data Connector.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, Update
-Aliases: DataConnectorId
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Aliases:
 
 Required: True
 Position: Named
@@ -666,11 +639,13 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
+[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]
+ Identity Parameter
+ To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAADAATP, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAADAATP, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -755,7 +730,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAADAATP, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii, UpdateGenericUI, UpdateViaIdentityGenericUI
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -864,12 +839,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
+ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, Update
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -908,11 +883,13 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+[Parameter(ParameterSetName = 'UpdateGenericUI')]
+ Gets subscription credentials which uniquely identify Microsoft Azure subscription.
+ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, Update
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: False
@@ -1163,11 +1140,12 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-The name of the workspace.
+[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
+ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, Update
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
 Aliases:
 
 Required: True
@@ -1213,15 +1191,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IDataConnector
-
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector
-
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IDataConnector
 
 ## NOTES
 

@@ -198,8 +198,13 @@ directive:
       variant: Create
     hide: true
   - where:
+      verb: Update
       subject: ^AlertRule$|^DataConnector$|^EntityQuery$
-      variant: ^(Create|Update)(?=.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentity$|^CreateViaIdentityWorkspace$
+      variant: Update
+    hide: true
+  - where:
+      subject: ^AlertRule$|^DataConnector$|^EntityQuery$
+      variant: ^(Create|Update)(?=.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentity$|^CreateViaIdentityWorkspace$|^UpdateViaIdentity$
     remove: true
   - where:
       verb: ^Update$|^Remove$

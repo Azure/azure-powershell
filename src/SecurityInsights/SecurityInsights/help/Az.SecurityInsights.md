@@ -165,7 +165,7 @@ Delete Sentinel onboarding state
 Get requirements state for a data connector type.
 
 ### [Update-AzSentinelAlertRule](Update-AzSentinelAlertRule.md)
-Update the alert rule.
+Updates the alert rule.
 
 ### [Update-AzSentinelAlertRuleAction](Update-AzSentinelAlertRuleAction.md)
 Update the action of alert rule.
@@ -180,7 +180,7 @@ Update the bookmark.
 Update the bookmark relation.
 
 ### [Update-AzSentinelDataConnector](Update-AzSentinelDataConnector.md)
-Update the data connector.
+Updates the data connector.
 
 ### [Update-AzSentinelEntityQuery](Update-AzSentinelEntityQuery.md)
 Updates the entity query.
