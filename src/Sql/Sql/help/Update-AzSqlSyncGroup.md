@@ -15,8 +15,8 @@ Updates an Azure SQL Database Sync Group.
 ```
 Update-AzSqlSyncGroup [-Name] <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
  [-SchemaFile <String>] [-UsePrivateLinkConnection <Boolean>] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-HubDatabaseAuthenticationType <String>] 
+ [-IdentityId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,29 @@ This command updates a sync group for an Azure SQL Database. "schema.json" is a 
 {"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable2"}],
 "MasterSyncMemberName":  null
 }
+
+### Example 2: Update a sync group for an Azure SQL Database with user assigned managed identity as the authentication type for hub db.
+```powershell
+Update-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" `
+-HubDatabaseAuthenticationType "userAssigned" `
+-IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -IntervalInSeconds 100 -Schema ".\schema.json" | Format-List
+```
+
+```output
+ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
+ResourceGroupName           : ResourceGroup01
+ServerName                  : Server01
+DatabaseName                : Database01
+SyncGroupName               : SyncGroup01
+SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
+IntervalInSeconds           : 100
+ConflictResolutionPolicy:   : HubWin
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
+Schema                      :
+```
+
+This command updates a sync group for an Azure SQL Database
 
 ## PARAMETERS
 
@@ -181,6 +204,35 @@ Whether to use a private link connection when connecting to the hub of this sync
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubDatabaseAuthenticationType
+The Database Authentication type of the hub database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: password, userAssigned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityId
+The identity ID of the hub database in case of UAMI Authentication.
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 

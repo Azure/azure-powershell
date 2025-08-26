@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the credential (username and password) of the Azure SQL Database. 
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = AzureSqlSet,
             HelpMessage = "The credential (username and password) of the Azure SQL Database.")]
         public PSCredential MemberDatabaseCredential { get; set; }
@@ -169,6 +170,19 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         private string syncAgentId = null;
 
+        ///<summary>
+        /// Gets or sets the Database Authentication type of the sync member database
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The Database Authentication type of the sync member database.")]
+        [ValidateSet("password", "userAssigned", IgnoreCase = true)]
+        public string MemberDatabaseAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity ID of the sync member database in case of user assigned identity authentication
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The identity ID of the sync member DB in case of UAMI Authentication")]
+        public string IdentityId { get; set; }
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -233,9 +247,42 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 newModel.MemberDatabaseName = this.MemberDatabaseName;
                 newModel.MemberServerName = this.MemberServerName;
-                newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
-                newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
-            } 
+
+                if (!MyInvocation.BoundParameters.ContainsKey(nameof(MemberDatabaseAuthenticationType)) ||
+                    this.MemberDatabaseAuthenticationType.Equals("password", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!MyInvocation.BoundParameters.ContainsKey(nameof(MemberDatabaseCredential))
+                        || this.MemberDatabaseCredential == null
+                        || string.IsNullOrEmpty(this.MemberDatabaseCredential.UserName))
+                    {
+                        throw new PSArgumentException(
+                            Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseCredentialRequired, nameof(MemberDatabaseCredential));
+                    }
+                    newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
+                    newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
+
+                    newModel.Identity = new DataSyncParticipantIdentity
+                    {
+                        Type = "None"
+                    };
+                }
+                else if (this.MemberDatabaseAuthenticationType.Equals("userAssigned", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!MyInvocation.BoundParameters.ContainsKey(nameof(IdentityId)) ||
+                        string.IsNullOrEmpty(this.IdentityId))
+                    {
+                        throw new PSArgumentException(
+                            Microsoft.Azure.Commands.Sql.Properties.Resources.IdentityIdRequired, nameof(IdentityId));
+                    }
+                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.IdentityId);
+                }
+                else
+                {
+                    throw new PSArgumentException(
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidDatabaseAuthenticationType, nameof(MemberDatabaseAuthenticationType));
+                }
+
+            }
             else
             {
                 newModel.SqlServerDatabaseId = this.SqlServerDatabaseId;

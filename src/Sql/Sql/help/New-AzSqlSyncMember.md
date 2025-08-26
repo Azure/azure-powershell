@@ -18,7 +18,8 @@ New-AzSqlSyncMember -Name <String> -MemberDatabaseType <String> -MemberServerNam
  -MemberDatabaseName <String> -MemberDatabaseCredential <PSCredential> [-SyncDirection <String>]
  [-UsePrivateLinkConnection] [-SyncMemberAzureDatabaseResourceId <String>] [-SyncGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-MemberDatabaseAuthenticationType <String>] 
+ [-IdentityId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### OnPremisesDatabaseSyncAgentComponent
@@ -98,6 +99,32 @@ SyncState                   : UnProvisioned
 ```
 
 This command creates a sync member for an on-premises SQL database.
+
+### Example 3: Create a sync member for an Azure SQL database using user managed identity authentication to authenticate to member database.
+```powershell
+New-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" -SyncDirection "OneWayMemberToHub" `
+-MemberDatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01.full.dns.name" -MemberDatabaseName "memberDatabase01"  -MemberDatabaseAuthenticationType "userAssigned" `
+-IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" | Format-List
+```
+
+```output
+ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
+ResourceGroupName           : ResourceGroup01
+ServerName                  : Server01
+DatabaseName                : Database01
+SyncGroupName               : SyncGroup01
+SyncMemberName              : SyncMember01
+SyncDirection               : OneWayMemberToHub
+MemberDatabaseType:         : AzureSqlDatabase
+SyncAgentId                 : 
+SqlServerDatabaseId         : 
+MemberServerName            : memberServer01.full.dns.name
+MemberDatabaseName          : memberDatabase01
+MemberDatabaseUserName      : 
+MemberDatabasePassword      : 
+SyncState                   : UnProvisioned
+```
+This command creates a sync member for an Azure SQL database.
 
 ## PARAMETERS
 
@@ -372,6 +399,36 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -MemberDatabaseAuthenticationType
+The Database Authentication type of the sync member database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: password, userAssigned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityId
+The identity ID of the sync member DB in case of UAMI Authentication
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

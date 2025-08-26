@@ -403,6 +403,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DatabaseCredentials (username/password) must be provided when DatabaseAuthenticationType is &apos;password&apos;..
+        /// </summary>
+        internal static string DatabaseCredentialRequired {
+            get {
+                return ResourceManager.GetString("DatabaseCredentialRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -655,6 +664,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IdentityId must be provided when DatabaseAuthenticationType is &apos;userAssigned&apos;..
+        /// </summary>
+        internal static string IdentityIdRequired {
+            get {
+                return ResourceManager.GetString("IdentityIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {
@@ -669,6 +687,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidBlobStorageSasUri {
             get {
                 return ResourceManager.GetString("InvalidBlobStorageSasUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid DatabaseAuthenticationType. Supported authentication types are &apos;userAssigned&apos; and &apos;password&apos;.
+        /// </summary>
+        internal static string InvalidDatabaseAuthenticationType {
+            get {
+                return ResourceManager.GetString("InvalidDatabaseAuthenticationType", resourceCulture);
             }
         }
         

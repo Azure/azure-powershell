@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="sku">The name and capacity of the SKU.
         /// </param>
 
+        /// <param name="identity">Sync group authentication information.
+        /// </param>
+
         /// <param name="interval">Sync interval of the sync group.
         /// </param>
 
@@ -74,11 +77,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="privateEndpointName">Private endpoint name of the sync group if use private link connection is
         /// enabled.
         /// </param>
-        public SyncGroup(string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), int? interval = default(int?), System.DateTime? lastSyncTime = default(System.DateTime?), string conflictResolutionPolicy = default(string), string syncDatabaseId = default(string), string hubDatabaseUserName = default(string), string hubDatabasePassword = default(string), string syncState = default(string), SyncGroupSchema schema = default(SyncGroupSchema), bool? enableConflictLogging = default(bool?), int? conflictLoggingRetentionInDays = default(int?), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string))
+        public SyncGroup(DataSyncParticipantIdentity identity, string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), int? interval = default(int?), System.DateTime? lastSyncTime = default(System.DateTime?), string conflictResolutionPolicy = default(string), string syncDatabaseId = default(string), string hubDatabaseUserName = default(string), string hubDatabasePassword = default(string), string syncState = default(string), SyncGroupSchema schema = default(SyncGroupSchema), bool? enableConflictLogging = default(bool?), int? conflictLoggingRetentionInDays = default(int?), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string))
 
         : base(id, name, type)
         {
             this.Sku = sku;
+            this.Identity = identity;
             this.Interval = interval;
             this.LastSyncTime = lastSyncTime;
             this.ConflictResolutionPolicy = conflictResolutionPolicy;
@@ -105,6 +109,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public Sku Sku {get; set; }
+
+        /// <summary>
+        /// Gets or sets sync group authentication information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public DataSyncParticipantIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets or sets sync interval of the sync group.
@@ -186,9 +196,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (this.Identity == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Identity");
+            }
             if (this.Sku != null)
             {
                 this.Sku.Validate();
+            }
+            if (this.Identity != null)
+            {
+                this.Identity.Validate();
             }
 
 
