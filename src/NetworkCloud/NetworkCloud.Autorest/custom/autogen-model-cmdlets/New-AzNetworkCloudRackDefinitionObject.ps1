@@ -21,21 +21,21 @@ Create an in-memory object for RackDefinition.
 Create an in-memory object for RackDefinition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.RackDefinition
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RackDefinition
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudRackDefinitionObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudrackdefinitionobject
 #>
 function New-AzNetworkCloudRackDefinitionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.RackDefinition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RackDefinition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The zone name used for this rack when created. Availability zones are used for workload placement.")]
         [string]
         $AvailabilityZone,
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("BareMetalMachineConfigurationData", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="The unordered list of bare metal machine configuration.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineConfigurationData[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData[]]
         $BareMetalMachineConfigurationData,
         [Parameter(Mandatory, HelpMessage="The resource ID of the network rack that matches this rack definition.")]
         [string]
@@ -49,14 +49,13 @@ function New-AzNetworkCloudRackDefinitionObject {
         [Parameter(Mandatory, HelpMessage="The resource ID of the sku for the rack being added.")]
         [string]
         $RackSkuId,
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.ParameterBreakingChange("StorageApplianceConfigurationData", "15.0.0", "2.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="The list of storage appliance configuration data for this rack.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IStorageApplianceConfigurationData[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData[]]
         $StorageApplianceConfigurationData
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.RackDefinition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RackDefinition]::New()
 
         if ($PSBoundParameters.ContainsKey('AvailabilityZone')) {
             $Object.AvailabilityZone = $AvailabilityZone

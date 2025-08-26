@@ -21,22 +21,23 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ServiceLoadBalancerBgpPeer
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ServiceLoadBalancerBgpPeer
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudServiceLoadBalancerBgpPeerObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudserviceloadbalancerbgppeerobject
 #>
 function New-AzNetworkCloudServiceLoadBalancerBgpPeerObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ServiceLoadBalancerBgpPeer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ServiceLoadBalancerBgpPeer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The indicator of BFD enablement for this BgpPeer.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled])]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
+        [string]
         $BfdEnabled,
         [Parameter(HelpMessage="The indicator to enable multi-hop peering support.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BgpMultiHop])]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BgpMultiHop]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
+        [string]
         $BgpMultiHop,
         [Parameter(HelpMessage="Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.")]
         [string]
@@ -65,7 +66,7 @@ function New-AzNetworkCloudServiceLoadBalancerBgpPeerObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ServiceLoadBalancerBgpPeer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ServiceLoadBalancerBgpPeer]::New()
 
         if ($PSBoundParameters.ContainsKey('BfdEnabled')) {
             $Object.BfdEnabled = $BfdEnabled
