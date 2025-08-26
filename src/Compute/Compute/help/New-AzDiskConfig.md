@@ -25,9 +25,9 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
- [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>] [-SecurityMetadataUri <String>]
+ [-SecurityDataUri <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -544,6 +544,36 @@ Specifies the Purchase Plan for the Disk.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSPurchasePlan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityDataUri
+If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityMetadataUri
+If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
