@@ -36,23 +36,42 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The GUID that identifies the failover test to stop.",
+            HelpMessage = "Peering location of the failover test to stop.",
             ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
-        public string TestGuid { get; set; }
+        public string PeeringLocation { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Whether the simulation was successful.",
+            ParameterSetName = ByName)]
+        public bool WasSimulationSuccessful { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Details of the failover simulation.",
+            ParameterSetName = ByName)]
+        public List<FailoverConnectionDetails> Details { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways.StopSiteFailoverTest(
-                ResourceGroupName,
-                VirtualNetworkGatewayName,
-                TestGuid
-            );
+            var parameters = new ExpressRouteFailoverStopApiParameters
+            {
+                PeeringLocation = this.PeeringLocation,
+                WasSimulationSuccessful = this.WasSimulationSuccessful,
+                Details = this.Details
+            };
 
-            var psResult = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteFailoverTestDetails>(response);
-            WriteObject(psResult);
+            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
+                .StopExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(
+                    ResourceGroupName,
+                    VirtualNetworkGatewayName,
+                    parameters
+                ).GetAwaiter().GetResult();
+
+            WriteObject(response.Body);
         }
     }
 }
