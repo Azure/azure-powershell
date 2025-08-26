@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.8
 * Fixed issue where the restore command failed to detect the source account, even when it existed.
 * Added support for preserving existing throughput buckets during SQL container throughput updates.
 
