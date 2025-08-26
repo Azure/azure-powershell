@@ -110,7 +110,7 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
       estimated-ga-date: 2023-09-30
 ```
 
-## Case 8 - Breaking change for a cmdlet(No parameter specified; only apply description at the cmdlet level)
+## Case 8 — Breaking change for a cmdlet(No parameter specified; only apply description at the cmdlet level)
 
 ```yaml
 - where:
