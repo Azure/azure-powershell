@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSResiliencyRecommendationComponents> Components { get; set; }
 
-        public PSCircuitMetadata CircuitMetadata { get; set; }
+        public PSCircuitMetadataMap CircuitMetadata { get; set; }
 
         public List<string> PrimaryConnectionIds { get; set; }
 
