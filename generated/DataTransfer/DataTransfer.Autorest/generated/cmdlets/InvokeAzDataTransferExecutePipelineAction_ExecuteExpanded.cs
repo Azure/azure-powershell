@@ -10,16 +10,17 @@ namespace ADT.Cmdlets
     using ADT.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Links the connection to its pending connection.</summary>
+    /// <summary>Executes a privileged action for a pipeline.</summary>
     /// <remarks>
-    /// [OpenAPI] Link=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link"
+    /// [OpenAPI] ExecuteAction=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzDataTransferLinkPendingConnection_LinkExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(ADT.Models.IConnection))]
-    [global::ADT.Description(@"Links the connection to its pending connection.")]
+    [global::ADT.InternalExport]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzDataTransferExecutePipelineAction_ExecuteExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.OutputType(typeof(ADT.Models.IPipeline))]
+    [global::ADT.Description(@"Executes a privileged action for a pipeline.")]
     [global::ADT.Generated]
-    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link", ApiVersion = "2025-05-21")]
-    public partial class InvokeAzDataTransferLinkPendingConnection_LinkExpanded : global::System.Management.Automation.PSCmdlet,
+    [global::ADT.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction", ApiVersion = "2025-05-21")]
+    public partial class InvokeAzDataTransferExecutePipelineAction_ExecuteExpanded : global::System.Management.Automation.PSCmdlet,
         ADT.Runtime.IEventListener,
         ADT.Runtime.IContext
     {
@@ -32,16 +33,28 @@ namespace ADT.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>The action to be executed.</summary>
+        private ADT.Models.IAction _actionBody = new ADT.Models.Action();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>The resource to reference.</summary>
-        private ADT.Models.IResourceBody _connectionBody = new ADT.Models.ResourceBody();
-
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Type of action to be executed</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Type of action to be executed")]
+        [global::ADT.Category(global::ADT.ParameterCategory.Body)]
+        [ADT.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Type of action to be executed",
+        SerializedName = @"actionType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("AllowUpdates", "ForceDisable")]
+        public string ActionType { get => _actionBody.Type ?? null; set => _actionBody.Type = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -58,20 +71,6 @@ namespace ADT.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public ADT.DataTransfer Client => ADT.Module.Instance.ClientAPI;
-
-        /// <summary>Backing field for <see cref="ConnectionName" /> property.</summary>
-        private string _connectionName;
-
-        /// <summary>The name for the connection to perform the operation on.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name for the connection to perform the operation on.")]
-        [ADT.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name for the connection to perform the operation on.",
-        SerializedName = @"connectionName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::ADT.Category(global::ADT.ParameterCategory.Path)]
-        public string ConnectionName { get => this._connectionName; set => this._connectionName = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -101,6 +100,17 @@ namespace ADT.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>Business justification for the action</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Business justification for the action")]
+        [global::ADT.Category(global::ADT.ParameterCategory.Body)]
+        [ADT.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Business justification for the action",
+        SerializedName = @"justification",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Justification { get => _actionBody.Justification ?? null; set => _actionBody.Justification = value; }
+
         /// <summary>
         /// <see cref="ADT.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -117,21 +127,24 @@ namespace ADT.Cmdlets
         [global::ADT.Category(global::ADT.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
-        /// <summary>ID of the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "ID of the resource.")]
-        [global::ADT.Category(global::ADT.ParameterCategory.Body)]
-        [ADT.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"ID of the resource.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        public string PendingConnectionId { get => _connectionBody.Id ?? null; set => _connectionBody.Id = value; }
-
         /// <summary>
         /// The instance of the <see cref="ADT.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public ADT.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>Backing field for <see cref="PipelineName" /> property.</summary>
+        private string _pipelineName;
+
+        /// <summary>The name for the pipeline to perform the operation on.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name for the pipeline to perform the operation on.")]
+        [ADT.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name for the pipeline to perform the operation on.",
+        SerializedName = @"pipelineName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.Category(global::ADT.ParameterCategory.Path)]
+        public string PipelineName { get => this._pipelineName; set => this._pipelineName = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -163,17 +176,6 @@ namespace ADT.Cmdlets
         [global::ADT.Category(global::ADT.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Reason for resource operation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Reason for resource operation.")]
-        [global::ADT.Category(global::ADT.ParameterCategory.Body)]
-        [ADT.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Reason for resource operation.",
-        SerializedName = @"statusReason",
-        PossibleTypes = new [] { typeof(string) })]
-        public string StatusReason { get => _connectionBody.StatusReason ?? null; set => _connectionBody.StatusReason = value; }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -193,6 +195,30 @@ namespace ADT.Cmdlets
         [global::ADT.Category(global::ADT.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Targets for the action</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Targets for the action")]
+        [global::ADT.Category(global::ADT.ParameterCategory.Body)]
+        [ADT.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Targets for the action",
+        SerializedName = @"targets",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] Target { get => _actionBody.Target?.ToArray() ?? null /* fixedArrayOf */; set => _actionBody.Target = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>Type of target to execute the action on</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Type of target to execute the action on")]
+        [global::ADT.Category(global::ADT.ParameterCategory.Body)]
+        [ADT.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Type of target to execute the action on",
+        SerializedName = @"targetType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::ADT.PSArgumentCompleterAttribute("Pipeline", "Connection", "FlowType")]
+        public string TargetType { get => _actionBody.TargetType ?? null; set => _actionBody.TargetType = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -210,12 +236,12 @@ namespace ADT.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="ADT.Models.IConnection">ADT.Models.IConnection</see> from the remote
+        /// <param name="response">the body result as a <see cref="ADT.Models.IPipeline">ADT.Models.IPipeline</see> from the remote
         /// call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipeline> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -236,10 +262,12 @@ namespace ADT.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of InvokeAzDataTransferLinkPendingConnection_LinkExpanded</returns>
-        public ADT.Cmdlets.InvokeAzDataTransferLinkPendingConnection_LinkExpanded Clone()
+        /// <returns>
+        /// a duplicate instance of InvokeAzDataTransferExecutePipelineAction_ExecuteExpanded
+        /// </returns>
+        public ADT.Cmdlets.InvokeAzDataTransferExecutePipelineAction_ExecuteExpanded Clone()
         {
-            var clone = new InvokeAzDataTransferLinkPendingConnection_LinkExpanded();
+            var clone = new InvokeAzDataTransferExecutePipelineAction_ExecuteExpanded();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -252,10 +280,10 @@ namespace ADT.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._connectionBody = this._connectionBody;
+            clone._actionBody = this._actionBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
-            clone.ConnectionName = this.ConnectionName;
+            clone.PipelineName = this.PipelineName;
             return clone;
         }
 
@@ -283,9 +311,9 @@ namespace ADT.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvokeAzDataTransferLinkPendingConnection_LinkExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="InvokeAzDataTransferExecutePipelineAction_ExecuteExpanded" /> cmdlet class.
         /// </summary>
-        public InvokeAzDataTransferLinkPendingConnection_LinkExpanded()
+        public InvokeAzDataTransferExecutePipelineAction_ExecuteExpanded()
         {
 
         }
@@ -411,7 +439,7 @@ namespace ADT.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'ConnectionsLink' operation"))
+                if (ShouldProcess($"Call remote 'PipelinesExecuteAction' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -475,12 +503,12 @@ namespace ADT.Cmdlets
                 try
                 {
                     await ((ADT.Runtime.IEventListener)this).Signal(ADT.Runtime.Events.CmdletBeforeAPICall); if( ((ADT.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ConnectionsLink(SubscriptionId, ResourceGroupName, ConnectionName, _connectionBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.PipelinesExecuteAction(SubscriptionId, ResourceGroupName, PipelineName, _actionBody, onOk, onDefault, this, Pipeline);
                     await ((ADT.Runtime.IEventListener)this).Signal(ADT.Runtime.Events.CmdletAfterAPICall); if( ((ADT.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (ADT.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ConnectionName=ConnectionName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,PipelineName=PipelineName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -558,12 +586,12 @@ namespace ADT.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="ADT.Models.IConnection">ADT.Models.IConnection</see> from the remote
+        /// <param name="response">the body result as a <see cref="ADT.Models.IPipeline">ADT.Models.IPipeline</see> from the remote
         /// call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<ADT.Models.IConnection> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<ADT.Models.IPipeline> response)
         {
             using( NoSynchronizationContext )
             {
@@ -575,7 +603,7 @@ namespace ADT.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be ADT.Models.IConnection
+                // (await response) // should be ADT.Models.IPipeline
                 var result = (await response);
                 WriteObject(result, false);
             }
