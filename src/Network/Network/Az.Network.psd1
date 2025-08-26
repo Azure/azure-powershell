@@ -755,9 +755,10 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Update-AzVpnServerConfigurationPolicyGroup', 'Update-AzVpnSite',
                'Get-AzVirtualNetworkGatewayFailoverSingleTestDetail',
                'Get-AzVirtualNetworkGatewayFailoverAllTestsDetail',
-               'Start-AzSiteFailoverTest', 'Stop-AzSiteFailoverTest',
-               'Get-AzVirtualNetworkGatewayFailoverResiliencyInformation',
-               'Get-AzVirtualNetworkGatewayFailoverRoutesInformation'
+               'Start-AzVirtualNetworkGatewaySiteFailoverTest',
+               'Stop-AzVirtualNetworkGatewaySiteFailoverTest',
+               'Get-AzVirtualNetworkGatewayResiliencyInformation',
+               'Get-AzVirtualNetworkGatewayRouteSetsInformation'
 
 
 # Variables to export from this module
