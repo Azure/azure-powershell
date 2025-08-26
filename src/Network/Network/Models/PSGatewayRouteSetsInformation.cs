@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string RouteSetVersion { get; set; }
 
-        public List<PSRouteSet> RouteSets { get; set; }
+        public List<PSGatewayRouteSet> RouteSets { get; set; }
 
-        public Dictionary<string, PSCircuitMetadata> CircuitsMetadataMap { get; set; }
+        public Dictionary<string, PSCircuitMetadataMap> CircuitsMetadataMap { get; set; }
 
         [JsonIgnore]
         public string RouteSetsText =>

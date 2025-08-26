@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSResiliencyRecommendationComponents : PSChildResource
     {
-        public string Name { get; set; }
+        public new string Name { get; set; }
 
         public string CurrentScore { get; set; }
 

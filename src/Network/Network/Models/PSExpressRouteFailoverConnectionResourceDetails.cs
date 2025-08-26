@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string NrpResourceUri { get; set; }
 
-        public string Name { get; set; }
+        public new string Name { get; set; }
 
         public string Status { get; set; }
 
