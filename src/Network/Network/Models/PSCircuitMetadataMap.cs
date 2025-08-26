@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSCircuitMetadataMap : PSChildResource
     {
-        public string Name { get; set; }
+        public new string Name { get; set; }
 
         public string Link { get; set; }
 

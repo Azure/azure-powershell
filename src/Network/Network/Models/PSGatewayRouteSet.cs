@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSGatewayRouteSet : PSChildResource
     {
-        public string Name { get; set; }
+        public new string Name { get; set; }
 
         public List<string> Locations { get; set; }
 
