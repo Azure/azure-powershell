@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Dns
-Module Guid: 71950809-d79e-44f1-ae3c-25ee2d8a9ec4
+Module Guid: 96cdae9e-d4a8-47c2-85c1-4d0be13a98df
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dns
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: Dns cmdlets
 Gets the DNSSEC configuration.
 
 ### [New-AzDnsDnssecConfig](New-AzDnsDnssecConfig.md)
-Creates or updates the DNSSEC configuration on a DNS zone.
+Create the DNSSEC configuration on a DNS zone.
 
 ### [Remove-AzDnsDnssecConfig](Remove-AzDnsDnssecConfig.md)
 Deletes the DNSSEC configuration on a DNS zone.
