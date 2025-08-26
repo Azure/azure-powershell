@@ -9,8 +9,6 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
 
 ## Case 1 — Module is deprecated
 
- 
-
 ```yaml
 - where:
     verb: (.*)
@@ -110,6 +108,20 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
     preview-announcement:
       preview-message: This is a test preview message.
       estimated-ga-date: 2023-09-30
+```
+
+## Case 8 - Breaking change for a cmdlet(No parameter specified; only apply description at the cmdlet level)
+
+```yaml
+- where:
+    verb: Remove
+    subject: VNetPeering
+  set:
+    breaking-change:
+      deprecated-by-version: 5.0.0
+      deprecated-by-azversion: 20.0.0
+      change-effective-date: 2022/05/30
+      change-description: Breaking change message applies at the cmdlet level
 ```
 
 # For customized cmdlets
