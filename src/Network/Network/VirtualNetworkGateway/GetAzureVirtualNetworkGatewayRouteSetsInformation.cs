@@ -52,8 +52,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var routeSets = this.NetworkClient.NetworkManagementClient.VirtualNetworkGateways.GetRouteSummary(this.ResourceGroupName, this.GatewayName);
-            var psRouteSets = NetworkResourceManagerProfile.Mapper.Map<PSGatewayRouteSetsInformation>(routeSets);
+            var response = this.NetworkClient.NetworkManagementClient.VirtualNetworkGateways
+                .GetRoutesInformationWithHttpMessagesAsync(this.ResourceGroupName, this.GatewayName)
+                .GetAwaiter()
+                .GetResult();
+
+            var psRouteSets = NetworkResourceManagerProfile.Mapper.Map<PSGatewayRouteSetsInformation>(response.Body);
             WriteObject(psRouteSets, true);
         }
     }
