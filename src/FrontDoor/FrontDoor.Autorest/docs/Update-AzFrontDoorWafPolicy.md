@@ -74,11 +74,6 @@ Accept wildcard characters: False
 ```
 
 ### -CustomBlockResponseBody
-[Parameter()]
-[Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-[Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettings]
-# Describes settings for the policy.
-${PolicySetting},
 If the action type is block, customer can override the response body.
 The body must be specified in base64 encoding.
 

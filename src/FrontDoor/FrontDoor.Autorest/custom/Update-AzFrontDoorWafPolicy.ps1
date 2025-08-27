@@ -146,12 +146,6 @@ param(
     # List of rule sets.
     ${ManagedRuleSet},
 
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettings]
-    # # Describes settings for the policy.
-    # ${PolicySetting},
-
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
