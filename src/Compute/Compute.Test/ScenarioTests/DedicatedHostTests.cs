@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testgenupdateazhost()
+        public void TestDedicatedHostRedeploy()
         {
-            TestRunner.RunTestScript("TestGen-updateazhost");
+            TestRunner.RunTestScript("Test-DedicatedHostRedeploy");
         }
     }
 }

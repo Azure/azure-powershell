@@ -339,7 +339,7 @@ function Test-DedicatedHostUpdateAndSize
 .SYNOPSIS
 Test Update-AzHost with Redeploy parameter.
 #>
-function TestGen-updateazhost
+function Test-DedicatedHostRedeploy
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
@@ -356,11 +356,12 @@ function TestGen-updateazhost
         New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1 -Zone "2" -Tag @{key1 = "val1"};
 
         $hostName = $rgname + 'host';
-        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "Dadsv5-Type1" -Tag @{key1 = "val2"};
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku "DSv3-Type3" -Tag @{key1 = "val2"};
 
         # Test Update-AzHost with Redeploy parameter
         $updateHost = Update-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Redeploy;
-        Assert-IsNotNull $updateHost.Redeploy;
+        Assert-True { $dedicatedHost != $null };
+        Assert-True { $updateHost.Redeploy != $null };
 
         # Verify the host is updated
         $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
