@@ -19,6 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
+    [CmdletDeprecationWithVersion(ReplacementCmdletName = "Get-AzBatchRemoteLoginSettings","14.6.0", "3.8.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchRemoteDesktopProtocolFile", DefaultParameterSetName = IdAndPathParameterSet), OutputType(typeof(void))]
     public class GetBatchRemoteDesktopProtocolFileCommand : BatchObjectModelCmdletBase
     {

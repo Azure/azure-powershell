@@ -15,9 +15,11 @@
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
+    [CmdletDeprecationWithVersion("14.6.0", "3.8.0")]
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificateDeletion"), OutputType(typeof(void))]
     public class StopBatchCertificateDeletionCommand : BatchObjectModelCmdletBase
     {

@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string CloudServiceAutoScaleParameterSet = "CloudServiceAndAutoScale";
         internal const string VirtualMachineTargetDedicatedParameterSet = "VirtualMachineAndTargetDedicated";
         internal const string VirtualMachineAutoScaleParameterSet = "VirtualMachineAndAutoScale";
+        internal const string ChangeDesc = "Parameter is being deprecated without being replaced";
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The id of the pool to create.")]
         [ValidateNotNullOrEmpty]
@@ -83,6 +84,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ResourceTag", ("14.6.0", "3.8.0", ChangeDescription = ChangeDesc))]
         [Parameter(Mandatory = false, HelpMessage = "The user  defined tags to be associated with the Azure Batch Pool.When specified, these tags are propagated to the backing Azure resources associated with the pool.This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.")]
         [ValidateNotNullOrEmpty]
         public IDictionary ResourceTag { get; set; }
@@ -100,6 +102,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         [ValidateNotNullOrEmpty]
         [Alias("CertificateReference")]
+        [CmdletParameterBreakingChangeWithVersion("CertificateReference", ("14.6.0", "3.8.0", ChangeDescription = ChangeDesc))]
         public PSCertificateReference[] CertificateReferences { get; set; }
 
         [Parameter]
@@ -110,6 +113,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         [ValidateNotNullOrEmpty]
         [Alias("ApplicationLicense")]
+        [CmdletParameterBreakingChangeWithVersion("ApplicationLicense", ("14.6.0", "3.8.0", ChangeDescription = ChangeDesc))]
         public List<string> ApplicationLicenses { get; set; }
 
         [Parameter(ParameterSetName = VirtualMachineAutoScaleParameterSet)]
@@ -120,6 +124,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = CloudServiceAutoScaleParameterSet)]
         [Parameter(ParameterSetName = CloudServiceTargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChangeWithVersion("CloudServiceConfiguration", ("14.6.0", "3.8.0", ChangeDescription = ChangeDesc))]
         public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
 
         [Parameter]
@@ -136,11 +141,13 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChangeWithVersion("CurrentNodeCommunicationMode", ("14.6.0", "3.8.0", ChangeDescription = ChangeDesc))]
         public NodeCommunicationMode CurrentNodeCommunicationMode { get; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Default", "Classic", "Simplified")]
+        [CmdletParameterBreakingChangeWithVersion("TargetNodeCommunicationMode", ("14.6.0", "3.8.0", ChangeDescription = ChangeDesc))]
         public NodeCommunicationMode TargetNodeCommunicationMode { get; set; }
 
         protected override void ExecuteCmdletImpl()

@@ -20,7 +20,8 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Batch
 {
     [System.Obsolete]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificate", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCertificate))]
+    [CmdletDeprecationWithVersion("14.6.0", "3.8.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificate", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCertificate))]
     public class GetBatchCertificateCommand : BatchObjectModelCmdletBase
     {
         internal const string ThumbprintParameterSet = "Thumbprint";
