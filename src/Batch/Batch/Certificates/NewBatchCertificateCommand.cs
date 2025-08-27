@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Batch
 {
     [System.Obsolete]
-    [CmdletDeprecationWithVersion("14.6.0", "3.8.0")]
+    [CmdletDeprecationWithVersion("15.0.0", "4.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificate", DefaultParameterSetName = FileParameterSet), OutputType(typeof(void))]
     public class NewBatchCertificateCommand : BatchObjectModelCmdletBase
     {
